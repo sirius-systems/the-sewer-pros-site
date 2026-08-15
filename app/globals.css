@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   The Sewer Pros — global tokens
+
+   Governed by docs/18-design-system.md §8, §122, §124.
+
+   ⚠ PLACEHOLDER VALUES — NOT BRAND COLORS
+
+   DEC-064 (status: PROPOSED) has not been approved, and PENDING-005
+   (brand palette) and PENDING-006 (typography) are unresolved.
+
+   The token NAMES and ROLES below are the approved architecture
+   (18 §8 defines semantic roles rather than fixed values).
+   The VALUES are neutral greys chosen only so the scaffold renders.
+
+   Do not treat any hex value in this file as a brand decision, and do
+   not build finished visual design against them. When brand assets are
+   approved, replace the values here — component code should not need
+   to change (18 §124).
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --background: #ffffff;
+  --foreground: #171717;
+  --surface: #ffffff;
+  --surface-muted: #f5f5f5;
+  --border: #e5e5e5;
+
+  /* Brand — PLACEHOLDER, see PENDING-005 */
+  --brand: #1f2937;
+  --brand-foreground: #ffffff;
+  --accent: #0f766e;
+  --accent-foreground: #ffffff;
+
+  /* Text */
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+
+  /* Semantic state (18 §8) */
+  --success: #15803d;
+  --warning: #b45309;
+  --error: #b91c1c;
+
+  /* Layout (18 §21, §22) */
+  --container-max: 1280px;
+  --container-reading: 42rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+
+   Note: 18 §125 — no application-style dark mode toggle. The design
+   system uses dark *sections*, not a user-switchable theme. The
+   generator's prefers-color-scheme block has therefore been removed.
+   -------------------------------------------------------------------------- */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* 18 §94 — keyboard focus must remain clearly visible. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 18 §90, §146 — honour reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
