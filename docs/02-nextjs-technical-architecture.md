@@ -387,6 +387,7 @@ the-sewer-pros-site/
 │   ├── services/
 │   ├── locations/
 │   ├── markets/
+│   ├── matrices/
 │   ├── audiences/
 │   ├── commercial/
 │   ├── pages/
@@ -549,16 +550,25 @@ Example conceptual structure:
 ```text
 data/
 ├── services/
+│   ├── master-service-registry.json     ← in repository
 │   └── services.ts
 ├── locations/
+│   ├── master-location-registry.json    ← in repository
 │   └── locations.ts
+├── matrices/
+│   ├── service-location-master-matrix.json  ← in repository
+│   └── service-location-master-matrix.csv   ← in repository
 ├── markets/
 │   └── markets.ts
 └── pages/
     └── approved-pages.ts
 ```
 
-The exact file formats will be determined during implementation.
+Files marked *in repository* are the normalized research datasets already committed. The remaining files are implementation modules to be created during the build.
+
+The exact file formats for the implementation modules will be determined during implementation.
+
+**Critical distinction:** the registries and matrices under `data/` are *research and entity data*. They are inputs to validation, not inputs to route generation. Route generation consumes only the approved page registry derived from `04-master-page-build-list.md`. See §21 and §46.
 
 ---
 

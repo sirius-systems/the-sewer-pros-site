@@ -66,10 +66,10 @@ desktop.ini
 # The following are project source-of-truth data and MUST remain
 # version-controlled. Do not add them to this file.
 #
-#   master-service-registry.json
-#   master-location-registry.json
-#   service-location-master-matrix.json     (~16 MB)
-#   service-location-master-matrix.csv      (~7.5 MB)
+#   data/services/master-service-registry.json
+#   data/locations/master-location-registry.json
+#   data/matrices/service-location-master-matrix.json   (~16 MB)
+#   data/matrices/service-location-master-matrix.csv    (~7.5 MB)
 #
 # Rationale:
 #   06-master-service-registry.md §48  — machine-readable registry

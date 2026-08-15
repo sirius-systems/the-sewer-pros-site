@@ -1401,30 +1401,20 @@ export type MatrixEligibility =
 
 # 50. Machine-Readable Source of Truth
 
-The repository should preserve:
+The repository preserves both formats.
+
+**Current repository locations:**
 
 ```text
-service-location-master-matrix.csv
+data/matrices/service-location-master-matrix.csv
+data/matrices/service-location-master-matrix.json
 ```
 
-for spreadsheet analysis.
+The CSV supports spreadsheet analysis.
 
-And:
+The JSON supports programmatic consumption, including the route/matrix cross-validation described in §112.
 
-```text
-service-location-master-matrix.json
-```
-
-for programmatic consumption.
-
-Recommended eventual repository placement:
-
-```text
-/data/matrices/service-location-master-matrix.json
-/data/matrices/service-location-master-matrix.csv
-```
-
-The exact repository folder may be finalized during implementation.
+Both files were relocated from the repository root into `data/matrices/` to match the architecture defined in `02-nextjs-technical-architecture.md` §10. Both remain version-controlled research source data, not build output.
 
 ---
 
@@ -2631,16 +2621,18 @@ Future changes should increment the appropriate version.
 
 # 110. Source-of-Truth Files
 
-Recommended repository structure:
+Current repository structure:
 
 ```text
-/data/services/master-service-registry.json
-/data/locations/master-location-registry.json
-/data/matrices/service-location-master-matrix.json
-/data/matrices/service-location-master-matrix.csv
+data/services/master-service-registry.json
+data/locations/master-location-registry.json
+data/matrices/service-location-master-matrix.json
+data/matrices/service-location-master-matrix.csv
 ```
 
-The exact final paths may be adjusted during implementation, but there should be one authoritative machine-readable source for each entity layer.
+These are the authoritative machine-readable sources for each entity layer.
+
+There should remain exactly one machine-readable source per layer. Do not create parallel copies elsewhere in the repository.
 
 ---
 

@@ -42,10 +42,10 @@
 # GitHub diffs and are excluded from language statistics.
 # These remain version-controlled source data. See .gitignore notes
 # and 08-service-location-matrix.md §50.
-service-location-master-matrix.json  linguist-generated=true
-service-location-master-matrix.csv   linguist-generated=true
-master-location-registry.json        linguist-generated=true
-master-service-registry.json         linguist-generated=true
+data/matrices/service-location-master-matrix.json  linguist-generated=true
+data/matrices/service-location-master-matrix.csv   linguist-generated=true
+data/locations/master-location-registry.json       linguist-generated=true
+data/services/master-service-registry.json         linguist-generated=true
 
 # Archived research output is historical reference, not active docs.
 docs/archive/**  linguist-documentation=true

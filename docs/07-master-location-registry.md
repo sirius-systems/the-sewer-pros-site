@@ -406,19 +406,21 @@ export interface LocationRecord {
 
 # 15. Machine-Readable Registry
 
-The complete 579-record dataset should be maintained in a machine-readable companion file.
+The complete 579-record dataset is maintained in a machine-readable companion file.
 
-Recommended:
-
-```text
-/data/locations/master-location-registry.json
-```
-
-or:
+**Current location:**
 
 ```text
-/data/locations/master-location-registry.ts
+data/locations/master-location-registry.json
 ```
+
+A typed TypeScript wrapper may later be added alongside it:
+
+```text
+data/locations/master-location-registry.ts
+```
+
+If added, it should derive from the JSON rather than duplicating the 579 records.
 
 The machine-readable registry should preserve, where available:
 

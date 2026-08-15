@@ -1751,21 +1751,25 @@ The production schema may expand as implementation requirements become clearer.
 
 # 48. Machine-Readable Source of Truth
 
-The repository should ultimately contain a machine-readable version of this registry.
+The repository contains a machine-readable version of this registry.
 
-Recommended:
-
-```text
-/data/services/master-service-registry.ts
-```
-
-or:
+**Current location:**
 
 ```text
-/data/services/master-service-registry.json
+data/services/master-service-registry.json
 ```
 
-The human-readable Markdown document should remain synchronized with the machine-readable registry.
+A typed TypeScript wrapper may later be added alongside it:
+
+```text
+data/services/master-service-registry.ts
+```
+
+If added, the TypeScript module should import or derive from the JSON rather than duplicating its contents, so a single source of truth is preserved.
+
+This Markdown document is the human-readable governance layer and must remain synchronized with the JSON registry.
+
+If the two disagree about a canonical service name, slug, ID, or page status, resolve the discrepancy rather than allowing implementation to follow whichever is more convenient.
 
 ---
 
