@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Production
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment
+# Never commit secrets. See 02-nextjs-technical-architecture.md §51-52
+# and CLAUDE.md §52, §86.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# .env.example SHOULD be committed
+!.env.example
+
+# Cloudflare
+.wrangler/
+.dev.vars
+
+# Testing
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp
+*.tmp
+.cache/
+
+
+# ---------------------------------------------------------------
+# NOT IGNORED — deliberate inclusions
+# ---------------------------------------------------------------
+#
+# The following are project source-of-truth data and MUST remain
+# version-controlled. Do not add them to this file.
+#
+#   master-service-registry.json
+#   master-location-registry.json
+#   service-location-master-matrix.json     (~16 MB)
+#   service-location-master-matrix.csv      (~7.5 MB)
+#
+# Rationale:
+#   06-master-service-registry.md §48  — machine-readable registry
+#   07-master-location-registry.md §15 — machine-readable registry
+#   08-service-location-matrix.md  §50 — preserve BOTH csv and json
+#   19-analytics-measurement.md   §141 — public IDs may be committed
+#
+# The matrix JSON is large but is research source data, not build
+# output. It is consumed at build time to validate approved routes
+# against known relationships (08-service-location-matrix.md §112).
+#
+# If repository size later becomes a problem, evaluate Git LFS
+# rather than removing these files, and record the decision in
+# 22-decisions-change-log.md.
+# ---------------------------------------------------------------

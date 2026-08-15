@@ -1,0 +1,3007 @@
+# The Sewer Pros — Decisions & Change Log
+
+**Document:** `22-decisions-change-log.md`
+**Project:** The Sewer Pros Website Rebuild
+**Repository:** `the-sewer-pros-site`
+**Status:** Active Project Governance / Source of Truth
+**Initial Baseline Date:** August 14, 2026
+
+---
+
+# 1. Purpose
+
+This document records material project decisions, approved changes, architectural revisions, exceptions, overrides, and unresolved decisions for The Sewer Pros website rebuild.
+
+It exists to prevent important project decisions from becoming scattered across:
+
+* chat conversations
+* Claude sessions
+* GitHub commits
+* VS Code notes
+* research files
+* implementation assumptions
+* undocumented developer decisions
+
+The purpose is to maintain a permanent project history answering:
+
+> **What was decided, when was it decided, why was it decided, and which project documents or systems were affected?**
+
+---
+
+# 2. Governance Role
+
+This document is the authoritative historical record of material project decisions.
+
+It does **not** replace the subject-specific source-of-truth documents.
+
+For example:
+
+```text
+Service taxonomy
+→ 06-master-service-registry.md
+```
+
+```text
+Approved routes
+→ 04-master-page-build-list.md
+```
+
+```text
+URL structure
+→ 05-url-routing-strategy.md
+```
+
+```text
+Technical architecture
+→ 02-nextjs-technical-architecture.md
+```
+
+This log records **changes to those decisions and why they occurred**.
+
+---
+
+# 3. Site OS Relationship
+
+Site OS Master remains the reusable operating system governing:
+
+* workflows
+* research procedures
+* prompts
+* QA
+* gates
+* implementation methodology
+* validation
+* efficiency
+
+This project log should not duplicate generalized Site OS procedures.
+
+Use this document when:
+
+* The Sewer Pros needs a project-specific exception
+* a project-specific architecture changes
+* a business fact changes
+* a service is added or removed
+* a market changes
+* a route strategy changes
+* an approved page is added or retired
+* a technical implementation decision materially changes
+* a Site OS default requires a project-specific override
+
+---
+
+# 4. Decision Hierarchy
+
+When conflicting project information exists, use the following priority:
+
+```text
+1. Most recent explicit approved project decision
+2. Subject-specific source-of-truth document
+3. This decisions/change log
+4. Approved business/source data
+5. Site OS Master
+6. Validated research
+7. Implementation convention
+8. AI inference
+```
+
+This log should help identify the most recent approved decision.
+
+---
+
+# 5. What Belongs in This Log
+
+Record changes involving:
+
+## Business
+
+* positioning
+* service capabilities
+* service exclusions
+* markets
+* audiences
+* commercial capabilities
+* business identity
+
+## SEO
+
+* page architecture
+* indexation rules
+* location strategy
+* service + location strategy
+* content strategy
+* canonicalization
+* local SEO
+* GBP strategy
+
+## Technical
+
+* framework
+* hosting
+* routing
+* deployment
+* rendering
+* analytics
+* schema
+* redirects
+
+## Design
+
+* major brand direction
+* design-system changes
+* navigation architecture
+* conversion-system changes
+
+## Project Governance
+
+* source-of-truth changes
+* Site OS overrides
+* publishing rules
+* approval gates
+
+---
+
+# 6. What Does Not Need Logging
+
+Do not record every minor implementation detail.
+
+Examples that normally do not require entries:
+
+* typo corrections
+* minor spacing changes
+* routine image replacement
+* ordinary dependency patches
+* non-material copy edits
+* small refactors that do not change architecture
+* routine QA fixes
+
+Git history can capture normal implementation changes.
+
+This log is for **decisions with future strategic relevance**.
+
+---
+
+# 7. Decision Statuses
+
+Use the following statuses.
+
+## `APPROVED`
+
+Decision is active and authoritative.
+
+## `SUPERSEDED`
+
+A newer approved decision has replaced it.
+
+## `REVERSED`
+
+The previous decision has been intentionally undone.
+
+## `DEFERRED`
+
+Decision was considered but postponed.
+
+## `PROPOSED`
+
+Decision is under consideration but not approved.
+
+## `REJECTED`
+
+Proposal was evaluated and explicitly declined.
+
+---
+
+# 8. Impact Levels
+
+Use:
+
+## Critical
+
+Changes core business positioning, architecture, domain, markets, or major service capabilities.
+
+## High
+
+Changes routes, publishing strategy, local SEO, schema, conversion architecture, or major page families.
+
+## Medium
+
+Changes significant content, design, analytics, or implementation standards.
+
+## Low
+
+Project-specific decision worth preserving but unlikely to affect the broader architecture.
+
+---
+
+# 9. Decision Record Format
+
+Use this format for new entries:
+
+```markdown
+## DEC-### — Decision Title
+
+**Date:** YYYY-MM-DD  
+**Status:** APPROVED  
+**Impact:** High  
+**Decision Owner:**  
+**Affected Documents:**  
+
+### Decision
+
+Describe what was decided.
+
+### Reason
+
+Explain why the decision was made.
+
+### Previous State
+
+Describe the prior state if applicable.
+
+### New State
+
+Describe the resulting state.
+
+### Implementation Impact
+
+List systems, pages, data, code, or workflows that must change.
+
+### Follow-Up
+
+List any additional action required.
+
+---
+```
+
+---
+
+# 10. Initial Project Decision Register
+
+The following decisions represent the approved project baseline as of August 14, 2026.
+
+---
+
+# DEC-001 — Repository Name
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:** All repository documentation
+
+### Decision
+
+The recommended repository name is:
+
+```text
+the-sewer-pros-site
+```
+
+### Reason
+
+The name is:
+
+* brand-specific
+* concise
+* understandable
+* consistent with website repository conventions
+
+### New State
+
+Project documentation and implementation should assume:
+
+```text
+the-sewer-pros-site
+```
+
+unless a later repository naming decision supersedes this entry.
+
+---
+
+# DEC-002 — Claude Project as Project Intelligence Workspace
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Project
+**Affected Documents:** `00-project-overview.md`, `CLAUDE.md`
+
+### Decision
+
+Claude Project will be used for:
+
+* project knowledge
+* research
+* planning
+* content development
+* project continuity
+
+### Reason
+
+The project requires a persistent research and content-development environment separate from the production repository implementation workflow.
+
+---
+
+# DEC-003 — Site OS Master Governs Reusable Methodology
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Decision Owner:** Project
+**Affected Documents:** All project documentation
+
+### Decision
+
+Site OS Master is the reusable Claude skill governing:
+
+* workflows
+* prompts
+* research methodology
+* QA
+* validation gates
+* efficiency
+* implementation methodology
+* build governance
+
+### Reason
+
+Reusable procedures should remain centralized instead of being duplicated across every website repository.
+
+### Project Rule
+
+Repository documentation should contain:
+
+```text
+PROJECT-SPECIFIC TRUTH
+```
+
+not duplicated generalized Site OS instructions.
+
+### Override Rule
+
+If The Sewer Pros requires an exception to Site OS Master, that exception must be explicitly documented in the appropriate repository document and, when material, in this log.
+
+---
+
+# DEC-004 — Next.js App Router
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `02-nextjs-technical-architecture.md`
+
+### Decision
+
+The website will use:
+
+```text
+Next.js App Router
+```
+
+### Reason
+
+The architecture needs to support:
+
+* scalable routing
+* structured page families
+* reusable components
+* TypeScript
+* metadata
+* SEO
+* multi-market expansion
+
+---
+
+# DEC-005 — TypeScript
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `02-nextjs-technical-architecture.md`
+
+### Decision
+
+TypeScript will be the primary application language.
+
+---
+
+# DEC-006 — Tailwind CSS
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `02-nextjs-technical-architecture.md`, `18-design-system.md`
+
+### Decision
+
+Tailwind CSS will provide the primary styling architecture.
+
+---
+
+# DEC-007 — VS Code Development Environment
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+
+### Decision
+
+VS Code will be the primary local development environment.
+
+---
+
+# DEC-008 — GitHub as Repository Source of Truth
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+
+### Decision
+
+GitHub will store:
+
+* source code
+* documentation
+* configuration
+* project data
+* content
+* structured registries
+* implementation history
+
+### Reason
+
+The repository must serve as the persistent project-specific source of truth.
+
+---
+
+# DEC-009 — Cloudflare Pages Deployment
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `02-nextjs-technical-architecture.md`, `20-migration-redirect-plan.md`
+
+### Decision
+
+Cloudflare Pages will be used for production deployment and hosting.
+
+---
+
+# DEC-010 — Single-Domain Multi-Market Architecture
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:**
+
+* `03-information-architecture.md`
+* `04-master-page-build-list.md`
+* `05-url-routing-strategy.md`
+* `07-master-location-registry.md`
+
+### Decision
+
+St. Louis, San Diego, and Las Vegas will operate within one primary website architecture.
+
+Separate standalone websites will not be created for each market.
+
+### Reason
+
+A single-domain architecture allows:
+
+* consolidated authority
+* shared service entities
+* scalable internal linking
+* simpler brand management
+* centralized content governance
+
+---
+
+# DEC-011 — Initial Primary Markets
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** All location-related documents
+
+### Decision
+
+Initial primary markets are:
+
+1. St. Louis, Missouri
+2. San Diego, California
+3. Las Vegas, Nevada
+
+### Rule
+
+Future market expansion requires explicit approval.
+
+---
+
+# DEC-012 — Core Business Positioning
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:**
+
+* `00-project-overview.md`
+* `01-business-brand-foundation.md`
+* `10-seo-strategy.md`
+* `12-content-aeo-ai-strategy.md`
+* `13-competitor-analysis.md`
+* `14-content-specification.md`
+* `17-conversion-architecture.md`
+* `18-design-system.md`
+
+### Decision
+
+The Sewer Pros should be positioned primarily around:
+
+```text
+Sewer Inspection
++
+Diagnostics
++
+Cleaning
++
+Hydro Jetting
++
+Locating
++
+Drain Cleaning
++
+Pre-Purchase Inspection
++
+Commercial Sewer/Drain Services
+```
+
+A central differentiator is:
+
+> **Independent sewer inspection and cleaning without repair-driven upselling.**
+
+---
+
+# DEC-013 — Sewer Repair and Replacement Are Not Approved Services
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** All service, content, schema, SEO, conversion, and design documents
+
+### Decision
+
+Do not position The Sewer Pros as a sewer repair or replacement contractor unless specifically approved later.
+
+Unapproved service positioning includes:
+
+* sewer line repair
+* sewer replacement
+* excavation
+* trenchless replacement
+* pipe bursting
+* sewer lining
+* major sewer construction
+
+### Allowed Use
+
+Repair and replacement topics may appear educationally in contexts such as:
+
+* evaluating a repair recommendation
+* determining whether repair may be necessary
+* obtaining a second opinion
+* comparing cleaning vs. structural repair
+
+### Reason
+
+The company's independent inspection model depends on maintaining a clear distinction between:
+
+```text
+Diagnosis
+```
+
+and:
+
+```text
+Selling the Repair
+```
+
+---
+
+# DEC-014 — Scalable Multi-Market Page Architecture
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `03-information-architecture.md`, `04-master-page-build-list.md`
+
+### Decision
+
+The website architecture may support:
+
+* core pages
+* core service pages
+* market hubs
+* location pages
+* service + location pages
+* audience pages
+* audience + location pages
+* commercial pages
+* commercial + location pages
+* comparison pages
+* alternative pages
+* resource/topic clusters
+
+### Rule
+
+Architecture capability does not equal publishing approval.
+
+---
+
+# DEC-015 — Master Page Build List Is Publishing Authority
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** Entire project
+
+### Decision
+
+`04-master-page-build-list.md`
+
+is the authoritative registry controlling which public indexable routes may be created.
+
+### Rule
+
+A route must not be generated merely because it exists in:
+
+* a keyword database
+* a competitor analysis
+* the location registry
+* the service registry
+* the service × location matrix
+* AI output
+
+### Governing Principle
+
+```text
+Opportunity
+    ↓
+Evaluation
+    ↓
+Master Page Build List Approval
+    ↓
+Build
+    ↓
+Index
+```
+
+---
+
+# DEC-016 — Geographic Dataset Is Opportunity Intelligence
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:**
+
+* `07-master-location-registry.md`
+* `08-service-location-matrix.md`
+* `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+The project contains:
+
+```text
+579 normalized geographic records
+```
+
+These records are strategic research/data assets.
+
+They do not automatically authorize:
+
+```text
+579 indexable location pages
+```
+
+---
+
+# DEC-017 — Eighteen Canonical Service Records
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `06-master-service-registry.md`
+
+### Decision
+
+The project research contains:
+
+```text
+18 canonical service records
+```
+
+The Master Service Registry controls canonical naming, relationships, and service eligibility.
+
+### Rule
+
+AI, page copy, forms, schema, and code must not independently invent alternative canonical service taxonomies.
+
+---
+
+# DEC-018 — 10,422 Service × Location Relationships Are Not Automatic Pages
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:**
+
+* `04-master-page-build-list.md`
+* `08-service-location-matrix.md`
+* `10-seo-strategy.md`
+* `14-content-specification.md`
+* `16-internal-linking-strategy.md`
+* `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+The project contains:
+
+```text
+10,422 service × location relationships
+```
+
+These represent potential SEO relationships.
+
+### Explicit Rule
+
+```text
+relationship_exists
+≠
+publish_page
+```
+
+### Reason
+
+This safeguard protects against:
+
+* doorway-page creation
+* thin content
+* uncontrolled programmatic SEO
+* index bloat
+* duplicate content
+* cannibalization
+
+---
+
+# DEC-019 — Controlled Geographic Expansion
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+Geographic expansion should occur through controlled cohorts.
+
+Conceptually:
+
+```text
+Approved Locations
+        ↓
+Publish Initial Cohort
+        ↓
+Measure
+        ↓
+Learn
+        ↓
+Approve Additional Cohort
+```
+
+Do not publish the entire geographic opportunity set simultaneously.
+
+---
+
+# DEC-020 — St. Louis Has Existing Google Business Profile
+
+**Date:** 2026-08-14
+**Status:** APPROVED BASELINE FACT
+**Impact:** High
+**Affected Documents:**
+
+* `11-local-seo-gbp-strategy.md`
+* `15-schema-entity-strategy.md`
+* `19-analytics-measurement.md`
+
+### Decision / Baseline
+
+St. Louis currently has an existing Google Business Profile.
+
+### Strategic Implication
+
+St. Louis should support:
+
+```text
+Website
++
+GBP
++
+Local Search
+```
+
+as an integrated local ecosystem.
+
+---
+
+# DEC-021 — San Diego Has No Current Google Business Profile
+
+**Date:** 2026-08-14
+**Status:** APPROVED BASELINE FACT
+**Impact:** High
+
+### Decision / Baseline
+
+No current San Diego Google Business Profile has been identified.
+
+### Strategic Implication
+
+San Diego should initially use:
+
+```text
+Organic-First Local SEO
+```
+
+without pretending a physical branch exists.
+
+---
+
+# DEC-022 — Las Vegas Has No Current Google Business Profile
+
+**Date:** 2026-08-14
+**Status:** APPROVED BASELINE FACT
+**Impact:** High
+
+### Decision / Baseline
+
+No current Las Vegas Google Business Profile has been identified.
+
+### Strategic Implication
+
+Las Vegas should initially use:
+
+```text
+Organic-First Local SEO
+```
+
+with particular opportunity around commercial and property-management search.
+
+---
+
+# DEC-023 — No Fake Local Locations
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:**
+
+* `07-master-location-registry.md`
+* `11-local-seo-gbp-strategy.md`
+* `14-content-specification.md`
+* `15-schema-entity-strategy.md`
+* `18-design-system.md`
+
+### Decision
+
+The site must not fabricate:
+
+* local offices
+* business addresses
+* local storefronts
+* technicians stationed in a location
+* local phone numbers
+* physical branches
+
+for SEO purposes.
+
+### Reason
+
+Market coverage and physical business presence are separate concepts.
+
+---
+
+# DEC-024 — One Primary Organization Entity
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `15-schema-entity-strategy.md`
+
+### Decision
+
+Structured data should maintain one primary entity for:
+
+```text
+The Sewer Pros
+```
+
+### Rule
+
+Do not represent every SEO market/location page as a separate company.
+
+---
+
+# DEC-025 — LocalBusiness Requires Verified Real Location
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `15-schema-entity-strategy.md`
+
+### Decision
+
+`LocalBusiness` schema should only be used where a legitimate physical operating location/branch has been verified and approved.
+
+### Implication
+
+San Diego and Las Vegas should not automatically receive LocalBusiness entities because market pages exist.
+
+Use appropriate relationships such as:
+
+```text
+Service
++
+areaServed
++
+Place
+```
+
+instead.
+
+---
+
+# DEC-026 — Service Schema Represents Approved Services
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:** `15-schema-entity-strategy.md`
+
+### Decision
+
+Canonical services should normally be modeled using:
+
+```text
+Service
+```
+
+rather than fake products, businesses, or keyword entities.
+
+---
+
+# DEC-027 — FAQ Content Does Not Depend on FAQ Rich Results
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:**
+
+* `12-content-aeo-ai-strategy.md`
+* `14-content-specification.md`
+* `15-schema-entity-strategy.md`
+
+### Decision
+
+FAQ content remains strategically valuable for:
+
+* users
+* AEO
+* AI retrieval
+* semantic depth
+
+The strategy should not depend on receiving Google FAQ rich-result enhancements.
+
+---
+
+# DEC-028 — No Self-Serving Review Schema Strategy
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:** `15-schema-entity-strategy.md`
+
+### Decision
+
+The project should not implement self-serving business review markup merely to pursue review stars.
+
+Authentic reviews remain important visually and for conversion.
+
+---
+
+# DEC-029 — Real Estate Is a Strategic Audience Cluster
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:**
+
+* `09-audience-commercial-matrix.md`
+* `13-competitor-analysis.md`
+* `14-content-specification.md`
+* `16-internal-linking-strategy.md`
+* `17-conversion-architecture.md`
+* `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+Real-estate-related audiences represent a major strategic opportunity.
+
+Priority groups include:
+
+* home buyers
+* home sellers
+* real estate agents
+* home inspectors
+* investors
+
+### Core Service Relationship
+
+```text
+Real Estate
+        ↓
+Pre-Purchase Sewer Inspection
+        ↓
+Sewer Camera Inspection
+```
+
+---
+
+# DEC-030 — Independent Second Opinion Is a Strategic Content Opportunity
+
+**Date:** 2026-08-14
+**Status:** APPROVED STRATEGIC DIRECTION
+**Impact:** High
+**Affected Documents:**
+
+* `13-competitor-analysis.md`
+* `14-content-specification.md`
+* `17-conversion-architecture.md`
+* `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+The site should explore approved content around:
+
+* independent sewer inspection
+* repair second opinions
+* replacement second opinions
+* what to do before approving sewer replacement
+
+### Rule
+
+This content must remain educational and non-accusatory.
+
+---
+
+# DEC-031 — Commercial Is a Dedicated Architecture
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:**
+
+* `03-information-architecture.md`
+* `09-audience-commercial-matrix.md`
+* `14-content-specification.md`
+* `16-internal-linking-strategy.md`
+* `17-conversion-architecture.md`
+
+### Decision
+
+Commercial sewer/drain services should not be buried as a small subsection of residential content.
+
+Commercial should support:
+
+```text
+Commercial Hub
+        ↓
+Commercial Services
+        ↓
+Commercial Markets
+        ↓
+Commercial Audiences
+        ↓
+Commercial Resources
+```
+
+---
+
+# DEC-032 — Commercial Conversion Path Must Be Distinct
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:** `17-conversion-architecture.md`
+
+### Decision
+
+Commercial inquiries should have a commercial-specific conversion experience.
+
+Do not force commercial leads through a purely residential inquiry flow.
+
+---
+
+# DEC-033 — Pre-Purchase Inspection Conversion Path
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:** `17-conversion-architecture.md`
+
+### Decision
+
+Pre-purchase sewer inspection should support a distinct conversion path appropriate for:
+
+* buyers
+* agents
+* sellers
+* real-estate transactions
+
+---
+
+# DEC-034 — Conversion Through Evidence, Not Pressure
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:**
+
+* `14-content-specification.md`
+* `17-conversion-architecture.md`
+* `18-design-system.md`
+
+### Decision
+
+The conversion philosophy should emphasize:
+
+```text
+Evidence
++
+Transparency
++
+Expertise
++
+Clear Next Step
+```
+
+rather than:
+
+* fear
+* artificial scarcity
+* exaggerated urgency
+* repair pressure
+* unapproved discounts
+
+---
+
+# DEC-035 — No Unverified Emergency or 24/7 Claims
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** Content and conversion architecture
+
+### Decision
+
+Do not claim:
+
+* 24/7 service
+* emergency availability
+* same-day service
+* guaranteed response times
+
+unless verified and approved.
+
+---
+
+# DEC-036 — No Unverified Pricing or Free-Service Claims
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Do not invent:
+
+* pricing
+* discounts
+* free inspections
+* free estimates
+* promotional offers
+
+for conversion purposes.
+
+---
+
+# DEC-037 — Internal Linking Uses Approved Routes Only
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `16-internal-linking-strategy.md`
+
+### Decision
+
+Internal-link components must reference approved live routes.
+
+### Rule
+
+The service × location opportunity matrix must not automatically produce public links.
+
+---
+
+# DEC-038 — Hub-and-Spoke Internal Linking
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `16-internal-linking-strategy.md`
+
+### Decision
+
+Primary internal-link architecture should use:
+
+```text
+Homepage
+    ↓
+Primary Hubs
+    ↓
+Canonical Pages
+    ↓
+Approved Local/Audience Pages
+    ↕
+Resources
+```
+
+Avoid uncontrolled many-to-many link grids.
+
+---
+
+# DEC-039 — Canonical Service Pages Remain Primary Service Authority
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Localized service pages should reinforce rather than replace the canonical general service page.
+
+Conceptually:
+
+```text
+Canonical Service
+        ↕
+Service + Market / Location
+```
+
+---
+
+# DEC-040 — Market Hubs Remain Primary Geographic Authority
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Each primary market hub should function as the main geographic authority node for its market.
+
+---
+
+# DEC-041 — Resource Content Uses Topic Clusters
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:**
+
+* `12-content-aeo-ai-strategy.md`
+* `14-content-specification.md`
+* `16-internal-linking-strategy.md`
+* `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+Resources should be organized around service and audience clusters rather than primarily as a chronological generic blog.
+
+Priority clusters include:
+
+* sewer inspection
+* sewer cleaning
+* hydro jetting
+* real estate/homebuyer
+* sewer problems
+* commercial
+
+---
+
+# DEC-042 — No Arbitrary Content Word Counts
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:** `14-content-specification.md`
+
+### Decision
+
+Content quality should be measured by intent satisfaction and unique value rather than minimum word counts.
+
+---
+
+# DEC-043 — No Automatic Blog Publishing Quota
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:** `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+The post-launch strategy will not require an arbitrary:
+
+```text
+X posts per week
+```
+
+publishing quota.
+
+Content velocity should follow:
+
+* opportunity
+* research quality
+* workflow capacity
+* business relevance
+
+---
+
+# DEC-044 — Design Should Emphasize Technical Precision
+
+**Date:** 2026-08-14
+**Status:** APPROVED DESIGN DIRECTION
+**Impact:** High
+**Affected Documents:** `18-design-system.md`
+
+### Decision
+
+The design direction should communicate:
+
+```text
+Industrial Precision
++
+Modern Editorial Design
++
+Local Service Trust
+```
+
+The site should not visually resemble a generic high-pressure plumbing franchise.
+
+---
+
+# DEC-045 — Design Should Avoid Repair-Heavy Visual Positioning
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Affected Documents:** `18-design-system.md`
+
+### Decision
+
+Avoid making excavation, destroyed yards, trenching, and replacement imagery a dominant brand theme.
+
+Primary visual themes should emphasize:
+
+* inspection
+* cameras
+* diagnostics
+* locating
+* cleaning
+* evidence
+
+---
+
+# DEC-046 — One Shared Design System Across Markets
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `18-design-system.md`
+
+### Decision
+
+St. Louis, San Diego, and Las Vegas should use one unified visual brand system.
+
+Markets may differ through:
+
+* imagery
+* proof
+* content
+* local context
+
+but should not become separate visual brands.
+
+---
+
+# DEC-047 — Analytics Should Measure Business Outcomes
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `19-analytics-measurement.md`
+
+### Decision
+
+Primary measurement should prioritize:
+
+```text
+Qualified Leads
++
+Search Visibility
++
+Conversion Performance
+```
+
+rather than:
+
+* page count
+* total keywords
+* raw pageviews
+
+---
+
+# DEC-048 — Core Analytics Stack
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Affected Documents:** `19-analytics-measurement.md`
+
+### Decision
+
+The preferred measurement stack includes:
+
+* Google Analytics 4
+* Google Search Console
+* Bing Webmaster Tools
+* Cloudflare analytics where useful
+
+Additional tools require a defined purpose.
+
+---
+
+# DEC-049 — Analytics Must Preserve Market and Service Context
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Conversions should preserve non-sensitive context where known, including:
+
+```text
+market_id
+service_id
+page_type
+audience_id
+lead_type
+form_type
+```
+
+This allows performance analysis across the multi-market architecture.
+
+---
+
+# DEC-050 — No PII in Analytics
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `19-analytics-measurement.md`
+
+### Decision
+
+Do not transmit customer personally identifiable information into GA4 event parameters.
+
+This includes:
+
+* names
+* phone numbers
+* emails
+* property street addresses
+* free-form inquiry messages
+
+---
+
+# DEC-051 — Migration Must Preserve Existing Search Equity
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `20-migration-redirect-plan.md`
+
+### Decision
+
+Before launch, inventory legacy URLs and map valuable URLs to approved new destinations.
+
+### Rule
+
+Do not treat the redesign as a reason to discard existing URL equity.
+
+---
+
+# DEC-052 — No Mass Redirect to Homepage
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `20-migration-redirect-plan.md`
+
+### Decision
+
+Removed legacy URLs should not automatically redirect to the homepage.
+
+Preferred redirect hierarchy:
+
+```text
+Exact Equivalent
+        ↓
+Closest Relevant Approved Page
+        ↓
+Relevant Hub
+        ↓
+404 / 410
+```
+
+---
+
+# DEC-053 — Permanent Redirects Should Be Direct
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Permanent migrations should normally use a direct permanent redirect.
+
+Avoid redirect chains and loops.
+
+---
+
+# DEC-054 — New Internal Links Must Use Final Canonical URLs
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Internal links should not rely on migration redirects.
+
+External legacy URLs may redirect.
+
+Internal navigation should point directly to the canonical destination.
+
+---
+
+# DEC-055 — Post-Launch SEO Uses Controlled Expansion
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Critical
+**Affected Documents:** `21-post-launch-seo-roadmap.md`
+
+### Decision
+
+Post-launch growth should follow:
+
+```text
+Stabilize
+→ Measure
+→ Improve
+→ Expand
+→ Measure Again
+```
+
+Do not immediately publish every theoretical route after launch.
+
+---
+
+# DEC-056 — Improve Existing Opportunities Before Unlimited Expansion
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Pages already receiving:
+
+* impressions
+* clicks
+* conversions
+
+should often be optimized before creating large quantities of new pages.
+
+---
+
+# DEC-057 — Geographic Expansion Uses Cohorts
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+New location and service + location pages should preferably launch in measurable cohorts.
+
+This allows performance feedback before additional expansion.
+
+---
+
+# DEC-058 — St. Louis Is the Strongest Existing Local Entity Market
+
+**Date:** 2026-08-14
+**Status:** APPROVED STRATEGIC BASELINE
+**Impact:** High
+
+### Decision
+
+St. Louis should initially receive particular emphasis around:
+
+* GBP integration
+* sewer laterals
+* pre-purchase inspection
+* real estate
+* local authority
+
+because it has the strongest existing established local presence.
+
+---
+
+# DEC-059 — San Diego Initially Uses Organic-First Market Growth
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Until an eligible real San Diego GBP exists, San Diego growth should focus on:
+
+* market authority
+* service authority
+* real-estate intent
+* selected local pages
+* independent inspection positioning
+* local references
+
+---
+
+# DEC-060 — Las Vegas Initially Uses Organic-First Market Growth
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+
+### Decision
+
+Until an eligible real Las Vegas GBP exists, Las Vegas growth should emphasize:
+
+* sewer diagnostics
+* hydro jetting
+* drain cleaning
+* line locating
+* property management
+* commercial SEO
+* selected local pages
+
+---
+
+# 11. Initial Decision Summary
+
+The initial project foundation can be summarized as:
+
+```text
+TECHNOLOGY
+Claude Project
++
+Site OS Master
++
+Next.js App Router
++
+TypeScript
++
+Tailwind
++
+GitHub
++
+Cloudflare Pages
+```
+
+```text
+MARKETS
+St. Louis
++
+San Diego
++
+Las Vegas
+```
+
+```text
+POSITIONING
+Independent Sewer Inspection
++
+Diagnostics
++
+Cleaning
++
+Locating
+```
+
+```text
+SEO ARCHITECTURE
+Services
++
+Markets
++
+Locations
++
+Audiences
++
+Commercial
++
+Resources
+```
+
+```text
+GOVERNANCE
+Opportunity Data
+≠
+Publishing Approval
+```
+
+```text
+PUBLISHING AUTHORITY
+04-master-page-build-list.md
+```
+
+---
+
+# 12. Current High-Level Status
+
+As of the initial baseline:
+
+| Area                                   | Status   |
+| -------------------------------------- | -------- |
+| Project stack                          | Approved |
+| Primary markets                        | Approved |
+| Independent inspection positioning     | Approved |
+| Repair/replacement exclusion           | Approved |
+| Multi-market architecture              | Approved |
+| Master Page Build List publishing gate | Approved |
+| Service registry model                 | Approved |
+| Location registry model                | Approved |
+| Service × location matrix role         | Approved |
+| Audience/commercial architecture       | Approved |
+| SEO strategy                           | Approved |
+| Local SEO strategy                     | Approved |
+| AEO/AI strategy                        | Approved |
+| Competitor strategy                    | Approved |
+| Content specification                  | Approved |
+| Schema/entity strategy                 | Approved |
+| Internal linking strategy              | Approved |
+| Conversion architecture                | Approved |
+| Design-system direction                | Approved |
+| Analytics strategy                     | Approved |
+| Migration strategy                     | Approved |
+| Post-launch SEO roadmap                | Approved |
+
+---
+
+# 13. Current Unresolved / Implementation-Dependent Decisions
+
+The following items may require future decisions or verification.
+
+They are not approved merely because they are listed here.
+
+---
+
+## PENDING-001 — Production Canonical Domain
+
+**Status:** OPEN
+
+Confirm the exact production canonical domain and preferred host format:
+
+```text
+apex
+vs.
+www
+```
+
+Once approved, update:
+
+* URL strategy
+* schema IDs
+* sitemap
+* canonical metadata
+* analytics
+* Search Console
+* migration plan
+
+---
+
+## PENDING-002 — St. Louis Physical Entity Details
+
+**Status:** OPEN
+
+Verify the exact public business information associated with the existing St. Louis GBP, including as applicable:
+
+* address/publication status
+* phone
+* hours
+* categories
+* service areas
+* website destination
+
+This determines the final LocalBusiness schema treatment.
+
+---
+
+## PENDING-003 — San Diego GBP Eligibility
+
+**Status:** DEFERRED
+
+Determine later whether The Sewer Pros qualifies for a legitimate San Diego Google Business Profile.
+
+No GBP or LocalBusiness entity should be fabricated while this remains unresolved.
+
+---
+
+## PENDING-004 — Las Vegas GBP Eligibility
+
+**Status:** DEFERRED
+
+Determine later whether The Sewer Pros qualifies for a legitimate Las Vegas Google Business Profile.
+
+---
+
+## PENDING-005 — Final Brand Color Palette
+
+**Status:** OPEN
+
+Confirm official approved brand colors from final source assets.
+
+Until then, `18-design-system.md` defines semantic visual direction rather than permanent HEX values.
+
+---
+
+## PENDING-006 — Final Typography
+
+**Status:** OPEN
+
+Select production font family/families during design implementation.
+
+---
+
+## PENDING-007 — Primary Conversion Label
+
+**Status:** OPEN
+
+Finalize global primary CTA language.
+
+Candidates may include:
+
+```text
+Request Service
+Schedule an Inspection
+Request an Inspection
+```
+
+Page-specific CTAs should remain intent-aware.
+
+---
+
+## PENDING-008 — Final Form Fields
+
+**Status:** OPEN
+
+Confirm operational requirements for:
+
+* general service form
+* pre-purchase inspection form
+* commercial form
+
+Keep forms as short as operationally practical.
+
+---
+
+## PENDING-009 — Call Tracking
+
+**Status:** DEFERRED / OPTIONAL
+
+Determine whether dynamic call tracking will be implemented.
+
+Any implementation must preserve NAP/entity consistency.
+
+---
+
+## PENDING-010 — Final Redirect Inventory
+
+**Status:** OPEN UNTIL MIGRATION RESEARCH
+
+Legacy URLs must be fully inventoried before launch.
+
+---
+
+## PENDING-011 — GPTBot Training-Access Policy
+
+**Status:** OPEN
+
+Determine whether `GPTBot` should be allowed or disallowed in production `robots.txt`.
+
+This is a business preference regarding AI model-training use of site content.
+
+It is **independent of** search visibility:
+
+```text
+OAI-SearchBot → allowed (DEC-062)
+GPTBot        → undecided
+```
+
+Allowing or blocking `GPTBot` has no effect on ChatGPT search visibility.
+
+Considerations:
+
+* whether the business wants its content used for model training
+* whether original inspection imagery, reports, or case studies change that calculus
+* whether competitors' choices are relevant (they are not binding)
+
+**Trigger:** before production `robots.txt` is finalized.
+
+Do not write the `GPTBot` directive until this is resolved. Do not resolve it by inheriting a template default.
+
+---
+
+## PENDING-012 — Las Vegas Service Availability Validation
+
+**Status:** OPEN
+
+Confirm the eight release criteria in DEC-063 before promoting any Las Vegas page from `launch_pending_validation` to `launch`.
+
+**Currently gated:**
+
+```text
+1 market hub
+4 location pages
+0 service + location pages (none authorized for generation)
+```
+
+**Trigger:** business confirmation of Las Vegas operational service delivery.
+
+This is separate from PENDING-004. Service availability is a prerequisite for a GBP, not a consequence of one.
+
+---
+
+# 14. Superseding a Decision
+
+When a decision changes:
+
+1. Do not delete the original entry.
+2. Change its status to `SUPERSEDED`.
+3. Add the ID of the new decision.
+4. Create a new decision entry.
+5. Update affected source-of-truth documents.
+6. Update implementation if necessary.
+
+Example:
+
+```markdown
+**Status:** SUPERSEDED  
+**Superseded By:** DEC-074
+```
+
+This preserves project history.
+
+---
+
+# 15. Reversing a Decision
+
+If the project intentionally returns to a previous strategy:
+
+* mark the current decision `REVERSED`
+* create a new decision explaining the reversal
+* do not simply delete both entries
+
+The history of why the project changed remains valuable.
+
+---
+
+# 16. Deferred Decisions
+
+A deferred decision should record:
+
+* what was considered
+* why it was postponed
+* what would trigger reconsideration
+
+Example:
+
+```text
+San Diego GBP
+Deferred until operational eligibility is confirmed.
+```
+
+This prevents the same unresolved question from being repeatedly re-decided.
+
+---
+
+# 17. Rejected Proposals
+
+Important rejected proposals may also be logged.
+
+Example:
+
+```text
+Proposal:
+Automatically generate all 10,422 service × location pages.
+
+Status:
+REJECTED
+
+Reason:
+Matrix represents opportunity intelligence, not publishing approval.
+```
+
+Logging major rejected ideas prevents future regression.
+
+---
+
+# 18. AI Decision Rule
+
+Claude, Claude Code, or another AI system must not silently convert an inference into a project decision.
+
+If a task encounters an unresolved architectural issue:
+
+```text
+Existing Approved Rule
+→ Follow It
+```
+
+If no approved rule exists:
+
+```text
+Implementation-Safe Default
++
+Document Decision Need
+```
+
+For material changes, update this log once the decision is approved.
+
+---
+
+# 19. Claude Code Rule
+
+`CLAUDE.md` should instruct Claude Code to:
+
+* consult source-of-truth documentation
+* respect approved decisions
+* avoid inventing business facts
+* avoid changing architecture silently
+* update project documentation when material approved changes occur
+
+A code implementation should not supersede repository governance merely because it exists in production.
+
+---
+
+# 20. Git History Relationship
+
+Git provides:
+
+```text
+What changed in files?
+```
+
+This document provides:
+
+```text
+Why did the project decide to change it?
+```
+
+Both are required for long-term project maintainability.
+
+---
+
+# 21. Decision Entry Naming
+
+Use sequential IDs:
+
+```text
+DEC-001
+DEC-002
+DEC-003
+...
+```
+
+Do not reuse deleted or superseded numbers.
+
+Pending questions may temporarily use:
+
+```text
+PENDING-###
+```
+
+until formally resolved.
+
+When approved, create a new permanent `DEC-###` entry.
+
+---
+
+# 22. Recommended Commit Practice
+
+When a material decision is implemented, the related Git commit or pull request should ideally reference the decision ID.
+
+Example:
+
+```text
+feat: add verified Las Vegas market entity [DEC-074]
+```
+
+or:
+
+```text
+docs: update service taxonomy [DEC-081]
+```
+
+This is recommended for significant changes, not required for every commit.
+
+---
+
+# 23. Decision Review Triggers
+
+Review this document when:
+
+* a new service is proposed
+* repair/replacement capabilities change
+* a new market is added
+* a GBP is created
+* a location becomes a verified branch
+* the canonical domain changes
+* page architecture changes
+* route conventions change
+* large page cohorts are approved
+* a major SEO strategy changes
+* analytics architecture changes
+* conversion strategy materially changes
+
+---
+
+# 24. Service Change Procedure
+
+If a new service is added:
+
+```text
+Business Approval
+        ↓
+New DEC Entry
+        ↓
+06-master-service-registry.md
+        ↓
+04-master-page-build-list.md
+        ↓
+Matrices
+        ↓
+Content
+        ↓
+Schema
+        ↓
+Internal Linking
+        ↓
+Analytics
+```
+
+Do not add the page first and update governance later.
+
+---
+
+# 25. New Market Procedure
+
+If a new market is approved:
+
+```text
+Business Approval
+        ↓
+New DEC Entry
+        ↓
+07-master-location-registry.md
+        ↓
+04-master-page-build-list.md
+        ↓
+URL Strategy
+        ↓
+SEO / Local SEO
+        ↓
+Schema
+        ↓
+Internal Linking
+        ↓
+Analytics
+```
+
+---
+
+# 26. GBP Change Procedure
+
+If San Diego or Las Vegas receives a legitimate GBP:
+
+```text
+Verify Eligibility
+        ↓
+Verify Business Data
+        ↓
+New DEC Entry
+        ↓
+11-local-seo-gbp-strategy.md
+        ↓
+15-schema-entity-strategy.md
+        ↓
+Analytics
+        ↓
+Market Pages
+```
+
+Do not automatically create a LocalBusiness entity merely because a profile request was submitted.
+
+---
+
+# 27. Repair Capability Change Procedure
+
+If the company begins providing sewer repair or replacement:
+
+This is a **Critical** decision.
+
+Required review includes:
+
+* positioning
+* brand
+* service registry
+* page build list
+* competitor strategy
+* content specification
+* schema
+* internal linking
+* conversion
+* design
+* analytics
+
+A repair capability change affects the site's fundamental competitive positioning.
+
+---
+
+# 28. Route Change Procedure
+
+Before changing an established production URL:
+
+1. identify why the URL must change
+2. review organic performance
+3. review backlinks
+4. review internal links
+5. approve the architectural decision
+6. create/update decision log if material
+7. implement permanent redirect
+8. update canonical references
+9. update sitemap
+10. monitor migration
+
+Do not change URLs solely for minor keyword preference.
+
+---
+
+# 29. Large Page Cohort Approval
+
+When a significant location or service + location cohort is approved, record a decision if it materially expands the indexed architecture.
+
+Example:
+
+```text
+DEC-089
+Approve first 25 San Diego service + location pages
+```
+
+The entry should record:
+
+* page family
+* market
+* number of routes
+* strategic rationale
+* expected measurement period
+
+This creates accountability for scaled publishing.
+
+---
+
+# 30. Post-Launch Decision Feedback
+
+Performance data may change project priorities.
+
+Example:
+
+```text
+Initial assumption:
+Homebuyer content is highest-value in San Diego.
+
+Observed data:
+Commercial hydro jetting substantially outperforms real-estate intent.
+
+Decision:
+Increase Las Vegas commercial priority.
+```
+
+A material strategic reprioritization should be logged.
+
+---
+
+# 31. Avoid Rewriting History
+
+Do not edit old decision entries so they appear to support newer thinking.
+
+Instead:
+
+```text
+Old Decision
+        ↓
+Superseded
+        ↓
+New Decision
+```
+
+The change history is part of the value of this document.
+
+---
+
+# 32. Document Update Requirement
+
+When a decision affects another source-of-truth file, both must be updated.
+
+Example:
+
+If a service is retired:
+
+```text
+22-decisions-change-log.md
++
+06-master-service-registry.md
++
+04-master-page-build-list.md
++
+Relevant matrices
+```
+
+The change log alone does not update operational truth.
+
+---
+
+# 33. Source-of-Truth Conflict Example
+
+Suppose:
+
+`06-master-service-registry.md`
+
+lists:
+
+```text
+Sewer Repair — Not Offered
+```
+
+but a new page is accidentally built at:
+
+```text
+/services/sewer-repair/
+```
+
+The code does not override the registry.
+
+The correct response is:
+
+```text
+Fix the implementation
+```
+
+unless an approved decision explicitly changed the service capability.
+
+---
+
+# 34. Content Conflict Example
+
+Suppose an AI-generated draft claims:
+
+> The Sewer Pros provides trenchless sewer replacement.
+
+But no approved decision changed DEC-013.
+
+The content is incorrect and must be revised.
+
+AI output does not create project truth.
+
+---
+
+# 35. Local Entity Conflict Example
+
+Suppose a Las Vegas page includes:
+
+```text
+Our Las Vegas Office
+```
+
+but DEC-022 and DEC-023 remain active.
+
+The page is incorrect.
+
+A market page does not create a physical branch.
+
+---
+
+# 36. Matrix Conflict Example
+
+Suppose:
+
+`08-service-location-matrix.md`
+
+contains:
+
+```text
+Hydro Jetting × Location X
+```
+
+but the route is absent from:
+
+`04-master-page-build-list.md`
+
+The page is not approved.
+
+DEC-015 and DEC-018 control.
+
+---
+
+# 37. Current Non-Negotiable Decisions
+
+Unless explicitly superseded, the following are foundational:
+
+```text
+DEC-003
+Site OS Master governs reusable methodology.
+```
+
+```text
+DEC-012
+Independent inspection/diagnostics/cleaning positioning.
+```
+
+```text
+DEC-013
+No repair/replacement contractor positioning.
+```
+
+```text
+DEC-015
+Master Page Build List controls publishing.
+```
+
+```text
+DEC-018
+10,422 matrix relationships are not automatic pages.
+```
+
+```text
+DEC-023
+No fake local locations.
+```
+
+These should be treated as major guardrails by Claude, developers, content creators, and future project contributors.
+
+---
+
+# 38. Active Decision Log Template
+
+Add future entries below this point in chronological order.
+
+---
+
+## DEC-061 — Trailing-Slash Canonical Convention
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `02-nextjs-technical-architecture.md` §7
+* `05-url-routing-strategy.md` §5, §6, §46, §138 Rule 3
+* `15-schema-entity-strategy.md` §114
+* `20-migration-redirect-plan.md` §46
+
+### Decision
+
+The project uses:
+
+```ts
+trailingSlash: true
+```
+
+All canonical URLs end with `/`.
+
+### Reason
+
+`05-url-routing-strategy.md` §5 established the routing convention as the subject-specific authority for URL structure and explicitly finalized the trailing-slash decision for this project.
+
+Consistency is required because the value propagates into canonical tags, sitemap entries, schema `@id` values, breadcrumb items, internal links, and redirect normalization. A mismatch between any two of those layers produces duplicate-URL signals.
+
+### Previous State
+
+`02-nextjs-technical-architecture.md` §7 contained an illustrative configuration example showing:
+
+```ts
+trailingSlash: false
+```
+
+That value was an early placeholder written before the routing strategy existed. It was never an approved project decision.
+
+### New State
+
+```text
+trailingSlash: true
+```
+
+is the authoritative production setting.
+
+`02-nextjs-technical-architecture.md` §7 has been corrected and now carries an explicit note identifying the superseded value and pointing to this decision.
+
+### Implementation Impact
+
+* `next.config.ts` must set `trailingSlash: true`
+* canonical metadata must emit trailing slashes
+* sitemap URLs must emit trailing slashes
+* schema `@id` / `url` / `mainEntityOfPage` / breadcrumb items must emit trailing slashes
+* internal `Link` hrefs must include trailing slashes
+* non-slash variants must normalize via redirect rather than serving independent `200` responses
+* route validation should reject stored pathnames lacking a trailing slash
+
+### Follow-Up
+
+Route-validation tooling (`05-url-routing-strategy.md` §66, §131) should enforce this as a build-time check rather than relying on developer discipline.
+
+---
+
+## DEC-062 — AI Crawler Access Policy (Search vs. Training)
+
+**Date:** 2026-08-14
+**Status:** APPROVED (search access) / see PENDING-011 (training access)
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `12-content-aeo-ai-strategy.md` §120, §121, §122
+* `02-nextjs-technical-architecture.md` §42
+
+### Decision
+
+The project treats AI search-discovery access and AI model-training access as **two separate decisions**.
+
+**Approved now:**
+
+```text
+OAI-SearchBot → Allow
+```
+
+Production `robots.txt` must not block `OAI-SearchBot`, because doing so removes the site from ChatGPT search answers.
+
+**Not decided:**
+
+```text
+GPTBot → Undecided
+```
+
+See PENDING-011.
+
+### Reason
+
+`12-content-aeo-ai-strategy.md` §121 establishes that search-visibility permission does not imply training permission. OpenAI documents the two crawlers separately, so the project can pursue AI-search visibility while treating training access as an independent business decision.
+
+Blocking the search crawler would forfeit a discovery channel the AEO strategy actively targets. Blocking or allowing the training crawler carries no search-visibility consequence and is therefore a business preference rather than an SEO decision.
+
+### Previous State
+
+No documented crawler policy. Risk of silently inheriting a generic `robots.txt` that resolved both questions by accident.
+
+### New State
+
+```text
+OAI-SearchBot: allowed (approved)
+GPTBot: unresolved, must be decided before launch
+```
+
+### Implementation Impact
+
+* `app/robots.ts` must explicitly allow `OAI-SearchBot`
+* `app/robots.ts` must not include a blanket AI-crawler disallow that catches `OAI-SearchBot` as a side effect
+* the GPTBot directive must not be written until PENDING-011 is resolved
+* do not add `llms.txt` as a substitute for either decision (`12-content-aeo-ai-strategy.md` §123)
+
+### Follow-Up
+
+Resolve PENDING-011 before production launch. Once decided, supersede this entry or append a new decision recording the GPTBot directive.
+
+---
+
+## DEC-063 — Las Vegas Operational Validation Gate
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `04-master-page-build-list.md` §10.3, §14, §19, §43, §51
+* `06-master-service-registry.md` §7, §42
+* `08-service-location-matrix.md` §26, §27
+* `11-local-seo-gbp-strategy.md` §67, §68, §69
+* `21-post-launch-seo-roadmap.md` §38
+
+### Decision
+
+Las Vegas pages may be **built and QA'd** but must not be **indexed** until operational service availability is confirmed.
+
+Five pages carry status `launch_pending_validation`:
+
+```text
+/las-vegas-nv/
+/las-vegas-nv/las-vegas/
+/las-vegas-nv/henderson/
+/las-vegas-nv/north-las-vegas/
+/las-vegas-nv/summerlin/
+```
+
+Zero Las Vegas service + location pages are authorized for generation at this stage.
+
+### Reason
+
+The Las Vegas geographic and service opportunity model is established, but the service registry does not mark the market's individual service menu as operationally confirmed. Publishing indexable service claims for a market whose delivery capability is unverified would create inaccurate customer-facing commitments.
+
+This is a business-accuracy gate, not an SEO-performance gate.
+
+### Previous State
+
+DEC-022 recorded the absence of a Las Vegas GBP as a baseline fact. It did not record the separate service-availability gate governing website indexation.
+
+### New State
+
+The gate is explicit and its release criteria are defined.
+
+**Release criteria** (from `04-master-page-build-list.md` §43) — confirm all before promoting any Las Vegas page to `launch`:
+
+1. active operational coverage
+2. services actually offered
+3. contact routing functional
+4. service-request handling functional
+5. geographic coverage confirmed
+6. market-specific business facts verified
+7. applicable licensing/business requirements satisfied
+8. public messaging accurate
+
+### Implementation Impact
+
+* Las Vegas routes generate but must emit `noindex`
+* Las Vegas routes must be excluded from the XML sitemap
+* Las Vegas routes must not appear in indexable internal-link modules
+* Las Vegas pages must not be submitted to Search Console or Bing
+* promotion to `launch` requires updating `04-master-page-build-list.md` and a new DEC entry
+
+### Follow-Up
+
+Tracked as PENDING-012. Note this gate is **independent of** PENDING-004 (GBP eligibility) — service availability could be confirmed without a GBP, and a GBP could not be created without service availability.
+
+---
+
+## DEC-064 — Interim Ownership of Visual Identity Values
+
+**Date:** 2026-08-14
+**Status:** PROPOSED
+**Impact:** Medium
+**Decision Owner:** *Awaiting project approval*
+**Affected Documents:**
+
+* `01-business-brand-foundation.md`
+* `18-design-system.md` §6, §7, §8, §9, §14
+
+### Decision (proposed)
+
+Until final brand assets are supplied, `18-design-system.md` holds **interim authority** for visual-identity values: color roles, typography selection, iconography style, and photography direction.
+
+When verified brand assets arrive, those values move to `01-business-brand-foundation.md` as approved brand facts, and `18-design-system.md` reverts to deferring to it.
+
+### Reason
+
+`18-design-system.md` §6 currently states that approved values in `01-business-brand-foundation.md` supersede the design system's provisional recommendations. However, `01-business-brand-foundation.md` contains no visual-identity section — it covers positioning, voice, messaging boundaries, and trust architecture, but not colors, type, or imagery.
+
+The deferral therefore points at content that does not exist, leaving no document with authority over these values. Implementation would have to either invent them or stall.
+
+This proposal resolves the gap without inventing brand facts: the design system already defines *semantic roles* (`Brand Primary`, `Accent`, `Surface`) rather than specific values, which is a safe interim position. It names an owner for the role definitions while leaving the concrete values open.
+
+### Previous State
+
+```text
+18-design-system.md §6 → defers to 01-business-brand-foundation.md
+01-business-brand-foundation.md → contains no visual-identity section
+Result: no owner
+```
+
+### New State (if approved)
+
+```text
+Interim:  18-design-system.md owns semantic visual roles
+Final:    01-business-brand-foundation.md owns verified brand values
+Trigger:  delivery of approved brand assets
+```
+
+### Implementation Impact
+
+* implementation may proceed against semantic tokens (`--brand`, `--accent`, `--surface`) without final values
+* CSS variables and Tailwind theme tokens must be centralized so values can be swapped without touching component logic (`18-design-system.md` §122, §124)
+* no specific HEX values, font families, or logo variants may be treated as approved brand facts until PENDING-005 and PENDING-006 resolve
+
+### Follow-Up
+
+Two options for the client, pending decision:
+
+1. **Supply brand assets** → add a visual-identity section to `01-business-brand-foundation.md`, resolve PENDING-005/006, supersede this entry.
+2. **No existing brand system** → approve this entry so the design system owns the values outright, and record the chosen palette/typography as a new DEC when selected.
+
+Do not begin visual implementation against invented brand values while this remains `PROPOSED`.
+
+---
+
+## DEC-065 — Mission Valley Approved as Launch Location Page
+
+**Date:** 2026-08-14
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `04-master-page-build-list.md` §5, §13, §14, §41, §50, §51
+* `07-master-location-registry.md` §29, §67, §68
+
+### Decision
+
+Add the following as an approved launch location page:
+
+```text
+loc-sd-mission-valley
+/san-diego-ca/mission-valley/
+status: launch
+indexable: true
+```
+
+Launch inventory changes from **69** to **70** page records.
+
+San Diego launch location pages change from **6** to **7**.
+
+### Reason
+
+`04-master-page-build-list.md` §18 authorized:
+
+```text
+/san-diego-ca/mission-valley/hydro-jetting/
+```
+
+as a `launch`, indexable service + location page, but `/san-diego-ca/mission-valley/` was not among the approved San Diego location pages. The service page therefore had no approved parent.
+
+This produced three concrete failures:
+
+1. **Breadcrumb break** — `05-url-routing-strategy.md` §118 resolves breadcrumb parentage through page/entity relationships. `Home → San Diego → Mission Valley → Hydro Jetting` would have emitted a crumb resolving to a 404.
+2. **Orphan-parent violation** — `03-information-architecture.md` §53 requires every approved page to have a defined logical parent; §113 requires a meaningful inbound path.
+3. **Link-target violation** — `05-url-routing-strategy.md` §117 and `16-internal-linking-strategy.md` §25 require a service + location page to link to its parent location hub, which did not exist as an approved route.
+
+Adding the parent resolves all three without weakening the publishing gate.
+
+### Verification Performed
+
+The underlying matrix relationship was confirmed present and eligible before approval:
+
+```text
+matrix_id: san-diego-ca::mission-valley::svc-hydro-jetting
+matrix_status: launch_candidate
+index_recommendation: index_launch_candidate
+recommended_phase: launch
+```
+
+Location registry record:
+
+```text
+location_type: commercial_or_mixed_use_district
+launch_tier: 1
+index_status: launch_candidate
+service_matrix: selective
+commercial_matrix: full
+priority_tags: launch_priority, residential, real_estate, commercial
+```
+
+This satisfies the cross-validation requirement in `08-service-location-matrix.md` §112.
+
+### Previous State
+
+```text
+/san-diego-ca/mission-valley/hydro-jetting/   → launch, indexable
+/san-diego-ca/mission-valley/                 → not approved
+Launch total: 69
+```
+
+### New State
+
+```text
+/san-diego-ca/mission-valley/                 → launch, indexable
+/san-diego-ca/mission-valley/hydro-jetting/   → launch, indexable
+Launch total: 70
+```
+
+### Alternatives Considered
+
+Two other resolutions were available and were rejected:
+
+**Defer the hydro-jetting page to `phase_2`** (launch total 68). Rejected because the matrix classifies the relationship as a launch candidate and Mission Valley is a genuine commercial-district opportunity; deferring would discard a valid launch-quality page to avoid adding its parent.
+
+**Keep as-is and document the exception.** Rejected because it would require breadcrumb logic to special-case a missing hierarchy level, contradicting `05-url-routing-strategy.md` §51 (visible and schema breadcrumb hierarchies must agree) and creating a pattern other pages could copy.
+
+### Implementation Impact
+
+* approved page registry gains `loc-sd-mission-valley`
+* route generation gains `/san-diego-ca/mission-valley/`
+* sitemap gains one indexable URL
+* San Diego market hub should link to Mission Valley in its approved-locations module
+* the hydro-jetting page must link up to the new location hub
+* breadcrumb resolution for `/san-diego-ca/mission-valley/hydro-jetting/` now resolves fully
+* location content must satisfy `14-content-specification.md` §41–42 differentiation requirements
+
+### Content Constraint
+
+Mission Valley is a **commercial/mixed-use district**, not a residential city. `07-master-location-registry.md` §46 uses it as the reference example of a district whose value is commercial rather than residential.
+
+Its location page should therefore emphasize commercial and mixed-use property context rather than reusing the residential pattern applied to the North County city pages. Applying `14-content-specification.md` §79's substitution test, the page should not read correctly if "Mission Valley" were swapped for "Carlsbad."
+
+### Follow-Up
+
+This approval does **not** authorize:
+
+* broad residential service + location expansion within Mission Valley
+* `/san-diego-ca/mission-valley/commercial/hydro-jetting/`, which remains `phase_2` per `04-master-page-build-list.md` §27
+* treating commercial districts generally as automatic launch locations
+
+Each remains subject to separate Master Page Build List approval.
+
+---
+
+## DEC-066 — Reserved for Next Approved Decision
+
+**Date:**
+**Status:**
+**Impact:**
+**Decision Owner:**
+**Affected Documents:**
+
+### Decision
+
+TBD
+
+### Reason
+
+TBD
+
+### Previous State
+
+TBD
+
+### New State
+
+TBD
+
+### Implementation Impact
+
+TBD
+
+### Follow-Up
+
+TBD
+
+---
+
+# 39. Pending Decision Register
+
+Maintain unresolved material questions here until resolved.
+
+| ID          | Decision Needed                         | Status   | Trigger                                |
+| ----------- | --------------------------------------- | -------- | -------------------------------------- |
+| PENDING-001 | Production canonical domain / host      | Open     | Before production configuration        |
+| PENDING-002 | Verified St. Louis local entity details | Open     | Before final GBP/schema implementation |
+| PENDING-003 | San Diego GBP eligibility               | Deferred | Operational eligibility                |
+| PENDING-004 | Las Vegas GBP eligibility               | Deferred | Operational eligibility                |
+| PENDING-005 | Final brand colors                      | Open     | Design implementation                  |
+| PENDING-006 | Final typography                        | Open     | Design implementation                  |
+| PENDING-007 | Global primary CTA wording              | Open     | Conversion implementation              |
+| PENDING-008 | Final service form fields               | Open     | Form implementation                    |
+| PENDING-009 | Call-tracking implementation            | Deferred | Analytics/CRO decision                 |
+| PENDING-010 | Complete legacy redirect inventory      | Open     | Migration research                     |
+| PENDING-011 | GPTBot training-access policy           | Open     | Before production robots.txt           |
+| PENDING-012 | Las Vegas service availability          | Open     | Business operational confirmation      |
+
+## Open Proposals
+
+| ID      | Proposal                              | Status   | Blocks                          |
+| ------- | ------------------------------------- | -------- | ------------------------------- |
+| DEC-064 | Interim ownership of visual identity  | PROPOSED | Visual implementation start     |
+
+A `PROPOSED` decision is not authoritative. Implementation must not proceed as though it were approved.
+
+---
+
+# 40. Decision Log Maintenance Rule
+
+This document should remain:
+
+* concise enough to review
+* detailed enough to explain material decisions
+* chronological
+* append-only for historical decisions
+* synchronized with affected source-of-truth documents
+
+Do not allow it to become a general project diary.
+
+---
+
+# 41. Final Governance Principle
+
+The Sewer Pros project contains:
+
+* scalable architecture
+* large research datasets
+* multiple markets
+* multiple page families
+* AI-assisted content and development
+* substantial future expansion potential
+
+That makes explicit decision governance essential.
+
+The governing standard is:
+
+> **Important project decisions must exist as documented project truth rather than memory, AI inference, or undocumented code. When a material decision changes, preserve the history, record the new decision, update every affected source-of-truth document, and ensure implementation follows the latest approved state.**

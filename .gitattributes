@@ -1,0 +1,51 @@
+# Normalize line endings so documentation diffs stay meaningful across
+# Windows / macOS / Linux and CI. Without this, a doc-heavy repository
+# accumulates whole-file diffs that hide real content changes.
+
+* text=auto eol=lf
+
+# Explicit text types
+*.md      text eol=lf
+*.mdx     text eol=lf
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.js      text eol=lf
+*.jsx     text eol=lf
+*.json    text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.svg     text eol=lf
+*.csv     text eol=lf
+
+# Binary — never diff or normalize
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.webp    binary
+*.avif    binary
+*.ico     binary
+*.woff    binary
+*.woff2   binary
+*.ttf     binary
+*.otf     binary
+*.eot     binary
+*.pdf     binary
+*.docx    binary
+*.xlsx    binary
+*.mp4     binary
+*.webm    binary
+
+# Large research datasets — mark as generated so they collapse in
+# GitHub diffs and are excluded from language statistics.
+# These remain version-controlled source data. See .gitignore notes
+# and 08-service-location-matrix.md §50.
+service-location-master-matrix.json  linguist-generated=true
+service-location-master-matrix.csv   linguist-generated=true
+master-location-registry.json        linguist-generated=true
+master-service-registry.json         linguist-generated=true
+
+# Archived research output is historical reference, not active docs.
+docs/archive/**  linguist-documentation=true
