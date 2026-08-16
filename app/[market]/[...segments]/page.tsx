@@ -10,7 +10,9 @@
 // and the St. Louis market-specific service, which lives at
 // /st-louis-mo/{service}/ (06 §23). The registry's pageType decides which
 // template renders, so segment count is never inspected.
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { pageMetadata } from '@/lib/seo'
 import {
   LocationPageTemplate,
   ServiceLocationPageTemplate,
@@ -25,6 +27,31 @@ import { marketCatchAllParams, resolveMarketRoute } from '@/lib/routing'
 
 export function generateStaticParams() {
   return marketCatchAllParams()
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ market: string; segments: string[] }>
+}): Promise<Metadata> {
+  const { market, segments } = await params
+  const page = resolveMarketRoute(market, segments)
+  if (page === undefined) notFound()
+
+  // One route serves three families; each has its own content store.
+  const content =
+    page.pageType === 'location'
+      ? getLocationContent(page.id)
+      : page.pageType === 'service-location'
+        ? getServiceLocationContent(page.id)
+        : getServiceContent(page.id)
+
+  if (content === undefined) notFound()
+  return pageMetadata({
+    page,
+    title: content.seoTitle ?? content.hero.title,
+    description: content.metaDescription,
+  })
 }
 
 export default async function Page({

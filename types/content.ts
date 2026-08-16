@@ -76,6 +76,23 @@ export interface CtaContent {
 
 export interface BasePageContent {
   hero: HeroContent
+  /**
+   * Meta title, where it should differ from the H1.
+   *
+   * 02 §36 wants a unique title per page. `hero.title` is already
+   * authored per page and reflects intent, so it is the default; set
+   * this only where the search-result title should read differently.
+   */
+  seoTitle?: string
+  /**
+   * Meta description. Authored per page (CLAUDE.md §36).
+   *
+   * ⚠ Omitted rather than generated when absent. A templated
+   * description assembled from tokens is worse than none — search
+   * engines write a better one from page content, and 15 §102-103's
+   * preference for omission over placeholder applies here too.
+   */
+  metaDescription?: string
   /** Explanatory sections. Rendered inside a reading-width container. */
   body?: ReactNode
   faq?: readonly FaqContent[]

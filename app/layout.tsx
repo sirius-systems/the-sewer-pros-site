@@ -1,38 +1,27 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { rootMetadata } from '@/lib/seo'
 import { SiteHeader } from '@/components/layout/SiteHeader'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { Analytics } from '@/components/tracking'
-import { SITE_NAME } from '@/data/business'
 
 /**
  * Root layout.
  *
- * Governed by docs/02-nextjs-technical-architecture.md §30, §37, §60-62;
- * docs/18-design-system.md §42, §94-95, §116.
+ * Governed by docs/02-nextjs-technical-architecture.md §30, §37, §53,
+ * §60-62; docs/18-design-system.md §42, §94-95, §116.
  *
- * Build sequence step 16. Header, footer, skip link, and landmark
- * structure. Design-system primitives are step 17; page sections are
- * step 18.
+ * `metadataBase` is now set, sourced from `siteOrigin()` and therefore
+ * from NEXT_PUBLIC_SITE_URL rather than a literal (02 §53).
  *
- * ---------------------------------------------------------------------------
- * ⚠ metadataBase IS STILL ABSENT
- * ---------------------------------------------------------------------------
- * It requires the production canonical origin, which is unresolved
- * (PENDING-001: the domain, and apex vs www). 02 §53 and CLAUDE.md
- * §53-54 forbid baking a guessed or development origin into production
- * metadata, and under `output: 'export'` whatever is present at build
- * time ships as static text.
- *
- * `siteOrigin()` in `data/business/site.ts` is the single place that
- * will supply it, sourced from NEXT_PUBLIC_SITE_URL. Wiring metadata
- * properly is step 14, which is blocked on the same decision.
+ * It was deliberately absent from the scaffold until DEC-078 confirmed
+ * the canonical origin as https://www.thesewerpros.com. Under
+ * `output: 'export'` the origin is baked into canonicals, schema `@id`
+ * values, and the sitemap as static text, and 15 §5 requires those stay
+ * stable once published — so a guess could not have been corrected
+ * later without breaking entity identity.
  */
-export const metadata: Metadata = {
-  title: SITE_NAME,
-  description:
-    'Independent sewer inspection, diagnostics, locating, and cleaning.',
-}
+export const metadata: Metadata = rootMetadata()
 
 export default function RootLayout({
   children,

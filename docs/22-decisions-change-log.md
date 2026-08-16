@@ -3771,7 +3771,72 @@ If the business publishes or states a service area for San Diego or Las Vegas, r
 
 ---
 
-## DEC-078 — Reserved for Next Approved Decision
+## DEC-078 — Production Canonical Domain
+
+**Date:** 2026-08-17
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Business owner
+**Affected Documents:**
+
+* `02-nextjs-technical-architecture.md` §53, §88
+* `05-url-routing-strategy.md` §7, §92, §93, §94
+* `15-schema-entity-strategy.md` §5, §6
+* `20-migration-redirect-plan.md`
+
+### Decision
+
+```text
+https://www.thesewerpros.com
+```
+
+**www, not apex** — this settles 05 §93's governance question. HTTPS per 05 §94. Closes PENDING-001.
+
+### Reason
+
+Three build steps were blocked on this and could not be built provisionally. 15 §5 requires `@id` values stay stable once published, and under `output: 'export'` the origin is baked into canonicals, schema, and the sitemap as static text with no runtime correction — so a guess could not have been corrected later without breaking entity identity.
+
+### Previous State
+
+`siteOrigin()` threw when `NEXT_PUBLIC_SITE_URL` was unset, deliberately and with no development fallback. `metadataBase` was absent from the root layout. Steps 14, 15, and 21 were blocked.
+
+### New State
+
+Steps 14 and 21 are complete and verified on the built output:
+
+| Check | Result |
+| ----- | ------ |
+| Pages with a canonical tag | 70 of 70 |
+| Canonicals matching the registry pathname | 70 of 70 |
+| Pages emitting `noindex` | 5 — exactly the gated Las Vegas set |
+| Sitemap URLs | 65 |
+| Sitemap entries overlapping the noindex set | 0 |
+
+Step 15 (schema) remains; it is now unblocked.
+
+### Implementation Impact
+
+* **Metadata** derives robots from page status via `robotsForPage()`. No route passes robots, so no caller can mark a gated page indexable — the same registry fact drives canonical, noindex, sitemap, and navigation.
+* **Sitemap** filters on indexable AND built. An approved page without content generates no route, and listing it would advertise a 404 (19 §83, §84).
+* **No `lastModified`** — a build-time date would restamp every URL on every deploy.
+* **`robots.txt`** allows `OAI-SearchBot` explicitly per DEC-062.
+* **Meta descriptions are optional and omitted where unauthored.** A token-assembled description is worse than none; search engines write better from page content, and 15 §102-103's omission-over-placeholder logic applies. No page currently has one — see Follow-Up.
+
+### ⚠ Two things this did NOT resolve
+
+**The gated pages are not disallowed in `robots.txt`, deliberately.** A crawler that is disallowed never fetches the page and so never sees the `noindex`, while a URL discovered elsewhere can still be indexed without its content. The two directives work against each other; `noindex` expresses the intent, so the crawler must be allowed to read it.
+
+**PENDING-011 (GPTBot) is still open**, and omission is not neutral. With no GPTBot rule, it falls under the general allow — the site currently permits training access by default. That is a live permission needing confirmation or reversal before launch, not a deferred question.
+
+### Follow-Up
+
+* Step 15 — schema, now unblocked
+* Meta descriptions: 70 pages have none. 02 §36 wants one per page; they are omitted rather than generated, so this is a content task rather than a defect
+* Search Console and Bing property setup against the confirmed domain (19 §37, §138-139)
+
+---
+
+## DEC-079 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
@@ -3811,7 +3876,7 @@ Maintain unresolved material questions here until resolved.
 
 | ID          | Decision Needed                         | Status   | Trigger                                |
 | ----------- | --------------------------------------- | -------- | -------------------------------------- |
-| PENDING-001 | Production canonical domain / host      | Open     | Before production configuration        |
+| PENDING-001 | Production canonical domain / host      | RESOLVED | DEC-078 — https://www.thesewerpros.com |
 | PENDING-002 | Verified St. Louis local entity details | RESOLVED | DEC-072 — no address exists; SAB model  |
 | PENDING-003 | San Diego GBP eligibility               | Deferred | Operational eligibility                |
 | PENDING-004 | Las Vegas GBP eligibility               | Deferred | Operational eligibility                |
