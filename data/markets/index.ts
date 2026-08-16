@@ -7,8 +7,10 @@
  *   import { getMarket, marketList } from '@/data/markets'
  */
 
+export type { MarketOperatingDetail } from './markets'
 export {
   markets,
+  marketOperatingDetail,
   marketList,
   getMarket,
   marketPathname,

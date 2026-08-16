@@ -21,5 +21,11 @@ export {
 export {
   organization,
   businessCategories,
+  contact,
+  hours,
+  foundingYear,
+  publishedServiceArea,
+  affiliations,
   CLAIMS_REQUIRING_VERIFICATION,
+  WITHHELD_PENDING_SUBSTANTIATION,
 } from './organization'

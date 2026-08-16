@@ -3154,7 +3154,140 @@ Four internal inconsistencies introduced by the update were corrected in the sam
 
 ---
 
-## DEC-070 — Reserved for Next Approved Decision
+## DEC-070 — Verified Business Facts and St. Louis Content Foundation
+
+**Date:** 2026-08-16
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `01-business-brand-foundation.md` §21, §24, §35
+* `14-content-specification.md` §38, §42, §43, §79
+* `15-schema-entity-strategy.md` §11
+* `20-migration-redirect-plan.md`
+
+### Decision
+
+The business facts published on thesewerpros.com are adopted as Confirmed Business Facts under 01 §24, and the St. Louis municipal research is adopted as the sourced foundation for all 13 launch-authorised St. Louis pages.
+
+Adopted and now live:
+
+| Fact | Value |
+| ---- | ----- |
+| Phone | (314) 821-1600 |
+| Email | info@thesewerpros.com |
+| Hours | Mon–Fri 7:30am–4:00pm; closed weekends |
+| Founded | 2011 |
+| Published service area | St. Louis, St. Charles, Jefferson counties, MO |
+| Affiliations | St. Louis Association of Realtors; ASHI; Women's Council of Realtors; St. Charles Realtors |
+| Lateral programmes | Licensed through most area programmes for submitting reports |
+
+### Reason
+
+01 §24 distinguishes a Confirmed Business Fact from an unverified claim. A fact the business publishes about itself on its own site is the former. This resolves the omissions recorded at build step 8, where `/contact/` shipped with no contact details because none was documented.
+
+The St. Louis pages are differentiated by **jurisdiction**, not description, which is what makes them pass 14 §79's substitution test decisively. Municipal lateral programme terms are not transferable between cities: Ballwin caps reimbursement at $4,500 and excludes annual root clearing as maintenance; Florissant states no maximum but stops five feet from the house; St. Louis City covers only the public right-of-way; St. Charles reimburses 90% capped at $7,500 and sits outside MSD's territory entirely, on its own two-plant system.
+
+### Previous State
+
+No phone, email, hours, founding date, or affiliations anywhere in the project. All 13 St. Louis pages unwritten. 27 of 70 pages built.
+
+### New State
+
+40 of 70 pages built. Contact details live in header, footer, and `/contact/`. All 13 St. Louis pages published.
+
+**Deliberately NOT adopted.** Three claims appear on the live site and are withheld pending substantiation:
+
+* "#1 choice in St. Louis" — unsubstantiated superlative (18 §71, CLAUDE.md §71)
+* "over 100 years of combined experience" — 01 §35 lists years in business among claims requiring documented evidence
+* "over 100,000 camera inspections completed" — same; a figure in marketing copy is the claim, not evidence for it
+
+Recorded in `WITHHELD_PENDING_SUBSTANTIATION` so build validation can scan rendered output for them. Verified absent from all 40 built pages.
+
+**Still no street address.** None is published on the business's own site. 15 §11 confirms a GBP does not authorise inventing one, so `permitsLocalBusinessEntity()` still returns false for every market and no `LocalBusiness` entity exists.
+
+**Housing-age statistics deliberately uncited.** The research supplied median-year and pre-1940 figures but flagged them as secondary republication of ACS data needing re-verification against data.census.gov. No percentage or median year appears in any published copy. Housing era is described qualitatively, and pipe material strictly as era correspondence — no source ties a material to a specific city.
+
+### Implementation Impact
+
+* `data/business/` now carries contact, hours, founding year, service area, and affiliations.
+* Header and footer render the phone; `/contact/` and `/about/` are complete pages.
+* Published hours (weekdays only) affirmatively **rule out** emergency, same-day, and 24/7 claims (01 §35).
+* Chesterfield's three pages ship on housing-era differentiation with the lateral section kept general — its cap and exclusions remain unverified (PENDING-014).
+
+### Follow-Up
+
+* PENDING-013 — the published service area names no California or Nevada geography.
+* PENDING-014 — Chesterfield lateral programme cap and exclusions.
+* PENDING-015 — housing-age figures against data.census.gov.
+* PENDING-016 — decide on the three withheld marketing claims.
+* `20-migration-redirect-plan.md` — the legacy site's 18 URLs contain no location pages, so all 30 location and service+location routes are net-new, not migrations. No redirects are owed for them.
+
+---
+
+## PENDING-013 — Las Vegas Operating Status
+
+**Status:** Open — narrowed to Las Vegas only
+**Trigger:** Before Las Vegas content is written
+
+**San Diego: RESOLVED.** The market operates a separate site, thesewerprossd.com, with its own phone — (858) 257-2888 — its own hours, and a founding date of 2015. San Diego is an operating market, not a planned one.
+
+This also corrected a misreading. The Missouri-only service area on thesewerpros.com is not evidence that San Diego is inactive; it is the **St. Louis site's** service area. The two markets publish separately, which is precisely why 01 §20 forbids copying business facts between them — the phone numbers, hours, and founding dates genuinely differ.
+
+**Las Vegas remains open**, and the evidence still points one way:
+
+* Zero of 18 services confirmed in the service registry — all `requires_operational_confirmation`
+* No GBP (01 §21)
+* No separate site found, unlike St. Louis and San Diego
+* Gated under DEC-063 pending PENDING-012
+
+⚠ No Las Vegas page may state or imply that a service is performed there until PENDING-012 resolves (01 §20, §26).
+
+---
+
+## PENDING-014 — Chesterfield Lateral Programme Cap and Exclusions
+
+**Status:** Open
+**Trigger:** Before Chesterfield's lateral-programme content states coverage terms
+
+Known and published: $28/yr on the tax bill since 1 January 2001 following voter approval; covers repairs of defective laterals for residential buildings of six units or fewer.
+
+Unresolved after an exhausted search — the city's own programme pages, ecode360 (which indexes equivalent ordinances for Twin Oaks, Crystal Lake Park, Brentwood, and Woodson Terrace but has no locatable Chesterfield chapter), third-party aggregators, and the Wayback Machine.
+
+Also unresolved: whether St. Louis County operates a countywide SLRP that overlaps or supplements Chesterfield's. Every county page returned 403.
+
+**Why this matters more than it looks.** The research surfaced a third-party plumbing site describing the *St. Louis City* programme as reimbursing "up to 50%", which directly contradicts the city's own site. Third-party sources are demonstrably getting these programmes wrong, so inferring Chesterfield's terms from an adjacent source is not a safe shortcut.
+
+Chesterfield's three pages ship without coverage detail, and the copy directs readers to Chesterfield Public Works. Resolution is a phone call.
+
+---
+
+## PENDING-015 — Housing-Age Figures Against Primary Census Data
+
+**Status:** Open
+**Trigger:** Before any housing statistic is published
+
+Median year built and pre-1940 share for all five St. Louis locations came from a secondary republication of ACS 2019–2023. Primary access was unavailable (`api.census.gov` needs a key; `censusreporter.org` is robots-blocked).
+
+No figure is currently published. St. Charles is additionally internally inconsistent across three sources (1983, 1989, 1985) and must not receive a median year until resolved.
+
+Re-verify against data.census.gov table B25034/DP04.
+
+---
+
+## PENDING-016 — Three Withheld Marketing Claims
+
+**Status:** Open
+**Trigger:** Before republishing any of them
+
+"#1 choice in St. Louis", "over 100 years of combined experience", and "over 100,000 camera inspections completed" appear on the live site and are withheld from the rebuild. Decide: republish with substantiation, soften, or omit.
+
+The superlative is the higher-risk one — 18 §71 and CLAUDE.md §71 prohibit unsubstantiated superlatives, and it invites a challenge the business would have to answer.
+
+---
+
+## DEC-071 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
@@ -3206,6 +3339,10 @@ Maintain unresolved material questions here until resolved.
 | PENDING-010 | Complete legacy redirect inventory      | Open     | Migration research                     |
 | PENDING-011 | GPTBot training-access policy           | Open     | Before production robots.txt           |
 | PENDING-012 | Las Vegas service availability          | Open     | Business operational confirmation      |
+| PENDING-013 | San Diego / Las Vegas operating status  | Open     | Before those markets' content          |
+| PENDING-014 | Chesterfield lateral programme terms    | Open     | Before stating its coverage            |
+| PENDING-015 | Housing-age figures vs primary Census   | Open     | Before publishing any housing stat     |
+| PENDING-016 | Three withheld marketing claims         | Open     | Before republishing any of them        |
 
 ## Open Proposals
 

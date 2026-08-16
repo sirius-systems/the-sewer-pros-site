@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { resolveFooterNav } from '@/data/navigation'
-import { SITE_NAME, organization } from '@/data/business'
+import { SITE_NAME, organization, contact, hours } from '@/data/business'
 
 /**
  * Site footer.
@@ -14,9 +14,9 @@ import { SITE_NAME, organization } from '@/data/business'
  * ---------------------------------------------------------------------------
  * THREE DELIBERATE OMISSIONS
  * ---------------------------------------------------------------------------
- * NO CONTACT DETAILS — 18 §116 lists contact information. No phone,
- * address, or email is documented anywhere in the project. Links to
- * `/contact/` instead of inventing one (01 §35, CLAUDE.md §23).
+ * Contact details are the business's own published facts (DEC-070).
+ * Still NO street address — none is published on the business's site,
+ * and 15 §11 confirms a GBP does not authorise inventing one.
  *
  * NO LEGAL LINKS — 18 §116 and §118 assume privacy, terms, and
  * accessibility pages. None is approved in doc 04; 05 §9 lists those
@@ -41,6 +41,16 @@ export function SiteFooter() {
             <p className="mt-3 max-w-xs text-sm opacity-80">
               {organization.description}
             </p>
+
+            <div className="mt-6 flex flex-col gap-2 text-sm">
+              <a href={`tel:${contact.phoneE164}`} className="hover:underline">
+                {contact.phone}
+              </a>
+              <a href={`mailto:${contact.email}`} className="hover:underline">
+                {contact.email}
+              </a>
+              <p className="opacity-70">{hours.weekdays}</p>
+            </div>
           </div>
 
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

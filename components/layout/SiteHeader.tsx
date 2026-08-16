@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { resolvePrimaryNav } from '@/data/navigation'
-import { SITE_NAME } from '@/data/business'
+import { SITE_NAME, contact } from '@/data/business'
 import { PRIMARY_CTA } from '@/components/layout/cta'
 
 /**
@@ -16,16 +16,10 @@ import { PRIMARY_CTA } from '@/components/layout/cta'
  * `<details>` is keyboard-operable and screen-reader-announced natively,
  * which satisfies 18 §94 and §95 without custom ARIA.
  *
- * ---------------------------------------------------------------------------
- * ⚠ NO PHONE NUMBER
- * ---------------------------------------------------------------------------
- * 18 §42 places a phone link in the header. No phone number exists in
- * any project document — verified when the business config was built.
- * Rather than invent one or render an empty `tel:` link, the header
- * routes to `/contact/` (01 §35, CLAUDE.md §23).
- *
- * When a number is confirmed, add it to `data/business/` and surface it
- * here; the design already reserves the slot beside the primary CTA.
+ * The phone link is the number the business publishes on its own site
+ * (DEC-070), sourced from `data/business/` rather than inlined — 18 §42
+ * places it in the header, and 02 §54 forbids hard-coding contact
+ * details into components.
  *
  * Dropdowns and mega menus (18 §44) are intentionally not here — they
  * are step 17/18 work. The flat list is complete and usable meanwhile.
@@ -59,7 +53,13 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
+          <a
+            href={`tel:${contact.phoneE164}`}
+            className="text-sm font-medium text-foreground hover:text-accent"
+          >
+            {contact.phone}
+          </a>
           <Link
             href={PRIMARY_CTA.href}
             className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
@@ -91,10 +91,16 @@ export function SiteHeader() {
               </ul>
             </nav>
 
-            {/* 18 §152 — primary action stays reachable on mobile. */}
+            {/* 18 §152 — primary actions stay reachable on mobile. */}
+            <a
+              href={`tel:${contact.phoneE164}`}
+              className="mt-4 flex min-h-11 items-center justify-center rounded-md border border-border text-sm font-medium text-foreground"
+            >
+              Call {contact.phone}
+            </a>
             <Link
               href={PRIMARY_CTA.href}
-              className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground"
+              className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground"
             >
               {PRIMARY_CTA.label}
             </Link>

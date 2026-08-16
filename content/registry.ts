@@ -98,6 +98,7 @@ const LOCAL_RESEARCH: PendingContentEntry = {
 markPending(
   approvedPages
     .filter((p) => p.pageType === 'location' || p.pageType === 'service-location')
+    .filter((p) => p.marketId !== 'st-louis-mo')
     .map((p) => p.id),
   LOCAL_RESEARCH,
 )
@@ -107,7 +108,10 @@ markPending(
    --------------------------------------------------------------------------- */
 
 markPending(
-  approvedPages.filter((p) => p.pageType === 'market').map((p) => p.id),
+  approvedPages
+    .filter((p) => p.pageType === 'market')
+    .filter((p) => p.marketId !== 'st-louis-mo')
+    .map((p) => p.id),
   {
     reason:
       '14 §38-40 set per-market content requirements grounded in local ' +
@@ -141,15 +145,9 @@ markPending(
    St. Louis market-specific service — 1 record
    --------------------------------------------------------------------------- */
 
-markPending(['svc-stl-sewer-lateral-inspection-reporting'], {
-  reason:
-    'The page documents municipal lateral reporting. 28 and CLAUDE.md ' +
-    '§28 require municipality-specific program facts be verified ' +
-    'individually; asserting program details from inference would ' +
-    'fabricate a municipal claim.',
-  unblockedBy:
-    'Verified St. Louis City and County sewer lateral program sources.',
-})
+// RESOLVED by the St. Louis market research (2026-08-16). Written
+// against MSD's own lateral-responsibility statement and the verified
+// per-municipality programme terms. See content/pages/st-louis.tsx.
 
 /* ---------------------------------------------------------------------------
    St. Louis municipal resource guides — 3 records

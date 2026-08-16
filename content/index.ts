@@ -10,6 +10,9 @@
  */
 
 import type {
+  LocationPageContent,
+  MarketPageContent,
+  ServiceLocationPageContent,
   CommercialPageContent,
   ComparisonPageContent,
   CorePageContent,
@@ -22,6 +25,27 @@ import { serviceContent } from './pages/services'
 import { commercialContent } from './pages/commercial'
 import { comparisonContent } from './pages/comparisons'
 import { coreContent, homeContent, hubContent, resourceContent } from './pages/core'
+import {
+  stLouisMarketContent,
+  lateralReportingContent,
+  stLouisLocationContent,
+  stLouisServiceLocationContent,
+} from './pages/st-louis'
+
+/** Market hub content, keyed by page id. */
+const marketContent: Partial<Record<PageId, MarketPageContent>> = {
+  ['market-st-louis-mo' as PageId]: stLouisMarketContent,
+}
+
+/** Location content across all markets. */
+const locationContent: Partial<Record<PageId, LocationPageContent>> = {
+  ...stLouisLocationContent,
+}
+
+/** Service + location content across all markets. */
+const serviceLocationContent: Partial<Record<PageId, ServiceLocationPageContent>> = {
+  ...stLouisServiceLocationContent,
+}
 
 export {
   contentReadyPages,
@@ -34,7 +58,26 @@ export {
 export { homeContent }
 
 export function getServiceContent(id: PageId): ServicePageContent | undefined {
+  // The St. Louis market-specific lateral service lives under the market
+  // path (/st-louis-mo/{service}/) but is a `service` page family (06 §23).
+  if (id === ('svc-stl-sewer-lateral-inspection-reporting' as PageId)) {
+    return lateralReportingContent
+  }
   return serviceContent[id]
+}
+
+export function getMarketContent(id: PageId): MarketPageContent | undefined {
+  return marketContent[id]
+}
+
+export function getLocationContent(id: PageId): LocationPageContent | undefined {
+  return locationContent[id]
+}
+
+export function getServiceLocationContent(
+  id: PageId,
+): ServiceLocationPageContent | undefined {
+  return serviceLocationContent[id]
 }
 
 export function getCommercialContent(id: PageId): CommercialPageContent | undefined {
@@ -71,4 +114,8 @@ export const authoredPageIds: ReadonlySet<PageId> = new Set<PageId>([
   ...(Object.keys(coreContent) as PageId[]),
   ...(Object.keys(hubContent) as PageId[]),
   ...(Object.keys(resourceContent) as PageId[]),
+  ...(Object.keys(marketContent) as PageId[]),
+  ...(Object.keys(locationContent) as PageId[]),
+  ...(Object.keys(serviceLocationContent) as PageId[]),
+  'svc-stl-sewer-lateral-inspection-reporting' as PageId,
 ])

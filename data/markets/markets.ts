@@ -38,11 +38,13 @@ import type { Market, MarketId } from '@/types'
  * geography authority (07). Do not retype them from memory.
  *
  * ---------------------------------------------------------------------------
- * NO PHONE. NO ADDRESS. FOR ANY MARKET.
+ * PHONES YES, ADDRESSES NO
  * ---------------------------------------------------------------------------
- * `phone` and `physicalLocation` are absent from all three records
- * because no such fact is documented anywhere in the project (01 §35,
- * 15 §102-103).
+ * St. Louis and San Diego each publish a phone number on their own site
+ * (DEC-070, DEC-071). Las Vegas publishes none.
+ *
+ * NO market has a published street address, so `physicalLocation` is
+ * absent from all three (01 §35, 15 §102-103).
  *
  * St. Louis is the case worth stating explicitly: it HAS an existing
  * Google Business Profile (01 §21), and that still does not authorise
@@ -55,8 +57,17 @@ import type { Market, MarketId } from '@/types'
  * anywhere on the site. Markets are represented as `Place` +
  * `Service.areaServed` (15 §13).
  *
- * 01 §20 forbids copying business facts between markets. If a phone
- * number is confirmed for one market, it does not become the others'.
+ * ---------------------------------------------------------------------------
+ * ⚠ PER-MARKET CONTACT IS NOT A FORMALITY HERE
+ * ---------------------------------------------------------------------------
+ * St. Louis and San Diego publish SEPARATE sites with different phone
+ * numbers, different hours, and different founding years (DEC-070,
+ * DEC-071). That is exactly the situation 01 §20 anticipates in
+ * forbidding business facts from being copied between markets, and
+ * 02 §55 in calling for market-specific contact data.
+ *
+ * Showing the St. Louis number on a San Diego page would be wrong, not
+ * merely imprecise.
  */
 export const markets: Record<MarketId, Market> = {
   'st-louis-mo': {
@@ -72,6 +83,8 @@ export const markets: Record<MarketId, Market> = {
      * status stops short of claiming either (PENDING-002).
      */
     gbpStatus: 'existing_type_unconfirmed',
+    /** thesewerpros.com/contact — DEC-070. */
+    phone: '(314) 821-1600',
   },
 
   'san-diego-ca': {
@@ -88,8 +101,16 @@ export const markets: Record<MarketId, Market> = {
      * Note 01 §22 records a San Diego Instagram and Facebook presence.
      * That is social presence, not a GBP, and no URLs are documented —
      * so it produces no `sameAs` values either (15 §27).
+     *
+     * ⚠ San Diego IS an operating market. It publishes its own site,
+     * thesewerprossd.com, with its own phone and hours and a founding
+     * year of 2015 (DEC-071). "No GBP" is not "no operations" — the
+     * two are separate facts and were briefly conflated before the
+     * San Diego research resolved it.
      */
     gbpStatus: 'none_identified',
+    /** thesewerprossd.com/contact — DEC-071. NOT the St. Louis number. */
+    phone: '(858) 257-2888',
   },
 
   'las-vegas-nv': {
@@ -115,6 +136,46 @@ export const markets: Record<MarketId, Market> = {
      * sitemap and indexing — pending PENDING-012.
      */
     gbpStatus: 'none_identified',
+  },
+}
+
+/**
+ * Per-market published operating detail (DEC-070, DEC-071).
+ *
+ * Sourced from each market's own site. Deliberately separate from the
+ * `Market` record because these are published facts about a market's
+ * operation rather than its identity, and because a missing entry must
+ * read as "not published" rather than defaulting to another market's.
+ *
+ * ⚠ Las Vegas has no entry. No separate site, no published phone, and
+ * zero of 18 services confirmed (PENDING-012, PENDING-013).
+ */
+export interface MarketOperatingDetail {
+  phone: string
+  phoneE164: string
+  hours: string
+  foundingYear: number
+  /** Service area exactly as that market publishes it. */
+  serviceArea: string
+}
+
+export const marketOperatingDetail: Partial<
+  Record<MarketId, MarketOperatingDetail>
+> = {
+  'st-louis-mo': {
+    phone: '(314) 821-1600',
+    phoneE164: '+1-314-821-1600',
+    hours: 'Monday to Friday, 7:30am – 4:00pm',
+    foundingYear: 2011,
+    serviceArea:
+      'St. Louis County, St. Charles County, Jefferson County, MO, and surrounding areas',
+  },
+  'san-diego-ca': {
+    phone: '(858) 257-2888',
+    phoneE164: '+1-858-257-2888',
+    hours: 'Monday to Friday, 8:00am – 4:00pm',
+    foundingYear: 2015,
+    serviceArea: 'San Diego County, CA',
   },
 }
 

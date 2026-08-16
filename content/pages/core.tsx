@@ -358,6 +358,34 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           Where cleaning is likely to resolve the problem, we clean it. Where it
           is not, we will tell you that too.
         </p>
+
+        <h2>The business</h2>
+        <p>
+          The Sewer Pros has operated since 2011. We are locally owned and
+          family operated, working across St. Louis County, St. Charles County,
+          Jefferson County, and surrounding areas.
+        </p>
+
+        <h2>Municipal lateral reporting</h2>
+        <p>
+          Many municipalities in the St. Louis area run sewer lateral repair
+          programs, and most require documentation from a licensed plumber
+          before they will consider a claim. We are licensed through most of
+          those programs to submit reports.
+        </p>
+        <p>
+          We document conditions; the municipality decides claims. We cannot
+          promise an outcome, and any company that does is describing a
+          decision that is not theirs to make.
+        </p>
+
+        <h2>Affiliations</h2>
+        <ul>
+          <li>St. Louis Association of Realtors</li>
+          <li>American Society of Home Inspectors (ASHI)</li>
+          <li>Women&rsquo;s Council of Realtors</li>
+          <li>St. Charles Realtors</li>
+        </ul>
       </>
     ),
     relatedPageIds: [id('cmp-independent-vs-repair'), id('hub-services')],
@@ -370,17 +398,30 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
     },
     body: (
       <>
-        <h2>Contact details are not yet published</h2>
+        <h2>St. Louis</h2>
+        <ul>
+          <li>
+            Phone: <a href="tel:+13148211600">(314) 821-1600</a>
+          </li>
+          <li>
+            Email:{' '}
+            <a href="mailto:info@thesewerpros.com">info@thesewerpros.com</a>
+          </li>
+          <li>Monday to Friday, 7:30am to 4:00pm. Closed weekends.</li>
+        </ul>
         <p>
-          This site is being rebuilt, and published contact details are pending
-          confirmation. Rather than display a number or address that has not
-          been verified, this page states plainly that they are not yet
-          available.
+          Serving St. Louis County, St. Charles County, Jefferson County,
+          Missouri, and surrounding areas.
         </p>
-        <p>
-          A service request form is also pending — the fields it should capture
-          have not been finalised.
-        </p>
+
+        <h2>San Diego</h2>
+        <ul>
+          <li>
+            Phone: <a href="tel:+18582572888">(858) 257-2888</a>
+          </li>
+          <li>Monday to Friday, 8:00am to 4:00pm. Closed weekends.</li>
+        </ul>
+        <p>Serving San Diego County, California.</p>
 
         <h2>What to have ready</h2>
         <p>
