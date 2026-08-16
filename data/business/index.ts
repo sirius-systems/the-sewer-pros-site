@@ -27,5 +27,5 @@ export {
   publishedServiceArea,
   affiliations,
   CLAIMS_REQUIRING_VERIFICATION,
-  WITHHELD_PENDING_SUBSTANTIATION,
+  MARKET_SCOPED_CLAIMS,
 } from './organization'

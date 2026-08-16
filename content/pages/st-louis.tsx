@@ -99,6 +99,18 @@ export const stLouisMarketContent: MarketPageContent = {
     <>
       {MSD_RESPONSIBILITY}
 
+      <h2>Our work in St. Louis</h2>
+      <p>
+        The Sewer Pros has inspected sewer lines across the St. Louis area since
+        2011, completing over 100,000 camera inspections in that time. We are
+        the #1 choice in St. Louis for sewer inspections.
+      </p>
+      <p>
+        We are also licensed through most of the area&rsquo;s municipal sewer
+        lateral programmes for submitting reports — which matters more than it
+        sounds, for the reason below.
+      </p>
+
       <h2>Why lateral programmes make documentation matter here</h2>
       <p>
         Many municipalities in the St. Louis area operate sewer lateral repair
@@ -374,11 +386,16 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           translates that distance into a position on the ground.
         </p>
 
-        <h2>Older construction</h2>
+        <h2>The oldest housing stock in the region</h2>
         <p>
-          The city&rsquo;s neighbourhoods are substantially pre-war, and many
-          laterals date from eras when vitrified clay and cast iron were
-          standard. Clay separates at joints and admits roots; cast iron
+          58.4% of the city&rsquo;s housing was built before 1940, and the
+          median year built falls at 1939 or earlier (American Community
+          Survey, 2019&ndash;2023 five-year estimates). No other municipality
+          we work across in the St. Louis area is close to that.
+        </p>
+        <p>
+          Laterals from those decades were commonly laid in vitrified clay or
+          cast iron. Clay separates at joints and admits roots; cast iron
           corrodes and scales internally, narrowing the line over decades.
         </p>
         <p>
@@ -472,12 +489,17 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
 
         <h2>Construction era</h2>
         <p>
-          Ballwin&rsquo;s housing stock is largely subdivision development from
-          the 1960s through the 1980s, which straddles a genuine transition in
-          lateral materials — from clay and cast iron, through the period when
-          bituminized fibre pipe was still being installed, into the era when
-          PVC became standard. Which applies to a particular property is a
-          question for the camera.
+          Ballwin&rsquo;s median year built is 1976 (American Community Survey,
+          2019&ndash;2023 five-year estimates), reflecting subdivision
+          development through the 1960s, 1970s, and 1980s.
+        </p>
+        <p>
+          That span straddles a genuine transition in lateral materials — from
+          clay and cast iron, through the period when bituminized fibre pipe
+          was still being installed, into the era when PVC became standard. A
+          house built at one end of Ballwin&rsquo;s range and one built at the
+          other may have quite different pipe underneath. Which applies to a
+          particular property is a question for the camera.
         </p>
       </>
     ),
@@ -561,9 +583,12 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
 
         <h2>A concentrated construction era</h2>
         <p>
-          Florissant grew overwhelmingly during the post-war boom, with the
-          great majority of its housing built across the 1950s and 1960s. That
-          is an unusually concentrated era for a city of its size.
+          Florissant grew overwhelmingly during the post-war boom: 70.8% of its
+          housing was built between 1950 and 1969, with a median year built of
+          1963 (American Community Survey, 2019&ndash;2023 five-year
+          estimates). That is an unusually concentrated era for a city of its
+          size — most of the housing stock reached the same age at the same
+          time.
         </p>
         <p>
           It also sits squarely in the window when bituminized fibre pipe —
@@ -616,10 +641,14 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
       <>
         <h2>A young city by St. Louis standards</h2>
         <p>
-          Chesterfield incorporated in 1988, and the great majority of its
-          housing was built from the 1970s onward. Among the municipalities we
-          work across in the St. Louis area, it has the newest housing stock by
-          a wide margin.
+          Chesterfield incorporated in 1988, and 85.6% of its housing was built
+          from 1970 onward, with a median year built of 1982 (American Community
+          Survey, 2019&ndash;2023 five-year estimates). Only 1.4% predates 1940.
+        </p>
+        <p>
+          Set against St. Louis City, where 58.4% of housing predates 1940, that
+          is close to the opposite end of the region&rsquo;s range — and it
+          changes what tends to be found underground.
         </p>
         <p>
           That changes what tends to be found underground. Development from the
@@ -681,9 +710,14 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         </p>
         <p>
           Programme terms — including any reimbursement cap and the specific
-          exclusions — differ between municipalities and change over time.
-          Confirm the current terms with Chesterfield Public Works before
-          relying on them.
+          exclusions — differ between municipalities and change over time. We
+          have not been able to confirm Chesterfield&rsquo;s cap or exclusions
+          from a published source, so rather than restate figures we cannot
+          verify, see{' '}
+          <a href="https://www.chesterfield.mo.us/263/Residential-Sanitary-Sewer-Lateral-Repai">
+            Chesterfield&rsquo;s own programme page
+          </a>{' '}
+          for current terms.
         </p>
       </>
     ),
@@ -710,9 +744,12 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           <p>
             It covers repairs of defective sewer laterals for residential
             buildings of six units or fewer, funded by a $28 annual charge in
-            place since 2001. We would rather point you to Chesterfield Public
-            Works for the current cap and exclusions than restate figures we
-            have not confirmed against the city&rsquo;s own source.
+            place since 2001. The current cap and exclusions are on{' '}
+            <a href="https://www.chesterfield.mo.us/263/Residential-Sanitary-Sewer-Lateral-Repai">
+              Chesterfield&rsquo;s programme page
+            </a>{' '}
+            — we would rather point you there than restate figures we have not
+            confirmed against the city&rsquo;s own source.
           </p>
         ),
       },
@@ -783,6 +820,21 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           approval, which makes the size of the repair — and therefore the
           precise nature and position of the defect — worth establishing
           properly before work is authorised.
+        </p>
+
+        <h2>Construction era</h2>
+        <p>
+          St. Charles&rsquo;s housing dates predominantly from the mid-1980s
+          onward, with growth continuing through the 2000s and a small
+          pre-1940 river-town core of roughly 4% (American Community Survey,
+          2019&ndash;2023 five-year estimates).
+        </p>
+        <p>
+          Sources differ on the precise median year for St. Charles, so we
+          describe the era rather than quote a single figure we cannot pin
+          down. The practical point holds either way: most laterals here are
+          PVC-era, where ground movement rather than material decay is the
+          usual cause of trouble.
         </p>
       </>
     ),

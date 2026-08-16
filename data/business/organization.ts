@@ -57,21 +57,20 @@
  *                     registry rather than hand-listed (15 §69, §91).
  *
  * ---------------------------------------------------------------------------
- * ⚠ PUBLISHED BUT WITHHELD PENDING SIGN-OFF
+ * ⚠ THREE CLAIMS ARE APPROVED BUT MARKET-SCOPED (DEC-072)
  * ---------------------------------------------------------------------------
- * Three claims appear on the live site and are deliberately NOT carried
- * over: "#1 choice in St. Louis", "over 100 years of combined
- * experience", and "over 100,000 camera inspections completed".
+ * The owner approved republication of "#1 choice in St. Louis", "over
+ * 100 years of combined experience", and "over 100,000 camera
+ * inspections completed".
  *
- * The first is an unsubstantiated superlative, which 18 §71 and
- * CLAUDE.md §71 prohibit without approved substantiation. The other two
- * are quantified performance claims — 01 §35 lists years in business
- * and inspections completed among facts requiring documented evidence,
- * and a figure appearing in the business's own marketing copy is the
- * claim, not the evidence for it.
+ * Permission is not the constraint; SCOPE is. Two of the three are
+ * St. Louis site claims, and 01 §20 forbids carrying one market's facts
+ * into another — so they must never appear on a San Diego or Las Vegas
+ * page. See `MARKET_SCOPED_CLAIMS` below.
  *
- * These need an explicit business decision before republication. See
- * `WITHHELD_PENDING_SUBSTANTIATION` below.
+ * The superlative also remains unsubstantiated by any third party.
+ * 18 §71 treats that as challengeable on an authority platform; the
+ * owner's decision and the reasoning are recorded in DEC-072.
  */
 
 import type { OrganizationConfig } from '@/types'
@@ -158,12 +157,12 @@ export const foundingYear = 2011
  * Service area exactly as the business publishes it
  * (thesewerpros.com/contact and /about).
  *
- * ⚠ MISSOURI ONLY. The published service area names no California or
- * Nevada geography.
+ * ⚠ This is the ST. LOUIS site's service area, not the company's.
  *
- * This is recorded verbatim rather than reconciled, because it bears on
- * a governance question rather than an implementation one — see
- * PENDING-013.
+ * San Diego publishes its own (San Diego County) on its own site, and
+ * Las Vegas is launching with its own. Reading this as company-wide was
+ * a misinterpretation corrected by the San Diego research — see
+ * DEC-071 and PENDING-013.
  */
 export const publishedServiceArea =
   'St. Louis County, St. Charles County, Jefferson County, MO, and surrounding areas'
@@ -190,11 +189,28 @@ export const affiliations = [
  * substantiation, soften, or omit. Exported so build validation can
  * scan rendered copy for them (step 24) rather than relying on review.
  */
-export const WITHHELD_PENDING_SUBSTANTIATION = [
-  '#1 choice in St. Louis',
-  'over 100 years of combined experience',
-  'over 100,000 camera inspections',
-] as const
+/**
+ * Previously withheld, now APPROVED for republication (DEC-072).
+ *
+ * Retained as a named list so build validation can check WHERE each
+ * appears, not whether. Scope matters more than permission here:
+ *
+ *   'over 100 years of combined experience' — published on BOTH the
+ *       St. Louis and San Diego sites, so company-wide. On /about/.
+ *
+ *   '#1 choice in St. Louis'  } published on the St. Louis site only.
+ *   'over 100,000 inspections'} 01 §20 forbids carrying a market's
+ *       claims into another, so both stay on St. Louis pages and must
+ *       never appear on a San Diego or Las Vegas page.
+ *
+ * ⚠ The superlative remains unsubstantiated by any third party. The
+ * owner approved it and that decision is recorded in DEC-072; 18 §71
+ * still treats it as a challengeable claim on an authority platform.
+ */
+export const MARKET_SCOPED_CLAIMS = {
+  companyWide: ['over 100 years of combined experience'],
+  stLouisOnly: ['#1 choice in St. Louis', 'over 100,000 camera inspections'],
+} as const
 
 /**
  * Approved business categories (01 §2.2).

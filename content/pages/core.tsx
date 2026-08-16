@@ -13,10 +13,15 @@
  * Still no street address and no form: none is published for any market
  * (15 §11), and PENDING-008 leaves form fields undecided.
  *
- * ⚠ `/about/` asserts no staff count, volume, licensing, or
- * certification, and no "years of experience" figure. 01 §35 lists all
- * of those among claims requiring documented evidence. The founding
- * year is published and used; a derived experience claim is not.
+ * `/about/` carries the company-wide combined-experience claim approved
+ * under DEC-072. It still asserts no staff count, no inspection volume,
+ * no licensing, and no certification — 01 §35 lists those among claims
+ * requiring documented evidence, and none has been supplied.
+ *
+ * ⚠ The St. Louis-scoped claims — "#1 choice in St. Louis" and the
+ * 100,000-inspections figure — live on the St. Louis market hub, not
+ * here. /about/ is sitewide, and 01 §20 forbids presenting one market's
+ * claims as though they covered another.
  */
 
 import type {
@@ -364,9 +369,15 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
 
         <h2>The business</h2>
         <p>
-          The Sewer Pros has operated since 2011. We are locally owned and
-          family operated, working across St. Louis County, St. Charles County,
-          Jefferson County, and surrounding areas.
+          The Sewer Pros has operated since 2011, with over 100 years of
+          combined experience across the team. We are locally owned and family
+          operated.
+        </p>
+        <p>
+          We work across the St. Louis area — St. Louis County, St. Charles
+          County, Jefferson County and surrounding areas — and across San Diego
+          County, which we have served since 2015. We are currently launching in
+          the Las Vegas Valley.
         </p>
 
         <h2>Municipal lateral reporting</h2>
@@ -425,6 +436,13 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           <li>Monday to Friday, 8:00am to 4:00pm. Closed weekends.</li>
         </ul>
         <p>Serving San Diego County, California.</p>
+
+        <h2>Why there is no address here</h2>
+        <p>
+          We are a service-area business. The work happens at your property —
+          in the ground, at a cleanout — rather than at a counter you visit, so
+          there is no storefront address to list.
+        </p>
 
         <h2>What to have ready</h2>
         <p>

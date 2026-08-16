@@ -319,8 +319,12 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           The grant programme is described as covering the Carlsbad Wastewater
           service area. Whether that extends to properties served by Leucadia or
           Vallecitos is not something we have been able to confirm, so if your
-          property sits in the southern part of the city, check directly with
-          the City of Carlsbad before assuming eligibility.
+          property sits in the southern part of the city, confirm your own
+          eligibility on the{' '}
+          <a href="https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners">
+            City of Carlsbad&rsquo;s property-owner page
+          </a>{' '}
+          before assuming it applies.
         </p>
 
         <h2>Owner responsibility either way</h2>
@@ -414,12 +418,21 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <p>
           We have not been able to confirm the programme&rsquo;s exact
           reimbursement cap, and it differs from Carlsbad&rsquo;s stated $3,000.
-          Confirm the current figure with CVSan before relying on it.
+          Check the current figure on{' '}
+          <a href="https://cvsan.org/wastewater/lateral_replacement_grant_program.php">
+            CVSan&rsquo;s grant programme page
+          </a>{' '}
+          rather than relying on a number from anywhere else.
         </p>
 
         <h2>Two eras in one city</h2>
         <p>
-          Chula Vista&rsquo;s housing is genuinely mixed — a meaningful postwar
+          Chula Vista&rsquo;s median year built is 1987, with 27.3% of housing
+          predating 1970 (American Community Survey, 2019&ndash;2023 five-year
+          estimates). That single figure hides a genuinely mixed picture.
+        </p>
+        <p>
+          The stock is genuinely mixed — a meaningful postwar
           and 1960s base alongside a strong wave of master-planned development
           in the eastern part of the city through the 2000s. Those two halves
           of the city can present quite different lateral conditions, so what is
@@ -496,8 +509,9 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
         <h2>Suburban expansion stock</h2>
         <p>
-          Escondido&rsquo;s housing is largely 1970s and 1980s suburban
-          expansion, with a modest older share. That span crosses the transition
+          Escondido&rsquo;s median year built is 1981 (American Community
+          Survey, 2019&ndash;2023 five-year estimates), reflecting 1970s and
+          1980s suburban expansion with a modest older share. That span crosses the transition
           toward PVC, so the age of a house is a weak predictor of what its
           lateral is made of or what condition it is in.
         </p>
@@ -543,8 +557,12 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           generally the property owner&rsquo;s responsibility. We have not
           located a specific published Oceanside statement setting out the exact
           boundary, so rather than restate a neighbouring city&rsquo;s rule as
-          though it were Oceanside&rsquo;s, we would point you to Water
-          Utilities directly for the detail that applies to your property.
+          though it were Oceanside&rsquo;s, confirm what applies to your
+          property with{' '}
+          <a href="https://www.ci.oceanside.ca.us/residents/water-utilities">
+            Oceanside Water Utilities
+          </a>
+          .
         </p>
         <p>
           We also found no lateral repair assistance programme here — unlike
@@ -554,8 +572,10 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
         <h2>Coastal conditions</h2>
         <p>
-          Oceanside&rsquo;s housing is predominantly 1970s and 1980s growth
-          continuing into the 1990s, with a smaller older share. On lines of
+          Oceanside&rsquo;s median year built is 1984, with 16.9% of housing
+          predating 1970 (American Community Survey, 2019&ndash;2023 five-year
+          estimates), reflecting growth through the 1970s and 1980s continuing
+          into the 1990s. On lines of
           that period, ground movement and settlement are more often behind
           recurring problems than material decay — bellies holding water,
           joints pulled apart, damage from later work on the property.
@@ -626,8 +646,9 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
         <h2>New housing, different failure modes</h2>
         <p>
-          San Marcos has among the newest housing in the region, dominated by
-          growth from the 1990s onward. Most laterals here will be PVC rather
+          San Marcos has among the newest housing in the region: a median year
+          built of 1996, with only 7.7% predating 1970 (American Community
+          Survey, 2019&ndash;2023 five-year estimates). Most laterals here will be PVC rather
           than clay, cast iron, or bituminized fibre.
         </p>
         <p>

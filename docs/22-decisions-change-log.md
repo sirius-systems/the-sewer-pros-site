@@ -3407,14 +3407,21 @@ PENDING-002, 014, 015, 016 resolved. PENDING-012 and 013 remain open — "curren
 
 ### Implementation Impact
 
-Not yet applied to page content. The following remain outstanding:
+**Applied 2026-08-17.** All six items complete; verified on the built output.
 
-* Add approved housing-age figures with ACS citation across the St. Louis and San Diego location pages
-* Apply the cite-and-link pattern — Chesterfield, Oceanside, CVSan, Carlsbad's southern boundary, St. Louis County SLRP, and the Las Vegas municipal sources
-* Reinstate the three approved marketing claims where they fit naturally
-* Record the SAB model where it clarifies why no address appears
-* Write the 8 San Diego and remaining service+location pages
-* Write the 5 gated Las Vegas pages
+* **Housing figures** — 40 ACS citations across 20 pages. St. Louis pages carry them where they sharpen a contrast (St. Louis City 58.4% pre-1940 against Chesterfield's 1.4%); San Diego and Las Vegas where they support the argument about what fails on newer lines. Two deliberate omissions stand: **St. Charles** is described as "mid-1980s" rather than given a median year, since sources disagree; **Mission Valley** gets no figure at all, because none exists at a usable geography.
+* **Cite-and-link** — all 8 municipal targets live: Chesterfield, St. Louis County, Carlsbad, CVSan, Oceanside, City of Las Vegas, North Las Vegas, and Clark County's boundary map. 15 external references in total.
+* **Marketing claims, market-scoped.** Permission was not the constraint — scope was. Two of the three are St. Louis site claims, so 01 §20 keeps them off other markets:
+
+  | Claim | Appears on | Leaked to SD/LV |
+  | ----- | ---------- | --------------- |
+  | "#1 choice in St. Louis" | `/st-louis-mo/` only | No |
+  | "over 100,000 camera inspections" | `/st-louis-mo/` only | No |
+  | "over 100 years of combined experience" | `/about/` only (both sites publish it) | No |
+
+* **SAB model** — `/contact/` now explains the absence of an address rather than leaving it unstated.
+* **San Diego pages** — complete (16).
+* **Las Vegas pages** — complete (5, gated).
 
 ### Follow-Up
 
