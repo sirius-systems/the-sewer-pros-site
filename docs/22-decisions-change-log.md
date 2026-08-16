@@ -3353,7 +3353,78 @@ Options if revisited: a market-scoped route group with its own layout, or accept
 
 ---
 
-## DEC-072 — Reserved for Next Approved Decision
+## DEC-072 — Business Owner Determinations on Open Content Questions
+
+**Date:** 2026-08-16
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Business owner
+**Affected Documents:**
+
+* `01-business-brand-foundation.md` §35
+* `11-local-seo-gbp-strategy.md` §62
+* `14-content-specification.md`
+* `15-schema-entity-strategy.md` §9-13
+* `18-design-system.md` §71
+
+### Decision
+
+The business owner resolved five questions raised across the three market research passes.
+
+| Question | Determination |
+| -------- | ------------- |
+| PENDING-002 — street address | **No address exists.** Service is delivered at the customer's location: a Service-Area-Business model. License numbers are intentionally not listed. |
+| PENDING-015 — housing-age figures | **Approved for use** on the research as compiled, retaining Census/ACS sourcing in citations. |
+| PENDING-016 — three withheld claims | **Approved for republication**, including "#1 choice in St. Louis". |
+| PENDING-014 — Chesterfield terms | Resolved by **cite-and-link**: link to the municipality's own programme page rather than assert an unverified cap. |
+| PENDING-012 / 013 — Las Vegas | Market is **"currently launching."** Real and imminent — but this does NOT satisfy DEC-063's release criteria. |
+
+### Reason
+
+Four of the five are straightforward: the owner holds facts research cannot reach, and has supplied them.
+
+The address determination is the most consequential and was previously mis-framed. PENDING-002 asked for "verified St. Louis local entity details" on the assumption an address existed and was simply unpublished. It does not exist. That converts an open question into a settled structural fact about the business model, and it reaches further than the contact page:
+
+* `permitsLocalBusinessEntity()` correctly returns false for every market **permanently**, not pending verification. 15 §9-12 requires a verified physical location for a `LocalBusiness` entity, and there is none to verify.
+* 11 §62's storefront-versus-SAB question is answered: SAB. That governs GBP eligibility and category selection in all three markets.
+* 18 §135's prohibition on office cards and 18 §86-87's map-pin rules are now permanent design constraints rather than interim ones.
+
+### The superlative, stated once and then accepted
+
+"#1 choice in St. Louis" is an unsubstantiated superlative of exactly the kind 18 §71 and CLAUDE.md §71 prohibit without approved substantiation. Owner approval is approval; it is not third-party substantiation, and the claim remains challengeable on an authority platform.
+
+That concern was raised when the claim was first withheld. The owner has decided, the decision is theirs to make, and it is recorded here so the basis is visible if the claim is ever questioned. The quantified claims — 100+ years combined experience, 100,000+ inspections — carry less risk, being statements of the business's own history rather than comparative ranking.
+
+### Previous State
+
+Five open PENDING entries. Marketing claims withheld from all built pages. No housing figure published. No address, treated as pending verification.
+
+### New State
+
+PENDING-002, 014, 015, 016 resolved. PENDING-012 and 013 remain open — "currently launching" is a status report, not the operational service confirmation DEC-063 requires.
+
+⚠ **Las Vegas indexing is unchanged.** DEC-063's gate is not released by content readiness or by a launch being imminent. The five Las Vegas pages stay `launch_pending_validation` until PENDING-012 resolves on its own criteria. No Las Vegas business facts have been supplied, so no Las Vegas page may state hours, phone, or service area.
+
+### Implementation Impact
+
+Not yet applied to page content. The following remain outstanding:
+
+* Add approved housing-age figures with ACS citation across the St. Louis and San Diego location pages
+* Apply the cite-and-link pattern — Chesterfield, Oceanside, CVSan, Carlsbad's southern boundary, St. Louis County SLRP, and the Las Vegas municipal sources
+* Reinstate the three approved marketing claims where they fit naturally
+* Record the SAB model where it clarifies why no address appears
+* Write the 8 San Diego and remaining service+location pages
+* Write the 5 gated Las Vegas pages
+
+### Follow-Up
+
+* PENDING-012 remains the sole gate on Las Vegas indexation.
+* Las Vegas business facts — phone, hours, service area — must come from the owner. Nothing on the public web can verify them.
+* `11-local-seo-gbp-strategy.md` §62 should record the SAB determination.
+
+---
+
+## DEC-073 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
@@ -3394,7 +3465,7 @@ Maintain unresolved material questions here until resolved.
 | ID          | Decision Needed                         | Status   | Trigger                                |
 | ----------- | --------------------------------------- | -------- | -------------------------------------- |
 | PENDING-001 | Production canonical domain / host      | Open     | Before production configuration        |
-| PENDING-002 | Verified St. Louis local entity details | Open     | Before final GBP/schema implementation |
+| PENDING-002 | Verified St. Louis local entity details | RESOLVED | DEC-072 — no address exists; SAB model  |
 | PENDING-003 | San Diego GBP eligibility               | Deferred | Operational eligibility                |
 | PENDING-004 | Las Vegas GBP eligibility               | Deferred | Operational eligibility                |
 | PENDING-005 | Final brand colors                      | Open     | Design implementation                  |
@@ -3406,9 +3477,9 @@ Maintain unresolved material questions here until resolved.
 | PENDING-011 | GPTBot training-access policy           | Open     | Before production robots.txt           |
 | PENDING-012 | Las Vegas service availability          | Open     | Business operational confirmation      |
 | PENDING-013 | San Diego / Las Vegas operating status  | Open     | Before those markets' content          |
-| PENDING-014 | Chesterfield lateral programme terms    | Open     | Before stating its coverage            |
-| PENDING-015 | Housing-age figures vs primary Census   | Open     | Before publishing any housing stat     |
-| PENDING-016 | Three withheld marketing claims         | Open     | Before republishing any of them        |
+| PENDING-014 | Chesterfield lateral programme terms    | RESOLVED | DEC-072 — cite-and-link to the city     |
+| PENDING-015 | Housing-age figures vs primary Census   | RESOLVED | DEC-072 — approved with ACS citation    |
+| PENDING-016 | Three withheld marketing claims         | RESOLVED | DEC-072 — approved for republication    |
 | PENDING-017 | Market-scoped header contact            | Open     | If a market-aware layout is introduced |
 
 ## Open Proposals
