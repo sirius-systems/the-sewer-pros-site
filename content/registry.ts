@@ -102,6 +102,10 @@ markPending(
     .filter((p) => p.marketId !== 'st-louis-mo')
     // San Diego locations and service+locations: written (DEC-071).
     .filter((p) => p.marketId !== 'san-diego-ca')
+    // Las Vegas locations: written and GATED (DEC-063, DEC-073). They
+    // build and route; the registry keeps them out of the sitemap and
+    // every indexable link module until PENDING-012 resolves.
+    .filter((p) => p.marketId !== 'las-vegas-nv')
     .map((p) => p.id),
   LOCAL_RESEARCH,
 )
@@ -115,6 +119,7 @@ markPending(
     .filter((p) => p.pageType === 'market')
     .filter((p) => p.marketId !== 'st-louis-mo')
     .filter((p) => p.marketId !== 'san-diego-ca')
+    .filter((p) => p.marketId !== 'las-vegas-nv')
     .map((p) => p.id),
   {
     reason:
@@ -159,7 +164,7 @@ markPending(
    --------------------------------------------------------------------------- */
 
 markPending(
-  ['res-stl-lateral-report', 'res-stl-city-program', 'res-stl-county-program'],
+  [],
   {
     reason:
       'All three describe St. Louis municipal sewer lateral programs. ' +

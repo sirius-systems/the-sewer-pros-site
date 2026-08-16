@@ -115,18 +115,21 @@ export function resolveApprovedLinks(
  */
 export function resolveLinkableOnly(
   pageIds: readonly PageId[],
-  options: Omit<ResolveOptions, 'indexableContext'> = {},
+  options: ResolveOptions = {},
 ): ApprovedLink[] {
+  const { indexableContext = true } = options
   return pageIds
     .filter((id) => {
       if (getPage(id) === undefined) {
         fail(`"${id}" is not in the approved page registry.`)
       }
-      // Two separate reasons a page may not be linkable:
-      //   not indexable — gated by doc 04 §4 (Las Vegas today)
-      //   not authored  — approved but no content yet, so the route is
-      //                   not generated and the link would 404 (05 §77)
-      return indexableIds.has(id) && authoredPageIds.has(id)
+      // Never linkable: approved but unwritten, so the route does not
+      // exist and the link would 404 (05 §77).
+      if (!authoredPageIds.has(id)) return false
+      // Gated pages are excluded only from INDEXABLE link modules
+      // (04 §4). A module rendered on a page that is itself not indexed
+      // is not one — see `indexableContext`.
+      return indexableContext ? indexableIds.has(id) : true
     })
-    .map((id) => resolveApprovedLink(id, options))
+    .map((id) => resolveApprovedLink(id, { ...options, indexableContext }))
 }

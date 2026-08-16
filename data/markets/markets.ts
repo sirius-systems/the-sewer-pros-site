@@ -134,8 +134,16 @@ export const markets: Record<MarketId, Market> = {
      * (01 §20, §26; 06 §42). DEC-063 gates the five Las Vegas pages as
      * `launch_pending_validation` — built and routable, excluded from
      * sitemap and indexing — pending PENDING-012.
+     *
+     * ⚠ Contact detail is now owner-confirmed (DEC-073), but that does
+     * NOT release the gate. A reachable phone number is evidence the
+     * business is real; DEC-063 asks whether the SERVICE MENU is
+     * operationally confirmed. Those are different questions, and this
+     * is the easiest place in the project to conflate them.
      */
     gbpStatus: 'none_identified',
+    /** Owner-confirmed 2026-08-17 (DEC-073). No live site to source from. */
+    phone: '(725) 292-4030',
   },
 }
 
@@ -147,13 +155,16 @@ export const markets: Record<MarketId, Market> = {
  * operation rather than its identity, and because a missing entry must
  * read as "not published" rather than defaulting to another market's.
  *
- * ⚠ Las Vegas has no entry. No separate site, no published phone, and
- * zero of 18 services confirmed (PENDING-012, PENDING-013).
+ * Las Vegas's entry is owner-confirmed rather than site-sourced
+ * (DEC-073) and carries no founding year — the market is newly
+ * launching, and importing another market's would imply a history it
+ * does not have.
  */
 export interface MarketOperatingDetail {
   phone: string
   phoneE164: string
   hours: string
+  /** 0 where the market has no operating history to state (Las Vegas). */
   foundingYear: number
   /** Service area exactly as that market publishes it. */
   serviceArea: string
@@ -176,6 +187,21 @@ export const marketOperatingDetail: Partial<
     hours: 'Monday to Friday, 8:00am – 4:00pm',
     foundingYear: 2015,
     serviceArea: 'San Diego County, CA',
+  },
+  /**
+   * ⚠ Owner-confirmed rather than site-sourced (DEC-073). No Las Vegas
+   * site or GBP exists.
+   *
+   * No `foundingYear`: the market is newly launching, and a founding
+   * year would imply an operating history that does not exist. 01 §20
+   * forbids importing St. Louis's 2011 or San Diego's 2015 here.
+   */
+  'las-vegas-nv': {
+    phone: '(725) 292-4030',
+    phoneE164: '+1-725-292-4030',
+    hours: 'Monday to Friday, 8:00am – 4:00pm',
+    foundingYear: 0,
+    serviceArea: 'Las Vegas Valley, NV',
   },
 }
 

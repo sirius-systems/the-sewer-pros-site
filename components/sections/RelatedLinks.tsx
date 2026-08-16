@@ -38,6 +38,17 @@ export interface RelatedLinksProps {
   pageIds: readonly PageId[]
   /** `muted` sets this apart from the body content above it. */
   surface?: 'default' | 'muted'
+  /**
+   * Whether this module is an indexable link module (04 §4).
+   *
+   * Default true, which drops gated pages. Pass false when the module
+   * is rendered ON a page that is itself not indexed — a gated market
+   * hub linking to its gated locations. Those links reach no crawler
+   * through an indexed path, and suppressing them would orphan the
+   * cluster from its own hub and make it un-QA-able (DEC-063 requires
+   * these pages be QA'd).
+   */
+  indexableContext?: boolean
 }
 
 export function RelatedLinks({
@@ -46,8 +57,9 @@ export function RelatedLinks({
   intro,
   pageIds,
   surface = 'muted',
+  indexableContext = true,
 }: RelatedLinksProps) {
-  const links = resolveLinkableOnly(pageIds)
+  const links = resolveLinkableOnly(pageIds, { indexableContext })
 
   if (links.length === 0) return null
 

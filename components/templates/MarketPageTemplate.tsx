@@ -90,6 +90,11 @@ export function MarketPageTemplate({
           title="Areas we serve"
           pageIds={content.locationPageIds}
           surface="default"
+          // A gated market hub may link to its gated locations: this
+          // module is not an indexable link module, because the page
+          // rendering it is not indexed (04 §4). Without this the
+          // cluster is orphaned from its own hub and cannot be QA'd.
+          indexableContext={page.status === 'launch'}
         />
       )}
 

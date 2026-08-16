@@ -30,6 +30,8 @@ import {
   sanDiegoLocationContent,
 } from './pages/san-diego'
 import { sanDiegoServiceLocationContent } from './pages/san-diego-service-location'
+import { stLouisResourceContent } from './pages/st-louis-resources'
+import { lasVegasMarketContent, lasVegasLocationContent } from './pages/las-vegas'
 import {
   stLouisMarketContent,
   lateralReportingContent,
@@ -41,12 +43,14 @@ import {
 const marketContent: Partial<Record<PageId, MarketPageContent>> = {
   ['market-st-louis-mo' as PageId]: stLouisMarketContent,
   ['market-san-diego-ca' as PageId]: sanDiegoMarketContent,
+  ['market-las-vegas-nv' as PageId]: lasVegasMarketContent,
 }
 
 /** Location content across all markets. */
 const locationContent: Partial<Record<PageId, LocationPageContent>> = {
   ...stLouisLocationContent,
   ...sanDiegoLocationContent,
+  ...lasVegasLocationContent,
 }
 
 /** Service + location content across all markets. */
@@ -104,8 +108,13 @@ export function getHubContent(id: PageId): HubPageContent | undefined {
   return hubContent[id]
 }
 
+const allResourceContent: Partial<Record<PageId, ResourcePageContent>> = {
+  ...resourceContent,
+  ...stLouisResourceContent,
+}
+
 export function getResourceContent(id: PageId): ResourcePageContent | undefined {
-  return resourceContent[id]
+  return allResourceContent[id]
 }
 
 /**
@@ -122,6 +131,7 @@ export const authoredPageIds: ReadonlySet<PageId> = new Set<PageId>([
   ...(Object.keys(coreContent) as PageId[]),
   ...(Object.keys(hubContent) as PageId[]),
   ...(Object.keys(resourceContent) as PageId[]),
+  ...(Object.keys(stLouisResourceContent) as PageId[]),
   ...(Object.keys(marketContent) as PageId[]),
   ...(Object.keys(locationContent) as PageId[]),
   ...(Object.keys(serviceLocationContent) as PageId[]),
