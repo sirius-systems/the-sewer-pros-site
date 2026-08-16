@@ -6,6 +6,8 @@ import {
 } from '@/components/ui'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { PageViewTracker } from '@/components/tracking'
+import { JsonLd } from '@/components/schema/JsonLd'
+import { pageSchema } from '@/lib/schema'
 import { pageContext } from '@/lib/analytics'
 import type { MasterPageRecord } from '@/types'
 
@@ -38,6 +40,13 @@ import type { MasterPageRecord } from '@/types'
 export interface PageShellProps {
   page: MasterPageRecord
   /**
+   * Title and description for structured data.
+   *
+   * The SAME values the metadata layer uses, so markup and the
+   * rendered page cannot diverge (15 §67).
+   */
+  schema?: { title: string; description?: string; dateModified?: string }
+  /**
    * Densities of the sections this template renders, in order.
    * Used only for the rhythm check.
    */
@@ -45,7 +54,7 @@ export interface PageShellProps {
   children: ReactNode
 }
 
-export function PageShell({ page, densities, children }: PageShellProps) {
+export function PageShell({ page, densities, schema, children }: PageShellProps) {
   const issues = sectionRhythmIssues(densities)
 
   if (issues.length > 0) {
@@ -57,6 +66,23 @@ export function PageShell({ page, densities, children }: PageShellProps) {
 
   return (
     <>
+      {/*
+        JSON-LD. Returns null for gated pages — pageSchema() yields
+        nothing for anything not indexable, so a noindex page carries no
+        structured data describing an entity it asks crawlers to ignore
+        (15 §115, DEC-063).
+      */}
+      {schema !== undefined && (
+        <JsonLd
+          graph={pageSchema({
+            page,
+            title: schema.title,
+            description: schema.description,
+            dateModified: schema.dateModified,
+          })}
+        />
+      )}
+
       {/*
         Page views, including client-side route changes (19 §134).
         Context is derived from the approved page record, so every event

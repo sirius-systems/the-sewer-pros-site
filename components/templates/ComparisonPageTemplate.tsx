@@ -52,7 +52,14 @@ export function ComparisonPageTemplate({
   ]
 
   return (
-    <PageShell page={page} densities={densities}>
+    <PageShell
+      page={page}
+      densities={densities}
+      schema={{
+        title: content.seoTitle ?? content.hero.title,
+        description: content.metaDescription,
+      }}
+    >
       <Section density="standard" width="reading" as="article">
         <header>
           {content.hero.eyebrow !== undefined && (

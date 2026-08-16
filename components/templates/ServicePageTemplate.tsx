@@ -61,7 +61,14 @@ export function ServicePageTemplate({
   ]
 
   return (
-    <PageShell page={page} densities={densities}>
+    <PageShell
+      page={page}
+      densities={densities}
+      schema={{
+        title: content.seoTitle ?? content.hero.title,
+        description: content.metaDescription,
+      }}
+    >
       <Hero
         variant="editorial"
         eyebrow={content.hero.eyebrow}

@@ -58,7 +58,14 @@ export function CorePageTemplate({
   ]
 
   return (
-    <PageShell page={page} densities={densities}>
+    <PageShell
+      page={page}
+      densities={densities}
+      schema={{
+        title: content.seoTitle ?? content.hero.title,
+        description: content.metaDescription,
+      }}
+    >
       <Section density="standard" width="reading">
         <header>
           <h1 className="text-h1 font-semibold tracking-tight text-balance">
