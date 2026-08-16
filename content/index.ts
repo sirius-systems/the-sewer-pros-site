@@ -29,6 +29,7 @@ import {
   sanDiegoMarketContent,
   sanDiegoLocationContent,
 } from './pages/san-diego'
+import { sanDiegoServiceLocationContent } from './pages/san-diego-service-location'
 import {
   stLouisMarketContent,
   lateralReportingContent,
@@ -51,6 +52,7 @@ const locationContent: Partial<Record<PageId, LocationPageContent>> = {
 /** Service + location content across all markets. */
 const serviceLocationContent: Partial<Record<PageId, ServiceLocationPageContent>> = {
   ...stLouisServiceLocationContent,
+  ...sanDiegoServiceLocationContent,
 }
 
 export {

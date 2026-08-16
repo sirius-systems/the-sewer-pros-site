@@ -100,9 +100,8 @@ markPending(
     .filter((p) => p.pageType === 'location' || p.pageType === 'service-location')
     // St. Louis locations and service+locations: written (DEC-070).
     .filter((p) => p.marketId !== 'st-louis-mo')
-    // San Diego LOCATIONS are written (DEC-071); its service+location
-    // pages are not yet.
-    .filter((p) => !(p.marketId === 'san-diego-ca' && p.pageType === 'location'))
+    // San Diego locations and service+locations: written (DEC-071).
+    .filter((p) => p.marketId !== 'san-diego-ca')
     .map((p) => p.id),
   LOCAL_RESEARCH,
 )
