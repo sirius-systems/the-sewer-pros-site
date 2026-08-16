@@ -1,4 +1,4 @@
-# The Sewer Pros — Website
+# The Sewer Pros - Website
 
 Multi-market website for The Sewer Pros: sewer inspection, diagnostics, locating, and cleaning across St. Louis MO, San Diego CA, and Las Vegas NV.
 
