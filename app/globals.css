@@ -46,6 +46,22 @@
   /* Layout (18 §21, §22) */
   --container-max: 1280px;
   --container-reading: 42rem;
+  --container-wide: 1536px;
+
+  /* ------------------------------------------------------------------
+     Section density (18 Appendix A)
+
+     Three densities, and the point is VARIATION down the page. Flat
+     density across every section is a named failure condition in
+     18 §155 and Appendix B.
+
+     Sparse — hero, positioning statements, final CTA
+     Standard — explanatory content, services, process
+     Dense — comparisons, specifications, FAQs
+     ------------------------------------------------------------------ */
+  --space-section-sparse: clamp(4rem, 10vw, 8rem);
+  --space-section-standard: clamp(3rem, 6vw, 5rem);
+  --space-section-dense: clamp(2rem, 4vw, 3rem);
 }
 
 @theme inline {
@@ -63,6 +79,32 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
+
+  /* ------------------------------------------------------------------
+     Type scale (18 §18, §150)
+
+     A responsive modular scale rather than arbitrary sizes. clamp()
+     keeps long city and service names usable on narrow screens
+     without fixed oversized headings that wrap awkwardly (18 §150).
+
+     ⚠ SIZES ONLY. Font FAMILY is unresolved (PENDING-006) and is
+     deliberately not set anywhere — the stack falls back to system
+     defaults until typography is approved.
+     ------------------------------------------------------------------ */
+  --text-display: clamp(2.5rem, 5vw + 1rem, 4rem);
+  --text-display--line-height: 1.05;
+  --text-h1: clamp(2rem, 3vw + 1rem, 3rem);
+  --text-h1--line-height: 1.1;
+  --text-h2: clamp(1.5rem, 1.5vw + 1rem, 2rem);
+  --text-h2--line-height: 1.2;
+  --text-h3: clamp(1.25rem, 0.5vw + 1rem, 1.5rem);
+  --text-h3--line-height: 1.3;
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.4;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.7;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
