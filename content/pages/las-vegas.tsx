@@ -28,16 +28,23 @@
  * evidence that a service menu is operationally confirmed.
  *
  * ---------------------------------------------------------------------------
- * ⚠ "LAUNCHING", NEVER "ESTABLISHED"
+ * ⚠ "OPERATIONAL", NEVER "ESTABLISHED"
  * ---------------------------------------------------------------------------
- * Zero of 18 services are confirmed in the service registry, and there
- * is no Las Vegas operating history. 01 §20 forbids importing another
- * market's facts — St. Louis's 2011 founding and San Diego's 2015 stay
- * where they belong.
+ * The owner updated Las Vegas from "currently launching" to
+ * "operational" on 2026-08-17 (DEC-074). The copy reflects that.
  *
- * No page below claims years of local service, local volume, a local
- * track record, or a local office. The framing is a market opening,
- * because that is what it is.
+ * What it does NOT license is a track record. 01 §20 forbids importing
+ * another market's facts — St. Louis's 2011 founding and San Diego's
+ * 2015 stay where they belong — so no page below claims years of local
+ * service, local volume, or a local office.
+ *
+ * ⚠ It also does not license a SERVICE MENU. The service registry still
+ * marks all 17 applicable services `requires_operational_confirmation`
+ * for this market, and 06 §9 makes that registry authoritative for
+ * service availability. "The business is operating here" and "these
+ * specific services are offered here" are different claims, and only
+ * the first is confirmed. No page below enumerates a Las Vegas service
+ * menu.
  *
  * ---------------------------------------------------------------------------
  * WHY THE HOUSING ANGLE IS ABSENT HERE
@@ -66,9 +73,10 @@ const LAS_VEGAS_CONTACT = (
       , Monday to Friday, 8:00am to 4:00pm.
     </p>
     <p>
-      We are newly launching in the Las Vegas Valley. Our established work is in
-      St. Louis and San Diego, and we would rather say that plainly than imply
-      a local history we do not have here yet.
+      We are operating in the Las Vegas Valley. This is a newer market for us —
+      our longest-running work is in St. Louis and San Diego — and we would
+      rather say that plainly than imply a local track record we have not built
+      here yet.
     </p>
   </>
 )
@@ -83,9 +91,9 @@ export const lasVegasMarketContent: MarketPageContent = {
     title: 'Sewer inspection and cleaning in the Las Vegas Valley',
     intro: (
       <p>
-        Independent camera inspection, diagnostics, and cleaning — newly
-        launching across the Las Vegas Valley, from a company that documents
-        the condition of the line and does not sell the repair.
+        Independent camera inspection, diagnostics, and cleaning across the
+        Las Vegas Valley, from a company that documents the condition of the
+        line and does not sell the repair.
       </p>
     ),
   },

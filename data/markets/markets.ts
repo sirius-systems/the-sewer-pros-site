@@ -135,11 +135,15 @@ export const markets: Record<MarketId, Market> = {
      * `launch_pending_validation` — built and routable, excluded from
      * sitemap and indexing — pending PENDING-012.
      *
-     * ⚠ Contact detail is now owner-confirmed (DEC-073), but that does
-     * NOT release the gate. A reachable phone number is evidence the
-     * business is real; DEC-063 asks whether the SERVICE MENU is
-     * operationally confirmed. Those are different questions, and this
-     * is the easiest place in the project to conflate them.
+     * ⚠ Contact detail is owner-confirmed (DEC-073) and the owner has
+     * reported the market OPERATIONAL as of 2026-08-17 (DEC-074).
+     * Neither releases the gate.
+     *
+     * DEC-063 criterion 2 asks whether the SERVICE MENU is operationally
+     * confirmed, and the registry above still answers no for all 17
+     * applicable services. "The business operates here" and "these
+     * services are offered here" are different claims — this is the
+     * easiest place in the project to conflate them.
      */
     gbpStatus: 'none_identified',
     /** Owner-confirmed 2026-08-17 (DEC-073). No live site to source from. */

@@ -1997,9 +1997,11 @@ Do not write the `GPTBot` directive until this is resolved. Do not resolve it by
 
 ## PENDING-012 — Las Vegas Service Availability Validation
 
-**Status:** OPEN
+**Status:** OPEN — reviewed 2026-08-17 under DEC-074, not released
 
 Confirm the eight release criteria in DEC-063 before promoting any Las Vegas page from `launch_pending_validation` to `launch`.
+
+**2026-08-17 review:** the owner reports the market operational, which satisfies criterion 1 and supports 8. Criterion 2 remains unmet — the service registry still marks all 17 applicable services `requires_operational_confirmation`. Criteria 3-7 are partly evidenced. See DEC-074 for the full assessment and the shortest path to closing this.
 
 **Currently gated:**
 
@@ -3431,7 +3433,75 @@ PENDING-002, 014, 015, 016 resolved. PENDING-012 and 013 remain open — "curren
 
 ---
 
-## DEC-073 — Reserved for Next Approved Decision
+## DEC-074 — Las Vegas Reported Operational; DEC-063 Gate Reviewed, NOT Released
+
+**Date:** 2026-08-17
+**Status:** APPROVED (status log) — the gate itself remains OPEN
+**Impact:** High
+**Decision Owner:** Business owner (status) / Project (gate)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` DEC-063, PENDING-012
+* `06-master-service-registry.md` §7, §9, §42
+* `04-master-page-build-list.md` §43
+
+### Decision
+
+The business owner updated Las Vegas from "currently launching" to **operational** on 2026-08-17. Site copy is updated to match.
+
+**The DEC-063 indexation gate is NOT released.** The five Las Vegas pages remain `launch_pending_validation`.
+
+### Reason
+
+DEC-063 §Release criteria lists eight conditions from `04` §43. Reviewed against current evidence:
+
+| # | Criterion | Status |
+| - | --------- | ------ |
+| 1 | Active operational coverage | ✅ Owner-reported operational |
+| 2 | **Services actually offered** | ❌ **Registry shows 0 of 18 confirmed** |
+| 3 | Contact routing functional | ⚠️ Phone and email supplied; not tested |
+| 4 | Service-request handling functional | ⚠️ No form exists (PENDING-008) |
+| 5 | Geographic coverage confirmed | ⚠️ No Las Vegas service area supplied |
+| 6 | Market-specific business facts verified | ⚠️ Phone, email, hours yes; licence outstanding |
+| 7 | Licensing/business requirements satisfied | ❌ Licence number requested, not supplied |
+| 8 | Public messaging accurate | ✅ Copy now reflects operational status |
+
+Criterion 2 is the decisive one, and it is the same fact DEC-063's own Reason cites: "the service registry does not mark the market's individual service menu as operationally confirmed."
+
+That is still literally true. `data/services/master-service-registry.json` marks all 17 applicable services `requires_operational_confirmation` for `las-vegas-nv`; the eighteenth is St. Louis-only. St. Louis stands at 14 of 18 and San Diego at 13.
+
+**"The business operates in Las Vegas" and "these specific services are offered in Las Vegas" are different claims.** The owner has confirmed the first. The second is a per-service fact that only the service registry records, and 06 §9 makes that registry authoritative for it.
+
+### Previous State
+
+Las Vegas framed as "currently launching". Contact confirmed under DEC-073.
+
+### New State
+
+Copy reflects operational status without claiming a track record — 01 §20 keeps St. Louis's 2011 and San Diego's 2015 out of Las Vegas. No page enumerates a Las Vegas service menu, because none is confirmed.
+
+Index status is unchanged: `launch_pending_validation`, excluded from sitemap, navigation, and every indexable link module.
+
+### Implementation Impact
+
+* `content/pages/las-vegas.tsx` — operational framing; the header records why that does not license a service menu
+* `data/markets/markets.ts` — the same distinction noted where the gate is most likely to be misread
+
+### Follow-Up — what would actually close PENDING-012
+
+The shortest path is criterion 2, and it is a data change with a defined process:
+
+1. Business confirms **which** of the 18 services are delivered in Las Vegas
+2. Update `las-vegas-nv` status per service in `06-master-service-registry.md` and `data/services/master-service-registry.json`, following CLAUDE.md §60
+3. `marketOffersAnyService('las-vegas-nv')` then returns true, and pages may state what is offered
+4. Resolve criteria 3–7: test contact routing, define request handling (PENDING-008), supply the service area and licence number
+5. Promote the five records in `04-master-page-build-list.md` and record a new DEC — per DEC-063, promotion requires both
+
+⚠ Step 5 is the only step that changes index status, and it is a doc 04 change. Nothing in the implementation may promote a page on its own.
+
+---
+
+## DEC-075 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
