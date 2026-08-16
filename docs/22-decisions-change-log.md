@@ -3013,7 +3013,7 @@ Ids referenced by three documents; absent from the data; no derivation rule.
 ### New State
 
 ```text
-loc-{marketAbbreviation}-{slug}
+loc-{marketAbbreviation}-{slug, with "/" replaced by "-"}
 
 st-louis-mo → stl
 san-diego-ca → sd
@@ -3024,9 +3024,22 @@ Market hub records carry `slug: ""`; these resolve to `loc-{abbr}-market` so eve
 
 Verified against both documented examples: the function produces exactly `loc-sd-carlsbad` and `loc-sd-mission-valley`.
 
+**Separator normalisation — added during step 11 implementation.**
+
+70 of the 579 slugs are compound. St. Louis City neighbourhoods store the full path within the market, so the slug is `st-louis-city/academy`, not `academy`. Without normalisation the derivation yields `loc-stl-st-louis-city-academy` → `loc-stl-st-louis-city/academy`, an identifier containing a path separator.
+
+That is fragile in the three places these ids are actually used:
+
+* the `::` relationship keys of 09 §122-123
+* analytics dimensions, which 19 §39 requires be stable identifiers
+* any URL, filename, or query context an id later passes through
+
+Both forms were checked against the complete 579-record dataset and both are collision-free, so this is a robustness choice, not a correctness fix.
+
 ### Implementation Impact
 
 * The abbreviation map is part of the identifier contract. Changing it invalidates every stored relationship key.
+* Separator normalisation is likewise part of the contract, and it introduces a collision risk the raw form did not have: a literal slug `st-louis-city-academy` would now collide with `st-louis-city/academy`. The location registry loader asserts derived-id uniqueness across all 579 records at module load and fails the build if that ever holds — verified by deliberately constructing the collision.
 * `LocationId` is a branded type, so a bare string cannot be passed where an id is expected.
 
 ### Follow-Up

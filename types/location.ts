@@ -42,10 +42,23 @@ const MARKET_ID_ABBREVIATION: Record<MarketId, string> = {
  *
  * Market hubs (empty slug) resolve to `loc-{abbr}-market`, keeping ids
  * total across all 579 records rather than leaving hubs unaddressable.
+ *
+ * ⚠ Path separators are normalised to hyphens.
+ *
+ * 70 of the 579 slugs are COMPOUND — St. Louis City neighbourhoods
+ * carry `st-louis-city/academy`, not `academy`, because the slug holds
+ * the full path within the market. Left as-is that yields
+ * `loc-stl-st-louis-city/academy`, an identifier containing a path
+ * separator, which is fragile inside the `::` relationship keys of
+ * 09 §122-123 and inside analytics dimensions (19 §39).
+ *
+ * Both forms were checked against the full dataset and both are
+ * collision-free, so this is a robustness choice rather than a
+ * correctness one (DEC-067).
  */
 export function locationId(market: MarketId, slug: string): LocationId {
   const abbreviation = MARKET_ID_ABBREVIATION[market]
-  const suffix = slug === '' ? 'market' : slug
+  const suffix = slug === '' ? 'market' : slug.replace(/\//g, '-')
   return `loc-${abbreviation}-${suffix}` as LocationId
 }
 
