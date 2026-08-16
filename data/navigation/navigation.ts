@@ -33,8 +33,8 @@
  * no code change.
  */
 
-import type { MasterPageRecord, PageId } from '@/types'
-import { getPage, indexablePages } from '@/data/pages'
+import type { PageId } from '@/types'
+import { resolveApprovedLink } from '@/lib/links/approved-link'
 
 /** A navigation entry. `label` overrides the registry page name. */
 export interface NavItem {
@@ -54,8 +54,6 @@ export interface ResolvedNavItem {
   label: string
   pageId: PageId
 }
-
-const indexableIds = new Set(indexablePages.map((p) => p.id))
 
 function id(value: string): PageId {
   return value as PageId
@@ -153,39 +151,15 @@ export const footerNav: NavGroup[] = [
    Resolution and validation
    ========================================================================== */
 
-function fail(message: string): never {
-  throw new Error(`Navigation invalid: ${message}`)
-}
-
 /**
  * Resolves a nav item to an href and label.
  *
- * Throws when the page is missing or not indexable — see the module
- * header on why non-indexable pages must not appear in navigation.
+ * Delegates to the shared resolver so navigation and section link
+ * modules enforce one rule rather than two copies of it. Throws when
+ * the page is missing or not indexable — see the module header.
  */
 function resolve(item: NavItem): ResolvedNavItem {
-  const page: MasterPageRecord | undefined = getPage(item.pageId)
-
-  if (page === undefined) {
-    fail(
-      `"${item.pageId}" is not an approved page. Navigation may only link to ` +
-        `records in the approved page registry (16 §25, CLAUDE.md §16).`,
-    )
-  }
-
-  if (!indexableIds.has(page.id)) {
-    fail(
-      `"${page.id}" (${page.pathname}) has status "${page.status}" and is not ` +
-        `indexable, so it must not appear in navigation. 04 §4 excludes such ` +
-        `pages from indexable internal-link modules.`,
-    )
-  }
-
-  return {
-    href: page.pathname,
-    label: item.label ?? page.name,
-    pageId: page.id,
-  }
+  return resolveApprovedLink(item.pageId, { label: item.label })
 }
 
 /** Header navigation, resolved. */
