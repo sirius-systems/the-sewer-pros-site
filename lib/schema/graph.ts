@@ -103,7 +103,9 @@ function webPageNode(page: MasterPageRecord, title: string, description?: string
     ...(description !== undefined && { description }),
     url: absoluteUrl(page.pathname),
     isPartOf: ref(websiteId()),
-    breadcrumb: ref(`${absoluteUrl(page.pathname)}${SCHEMA_FRAGMENT.breadcrumb}`),
+    // `breadcrumb` is attached in pageSchema(), and only when a
+    // BreadcrumbList is actually emitted. Referencing an @id that no
+    // node in the graph defines leaves a consumer resolving nothing.
   }
 }
 
@@ -174,6 +176,60 @@ function articleNode(
     url: absoluteUrl(page.pathname),
     publisher: ref(organizationId()),
     ...(dateModified !== undefined && { dateModified }),
+  }
+}
+
+/* ==========================================================================
+   Self-containment guard — 15 §84-85, CLAUDE.md §45
+   ========================================================================== */
+
+/**
+ * Every `@id` reference must resolve to a node in the same graph.
+ *
+ * The whole point of cross-referencing by `@id` (15 §85) is that a
+ * consumer can follow the reference and find the entity. A reference to
+ * an `@id` no node defines is worse than an inlined copy: it asserts a
+ * relationship to something that is not there.
+ *
+ * This runs during static generation, so a broken reference fails
+ * `next build` rather than shipping. It caught exactly one real defect —
+ * the home page referenced a BreadcrumbList that `breadcrumbNode()`
+ * correctly declines to emit for a single-entry trail.
+ */
+function assertGraphIsSelfContained(nodes: SchemaNode[], pathname: string): void {
+  const defined = new Set(
+    nodes.map((node) => (node as { '@id'?: string })['@id']).filter(Boolean),
+  )
+
+  const dangling: string[] = []
+
+  const walk = (value: unknown): void => {
+    if (Array.isArray(value)) {
+      value.forEach(walk)
+      return
+    }
+    if (value === null || typeof value !== 'object') return
+
+    const keys = Object.keys(value)
+    const id = (value as { '@id'?: string })['@id']
+
+    // A bare { '@id': … } is a reference; anything else is a definition.
+    if (keys.length === 1 && id !== undefined) {
+      if (!defined.has(id)) dangling.push(id)
+      return
+    }
+
+    Object.values(value).forEach(walk)
+  }
+
+  nodes.forEach(walk)
+
+  if (dangling.length > 0) {
+    throw new Error(
+      `Schema graph for ${pathname} references @id values no node defines: ` +
+        `${dangling.join(', ')}. Every @id reference must resolve within its ` +
+        `own graph (15 §84-85).`,
+    )
   }
 }
 
@@ -250,12 +306,17 @@ export function pageSchema({
   }
 
   const breadcrumb = breadcrumbNode(page)
-  if (breadcrumb !== undefined) nodes.push(breadcrumb)
+  if (breadcrumb !== undefined) {
+    nodes.push(breadcrumb)
+    webPage.breadcrumb = ref(breadcrumb['@id'])
+  }
 
   if (emitFaqSchema) {
     // Reserved. 15 §57-58 make this a per-page decision, and no page
     // has been approved for it yet — see the barrel note.
   }
+
+  assertGraphIsSelfContained(nodes, page.pathname)
 
   return {
     '@context': 'https://schema.org',

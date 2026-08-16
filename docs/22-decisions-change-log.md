@@ -3836,7 +3836,130 @@ Step 15 (schema) remains; it is now unblocked.
 
 ---
 
-## DEC-079 — Reserved for Next Approved Decision
+## DEC-079 — Structured Data Entity Model Implemented
+
+**Date:** 2026-08-16
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Implementation, under DEC-072 and DEC-078
+**Affected Documents:**
+
+* `15-schema-entity-strategy.md` §4-13, §21-22, §26-27, §30, §37-40, §47-50,
+  §57-58, §61, §63-65, §67, §69, §75-76, §80, §82-86, §102-103, §111, §115
+* `02-nextjs-technical-architecture.md` §103 (build sequence step 15)
+
+### Decision
+
+The site emits one JSON-LD `@graph` per indexable page, built around a single
+`Organization` entity. Three structural choices are recorded here because they
+are permanent rather than provisional:
+
+1. **No `LocalBusiness` node anywhere, and no `PostalAddress` type in the
+   codebase.** Not pending verification — DEC-072 established that no physical
+   address exists, because service happens at the customer's property. Coverage
+   is expressed as `Service` + `areaServed` + `Place` (15 §13, §22).
+2. **`areaServed` includes all three markets, including Las Vegas.** This is
+   deliberately independent of DEC-063's indexation gate.
+3. **Gated pages emit no structured data at all**, rather than reduced markup.
+
+### Reason
+
+Step 15 was the last of the three steps PENDING-001 blocked.
+
+On (1): a `LocalBusiness` requires an address, and the temptation under an SAB
+model is to supply a service-area centroid or the owner's home. Recording the
+absence as *correct* rather than *missing* removes the pressure to fill it later.
+
+On (2): `areaServed` states where the business works. DEC-063 governs which
+**pages** may be indexed. These are different questions, and conflating them
+would have misdescribed the business to satisfy a routing rule. A `Place` node
+carries no URL, so listing Las Vegas exposes none of the five gated routes.
+
+On (3): structured data describing a `noindex` page asks a crawler to interpret
+an entity the same page tells it to ignore (15 §115).
+
+### Previous State
+
+No structured data existed. Steps 14 and 21 were complete; step 15 was the
+remaining blocked item from DEC-078.
+
+### New State
+
+Verified against the built output:
+
+| Check | Result |
+| ----- | ------ |
+| Pages emitting JSON-LD | 65 of 70 |
+| Gated Las Vegas pages emitting JSON-LD | 0 |
+| `Organization` nodes per graph | exactly 1 |
+| `Service.provider` as an `@id` reference, not an inlined copy | yes |
+| Breadcrumb divergence from the visible `<nav>` | 0 of 64 pages |
+| `LocalBusiness` / `PostalAddress` / `AggregateRating` / `Product` / `Plumber` / `FAQPage` / `author` / `priceRange` | absent from all graphs |
+| Placeholder tokens 15 §102 names (`null`, `undefined`, `TODO`, `TBD`, unresolved origin/phone/address) | absent from all graphs |
+| `@id` references resolving within their own graph | 65 of 65 |
+
+### One defect found and fixed during verification
+
+The home page's `WebPage` node referenced a `BreadcrumbList` that was never
+emitted. `breadcrumbNode()` correctly declines to emit a trail of one — a
+breadcrumb from the home page to itself carries no information — but
+`webPageNode()` attached the reference unconditionally. A consumer following
+that `@id` would have resolved nothing.
+
+This is worse than an inlined copy, because it asserts a relationship to an
+entity that is not present. The reference is now attached only when the node
+is emitted.
+
+A **self-containment assertion now runs during static generation** and fails
+`next build` if any `@id` reference in a graph is not defined by a node in
+that same graph (CLAUDE.md §45). It was negative-tested by reintroducing the
+exact defect: the build failed with the offending path and `@id` named. This
+class of error cannot ship silently again.
+
+### Implementation Impact
+
+* **The breadcrumb is generated from the same `breadcrumbTrail()` the visible
+  `<nav>` renders.** 15 §67's match-visible-content rule therefore holds by
+  construction rather than by review. This also renders harmless the
+  03 §53 versus 05 §118 hierarchy question flagged at step 19 — whichever
+  hierarchy is correct, markup and page agree.
+* **`knowsAbout` derives from the approved service registry** rather than a
+  hand-written list, so it cannot drift from what the site offers and cannot
+  become keyword stuffing (15 §68, §91). Nothing repair-related appears,
+  because the registry contains nothing to derive it from (15 §65).
+* **`FAQPage` is opt-in and currently emitted nowhere.** Most pages carry an
+  FAQ section; emitting the type from all of them would have applied a policy
+  across 70 pages by accident (15 §57-58).
+* **Contact points are per market**, each scoped by `areaServed`, so no
+  market's phone number is presented as another's (15 §76, 01 §20).
+* **`foundingDate` is absent from the Organization.** St. Louis 2011 and
+  San Diego 2015 are market facts (DEC-070, DEC-071); electing one as the
+  company's would assert something no source states.
+
+### ⚠ What remains absent, and why
+
+`aggregateRating` is omitted because no verified review data exists — a
+fabricated rating is the highest-risk structured-data claim a local business
+can make (15 §61). `sameAs` is omitted because 01 §22 records a San Diego
+social presence but supplies no URLs, and a profile must be verified as
+official before it can be asserted as the entity's (15 §26-27). `logo` and
+`image` await an approved asset.
+
+Per 15 §103: a smaller accurate schema object is preferable to a larger
+inaccurate one.
+
+### Follow-Up
+
+* Step 22 — redirects (PENDING-010)
+* Steps 24-28 — validation, static export, preview deploy, QA, production
+* Meta descriptions still unauthored across all 70 pages; where absent they
+  are omitted from both metadata and schema `description`
+* If review data is ever verified, `aggregateRating` requires a decision entry
+  before it may appear — it must not be added as an implementation detail
+
+---
+
+## DEC-080 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
@@ -3887,7 +4010,7 @@ Maintain unresolved material questions here until resolved.
 | PENDING-009 | Call-tracking implementation            | Deferred | Analytics/CRO decision                 |
 | PENDING-010 | Complete legacy redirect inventory      | Open     | Migration research                     |
 | PENDING-011 | GPTBot training-access policy           | Open     | Before production robots.txt           |
-| PENDING-012 | Las Vegas service availability          | Open     | Business operational confirmation      |
+| PENDING-012 | Las Vegas service availability          | RESOLVED | DEC-075 / DEC-076 — 18/18 in all markets |
 | PENDING-013 | San Diego / Las Vegas operating status  | Open     | Before those markets' content          |
 | PENDING-014 | Chesterfield lateral programme terms    | RESOLVED | DEC-072 — cite-and-link to the city     |
 | PENDING-015 | Housing-age figures vs primary Census   | RESOLVED | DEC-072 — approved with ACS citation    |
