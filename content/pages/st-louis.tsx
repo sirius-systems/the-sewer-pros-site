@@ -20,26 +20,27 @@
  * St. Charles is not even in MSD's territory.
  *
  * ---------------------------------------------------------------------------
- * ⚠ HOUSING-AGE STATISTICS ARE DELIBERATELY NOT CITED
+ * HOUSING ERA IS QUALITATIVE HERE
  * ---------------------------------------------------------------------------
- * The research supplied median-year and pre-1940-share figures, but
- * flagged them as secondary republication of ACS data requiring
- * re-verification against data.census.gov before publication.
+ * DEC-072 approved the median-year figures for use with ACS citation.
+ * These pages nonetheless describe era qualitatively, because the
+ * jurisdictional facts already carry the differentiation and a median
+ * year adds little to an argument about municipal programme terms. The
+ * San Diego and Las Vegas pages cite figures where they DO carry an
+ * argument about what fails on newer lines.
  *
- * So no percentage or median year appears in any copy below. Housing era
- * is described qualitatively where it is uncontroversial, and pipe
- * material is framed strictly as era correspondence — the research is
- * explicit that no source ties a material to a specific city, and
- * CLAUDE.md §73 forbids fabricated localisation.
+ * Pipe material stays era correspondence throughout — no source ties a
+ * material to a specific city, and CLAUDE.md §73 forbids fabricated
+ * localisation.
  *
  * ---------------------------------------------------------------------------
- * ⚠ CHESTERFIELD IS ABSENT
+ * ⚠ CHESTERFIELD STATES LESS THAN ITS SIBLINGS
  * ---------------------------------------------------------------------------
- * Chesterfield's three approved pages are not written. Its programme
- * cap and exclusions are unpublished on every reachable city page, and
- * writing "the programme covers X" without that source would be exactly
- * the municipal fabrication CLAUDE.md §28 prohibits. Its fee and start
- * date are known; that alone is not enough to differentiate three pages.
+ * Its three pages ship on housing-era differentiation, with the lateral
+ * section limited to the published fee and start date. The cap and
+ * exclusions remain unverified after an exhausted search, so per
+ * DEC-072 the copy cite-and-links to Chesterfield Public Works rather
+ * than restating figures we have not confirmed.
  *
  * ---------------------------------------------------------------------------
  * ⚠ NO CLAIM OF PROGRAMME OUTCOMES
@@ -704,7 +705,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         ),
       },
       {
-        question: 'What does Chesterfield&rsquo;s lateral programme cover?',
+        question: 'What does Chesterfield’s lateral programme cover?',
         answer: (
           <p>
             It covers repairs of defective sewer laterals for residential

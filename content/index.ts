@@ -10,6 +10,7 @@
  */
 
 import type {
+  AudiencePageContent,
   LocationPageContent,
   MarketPageContent,
   ServiceLocationPageContent,
@@ -32,6 +33,7 @@ import {
 import { sanDiegoServiceLocationContent } from './pages/san-diego-service-location'
 import { stLouisResourceContent } from './pages/st-louis-resources'
 import { lasVegasMarketContent, lasVegasLocationContent } from './pages/las-vegas'
+import { audienceContent } from './pages/audiences'
 import {
   stLouisMarketContent,
   lateralReportingContent,
@@ -76,6 +78,10 @@ export function getServiceContent(id: PageId): ServicePageContent | undefined {
     return lateralReportingContent
   }
   return serviceContent[id]
+}
+
+export function getAudienceContent(id: PageId): AudiencePageContent | undefined {
+  return audienceContent[id]
 }
 
 export function getMarketContent(id: PageId): MarketPageContent | undefined {
@@ -135,5 +141,6 @@ export const authoredPageIds: ReadonlySet<PageId> = new Set<PageId>([
   ...(Object.keys(marketContent) as PageId[]),
   ...(Object.keys(locationContent) as PageId[]),
   ...(Object.keys(serviceLocationContent) as PageId[]),
+  ...(Object.keys(audienceContent) as PageId[]),
   'svc-stl-sewer-lateral-inspection-reporting' as PageId,
 ])

@@ -440,7 +440,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         ),
       },
       {
-        question: 'What does CVSan&rsquo;s grant require?',
+        question: 'What does CVSan’s grant require?',
         answer: (
           <p>
             Three quotes from its Qualified Contractor List, a CVSan repair

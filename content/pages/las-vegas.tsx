@@ -269,7 +269,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
     ),
     faq: [
       {
-        question: 'Should I buy the city&rsquo;s warranty?',
+        question: 'Should I buy the city’s warranty?',
         answer: (
           <p>
             That depends on the condition of your line, which is worth
@@ -557,7 +557,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
         ),
       },
       {
-        question: 'Does the city&rsquo;s warranty cover my Summerlin property?',
+        question: 'Does the city’s warranty cover my Summerlin property?',
         answer: (
           <p>
             Only if your property is in the incorporated portion. The City of

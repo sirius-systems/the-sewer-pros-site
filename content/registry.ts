@@ -138,18 +138,9 @@ markPending(
    Audience pages — 6 records
    --------------------------------------------------------------------------- */
 
-markPending(
-  approvedPages.filter((p) => p.pageType === 'audience').map((p) => p.id),
-  {
-    reason:
-      '14 §46-49 and 09 §63 require distinct audience questions, ' +
-      'conversion intent, and service relationships per audience. ' +
-      "CLAUDE.md §21's audience test rejects copy that survives swapping " +
-      '"home buyers" for "property managers".',
-    unblockedBy:
-      'Audience research and approved messaging per 09 §77 and 14 §46-49.',
-  },
-)
+// RESOLVED. Doc 09 §16 and §18-22 supply per-audience needs and service
+// relationships; each page is built on a genuinely different decision
+// rather than a tone shift (CLAUDE.md §21).
 
 /* ---------------------------------------------------------------------------
    St. Louis market-specific service — 1 record
