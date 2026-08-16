@@ -34,6 +34,17 @@ The repository contains 18 canonical services, 579 geographic records, and 10,42
 
 ---
 
+## Setup
+
+```bash
+npm install
+cp .env.example .env.local   # then fill in NEXT_PUBLIC_SITE_URL
+```
+
+`NEXT_PUBLIC_SITE_URL` has no default and the build fails without it. That is deliberate — with `output: 'export'` the origin is baked into canonicals, schema `@id` values, and the sitemap as static text, so a silent fallback would ship rather than fail (`docs/02` §53, `docs/15` §5). The production value is blocked on PENDING-001.
+
+---
+
 ## Commands
 
 ```bash

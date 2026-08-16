@@ -26,16 +26,43 @@ import type { MarketId } from './common'
    ========================================================================== */
 
 /**
- * Google Business Profile status for a market (11 §-, 15 §106-108).
+ * Google Business Profile status for a market (01 §21, 15 §11, §106-108).
  *
- * Drives whether a `LocalBusiness` entity may exist at all. Only
+ * Drives whether a `LocalBusiness` entity may exist at all. ONLY
  * `verified_physical_location` permits one (15 §9-12).
+ *
+ * `existing_type_unconfirmed` exists because the documented baseline
+ * does not support a finer claim. 01 §21 and 15 §11 record that
+ * St. Louis has an existing GBP, but neither states whether it is a
+ * storefront or a service-area business — that is PENDING-002.
+ *
+ * ⚠ A GBP is not an address licence. 15 §11: "The GBP itself does not
+ * authorize inventing or exposing an address that has not been approved
+ * for website publication." So `existing_type_unconfirmed` permits no
+ * LocalBusiness entity and no published address either.
  */
 export type GbpStatus =
   | 'verified_physical_location'
   | 'service_area_business'
-  | 'not_established'
+  | 'existing_type_unconfirmed'
+  | 'none_identified'
   | 'planned'
+
+/**
+ * True only when a market may carry a `LocalBusiness` schema entity.
+ *
+ * Deliberately single-valued. 15 §12 prohibits fake LocalBusiness
+ * entities; an unconfirmed GBP type is not verification.
+ */
+export function permitsLocalBusinessEntity(market: {
+  gbpStatus: GbpStatus
+  physicalLocation?: PhysicalLocation
+}): boolean {
+  return (
+    market.gbpStatus === 'verified_physical_location' &&
+    market.physicalLocation !== undefined
+  )
+}
 
 /**
  * A market as a first-class entity, distinct from a location record.
