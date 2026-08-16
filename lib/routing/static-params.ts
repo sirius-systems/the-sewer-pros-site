@@ -5,7 +5,7 @@
  *            docs/02-nextjs-technical-architecture.md §21-23, §46
  *
  * ===========================================================================
- * EVERY GENERATOR HERE READS `routablePages` AND NOTHING ELSE
+ * EVERY GENERATOR HERE READS `contentReadyPages` AND NOTHING ELSE
  * ===========================================================================
  * This module deliberately does NOT import the service registry, the
  * location registry, or the matrix. It cannot, by construction, produce
@@ -23,10 +23,23 @@
  * 05 §72: "A catch-all filesystem route must not accept arbitrary URL
  * permutations. The catch-all exists only to resolve paths in the
  * approved page registry."
+ *
+ * ---------------------------------------------------------------------------
+ * APPROVED AND WRITTEN
+ * ---------------------------------------------------------------------------
+ * The source is `contentReadyPages`, a strict subset of `routablePages`:
+ * approved by doc 04 AND carrying authored content. An approved page
+ * with no content does not generate a route, because the alternative is
+ * publishing a thin page, which 14 §84 and CLAUDE.md §20 forbid more
+ * firmly than doc 04 requires completeness.
+ *
+ * `unroutedPages()` below therefore reports pages awaiting content as
+ * well as genuine routing gaps — see `content/registry.ts` for the
+ * tracked manifest.
  */
 
 import type { MasterPageRecord } from '@/types'
-import { routablePages } from '@/data/pages'
+import { contentReadyPages } from '@/content'
 import { pathnameSegments, toMarketRouteParams } from './pathname'
 
 /**
@@ -40,7 +53,7 @@ function segmentUnder(page: MasterPageRecord, prefix: string): string | undefine
 }
 
 function paramsUnder(prefix: string, key: string): Record<string, string>[] {
-  return routablePages
+  return contentReadyPages
     .map((page) => segmentUnder(page, prefix))
     .filter((segment): segment is string => segment !== undefined)
     .map((segment) => ({ [key]: segment }))
@@ -81,7 +94,7 @@ export function resourceParams(): { resource: string }[] {
 
 /** `app/[market]/page.tsx` — the three market hubs. */
 export function marketHubParams(): { market: string }[] {
-  return routablePages
+  return contentReadyPages
     .filter((page) => page.pageType === 'market')
     .flatMap((page) => {
       const params = toMarketRouteParams(page.pathname)
@@ -98,7 +111,7 @@ export function marketHubParams(): { market: string }[] {
  * parameter sets still come only from approved pathnames.
  */
 export function marketCatchAllParams(): { market: string; segments: string[] }[] {
-  return routablePages.flatMap((page) => {
+  return contentReadyPages.flatMap((page) => {
     const params = toMarketRouteParams(page.pathname)
     if (params === undefined || params.segments.length === 0) return []
     return [{ market: String(params.market), segments: params.segments }]
@@ -137,7 +150,7 @@ export function unroutedPages(staticRoutes: readonly string[]): string[] {
     claimed.add(`/${market}/${segments.join('/')}/`)
   }
 
-  return routablePages
+  return contentReadyPages
     .map((page) => page.pathname)
     .filter((pathname) => !claimed.has(pathname))
 }

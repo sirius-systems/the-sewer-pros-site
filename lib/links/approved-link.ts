@@ -24,6 +24,7 @@
 
 import type { MasterPageRecord, PageId } from '@/types'
 import { getPage, indexablePages } from '@/data/pages'
+import { authoredPageIds } from '@/content'
 
 export interface ApprovedLink {
   href: string
@@ -82,6 +83,14 @@ export function resolveApprovedLink(
     )
   }
 
+  if (!authoredPageIds.has(page.id)) {
+    fail(
+      `"${page.id}" (${page.pathname}) is approved but has no authored ` +
+        `content, so no route is generated for it and this link would 404. ` +
+        `See content/registry.ts for what is outstanding.`,
+    )
+  }
+
   return { href: page.pathname, label: label ?? page.name, pageId: page.id }
 }
 
@@ -113,7 +122,11 @@ export function resolveLinkableOnly(
       if (getPage(id) === undefined) {
         fail(`"${id}" is not in the approved page registry.`)
       }
-      return indexableIds.has(id)
+      // Two separate reasons a page may not be linkable:
+      //   not indexable — gated by doc 04 §4 (Las Vegas today)
+      //   not authored  — approved but no content yet, so the route is
+      //                   not generated and the link would 404 (05 §77)
+      return indexableIds.has(id) && authoredPageIds.has(id)
     })
     .map((id) => resolveApprovedLink(id, options))
 }

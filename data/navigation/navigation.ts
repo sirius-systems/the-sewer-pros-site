@@ -34,7 +34,7 @@
  */
 
 import type { PageId } from '@/types'
-import { resolveApprovedLink } from '@/lib/links/approved-link'
+import { resolveApprovedLink, resolveLinkableOnly } from '@/lib/links/approved-link'
 
 /** A navigation entry. `label` overrides the registry page name. */
 export interface NavItem {
@@ -162,17 +162,41 @@ function resolve(item: NavItem): ResolvedNavItem {
   return resolveApprovedLink(item.pageId, { label: item.label })
 }
 
-/** Header navigation, resolved. */
+/**
+ * Header navigation, resolved.
+ *
+ * Strict: every primary nav item is a hub or core page that must exist.
+ * A missing one is a structural error, not a transient content gap.
+ */
 export function resolvePrimaryNav(): ResolvedNavItem[] {
   return primaryNav.map(resolve)
 }
 
-/** Footer groups, resolved. */
+/**
+ * Footer groups, resolved, with unbuilt destinations dropped.
+ *
+ * Unlike the header, footer groups list individual services, markets,
+ * and audiences — pages that are approved but may not be written yet.
+ * Linking to one would 404 (05 §77), so those entries are filtered and
+ * a group left with nothing is omitted entirely (18 §120: "omit the
+ * section entirely" rather than render an empty shell).
+ *
+ * This is why the footer currently shows no markets: both St. Louis and
+ * San Diego are approved and indexable but await local research, and
+ * Las Vegas is gated. They reappear automatically as content lands.
+ */
 export function resolveFooterNav(): { title: string; items: ResolvedNavItem[] }[] {
-  return footerNav.map((group) => ({
-    title: group.title,
-    items: group.items.map(resolve),
-  }))
+  return footerNav
+    .map((group) => ({
+      title: group.title,
+      items: resolveLinkableOnly(
+        group.items.map((item) => item.pageId),
+      ).map((link) => {
+        const override = group.items.find((i) => i.pageId === link.pageId)?.label
+        return { ...link, label: override ?? link.label }
+      }),
+    }))
+    .filter((group) => group.items.length > 0)
 }
 
 // Validate the whole configuration at import so a bad reference fails
