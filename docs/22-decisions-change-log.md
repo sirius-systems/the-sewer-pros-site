@@ -2912,7 +2912,171 @@ Each remains subject to separate Master Page Build List approval.
 
 ---
 
-## DEC-066 — Reserved for Next Approved Decision
+## DEC-066 — Canonical `PageType` Taxonomy
+
+**Date:** 2026-08-15
+**Status:** PROPOSED
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `02-nextjs-technical-architecture.md` §26
+* `03-information-architecture.md` §52
+* `19-analytics-measurement.md` §28
+* `04-master-page-build-list.md` §5, §44
+
+### Decision
+
+A single canonical `PageType` union is defined in `types/page.ts`, and analytics page-type attribution is treated as a **separate dimension** (`AnalyticsPageType`) rather than the same list.
+
+### Reason
+
+Three documents specify page families and none of the three agree:
+
+| List | Has | Lacks |
+| ---- | --- | ----- |
+| `02` §26 | `resource-hub`, `legal` | `contact`, `conversion`, all hub types except resource-hub |
+| `19` §28 | `contact`, `conversion` | `resource-hub`, `legal` |
+| `03` §52 | Fullest taxonomy incl. Service/Markets/Audience/Commercial/Topic hubs | Expressed as prose labels, not code values |
+
+All three are explicitly provisional. `02` §26 says "Potential page family types include" and "This list may evolve based on the final information architecture." `03` §52 says "Final types should be represented consistently in the page build list and code."
+
+Doc `04`'s approved launch build requires families that `02` §26 does not contain: `/services/`, `/locations/`, `/for/`, `/commercial/`, and `/resources/` are all approved launch pages with no corresponding hub family in that list.
+
+`19` §28's `contact` and `conversion` are not structural families. `/contact/` is structurally a `core` page; "conversion" describes intent, not architecture. Merging them into the structural union would make template selection ambiguous.
+
+### Previous State
+
+Three divergent provisional lists. No single value set usable for template selection.
+
+### New State
+
+`PageType` = `02` §26 base + hub families from `03` §52 (kebab-cased), since `02` §26 defers to the information architecture and `03` is that document.
+
+```text
+home · core · legal
+service-hub · service
+markets-hub · market · location · service-location
+audience-hub · audience · audience-location
+commercial-hub · commercial · commercial-location
+comparison · alternative
+resource-hub · topic-hub · resource
+```
+
+`AnalyticsPageType` retains `19` §28's list unchanged. `analyticsPageType()` maps structural → analytics.
+
+### Implementation Impact
+
+* Template selection and internal-linking modules branch on `PageType`.
+* Analytics attribution uses `AnalyticsPageType`.
+* `19` §28 defines no attribution value for `resource-hub` or `legal`; those currently collapse to `resource` and `core` respectively. This is a documented gap, not a silent invention.
+
+### Follow-Up
+
+Confirm the reconciliation before templates are built on it (build sequence step 18). If approved, update `02` §26 and `19` §28 to reference this entry rather than carrying divergent lists.
+
+---
+
+## DEC-067 — Derived Location Identifier Convention
+
+**Date:** 2026-08-15
+**Status:** PROPOSED
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `07-master-location-registry.md` §14, §59
+* `09-audience-commercial-matrix.md` §122, §123
+* `04-master-page-build-list.md` §44
+
+### Decision
+
+Location identifiers are **derived deterministically** from `(market, slug)` by a single function, `locationId()` in `types/location.ts`. They are not read from the location registry.
+
+### Reason
+
+`data/locations/master-location-registry.json` contains **no id field** across all 579 records. Natural identity is the `(market, slug)` pair.
+
+However `04` §44 declares `locationId?: string` on the page record, and `09` §122-123 use ids as relationship keys:
+
+```text
+aud-home-buyers::loc-sd-carlsbad
+comseg-restaurants::loc-sd-mission-valley
+```
+
+`07` §59 describes these ids as recommended rather than present. Without one derivation point, ids would be reconstructed ad hoc at each call site and drift — breaking relationship keys that are supposed to be stable.
+
+### Previous State
+
+Ids referenced by three documents; absent from the data; no derivation rule.
+
+### New State
+
+```text
+loc-{marketAbbreviation}-{slug}
+
+st-louis-mo → stl
+san-diego-ca → sd
+las-vegas-nv → lv
+```
+
+Market hub records carry `slug: ""`; these resolve to `loc-{abbr}-market` so every one of the 579 records is addressable.
+
+Verified against both documented examples: the function produces exactly `loc-sd-carlsbad` and `loc-sd-mission-valley`.
+
+### Implementation Impact
+
+* The abbreviation map is part of the identifier contract. Changing it invalidates every stored relationship key.
+* `LocationId` is a branded type, so a bare string cannot be passed where an id is expected.
+
+### Follow-Up
+
+If ids are ever added to the location registry, they must match this derivation exactly, and the registry becomes authoritative. Until then, derive — never hand-write.
+
+---
+
+## DEC-068 — `AudienceMatrixStatus` Retains `commercial_fit_only`
+
+**Date:** 2026-08-15
+**Status:** PROPOSED
+**Impact:** Low
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `09-audience-commercial-matrix.md` §10, §57, §68, §69, §70
+
+### Decision
+
+`AudienceMatrixStatus` includes `commercial_fit_only`, following `09` §10 rather than `09` §57.
+
+### Reason
+
+Doc `09` contradicts itself:
+
+* §10's status table lists **eight** statuses, including `commercial_fit_only` — "Better handled through commercial architecture."
+* §57's `AudienceMatrixStatus` type lists **seven** and omits it.
+
+The value encodes a routing decision the architecture actively depends on. §68-70's cannibalization rules turn on exactly this distinction, directing property-manager and restaurant geography into `/commercial/` instead of `/for/`. Omitting the status would leave those documented cases unrepresentable.
+
+### Previous State
+
+Two conflicting status lists in the same document.
+
+### New State
+
+Eight statuses per §10. §57's seven-value type is treated as an incomplete restatement.
+
+### Implementation Impact
+
+Low. No audience + location pages are approved at launch (`09` §48, §100), so nothing publishes on this today. It matters when the audience matrix is populated in Phase 2.
+
+### Follow-Up
+
+Correct `09` §57 to match §10, or state why the type intentionally narrows the table.
+
+---
+
+## DEC-069 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
@@ -2970,6 +3134,9 @@ Maintain unresolved material questions here until resolved.
 | ID      | Proposal                              | Status   | Blocks                          |
 | ------- | ------------------------------------- | -------- | ------------------------------- |
 | DEC-064 | Interim ownership of visual identity  | PROPOSED | Visual implementation start     |
+| DEC-066 | Canonical `PageType` taxonomy         | PROPOSED | Page templates (step 18)        |
+| DEC-067 | Derived location identifier convention| PROPOSED | Registry loaders (step 11)      |
+| DEC-068 | `AudienceMatrixStatus` value set      | PROPOSED | Phase 2 audience matrix         |
 
 A `PROPOSED` decision is not authoritative. Implementation must not proceed as though it were approved.
 

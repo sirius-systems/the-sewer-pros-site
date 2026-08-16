@@ -27,7 +27,9 @@ import type { LocationId, MarketId, MatrixEligibility } from './common'
  * 07 §59 describes these as recommended rather than present. They must
  * therefore be derived, and derived in exactly one place.
  *
- * `locationId()` below is that place.
+ * `locationId()` below is that place. Convention recorded as DEC-067
+ * (PROPOSED), verified against the `loc-sd-carlsbad` and
+ * `loc-sd-mission-valley` examples in 09 §122-123.
  */
 const MARKET_ID_ABBREVIATION: Record<MarketId, string> = {
   'st-louis-mo': 'stl',

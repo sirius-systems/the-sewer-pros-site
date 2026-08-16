@@ -83,9 +83,8 @@ type Brand<T, B> = T & { readonly [brand]: B }
  * 09 §122-123 and 07 §59 all reference ids in `loc-{market}-{slug}`
  * form.
  *
- * These ids must therefore be DERIVED deterministically when the
- * location registry loader is built (step 11), not invented per call
- * site. See `locationIdFrom()` in lib/content when it exists.
+ * These ids must therefore be DERIVED deterministically, not invented
+ * per call site. See `locationId()` in `./location` and DEC-067.
  *
  * Branded so a bare string cannot be passed where an id is expected.
  */

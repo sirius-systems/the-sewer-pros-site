@@ -118,9 +118,8 @@ export function isIndexable(
  *     analytics attribution values, not structural families — /contact/
  *     is structurally `core`. See `AnalyticsPageType` below.
  *
- * ⚠ This reconciliation is an implementation judgement, not a recorded
- * decision. It needs a DEC entry in 22-decisions-change-log.md before
- * templates are built on it.
+ * ⚠ Recorded as DEC-066, status PROPOSED — not yet authoritative.
+ * Confirm before page templates are built on it (build step 18).
  *
  * Families present in the 70-page launch build (04 §5):
  *   core (9) · service (10) · market (3) · location (16) ·

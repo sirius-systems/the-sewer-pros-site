@@ -117,7 +117,7 @@ export interface Audience {
  * restaurant geography into `/commercial/` rather than `/for/`. Dropping
  * it would leave those cases unrepresentable.
  *
- * ⚠ Needs a DEC entry resolving §10 against §57.
+ * ⚠ Recorded as DEC-068, status PROPOSED.
  */
 export type AudienceMatrixStatus =
   | 'strong_candidate'
