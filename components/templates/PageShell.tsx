@@ -5,6 +5,8 @@ import {
   type SectionDensity,
 } from '@/components/ui'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
+import { PageViewTracker } from '@/components/tracking'
+import { pageContext } from '@/lib/analytics'
 import type { MasterPageRecord } from '@/types'
 
 /**
@@ -55,6 +57,13 @@ export function PageShell({ page, densities, children }: PageShellProps) {
 
   return (
     <>
+      {/*
+        Page views, including client-side route changes (19 §134).
+        Context is derived from the approved page record, so every event
+        on this page carries identical canonical attribution (19 §131).
+      */}
+      <PageViewTracker context={pageContext(page)} />
+
       {/*
         Breadcrumbs sit above the hero in a standard container so they
         align with page content rather than the hero's own width.

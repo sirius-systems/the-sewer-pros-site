@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { SiteHeader } from '@/components/layout/SiteHeader'
 import { SiteFooter } from '@/components/layout/SiteFooter'
+import { Analytics } from '@/components/tracking'
 import { SITE_NAME } from '@/data/business'
 
 /**
@@ -60,6 +61,13 @@ export default function RootLayout({
         </main>
 
         <SiteFooter />
+
+        {/*
+          Renders nothing while NEXT_PUBLIC_GA_MEASUREMENT_ID is unset,
+          which it currently is — see the consent note in
+          components/tracking (19 §106).
+        */}
+        <Analytics />
       </body>
     </html>
   )

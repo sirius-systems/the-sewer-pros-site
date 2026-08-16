@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { resolveFooterNav } from '@/data/navigation'
+import { TrackedPhoneLink } from '@/components/tracking'
 import { SITE_NAME, organization, contact } from '@/data/business'
 
 /**
@@ -49,16 +50,26 @@ export function SiteFooter() {
             */}
             <div className="mt-6 flex flex-col gap-1 text-sm">
               <p className="opacity-70">St. Louis</p>
-              <a href={`tel:${contact.phoneE164}`} className="hover:underline">
+              <TrackedPhoneLink
+                phoneE164={contact.phoneE164}
+                ctaLocation="footer"
+                context={{ market_id: 'st-louis-mo' }}
+                className="hover:underline"
+              >
                 {contact.phone}
-              </a>
+              </TrackedPhoneLink>
               <a href={`mailto:${contact.email}`} className="hover:underline">
                 {contact.email}
               </a>
               <p className="mt-3 opacity-70">San Diego</p>
-              <a href="tel:+18582572888" className="hover:underline">
+              <TrackedPhoneLink
+                phoneE164="+1-858-257-2888"
+                ctaLocation="footer"
+                context={{ market_id: 'san-diego-ca' }}
+                className="hover:underline"
+              >
                 (858) 257-2888
-              </a>
+              </TrackedPhoneLink>
             </div>
           </div>
 
