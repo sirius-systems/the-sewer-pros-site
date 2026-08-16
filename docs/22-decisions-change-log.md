@@ -2008,7 +2008,7 @@ Confirm the eight release criteria in DEC-063 before promoting any Las Vegas pag
 | # | Criterion | Status |
 | - | --------- | ------ |
 | 1 | Active operational coverage | ✅ DEC-074 |
-| 2 | Services actually offered | ✅ DEC-075 |
+| 2 | Services actually offered | ✅ DEC-075, superseded by DEC-076 (17/18; 18th is St. Louis-specific) |
 | 3 | Contact routing functional | ⚠️ Untested |
 | 4 | Service-request handling | ⚠️ PENDING-008 |
 | 5 | Geographic coverage confirmed | ⚠️ No service area supplied |
@@ -3581,6 +3581,13 @@ The business owner confirmed Las Vegas delivers "all services as San Diego, CA a
 
 Las Vegas now **mirrors San Diego** per service: 13 of 18 available.
 
+> ⚠ **SUPERSEDED IN PART by DEC-076** (same day). The owner subsequently
+> corrected the answer: all three markets deliver the full service set,
+> and the 14/18 and 13/18 figures were registry gaps rather than service
+> limits. Counts are now 18/18 for St. Louis and 17/18 for San Diego and
+> Las Vegas, the eighteenth being St. Louis-specific. The reconciliation
+> below about that service still stands — it is why 17/18 is not a gap.
+
 ### Reason
 
 This is the decisive criterion 2 from DEC-063, which DEC-074 identified as the blocker. Doc 06 §7 anticipated exactly this route: Las Vegas "should remain under operational confirmation unless a later project decision explicitly updates its service availability."
@@ -3626,7 +3633,84 @@ The five pages stay `launch_pending_validation`. Promotion requires updating `04
 
 ---
 
-## DEC-076 — Reserved for Next Approved Decision
+## DEC-076 — Full Service Menu Confirmed in All Three Markets
+
+**Date:** 2026-08-17
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Business owner (availability) / Project (registry)
+**Affected Documents:**
+
+* `06-master-service-registry.md` §7, §23, §43, §60 Rule 11, and all 18 Market Status tables
+* `data/services/master-service-registry.json`
+* `22-decisions-change-log.md` DEC-063, DEC-074, DEC-075, PENDING-012
+
+### Decision
+
+The business owner confirmed all three markets deliver the full canonical service set. Two prior holds are released across every market:
+
+* `requires_operational_confirmation` — no longer applies to any service anywhere
+* `capability_validate_packaging` — the owner's confirmation IS the packaging validation 06 §43 required, so the four commercial services move to `confirmed`
+
+**Supersedes DEC-075**, which set Las Vegas to mirror San Diego at 13 of 18 on the earlier answer.
+
+### Reason
+
+The earlier 14/18 and 13/18 figures were registry gaps rather than genuine service limits — services that had not been confirmed in the registry, not services the business declines to perform.
+
+### ⚠ One instruction could not be applied literally
+
+The direction was to set all three markets to 18 of 18. Seventeen services were set exactly that way. The eighteenth was not, and the reason is structural rather than cautious.
+
+`svc-stl-sewer-lateral-inspection-reporting` documents **St. Louis municipal lateral programme reporting**. Four separate facts place it in one market:
+
+| Field | Value |
+| ----- | ----- |
+| `record_type` | `market_specific_service` |
+| `canonical_url` | `/st-louis-mo/sewer-lateral-inspection-reporting/` |
+| `matrix_eligibility` | `selective_st_louis_only` |
+| 06 §60 Rule 11 | "St. Louis sewer lateral reporting is St. Louis-specific." |
+
+San Diego and Las Vegas have no St. Louis municipal lateral programmes. San Diego has the Carlsbad and CVSan grants; Las Vegas has a paid private warranty from a private provider. Marking this service `confirmed` in California and Nevada would assert the business performs St. Louis municipal reporting there — not a capability claim but a jurisdictional impossibility, and one that would put a page on `/st-louis-mo/{service}/` into two markets that cannot reach it.
+
+It therefore remains `not_applicable` outside St. Louis, which is what that status exists to express.
+
+**Every service the business actually offers is available in every market.** That is what 18/18 means in substance, and it is now true.
+
+### Previous State
+
+```text
+St. Louis     14/18 available, 4 pending packaging validation
+San Diego     13/18 available, 4 pending, 1 not applicable
+Las Vegas     13/18 available, 4 pending, 1 not applicable   (DEC-075)
+```
+
+### New State
+
+```text
+St. Louis     18/18 available, 0 not applicable
+San Diego     17/18 available, 1 not applicable
+Las Vegas     17/18 available, 1 not applicable
+```
+
+`marketOffersAnyService()` returns true for all three. Doc 06's 18 Market Status tables and the registry JSON were updated together (CLAUDE.md §79, §96).
+
+### Implementation Impact
+
+* Commercial packaging may now be presented as an established offering — 06 §43's restriction is satisfied, not waived
+* Checked whether any page understated its menu on the old counts: none did. No page ever cited a service count, so no content pass is needed.
+
+### ⚠ Follow-Up — the gate still does not open
+
+DEC-063 criterion 2 is closed. **Criterion 7 is not.**
+
+Nevada licensing remains unconfirmed. DEC-072 settled that licence numbers are not published, which answers display and not whether the business is licensed in Nevada. Criteria 3-6 also remain: routing untested, no request handling (PENDING-008), no Las Vegas service area supplied.
+
+The five Las Vegas pages stay `launch_pending_validation`. Verified after this change that they remain linked from no other page on the site.
+
+---
+
+## DEC-077 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**

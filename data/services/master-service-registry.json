@@ -446,9 +446,9 @@
         "commercial sewer inspection"
       ],
       "markets": {
-        "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
-        "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
+        "st-louis-mo": "confirmed",
+        "san-diego-ca": "confirmed",
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Technique is established; standalone commercial packaging is part of the rebuild and should use commercial-first proof, reporting, scheduling, and maintenance language."
     },
@@ -481,9 +481,9 @@
         "commercial sewer rooter"
       ],
       "markets": {
-        "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
-        "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
+        "st-louis-mo": "confirmed",
+        "san-diego-ca": "confirmed",
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Commercial page is an expansion of a confirmed cleaning capability. Service hours, emergency response, large-line limits, and equipment constraints must be validated."
     },
@@ -552,9 +552,9 @@
         "restaurant drain cleaning"
       ],
       "markets": {
-        "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
-        "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
+        "st-louis-mo": "confirmed",
+        "san-diego-ca": "confirmed",
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Commercial positioning is recommended for the rebuild, but current public service pages do not establish every commercial scope detail."
     },
@@ -585,9 +585,9 @@
         "commercial line locating"
       ],
       "markets": {
-        "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
-        "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
+        "st-louis-mo": "confirmed",
+        "san-diego-ca": "confirmed",
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Keep selective because intent is narrower than camera inspection, cleaning, and hydro jetting."
     },
