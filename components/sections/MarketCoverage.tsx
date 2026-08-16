@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Section } from '@/components/ui'
+import { Section , type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import { pagesOfType } from '@/data/pages'
@@ -38,6 +38,14 @@ import type { PageId } from '@/types'
  * automatically once doc 04 promotes those records.
  */
 export interface MarketCoverageProps {
+  /**
+   * Overrides the section's natural density.
+   *
+   * Appendix A's density system is about VARIATION down a page, so the
+   * composing template — which alone knows the full sequence — may need
+   * a different value than this section would pick alone (18 §108).
+   */
+  density?: SectionDensity
   id?: string
   eyebrow?: string
   title?: string
@@ -45,6 +53,7 @@ export interface MarketCoverageProps {
 }
 
 export function MarketCoverage({
+  density = 'standard',
   id = 'markets',
   eyebrow,
   title = 'Where we work',
@@ -56,7 +65,7 @@ export function MarketCoverage({
   if (links.length === 0) return null
 
   return (
-    <Section density="standard" labelledBy={id}>
+    <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <ul className="mt-8 border-t border-border">

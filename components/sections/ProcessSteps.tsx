@@ -1,4 +1,4 @@
-import { Section } from '@/components/ui'
+import { Section , type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 
 /**
@@ -25,6 +25,14 @@ export interface ProcessStep {
 }
 
 export interface ProcessStepsProps {
+  /**
+   * Overrides the section's natural density.
+   *
+   * Appendix A's density system is about VARIATION down a page, so the
+   * composing template — which alone knows the full sequence — may need
+   * a different value than this section would pick alone (18 §108).
+   */
+  density?: SectionDensity
   id?: string
   eyebrow?: string
   title: string
@@ -33,6 +41,7 @@ export interface ProcessStepsProps {
 }
 
 export function ProcessSteps({
+  density = 'standard',
   id = 'process',
   eyebrow,
   title,
@@ -42,7 +51,7 @@ export function ProcessSteps({
   if (steps.length === 0) return null
 
   return (
-    <Section density="standard" labelledBy={id}>
+    <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <ol className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">

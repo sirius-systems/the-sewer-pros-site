@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Section } from '@/components/ui'
+import { Section , type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import type { PageId } from '@/types'
@@ -38,6 +38,14 @@ export interface ServiceIndexItem {
 }
 
 export interface ServiceIndexProps {
+  /**
+   * Overrides the section's natural density.
+   *
+   * Appendix A's density system is about VARIATION down a page, so the
+   * composing template — which alone knows the full sequence — may need
+   * a different value than this section would pick alone (18 §108).
+   */
+  density?: SectionDensity
   id?: string
   eyebrow?: string
   title: string
@@ -48,6 +56,7 @@ export interface ServiceIndexProps {
 }
 
 export function ServiceIndex({
+  density = 'standard',
   id = 'services',
   eyebrow,
   title,
@@ -65,7 +74,7 @@ export function ServiceIndex({
   if (links.length === 0) return null
 
   return (
-    <Section density="standard" labelledBy={id}>
+    <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <ul className="mt-10 border-t border-border">

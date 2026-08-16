@@ -1,4 +1,4 @@
-import { Section } from '@/components/ui'
+import { Section , type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { differentiatorContrast } from '@/data/business/positioning'
 
@@ -30,6 +30,14 @@ import { differentiatorContrast } from '@/data/business/positioning'
  * applies here.
  */
 export interface DifferentiatorProps {
+  /**
+   * Overrides the section's natural density.
+   *
+   * Appendix A's density system is about VARIATION down a page, so the
+   * composing template — which alone knows the full sequence — may need
+   * a different value than this section would pick alone (18 §108).
+   */
+  density?: SectionDensity
   id?: string
   eyebrow?: string
   title: string
@@ -37,6 +45,7 @@ export interface DifferentiatorProps {
 }
 
 export function Differentiator({
+  density = 'standard',
   id = 'independent',
   eyebrow,
   title,
@@ -45,7 +54,7 @@ export function Differentiator({
   const columns = [differentiatorContrast.comparison, differentiatorContrast.ours]
 
   return (
-    <Section density="standard" surface="muted" labelledBy={id}>
+    <Section density={density} surface="muted" labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
