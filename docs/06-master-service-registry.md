@@ -173,7 +173,11 @@ Recommended status values include:
 | `requires_operational_confirmation` | Do not publish customer-facing market claims until availability is confirmed            |
 | `not_applicable`                    | Service does not apply to this market                                                   |
 
-Las Vegas should remain under operational confirmation unless a later project decision explicitly updates its service availability.
+Las Vegas was held under operational confirmation until DEC-075 (2026-08-17), when the business owner confirmed the market delivers the same service set as San Diego and St. Louis.
+
+Las Vegas now mirrors San Diego's per-service status: 13 of 18 available, 4 commercial services pending packaging validation (as in every market), and the St. Louis-specific lateral reporting service `not_applicable`.
+
+⚠ This resolves DEC-063's release criterion 2 only. It does **not** release the indexation gate — criterion 7 (licensing) remains unconfirmed, so the five Las Vegas pages stay `launch_pending_validation` per PENDING-012.
 
 ---
 
@@ -336,7 +340,7 @@ Aliases belong to this canonical service unless later intent analysis supports a
 | --------- | --------------------------------- |
 | St. Louis | Confirmed                         |
 | San Diego | Confirmed                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Confirmed                         |
 
 ## Strategic Role
 
@@ -389,7 +393,7 @@ This is the flagship diagnostic service and one of the strongest entities for:
 | --------- | --------------------------------- |
 | St. Louis | Confirmed                         |
 | San Diego | Confirmed                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Confirmed                         |
 
 ## Service Boundary
 
@@ -438,7 +442,7 @@ Root intrusion removal generally belongs under sewer cleaning unless future oper
 | --------- | --------------------------------- |
 | St. Louis | Confirmed                         |
 | San Diego | Confirmed                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Confirmed                         |
 
 ## Service Boundary
 
@@ -486,7 +490,7 @@ Inspection or evaluation may be appropriate before hydro jetting depending on sy
 | --------- | --------------------------------- |
 | St. Louis | Confirmed                         |
 | San Diego | Confirmed                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Confirmed                         |
 
 ## Strategic Role
 
@@ -535,7 +539,7 @@ This service strongly supports the independent-inspection positioning because cl
 | --------- | --------------------------------- |
 | St. Louis | Confirmed                         |
 | San Diego | Confirmed                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Confirmed                         |
 
 ## Claim Guardrail
 
@@ -582,7 +586,7 @@ Do not imply survey-grade accuracy unless specifically confirmed.
 | --------- | --------------------------------- |
 | St. Louis | Confirmed                         |
 | San Diego | Confirmed                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Confirmed                         |
 
 ## Service Boundary
 
@@ -655,7 +659,7 @@ These are supported by existing capabilities or positioning but represent distin
 | --------- | --------------------------------- |
 | St. Louis | Supported                         |
 | San Diego | Supported                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Supported                         |
 
 ## Strategic Role
 
@@ -705,7 +709,7 @@ It should remain closely linked to the parent camera-inspection entity.
 | --------- | --------------------------------- |
 | St. Louis | Supported                         |
 | San Diego | Supported                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Supported                         |
 
 ## Strategic Role
 
@@ -763,7 +767,7 @@ Its content should connect strongly to:
 | --------- | --------------------------------- |
 | St. Louis | Supported                         |
 | San Diego | Supported                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Supported                         |
 
 ## Claim Guardrail
 
@@ -820,7 +824,7 @@ without business confirmation.
 | --------- | --------------------------------- |
 | St. Louis | Supported                         |
 | San Diego | Supported                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Supported                         |
 
 ## Cannibalization Guardrail
 
@@ -967,7 +971,7 @@ The commercial registry contains seven services.
 | --------- | ------------------------------------------------ |
 | St. Louis | Capability exists; validate commercial packaging |
 | San Diego | Capability exists; validate commercial packaging |
-| Las Vegas | Requires operational confirmation                |
+| Las Vegas | Capability exists; validate commercial packaging |
 
 ## Commercial Content Requirements
 
@@ -1021,7 +1025,7 @@ rather than simply duplicating residential inspection content.
 | --------- | ------------------------------------------------ |
 | St. Louis | Capability exists; validate commercial packaging |
 | San Diego | Capability exists; validate commercial packaging |
-| Las Vegas | Requires operational confirmation                |
+| Las Vegas | Capability exists; validate commercial packaging |
 
 ## Validation Requirements
 
@@ -1072,7 +1076,7 @@ Do not invent:
 | --------- | --------------------------------- |
 | St. Louis | Supported                         |
 | San Diego | Supported                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Supported                         |
 
 ## Strategic Role
 
@@ -1117,7 +1121,7 @@ It should play a major role in restaurant, property-management, and facility-mai
 | --------- | ------------------------------------------------ |
 | St. Louis | Capability exists; validate commercial packaging |
 | San Diego | Capability exists; validate commercial packaging |
-| Las Vegas | Requires operational confirmation                |
+| Las Vegas | Capability exists; validate commercial packaging |
 
 ---
 
@@ -1156,7 +1160,7 @@ It should play a major role in restaurant, property-management, and facility-mai
 | --------- | ------------------------------------- |
 | St. Louis | Capability exists; validate packaging |
 | San Diego | Capability exists; validate packaging |
-| Las Vegas | Requires operational confirmation     |
+| Las Vegas | Capability exists; validate packaging |
 
 This service remains selective because commercial search intent is narrower than:
 
@@ -1205,7 +1209,7 @@ This service remains selective because commercial search intent is narrower than
 | --------- | --------------------------------- |
 | St. Louis | Supported                         |
 | San Diego | Supported                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Supported                         |
 
 ## Claim Guardrail
 
@@ -1256,7 +1260,7 @@ until confirmed.
 | --------- | --------------------------------- |
 | St. Louis | Supported                         |
 | San Diego | Supported                         |
-| Las Vegas | Requires operational confirmation |
+| Las Vegas | Supported                         |
 
 ## Critical Boundary
 

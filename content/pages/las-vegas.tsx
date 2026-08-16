@@ -38,13 +38,18 @@
  * 2015 stay where they belong — so no page below claims years of local
  * service, local volume, or a local office.
  *
- * ⚠ It also does not license a SERVICE MENU. The service registry still
- * marks all 17 applicable services `requires_operational_confirmation`
- * for this market, and 06 §9 makes that registry authoritative for
- * service availability. "The business is operating here" and "these
- * specific services are offered here" are different claims, and only
- * the first is confirmed. No page below enumerates a Las Vegas service
- * menu.
+ * The SERVICE MENU is now confirmed too. DEC-075 (2026-08-17) records
+ * the owner's confirmation that Las Vegas delivers the same set as
+ * San Diego — 13 of 18 — and doc 06 and the registry were updated
+ * together. Pages may state what is offered.
+ *
+ * ⚠ Four commercial services remain `capability_validate_packaging` in
+ * EVERY market, Las Vegas included, so commercial packaging still must
+ * not be presented as an established offering (06 §43).
+ *
+ * ⚠ And none of this opens the indexation gate. DEC-063 criterion 7
+ * (Nevada licensing) is unconfirmed, so these five pages remain
+ * `launch_pending_validation`.
  *
  * ---------------------------------------------------------------------------
  * WHY THE HOUSING ANGLE IS ABSENT HERE
@@ -161,6 +166,12 @@ export const lasVegasMarketContent: MarketPageContent = {
       {LAS_VEGAS_CONTACT}
     </>
   ),
+  services: [
+    { pageId: id('svc-sewer-camera-inspection'), description: 'See the visible condition of the line.' },
+    { pageId: id('svc-sewer-cleaning'), description: 'Clear what has accumulated in the line.' },
+    { pageId: id('svc-hydro-jetting'), description: 'High-pressure cleaning for buildup on the pipe wall.' },
+    { pageId: id('svc-pre-purchase-sewer-inspection'), description: 'Inspect the line before closing on a property.' },
+  ],
   locationPageIds: [
     id('loc-lv-las-vegas'),
     id('loc-lv-henderson'),

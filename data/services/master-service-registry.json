@@ -53,7 +53,7 @@
       "markets": {
         "st-louis-mo": "confirmed",
         "san-diego-ca": "confirmed",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Flagship diagnostic service. Current sites emphasize high-resolution camera work, identifying damage/obstructions, reporting, and home-purchase use cases."
     },
@@ -89,7 +89,7 @@
       "markets": {
         "st-louis-mo": "confirmed",
         "san-diego-ca": "confirmed",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Core mechanical cleaning service. Root intrusion and blockage removal belong under this service unless a distinct operational offering is later validated."
     },
@@ -126,7 +126,7 @@
       "markets": {
         "st-louis-mo": "confirmed",
         "san-diego-ca": "confirmed",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Current sites explicitly position hydro jetting for grease/sludge removal and recurring preventative maintenance, including commercial properties and food establishments."
     },
@@ -161,7 +161,7 @@
       "markets": {
         "st-louis-mo": "confirmed",
         "san-diego-ca": "confirmed",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Core combined service and the strongest proof point for unbiased third-party evaluation because The Sewer Pros states it does not repair broken sewer lines."
     },
@@ -198,7 +198,7 @@
       "markets": {
         "st-louis-mo": "confirmed",
         "san-diego-ca": "confirmed",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Current sites describe locating the direction and depth of the main sewer line for damage, repair/replacement planning, and major property projects."
     },
@@ -234,7 +234,7 @@
       "markets": {
         "st-louis-mo": "confirmed",
         "san-diego-ca": "confirmed",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "confirmed"
       },
       "notes": "Established drain service. Do not split every fixture/drain type into a service page until actual operational scope and search intent are validated."
     },
@@ -270,7 +270,7 @@
       "markets": {
         "st-louis-mo": "supported_by_existing_camera_service",
         "san-diego-ca": "supported_by_existing_camera_service",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "supported_by_existing_camera_service"
       },
       "notes": "Not a separate technique from camera inspection; it is a high-value transactional intent. Keep as a standalone landing page because current sites explicitly sell the buy-before-you-purchase use case."
     },
@@ -304,7 +304,7 @@
       "markets": {
         "st-louis-mo": "supported_by_existing_combined_service",
         "san-diego-ca": "supported_by_existing_combined_service",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "supported_by_existing_combined_service"
       },
       "notes": "Derived directly from the existing cleaning + camera workflow for customers experiencing multiple backups."
     },
@@ -342,7 +342,7 @@
       "markets": {
         "st-louis-mo": "supported_by_existing_cleaning_and_hydro_jetting",
         "san-diego-ca": "supported_by_existing_cleaning_and_hydro_jetting",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "supported_by_existing_cleaning_and_hydro_jetting"
       },
       "notes": "Existing sites discuss maintenance schedules and annual hydro jetting. Exact plan cadence, pricing, and inclusions must be confirmed before customer-facing claims."
     },
@@ -377,7 +377,7 @@
       "markets": {
         "st-louis-mo": "supported_by_existing_brand_positioning",
         "san-diego-ca": "supported_by_existing_brand_positioning",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "supported_by_existing_brand_positioning"
       },
       "notes": "Strong differentiator, but should not cannibalize the general camera inspection page. Use for repair-recommendation/second-opinion intent."
     },
@@ -448,7 +448,7 @@
       "markets": {
         "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
         "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
       },
       "notes": "Technique is established; standalone commercial packaging is part of the rebuild and should use commercial-first proof, reporting, scheduling, and maintenance language."
     },
@@ -483,7 +483,7 @@
       "markets": {
         "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
         "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
       },
       "notes": "Commercial page is an expansion of a confirmed cleaning capability. Service hours, emergency response, large-line limits, and equipment constraints must be validated."
     },
@@ -519,7 +519,7 @@
       "markets": {
         "st-louis-mo": "supported_by_current_hydro_jetting_page",
         "san-diego-ca": "supported_by_current_hydro_jetting_page",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "supported_by_current_hydro_jetting_page"
       },
       "notes": "Highest-confidence commercial service. Current hydro-jetting pages explicitly reference commercial sewer lines, food establishments, grease/sludge, and maintenance."
     },
@@ -554,7 +554,7 @@
       "markets": {
         "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
         "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
       },
       "notes": "Commercial positioning is recommended for the rebuild, but current public service pages do not establish every commercial scope detail."
     },
@@ -587,7 +587,7 @@
       "markets": {
         "st-louis-mo": "capability_confirmed_commercial_packaging_requires_validation",
         "san-diego-ca": "capability_confirmed_commercial_packaging_requires_validation",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "capability_confirmed_commercial_packaging_requires_validation"
       },
       "notes": "Keep selective because intent is narrower than camera inspection, cleaning, and hydro jetting."
     },
@@ -624,7 +624,7 @@
       "markets": {
         "st-louis-mo": "supported_by_current_hydro_jetting_positioning",
         "san-diego-ca": "supported_by_current_hydro_jetting_positioning",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "supported_by_current_hydro_jetting_positioning"
       },
       "notes": "Current hydro-jetting pages explicitly recommend scheduled preventative maintenance for commercial properties. Actual program terms must be confirmed."
     },
@@ -658,7 +658,7 @@
       "markets": {
         "st-louis-mo": "supported_by_current_hydro_jetting_capability",
         "san-diego-ca": "supported_by_current_hydro_jetting_capability",
-        "las-vegas-nv": "requires_operational_confirmation"
+        "las-vegas-nv": "supported_by_current_hydro_jetting_capability"
       },
       "notes": "Do not describe this as grease-trap cleaning unless the company separately confirms that service. Current support is for hydro-jetting grease/sludge from sewer lines."
     }

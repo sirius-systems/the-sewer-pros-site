@@ -2001,7 +2001,20 @@ Do not write the `GPTBot` directive until this is resolved. Do not resolve it by
 
 Confirm the eight release criteria in DEC-063 before promoting any Las Vegas page from `launch_pending_validation` to `launch`.
 
-**2026-08-17 review:** the owner reports the market operational, which satisfies criterion 1 and supports 8. Criterion 2 remains unmet — the service registry still marks all 17 applicable services `requires_operational_confirmation`. Criteria 3-7 are partly evidenced. See DEC-074 for the full assessment and the shortest path to closing this.
+**2026-08-17 review (updated):** criteria 1, 2, and 8 now closed. Criterion 2 closed under DEC-075 — Las Vegas confirmed at 13 of 18 services, mirroring San Diego.
+
+**Criterion 7 blocks promotion.** Nevada licensing is unconfirmed; DEC-072 settled only that licence numbers are not published. Criteria 3-6 also remain: routing untested, no request handling (PENDING-008), no Las Vegas service area.
+
+| # | Criterion | Status |
+| - | --------- | ------ |
+| 1 | Active operational coverage | ✅ DEC-074 |
+| 2 | Services actually offered | ✅ DEC-075 |
+| 3 | Contact routing functional | ⚠️ Untested |
+| 4 | Service-request handling | ⚠️ PENDING-008 |
+| 5 | Geographic coverage confirmed | ⚠️ No service area supplied |
+| 6 | Market business facts verified | ⚠️ DEC-073; licence outstanding |
+| 7 | Licensing satisfied | ❌ Unconfirmed |
+| 8 | Public messaging accurate | ✅ DEC-074 |
 
 **Currently gated:**
 
@@ -3405,7 +3418,9 @@ Five open PENDING entries. Marketing claims withheld from all built pages. No ho
 
 PENDING-002, 014, 015, 016 resolved. PENDING-012 and 013 remain open — "currently launching" is a status report, not the operational service confirmation DEC-063 requires.
 
-⚠ **Las Vegas indexing is unchanged.** DEC-063's gate is not released by content readiness or by a launch being imminent. The five Las Vegas pages stay `launch_pending_validation` until PENDING-012 resolves on its own criteria. No Las Vegas business facts have been supplied, so no Las Vegas page may state hours, phone, or service area.
+⚠ **Las Vegas indexing is unchanged.** DEC-063's gate is not released by content readiness or by a launch being imminent. The five Las Vegas pages stay `launch_pending_validation` until PENDING-012 resolves on its own criteria.
+
+*Superseded in part:* this section originally stated that no Las Vegas business facts had been supplied. DEC-073 (2026-08-17) supplied phone, email, and hours; DEC-075 confirmed service availability. The indexation gate is unaffected — see DEC-075's Follow-Up.
 
 ### Implementation Impact
 
@@ -3428,8 +3443,55 @@ PENDING-002, 014, 015, 016 resolved. PENDING-012 and 013 remain open — "curren
 ### Follow-Up
 
 * PENDING-012 remains the sole gate on Las Vegas indexation.
-* Las Vegas business facts — phone, hours, service area — must come from the owner. Nothing on the public web can verify them.
+* ~~Las Vegas business facts must come from the owner~~ — **SUPERSEDED by DEC-073** (2026-08-17): phone, email, and hours supplied. Service area still outstanding.
 * `11-local-seo-gbp-strategy.md` §62 should record the SAB determination.
+
+---
+
+## DEC-073 — Las Vegas Business Facts Supplied
+
+**Date:** 2026-08-17
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner
+**Affected Documents:**
+
+* `01-business-brand-foundation.md` §20, §21, §35
+* `02-nextjs-technical-architecture.md` §55
+
+### Decision
+
+The business owner supplied Las Vegas contact facts directly. No Las Vegas site or GBP exists to source them from.
+
+| Fact | Value |
+| ---- | ----- |
+| Phone | (725) 292-4030 |
+| Email | bookaninspection@thesewerpros.com |
+| Hours | Monday to Friday, 8:00am–4:00pm; closed weekends |
+| Street address | None — Service-Area-Business (DEC-072) |
+| Licence number | Requested; not supplied. Not for publication (DEC-072) |
+
+### Reason
+
+Unlike St. Louis and San Diego, Las Vegas publishes nothing to verify against — research returned only unrelated third-party companies. Owner confirmation is the only available source, and under 01 §24 it carries the same standing as a verified live-site fact.
+
+This entry exists because it was missing. Seven code sites cited DEC-073 while the change-log slot had been overwritten by DEC-074, leaving a dangling reference — a governance record that pointed at nothing.
+
+### Previous State
+
+Las Vegas had no contact facts. DEC-072 recorded that none had been supplied, and that text is now superseded on this point.
+
+### New State
+
+Per-market contact detail in `data/markets/markets.ts`. No founding year: 01 §20 forbids importing St. Louis's 2011 or San Diego's 2015, and Las Vegas has no operating history to state.
+
+### Implementation Impact
+
+The five Las Vegas pages carry real contact detail. They remain gated — see DEC-074 and DEC-075.
+
+### Follow-Up
+
+The Nevada licensing FACT remains unconfirmed. DEC-072 answered whether licence numbers are published (no, by design); it did not establish that Nevada licensing is satisfied. That is DEC-063 criterion 7, and it still blocks promotion.
 
 ---
 
@@ -3501,7 +3563,70 @@ The shortest path is criterion 2, and it is a data change with a defined process
 
 ---
 
-## DEC-075 — Reserved for Next Approved Decision
+## DEC-075 — Las Vegas Service Availability Confirmed; Criterion 2 Closes
+
+**Date:** 2026-08-17
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Business owner (availability) / Project (registry)
+**Affected Documents:**
+
+* `06-master-service-registry.md` §7, and all 18 per-service Market Status tables
+* `data/services/master-service-registry.json`
+* `22-decisions-change-log.md` DEC-063, DEC-074, PENDING-012
+
+### Decision
+
+The business owner confirmed Las Vegas delivers "all services as San Diego, CA and St. Louis, MO."
+
+Las Vegas now **mirrors San Diego** per service: 13 of 18 available.
+
+### Reason
+
+This is the decisive criterion 2 from DEC-063, which DEC-074 identified as the blocker. Doc 06 §7 anticipated exactly this route: Las Vegas "should remain under operational confirmation unless a later project decision explicitly updates its service availability."
+
+**One reconciliation was required, and it changes the answer.** The instruction was to apply the union of St. Louis's 14 and San Diego's 13. That union is 14 — but San Diego's set is a strict SUBSET of St. Louis's, and the single difference is `svc-stl-sewer-lateral-inspection-reporting`.
+
+That service documents **St. Louis municipal lateral programme reporting**. It is `market_specific_service` and St. Louis-only under 06 §23, and Las Vegas has no comparable programme — the City of Las Vegas offers a paid private warranty instead. Applying the literal union would have given Las Vegas a service that cannot exist there.
+
+So the correct set is the union minus the St. Louis-only service: **13, identical to San Diego**.
+
+### Previous State
+
+All 17 applicable Las Vegas services `requires_operational_confirmation`; `marketOffersAnyService('las-vegas-nv')` returned false.
+
+### New State
+
+```text
+St. Louis     14/18 available
+San Diego     13/18 available
+Las Vegas     13/18 available   (was 0/18)
+```
+
+`marketOffersAnyService('las-vegas-nv')` returns true.
+
+The four commercial services carrying `capability_confirmed_commercial_packaging_requires_validation` remain unvalidated **in every market**, Las Vegas included — 06 §43 still forbids presenting that packaging as an established offering anywhere.
+
+Doc 06 and the registry JSON were updated together, so no layer became the unofficial authority (CLAUDE.md §79, §96).
+
+### Implementation Impact
+
+* Las Vegas pages may now state which services are offered
+* Doc 06's 18 Market Status tables updated; the §7 note records why
+
+### ⚠ Follow-Up — the gate does NOT open
+
+Criterion 2 closes. **Criterion 7 does not.**
+
+The Nevada licensing fact is unconfirmed. DEC-072 settled that licence numbers are not published; that answers display, not whether the business is licensed in Nevada. An indexed page implying service delivery in a state where licensing is unverified is precisely the business-accuracy risk DEC-063 exists to prevent.
+
+Criteria 3-6 also remain: contact routing untested, no request handling (PENDING-008), and no Las Vegas service area supplied.
+
+The five pages stay `launch_pending_validation`. Promotion requires updating `04-master-page-build-list.md` and a further decision entry — per DEC-063, both.
+
+---
+
+## DEC-076 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
