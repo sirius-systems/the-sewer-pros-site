@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { resolveFooterNav } from '@/data/navigation'
-import { SITE_NAME, organization, contact, hours } from '@/data/business'
+import { SITE_NAME, organization, contact } from '@/data/business'
 
 /**
  * Site footer.
@@ -42,14 +42,23 @@ export function SiteFooter() {
               {organization.description}
             </p>
 
-            <div className="mt-6 flex flex-col gap-2 text-sm">
+            {/*
+              Labelled by market. Two numbers exist (DEC-070, DEC-071)
+              and 01 §20 forbids presenting one market's contact detail
+              as though it covered another.
+            */}
+            <div className="mt-6 flex flex-col gap-1 text-sm">
+              <p className="opacity-70">St. Louis</p>
               <a href={`tel:${contact.phoneE164}`} className="hover:underline">
                 {contact.phone}
               </a>
               <a href={`mailto:${contact.email}`} className="hover:underline">
                 {contact.email}
               </a>
-              <p className="opacity-70">{hours.weekdays}</p>
+              <p className="mt-3 opacity-70">San Diego</p>
+              <a href="tel:+18582572888" className="hover:underline">
+                (858) 257-2888
+              </a>
             </div>
           </div>
 

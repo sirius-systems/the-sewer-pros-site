@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { resolvePrimaryNav } from '@/data/navigation'
-import { SITE_NAME, contact } from '@/data/business'
+import { SITE_NAME } from '@/data/business'
 import { PRIMARY_CTA } from '@/components/layout/cta'
 
 /**
@@ -16,10 +16,23 @@ import { PRIMARY_CTA } from '@/components/layout/cta'
  * `<details>` is keyboard-operable and screen-reader-announced natively,
  * which satisfies 18 §94 and §95 without custom ARIA.
  *
- * The phone link is the number the business publishes on its own site
- * (DEC-070), sourced from `data/business/` rather than inlined — 18 §42
- * places it in the header, and 02 §54 forbids hard-coding contact
- * details into components.
+ * ---------------------------------------------------------------------------
+ * ⚠ WHY THE HEADER SHOWS "CALL" RATHER THAN A NUMBER
+ * ---------------------------------------------------------------------------
+ * 18 §42 places a phone link in the header, and the business publishes
+ * two: (314) 821-1600 for St. Louis and (858) 257-2888 for San Diego,
+ * on separate sites with different hours (DEC-070, DEC-071).
+ *
+ * The header is a shared layout component. Under `output: 'export'` it
+ * cannot vary by route without becoming a client component, and there
+ * is no runtime to detect a visitor's market.
+ *
+ * Rendering one number sitewide would put the St. Louis line on every
+ * San Diego page — precisely the cross-market fact-copying 01 §20
+ * forbids. So the header links to `/contact/`, which lists both markets
+ * separately, and each market page carries its own number in content.
+ *
+ * Revisit if a market-scoped layout is introduced (PENDING-017).
  *
  * Dropdowns and mega menus (18 §44) are intentionally not here — they
  * are step 17/18 work. The flat list is complete and usable meanwhile.
@@ -54,12 +67,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <a
-            href={`tel:${contact.phoneE164}`}
+          <Link
+            href="/contact/"
             className="text-sm font-medium text-foreground hover:text-accent"
           >
-            {contact.phone}
-          </a>
+            Call
+          </Link>
           <Link
             href={PRIMARY_CTA.href}
             className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
@@ -92,12 +105,12 @@ export function SiteHeader() {
             </nav>
 
             {/* 18 §152 — primary actions stay reachable on mobile. */}
-            <a
-              href={`tel:${contact.phoneE164}`}
+            <Link
+              href="/contact/"
               className="mt-4 flex min-h-11 items-center justify-center rounded-md border border-border text-sm font-medium text-foreground"
             >
-              Call {contact.phone}
-            </a>
+              Call
+            </Link>
             <Link
               href={PRIMARY_CTA.href}
               className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground"

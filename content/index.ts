@@ -26,6 +26,10 @@ import { commercialContent } from './pages/commercial'
 import { comparisonContent } from './pages/comparisons'
 import { coreContent, homeContent, hubContent, resourceContent } from './pages/core'
 import {
+  sanDiegoMarketContent,
+  sanDiegoLocationContent,
+} from './pages/san-diego'
+import {
   stLouisMarketContent,
   lateralReportingContent,
   stLouisLocationContent,
@@ -35,11 +39,13 @@ import {
 /** Market hub content, keyed by page id. */
 const marketContent: Partial<Record<PageId, MarketPageContent>> = {
   ['market-st-louis-mo' as PageId]: stLouisMarketContent,
+  ['market-san-diego-ca' as PageId]: sanDiegoMarketContent,
 }
 
 /** Location content across all markets. */
 const locationContent: Partial<Record<PageId, LocationPageContent>> = {
   ...stLouisLocationContent,
+  ...sanDiegoLocationContent,
 }
 
 /** Service + location content across all markets. */

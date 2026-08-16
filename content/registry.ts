@@ -98,7 +98,11 @@ const LOCAL_RESEARCH: PendingContentEntry = {
 markPending(
   approvedPages
     .filter((p) => p.pageType === 'location' || p.pageType === 'service-location')
+    // St. Louis locations and service+locations: written (DEC-070).
     .filter((p) => p.marketId !== 'st-louis-mo')
+    // San Diego LOCATIONS are written (DEC-071); its service+location
+    // pages are not yet.
+    .filter((p) => !(p.marketId === 'san-diego-ca' && p.pageType === 'location'))
     .map((p) => p.id),
   LOCAL_RESEARCH,
 )
@@ -111,16 +115,18 @@ markPending(
   approvedPages
     .filter((p) => p.pageType === 'market')
     .filter((p) => p.marketId !== 'st-louis-mo')
+    .filter((p) => p.marketId !== 'san-diego-ca')
     .map((p) => p.id),
   {
     reason:
-      '14 §38-40 set per-market content requirements grounded in local ' +
-      'conditions. Las Vegas additionally has zero of 18 services ' +
-      'confirmed, so its page cannot state that any service is offered ' +
-      '(01 §20, §26).',
+      'Las Vegas has zero of 18 services confirmed, so its page cannot ' +
+      'state that any service is offered (01 §20, §26). The market ' +
+      'research additionally found NO Las Vegas business presence at ' +
+      'all — no site, phone, hours, or founding date exist to source, ' +
+      'unlike St. Louis and San Diego which each publish their own.',
     unblockedBy:
-      'Verified local research for St. Louis and San Diego; PENDING-012 ' +
-      'for Las Vegas.',
+      'PENDING-012, and business-supplied operating facts. Nothing on ' +
+      'the public web can verify a Las Vegas presence.',
   },
 )
 

@@ -3228,7 +3228,7 @@ Recorded in `WITHHELD_PENDING_SUBSTANTIATION` so build validation can scan rende
 
 ## PENDING-013 — Las Vegas Operating Status
 
-**Status:** Open — narrowed to Las Vegas only
+**Status:** Open — narrowed to Las Vegas only (confirmed by Las Vegas research: no site, phone, hours, or founding date exists to source)
 **Trigger:** Before Las Vegas content is written
 
 **San Diego: RESOLVED.** The market operates a separate site, thesewerprossd.com, with its own phone — (858) 257-2888 — its own hours, and a founding date of 2015. San Diego is an operating market, not a planned one.
@@ -3287,7 +3287,73 @@ The superlative is the higher-risk one — 18 §71 and CLAUDE.md §71 prohibit u
 
 ---
 
-## DEC-071 — Reserved for Next Approved Decision
+## DEC-071 — San Diego Confirmed Operating; 8 San Diego Pages Published
+
+**Date:** 2026-08-16
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `01-business-brand-foundation.md` §20, §21, §24
+* `02-nextjs-technical-architecture.md` §55
+* `14-content-specification.md` §39, §42, §79
+* `21-post-launch-seo-roadmap.md` §35-37
+
+### Decision
+
+San Diego is confirmed as an **operating** market. It publishes its own site — thesewerprossd.com — with phone (858) 257-2888, hours Monday to Friday 8:00am–4:00pm, and a 2015 founding year.
+
+The market hub and all 7 location pages are published.
+
+### Reason
+
+This corrects a misreading recorded hours earlier in PENDING-013. The Missouri-only service area on thesewerpros.com is the **St. Louis site's** service area, not evidence that San Diego is dormant. The two markets publish separately.
+
+That is exactly why 01 §20 forbids copying business facts between markets — here the phone numbers, hours, and founding years genuinely differ, and treating either as sitewide would be wrong rather than merely imprecise.
+
+San Diego's regulatory landscape is also structurally different from St. Louis, and the pages say so. St. Louis has one regional authority and a near-universal $28/yr assistance model. San Diego County has neither: service comes from a mix of city departments and independent special districts, and assistance is confirmed in only two of seven jurisdictions. The City of San Diego's own guidance states there is **no reimbursement** for plumbing expenses.
+
+### New State
+
+48 of 70 pages built, up from 40. Per-market contact detail lives in the market registry per 02 §55.
+
+**Differentiation is jurisdictional**, and none of it survives a city-name swap: San Marcos is served by Vallecitos Water District rather than the city; Chula Vista's provider is CVSan, a district distinct from city government, running a grant with a three-quote and permit process; Carlsbad has a $3,000 grant and a split provider boundary; Escondido's code §22-165 is unusually explicit; Mission Valley is a commercial district inside the City of San Diego.
+
+**Calibrated down where the evidence is weaker.** The research noted this cluster is materially newer than St. Louis — even the oldest stock is around a third pre-1970 against 58% pre-1940 in St. Louis City. Aggressive "aging pipe" framing would be less honest here, so the copy leans on ground movement, bellies, and settlement instead.
+
+**Oceanside states less than its siblings.** No published Oceanside lateral-responsibility statement was located, so the page gives the county-wide pattern and directs readers to Water Utilities rather than restating a neighbouring city's rule as though it were Oceanside's.
+
+**No housing statistic is published** anywhere (PENDING-015), and no Mission Valley figure exists at any usable geography — two proxies conflict and describe non-comparable areas. Neither is published, and they are not averaged.
+
+### Implementation Impact
+
+* The header no longer renders a phone number. With two market numbers and a shared static layout, one number sitewide would put the St. Louis line on every San Diego page. The header links to `/contact/`, which lists both; the footer labels each by market; each market page carries its own in content. See PENDING-017.
+* `/contact/` lists St. Louis and San Diego separately rather than merging them.
+* Still no street address for any market, so no `LocalBusiness` entity exists.
+
+### Follow-Up
+
+* San Diego's 8 service + location pages remain unwritten.
+* PENDING-014 equivalents for San Diego: CVSan's exact grant cap, whether Carlsbad's grant reaches Leucadia/Vallecitos-served properties, and Oceanside's responsibility statement.
+* PENDING-017 — market-scoped header contact.
+
+---
+
+## PENDING-017 — Market-Scoped Header Contact
+
+**Status:** Open
+**Trigger:** If a market-aware layout is introduced
+
+18 §42 places a phone number in the header. The business publishes two, and under `output: 'export'` a shared layout cannot vary by route without becoming a client component, with no runtime to detect a visitor's market.
+
+Current resolution: the header links to `/contact/`; the footer labels both numbers by market; market pages carry their own in content. This is correct but costs one-tap calling from the header.
+
+Options if revisited: a market-scoped route group with its own layout, or accepting the St. Louis number as the primary with San Diego pages overriding in content.
+
+---
+
+## DEC-072 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
@@ -3343,6 +3409,7 @@ Maintain unresolved material questions here until resolved.
 | PENDING-014 | Chesterfield lateral programme terms    | Open     | Before stating its coverage            |
 | PENDING-015 | Housing-age figures vs primary Census   | Open     | Before publishing any housing stat     |
 | PENDING-016 | Three withheld marketing claims         | Open     | Before republishing any of them        |
+| PENDING-017 | Market-scoped header contact            | Open     | If a market-aware layout is introduced |
 
 ## Open Proposals
 

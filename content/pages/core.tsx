@@ -5,15 +5,18 @@
  *            docs/18-design-system.md §110, §118
  *            docs/01-business-brand-foundation.md §3, §35
  *
- * ⚠ `/contact/` carries no phone number, address, email, or form.
- * None is documented (verified at step 8) and PENDING-008 leaves form
- * fields undecided. 01 §35 and CLAUDE.md §23 make omission the correct
- * state — the page says plainly that contact details are not yet
- * published rather than showing a fabricated one.
+ * `/contact/` lists St. Louis and San Diego SEPARATELY. They publish
+ * different numbers, different hours, and different founding years
+ * (DEC-070, DEC-071), and 01 §20 forbids copying business facts between
+ * markets — a single merged block would be wrong, not merely tidy.
  *
- * ⚠ `/about/` asserts no years in business, staff count, volume,
- * licensing, or certification. All appear in 01 §35's list of claims
- * requiring documented evidence, and none is documented.
+ * Still no street address and no form: none is published for any market
+ * (15 §11), and PENDING-008 leaves form fields undecided.
+ *
+ * ⚠ `/about/` asserts no staff count, volume, licensing, or
+ * certification, and no "years of experience" figure. 01 §35 lists all
+ * of those among claims requiring documented evidence. The founding
+ * year is published and used; a derived experience claim is not.
  */
 
 import type {
