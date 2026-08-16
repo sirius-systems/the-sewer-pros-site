@@ -144,6 +144,17 @@ The preferred design direction is:
 
 The interface should feel engineered rather than decorated.
 
+That standard is governed by four pillars:
+
+```text
+Documentary — real equipment, real footage, real conditions; never staged or synthetic
+Editorial — strong typography, asymmetric composition, intentional whitespace
+Technical — diagrams, inspection data, process, evidence
+Conversional — clear next steps, contextual CTAs, low friction, no pressure
+```
+
+The site should feel photographed, documented, edited, and engineered — not generated. Appendix A (Composition Pattern Vocabulary) and Appendix B (Human-Designed / Anti-AI Visual Standard) operationalize this standard at the section-build and design-QA level.
+
 ---
 
 # 5. Design Principles
@@ -195,6 +206,17 @@ Do not visually resemble a generic multi-trade home-services company.
 ## 5.5 Conversion Without Pressure
 
 Calls to action should be easy to find without overwhelming the page.
+
+---
+
+## 5.6 Composition Over Componentry
+
+Cards are an organizational tool, not the default layout. A page built entirely from card grids is the single strongest visual signal of a templated or AI-generated site, regardless of how restrained the individual card styling is.
+
+* Do not force an item count into a grid it doesn't divide evenly into (five services in a three-column grid, an orphaned row) — use a scannable index, an uneven mosaic that gives the flagship item more space, or a different pattern entirely.
+* Vary composition pattern and density between adjacent sections. See Appendix A for the named pattern vocabulary.
+* Centered composition is the exception, not the default — reserve it for short, deliberate statements (a hero headline, a pull quote). Left-align long-form content, lists, and paragraph text.
+* Favor asymmetry over perfect balance where content genuinely isn't equal weight: uneven column splits, offset imagery, varying content widths.
 
 ---
 
@@ -776,6 +798,10 @@ Potential imagery includes:
 
 This should become a major recurring visual theme.
 
+## Condition Library Module
+
+The strongest use of this imagery is structural, not decorative: a recurring module that pairs one real (or representative) inspection frame with a plain-language explanation of one condition — root intrusion, heavy buildup, offset joint, standing water, and similar. Each entry demonstrates expertise directly rather than claiming it. This module should become ownable to The Sewer Pros; label example footage clearly (e.g. "Example inspection footage — residential sewer lateral") and never imply a specific frame belongs to a specific customer's job unless it does.
+
 ---
 
 # 32. Before-and-After Imagery
@@ -1158,6 +1184,8 @@ Cards may support:
 * related content
 
 Card designs should be consistent but not identical across every content type.
+
+Cards are one pattern among many, not the default. Before placing a section in a card grid, check whether an editorial split, a scannable index, a mosaic, or a full-bleed image break (see Appendix A) fits the content's actual shape better. A page family that uses cards for every list-like section is the pattern to avoid.
 
 ---
 
@@ -2143,6 +2171,8 @@ with only token substitutions.
 
 Layouts should vary where content warrants it while remaining within the same design system.
 
+This applies within a single page, not only across pages. A long page where every section shares the same density and visual weight reads as flat and templated even if the page-family structure is correct. Vary density (sparse / standard / dense) between adjacent sections so the page has rhythm, and reserve the strongest visual treatment on the page for the final conversion moment rather than repeating the hero's weight throughout. See Appendix A for the density system and Appendix B for the full checklist.
+
 ---
 
 # 109. Page Family Visual Identity
@@ -2977,6 +3007,13 @@ A page should be revised if it:
 * uses decorative imagery unrelated to the service
 * sacrifices mobile usability for desktop aesthetics
 * contains excessive animation
+* uses a card grid as the default for every list-like section, including where item counts don't divide evenly
+* keeps the same density and visual weight across every section on a page (no rhythm, nothing reads as the strongest moment)
+* centers long-form or paragraph text
+* renders the same CTA (e.g. the primary "Schedule an Inspection" action) with different button styles depending on where it appears on the page
+* could be mistaken for a generic SaaS landing page or a template with the copy swapped in
+
+See Appendix B for the full Human-Designed / Anti-AI Visual Standard this list is drawn from.
 
 ---
 
@@ -3101,3 +3138,90 @@ The visual design should support the same promise as the business positioning:
 The governing design standard is:
 
 > **The Sewer Pros website should feel like a specialized, technically capable, independent sewer diagnostics company—using clean modern design, strong information hierarchy, real service imagery, restrained visual language, accessible components, and clear conversion paths without resorting to generic plumbing aesthetics, fake local signals, excessive urgency, or repair-driven visual positioning.**
+
+---
+
+# Appendix A. Composition Pattern Vocabulary
+
+This appendix gives Section 107's page-section names (Hero, Process, Proof, FAQ, CTA, etc.) an actual *shape*, so a section is assigned a deliberate pattern instead of defaulting to a card grid. Use it alongside Sections 50, 106–109. Not a checklist to fill — pick the pattern whose shape matches what the content actually is.
+
+## Hero patterns
+
+* **Editorial hero** — headline + subhead only, no image. Use when the copy is confident enough to carry the section alone.
+* **Split hero** — headline/subhead on one side, a real supporting image on the other. The default for Homepage and Service Hero per Sections 38–39.
+* **Image-led hero** — full-bleed image with a smaller text block. Use only when the visual itself is the strongest asset.
+
+## Trust / proof
+
+* **Metric strip / credential strip** — a thin horizontal band, low visual weight. Not a card grid.
+* **Proof wall** — many short quotes, compact.
+* **Testimonial feature** — one quote given real visual weight, used when that quote does different work than the others (e.g. a commercial credibility signal among residential reviews).
+
+## Editorial / explanatory
+
+* **Editorial split** — narrow text column beside an image. Good for a "why us" or differentiator section with one clear idea.
+* **Editorial stack** — narrow text column alone, no card or border, full-bleed or contrasting background behind it. Use for content that should read like writing, not marketing copy in a box — this is the pattern for Section 5.6's "no floating cards" plain sections.
+* **Image break** — full-width image between two content-dense sections, no text. A rhythm device, not decoration.
+
+## Grids and lists (see Section 51's card guardrail first)
+
+* **Service/feature index** — a scannable list (numbered, iconed, or plain) instead of a grid. Use when item count doesn't divide evenly or items vary in length — the default for Services when there are 4, 5, or 7 items rather than a clean 3 or 6.
+* **Service mosaic** — a deliberately uneven grid where the flagship item (Sewer Camera Inspection) gets more visual space than supporting services.
+* **Service/feature grid** — even grid, equal weight. Only when items genuinely are equal weight and the count divides cleanly.
+
+## Process / sequence
+
+* **Numbered process** — simple vertical numbered steps, as in Section 65. Can run with no cards, no icons, no gradient — see 5.6.
+* **Sticky process** — steps reveal against a fixed image/diagram while text scrolls past. Reserve for a process genuinely worth walking through slowly (e.g. the full Inspect → Understand → Decide arc on the homepage), not a generic 3-step list.
+
+## Comparison / data
+
+* **Comparison table** — literal table, better than cards once there are more than ~4 comparison dimensions.
+* **Feature matrix** — checkmarks/values across features × options.
+
+## Conversion (extends Section 62)
+
+* **Conversion band** — thin, high-contrast strip with a single CTA, used mid-page after a relevant argument has been made.
+* **Conversion panel** — the strongest visual treatment on the page, for the final conversion moment.
+* **Conversion split** — CTA beside supporting proof or a testimonial, used when social proof should reinforce the ask directly.
+
+## Density system
+
+Every section gets one of three densities, and the point is variation down the page:
+
+* **Sparse** — generous whitespace. Hero, major positioning statements, final CTA.
+* **Standard** — balanced whitespace. Explanatory content, services, process.
+* **Dense** — tighter spacing, more per viewport. Comparisons, specifications, FAQs — this is what keeps long service/location pages from feeling padded, and what makes the sparse sections feel intentional by contrast.
+
+## Asymmetric column system (extends Section 21)
+
+Prefer uneven splits (roughly 7/5 or 5/7) over a perfectly even 6/6 when one side of a section is genuinely primary — an even split reads as templated even when the content itself is left-aligned.
+
+---
+
+# Appendix B. Human-Designed / Anti-AI Visual Standard
+
+A judgment-based review to run once per page against the *rendered* result — after Claude Code has built the page, not as an automated pre-build gate, since most of these are design judgment calls rather than binary checks. Pairs with Sections 154–155. Present findings as fixes to make, not a score.
+
+## Check the rendered page for
+
+* More than two consecutive card-grid sections
+* A grid that forces an item count it doesn't divide into evenly
+* The same two-column layout repeated more than twice in a row
+* Long-form or paragraph text that's centered
+* Flat density — no section reads as sparser or denser than its neighbors, nothing reads as the page's strongest moment
+* The same CTA rendered with different button styles depending on where it sits on the page
+* Icons used as decoration next to text that already communicates the idea on its own
+* Gradients, glows, or decorative shapes with no compositional purpose tied to the brand
+* Photography that reads as staged, synthetic, or generic stock rather than real equipment/footage (Sections 28–34)
+* A page that could be mistaken for a generic SaaS landing page or another local-service business with the copy swapped
+* Generic conversion language ("Get Started Today," "Trusted Professionals," "Hassle-Free Service") in place of the specific, outcome-stated labels in Section 47
+* A CTA appearing after every section rather than at moments of rising intent (Section 106)
+
+## What "authentic" means for imagery specifically
+
+The target is *unstaged*, not *unpolished*. Real, professionally maintained equipment photographed in genuine use is correct; equipment that reads as neglected or a site that reads as low-production-value contradicts Section 3's "should not feel cheap." Don't sanitize the subject matter into a product render, and don't overcorrect into looking unmaintained — both are a miss.
+
+## If several checks fail
+
+Revise the specific section against Appendix A's pattern vocabulary rather than a full-page redesign — this is the same targeted-fix approach as Section 155's failure conditions, applied at the rendered-page stage instead of the spec stage.
