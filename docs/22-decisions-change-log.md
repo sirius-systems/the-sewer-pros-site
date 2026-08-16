@@ -3076,7 +3076,72 @@ Correct `09` §57 to match §10, or state why the type intentionally narrows the
 
 ---
 
-## DEC-069 — Reserved for Next Approved Decision
+## DEC-069 — Composition and Anti-Template Visual Standard
+
+**Date:** 2026-08-15
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `18-design-system.md` §4, §5.6, §31, §50, §108, §155, Appendix A, Appendix B
+* `17-conversion-architecture.md` §288 (CTA label conformance)
+* `02-nextjs-technical-architecture.md` §103 steps 17-19
+
+### Decision
+
+The design system adopts a composition layer governing **how sections are shaped**, not only how components are styled, plus a rendered-page review standard.
+
+Added to `18-design-system.md`:
+
+* §4 — four governing pillars: Documentary, Editorial, Technical, Conversional
+* §5.6 — Composition Over Componentry: cards are not the default layout
+* §31 — Condition Library Module
+* §50 — card guardrail
+* §108 — within-page density and rhythm
+* §155 — five additional failure conditions
+* Appendix A — Composition Pattern Vocabulary, giving §107's section names actual shapes, plus a sparse/standard/dense density system
+* Appendix B — Human-Designed / Anti-AI Visual Standard, run against the rendered page after build
+
+### Reason
+
+The document previously specified components, tokens, imagery, and page-family section *lists*, but never the **shape** a section should take. That gap defaults every list-like section to a card grid, which §5.6 identifies as the single strongest visual signal of a templated or AI-generated site.
+
+The gap was not theoretical. `04-master-page-build-list.md` §5 approves 10 core and high-intent service pages. Ten items in the three-column grid implied by §99 renders as 3+3+3+1 — precisely the orphaned row §5.6 now prohibits. Without Appendix A the services hub had no specified alternative.
+
+Appendix B is deliberately a **post-build judgement review, not a pre-build automated gate**, because the checks are design judgements rather than binary conditions.
+
+### Previous State
+
+Component-level and token-level guidance only. Section shape unspecified. No rendered-page design review. No stated position on card grids as a default.
+
+### New State
+
+Every section is assigned a deliberate pattern and one of three densities. Cards are one pattern among many. Appendix B runs once per page against the rendered result.
+
+Four internal inconsistencies introduced by the update were corrected in the same pass:
+
+1. Appendix A pointed at §51 (*Service Cards*) for the card guardrail, which lives in §50 (*Card System*). Corrected to §50.
+2. Appendix A attributed the phrase "no floating cards" to §5.6; the phrase is §25's ("dramatic floating cards"). Rewritten to cite both sections for their actual content.
+3. Appendix A's "no cards, no icons, no gradient — see 5.6" cited one section for three rules. Icons are §27, gradients are Appendix B. Corrected.
+4. §38, §39, and §155 used the CTA label "Schedule an Inspection", which is **not** among the approved conversion concepts in `17` §288. Since §155 and Appendix B now add a CTA-consistency check, the document would have enforced a non-approved string. All three aligned to "Schedule a Sewer Inspection".
+
+### Implementation Impact
+
+* Section components must accept a composition pattern and a density, not only content — this shapes build sequence steps 18 and 19.
+* The services hub must use an index or mosaic rather than an even grid.
+* Appendix B becomes a QA step after each page family is built.
+* Fix 4 aligns example copy with `17` §288 but does **not** resolve PENDING-007. The global primary CTA wording remains open; if PENDING-007 selects different wording, §38, §39, §155, and Appendix B update together.
+* Largely independent of PENDING-005, PENDING-006, and DEC-064 — composition and density guidance is palette- and typography-agnostic, so this layer is implementable before visual identity resolves.
+
+### Follow-Up
+
+* Resolve PENDING-007 before conversion components are built.
+* `18` §107 names a section "Audience Cards" and §156 lists five card types among launch priorities. Both encode the card *shape* into the section *identity*, which is the defaulting Appendix A exists to prevent. Consider renaming to shape-neutral section names. Not corrected here — the naming predates this decision and changing it touches the launch priority list.
+
+---
+
+## DEC-070 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**

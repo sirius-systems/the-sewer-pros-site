@@ -921,7 +921,7 @@ Know What Is Happening Inside the Sewer Line.
 Supporting copy:
 Inspection, diagnostics, locating, and cleaning across St. Louis, San Diego, and Las Vegas without repair-driven upselling.
 
-[Schedule an Inspection]
+[Schedule a Sewer Inspection]
 [Call The Sewer Pros]
 ```
 
@@ -940,7 +940,7 @@ Sewer Camera Inspection
 
 See visible conditions inside the sewer line before making major repair, cleaning, or property decisions.
 
-[Schedule an Inspection]
+[Schedule a Sewer Inspection]
 ```
 
 Avoid large generic marketing slogans that obscure search intent.
@@ -3010,7 +3010,7 @@ A page should be revised if it:
 * uses a card grid as the default for every list-like section, including where item counts don't divide evenly
 * keeps the same density and visual weight across every section on a page (no rhythm, nothing reads as the strongest moment)
 * centers long-form or paragraph text
-* renders the same CTA (e.g. the primary "Schedule an Inspection" action) with different button styles depending on where it appears on the page
+* renders the same CTA (e.g. the primary "Schedule a Sewer Inspection" action) with different button styles depending on where it appears on the page
 * could be mistaken for a generic SaaS landing page or a template with the copy swapped in
 
 See Appendix B for the full Human-Designed / Anti-AI Visual Standard this list is drawn from.
@@ -3160,10 +3160,10 @@ This appendix gives Section 107's page-section names (Hero, Process, Proof, FAQ,
 ## Editorial / explanatory
 
 * **Editorial split** — narrow text column beside an image. Good for a "why us" or differentiator section with one clear idea.
-* **Editorial stack** — narrow text column alone, no card or border, full-bleed or contrasting background behind it. Use for content that should read like writing, not marketing copy in a box — this is the pattern for Section 5.6's "no floating cards" plain sections.
+* **Editorial stack** — narrow text column alone, no card or border, full-bleed or contrasting background behind it. Use for content that should read like writing, not marketing copy in a box — this is the pattern for the plain, un-carded sections Section 5.6 calls for, without the "dramatic floating cards" treatment Section 25 warns against.
 * **Image break** — full-width image between two content-dense sections, no text. A rhythm device, not decoration.
 
-## Grids and lists (see Section 51's card guardrail first)
+## Grids and lists (see Section 50's card guardrail first)
 
 * **Service/feature index** — a scannable list (numbered, iconed, or plain) instead of a grid. Use when item count doesn't divide evenly or items vary in length — the default for Services when there are 4, 5, or 7 items rather than a clean 3 or 6.
 * **Service mosaic** — a deliberately uneven grid where the flagship item (Sewer Camera Inspection) gets more visual space than supporting services.
@@ -3171,7 +3171,7 @@ This appendix gives Section 107's page-section names (Hero, Process, Proof, FAQ,
 
 ## Process / sequence
 
-* **Numbered process** — simple vertical numbered steps, as in Section 65. Can run with no cards, no icons, no gradient — see 5.6.
+* **Numbered process** — simple vertical numbered steps, as in Section 65. Can run with no cards (Section 5.6), no decorative icons (Section 27), and no gradient (Appendix B).
 * **Sticky process** — steps reveal against a fixed image/diagram while text scrolls past. Reserve for a process genuinely worth walking through slowly (e.g. the full Inspect → Understand → Decide arc on the homepage), not a generic 3-step list.
 
 ## Comparison / data
