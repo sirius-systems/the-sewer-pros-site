@@ -435,7 +435,10 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           </li>
           <li>Monday to Friday, 8:00am to 4:00pm. Closed weekends.</li>
         </ul>
-        <p>Serving San Diego County, California.</p>
+        <p>
+          Working across San Diego, San Marcos, Carlsbad, Escondido,
+          Oceanside, Chula Vista, and Mission Valley.
+        </p>
 
         <h2>Why there is no address here</h2>
         <p>

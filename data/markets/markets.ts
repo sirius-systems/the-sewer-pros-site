@@ -170,8 +170,22 @@ export interface MarketOperatingDetail {
   hours: string
   /** 0 where the market has no operating history to state (Las Vegas). */
   foundingYear: number
-  /** Service area exactly as that market publishes it. */
+  /**
+   * The market's service area.
+   *
+   * ⚠ Read `serviceAreaSource` before treating this as a business
+   * statement. Only St. Louis publishes one; the others are derived
+   * from the approved page registry, which is a description of where
+   * pages exist rather than a claim the business has made.
+   */
   serviceArea: string
+  /**
+   * `published` — stated by the business on its own site.
+   * `derived_from_approved_locations` — assembled from the locations
+   *   doc 04 approves for that market. Accurate about coverage, but
+   *   NOT a business claim, and must not be presented as one.
+   */
+  serviceAreaSource: 'published' | 'derived_from_approved_locations'
 }
 
 export const marketOperatingDetail: Partial<
@@ -184,13 +198,24 @@ export const marketOperatingDetail: Partial<
     foundingYear: 2011,
     serviceArea:
       'St. Louis County, St. Charles County, Jefferson County, MO, and surrounding areas',
+    /** thesewerpros.com/contact and /about — DEC-070. */
+    serviceAreaSource: 'published',
   },
   'san-diego-ca': {
     phone: '(858) 257-2888',
     phoneE164: '+1-858-257-2888',
     hours: 'Monday to Friday, 8:00am – 4:00pm',
     foundingYear: 2015,
-    serviceArea: 'San Diego County, CA',
+    /**
+     * Derived from the seven approved San Diego locations (doc 04
+     * §10.2, §11, §13). thesewerprossd.com publishes phone, hours, and
+     * a founding year but NO service area — an earlier value of
+     * "San Diego County, CA" was inference, not a published fact, and
+     * has been corrected (DEC-077).
+     */
+    serviceArea:
+      'San Diego, San Marcos, Carlsbad, Escondido, Oceanside, Chula Vista, and Mission Valley',
+    serviceAreaSource: 'derived_from_approved_locations',
   },
   /**
    * ⚠ Owner-confirmed rather than site-sourced (DEC-073). No Las Vegas
@@ -205,7 +230,14 @@ export const marketOperatingDetail: Partial<
     phoneE164: '+1-725-292-4030',
     hours: 'Monday to Friday, 8:00am – 4:00pm',
     foundingYear: 0,
-    serviceArea: 'Las Vegas Valley, NV',
+    /**
+     * Derived from the four approved Las Vegas locations (doc 04
+     * §10.3, §14). The owner supplied phone, email, and hours but
+     * explicitly NOT a service area — an earlier value of "Las Vegas
+     * Valley, NV" was inference and has been corrected (DEC-077).
+     */
+    serviceArea: 'Las Vegas, Henderson, North Las Vegas, and Summerlin',
+    serviceAreaSource: 'derived_from_approved_locations',
   },
 }
 

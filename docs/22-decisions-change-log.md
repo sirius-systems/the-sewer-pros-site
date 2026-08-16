@@ -2007,14 +2007,23 @@ Confirm the eight release criteria in DEC-063 before promoting any Las Vegas pag
 
 | # | Criterion | Status |
 | - | --------- | ------ |
-| 1 | Active operational coverage | ✅ DEC-074 |
-| 2 | Services actually offered | ✅ DEC-075, superseded by DEC-076 (17/18; 18th is St. Louis-specific) |
-| 3 | Contact routing functional | ⚠️ Untested |
-| 4 | Service-request handling | ⚠️ PENDING-008 |
-| 5 | Geographic coverage confirmed | ⚠️ No service area supplied |
-| 6 | Market business facts verified | ⚠️ DEC-073; licence outstanding |
-| 7 | Licensing satisfied | ❌ Unconfirmed |
+| 1 | Active operational coverage | ✅ DEC-074 — owner reports operational |
+| 2 | Services actually offered | ✅ DEC-076 — 17/18; the 18th is St. Louis-specific, not a gap |
+| 3 | Contact routing functional | ❌ **Untested.** Nobody has dialled (725) 292-4030 or emailed the booking address to confirm they reach the business |
+| 4 | Service-request handling | ❌ **No mechanism exists.** No form is built; PENDING-008 leaves its fields undecided |
+| 5 | Geographic coverage confirmed | ✅ The four approved Las Vegas locations define it (DEC-077) |
+| 6 | Market business facts verified | ✅ DEC-073 — phone, email, hours |
+| 7 | Licensing satisfied | ⚠️ Owner states licence numbers are not published, which implies licences exist. Not an explicit confirmation that Nevada requirements are met |
 | 8 | Public messaging accurate | ✅ DEC-074 |
+
+**Two criteria block promotion, and both are implementation work rather than open business questions:**
+
+* **3 — routing.** A page that invites a call must reach someone. This needs one test call and one test email, which nobody has run.
+* **4 — request handling.** There is no form on any page in any market. PENDING-008 must resolve before a page can promise a request path.
+
+Criterion 7 sits between: "do not publish the number" implies numbers exist, which is reasonable but is not the same as confirming Nevada requirements are satisfied. Recorded rather than resolved.
+
+⚠ Promotion remains a doc 04 change plus a decision entry (DEC-063). Nothing in the implementation promotes a page on its own.
 
 **Currently gated:**
 
@@ -3710,7 +3719,59 @@ The five Las Vegas pages stay `launch_pending_validation`. Verified after this c
 
 ---
 
-## DEC-077 — Reserved for Next Approved Decision
+## DEC-077 — Service Areas Corrected; Two Were Inferred, Not Published
+
+**Date:** 2026-08-17
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `01-business-brand-foundation.md` §20, §35
+* `02-nextjs-technical-architecture.md` §55
+* `data/markets/markets.ts`, `content/pages/core.tsx`
+
+### Decision
+
+Market service areas now record their provenance. Two values that had been written as business facts were inferences and have been replaced.
+
+| Market | Value | Source |
+| ------ | ----- | ------ |
+| St. Louis | St. Louis, St. Charles, Jefferson counties, MO, and surrounding areas | **Published** on thesewerpros.com |
+| San Diego | San Diego, San Marcos, Carlsbad, Escondido, Oceanside, Chula Vista, Mission Valley | **Derived** from doc 04's approved locations |
+| Las Vegas | Las Vegas, Henderson, North Las Vegas, Summerlin | **Derived** from doc 04's approved locations |
+
+### Reason
+
+This corrects an error introduced during implementation, not a business decision.
+
+`'San Diego County, CA'` and `'Las Vegas Valley, NV'` were written into the market registry as though published. Neither was. thesewerprossd.com publishes phone, hours, and a founding year but states no service area, and the Las Vegas research lists service area explicitly as **not supplied**. Both strings were plausible inference — which is precisely what 01 §35 and CLAUDE.md §23 prohibit, and plausibility is what makes that kind of value hard to notice.
+
+One had reached rendered output: `/contact/` stated "Serving San Diego County, California."
+
+The replacements are grounded in the approved page registry, which is a verifiable statement about where the business has approved pages. `serviceAreaSource` marks that distinction in the type so the two can never again be read as equivalent.
+
+### Previous State
+
+Three service areas, presented alike. One published, two inferred, with nothing recording which was which.
+
+### New State
+
+Provenance is explicit. Derived values describe coverage; they are not business claims and must not be presented as such.
+
+### Implementation Impact
+
+* `MarketOperatingDetail` gains `serviceAreaSource`
+* `/contact/` lists the approved San Diego locations instead of asserting a county
+* Market hub eyebrows ("San Diego County, California") are unchanged — those label the page's geography rather than claiming coverage
+
+### Follow-Up
+
+If the business publishes or states a service area for San Diego or Las Vegas, replace the derived value and set `serviceAreaSource: 'published'`.
+
+---
+
+## DEC-078 — Reserved for Next Approved Decision
 
 **Date:**
 **Status:**
