@@ -50,6 +50,9 @@ export const homeContent: HomePageContent = {
       </p>
     ),
   },
+  seoTitle: 'Sewer Camera Inspection, Diagnostics & Cleaning | The Sewer Pros',
+  metaDescription:
+    'Independent sewer camera inspection, diagnostics, locating, and cleaning in St. Louis, San Diego, and Las Vegas. See the condition of the line before you decide what to do next.',
   services: [
     {
       pageId: id('svc-sewer-camera-inspection'),
@@ -126,6 +129,38 @@ export const homeContent: HomePageContent = {
           Not necessarily. One slow fixture is often a local branch issue.
           Several fixtures draining slowly, or repeated backups, is more reason
           to look at the main line.
+        </p>
+      ),
+    },
+    {
+      question: 'How much does a sewer inspection cost?',
+      answer: (
+        <p>
+          Cost depends on the length and accessibility of the line, whether a
+          cleanout is available, and the market you&rsquo;re in. We don&rsquo;t
+          publish a flat rate because those factors vary by property. Contact us
+          for an estimate specific to your line.
+        </p>
+      ),
+    },
+    {
+      question: 'Do you serve my area?',
+      answer: (
+        <p>
+          We work across the St. Louis, San Diego, and Las Vegas metro areas as
+          a service-area business: we travel to you rather than operating from a
+          public storefront. Check our locations page for specific coverage.
+        </p>
+      ),
+    },
+    {
+      question: 'What is the difference between an inspection and cleaning?',
+      answer: (
+        <p>
+          An inspection documents the condition of the line with a camera.
+          Cleaning removes what has accumulated inside it. They are often done
+          together, but they answer different questions: inspection tells you
+          what is wrong, cleaning restores flow.
         </p>
       ),
     },
