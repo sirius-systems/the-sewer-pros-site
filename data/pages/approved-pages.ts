@@ -27,7 +27,12 @@
  *    -1 phase_2      (`svc-independent-sewer-second-opinion`, §9,
  *                     approved but NOT part of the launch build)
  *   ---
- *    70 launch records = 65 indexable + 5 launch_pending_validation
+ *    70 launch records, all 70 indexable
+ *
+ * The five Las Vegas records were `launch_pending_validation` until
+ * DEC-080 released DEC-063's indexation gate. No record is gated now,
+ * so `gatedPages` is empty and no record carries a
+ * `validationCondition`.
  *
  * Page-family counts match 04 §5 exactly: 9 core/hub, 10 service,
  * 3 market, 16 location, 14 service+location, 6 audience,
@@ -290,12 +295,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     name: 'Las Vegas, NV Sewer Services',
     pageType: 'market',
     pathname: toPathname('/las-vegas-nv/'),
-    status: 'launch_pending_validation',
-    indexable: false,
+    status: 'launch',
+    indexable: true,
     marketId: 'las-vegas-nv',
     parentId: 'hub-locations' as PageId,
-    validationCondition:
-      'Las Vegas operational service availability must be confirmed (PENDING-012, DEC-063).',
   },
   {
     id: 'loc-stl-st-louis-city' as PageId,
@@ -434,52 +437,44 @@ export const approvedPages: readonly MasterPageRecord[] = [
     name: 'Las Vegas',
     pageType: 'location',
     pathname: toPathname('/las-vegas-nv/las-vegas/'),
-    status: 'launch_pending_validation',
-    indexable: false,
+    status: 'launch',
+    indexable: true,
     marketId: 'las-vegas-nv',
     locationId: 'loc-lv-las-vegas' as LocationId,
     parentId: 'market-las-vegas-nv' as PageId,
-    validationCondition:
-      'Las Vegas operational service availability must be confirmed (PENDING-012, DEC-063).',
   },
   {
     id: 'loc-lv-henderson' as PageId,
     name: 'Henderson',
     pageType: 'location',
     pathname: toPathname('/las-vegas-nv/henderson/'),
-    status: 'launch_pending_validation',
-    indexable: false,
+    status: 'launch',
+    indexable: true,
     marketId: 'las-vegas-nv',
     locationId: 'loc-lv-henderson' as LocationId,
     parentId: 'market-las-vegas-nv' as PageId,
-    validationCondition:
-      'Las Vegas operational service availability must be confirmed (PENDING-012, DEC-063).',
   },
   {
     id: 'loc-lv-north-las-vegas' as PageId,
     name: 'North Las Vegas',
     pageType: 'location',
     pathname: toPathname('/las-vegas-nv/north-las-vegas/'),
-    status: 'launch_pending_validation',
-    indexable: false,
+    status: 'launch',
+    indexable: true,
     marketId: 'las-vegas-nv',
     locationId: 'loc-lv-north-las-vegas' as LocationId,
     parentId: 'market-las-vegas-nv' as PageId,
-    validationCondition:
-      'Las Vegas operational service availability must be confirmed (PENDING-012, DEC-063).',
   },
   {
     id: 'loc-lv-summerlin' as PageId,
     name: 'Summerlin',
     pageType: 'location',
     pathname: toPathname('/las-vegas-nv/summerlin/'),
-    status: 'launch_pending_validation',
-    indexable: false,
+    status: 'launch',
+    indexable: true,
     marketId: 'las-vegas-nv',
     locationId: 'loc-lv-summerlin' as LocationId,
     parentId: 'market-las-vegas-nv' as PageId,
-    validationCondition:
-      'Las Vegas operational service availability must be confirmed (PENDING-012, DEC-063).',
   },
   {
     id: 'sl-stl-city-camera' as PageId,

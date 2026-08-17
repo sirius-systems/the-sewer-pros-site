@@ -1,31 +1,29 @@
 /**
- * Las Vegas market content — 5 GATED pages.
+ * Las Vegas market content — 5 live pages.
  *
  * Authority: docs/04-master-page-build-list.md §10.3, §14
- *            docs/22-decisions-change-log.md DEC-063, PENDING-012, DEC-073
+ *            docs/22-decisions-change-log.md DEC-080, DEC-063, DEC-073
  *            docs/14-content-specification.md §40, §42, §79
  *            CLAUDE.md §30, §73
  *            Las Vegas Market Research, 2026-08-16 / 2026-08-17
  *
  * ===========================================================================
- * ⚠ THESE PAGES ARE BUILT AND ROUTABLE BUT MUST NOT BE INDEXED
+ * INDEXATION GATE RELEASED — DEC-080
  * ===========================================================================
- * All five carry `launch_pending_validation`. They are excluded from the
- * sitemap, from navigation, and from every indexable link module by the
- * approved page registry — automatically, not by convention.
+ * All five pages carry `status: 'launch'` and `indexable: true`. They
+ * appear in the sitemap, in navigation, and in indexable link modules
+ * automatically, because those systems read the approved page registry
+ * rather than a hardcoded market list.
  *
- * DEC-063's gate is released by PENDING-012 resolving on its own
- * criteria: operational confirmation of the market's SERVICE MENU.
+ * DEC-063 held these pages back until its eight release criteria were
+ * satisfied. DEC-080 (2026-08-17) records that they are, and promoted
+ * the five records.
  *
- * It is NOT released by any of the following, all of which are now true:
- *   - the research being complete
- *   - the market being "currently launching"
- *   - contact information being confirmed
- *
- * Content readiness has advanced faster than the indexation decision,
- * which makes this the easiest point in the project to conflate the two.
- * A reachable phone number is evidence the business is real. It is not
- * evidence that a service menu is operationally confirmed.
+ * ⚠ Criterion 7 — Nevada licensing — is satisfied by the owner's
+ * PRIVATE confirmation, recorded in `22-decisions-change-log.md` only.
+ * No licensing claim appears on any page, and none should be added.
+ * DEC-072's stance is unchanged: licence numbers are not published.
+ * The confirmation lives in governance; it is not site copy.
  *
  * ---------------------------------------------------------------------------
  * ⚠ "OPERATIONAL", NEVER "ESTABLISHED"
@@ -33,23 +31,22 @@
  * The owner updated Las Vegas from "currently launching" to
  * "operational" on 2026-08-17 (DEC-074). The copy reflects that.
  *
- * What it does NOT license is a track record. 01 §20 forbids importing
- * another market's facts — St. Louis's 2011 founding and San Diego's
- * 2015 stay where they belong — so no page below claims years of local
- * service, local volume, or a local office.
+ * Releasing the gate does NOT license a track record, and this is the
+ * easiest thing to get wrong now that the pages are indexed. 01 §20
+ * forbids importing another market's facts — St. Louis's 2011 founding
+ * and San Diego's 2015 stay where they belong — so no page below claims
+ * years of local service, local volume, review counts, or a local
+ * office. Indexation changes who sees these pages, not what the
+ * business can say on them.
  *
- * The SERVICE MENU is now confirmed too. DEC-075 (2026-08-17) records
- * the owner's confirmation that Las Vegas delivers the same set as
- * San Diego — 13 of 18 — and doc 06 and the registry were updated
- * together. Pages may state what is offered.
+ * The SERVICE MENU is confirmed. DEC-076 (2026-08-17) supersedes
+ * DEC-075's 13 of 18: Las Vegas matches San Diego at 17 of 18, the
+ * eighteenth being St. Louis lateral reporting, which is
+ * `not_applicable` here rather than a gap. No page cites a count.
  *
  * ⚠ Four commercial services remain `capability_validate_packaging` in
  * EVERY market, Las Vegas included, so commercial packaging still must
  * not be presented as an established offering (06 §43).
- *
- * ⚠ And none of this opens the indexation gate. DEC-063 criterion 7
- * (Nevada licensing) is unconfirmed, so these five pages remain
- * `launch_pending_validation`.
  *
  * ---------------------------------------------------------------------------
  * WHY THE HOUSING ANGLE IS ABSENT HERE

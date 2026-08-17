@@ -46,7 +46,11 @@ import { approvedPages } from './approved-pages'
    ========================================================================== */
 
 const EXPECTED_PAGE_COUNT = 70
-const EXPECTED_INDEXABLE_COUNT = 65
+// Was 65 while DEC-063 gated the five Las Vegas pages. DEC-080 released
+// that gate, so all 70 approved pages are indexable and `gatedPages` is
+// empty. Keep this pinned: it is the guard that catches a page becoming
+// indexable without a decision behind it (CLAUDE.md §45).
+const EXPECTED_INDEXABLE_COUNT = 70
 
 function fail(message: string): never {
   throw new Error(`Approved page registry invalid: ${message}`)
@@ -91,7 +95,7 @@ function validate(pages: readonly MasterPageRecord[]): void {
   if (indexable !== EXPECTED_INDEXABLE_COUNT) {
     fail(
       `expected ${EXPECTED_INDEXABLE_COUNT} indexable pages, found ${indexable}. ` +
-        `04 §5 and DEC-063 fix the split at 65 indexable + 5 gated.`,
+        `04 §5 and DEC-080 fix this at all 70 approved pages indexable.`,
     )
   }
 
@@ -215,8 +219,11 @@ export const indexablePages: readonly MasterPageRecord[] =
 /**
  * Pages that are built but withheld from indexing.
  *
- * Currently the five Las Vegas pages (DEC-063). Each carries a
- * `validationCondition` naming what must be confirmed.
+ * Currently EMPTY. This held the five Las Vegas pages under DEC-063
+ * until DEC-080 released that gate. The mechanism stays because the
+ * next market to launch will need it: set `launch_pending_validation`
+ * plus a `validationCondition` naming what must be confirmed, and the
+ * page routes without being indexed or linked.
  */
 export const gatedPages: readonly MasterPageRecord[] = approvedPages.filter(
   (p) => p.status === 'launch_pending_validation',

@@ -20,17 +20,16 @@
  * "indexable internal-link modules". The header and footer are exactly
  * that.
  *
- * So Las Vegas does NOT appear in navigation, even though
- * `/las-vegas-nv/` builds and is reachable. Linking to it sitewide
- * would pass it to crawlers through every page on the site, which is
- * the outcome DEC-063 exists to prevent — and the market has zero of
- * 18 services confirmed (PENDING-012), so promoting it would also imply
- * availability that has not been verified (01 §20).
+ * `assertNavigable()` enforces it: a nav entry naming a non-indexable
+ * page fails the build. `resolveLinkableOnly` handles the softer case,
+ * dropping an entry rather than breaking the footer.
  *
- * `assertNavigable()` enforces this: a nav entry naming a non-indexable
- * page fails the build. When PENDING-012 resolves and doc 04 promotes
- * those five records to `launch`, Las Vegas appears automatically with
- * no code change.
+ * ⚠ Las Vegas was excluded under DEC-063 and is now included (DEC-080).
+ * Note what that took: the filter alone was NOT enough. A market absent
+ * from the config below cannot "appear automatically" when its gate
+ * opens — filtering can only remove entries, never add them. The
+ * `market-las-vegas-nv` entry had to be written in. Any future market
+ * released from a gate needs the same explicit addition here.
  */
 
 import type { PageId } from '@/types'
@@ -124,6 +123,7 @@ export const footerNav: NavGroup[] = [
     items: [
       { pageId: id('market-st-louis-mo'), label: 'St. Louis, MO' },
       { pageId: id('market-san-diego-ca'), label: 'San Diego, CA' },
+      { pageId: id('market-las-vegas-nv'), label: 'Las Vegas, NV' },
       { pageId: id('hub-locations'), label: 'All service areas' },
     ],
   },
@@ -181,9 +181,9 @@ export function resolvePrimaryNav(): ResolvedNavItem[] {
  * a group left with nothing is omitted entirely (18 §120: "omit the
  * section entirely" rather than render an empty shell).
  *
- * This is why the footer currently shows no markets: both St. Louis and
- * San Diego are approved and indexable but await local research, and
- * Las Vegas is gated. They reappear automatically as content lands.
+ * All three markets now resolve and render: St. Louis, San Diego, and
+ * Las Vegas (DEC-080). The filter still applies to any entry whose page
+ * is unwritten or gated.
  */
 export function resolveFooterNav(): { title: string; items: ResolvedNavItem[] }[] {
   return footerNav

@@ -13,7 +13,7 @@ import { SITE_NAME, organization, contact } from '@/data/business'
  * PENDING-005 resolves; the roles are what matter here.
  *
  * ---------------------------------------------------------------------------
- * THREE DELIBERATE OMISSIONS
+ * TWO DELIBERATE OMISSIONS
  * ---------------------------------------------------------------------------
  * Contact details are the business's own published facts (DEC-070).
  * Still NO street address — none is published on the business's site,
@@ -23,11 +23,9 @@ import { SITE_NAME, organization, contact } from '@/data/business'
  * accessibility pages. None is approved in doc 04; 05 §9 lists those
  * segments as prospective, not live. Linking to them would 404.
  *
- * NO LAS VEGAS — `/las-vegas-nv/` builds and is reachable, but its
- * status is `launch_pending_validation`. 04 §4 keeps such pages out of
- * indexable internal-link modules, and a sitewide footer is the most
- * indexable link module there is. The navigation config enforces this;
- * see `data/navigation/navigation.ts`.
+ * Las Vegas WAS a third omission, held out while DEC-063 gated it.
+ * DEC-080 released that gate, and `market-las-vegas-nv` is now listed
+ * in `data/navigation/navigation.ts` alongside the other two markets.
  */
 export function SiteFooter() {
   const groups = resolveFooterNav()
