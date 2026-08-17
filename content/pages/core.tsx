@@ -340,6 +340,10 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       ),
     },
+    // No brand suffix: the root title template appends it.
+    seoTitle: 'Service Areas | St. Louis, San Diego & Las Vegas',
+    metaDescription:
+      'The Sewer Pros provides sewer and drain services across St. Louis, San Diego, and Las Vegas: service-area coverage, not branch offices.',
     body: (
       <>
         <h2>Service markets, not branches</h2>
@@ -365,6 +369,47 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       </>
     ),
+    // All three markets are declared. `ServiceIndex` resolves through
+    // `resolveLinkableOnly`, so a market whose hub is still gated drops
+    // out of this indexable module rather than emitting a link to a
+    // noindex page (04 §4). Las Vegas is gated under DEC-063 today and
+    // will appear here automatically when that gate is released.
+    items: [
+      { pageId: id('market-st-louis-mo'), description: 'Serving the St. Louis metro area.' },
+      { pageId: id('market-san-diego-ca'), description: 'Serving the San Diego metro area.' },
+      { pageId: id('market-las-vegas-nv'), description: 'Serving the Las Vegas Valley.' },
+    ],
+    faq: [
+      {
+        question: 'Do you have a local office I can visit?',
+        answer: (
+          <p>
+            No. We&rsquo;re a service-area business: work happens at your
+            property, not a storefront. See the markets listed above for where
+            we currently work.
+          </p>
+        ),
+      },
+      {
+        question: 'Do you offer emergency service?',
+        answer: (
+          <p>
+            No. We operate standard weekday hours in every market and do not
+            provide 24/7 or emergency service.
+          </p>
+        ),
+      },
+      {
+        question: 'How do I find out if you serve my area?',
+        answer: (
+          <p>
+            Check the market pages above for coverage, or contact us directly
+            with your location, and we can tell you quickly whether we are
+            currently working there.
+          </p>
+        ),
+      },
+    ],
   },
 
   [id('hub-audiences')]: {
