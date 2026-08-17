@@ -24,6 +24,10 @@
  * claims as though they covered another.
  */
 
+import Link from 'next/link'
+import type { ReactNode } from 'react'
+
+import { resolveApprovedLink } from '@/lib/links/approved-link'
 import type {
   CorePageContent,
   HomePageContent,
@@ -33,6 +37,28 @@ import type {
 } from '@/types'
 
 const id = (value: string): PageId => value as PageId
+
+/**
+ * Inline prose link to an approved page.
+ *
+ * Resolution happens at RENDER time, not module-evaluation time. This
+ * file is loaded via `content/index.ts`, which is what
+ * `approved-link.ts` reads `authoredPageIds` from — calling the
+ * resolver while this module's body is still evaluating throws
+ * "Cannot access before initialization" on that cycle.
+ *
+ * The href still comes from the registry rather than a literal, so
+ * 16 §25 and CLAUDE.md §51 hold: the link names a page, never a path.
+ */
+function ApprovedInlineLink({
+  pageId,
+  children,
+}: {
+  pageId: PageId
+  children: ReactNode
+}) {
+  return <Link href={resolveApprovedLink(pageId).href}>{children}</Link>
+}
 
 /* ==========================================================================
    Home — 18 §110, §38
@@ -191,6 +217,11 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       ),
     },
+    // No brand suffix: rootMetadata's `%s | The Sewer Pros` template
+    // appends it for every nested route (lib/seo/metadata.ts).
+    seoTitle: 'Sewer & Drain Services',
+    metaDescription:
+      'Sewer camera inspection, cleaning, hydro jetting, and line locating. Independent service without repair-driven upselling, across St. Louis, San Diego, and Las Vegas.',
     body: (
       <>
         <h2>How these services fit together</h2>
@@ -207,6 +238,56 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       </>
     ),
     items: homeContent.services,
+    faq: [
+      {
+        question: 'Which service do I need?',
+        answer: (
+          <p>
+            Start with what you&rsquo;re trying to answer. If you want to know
+            the condition of the line, start with inspection. If something
+            isn&rsquo;t draining, cleaning usually comes first. If you need to
+            know where the line runs before digging, that&rsquo;s locating.
+            Several services often combine: cleaning before inspection is
+            common, since buildup can hide what a camera would otherwise show.
+          </p>
+        ),
+      },
+      {
+        question: 'What is the difference between sewer cleaning and drain cleaning?',
+        answer: (
+          <p>
+            Drain cleaning clears an individual fixture or branch line. Sewer
+            cleaning clears the main line that carries everything away from the
+            property. A single slow drain is usually a branch issue; several
+            fixtures backing up at once more often points to the main line.
+          </p>
+        ),
+      },
+      {
+        question: 'Do you offer emergency or same-day service?',
+        answer: (
+          <p>
+            We operate Monday through Friday during standard business hours. We
+            do not offer 24/7 or emergency service.
+          </p>
+        ),
+      },
+      {
+        question: 'Do you perform sewer repairs?',
+        answer: (
+          <p>
+            No. We inspect, diagnose, locate, and clean. If a finding suggests
+            repair may be worth considering, that is a separate decision, and
+            having{' '}
+            <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
+              documented evidence from an inspection
+            </ApprovedInlineLink>{' '}
+            can be useful information to bring to that conversation, whoever
+            performs the work.
+          </p>
+        ),
+      },
+    ],
   },
 
   [id('hub-commercial')]: {
