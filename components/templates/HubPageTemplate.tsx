@@ -1,4 +1,4 @@
-import { Section, Prose, type SectionDensity } from '@/components/ui'
+import { Section, Prose, type SectionDensity, type SectionSurface } from '@/components/ui'
 import {
   Hero,
   ServiceIndex,
@@ -33,6 +33,14 @@ export interface HubPageTemplateProps {
   itemsTitle?: string
   /** Numbered rows suit an ordered family; plain suits a set. */
   numbered?: boolean
+  /**
+   * Surface for the items index.
+   *
+   * Only needed on a hub with NO faq, where the index is the last
+   * content band before the CTA and would otherwise leave the page an
+   * unbroken run of `default` surfaces. `/for/` sets this.
+   */
+  itemsSurface?: SectionSurface
 }
 
 export function HubPageTemplate({
@@ -40,6 +48,7 @@ export function HubPageTemplate({
   content,
   itemsTitle = 'In this section',
   numbered = false,
+  itemsSurface = 'default',
 }: HubPageTemplateProps) {
   const densities: SectionDensity[] = [
     'sparse',
@@ -77,10 +86,22 @@ export function HubPageTemplate({
           title={itemsTitle}
           items={content.items}
           numbered={numbered}
+          surface={itemsSurface}
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {/*
+        Muted, deliberately. A hub runs hero → body → items → faq, and
+        every one of those is a `default` surface, so the page reads as
+        an unbroken white column until the brand CTA. The FAQ is also
+        `width="reading"` while the index above it is full-width: at
+        1440px its left edge sits ~300px inside the section above, which
+        on a shared background looks like a misalignment rather than a
+        narrower measure. One surface change fixes both.
+      */}
+      {content.faq !== undefined && (
+        <FaqSection entries={content.faq} surface="muted" />
+      )}
 
       <CtaSection
         variant="panel"

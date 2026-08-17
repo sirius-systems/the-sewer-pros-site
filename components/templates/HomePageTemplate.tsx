@@ -102,7 +102,16 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         </Section>
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {/*
+        Muted for the same reason as the hubs: the home page runs
+        markets → process → faq as three consecutive `default` surfaces
+        before the brand CTA, and this section's reading measure is
+        narrower than the ones above it (HubPageTemplate carries the
+        full note).
+      */}
+      {content.faq !== undefined && (
+        <FaqSection entries={content.faq} surface="muted" />
+      )}
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
