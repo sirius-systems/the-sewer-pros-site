@@ -301,6 +301,10 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       ),
     },
+    // No brand suffix: the root title template appends it.
+    seoTitle: 'Commercial Sewer & Drain Services',
+    metaDescription:
+      'Sewer camera inspection, cleaning, hydro jetting, and maintenance for commercial properties across St. Louis, San Diego, and Las Vegas: planned service, not reactive fixes.',
     body: (
       <>
         <h2>What changes on a commercial property</h2>
@@ -322,6 +326,38 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       { pageId: id('com-hydro-jetting'), description: 'High-pressure cleaning for grease, scale, and sludge.' },
       { pageId: id('com-drain-cleaning'), description: 'Fixture and branch drains across occupied buildings.' },
       { pageId: id('com-maintenance'), description: 'Servicing lines on an evidence-based interval.' },
+    ],
+    faq: [
+      {
+        question: 'Do you serve restaurants and food-service properties?',
+        answer: (
+          <p>
+            Yes. Grease and buildup in food-service lines is one of the most
+            common reasons commercial properties need cleaning, and it is a
+            large part of what hydro jetting addresses.
+          </p>
+        ),
+      },
+      {
+        question: 'Do you offer commercial sewer repair?',
+        answer: (
+          <p>
+            No. We inspect, diagnose, locate, and clean commercial lines.
+            Where a finding suggests repair, that is a separate conversation
+            with a qualified repair contractor.
+          </p>
+        ),
+      },
+      {
+        question: 'Can you service multiple properties under one account?',
+        answer: (
+          <p>
+            Yes, scheduling across a portfolio is part of the conversation.
+            What we will not do is put every line on the same interval
+            regardless of what it actually needs.
+          </p>
+        ),
+      },
     ],
     cta: {
       title: 'Talk to us about a commercial property',
