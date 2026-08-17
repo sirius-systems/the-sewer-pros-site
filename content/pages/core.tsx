@@ -277,13 +277,13 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         answer: (
           <p>
             No. We inspect, diagnose, locate, and clean. If a finding suggests
-            repair may be worth considering, that is a separate decision, and
-            having{' '}
+            repair may be worth considering, that is a separate decision. See{' '}
             <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
-              documented evidence from an inspection
+              how an independent inspection compares to going straight to a
+              repair quote
             </ApprovedInlineLink>{' '}
-            can be useful information to bring to that conversation, whoever
-            performs the work.
+            for more on why that separation matters, whoever ends up performing
+            the work.
           </p>
         ),
       },
