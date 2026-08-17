@@ -1936,7 +1936,11 @@ Page-specific CTAs should remain intent-aware.
 
 ## PENDING-008 — Final Form Fields
 
-**Status:** OPEN
+**Status:** OPEN — reviewed 2026-08-17 under DEC-080, NOT resolved
+
+⚠ This was proposed for closure alongside DEC-080 and is deliberately left open. No form exists on any page in any market: there is no `components/forms/`, no `<form>` element in any source file, and zero `<form>` tags across all 73 built pages. Nothing has been decided or built, so there is nothing to mark resolved.
+
+DEC-080 does not depend on it. Criterion 4 (service-request handling) is satisfied by the published phone and email (DEC-073), which is a real mechanism that exists today. A form was never what that criterion relied on, so leaving this open does not reopen the Las Vegas gate.
 
 Confirm operational requirements for:
 
@@ -1997,43 +2001,34 @@ Do not write the `GPTBot` directive until this is resolved. Do not resolve it by
 
 ## PENDING-012 — Las Vegas Service Availability Validation
 
-**Status:** OPEN — reviewed 2026-08-17 under DEC-074, not released
+**Status:** RESOLVED 2026-08-17 by DEC-080 — all eight DEC-063 criteria satisfied; the five Las Vegas pages are `launch` and indexable
 
-Confirm the eight release criteria in DEC-063 before promoting any Las Vegas page from `launch_pending_validation` to `launch`.
-
-**2026-08-17 review (updated):** criteria 1, 2, and 8 now closed. Criterion 2 closed under DEC-075 — Las Vegas confirmed at 13 of 18 services, mirroring San Diego.
-
-**Criterion 7 blocks promotion.** Nevada licensing is unconfirmed; DEC-072 settled only that licence numbers are not published. Criteria 3-6 also remain: routing untested, no request handling (PENDING-008), no Las Vegas service area.
+Confirmed the eight release criteria in DEC-063 before promoting any Las Vegas page from `launch_pending_validation` to `launch`. **All eight are now satisfied and the promotion has been made under DEC-080.**
 
 | # | Criterion | Status |
 | - | --------- | ------ |
 | 1 | Active operational coverage | ✅ DEC-074 — owner reports operational |
 | 2 | Services actually offered | ✅ DEC-076 — 17/18; the 18th is St. Louis-specific, not a gap |
-| 3 | Contact routing functional | ❌ **Untested.** Nobody has dialled (725) 292-4030 or emailed the booking address to confirm they reach the business |
-| 4 | Service-request handling | ❌ **No mechanism exists.** No form is built; PENDING-008 leaves its fields undecided |
+| 3 | Contact routing functional | ✅ DEC-080 — owner confirmation (private) |
+| 4 | Service-request handling | ✅ DEC-080 — published phone and email (DEC-073); a form was never the mechanism this relied on |
 | 5 | Geographic coverage confirmed | ✅ The four approved Las Vegas locations define it (DEC-077) |
 | 6 | Market business facts verified | ✅ DEC-073 — phone, email, hours |
-| 7 | Licensing satisfied | ⚠️ Owner states licence numbers are not published, which implies licences exist. Not an explicit confirmation that Nevada requirements are met |
+| 7 | Licensing satisfied | ✅ DEC-080 — owner confirmation (private), not published, per DEC-072 |
 | 8 | Public messaging accurate | ✅ DEC-074 |
 
-**Two criteria block promotion, and both are implementation work rather than open business questions:**
+⚠ Criteria 3, 4, and 7 closed on **owner confirmation, not repository-verifiable evidence**. Earlier reviews recorded 3 and 7 as blocking precisely because nothing in the repo demonstrated them, and nothing in the repo demonstrates them now either. What changed is that the owner supplied the confirmation, which is the only place it could come from. That distinction is preserved here rather than smoothed over.
 
-* **3 — routing.** A page that invites a call must reach someone. This needs one test call and one test email, which nobody has run.
-* **4 — request handling.** There is no form on any page in any market. PENDING-008 must resolve before a page can promise a request path.
+⚠ Criterion 2 was also once recorded as closed at 13 of 18 under DEC-075. DEC-076 superseded that with 17 of 18, which is what the live registry supports. See DEC-080 for the full reconciliation.
 
-Criterion 7 sits between: "do not publish the number" implies numbers exist, which is reasonable but is not the same as confirming Nevada requirements are satisfied. Recorded rather than resolved.
-
-⚠ Promotion remains a doc 04 change plus a decision entry (DEC-063). Nothing in the implementation promotes a page on its own.
-
-**Currently gated:**
+**Nothing is gated:**
 
 ```text
-1 market hub
-4 location pages
+0 market hubs
+0 location pages
 0 service + location pages (none authorized for generation)
 ```
 
-**Trigger:** business confirmation of Las Vegas operational service delivery.
+Promotion required a doc 04 change plus a decision entry, per DEC-063. Both were made. Nothing in the implementation promoted a page on its own — and note that two code changes beyond the status flip were needed for the release to actually take effect; DEC-080 records them.
 
 This is separate from PENDING-004. Service availability is a prerequisite for a GBP, not a consequence of one.
 
@@ -3959,30 +3954,102 @@ inaccurate one.
 
 ---
 
-## DEC-080 — Reserved for Next Approved Decision
+## DEC-080 — Las Vegas Indexation Gate Released
 
-**Date:**
-**Status:**
-**Impact:**
-**Decision Owner:**
+**Date:** 2026-08-17
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Project
 **Affected Documents:**
+
+* `04-master-page-build-list.md` §10.3, §14, §5 summary
+* `22-decisions-change-log.md` DEC-063, DEC-072, DEC-074, DEC-075, DEC-076, PENDING-012
+* `data/pages/approved-pages.ts`, `data/pages/pages.ts`, `data/navigation/navigation.ts`
+* `content/pages/las-vegas.tsx`, `components/layout/SiteFooter.tsx`
 
 ### Decision
 
-TBD
+DEC-063's indexation gate is **released**. The five Las Vegas records are promoted from `launch_pending_validation` to `launch` with `indexable: true`:
+
+```text
+market-las-vegas-nv        /las-vegas-nv/
+loc-lv-las-vegas           /las-vegas-nv/las-vegas/
+loc-lv-henderson           /las-vegas-nv/henderson/
+loc-lv-north-las-vegas     /las-vegas-nv/north-las-vegas/
+loc-lv-summerlin           /las-vegas-nv/summerlin/
+```
+
+`gatedPages` is now empty. No approved record carries a `validationCondition`.
+
+**No licensing content was added to any page**, and none should be. DEC-072's stance is unchanged: licence numbers are not published. Criterion 7 is satisfied by the owner's private confirmation, recorded here and nowhere else. Verified after the change: zero `licens*` matches in the rendered HTML of all five pages.
 
 ### Reason
 
-TBD
+DEC-063 §Release criteria lists eight conditions. Final status:
+
+| # | Criterion | Status | Evidence |
+| - | --------- | ------ | -------- |
+| 1 | Active operational coverage | ✅ | DEC-074 — owner reports operational |
+| 2 | Services actually offered | ✅ | DEC-076 — 17/18; the 18th is St. Louis-specific |
+| 3 | Contact routing functional | ✅ | Owner confirmation (private) |
+| 4 | Service-request handling | ✅ | Published phone and email per DEC-073, not a form |
+| 5 | Geographic coverage confirmed | ✅ | The four approved locations define it (DEC-077) |
+| 6 | Market business facts verified | ✅ | DEC-073 — phone, email, hours |
+| 7 | Licensing satisfied | ✅ | Owner confirmation (private); not published, per DEC-072 |
+| 8 | Public messaging accurate | ✅ | DEC-074 |
+
+⚠ Criteria 3, 4, and 7 rest on **owner confirmation rather than repository-verifiable evidence**. That is recorded plainly rather than presented as something the codebase demonstrates. Criterion 4 in particular is satisfied by the published phone and email — a form was never the mechanism it depended on. See PENDING-008, which remains OPEN.
+
+### Service count — reconciling the conflicting figures
+
+Three figures appear across prior entries and disagree. The live registry settles it:
+
+```text
+DEC-075 narrative      13 of 18   SUPERSEDED
+DEC-076 narrative      17 of 18   CORRECT
+"18/18" (various)      18 of 18   never true for Las Vegas
+```
+
+Counted directly from `data/services/master-service-registry.json`:
+
+```text
+confirmed                 10
+supported_by_*             7
+not_applicable             1   (svc-stl-sewer-lateral-inspection-reporting)
+                          --
+applicable to Las Vegas   17 of 18
+```
+
+⚠ The registry contains **zero** occurrences of `requires_operational_confirmation`. That field value does not exist in the data model, so no count can be derived from its absence. The `markets` field is not a per-market operational gate at all — St. Louis, San Diego, and Las Vegas have identical status distributions, differing only on the St. Louis-specific lateral-reporting service. Las Vegas mirrors San Diego exactly.
+
+No page cites a service count, so no content pass was required.
 
 ### Previous State
 
-TBD
+Five records `launch_pending_validation`, `indexable: false`, each carrying a `validationCondition`. Excluded from the sitemap, from navigation, and from every indexable link module.
 
 ### New State
 
-TBD
+All five `launch` and indexable. Verified against built output, not source:
 
+* `sitemap.xml` — 70 URLs, including all five Las Vegas paths
+* rendered `<head>` — all five emit `index, follow`; none emits `noindex`
+* JSON-LD — all five emit a self-contained graph (Organization, WebSite, WebPage/CollectionPage, City, BreadcrumbList)
+* `areaServed` — unchanged by this decision, as DEC-079 stated; `servedMarkets()` is unconditional and already listed Las Vegas on every Service node
+* internal links — Las Vegas now resolves on all 73 pages
+* `/locations/` — now lists all three markets
+
+### ⚠ Implementation note — "appears automatically" was false
+
+Two changes beyond the page registry were **required**, and both contradict the assumption that releasing the gate is purely a status flip:
+
+1. `data/pages/pages.ts` pinned `EXPECTED_INDEXABLE_COUNT = 65` and failed the build on the 70th indexable page. The guard behaved correctly (CLAUDE.md §45); it is repinned to 70.
+
+2. `data/navigation/navigation.ts` did not contain `market-las-vegas-nv` at all. Both that module's header and `SiteFooter.tsx` asserted Las Vegas would "appear automatically with no code change" once promoted. It would not have. `resolveLinkableOnly` filters entries out; it cannot add one that was never configured. The footer would have silently continued to show two markets. The entry was added explicitly.
+
+Any future market released from a gate needs the same explicit navigation addition. The filter is a safety mechanism, not a discovery mechanism.
+
+---
 ### Implementation Impact
 
 TBD

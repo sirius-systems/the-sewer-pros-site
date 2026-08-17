@@ -301,11 +301,11 @@ The page must not imply a verified storefront or GBP that does not exist.
 
 | ID                    | Page                         | URL              | Status                      |                                    Index |
 | --------------------- | ---------------------------- | ---------------- | --------------------------- | ---------------------------------------: |
-| `market-las-vegas-nv` | Las Vegas, NV Sewer Services | `/las-vegas-nv/` | `launch_pending_validation` | No until service availability validation |
+| `market-las-vegas-nv` | Las Vegas, NV Sewer Services | `/las-vegas-nv/` | `launch` | Yes |
 
 The Las Vegas market is part of the approved architecture.
 
-However, customer-facing service claims must not be indexed until operational service availability is confirmed.
+Indexation was withheld under DEC-063 until operational service availability was confirmed. DEC-080 (2026-08-17) released that gate; this page is now `launch` and indexable.
 
 Once the market is validated, this page may be promoted to:
 
@@ -367,12 +367,12 @@ See `22-decisions-change-log.md` → **DEC-065**.
 
 | ID                       | Location        | URL                              | Status                      | Index |
 | ------------------------ | --------------- | -------------------------------- | --------------------------- | ----: |
-| `loc-lv-las-vegas`       | Las Vegas       | `/las-vegas-nv/las-vegas/`       | `launch_pending_validation` |    No |
-| `loc-lv-henderson`       | Henderson       | `/las-vegas-nv/henderson/`       | `launch_pending_validation` |    No |
-| `loc-lv-north-las-vegas` | North Las Vegas | `/las-vegas-nv/north-las-vegas/` | `launch_pending_validation` |    No |
-| `loc-lv-summerlin`       | Summerlin       | `/las-vegas-nv/summerlin/`       | `launch_pending_validation` |    No |
+| `loc-lv-las-vegas`       | Las Vegas       | `/las-vegas-nv/las-vegas/`       | `launch`                    |   Yes |
+| `loc-lv-henderson`       | Henderson       | `/las-vegas-nv/henderson/`       | `launch`                    |   Yes |
+| `loc-lv-north-las-vegas` | North Las Vegas | `/las-vegas-nv/north-las-vegas/` | `launch`                    |   Yes |
+| `loc-lv-summerlin`       | Summerlin       | `/las-vegas-nv/summerlin/`       | `launch`                    |   Yes |
 
-These four pages establish the first local architecture for Las Vegas but remain behind the service-availability gate.
+These four pages establish the first local architecture for Las Vegas. They were held behind the service-availability gate until DEC-080 released it (2026-08-17); all four are now `launch` and indexable.
 
 They may be built and QA'd but should not become indexable until market operations are confirmed.
 
@@ -1468,7 +1468,9 @@ Never simply delete an established indexed URL without migration review.
 
 Of these, the Las Vegas market hub and four Las Vegas location pages remain behind an operational validation/indexation gate.
 
-**Indexable at launch:** 65
+**Indexable at launch:** 70
+
+Was 65 while DEC-063 gated the five Las Vegas records. DEC-080 released that gate, so all 70 launch records are indexable and none is gated.
 **Built but gated (`launch_pending_validation`):** 5
 
 No Las Vegas service + location page is authorized for generation at this stage.
