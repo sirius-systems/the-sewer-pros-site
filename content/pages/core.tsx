@@ -459,6 +459,10 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       ),
     },
+    // No brand suffix: the root title template appends it.
+    seoTitle: 'Who We Serve',
+    metaDescription:
+      'Sewer inspection, diagnostics, and cleaning for home buyers, sellers, real estate agents, home inspectors, property managers, and HOA communities across St. Louis, San Diego, and Las Vegas.',
     body: (
       <>
         <h2>Different decisions, different evidence</h2>
@@ -482,6 +486,18 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       </>
     ),
+    // Plain strings, not JSX: apostrophes are literal ’ here, the
+    // convention this codebase already uses for string values
+    // (content/pages/audiences.tsx §175). `&rsquo;` is JSX-only and
+    // would render as visible markup in this position.
+    items: [
+      { pageId: id('aud-home-buyers'), description: 'Inspect the line before you commit to a property.' },
+      { pageId: id('aud-home-sellers'), description: 'Find out what a buyer’s inspection will find.' },
+      { pageId: id('aud-real-estate-agents'), description: 'Support transactions with documented findings.' },
+      { pageId: id('aud-home-inspectors'), description: 'Camera findings alongside a general inspection.' },
+      { pageId: id('aud-property-managers'), description: 'Diagnose recurring problems instead of repeating the same call.' },
+      { pageId: id('aud-hoa-communities'), description: 'Evidence a board can actually make a decision on.' },
+    ],
   },
 
   [id('hub-resources')]: {
