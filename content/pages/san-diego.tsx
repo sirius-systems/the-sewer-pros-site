@@ -63,7 +63,7 @@ const CITY_OF_SAN_DIEGO_POLICY = (
     <h2>Who owns the lateral, and what the City will not do</h2>
     <p>
       In the City of San Diego, the property owner owns the entire sewer
-      lateral — the full run from the building to the public main, not merely
+      lateral: the full run from the building to the public main, not merely
       the portion under private land.
     </p>
     <p>
@@ -91,7 +91,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     intro: (
       <p>
         Independent camera inspection, diagnostics, and cleaning for properties
-        across San Diego County — from a company that documents the condition
+        across San Diego County, from a company that documents the condition
         of the line and does not sell the repair.
       </p>
     ),
@@ -109,7 +109,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
         rather than of city name.
       </p>
       <p>
-        San Marcos, for instance, is served by the Vallecitos Water District —
+        San Marcos, for instance, is served by the Vallecitos Water District,
         an independent special district that also serves parts of Carlsbad,
         Escondido, and Vista. Chula Vista&rsquo;s sewer service comes from
         CVSan, a sanitation district distinct from the city government itself.
@@ -127,8 +127,8 @@ export const sanDiegoMarketContent: MarketPageContent = {
         replacement grant programme in Chula Vista.
       </p>
       <p>
-        Elsewhere — including the City of San Diego, Escondido, and San Marcos
-        — no such programme was found. In most of the county, a failed lateral
+        Elsewhere (including the City of San Diego, Escondido, and San Marcos)
+        no such programme was found. In most of the county, a failed lateral
         is funded entirely by the property owner.
       </p>
       <p>
@@ -149,7 +149,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       <p>
         San Diego enquiries go to{' '}
         <a href="tel:+18582572888">(858) 257-2888</a>, Monday to Friday, 8:00am
-        to 4:00pm. This is a different line from our St. Louis number — please
+        to 4:00pm. This is a different line from our St. Louis number; please
         use the San Diego one for work in this county.
       </p>
     </>
@@ -186,7 +186,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
         <p>
           It depends on your address rather than only your city. Some areas are
           served by a city utilities department and others by an independent
-          special district — Vallecitos, Leucadia, or CVSan among them. Parts of
+          special district: Vallecitos, Leucadia, or CVSan among them. Parts of
           Carlsbad fall under different providers than the rest of it.
         </p>
       ),
@@ -222,7 +222,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for properties in the
-          City of San Diego — where you own the whole lateral and no
+          City of San Diego, where you own the whole lateral and no
           reimbursement exists.
         </p>
       ),
@@ -249,7 +249,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <p>
           The City repairs right-of-way breaks not caused by neglect, and bills
           the owner where neglect caused them. That makes documented condition
-          worth having in its own right — a record of the line&rsquo;s state
+          worth having in its own right: a record of the line&rsquo;s state
           is evidence about how it came to fail, not merely a diagnosis.
         </p>
 
@@ -272,7 +272,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         question: 'How much of the lateral do I own in San Diego?',
         answer: (
           <p>
-            All of it — the full run from the building to the public main. The
+            All of it: the full run from the building to the public main. The
             City repairs right-of-way breaks not caused by neglect, but the
             lateral itself is the owner&rsquo;s.
           </p>
@@ -288,8 +288,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
       title: 'Sewer inspection and cleaning in Carlsbad',
       intro: (
         <p>
-          Camera inspection, diagnostics, and cleaning for Carlsbad properties
-          — one of the few places in San Diego County with a grant programme
+          Camera inspection, diagnostics, and cleaning for Carlsbad properties,
+          one of the few places in San Diego County with a grant programme
           toward lateral work.
         </p>
       ),
@@ -337,7 +337,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <h2>Coastal buildout</h2>
         <p>
           Carlsbad&rsquo;s housing is largely late-1970s through 2000s
-          construction, peaking in the 1980s — meaningfully newer than the older
+          construction, peaking in the 1980s, meaningfully newer than the older
           urban stock elsewhere in the region. On lines of that era the
           recurring findings tend to be bellies and joint separation from ground
           movement rather than the material decay that dominates older areas.
@@ -363,7 +363,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
             It covers the Carlsbad Wastewater service area. The southern portion
             of the city is served by Leucadia Wastewater District or Vallecitos
             instead, and whether the grant reaches those properties is not
-            something we can confirm — check with the City directly.
+            something we can confirm; check with the City directly.
           </p>
         ),
       },
@@ -387,8 +387,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
       <>
         <h2>CVSan is not the City of Chula Vista</h2>
         <p>
-          Sewer service in Chula Vista is provided by CVSan — the Chula Vista
-          Sanitation District — which is a separate special district rather than
+          Sewer service in Chula Vista is provided by CVSan (the Chula Vista
+          Sanitation District), which is a separate special district rather than
           a department of the city government.
         </p>
         <p>
@@ -432,7 +432,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           estimates). That single figure hides a genuinely mixed picture.
         </p>
         <p>
-          The stock is genuinely mixed — a meaningful postwar
+          The stock is genuinely mixed: a meaningful postwar
           and 1960s base alongside a strong wave of master-planned development
           in the eastern part of the city through the 2000s. Those two halves
           of the city can present quite different lateral conditions, so what is
@@ -446,7 +446,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         question: 'Do I contact the City of Chula Vista about my sewer lateral?',
         answer: (
           <p>
-            CVSan — the Chula Vista Sanitation District — provides sewer service
+            CVSan (the Chula Vista Sanitation District) provides sewer service
             and administers the lateral grant programme. It is a separate
             district from the city government.
           </p>
@@ -540,7 +540,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for Oceanside
-          properties — coastal and suburban housing across a wide span of
+          properties, coastal and suburban housing across a wide span of
           construction eras.
         </p>
       ),
@@ -565,7 +565,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           .
         </p>
         <p>
-          We also found no lateral repair assistance programme here — unlike
+          We also found no lateral repair assistance programme here, unlike
           Carlsbad and Chula Vista, which do have one. Worth confirming for
           yourself before assuming either way.
         </p>
@@ -577,7 +577,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           estimates), reflecting growth through the 1970s and 1980s continuing
           into the 1990s. On lines of
           that period, ground movement and settlement are more often behind
-          recurring problems than material decay — bellies holding water,
+          recurring problems than material decay: bellies holding water,
           joints pulled apart, damage from later work on the property.
         </p>
         <p>
@@ -621,7 +621,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <h2>Vallecitos Water District, not the City</h2>
         <p>
           Sewer service in San Marcos is provided by the Vallecitos Water
-          District — an independent special district that also serves parts of
+          District, an independent special district that also serves parts of
           Carlsbad, Escondido, and Vista.
         </p>
         <p>
@@ -653,7 +653,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         </p>
         <p>
           That removes the material failure modes that dominate older
-          areas — but not the ones caused by ground movement. On newer lines the
+          areas, but not the ones caused by ground movement. On newer lines the
           recurring findings are bellies that hold water, joints opened by
           settlement, and damage from landscaping or later construction. A belly
           produces exactly the repeating slow-drainage pattern people associate
@@ -672,7 +672,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         answer: (
           <p>
             The Vallecitos Water District, an independent special district that
-            also serves parts of Carlsbad, Escondido, and Vista — not the city
+            also serves parts of Carlsbad, Escondido, and Vista, not the city
             itself.
           </p>
         ),
@@ -737,7 +737,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <p>
           Where lines carry grease or continuous volume, the useful pattern is
           usually to establish condition, clean on an interval the evidence
-          supports, and re-inspect — rather than to respond to backups as they
+          supports, and re-inspect, rather than to respond to backups as they
           happen.
         </p>
         <p>
@@ -761,7 +761,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         answer: (
           <p>
             No. It is a commercial and mixed-use district within the City of San
-            Diego, so the City&rsquo;s sewer policy applies — including full
+            Diego, so the City&rsquo;s sewer policy applies, including full
             owner responsibility for the lateral and no reimbursement.
           </p>
         ),

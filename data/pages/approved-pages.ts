@@ -478,7 +478,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-stl-city-camera' as PageId,
-    name: 'Sewer Camera Inspection — St. Louis City',
+    name: 'Sewer Camera Inspection in St. Louis City',
     pageType: 'service-location',
     pathname: toPathname('/st-louis-mo/st-louis-city/sewer-camera-inspection/'),
     status: 'launch',
@@ -490,7 +490,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-chesterfield-camera' as PageId,
-    name: 'Sewer Camera Inspection — Chesterfield',
+    name: 'Sewer Camera Inspection in Chesterfield',
     pageType: 'service-location',
     pathname: toPathname('/st-louis-mo/chesterfield/sewer-camera-inspection/'),
     status: 'launch',
@@ -502,7 +502,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-ballwin-prepurchase' as PageId,
-    name: 'Pre-Purchase Sewer Inspection — Ballwin',
+    name: 'Pre-Purchase Sewer Inspection in Ballwin',
     pageType: 'service-location',
     pathname: toPathname('/st-louis-mo/ballwin/pre-purchase-sewer-inspection/'),
     status: 'launch',
@@ -514,7 +514,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-st-charles-prepurchase' as PageId,
-    name: 'Pre-Purchase Sewer Inspection — St. Charles',
+    name: 'Pre-Purchase Sewer Inspection in St. Charles',
     pageType: 'service-location',
     pathname: toPathname('/st-louis-mo/st-charles/pre-purchase-sewer-inspection/'),
     status: 'launch',
@@ -526,7 +526,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-florissant-cleaning' as PageId,
-    name: 'Sewer Cleaning — Florissant',
+    name: 'Sewer Cleaning in Florissant',
     pageType: 'service-location',
     pathname: toPathname('/st-louis-mo/florissant/sewer-cleaning/'),
     status: 'launch',
@@ -538,7 +538,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-chesterfield-hydro' as PageId,
-    name: 'Hydro Jetting — Chesterfield',
+    name: 'Hydro Jetting in Chesterfield',
     pageType: 'service-location',
     pathname: toPathname('/st-louis-mo/chesterfield/hydro-jetting/'),
     status: 'launch',
@@ -550,7 +550,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-sd-city-camera' as PageId,
-    name: 'Sewer Camera Inspection — San Diego',
+    name: 'Sewer Camera Inspection in San Diego',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/san-diego/sewer-camera-inspection/'),
     status: 'launch',
@@ -562,7 +562,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-san-marcos-camera' as PageId,
-    name: 'Sewer Camera Inspection — San Marcos',
+    name: 'Sewer Camera Inspection in San Marcos',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/san-marcos/sewer-camera-inspection/'),
     status: 'launch',
@@ -574,7 +574,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-carlsbad-camera' as PageId,
-    name: 'Sewer Camera Inspection — Carlsbad',
+    name: 'Sewer Camera Inspection in Carlsbad',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/carlsbad/sewer-camera-inspection/'),
     status: 'launch',
@@ -586,7 +586,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-chula-vista-camera' as PageId,
-    name: 'Sewer Camera Inspection — Chula Vista',
+    name: 'Sewer Camera Inspection in Chula Vista',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/chula-vista/sewer-camera-inspection/'),
     status: 'launch',
@@ -598,7 +598,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-escondido-cleaning' as PageId,
-    name: 'Sewer Cleaning — Escondido',
+    name: 'Sewer Cleaning in Escondido',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/escondido/sewer-cleaning/'),
     status: 'launch',
@@ -610,7 +610,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-oceanside-cleaning' as PageId,
-    name: 'Sewer Cleaning — Oceanside',
+    name: 'Sewer Cleaning in Oceanside',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/oceanside/sewer-cleaning/'),
     status: 'launch',
@@ -622,7 +622,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-mission-valley-hydro' as PageId,
-    name: 'Hydro Jetting — Mission Valley',
+    name: 'Hydro Jetting in Mission Valley',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/mission-valley/hydro-jetting/'),
     status: 'launch',
@@ -634,7 +634,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'sl-carlsbad-prepurchase' as PageId,
-    name: 'Pre-Purchase Sewer Inspection — Carlsbad',
+    name: 'Pre-Purchase Sewer Inspection in Carlsbad',
     pageType: 'service-location',
     pathname: toPathname('/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/'),
     status: 'launch',

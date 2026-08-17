@@ -85,7 +85,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <p>
           It documents visible conditions on the day. It does not guarantee
           future performance, and it does not establish who is legally
-          responsible for which portion of the line — that varies by
+          responsible for which portion of the line: that varies by
           jurisdiction and is a question for your own advisers.
         </p>
         <p>
@@ -97,7 +97,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <h2>Where a lateral programme changes the arithmetic</h2>
         <p>
           Some municipalities run programmes that contribute toward lateral
-          repair, and terms vary sharply — Carlsbad offers up to $3,000, Ballwin
+          repair, and terms vary sharply: Carlsbad offers up to $3,000, Ballwin
           caps at $4,500, Florissant states no maximum but stops five feet from
           the house, and the City of San Diego offers nothing at all.
         </p>
@@ -111,7 +111,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <h2>Why we do not perform the repair</h2>
         <p>
           A pre-purchase inspection informs a significant financial decision. We
-          inspect, document, and clean — we do not perform sewer repair or
+          inspect, document, and clean; we do not perform sewer repair or
           replacement, so what we find is not the opening step toward selling
           you the remedy.
         </p>
@@ -144,8 +144,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         answer: (
           <p>
             You have documented evidence of the line&rsquo;s condition while the
-            decision is still open. What you do with it — including getting
-            repair quotes or discussing it with your agent and advisers — is
+            decision is still open. What you do with it, including getting
+            repair quotes or discussing it with your agent and advisers, is
             yours to decide.
           </p>
         ),
@@ -216,7 +216,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <p>
           If an inspection has already been done and the findings are being used
           to reopen terms, an independent second opinion is a reasonable step.
-          Sewer footage frequently supports more than one reading — a joint may
+          Sewer footage frequently supports more than one reading: a joint may
           be a maintenance item or the start of a failure, and the interpretation
           matters.
         </p>
@@ -310,7 +310,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <p>
           The inspection is most useful while options remain open. Where a
           municipal lateral programme exists, its terms are also worth
-          establishing early — they vary considerably between jurisdictions and
+          establishing early: they vary considerably between jurisdictions and
           can materially change what a finding costs whoever ends up owning it.
         </p>
 
@@ -388,7 +388,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <p>
           The third item is the one most often missing from sewer reports, and
           it is the one that most resembles how a careful inspection report is
-          written — the limits of the assessment stated alongside its findings.
+          written: the limits of the assessment stated alongside its findings.
         </p>
 
         <h2>Why an independent referral is a safer one</h2>
@@ -403,7 +403,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <p>
           Where a line cannot be assessed because of buildup or standing water,
           we say so rather than producing a confident conclusion the footage
-          does not support. That should read as familiar practice — it is the
+          does not support. That should read as familiar practice: it is the
           same discipline a well-written inspection report applies.
         </p>
       </>
@@ -418,7 +418,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         question: 'Why is the sewer lateral outside general inspection scope?',
         answer: (
           <p>
-            It is underground and cannot be assessed without a camera survey —
+            It is underground and cannot be assessed without a camera survey:
             different equipment and a different specialisation from a general
             property inspection.
           </p>
@@ -455,8 +455,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <h2>Recurrence is the signal</h2>
         <p>
           One blockage is usually ordinary. A blockage that returns on a pattern
-          means something in the line is catching material — roots at a defect,
-          a section holding water, a break creating a catch point — and each
+          means something in the line is catching material (roots at a defect,
+          a section holding water, a break creating a catch point), and each
           clearing addresses the symptom.
         </p>
         <p>
@@ -494,7 +494,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
         <h2>Documentation across a portfolio</h2>
         <p>
-          Recurring inspection produces a record of condition over time — useful
+          Recurring inspection produces a record of condition over time, useful
           when justifying spend to an owner, planning capital work, or
           demonstrating that a known issue was being managed rather than
           ignored.
@@ -527,7 +527,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         answer: (
           <p>
             Scheduling across properties is part of the conversation. What we
-            will not do is put every line on an interval — that is a predictable
+            will not do is put every line on an interval: that is a predictable
             cost rather than a solution, and only some lines warrant it.
           </p>
         ),
@@ -557,7 +557,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       title: 'Evidence a board can actually make a decision on',
       intro: (
         <p>
-          Common-area sewer problems become board decisions — about shared cost,
+          Common-area sewer problems become board decisions: about shared cost,
           competing vendor recommendations, and what to tell owners. Documented
           condition is what makes that decision defensible.
         </p>
@@ -611,7 +611,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <h2>Documentation for owners</h2>
         <p>
           A record of condition over time supports the board&rsquo;s account of
-          what was known and when — useful when explaining a decision to owners
+          what was known and when, useful when explaining a decision to owners
           who were not in the room for it.
         </p>
       </>

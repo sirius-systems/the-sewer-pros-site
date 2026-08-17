@@ -47,7 +47,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
         <h2>The short answer</h2>
         <p>
           Snaking (mechanical clearing) is well suited to a discrete
-          obstruction — something lodged at a point in the line. Hydro jetting
+          obstruction: something lodged at a point in the line. Hydro jetting
           is better at removing accumulation from the pipe wall along a length
           of line. Neither is universally better.
         </p>
@@ -91,7 +91,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           that pressure can make the problem worse.
         </p>
         <p>
-          A line with unknown condition — particularly older pipe — is a case
+          A line with unknown condition, particularly older pipe, is a case
           for finding out first. Choosing the gentler tool, or inspecting before
           deciding, is a legitimate answer.
         </p>
@@ -100,7 +100,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
         <p>
           Both methods clear a line. Neither explains why it blocked. If a line
           blocks repeatedly, the useful next step is usually inspection rather
-          than a different clearing method — the cause may be a defect that
+          than a different clearing method: the cause may be a defect that
           neither tool addresses.
         </p>
       </>
@@ -139,7 +139,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
       intro: (
         <p>
           Both can inspect a sewer line competently. The difference is what
-          happens to the findings — and it is a difference in business model,
+          happens to the findings, and it is a difference in business model,
           not in character.
         </p>
       ),
@@ -203,7 +203,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
             line
           </li>
           <li>
-            Ask what could not be assessed — obscured sections are as
+            Ask what could not be assessed: obscured sections are as
             informative as visible defects
           </li>
           <li>Ask whether the line was cleaned before inspection, and why</li>
@@ -218,7 +218,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           The Sewer Pros inspects, diagnoses, locates, and cleans. We do not
           perform sewer repair or replacement, so our findings do not lead to a
           quote from us for the remedy. That is the whole of the
-          differentiator — not a claim about how anyone else works.
+          differentiator, not a claim about how anyone else works.
         </p>
       </>
     ),

@@ -70,7 +70,7 @@ export const homeContent: HomePageContent = {
     title: 'Know what is happening inside the sewer line.',
     intro: (
       <p>
-        Inspection, diagnostics, locating, and cleaning — from a company that
+        Inspection, diagnostics, locating, and cleaning, from a company that
         does not sell the repair. See the condition of the line, then decide
         what to do about it.
       </p>
@@ -124,7 +124,7 @@ export const homeContent: HomePageContent = {
   },
   process: [
     { title: 'Inspect', description: 'Put a camera in the line and see what is there.' },
-    { title: 'Understand', description: 'Establish what the footage shows — and what it does not.' },
+    { title: 'Understand', description: 'Establish what the footage shows, and what it does not.' },
     { title: 'Decide', description: 'Choose the next step with the evidence in front of you.' },
   ],
   faq: [
@@ -132,7 +132,7 @@ export const homeContent: HomePageContent = {
       question: 'What does a sewer camera inspection show?',
       answer: (
         <p>
-          Visible conditions inside the accessible line — blockages, root
+          Visible conditions inside the accessible line: blockages, root
           intrusion, separated joints, cracks, offsets, standing water, and
           debris. It cannot guarantee detection of every hidden defect.
         </p>
@@ -143,7 +143,7 @@ export const homeContent: HomePageContent = {
       answer: (
         <p>
           No. We inspect, diagnose, locate, and clean. Where findings suggest
-          work beyond cleaning, that is a conversation about the evidence —
+          work beyond cleaning, that is a conversation about the evidence,
           including having a qualified repair contractor review it.
         </p>
       ),
@@ -296,7 +296,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       intro: (
         <p>
           Inspection, cleaning, and planned maintenance for commercial
-          properties — where a blocked line closes something rather than merely
+          properties, where a blocked line closes something rather than merely
           inconveniencing someone.
         </p>
       ),
@@ -315,7 +315,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
         <p>
           That shifts the useful work from reactive to planned, and makes
-          documentation matter — decisions on commercial property usually have
+          documentation matter: decisions on commercial property usually have
           to be justified to someone.
         </p>
       </>
@@ -371,7 +371,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       intro: (
         <p>
           The Sewer Pros works across St. Louis, San Diego, and Las Vegas.
-          These are service markets — areas we work in, not offices you can
+          These are service markets: areas we work in, not offices you can
           visit.
         </p>
       ),
@@ -395,7 +395,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
           Sewer lines reflect where and when they were built. Housing age,
           common pipe materials, soil movement, root pressure from mature
           planting, and the rules of the local sewer authority all differ
-          between markets — and all affect what tends to go wrong and what can
+          between markets, and all affect what tends to go wrong and what can
           be done about it.
         </p>
         <p>
@@ -454,7 +454,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       intro: (
         <p>
           Property owners, buyers, real estate professionals, property
-          managers, and commercial operators — each arriving with a different
+          managers, and commercial operators, each arriving with a different
           question about the same underground pipe.
         </p>
       ),
@@ -534,7 +534,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
       intro: (
         <p>
           A sewer and drain specialist focused on inspection, diagnostics,
-          locating, and cleaning — deliberately not on repair.
+          locating, and cleaning, deliberately not on repair.
         </p>
       ),
     },
@@ -552,7 +552,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           We do not perform sewer repair, replacement, lining, pipe bursting, or
           excavation. When an inspection turns up a condition that warrants
           structural work, the next conversation is with a qualified repair
-          contractor — not with us.
+          contractor, not with us.
         </p>
 
         <h2>Why that separation matters</h2>
@@ -564,7 +564,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         <p>
           A company that both diagnoses and sells the remedy is interpreting
           that ambiguity while standing to gain from one interpretation. That is
-          a structural position, not a comment on anyone&rsquo;s integrity — but
+          a structural position, not a comment on anyone&rsquo;s integrity, but
           it is a position we chose not to occupy.
         </p>
 
@@ -587,8 +587,8 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           operated.
         </p>
         <p>
-          We work across the St. Louis area — St. Louis County, St. Charles
-          County, Jefferson County and surrounding areas — and across San Diego
+          We work across the St. Louis area (St. Louis County, St. Charles
+          County, Jefferson County and surrounding areas) and across San Diego
           County, which we have served since 2015. We are currently launching in
           the Las Vegas Valley.
         </p>
@@ -655,8 +655,8 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
 
         <h2>Why there is no address here</h2>
         <p>
-          We are a service-area business. The work happens at your property —
-          in the ground, at a cleanout — rather than at a counter you visit, so
+          We are a service-area business. The work happens at your property
+          (in the ground, at a cleanout) rather than at a counter you visit, so
           there is no storefront address to list.
         </p>
 
@@ -666,7 +666,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           conversation more useful:
         </p>
         <ul>
-          <li>What is happening — a backup, slow drainage, or a planned inspection</li>
+          <li>What is happening: a backup, slow drainage, or a planned inspection</li>
           <li>Whether it has happened before, and how often</li>
           <li>Which fixtures are affected</li>
           <li>What work has already been done, and by whom</li>
@@ -720,7 +720,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         answer: (
           <p>
             Recurrence usually indicates something the clearing is not
-            addressing — roots entering at a defect, a section holding water, or
+            addressing: roots entering at a defect, a section holding water, or
             damage creating a catch point. That is a case for inspection rather
             than another clearing.
           </p>
@@ -785,7 +785,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <h2>Why the report matters as much as the inspection</h2>
         <p>
           The inspection produces evidence. The report is what makes that
-          evidence usable later — when comparing quotes, revisiting a decision,
+          evidence usable later: when comparing quotes, revisiting a decision,
           or showing someone else what was found.
         </p>
 
@@ -808,14 +808,14 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
           Each condition should be tied to a distance along the line. &ldquo;Root
           intrusion at a joint&rdquo; is an observation; &ldquo;root intrusion
           at a joint approximately 42 feet from the cleanout&rdquo; is
-          actionable — it can be located, quoted against, and re-checked.
+          actionable: it can be located, quoted against, and re-checked.
         </p>
 
         <h3>What could not be assessed</h3>
         <p>
           Sections obscured by standing water or buildup, points where the
           camera could not pass, and any part of the line not reached. This is
-          the section most often missing and among the most important — it
+          the section most often missing and among the most important: it
           tells you the limits of what the inspection established.
         </p>
 
@@ -826,7 +826,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
 
         <h2>What a report should not do</h2>
         <p>
-          It should not assert conditions the camera cannot establish — pipe
+          It should not assert conditions the camera cannot establish: pipe
           wall thickness from outside, soil conditions, or the remaining life of
           a line. It also should not present a repair recommendation as a
           finding; what was observed and what someone concludes from it are
@@ -869,7 +869,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         Watch for four things: standing water where the line should drain,
         joints that are separated or misaligned, roots or material entering the
         pipe, and any change in the pipe&rsquo;s shape or surface. Note the
-        distance counter when you see them — position is what makes an
+        distance counter when you see them: position is what makes an
         observation useful.
       </p>
     ),
@@ -878,7 +878,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <h2>What you are looking at</h2>
         <p>
           The camera travels along the inside of the pipe, lit from the head.
-          The picture is close, wide-angle, and often wet — which is why
+          The picture is close, wide-angle, and often wet, which is why
           footage can look alarming when it is normal, and normal when it is
           not.
         </p>
@@ -886,7 +886,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <h2>Standing water</h2>
         <p>
           A line should carry water away. Water sitting in a section suggests
-          that part of the line is not draining — a low spot, a loss of slope,
+          that part of the line is not draining: a low spot, a loss of slope,
           or a restriction downstream. Watch whether the camera passes through
           water and out the other side, or whether it stays submerged.
         </p>
@@ -895,7 +895,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <p>
           Joints appear as regular seams. What matters is whether they line up.
           A visible gap, a step where one section sits higher than the next, or
-          daylight-like darkness at a seam suggests separation or offset — and
+          daylight-like darkness at a seam suggests separation or offset, and
           those are the points where roots and material typically enter.
         </p>
 
@@ -910,7 +910,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <p>
           Watch for the pipe changing material or diameter, scale or buildup
           coating the wall, cracks, and any point where the round profile
-          deforms. A change of material is not itself a problem — it is
+          deforms. A change of material is not itself a problem: it is
           information about how the line was built or previously worked on.
         </p>
 
@@ -926,7 +926,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
           It shows the inside surface of the accessible line, at that moment.
           It does not show wall thickness, the ground around the pipe, or how
           long a condition has existed. Obscured sections are unknown, not
-          fine — and treating them as fine is the most common misreading.
+          fine, and treating them as fine is the most common misreading.
         </p>
 
         <h2>If you are unsure</h2>
@@ -943,7 +943,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         answer: (
           <p>
             Not necessarily. Sewer footage frequently looks worse than the
-            condition warrants — the camera is close, the environment is wet,
+            condition warrants: the camera is close, the environment is wet,
             and normal wear reads dramatically. What matters is specific
             observations at specific distances, not the general impression.
           </p>

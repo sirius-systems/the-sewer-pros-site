@@ -97,7 +97,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h3>What the defect is</h3>
         <p>
-          Not &ldquo;the line is blocked&rdquo; but what is causing it — a
+          Not &ldquo;the line is blocked&rdquo; but what is causing it: a
           separated joint, a collapsed section, root intrusion at a specific
           point, a section that has lost slope. Programmes distinguish between
           structural failure and ordinary maintenance, and that distinction
@@ -139,7 +139,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h3>What could not be assessed</h3>
         <p>
           Sections obscured by standing water or buildup, and any part of the
-          line the camera could not reach. This is not a weakness in a report —
+          line the camera could not reach. This is not a weakness in a report:
           it is the boundary of what the report establishes, and stating it is
           what makes the rest credible.
         </p>
@@ -160,7 +160,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h2>What a report cannot do</h2>
         <p>
           It cannot approve a claim. Municipalities apply their own rules to the
-          evidence, and eligibility differs sharply between them — caps, coverage
+          evidence, and eligibility differs sharply between them: caps, coverage
           boundaries, and exclusions all vary.
         </p>
         <p>
@@ -171,7 +171,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h2>Verify the terms against your own municipality</h2>
         <p>
           Programme details change, and third-party summaries of them are
-          demonstrably unreliable — we found a plumbing-company page describing
+          demonstrably unreliable: we found a plumbing-company page describing
           the St. Louis City programme as reimbursing up to 50%, when the
           city&rsquo;s own page states full cost for eligible right-of-way
           repairs. Check the municipality&rsquo;s own source.
@@ -241,7 +241,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           </li>
           <li>
             <strong>Clearing clogs and tree roots</strong> along any portion of
-            the lateral — including the portion the programme would otherwise
+            the lateral, including the portion the programme would otherwise
             cover. Blockage removal is treated as maintenance rather than
             structural failure.
           </li>
@@ -277,32 +277,32 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           </li>
         </ul>
         <p>
-          The free assessment is worth knowing about — it is a genuine first
+          The free assessment is worth knowing about: it is a genuine first
           step that costs nothing. It does not replace the plumber&rsquo;s
           documentation.
         </p>
 
         <h2>How this compares to nearby municipalities</h2>
         <p>
-          The $28 annual charge is common across the area — Ballwin, Chesterfield,
+          The $28 annual charge is common across the area: Ballwin, Chesterfield,
           St. Charles, and post-2012 Florissant all levy the same figure. What
           differs is what it buys:
         </p>
         <ul>
           <li>
-            <strong>St. Louis City</strong> — full cost, but only beneath the
+            <strong>St. Louis City</strong>: full cost, but only beneath the
             public right-of-way
           </li>
           <li>
-            <strong>Ballwin</strong> — capped at $4,500, or up to $7,500 for
+            <strong>Ballwin</strong>: capped at $4,500, or up to $7,500 for
             deep excavation or street cutting
           </li>
           <li>
-            <strong>Florissant</strong> — no stated maximum, covering to within
+            <strong>Florissant</strong>: no stated maximum, covering to within
             five feet of the residence
           </li>
           <li>
-            <strong>St. Charles</strong> — 90% of authorised cost capped at
+            <strong>St. Charles</strong>: 90% of authorised cost capped at
             $7,500, and outside MSD&rsquo;s territory entirely
           </li>
         </ul>
@@ -323,7 +323,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h2>Verify before relying on it</h2>
         <p>
           Programme terms change, and third-party descriptions of this
-          programme are demonstrably unreliable — we found a plumbing-company
+          programme are demonstrably unreliable: we found a plumbing-company
           page stating it reimburses up to 50%, which contradicts the
           city&rsquo;s own material. Check the City of St. Louis&rsquo;s own
           sewer lateral repair programme page for current terms.
@@ -376,7 +376,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
     },
     directAnswer: (
       <p>
-        In St. Louis County there is no single answer — which lateral programme
+        In St. Louis County there is no single answer: which lateral programme
         applies depends on your municipality, and terms differ substantially
         between them. Ballwin caps reimbursement at $4,500; Florissant states no
         maximum but stops five feet from the house. The practical first step is
@@ -439,7 +439,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h3>Florissant</h3>
         <p>
           No stated maximum, but coverage runs from the main sewer only to
-          within five feet of the residence — damage inside that band is the
+          within five feet of the residence: damage inside that band is the
           owner&rsquo;s. Excludes septic and private treatment systems, and
           restoration of trees, shrubs, sod, decks, retaining walls, and
           outbuildings. Video inspection is required for approval. The fee was
@@ -448,7 +448,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h3>St. Charles</h3>
         <p>
-          Not in St. Louis County, and not in MSD&rsquo;s territory — the City
+          Not in St. Louis County, and not in MSD&rsquo;s territory: the City
           of St. Charles operates its own sewer system. Reimburses 90% of the
           authorised cost capped at $7,500, so a share remains the owner&rsquo;s
           regardless. Excludes landscaping and ornamental structures.
@@ -459,7 +459,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           Charges $28 annually, in place since January 2001 following voter
           approval, covering repairs of defective laterals for residential
           buildings of six units or fewer. We have not been able to confirm the
-          cap or the specific exclusions from a published source — see{' '}
+          cap or the specific exclusions from a published source; see{' '}
           <a href="https://www.chesterfield.mo.us/263/Residential-Sanitary-Sewer-Lateral-Repai">
             Chesterfield&rsquo;s own programme page
           </a>{' '}
@@ -477,7 +477,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h2>Treat third-party summaries with suspicion</h2>
         <p>
-          Including, reasonably, this one — check your municipality&rsquo;s own
+          Including, reasonably, this one: check your municipality&rsquo;s own
           page before acting on anything here. We found a plumbing-company page
           describing the St. Louis City programme as reimbursing up to 50%,
           directly contradicting the city&rsquo;s own material.
@@ -495,7 +495,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           <p>
             Programmes are generally run at the municipal level, so terms differ
             between jurisdictions. We have not been able to confirm the current
-            status of a countywide programme from a reachable source — check
+            status of a countywide programme from a reachable source; check
             with St. Louis County directly.
           </p>
         ),

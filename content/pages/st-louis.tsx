@@ -68,7 +68,7 @@ const MSD_RESPONSIBILITY = (
     <p>
       The Metropolitan St. Louis Sewer District maintains the public mains and
       the collection system. It states plainly that homeowners are responsible
-      for maintaining the sewer lateral — the line running from the building to
+      for maintaining the sewer lateral: the line running from the building to
       the public sewer.
     </p>
     <p>
@@ -107,7 +107,7 @@ export const stLouisMarketContent: MarketPageContent = {
       </p>
       <p>
         We are also licensed through most of the area&rsquo;s municipal sewer
-        lateral programmes for submitting reports — which matters more than it
+        lateral programmes for submitting reports, which matters more than it
         sounds, for the reason below.
       </p>
 
@@ -120,14 +120,14 @@ export const stLouisMarketContent: MarketPageContent = {
       </p>
       <p>
         These programmes generally require documentation from a licensed
-        plumber before a claim is considered — commonly including video of the
+        plumber before a claim is considered, commonly including video of the
         line. That makes a camera inspection more than a diagnostic here: it is
         frequently the document the programme asks for.
       </p>
       <p>
         The terms are not uniform. Fees, caps, coverage boundaries, and
         exclusions differ between municipalities, and the City of St. Charles
-        is not in MSD&rsquo;s service territory at all — it runs its own sewer
+        is not in MSD&rsquo;s service territory at all: it runs its own sewer
         system. Whether a programme applies to your address, and what it
         covers, is a question about your specific municipality.
       </p>
@@ -141,7 +141,7 @@ export const stLouisMarketContent: MarketPageContent = {
       <p>
         Era matters because lateral materials changed over time. Lines laid
         through much of the twentieth century commonly used vitrified clay or
-        cast iron, and bituminized fibre pipe — Orangeburg — was installed in
+        cast iron, and bituminized fibre pipe (Orangeburg) was installed in
         the post-war decades until its manufacturer closed in 1974. Each has a
         characteristic failure pattern: clay separates at joints and admits
         roots, cast iron corrodes and scales internally, and Orangeburg
@@ -195,7 +195,7 @@ export const stLouisMarketContent: MarketPageContent = {
       answer: (
         <p>
           Many in the area do, funded by an annual charge on the real estate tax
-          bill — but terms vary considerably and not every jurisdiction
+          bill, but terms vary considerably and not every jurisdiction
           participates. The City of St. Charles operates outside MSD&rsquo;s
           territory entirely. Check with your own municipality for what applies
           to your address.
@@ -249,7 +249,7 @@ export const lateralReportingContent: ServicePageContent = {
       <p>
         Programmes do not generally reimburse on the basis of a description of
         the problem. They typically require documentation from a licensed
-        plumber establishing the defect — commonly including video of the line
+        plumber establishing the defect, commonly including video of the line
         showing the condition and where along the line it sits.
       </p>
       <p>
@@ -270,7 +270,7 @@ export const lateralReportingContent: ServicePageContent = {
       <h2>What we cannot do</h2>
       <p>
         We cannot approve a claim, and we will not tell you one is likely.
-        Eligibility rules differ sharply between municipalities — some cover
+        Eligibility rules differ sharply between municipalities: some cover
         only failures beneath the public right-of-way, others stop a set
         distance from the house, several exclude root clearing as ordinary
         maintenance, and caps range from none stated to a fixed dollar limit.
@@ -347,7 +347,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
       title: 'Sewer inspection and cleaning in St. Louis City',
       intro: (
         <p>
-          Camera inspection, diagnostics, and cleaning for city properties —
+          Camera inspection, diagnostics, and cleaning for city properties,
           where the housing stock is among the oldest in the region and the
           City runs its own lateral repair programme.
         </p>
@@ -381,7 +381,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           situation for the homeowner.
         </p>
         <p>
-          That is why inspection and locating are often done together here —
+          That is why inspection and locating are often done together here:
           the footage shows the condition and the distance, and locating
           translates that distance into a position on the ground.
         </p>
@@ -400,7 +400,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         </p>
         <p>
           Both are era characteristics rather than a claim about any specific
-          address — what a given line is made of, and how it is holding up, is
+          address: what a given line is made of, and how it is holding up, is
           what the camera establishes.
         </p>
       </>
@@ -482,7 +482,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         <p>
           Whether a recurring problem is roots arriving through an otherwise
           sound joint, or a structural failure that happens to be admitting
-          roots, determines which side of that rule it falls on — and it is a
+          roots, determines which side of that rule it falls on, and it is a
           question a camera inspection answers rather than one anybody should
           guess at.
         </p>
@@ -494,7 +494,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           development through the 1960s, 1970s, and 1980s.
         </p>
         <p>
-          That span straddles a genuine transition in lateral materials — from
+          That span straddles a genuine transition in lateral materials: from
           clay and cast iron, through the period when bituminized fibre pipe
           was still being installed, into the era when PVC became standard. A
           house built at one end of Ballwin&rsquo;s range and one built at the
@@ -546,7 +546,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         <h2>Florissant&rsquo;s lateral repair programme</h2>
         <p>
           Florissant funds its lateral programme through a $28 annual charge on
-          the real estate tax bill — reduced from $50 in January 2012, when the
+          the real estate tax bill, reduced from $50 in January 2012, when the
           council cited a fund reserve of around $1.6 million.
         </p>
         <p>
@@ -587,12 +587,12 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           housing was built between 1950 and 1969, with a median year built of
           1963 (American Community Survey, 2019&ndash;2023 five-year
           estimates). That is an unusually concentrated era for a city of its
-          size — most of the housing stock reached the same age at the same
+          size: most of the housing stock reached the same age at the same
           time.
         </p>
         <p>
-          It also sits squarely in the window when bituminized fibre pipe —
-          Orangeburg — was still being installed, alongside clay and cast iron.
+          It also sits squarely in the window when bituminized fibre pipe
+          (Orangeburg) was still being installed, alongside clay and cast iron.
           Orangeburg deforms under soil load rather than cracking, and every
           remaining length of it is now beyond its intended service life. Which
           material is actually in a given lateral is what an inspection
@@ -632,7 +632,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for Chesterfield
-          properties — a comparatively young city where a newer lateral is not
+          properties, a comparatively young city where a newer lateral is not
           the same thing as a problem-free one.
         </p>
       ),
@@ -647,14 +647,14 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         </p>
         <p>
           Set against St. Louis City, where 58.4% of housing predates 1940, that
-          is close to the opposite end of the region&rsquo;s range — and it
+          is close to the opposite end of the region&rsquo;s range, and it
           changes what tends to be found underground.
         </p>
         <p>
           That changes what tends to be found underground. Development from the
           1970s onward increasingly used PVC rather than clay, cast iron, or
           bituminized fibre pipe, which removes the material failure modes that
-          dominate older areas — clay joints separating, cast iron scaling,
+          dominate older areas: clay joints separating, cast iron scaling,
           Orangeburg deforming under load.
         </p>
 
@@ -666,7 +666,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         </p>
         <ul>
           <li>
-            Bellies — sections that have lost slope and hold water, so solids
+            Bellies: sections that have lost slope and hold water, so solids
             settle where flow has slowed
           </li>
           <li>
@@ -674,7 +674,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
             material decay
           </li>
           <li>
-            Damage from later work — landscaping, an addition, utility trenching
+            Damage from later work: landscaping, an addition, utility trenching
             crossing the line
           </li>
           <li>
@@ -709,8 +709,8 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           fewer.
         </p>
         <p>
-          Programme terms — including any reimbursement cap and the specific
-          exclusions — differ between municipalities and change over time. We
+          Programme terms (including any reimbursement cap and the specific
+          exclusions) differ between municipalities and change over time. We
           have not been able to confirm Chesterfield&rsquo;s cap or exclusions
           from a published source, so rather than restate figures we cannot
           verify, see{' '}
@@ -732,7 +732,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         answer: (
           <p>
             Newer pipe removes the material failure modes common in older areas,
-            but not the ones caused by ground movement or later disturbance —
+            but not the ones caused by ground movement or later disturbance:
             bellies, joint separation, and damage from subsequent work. Those
             produce the same recurring symptoms.
           </p>
@@ -747,8 +747,8 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
             place since 2001. The current cap and exclusions are on{' '}
             <a href="https://www.chesterfield.mo.us/263/Residential-Sanitary-Sewer-Lateral-Repai">
               Chesterfield&rsquo;s programme page
-            </a>{' '}
-            — we would rather point you there than restate figures we have not
+            </a>{' '};
+            we would rather point you there than restate figures we have not
             confirmed against the city&rsquo;s own source.
           </p>
         ),
@@ -764,7 +764,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for St. Charles
-          properties — a city that operates entirely outside MSD&rsquo;s
+          properties, a city that operates entirely outside MSD&rsquo;s
           territory, on its own sewer system.
         </p>
       ),
@@ -779,21 +779,21 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
           operates its own sanitary sewer system independently.
         </p>
         <p>
-          That system comprises two treatment facilities — one on the
+          That system comprises two treatment facilities (one on the
           Mississippi River rated at 9.63 million gallons per day, one on the
-          Missouri River rated at 7.54 — together with 22 lift stations.
+          Missouri River rated at 7.54) together with 22 lift stations.
           Day-to-day operations are contracted out, while the city&rsquo;s own
           Utilities Division retains regulatory oversight.
         </p>
         <p>
           For a property owner, the practical consequence is that the authority,
-          the rules, and the programme are the city&rsquo;s — not MSD&rsquo;s.
+          the rules, and the programme are the city&rsquo;s, not MSD&rsquo;s.
           Guidance written for St. Louis County does not necessarily apply here.
         </p>
 
         <h2>A different reimbursement structure</h2>
         <p>
-          The annual charge is $28 on residential property — the same figure
+          The annual charge is $28 on residential property, the same figure
           most neighbouring municipalities collect. What differs is what that
           charge buys.
         </p>
@@ -810,15 +810,15 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         <p>
           The ordinance requires written certification from a licensed master
           plumber or drainlayer that cabling was attempted and did not resolve
-          the issue — a different evidentiary route from programmes that require
+          the issue, a different evidentiary route from programmes that require
           video as a matter of course.
         </p>
 
         <h2>What that means for a homeowner</h2>
         <p>
           A 90% structure means a share of the cost remains yours regardless of
-          approval, which makes the size of the repair — and therefore the
-          precise nature and position of the defect — worth establishing
+          approval, which makes the size of the repair, and therefore the
+          precise nature and position of the defect, worth establishing
           properly before work is authorised.
         </p>
 
@@ -854,7 +854,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         question: 'How much does the St. Charles programme reimburse?',
         answer: (
           <p>
-            90% of the authorised cost, capped at $7,500 — a different
+            90% of the authorised cost, capped at $7,500, a different
             structure from neighbouring programmes that cover the full cost of
             an eligible repair up to their own limits.
           </p>
@@ -877,7 +877,7 @@ export const stLouisServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in St. Louis City',
       intro: (
         <p>
-          Video inspection of the lateral — often the document the City&rsquo;s
+          Video inspection of the lateral, often the document the City&rsquo;s
           lateral repair programme requires, as well as the diagnosis.
         </p>
       ),
@@ -889,7 +889,7 @@ export const stLouisServiceLocationContent: Partial<
           St. Louis City&rsquo;s lateral repair programme requires a licensed
           plumber to inspect the line and submit a written statement together
           with video. The camera inspection is therefore not only how the
-          problem is identified — it is frequently the evidence the programme
+          problem is identified: it is frequently the evidence the programme
           asks for.
         </p>
 
@@ -929,7 +929,7 @@ export const stLouisServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in Chesterfield',
       intro: (
         <p>
-          Video inspection of the lateral — including on newer lines, where the
+          Video inspection of the lateral, including on newer lines, where the
           problems are usually about ground movement rather than the pipe
           itself.
         </p>
@@ -960,8 +960,8 @@ export const stLouisServiceLocationContent: Partial<
           because solids settle wherever flow has slowed.
         </p>
         <p>
-          The camera shows it directly — water sitting in a section that should
-          drain — and the distance counter establishes where along the run it
+          The camera shows it directly (water sitting in a section that should
+          drain), and the distance counter establishes where along the run it
           sits. That distinction matters, because a belly and a blockage feel
           identical at the fixtures and call for different responses.
         </p>
@@ -974,7 +974,7 @@ export const stLouisServiceLocationContent: Partial<
           considering a claim, which is often the video itself.
         </p>
         <p>
-          Confirm current programme terms with Chesterfield Public Works — caps
+          Confirm current programme terms with Chesterfield Public Works; caps
           and exclusions vary between municipalities, and we will not restate
           figures we have not verified against the city&rsquo;s own source.
         </p>
@@ -993,7 +993,7 @@ export const stLouisServiceLocationContent: Partial<
       title: 'Hydro Jetting in Chesterfield',
       intro: (
         <p>
-          High-pressure cleaning for lines carrying accumulation — and an
+          High-pressure cleaning for lines carrying accumulation, and an
           honest assessment of when a Chesterfield line does not need it.
         </p>
       ),
@@ -1004,7 +1004,7 @@ export const stLouisServiceLocationContent: Partial<
         <p>
           Hydro jetting removes material from the pipe wall along a length of
           line, rather than boring a channel through a single obstruction. It
-          suits grease, scale, sediment, and sludge — accumulation that has
+          suits grease, scale, sediment, and sludge: accumulation that has
           narrowed the effective diameter over time.
         </p>
 
@@ -1053,7 +1053,7 @@ export const stLouisServiceLocationContent: Partial<
       title: 'Pre-Purchase Sewer Inspection in Ballwin',
       intro: (
         <p>
-          Inspect the lateral before closing — and understand what
+          Inspect the lateral before closing, and understand what
           Ballwin&rsquo;s lateral programme will and will not cover once the
           property is yours.
         </p>
@@ -1087,7 +1087,7 @@ export const stLouisServiceLocationContent: Partial<
         <h2>Construction era in Ballwin</h2>
         <p>
           Much of Ballwin&rsquo;s housing dates from the subdivision development
-          of the 1960s through the 1980s — a period spanning the transition from
+          of the 1960s through the 1980s, a period spanning the transition from
           clay and cast iron, through the years bituminized fibre pipe was still
           being laid, into the PVC era. That range is wide enough that the age of
           a house is a poor proxy for the condition of its lateral.
@@ -1097,7 +1097,7 @@ export const stLouisServiceLocationContent: Partial<
         <p>
           The inspection is most useful while decisions remain available to you.
           What you do with the findings is yours to decide with your own
-          advisers — we document the line, not the transaction.
+          advisers; we document the line, not the transaction.
         </p>
       </>
     ),
@@ -1123,7 +1123,7 @@ export const stLouisServiceLocationContent: Partial<
       <>
         <h2>Different authority, different rules</h2>
         <p>
-          The City of St. Charles is not within MSD&rsquo;s service territory —
+          The City of St. Charles is not within MSD&rsquo;s service territory:
           it operates its own sanitary sewer system, with its own treatment
           facilities and its own oversight. Guidance a buyer has read about
           St. Louis County does not necessarily transfer.
@@ -1140,7 +1140,7 @@ export const stLouisServiceLocationContent: Partial<
           of any repair remains the owner&rsquo;s regardless of approval, so the
           scale of the defect matters. And the ordinance route requires written
           certification from a licensed master plumber or drainlayer that
-          cabling was attempted and did not resolve the issue — meaning a
+          cabling was attempted and did not resolve the issue, meaning a
           recurring blockage has a documentation path attached to it.
         </p>
 
@@ -1165,7 +1165,7 @@ export const stLouisServiceLocationContent: Partial<
       title: 'Sewer Cleaning in Florissant',
       intro: (
         <p>
-          Clearing accumulated material from Florissant lines — and
+          Clearing accumulated material from Florissant lines, and
           establishing whether accumulation is the whole story.
         </p>
       ),
@@ -1180,7 +1180,7 @@ export const stLouisServiceLocationContent: Partial<
         </p>
         <p>
           Laterals of that era were commonly laid in clay, cast iron, or
-          bituminized fibre pipe. Each fails differently — joints separating and
+          bituminized fibre pipe. Each fails differently: joints separating and
           admitting roots, internal corrosion and scale, or deformation under
           soil load. All three produce recurring blockages that clearing
           temporarily relieves without addressing.
@@ -1196,7 +1196,7 @@ export const stLouisServiceLocationContent: Partial<
         </p>
         <p>
           So if a line blocks repeatedly, the useful sequence is usually to
-          clean it enough to see it, then inspect — because the footage is both
+          clean it enough to see it, then inspect, because the footage is both
           the diagnosis and, if a structural failure is present, the
           documentation the programme requires.
         </p>

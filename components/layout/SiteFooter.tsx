@@ -105,7 +105,7 @@ export function SiteFooter() {
             the entity name and founding year exists (PENDING-002).
           */}
           <p className="text-xs opacity-70">
-            {SITE_NAME} — independent sewer inspection, diagnostics, locating, and
+            {SITE_NAME}: independent sewer inspection, diagnostics, locating, and
             cleaning.
           </p>
         </div>

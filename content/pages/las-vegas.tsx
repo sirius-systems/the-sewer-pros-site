@@ -75,8 +75,8 @@ const LAS_VEGAS_CONTACT = (
       , Monday to Friday, 8:00am to 4:00pm.
     </p>
     <p>
-      We are operating in the Las Vegas Valley. This is a newer market for us —
-      our longest-running work is in St. Louis and San Diego — and we would
+      We are operating in the Las Vegas Valley. This is a newer market for us
+      (our longest-running work is in St. Louis and San Diego), and we would
       rather say that plainly than imply a local track record we have not built
       here yet.
     </p>
@@ -105,7 +105,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       <p>
         The Las Vegas Valley has no single sewer authority. Each incorporated
         city runs its own utility relationship, while the Clark County Water
-        Reclamation District — publicly branded the Clean Water Team — serves
+        Reclamation District, publicly branded the Clean Water Team, serves
         the unincorporated areas of the valley.
       </p>
       <p>
@@ -120,7 +120,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       <p>
         The Clark County Water Reclamation District states it directly: a
         damaged sewer lateral connecting a house to the sewer main in the street
-        is the responsibility of the property owner — cleaning, repair, and
+        is the responsibility of the property owner: cleaning, repair, and
         replacement alike.
       </p>
       <p>
@@ -134,7 +134,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       <p>
         This is a genuine difference from other markets. Rather than a
         reimbursement programme, the City of Las Vegas partners with a private
-        company on an <strong>optional paid warranty</strong> — Service Line
+        company on an <strong>optional paid warranty</strong>: Service Line
         Warranties of America, at $6.00 per month or $67.00 per year, with no
         coverage cap and no deductible or service fee.
       </p>
@@ -155,7 +155,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       <p>
         What it does not remove is ground movement. On newer lines the recurring
         findings are bellies holding standing water, joints opened by
-        settlement, and damage from later construction or landscaping — all of
+        settlement, and damage from later construction or landscaping, all of
         which produce the same repeating slow-drainage pattern people associate
         with old pipe, from an entirely different cause.
       </p>
@@ -182,7 +182,7 @@ export const lasVegasMarketContent: MarketPageContent = {
         <p>
           The property owner. The Clark County Water Reclamation District states
           this directly for the unincorporated valley, and Henderson states it
-          for its own residents — responsibility begins where the lateral meets
+          for its own residents: responsibility begins where the lateral meets
           the city main.
         </p>
       ),
@@ -193,7 +193,7 @@ export const lasVegasMarketContent: MarketPageContent = {
         <p>
           Not a reimbursement fund of the kind some other regions run. The City
           of Las Vegas partners with a private provider on an optional paid
-          warranty — $6.00 a month or $67.00 a year — which is insurance a
+          warranty, $6.00 a month or $67.00 a year, which is insurance a
           homeowner buys rather than municipal assistance.
         </p>
       ),
@@ -218,7 +218,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for properties in the
-          City of Las Vegas — where the city&rsquo;s answer to lateral costs is
+          City of Las Vegas, where the city&rsquo;s answer to lateral costs is
           an optional warranty rather than a repair fund.
         </p>
       ),
@@ -253,7 +253,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
         </p>
         <p>
           The existence of the warranty product strongly implies the standard
-          model — the homeowner owns the lateral — which is what every other
+          model (the homeowner owns the lateral), which is what every other
           authority in the valley states. But rather than assert the
           city&rsquo;s policy from an inference, confirm it with{' '}
           <a href="https://www.lasvegasnevada.gov/Government/Departments/Public-Works">
@@ -269,8 +269,8 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           close to 28% of all housing built during the 1990s alone.
         </p>
         <p>
-          That means most laterals here are PVC. Material decay — the clay joints
-          and corroded cast iron that dominate older regions — is largely not
+          That means most laterals here are PVC. Material decay, the clay joints
+          and corroded cast iron that dominate older regions, is largely not
           the issue. What is:
         </p>
         <ul>
@@ -290,7 +290,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           <p>
             That depends on the condition of your line, which is worth
             establishing either way. The warranty is $6.00 a month or $67.00 a
-            year with no cap and no deductible — but it is a product you buy,
+            year with no cap and no deductible, but it is a product you buy,
             not assistance you claim after a failure.
           </p>
         ),
@@ -354,7 +354,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           Newer pipe does not float above the ground it sits in. On lines of
           this era the recurring findings are bellies holding water, joints
           opened by settlement, and damage from work done after the line was
-          laid — pools, additions, landscaping, utility trenching.
+          laid: pools, additions, landscaping, utility trenching.
         </p>
         <p>
           A belly produces exactly the symptom people read as an ageing sewer:
@@ -399,7 +399,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for North Las Vegas
-          properties — the newest housing stock in the valley, where sewer
+          properties, the newest housing stock in the valley, where sewer
           problems rarely look like age.
         </p>
       ),
@@ -440,7 +440,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           </li>
         </ul>
         <p>
-          All three produce recurring slow drainage that clears and returns —
+          All three produce recurring slow drainage that clears and returns:
           the symptom people attribute to an old sewer, on a line that is
           nothing of the sort.
         </p>
@@ -453,8 +453,8 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           lateral begins.
         </p>
         <p>
-          Every other authority in the valley — Henderson and the Clark County
-          Water Reclamation District both — places the lateral with the property
+          Every other authority in the valley (Henderson and the Clark County
+          Water Reclamation District both) places the lateral with the property
           owner, so the pattern is consistent. But we would rather send you to{' '}
           <a href="https://www.cityofnorthlasvegas.com">
             the City of North Las Vegas
@@ -472,7 +472,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
         answer: (
           <p>
             Because the failure modes on newer lines are about ground movement,
-            not pipe age — bellies, settlement-opened joints, and damage from
+            not pipe age: bellies, settlement-opened joints, and damage from
             work done after the line was laid. Those produce the same recurring
             symptoms as an old failing line.
           </p>
@@ -488,7 +488,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
       title: 'Sewer inspection and cleaning in Summerlin',
       intro: (
         <p>
-          Camera inspection, diagnostics, and cleaning across Summerlin — a
+          Camera inspection, diagnostics, and cleaning across Summerlin, a
           community that genuinely straddles two different sewer authorities.
         </p>
       ),
@@ -502,7 +502,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           years.
         </p>
         <p>
-          Most of Summerlin lies within the incorporated City of Las Vegas —
+          Most of Summerlin lies within the incorporated City of Las Vegas,
           roughly 22,500 acres along the city&rsquo;s western edge. But
           Summerlin South is a separate unincorporated Clark County
           census-designated place, not part of the city at all, and falls under
@@ -535,7 +535,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           The one thing that does not change across the boundary is
           responsibility. The Clark County Water Reclamation District states
           that a damaged lateral connecting a house to the main in the street is
-          the property owner&rsquo;s — cleaning, repair, and replacement.
+          the property owner&rsquo;s: cleaning, repair, and replacement.
         </p>
 
         <h2>A tightly concentrated construction era</h2>
@@ -553,7 +553,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
         </p>
         <p>
           Note that figure describes incorporated Summerlin rather than
-          Summerlin South, which is a separate geography — another reason the
+          Summerlin South, which is a separate geography, another reason the
           boundary is worth confirming.
         </p>
 

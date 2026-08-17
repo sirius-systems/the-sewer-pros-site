@@ -39,7 +39,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       intro: (
         <p>
           A camera inspection puts a video camera inside the sewer line so the
-          line&rsquo;s visible condition can be seen and documented — before
+          line&rsquo;s visible condition can be seen and documented, before
           anyone recommends cleaning, repair, or replacement.
         </p>
       ),
@@ -125,7 +125,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           The Sewer Pros inspects, documents, and cleans. We are not a repair or
           replacement contractor, so an inspection here does not exist to
           produce a repair sale. If findings suggest work beyond cleaning, that
-          is a conversation about evidence and options — including having the
+          is a conversation about evidence and options, including having the
           footage reviewed by a qualified repair contractor.
         </p>
       </>
@@ -142,7 +142,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'What does a sewer camera inspection show?',
         answer: (
           <p>
-            It can reveal visible conditions inside the accessible line —
+            It can reveal visible conditions inside the accessible line:
             blockages, root intrusion, separated joints, cracks, offsets,
             standing water, and debris. It cannot guarantee detection of every
             hidden defect.
@@ -192,7 +192,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       intro: (
         <p>
           Clearing what has built up inside the sewer line so it drains as
-          intended — and so its actual condition can be seen.
+          intended, and so its actual condition can be seen.
         </p>
       ),
     },
@@ -206,7 +206,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         </p>
         <p>
           Cleaning removes that accumulation. It does not change the structural
-          condition of the pipe — a cleaned line with a cracked or offset joint
+          condition of the pipe: a cleaned line with a cracked or offset joint
           still has a cracked or offset joint.
         </p>
 
@@ -221,7 +221,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         <h2>When cleaning is not the answer</h2>
         <p>
           Repeated blockages returning quickly after cleaning usually indicate
-          something the cleaning is not addressing — root intrusion at a
+          something the cleaning is not addressing: root intrusion at a
           specific defect, a section that has lost slope, or a collapsed
           segment. Cleaning that line again treats the symptom.
         </p>
@@ -261,7 +261,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         answer: (
           <p>
             Rapid recurrence usually points to an underlying condition rather
-            than ordinary buildup — roots entering at a defect, a low section
+            than ordinary buildup: roots entering at a defect, a low section
             holding water, or damage. An inspection is more useful than another
             cleaning at that point.
           </p>
@@ -285,7 +285,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       intro: (
         <p>
           High-pressure water cleaning that scours the pipe wall rather than
-          punching a hole through a blockage — appropriate for some lines and
+          punching a hole through a blockage, appropriate for some lines and
           conditions, and not for others.
         </p>
       ),
@@ -405,7 +405,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           in sequence answers a third: why did this line block?
         </p>
         <p>
-          A line full of accumulated material cannot be assessed properly — the
+          A line full of accumulated material cannot be assessed properly: the
           camera sees the buildup, not the pipe. Cleaning first and inspecting
           second means the footage shows the actual pipe wall, joints, and any
           defect that caused material to catch in the first place.
@@ -423,7 +423,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         <p>
           With the line clear, the footage can show whether the blockage was
           ordinary accumulation or the consequence of a condition that will
-          cause it again — roots entering at a joint, a section holding water,
+          cause it again: roots entering at a joint, a section holding water,
           a break collecting debris.
         </p>
         <p>
@@ -470,7 +470,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       intro: (
         <p>
           Establishing where the sewer line physically runs and how deep it
-          sits — information you need before anyone digs, and often before
+          sits, information you need before anyone digs, and often before
           anyone quotes.
         </p>
       ),
@@ -496,7 +496,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             problem are known rather than estimated.
           </li>
           <li>
-            Planning work on a property — landscaping, an addition, paving —
+            Planning work on a property (landscaping, an addition, paving)
             benefits from knowing what runs underneath and where.
           </li>
           <li>
@@ -514,7 +514,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         </p>
         <p>
           That combination is what makes a repair decision concrete rather than
-          approximate — and it is information you own regardless of who
+          approximate, and it is information you own regardless of who
           performs any subsequent work.
         </p>
       </>
@@ -552,7 +552,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       title: 'Drain Cleaning',
       intro: (
         <p>
-          Clearing individual fixture and branch drains — and recognising when
+          Clearing individual fixture and branch drains, and recognising when
           a drain problem is actually a sewer problem.
         </p>
       ),
@@ -584,7 +584,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         <p>
           A drain that clears and stays clear was a drain problem. A drain that
           blocks repeatedly, or blocks alongside other fixtures, is worth
-          investigating past the branch — clearing the same fixture repeatedly
+          investigating past the branch: clearing the same fixture repeatedly
           does not address a main-line cause.
         </p>
       </>
@@ -594,8 +594,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'Multiple drains are slow. Is that different?',
         answer: (
           <p>
-            Usually, yes. Several fixtures affected at once — especially the
-            lowest ones — points toward the main line rather than any individual
+            Usually, yes. Several fixtures affected at once, especially the
+            lowest ones, points toward the main line rather than any individual
             branch, and is worth inspecting rather than clearing repeatedly.
           </p>
         ),
@@ -646,14 +646,14 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         <p>
           It documents visible conditions on the day of inspection. It does not
           guarantee future performance, and it does not establish who is legally
-          responsible for which portion of the line — that varies by
+          responsible for which portion of the line: that varies by
           jurisdiction and is a question for the appropriate professional.
         </p>
 
         <h2>Timing</h2>
         <p>
           The inspection is most useful while you still have decisions
-          available to you. Findings are information for your due diligence —
+          available to you. Findings are information for your due diligence:
           what you do with them is your decision, made with your own advisers.
         </p>
 
@@ -688,8 +688,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         answer: (
           <p>
             You have documented evidence of the line&rsquo;s condition. What you
-            do with it — including obtaining repair quotes or discussing it with
-            your agent and advisers — is your decision.
+            do with it, including obtaining repair quotes or discussing it with
+            your agent and advisers, is your decision.
           </p>
         ),
       },
@@ -714,7 +714,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       intro: (
         <p>
           When a line backs up again after being cleared, the useful question is
-          no longer how to clear it — it is why it keeps happening.
+          no longer how to clear it: it is why it keeps happening.
         </p>
       ),
     },
@@ -744,7 +744,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         </p>
         <p>
           That usually means cleaning the line enough to see it, inspecting it,
-          and locating any defect the footage identifies — so the position is
+          and locating any defect the footage identifies, so the position is
           known rather than approximate.
         </p>
 
@@ -771,8 +771,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         answer: (
           <p>
             The objective. Clearing addresses the blockage; diagnosis addresses
-            the reason it forms. Those need different work — inspection and
-            usually locating — and produce a different kind of answer.
+            the reason it forms. Those need different work (inspection and
+            usually locating) and produce a different kind of answer.
           </p>
         ),
       },
@@ -794,7 +794,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       intro: (
         <p>
           Scheduled cleaning and inspection for lines with a known reason to
-          need it — based on the line&rsquo;s actual condition and history
+          need it, based on the line&rsquo;s actual condition and history
           rather than a default interval.
         </p>
       ),
@@ -842,7 +842,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'How do you decide the interval?',
         answer: (
           <p>
-            From the line itself — its condition at inspection, how quickly it
+            From the line itself: its condition at inspection, how quickly it
             accumulates, and what caused previous problems. There is no single
             correct interval for every line.
           </p>

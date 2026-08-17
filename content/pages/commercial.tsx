@@ -49,7 +49,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
       title: 'Commercial Sewer Camera Inspection',
       intro: (
         <p>
-          Documented evidence of a line&rsquo;s condition — for planning
+          Documented evidence of a line&rsquo;s condition: for planning
           maintenance, supporting a capital decision, or establishing what
           happened after a failure.
         </p>
@@ -82,7 +82,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
         <h2>Working around operations</h2>
         <p>
           Access on a commercial site usually involves more than opening a
-          cleanout — occupied units, trading hours, service corridors, and other
+          cleanout: occupied units, trading hours, service corridors, and other
           contractors on site. Inspection work is planned around that rather
           than assuming an empty building.
         </p>
@@ -107,7 +107,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
         question: 'Can inspection be scheduled outside trading hours?',
         answer: (
           <p>
-            Scheduling is part of the conversation — access on an operating
+            Scheduling is part of the conversation: access on an operating
             property is a constraint to plan around, not an afterthought. Talk
             to us about what the site requires.
           </p>
@@ -123,7 +123,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
       title: 'Commercial Sewer Cleaning',
       intro: (
         <p>
-          Clearing accumulated material from commercial sewer lines — where
+          Clearing accumulated material from commercial sewer lines, where
           volume is higher, consequences of a backup are broader, and the
           window to do the work is narrower.
         </p>
@@ -176,7 +176,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
       intro: (
         <p>
           High-pressure cleaning for lines carrying grease, solids, and
-          continuous volume — where buildup on the pipe wall, not a single
+          continuous volume, where buildup on the pipe wall, not a single
           obstruction, is the recurring problem.
         </p>
       ),
@@ -223,7 +223,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
         question: 'How often do grease-bearing lines need jetting?',
         answer: (
           <p>
-            It depends on volume, what enters the line, and its condition — not
+            It depends on volume, what enters the line, and its condition, not
             on a standard interval. Establishing the rate of accumulation for a
             specific line is more useful than applying a default.
           </p>
@@ -239,7 +239,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
       title: 'Commercial Drain Cleaning',
       intro: (
         <p>
-          Clearing fixture and branch drains across occupied buildings — and
+          Clearing fixture and branch drains across occupied buildings, and
           distinguishing a local drain issue from a main-line problem before
           repeating the same visit.
         </p>
@@ -284,7 +284,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
       title: 'Commercial Preventative Sewer & Drain Maintenance',
       intro: (
         <p>
-          Servicing lines on an interval the evidence supports — so failures
+          Servicing lines on an interval the evidence supports, so failures
           happen on a schedule you chose rather than during trading hours.
         </p>
       ),
@@ -299,7 +299,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
         </p>
         <p>
           The difference is largely about when the disruption happens and how
-          much of it there is — not about whether lines need attention.
+          much of it there is, not about whether lines need attention.
         </p>
 
         <h2>Which lines actually warrant it</h2>
@@ -316,7 +316,7 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
 
         <h2>Documentation</h2>
         <p>
-          Recurring service produces a record of condition over time — useful
+          Recurring service produces a record of condition over time, useful
           when justifying budget, planning capital work, or demonstrating that a
           known issue was being managed.
         </p>

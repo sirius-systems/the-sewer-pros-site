@@ -56,7 +56,7 @@ export const sanDiegoServiceLocationContent: Partial<
       intro: (
         <p>
           Video inspection of the lateral in a city where you own the entire
-          line and no reimbursement exists — which makes knowing its condition
+          line and no reimbursement exists, which makes knowing its condition
           before you spend money the whole point.
         </p>
       ),
@@ -74,7 +74,7 @@ export const sanDiegoServiceLocationContent: Partial<
           Set against places that operate assistance programmes, that changes
           the calculation. Every dollar of a lateral repair here is the
           owner&rsquo;s, so the difference between a line that needs cleaning
-          and a line that needs replacing is not a technicality — it is the
+          and a line that needs replacing is not a technicality: it is the
           entire cost.
         </p>
 
@@ -119,7 +119,7 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in San Marcos',
       intro: (
         <p>
-          Video inspection for San Marcos properties — served by a water
+          Video inspection for San Marcos properties, served by a water
           district rather than the city, and built recently enough that the
           usual assumptions about old pipe do not apply.
         </p>
@@ -143,7 +143,7 @@ export const sanDiegoServiceLocationContent: Partial<
         <h2>New housing changes what the camera looks for</h2>
         <p>
           San Marcos has a median year built of around 1996 (American Community
-          Survey, 2019&ndash;2023 five-year estimates) — among the newest
+          Survey, 2019&ndash;2023 five-year estimates), among the newest
           housing in the region. Most laterals here will be PVC rather than
           clay, cast iron, or bituminized fibre.
         </p>
@@ -152,7 +152,7 @@ export const sanDiegoServiceLocationContent: Partial<
           shifts what appears on camera:
         </p>
         <ul>
-          <li>Bellies — sections that lost slope and hold standing water</li>
+          <li>Bellies: sections that lost slope and hold standing water</li>
           <li>Joints opened by settlement rather than material decay</li>
           <li>Damage from landscaping, an addition, or utility trenching</li>
           <li>Roots exploiting an opening that movement or damage created</li>
@@ -182,7 +182,7 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in Carlsbad',
       intro: (
         <p>
-          Video inspection for Carlsbad properties — in one of the few places in
+          Video inspection for Carlsbad properties, in one of the few places in
           San Diego County where a grant programme may contribute toward
           lateral work.
         </p>
@@ -229,7 +229,7 @@ export const sanDiegoServiceLocationContent: Partial<
         </p>
         <p>
           On lines of that period the recurring findings are usually ground
-          movement rather than material decay — bellies holding water, joints
+          movement rather than material decay: bellies holding water, joints
           pulled apart by settlement, damage from later work on the property.
           Those are visible on camera and effectively invisible from the
           fixtures.
@@ -250,7 +250,7 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Pre-Purchase Sewer Inspection in Carlsbad',
       intro: (
         <p>
-          Inspect the lateral before closing — and know that Carlsbad is one of
+          Inspect the lateral before closing, and know that Carlsbad is one of
           the few places in the county where a grant may contribute toward a
           repair you inherit.
         </p>
@@ -265,7 +265,7 @@ export const sanDiegoServiceLocationContent: Partial<
           first-served, with priority for properties with an overflow history.
         </p>
         <p>
-          For a buyer that is genuinely useful information, and it is unusual —
+          For a buyer that is genuinely useful information, and it is unusual:
           across most of San Diego County, including the City of San Diego, no
           such programme exists and a failed lateral is funded entirely by the
           owner.
@@ -282,7 +282,7 @@ export const sanDiegoServiceLocationContent: Partial<
           Most of Carlsbad is served by the city&rsquo;s own utilities
           department, but the southern portion falls to Leucadia Wastewater
           District or Vallecitos. Whether the grant reaches those properties is
-          not something we can confirm — check the{' '}
+          not something we can confirm; check the{' '}
           <a href="https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners">
             City of Carlsbad&rsquo;s property-owner page
           </a>{' '}
@@ -301,7 +301,7 @@ export const sanDiegoServiceLocationContent: Partial<
           construction, with a median year built of around 1989 (American
           Community Survey, 2019&ndash;2023 five-year estimates). Newer pipe
           removes material decay as a concern but not settlement, bellies, or
-          damage from work done since — none of which the age of a house
+          damage from work done since, none of which the age of a house
           predicts.
         </p>
 
@@ -309,7 +309,7 @@ export const sanDiegoServiceLocationContent: Partial<
         <p>
           The inspection is most useful while decisions are still available to
           you. What you do with the findings is yours to decide with your own
-          advisers — we document the line, not the transaction, and we do not
+          advisers; we document the line, not the transaction, and we do not
           perform the repair.
         </p>
       </>
@@ -328,7 +328,7 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in Chula Vista',
       intro: (
         <p>
-          Video inspection for Chula Vista properties — where the grant process
+          Video inspection for Chula Vista properties, where the grant process
           runs through CVSan and asks for exactly the kind of documentation an
           inspection produces.
         </p>
@@ -338,8 +338,8 @@ export const sanDiegoServiceLocationContent: Partial<
       <>
         <h2>CVSan, not the City of Chula Vista</h2>
         <p>
-          Sewer service in Chula Vista comes from CVSan — the Chula Vista
-          Sanitation District — a separate special district rather than a
+          Sewer service in Chula Vista comes from CVSan (the Chula Vista
+          Sanitation District), a separate special district rather than a
           department of city government. Questions about laterals, permits, and
           the grant programme go there, not to City Hall.
         </p>
@@ -358,8 +358,8 @@ export const sanDiegoServiceLocationContent: Partial<
         <p>
           The three-quote requirement is where inspection earns its place.
           Comparable quotes are far easier to obtain when every contractor is
-          pricing against the same recorded evidence — a defect of a known type
-          at a known distance — rather than each forming an independent view of
+          pricing against the same recorded evidence (a defect of a known type
+          at a known distance) rather than each forming an independent view of
           what is wrong.
         </p>
         <p>
@@ -397,7 +397,7 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Cleaning in Escondido',
       intro: (
         <p>
-          Clearing accumulated material from Escondido lines — where the
+          Clearing accumulated material from Escondido lines, where the
           municipal code puts blockage removal squarely on the property owner.
         </p>
       ),
@@ -493,7 +493,7 @@ export const sanDiegoServiceLocationContent: Partial<
         </p>
         <p>
           We also found no lateral repair assistance programme here, unlike
-          Carlsbad and Chula Vista — worth confirming for yourself either way.
+          Carlsbad and Chula Vista; worth confirming for yourself either way.
         </p>
 
         <h2>What cleaning addresses, and what it does not</h2>
@@ -517,7 +517,7 @@ export const sanDiegoServiceLocationContent: Partial<
         </p>
         <p>
           On lines of that period, recurring problems are more often caused by
-          ground movement than by material decay — a section that lost slope, a
+          ground movement than by material decay: a section that lost slope, a
           joint opened by settlement, damage from later work on the property.
           Those produce the same symptom as an old failing line and are not
           distinguishable from the fixtures.
@@ -546,7 +546,7 @@ export const sanDiegoServiceLocationContent: Partial<
       intro: (
         <p>
           High-pressure cleaning for Mission Valley&rsquo;s hotel, restaurant,
-          retail, and multifamily lines — where accumulation is a scheduling
+          retail, and multifamily lines, where accumulation is a scheduling
           problem rather than an emergency.
         </p>
       ),
@@ -563,7 +563,7 @@ export const sanDiegoServiceLocationContent: Partial<
         <p>
           That changes what accumulates. Food-service and high-volume lines
           collect grease and solids on the pipe wall at a rate residential lines
-          do not, and the accumulation is progressive rather than sudden — the
+          do not, and the accumulation is progressive rather than sudden: the
           line narrows until flow fails.
         </p>
 
@@ -580,8 +580,8 @@ export const sanDiegoServiceLocationContent: Partial<
         <p>
           In the City of San Diego the property owner owns the entire lateral
           and there is no reimbursement for plumbing expenses. On a commercial
-          property that sits alongside the operational cost — a closed kitchen,
-          displaced tenants, an interrupted trading day — which usually exceeds
+          property that sits alongside the operational cost (a closed kitchen,
+          displaced tenants, an interrupted trading day), which usually exceeds
           the repair.
         </p>
         <p>

@@ -443,12 +443,12 @@ Canonical pattern:
 
 | ID                          | Page                                        | URL                                                      | Status   | Index |
 | --------------------------- | ------------------------------------------- | -------------------------------------------------------- | -------- | ----: |
-| `sl-stl-city-camera`        | Sewer Camera Inspection — St. Louis City    | `/st-louis-mo/st-louis-city/sewer-camera-inspection/`    | `launch` |   Yes |
-| `sl-chesterfield-camera`    | Sewer Camera Inspection — Chesterfield      | `/st-louis-mo/chesterfield/sewer-camera-inspection/`     | `launch` |   Yes |
-| `sl-ballwin-prepurchase`    | Pre-Purchase Sewer Inspection — Ballwin     | `/st-louis-mo/ballwin/pre-purchase-sewer-inspection/`    | `launch` |   Yes |
-| `sl-st-charles-prepurchase` | Pre-Purchase Sewer Inspection — St. Charles | `/st-louis-mo/st-charles/pre-purchase-sewer-inspection/` | `launch` |   Yes |
-| `sl-florissant-cleaning`    | Sewer Cleaning — Florissant                 | `/st-louis-mo/florissant/sewer-cleaning/`                | `launch` |   Yes |
-| `sl-chesterfield-hydro`     | Hydro Jetting — Chesterfield                | `/st-louis-mo/chesterfield/hydro-jetting/`               | `launch` |   Yes |
+| `sl-stl-city-camera`        | Sewer Camera Inspection in St. Louis City    | `/st-louis-mo/st-louis-city/sewer-camera-inspection/`    | `launch` |   Yes |
+| `sl-chesterfield-camera`    | Sewer Camera Inspection in Chesterfield      | `/st-louis-mo/chesterfield/sewer-camera-inspection/`     | `launch` |   Yes |
+| `sl-ballwin-prepurchase`    | Pre-Purchase Sewer Inspection in Ballwin     | `/st-louis-mo/ballwin/pre-purchase-sewer-inspection/`    | `launch` |   Yes |
+| `sl-st-charles-prepurchase` | Pre-Purchase Sewer Inspection in St. Charles | `/st-louis-mo/st-charles/pre-purchase-sewer-inspection/` | `launch` |   Yes |
+| `sl-florissant-cleaning`    | Sewer Cleaning in Florissant                 | `/st-louis-mo/florissant/sewer-cleaning/`                | `launch` |   Yes |
+| `sl-chesterfield-hydro`     | Hydro Jetting in Chesterfield                | `/st-louis-mo/chesterfield/hydro-jetting/`               | `launch` |   Yes |
 
 **St. Louis launch service + location pages:** 6
 
@@ -458,14 +458,14 @@ Canonical pattern:
 
 | ID                        | Page                                     | URL                                                     | Status   | Index |
 | ------------------------- | ---------------------------------------- | ------------------------------------------------------- | -------- | ----: |
-| `sl-sd-city-camera`       | Sewer Camera Inspection — San Diego      | `/san-diego-ca/san-diego/sewer-camera-inspection/`      | `launch` |   Yes |
-| `sl-san-marcos-camera`    | Sewer Camera Inspection — San Marcos     | `/san-diego-ca/san-marcos/sewer-camera-inspection/`     | `launch` |   Yes |
-| `sl-carlsbad-camera`      | Sewer Camera Inspection — Carlsbad       | `/san-diego-ca/carlsbad/sewer-camera-inspection/`       | `launch` |   Yes |
-| `sl-chula-vista-camera`   | Sewer Camera Inspection — Chula Vista    | `/san-diego-ca/chula-vista/sewer-camera-inspection/`    | `launch` |   Yes |
-| `sl-escondido-cleaning`   | Sewer Cleaning — Escondido               | `/san-diego-ca/escondido/sewer-cleaning/`               | `launch` |   Yes |
-| `sl-oceanside-cleaning`   | Sewer Cleaning — Oceanside               | `/san-diego-ca/oceanside/sewer-cleaning/`               | `launch` |   Yes |
-| `sl-mission-valley-hydro` | Hydro Jetting — Mission Valley           | `/san-diego-ca/mission-valley/hydro-jetting/`           | `launch` |   Yes |
-| `sl-carlsbad-prepurchase` | Pre-Purchase Sewer Inspection — Carlsbad | `/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/` | `launch` |   Yes |
+| `sl-sd-city-camera`       | Sewer Camera Inspection in San Diego      | `/san-diego-ca/san-diego/sewer-camera-inspection/`      | `launch` |   Yes |
+| `sl-san-marcos-camera`    | Sewer Camera Inspection in San Marcos     | `/san-diego-ca/san-marcos/sewer-camera-inspection/`     | `launch` |   Yes |
+| `sl-carlsbad-camera`      | Sewer Camera Inspection in Carlsbad       | `/san-diego-ca/carlsbad/sewer-camera-inspection/`       | `launch` |   Yes |
+| `sl-chula-vista-camera`   | Sewer Camera Inspection in Chula Vista    | `/san-diego-ca/chula-vista/sewer-camera-inspection/`    | `launch` |   Yes |
+| `sl-escondido-cleaning`   | Sewer Cleaning in Escondido               | `/san-diego-ca/escondido/sewer-cleaning/`               | `launch` |   Yes |
+| `sl-oceanside-cleaning`   | Sewer Cleaning in Oceanside               | `/san-diego-ca/oceanside/sewer-cleaning/`               | `launch` |   Yes |
+| `sl-mission-valley-hydro` | Hydro Jetting in Mission Valley           | `/san-diego-ca/mission-valley/hydro-jetting/`           | `launch` |   Yes |
+| `sl-carlsbad-prepurchase` | Pre-Purchase Sewer Inspection in Carlsbad | `/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/` | `launch` |   Yes |
 
 **San Diego launch service + location pages:** 8
 
