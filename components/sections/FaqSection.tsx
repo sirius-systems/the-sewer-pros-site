@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Section, Accordion, AccordionItem } from '@/components/ui'
+import { Section, Accordion, AccordionItem, type SectionSurface } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 
 /**
@@ -42,6 +42,18 @@ export interface FaqSectionProps {
   openFirst?: boolean
   /** Heading level for questions, matching the page outline (18 §15). */
   questionLevel?: 'h3' | 'h4'
+  /**
+   * Surface for the FAQ band.
+   *
+   * Defaults to `default` so existing pages are unchanged. Composing
+   * templates set `muted` where the FAQ follows a full-width section:
+   * this section is `width="reading"`, so its left edge sits well inside
+   * the one above it. On a shared white background that inset reads as a
+   * misalignment; with a surface change it reads as a distinct band,
+   * which is what it is. Same reasoning as `RelatedLinks`, which already
+   * defaults to `muted` for supplementary content.
+   */
+  surface?: SectionSurface
 }
 
 export function FaqSection({
@@ -51,12 +63,13 @@ export function FaqSection({
   entries,
   openFirst = false,
   questionLevel = 'h3',
+  surface = 'default',
 }: FaqSectionProps) {
   // 18 §120 — render nothing rather than an empty shell.
   if (entries.length === 0) return null
 
   return (
-    <Section density="dense" width="reading" labelledBy={id}>
+    <Section density="dense" width="reading" surface={surface} labelledBy={id}>
       <SectionHeading id={id} title={title} intro={intro} />
 
       <Accordion className="mt-8">

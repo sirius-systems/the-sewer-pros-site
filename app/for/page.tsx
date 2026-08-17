@@ -26,5 +26,8 @@ export default function Page() {
   const page = getPage(PAGE_ID)
   const content = getHubContent(PAGE_ID)
   if (page === undefined || content === undefined) notFound()
-  return <HubPageTemplate page={page} content={content} />
+  // `/for/` has no FAQ, so the items index is the last content band
+  // before the CTA. Muted keeps this hub from rendering as an unbroken
+  // white column, the same break the other hubs get from their FAQ.
+  return <HubPageTemplate page={page} content={content} itemsSurface="muted" />
 }

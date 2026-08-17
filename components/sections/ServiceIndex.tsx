@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Section , type SectionDensity } from '@/components/ui'
+import { Section , type SectionDensity, type SectionSurface } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import type { PageId } from '@/types'
@@ -53,6 +53,16 @@ export interface ServiceIndexProps {
   items: readonly ServiceIndexItem[]
   /** Numbered rows suit a sequence; plain rows suit a set. */
   numbered?: boolean
+  /**
+   * Surface for the index band.
+   *
+   * Defaults to `default` so existing pages are unchanged. A composing
+   * template sets `muted` where this index would otherwise sit in an
+   * unbroken run of `default` sections — the same reason `density`
+   * is overridable here: only the template knows the full sequence
+   * (18 §108, §155).
+   */
+  surface?: SectionSurface
 }
 
 export function ServiceIndex({
@@ -63,6 +73,7 @@ export function ServiceIndex({
   intro,
   items,
   numbered = false,
+  surface = 'default',
 }: ServiceIndexProps) {
   // Gated pages drop out rather than failing the build — a service
   // whose page is pending validation simply is not listed yet (04 §4).
@@ -74,7 +85,7 @@ export function ServiceIndex({
   if (links.length === 0) return null
 
   return (
-    <Section density={density} labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <ul className="mt-10 border-t border-border">
