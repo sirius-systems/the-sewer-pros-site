@@ -1,4 +1,4 @@
-import { Section, Prose, Container, type SectionDensity } from '@/components/ui'
+import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   FaqSection,
   RelatedLinks,
@@ -181,14 +181,20 @@ export function ResourcePageTemplate({
         18 §115 places a relevant SERVICE CTA at the end of an article,
         after the reader has the answer — a band rather than the full
         panel, since a resource page's job is comprehension first.
+
+        NOT wrapped in a `Container`. `CtaSection` renders a `Section`,
+        which supplies its own container, so an outer one nested a
+        second identical `max-w`/`px` pair inside the first: the band's
+        `bg-surface-muted` stopped at the container edge instead of
+        bleeding, and its content carried doubled gutters. On the page
+        that read as a boxed card sitting between the full-bleed related
+        strip above it and the full-bleed footer below.
       */}
-      <Container>
-        <CtaSection
-          variant="band"
-          title={content.cta?.title ?? 'Want the condition documented?'}
-          body={content.cta?.body}
-        />
-      </Container>
+      <CtaSection
+        variant="band"
+        title={content.cta?.title ?? 'Want the condition documented?'}
+        body={content.cta?.body}
+      />
     </PageShell>
   )
 }
