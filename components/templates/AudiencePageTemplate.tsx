@@ -1,9 +1,16 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
+  TrustBar,
+  ProblemGrid,
+  InclusionsGrid,
   ServiceIndex,
   ProcessSteps,
   Differentiator,
+  AuthorityBand,
+  ProofGallery,
+  TestimonialBand,
+  LeadFormSection,
   FaqSection,
   RelatedLinks,
   CtaSection,
@@ -14,16 +21,33 @@ import type { AudiencePageContent, MasterPageRecord } from '@/types'
 /**
  * Audience page.
  *
- * Structure from docs/18-design-system.md §113:
+ * Structure ported from the `power` composition maps, resolved against
+ * docs/18-design-system.md §113:
  *
- *   Audience Hero → Audience Problem → Relevant Services → Process
- *   → Why Independent Inspection Matters → Market Availability
- *   → Resources → FAQ → CTA
+ *   Hero → Trust strip → Audience problem → Independent-model split
+ *   → Scenarios → What's included → Relevant services → Process
+ *   → Authority band → Proof* → Testimonial* → Form*
+ *   → Related → FAQ → CTA
+ *
+ * `*` renders nothing until its data gate opens.
  *
  * 18 §109: "Audience — problem/use-case led." The differentiator is on
- * by default here, unlike the service template: 09 §79-83 route every
- * audience through the independent-inspection argument, and for buyers
- * and agents it is the reason the page exists.
+ * unconditionally here, unlike the service template: 09 §79-83 route
+ * every audience through the independent-inspection argument, and for
+ * buyers and agents it is the reason the page exists.
+ *
+ * ---------------------------------------------------------------------------
+ * OPERATIONAL REGISTER, NOT CONSUMER
+ * ---------------------------------------------------------------------------
+ * The reference map for this type is explicit that the tone is
+ * "operationally credible, not just friendly" — this reader is
+ * evaluating a vendor relationship and cares about process,
+ * documentation, and reliability at scale. Its anti-patterns name tone
+ * drifting consumer-friendly as the failure.
+ *
+ * The services section is `dense`, denser than the home page's, for the
+ * same reason: it should read as framed around this audience's use
+ * cases rather than as the general catalog.
  *
  * ⚠ CLAUDE.md §21's audience test governs the copy: "Could 'home
  * buyers' be replaced with 'property managers' without rewriting most
@@ -38,6 +62,10 @@ import type { AudiencePageContent, MasterPageRecord } from '@/types'
  *
  * No legal or contractual language — 09, 31, and CLAUDE.md §31 and §75
  * forbid legal advice on real-estate content.
+ *
+ * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="panel"`
+ * are the only brand surfaces. Related and FAQ sit between them
+ * (18 §11).
  */
 export interface AudiencePageTemplateProps {
   page: MasterPageRecord
@@ -48,14 +76,25 @@ export function AudiencePageTemplate({
   page,
   content,
 }: AudiencePageTemplateProps) {
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
+  // The three gated sections contribute no entry — they render nothing.
+  //
+  // Services is `dense` per the reference map. That also breaks what
+  // was previously a four-section `standard` run through body →
+  // services → process → differentiator, a live rhythm warning on
+  // /for/home-buyers/ and /for/property-managers/ before the port.
   const densities: SectionDensity[] = [
     'sparse',
+    'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.services !== undefined ? (['standard'] as const) : []),
+    'standard',
+    ...(content.problems !== undefined ? (['standard'] as const) : []),
+    ...(content.inclusions !== undefined ? (['dense'] as const) : []),
+    ...(content.services !== undefined ? (['dense'] as const) : []),
     ...(content.process !== undefined ? (['standard'] as const) : []),
     'standard',
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]
 
@@ -75,14 +114,35 @@ export function AudiencePageTemplate({
         intro={content.hero.intro}
       />
 
+      <TrustBar />
+
       {content.body !== undefined && (
         <Section density="standard" width="reading">
           <Prose>{content.body}</Prose>
         </Section>
       )}
 
+      <Differentiator title="Why an independent inspection matters here" />
+
+      {content.problems !== undefined && (
+        <ProblemGrid
+          id="common-situations"
+          title="Common situations"
+          items={content.problems}
+        />
+      )}
+
+      {content.inclusions !== undefined && (
+        <InclusionsGrid
+          id="whats-included"
+          title="What's included"
+          items={content.inclusions}
+        />
+      )}
+
       {content.services !== undefined && (
         <ServiceIndex
+          density="dense"
           id="relevant-services"
           title="Services that apply"
           items={content.services}
@@ -97,9 +157,13 @@ export function AudiencePageTemplate({
         />
       )}
 
-      <Differentiator title="Why an independent inspection matters here" />
+      <AuthorityBand title="How we work" />
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      <ProofGallery title="Recent work" />
+
+      <TestimonialBand />
+
+      <LeadFormSection />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -107,6 +171,8 @@ export function AudiencePageTemplate({
           pageIds={content.relatedPageIds}
         />
       )}
+
+      {content.faq !== undefined && <FaqSection entries={content.faq} />}
 
       <CtaSection
         variant="panel"
