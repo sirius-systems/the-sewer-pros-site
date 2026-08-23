@@ -95,7 +95,22 @@ export function AuthorityBand({
         </p>
       )}
 
-      <ul className="mt-10 grid gap-8 sm:grid-cols-2">
+      {/*
+        Columns follow the point count rather than assuming four.
+
+        The guard above permits three, and `authority.ts` states that
+        deleting a point that cannot be sourced is always safe — so
+        three is a reachable, documented state, and three points in a
+        fixed two-column grid would orphan a cell. 18 §5.6 prohibits
+        forcing a count into a grid it does not divide into.
+      */}
+      <ul
+        className={`mt-10 grid gap-8 ${
+          authorityProofPoints.length % 2 === 0
+            ? 'sm:grid-cols-2'
+            : 'sm:grid-cols-3'
+        }`}
+      >
         {authorityProofPoints.map((point) => (
           <li key={point.label}>
             <h3 className="text-base font-medium">{point.label}</h3>
