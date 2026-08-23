@@ -71,7 +71,12 @@ export function ComparisonPageTemplate({
     ...(content.problems !== undefined ? (['standard'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
-    'sparse',
+    // The closing CTA is a `band`, not a `panel`, and CtaSection
+    // renders a band at `dense` (`isPanel ? sparse : dense`). This
+    // entry read `sparse` and therefore described a page that does not
+    // exist -- the rhythm check was validating a fiction on this family.
+    // Verified against rendered output.
+    'dense',
   ]
 
   return (
