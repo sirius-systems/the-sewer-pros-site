@@ -8,6 +8,7 @@ import {
   RelatedLinks,
   FaqSection,
   CtaSection,
+  authorityBandRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { LocationPageContent, MasterPageRecord } from '@/types'
@@ -76,7 +77,7 @@ export function LocationPageTemplate({
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.servicePageIds !== undefined ? (['dense'] as const) : []),
-    'standard',
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(content.coverage !== undefined ? (['standard'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',

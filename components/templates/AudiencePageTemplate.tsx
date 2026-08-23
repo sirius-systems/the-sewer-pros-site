@@ -14,6 +14,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  authorityBandRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { AudiencePageContent, MasterPageRecord } from '@/types'
@@ -92,7 +93,7 @@ export function AudiencePageTemplate({
     ...(content.inclusions !== undefined ? (['dense'] as const) : []),
     ...(content.services !== undefined ? (['dense'] as const) : []),
     ...(content.process !== undefined ? (['standard'] as const) : []),
-    'standard',
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',

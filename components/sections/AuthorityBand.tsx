@@ -62,6 +62,23 @@ export interface AuthorityBandProps {
   action?: { href: string; label: string } | null
 }
 
+/**
+ * Whether `AuthorityBand` renders anything.
+ *
+ * The band omits itself below three proof points rather than padding
+ * the grid, so a template that lists this section in its `densities`
+ * array must gate that entry on this predicate. Otherwise the declared
+ * rhythm describes a section the page does not have, and
+ * `sectionRhythmIssues()` validates a page that was never built — the
+ * drift class this port hit twice already (DEC-081).
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition instead of two copies of it.
+ */
+export function authorityBandRenders(): boolean {
+  return authorityProofPoints.length >= 3
+}
+
 export function AuthorityBand({
   density = 'standard',
   id = 'why-the-sewer-pros',
@@ -70,7 +87,7 @@ export function AuthorityBand({
   intro,
   action = PRIMARY_CTA,
 }: AuthorityBandProps) {
-  if (authorityProofPoints.length < 3) return null
+  if (!authorityBandRenders()) return null
 
   return (
     <Section density={density} surface="brand" labelledBy={id}>

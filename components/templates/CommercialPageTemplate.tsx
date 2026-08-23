@@ -10,6 +10,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  authorityBandRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { CommercialPageContent, MasterPageRecord } from '@/types'
@@ -89,7 +90,7 @@ export function CommercialPageTemplate({
     ...(content.problems !== undefined ? (['standard'] as const) : []),
     ...(content.inclusions !== undefined ? (['dense'] as const) : []),
     ...(content.process !== undefined ? (['standard'] as const) : []),
-    'standard',
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',

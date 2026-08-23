@@ -11,6 +11,7 @@ import {
   RelatedLinks,
   FaqSection,
   CtaSection,
+  authorityBandRenders,
 } from '@/components/sections'
 import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
@@ -91,7 +92,7 @@ export function MarketPageTemplate({
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.services !== undefined ? (['dense'] as const) : []),
-    'standard',
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(content.coverage !== undefined ? (['standard'] as const) : []),
     ...(content.locationPageIds !== undefined ? (['dense'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
