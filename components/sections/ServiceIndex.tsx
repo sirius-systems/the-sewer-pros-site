@@ -1,7 +1,13 @@
 import Link from 'next/link'
-import { Section , type SectionDensity, type SectionSurface } from '@/components/ui'
+import {
+  Section,
+  LinkCard,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
+import { cn } from '@/lib/utils/cn'
 import type { PageId } from '@/types'
 
 /**
@@ -51,8 +57,37 @@ export interface ServiceIndexProps {
   title: string
   intro?: string
   items: readonly ServiceIndexItem[]
-  /** Numbered rows suit a sequence; plain rows suit a set. */
+  /** Numbered rows suit a sequence; plain rows suit a set. `index` only. */
   numbered?: boolean
+  /**
+   * Layout shape — Appendix A.
+   *
+   *   index   a scannable list. The default, and the right choice when
+   *           the item count does not divide evenly or items vary in
+   *           length. See the note above on ten approved services.
+   *   mosaic  "a deliberately uneven grid where the flagship item
+   *           (Sewer Camera Inspection) gets more visual space than
+   *           supporting services" — Appendix A names both the pattern
+   *           and that exact flagship.
+   *
+   * The home page uses `mosaic` so it does not repeat the shape of the
+   * even `RoutingCards` grid directly above it. That satisfies 18 §5.6's
+   * "vary composition pattern between adjacent sections", and it is
+   * also the reference style's own requirement that intent-routing and
+   * the services catalog stay visually distinct.
+   *
+   * `mosaic` is deliberately not built on `CardGrid`: its even-division
+   * warning describes a failure mode that does not apply to a layout
+   * whose whole point is being uneven.
+   */
+  variant?: 'index' | 'mosaic'
+  /**
+   * The item given extra space in `mosaic`. Defaults to the first.
+   *
+   * Pass explicitly rather than relying on ordering when the flagship
+   * is not first in the content file.
+   */
+  flagshipPageId?: PageId
   /**
    * Surface for the index band.
    *
@@ -74,6 +109,8 @@ export function ServiceIndex({
   items,
   numbered = false,
   surface = 'default',
+  variant = 'index',
+  flagshipPageId,
 }: ServiceIndexProps) {
   // Gated pages drop out rather than failing the build — a service
   // whose page is pending validation simply is not listed yet (04 §4).
@@ -83,6 +120,57 @@ export function ServiceIndex({
   )
 
   if (links.length === 0) return null
+
+  if (variant === 'mosaic') {
+    const flagship = flagshipPageId ?? links[0]?.pageId
+
+    return (
+      <Section density={density} surface={surface} labelledBy={id}>
+        <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+
+        <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {links.map((link) => {
+            const isFlagship = link.pageId === flagship
+
+            return (
+              <li
+                key={link.pageId}
+                className={cn(isFlagship && 'sm:col-span-2 lg:row-span-2')}
+              >
+                {/*
+                  One anchor wraps the card, so the target is large
+                  (18 §48) and assistive technology announces one action
+                  rather than a card plus a nested link.
+                */}
+                <LinkCard
+                  href={link.href}
+                  actionLabel={link.label}
+                  className={cn(
+                    'flex h-full flex-col',
+                    isFlagship && 'justify-end',
+                  )}
+                >
+                  <h3
+                    className={cn(
+                      'font-medium tracking-tight text-balance text-foreground',
+                      isFlagship ? 'text-h2' : 'text-h4',
+                    )}
+                  >
+                    {link.label}
+                  </h3>
+                  {descriptions.get(link.pageId) !== undefined && (
+                    <p className="mt-2 max-w-prose text-sm leading-6 text-muted-foreground">
+                      {descriptions.get(link.pageId)}
+                    </p>
+                  )}
+                </LinkCard>
+              </li>
+            )
+          })}
+        </ul>
+      </Section>
+    )
+  }
 
   return (
     <Section density={density} surface={surface} labelledBy={id}>
