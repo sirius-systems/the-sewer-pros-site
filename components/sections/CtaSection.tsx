@@ -47,6 +47,23 @@ export interface CtaSectionProps {
   secondaryAction?: { href: string; label: string }
   /** Verified supporting content for the `split` variant only. */
   proof?: ReactNode
+  /**
+   * Market phone number, rendered beside the CTA.
+   *
+   * ⚠ ONLY MARKET-SCOPED TEMPLATES MAY PASS THIS.
+   *
+   * The business publishes two numbers on separate market sites with
+   * different hours (DEC-070, DEC-071), and 01 §20 forbids copying one
+   * market's facts onto another market's page. A template that does not
+   * know its market must omit this prop and let the CTA route to
+   * `/contact/`, which lists both markets separately — the same reason
+   * `SiteHeader` shows "Call" rather than a number (PENDING-017).
+   *
+   * The reference composition displays a phone prominently in every
+   * final CTA banner. That is not portable here, and this prop is the
+   * narrowed version of it.
+   */
+  phone?: { label: string; href: string }
   className?: string
 }
 
@@ -58,6 +75,7 @@ export function CtaSection({
   action = PRIMARY_CTA,
   secondaryAction,
   proof,
+  phone,
   className,
 }: CtaSectionProps) {
   const isPanel = variant === 'panel'
@@ -98,6 +116,23 @@ export function CtaSection({
           </ButtonLink>
         )}
       </div>
+
+      {phone !== undefined && (
+        <p
+          className={cn(
+            'mt-4 text-sm',
+            isPanel ? 'opacity-80' : 'text-muted-foreground',
+          )}
+        >
+          Prefer to talk now?{' '}
+          <a
+            href={phone.href}
+            className="font-medium underline underline-offset-4"
+          >
+            {phone.label}
+          </a>
+        </p>
+      )}
     </div>
   )
 

@@ -1,4 +1,8 @@
-import { Section } from '@/components/ui'
+import {
+  Section,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { trustStatements } from '@/data/business/positioning'
 
 /**
@@ -22,9 +26,26 @@ import { trustStatements } from '@/data/business/positioning'
  * sections and should read as a quiet strip, contributing rhythm rather
  * than competing (Appendix A density system).
  */
-export function TrustBar() {
+export interface TrustBarProps {
+  /**
+   * Overrides the section's natural density.
+   *
+   * Appendix A's density system is about VARIATION down a page, so the
+   * composing template — which alone knows the full sequence — may need
+   * a different value than this section would pick alone (18 §108).
+   * The reference composition places this strip in a different slot on
+   * each page type, which is why it became overridable.
+   */
+  density?: SectionDensity
+  surface?: SectionSurface
+}
+
+export function TrustBar({
+  density = 'dense',
+  surface = 'muted',
+}: TrustBarProps = {}) {
   return (
-    <Section density="dense" surface="muted" as="aside">
+    <Section density={density} surface={surface} as="aside">
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {trustStatements.map((statement) => (
           <li

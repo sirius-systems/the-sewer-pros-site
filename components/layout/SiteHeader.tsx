@@ -34,6 +34,21 @@ import { PRIMARY_CTA } from '@/components/layout/cta'
  *
  * Revisit if a market-scoped layout is introduced (PENDING-017).
  *
+ * ---------------------------------------------------------------------------
+ * STICKY
+ * ---------------------------------------------------------------------------
+ * The ported composition places a sticky header on every page type, and
+ * the ported page maps are materially longer than what they replaced,
+ * so the primary CTA would otherwise scroll out of reach.
+ *
+ * Pure CSS, so the header still ships no JavaScript. The phone question
+ * above is unchanged — sticky was adopted from the reference style;
+ * click-to-call was not.
+ *
+ * A sticky header covers in-page anchor targets, so `app/globals.css`
+ * carries a matching `:target { scroll-margin-top }`. Change both
+ * together.
+ *
  * Dropdowns and mega menus (18 §44) are intentionally not here — they
  * are step 17/18 work. The flat list is complete and usable meanwhile.
  */
@@ -41,7 +56,7 @@ export function SiteHeader() {
   const nav = resolvePrimaryNav()
 
   return (
-    <header className="border-b border-border bg-surface">
+    <header className="sticky top-0 z-50 border-b border-border bg-surface">
       <div className="mx-auto flex max-w-[var(--container-max)] items-center justify-between gap-6 px-4 py-4 sm:px-6">
         {/* 18 §7 — no logo asset has been approved; wordmark until then. */}
         <Link
