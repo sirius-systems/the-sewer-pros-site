@@ -1,4 +1,5 @@
-import { Section, Card, CardGrid, type SectionDensity } from '@/components/ui'
+import { Section, Card, type SectionDensity } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 
 /**
@@ -78,26 +79,56 @@ export function ProblemGrid({
   if (items.length === 0) return null
 
   // 18 §5.6 forbids forcing an item count into a grid it does not
-  // divide into evenly. Choosing the divisor from the count avoids the
-  // orphaned row for the 4 and 6 this section actually receives.
+  // divide into evenly.
+  //
+  // The composition specifies 4-6 items. An earlier version used
+  // `length % 3 === 0 ? 3 : 2`, which handled 4 and 6 but dropped 5
+  // into two columns and orphaned a cell — five is exactly the example
+  // §5.6 names.
+  //
+  // Five has no clean divisor at these widths, so the remainder is
+  // absorbed rather than left as a hole: the trailing card spans the
+  // columns the last row would otherwise leave empty. That is
+  // Appendix A's uneven-mosaic idea applied to a remainder, and it
+  // means no item count in range can orphan.
+  //
+  // Deliberately not `CardGrid`: its even-division warning would be a
+  // false positive here, since the span makes the orphan impossible.
   const columns = items.length % 3 === 0 ? 3 : 2
+  const remainder = items.length % columns
 
   return (
     <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
-      <CardGrid columns={columns} itemCount={items.length} className="mt-10">
-        {items.map((item) => (
-          <Card key={item.title}>
-            <h3 className="text-h4 font-medium tracking-tight text-foreground">
-              {item.title}
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              {item.description}
-            </p>
-          </Card>
-        ))}
-      </CardGrid>
+      <div
+        className={cn(
+          'mt-10 grid grid-cols-1 gap-6',
+          columns === 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-2',
+        )}
+      >
+        {items.map((item, index) => {
+          // The trailing `remainder` cards fill the short final row.
+          const fillsRow = remainder !== 0 && index >= items.length - remainder
+
+          return (
+            <Card
+              key={item.title}
+              className={cn(
+                fillsRow && columns === 2 && 'sm:col-span-2',
+                fillsRow && columns === 3 && 'lg:col-span-3',
+              )}
+            >
+              <h3 className="text-h4 font-medium tracking-tight text-foreground">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {item.description}
+              </p>
+            </Card>
+          )
+        })}
+      </div>
     </Section>
   )
 }
