@@ -2209,102 +2209,173 @@ This helps users understand page purpose.
 
 # 110. Home Page Structure Direction
 
-Recommended conceptual structure:
+Implemented structure (DEC-081):
 
 ```text
-Header
+Header (sticky)
 Hero
-Trust/Differentiator Bar
-Core Services
+Trust Bar
+Intent Routing            (even card grid)
+Core Services             (uneven mosaic, flagship at double width)
 Why Independent Inspection Matters
 Markets
 How It Works
-Who We Help
-Commercial
-Proof
+Body
+Authority Band            (brand surface)
+Proof*
+Testimonial*
+Lead Form*
 Resources
 FAQ
-Final CTA
+Final CTA                 (brand surface)
 Footer
 ```
 
-Final page structure is controlled by the Master Page Build List and page-specific content.
+`*` renders nothing until its data gate opens — see §120 and the
+`components/sections/index.ts` header.
+
+Intent routing and the services catalog must not read as the same
+component. Routing is decision support; the catalog is inventory. The
+separation is structural: an even grid above an uneven mosaic, which is
+also what §5.6's "vary composition pattern between adjacent sections"
+requires. Intent-routing content is unauthored, so that section does
+not yet render.
+
+Final page structure is controlled by the Master Page Build List and
+page-specific content.
 
 ---
 
 # 111. Service Page Structure Direction
 
+Implemented structure (DEC-081):
+
 ```text
-Header
+Header (sticky)
 Service Hero
-Problem/Need
-How Service Works
-What It Can Reveal/Solve
+Trust Bar
+Service Overview          (body)
+Independent-Model Split   (opt-in per page)
+When You May Need This    (card grid)
+What's Included           (card grid, spec-sheet treatment)
 Process
-Why The Sewer Pros
-Related Services
+Authority Band            (brand surface)
+Proof*
+Testimonial*
+Lead Form*
 Markets
+Related Services
 FAQ
-CTA
+CTA                       (brand surface)
 Footer
 ```
+
+The two card grids must stay visually distinct — different column
+behaviour, card shape, and surface. Collapsing them into the same
+treatment is a named failure.
+
+⚠ Tail order is **related → FAQ → CTA**. This reversed under DEC-081;
+earlier builds ran FAQ → related → CTA.
+
+⚠ The authority band and the closing CTA panel are the only two brand
+surfaces in the system. At least one non-brand section must separate
+them (§11).
 
 ---
 
-# 112. Market Page Structure Direction
+# 112. Market and Location Page Structure Direction
+
+Implemented market structure (DEC-081):
 
 ```text
-Header
+Header (sticky)
 Local Hero
+Trust Bar
 Market Service Overview
-Local Differentiation
 Primary Local Services
-Who We Help
+Authority Band            (brand surface)
+Proof*
+Testimonial*
+Lead Form*
+Service Area Coverage
 Approved Locations
-Local Proof
-Commercial
-Resources
 FAQ
-CTA
+CTA + market phone        (brand surface)
 Footer
 ```
+
+The **location page** uses the same sequence minus the problem and
+inclusions grids: a location's service detail belongs on the
+service+location page (05 §119), and duplicating it gives two pages the
+same job. See also §79.
+
+⚠ NO map, pin, address, directions, or hours card on either type.
+PENDING-002 resolved the business model as service-area with no
+address, and CLAUDE.md §29-30 forbid implying an office in San Diego or
+Las Vegas.
+
+⚠ The market page is the ONLY template that displays a phone number in
+its CTA. Each market publishes a different number (DEC-070, DEC-071,
+DEC-073), and 01 §20 forbids copying one market's facts onto another's
+page. A template that does not know its market shows no number.
 
 ---
 
 # 113. Audience Page Structure Direction
 
+Implemented structure (DEC-081):
+
 ```text
-Header
+Header (sticky)
 Audience Hero
+Trust Bar
 Audience Problem
-Relevant Services
-Process
 Why Independent Inspection Matters
-Market Availability
-Resources
+Common Situations         (card grid)
+What's Included           (card grid)
+Relevant Services         (dense)
+Process
+Authority Band            (brand surface)
+Proof*
+Testimonial*
+Lead Form*
+Related
 FAQ
-CTA
+CTA                       (brand surface)
 Footer
 ```
+
+The services section is denser than the home page's: it should read as
+framed around this audience's use cases, not as the general catalog.
+Tone stays operational rather than consumer-friendly.
 
 ---
 
 # 114. Commercial Page Structure Direction
 
+Implemented structure (DEC-081):
+
 ```text
-Header
+Header (sticky)
 Commercial Hero
+Trust Bar
 Operational Problems
-Commercial Services
-Property Types
+What's Included           (card grid)
 Process
-Why The Sewer Pros
-Markets
-Proof
+Authority Band            (brand surface, commercial CTA)
+Lead Form*
+Related Commercial Services
 FAQ
-Commercial CTA
+Commercial CTA            (brand surface)
 Footer
 ```
+
+Every CTA on this page routes to "Request Commercial Service",
+including the authority band's. Leaving the band on its default would
+place the residential primary CTA mid-page, which §139 forbids.
+
+⚠ NO proof or testimonial section on this family yet — a tracked,
+resolvable gap, not a permanent exclusion. See DEC-081.
 
 ---
 
@@ -2322,6 +2393,57 @@ Relevant Service CTA
 Related Resources
 Footer
 ```
+
+⚠ This family is deliberately EXCLUDED from the DEC-081 composition:
+no trust bar, no grids, no authority band, no proof, no form, and the
+closing CTA stays a band rather than a panel. 17 §19 requires
+informational content to progress without forcing the reader into a
+form.
+
+Its section order is also unchanged, including the FAQ preceding the
+related strip — the reverse of every other family. That is this
+section's order, not drift. Do not "correct" it for consistency: under
+CLAUDE.md §97 this subject-specific section governs its own family.
+
+---
+
+## 115.1 Families Without a Dedicated Structure Section
+
+Three implemented families have no numbered structure section above.
+Their maps are recorded here (DEC-081).
+
+**Hub** — `/services/`, `/locations/`, `/for/`, `/commercial/`,
+`/resources/`:
+
+```text
+Hero → Trust Bar → Items Index → Authority Band† → FAQ → CTA
+```
+
+† Only where a non-brand section follows it. `/for/` has no FAQ, so the
+band is omitted there rather than stacking two brand surfaces (§11).
+
+**Comparison** — `/compare/*`:
+
+```text
+Hero → Body → When Each Applies → Related → FAQ → CTA (band)
+```
+
+⚠ Takes NO trust bar, authority band, proof, testimonial, or form.
+Each argues for The Sewer Pros, and this page exists to help a reader
+choose between two options. §66 and CLAUDE.md §65 forbid putting a
+thumb on that scale; a brand-surface authority band would do it
+loudest. The closing CTA stays a band for the same reason.
+
+**Core** — `/about/`, `/contact/`, `/faq/`:
+
+```text
+Hero → Body → Trust Bar → Related → FAQ → CTA
+```
+
+Takes the trust bar and the tail order, but not the authority band:
+`/about/` is already a page about how the business works, so a band
+restating four proof points would repeat the body rather than reinforce
+it (§155). `/contact/` suppresses the CTA entirely.
 
 ---
 
