@@ -15,6 +15,11 @@ import {
   RelatedLinks,
   CtaSection,
   authorityBandRenders,
+  routingCardsRenders,
+  serviceIndexRenders,
+  marketCoverageRenders,
+  processStepsRenders,
+  relatedLinksRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { HomePageContent, MasterPageRecord } from '@/types'
@@ -76,14 +81,18 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
-    ...(content.routing !== undefined ? (['standard'] as const) : []),
-    'dense',
+    ...(routingCardsRenders(content.routing) ? (['standard'] as const) : []),
+    ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
     ...(content.differentiator !== undefined ? (['standard'] as const) : []),
-    'dense',
-    ...(content.process !== undefined ? (['standard'] as const) : []),
+    ...(marketCoverageRenders() ? (['dense'] as const) : []),
+    ...(content.process !== undefined && processStepsRenders(content.process)
+      ? (['standard'] as const)
+      : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]

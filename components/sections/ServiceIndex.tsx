@@ -100,6 +100,28 @@ export interface ServiceIndexProps {
   surface?: SectionSurface
 }
 
+/**
+ * Whether `ServiceIndex` renders anything.
+ *
+ * Items whose pages are gated drop out, and an index with nothing
+ * left to list omits itself rather than rendering an empty grid
+ * (04 §4, 18 §120).
+ *
+ * A template listing this section in its `densities` array must gate
+ * that entry on this predicate. An array entry for a section that
+ * omitted itself describes a page that was never built, and
+ * `sectionRhythmIssues()` then checks the fiction instead of the page.
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition, not two copies of it.
+ */
+export function serviceIndexRenders(
+  items: readonly ServiceIndexItem[] | undefined,
+): boolean {
+  if (items === undefined) return false
+  return resolveLinkableOnly(items.map((item) => item.pageId)).length > 0
+}
+
 export function ServiceIndex({
   density = 'standard',
   id = 'services',

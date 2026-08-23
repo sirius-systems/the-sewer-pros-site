@@ -60,7 +60,7 @@ export type { HeroProps, HeroVariant } from './Hero'
 export { TrustBar } from './TrustBar'
 export type { TrustBarProps } from './TrustBar'
 
-export { RoutingCards } from './RoutingCards'
+export { RoutingCards, routingCardsRenders } from './RoutingCards'
 export type { RoutingCardsProps, RoutingCardItem } from './RoutingCards'
 
 export { ProblemGrid } from './ProblemGrid'
@@ -75,7 +75,7 @@ export type {
 export { AuthorityBand, authorityBandRenders } from './AuthorityBand'
 export type { AuthorityBandProps } from './AuthorityBand'
 
-export { CoverageSection } from './CoverageSection'
+export { CoverageSection, coverageSectionRenders } from './CoverageSection'
 export type { CoverageSectionProps } from './CoverageSection'
 
 export { ProofGallery } from './ProofGallery'
@@ -87,10 +87,10 @@ export type { TestimonialBandProps } from './TestimonialBand'
 export { LeadFormSection } from './LeadFormSection'
 export type { LeadFormSectionProps } from './LeadFormSection'
 
-export { ServiceIndex } from './ServiceIndex'
+export { ServiceIndex, serviceIndexRenders } from './ServiceIndex'
 export type { ServiceIndexProps, ServiceIndexItem } from './ServiceIndex'
 
-export { ProcessSteps } from './ProcessSteps'
+export { ProcessSteps, processStepsRenders } from './ProcessSteps'
 export type { ProcessStepsProps, ProcessStep } from './ProcessSteps'
 
 export { Differentiator } from './Differentiator'
@@ -99,10 +99,10 @@ export type { DifferentiatorProps } from './Differentiator'
 export { FaqSection } from './FaqSection'
 export type { FaqSectionProps, FaqEntry } from './FaqSection'
 
-export { RelatedLinks } from './RelatedLinks'
+export { RelatedLinks, relatedLinksRenders } from './RelatedLinks'
 export type { RelatedLinksProps } from './RelatedLinks'
 
-export { MarketCoverage } from './MarketCoverage'
+export { MarketCoverage, marketCoverageRenders } from './MarketCoverage'
 export type { MarketCoverageProps } from './MarketCoverage'
 
 export { CtaSection } from './CtaSection'

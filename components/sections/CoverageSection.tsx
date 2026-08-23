@@ -67,6 +67,31 @@ export interface CoverageSectionProps {
   availabilityStatement: string
 }
 
+/**
+ * Whether `CoverageSection` renders anything.
+ *
+ * Linked communities can drop out through page status while the
+ * plain-text names cannot. The section needs at least one of the two
+ * and omits itself with neither (18 §120).
+ *
+ * A template listing this section in its `densities` array must gate
+ * that entry on this predicate. An array entry for a section that
+ * omitted itself describes a page that was never built, and
+ * `sectionRhythmIssues()` then checks the fiction instead of the page.
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition, not two copies of it.
+ */
+export function coverageSectionRenders(
+  coverage:
+    | { pageIds?: readonly PageId[]; names?: readonly string[] }
+    | undefined,
+): boolean {
+  if (coverage === undefined) return false
+  const links = resolveLinkableOnly(coverage.pageIds ?? [])
+  return links.length > 0 || (coverage.names ?? []).length > 0
+}
+
 export function CoverageSection({
   density = 'standard',
   id = 'service-area',

@@ -12,6 +12,9 @@ import {
   FaqSection,
   CtaSection,
   authorityBandRenders,
+  serviceIndexRenders,
+  coverageSectionRenders,
+  relatedLinksRenders,
 } from '@/components/sections'
 import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
@@ -91,10 +94,18 @@ export function MarketPageTemplate({
     'sparse',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.services !== undefined ? (['dense'] as const) : []),
+    ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(content.coverage !== undefined ? (['standard'] as const) : []),
-    ...(content.locationPageIds !== undefined ? (['dense'] as const) : []),
+    ...(coverageSectionRenders(content.coverage)
+      ? (['standard'] as const)
+      : []),
+    // Same `indexableContext` the module below is given, so a gated
+    // market hub's array follows its own links out of the page.
+    ...(relatedLinksRenders(content.locationPageIds, {
+      indexableContext: page.status === 'launch',
+    })
+      ? (['dense'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]

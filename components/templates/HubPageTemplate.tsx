@@ -7,6 +7,7 @@ import {
   FaqSection,
   CtaSection,
   authorityBandRenders,
+  serviceIndexRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { HubPageContent, MasterPageRecord } from '@/types'
@@ -70,7 +71,7 @@ export function HubPageTemplate({
     'sparse',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.items !== undefined ? (['standard'] as const) : []),
+    ...(serviceIndexRenders(content.items) ? (['standard'] as const) : []),
     ...(showAuthority ? (['standard'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',

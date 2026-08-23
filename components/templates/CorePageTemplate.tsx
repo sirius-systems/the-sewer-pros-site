@@ -4,6 +4,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  relatedLinksRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { CorePageContent, MasterPageRecord } from '@/types'
@@ -75,7 +76,9 @@ export function CorePageTemplate({
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     'dense',
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     ...(hideCta ? [] : (['sparse'] as const)),
   ]

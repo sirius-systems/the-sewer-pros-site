@@ -9,6 +9,8 @@ import {
   FaqSection,
   CtaSection,
   authorityBandRenders,
+  relatedLinksRenders,
+  coverageSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { LocationPageContent, MasterPageRecord } from '@/types'
@@ -76,9 +78,13 @@ export function LocationPageTemplate({
     'sparse',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.servicePageIds !== undefined ? (['dense'] as const) : []),
+    ...(relatedLinksRenders(content.servicePageIds)
+      ? (['dense'] as const)
+      : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(content.coverage !== undefined ? (['standard'] as const) : []),
+    ...(coverageSectionRenders(content.coverage)
+      ? (['standard'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]

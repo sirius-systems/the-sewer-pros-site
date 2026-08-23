@@ -1,5 +1,10 @@
 import { Section, Prose, Container, type SectionDensity } from '@/components/ui'
-import { FaqSection, RelatedLinks, CtaSection } from '@/components/sections'
+import {
+  FaqSection,
+  RelatedLinks,
+  CtaSection,
+  relatedLinksRenders,
+} from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ResourcePageContent } from '@/types'
 
@@ -80,7 +85,9 @@ export function ResourcePageTemplate({
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
     // The closing CTA is a `band`, not a `panel`, and CtaSection
     // renders a band at `dense` (`isPanel ? sparse : dense`). This
     // entry read `sparse` and therefore described a page that does not

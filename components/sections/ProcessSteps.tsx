@@ -128,6 +128,28 @@ function spanClasses(count: number, wide: string): string {
     : 'sm:col-span-2 lg:col-span-1'
 }
 
+/**
+ * Whether `ProcessSteps` renders anything.
+ *
+ * Steps fall back to 18 §141's motif when none are passed, so this
+ * is true for an omitted `steps` prop and false only for an empty
+ * one. A template that renders the band conditionally must combine
+ * this with its own condition.
+ *
+ * A template listing this section in its `densities` array must gate
+ * that entry on this predicate. An array entry for a section that
+ * omitted itself describes a page that was never built, and
+ * `sectionRhythmIssues()` then checks the fiction instead of the page.
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition, not two copies of it.
+ */
+export function processStepsRenders(
+  steps: readonly ProcessStep[] | undefined,
+): boolean {
+  return (steps ?? motifSteps).length > 0
+}
+
 export function ProcessSteps({
   density = 'standard',
   id = 'process',

@@ -14,6 +14,9 @@ import {
   RelatedLinks,
   CtaSection,
   authorityBandRenders,
+  processStepsRenders,
+  relatedLinksRenders,
+  coverageSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServiceLocationPageContent } from '@/types'
@@ -87,10 +90,16 @@ export function ServiceLocationPageTemplate({
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.problems !== undefined ? (['standard'] as const) : []),
     ...(content.inclusions !== undefined ? (['dense'] as const) : []),
-    ...(content.process !== undefined ? (['standard'] as const) : []),
+    ...(content.process !== undefined && processStepsRenders(content.process)
+      ? (['standard'] as const)
+      : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
-    ...(content.coverage !== undefined ? (['standard'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
+    ...(coverageSectionRenders(content.coverage)
+      ? (['standard'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]
