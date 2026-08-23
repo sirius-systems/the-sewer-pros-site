@@ -2049,7 +2049,7 @@ Example:
 
 ```markdown
 **Status:** SUPERSEDED  
-**Superseded By:** DEC-074
+**Superseded By:** DEC-0xx
 ```
 
 This preserves project history.
@@ -2199,7 +2199,7 @@ When a material decision is implemented, the related Git commit or pull request 
 Example:
 
 ```text
-feat: add verified Las Vegas market entity [DEC-074]
+feat: add verified Las Vegas market entity [DEC-0xx]
 ```
 
 or:
