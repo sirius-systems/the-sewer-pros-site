@@ -6,6 +6,7 @@ import {
   CtaSection,
   relatedLinksRenders,
   faqSectionRenders,
+  problemGridRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { ComparisonPageContent, MasterPageRecord } from '@/types'
@@ -70,7 +71,9 @@ export function ComparisonPageTemplate({
   const densities: SectionDensity[] = [
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.problems !== undefined ? (['standard'] as const) : []),
+    ...(problemGridRenders(content.problems)
+      ? (['standard'] as const)
+      : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
