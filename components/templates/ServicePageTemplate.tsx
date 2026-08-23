@@ -19,6 +19,8 @@ import {
   marketCoverageRenders,
   relatedLinksRenders,
   faqSectionRenders,
+  problemGridRenders,
+  inclusionsGridRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
@@ -95,8 +97,12 @@ export function ServicePageTemplate({
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.showDifferentiator === true ? (['standard'] as const) : []),
-    ...(content.problems !== undefined ? (['standard'] as const) : []),
-    ...(content.inclusions !== undefined ? (['dense'] as const) : []),
+    ...(problemGridRenders(content.problems)
+      ? (['standard'] as const)
+      : []),
+    ...(inclusionsGridRenders(content.inclusions)
+      ? (['dense'] as const)
+      : []),
     ...(content.process !== undefined && processStepsRenders(content.process)
       ? (['dense'] as const)
       : []),

@@ -18,6 +18,8 @@ import {
   relatedLinksRenders,
   coverageSectionRenders,
   faqSectionRenders,
+  problemGridRenders,
+  inclusionsGridRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServiceLocationPageContent } from '@/types'
@@ -89,8 +91,12 @@ export function ServiceLocationPageTemplate({
     'sparse',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.problems !== undefined ? (['standard'] as const) : []),
-    ...(content.inclusions !== undefined ? (['dense'] as const) : []),
+    ...(problemGridRenders(content.problems)
+      ? (['standard'] as const)
+      : []),
+    ...(inclusionsGridRenders(content.inclusions)
+      ? (['dense'] as const)
+      : []),
     ...(content.process !== undefined && processStepsRenders(content.process)
       ? (['standard'] as const)
       : []),
