@@ -36,9 +36,10 @@
  *   <CANONICAL_URL>#breadcrumb
  *   <CANONICAL_URL>#article
  *
- * ⚠ Blocked on PENDING-001. `@id` values must stay stable once
- * published (15 §5), so they cannot be generated against a guessed
- * origin and corrected later.
+ * ⚠ `@id` values must stay stable once published (15 §5), so they are
+ * built against the resolved origin (DEC-078) as supplied by
+ * `siteOrigin()` — never a guessed or preview one, which could not be
+ * corrected after publication.
  */
 export type SchemaId = string
 

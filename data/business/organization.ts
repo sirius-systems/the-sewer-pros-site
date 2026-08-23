@@ -83,9 +83,9 @@ import { SITE_NAME } from './site'
  * companies and must never be modelled as such (15 §111).
  *
  * `url` is omitted from this object deliberately — it depends on the
- * unresolved canonical origin (PENDING-001) and is supplied at the
- * schema/metadata boundary via `siteOrigin()`, so that a missing origin
- * fails loudly there rather than being frozen into a constant here.
+ * canonical origin (DEC-078), which is supplied at the schema/metadata
+ * boundary via `siteOrigin()` so that a missing origin fails loudly
+ * there rather than being frozen into a constant here.
  */
 export const organization: Omit<OrganizationConfig, 'url'> = {
   name: SITE_NAME,
