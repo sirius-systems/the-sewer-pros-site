@@ -9,8 +9,13 @@ import type { MasterPageRecord, ResourcePageContent } from '@/types'
  * Structure from docs/18-design-system.md §115:
  *
  *   Article Hero → Optional TOC → Direct Answer → Detailed Sections
- *   → Visuals/Diagrams → Related Questions → Relevant Service CTA
- *   → Related Resources
+ *   → Visuals/Diagrams → Related Questions → Related Resources
+ *   → Relevant Service CTA
+ *
+ * §115 listed the service CTA between the FAQ and the related strip
+ * until 2026-08-23. This file never rendered that order, and DEC-082
+ * corrected the document to the rendered one rather than moving the
+ * CTA in code.
  *
  * 18 §41 and §109: editorial and educational. The hero is a plain
  * heading block rather than the `Hero` section — 18 §41 warns against
@@ -53,8 +58,9 @@ import type { MasterPageRecord, ResourcePageContent } from '@/types'
  *    machinery onto an article inverts that.
  * 2. 18 §115 is the subject-specific authority for this type and
  *    already prescribes its order (hero -> direct answer -> detail ->
- *    related questions -> service CTA). Under CLAUDE.md §97 the
- *    subject-specific document wins over a general composition port.
+ *    related questions -> related resources -> service CTA). Under
+ *    CLAUDE.md §97 the subject-specific document wins over a general
+ *    composition port.
  *
  * The section ORDER is therefore also unchanged - including the FAQ
  * sitting before the related strip, which is the reverse of every other
@@ -140,13 +146,17 @@ export function ResourcePageTemplate({
         composition port. This one is the reverse, and that is correct.
 
         18 §115 prescribes this family's order directly: detailed
-        sections → Related Questions → service CTA → Related Resources.
+        sections → Related Questions → Related Resources → service CTA.
         Under CLAUDE.md §97 a subject-specific document beats a general
         composition standard, so §115 governs here and the port does not.
 
         Reordering these two to match the other eleven templates would
         be a regression against §115, not a consistency improvement.
-        See this file's header and DEC-081.
+        See this file's header, DEC-081, and DEC-082.
+
+        (Only the FAQ/related pair is inverted. The closing CTA is last
+        here exactly as it is everywhere else — §115 said otherwise
+        until DEC-082 corrected it to the order this file renders.)
       */}
       {content.faq !== undefined && (
         <FaqSection title="Related questions" entries={content.faq} />

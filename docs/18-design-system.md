@@ -2389,8 +2389,8 @@ Direct Answer
 Detailed Sections
 Visuals/Diagrams
 Related Questions
-Relevant Service CTA
 Related Resources
+Relevant Service CTA
 Footer
 ```
 
@@ -2400,10 +2400,20 @@ closing CTA stays a band rather than a panel. 17 §19 requires
 informational content to progress without forcing the reader into a
 form.
 
-Its section order is also unchanged, including the FAQ preceding the
-related strip — the reverse of every other family. That is this
-section's order, not drift. Do not "correct" it for consistency: under
-CLAUDE.md §97 this subject-specific section governs its own family.
+**The FAQ precedes the related strip here — the reverse of every other
+family.** That is this section's order, not drift. Do not "correct" it
+for consistency: under CLAUDE.md §97 this subject-specific section
+governs its own family.
+
+⚠ The closing CTA moved to last in this chain under DEC-082. It sat
+between Related Questions and Related Resources until 2026-08-23, which
+no implementation ever matched — `ResourcePageTemplate` has rendered
+FAQ → related → CTA since it was written. DEC-082 corrected the
+document to the rendered order rather than moving the CTA in code,
+because a service CTA is the last thing an article should offer and
+every other family already closes on one. The FAQ/related inversion
+above is the only part of this family's tail that differs from the rest
+of the site.
 
 ---
 
