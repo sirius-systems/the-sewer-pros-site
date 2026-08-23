@@ -11,7 +11,7 @@ import { measurementId } from '@/lib/analytics'
  * configured — no placeholder, no empty script tag. The site is fully
  * functional without measurement, which matters because
  * `NEXT_PUBLIC_GA_MEASUREMENT_ID` is deliberately optional while
- * PENDING-001 and environment separation are unresolved.
+ * environment separation is unresolved.
  *
  * ---------------------------------------------------------------------------
  * PERFORMANCE (19 §135, §136; 18 §103)

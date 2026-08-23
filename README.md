@@ -41,7 +41,9 @@ npm install
 cp .env.example .env.local   # then fill in NEXT_PUBLIC_SITE_URL
 ```
 
-`NEXT_PUBLIC_SITE_URL` has no default and the build fails without it. That is deliberate — with `output: 'export'` the origin is baked into canonicals, schema `@id` values, and the sitemap as static text, so a silent fallback would ship rather than fail (`docs/02` §53, `docs/15` §5). The production value is blocked on PENDING-001.
+`NEXT_PUBLIC_SITE_URL` has no default and the build fails without it. That is deliberate — with `output: 'export'` the origin is baked into canonicals, schema `@id` values, and the sitemap as static text, so a silent fallback would ship rather than fail (`docs/02` §53, `docs/15` §5).
+
+The value is `https://www.thesewerpros.com` — www, not apex (DEC-078) — and `.env.example` carries it. Set the same value in every environment, including a deployed preview: a preview host must never reach a canonical tag, a schema `@id`, or the sitemap (`docs/05` §92, `docs/02` §88), and under `output: 'export'` there is no runtime correction once it ships.
 
 ---
 
@@ -96,7 +98,6 @@ Implementation is blocked on these in places. See `docs/22-decisions-change-log.
 
 | ID | Needed | Blocks |
 |---|---|---|
-| PENDING-001 | Production canonical domain, apex vs www | `metadataBase`, schema `@id`, sitemap, Search Console |
 | PENDING-005 | Brand colour palette | Visual implementation |
 | PENDING-006 | Typography | Visual implementation |
 | PENDING-007 | Global primary CTA wording | Conversion components |
