@@ -19,24 +19,36 @@
  * intent." This is a library, not a checklist.
  *
  * ---------------------------------------------------------------------------
- * DELIBERATELY ABSENT
+ * DATA-GATED SECTIONS
  * ---------------------------------------------------------------------------
- * NO Proof / Reviews section. 18 §69-70 require accurate review text,
- * attribution, and source; 01 §35 lists review counts and ratings among
- * claims needing documented evidence; CLAUDE.md §77 forbids inventing
- * or reassigning testimonials. No verified review data exists in this
- * project, and shipping an empty shell invites filling it with
- * fabricated content. Build it when real review data arrives.
+ * `ProofGallery`, `TestimonialBand`, and `LeadFormSection` exist in the
+ * composition but render NOTHING today. That is their intended state,
+ * not an unfinished one.
  *
- * NO forms. PENDING-008 (final service form fields) is open, and
- * 18 §56-61 ties field design to the form's actual contents.
+ *   ProofGallery     gate: approved photography (18 §28-34; §34 rules
+ *                    out AI imagery and staged stock)
+ *   TestimonialBand  gate: verified review data with attribution and
+ *                    source (18 §69-70, 01 §35, CLAUDE.md §77)
+ *   LeadFormSection  gate: PENDING-007 and PENDING-008 (17 §27-36,
+ *                    18 §56-61, CLAUDE.md §58)
  *
- * NO Case Studies. 18 §71 and CLAUDE.md §76 require verified project
- * data, which does not exist yet.
+ * An earlier version of this note argued these sections should not
+ * exist at all, because "shipping an empty shell invites filling it
+ * with fabricated content". That risk is real, and it is now handled by
+ * the type system instead of by absence:
  *
- * NO image-bearing sections beyond the hero's optional slot. 18 §28-34
- * require real inspection photography; no approved assets exist, and
- * §34 rules out AI imagery and staged stock.
+ *   1. Each reads a governed module under `data/` where every item must
+ *      cite its `source` — see `data/business/proof.ts`.
+ *   2. None accepts a claim-bearing string prop. A contributor cannot
+ *      type a plausible testimonial or gallery caption into JSX,
+ *      because there is no prop to type it into.
+ *   3. An empty module means the section is absent and the page closes
+ *      around it (18 §120).
+ *
+ * Do not populate a gated module to "finish" a page.
+ *
+ * NO Case Studies section. 18 §71 and CLAUDE.md §76 require verified
+ * project data, which does not exist and has no slot here yet.
  */
 
 export { SectionHeading } from './SectionHeading'
@@ -46,6 +58,34 @@ export { Hero } from './Hero'
 export type { HeroProps, HeroVariant } from './Hero'
 
 export { TrustBar } from './TrustBar'
+export type { TrustBarProps } from './TrustBar'
+
+export { RoutingCards } from './RoutingCards'
+export type { RoutingCardsProps, RoutingCardItem } from './RoutingCards'
+
+export { ProblemGrid } from './ProblemGrid'
+export type { ProblemGridProps, ProblemGridItem } from './ProblemGrid'
+
+export { InclusionsGrid } from './InclusionsGrid'
+export type {
+  InclusionsGridProps,
+  InclusionsGridItem,
+} from './InclusionsGrid'
+
+export { AuthorityBand } from './AuthorityBand'
+export type { AuthorityBandProps } from './AuthorityBand'
+
+export { CoverageSection } from './CoverageSection'
+export type { CoverageSectionProps } from './CoverageSection'
+
+export { ProofGallery } from './ProofGallery'
+export type { ProofGalleryProps } from './ProofGallery'
+
+export { TestimonialBand } from './TestimonialBand'
+export type { TestimonialBandProps } from './TestimonialBand'
+
+export { LeadFormSection } from './LeadFormSection'
+export type { LeadFormSectionProps } from './LeadFormSection'
 
 export { ServiceIndex } from './ServiceIndex'
 export type { ServiceIndexProps, ServiceIndexItem } from './ServiceIndex'
