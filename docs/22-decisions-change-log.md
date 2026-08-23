@@ -2168,11 +2168,15 @@ Both are required for long-term project maintainability.
 Use sequential IDs:
 
 ```text
-DEC-001
-DEC-002
-DEC-003
+DEC-EXAMPLE-1
+DEC-EXAMPLE-2
+DEC-EXAMPLE-3
 ...
 ```
+
+Real IDs are `DEC-` plus a zero-padded three-digit number. The
+placeholders above are deliberately not in that form so a search for
+real entries never matches this illustration.
 
 Do not reuse deleted or superseded numbers.
 
@@ -2201,7 +2205,7 @@ feat: add verified Las Vegas market entity [DEC-074]
 or:
 
 ```text
-docs: update service taxonomy [DEC-081]
+docs: update service taxonomy [DEC-0xx]
 ```
 
 This is recommended for significant changes, not required for every commit.
@@ -2355,7 +2359,7 @@ When a significant location or service + location cohort is approved, record a d
 Example:
 
 ```text
-DEC-089
+DEC-0xx
 Approve first 25 San Diego service + location pages
 ```
 
