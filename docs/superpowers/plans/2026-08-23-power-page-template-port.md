@@ -24,16 +24,35 @@ npm run build       # also proves route generation
 
 plus the existing `sectionRhythmIssues()` build warnings surfaced by `PageShell`, plus route-set parity (Task 1), plus rendered inspection in the browser at the end.
 
-**Spec amendment folded in — see Task 0.** `18` §5.6 (surfaced in `components/ui/Card.tsx`) states that a page built entirely from card grids is "the single strongest visual signal of a templated or AI-generated site." The `power` maps call for 5-6 card grids per page. The spec's §4 conflict table missed this. Resolution applied throughout this plan: **at most two card grids per page**, using Appendix A's pattern vocabulary for the rest.
+**Spec amendment folded in — card-section differentiation.** `18` §5.6 reads, verbatim:
 
-| `power` section | Pattern used here | Why |
+> Cards are an organizational tool, not the default layout. A page built entirely from card grids is the single strongest visual signal of a templated or AI-generated site, regardless of how restrained the individual card styling is.
+> * Do not force an item count into a grid it doesn't divide evenly into [...]
+> * **Vary composition pattern and density between adjacent sections. See Appendix A for the named pattern vocabulary.**
+
+The `power` map is **not** "entirely card grids" — it alternates card sections with hero, editorial split, process band, authority band, testimonial, and form. So the prohibition in sentence one is not triggered, and the governing instruction is bullet two: **vary the pattern between adjacent sections.**
+
+Resolution applied throughout this plan: **keep every card-based section as cards, and give each a visually distinct treatment** drawn from Appendix A, varying column count, grid evenness, card shape, surface, and link behaviour. No two card sections on a page may read as the same component with different text.
+
+| `power` section | Appendix A pattern | Distinct treatment |
 |---|---|---|
-| Intent-routing (homepage) | Card grid | Genuinely 3-4 equal-weight destinations |
-| Services grid | **Existing `ServiceIndex`** (scannable index) | 10 approved services do not divide into any grid (§5.6 orphan rule, already documented in `ServiceIndex`). Also satisfies power's own "keep routing and services visually distinct" note |
-| Common problems | Card grid | Discrete, equal-weight, diagnostic |
-| What's included | **Checklist/index, not cards** | Deliverables are a list, and this is the second grid that would tip the page over |
-| Results gallery | Image grid (data-gated, currently absent) | Not card chrome |
-| Related | **Existing `RelatedLinks`** | Unchanged |
+| Intent-routing (homepage) | **Service/feature grid** (even) | 3-col even, whole-surface `LinkCard`, full border, title + description. These genuinely are equal-weight destinations. |
+| Services (homepage) | **Service mosaic** | Deliberately uneven — flagship Sewer Camera Inspection spans 2 columns and gets more vertical space; supporting services single-width. Appendix A names this pattern and names that exact flagship. Immediately distinct from the even routing grid directly above it, which is power's own "keep routing and services visually distinct" requirement made structural. |
+| Common problems | **Service/feature grid** | 2-col at 4 items, 3-col at 6. Compact, static (no link), symptom-led copy, full border. |
+| What's included | **Service/feature grid** | 2-col regardless of count, `muted` surface, top-rule card instead of full border, tighter padding. Reads as a spec sheet against the problem grid's diagnostic cards. |
+| Results gallery | **Image grid** (data-gated) | 4-up, fixed aspect ratio, image-led — no card chrome at all. |
+| Related services | **Service/feature grid, horizontal** | Reworked from vertical to **horizontal cards**: title and description sit beside a leading rule rather than stacked, at a wider aspect ratio, 3-up. The last card section on the page must not repeat the shape of the first. |
+
+**Differentiation axes available today:** column count, grid evenness (even vs. mosaic), card shape (full border vs. top rule vs. leading rule), surface (`default` vs. `muted`), **orientation (vertical vs. horizontal)**, and density.
+
+**Axes not yet available:** *image-led* requires approved photography, and `public/` is empty (`18` §28-34). *Icon-led* is permitted only where an icon carries meaning the adjacent text does not — §27 and Appendix B flag icons "used as decoration next to text that already communicates the idea on its own," and §56 warns against large icon libraries. Neither is used in this port; both become available later without changing any composition.
+
+Two constraints that survive independently of the "entirely" wording, and are satisfied above:
+
+- **Line 1188 / line 3010** (Appendix B failure check): "A page family that uses cards for every list-like section is the pattern to avoid." Satisfied — `TrustBar` is a band, `AuthorityBand`'s proof points are a plain list, `CoverageSection` is a plain list, and `ProcessSteps` is a numbered band. List-like is not universally carded.
+- **§5.6 bullet 1** (orphan rows) is mechanical, not stylistic. The homepage passes **9** services, which divides cleanly into 3 columns; the mosaic is chosen for visual differentiation, not to dodge an orphan row. `CardGrid` still warns if any count/column pair mismatches.
+
+**No decorative icons.** §27 and Appendix B both flag "icons used as decoration next to text that already communicates the idea on its own," and §56 warns against large icon libraries. Differentiation comes from column count, grid evenness, card shape, surface, and density — not from adding iconography.
 
 ---
 
@@ -47,7 +66,7 @@ plus the existing `sectionRhythmIssues()` build warnings surfaced by `PageShell`
 | `data/business/authority.ts` | Authority-band proof points. Every item cites a doc section. |
 | `components/sections/RoutingCards.tsx` | Homepage intent-routing card grid |
 | `components/sections/ProblemGrid.tsx` | "When you may need X" card grid |
-| `components/sections/InclusionsGrid.tsx` | "What's included" checklist index |
+| `components/sections/InclusionsGrid.tsx` | "What's included" card grid, spec-sheet treatment |
 | `components/sections/AuthorityBand.tsx` | Dark brand band, 3-4 proof points |
 | `components/sections/CoverageSection.tsx` | Served communities + availability statement |
 | `components/sections/ProofGallery.tsx` | Data-gated image grid |
@@ -371,27 +390,39 @@ git commit -m "feat(sections): add ProblemGrid"
 
 - [ ] **Step 1: Write the component**
 
-Rendered as a bordered checklist index, **not** cards — this is the §5.6 amendment. It must read visibly differently from `ProblemGrid`, which `power` names as a failure mode for both the service and service+audience types.
+A card grid, as `power` specifies. Differentiation from `ProblemGrid` comes from treatment, not from changing pattern: fixed 2 columns regardless of count, `muted` surface, **top-rule cards instead of full-border cards**, tighter padding. It should read as a spec sheet beside the problem grid's diagnostic cards.
 
 ```tsx
-import { Section, type SectionDensity } from '@/components/ui'
+import { Section, CardGrid, type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 
 /**
- * Deliverables index — "what's included".
+ * Deliverables grid — "what's included".
  *
  * Governed by docs/18-design-system.md §5.6, §51, §155 and Appendix A
- * ("Service/feature index"); docs/06-master-service-registry.md;
+ * ("Service/feature grid"); docs/06-master-service-registry.md;
  * CLAUDE.md §4, §23.
  *
- * `power/service-page.md` item 6 specifies a card grid. This project
- * renders an index instead: 18 §5.6 warns that a page built from card
- * grids is the strongest signal of a templated site, and this page
- * already spends its card budget on `ProblemGrid`. Appendix A's
- * "service/feature index" is the listed alternative.
+ * `power/service-page.md` item 6: a 4-6 card grid of practical
+ * deliverables, deliberately distinct from item 5's problem grid.
  *
- * That also enforces power's own constraint — items 5 and 6 must not
- * look alike. Different pattern, not just different copy.
+ * ===========================================================================
+ * WHY THIS STAYS A CARD GRID
+ * ===========================================================================
+ * 18 §5.6's prohibition is on a page built ENTIRELY from card grids.
+ * This page is not: hero, editorial split, process band, authority
+ * band, testimonial, and form all sit between the card sections. The
+ * governing rule here is §5.6's second bullet — "vary composition
+ * pattern and density between adjacent sections."
+ *
+ * So the differentiation is in TREATMENT, not pattern:
+ *
+ *   ProblemGrid       2 or 3 cols by count, full border, default surface
+ *   InclusionsGrid    always 2 cols, top rule only, muted surface, denser
+ *
+ * That preserves power's conversion composition deliberately, rather
+ * than defaulting away from it. See the plan's amendment table and the
+ * DEC entry for the full reasoning.
  *
  * ⚠ Deliverables must correspond to services The Sewer Pros actually
  * performs (06). CLAUDE.md §4: no repair, replacement, lining, or
@@ -426,22 +457,31 @@ export function InclusionsGrid({
     <Section density={density} surface="muted" labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
-      <ul className="mt-10 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+      {/*
+        Always 2 columns, never 3. ProblemGrid varies its column count
+        by item count; holding this one fixed is part of what keeps the
+        two grids from reading as the same component (18 §5.6 bullet 2).
+      */}
+      <CardGrid columns={2} itemCount={items.length} className="mt-10">
         {items.map((item) => (
-          <li key={item.title} className="border-t border-border pt-4">
+          // Top rule rather than the full-border `Card`, and tighter
+          // padding — the spec-sheet treatment described in the header.
+          <div key={item.title} className="border-t border-foreground/20 pt-4">
             <h3 className="text-base font-medium text-foreground">
               {item.title}
             </h3>
             <p className="mt-1 text-sm leading-6 text-muted-foreground">
               {item.description}
             </p>
-          </li>
+          </div>
         ))}
-      </ul>
+      </CardGrid>
     </Section>
   )
 }
 ```
+
+Note: `CardGrid` warns when `itemCount % columns !== 0`. With `columns={2}` an odd item count warns. `power` specifies 4-6 inclusions, so even counts are the norm; if a page genuinely needs 5, the warning is correct and that page's content should be revised rather than the check suppressed.
 
 - [ ] **Step 2: Export it**
 
@@ -450,12 +490,16 @@ export { InclusionsGrid } from './InclusionsGrid'
 export type { InclusionsGridProps, InclusionsGridItem } from './InclusionsGrid'
 ```
 
-- [ ] **Step 3: Verify and commit**
+- [ ] **Step 3: Verify visual divergence from `ProblemGrid`**
+
+Render a page carrying both and confirm they do not read as the same component. They must differ on at least three axes: column count, card shape, and surface.
+
+- [ ] **Step 4: Verify and commit**
 
 ```bash
 npm run typecheck && npm run lint
 git add components/sections/InclusionsGrid.tsx components/sections/index.ts
-git commit -m "feat(sections): add InclusionsGrid as an index, not a card grid"
+git commit -m "feat(sections): add InclusionsGrid with spec-sheet card treatment"
 ```
 
 ---
@@ -482,7 +526,7 @@ import type { PageId } from '@/types'
  * DECISION SUPPORT toward Services / Areas / Audience / Contact, and
  * must stay visually distinct from the services catalog below it. Here
  * that separation is structural — this section is the page's card grid,
- * and `ServiceIndex` below it is a scannable index (18 §5.6).
+ * and `ServiceIndex` below it is an uneven mosaic (18 §5.6 bullet 2).
  *
  * Destinations are approved page ids resolved through
  * `resolveLinkableOnly`, never hrefs. CLAUDE.md §37: never surface a
@@ -992,9 +1036,9 @@ git commit -m "feat(sections): add data-gated ProofGallery, TestimonialBand, Lea
 
 ---
 
-## Task 8: Edit the three existing components
+## Task 8: Edit the five existing components
 
-**Files:** Modify `TrustBar.tsx`, `CtaSection.tsx`, `SiteHeader.tsx`
+**Files:** Modify `TrustBar.tsx`, `CtaSection.tsx`, `SiteHeader.tsx`, `ServiceIndex.tsx`, `RelatedLinks.tsx`
 
 - [ ] **Step 1: `TrustBar` — add density and surface overrides**
 
@@ -1077,12 +1121,93 @@ Nothing else changes: no click-to-call, no nav changes, still a Server Component
 }
 ```
 
-- [ ] **Step 5: Verify and commit**
+- [ ] **Step 5: `ServiceIndex` — add the `mosaic` variant**
+
+`power` wants a visual services section, not a text list. Appendix A names the pattern: *"Service mosaic — a deliberately uneven grid where the flagship item (Sewer Camera Inspection) gets more visual space than supporting services."*
+
+Add a `variant` prop. The existing `index` rendering stays the default so no current call site changes; the homepage opts into `mosaic`.
+
+```tsx
+/**
+ * Layout shape.
+ *
+ *   index   scannable rows — the default. Correct when the item count
+ *           does not divide evenly or items vary in length (Appendix A).
+ *   mosaic  deliberately uneven card grid, flagship item given more
+ *           space. Appendix A names Sewer Camera Inspection as the
+ *           flagship. Use where the section must read as a visual
+ *           services catalog rather than a list.
+ *
+ * The homepage uses `mosaic` so it does not repeat the shape of the
+ * even RoutingCards grid directly above it (18 §5.6 bullet 2, and
+ * power/homepage.md's own note that routing and services must stay
+ * visually distinct).
+ */
+variant?: 'index' | 'mosaic'
+/** The pageId given extra space in `mosaic`. Defaults to the first item. */
+flagshipPageId?: PageId
+```
+
+Mosaic rendering — the flagship spans two columns and gets a taller card; the rest are single-width. Note this is intentionally **not** `CardGrid`, whose even-division warning does not apply to a deliberately uneven layout:
+
+```tsx
+  <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {links.map((link) => {
+      const isFlagship = link.pageId === (flagshipPageId ?? links[0]?.pageId)
+      return (
+        <LinkCard
+          key={link.pageId}
+          href={link.href}
+          actionLabel={link.label}
+          className={cn(
+            'flex flex-col',
+            isFlagship && 'sm:col-span-2 sm:row-span-2 sm:justify-end',
+          )}
+        >
+          <h3
+            className={cn(
+              'font-medium tracking-tight text-foreground',
+              isFlagship ? 'text-h2' : 'text-h4',
+            )}
+          >
+            {link.label}
+          </h3>
+          <p className="mt-2 max-w-prose text-sm leading-6 text-muted-foreground">
+            {descriptions.get(link.pageId)}
+          </p>
+        </LinkCard>
+      )
+    })}
+  </div>
+```
+
+Import `cn` from `@/lib/utils/cn` and `LinkCard` from `@/components/ui`.
+
+- [ ] **Step 6: `RelatedLinks` — switch to horizontal cards**
+
+The related strip is the last card section on the page and must not repeat the shape of the first. Change its cards from vertical (stacked title over description) to **horizontal**: a leading rule with title and description beside it, at a wider aspect ratio, 3-up.
+
+Read the current implementation first, then change only the card interior and grid — not the `pageId` resolution, which must keep going through the approved-link layer.
+
+```bash
+cat components/sections/RelatedLinks.tsx
+```
+
+Add to its header comment:
+
+```
+ * Horizontal card treatment since the power composition port: this is
+ * the last card section on most pages, and 18 §5.6 bullet 2 requires
+ * varying composition between sections. A vertical card here would
+ * repeat the shape of the problem grid above it.
+```
+
+- [ ] **Step 7: Verify all five and commit**
 
 ```bash
 npm run typecheck && npm run lint && npm run build
-git add components/sections/TrustBar.tsx components/sections/CtaSection.tsx components/sections/index.ts components/layout/SiteHeader.tsx app/globals.css
-git commit -m "feat(layout): sticky header, CTA phone slot, TrustBar density override"
+git add components/sections/ components/layout/SiteHeader.tsx app/globals.css
+git commit -m "feat(sections): sticky header, CTA phone slot, ServiceIndex mosaic, horizontal RelatedLinks"
 ```
 
 ---
@@ -1240,8 +1365,8 @@ Same procedure as Task 10 for each: write the density array with inline section 
 
 | Template | Section order | Density array (all optional present) |
 |---|---|---|
-| `HomePageTemplate` | hero, trust, **routing**, services index, differentiator, markets, process, authority, gallery*, testimonial*, form*, resources related, faq, cta | sparse, dense, standard, standard, standard, dense, standard, standard, dense, dense, sparse |
-| `MarketPageTemplate` | hero, trust, body, services index, authority, gallery*, testimonial*, form*, **coverage**, related, faq, cta(**+phone**) | sparse, dense, standard, standard, standard, standard, dense, dense, sparse |
+| `HomePageTemplate` | hero, trust, **routing** (even grid), **services mosaic**, differentiator, markets, process, authority, gallery*, testimonial*, form*, resources related (horizontal), faq, cta | sparse, dense, standard, standard, standard, dense, standard, standard, dense, dense, sparse |
+| `MarketPageTemplate` | hero, trust, body, services index, authority, gallery*, testimonial*, form*, **coverage**, related, faq, cta(**+phone**) | sparse, dense, standard, **dense**, standard, standard, dense, dense, sparse |
 | `LocationPageTemplate` | hero, trust, body, services index, authority, form*, related, faq, cta | sparse, dense, standard, standard, standard, dense, dense, sparse |
 | `ServiceLocationPageTemplate` | hero, trust, body, problems, inclusions, process, authority, gallery*, testimonial*, form*, related, **coverage**, faq, cta | sparse, dense, standard, standard, dense, standard, standard, dense, standard, dense, sparse |
 | `AudiencePageTemplate` | hero, trust, body, problems, inclusions, process, authority, gallery*, testimonial*, form*, services index, related, faq, cta | sparse, dense, standard, standard, dense, standard, standard, dense, dense, dense, sparse |
@@ -1251,13 +1376,22 @@ Same procedure as Task 10 for each: write the density array with inline section 
 
 - [ ] **Step 1: Verify each array against the rhythm rule before writing it**
 
-For each row, check no 4 consecutive identical values and at least 2 distinct values. `MarketPageTemplate` above runs `standard, standard, standard, standard` at positions 3-6 — **that fails**. Fix by setting the services index to `dense`:
+For each row, check no 4 consecutive identical values and at least 2 distinct values.
 
-```
-sparse, dense, standard, dense, standard, standard, dense, dense, sparse
-```
+All 12 arrays in this plan have been verified against a mirror of `sectionRhythmIssues()`. `MarketPageTemplate` originally ran `standard, standard, standard, standard` at positions 3-6 and **failed**; the table above carries the corrected array, with the services index moved to `dense`. That correction is recorded here rather than silently applied, because it is the pattern to reuse: fix a run of 4 by moving a list-like section to `dense`, never by inventing a section to break it up.
 
-Apply the same check to every row before implementing; correct any run of 4 the same way, by moving a list-like section to `dense`.
+Re-run this check if any array changes:
+
+```bash
+node -e '
+const S="sparse",T="standard",D="dense";
+const d=[S,D,T,D,T,T,D,D,S];           // the array under test
+let run=1,bad=[];
+for(let i=1;i<d.length;i++){run=d[i]===d[i-1]?run+1:1;
+if(run===4)bad.push(`run of 4 at ${i-2}-${i+1}`);}
+if(new Set(d).size===1)bad.push("no variation");
+console.log(bad.length?bad.join("; "):"ok");'
+```
 
 - [ ] **Step 2: `MarketPageTemplate` phone**
 
@@ -1370,7 +1504,19 @@ Use the next available DEC number.
 grep -o "DEC-[0-9]\+" docs/22-decisions-change-log.md | sort -u | tail -3
 ```
 
-The entry must record: adoption of the `power` composition system and its source; the tail reordering (related before FAQ); the 8 new components; the §5.6 card-grid amendment; and each of the nine §4 resolutions, distinguishing rejected outright (offer modules, placeholder testimonials, click-to-call header, map card, icon trust strip) from adapted (photography slots, form slot, CTA phone, register). Follow the existing entry format in that file.
+The entry must record: adoption of the `power` composition system and its source; the tail reordering (related before FAQ); the 8 new components; and each of the nine §4 resolutions, distinguishing rejected outright (offer modules, placeholder testimonials, click-to-call header, map card, icon trust strip) from adapted (photography slots, form slot, CTA phone, register). Follow the existing entry format in that file.
+
+It must also record the **card-composition resolution** explicitly, as a deliberate decision rather than an oversight — a later reviewer will otherwise read five card sections on one page and assume §5.6 was missed:
+
+> **Card composition under §5.6.** `power`'s conversion composition is card-based across routing, services, problems, inclusions, gallery, and related. That composition is **retained deliberately**, not defaulted into.
+>
+> §5.6's prohibition is on a page built *entirely* from card grids. These pages are not: hero, editorial split, process band, authority band, testimonial, and form separate every card section. The governing rule is §5.6's second bullet, "vary composition pattern and density between adjacent sections," and the resolution is **visual variation as the differentiator** rather than pattern substitution.
+>
+> Per-section treatments: routing = even 3-col `LinkCard`, full border. Services = uneven mosaic, flagship Sewer Camera Inspection given double width (Appendix A names both the pattern and the flagship). Problems = 2/3-col by count, full border, static. Inclusions = fixed 2-col, top rule, `muted`, denser. Gallery = image grid, no card chrome. Related = horizontal cards, 3-up.
+>
+> Line 1188 and Appendix B's "cards for every list-like section" check are separately satisfied: `TrustBar` is a band, `AuthorityBand` proof points and `CoverageSection` are plain lists, `ProcessSteps` is a numbered band.
+>
+> Decorative icons are excluded per §27, Appendix B, and §56. Image-led treatments remain unavailable until photography is approved (§28-34).
 
 - [ ] **Step 4: Commit**
 
@@ -1422,11 +1568,26 @@ grep -rnE "\(?[0-9]{3}\)?[ .-][0-9]{3}[ .-][0-9]{4}" components/
 
 Expected: no hardcoded phone numbers in the component layer.
 
-- [ ] **Step 5: Accessibility spot check**
+- [ ] **Step 5: §5.6 card-differentiation check**
+
+This is the check that replaces the abandoned "cap the grid count" approach, and it is a judgement check on the rendered page, per Appendix B's instruction that its reviews run after the build rather than as an automated gate.
+
+For the homepage and the service page, list every card-based section in render order and confirm **no adjacent pair shares all of column count, card shape, surface, and orientation**:
+
+| Page | Expected sequence |
+|---|---|
+| Home | routing (even 3-col, full border, vertical, default) → services (mosaic, uneven, vertical, default) → related (3-up, leading rule, **horizontal**, default) |
+| Service | problems (2/3-col, full border, vertical, default) → inclusions (fixed 2-col, **top rule**, vertical, **muted**) → related (3-up, leading rule, **horizontal**, default) |
+
+Also confirm Appendix B's separate check — that cards are not used for *every* list-like section: `TrustBar`, `AuthorityBand`, `CoverageSection`, and `ProcessSteps` must all still render un-carded.
+
+Any adjacent pair that reads as the same component with different text is a failure. Fix by changing treatment, **not** by substituting a non-card pattern — that reversal is a recorded decision (Task 14 Step 3).
+
+- [ ] **Step 6: Accessibility spot check**
 
 Confirm one `h1` per page, that new grids use `ul`/`li`, and that the sticky header does not obscure `:target` anchors.
 
-- [ ] **Step 6: Browser verification**
+- [ ] **Step 7: Browser verification**
 
 Confirm the dev server is still running; restart with `npm run dev` if not. Load `/` and `/services/sewer-camera-inspection/`, screenshot both, and compare against the baseline captured earlier: hero, trust bar, services treatment, and the sections now sitting between hero and prose on the service page.
 
