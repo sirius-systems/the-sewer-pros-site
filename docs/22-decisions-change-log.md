@@ -4060,6 +4060,159 @@ TBD
 
 ---
 
+## DEC-081 — Page Composition Ported from the `power` Template Set
+
+**Date:** 2026-08-23
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `18-design-system.md` §110-115, §115.1
+* `components/sections/` (8 new sections, 5 edited), `components/templates/` (all 12)
+* `types/content.ts`, `data/business/proof.ts`, `data/business/authority.ts`
+
+### Decision
+
+The `power` composition set from `site-foundation-template` (`fc79c79`,
+`docs/page-templates/power/`) is adopted as the section architecture for
+all 12 page templates.
+
+The reference ships **Markdown composition maps, not React** — its
+`src/components/` holds only a `.gitkeep`, and it targets Next 14 /
+Tailwind 3 against this project's Next 16 / Tailwind 4. What was ported
+is section order, section inventory, density rhythm, and element roles.
+No code was copied.
+
+Presentation layer only. **Route parity was verified before and after:
+73 pages, identical set.** No new indexable route, no registry change,
+no addition to doc 04.
+
+### Ported
+
+Eight new sections: `RoutingCards`, `ProblemGrid`, `InclusionsGrid`,
+`AuthorityBand`, `CoverageSection`, `ProofGallery`, `TestimonialBand`,
+`LeadFormSection`. Five edited: `TrustBar`, `CtaSection`, `SiteHeader`,
+`ServiceIndex`, `RelatedLinks`.
+
+The page tail reordered to **related → FAQ → CTA** across every family
+except Resource.
+
+### Rejected outright
+
+| Reference element | Governing rule |
+|---|---|
+| Free-estimate, financing, warranty, same-day/emergency offer modules | CLAUDE.md §17, §23; 18 §89, §145; 01 §34 |
+| "One editable placeholder testimonial" per page type | CLAUDE.md §77 — a placeholder quote on a public page is an invented one |
+| Click-to-call phone in the shared header | DEC-070/071 publish two numbers; `output: 'export'` cannot vary a shared header by route (PENDING-017); 01 §20 |
+| Map / directions / hours card on location pages | PENDING-002 — no address exists; service-area model. CLAUDE.md §29-30 |
+| 4-across icon trust strip | 18 §5.3; Appendix B flags decorative icons beside self-sufficient text |
+
+### Adapted
+
+* **Photography slots** typed but empty (18 §28-34). Sections reflow text-first; no placeholder boxes, no stock.
+* **Lead form** built as a slot that renders nothing until PENDING-007 and PENDING-008 resolve (CLAUDE.md §58).
+* **CTA phone** narrowed to market-scoped templates only. Verified in rendered output: St. Louis, San Diego, and Las Vegas each show their own number; no other page shows one.
+* **Register** overridden from the reference's "urgent, visitor mid-problem" to this project's calm and factual voice (18 §68, §70; CLAUDE.md §98).
+
+### Card composition under §5.6
+
+The reference composition is card-based across routing, services,
+problems, inclusions, gallery, and related. That composition is
+**retained deliberately**, not defaulted into.
+
+§5.6's prohibition is on a page built *entirely* from card grids. These
+pages are not: hero, editorial split, process band, authority band,
+testimonial, and form separate every card section. The governing rule is
+§5.6's second bullet — "vary composition pattern and density between
+adjacent sections" — so the resolution is **visual variation as the
+differentiator** rather than pattern substitution.
+
+Per-section treatments: routing = even 3-col `LinkCard`, full border.
+Services = uneven mosaic, flagship Sewer Camera Inspection at double
+width (Appendix A names both the pattern and that flagship). Problems =
+2/3-col by count, full border. Inclusions = fixed 2-col, top rule,
+muted, denser. Gallery = image grid, no card chrome. Related =
+horizontal cards.
+
+Appendix B's separate "cards for every list-like section" check is also
+satisfied: `TrustBar` is a band, `AuthorityBand` and `CoverageSection`
+are plain lists, `ProcessSteps` is numbered.
+
+Decorative icons excluded (§27, §56, Appendix B). Image-led treatments
+remain unavailable until photography is approved.
+
+### Open gap — commercial proof
+
+`CommercialPageTemplate` ships without a proof or testimonial section.
+`TestimonialBand` and `ProofGallery` draw on company-wide data that is
+not scoped by industry.
+
+**Planned resolution:** a review carousel surfacing **all** reviews,
+unfiltered, for conversion. There is no vetting requirement and no
+filtering to commercial-specific material.
+
+CLAUDE.md §33 and §74's industry-swap rule was raised against this and
+**deliberately not applied**. That rule prohibits presenting residential
+content as commercial; an unfiltered review set makes no
+residential-versus-commercial claim at all. The goal is broad social
+proof on the commercial page, not a claim about commercial-specific
+results.
+
+**This is unbuilt. Commercial remains intentionally thinner than other
+families until it lands.**
+
+**No data-shape change is required.** `testimonials` is already
+`readonly Testimonial[]`; `TestimonialBand` simply renders `[first]`.
+Surfacing all of them is `testimonials.map(...)` — a presentation
+choice, not a new content category. And because the set is explicitly
+unfiltered, no `industry` or `segment` field is needed on `Testimonial`.
+The existing `quote` / `attribution` / `source` shape stands, and
+`source` stays required.
+
+⚠ One implementation constraint, unresolved: §105 says "avoid carousels
+for critical content" and lists the permitted uses as galleries,
+inspection examples, and case-study media — reviews are not among them.
+CLAUDE.md §56 and §103 also warn on carousel weight, and a true carousel
+needs client JavaScript in a component layer that currently ships none
+(02 §30). Appendix A's **proof wall** ("many short quotes, compact") is
+the static pattern for this content and trips none of that. The decision
+to surface all reviews unfiltered stands either way; only the mechanism
+is open.
+
+### Not part of this decision
+
+Two site-wide fixes were surfaced by this work and committed separately.
+Neither belongs to the port:
+
+* `data/business/positioning.ts` — restored the "Cleaning" step to 18 §64's differentiator motif (pre-existing content drift).
+* `components/layout/SiteFooter.tsx` — footer columns now follow surviving nav group count (site chrome).
+
+A class of grid bug was also fixed across six components: hardcoded
+column counts that silently orphaned cells when the rendered array
+length did not match the assumption. The worst case was `RelatedLinks`,
+orphaning a cell on 23 of 46 pages.
+
+### Reason
+
+The project needed a documented composition standard rather than
+per-template invention. The reference set supplies one, derived from a
+trade-services reference group, and most of it transfers. The parts that
+do not are the parts where that group's business model differs from this
+one — urgency mechanics, offer modules, and proof this business has not
+yet collected — and those are recorded above rather than quietly
+softened.
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* Route set identical before and after — 73 pages
+* `sectionRhythmIssues()` reports zero warnings, down from three pre-existing
+* No new unverified claims, hardcoded phone numbers, or addresses in the component layer
+* One `h1` per page confirmed across families
+
+---
+
 # 39. Pending Decision Register
 
 Maintain unresolved material questions here until resolved.
