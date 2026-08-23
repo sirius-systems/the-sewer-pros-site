@@ -4217,6 +4217,70 @@ softened.
 
 ---
 
+## DEC-082 — 18 §115's Resource Chain Corrected to the Rendered Order
+
+**Date:** 2026-08-23
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `18-design-system.md` §115
+* `components/templates/ResourcePageTemplate.tsx` (comments only)
+
+### Decision
+
+§115's prescribed chain for the resource family is corrected to:
+
+```text
+Article Hero → Optional TOC → Direct Answer → Detailed Sections
+→ Visuals/Diagrams → Related Questions → Related Resources
+→ Relevant Service CTA
+```
+
+The closing service CTA moves from between Related Questions and
+Related Resources to the end of the chain. Nothing else in §115
+changes, and the FAQ still precedes the related strip.
+
+### Why this is a documentation fix, not a composition change
+
+§115 has listed the CTA mid-tail since it was written. No
+implementation ever matched that: `ResourcePageTemplate` has rendered
+FAQ → related → CTA since `6c5a94e`, before DEC-081, and DEC-081 did
+not touch this family's order.
+
+So the document and the code have disagreed on this one position for
+the life of both, and the disagreement was invisible because §115's
+real job — protecting the FAQ-before-related inversion — is the part
+everyone reads. The template's own protective comment quoted the
+document's chain rather than its own render, which is how a comment
+written to prevent drift came to describe it.
+
+The document is corrected rather than the code because:
+
+* A service CTA is the last thing an article should offer, after the
+  reader has the answer (§115's own framing, 17 §19).
+* Every other family closes on a CTA. Moving the resource CTA to the
+  document's position would have made this family's tail differ from
+  the rest of the site in two places instead of one.
+* Nothing rendered changes, so no page, route, schema, or analytics
+  context is affected.
+
+### Not part of this decision
+
+The FAQ-before-related inversion is untouched and still governed by
+§115 under CLAUDE.md §97. This entry narrows what is exceptional about
+this family's tail — it is the FAQ/related pair, and only that.
+
+### Verification
+
+* No code path changed — comment text only in the template
+* `npm run check` (typecheck, lint, production build) passes
+* Route set identical before and after — 73 HTML routes (70 of them PageShell pages)
+* Rendered section order on all five resource pages unchanged
+
+---
+
 # 39. Pending Decision Register
 
 Maintain unresolved material questions here until resolved.
