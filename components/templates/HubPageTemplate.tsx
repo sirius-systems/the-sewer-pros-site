@@ -1,7 +1,9 @@
 import { Section, Prose, type SectionDensity, type SectionSurface } from '@/components/ui'
 import {
   Hero,
+  TrustBar,
   ServiceIndex,
+  AuthorityBand,
   FaqSection,
   CtaSection,
 } from '@/components/sections'
@@ -50,10 +52,23 @@ export function HubPageTemplate({
   numbered = false,
   itemsSurface = 'default',
 }: HubPageTemplateProps) {
+  // A hub only takes the authority band when a non-brand section
+  // follows it. `AuthorityBand` and the closing `CtaSection
+  // variant="panel"` are the only two brand surfaces in the system, and
+  // stacking dark sections is a named anti-pattern (18 §11).
+  //
+  // `/for/` is the live case: it has no FAQ, so the band would land
+  // directly against the CTA panel. It is omitted there rather than the
+  // adjacency being accepted.
+  const showAuthority = content.faq !== undefined
+
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'sparse',
+    'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.items !== undefined ? (['standard'] as const) : []),
+    ...(showAuthority ? (['standard'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]
@@ -74,6 +89,8 @@ export function HubPageTemplate({
         intro={content.hero.intro}
       />
 
+      <TrustBar />
+
       {content.body !== undefined && (
         <Section density="standard" width="reading">
           <Prose>{content.body}</Prose>
@@ -89,6 +106,8 @@ export function HubPageTemplate({
           surface={itemsSurface}
         />
       )}
+
+      {showAuthority && <AuthorityBand title="How we work" />}
 
       {/*
         Muted, deliberately. A hub runs hero → body → items → faq, and
