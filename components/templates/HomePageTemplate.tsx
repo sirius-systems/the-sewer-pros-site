@@ -14,6 +14,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  authorityBandRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { HomePageContent, MasterPageRecord } from '@/types'
@@ -81,7 +82,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
     'dense',
     ...(content.process !== undefined ? (['standard'] as const) : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    'standard',
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',

@@ -6,6 +6,7 @@ import {
   AuthorityBand,
   FaqSection,
   CtaSection,
+  authorityBandRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { HubPageContent, MasterPageRecord } from '@/types'
@@ -60,7 +61,9 @@ export function HubPageTemplate({
   // `/for/` is the live case: it has no FAQ, so the band would land
   // directly against the CTA panel. It is omitted there rather than the
   // adjacency being accepted.
-  const showAuthority = content.faq !== undefined
+  // The band also omits itself below three proof points, so the
+  // array entry must read the same condition the render does.
+  const showAuthority = content.faq !== undefined && authorityBandRenders()
 
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [

@@ -72,7 +72,7 @@ export type {
   InclusionsGridItem,
 } from './InclusionsGrid'
 
-export { AuthorityBand } from './AuthorityBand'
+export { AuthorityBand, authorityBandRenders } from './AuthorityBand'
 export type { AuthorityBandProps } from './AuthorityBand'
 
 export { CoverageSection } from './CoverageSection'

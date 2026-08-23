@@ -14,6 +14,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  authorityBandRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
@@ -93,7 +94,7 @@ export function ServicePageTemplate({
     ...(content.problems !== undefined ? (['standard'] as const) : []),
     ...(content.inclusions !== undefined ? (['dense'] as const) : []),
     ...(content.process !== undefined ? (['dense'] as const) : []),
-    'standard',
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(content.showMarkets === true ? (['dense'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
