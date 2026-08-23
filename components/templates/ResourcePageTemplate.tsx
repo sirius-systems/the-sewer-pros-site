@@ -75,7 +75,12 @@ export function ResourcePageTemplate({
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
-    'sparse',
+    // The closing CTA is a `band`, not a `panel`, and CtaSection
+    // renders a band at `dense` (`isPanel ? sparse : dense`). This
+    // entry read `sparse` and therefore described a page that does not
+    // exist -- the rhythm check was validating a fiction on this family.
+    // Verified against rendered output.
+    'dense',
   ]
 
   return (
@@ -128,6 +133,21 @@ export function ResourcePageTemplate({
         </Section>
       )}
 
+      {/*
+        ⚠ ORDER IS DELIBERATE: FAQ BEFORE RELATED. DO NOT "FIX" THIS.
+        ---------------------------------------------------------------
+        Every other template runs related → FAQ → CTA after the
+        composition port. This one is the reverse, and that is correct.
+
+        18 §115 prescribes this family's order directly: detailed
+        sections → Related Questions → service CTA → Related Resources.
+        Under CLAUDE.md §97 a subject-specific document beats a general
+        composition standard, so §115 governs here and the port does not.
+
+        Reordering these two to match the other eleven templates would
+        be a regression against §115, not a consistency improvement.
+        See this file's header and DEC-081.
+      */}
       {content.faq !== undefined && (
         <FaqSection title="Related questions" entries={content.faq} />
       )}
