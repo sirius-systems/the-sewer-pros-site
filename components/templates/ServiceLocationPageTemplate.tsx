@@ -1,7 +1,15 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
+  TrustBar,
+  ProblemGrid,
+  InclusionsGrid,
   ProcessSteps,
+  AuthorityBand,
+  ProofGallery,
+  TestimonialBand,
+  LeadFormSection,
+  CoverageSection,
   FaqSection,
   RelatedLinks,
   CtaSection,
@@ -44,6 +52,22 @@ import type { MasterPageRecord, ServiceLocationPageContent } from '@/types'
  * variant of the canonical service page. Its `relatedPageIds` should
  * point to the canonical service and the parent location so the reader
  * can move up the hierarchy (16 §25).
+ *
+ * ---------------------------------------------------------------------------
+ * THE FULL PORTED MAP, NOT A THINNED ONE
+ * ---------------------------------------------------------------------------
+ * The reference composition warns explicitly against treating this type
+ * as "the service page plus content changes" - a service+location page
+ * needs enough location-specific structure (its own coverage section,
+ * local proof, a location-blended FAQ) to earn its URL. So it gets the
+ * full sequence rather than the lighter location-page one.
+ *
+ * That does NOT relax the substitution tests above. Structure earns the
+ * URL only if the writing does too.
+ *
+ * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection
+ * variant="panel"` are the only brand surfaces; related, coverage, and
+ * FAQ sit between them (18 §11).
  */
 export interface ServiceLocationPageTemplateProps {
   page: MasterPageRecord
@@ -54,12 +78,19 @@ export function ServiceLocationPageTemplate({
   page,
   content,
 }: ServiceLocationPageTemplateProps) {
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
+  // The three gated sections contribute no entry - they render nothing.
   const densities: SectionDensity[] = [
     'sparse',
+    'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
+    ...(content.problems !== undefined ? (['standard'] as const) : []),
+    ...(content.inclusions !== undefined ? (['dense'] as const) : []),
     ...(content.process !== undefined ? (['standard'] as const) : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    'standard',
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(content.coverage !== undefined ? (['standard'] as const) : []),
+    ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]
 
@@ -79,10 +110,28 @@ export function ServiceLocationPageTemplate({
         intro={content.hero.intro}
       />
 
+      <TrustBar />
+
       {content.body !== undefined && (
         <Section density="standard" width="reading">
           <Prose>{content.body}</Prose>
         </Section>
+      )}
+
+      {content.problems !== undefined && (
+        <ProblemGrid
+          id="when-to-call"
+          title="When to call"
+          items={content.problems}
+        />
+      )}
+
+      {content.inclusions !== undefined && (
+        <InclusionsGrid
+          id="whats-included"
+          title="What's included"
+          items={content.inclusions}
+        />
       )}
 
       {content.process !== undefined && (
@@ -93,7 +142,13 @@ export function ServiceLocationPageTemplate({
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      <AuthorityBand title="How we work" />
+
+      <ProofGallery title="Recent work" />
+
+      <TestimonialBand />
+
+      <LeadFormSection />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -101,6 +156,19 @@ export function ServiceLocationPageTemplate({
           pageIds={content.relatedPageIds}
         />
       )}
+
+      {content.coverage !== undefined && (
+        <CoverageSection
+          id="service-area"
+          title={content.coverage.title}
+          intro={content.coverage.intro}
+          pageIds={content.coverage.pageIds}
+          names={content.coverage.names}
+          availabilityStatement={content.coverage.availabilityStatement}
+        />
+      )}
+
+      {content.faq !== undefined && <FaqSection entries={content.faq} />}
 
       <CtaSection
         variant="panel"
