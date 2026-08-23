@@ -1,6 +1,10 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
+  TrustBar,
+  AuthorityBand,
+  LeadFormSection,
+  CoverageSection,
   RelatedLinks,
   FaqSection,
   CtaSection,
@@ -35,6 +39,21 @@ import type { LocationPageContent, MasterPageRecord } from '@/types'
  * 18 §86 and §135: no map pins and no "office" language. No market has
  * a verified physical location, so a location page asserts service
  * relevance, never presence.
+ *
+ * ---------------------------------------------------------------------------
+ * PORTED COMPOSITION, DELIBERATELY LIGHT
+ * ---------------------------------------------------------------------------
+ * This type gets the trust strip, authority band, and coverage section,
+ * but NOT the problem or inclusions grids. Those belong to the
+ * service+location page, which is where a location's service detail is
+ * supposed to live (05 §119). Duplicating them here would give two
+ * pages the same job.
+ *
+ * `CoverageSection` still carries no map or address (PENDING-002).
+ *
+ * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection
+ * variant="panel"` are the only brand surfaces. Coverage and FAQ sit
+ * between them (18 §11).
  */
 export interface LocationPageTemplateProps {
   page: MasterPageRecord
@@ -45,10 +64,20 @@ export function LocationPageTemplate({
   page,
   content,
 }: LocationPageTemplateProps) {
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
+  // The gated form contributes no entry - it renders nothing.
+  //
+  // The services entry is `dense`, matching what `RelatedLinks`
+  // actually renders. It previously read `standard` while the component
+  // rendered `dense`, so the hand-written array had drifted from the
+  // page it describes.
   const densities: SectionDensity[] = [
     'sparse',
+    'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.servicePageIds !== undefined ? (['standard'] as const) : []),
+    ...(content.servicePageIds !== undefined ? (['dense'] as const) : []),
+    'standard',
+    ...(content.coverage !== undefined ? (['standard'] as const) : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]
@@ -69,6 +98,8 @@ export function LocationPageTemplate({
         intro={content.hero.intro}
       />
 
+      <TrustBar />
+
       {content.body !== undefined && (
         <Section density="standard" width="reading">
           <Prose>{content.body}</Prose>
@@ -81,6 +112,21 @@ export function LocationPageTemplate({
           title={content.relatedTitle ?? 'Services in this area'}
           pageIds={content.servicePageIds}
           surface="default"
+        />
+      )}
+
+      <AuthorityBand title="How we work" />
+
+      <LeadFormSection />
+
+      {content.coverage !== undefined && (
+        <CoverageSection
+          id="service-area"
+          title={content.coverage.title}
+          intro={content.coverage.intro}
+          pageIds={content.coverage.pageIds}
+          names={content.coverage.names}
+          availabilityStatement={content.coverage.availabilityStatement}
         />
       )}
 
