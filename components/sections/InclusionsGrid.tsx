@@ -1,4 +1,5 @@
-import { Section, CardGrid, type SectionDensity } from '@/components/ui'
+import { Section, type SectionDensity } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 
 /**
@@ -74,20 +75,32 @@ export function InclusionsGrid({
       {/*
         Always 2 columns, never 3. ProblemGrid varies its column count by
         item count; holding this one fixed is part of what keeps the two
-        grids from reading as the same component (18 §5.6 bullet 2).
+        grids from reading as the same component (18 §5.6 bullet 2), so
+        the fix for an odd count is a span rather than a column change.
 
-        CardGrid warns on an odd count against 2 columns. The reference
-        style specifies 4-6 deliverables, so even counts are the norm; a
-        genuine 5 should be revised in content rather than the check
-        suppressed.
+        The composition specifies 4-6 deliverables. Five is in range and
+        has no clean divisor against two columns, so the trailing item
+        spans both rather than leaving a hole — the same remainder
+        treatment ProblemGrid uses.
+
+        Deliberately not `CardGrid`: its even-division warning would be
+        a false positive once the span makes the orphan impossible.
       */}
-      <CardGrid columns={2} itemCount={items.length} className="mt-10">
-        {items.map((item) => (
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {items.map((item, index) => (
           // Top rule rather than the full-border `Card`, and tighter
           // spacing — the spec-sheet treatment described above. 18 §25
           // rules out dramatic floating cards; this is the quieter end
           // of the same idea.
-          <div key={item.title} className="border-t border-foreground/20 pt-4">
+          <div
+            key={item.title}
+            className={cn(
+              'border-t border-foreground/20 pt-4',
+              items.length % 2 !== 0 &&
+                index === items.length - 1 &&
+                'sm:col-span-2',
+            )}
+          >
             <h3 className="text-base font-medium text-foreground">
               {item.title}
             </h3>
@@ -96,7 +109,7 @@ export function InclusionsGrid({
             </p>
           </div>
         ))}
-      </CardGrid>
+      </div>
     </Section>
   )
 }
