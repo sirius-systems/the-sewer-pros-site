@@ -4,6 +4,7 @@ import {
   RelatedLinks,
   CtaSection,
   relatedLinksRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ResourcePageContent } from '@/types'
@@ -84,7 +85,7 @@ export function ResourcePageTemplate({
   const densities: SectionDensity[] = [
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),

@@ -11,6 +11,7 @@ import {
   authorityBandRenders,
   relatedLinksRenders,
   coverageSectionRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { LocationPageContent, MasterPageRecord } from '@/types'
@@ -85,7 +86,7 @@ export function LocationPageTemplate({
     ...(coverageSectionRenders(content.coverage)
       ? (['standard'] as const)
       : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 

@@ -15,6 +15,7 @@ import {
   serviceIndexRenders,
   coverageSectionRenders,
   relatedLinksRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
@@ -106,7 +107,7 @@ export function MarketPageTemplate({
     })
       ? (['dense'] as const)
       : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 

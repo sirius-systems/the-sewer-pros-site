@@ -13,6 +13,7 @@ import {
   authorityBandRenders,
   processStepsRenders,
   relatedLinksRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { CommercialPageContent, MasterPageRecord } from '@/types'
@@ -98,7 +99,7 @@ export function CommercialPageTemplate({
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 

@@ -8,6 +8,7 @@ import {
   CtaSection,
   authorityBandRenders,
   serviceIndexRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { HubPageContent, MasterPageRecord } from '@/types'
@@ -62,9 +63,15 @@ export function HubPageTemplate({
   // `/for/` is the live case: it has no FAQ, so the band would land
   // directly against the CTA panel. It is omitted there rather than the
   // adjacency being accepted.
-  // The band also omits itself below three proof points, so the
-  // array entry must read the same condition the render does.
-  const showAuthority = content.faq !== undefined && authorityBandRenders()
+  // The band also omits itself below three proof points, so the array
+  // entry must read the same condition the render does.
+  //
+  // The FAQ condition is `faqSectionRenders`, not `!== undefined`: an
+  // authored but empty entry list renders nothing, which would leave
+  // the band against the closing CTA panel — the stacked brand
+  // surfaces this whole condition exists to prevent.
+  const showAuthority =
+    faqSectionRenders(content.faq) && authorityBandRenders()
 
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
@@ -73,7 +80,7 @@ export function HubPageTemplate({
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(serviceIndexRenders(content.items) ? (['standard'] as const) : []),
     ...(showAuthority ? (['standard'] as const) : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 
