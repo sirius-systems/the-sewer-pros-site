@@ -4,6 +4,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  relatedLinksRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { ComparisonPageContent, MasterPageRecord } from '@/types'
@@ -69,7 +70,9 @@ export function ComparisonPageTemplate({
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.problems !== undefined ? (['standard'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     // The closing CTA is a `band`, not a `panel`, and CtaSection
     // renders a band at `dense` (`isPanel ? sparse : dense`). This

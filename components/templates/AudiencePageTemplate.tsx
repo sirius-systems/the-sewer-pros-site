@@ -15,6 +15,9 @@ import {
   RelatedLinks,
   CtaSection,
   authorityBandRenders,
+  serviceIndexRenders,
+  processStepsRenders,
+  relatedLinksRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { AudiencePageContent, MasterPageRecord } from '@/types'
@@ -91,10 +94,14 @@ export function AudiencePageTemplate({
     'standard',
     ...(content.problems !== undefined ? (['standard'] as const) : []),
     ...(content.inclusions !== undefined ? (['dense'] as const) : []),
-    ...(content.services !== undefined ? (['dense'] as const) : []),
-    ...(content.process !== undefined ? (['standard'] as const) : []),
+    ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
+    ...(content.process !== undefined && processStepsRenders(content.process)
+      ? (['standard'] as const)
+      : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]

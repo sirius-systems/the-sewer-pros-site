@@ -15,6 +15,9 @@ import {
   RelatedLinks,
   CtaSection,
   authorityBandRenders,
+  processStepsRenders,
+  marketCoverageRenders,
+  relatedLinksRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
@@ -93,10 +96,16 @@ export function ServicePageTemplate({
     ...(content.showDifferentiator === true ? (['standard'] as const) : []),
     ...(content.problems !== undefined ? (['standard'] as const) : []),
     ...(content.inclusions !== undefined ? (['dense'] as const) : []),
-    ...(content.process !== undefined ? (['dense'] as const) : []),
+    ...(content.process !== undefined && processStepsRenders(content.process)
+      ? (['dense'] as const)
+      : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(content.showMarkets === true ? (['dense'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(content.showMarkets === true && marketCoverageRenders()
+      ? (['dense'] as const)
+      : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
     ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]

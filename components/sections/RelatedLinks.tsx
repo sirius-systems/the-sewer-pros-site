@@ -96,6 +96,34 @@ const COLUMNS: Record<number, string> = {
   4: 'md:grid-cols-2',
 }
 
+/**
+ * Whether `RelatedLinks` renders anything.
+ *
+ * Ids that resolve to no linkable page leave nothing to link to,
+ * and the module omits itself rather than rendering an empty aside
+ * (18 §120). Gated and retired pages drop out here, so this is a
+ * function of page STATUS, not of whether the ids were supplied.
+ *
+ * A template listing this section in its `densities` array must gate
+ * that entry on this predicate. An array entry for a section that
+ * omitted itself describes a page that was never built, and
+ * `sectionRhythmIssues()` then checks the fiction instead of the page.
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition, not two copies of it.
+ */
+export function relatedLinksRenders(
+  pageIds: readonly PageId[] | undefined,
+  options: { indexableContext?: boolean } = {},
+): boolean {
+  if (pageIds === undefined) return false
+  return (
+    resolveLinkableOnly(pageIds, {
+      indexableContext: options.indexableContext ?? true,
+    }).length > 0
+  )
+}
+
 export function RelatedLinks({
   density = 'dense',
   id = 'related',
