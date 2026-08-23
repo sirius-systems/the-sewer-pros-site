@@ -65,6 +65,23 @@ export const trustStatements: readonly TrustStatement[] = [
  * The framing below therefore contrasts BUSINESS MODELS, not integrity.
  * A repair contractor selling repairs is a description of how that
  * business earns, not an accusation.
+ *
+ * ---------------------------------------------------------------------------
+ * KEEP "CLEANING" IN THE CHAIN
+ * ---------------------------------------------------------------------------
+ * 18 §64 gives the motif as:
+ *
+ *   Inspection → Evidence → Cleaning/Next-Step Decision
+ *
+ * Cleaning belongs in the third step because it is an APPROVED SERVICE
+ * (06; 01 §2.2, §3). Collapsing that step to "your decision" alone
+ * implies the company only inspects and then hands the customer off,
+ * which understates what it actually does and reads against 01 §3's
+ * positioning of "inspection, diagnostics, locating, and cleaning".
+ *
+ * The wording stays plain-language rather than copying the doc's
+ * title-case slash form; the three-beat structure and the cleaning
+ * step are what §64 fixes.
  */
 export const differentiatorContrast = {
   comparison: {
@@ -73,7 +90,11 @@ export const differentiatorContrast = {
   },
   ours: {
     heading: 'The Sewer Pros',
-    steps: ['Inspection', 'Documented evidence', 'Your decision'],
+    steps: [
+      'Inspection',
+      'Documented evidence',
+      'Cleaning or your next-step decision',
+    ],
   },
 } as const
 
