@@ -69,8 +69,23 @@ export function ProofGallery({
         Image grid at a consistent crop, no card chrome. This is the
         one image-led section in the system, which is part of how the
         page avoids reading as a run of card grids (18 §5.6).
+
+        Columns follow the image count rather than assuming the
+        composition's four. The array is empty today, so this is
+        hardening against a future population rather than a live fix —
+        but a hardcoded four would orphan cells the moment three or
+        five approved frames arrive, which is the same bug found in the
+        process band and the related strip.
       */}
-      <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul
+        className={`mt-10 grid gap-6 sm:grid-cols-2 ${
+          proofImages.length % 4 === 0
+            ? 'lg:grid-cols-4'
+            : proofImages.length % 3 === 0
+              ? 'lg:grid-cols-3'
+              : 'lg:grid-cols-2'
+        }`}
+      >
         {proofImages.map((image) => (
           <li key={image.src}>
             <Image
