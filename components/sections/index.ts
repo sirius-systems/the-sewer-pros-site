@@ -63,10 +63,10 @@ export type { TrustBarProps } from './TrustBar'
 export { RoutingCards, routingCardsRenders } from './RoutingCards'
 export type { RoutingCardsProps, RoutingCardItem } from './RoutingCards'
 
-export { ProblemGrid } from './ProblemGrid'
+export { ProblemGrid, problemGridRenders } from './ProblemGrid'
 export type { ProblemGridProps, ProblemGridItem } from './ProblemGrid'
 
-export { InclusionsGrid } from './InclusionsGrid'
+export { InclusionsGrid, inclusionsGridRenders } from './InclusionsGrid'
 export type {
   InclusionsGridProps,
   InclusionsGridItem,
@@ -96,7 +96,7 @@ export type { ProcessStepsProps, ProcessStep } from './ProcessSteps'
 export { Differentiator } from './Differentiator'
 export type { DifferentiatorProps } from './Differentiator'
 
-export { FaqSection } from './FaqSection'
+export { FaqSection, faqSectionRenders } from './FaqSection'
 export type { FaqSectionProps, FaqEntry } from './FaqSection'
 
 export { RelatedLinks, relatedLinksRenders } from './RelatedLinks'

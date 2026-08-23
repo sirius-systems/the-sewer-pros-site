@@ -17,6 +17,7 @@ import {
   processStepsRenders,
   relatedLinksRenders,
   coverageSectionRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServiceLocationPageContent } from '@/types'
@@ -100,7 +101,7 @@ export function ServiceLocationPageTemplate({
     ...(coverageSectionRenders(content.coverage)
       ? (['standard'] as const)
       : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 

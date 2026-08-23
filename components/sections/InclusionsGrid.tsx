@@ -57,6 +57,27 @@ export interface InclusionsGridProps {
   items: readonly InclusionsGridItem[]
 }
 
+/**
+ * Whether `InclusionsGrid` renders anything.
+ *
+ * An authored but empty item list renders nothing rather than an
+ * empty grid (18 §120), so supplying `inclusions` is not the same as
+ * having any.
+ *
+ * A template listing this section in its `densities` array must gate
+ * that entry on this predicate. An array entry for a section that
+ * omitted itself describes a page that was never built, and
+ * `sectionRhythmIssues()` then checks the fiction instead of the page.
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition, not two copies of it.
+ */
+export function inclusionsGridRenders(
+  items: readonly InclusionsGridItem[] | undefined,
+): boolean {
+  return items !== undefined && items.length > 0
+}
+
 export function InclusionsGrid({
   density = 'dense',
   id = 'whats-included',

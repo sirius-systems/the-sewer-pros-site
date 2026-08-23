@@ -20,6 +20,7 @@ import {
   marketCoverageRenders,
   processStepsRenders,
   relatedLinksRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { HomePageContent, MasterPageRecord } from '@/types'
@@ -93,7 +94,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 

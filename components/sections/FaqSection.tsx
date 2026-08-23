@@ -56,6 +56,27 @@ export interface FaqSectionProps {
   surface?: SectionSurface
 }
 
+/**
+ * Whether `FaqSection` renders anything.
+ *
+ * An authored but empty entry list renders nothing rather than an
+ * empty accordion (18 §120), so supplying `faq` is not the same as
+ * having one.
+ *
+ * A template listing this section in its `densities` array must gate
+ * that entry on this predicate. An array entry for a section that
+ * omitted itself describes a page that was never built, and
+ * `sectionRhythmIssues()` then checks the fiction instead of the page.
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition, not two copies of it.
+ */
+export function faqSectionRenders(
+  entries: readonly FaqEntry[] | undefined,
+): boolean {
+  return entries !== undefined && entries.length > 0
+}
+
 export function FaqSection({
   id = 'faq',
   title = 'Common questions',
