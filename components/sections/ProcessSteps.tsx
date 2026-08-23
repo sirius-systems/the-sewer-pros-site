@@ -1,4 +1,5 @@
 import { Section, type SectionDensity } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 import { processMotif } from '@/data/business/positioning'
 
@@ -82,10 +83,49 @@ export interface ProcessStepsProps {
   steps?: readonly ProcessStep[]
 }
 
-const COLUMNS: Record<number, string> = {
-  3: 'lg:grid-cols-3',
-  4: 'lg:grid-cols-4',
-  5: 'lg:grid-cols-5',
+/**
+ * Wide-breakpoint column count for a step sequence.
+ *
+ * 18 §5.6 forbids forcing an item count into a grid it does not divide
+ * into evenly. This band was hardcoded to four columns, which orphaned
+ * a cell for every sequence that was not exactly four long — including
+ * the home page's three authored steps and §141's three-step motif.
+ *
+ * An interim version mapped 3/4/5 and fell back to four, which merely
+ * moved the same assumption to six steps. This picks the largest
+ * divisor that actually divides, so nothing silently orphans:
+ *
+ *   3 -> 3    4 -> 4    6 -> 3    8 -> 4
+ *
+ * Counts with no divisor at these widths (5, 7) drop to two columns
+ * and let `spanClasses` below absorb the odd tail. Five columns is
+ * deliberately not offered — a process band that narrow stops being
+ * readable, and Appendix A's numbered process is meant to be scanned.
+ */
+function columnClass(count: number): string {
+  if (count % 4 === 0) return 'lg:grid-cols-4'
+  if (count % 3 === 0) return 'lg:grid-cols-3'
+  if (count % 2 === 0) return 'lg:grid-cols-2'
+  return 'lg:grid-cols-2'
+}
+
+/**
+ * Classes for the trailing step when the count is odd.
+ *
+ * The band is two columns from the `sm` breakpoint up, so any odd
+ * count leaves a gap there regardless of the wide-breakpoint choice.
+ * The last step spans both, matching the remainder treatment in
+ * `ProblemGrid` and `InclusionsGrid`.
+ *
+ * Tailwind breakpoints are min-width, so a `sm:col-span-2` would carry
+ * into a three-column wide layout and span two of three. `lg` resets it
+ * where the wide layout is not also two columns.
+ */
+function spanClasses(count: number, wide: string): string {
+  if (count % 2 === 0) return ''
+  return wide === 'lg:grid-cols-2'
+    ? 'sm:col-span-2'
+    : 'sm:col-span-2 lg:col-span-1'
 }
 
 export function ProcessSteps({
@@ -100,20 +140,26 @@ export function ProcessSteps({
 
   if (resolved.length === 0) return null
 
-  // The column count follows the step count. Previously hardcoded to
-  // four, which left an empty cell for any sequence that was not
-  // exactly four long — including §141's three-step motif. 18 §5.6's
-  // objection to forcing a count into a grid it does not divide into
-  // applies to this band for the same reason it applies to cards.
-  const columns = COLUMNS[resolved.length] ?? 'lg:grid-cols-4'
+  // Columns follow the step count, and an odd tail spans rather than
+  // orphaning. 18 §5.6's objection to forcing a count into a grid it
+  // does not divide into applies to this band for the same reason it
+  // applies to cards.
+  const wide = columnClass(resolved.length)
+  const span = spanClasses(resolved.length, wide)
 
   return (
     <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
-      <ol className={`mt-10 grid gap-px bg-border sm:grid-cols-2 ${columns}`}>
+      <ol className={cn('mt-10 grid gap-px bg-border sm:grid-cols-2', wide)}>
         {resolved.map((step, index) => (
-          <li key={step.title} className="bg-background p-6">
+          <li
+            key={step.title}
+            className={cn(
+              'bg-background p-6',
+              index === resolved.length - 1 && span,
+            )}
+          >
             <span
               aria-hidden="true"
               className="text-caption tabular-nums text-muted-foreground"
