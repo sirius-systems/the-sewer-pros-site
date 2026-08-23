@@ -1,5 +1,10 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
-import { FaqSection, RelatedLinks, CtaSection } from '@/components/sections'
+import {
+  ProblemGrid,
+  FaqSection,
+  RelatedLinks,
+  CtaSection,
+} from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { ComparisonPageContent, MasterPageRecord } from '@/types'
 
@@ -30,6 +35,22 @@ import type { ComparisonPageContent, MasterPageRecord } from '@/types'
  * accusing competitors of dishonesty, so that page must argue from
  * business model rather than character.
  *
+ * ---------------------------------------------------------------------------
+ * WHAT THIS TYPE DELIBERATELY DID NOT TAKE FROM THE PORT
+ * ---------------------------------------------------------------------------
+ * NO trust strip, NO authority band, NO proof, NO testimonial, NO form.
+ *
+ * Every one of those argues for The Sewer Pros. Dropping them into a
+ * page whose job is to help a reader choose between two options would
+ * put a thumb on the scale that CLAUDE.md §65 and 18 §66 forbid -
+ * and the brand-surface authority band would do it loudest.
+ *
+ * The closing CTA stays a `band`, not a `panel`, for the same reason.
+ *
+ * What this type DOES take is `ProblemGrid`, reframed as "when each
+ * applies" and describing both options in the same register. The tail
+ * also reorders to related -> FAQ -> CTA, matching the other families.
+ *
  * ⚠ Breadcrumbs resolve to Home > this page. Doc 04 approves no
  * `/compare/` hub, so the segment has no page of its own — flagged in
  * `data/pages/pages.ts`.
@@ -43,11 +64,13 @@ export function ComparisonPageTemplate({
   page,
   content,
 }: ComparisonPageTemplateProps) {
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
+    ...(content.problems !== undefined ? (['standard'] as const) : []),
     ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(content.faq !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]
 
@@ -84,7 +107,13 @@ export function ComparisonPageTemplate({
         </Section>
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {content.problems !== undefined && (
+        <ProblemGrid
+          id="when-each-applies"
+          title="When each applies"
+          items={content.problems}
+        />
+      )}
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -92,6 +121,8 @@ export function ComparisonPageTemplate({
           pageIds={content.relatedPageIds}
         />
       )}
+
+      {content.faq !== undefined && <FaqSection entries={content.faq} />}
 
       <CtaSection
         variant="band"
