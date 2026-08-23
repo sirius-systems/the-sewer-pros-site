@@ -83,6 +83,19 @@ export interface RelatedLinksProps {
   indexableContext?: boolean
 }
 
+/**
+ * Column count by link count.
+ *
+ * Anything larger falls back to three and wraps; at four or more the
+ * final row reads as a continuation rather than a hole.
+ */
+const COLUMNS: Record<number, string> = {
+  1: 'md:grid-cols-1',
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-2',
+}
+
 export function RelatedLinks({
   density = 'dense',
   id = 'related',
@@ -102,12 +115,18 @@ export function RelatedLinks({
       <SectionHeading id={id} title={title} level="h2" intro={intro} />
 
       {/*
-        Horizontal cards, 3-up. Not `CardGrid`: related counts vary by
-        page and are frequently not divisible by three, and an orphaned
-        row here would trip the very rule 18 §5.6 sets. A plain grid
-        that wraps naturally is the honest shape for a variable count.
+        Horizontal cards. Not `CardGrid`: related counts vary by page,
+        so the column count follows the actual number of links rather
+        than assuming three.
+
+        Half the pages in this project pass two related ids and half
+        pass three. A fixed three-column grid orphaned a cell on every
+        two-item page — the same class of bug as the hardcoded
+        four-column process band, and exactly what 18 §5.6's "do not
+        force an item count into a grid it doesn't divide evenly into"
+        prohibits.
       */}
-      <ul className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <ul className={`mt-6 grid grid-cols-1 gap-4 ${COLUMNS[links.length] ?? 'md:grid-cols-3'}`}>
         {links.map((link) => {
           const description = descriptions?.[link.pageId]
 
