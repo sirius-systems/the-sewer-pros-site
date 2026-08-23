@@ -1,18 +1,31 @@
 /**
  * Site origin configuration.
  *
- * Authority: docs/02-nextjs-technical-architecture.md §53
+ * Authority: docs/02-nextjs-technical-architecture.md §53, §88
  *            docs/15-schema-entity-strategy.md §5, §6, §102
- *            docs/22-decisions-change-log.md PENDING-001
+ *            docs/05-url-routing-strategy.md §92, §93, §94
+ *            docs/22-decisions-change-log.md DEC-078
  *
  * ===========================================================================
- * ⚠  THE CANONICAL ORIGIN IS UNRESOLVED (PENDING-001)
+ * ⚠  THE ORIGIN IS REQUIRED AT BUILD TIME, WITH NO FALLBACK
  * ===========================================================================
- * Neither the production domain nor the apex-vs-www form has been decided.
+ * The canonical origin is settled: `https://www.thesewerpros.com`, www
+ * rather than apex (DEC-078, 2026-08-17, closing PENDING-001).
  *
- * That makes this module deliberately unforgiving: `siteOrigin()` THROWS
- * when `NEXT_PUBLIC_SITE_URL` is unset. There is no development fallback,
- * by design.
+ * It is deliberately NOT hardcoded here. Environment configuration stays
+ * out of committed source (CLAUDE.md §52), so every environment supplies
+ * it through `NEXT_PUBLIC_SITE_URL` — `.env.local` locally, the host's
+ * own environment settings for a deployed build. `.env.example` carries
+ * the value to use.
+ *
+ * Every environment supplies the SAME value, including previews. A
+ * preview host must never appear in a canonical tag, a schema `@id`, or
+ * the sitemap (05 §92, 02 §88), and under `output: 'export'` there is no
+ * runtime correction once it ships.
+ *
+ * This module is therefore deliberately unforgiving: `siteOrigin()`
+ * THROWS when `NEXT_PUBLIC_SITE_URL` is unset. There is no development
+ * fallback, by design.
  *
  * A fallback would be the more convenient choice and the wrong one. This
  * project builds with `output: 'export'`, so whatever origin is present
@@ -47,8 +60,12 @@ export function siteOrigin(): string {
         `output: 'export', so the origin present at build time is baked ` +
         `into canonicals, schema @id values, and the sitemap as static ` +
         `text (02 §53, 15 §5).\n\n` +
-        `Set it in .env.local — see .env.example.\n` +
-        `The production value is blocked on PENDING-001 (domain, apex vs www).`,
+        `Set it in .env.local for local work, or in the deployment ` +
+        `host's own environment settings for a build there — ` +
+        `see .env.example.\n` +
+        `The value is https://www.thesewerpros.com (DEC-078). Use it in ` +
+        `every environment: a preview host must never reach a canonical ` +
+        `tag, a schema @id, or the sitemap (05 §92, 02 §88).`,
     )
   }
 
