@@ -38,6 +38,28 @@ import type { MasterPageRecord, ResourcePageContent } from '@/types'
  * deploy.
  *
  * No author byline. 15 §49: omit rather than invent an author.
+ *
+ * ---------------------------------------------------------------------------
+ * DELIBERATELY EXCLUDED FROM THE PORTED COMPOSITION
+ * ---------------------------------------------------------------------------
+ * This family takes NONE of it: no trust strip, no problem grid, no
+ * inclusions grid, no authority band, no proof, no testimonial, no
+ * form, and the closing CTA stays a `band` rather than a `panel`.
+ *
+ * Two reasons, and neither is oversight:
+ *
+ * 1. 17 §19 requires informational content to progress without forcing
+ *    the reader into a form. Stacking a service page's conversion
+ *    machinery onto an article inverts that.
+ * 2. 18 §115 is the subject-specific authority for this type and
+ *    already prescribes its order (hero -> direct answer -> detail ->
+ *    related questions -> service CTA). Under CLAUDE.md §97 the
+ *    subject-specific document wins over a general composition port.
+ *
+ * The section ORDER is therefore also unchanged - including the FAQ
+ * sitting before the related strip, which is the reverse of every other
+ * family after the port. That is §115's order, not drift. Do not
+ * "correct" it for consistency.
  */
 export interface ResourcePageTemplateProps {
   page: MasterPageRecord
