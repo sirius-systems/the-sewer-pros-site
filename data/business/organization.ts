@@ -246,6 +246,15 @@ export const businessCategories = [
  * Exported so build-time content validation (step 24) can scan rendered
  * copy for these assertions rather than relying on review alone. The
  * list is a governance artefact, not display data — never render it.
+ *
+ * ⚠ 'same-day service' and 'free estimates' now HAVE that documented
+ * evidence — DEC-088 (owner-confirmed 2026-09-01) — and are published
+ * via `data/business/offers.ts` -> `ConfidenceModule`, homepage only.
+ * They stay listed here because this array still governs every OTHER
+ * appearance: it is the guard against the same claim being repeated
+ * elsewhere (a service page, a market page, a CTA) without the same
+ * scoping and hedged phrasing DEC-088 approved. Do not treat their
+ * presence in `offers.ts` as blanket approval to use them anywhere else.
  */
 export const CLAIMS_REQUIRING_VERIFICATION = [
   'years in business',

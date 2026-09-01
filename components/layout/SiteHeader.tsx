@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { HeaderPhoneLink } from '@/components/layout/HeaderPhoneLink'
 import { resolvePrimaryNav } from '@/data/navigation'
 import { SITE_NAME } from '@/data/business'
 import { PRIMARY_CTA } from '@/components/layout/cta'
@@ -17,22 +18,20 @@ import { PRIMARY_CTA } from '@/components/layout/cta'
  * which satisfies 18 §94 and §95 without custom ARIA.
  *
  * ---------------------------------------------------------------------------
- * ⚠ WHY THE HEADER SHOWS "CALL" RATHER THAN A NUMBER
+ * ⚠ THE HEADER PHONE CONTROL IS MARKET-AWARE (supersedes PENDING-017)
  * ---------------------------------------------------------------------------
- * 18 §42 places a phone link in the header, and the business publishes
- * two: (314) 821-1600 for St. Louis and (858) 257-2888 for San Diego,
- * on separate sites with different hours (DEC-070, DEC-071).
+ * 18 §42 places a phone link in the header. The business publishes a
+ * different real, owner-confirmed number per market — St. Louis,
+ * San Diego, and Las Vegas (DEC-070, DEC-071, DEC-073) — and 01 §20
+ * forbids showing one market's number on another market's page.
  *
- * The header is a shared layout component. Under `output: 'export'` it
- * cannot vary by route without becoming a client component, and there
- * is no runtime to detect a visitor's market.
- *
- * Rendering one number sitewide would put the St. Louis line on every
- * San Diego page — precisely the cross-market fact-copying 01 §20
- * forbids. So the header links to `/contact/`, which lists both markets
- * separately, and each market page carries its own number in content.
- *
- * Revisit if a market-scoped layout is introduced (PENDING-017).
+ * `HeaderPhoneLink` resolves this by reading the CURRENT ROUTE (which
+ * market page a visitor is on), not by guessing the visitor's location.
+ * On a market page or its sub-pages it renders that market's own
+ * tracked `tel:` link; on sitewide pages (homepage, `/services/`,
+ * `/about/`, etc.) — which have no single correct number — it falls
+ * back to "Call" -> `/contact/`, same as before. See that component for
+ * the full reasoning.
  *
  * ---------------------------------------------------------------------------
  * STICKY
@@ -82,12 +81,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Link
-            href="/contact/"
+          <HeaderPhoneLink
+            ctaLocation="header"
             className="text-sm font-medium text-foreground hover:text-accent"
-          >
-            Call
-          </Link>
+          />
           <Link
             href={PRIMARY_CTA.href}
             className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
@@ -120,12 +117,10 @@ export function SiteHeader() {
             </nav>
 
             {/* 18 §152 — primary actions stay reachable on mobile. */}
-            <Link
-              href="/contact/"
+            <HeaderPhoneLink
+              ctaLocation="mobile_bar"
               className="mt-4 flex min-h-11 items-center justify-center rounded-md border border-border text-sm font-medium text-foreground"
-            >
-              Call
-            </Link>
+            />
             <Link
               href={PRIMARY_CTA.href}
               className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground"
