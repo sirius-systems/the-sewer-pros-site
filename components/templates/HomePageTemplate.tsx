@@ -2,6 +2,8 @@ import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
+  ConfidenceModule,
+  confidenceModuleRenders,
   RoutingCards,
   ServiceIndex,
   ProcessSteps,
@@ -36,12 +38,13 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  * Structure ported from the `power` composition maps, resolved against
  * docs/18-design-system.md §110:
  *
- *   Hero → Trust strip → Intent routing → Services mosaic
- *   → Independent-model split → Markets → Process → Body
+ *   Hero → Trust strip → Confidence module* → Intent routing → Services
+ *   mosaic → Independent-model split → Markets → Process → Body
  *   → Authority band → Proof* → Testimonial* → Google reviews
  *   → Form* → Resources → FAQ → Final CTA
  *
- * `*` renders nothing until its data gate opens.
+ * `*` renders nothing until its data gate opens. Confidence module:
+ * DEC-088 — see components/sections/index.ts for what changed and why.
  *
  * The review carousel is the composition's testimonial slot finally
  * carrying real material (DEC-084). `TestimonialBand` above it remains
@@ -92,6 +95,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
+    ...(confidenceModuleRenders() ? (['standard'] as const) : []),
     ...(routingCardsRenders(content.routing) ? (['standard'] as const) : []),
     ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
     ...(content.differentiator !== undefined ? (['standard'] as const) : []),
@@ -127,6 +131,8 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       />
 
       <TrustBar />
+
+      <ConfidenceModule density="standard" />
 
       {content.routing !== undefined && (
         <RoutingCards

@@ -67,6 +67,19 @@
  *
  * NO Case Studies section. 18 §71 and CLAUDE.md §76 require verified
  * project data, which does not exist and has no slot here yet.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ `ConfidenceModule` — SUPERSEDES THE ORIGINAL "REMOVED ENTIRELY" NOTE
+ * ---------------------------------------------------------------------------
+ * The 2026-08-23 port design removed `power`'s confidence/offer module
+ * (free estimate, financing, warranty, same-day availability) from every
+ * composition map, because none of those claims were verified. DEC-088
+ * changed that for two of the four: free estimate and same-day
+ * availability are now owner-confirmed (`data/business/offers.ts`).
+ * `ConfidenceModule` renders only those two, gated the same way as every
+ * other data-backed section — empty data means the section is absent.
+ * Financing and warranty remain out; do not add them without an
+ * equivalent decision.
  */
 
 export { SectionHeading } from './SectionHeading'
@@ -77,6 +90,9 @@ export type { HeroProps, HeroVariant } from './Hero'
 
 export { TrustBar } from './TrustBar'
 export type { TrustBarProps } from './TrustBar'
+
+export { ConfidenceModule, confidenceModuleRenders } from './ConfidenceModule'
+export type { ConfidenceModuleProps } from './ConfidenceModule'
 
 export { RoutingCards, routingCardsRenders } from './RoutingCards'
 export type { RoutingCardsProps, RoutingCardItem } from './RoutingCards'
