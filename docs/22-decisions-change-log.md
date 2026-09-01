@@ -4516,7 +4516,7 @@ Maintain unresolved material questions here until resolved.
 | PENDING-009 | Call-tracking implementation            | Deferred | Analytics/CRO decision                 |
 | PENDING-010 | Complete legacy redirect inventory      | Open     | Migration research                     |
 | PENDING-011 | GPTBot training-access policy           | Open     | Before production robots.txt           |
-| PENDING-012 | Las Vegas service availability          | RESOLVED | DEC-075 / DEC-076 — 18/18 in all markets |
+| PENDING-012 | Las Vegas service availability          | RESOLVED | DEC-080 — gate released; 17 of 18 apply  |
 | PENDING-013 | San Diego / Las Vegas operating status  | Open     | Before those markets' content          |
 | PENDING-014 | Chesterfield lateral programme terms    | RESOLVED | DEC-072 — cite-and-link to the city     |
 | PENDING-015 | Housing-age figures vs primary Census   | RESOLVED | DEC-072 — approved with ACS citation    |
