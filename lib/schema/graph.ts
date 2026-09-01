@@ -26,16 +26,24 @@
  * at step 19 — whichever hierarchy is right, markup and page agree.
  *
  * ---------------------------------------------------------------------------
- * ⚠ FAQPage IS OPT-IN, NEVER AUTOMATIC (15 §57-58)
+ * ⚠ FAQPage IS OPT-IN, NEVER AUTOMATIC (15 §57-58, DEC-089)
  * ---------------------------------------------------------------------------
  * "Do not schema every FAQ automatically." Most pages carry an FAQ
  * section; emitting `FAQPage` from all of them would apply a policy by
- * accident across 70 pages. `emitFaqSchema` defaults to false.
+ * accident across 70 pages.
+ *
+ * The opt-in is the `faq` input below. A caller that wants the node
+ * hands over the SAME array the page renders — there is no boolean to
+ * set, so the node cannot be switched on for a page whose visible
+ * content is not also supplied. DEC-089 approves exactly one caller:
+ * the home page. Adding a second is a new decision under 15 §58, not
+ * an implementation detail.
  */
 
 import type {
   ArticleNode,
   BreadcrumbListNode,
+  FaqContent,
   ListItemNode,
   MasterPageRecord,
   PlaceNode,
@@ -58,6 +66,7 @@ import {
   servedMarkets,
   websiteId,
 } from './organization'
+import { faqPageNode } from './faq'
 
 function ref(id: string): SchemaRef {
   return { '@id': id }
@@ -244,10 +253,17 @@ export interface PageSchemaInput {
   /** ISO date, only where 18 §78 justifies one. */
   dateModified?: string
   /**
-   * Emit `FAQPage`. Off by default — 15 §57-58 require this be a
-   * per-page decision rather than a side effect of having an FAQ.
+   * The page's visible FAQ, where `FAQPage` has been approved for it.
+   *
+   * Supplying this IS the opt-in — 15 §57-58 require a per-page
+   * decision rather than a side effect of having an FAQ, and DEC-089
+   * approves the home page only. Omit it and no `FAQPage` is emitted.
+   *
+   * ⚠ Must be the same array the page RENDERS. `faqPageNode()` reads
+   * the answer text out of the JSX, so passing a different array would
+   * publish markup the reader cannot see (15 §67).
    */
-  emitFaqSchema?: boolean
+  faq?: readonly FaqContent[]
 }
 
 /**
@@ -264,7 +280,7 @@ export function pageSchema({
   title,
   description,
   dateModified,
-  emitFaqSchema = false,
+  faq,
 }: PageSchemaInput): SchemaGraph | undefined {
   if (!isIndexable(page)) return undefined
 
@@ -311,10 +327,17 @@ export function pageSchema({
     webPage.breadcrumb = ref(breadcrumb['@id'])
   }
 
-  if (emitFaqSchema) {
-    // Reserved. 15 §57-58 make this a per-page decision, and no page
-    // has been approved for it yet — see the barrel note.
-  }
+  // DEC-089. Text is derived from the same JSX the page renders, so
+  // markup and visible copy cannot drift apart (15 §67) — see
+  // ./faq.ts for why that is a derivation rather than a check.
+  const faqPage = faqPageNode(
+    faq,
+    `${absoluteUrl(page.pathname)}${SCHEMA_FRAGMENT.faqPage}`,
+    absoluteUrl(page.pathname),
+    title,
+    ref(websiteId()),
+  )
+  if (faqPage !== undefined) nodes.push(faqPage)
 
   assertGraphIsSelfContained(nodes, page.pathname)
 

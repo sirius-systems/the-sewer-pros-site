@@ -4584,6 +4584,80 @@ Same-day copy is hedged to match the actual constraint: "sometimes available," n
 
 ---
 
+## DEC-089 — Homepage FAQPage Schema Emission Approved
+
+**Date:** 2026-09-01
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `docs/15-schema-entity-strategy.md` §57-58 (the per-page policy this exercises), §67 (schema must match visible content)
+* `lib/schema/faq.ts` (new), `lib/schema/graph.ts`, `lib/schema/index.ts`, `types/schema.ts`
+* `components/templates/PageShell.tsx`, `components/templates/HomePageTemplate.tsx`
+
+### Decision
+
+The home page's FAQ set — 14 entries as of the 2026-09-01 content build — is approved for `FAQPage` markup and rich-result eligibility.
+
+This approval is **scoped to the home page and to no other route**. Every other page's FAQ remains unschema'd. Extending it is a new decision under 15 §58, not an implementation detail.
+
+### Why this is approved now, and was not before
+
+15 §57 permits `FAQPage` where a page "genuinely contains multiple visible questions and answers", the markup matches visible content, and the implementation carries semantic value. 15 §58 forbids generating it merely because an FAQ component is present.
+
+Before the 2026-09-01 build the home page carried six FAQ entries. `emitFaqSchema` existed in `lib/schema/graph.ts` as an opt-in flag with an **empty implementation body** — no `FAQPage` builder had ever been written, and no page had been approved. That was the correct state: the flag recorded the policy without acting on it.
+
+The content build raised the set to 14 substantive entries spanning pre-purchase inspection, second opinions, recurring backups, line locating, hydro jetting, commercial service, and availability. That closes the depth condition in 15 §57. The owner confirmed the set is stable enough to warrant rich-result eligibility.
+
+### How the visible/markup match is guaranteed
+
+15 §67 forbids asserting in markup anything a reader cannot see. This decision required that `acceptedAnswer.text` match the visible answer character for character.
+
+That is implemented as a **derivation, not a check**. `lib/schema/faq.ts` reads the answer text out of the same `ReactNode` that `FaqSection` renders — `content.faq` is handed to `pageSchema()` directly. There is no second copy of the copy to fall out of step, so a comparison would have nothing to compare. Editing the visible answer changes the markup in the same edit, necessarily.
+
+Two guards back that up, both failing the build rather than shipping:
+
+* an answer containing a **custom React component** throws, because a component may render text absent from its children and silent extraction would put markup and page out of step
+* an answer producing **no text** throws, rather than emitting a `Question` the page does not answer
+
+The opt-in is likewise structural: `PageSchemaInput.emitFaqSchema` (a boolean) was **replaced** by `faq?: readonly FaqContent[]`. A caller cannot switch the node on without also supplying the visible content it is derived from — the failure mode a boolean invites (flag set, content stale or absent) is now unrepresentable.
+
+⚠ This matters most for the home page's same-day answer. DEC-088 approved that wording as *visible* copy, hedged to "sometimes"/"cannot promise" against published Monday–Friday 8:00am–4:00pm hours. Markup asserting a less-qualified availability claim than the page shows would be a structured-data misrepresentation of an offer. It cannot happen by construction; do not replace the derivation with a hand-authored node.
+
+### Deviation from the decision text — raised, and APPROVED
+
+The decision as first drafted said `emitFaqSchema` "may be enabled for the homepage only". Implementation did not enable that boolean; it **removed** it, replacing it with `faq?: readonly FaqContent[]`.
+
+The deviation was flagged for approval before the work was accepted, and the owner approved it on 2026-09-01 as the better design. The reasoning is requirement #4's own: a boolean and the content are two separate things, so a boolean permits precisely the failure this decision exists to prevent — flag on, content stale or absent, markup silently misrepresenting the page. Passing the content IS the opt-in, so that state cannot be expressed.
+
+Per-page scoping is unchanged and is what the boolean was for: only `HomePageTemplate` passes `faq`; every other template omits it and emits nothing.
+
+⚠ The boolean is not coming back. A future reader comparing the decision text above against `lib/schema/graph.ts` will find no `emitFaqSchema` — that absence is this approval, not drift.
+
+### What this does NOT approve
+
+* **No `AggregateRating`. No `Review`.** Unchanged from DEC-028 and DEC-085, and unchanged by the home page gaining `FAQPage`. No verified review data exists.
+* No `FAQPage` on `/services/`, `/faq/`, `/contact/`, any market, service, audience, commercial, resource, or comparison page — all of which carry FAQ sections and none of which emit the node.
+* No change to the home page's `WebPage` subtype. The page's purpose is not "an FAQ page"; per 15 §30 the subtype still reflects actual visible purpose, and `FAQPage` is a separate node describing the FAQ section.
+* No success metric based on obtaining FAQ rich-result expansion (15 §57 explicitly warns against this).
+
+### New State
+
+The home page emits one `@graph` containing `Organization`, `WebSite`, `WebPage`, and `FAQPage`. The `FAQPage` node carries `@id` `https://www.thesewerpros.com/#faq`, `isPartOf` the `WebSite`, and 14 `Question`/`Answer` pairs.
+
+`SCHEMA_FRAGMENT.faqPage` (`'#faq'`) is new. `QuestionNode`, `AnswerNode`, and `FaqPageNode` are new in `types/schema.ts`; `FaqPageNode` joins the `SchemaNode` union.
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* Exactly one `FAQPage` node, in exactly one `<script type="application/ld+json">` tag, on exactly one route — swept all 75 built pages
+* All 14 `acceptedAnswer.text` values compared against the answer text scraped from the rendered HTML DOM: 14/14 exact character-for-character match, including the two-paragraph same-day answer
+* No `AggregateRating` or `Review` node on any built page
+* Route parity unchanged — 70 sitemap URLs
+
+---
+
 # 39. Pending Decision Register
 
 Maintain unresolved material questions here until resolved.

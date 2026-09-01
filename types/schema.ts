@@ -53,6 +53,7 @@ export const SCHEMA_FRAGMENT = {
   webPage: '#webpage',
   breadcrumb: '#breadcrumb',
   article: '#article',
+  faqPage: '#faq',
 } as const
 
 /** A reference to another node in the graph (15 §85). */
@@ -270,6 +271,40 @@ export interface ItemListNode extends SchemaNodeBase {
   itemListElement: ListItemNode[]
 }
 
+/**
+ * One visible question/answer pair — 15 §57, DEC-089.
+ *
+ * No `@id`: these are anonymous members of their `FAQPage`'s
+ * `mainEntity`, not independently addressable entities.
+ */
+export interface QuestionNode {
+  '@type': 'Question'
+  name: string
+  acceptedAnswer: AnswerNode
+}
+
+/** The answer to a `QuestionNode`. Plain text, never markup. */
+export interface AnswerNode {
+  '@type': 'Answer'
+  text: string
+}
+
+/**
+ * 15 §57-58, DEC-089. OPT-IN PER PAGE, never automatic.
+ *
+ * ⚠ `mainEntity` text must equal the visible answer character for
+ * character. `lib/schema/faq.ts` derives it from the same `ReactNode`
+ * the page renders, so the two cannot diverge — do not hand-author
+ * this node from a second copy of the copy.
+ */
+export interface FaqPageNode extends SchemaNodeBase {
+  '@type': 'FAQPage'
+  name: string
+  url: string
+  isPartOf: SchemaRef
+  mainEntity: QuestionNode[]
+}
+
 /* ==========================================================================
    Graph — 15 §84
    ========================================================================== */
@@ -286,6 +321,7 @@ export type SchemaNode =
   | ArticleNode
   | ItemListNode
   | ImageObjectNode
+  | FaqPageNode
 
 /**
  * The single JSON-LD block emitted per page.

@@ -120,6 +120,11 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       schema={{
         title: content.seoTitle ?? content.hero.title,
         description: content.metaDescription,
+        // DEC-089 — the ONLY approved FAQPage caller on the site. This
+        // is `content.faq` itself, not a copy: lib/schema/faq.ts reads
+        // the answer text out of the same JSX FaqSection renders below,
+        // so markup cannot drift from visible copy (15 §67).
+        faq: content.faq,
       }}
     >
       <Hero
