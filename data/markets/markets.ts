@@ -167,6 +167,15 @@ export const markets: Record<MarketId, Market> = {
 export interface MarketOperatingDetail {
   phone: string
   phoneE164: string
+  /**
+   * Owner-confirmed per market (DEC-083). St. Louis and San Diego share
+   * `info@`; Las Vegas routes to its own `bookaninspection@` box.
+   *
+   * ⚠ Shared today does NOT mean interchangeable. 01 §20 still forbids
+   * copying a market's contact facts to a market that has not confirmed
+   * them — if a market's address changes, change only that entry.
+   */
+  email: string
   hours: string
   /** 0 where the market has no operating history to state (Las Vegas). */
   foundingYear: number
@@ -194,7 +203,8 @@ export const marketOperatingDetail: Partial<
   'st-louis-mo': {
     phone: '(314) 821-1600',
     phoneE164: '+1-314-821-1600',
-    hours: 'Monday to Friday, 7:30am – 4:00pm',
+    email: 'info@thesewerpros.com',
+    hours: 'Monday to Friday, 8:00am – 4:00pm',
     foundingYear: 2011,
     serviceArea:
       'St. Louis County, St. Charles County, Jefferson County, MO, and surrounding areas',
@@ -204,6 +214,7 @@ export const marketOperatingDetail: Partial<
   'san-diego-ca': {
     phone: '(858) 257-2888',
     phoneE164: '+1-858-257-2888',
+    email: 'info@thesewerpros.com',
     hours: 'Monday to Friday, 8:00am – 4:00pm',
     foundingYear: 2015,
     /**
@@ -228,6 +239,7 @@ export const marketOperatingDetail: Partial<
   'las-vegas-nv': {
     phone: '(725) 292-4030',
     phoneE164: '+1-725-292-4030',
+    email: 'bookaninspection@thesewerpros.com',
     hours: 'Monday to Friday, 8:00am – 4:00pm',
     foundingYear: 0,
     /**
