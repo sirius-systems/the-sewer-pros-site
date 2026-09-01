@@ -1,5 +1,7 @@
-import { Section , type SectionDensity } from '@/components/ui'
+import { Section, type SectionDensity } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
+import { processMotif } from '@/data/business/positioning'
 
 /**
  * Numbered process.
@@ -18,11 +20,45 @@ import { SectionHeading } from './SectionHeading'
  * Rendered as an ordered list so assistive technology announces the
  * sequence and its length — the numerals are decorative reinforcement,
  * marked `aria-hidden` to avoid double announcement.
+ *
+ * ===========================================================================
+ * THE INDEPENDENT-INSPECTION MOTIF (18 §141)
+ * ===========================================================================
+ * 18 §141 defines a recurring visual concept:
+ *
+ *   Inspect → Understand → Decide
+ *
+ * and says it "can appear through: process icons, diagrams, section
+ * dividers, branded steps", and that "it should become a recognizable
+ * part of the design system." A numbered process band is one of the
+ * placements §141 names, so this is where it goes live.
+ *
+ * `steps` is therefore optional: omit it and this section renders the
+ * motif. Pass steps and the page's own sequence wins.
+ *
+ * ⚠ THE MOTIF IS LABELS ONLY. §141 supplies three words and no
+ * descriptions, so the motif renders three words and no descriptions.
+ * Do not write supporting copy to fill the gap — that would be new
+ * claim-bearing content invented at the component layer, which is
+ * exactly what `data/business/positioning.ts` exists to prevent.
+ *
+ * Three steps is deliberate and within the 3-4 the composition maps
+ * allow; it is not padded to four to match a reference example.
  */
 export interface ProcessStep {
   title: string
   description?: string
 }
+
+/**
+ * 18 §141's motif as a step sequence.
+ *
+ * Derived from `processMotif` rather than restated, so the labels
+ * cannot drift from the data module that cites §141.
+ */
+const motifSteps: readonly ProcessStep[] = processMotif.map((title) => ({
+  title,
+}))
 
 export interface ProcessStepsProps {
   /**
@@ -37,7 +73,81 @@ export interface ProcessStepsProps {
   eyebrow?: string
   title: string
   intro?: string
-  steps: readonly ProcessStep[]
+  /**
+   * The page's own sequence.
+   *
+   * Omit to render 18 §141's `Inspect → Understand → Decide` motif —
+   * see the header. A page that authors its own process keeps it; the
+   * motif never overrides authored content.
+   */
+  steps?: readonly ProcessStep[]
+}
+
+/**
+ * Wide-breakpoint column count for a step sequence.
+ *
+ * 18 §5.6 forbids forcing an item count into a grid it does not divide
+ * into evenly. This band was hardcoded to four columns, which orphaned
+ * a cell for every sequence that was not exactly four long — including
+ * the home page's three authored steps and §141's three-step motif.
+ *
+ * An interim version mapped 3/4/5 and fell back to four, which merely
+ * moved the same assumption to six steps. This picks the largest
+ * divisor that actually divides, so nothing silently orphans:
+ *
+ *   3 -> 3    4 -> 4    6 -> 3    8 -> 4
+ *
+ * Counts with no divisor at these widths (5, 7) drop to two columns
+ * and let `spanClasses` below absorb the odd tail. Five columns is
+ * deliberately not offered — a process band that narrow stops being
+ * readable, and Appendix A's numbered process is meant to be scanned.
+ */
+function columnClass(count: number): string {
+  if (count % 4 === 0) return 'lg:grid-cols-4'
+  if (count % 3 === 0) return 'lg:grid-cols-3'
+  if (count % 2 === 0) return 'lg:grid-cols-2'
+  return 'lg:grid-cols-2'
+}
+
+/**
+ * Classes for the trailing step when the count is odd.
+ *
+ * The band is two columns from the `sm` breakpoint up, so any odd
+ * count leaves a gap there regardless of the wide-breakpoint choice.
+ * The last step spans both, matching the remainder treatment in
+ * `ProblemGrid` and `InclusionsGrid`.
+ *
+ * Tailwind breakpoints are min-width, so a `sm:col-span-2` would carry
+ * into a three-column wide layout and span two of three. `lg` resets it
+ * where the wide layout is not also two columns.
+ */
+function spanClasses(count: number, wide: string): string {
+  if (count % 2 === 0) return ''
+  return wide === 'lg:grid-cols-2'
+    ? 'sm:col-span-2'
+    : 'sm:col-span-2 lg:col-span-1'
+}
+
+/**
+ * Whether `ProcessSteps` renders anything.
+ *
+ * Steps fall back to 18 §141's motif when none are passed, so this
+ * is true for an omitted `steps` prop and false only for an empty
+ * one. A template that renders the band conditionally must combine
+ * this with its own condition.
+ *
+ * A template listing this section in its `densities` array must gate
+ * that entry on this predicate. An array entry for a section that
+ * omitted itself describes a page that was never built, and
+ * `sectionRhythmIssues()` then checks the fiction instead of the page.
+ *
+ * Exported rather than restated at each call site so the array and the
+ * render read one condition, not two copies of it.
+ */
+export function processStepsRenders(
+  steps: readonly ProcessStep[] | undefined,
+): boolean {
+  return (steps ?? motifSteps).length > 0
 }
 
 export function ProcessSteps({
@@ -48,15 +158,30 @@ export function ProcessSteps({
   intro,
   steps,
 }: ProcessStepsProps) {
-  if (steps.length === 0) return null
+  const resolved = steps ?? motifSteps
+
+  if (resolved.length === 0) return null
+
+  // Columns follow the step count, and an odd tail spans rather than
+  // orphaning. 18 §5.6's objection to forcing a count into a grid it
+  // does not divide into applies to this band for the same reason it
+  // applies to cards.
+  const wide = columnClass(resolved.length)
+  const span = spanClasses(resolved.length, wide)
 
   return (
     <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
-      <ol className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, index) => (
-          <li key={step.title} className="bg-background p-6">
+      <ol className={cn('mt-10 grid gap-px bg-border sm:grid-cols-2', wide)}>
+        {resolved.map((step, index) => (
+          <li
+            key={step.title}
+            className={cn(
+              'bg-background p-6',
+              index === resolved.length - 1 && span,
+            )}
+          >
             <span
               aria-hidden="true"
               className="text-caption tabular-nums text-muted-foreground"

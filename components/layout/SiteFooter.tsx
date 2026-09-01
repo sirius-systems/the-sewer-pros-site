@@ -27,6 +27,19 @@ import { SITE_NAME, organization, contact } from '@/data/business'
  * DEC-080 released that gate, and `market-las-vegas-nv` is now listed
  * in `data/navigation/navigation.ts` alongside the other two markets.
  */
+/**
+ * Wide-breakpoint column count for the footer nav groups.
+ *
+ * Keyed by how many groups survive gating, so the grid never carries
+ * more columns than it has content to fill.
+ */
+const FOOTER_COLUMNS: Record<number, string> = {
+  1: 'lg:grid-cols-1',
+  2: 'lg:grid-cols-2',
+  3: 'lg:grid-cols-3',
+  4: 'lg:grid-cols-4',
+}
+
 export function SiteFooter() {
   const groups = resolveFooterNav()
 
@@ -71,7 +84,24 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/*
+            Columns follow the number of groups actually rendered.
+
+            `resolveFooterNav()` ends in
+            `.filter(group => group.items.length > 0)`, so a group whose
+            every destination is gated (04 §4) drops out entirely. Four
+            groups are configured today, but three would have landed in
+            a hardcoded four-column grid and orphaned a cell.
+
+            18 §5.6: do not force an item count into a grid it does not
+            divide into evenly. This is chrome rather than a page
+            section, but the rule and the failure are identical.
+          */}
+          <div
+            className={`grid gap-10 sm:grid-cols-2 ${
+              FOOTER_COLUMNS[groups.length] ?? 'lg:grid-cols-4'
+            }`}
+          >
             {groups.map((group) => (
               <nav key={group.title} aria-labelledby={`footer-${group.title.replace(/\s+/g, '-').toLowerCase()}`}>
                 <h2

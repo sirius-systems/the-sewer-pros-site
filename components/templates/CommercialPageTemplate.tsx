@@ -1,10 +1,21 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
+  TrustBar,
+  ProblemGrid,
+  InclusionsGrid,
   ProcessSteps,
+  AuthorityBand,
+  LeadFormSection,
   FaqSection,
   RelatedLinks,
   CtaSection,
+  authorityBandRenders,
+  processStepsRenders,
+  relatedLinksRenders,
+  faqSectionRenders,
+  problemGridRenders,
+  inclusionsGridRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { CommercialPageContent, MasterPageRecord } from '@/types'
@@ -47,6 +58,24 @@ import type { CommercialPageContent, MasterPageRecord } from '@/types'
  * `capability_confirmed_commercial_packaging_requires_validation` in
  * the service registry, so commercial packaging detail must not be
  * presented as an established offering (06 §43).
+ *
+ * ---------------------------------------------------------------------------
+ * THE AUTHORITY BAND CARRIES THE COMMERCIAL CTA TOO
+ * ---------------------------------------------------------------------------
+ * Every CTA on this page routes to "Request Commercial Service", the
+ * hero and the closing panel included. An `AuthorityBand` left on its
+ * default would have put the residential primary CTA in the middle of a
+ * commercial page, which is exactly what 18 §139 forbids.
+ *
+ * ⚠ No `ProofGallery` or `TestimonialBand` here. Both are gated and
+ * render nothing today, but when they open they draw on company-wide
+ * data with no commercial scoping - and residential proof on a
+ * commercial page is the industry-swap failure CLAUDE.md §33 and §74
+ * name. Add them only with commercial-specific material.
+ *
+ * ⚠ ADJACENCY: `AuthorityBand` and the closing `CtaSection
+ * variant="panel"` are the only brand surfaces; related and FAQ sit
+ * between them (18 §11).
  */
 export interface CommercialPageTemplateProps {
   page: MasterPageRecord
@@ -57,12 +86,26 @@ export function CommercialPageTemplate({
   page,
   content,
 }: CommercialPageTemplateProps) {
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
+  // The gated form contributes no entry - it renders nothing.
   const densities: SectionDensity[] = [
     'sparse',
+    'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.process !== undefined ? (['standard'] as const) : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(problemGridRenders(content.problems)
+      ? (['standard'] as const)
+      : []),
+    ...(inclusionsGridRenders(content.inclusions)
+      ? (['dense'] as const)
+      : []),
+    ...(content.process !== undefined && processStepsRenders(content.process)
+      ? (['standard'] as const)
+      : []),
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 
@@ -86,10 +129,28 @@ export function CommercialPageTemplate({
         }}
       />
 
+      <TrustBar />
+
       {content.body !== undefined && (
         <Section density="standard" width="reading">
           <Prose>{content.body}</Prose>
         </Section>
+      )}
+
+      {content.problems !== undefined && (
+        <ProblemGrid
+          id="operational-issues"
+          title="Operational issues this addresses"
+          items={content.problems}
+        />
+      )}
+
+      {content.inclusions !== undefined && (
+        <InclusionsGrid
+          id="whats-included"
+          title="What's included"
+          items={content.inclusions}
+        />
       )}
 
       {content.process !== undefined && (
@@ -100,7 +161,12 @@ export function CommercialPageTemplate({
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      <AuthorityBand
+        title="How we work"
+        action={{ href: '/contact/', label: 'Request Commercial Service' }}
+      />
+
+      <LeadFormSection />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -108,6 +174,8 @@ export function CommercialPageTemplate({
           pageIds={content.relatedPageIds}
         />
       )}
+
+      {content.faq !== undefined && <FaqSection entries={content.faq} />}
 
       <CtaSection
         variant="panel"

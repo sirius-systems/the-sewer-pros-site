@@ -2,37 +2,79 @@ import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
+  RoutingCards,
   ServiceIndex,
   ProcessSteps,
   Differentiator,
+  AuthorityBand,
+  ProofGallery,
+  TestimonialBand,
+  ReviewCarousel,
+  LeadFormSection,
   MarketCoverage,
   FaqSection,
   RelatedLinks,
   CtaSection,
+  authorityBandRenders,
+  routingCardsRenders,
+  serviceIndexRenders,
+  marketCoverageRenders,
+  processStepsRenders,
+  relatedLinksRenders,
+  faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
+// Imported from the data module rather than re-exported through the
+// section: whether this section renders is a question about the review
+// data, and `ReviewCarousel` itself is a client component.
+import { reviewCarouselRenders } from '@/data/reviews/reviews'
 import type { HomePageContent, MasterPageRecord } from '@/types'
 
 /**
  * Home page.
  *
- * Structure from docs/18-design-system.md §110:
+ * Structure ported from the `power` composition maps, resolved against
+ * docs/18-design-system.md §110:
  *
- *   Hero → Trust/Differentiator Bar → Core Services
- *   → Why Independent Inspection Matters → Markets → How It Works
- *   → Who We Help → Commercial → Proof → Resources → FAQ → Final CTA
+ *   Hero → Trust strip → Intent routing → Services mosaic
+ *   → Independent-model split → Markets → Process → Body
+ *   → Authority band → Proof* → Testimonial* → Google reviews
+ *   → Form* → Resources → FAQ → Final CTA
  *
- * 18 §38: the homepage hero should feel brand-defining. It uses the
- * `display` type scale and the editorial pattern — no approved
- * photography exists (18 §28-34), and 18 §37 already says a hero must
- * not depend on a decorative image to explain the page.
+ * `*` renders nothing until its data gate opens.
  *
- * PROOF is omitted: no verified review or case-study data exists
- * (01 §35, §77; CLAUDE.md §76-77).
+ * The review carousel is the composition's testimonial slot finally
+ * carrying real material (DEC-084). `TestimonialBand` above it remains
+ * gated and empty; the two are separate because the carousel is
+ * ST. LOUIS-scoped and `TestimonialBand` is not (01 §20-21).
  *
- * Density runs sparse → dense → standard → standard → standard → dense
- * → dense → sparse. The strongest treatment is reserved for the final
- * CTA panel rather than repeated from the hero, per 18 §108.
+ * ---------------------------------------------------------------------------
+ * ROUTING AND SERVICES MUST NOT LOOK ALIKE
+ * ---------------------------------------------------------------------------
+ * The reference map requires the intent-routing section and the
+ * services catalog below it to read as different things — routing is
+ * decision support, the catalog is the inventory. 18 §5.6 says the same
+ * in general terms: "vary composition pattern and density between
+ * adjacent sections."
+ *
+ * So the separation here is structural, not cosmetic:
+ *
+ *   RoutingCards   an EVEN card grid
+ *   ServiceIndex   an UNEVEN mosaic, flagship given double width
+ *
+ * Two different Appendix A patterns, adjacent, deliberately.
+ *
+ * ⚠ `routing` is optional and currently unauthored, so the routing
+ * section does not render yet. Authoring it is per-page content work,
+ * outside the composition port.
+ *
+ * 18 §38: the homepage hero should feel brand-defining. It stays
+ * editorial — no approved photography exists (18 §28-34), and §37 says
+ * a hero must not depend on a decorative image to explain the page.
+ *
+ * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="panel"`
+ * are the only brand surfaces in the system. Resources and FAQ sit
+ * between them; stacking dark sections is a named anti-pattern (18 §11).
  */
 export interface HomePageTemplateProps {
   page: MasterPageRecord
@@ -40,16 +82,30 @@ export interface HomePageTemplateProps {
 }
 
 export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
+  // The three gated sections contribute no entry — they render nothing.
+  //
+  // The services mosaic is `dense` and the markets band `dense` to
+  // break what was previously a four-section `standard` run through
+  // services → differentiator → markets → process. That run was a live
+  // rhythm warning on this page before the port.
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
-    'standard',
+    ...(routingCardsRenders(content.routing) ? (['standard'] as const) : []),
+    ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
     ...(content.differentiator !== undefined ? (['standard'] as const) : []),
-    'standard',
-    ...(content.process !== undefined ? (['standard'] as const) : []),
+    ...(marketCoverageRenders() ? (['dense'] as const) : []),
+    ...(content.process !== undefined && processStepsRenders(content.process)
+      ? (['standard'] as const)
+      : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
+    ...(reviewCarouselRenders() ? (['standard'] as const) : []),
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
 
@@ -72,11 +128,20 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       <TrustBar />
 
+      {content.routing !== undefined && (
+        <RoutingCards
+          id="how-we-can-help"
+          title="How we can help"
+          items={content.routing}
+        />
+      )}
+
       <ServiceIndex
+        density="dense"
         id="services"
         title="What we do"
         items={content.services}
-        numbered
+        variant="mosaic"
       />
 
       {content.differentiator !== undefined && (
@@ -86,7 +151,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         />
       )}
 
-      <MarketCoverage />
+      <MarketCoverage density="dense" />
 
       {content.process !== undefined && (
         <ProcessSteps
@@ -102,7 +167,22 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         </Section>
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      <AuthorityBand title="How we work" />
+
+      <ProofGallery title="Recent work" />
+
+      {/*
+        `TestimonialBand` stays gated and empty — `data/business/proof.ts`
+        holds no verified single testimonial. `ReviewCarousel` is a
+        different thing: real St. Louis Google reviews (DEC-084), safe
+        here because the homepage is sitewide and St. Louis is the only
+        market with a Business Profile (01 §20-21).
+      */}
+      <TestimonialBand />
+
+      <ReviewCarousel density="standard" />
+
+      <LeadFormSection />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -110,6 +190,8 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           pageIds={content.relatedPageIds}
         />
       )}
+
+      {content.faq !== undefined && <FaqSection entries={content.faq} />}
 
       <CtaSection
         variant="panel"

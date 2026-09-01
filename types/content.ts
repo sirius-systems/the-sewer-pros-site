@@ -60,6 +60,58 @@ export interface ProcessContent {
 }
 
 /**
+ * A symptom, scenario, or goal that brings someone to this service.
+ *
+ * ⚠ 18 §70 and CLAUDE.md §70 forbid alarm copy. Describe a condition
+ * worth investigating, not a catastrophe. See `ProblemGrid`.
+ */
+export interface ProblemContent {
+  title: string
+  description: string
+}
+
+/**
+ * A practical deliverable of a service.
+ *
+ * ⚠ Must correspond to something The Sewer Pros actually performs
+ * (06). CLAUDE.md §4: no repair, replacement, lining, CIPP, or
+ * excavation deliverables unless formally added to the registry.
+ */
+export interface InclusionContent {
+  title: string
+  description: string
+}
+
+/**
+ * An intent-routing destination on the home page.
+ *
+ * Approved page ids only, resolved through the approved-link layer —
+ * never an href (CLAUDE.md §37, 16 §25).
+ */
+export interface RoutingContent {
+  pageId: PageId
+  description: string
+}
+
+/**
+ * Service-area coverage for a market or location page.
+ *
+ * ⚠ No address, map, or directions field by design. PENDING-002
+ * resolved the business model as service-area with no address, and
+ * CLAUDE.md §29-30 forbid implying an office in San Diego or Las
+ * Vegas. See `CoverageSection`.
+ */
+export interface CoverageContent {
+  title: string
+  intro?: string
+  /** Approved location pages, rendered as links. */
+  pageIds?: readonly PageId[]
+  /** Registry names with no approved page, rendered as plain text. */
+  names?: readonly string[]
+  availabilityStatement: string
+}
+
+/**
  * A closing conversion block.
  *
  * The CTA label itself is NOT here — it comes from the single global
@@ -114,6 +166,8 @@ export interface BasePageContent {
 /** Home — 18 §110. */
 export interface HomePageContent extends BasePageContent {
   services: readonly { pageId: PageId; description?: string }[]
+  /** Intent-routing cards, rendered between hero and services. */
+  routing?: readonly RoutingContent[]
   process?: readonly ProcessContent[]
   differentiator?: { title: string; intro?: string }
 }
@@ -121,6 +175,10 @@ export interface HomePageContent extends BasePageContent {
 /** Canonical service page — 18 §111. */
 export interface ServicePageContent extends BasePageContent {
   process?: readonly ProcessContent[]
+  /** "When you may need this" — see `ProblemContent`. */
+  problems?: readonly ProblemContent[]
+  /** "What's included" — see `InclusionContent`. */
+  inclusions?: readonly InclusionContent[]
   /** Shows the independent-model contrast. Off by default. */
   showDifferentiator?: boolean
   /** Shows market coverage beneath the service explanation. */
@@ -131,6 +189,8 @@ export interface ServicePageContent extends BasePageContent {
 export interface MarketPageContent extends BasePageContent {
   /** Approved location pages within this market. */
   locationPageIds?: readonly PageId[]
+  /** Served communities plus an availability statement. No map. */
+  coverage?: CoverageContent
   /** Services to feature for this market. */
   services?: readonly { pageId: PageId; description?: string }[]
 }
@@ -139,32 +199,44 @@ export interface MarketPageContent extends BasePageContent {
 export interface LocationPageContent extends BasePageContent {
   /** Approved service + location pages for this location. */
   servicePageIds?: readonly PageId[]
+  /** Served communities plus an availability statement. No map. */
+  coverage?: CoverageContent
 }
 
 /** Service + location page — 05 §119, 14 §21. */
 export interface ServiceLocationPageContent extends BasePageContent {
   process?: readonly ProcessContent[]
+  problems?: readonly ProblemContent[]
+  inclusions?: readonly InclusionContent[]
+  coverage?: CoverageContent
 }
 
 /** Audience page — 18 §113. */
 export interface AudiencePageContent extends BasePageContent {
   process?: readonly ProcessContent[]
+  problems?: readonly ProblemContent[]
+  inclusions?: readonly InclusionContent[]
   services?: readonly { pageId: PageId; description?: string }[]
 }
 
 /** Commercial service page — 18 §114. */
 export interface CommercialPageContent extends BasePageContent {
   process?: readonly ProcessContent[]
+  problems?: readonly ProblemContent[]
+  inclusions?: readonly InclusionContent[]
 }
 
 /** Comparison page — 18 §66, 05 §41. */
 export interface ComparisonPageContent extends BasePageContent {
   /**
-   * Comparison pages are prose- and table-led. 18 §66 forbids
-   * manipulating visual emphasis so the preferred option always wins,
-   * so there is no "recommended" field by design.
+   * "When each applies" — the neutral framing of the comparison.
+   *
+   * 18 §66 and CLAUDE.md §65 forbid manipulating visual emphasis so
+   * the preferred option always wins, so there is no "recommended"
+   * field by design and both options must be described in the same
+   * register.
    */
-  placeholder?: never
+  problems?: readonly ProblemContent[]
 }
 
 /** Resource article — 18 §115, 15 §47-50. */

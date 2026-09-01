@@ -126,6 +126,20 @@ body {
   outline-offset: 2px;
 }
 
+/*
+   Sticky-header offset for in-page anchor targets.
+
+   SiteHeader is `sticky top-0`, so an anchored heading would otherwise
+   land underneath it. Sections use `labelledBy` ids as anchor targets,
+   and 18 §94-95 require those destinations to be actually visible when
+   reached by keyboard.
+
+   Change this together with the header's height.
+*/
+:target {
+  scroll-margin-top: 6rem;
+}
+
 /* 18 §90, §146 — honour reduced-motion preferences. */
 @media (prefers-reduced-motion: reduce) {
   *,

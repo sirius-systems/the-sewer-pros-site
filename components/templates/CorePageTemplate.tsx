@@ -1,5 +1,12 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
-import { FaqSection, RelatedLinks, CtaSection } from '@/components/sections'
+import {
+  TrustBar,
+  FaqSection,
+  RelatedLinks,
+  CtaSection,
+  relatedLinksRenders,
+  faqSectionRenders,
+} from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { CorePageContent, MasterPageRecord } from '@/types'
 
@@ -36,6 +43,22 @@ import type { CorePageContent, MasterPageRecord } from '@/types'
  * counts, certifications, licensing. 15 §67 additionally requires
  * schema match visible content, so anything added here has to be true
  * before it can be marked up later.
+ *
+ * ---------------------------------------------------------------------------
+ * WHAT THIS TYPE TOOK FROM THE PORT, AND WHAT IT DID NOT
+ * ---------------------------------------------------------------------------
+ * TOOK: the trust strip, and the related -> FAQ -> CTA tail order.
+ *
+ * DID NOT TAKE: the authority band. `/about/` is already a page about
+ * how the business works, so a band restating four proof points would
+ * repeat the body rather than reinforce it (18 §155 treats repetition
+ * as a failure). `/faq/` and `/contact/` have no argument to make at
+ * all.
+ *
+ * The band is also the reason the tail order matters here: it is a
+ * brand surface and so is the closing CTA panel, and with `/contact/`
+ * passing `hideCta` the two could not be reliably separated on every
+ * page this template serves.
  */
 export interface CorePageTemplateProps {
   page: MasterPageRecord
@@ -49,11 +72,15 @@ export function CorePageTemplate({
   content,
   hideCta = false,
 }: CorePageTemplateProps) {
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(content.faq !== undefined ? (['dense'] as const) : []),
-    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    'dense',
+    ...(relatedLinksRenders(content.relatedPageIds)
+      ? (['dense'] as const)
+      : []),
+    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     ...(hideCta ? [] : (['sparse'] as const)),
   ]
 
@@ -85,15 +112,17 @@ export function CorePageTemplate({
         </Section>
       )}
 
-      {content.faq !== undefined && (
-        <FaqSection entries={content.faq} openFirst />
-      )}
+      <TrustBar />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
           title={content.relatedTitle ?? 'Related pages'}
           pageIds={content.relatedPageIds}
         />
+      )}
+
+      {content.faq !== undefined && (
+        <FaqSection entries={content.faq} openFirst />
       )}
 
       {!hideCta && (
