@@ -117,6 +117,26 @@ export const homeContent: HomePageContent = {
       description: 'Service lines on an interval the evidence supports.',
     },
   ],
+  routing: [
+    {
+      pageId: id('hub-services'),
+      description:
+        'Browse sewer and drain services — inspection, cleaning, hydro jetting, and locating.',
+    },
+    {
+      pageId: id('hub-locations'),
+      description: 'See coverage in St. Louis, San Diego, and Las Vegas.',
+    },
+    {
+      pageId: id('hub-commercial'),
+      description:
+        'Sewer and drain services for commercial properties and property managers.',
+    },
+    {
+      pageId: id('core-contact'),
+      description: 'Reach out to schedule an inspection or ask a question.',
+    },
+  ],
   differentiator: {
     title: 'Diagnosis separated from the sale',
     intro:
@@ -188,6 +208,120 @@ export const homeContent: HomePageContent = {
           together, but they answer different questions: inspection tells you
           what is wrong, cleaning restores flow.
         </p>
+      ),
+    },
+    {
+      question: 'Should I get a sewer inspection before buying a house?',
+      answer: (
+        <p>
+          A sewer camera inspection before closing can reveal blockages, root
+          intrusion, or pipe damage that a standard home inspection does not
+          check. The Sewer Pros provides independent camera inspections for
+          home buyers, with recorded video to support your decision.
+        </p>
+      ),
+    },
+    {
+      question: 'What is a sewer scope, and is it the same as a camera inspection?',
+      answer: (
+        <p>
+          A sewer scope is a video camera inspection of the sewer line,
+          performed by pushing a specialized camera through the pipe. The terms
+          are used interchangeably in the industry, and The Sewer Pros uses the
+          same camera equipment and reporting for both.
+        </p>
+      ),
+    },
+    {
+      question: 'Should I get a second opinion before agreeing to a sewer replacement?',
+      answer: (
+        <p>
+          A second inspection can confirm whether a sewer line actually needs
+          replacement or can be cleaned and maintained instead. The Sewer Pros
+          performs independent camera inspections without an incentive to sell
+          repair or replacement work, giving you an unbiased look at the
+          pipe&rsquo;s condition.
+        </p>
+      ),
+    },
+    {
+      question: 'What causes recurring sewer backups?',
+      answer: (
+        <p>
+          Recurring backups are often caused by root intrusion, grease buildup,
+          a pipe offset, or a partial blockage that returns after snaking. A
+          camera inspection identifies the specific cause so the right next
+          step, whether cleaning, hydro jetting, or further diagnosis, can be
+          chosen.
+        </p>
+      ),
+    },
+    {
+      question: 'What does sewer line locating involve, and when is it needed?',
+      answer: (
+        <p>
+          Sewer line locating uses specialized equipment to trace the exact path
+          and depth of an underground sewer line. It is typically needed before
+          excavation or construction, or when a line&rsquo;s location is
+          undocumented.
+        </p>
+      ),
+    },
+    {
+      question: 'Is hydro jetting different from regular drain cleaning?',
+      answer: (
+        <p>
+          Hydro jetting uses high-pressure water to clear grease, roots, and
+          buildup from the full diameter of a pipe, while standard drain
+          cleaning typically uses a cable to break through a single blockage.
+          Hydro jetting reaches further and cleans more thoroughly for
+          recurring or severe buildup.
+        </p>
+      ),
+    },
+    {
+      question: 'Do you offer commercial sewer and drain services?',
+      answer: (
+        <p>
+          The Sewer Pros provides commercial sewer camera inspection, cleaning,
+          and hydro jetting for property managers, multi-family properties, and
+          commercial facilities, with service available across St. Louis, San
+          Diego, and Las Vegas.
+        </p>
+      ),
+    },
+    {
+      /*
+        Answer text is the canonical DEC-088 wording. The same-day half
+        is reused from the `/services/` FAQ answer to the same question
+        (see hubContent, hub-services) so the two pages state one thing,
+        not two; the free-estimate sentence is verbatim from
+        `verifiedOffers` in data/business/offers.ts.
+
+        ⚠ Same-day wording is load-bearing. DEC-088 approved
+        availability, never a promise: published hours are Monday to
+        Friday, 8:00am–4:00pm (DEC-083), which rule out a guarantee,
+        weekend coverage, and any emergency or 24/7 claim. Keep
+        "sometimes" and "cannot promise"; do not tighten this into an
+        offer. Changing it here without changing `/services/` puts the
+        two pages back into contradiction.
+      */
+      // TODO: A stronger, unconditional version of this answer may be used only if the client confirms a standing, always-available same-day/free-estimate policy that does not vary by market or season. Do not change this answer without that explicit confirmation.
+      question: 'Do you offer free estimates or same-day appointments?',
+      answer: (
+        <>
+          <p>
+            Ask about a free estimate before scheduling a sewer inspection or
+            cleaning. Same-day is sometimes possible, but never guaranteed. We
+            operate Monday through Friday, 8:00am to 4:00pm, and are closed
+            weekends. We do not offer 24/7 or emergency service.
+          </p>
+          <p>
+            Within those hours, a same-day appointment can sometimes be
+            arranged, depending on how the day is already booked. It is worth
+            asking when you get in touch, but we cannot promise it in advance.
+          </p>
+        </>
       ),
     },
   ],
