@@ -126,11 +126,11 @@ until its validation condition has been satisfied.
 
 # 5. Launch Build Summary
 
-The initial approved build contains **70 page records**.
+The initial approved build contains **71 page records**, of which **70 are indexable** — `core-privacy` is built but `noindex` (§7).
 
 | Page Family                       | Launch Build Count |
 | --------------------------------- | -----------------: |
-| Core / hub / conversion           |                  9 |
+| Core / hub / conversion           |                 10 |
 | Core + high-intent services       |                 10 |
 | Market hubs                       |                  3 |
 | Priority location pages           |                 16 |
@@ -139,11 +139,11 @@ The initial approved build contains **70 page records**.
 | Commercial service pages          |                  5 |
 | Comparison pages                  |                  2 |
 | Foundational resource pages       |                  5 |
-| **Total**                         |             **70** |
+| **Total**                         |             **71** |
 
 This fits the intended initial website scope while preserving a substantially larger post-launch SEO opportunity.
 
-The 70-page build represents the **launch foundation**, not the final size of the website.
+The 71-page build represents the **launch foundation**, not the final size of the website. Sitemap and indexable-route counts remain 70.
 
 ---
 
@@ -204,8 +204,13 @@ Pages supporting:
 | `hub-commercial` | Commercial Sewer & Drain Services | `/commercial/` | L1       | `launch` |   Yes |
 | `hub-resources`  | Sewer & Drain Resources           | `/resources/`  | L1       | `launch` |   Yes |
 | `core-faq`       | Sewer & Drain FAQs                | `/faq/`        | L3       | `launch` |   Yes |
+| `core-privacy`   | Privacy Policy                    | `/privacy/`    | L1       | `launch` |    No |
 
-**Launch count:** 9
+**Launch count:** 10
+
+⚠ `core-privacy` is `launch` with **Index: No** — the route is built and publicly reachable, but carries `noindex` and is omitted from the sitemap. §4's indexation gate (`status === 'launch' && indexable === true`) expresses that combination directly.
+
+It is a legal utility page, and CLAUDE.md §48 asks utility pages to use `noindex`/sitemap omission rather than adding a thin record to a deliberately controlled index (§93-94). Noindex does not affect public accessibility, so the CPRA disclosure obligation the page exists to satisfy is unaffected. Flip to `Yes` if the business prefers it indexed — that is a preference, not a compliance question.
 
 ---
 
