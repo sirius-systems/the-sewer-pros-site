@@ -634,7 +634,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
             Email:{' '}
             <a href="mailto:info@thesewerpros.com">info@thesewerpros.com</a>
           </li>
-          <li>Monday to Friday, 7:30am to 4:00pm. Closed weekends.</li>
+          <li>Monday to Friday, 8:00am to 4:00pm. Closed weekends.</li>
         </ul>
         <p>
           Serving St. Louis County, St. Charles County, Jefferson County,
@@ -646,11 +646,33 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           <li>
             Phone: <a href="tel:+18582572888">(858) 257-2888</a>
           </li>
+          <li>
+            Email:{' '}
+            <a href="mailto:info@thesewerpros.com">info@thesewerpros.com</a>
+          </li>
           <li>Monday to Friday, 8:00am to 4:00pm. Closed weekends.</li>
         </ul>
         <p>
           Working across San Diego, San Marcos, Carlsbad, Escondido,
           Oceanside, Chula Vista, and Mission Valley.
+        </p>
+
+        <h2>Las Vegas</h2>
+        <ul>
+          <li>
+            Phone: <a href="tel:+17252924030">(725) 292-4030</a>
+          </li>
+          <li>
+            Email:{' '}
+            <a href="mailto:bookaninspection@thesewerpros.com">
+              bookaninspection@thesewerpros.com
+            </a>
+          </li>
+          <li>Monday to Friday, 8:00am to 4:00pm. Closed weekends.</li>
+        </ul>
+        <p>
+          Working across Las Vegas, Henderson, North Las Vegas, and
+          Summerlin.
         </p>
 
         <h2>Why there is no address here</h2>

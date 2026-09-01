@@ -374,14 +374,12 @@ See `22-decisions-change-log.md` → **DEC-065**.
 
 These four pages establish the first local architecture for Las Vegas. They were held behind the service-availability gate until DEC-080 released it (2026-08-17); all four are now `launch` and indexable.
 
-They may be built and QA'd but should not become indexable until market operations are confirmed.
-
 **Launch location-page count:** 16
 
 ```text
 St. Louis:  5
 San Diego:  6 residential/city + 1 commercial district = 7
-Las Vegas:  4 (pending validation)
+Las Vegas:  4
 ```
 
 ---
@@ -1353,7 +1351,7 @@ Never simply delete an established indexed URL without migration review.
 ```text
 /st-louis-mo/
 /san-diego-ca/
-/las-vegas-nv/          [PENDING VALIDATION]
+/las-vegas-nv/
 ```
 
 ## St. Louis Locations
@@ -1381,10 +1379,10 @@ Never simply delete an established indexed URL without migration review.
 ## Las Vegas Locations
 
 ```text
-/las-vegas-nv/las-vegas/          [PENDING VALIDATION]
-/las-vegas-nv/henderson/          [PENDING VALIDATION]
-/las-vegas-nv/north-las-vegas/    [PENDING VALIDATION]
-/las-vegas-nv/summerlin/          [PENDING VALIDATION]
+/las-vegas-nv/las-vegas/
+/las-vegas-nv/henderson/
+/las-vegas-nv/north-las-vegas/
+/las-vegas-nv/summerlin/
 ```
 
 ## St. Louis Service + Location

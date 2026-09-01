@@ -2209,7 +2209,7 @@ This helps users understand page purpose.
 
 # 110. Home Page Structure Direction
 
-Implemented structure (DEC-081):
+Implemented structure (DEC-081, DEC-084):
 
 ```text
 Header (sticky)
@@ -2224,6 +2224,7 @@ Body
 Authority Band            (brand surface)
 Proof*
 Testimonial*
+Google Reviews            (carousel — St. Louis GBP, DEC-084)
 Lead Form*
 Resources
 FAQ
@@ -2233,6 +2234,15 @@ Footer
 
 `*` renders nothing until its data gate opens — see §120 and the
 `components/sections/index.ts` header.
+
+⚠ The Google review carousel and `Testimonial*` are **different
+sections**, and the carousel does not open the testimonial gate.
+`TestimonialBand` is sitewide and still empty; the carousel carries
+St. Louis Business Profile reviews and is scoped to the sitewide
+homepage and St. Louis pages only. Only St. Louis has a GBP (01 §21),
+and 01 §20 forbids carrying one market's business facts onto another —
+so this section must not be added to the market template, which also
+serves San Diego and Las Vegas.
 
 Intent routing and the services catalog must not read as the same
 component. Routing is decision support; the catalog is inventory. The

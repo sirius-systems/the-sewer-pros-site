@@ -3206,6 +3206,8 @@ Adopted and now live:
 | Affiliations | St. Louis Association of Realtors; ASHI; Women's Council of Realtors; St. Charles Realtors |
 | Lateral programmes | Licensed through most area programmes for submitting reports |
 
+⚠ **The Hours row is SUPERSEDED by DEC-083 (2026-08-31): Mon–Fri 8:00am–4:00pm.** The 7:30am value above is what thesewerpros.com/contact published when this entry was written and is retained as the historical record. The site may still show 7:30am; the owner's correction governs. Every other row stands.
+
 ### Reason
 
 01 §24 distinguishes a Confirmed Business Fact from an unverified claim. A fact the business publishes about itself on its own site is the former. This resolves the omissions recorded at build step 8, where `/contact/` shipped with no contact details because none was documented.
@@ -4278,6 +4280,222 @@ this family's tail — it is the FAQ/related pair, and only that.
 * `npm run check` (typecheck, lint, production build) passes
 * Route set identical before and after — 73 HTML routes (70 of them PageShell pages)
 * Rendered section order on all five resource pages unchanged
+
+---
+
+## DEC-083 — Per-Market Contact Facts Confirmed; St. Louis Hours Corrected
+
+**Date:** 2026-08-31
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` DEC-070 (Hours row superseded), DEC-071, DEC-073
+* `data/business/organization.ts`, `data/markets/markets.ts`
+* `content/pages/core.tsx` (`/contact/`)
+
+### Decision
+
+The owner supplied contact facts for all three markets. Two are changes; the rest confirm what the repository already held.
+
+| Market | Phone | Email | Hours |
+| ------ | ----- | ----- | ----- |
+| St. Louis | (314) 821-1600 | info@thesewerpros.com | Mon–Fri 8:00am–4:00pm |
+| San Diego | (858) 257-2888 | info@thesewerpros.com | Mon–Fri 8:00am–4:00pm |
+| Las Vegas | (725) 292-4030 | bookaninspection@thesewerpros.com | Mon–Fri 8:00am–4:00pm |
+
+Two facts changed:
+
+1. **St. Louis hours corrected from 7:30am to 8:00am.** DEC-070 recorded 7:30am because that is what thesewerpros.com/contact published. The owner's figure supersedes it. All three markets now open at 8:00am.
+2. **San Diego email recorded for the first time.** DEC-071 sourced San Diego's phone, hours, and founding year from thesewerprossd.com, which publishes no email. `info@` is owner-supplied, not site-sourced.
+
+Phones for all three markets and the St. Louis and Las Vegas emails were already correct and are unchanged.
+
+### Reason
+
+01 §24 treats an owner statement about the business as a Confirmed Business Fact. The St. Louis correction is the notable one: it supersedes a *published* fact rather than filling a gap, so the live site and the repository now disagree by design. The comment on `hours` in `organization.ts` says so explicitly, to stop a future pass from "restoring" 7:30am from the site and calling it a fix.
+
+### Previous State
+
+* St. Louis hours 7:30am–4:00pm in `organization.ts` (`weekdays` and schema `opens: '07:30'`), `markets.ts`, and `/contact/`
+* No `email` field existed on `MarketOperatingDetail` — St. Louis's lived in `organization.ts`, Las Vegas's was hardcoded in `content/pages/las-vegas.tsx`, and San Diego had none anywhere
+* `/contact/` listed St. Louis and San Diego only, with no email for San Diego and no Las Vegas section at all — a gap since DEC-080 made the five Las Vegas pages indexable
+
+### New State
+
+* 8:00am open across `organization.ts` (display string and `opens: '08:00'`), `markets.ts`, and `/contact/`
+* `MarketOperatingDetail.email` added and populated for all three markets, so per-market email is canonical data rather than scattered through JSX (CLAUDE.md §43)
+* `/contact/` publishes all three markets with phone, email, and hours
+
+⚠ `MarketOperatingDetail.email` is populated but **not yet consumed** — `/contact/` and the market pages still hardcode their strings, matching the existing pattern for `phone`. The field is the canonical source; wiring the content files to read from it was not done here.
+
+### Not part of this decision
+
+* **Schema `contactPoints` still lists St. Louis only.** `organization.ts` emits one `contactPoint` with `areaServed: ['st-louis-mo']`. Now that San Diego and Las Vegas have confirmed phone and email, adding them is defensible — but that changes the emitted entity graph and belongs to DEC-079's model, not to a facts update. Left for a decision that addresses it directly.
+* Hours are unchanged for San Diego and Las Vegas; both were already 8:00am–4:00pm.
+* These hours continue to rule out any emergency, same-day, or 24/7 claim (01 §35).
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* Zero `7:30` / `07:30` occurrences remain in `.ts`/`.tsx`
+* Rendered `/contact/` shows three markets, each with phone, email, and 8:00am–4:00pm
+
+---
+
+## DEC-084 — Google Review Carousel Built From Real St. Louis Reviews
+
+**Date:** 2026-08-31
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `18-design-system.md` §110
+* `22-decisions-change-log.md` DEC-020, DEC-028, DEC-035, DEC-036, DEC-081, DEC-083
+* `data/reviews/google-reviews.json`, `data/reviews/reviews.ts`
+* `components/sections/ReviewCarousel.tsx`, `components/sections/index.ts`
+* `components/templates/HomePageTemplate.tsx`, `components/ui/Button.tsx`
+
+### Decision
+
+The homepage carries a carousel of **real, attributed Google reviews** from the St. Louis Business Profile. The owner supplied a one-time export of 278 public reviews on 2026-08-31.
+
+This closes the gate `TestimonialBand` has held since DEC-081 — but **not by opening that gate**. The carousel is a separate section, for a reason given below.
+
+**272 of 278 reviews are published.** Six are withheld, each named with its reason in `data/reviews/reviews.ts`.
+
+### Reason
+
+CLAUDE.md §77 requires verified review data with real attribution. This is that: every entry carries the reviewer's public Google name and a link to their public profile, so every quote on the page is checkable at source. DEC-081 rejected the reference composition's placeholder testimonial precisely because no such material existed. It does now.
+
+### ⚠ Why this is NOT a population of `TestimonialBand`
+
+`TestimonialBand` renders on six templates **including `MarketPageTemplate`**. Filling `data/business/proof.ts` would therefore have put St. Louis reviews onto `/san-diego-ca/` and `/las-vegas-nv/` automatically, with no code change and no warning.
+
+Only St. Louis has a Google Business Profile (01 §21, DEC-020); San Diego and Las Vegas have none identified (DEC-021, DEC-022). 01 §20 forbids carrying one market's business facts onto another. So the carousel is its own section, added deliberately to the homepage only, and `proof.ts` stays empty.
+
+Verified in built output: the carousel heading appears on `/` and on **no** market page.
+
+### The six withheld reviews
+
+One is negative; five are positive but would publish a claim this project has ruled out. That second category is the one worth understanding: a customer describing same-day service is reporting their experience, but The Sewer Pros *selecting that quote for its homepage* is making an availability claim.
+
+| Reviewer | Reason |
+| -------- | ------ |
+| Brian Markowitz | NEGATIVE — disputes technician licensing and experience |
+| andy dv | "came out same-day … urgent matter" — DEC-035 |
+| Ben | "completed it same day" + "cheaper than the quotes from their competitors" — DEC-035, DEC-036 |
+| SH | "about half the price of the other companies" — DEC-036 |
+| Vicki J. Harp | "You work on Saturdays" — contradicts published hours, DEC-083 |
+| Victoria Krylov | "finish the job in the same day" + exposing a buried yard vent — DEC-035, CLAUDE.md §4 |
+
+⚠ Nothing here claims these reviews are illegitimate or hides them. They are public on Google and stay public on Google. `google-reviews.json` holds the export **unchanged**; exclusions live in `reviews.ts` as named data so the removals are visible and reversible in one line.
+
+⚠ **Brian Markowitz's review contests licensing** — the same evidence question left open at DEC-063 criterion 7 and still unresolved (see DEC-080 and §39). Excluding it from a carousel does not answer it.
+
+### Not built, and why
+
+* **No `Review` / `AggregateRating` / `ratingValue` schema.** DEC-028 rejects self-serving review markup. Verified absent from built output. Visible stars on a quote (below) are a different act — DEC-028 permits reviews "visually and for conversion"; what it rejects is emitting markup to chase rating snippets.
+* ~~**No overall rating or review-count line.**~~ **SUPERSEDED same day by DEC-085**, which approves publishing 4.9★ / 595 reviews as visible text. The reasoning here was right and the gap it named is what DEC-085 closes: the aggregate needed a verification-backed decision entry (01 §35, CLAUDE.md §23), and it now has one. The schema prohibition is unchanged.
+* **No "See all reviews on Google" link.** No GBP URL is documented anywhere in this repository — `organization.ts` has no `sameAs` (15 §27), and neither doc 01 nor 11 records one. CLAUDE.md §23 forbids inventing a plausible Maps URL. `googleProfileReviewsUrl` is `null` and the section says plainly that the selection is partial; supply the real URL and the link appears with no other change.
+* **No autoplay.** Quotes are long enough that self-advancing text would move out from under a reader mid-sentence.
+* **Star ratings: 8 of 272 published reviews, amended same day.** The original export carried no star values, so this entry first recorded stars as unavailable. The owner then supplied per-review values verified individually against the live listing — Google Maps throttled the scroll before the rest could be read. `stars: 5` is set for Yu Ma, Jason and Kris Handy-Kraus, Sean DePass, Dave O'Brien, Venkata Simhadri, Laura Ribeiro, Bridget Kelly, and Katya R; every other record is `null`.
+
+  A star row renders **only** where `stars` is non-null — no placeholder, no greyed outline, no assumed 5. Glyphs are `aria-hidden`; the rating reaches assistive technology once as text ("Rated 5 out of 5 on Google").
+
+  ⚠ `null` means NOT VERIFIED, not unrated and not low. **Do not backfill from the aggregate.** The overall average is high but the distribution still contains one- and two-star reviews, so assuming 5 for an unverified record would manufacture a rating for a named person's review (CLAUDE.md §23, §77). `verifiedStarCount` is exported so the gap stays countable; the backfill is complete when it equals `publishedReviews.length`.
+
+### Implementation notes
+
+* **Virtualized.** Only the active slide plus one either side is mounted; verified 1 review in the initial DOM rather than 272. The data itself ships in the bundle — a 134 KB chunk, **35 KB gzipped**. That is the real cost of the owner's "all positive reviews" instruction and is recorded here rather than left to be discovered.
+* **Relative dates rendered verbatim** ("3 months ago"). An `ageInMonths()` helper derives a sort key only; it must never be rendered or written to schema, since Google publishes no calendar date and inventing one would manufacture precision (CLAUDE.md §23, §78).
+* **Quotes are never edited.** Long ones clamp visually with a "read the full review" control; the complete text is always in the DOM. Reviews Google itself truncated (8 of them, ending "… More") get no expand control, because there is nothing further to reveal.
+* **Six reviews pinned first** — those stating the independent-inspection model in a customer's own words, plus a named real-estate agent. Ordering only; nothing altered or excluded.
+* `Button` gained optional `onClick` and three ARIA passthroughs. Purely additive; no existing call site changes.
+
+### Not part of this decision
+
+* **The homepage was already in the `power` composition.** DEC-081 ported it on 2026-08-23, including `RoutingCards`, `TestimonialBand`, and `LeadFormSection`. No restructuring was needed or done; `docs/page-templates/` was not imported.
+* **Intent-routing cards (§110) remain unauthored** — they need card copy, which is content work.
+* **The FAQ remains at 3 entries** where `_base/homepage.md` asks for 5–8. Also content work.
+* **The lead form remains unbuilt.** PENDING-007 and PENDING-008 are both open, the referenced field spec does not exist in this repository, and the site is a static export with no submission endpoint — a form that posts nowhere is worse than no form. `LeadFormSection` stays a gate.
+
+### Follow-Up
+
+* Supply the Google Business Profile reviews URL to activate the "See all reviews" link.
+* Backfill `stars` for the 270 unverified reviews — a GBP export tool that reports per-review values, or another live-verification pass. Not a blocker; the section is correct without them.
+* This is a static snapshot. It will not reflect reviews posted, edited, or deleted after 2026-08-31. Re-export periodically. Google's Places API caps at five reviews, so live sync means a paid third-party widget — a reasonable future upgrade, not what this is.
+* Whether the carousel should also appear on St. Louis market and location pages is a live option, and permitted by 01 §20. Not done here; the homepage was the requested scope.
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* Route parity: 73 HTML routes, 70 sitemap URLs — unchanged
+* Carousel renders on `/`; absent from `/san-diego-ca/`, `/las-vegas-nv/`, `/st-louis-mo/`
+* All six withheld reviews absent from built output
+* No `AggregateRating`, no `"@type": "Review"`, no `ratingValue` anywhere in the build
+
+---
+
+## DEC-085 — Google Aggregate Rating Approved for Publication
+
+**Date:** 2026-09-01
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` DEC-020, DEC-028, DEC-084
+* `data/reviews/reviews.ts`, `components/sections/ReviewCarousel.tsx`
+
+### Decision
+
+The St. Louis profile's aggregate Google rating — **4.9★ from 595 reviews** — is approved for publication as **visible text** on the homepage review section.
+
+This closes the gap DEC-084 named. That entry withheld the aggregate and said why: a rating and review-count figure is a business claim that 01 §35 and CLAUDE.md §23 put behind a verification-backed decision. This is that decision.
+
+### Verification basis
+
+Read from the live Google Business Profile listing on 2026-09-01. Not carried over from the review-text export, which contained no aggregate data.
+
+| Stars | Count |
+| ----- | ----- |
+| 5 | 575 |
+| 4 | 7 |
+| 3 | 0 |
+| 2 | 1 |
+| 1 | 12 |
+
+Checked when recorded: the buckets sum to **595**, and the implied mean is **4.9025**, which rounds to the stated **4.9**. The three figures corroborate one another rather than standing as three separate assertions.
+
+The distribution is stored in `ratingSnapshot` but **not rendered** — DEC-085 approves the rating and the count, not the breakdown. It is kept because it is the evidence, and because it is the standing argument against backfilling per-review `stars` from the average: the profile contains one- and two-star reviews, so "the average is 4.9" does not make any particular unverified review a five.
+
+### What this does NOT approve
+
+* **No schema.** DEC-028 stays in force and DEC-085 says so explicitly. No `AggregateRating`, no `ratingValue`, no `reviewCount` structured-data property. The approval covers what a visitor reads, not what a crawler parses. Verified absent from built output.
+* **No implication of currency.** The figure renders as "4.9★ … from 595 Google reviews · as of September 1, 2026". The date is part of the claim, not a footnote — `verifiedAt` is a required field on `RatingSnapshot` and the component renders it in the same sentence. Removing it to tidy the layout would turn a dated reading into an assertion that the number is current.
+* **No extension to other markets.** St. Louis is the only market with a GBP (01 §21, DEC-020). Verified absent from `/san-diego-ca/` and `/las-vegas-nv/`.
+
+### New State
+
+`ratingSnapshot = { rating: 4.9, reviewCount: 595, verifiedAt: '2026-09-01', distribution: {…} }` in `data/reviews/reviews.ts`, rendered by `AggregateStat` above the carousel.
+
+Stored as a dated object rather than a hardcoded string so it reads as a snapshot needing refresh rather than a live feed.
+
+### Follow-Up
+
+* Refresh the snapshot whenever the review dataset is refreshed. Both go stale together.
+* The "See all reviews on Google" link still has no destination — no GBP URL exists anywhere in this repository. It is the one open item for both this stat and the carousel; supplying the URL activates it with no other change.
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* Rendered on `/`: "4.9★ out of 5 from 595 Google reviews · as of September 1, 2026"
+* Absent from `/san-diego-ca/` and `/las-vegas-nv/`
+* No `AggregateRating`, `ratingValue`, or `reviewCount` anywhere in the build
+* Route parity unchanged — 73 HTML routes, 70 sitemap URLs
 
 ---
 

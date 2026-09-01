@@ -47,6 +47,24 @@
  *
  * Do not populate a gated module to "finish" a page.
  *
+ * ---------------------------------------------------------------------------
+ * ⚠ `ReviewCarousel` IS MARKET-SCOPED, NOT SITEWIDE
+ * ---------------------------------------------------------------------------
+ * `ReviewCarousel` carries real Google reviews from the ST. LOUIS
+ * Business Profile (DEC-084). It is not a general proof section: only
+ * St. Louis has a GBP (01 §21, DEC-020), and 01 §20 forbids carrying
+ * one market's business facts onto another.
+ *
+ * It belongs on the sitewide homepage and on St. Louis pages. Do NOT
+ * add it to `MarketPageTemplate` — that template also serves
+ * `/san-diego-ca/` and `/las-vegas-nv/`.
+ *
+ * This is exactly why it is separate from `TestimonialBand` rather
+ * than a population of `data/business/proof.ts`: `TestimonialBand`
+ * renders on six templates including `MarketPageTemplate`, so filling
+ * its array would have put St. Louis reviews on the other two markets
+ * with no code change and no warning. `TestimonialBand` stays gated.
+ *
  * NO Case Studies section. 18 §71 and CLAUDE.md §76 require verified
  * project data, which does not exist and has no slot here yet.
  */
@@ -83,6 +101,9 @@ export type { ProofGalleryProps } from './ProofGallery'
 
 export { TestimonialBand } from './TestimonialBand'
 export type { TestimonialBandProps } from './TestimonialBand'
+
+export { ReviewCarousel } from './ReviewCarousel'
+export type { ReviewCarouselProps } from './ReviewCarousel'
 
 export { LeadFormSection } from './LeadFormSection'
 export type { LeadFormSectionProps } from './LeadFormSection'

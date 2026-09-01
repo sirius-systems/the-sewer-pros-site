@@ -9,6 +9,7 @@ import {
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
+  ReviewCarousel,
   LeadFormSection,
   MarketCoverage,
   FaqSection,
@@ -23,6 +24,10 @@ import {
   faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
+// Imported from the data module rather than re-exported through the
+// section: whether this section renders is a question about the review
+// data, and `ReviewCarousel` itself is a client component.
+import { reviewCarouselRenders } from '@/data/reviews/reviews'
 import type { HomePageContent, MasterPageRecord } from '@/types'
 
 /**
@@ -33,10 +38,15 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  *
  *   Hero → Trust strip → Intent routing → Services mosaic
  *   → Independent-model split → Markets → Process → Body
- *   → Authority band → Proof* → Testimonial* → Form*
- *   → Resources → FAQ → Final CTA
+ *   → Authority band → Proof* → Testimonial* → Google reviews
+ *   → Form* → Resources → FAQ → Final CTA
  *
  * `*` renders nothing until its data gate opens.
+ *
+ * The review carousel is the composition's testimonial slot finally
+ * carrying real material (DEC-084). `TestimonialBand` above it remains
+ * gated and empty; the two are separate because the carousel is
+ * ST. LOUIS-scoped and `TestimonialBand` is not (01 §20-21).
  *
  * ---------------------------------------------------------------------------
  * ROUTING AND SERVICES MUST NOT LOOK ALIKE
@@ -91,6 +101,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
+    ...(reviewCarouselRenders() ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
@@ -160,7 +171,16 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       <ProofGallery title="Recent work" />
 
+      {/*
+        `TestimonialBand` stays gated and empty — `data/business/proof.ts`
+        holds no verified single testimonial. `ReviewCarousel` is a
+        different thing: real St. Louis Google reviews (DEC-084), safe
+        here because the homepage is sitewide and St. Louis is the only
+        market with a Business Profile (01 §20-21).
+      */}
       <TestimonialBand />
+
+      <ReviewCarousel density="standard" />
 
       <LeadFormSection />
 

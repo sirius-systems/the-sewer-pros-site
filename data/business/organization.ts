@@ -130,17 +130,22 @@ export const contact = {
 } as const
 
 /**
- * Published business hours (thesewerpros.com/contact).
+ * St. Louis business hours.
+ *
+ * ⚠ Owner-corrected to an 8:00am open on 2026-08-31 (DEC-083).
+ * thesewerpros.com/contact still shows 7:30am; the owner's figure
+ * supersedes the published one, which is stale. Do not "restore" the
+ * earlier value from the live site without a new decision.
  *
  * ⚠ These hours do NOT support an emergency, same-day, or 24/7 claim —
  * they rule one out. 01 §35 lists all three among claims requiring
  * evidence, and CLAUDE.md §11 forbids inventing them. Weekends closed.
  */
 export const hours = {
-  weekdays: 'Monday to Friday, 7:30am – 4:00pm',
+  weekdays: 'Monday to Friday, 8:00am – 4:00pm',
   weekend: 'Closed Saturday and Sunday',
   /** Schema.org openingHours form, for step 15. */
-  specification: [{ days: ['Mo', 'Tu', 'We', 'Th', 'Fr'], opens: '07:30', closes: '16:00' }],
+  specification: [{ days: ['Mo', 'Tu', 'We', 'Th', 'Fr'], opens: '08:00', closes: '16:00' }],
 } as const
 
 /**
