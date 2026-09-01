@@ -264,12 +264,35 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         ),
       },
       {
+        /*
+          The question asks two things, so the answer addresses both.
+          An earlier version answered only the emergency half, which
+          read as a decline on same-day as well — inaccurate since
+          DEC-088.
+
+          ⚠ Same-day wording is load-bearing. DEC-088 approved
+          availability, never a promise: published hours are Monday to
+          Friday, 8:00am–4:00pm (DEC-083), which rule out a guarantee,
+          weekend coverage, and any emergency or 24/7 claim. Keep
+          "sometimes" and "cannot promise"; do not tighten this into
+          an offer.
+        */
         question: 'Do you offer emergency or same-day service?',
         answer: (
-          <p>
-            We operate Monday through Friday during standard business hours. We
-            do not offer 24/7 or emergency service.
-          </p>
+          <>
+            <p>
+              No emergency service. Same-day is sometimes possible, but never
+              guaranteed. We operate Monday through Friday, 8:00am to 4:00pm,
+              and are closed weekends. We do not offer 24/7 or emergency
+              service.
+            </p>
+            <p>
+              Within those hours, a same-day appointment can sometimes be
+              arranged, depending on how the day is already booked. It is
+              worth asking when you get in touch, but we cannot promise it in
+              advance.
+            </p>
+          </>
         ),
       },
       {
