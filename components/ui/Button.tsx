@@ -108,6 +108,24 @@ export interface ButtonProps extends CommonProps {
    */
   pending?: boolean
   pendingLabel?: string
+  /**
+   * Click handler, for buttons that drive UI rather than submit a form.
+   *
+   * Only usable from a client component. Server components have no
+   * handler to pass, which is the intended friction: a button that does
+   * something is interactive, and saying so at the boundary is correct.
+   */
+  onClick?: () => void
+  /**
+   * Accessible name, where the visible label is not sufficient on its
+   * own — an icon-bearing control, or one whose meaning depends on
+   * surrounding content (18 §96, CLAUDE.md §55).
+   */
+  'aria-label'?: string
+  /** Element this control operates, e.g. a live region it advances. */
+  'aria-controls'?: string
+  /** Expanded state, for controls that disclose content. */
+  'aria-expanded'?: boolean
 }
 
 export function Button({
@@ -118,12 +136,20 @@ export function Button({
   pendingLabel = 'Working…',
   className,
   children,
+  onClick,
+  'aria-label': ariaLabel,
+  'aria-controls': ariaControls,
+  'aria-expanded': ariaExpanded,
 }: ButtonProps) {
   return (
     <button
       type={type}
       disabled={disabled || pending}
       aria-busy={pending || undefined}
+      aria-label={ariaLabel}
+      aria-controls={ariaControls}
+      aria-expanded={ariaExpanded}
+      onClick={onClick}
       className={cn(BASE, VARIANT[variant], className)}
     >
       {pending ? pendingLabel : children}

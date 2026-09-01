@@ -170,9 +170,10 @@ export interface ContactPoint {
 /**
  * Runtime site configuration.
  *
- * ⚠ `origin` is blocked on PENDING-001 (canonical domain, apex vs www).
+ * `origin` is `https://www.thesewerpros.com` — www, not apex (DEC-078).
  *
- * It must come from `NEXT_PUBLIC_SITE_URL`, never a hard-coded literal.
+ * ⚠ It must still come from `NEXT_PUBLIC_SITE_URL`, never a hard-coded
+ * literal, now that the value is settled.
  * 02 §53 and CLAUDE.md §53-54 forbid baking localhost, a Cloudflare
  * preview host, or a guessed production domain into canonicals, schema
  * `@id` values, the sitemap, or metadata.
