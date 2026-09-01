@@ -22,8 +22,9 @@
  * `AggregateRating` — 15 §61. No verified review data exists, and a
  *   fabricated rating is the highest-risk structured-data claim
  *   available to a local business.
- * `FAQPage` — 15 §57-58 require a per-page decision. `emitFaqSchema`
- *   exists but no page has been approved for it, so nothing emits it.
+ * `AggregateRating` and `Review` remain absent on the home page too —
+ *   DEC-089 approved `FAQPage` there and nothing else (15 §61,
+ *   DEC-028, DEC-085).
  * `Product` — 15 §37 forbids Product schema for services.
  * `Plumber` — 15 §64's guardrail. The business does not perform repair
  *   or replacement (15 §65), so the type would imply contracting work
@@ -48,3 +49,10 @@ export {
 
 export { pageSchema } from './graph'
 export type { PageSchemaInput } from './graph'
+
+/**
+ * `FAQPage` — OPT-IN PER PAGE (15 §57-58). DEC-089 approves the home
+ * page and nothing else. The opt-in is passing `faq` to `pageSchema()`,
+ * which must be the same array the page renders.
+ */
+export { faqPageNode, faqAnswerText } from './faq'

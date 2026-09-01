@@ -9,7 +9,7 @@ import { PageViewTracker } from '@/components/tracking'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { pageSchema } from '@/lib/schema'
 import { pageContext } from '@/lib/analytics'
-import type { MasterPageRecord } from '@/types'
+import type { FaqContent, MasterPageRecord } from '@/types'
 
 /**
  * Shared page shell.
@@ -45,7 +45,20 @@ export interface PageShellProps {
    * The SAME values the metadata layer uses, so markup and the
    * rendered page cannot diverge (15 §67).
    */
-  schema?: { title: string; description?: string; dateModified?: string }
+  schema?: {
+    title: string
+    description?: string
+    dateModified?: string
+    /**
+     * The page's visible FAQ, where `FAQPage` markup is approved for it.
+     *
+     * OPT-IN PER PAGE (15 §57-58). DEC-089 approves the home page only;
+     * every other template omits this and emits no `FAQPage`. Pass the
+     * SAME array the template renders — the node's answer text is read
+     * out of that JSX (15 §67, lib/schema/faq.ts).
+     */
+    faq?: readonly FaqContent[]
+  }
   /**
    * Densities of the sections this template renders, in order.
    * Used only for the rhythm check.
@@ -79,6 +92,7 @@ export function PageShell({ page, densities, schema, children }: PageShellProps)
             title: schema.title,
             description: schema.description,
             dateModified: schema.dateModified,
+            faq: schema.faq,
           })}
         />
       )}
