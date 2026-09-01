@@ -4498,6 +4498,91 @@ Stored as a dated object rather than a hardcoded string so it reads as a snapsho
 * Route parity unchanged — 73 HTML routes, 70 sitemap URLs
 
 ---
+## DEC-087 — Header Phone Link Made Market-Aware
+
+**Date:** 2026-09-01
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` PENDING-017, DEC-070, DEC-071, DEC-073
+* `components/layout/SiteHeader.tsx`, `components/layout/HeaderPhoneLink.tsx` (new)
+
+### Decision
+
+The site header's phone control now shows the correct market's real, owner-confirmed number when a visitor is on that market's pages, instead of always linking to `/contact/`.
+
+### Why this was previously blocked, and what changed
+
+The header is a shared layout component rendered once in the root layout, and St. Louis, San Diego, and Las Vegas each publish a different real number (DEC-070, DEC-071, DEC-073). 01 §20 forbids showing one market's contact facts on another market's page, and under `output: 'export'` the header had no way to know which market a visitor was viewing — so it fell back to a neutral "Call" link to `/contact/`, which lists all three separately. PENDING-017 tracked this as open, pending "a market-aware layout."
+
+The blocker was never missing data — all three numbers, emails, and hours were already verified in `data/markets/markets.ts` (`marketOperatingDetail`). What was missing was a way to read the current route without turning the whole header into a client component. `HeaderPhoneLink` (new, `components/layout/HeaderPhoneLink.tsx`) is a small client island that reads the pathname via `usePathname()`, matches it against the three market slugs, and renders that market's `TrackedPhoneLink` when there's a match. It does not guess a visitor's location — it reads the page they are actually on, which is exact.
+
+### What this does NOT change
+
+* Sitewide pages (homepage, `/services/`, `/about/`, etc.) have no single correct number, so the fallback there is unchanged: "Call" → `/contact/`.
+* No new phone numbers were invented. All three come from already-verified `marketOperatingDetail` entries.
+* The rest of the header stays a Server Component; only the phone control is client-side.
+
+### New State
+
+`PENDING-017` is RESOLVED by this entry. `components/layout/HeaderPhoneLink.tsx` is the new market-detection logic; `SiteHeader.tsx` uses it in both the desktop and mobile phone slots.
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* `/st-louis-mo/*` renders `(314) 821-1600`; `/san-diego-ca/*` renders `(858) 257-2888`; `/las-vegas-nv/*` renders `(725) 292-4030`
+* `/`, `/services/`, `/about/`, and other sitewide routes still render "Call" → `/contact/`
+* Checked in built output across nine routes, desktop and mobile slots both, with no cross-market leakage
+
+---
+
+## DEC-088 — Free Estimate and Same-Day Availability Approved for Publication
+
+**Date:** 2026-09-01
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `docs/superpowers/specs/2026-08-23-power-page-templates-design.md` (the port design that removed the module), `data/business/organization.ts` (`CLAIMS_REQUIRING_VERIFICATION`)
+* `data/business/offers.ts` (new), `components/sections/ConfidenceModule.tsx` (new)
+
+### Decision
+
+Two claims previously on `CLAIMS_REQUIRING_VERIFICATION` are now owner-confirmed and approved for publication on the homepage:
+
+* **Free estimate** — available; ask before scheduling a sewer inspection or cleaning.
+* **Same-day appointments** — sometimes available Monday–Friday, 8:00am–4:00pm, depending on scheduling. Not guaranteed. Not available weekends.
+
+### Why this was previously withheld, and what changed
+
+`docs/superpowers/specs/2026-08-23-power-page-templates-design.md` removed `power`'s "optional confidence module" (free estimate, financing, warranty, same-day/emergency availability) from every ported composition map entirely, because none of the four were verified and 01 §35 lists same-day/emergency service and free estimates among claims requiring documented evidence. `data/business/organization.ts` still flags published hours (Mon–Fri, 8–4, closed weekends) as ruling OUT a same-day guarantee or emergency/24-7 claim.
+
+The owner directly confirmed both offers on 2026-09-01. That satisfies 01 §24 (a business's own statement about itself is evidence) for exactly these two — it does not extend to financing or warranty, which remain unconfirmed and are deliberately excluded from the new module.
+
+Same-day copy is hedged to match the actual constraint: "sometimes available," never "guaranteed," never implying weekend or 24-7 coverage. It describes availability rather than promising it.
+
+### What this does NOT approve
+
+* No financing claim. No warranty claim. No 24/7 or emergency-service claim. All three stay on `CLAIMS_REQUIRING_VERIFICATION` and out of the site.
+* No Las Vegas service claim. ⚠ The source brief for this entry said this changes nothing about "Las Vegas's `launch_pending_validation` gate (DEC-063)" — that gate was **released on 2026-08-17 by DEC-080**, and the five Las Vegas records have been `launch` and indexable since. The accurate statement is the narrower one: this module is homepage-only and authorises no service claim in any market, Las Vegas included.
+
+### New State
+
+`data/business/offers.ts` (new) holds `verifiedOffers`, each entry citing this decision. `components/sections/ConfidenceModule.tsx` (new) renders it, gated the same way as every other data-backed section — empty data means the section is absent. Wired into `HomePageTemplate.tsx` directly under the trust bar.
+
+⚠ `'same-day service'` and `'free estimates'` remain in `CLAIMS_REQUIRING_VERIFICATION` deliberately. That array still governs every appearance OTHER than this module — it is the guard against the same claim reappearing on a service page, a market page, or a CTA without DEC-088's scoping and hedged phrasing.
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* Rendered on `/`: "Free estimate" and "Same-day appointments sometimes available" with the hedged detail text
+* Absent from every page other than the homepage (module is not wired into any other template)
+* Route parity unchanged — 73 HTML routes, 70 sitemap URLs
+
+---
 
 # 39. Pending Decision Register
 
@@ -4521,7 +4606,7 @@ Maintain unresolved material questions here until resolved.
 | PENDING-014 | Chesterfield lateral programme terms    | RESOLVED | DEC-072 — cite-and-link to the city     |
 | PENDING-015 | Housing-age figures vs primary Census   | RESOLVED | DEC-072 — approved with ACS citation    |
 | PENDING-016 | Three withheld marketing claims         | RESOLVED | DEC-072 — approved for republication    |
-| PENDING-017 | Market-scoped header contact            | Open     | If a market-aware layout is introduced |
+| PENDING-017 | Market-scoped header contact            | RESOLVED | DEC-087 — pathname-based market detection |
 
 ## Open Proposals
 
