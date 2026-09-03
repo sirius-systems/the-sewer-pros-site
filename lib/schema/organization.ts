@@ -32,9 +32,13 @@
  * WHAT IS ABSENT, AND WHY EACH ABSENCE IS DELIBERATE
  * ---------------------------------------------------------------------------
  * `address`          — none exists (DEC-072)
- * `aggregateRating`  — 15 §61. No verified review data exists, and a
- *                      fabricated rating is the single highest-risk
- *                      structured-data claim a local business can make
+ * `aggregateRating`  — 15 §61, DEC-028. Verified rating data DOES now
+ *                      exist (4.9 from 595 reviews, DEC-085), but that
+ *                      decision approves it as VISIBLE TEXT only and
+ *                      restates DEC-028 as remaining in force. The
+ *                      absence is not pending better data: self-serving
+ *                      ratings on Organization/LocalBusiness are
+ *                      ineligible for Google review-snippet stars
  * `sameAs`           — 15 §26-27. 01 §22 records San Diego social
  *                      presence but supplies no URLs, and a profile must
  *                      be verified as official and controlled first
