@@ -14,8 +14,8 @@ import {
   type SelectOption,
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
-import { serviceList } from '@/data/services'
 import { marketList } from '@/data/markets/markets'
+import type { ServiceId } from '@/types'
 
 /**
  * Unified sitewide lead form.
@@ -44,36 +44,66 @@ import { marketList } from '@/data/markets/markets'
  * Neither is invented here. Both are flagged rather than papered over.
  *
  * ===========================================================================
- * NO SUCCESS MESSAGE IS SHOWN
+ * NO SUCCESS MESSAGE IS SHOWN, AND THAT IS THE POINT
  * ===========================================================================
  * The obvious stub is a "Thanks, we will be in touch" confirmation.
  * That would be a false statement of fact to a customer: nothing was
  * received and no one will be in touch. CLAUDE.md §24 forbids inventing
- * business facts, and a delivery promise is one. So the button reports
- * only that the form is not yet connected, which is true.
+ * business facts, and a delivery promise is one.
+ *
+ * So pressing submit currently does nothing visible. That is a poor
+ * experience and it is not being defended as good: it is the honest
+ * state of an unwired form, and the fix is blocker 1, not a message.
+ * Do not paper over it with a confirmation.
  */
 
 /** Analytics form type. This is the general service form (19 §14). */
 const FORM_TYPE = 'general_service' as const
 
 /**
- * Service options, read from the canonical registry.
+ * What the service select submits: a canonical id, or "other".
  *
- * All 18 records, never a hand-typed list, so a registry change reaches
- * the form automatically. `name` is the registry's display string.
- *
- * Commercial records repeat five core slugs, so the option VALUE is the
- * unique `serviceId` rather than the slug. Two options reading
- * "Sewer Camera Inspection" would otherwise be indistinguishable in the
- * submitted payload.
+ * `ServiceId` is the existing type modelling registry ids, so the
+ * pairing below is checked at compile time rather than being a loose
+ * string. "Other" has no registry record and is deliberately outside
+ * that union.
  */
-const SERVICE_OPTIONS: readonly SelectOption[] = [
-  ...serviceList.map((service) => ({
-    value: service.serviceId,
-    label: service.name,
-  })),
-  // 17 §33: someone who cannot name the service still needs a route in.
-  { value: 'not-sure', label: 'Not sure which service I need' },
+type LeadServiceValue = ServiceId | 'other'
+
+/**
+ * Service options: a FIXED CURATED SET OF SEVEN, not the registry.
+ *
+ * ⚠ Deliberate, owner-specified, and not an oversight. Do not "fix"
+ * this back to the full 18 records. The registry is the taxonomy; this
+ * is a customer-facing menu, and 18 records (five of which repeat a
+ * core name under a commercial record) is a worse thing to ask someone
+ * to read than six plain choices and an escape hatch. `homeContent.services`
+ * already does the same thing, showing a curated 9 of 18 on the grid.
+ *
+ * LABELS ARE SHORTHAND, VALUES ARE CANONICAL. "Sewer Cleaning &
+ * Inspection" and "Line Location" are how customers say it; the values
+ * are still `svc-sewer-cleaning-camera-inspection` and
+ * `svc-sewer-line-locating`, so routing and analytics keep keying off
+ * the registry taxonomy no matter how the label is worded.
+ *
+ * Typed against `ServiceId` rather than imported from `serviceList` on
+ * purpose: this is a client component, and a type-only import keeps the
+ * whole service registry out of the browser bundle while still failing
+ * the build if one of these ids ever stops being canonical.
+ */
+const SERVICE_OPTIONS: readonly { value: LeadServiceValue; label: string }[] = [
+  { value: 'svc-sewer-camera-inspection', label: 'Sewer Camera Inspection' },
+  { value: 'svc-sewer-cleaning', label: 'Sewer Cleaning' },
+  { value: 'svc-hydro-jetting', label: 'Hydro Jetting' },
+  {
+    value: 'svc-sewer-cleaning-camera-inspection',
+    label: 'Sewer Cleaning & Inspection',
+  },
+  { value: 'svc-sewer-line-locating', label: 'Line Location' },
+  { value: 'svc-drain-cleaning', label: 'Drain Cleaning' },
+  // No canonical record, so a literal. Someone who cannot place their
+  // problem in the list above still needs a way through (17 §33).
+  { value: 'other', label: 'Other' },
 ]
 
 /** The three approved markets, using their registry display names. */
