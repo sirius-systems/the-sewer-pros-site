@@ -3,7 +3,7 @@
 **Document:** `03-information-architecture.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Foundation
+**Status:** Active Information Architecture Source of Truth
 **Document Role:** Site hierarchy, page-family, relationship, and navigation source of truth
 **Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
 
@@ -33,9 +33,11 @@ This document determines **how information is organized**.
 
 It does not independently authorize every potential page.
 
-Final route authorization is controlled by:
+Final production publication and indexation selection is controlled by:
 
 `04-master-page-build-list.md`
+
+This document may define page families, relationships, templates, draft concepts, and future architectural capacity without making every concept a public or indexable page.
 
 Final URL structures are controlled by:
 
@@ -63,7 +65,7 @@ entities.
 
 The site should not function as a disconnected collection of SEO landing pages.
 
-Every approved page should have a meaningful place within the broader site hierarchy.
+Every production indexable page should have a meaningful place within the broader site hierarchy. Drafts and candidate pages may be developed before publication, but they must use the same entity and relationship model so they can be evaluated accurately.
 
 ---
 
@@ -89,6 +91,42 @@ The information architecture must support:
 16. logical sitemap organization
 17. minimal keyword cannibalization
 18. minimal orphan-page risk
+
+---
+
+# 3A. Build-First Information Architecture
+
+Information architecture should guide development without becoming a permission system that prevents useful work from beginning.
+
+Claude Code and developers may build:
+
+* reusable page-family templates
+* navigation and breadcrumb models
+* draft page records
+* candidate content relationships
+* local and protected-preview routes
+* internal-link logic
+* schema and metadata models
+* validation and quality checks
+
+before every future page has been selected for production.
+
+The architecture must keep three decisions separate:
+
+```text
+DEVELOPMENT
+What may be designed, drafted, modeled, or tested.
+
+PUBLICATION
+What is deliberately included on the production website.
+
+INDEXATION
+What is deliberately exposed to search systems.
+```
+
+`03-information-architecture.md` defines the structural model. `04-master-page-build-list.md` selects the production inventory. Technical controls then determine publication and indexation behavior.
+
+This build-first model does not relax business truth. Services, markets, locations, audiences, offices, claims, and business capabilities must still come from their controlling sources of truth.
 
 ---
 
@@ -124,7 +162,7 @@ The final route depth will be defined separately.
 
 # 5. Primary Site Entities
 
-The site's primary entities are:
+The primary entities of the site are:
 
 ## Company
 
@@ -202,7 +240,7 @@ Potential examples include:
 * industrial
 * institutional properties
 
-These are not automatically approved page categories.
+These are not automatically public or indexable page categories.
 
 ---
 
@@ -287,7 +325,7 @@ Home
 
 This is a conceptual hierarchy.
 
-The Master Page Build List determines which nodes actually exist.
+The Master Page Build List determines which nodes are deliberately included in the production site. Additional nodes may exist as drafts or protected-preview candidates without entering the public architecture.
 
 ---
 
@@ -310,7 +348,7 @@ It should establish:
 
 The homepage should not attempt to rank for every service and location combination.
 
-Its primary purpose is to establish the company entity and provide strong navigation into the site's major topic areas.
+Its primary purpose is to establish the company entity and provide strong navigation into the major topic areas of the site.
 
 ---
 
@@ -338,7 +376,7 @@ Additional core pages may include:
 * accessibility
 * other legally or operationally required pages
 
-Only approved pages should be added.
+Only pages selected for production should be added to the public site architecture. Draft company-page concepts and reusable templates may be developed earlier when useful.
 
 ---
 
@@ -348,7 +386,7 @@ A central services hub should organize the approved canonical services.
 
 The services hub should:
 
-* explain the company's specialization
+* explain the specialization of the company
 * introduce service categories
 * link to canonical service pages
 * distinguish inspection from cleaning
@@ -362,7 +400,7 @@ The services hub should not simply be a grid of keywords.
 
 # 10. Canonical Service Pages
 
-Each strategically approved core service should have a canonical service page.
+Each canonical service selected for production should have one authoritative service page. Canonical service templates and draft content may be developed before publication selection is final.
 
 Examples may include:
 
@@ -553,7 +591,7 @@ Potential page eligibility factors include:
 * proximity to the primary market
 * conversion potential
 
-Final approval belongs in:
+Final publication and indexation selection belongs in:
 
 `04-master-page-build-list.md`
 
@@ -577,7 +615,7 @@ Conceptual examples:
 * drain cleaning + location
 * pre-purchase sewer inspection + location
 
-Only strategically approved combinations should exist.
+Only strategically selected combinations should exist as production pages. Candidate combinations may be drafted or tested in protected previews without becoming public or indexable.
 
 ---
 
@@ -593,7 +631,7 @@ It should provide meaningful service-specific and location-specific value.
 
 # 22. Service + Location Relationships
 
-Each approved service + location page should connect to:
+Each published service + location page should connect to:
 
 * canonical service page
 * parent market hub
@@ -625,7 +663,7 @@ Current research includes:
 
 These represent SEO opportunities.
 
-They do not represent approved pages.
+They do not represent production pages or indexation decisions.
 
 The information architecture must treat:
 
@@ -657,7 +695,7 @@ The architecture should avoid:
 * low-value pages
 * site-wide keyword swapping
 
-The Master Page Build List acts as the publishing gate.
+The Master Page Build List is the production publishing control point. It governs public exposure without preventing templates, drafts, or candidate pages from being built and reviewed.
 
 ---
 
@@ -690,7 +728,7 @@ Audience pages should answer:
 
 > Why would this specific type of customer use The Sewer Pros?
 
-These pages should focus on the customer's:
+These pages should focus on the:
 
 * problems
 * decisions
@@ -698,6 +736,8 @@ These pages should focus on the customer's:
 * workflow
 * relevant services
 * expected outcomes
+
+of that customer.
 
 They should not simply duplicate service pages.
 
@@ -803,7 +843,7 @@ Sewer Inspections for Real Estate Agents in [Market]
 Property Manager Sewer Services in [Market]
 ```
 
-These pages require explicit approval.
+These pages require deliberate selection before production publication and indexation. They may be developed as drafts or protected-preview candidates beforehand.
 
 Do not automatically create audience pages for every one of the 579 geographic records.
 
@@ -811,7 +851,7 @@ Do not automatically create audience pages for every one of the 579 geographic r
 
 # 33. Audience + Location Page Test
 
-Before approving an audience + location page, determine whether:
+Before publishing and indexing an audience + location page, determine whether:
 
 1. the audience is strategically important
 2. meaningful local search intent exists
@@ -902,7 +942,7 @@ Commercial Drain Cleaning + Market
 Hydro Jetting for Commercial Properties + Market
 ```
 
-Only strategically useful combinations should be approved.
+Only strategically useful combinations should be selected for production. Other combinations may remain research records or development drafts.
 
 The architecture must prevent automatic commercial × 579-location expansion.
 
@@ -942,7 +982,7 @@ They should not exist only to capture competitor keywords.
 
 # 41. Potential Comparison Topics
 
-Subject to research and approval, comparison opportunities may include concepts such as:
+Subject to research and deliberate production selection, comparison opportunities may include concepts such as:
 
 * sewer inspection vs sewer scope
 * hydro jetting vs drain snaking
@@ -1099,7 +1139,7 @@ Potential locations include:
 * commercial pages
 * resource pages
 
-A standalone FAQ hub may also be useful if approved.
+A standalone FAQ hub may also be useful if deliberately included in the production page inventory.
 
 Do not create hundreds of near-duplicate FAQ pages from single questions without a strong strategic reason.
 
@@ -1185,9 +1225,19 @@ Final types should be represented consistently in the page build list and code.
 
 ---
 
+# 52A. Page-Family Design References
+
+The six files in `/docs/design-references/` are the approved visual templates for their corresponding page families.
+
+Information architecture determines which page family and content relationships a page uses. `18-design-system.md` determines how the associated reference is translated into responsive components and section patterns.
+
+The reference images guide hierarchy, section order, content density, media placement, and conversion flow. They do not independently authorize a route, and they should not be reproduced as rigid screenshots with hard-coded positioning.
+
+---
+
 # 53. Parent/Child Relationships
 
-Every approved page should have a defined logical parent where applicable.
+Every production page should have a defined logical parent where applicable. Drafts and candidate pages should model a proposed parent so their fit can be evaluated before publication.
 
 Examples:
 
@@ -1295,7 +1345,7 @@ The architecture should assign each page a clear primary intent.
 
 # 57. Primary Intent Requirement
 
-Every approved indexable page should have a documented primary intent.
+Every production indexable page should have a documented primary intent. Drafts should identify a proposed intent so duplication and cannibalization can be evaluated before publication.
 
 Examples:
 
@@ -1334,7 +1384,7 @@ United States
     └── Las Vegas Market
 ```
 
-The public site does not necessarily need state-level landing pages unless strategically approved.
+The public site does not necessarily need state-level landing pages unless they are strategically selected for production.
 
 The hierarchy describes data relationships, not automatic page creation.
 
@@ -2064,23 +2114,25 @@ It should not be residential copy with "commercial" inserted.
 
 ---
 
-# 97. Page Authorization Layer
+# 97. Page Relationship and Publication Layer
 
-The information architecture defines what kinds of pages may exist.
+The information architecture defines the supported structural model and how page families relate.
 
-The Master Page Build List defines which pages **will** exist.
+The Master Page Build List defines which pages are deliberately included in production.
 
 Relationship:
 
 ```text
 Information Architecture
-= Allowed Structural Model
+= Supported Structural Model
 ```
 
 ```text
 Master Page Build List
-= Approved Page Inventory
+= Production Page Inventory
 ```
+
+Development drafts and protected-preview candidates may use the supported structural model before they enter the production inventory.
 
 ---
 
@@ -2095,11 +2147,15 @@ Research
 ↓
 Opportunity
 ↓
-Evaluate
+Evaluate and Prioritize
 ↓
-Approve
+Develop and Review
 ↓
-Build
+Master Page Build List
+↓
+Publish
+↓
+Index When Qualified
 ```
 
 not:
@@ -2168,14 +2224,14 @@ without restructuring the existing site.
 
 # 101. Service Expansion Architecture
 
-When a new canonical service is approved:
+When a new canonical service is verified and added to the service registry:
 
 ```text
 Services Hub
 ↓
 New Canonical Service Page
 ↓
-Approved Market / Location Variants
+Selected Production Market / Location Variants
 ↓
 Audience Relationships
 ↓
@@ -2201,7 +2257,7 @@ Potential future audiences may include:
 * contractors
 * municipalities
 
-These examples are not approvals.
+These examples are not business, publication, or indexation decisions.
 
 ---
 
@@ -2250,7 +2306,7 @@ State-level pages should not be created automatically simply because the company
 * California
 * Nevada
 
-A state page requires its own strategic purpose and approval.
+A state page requires its own strategic purpose and a deliberate production publication decision.
 
 ---
 
@@ -2394,7 +2450,7 @@ Stable page IDs may exist separately from human-readable titles.
 
 # 112. Architecture Validation Questions
 
-Before approving a new page, ask:
+Before publishing and indexing a new page, ask:
 
 1. What entity does this page represent?
 2. What is the primary user intent?
@@ -2407,7 +2463,7 @@ Before approving a new page, ask:
 9. Is it operationally accurate?
 10. Should it be indexed?
 
-If these questions cannot be answered clearly, the page is not ready for approval.
+If these questions cannot be answered clearly, development may continue, but the page is not ready for production publication or indexation.
 
 ---
 
@@ -2591,7 +2647,7 @@ This enables evaluation of which architecture layers drive:
 
 # 122. Architecture and Page Build Stages
 
-Every approved page should eventually receive a build-stage designation.
+Every planned or published page should eventually receive a prioritization-stage designation.
 
 Potential stages may include:
 
@@ -2602,7 +2658,7 @@ Phase 3
 Future
 ```
 
-or another approved structure.
+or another documented prioritization structure.
 
 This prevents the information architecture from being confused with the launch checklist.
 
@@ -2654,7 +2710,7 @@ The Sewer Pros
 └── Resources
 ```
 
-These major entities connect through approved page relationships rather than uncontrolled permutations.
+These major entities connect through deliberately published page relationships rather than uncontrolled permutations.
 
 ---
 
@@ -2763,13 +2819,13 @@ Defines how site information relates
 ```text
 04-master-page-build-list.md
 ↓
-Defines which pages are actually approved
+Defines which pages are selected for production publication and indexation
 ```
 
 ```text
 05-url-routing-strategy.md
 ↓
-Defines how approved pages are routed
+Defines how production pages are routed
 ```
 
 ```text
@@ -2822,7 +2878,7 @@ Canonical Entities
 ↓
 Information Architecture
 ↓
-Approved Page Inventory
+Production Page Inventory
 ↓
 URL Architecture
 ↓

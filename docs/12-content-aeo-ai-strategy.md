@@ -3,7 +3,7 @@
 **Document:** `12-content-aeo-ai-strategy.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Content & Answer Visibility Strategy
+**Status:** Active Content & Answer Visibility Strategy
 **Document Role:** Content creation, Answer Engine Optimization, AI-search visibility, question architecture, entity clarity, factual sourcing, and content-production source of truth
 **Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
 
@@ -81,6 +81,45 @@ Search Accessibility
 =
 Search + Answer + AI Visibility
 ```
+
+---
+
+# 2A. Build-First Content and AEO Model
+
+Content strategy should accelerate learning and production without requiring a separate permission step before research, outlining, drafting, template creation, or page development.
+
+Claude, content systems, and developers may:
+
+* research questions, entities, topics, services, audiences, and markets
+* create content briefs and outlines
+* draft direct answers, FAQs, comparisons, resources, and landing-page content
+* build page-family templates and reusable answer components
+* generate bounded candidate-page records
+* implement local or protected-preview pages
+* prepare metadata, schema, internal links, and conversion paths
+* run factual, editorial, SEO, AEO, duplication, and accessibility QA
+
+before every candidate is selected for production.
+
+The workflow must keep these states separate:
+
+```text
+RESEARCH / DRAFT
+Content may be explored, sourced, written, and improved.
+
+BUILD / QA
+Content may be implemented and reviewed locally or in a protected preview.
+
+PUBLICATION
+A page is deliberately included on the production website.
+
+INDEXATION
+A published page is deliberately exposed to search and answer systems.
+```
+
+Publication and indexation require quality and factual readiness. They do not control whether legitimate content work may begin.
+
+Business truth remains strict at every stage. AI must not fabricate services, markets, offices, claims, costs, timing, equipment, certifications, repair capabilities, or local facts.
 
 ---
 
@@ -209,7 +248,7 @@ AI visibility should result from the quality and accessibility of the primary we
 
 # 8. Current Google Generative Search Principle
 
-Google's current guidance states that normal SEO best practices remain relevant to generative AI features such as AI Overviews and AI Mode. Google specifically advises against producing separate pages for every possible query variation merely to target generative responses.
+Current Google guidance states that normal SEO best practices remain relevant to generative AI features such as AI Overviews and AI Mode. Google specifically advises against producing separate pages for every possible query variation merely to target generative responses.
 
 This aligns directly with The Sewer Pros architecture:
 
@@ -223,7 +262,7 @@ Many Query-Variant Pages
 
 # 9. Google AEO/GEO Principle
 
-Google's current guidance explicitly treats AEO and GEO as terminology describing optimization for AI/search experiences rather than a fundamentally separate replacement for SEO. It recommends focusing on useful, unique content and established SEO fundamentals rather than AI-search "hacks."
+Current Google guidance explicitly treats AEO and GEO as terminology describing optimization for AI/search experiences rather than a fundamentally separate replacement for SEO. It recommends focusing on useful, unique content and established SEO fundamentals rather than AI-search "hacks."
 
 Therefore:
 
@@ -1431,7 +1470,7 @@ Possible differentiation:
 * commercial context
 * relevant municipal information
 * location-specific FAQs
-* neighboring approved areas
+* neighboring verified or strategically selected areas
 * local proof
 
 ---
@@ -1440,7 +1479,7 @@ Possible differentiation:
 
 Local service pages should answer:
 
-> How does this specific service help customers in this specific approved geography?
+> How does this specific service help customers in this specific verified geography?
 
 Required dimensions:
 
@@ -1571,7 +1610,7 @@ Structure should help humans first.
 
 Do not break content into artificially tiny sections solely because someone claims AI systems require "chunks."
 
-Google's current guidance explicitly states that special content chunking is not required for its generative search features and that page length should follow user need rather than an artificial AI formula.
+Current Google guidance explicitly states that special content chunking is not required for its generative search features and that page length should follow user need rather than an artificial AI formula.
 
 ---
 
@@ -1689,7 +1728,7 @@ Structured data supports entity clarity and eligible search features.
 
 It is not a special AI-ranking trick.
 
-Google's current generative-search guidance states that no special structured-data markup is required for its AI features.
+Current Google generative-search guidance states that no special structured-data markup is required for its AI features.
 
 Detailed implementation belongs in:
 
@@ -1766,7 +1805,7 @@ Relevant images can strengthen:
 * visual search
 * AI-assisted search experiences
 
-Google's current generative-search guidance specifically recommends useful high-quality images and video where they improve the content.
+Current Google generative-search guidance specifically recommends useful high-quality images and video where they improve the content.
 
 ---
 
@@ -1832,7 +1871,7 @@ Claude may assist with:
 * schema drafts
 * QA
 
-Claude does not independently authorize facts or pages.
+Claude may research, outline, draft, and help build pages. It must not invent business facts or independently place pages into production publication or indexation.
 
 ---
 
@@ -1882,39 +1921,40 @@ Automatic Indexation
 
 # 98. Content Production Workflow
 
-Every substantial page should move through:
+Every substantial page should move through an iterative workflow:
 
 ```text
-1. Page Authorization
+1. Opportunity or Page Concept
 2. Intent Definition
 3. Entity Mapping
 4. Research
 5. Source Capture
 6. Content Brief
 7. Draft
-8. Business-Fact Validation
-9. Factual QA
-10. SEO / AEO QA
-11. Conversion QA
-12. Internal-Link QA
-13. Final Approval
-14. Build
-15. Technical QA
+8. Build / Implementation
+9. Business-Fact Validation
+10. Factual QA
+11. SEO / AEO QA
+12. Conversion QA
+13. Internal-Link QA
+14. Technical QA
+15. Production Readiness Review
 16. Publication
-17. Measurement
+17. Indexation When Qualified
+18. Measurement and Improvement
 ```
+
+Steps may overlap or repeat. The sequence is a quality workflow, not a pre-build permission gate.
 
 ---
 
-# 99. Page Authorization Before Research
+# 99. Research and Drafting May Precede Publication Selection
 
-Do not invest in full production of a page unless:
+Research, entity mapping, briefs, drafts, templates, and protected-preview builds may proceed whenever they advance the project.
 
-```text
-04-master-page-build-list.md
-```
+`04-master-page-build-list.md` controls whether a page enters production publication and indexation. It must not be used as a permission gate before content work can begin.
 
-authorizes it or the research has explicitly been commissioned for future evaluation.
+Teams should still use prioritization and evidence to avoid wasting effort. That is a production-management decision, not a prohibition on research or development.
 
 ---
 
@@ -2296,7 +2336,7 @@ Avoid making core service information dependent on:
 
 # 119. Google AI Crawl Strategy
 
-Google's current guidance states that pages must be crawlable and eligible for normal Search indexing to participate in its generative Search experiences.
+Current Google guidance states that pages must be crawlable and eligible for normal Search indexing to participate in its generative Search experiences.
 
 Therefore:
 
@@ -2369,7 +2409,7 @@ llms.txt
 
 or similar AI-specific files.
 
-Google's current generative-search guidance states that it does not use `llms.txt` or special AI text files for visibility in Google Search.
+Current Google generative-search guidance states that it does not use `llms.txt` or special AI text files for visibility in Google Search.
 
 If such a file is later adopted for another ecosystem, it should be treated as an optional integration rather than the foundation of AEO.
 
@@ -2395,7 +2435,7 @@ Do not replace normal web architecture with speculative AI protocols.
 
 # 125. Sitemap Strategy
 
-Only approved indexable pages should appear in the sitemap.
+Only canonical, published, indexable pages should appear in the sitemap.
 
 AI-search visibility must follow the same selective publishing policy as traditional SEO.
 
@@ -2405,7 +2445,7 @@ Do not expose the entire opportunity matrix simply because AI crawlers exist.
 
 # 126. Canonical Strategy
 
-AI and traditional search systems should encounter one canonical URL for each approved intent.
+AI and traditional search systems should encounter one canonical URL for each published intent.
 
 Avoid:
 
@@ -2425,7 +2465,7 @@ for the same page.
 
 # 127. Google Generative AI Measurement
 
-Google's current guidance includes a Generative AI performance report in Search Console for measuring how site content performs in its generative Search experiences.
+Current Google guidance includes a Generative AI performance report in Search Console for measuring how site content performs in its generative Search experiences.
 
 Where available for the production property, include this in ongoing reporting.
 
@@ -3008,12 +3048,12 @@ Precision is a strategic advantage.
 
 ---
 
-# 161. Project Content Approval Gate
+# 161. Production Content and Indexation Readiness
 
-Before publication:
+Before production publication or indexation:
 
 ```text
-Approved Page?
+Production Publication State?
 +
 Correct Intent?
 +
@@ -3032,11 +3072,13 @@ Internal Links?
 Conversion Path?
 +
 Technical SEO?
++
+Indexation State?
 =
-Publish
+Publish / Index as Documented
 ```
 
-Any critical failure should stop publication.
+Any critical failure should stop production publication or indexation until corrected. It should not prevent unrelated research, drafting, template work, or development.
 
 ---
 
@@ -3156,7 +3198,7 @@ Use AI visibility data as an optimization input when available.
 
 ### Rule 29
 
-Optimize existing pages before automatically creating more pages.
+Optimize existing pages before automatically publishing or indexing more pages. New drafts and candidates may still be developed.
 
 ### Rule 30
 
@@ -3209,8 +3251,10 @@ The governing content principle is:
 ```text
 Answer Clearly.
 Explain Deeply.
+Build Iteratively.
 Verify Everything.
-Publish Selectively.
+Publish Deliberately.
+Index Selectively.
 ```
 
 The governing AEO principle is:

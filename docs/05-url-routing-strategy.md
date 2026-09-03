@@ -3,7 +3,7 @@
 **Document:** `05-url-routing-strategy.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Routing Authority
+**Status:** Active Routing Authority
 **Document Role:** Canonical URL, slug, route-family, redirect, and route-generation source of truth
 **Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
 
@@ -39,7 +39,7 @@ It governs:
 
 This document answers:
 
-> **When a page is approved, what is its one canonical URL and how should Next.js generate it?**
+> **When a page is developed, what stable pathname should it use—and when it is published, what is its one canonical production URL?**
 
 ---
 
@@ -54,11 +54,11 @@ Defines how pages relate conceptually
 
 04-master-page-build-list.md
 ↓
-Defines which pages are authorized
+Tracks page lifecycle, production publication, and indexation state
 
 05-url-routing-strategy.md
 ↓
-Defines the canonical route for each authorized page
+Defines the stable pathname pattern and production canonical route
 
 06-master-service-registry.md
 +
@@ -66,12 +66,43 @@ Defines the canonical route for each authorized page
 ↓
 Provide canonical service/location identifiers and slugs
 
-Next.js Approved Page Registry
+Next.js Route Registry
 ↓
-Implements the approved routes
+Implements environment-filtered development, preview, and production routes
 ```
 
-A route must not exist simply because its pathname can be calculated.
+A production route must not exist simply because its pathname can be calculated. A candidate pathname may be generated and registered for development or protected preview without becoming public, canonical, or indexable.
+
+---
+
+# 2A. Build-First Routing Model
+
+Routing must support implementation without turning every development route into a production URL.
+
+The route registry should distinguish:
+
+```text
+CANDIDATE / DRAFT
+May be generated, built, and reviewed locally or in a protected preview.
+
+BUILD-READY
+Has the content and dependencies needed for implementation or QA.
+
+PUBLISHED
+Is deliberately included in the production route collection.
+
+INDEXABLE / NOINDEX
+Controls search exposure separately from publication.
+
+DEFERRED / RETIRED
+Remains outside active production generation unless its documented state changes.
+```
+
+The exact status field names must match `04-master-page-build-list.md`. This document defines routing behavior, not a competing status vocabulary.
+
+Service, location, audience, commercial, and opportunity data may support candidate-route generation in bounded development workflows. They must not automatically populate the production route collection.
+
+Pre-build permission gates must not be added to pathname helpers, route registries, `generateStaticParams()`, CI, or validation. These systems should validate route integrity and filter environment exposure—not prevent legitimate components, drafts, or candidate routes from being created.
 
 ---
 
@@ -199,7 +230,7 @@ export default nextConfig
 
 The project remains static-export-first.
 
-Next.js static export generates static output for prebuilt routes, while `generateStaticParams()` can provide the approved parameter set for dynamic App Router segments.
+Next.js static export generates static output for prebuilt routes, while `generateStaticParams()` can provide an environment-filtered parameter set for dynamic App Router segments. Development or protected-preview builds may include registered candidates; production builds must include only the deliberately published route collection.
 
 ---
 
@@ -235,7 +266,7 @@ The final production-domain decision will be confirmed through the migration pla
 
 # 8. Global Route Families
 
-The approved route families are:
+The supported route families are:
 
 ```text
 /
@@ -297,7 +328,7 @@ The approved route families are:
 /resources/{resource}/
 ```
 
-Future resource topic hubs may introduce additional nested resource architecture only after approval.
+Future resource topic hubs may be modeled and developed within this pattern. They enter the production route collection only when selected in the Master Page Build List.
 
 ---
 
@@ -327,7 +358,7 @@ accessibility
 reviews
 ```
 
-if those pages are approved.
+if those pages are selected for production.
 
 No market ID, service alias, or other entity may use a root slug that conflicts with a reserved segment.
 
@@ -486,7 +517,7 @@ Do not independently regenerate location slugs inside page components.
 
 # 15. Canonical Location Path Is Authoritative
 
-Every approved location should have a canonical path stored in the location registry.
+Every canonical location record should have a stable pathname value or pathname input stored in the location registry. That value may support development before a standalone location page is published.
 
 Example:
 
@@ -524,9 +555,9 @@ Examples:
 /st-louis-mo/st-louis-city/tower-grove-south/
 ```
 
-These routes should only exist when explicitly approved by the Master Page Build List.
+These routes may be developed as registered candidates, but they should enter the production route collection only when selected by the Master Page Build List.
 
-Neighborhood status in the geographic registry alone does not authorize publication.
+Neighborhood status in the geographic registry alone does not authorize publication or indexation.
 
 ---
 
@@ -536,7 +567,7 @@ For location-specific page families, the system should not assume that every loc
 
 Instead:
 
-> **Start with the location's canonical pathname and append the required child segment.**
+> **Start with the canonical pathname of the location and append the required child segment.**
 
 Example location:
 
@@ -748,13 +779,13 @@ Conceptually:
         /hydro-jetting/
 ```
 
-The routing hierarchy should reflect approved entities rather than concatenated keyword strings.
+The routing hierarchy should reflect canonical entities rather than concatenated keyword strings.
 
 ---
 
-# 26. Service + Location Authorization
+# 26. Service + Location Publication Control
 
-A URL being technically valid does not make it approved.
+A URL being technically valid does not make it published or indexable.
 
 For example:
 
@@ -764,11 +795,7 @@ For example:
 
 may be structurally valid.
 
-But it must not exist unless:
-
-`04-master-page-build-list.md`
-
-authorizes it.
+It may exist as a registered candidate in local development or a protected preview. It must not enter the production route, canonical, sitemap, schema, navigation, or indexation systems unless `04-master-page-build-list.md` selects it for production.
 
 This distinction must be enforced programmatically.
 
@@ -815,7 +842,7 @@ is a location.
 
 is a market-specific service.
 
-The approved page registry must determine entity type by the **complete pathname**, not by blindly assuming every second segment is a location.
+The route registry must determine entity type by the **complete pathname**, not by blindly assuming every second segment is a location.
 
 ---
 
@@ -922,7 +949,7 @@ Avoid:
 /for/home-buyers/carlsbad-ca/
 ```
 
-The project's local architecture treats geography as the primary parent for local audience variants.
+The local architecture of the project treats geography as the primary parent for local audience variants.
 
 Canonical model:
 
@@ -1295,7 +1322,7 @@ may appear during user sessions.
 
 They should not create separate canonical URLs.
 
-Canonical metadata should continue to point to the clean approved pathname.
+Canonical metadata should continue to point to the clean production pathname.
 
 ---
 
@@ -1566,7 +1593,7 @@ getResourcePath(resource)
 
 # 65. Prefer Stored Canonical Pathnames
 
-Where practical, the approved page registry should store the final pathname.
+Where practical, the route registry should store the stable pathname.
 
 Example:
 
@@ -1586,7 +1613,7 @@ The application should not repeatedly reconstruct critical URLs from strings in 
 
 # 66. Path Validation
 
-Every approved pathname should pass validation.
+Every registered pathname should pass validation.
 
 Checks should include:
 
@@ -1600,13 +1627,13 @@ Checks should include:
 * no fragments
 * no duplicate pathname
 * valid parent entity
-* approved page record
+* valid route record
 
 ---
 
 # 67. Duplicate Route Detection
 
-The build must fail if two approved page records resolve to the same pathname.
+Route validation must fail if two registered page records resolve to the same pathname.
 
 Example conflict:
 
@@ -1664,7 +1691,7 @@ could represent a nested geographic page.
 
 represents a service + location page.
 
-The system must resolve page identity using the approved pathname registry rather than trying to infer meaning from segment count alone.
+The system must resolve page identity using the validated route registry rather than trying to infer meaning from segment count alone.
 
 ---
 
@@ -1708,18 +1735,18 @@ without creating overlapping filesystem dynamic-route definitions.
 
 ---
 
-# 72. Catch-All Routing Does Not Mean Catch-All Publishing
+# 72. Catch-All Routing Does Not Mean Automatic Publishing
 
 This distinction is critical.
 
-A catch-all filesystem route must **not** accept arbitrary URL permutations.
+A catch-all filesystem route must **not** accept arbitrary runtime URL permutations.
 
-The catch-all exists only to resolve paths in the approved page registry.
+The catch-all exists only to resolve registered paths from the environment-appropriate route collection.
 
 Conceptual logic:
 
 ```ts
-const page = getApprovedPageByPathname(pathname)
+const page = getRouteRecordByPathname(pathname)
 
 if (!page) {
   notFound()
@@ -1728,19 +1755,19 @@ if (!page) {
 
 The filesystem may technically recognize the pattern.
 
-The page registry determines whether the path actually exists.
+The route registry and current environment determine whether the path actually exists.
 
 ---
 
 # 73. Static Parameter Generation
 
-The market catch-all should receive only approved parameter sets.
+The market catch-all should receive only parameter sets allowed for the current environment.
 
 Conceptually:
 
 ```ts
 export function generateStaticParams() {
-  return approvedMarketPages.map((page) => ({
+  return getRoutesForEnvironment().map((page) => ({
     market: page.marketSlug,
     segments: page.routeSegments,
   }))
@@ -1845,9 +1872,9 @@ getPageByRoute({
 })
 ```
 
-The lookup should return the approved page record.
+The lookup should return the registered page record for the current environment.
 
-It should not create a page object when no approved record exists.
+It should not invent a page object at request time when no registered record exists.
 
 ---
 
@@ -1874,17 +1901,17 @@ It should return Not Found.
 
 # 78. Static Export Requirement
 
-Because the project uses static export, authorized dynamic routes need to be known during build generation.
+Because the project uses static export, the dynamic routes for each environment need to be known during build generation.
 
 Next.js static exports generate static files for the prebuilt route set.
 
-This reinforces the project rule that the approved page registry must exist before large-scale route generation.
+This reinforces the project rule that route generation must consume a defined, validated collection. Candidate records may be generated for development; the production collection must remain deliberately filtered.
 
 ---
 
 # 79. Canonical Metadata
 
-Every indexable page should use its approved pathname when generating canonical metadata.
+Every indexable page should use its stable production pathname when generating canonical metadata. Draft and protected-preview routes must not emit themselves as production canonical URLs.
 
 Conceptually:
 
@@ -2210,7 +2237,7 @@ A page may technically have a route without being indexable.
 Example:
 
 ```text
-launch_pending_validation
+validation-pending
 ```
 
 may be built for preview/QA.
@@ -2225,29 +2252,27 @@ Indexation status belongs to the page record.
 
 ---
 
-# 97. Noindex Is Not a Permanent Architecture Substitute
+# 97. Noindex Is Not a Permanent Quality Substitute
 
-Do not create thousands of speculative routes and simply mark them `noindex`.
+Candidate and draft routes may be built locally or in protected previews. A deliberately published utility, campaign, or validation-pending page may also use `noindex` when the page registry requires it.
+
+Do not publish thousands of speculative or low-value routes and treat `noindex` as a permanent substitute for prioritization, differentiation, or quality.
 
 Preferred:
 
 ```text
-Unapproved page
+Candidate or draft
 →
-No production route
+Local / protected preview
+→
+Review and improve
+→
+Deliberate publication decision
+→
+Separate indexation decision
 ```
 
-rather than:
-
-```text
-Unapproved page
-→
-Route exists
-→
-noindex
-```
-
-This keeps the production architecture controlled.
+The production architecture should contain only intentionally published routes, whether `indexable` or deliberately `noindex`.
 
 ---
 
@@ -2264,7 +2289,7 @@ services.flatMap((service) =>
 )
 ```
 
-The approved page registry must be the source.
+The environment-filtered route registry must be the source. Raw matrix expansion must never feed the production route collection directly.
 
 ---
 
@@ -2277,15 +2302,19 @@ Location Registry
 +
 Opportunity Matrix
 ↓
+Candidate Route Records
+↓
+Development / Protected Preview
+↓
 Master Page Build List
 ↓
-Approved Page Registry
+Production Route Registry
 ↓
 Canonical Pathname
 ↓
 generateStaticParams()
 ↓
-Static Route
+Static Production Route
 ```
 
 ---
@@ -2331,7 +2360,7 @@ They should generally be handled through:
 * service sections
 * problem-topic clusters
 
-unless later approved as distinct pages.
+unless they are later developed, differentiated, and deliberately selected as distinct production pages.
 
 ---
 
@@ -2427,7 +2456,7 @@ Traffic / backlink / conversion review
 ↓
 Determine replacement
 ↓
-Approve new URL
+Document production URL decision
 ↓
 Create permanent redirect
 ↓
@@ -2546,7 +2575,7 @@ Preferred:
 }
 ```
 
-then resolve the approved pathname centrally.
+then resolve the canonical production pathname centrally.
 
 ---
 
@@ -2764,7 +2793,7 @@ The exact future market slug must be entered into the market registry before rou
 
 # 125. Future Service Expansion
 
-A new approved company-wide service receives:
+A verified company-wide service selected for production receives:
 
 ```text
 /services/{service}/
@@ -2776,7 +2805,7 @@ Local versions may subsequently receive:
 /{canonical-location-path}/{service}/
 ```
 
-only where individually authorized.
+only where individually selected for production.
 
 ---
 
@@ -2788,7 +2817,7 @@ New company-wide audiences receive:
 /for/{audience}/
 ```
 
-only after approval.
+when deliberately selected for production. Candidate audience routes may be developed and reviewed earlier.
 
 Local variants remain:
 
@@ -2824,8 +2853,9 @@ export const pages = [
     id: 'svc-sewer-camera-inspection',
     pageType: 'service',
     pathname: '/services/sewer-camera-inspection/',
-    indexable: true,
-    status: 'launch',
+    buildStatus: 'build-ready',
+    publicationStatus: 'published',
+    indexationStatus: 'indexable',
   },
 
   {
@@ -2833,8 +2863,9 @@ export const pages = [
     pageType: 'location',
     pathname: '/san-diego-ca/carlsbad/',
     marketId: 'san-diego-ca',
-    indexable: true,
-    status: 'launch',
+    buildStatus: 'build-ready',
+    publicationStatus: 'published',
+    indexationStatus: 'indexable',
   },
 
   {
@@ -2845,8 +2876,9 @@ export const pages = [
     marketId: 'san-diego-ca',
     locationId: 'loc-sd-carlsbad',
     serviceId: 'svc-sewer-camera-inspection',
-    indexable: true,
-    status: 'launch',
+    buildStatus: 'build-ready',
+    publicationStatus: 'published',
+    indexationStatus: 'indexable',
   },
 ]
 ```
@@ -2855,7 +2887,7 @@ export const pages = [
 
 # 129. Route Segments Derived From Pathname
 
-For static generation, the application may derive route segments from the approved pathname.
+For static generation, the application may derive route segments from the registered stable pathname.
 
 Example:
 
@@ -2876,7 +2908,7 @@ becomes:
 }
 ```
 
-The approved pathname remains the authority.
+The registered stable pathname remains the authority.
 
 ---
 
@@ -2919,12 +2951,12 @@ It should verify:
 * valid market references
 * valid parent relationships
 * correct page-family namespace
-* approved build status
+* recognized lifecycle, publication, and indexation status
 * redirect conflicts
 
 ---
 
-# 132. Production Build Gate
+# 132. Production Route Validation
 
 The build should fail if:
 
@@ -2933,76 +2965,65 @@ The build should fail if:
 * a local page references an unknown location
 * an audience route uses an invalid audience
 * a market-local route references the wrong market
-* an unapproved page enters route generation
+* a draft, deferred, retired, or candidate page enters the production route collection unexpectedly
 * a pathname violates canonical formatting
 * a redirect conflicts with an active route
 
-Failing the build is preferable to silently publishing broken routing architecture.
+Failing the production build is preferable to silently publishing broken routing architecture. A draft or candidate route being incomplete should not block unrelated development when it remains outside the production collection.
 
 ---
 
 # 133. Sitemap Generation Rule
 
-Only pages satisfying:
+Only pages satisfying both conditions should enter the production sitemap:
 
 ```text
-status = launch
+publicationStatus = published
 AND
-indexable = true
+indexationStatus = indexable
 ```
 
-should enter the production sitemap.
+The exact field names must match `04-master-page-build-list.md`; the separation of publication from indexation is mandatory.
 
-The sitemap should use the exact canonical pathname.
+The sitemap should use the exact production canonical pathname.
 
-Pages with:
-
-```text
-launch_pending_validation
-phase_2
-phase_3
-hold
-research_only
-retired
-```
-
-must not enter the sitemap unless their status changes.
+Candidate, draft, build-ready, deferred, retired, preview-only, and deliberately `noindex` records must not enter the production sitemap unless their documented state changes.
 
 ---
 
-# 134. Route Authorization Rule
+# 134. Environment, Publication, and Indexation Rule
 
-The final route test is:
+The route test is:
 
 ```text
-Does the page exist in
-04-master-page-build-list.md?
+Does a valid route record exist?
+```
+
+If no, the application must not invent one at runtime.
+
+If yes, development and protected-preview environments may build the record according to their configured scope.
+
+For production, ask:
+
+```text
+Does `04-master-page-build-list.md`
+select this record for publication?
 ```
 
 If no:
 
 ```text
-No production route.
+Exclude it from the production route collection.
 ```
 
 If yes:
 
 ```text
-Does its status authorize building?
-```
-
-If no:
-
-```text
-No production route.
-```
-
-If yes:
-
-```text
-Use the canonical pathname defined by
-05-url-routing-strategy.md
-and the approved page record.
+Use the stable pathname defined by
+05-url-routing-strategy.md.
+Then apply the separate indexation state
+to canonicals, robots metadata, sitemap,
+schema, navigation, and internal linking.
 ```
 
 ---
@@ -3242,7 +3263,7 @@ Locations live beneath their parent market.
 
 ### Rule 6
 
-Service + location pages append the service slug to the location's canonical pathname.
+Service + location pages append the service slug to the canonical pathname of the location.
 
 ### Rule 7
 
@@ -3290,7 +3311,7 @@ Aliases and keyword variants do not automatically create routes.
 
 ### Rule 18
 
-The canonical registry controls slugs; implementation must not silently re-slug approved entities.
+The canonical registry controls slugs; implementation must not silently re-slug canonical entities.
 
 ### Rule 19
 
@@ -3302,7 +3323,7 @@ The full matrix must never power automatic route creation.
 
 ### Rule 21
 
-Only the Master Page Build List authorizes routes.
+Only the Master Page Build List selects routes for production publication and indexation.
 
 ### Rule 22
 
@@ -3327,7 +3348,7 @@ Explicit global App Router namespaces
 +
 Registry-resolved market catch-all route
 +
-Approved static parameters
+Environment-filtered static parameters
 ```
 
 Conceptually:
@@ -3391,9 +3412,11 @@ The implementation model is:
 ```text
 Canonical Entity
 +
-Approved Page
+Registered Page Record
 +
-Approved Pathname
+Stable Pathname
++
+Production Publication State
 +
 Static Generation
 +
@@ -3413,5 +3436,5 @@ The presence of:
 
 never creates a URL by itself.
 
-**The Master Page Build List authorizes the page.
-The URL Routing Strategy gives that page its permanent address.**
+**The Master Page Build List controls production publication and indexation.
+The URL Routing Strategy gives each registered page a stable address and each published page its permanent canonical URL.**
