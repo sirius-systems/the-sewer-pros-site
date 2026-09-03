@@ -3,7 +3,7 @@
 **Document:** `15-schema-entity-strategy.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Structured Data and Entity Source of Truth
+**Status:** Active Project-Specific Structured Data and Entity Source of Truth
 **Standards Baseline:** August 14, 2026
 
 ---
@@ -38,7 +38,7 @@ This document does **not** duplicate Site OS Master procedures for:
 
 * structured-data QA workflows
 * automated schema testing
-* release gates
+* release validation and production controls
 * crawler validation
 * prompt methodology
 * implementation sequencing
@@ -47,6 +47,24 @@ This document does **not** duplicate Site OS Master procedures for:
 Site OS Master governs **how schema is implemented and validated**.
 
 This document defines **what The Sewer Pros schema should represent**.
+
+## 1.1 Build-First Schema Governance
+
+Schema development is not a pre-build permission gate. Teams may create typed schema models, JSON-LD components, candidate entity relationships, draft-page markup, and protected-preview implementations before a route is selected for production.
+
+The governing principle is:
+
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+The schema lifecycle has three separate states:
+
+| State | Permitted work | Control |
+|---|---|---|
+| Development | Model entities, implement components, generate draft JSON-LD, validate protected previews | Must use registry-backed and verified facts |
+| Production publication | Emit structured data on a public route | Route must be selected for production in `04-master-page-build-list.md` |
+| Indexation | Use the route as a crawlable canonical entity destination | Route must be explicitly indexable and quality-qualified |
+
+A candidate or noindex page may contain schema for implementation testing, but it must not be used to manufacture public entity prominence, expose withheld routes, or contradict robots, canonical, sitemap, or page-state directives.
 
 ---
 
@@ -200,7 +218,7 @@ IDs should remain stable unless the underlying canonical entity changes.
 
 # 6. Canonical Origin Placeholder
 
-Until the production canonical hostname is formally approved, examples in repository documentation should use:
+Until the production canonical hostname is defined in the project source of truth, examples in repository documentation should use:
 
 ```text
 <CANONICAL_ORIGIN>
@@ -267,7 +285,7 @@ The root organization should normally use:
 
 Additional properties may be added only when verified.
 
-Potential approved properties include:
+Potential verified properties include:
 
 * `legalName`
 * `alternateName`
@@ -334,14 +352,14 @@ Do not create three LocalBusiness entities merely because the company operates i
 * San Diego
 * Las Vegas
 
-A LocalBusiness entity should be created only when the underlying location is verified as a legitimate operating business location that the project has approved for structured-data representation.
+A LocalBusiness entity should be created only when the underlying location is verified as a legitimate operating business location and its public structured-data representation is accurate.
 
 Required verification should include applicable information such as:
 
 * genuine operating location
-* approved business address
-* approved market phone
-* approved hours
+* verified public business address
+* verified public market phone
+* verified operating hours
 * actual relationship to The Sewer Pros
 * public-facing business identity
 * GBP relationship where applicable
@@ -362,7 +380,7 @@ The existence of the St. Louis GBP makes it the strongest candidate for a market
 
 However:
 
-> The GBP itself does not authorize inventing or exposing an address that has not been approved for website publication.
+> The GBP itself does not justify inventing or exposing an address that has not been verified and designated for public website use.
 
 ---
 
@@ -484,7 +502,7 @@ The project contains:
 
 This does **not** mean 579 `Place` entities must be emitted sitewide.
 
-Structured data should represent locations that are relevant to the page and approved architecture.
+Structured data should represent locations that are relevant to the page, supported by the location registry, and appropriate for the route's development, production, and indexation states.
 
 The geographic registry is a data source.
 
@@ -494,7 +512,7 @@ It is not a mandate to create a giant sitewide geographic entity graph.
 
 # 17. Primary Service Entity Model
 
-Each canonical approved service should be represented as a `Service`.
+Each registry-listed canonical service used in the site architecture should be represented as a `Service`.
 
 Example:
 
@@ -569,7 +587,7 @@ Pipe Camera Inspection
 Sewer Video Camera Inspection
 ```
 
-unless they represent approved distinct services.
+unless the Master Service Registry defines them as distinct services.
 
 Synonyms belong in content/entity attributes where appropriate, not automatically as separate entities.
 
@@ -594,7 +612,7 @@ category
 termsOfService
 ```
 
-Only use properties supported by actual visible page content and approved business facts.
+Only use properties supported by actual visible page content and documented business facts.
 
 ---
 
@@ -660,8 +678,8 @@ The schema graph should prioritize:
 
 * canonical services
 * primary markets
-* approved location pages
-* approved service + location pages
+* published location pages
+* published service + location pages
 * meaningful page-level relationships
 
 Do not turn the entire research matrix into a massive JSON-LD payload.
@@ -937,7 +955,7 @@ Organization
 ContactPoint
 ```
 
-Do not place unapproved phone numbers, emails, or physical addresses into schema.
+Do not place unverified or nonpublic phone numbers, emails, or physical addresses into schema.
 
 ---
 
@@ -955,7 +973,7 @@ and optionally:
 ItemList
 ```
 
-to describe the visible list of approved service pages.
+to describe the visible list of published service pages.
 
 Example structure:
 
@@ -987,7 +1005,7 @@ with an:
 OfferCatalog
 ```
 
-for major approved services.
+for major verified canonical services.
 
 Schema.org explicitly supports `hasOfferCatalog` for organizations and services.
 
@@ -1086,7 +1104,7 @@ The Sewer Pros Services Available in St. Louis
 
 # 39. Location Page Schema
 
-Approved location pages should describe the actual geographic entity.
+Location pages selected for production should describe the actual geographic entity.
 
 Example:
 
@@ -1136,7 +1154,7 @@ LocalBusiness entities.
 
 Schema.org `Audience` may be used where it provides genuine semantic value.
 
-Potential approved audiences include:
+Potential verified target audiences include:
 
 * homeowners
 * home buyers
@@ -1260,7 +1278,7 @@ Las Vegas
 
 # 46. Industry Audience Entities
 
-If approved commercial pages target industries such as:
+If production commercial pages target verified industries such as:
 
 * restaurants
 * hospitality
@@ -1343,7 +1361,7 @@ Person
 
 may be used.
 
-If organizational authorship is the actual approved editorial model:
+If organizational authorship is the actual documented editorial model:
 
 ```text
 Organization
@@ -1668,7 +1686,7 @@ This is a display/content issue separate from review rich-result eligibility.
 
 # 63. LocalBusiness Type Selection
 
-If a verified physical branch is approved, start with the most accurate legitimate LocalBusiness subtype.
+If a physical branch is verified and intended for public entity representation, start with the most accurate legitimate LocalBusiness subtype.
 
 Schema.org includes:
 
@@ -1701,7 +1719,7 @@ rather than general plumbing or repair.
 
 Therefore:
 
-> Use `Plumber` only if business classification, actual services, local entity representation, and approved brand positioning support that type.
+> Use `Plumber` only if business classification, actual services, local entity representation, and documented brand positioning support that type.
 
 Otherwise use a more neutral accurate type such as:
 
@@ -1727,7 +1745,7 @@ Service: Pipe Bursting
 Service: Sewer Lining
 ```
 
-unless those services are formally approved in:
+unless those services are formally added to:
 
 `06-master-service-registry.md`
 
@@ -1775,7 +1793,7 @@ Therefore do not place invisible claims in JSON-LD such as:
 * hidden testimonials
 * fabricated locations
 * unsupported pricing
-* unapproved certifications
+* unsupported certifications
 
 ---
 
@@ -1834,13 +1852,13 @@ Do not populate all 18 services plus hundreds of long-tail topics without a clea
 
 # 70. Organization Description
 
-The Organization description should reinforce approved positioning.
+The Organization description should reinforce documented positioning.
 
 Conceptual example:
 
 > The Sewer Pros provides independent sewer inspection, sewer camera diagnostics, sewer cleaning, hydro jetting, drain cleaning, sewer line locating, pre-purchase sewer inspections, and commercial sewer and drain services.
 
-Do not mention repair or replacement as company services unless approved.
+Do not mention repair or replacement as company services unless they are formally added to the Master Service Registry and Decisions & Change Log.
 
 ---
 
@@ -1876,7 +1894,7 @@ use:
 name
 ```
 
-for the approved public brand and:
+for the verified public brand and:
 
 ```text
 legalName
@@ -1890,7 +1908,7 @@ Do not guess the legal business name.
 
 # 73. Logo Entity
 
-The organization should reference the approved production logo.
+The organization should reference the selected production logo.
 
 Potential implementation:
 
@@ -1899,8 +1917,8 @@ Potential implementation:
   "logo": {
     "@type": "ImageObject",
     "@id": "<CANONICAL_ORIGIN>/#logo",
-    "url": "<APPROVED_LOGO_URL>",
-    "contentUrl": "<APPROVED_LOGO_URL>"
+    "url": "<PRODUCTION_LOGO_URL>",
+    "contentUrl": "<PRODUCTION_LOGO_URL>"
   }
 }
 ```
@@ -2006,9 +2024,9 @@ PostalAddress
 when the address is:
 
 * accurate
-* approved
+* verified
 * legitimately associated with the entity
-* appropriate for public publication
+* designated for public publication
 
 Do not expose:
 
@@ -2018,7 +2036,7 @@ Do not expose:
 * mailbox locations
 * coworking addresses
 
-unless they are legitimately approved as business locations and comply with applicable platform requirements.
+unless they are verified as legitimate business locations, designated for public use, and comply with applicable platform requirements.
 
 ---
 
@@ -2282,27 +2300,33 @@ Benefits include:
 * easier QA
 * safer refactoring
 
-Do not allow the schema layer to create new services or locations outside approved registries.
+Do not allow the schema layer to create services or locations outside the authoritative registries. Candidate routes may use registry-backed entities during development.
 
 ---
 
 # 90. Schema and Master Page Build List
 
-Only approved public pages should produce page-level structured data intended for indexable routes.
+Candidate routes, draft pages, and protected previews may produce page-level structured data for development and validation.
+
+Public structured data must follow the route's explicit production and indexation states.
 
 The governing relationship is:
 
 ```text
-Master Page Build List
+Registry-Backed Candidate
         ↓
-Approved Route
+Draft Page + Draft Schema
         ↓
-Page Content
+Protected-Preview Validation
         ↓
-Appropriate Schema
+Master Page Build List Production State
+        ↓
+Public Page + Production Schema
+        ↓
+Indexable Canonical Entity Destination When Qualified
 ```
 
-Schema must never be used as a mechanism to expose unapproved programmatic pages.
+The schema layer must never expose withheld programmatic routes through production graphs, sitemaps, canonical references, or public entity links. A published `noindex` route may contain accurate schema, but it should not be treated as a primary canonical entity destination.
 
 ---
 
@@ -2315,7 +2339,7 @@ controls:
 * canonical service names
 * service distinctions
 * aliases
-* approved capabilities
+* documented actual capabilities
 * prohibited repair positioning
 
 Schema should inherit service definitions from that registry.
@@ -2617,7 +2641,7 @@ During migration, preserve continuity wherever possible for:
 * GBP relationship
 * important canonical service URLs
 
-If URLs change, entity IDs should follow the approved canonical migration strategy.
+If URLs change, entity IDs should follow the documented canonical migration strategy.
 
 See:
 
@@ -2649,7 +2673,7 @@ Consistency should focus on factual business identity rather than mechanically f
 The existing St. Louis GBP should eventually be reconciled against:
 
 * business name
-* approved website URL
+* verified canonical website URL
 * phone
 * public address if applicable
 * business category
@@ -2682,9 +2706,11 @@ Do not automatically change schema merely because a GBP is discussed.
 
 # 108. Future Las Vegas GBP
 
-Use the same process for Las Vegas.
+Las Vegas is an active operational market and does not require a separate website, content, schema-development, or SEO gate.
 
-The addition of a future GBP should be treated as an entity-architecture change, not merely a marketing profile update.
+No current Las Vegas GBP has been identified. Represent Las Vegas through `Place`, `Service.areaServed`, and relevant `WebPage` relationships unless a legitimate local business entity is verified.
+
+If an eligible Las Vegas GBP is created later, use the same verification and change-documentation process defined for San Diego. The addition of a future GBP should be treated as an entity-architecture change, not merely a marketing profile update.
 
 ---
 
@@ -2850,7 +2876,7 @@ should not be treated as central public entity destinations.
 
 Schema may still technically exist on such pages, but the project should not depend on noindexed URLs as canonical entity identifiers.
 
-Primary entities should resolve to approved crawlable canonical URLs.
+Primary entities should resolve to published, crawlable canonical URLs selected as indexable entity destinations.
 
 ---
 
@@ -2885,7 +2911,7 @@ Examples:
 * canonical domain changes
 * service added
 * service retired
-* repair capabilities approved
+* repair capabilities formally added or changed
 * major schema type changed
 
 ---
@@ -2901,13 +2927,13 @@ The following rules are mandatory:
 5. Use `Service` for services.
 6. Use `Place`/accurate geographic types for markets and locations.
 7. Use `areaServed` to connect services to genuine service areas.
-8. Do not create unapproved repair-service entities.
+8. Do not create repair-service entities outside the Master Service Registry.
 9. Do not invent ratings, addresses, hours, pricing, or certifications.
 10. Do not use self-serving review markup to pursue review stars.
 11. Do not rely on FAQ schema for Google FAQ rich results.
 12. Schema must match visible content.
 13. Schema must follow canonical service and location registries.
-14. Approved routes come from the Master Page Build List.
+14. Production publication and indexation states come from the Master Page Build List; schema development may begin earlier.
 15. Structured data must reinforce the site's entity architecture, not replace it.
 
 ---
@@ -3019,7 +3045,7 @@ without incorrectly concluding that The Sewer Pros:
 * operates a physical office in every service area
 * repairs sewer lines
 * replaces sewer lines
-* provides services not approved by the business
+* provides services not actually offered or documented by the business
 
 ---
 
@@ -3036,7 +3062,7 @@ VERIFIED SERVICES
         ↓
 VERIFIED MARKETS
         ↓
-APPROVED LOCATIONS
+REGISTRY-SUPPORTED LOCATIONS
         ↓
 REAL AUDIENCES
         ↓
@@ -3056,3 +3082,4 @@ New Fake Entity
 The final standard is:
 
 > **Use structured data to make The Sewer Pros easier for search engines, answer engines, AI systems, and other machines to understand accurately—while maintaining one coherent business identity, truthful service relationships, legitimate geographic relationships, and strict separation between service-area SEO pages and actual physical business entities.**
+
