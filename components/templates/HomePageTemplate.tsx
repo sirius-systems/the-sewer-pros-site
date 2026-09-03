@@ -125,7 +125,11 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       ? (['dense'] as const)
       : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
-    'sparse',
+    // The final CTA is `split`, not `panel`, and CtaSection gives
+    // `split` DENSE density on a muted surface (panel is the sparse
+    // brand one). This entry has to say what actually renders, or
+    // sectionRhythmIssues() checks a page that was never built.
+    'dense',
   ]
 
   return (
@@ -210,8 +214,6 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       <ReviewCarousel density="standard" />
 
-      <LeadFormSection />
-
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
           title={content.relatedTitle ?? 'Guides and resources'}
@@ -224,10 +226,23 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         <FaqSection entries={content.faq} columns={2} />
       )}
 
+      {/*
+        The form moved into the final CTA's proof slot, which is what
+        `split` exists for: content at lg:col-span-7, proof at
+        lg:col-span-5. The bare mid-page call above was removed in the
+        same change, since opening the gate would otherwise have
+        rendered the same form twice on one page.
+
+        Note this drops the page's second brand surface: `split`
+        renders on `muted`, where `panel` used `brand`. AuthorityBand
+        remains the only brand section, which keeps 18 §11's rule
+        against stacking dark sections satisfied by a wider margin.
+      */}
       <CtaSection
-        variant="panel"
-        title={content.cta?.title ?? 'Find out what is happening in the line'}
+        variant="split"
+        title={content.cta?.title ?? 'Schedule a sewer camera inspection.'}
         body={content.cta?.body}
+        proof={<LeadFormSection bare density="standard" />}
       />
     </PageShell>
   )
