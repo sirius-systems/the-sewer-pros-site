@@ -1685,6 +1685,8 @@ unless explicitly verified and documented in the business source of truth.
 
 Competitor use of emergency language does not justify The Sewer Pros using it.
 
+`DEC-088` does not soften this rule. It approves same-day *availability* language only, hedged as "sometimes available" within published Monday–Friday hours, and authorizes no emergency, 24/7, dispatch, or response-time claim.
+
 ---
 
 # 78. Pricing Guardrail
@@ -1699,6 +1701,8 @@ Do not:
 unless explicitly offered and documented by the business.
 
 Pricing is a business decision, not a CRO assumption.
+
+`DEC-088` supplies the documented exception for one item on this list: free estimates are owner-confirmed and approved. It authorizes no pricing figure, no discount, and no other free-service claim.
 
 ---
 
@@ -1737,6 +1741,10 @@ for inspection or cleaning unless the business actually provides that offer.
 A sewer camera inspection itself may be a paid diagnostic service.
 
 Do not unintentionally devalue the company's core service.
+
+`DEC-088` is that offer. Free estimates are owner-confirmed and approved for the homepage confidence module.
+
+The approval is scoped: `'free estimates'` remains in `CLAIMS_REQUIRING_VERIFICATION`, which still governs every appearance outside that module, and the sewer camera inspection itself remains a paid diagnostic service.
 
 ---
 

@@ -692,6 +692,28 @@ Never invent:
 
 All factual claims must come from documented business data or verified research.
 
+## Verified Exception — DEC-088
+
+`DEC-088` verifies and authorizes exactly two of the claims listed above:
+
+* **Free estimates** — available; ask before scheduling a sewer inspection or cleaning.
+* **Same-day availability** — sometimes available Monday–Friday, 8:00am–4:00pm, depending on scheduling.
+
+These are project-specific exceptions to the internal default stated above, granted on owner confirmation recorded 2026-09-01. They are not exceptions to any external platform policy.
+
+`DEC-088` does **not** authorize:
+
+* 24/7 service
+* emergency service or emergency dispatch
+* guaranteed same-day arrival
+* any specific response time
+* financing
+* warranty
+
+Same-day phrasing must remain hedged — "sometimes available," never "guaranteed," and never implying weekend or 24-hour coverage. It describes availability rather than promising it.
+
+The approval is scoped to the homepage confidence module. `'same-day service'` and `'free estimates'` deliberately remain in `CLAIMS_REQUIRING_VERIFICATION`, which continues to govern every other appearance — service pages, market pages, and CTAs included.
+
 ---
 
 # 22. Experience Claims
