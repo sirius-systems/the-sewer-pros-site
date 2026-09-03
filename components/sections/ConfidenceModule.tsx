@@ -1,5 +1,4 @@
 import { Section, type SectionDensity } from '@/components/ui'
-import { SectionHeading } from './SectionHeading'
 import { verifiedOffers } from '@/data/business/offers'
 
 /**
@@ -44,12 +43,26 @@ export function ConfidenceModule({
   if (!confidenceModuleRenders()) return null
 
   return (
-    <Section density={density} surface="muted" labelledBy={id}>
-      <SectionHeading id={id} level="h3" title="Good to know" />
+    <Section density={density} labelledBy={id}>
+      {/*
+        The visible "Good to know" heading was removed on owner direction.
+        `labelledBy` wires `aria-labelledby` on the section landmark
+        (components/ui/Section.tsx), so the id has to keep resolving to a
+        real element or the landmark loses its accessible name. An
+        `sr-only` heading keeps the name without the visible label,
+        matching the `sr-only` convention already used in
+        ReviewCarousel.tsx.
+      */}
+      <h2 id={id} className="sr-only">
+        Good to know
+      </h2>
 
-      <ul className="mt-6 grid gap-6 sm:grid-cols-2">
+      <ul className="grid gap-6 sm:grid-cols-2">
         {verifiedOffers.map((offer) => (
-          <li key={offer.label}>
+          <li
+            key={offer.label}
+            className="rounded-md border border-border bg-surface p-6"
+          >
             <p className="text-sm font-semibold text-foreground">
               {offer.label}
             </p>

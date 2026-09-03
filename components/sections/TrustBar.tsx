@@ -125,17 +125,22 @@ export function TrustBar({
   surface = 'muted',
 }: TrustBarProps = {}) {
   return (
-    <Section density={density} surface={surface} as="aside">
-      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <Section
+      density={density}
+      surface={surface}
+      as="aside"
+      className="border-b border-border"
+    >
+      <ul className="flex flex-nowrap items-center justify-center gap-x-8 gap-y-2 overflow-x-auto">
         {trustStatements.map((statement) => {
           const Icon = TRUST_ICONS[statement.label]
           return (
             <li
               key={statement.label}
-              className="flex items-start gap-3 text-sm leading-6 text-muted-foreground"
+              className="flex shrink-0 items-center gap-2 whitespace-nowrap text-sm leading-6 text-muted-foreground"
             >
               {Icon !== undefined && (
-                <Icon className="mt-0.5 h-5 w-5 shrink-0 text-foreground/70" />
+                <Icon className="h-4 w-4 shrink-0 text-foreground/70" />
               )}
               <span>{statement.label}</span>
             </li>
