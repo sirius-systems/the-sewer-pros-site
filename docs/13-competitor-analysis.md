@@ -5,7 +5,7 @@
 **Repository:** `the-sewer-pros-site`
 **Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
 **Research Snapshot:** August 14, 2026
-**Status:** Project-Specific Competitive Intelligence / Source of Truth
+**Status:** Active Project-Specific Competitive Intelligence / Source of Truth
 
 ---
 
@@ -34,11 +34,41 @@ The analysis is intended to support project-specific decisions involving:
 * conversion architecture
 * content differentiation
 
-This document does **not** replace the reusable competitor-research procedures, workflows, prompts, or validation gates contained in Site OS Master.
+This document does **not** replace the reusable competitor-research procedures, workflows, prompts, or quality-validation standards contained in Site OS Master.
 
 Site OS governs **how competitive research is conducted**.
 
 This document records **what competitive research means specifically for The Sewer Pros**.
+
+## 1.1 Governance Model
+
+Competitor intelligence may initiate or inform:
+
+* search-intent research
+* content briefs
+* page-family templates
+* candidate routes
+* draft pages
+* local or protected-preview builds
+* production and indexation recommendations
+
+It is not a pre-build permission gate.
+
+The governing principle is:
+
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+Competitive evidence must never override the service registry, location registry, verified operating practices, or documented business facts. A competitor page may justify investigation or a candidate draft; it does not by itself justify a new business claim, production publication, or indexation.
+
+Development, publication, and indexation are separate states:
+
+| State | Competitor research may support | Required control |
+|---|---|---|
+| Research and development | Briefs, templates, candidate routes, drafts, protected previews | Verified intent and business relevance |
+| Production publication | A selected, complete route that accurately represents the business | `04-master-page-build-list.md` publication state and release QA |
+| Search indexation | A published page that meets quality, uniqueness, and strategic-value standards | Explicit indexation state and technical directives |
+
+No separate market permission is required to research or build for St. Louis, San Diego, or Las Vegas. All three are operational markets. This does not imply a verified office or Google Business Profile in every market.
 
 ---
 
@@ -99,7 +129,7 @@ The correct distinction is:
 
 > "The company performing the inspection does not benefit financially from recommending a sewer replacement."
 
-That positioning is already supported by The Sewer Pros' existing public messaging, which states that the company does not repair damaged sewer lines and therefore provides an assessment without attempting to sell the customer a repair.
+That positioning is already supported by the existing public messaging of The Sewer Pros, which states that the company does not repair damaged sewer lines and therefore provides an assessment without attempting to sell the customer a repair.
 
 This differentiator should become significantly more prominent in the rebuilt website.
 
@@ -158,7 +188,7 @@ These companies frequently use camera inspection as the first step toward:
 * spot repair
 * sewer replacement
 
-These businesses create one of the strongest opportunities for The Sewer Pros' independent-inspection positioning.
+These businesses create one of the strongest opportunities for the independent-inspection positioning of The Sewer Pros.
 
 ---
 
@@ -204,7 +234,7 @@ The stronger opportunity is specialization.
 
 ---
 
-# 4. The Sewer Pros' Competitive Position
+# 4. Competitive Position of The Sewer Pros
 
 The desired market position is:
 
@@ -226,7 +256,7 @@ Supporting concepts include:
 * sewer inspection for real estate transactions
 * commercial sewer diagnostics
 
-The company's existing St. Louis messaging also establishes experience with sewer lateral programs and states that it is licensed through most applicable municipal sewer lateral programs for submitting reports.
+The existing St. Louis messaging of the company also establishes experience with sewer lateral programs and states that it is licensed through most applicable municipal sewer lateral programs for submitting reports.
 
 This is an especially important St. Louis competitive asset.
 
@@ -462,7 +492,7 @@ This means The Sewer Pros cannot rely solely on:
 
 to capture all pre-purchase intent.
 
-The architecture should also support approved pages around:
+The architecture should also support candidate pages around:
 
 * pre-purchase sewer inspection
 * sewer inspection for home buyers
@@ -671,7 +701,7 @@ Xtreme Drainworks explicitly positions sewer inspections around:
 * pre-hydro-jetting evaluation
 * diagnostic accuracy
 
-This is particularly important because it overlaps heavily with The Sewer Pros' highest-value audience strategy.
+This is particularly important because it overlaps heavily with the highest-value audience strategy of The Sewer Pros.
 
 ### Competitive Threat
 
@@ -716,7 +746,7 @@ Its local architecture also includes community-specific pages such as Bonita and
 
 This illustrates why San Diego cannot be approached as one generic city page.
 
-Approved community-level pages can be valuable when they contain genuine local differentiation.
+Community-level pages can be valuable when they contain genuine local differentiation and are deliberately selected for publication and indexation.
 
 ---
 
@@ -762,14 +792,16 @@ Content should specifically address:
 
 San Diego competitors already employ city/community-level SEO architectures.
 
-The Sewer Pros should therefore develop approved location coverage, but only where:
+The Sewer Pros should therefore research and develop location coverage where:
 
 * search opportunity exists
 * actual service coverage exists
 * unique local content can be produced
-* the route is approved in the Master Page Build List
+* the route can accurately represent the business
 
-Competitor page volume is **not justification for automatic page generation**.
+Candidate routes and protected-preview drafts may be developed before a production decision. Publication and indexation are controlled by the state of the route in the Master Page Build List.
+
+Competitor page volume is **not justification for automatic production publication or indexation**.
 
 ---
 
@@ -803,7 +835,7 @@ Repair
 
 Examples include Zoom Drain, Vegas Drain Masters, Sound Plumbing, and Goettl.
 
-Because The Sewer Pros does not currently have a Las Vegas Google Business Profile, website-based organic visibility and entity development are particularly important during initial market development.
+Las Vegas is an active operational market. Because The Sewer Pros does not currently have a verified Las Vegas Google Business Profile, website-based organic visibility and entity development are particularly important. The lack of a GBP does not create a research, development, publication, or SEO permission gate.
 
 ---
 
@@ -859,7 +891,7 @@ The Sewer Pros can more aggressively own:
 
 **Major specialist and commercial competitor**
 
-Zoom Drain's Las Vegas offering includes:
+The Las Vegas offering of Zoom Drain includes:
 
 * drain cleaning
 * sewer inspections
@@ -885,7 +917,7 @@ Its Las Vegas commercial hydro-jetting content explicitly addresses:
 
 ### Strategic Implication
 
-The Sewer Pros' commercial architecture must be substantially stronger than a generic:
+The commercial architecture of The Sewer Pros must be substantially stronger than a generic:
 
 ```text
 Commercial Sewer Services
@@ -893,7 +925,7 @@ Commercial Sewer Services
 
 page.
 
-Potential approved commercial audience/topic combinations should include property-specific needs rather than simply repeating residential content.
+Candidate commercial audience/topic combinations should include property-specific needs rather than simply repeating residential content.
 
 ---
 
@@ -973,7 +1005,7 @@ The Sewer Pros should compete on:
 
 A customer seeking the cheapest introductory drain offer may not be the ideal strategic customer.
 
-A customer seeking a reliable assessment before making a major sewer decision is substantially more aligned with The Sewer Pros' positioning.
+A customer seeking a reliable assessment before making a major sewer decision is substantially more aligned with the positioning of The Sewer Pros.
 
 ---
 
@@ -1012,7 +1044,7 @@ Priority audience concepts may eventually include:
 * facilities
 * commercial property owners
 
-All audience/service routes still require Master Page Build List approval.
+Audience/service candidates may be researched and built without a pre-build approval step. Production publication and indexation remain controlled by their explicit states in the Master Page Build List.
 
 ---
 
@@ -1115,7 +1147,7 @@ Competitor research reveals several recurring SEO patterns.
 
 Strong competitors generally provide dedicated pages for individual services.
 
-The Sewer Pros should maintain robust canonical pages for all approved services.
+The Sewer Pros should maintain robust canonical pages for registry-listed services selected for production.
 
 ---
 
@@ -1123,13 +1155,13 @@ The Sewer Pros should maintain robust canonical pages for all approved services.
 
 Competitors frequently create community-specific pages.
 
-This is especially visible in San Diego and across Zoom Drain's market sites.
+This is especially visible in San Diego and across the Zoom Drain market sites.
 
 The Sewer Pros should use its location registry and service-location matrix to evaluate similar opportunities.
 
 However:
 
-> Competitor page creation does not equal The Sewer Pros publishing approval.
+> A competitor page may justify research or a candidate build, but it does not determine the production publication or indexation state of The Sewer Pros.
 
 ---
 
@@ -1155,7 +1187,7 @@ It does **not** validate publishing all 10,422 known service × location relatio
 
 The existing matrix remains an opportunity dataset.
 
-Only approved routes should be produced.
+Candidate routes may be developed in bounded batches. Only routes selected in the Master Page Build List should be published to production, and only quality-qualified routes should be indexable.
 
 ---
 
@@ -1174,7 +1206,7 @@ Strong competitors create content specifically around:
 * commercial hydro jetting
 * commercial inspections
 
-Zoom Drain's Las Vegas commercial architecture and Arrow's San Diego property-management content demonstrate the value of audience-specific commercial content.
+The Las Vegas commercial architecture of Zoom Drain and the San Diego property-management content of Arrow demonstrate the value of audience-specific commercial content.
 
 The Sewer Pros should not bury commercial services in one paragraph on a residential page.
 
@@ -1333,9 +1365,9 @@ The existence of those pages does not prove that each route:
 * ranks
 * converts
 * creates value
-* complies with The Sewer Pros' quality standard
+* complies with the quality standard of The Sewer Pros
 
-The Sewer Pros must maintain the Master Page Build List approval gate.
+The Sewer Pros must use the Master Page Build List as the control plane for production publication and indexation—not as permission to begin research or development.
 
 ---
 
@@ -1618,7 +1650,7 @@ San Diego, California
 Las Vegas, Nevada
 ```
 
-This entity graph should remain more focused than a full-service plumbing competitor's graph.
+This entity graph should remain more focused than the graph of a full-service plumbing competitor.
 
 That specialization is an advantage.
 
@@ -1669,9 +1701,9 @@ and:
 ```text
 Market
     ↓
-Approved Location
+Published Location
     ↓
-Approved Service + Location
+Published Service + Location
     ↓
 Related Audience + Location
 ```
@@ -1898,25 +1930,29 @@ The combination does.
 
 This analysis may generate hundreds or thousands of potential content ideas.
 
-It does **not** authorize their publication.
+Those ideas may proceed into research, briefs, templates, candidate routes, drafts, and protected previews. They do **not** authorize production publication or indexation.
 
 Competitive opportunity follows this process:
 
 ```text
 Competitor Finding
         ↓
-Search Opportunity
+Search Opportunity + Intent
         ↓
-Business Relevance
+Business Relevance + Truth Check
         ↓
-Content Differentiation Test
+Differentiated Candidate / Brief / Draft
         ↓
-Master Page Build List Decision
+Content, Technical, and Release QA
         ↓
-Approved Build
+Master Page Build List Publication State
+        ↓
+Production Publication
+        ↓
+Indexation When Quality-Qualified
 ```
 
-The presence of a competitor page is not sufficient justification to create an equivalent page.
+The presence of a competitor page is not sufficient justification to publish or index an equivalent page. It may be sufficient to investigate the intent and develop a differentiated candidate.
 
 ---
 
@@ -1929,7 +1965,7 @@ When using competitor research during future content creation:
 3. Identify useful topics or entities it covers.
 4. Determine what questions remain unanswered.
 5. Create an original content strategy.
-6. Apply The Sewer Pros' differentiators.
+6. Apply the differentiators of The Sewer Pros.
 7. Use verified local and business facts.
 8. Never copy competitor language.
 9. Never copy competitor page structure verbatim.
@@ -2011,9 +2047,9 @@ Based on the competitive landscape, the following concepts should receive seriou
 * Sewer Cleaning vs. Sewer Repair
 * Does My Sewer Need Cleaning or Repair?
 
-These are recommendations only.
+These are strategic recommendations and valid development candidates.
 
-They become authorized routes only when added to `04-master-page-build-list.md`.
+They become production routes only when selected for publication in `04-master-page-build-list.md`. Indexation is a separate, explicit quality-controlled state.
 
 ---
 
@@ -2078,7 +2114,7 @@ Use the existing:
 
 as opportunity intelligence.
 
-Do not turn the matrix directly into pages.
+Use the matrix for bounded opportunity discovery and candidate generation. Do not convert it into automatic production publication or indexation.
 
 ---
 

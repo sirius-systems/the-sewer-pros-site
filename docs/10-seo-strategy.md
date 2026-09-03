@@ -3,7 +3,7 @@
 **Document:** `10-seo-strategy.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Organic Search Strategy
+**Status:** Active Organic Search Strategy
 **Document Role:** Organic search visibility, keyword-intent, topical authority, indexation, page optimization, content quality, and search-growth source of truth
 **Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
 **Primary Search Platforms:** Google, Bing, AI-assisted search experiences, and downstream search/answer systems
@@ -61,7 +61,7 @@ The SEO objective is not simply:
 
 The objective is:
 
-> **Make The Sewer Pros the clearest, most useful, and most authoritative search entity for sewer inspection, diagnostics, locating, cleaning, hydro jetting, pre-purchase sewer inspections, and commercial sewer/drain services across its approved markets.**
+> **Make The Sewer Pros the clearest, most useful, and most authoritative search entity for sewer inspection, diagnostics, locating, cleaning, hydro jetting, pre-purchase sewer inspections, and commercial sewer/drain services across its three active markets: St. Louis, San Diego, and Las Vegas.**
 
 The governing model is:
 
@@ -84,6 +84,47 @@ Conversion
 =
 Sustainable Organic Growth
 ```
+
+---
+
+# 2A. Build-First SEO Operating Model
+
+SEO should inform research, architecture, content, and development without becoming a permission system that blocks work before it begins.
+
+Claude Code, content systems, and developers may:
+
+* conduct keyword and intent research
+* map opportunities to canonical entities
+* build page-family templates
+* draft service, location, audience, commercial, comparison, and resource content
+* generate bounded candidate-page records
+* build local or protected-preview routes
+* prepare metadata, schema, internal-link, and conversion models
+* run quality, duplication, and cannibalization checks
+
+before every candidate is selected for production.
+
+The SEO system must keep these states separate:
+
+```text
+RESEARCH OPPORTUNITY
+A query, topic, entity relationship, or market need worth evaluating.
+
+DEVELOPMENT
+A template, page, route, or content asset may be drafted, built, and reviewed.
+
+PUBLICATION
+A page is deliberately included on the production website.
+
+INDEXATION
+A published page is deliberately exposed to search engines and answer systems.
+```
+
+Indexation is the primary SEO quality control—not permission to start development.
+
+`04-master-page-build-list.md` tracks lifecycle, publication, and indexation state. Matrices may support research and candidate development, but they must not automatically populate production sitemaps, canonicals, schema, navigation, internal-link discovery, or search indexes.
+
+Business truth remains strict. SEO work must not invent services, service areas, offices, claims, availability, pricing, or repair/replacement capabilities.
 
 ---
 
@@ -172,11 +213,11 @@ The project should follow a people-first publishing model rather than producing 
 
 Google currently states that its systems are designed to prioritize helpful, reliable content created primarily for people, and its spam policies prohibit scaled content created primarily to manipulate rankings.
 
-Google's current guidance also states that using generative AI to assist content production is acceptable, but generating large quantities of pages without adding value can violate scaled-content policies.
+Current Google guidance also states that using generative AI to assist content production is acceptable, but generating large quantities of pages without adding value can violate scaled-content policies.
 
-Bing's current Webmaster Guidelines apply not only to traditional Bing search but also to Bing's Copilot and grounding experiences, making crawlability, indexability, content quality, and search compliance relevant to both search and AI visibility.
+The current Bing Webmaster Guidelines apply not only to traditional Bing search but also to Bing's Copilot and grounding experiences, making crawlability, indexability, content quality, and search compliance relevant to both search and AI visibility.
 
-This directly reinforces the project's existing rule:
+This directly reinforces the existing project rule:
 
 ```text
 Opportunity ≠ Page
@@ -644,7 +685,7 @@ Potential emphasis:
 
 ## Las Vegas
 
-Potential emphasis after operational validation:
+Active-market emphasis:
 
 * new-market authority
 * inspection
@@ -655,18 +696,13 @@ Potential emphasis after operational validation:
 
 ---
 
-# 24. Las Vegas SEO Gate
+# 24. Las Vegas Active-Market SEO Strategy
 
-SEO opportunity does not override business readiness.
+Las Vegas is a confirmed operational market. SEO research, content development, page builds, publication planning, and indexation evaluation may proceed under the same framework used for St. Louis and San Diego.
 
-Las Vegas pages should not make indexable service claims until:
+There is no separate Las Vegas approval or operational gate.
 
-* market operations are confirmed
-* applicable services are confirmed
-* service areas are confirmed
-* contact routing is operational
-
-Research may continue while publication remains gated.
+Page-specific claims must still use verified services, service areas, contact information, and business facts. Those requirements protect accuracy; they do not prevent ordinary SEO development or create a special market hold.
 
 ---
 
@@ -721,7 +757,7 @@ sewer cleaning Carlsbad
 
 The location hub should target broad local entity/service intent.
 
-Specific services may receive dedicated pages only when approved.
+Specific services may receive dedicated production pages when selected in the Master Page Build List. Candidate pages and content drafts may be developed earlier.
 
 ---
 
@@ -743,7 +779,7 @@ sewer camera inspection Carlsbad
 
 ---
 
-# 29. Service + Location Publishing Threshold
+# 29. Service + Location Production and Indexation Readiness
 
 A local service page should exist only when:
 
@@ -753,7 +789,7 @@ A local service page should exist only when:
 * content can be differentiated
 * page will not unnecessarily cannibalize another page
 * conversion value exists
-* Master Page Build List authorizes it
+* Master Page Build List records the intended production and indexation state
 
 ---
 
@@ -935,7 +971,7 @@ Canonical hub:
 /commercial/
 ```
 
-Approved launch commercial services include:
+Current production commercial services include:
 
 ```text
 /commercial/sewer-camera-inspection/
@@ -1446,7 +1482,7 @@ The first paragraph should quickly answer:
 * what problem it addresses
 * why The Sewer Pros is relevant
 
-Avoid long generic introductions before answering the user's intent.
+Avoid long generic introductions before answering the intent of the user.
 
 ---
 
@@ -1555,7 +1591,7 @@ Schema must reflect reality.
 
 Do not create a separate LocalBusiness entity for every SEO location page.
 
-Google's LocalBusiness documentation uses the markup to describe actual business information such as hours and business details.
+The Google LocalBusiness documentation uses the markup to describe actual business information such as hours and business details.
 
 Service-area landing pages should not be used to manufacture artificial business locations.
 
@@ -1583,13 +1619,13 @@ Google provides Organization structured data specifically to help describe organ
 
 The technical goal is:
 
-> Make every approved page easy to discover, crawl, understand, canonicalize, and index while excluding unapproved opportunity data from public search architecture.
+> Make every production indexable page easy to discover, crawl, understand, canonicalize, and index while keeping candidate, draft, and nonindexable opportunity data out of public search discovery.
 
 ---
 
 # 77. Crawlability
 
-Approved pages should be reachable through:
+Published indexable pages should be reachable through:
 
 * navigation
 * hub pages
@@ -1606,7 +1642,7 @@ Do not rely on the sitemap as the only discovery path.
 Only pages satisfying:
 
 ```text
-Approved
+Published
 +
 Complete
 +
@@ -1615,27 +1651,28 @@ Indexable
 
 should be submitted for indexing.
 
+Candidate, draft, and build-ready pages may continue through development and protected-preview QA without being indexable.
+
 Do not index:
 
 * candidates
 * research pages
 * placeholder pages
 * duplicate variants
-* unvalidated Las Vegas pages
 * matrix permutations
 
 ---
 
 # 79. XML Sitemap Rule
 
-The sitemap should contain only canonical, approved, indexable URLs.
+The sitemap should contain only canonical, published, indexable URLs.
 
 Conceptually:
 
 ```ts
-status === 'launch'
+publicationStatus === 'published'
 &&
-indexable === true
+indexationStatus === 'indexable'
 ```
 
 ---
@@ -1646,13 +1683,13 @@ indexable === true
 
 Do not use robots rules as a substitute for sensible route architecture.
 
-Pages that should not exist should generally not be generated.
+Candidate and draft pages may be generated locally or in protected previews. Pages that are not deliberately published must remain outside the production route and search-discovery systems.
 
 ---
 
 # 81. Canonical Strategy
 
-Each approved indexable page should generally self-canonicalize.
+Each published indexable page should generally self-canonicalize.
 
 Example:
 
@@ -1684,7 +1721,7 @@ Canonical host and redirect policies must be consistent.
 
 # 83. 404 Strategy
 
-Unapproved combinations should return:
+Unknown or unpublished production combinations should return:
 
 ```text
 404
@@ -1845,7 +1882,7 @@ Independent inspection without repair-driven upselling
 Where:
 St. Louis
 San Diego
-Las Vegas after validation
+Las Vegas
 
 Who For:
 Homeowners
@@ -1929,7 +1966,7 @@ Actions may include:
 * add internal links
 * improve title
 * improve intent match
-* create a new approved page if distinct intent exists
+* develop a new candidate page and publish it if distinct intent and value are confirmed
 
 ---
 
@@ -1937,13 +1974,13 @@ Actions may include:
 
 Bing Webmaster Tools should be treated as an independent search channel rather than assuming Google optimization automatically covers every Bing opportunity.
 
-Bing's current guidelines specifically describe eligibility across Bing search, Copilot, and grounding results.
+The current Bing guidelines specifically describe eligibility across Bing search, Copilot, and grounding results.
 
 ---
 
 # 96. IndexNow Strategy
 
-The deployment system should evaluate IndexNow integration for notifying participating search engines when approved URLs are:
+The deployment system should evaluate IndexNow integration for notifying participating search engines when published indexable URLs are:
 
 * added
 * updated
@@ -2133,7 +2170,7 @@ Reviews should not be fabricated, rewritten as fake customer quotes, or marked u
 
 # 108. Image SEO
 
-Images should support the page's subject.
+Images should support the subject of the page.
 
 Use:
 
@@ -2603,7 +2640,7 @@ Secondary:
 * clicks
 * CTR
 * average position
-* indexed approved pages
+* indexed published pages
 * non-branded visibility
 * featured-answer visibility
 * referring domains
@@ -2628,7 +2665,7 @@ The strategy should maximize eligibility, usefulness, and competitive strength r
 
 ---
 
-# 132. Search Quality Gate
+# 132. Search Indexation Readiness
 
 Before indexation, ask:
 
@@ -2646,7 +2683,7 @@ Before indexation, ask:
 If the final answer is uncertain:
 
 ```text
-Hold the page.
+Continue improving the page, and keep it outside production indexation until the uncertainty is resolved.
 ```
 
 ---
@@ -2657,7 +2694,7 @@ The project contains enough structured research to produce tens of thousands of 
 
 That capability must be treated as a strategic advantage rather than a publishing target.
 
-Google's current spam policy explicitly identifies scaled content abuse as large-scale content production created primarily to manipulate rankings rather than help users.
+The current Google spam policy explicitly identifies scaled content abuse as large-scale content production created primarily to manipulate rankings rather than help users.
 
 Therefore:
 
@@ -2671,7 +2708,7 @@ Programmatic Publishing Without Editorial Control
 
 # 134. SEO Expansion Formula
 
-A new page should generally require:
+A new production indexable page should generally require:
 
 ```text
 Search Opportunity
@@ -2688,8 +2725,10 @@ Internal-Link Role
 +
 Conversion Role
 +
-Page Approval
+Publication and Indexation State
 ```
+
+These are production and search-exposure criteria, not pre-build permission gates.
 
 ---
 
@@ -2840,7 +2879,7 @@ Commercial + location publishing must remain selective.
 
 ### Rule 13
 
-Las Vegas remains behind operational validation.
+Las Vegas is an active operational market and follows the same SEO, publication, and indexation standards as St. Louis and San Diego.
 
 ### Rule 14
 
@@ -2864,11 +2903,11 @@ Internal links should reflect real relationships.
 
 ### Rule 19
 
-Only approved pages belong in the sitemap.
+Only canonical, published, indexable pages belong in the sitemap.
 
 ### Rule 20
 
-Unknown matrix combinations should not create routes.
+Unknown matrix combinations should not create production routes. Registered candidates may be developed locally or in protected previews.
 
 ### Rule 21
 
@@ -2903,9 +2942,13 @@ Canonical Entities
 ↓
 Search Intent
 ↓
-Approved Architecture
+Documented Architecture
+↓
+Build and QA
 ↓
 Helpful Content
+↓
+Production Publication
 ↓
 Technical SEO
 ↓
@@ -2924,7 +2967,7 @@ Performance Data
 Strategic Expansion
 ```
 
-The site's competitive advantage is not simply its ability to generate a large number of pages.
+The competitive advantage of the site is not simply its ability to generate a large number of pages.
 
 Its advantage is the ability to maintain a very large structured opportunity model while publishing only the pages that are:
 
@@ -2948,9 +2991,11 @@ and:
 
 ```text
 Research Broadly
-Publish Selectively
+Build Iteratively
+Publish Deliberately
+Index Selectively
 Measure Continuously
 Expand From Evidence
 ```
 
-This approach gives The Sewer Pros a scalable organic-search platform capable of building authority across services, markets, audiences, commercial segments, educational topics, and future geographies without compromising search quality or the company's specialized independent-inspection positioning.
+This approach gives The Sewer Pros a scalable organic-search platform capable of building authority across services, markets, audiences, commercial segments, educational topics, and future geographies without compromising search quality or the specialized independent-inspection positioning of the company.

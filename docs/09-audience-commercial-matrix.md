@@ -3,7 +3,7 @@
 **Document:** `09-audience-commercial-matrix.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Audience & Commercial Opportunity Authority
+**Status:** Active Audience & Commercial Opportunity Authority
 **Document Role:** Audience taxonomy, commercial-segment taxonomy, audience-to-service relationships, audience-to-location relationships, commercial-to-service relationships, and commercial-to-location opportunity governance
 **Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
 
@@ -36,9 +36,11 @@ This document answers:
 
 This document does **not** independently authorize every potential page.
 
-Page authorization remains controlled by:
+Production publication and indexation remain controlled by:
 
 `04-master-page-build-list.md`
+
+This matrix may support research, prioritization, templates, drafts, candidate routes, and protected-preview QA before a relationship is selected for production.
 
 ---
 
@@ -71,7 +73,7 @@ The governing rule is:
 ```text
 Relationship
 ≠
-Page
+Production Page
 ```
 
 and:
@@ -79,7 +81,7 @@ and:
 ```text
 Audience Relevance
 ≠
-Automatic Route
+Automatic Production or Indexation
 ```
 
 ---
@@ -105,12 +107,49 @@ Defines audience/commercial relationships
 
 04-master-page-build-list.md
 ↓
-Authorizes actual pages
+Tracks lifecycle, production publication, and indexation
 
 05-url-routing-strategy.md
 ↓
-Defines canonical routes
+Defines stable pathnames and canonical production routes
 ```
+
+---
+
+# 3A. Build-First Matrix Model
+
+The audience and commercial matrices should accelerate development without turning every relationship into a public page.
+
+Matrix data may be used to:
+
+* identify audience and commercial opportunities
+* prioritize page families
+* create reusable templates
+* draft audience-specific or commercial-specific content
+* generate bounded candidate-route sets for local development
+* build protected-preview pages for review
+* plan internal links, schema, conversion paths, and analytics context
+* compare opportunities before production selection
+
+The system must keep four concepts separate:
+
+```text
+MATRIX STATUS
+How strong or useful the relationship appears.
+
+BUILD STATUS
+Whether the associated content or implementation is a candidate, draft, build-ready, in QA, or complete.
+
+PUBLICATION STATUS
+Whether the page is deliberately included in production.
+
+INDEXATION STATUS
+Whether a published page is indexable or intentionally noindex.
+```
+
+The exact lifecycle values must match `04-master-page-build-list.md`. Matrix scores and eligibility labels do not substitute for publication or indexation state.
+
+Ordinary development does not require a new approval entry. Business claims, services, markets, operational coverage, and production exposure still require verified source data and the appropriate documented decision.
 
 ---
 
@@ -274,11 +313,9 @@ export interface Audience {
     | 'commercial_operator'
     | 'organization'
 
-  pageStatus:
-    | 'launch'
-    | 'phase_2'
-    | 'phase_3'
-    | 'hold'
+  buildStatus: string
+  publicationStatus: string
+  indexationStatus: string
 
   primaryNeeds: string[]
   primaryServices: string[]
@@ -299,6 +336,8 @@ export interface Audience {
 ---
 
 # 10. Audience Matrix Status Model
+
+The audience records below retain historical `Page Status` labels such as `launch` and `phase_2`. Treat those labels as prioritization metadata, not permission to begin or stop development. Before production use, normalize them against the current lifecycle, publication, and indexation fields in `04-master-page-build-list.md`.
 
 Recommended audience-location relationship statuses:
 
@@ -339,7 +378,7 @@ It does **not** mean the website should eventually contain 7,527 audience + loca
 
 # 12. Audience + Location Canonical Pattern
 
-When approved:
+When selected for production:
 
 ```text
 /{canonical-location-path}/for/{audience}/
@@ -357,7 +396,7 @@ Nested example:
 /st-louis-mo/st-louis-city/soulard/for/home-buyers/
 ```
 
-Only approved relationships should generate these routes.
+Only relationships selected for production should enter the public route collection. Candidate relationships may generate local or protected-preview routes earlier.
 
 ---
 
@@ -369,7 +408,7 @@ Audience pages should answer:
 
 They should focus on:
 
-* the audience's decision
+* the decision of the audience
 * risk
 * workflow
 * relevant services
@@ -516,7 +555,7 @@ Encinitas
 La Jolla
 ```
 
-but page authorization still requires specific evaluation.
+but production publication and indexation still require specific evaluation.
 
 ---
 
@@ -1033,7 +1072,7 @@ The initial commercial segment taxonomy contains **8 strategic segments**.
 
 These segments are opportunity-model entities.
 
-They are not all approved standalone pages.
+They are not all production standalone pages.
 
 ---
 
@@ -1267,7 +1306,7 @@ San Diego hospitality districts
 major hotel / tourism corridors
 ```
 
-Las Vegas pages remain subject to operational validation.
+Las Vegas is an active operational market. These pages follow the same service-verification, differentiation, publication, and indexation standards used across the site.
 
 ---
 
@@ -1369,7 +1408,7 @@ A standalone commercial-segment page requires:
 3. differentiated content
 4. multiple relevant services
 5. low overlap with `/for/` pages
-6. page-build-list approval
+6. deliberate page-build-list production selection
 
 ---
 
@@ -1405,7 +1444,7 @@ Avoid creating redundant audience and commercial pages targeting the same intent
 
 # 46. Commercial + Location Pattern
 
-When approved:
+When selected for production:
 
 ```text
 /{canonical-location-path}/commercial/{service}/
@@ -1427,7 +1466,7 @@ Commercial-service + location architecture is governed jointly by:
 
 # 47. Audience + Location Pattern
 
-When approved:
+When selected for production:
 
 ```text
 /{canonical-location-path}/for/{audience}/
@@ -1539,9 +1578,9 @@ HOA Communities
 Summerlin
 ```
 
-after Las Vegas validation.
+as a Las Vegas audience-location opportunity.
 
-These remain strategic examples, not automatic approvals.
+These remain strategic examples, not automatic production or indexation decisions.
 
 ---
 
@@ -1843,9 +1882,9 @@ This can identify high-value commercial geographies independently of service + l
 
 ---
 
-# 65. Audience Page Authorization Rule
+# 65. Audience Page Publication Rule
 
-An audience existing in the registry does not mean its page automatically exists.
+An audience existing in the registry does not mean its page automatically exists in production. Its template, content draft, or candidate route may still be developed.
 
 Example:
 
@@ -1855,17 +1894,17 @@ aud-homeowners
 
 exists strategically.
 
-Current page authorization:
+Current prioritization stage:
 
 ```text
 phase_2
 ```
 
-No production route should be generated as a launch page unless the Master Page Build List is updated.
+No production route should be generated until the Master Page Build List selects it for publication. This does not prevent development or protected-preview generation.
 
 ---
 
-# 66. Audience + Location Authorization Rule
+# 66. Audience + Location Publication Rule
 
 A relationship may be mathematically strong.
 
@@ -1883,11 +1922,11 @@ But:
 /san-diego-ca/carlsbad/for/home-buyers/
 ```
 
-must not exist until explicitly approved.
+may exist as a development or protected-preview candidate, but must not enter the production route collection until deliberately selected in the Master Page Build List.
 
 ---
 
-# 67. Commercial Authorization Rule
+# 67. Commercial Publication Rule
 
 A commercial segment may strongly relate to a service and geography.
 
@@ -1915,7 +1954,7 @@ The project should choose the smallest set of pages necessary to satisfy distinc
 
 # 68. Cannibalization Rule
 
-Before approving an audience or commercial page, compare it against:
+Before publishing or indexing an audience or commercial page, compare it against:
 
 * canonical service page
 * local service page
@@ -1960,7 +1999,7 @@ Focus:
 
 Focus:
 
-> Commercial preventative maintenance in a specific approved geography.
+> Commercial preventative maintenance in a specific verified and selected geography.
 
 ---
 
@@ -2073,23 +2112,19 @@ Audience-local expansion should remain data-driven.
 
 ---
 
-# 74. Las Vegas Audience Gate
+# 74. Las Vegas Audience Opportunity
 
-Las Vegas audience relationships may be modeled before launch.
+Las Vegas is a confirmed operational market.
 
-Customer-facing local audience pages should not be activated until:
+Audience relationships, templates, content, routes, and production pages may be developed under the same build-first model used for St. Louis and San Diego. There is no separate Las Vegas approval or operational gate.
 
-* operations are confirmed
-* applicable services are confirmed
-* geographic coverage is validated
-
-This is the same operational gate used elsewhere in the Las Vegas architecture.
+Page-specific service claims and geographic statements must still remain accurate, but ordinary development, publication planning, and indexation evaluation may proceed without waiting for additional market confirmation.
 
 ---
 
 # 75. Las Vegas Commercial Opportunity
 
-Once operations are confirmed, Las Vegas may present substantial commercial opportunities around:
+Las Vegas presents substantial commercial opportunities around:
 
 ```text
 Restaurants
@@ -2113,7 +2148,7 @@ commercial corridors
 industrial districts
 ```
 
-These are research priorities, not launch authorization.
+These are research priorities, not automatic production publication or indexation decisions.
 
 ---
 
@@ -2394,7 +2429,7 @@ The project should determine whether these map best to:
 * local commercial pages
 * resources
 
-before creating routes.
+before selecting production routes. Candidate routes may be created earlier for development and review.
 
 ---
 
@@ -2522,7 +2557,7 @@ Recommended:
 
 # 98. Current Launch Commercial Services
 
-Already approved:
+Current production selection:
 
 ```text
 /commercial/sewer-camera-inspection/
@@ -2668,7 +2703,7 @@ A lower-traffic commercial page may still be strategically valuable if it produc
 
 ---
 
-# 106. Matrix Promotion Workflow
+# 106. Matrix Development and Promotion Workflow
 
 ```text
 Audience / Commercial Opportunity
@@ -2681,22 +2716,26 @@ Search Intent
 ↓
 Conversion Potential
 ↓
+Candidate Record
+↓
+Content and Template Development
+↓
 Cannibalization Review
 ↓
 Operational Validation
 ↓
-Master Page Build List
-↓
-Content
-↓
 QA
 ↓
+Master Page Build List Publication State
+↓
 Publish
+↓
+Index When Qualified
 ```
 
 ---
 
-# 107. Audience Page Quality Gate
+# 107. Audience Page Production Readiness
 
 Before publishing an audience page, verify:
 
@@ -2711,7 +2750,7 @@ Before publishing an audience page, verify:
 
 ---
 
-# 108. Audience + Location Quality Gate
+# 108. Audience + Location Production Readiness
 
 Require:
 
@@ -2725,7 +2764,7 @@ Require:
 
 ---
 
-# 109. Commercial Page Quality Gate
+# 109. Commercial Page Production Readiness
 
 Require:
 
@@ -2738,7 +2777,7 @@ Require:
 
 ---
 
-# 110. Commercial + Location Quality Gate
+# 110. Commercial + Location Production Readiness
 
 Require:
 
@@ -2832,7 +2871,7 @@ The Sewer Pros provides commercial hydro jetting for restaurants and property ma
 ```
 
 ```text
-The Sewer Pros provides sewer inspection and cleaning services in approved markets.
+The Sewer Pros provides sewer inspection and cleaning services in verified markets selected for publication.
 ```
 
 These relationships should be:
@@ -2990,11 +3029,12 @@ Production routes should derive from:
 Example:
 
 ```ts
-const approvedAudiencePages =
+const publishedAudiencePages =
   pageRegistry.filter(
     (page) =>
-      page.pageType === 'audience' ||
-      page.pageType === 'audience-location'
+      page.publicationStatus === 'published' &&
+      (page.pageType === 'audience' ||
+        page.pageType === 'audience-location')
   )
 ```
 
@@ -3154,7 +3194,7 @@ Shopping Centers
 Mixed-Use Developments
 ```
 
-These are **research opportunities**, not approved canonical segments.
+These are **research opportunities**, not verified canonical segments or production pages.
 
 They should be added only when business demand and service fit justify them.
 
@@ -3290,7 +3330,7 @@ This project document governs:
 
 `CLAUDE.md` should eventually state:
 
-> Audience and commercial matrices are opportunity models, not route manifests. Never generate an audience + location or commercial + location route unless the page is explicitly authorized in `04-master-page-build-list.md`.
+Audience and commercial matrices are opportunity models, not production route manifests. They may support candidate routes, templates, drafts, and protected previews. Never place an audience + location or commercial + location route into production publication or indexation unless its lifecycle state in `04-master-page-build-list.md` allows it.
 
 ---
 
@@ -3322,7 +3362,7 @@ Property managers represent both audience and commercial acquisition opportunity
 
 ### Rule 7
 
-Audience + location pages begin post-launch unless explicitly approved otherwise.
+Audience + location production publication is post-launch by default unless the Master Page Build List states otherwise. Development may begin earlier.
 
 ### Rule 8
 
@@ -3330,7 +3370,7 @@ Do not mass-publish the theoretical 7,527 audience-location combinations.
 
 ### Rule 9
 
-Las Vegas audience-local pages remain subject to operational validation.
+Las Vegas audience-local pages may be built, published, and indexed under the same quality and business-truth standards as the other active markets.
 
 ---
 
@@ -3354,7 +3394,7 @@ Commercial geography requires real commercial fit.
 
 ### Rule 5
 
-Commercial + location pages begin post-launch unless explicitly approved otherwise.
+Commercial + location production publication is post-launch by default unless the Master Page Build List states otherwise. Development may begin earlier.
 
 ### Rule 6
 
@@ -3374,13 +3414,13 @@ Property managers, facility managers, and commercial property owners are high-va
 
 ### Rule 10
 
-Hotels/hospitality and Las Vegas commercial opportunities remain subject to operational validation.
+Hotels, hospitality, and other Las Vegas commercial opportunities may proceed under the standard build-first, publication, and indexation model.
 
 ---
 
-# 139. Publishing Authority Rule
+# 139. Production Publication and Indexation Authority
 
-The following are never sufficient by themselves to create a page:
+The following are never sufficient by themselves to publish or index a page:
 
 ```text
 Audience Exists
@@ -3394,13 +3434,13 @@ Claude Suggests Page
 Competitor Has Page
 ```
 
-A page requires:
+A production page requires a publication state in:
 
 ```text
 04-master-page-build-list.md
 ```
 
-authorization.
+An indexable page additionally requires the appropriate indexation state. Neither requirement prevents research, drafting, template creation, candidate-route generation, or protected-preview QA.
 
 ---
 
@@ -3455,7 +3495,7 @@ Geographic Relevance
 +
 Useful Content
 +
-Master Page Approval
+Master Page Publication and Indexation State
 ```
 
 The governing principle is:
@@ -3469,4 +3509,4 @@ Expand From Evidence
 ```
 
 **The audience and commercial matrices model who the company can serve and where opportunity exists.
-The Master Page Build List decides which of those relationships become website pages.**
+The Master Page Build List controls which relationships become production pages and whether those pages are indexable; it does not prevent promising relationships from being researched, drafted, built, or reviewed.**

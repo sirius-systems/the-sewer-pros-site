@@ -3,7 +3,7 @@
 **Document:** `02-nextjs-technical-architecture.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Foundation
+**Status:** Active Technical Source of Truth
 **Document Role:** Technical implementation source of truth
 **Primary Framework:** Next.js App Router
 **Language:** TypeScript
@@ -43,7 +43,9 @@ The objective is to create a website architecture capable of supporting hundreds
 
 The fundamental technical principle is:
 
-> **Data may describe opportunities. Only approved page records may create routes.**
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+Research data may describe opportunities, and the architecture may support future routes before publication. Only page records deliberately selected for production may enter the public production route system. Indexation is then controlled separately through metadata, sitemaps, canonicals, schema, navigation, and internal-link discovery.
 
 ---
 
@@ -69,6 +71,33 @@ The technical architecture must support:
 16. clear separation between research datasets and publishable routes
 
 The system should remain manageable as the site grows significantly beyond the initial launch page count.
+
+---
+
+# 2A. Build-First Operating Model
+
+Development should proceed as soon as the controlling business facts and the requirements relevant to the task are available.
+
+Claude Code and developers may create or improve reusable components, page-family templates, content models, route utilities, draft content, candidate routes for local or protected preview review, validation scripts, tests, accessibility, performance, and maintainability without waiting for a separate pre-build permission entry.
+
+The codebase must keep three states separate:
+
+```text
+DEVELOPMENT
+A component, template, draft, or candidate route may be built and reviewed.
+
+PUBLICATION
+A route is intentionally included in the production website.
+
+INDEXATION
+A published route is intentionally exposed to search systems.
+```
+
+A page may exist in development without being published. A published utility or campaign page may intentionally remain `noindex`. An indexable page must meet the quality and route controls defined by the project.
+
+This build-first model does not authorize unverified business claims, new services, new markets, new offices, new canonical URL patterns, or other material changes to business truth. Those remain governed by the relevant source-of-truth documents and `22-decisions-change-log.md`.
+
+Pre-build permission gates must not be reintroduced through CI, route loaders, comments, checklists, or validation scripts. Validation should protect production quality and indexation without preventing legitimate development work.
 
 ---
 
@@ -550,14 +579,7 @@ Example conceptual structure:
 ```text
 data/
 ├── services/
-│   ├── master-service-registry.json     ← in repository
-│   └── services.ts
-├── locations/
-│   ├── master-location-registry.json    ← in repository
-│   └── locations.ts
-├── matrices/
-│   ├── service-location-master-matrix.json  ← in repository
-│   └── service-location-master-matrix.csv   ← in repository
+│   ├── master-service-registry.json     ←← in repository
 ├── markets/
 │   └── markets.ts
 └── pages/
@@ -568,7 +590,7 @@ Files marked *in repository* are the normalized research datasets already commit
 
 The exact file formats for the implementation modules will be determined during implementation.
 
-**Critical distinction:** the registries and matrices under `data/` are *research and entity data*. They are inputs to validation, not inputs to route generation. Route generation consumes only the approved page registry derived from `04-master-page-build-list.md`. See §21 and §46.
+**Critical distinction:** the registries and matrices under `data/` are *research and entity data*. They must not automatically create public or indexable routes. Production route generation consumes the publishable subset derived from `04-master-page-build-list.md`. Local and protected preview builds may also consume clearly identified draft or candidate records for implementation and QA. See §21 and §46.
 
 ---
 
@@ -596,19 +618,19 @@ export interface ApprovedPage {
 }
 ```
 
-A route should not exist merely because enough IDs can be combined to produce it.
+A production indexable route must not exist merely because enough IDs can be combined to produce it.
 
-It should exist because an approved page record authorizes it.
+A component, draft, or candidate route may be built for development and review. It becomes a production route only when the Master Page Build List and route registry identify it for publication. Indexation remains a separate explicit decision.
 
 ---
 
 # 15. Page Status Model
 
-The page registry should support explicit lifecycle states.
+The page registry should support explicit lifecycle states. The exact status vocabulary must match `04-master-page-build-list.md`; this technical document must not create a competing lifecycle.
 
-Recommended values:
+A conceptual model may include:
 
-```ts
+```typescript
 type PageStatus =
   | 'research'
   | 'planned'
@@ -619,35 +641,13 @@ type PageStatus =
   | 'retired'
 ```
 
-Only appropriate statuses should generate production output.
+Status controls exposure, not whether foundational work may begin.
 
-For example:
+`research`, `planned`, `approved`, `draft`, or `qa` records may participate in local development or protected previews when useful. They must not automatically enter production navigation, schema, canonicals, XML sitemaps, internal-link discovery modules, or search indexes.
 
-```text
-research
-```
+A `published` state may authorize production output. Indexation must still be explicit.
 
-should not create a route.
-
-```text
-planned
-```
-
-should not automatically create an indexable route.
-
-```text
-approved
-```
-
-may authorize production work.
-
-```text
-published
-```
-
-may authorize sitemap/indexation behavior.
-
-The precise status workflow should be aligned with the Site OS skill and project-specific publishing rules.
+The implementation should derive separate development, publication, and indexation collections from the page registry. Site OS may provide reusable workflow and QA, but it must not be interpreted as a pre-build permission gate for this project.
 
 ---
 
@@ -807,7 +807,7 @@ This is prohibited.
 
 ---
 
-# 22. Approved Generation Pattern
+# 22. Production Publishing Pattern
 
 The correct conceptual model is:
 
@@ -818,24 +818,24 @@ Location Registry
        +
 Opportunity Matrix
        ↓
-Strategic Approval
+Strategic Evaluation
        ↓
 Master Page Build List
        ↓
-Approved Page Registry
+Publishable Page Registry
        ↓
 generateStaticParams()
        ↓
 Production Routes
 ```
 
-This creates a hard gate between research and publishing.
+This creates a deliberate boundary between research data and production publishing while leaving development free to proceed on templates, drafts, and validated candidate pages.
 
 ---
 
 # 23. Dynamic Route Generation
 
-Where dynamic App Router segments are used, approved routes should be generated at build time with:
+Where dynamic App Router segments are used, production routes should be generated at build time with:
 
 ```ts
 generateStaticParams()
@@ -859,7 +859,7 @@ export function generateStaticParams() {
 }
 ```
 
-The function must consume the **approved page dataset**, not the entire canonical registry unless every registry entry has separately been approved for publication.
+The production function must consume the **publishable page dataset**, not the entire canonical registry. A separate local or protected-preview collection may include draft records for implementation and QA, but those records must remain outside production indexation systems.
 
 ---
 
@@ -1194,7 +1194,7 @@ Project content will primarily be:
 
 A CMS can be evaluated later if operational requirements justify it.
 
-Do not introduce one during foundation work without approval.
+Do not introduce a CMS casually during foundation work. If implementation shows that one would materially improve operations, document the recommendation and its architecture impact before changing the production model.
 
 ---
 
@@ -1764,7 +1764,7 @@ Accessibility should be built into reusable components rather than retrofitted p
 
 # 61. Heading Architecture
 
-Each page should generally contain one primary H1 representing the page's core topic.
+Each page should generally contain one primary H1 representing the core topic of the page.
 
 Subsections should follow logical heading hierarchy.
 
@@ -2322,7 +2322,7 @@ Claude Code should be used for:
 * Git workflows
 * build troubleshooting
 
-Claude Code should implement approved project decisions rather than independently redefining the site's business architecture.
+Claude Code should implement documented project truth rather than independently redefining the business architecture of the site. It may proceed with ordinary implementation, templates, drafts, refactors, and validation without waiting for a separate pre-build permission step.
 
 ---
 
@@ -2333,7 +2333,7 @@ Site OS Master remains the reusable governance layer for:
 * workflow
 * prompts
 * QA
-* gates
+* release validation
 * research methodology
 * production methodology
 * efficiency
@@ -2341,7 +2341,7 @@ Site OS Master remains the reusable governance layer for:
 
 Do not copy generalized Site OS processes into this technical document.
 
-This document defines only The Sewer Pros-specific technical architecture and overrides.
+Site OS workflows must not be interpreted as pre-build permission gates. This document defines The Sewer Pros-specific technical architecture and overrides.
 
 ---
 
@@ -2373,7 +2373,7 @@ Detailed `CLAUDE.md` content will be created separately.
 
 ---
 
-# 93. Build Authorization Rule
+# 93. Production Route Control
 
 Claude Code must not interpret:
 
@@ -2396,36 +2396,38 @@ The correct interpretation is:
 ```text
 10,422 researched relationships
 ↓
-subset strategically approved
+subset strategically evaluated
 ↓
-approved Master Page Build List
+Master Page Build List
 ↓
-authorized routes
+deliberately published routes
 ```
 
 ---
 
-# 94. Production Page Gate
+# 94. Production Publication and Indexation Control
 
 Before a page becomes a production indexable route, it should satisfy:
 
 ```text
 Valid Page ID
 +
-Approved Page Type
+Recognized Page Type
 +
 Valid Canonical Entity IDs
 +
-Approved Pathname
+Canonical Pathname
 +
-Approved Content
+Production-Ready Content
++
+Publication Decision
 +
 Indexation Decision
 +
 QA
 ```
 
-If these conditions are not met, the page should not automatically enter production.
+These conditions control production exposure and indexation. They do not prevent a component, template, draft, or candidate route from being created and evaluated in development.
 
 ---
 
@@ -2441,9 +2443,9 @@ Examples:
 * missing market
 * invalid page type
 * duplicate canonical
-* approved route with missing content
+* production route with missing content
 
-A failed build is preferable to silently publishing corrupted architecture.
+A failed production build is preferable to silently publishing corrupted architecture. Draft incompleteness should be reported in the development workflow without becoming an unnecessary blocker for unrelated implementation.
 
 ---
 
@@ -2461,9 +2463,9 @@ It should not:
 * create new services
 * alter canonical records
 
-Research and approval occur upstream.
+Research and material business decisions occur upstream.
 
-Builds implement approved decisions.
+Development may proceed iteratively. Production builds implement the current documented publication and indexation decisions.
 
 ---
 
@@ -2599,7 +2601,7 @@ Do not generate routes from the full service × location matrix.
 
 ### Rule 6
 
-Only approved pages from the Master Page Build List may become authorized production routes.
+Only pages selected for publication in the Master Page Build List may become production routes.
 
 ### Rule 7
 
@@ -2649,7 +2651,7 @@ Site OS governs generalized workflow and QA; repository documents govern The Sew
 
 # 103. Initial Technical Build Sequence
 
-Once the strategic documentation is sufficiently complete, the repository foundation should generally proceed in this order:
+The repository foundation should proceed iteratively as the relevant source-of-truth material becomes actionable. Documentation and implementation may advance in parallel. A practical sequence is:
 
 ```text
 1. Initialize Next.js project
@@ -2684,7 +2686,7 @@ Once the strategic documentation is sufficiently complete, the repository founda
 
 This sequence is directional.
 
-Site OS gates and project-specific dependencies may alter the order.
+Site OS workflow, release validation, and project-specific dependencies may alter the order, but they must not create unnecessary permission gates before ordinary build work begins.
 
 ---
 
@@ -2709,7 +2711,7 @@ At that point, migration from static Cloudflare Pages architecture to an approve
 
 Cloudflare currently directs full-stack server-rendered Next.js deployments toward Workers using its Next.js/OpenNext deployment path.
 
-Any such change requires explicit architectural approval.
+Any such production change must be documented in `22-decisions-change-log.md` and verified against the chosen Cloudflare deployment model before rollout.
 
 ---
 
@@ -2728,11 +2730,11 @@ Canonical Registries
 ↓
 SEO Opportunity Relationships
 ↓
-Strategic Approval
+Strategic Evaluation
 ↓
 Master Page Build List
 ↓
-Approved Page Registry
+Publishable Page Registry
 ↓
 Reusable Next.js Templates
 ↓

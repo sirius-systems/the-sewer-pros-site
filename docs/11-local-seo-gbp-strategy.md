@@ -3,7 +3,7 @@
 **Document:** `11-local-seo-gbp-strategy.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Local Search Strategy
+**Status:** Active Local Search Strategy
 **Document Role:** Google Business Profile, Google Maps, service-area, local entity, review, citation, market alignment, and local-search growth source of truth
 **Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
 
@@ -83,6 +83,43 @@ Sustainable Local Visibility
 
 ---
 
+# 2A. Build-First Local SEO Model
+
+Local SEO development should proceed independently from Google Business Profile availability.
+
+For all three active website markets—St. Louis, San Diego, and Las Vegas—the project may:
+
+* research local search intent
+* build market and location templates
+* draft and develop local content
+* create bounded candidate-route sets
+* build local or protected-preview pages
+* prepare local metadata, schema, internal links, and conversion paths
+* develop citation, review, partnership, and authority plans
+* evaluate pages for production publication and indexation
+
+A missing or unverified GBP does not block website architecture, content development, technical implementation, or organic local-search work.
+
+The project must keep these concepts separate:
+
+```text
+ACTIVE SERVICE MARKET
+The business operates in and serves the market.
+
+WEBSITE MARKET
+The website represents the market through accurate content and service-area relationships.
+
+PHYSICAL BUSINESS LOCATION
+A real operating address or customer-facing location, when verified.
+
+GOOGLE BUSINESS PROFILE
+An eligible, owner-authorized, verified external platform listing.
+```
+
+Publication and indexation remain deliberate. GBP eligibility and verification protect external-profile compliance; they must not be converted into pre-build permission gates for the website.
+
+---
+
 # 3. Local SEO Must Follow Business Reality
 
 The site may target legitimate service areas.
@@ -135,7 +172,7 @@ Expand Local Authority
 ## San Diego
 
 ```text
-Confirm Operations
+Active Website Market
 ↓
 Confirm GBP Eligibility
 ↓
@@ -149,9 +186,9 @@ Build Reviews / Local Signals
 ## Las Vegas
 
 ```text
-Confirm Market Operations
+Active Website Market
 ↓
-Confirm Service Availability
+Build Local Search Authority
 ↓
 Confirm GBP Eligibility
 ↓
@@ -164,7 +201,7 @@ Activate Local SEO
 
 # 6. GBP Eligibility Rule
 
-A Business Profile should be created only when the operation actually meets Google's eligibility requirements.
+A Business Profile should be created only when the operation actually meets the Google eligibility requirements.
 
 Google currently states that businesses generally must make in-person contact with customers during their stated hours to qualify for a Business Profile. It also excludes certain arrangements such as lead-generation businesses and P.O. boxes or remote mailboxes.
 
@@ -184,7 +221,7 @@ The business owner should retain ownership of every Google Business Profile.
 
 Sirius Systems or another agency may be added as an authorized manager.
 
-Google's current guidance states that only owners or authorized representatives may verify and manage a profile, and authorized representatives should not claim a profile without express owner consent.
+Current Google guidance states that only owners or authorized representatives may verify and manage a profile, and authorized representatives should not claim a profile without express owner consent.
 
 Recommended governance:
 
@@ -258,7 +295,7 @@ The Sewer Pros San Diego
 The Sewer Pros Las Vegas
 ```
 
-unless that naming is actually used by the business in the real world and complies with Google's rules.
+unless that naming is actually used by the business in the real world and complies with the Google rules.
 
 Market differentiation should occur through:
 
@@ -395,7 +432,7 @@ Ranking Guarantee
 
 ---
 
-# 18. Google's Local Ranking Framework
+# 18. Local Ranking Framework
 
 Google currently describes three primary local ranking considerations:
 
@@ -483,7 +520,7 @@ Google states that the primary category should be the most specific available ca
 
 # 23. Primary Category Selection
 
-Do not hardcode the primary category in project documentation before reviewing Google's currently available category list.
+Do not hardcode the primary category in project documentation before reviewing the currently available Google category list.
 
 The workflow should be:
 
@@ -684,7 +721,7 @@ Do not use the GBP description for:
 * keyword lists
 * unsupported superiority claims
 
-Google's current guidelines prohibit links and promotional/price-focused content in the description field.
+Current Google guidelines prohibit links and promotional/price-focused content in the description field.
 
 ---
 
@@ -700,7 +737,7 @@ The exact description can vary slightly by market where local business facts dif
 
 # 36. Website Link Strategy
 
-Each market GBP should link to the most relevant approved market landing page.
+Each verified market GBP should link to the most relevant published market landing page.
 
 ## St. Louis
 
@@ -720,7 +757,7 @@ Each market GBP should link to the most relevant approved market landing page.
 /las-vegas-nv/
 ```
 
-after activation and operational validation.
+when a Las Vegas GBP is created and verified.
 
 ---
 
@@ -1022,7 +1059,7 @@ Responses should:
 * move complex resolution offline
 * avoid publishing private job details
 
-Google's current guidance specifically recommends protecting privacy, avoiding personal attacks, and responding constructively to negative feedback.
+Current Google guidance specifically recommends protecting privacy, avoiding personal attacks, and responding constructively to negative feedback.
 
 ---
 
@@ -1253,34 +1290,34 @@ Local authority should also grow through:
 
 ---
 
-# 67. Las Vegas GBP Strategy
+# 67. Las Vegas Active-Market GBP Strategy
 
-Las Vegas has a stronger activation gate.
+Las Vegas is a confirmed operational website market. It does not have a separate local SEO or website activation gate.
 
-Before GBP creation, confirm:
+Creating a Las Vegas Google Business Profile remains a separate platform-compliance action. Use the same eligibility, owner authorization, accuracy, and verification requirements that apply to any new profile.
 
-1. the operation is active
+For GBP creation, document:
+
+1. the confirmed active operation
 2. services are actually available
 3. customers are being served in person
 4. operating base is eligible
 5. service areas are accurate
 6. phone and lead routing work
 7. hours are accurate
-8. business owner approves activation
+8. business owner authorization for profile creation and management
 9. verification documentation is available
 
 ---
 
-# 68. Las Vegas Activation Sequence
+# 68. Las Vegas GBP Activation Sequence
 
 Use:
 
 ```text
-Operations
+Active Las Vegas Market
 ↓
-Service Validation
-↓
-Website Market Hub
+Website Market Hub and Local Content
 ↓
 GBP Eligibility
 ↓
@@ -1297,23 +1334,21 @@ Do not reverse the sequence.
 
 ---
 
-# 69. Las Vegas Website Gate
+# 69. Las Vegas Website and Local SEO Strategy
 
-The site may prepare:
+The Las Vegas market hub and supporting pages may be researched, drafted, built, published, and evaluated for indexation under the same build-first standards used for St. Louis and San Diego:
 
 ```text
 /las-vegas-nv/
 ```
 
-and selected supporting pages for QA.
-
-Indexation and local-search promotion should remain aligned with real operational readiness.
+There is no separate Las Vegas operational hold. Page-specific claims, service areas, contact information, and schema must remain accurate.
 
 ---
 
 # 70. Las Vegas Commercial Opportunity
 
-Once operationally validated, local SEO may strongly emphasize:
+Las Vegas local SEO may strongly emphasize:
 
 * commercial sewer cleaning
 * hydro jetting
@@ -1346,7 +1381,7 @@ Website Market Hub
 ```text
 GBP Services
 ≈
-Website Approved Services
+Website Verified Canonical Services
 ```
 
 ```text
@@ -1361,7 +1396,7 @@ Website Geographic Opportunity Universe
 
 The primary GBP website link should generally point to the market hub.
 
-Additional supported profile links or conversion links may point to relevant approved actions where useful.
+Additional supported profile links or conversion links may point to relevant published actions where useful.
 
 Do not create dozens of tracking URLs that fragment canonical landing-page identity.
 
@@ -1471,7 +1506,7 @@ Fix the highest-authority errors first.
 
 # 79. Bing Places Strategy
 
-Local-search execution should also include Bing's local business ecosystem where eligible.
+Local-search execution should also include the Bing local business ecosystem where eligible.
 
 The same core business entity information should remain consistent with:
 
@@ -1485,7 +1520,7 @@ Detailed Bing organic search strategy remains part of `10-seo-strategy.md`.
 
 # 80. Apple Business Connect Strategy
 
-Where the operation is eligible, establish or claim business information through Apple's business-management ecosystem.
+Where the operation is eligible, establish or claim business information through the Apple business-management ecosystem.
 
 Maintain consistency in:
 
@@ -1496,7 +1531,7 @@ Maintain consistency in:
 * location
 * brand information
 
-This supports Apple's mapping/search ecosystem.
+This supports the Apple mapping/search ecosystem.
 
 ---
 
@@ -2067,7 +2102,7 @@ This research belongs within market-level competitor analysis.
 
 # 112. Local Search Cannot Eliminate Distance
 
-If a profile is physically or operationally distant from a searcher, website optimization cannot fully remove Google's distance consideration.
+If a profile is physically or operationally distant from a searcher, website optimization cannot fully remove the Google distance consideration.
 
 The correct solution is not to invent closer locations.
 
@@ -2145,14 +2180,12 @@ Municipal Resources
 
 ---
 
-# 116. Las Vegas Growth Model
+# 116. Las Vegas Active-Market Growth Model
 
 Recommended sequence:
 
 ```text
-Operational Validation
-↓
-Market Activation
+Active Market Website and Local Content
 ↓
 GBP Eligibility / Verification
 ↓
@@ -2210,7 +2243,7 @@ Local SEO quality depends on accurate, meaningful geographic targeting.
 
 ---
 
-# 119. New GBP Approval Gate
+# 119. New GBP Eligibility and Ownership Check
 
 Before creating a new profile, require:
 
@@ -2236,7 +2269,7 @@ Verification Readiness
 
 ---
 
-# 120. New Market Local SEO Gate
+# 120. Future Market Local SEO Activation Workflow
 
 Before activating a new market:
 
@@ -2280,7 +2313,7 @@ First:
 1. identify likely policy issue
 2. correct inaccurate information
 3. gather legitimate business evidence
-4. use Google's appropriate reinstatement/support process
+4. use the appropriate Google reinstatement/support process
 5. document changes
 
 Creating duplicates may worsen the problem.
@@ -2333,7 +2366,7 @@ Service areas must reflect real operational coverage.
 
 ### Rule 7
 
-The website's 579-location registry does not equal GBP service areas.
+The 579-location registry of the website does not equal GBP service areas.
 
 ### Rule 8
 
@@ -2393,7 +2426,7 @@ San Diego requires eligibility and verification before profile activation.
 
 ### Rule 22
 
-Las Vegas requires operational validation before GBP activation.
+Las Vegas is operational. Any new Las Vegas GBP requires the same eligibility, owner authorization, accuracy, and verification process as other new profiles.
 
 ### Rule 23
 
@@ -2483,4 +2516,4 @@ Local Authority
 Durable Local Visibility
 ```
 
-This gives The Sewer Pros a scalable local-search strategy capable of strengthening the established St. Louis market, building a legitimate San Diego local entity, activating Las Vegas when operations are ready, and supporting future markets without relying on fake locations, thin local pages, or short-term GBP manipulation.
+This gives The Sewer Pros a scalable local-search strategy capable of strengthening the established St. Louis market, building a legitimate San Diego local entity, strengthening the active Las Vegas market and establishing a GBP if eligible, and supporting future markets without relying on fake locations, thin local pages, or short-term GBP manipulation.
