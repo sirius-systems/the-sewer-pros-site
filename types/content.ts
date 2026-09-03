@@ -58,6 +58,16 @@ export interface FaqContent {
 export interface ProcessContent {
   title: string
   description?: string
+  /**
+   * Optional approved artwork. `ProcessSteps` `cards` variant only.
+   *
+   * Unset on every step today. Present here as well as on the
+   * component's own `ProcessStep` because this is the type a page's
+   * authored content is checked against: without it the field exists
+   * on the component but cannot be set from `homeContent`, which is
+   * a slot that only looks open.
+   */
+  image?: CardImage
 }
 
 /**
