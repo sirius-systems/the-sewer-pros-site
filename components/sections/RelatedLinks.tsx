@@ -258,8 +258,16 @@ export function RelatedLinks({
                 href={link.href}
                 actionLabel={link.label}
                 // Leading rule instead of a full border, and a row
-                // layout — the horizontal treatment described above.
-                className="flex h-full gap-4 border-0 border-l-2 border-l-border p-0 pl-4 hover:bg-transparent hover:border-l-foreground/40"
+                // layout: the horizontal treatment described above.
+                //
+                // `padded={false}` rather than a `p-0` in the class
+                // list. `cn()` is a plain join, so `p-0` and LinkCard's
+                // own `p-6` both shipped and `.p-6` won on source
+                // order, leaving 24px on the top, right and bottom that
+                // this treatment never wanted. `pl-4` stays: the left
+                // inset is the intended part.
+                padded={false}
+                className="flex h-full gap-4 border-0 border-l-2 border-l-border pl-4 hover:bg-transparent hover:border-l-foreground/40"
               >
                 <span className="flex flex-col">
                   <span className="text-base font-medium text-foreground">
