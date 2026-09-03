@@ -67,7 +67,7 @@ function ApprovedInlineLink({
 export const homeContent: HomePageContent = {
   hero: {
     eyebrow: 'Independent sewer inspection and cleaning',
-    title: 'Know what is happening inside the sewer line.',
+    title: 'Sewer camera inspection and cleaning.',
     intro: (
       <p>
         Inspection, diagnostics, locating, and cleaning, from a company that
@@ -78,7 +78,7 @@ export const homeContent: HomePageContent = {
   },
   seoTitle: 'Sewer Camera Inspection, Diagnostics & Cleaning | The Sewer Pros',
   metaDescription:
-    'Independent sewer camera inspection, diagnostics, locating, and cleaning in St. Louis, San Diego, and Las Vegas. See the condition of the line before you decide what to do next.',
+    "Independent sewer camera inspection, diagnostics, locating, and cleaning across St. Louis, San Diego, and Las Vegas. See the line's condition first.",
   services: [
     {
       pageId: id('svc-sewer-camera-inspection'),
