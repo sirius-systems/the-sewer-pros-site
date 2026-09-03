@@ -19,9 +19,12 @@
  * ---------------------------------------------------------------------------
  * DELIBERATELY ABSENT
  * ---------------------------------------------------------------------------
- * `AggregateRating` — 15 §61. No verified review data exists, and a
- *   fabricated rating is the highest-risk structured-data claim
- *   available to a local business.
+ * `AggregateRating` — 15 §61, DEC-028. Verified rating data DOES now
+ *   exist (4.9 from 595 reviews, DEC-085), but that decision approves
+ *   it as VISIBLE TEXT only and restates DEC-028 as remaining in
+ *   force. The absence is not pending better data: self-serving
+ *   ratings on Organization/LocalBusiness are ineligible for Google
+ *   review-snippet stars however well sourced.
  * `AggregateRating` and `Review` remain absent on the home page too —
  *   DEC-089 approved `FAQPage` there and nothing else (15 §61,
  *   DEC-028, DEC-085).
