@@ -50,7 +50,7 @@ export const verifiedOffers: readonly VerifiedOffer[] = [
   {
     label: 'Same-day appointments when available',
     detail:
-      'Same-day appointments can sometimes be arranged Monday through Friday, 8:00am–4:00pm, depending on scheduling — not guaranteed, and not available on weekends.',
+      'Same-day appointments can sometimes be arranged Monday through Friday, 8:00am–4:00pm, depending on scheduling. Not guaranteed, and not available on weekends.',
     source: 'Owner-confirmed 2026-09-01 — DEC-088',
   },
 ] as const

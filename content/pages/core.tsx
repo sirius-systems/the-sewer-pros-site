@@ -121,7 +121,7 @@ export const homeContent: HomePageContent = {
     {
       pageId: id('hub-services'),
       description:
-        'Browse sewer and drain services — inspection, cleaning, hydro jetting, and locating.',
+        'Browse sewer and drain services: inspection, cleaning, hydro jetting, and locating.',
     },
     {
       pageId: id('hub-locations'),
