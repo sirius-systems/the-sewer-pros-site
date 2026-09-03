@@ -1,7 +1,9 @@
+import Image from 'next/image'
 import { Section, type SectionDensity } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 import { processMotif } from '@/data/business/positioning'
+import type { CardImage } from '@/types'
 
 /**
  * Numbered process.
@@ -48,6 +50,15 @@ import { processMotif } from '@/data/business/positioning'
 export interface ProcessStep {
   title: string
   description?: string
+  /**
+   * Optional approved artwork. `cards` variant only.
+   *
+   * Unset on every step today, and the `grid` branch ignores it: that
+   * branch is the hairline band, where a crop would break the seamless
+   * grid it exists to produce. A card grows to hold a 7:4 crop only
+   * when one is present (18 §40-42).
+   */
+  image?: CardImage
 }
 
 /**
@@ -206,32 +217,55 @@ export function ProcessSteps({
           wide,
         )}
       >
-        {resolved.map((step, index) => (
-          <li
-            key={step.title}
-            className={cn(
-              variant === 'cards'
-                ? 'rounded-md border border-border bg-background p-6'
-                : 'bg-background p-6',
-              index === resolved.length - 1 && span,
-            )}
-          >
-            <span
-              aria-hidden="true"
-              className="text-caption tabular-nums text-muted-foreground"
+        {resolved.map((step, index) => {
+          // Artwork applies to the `cards` branch only, and only when a
+          // step actually has some. The hairline `grid` branch and the
+          // `processMotif` fallback carry no image field and are
+          // untouched. A step without artwork keeps its current padding
+          // and renders no crop container, so nothing changes until a
+          // real photograph exists (18 §40-42).
+          const image = variant === 'cards' ? step.image : undefined
+
+          return (
+            <li
+              key={step.title}
+              className={cn(
+                variant === 'cards'
+                  ? 'overflow-hidden rounded-md border border-border bg-background'
+                  : 'bg-background',
+                image === undefined && 'p-6',
+                index === resolved.length - 1 && span,
+              )}
             >
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <h3 className="mt-3 text-base font-medium text-foreground">
-              {step.title}
-            </h3>
-            {step.description !== undefined && (
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                {step.description}
-              </p>
-            )}
-          </li>
-        ))}
+              {image !== undefined && (
+                <div className="relative aspect-[7/4] w-full overflow-hidden">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
+              <div className={cn(image !== undefined && 'p-6')}>
+                <span
+                  aria-hidden="true"
+                  className="text-caption tabular-nums text-muted-foreground"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="mt-3 text-base font-medium text-foreground">
+                  {step.title}
+                </h3>
+                {step.description !== undefined && (
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {step.description}
+                  </p>
+                )}
+              </div>
+            </li>
+          )
+        })}
       </ol>
     </Section>
   )
