@@ -11,7 +11,7 @@ import {
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
-  ReviewCarousel,
+  ReviewMarquee,
   LeadFormSection,
   MarketCoverage,
   FaqSection,
@@ -28,8 +28,8 @@ import {
 import { PageShell } from './PageShell'
 // Imported from the data module rather than re-exported through the
 // section: whether this section renders is a question about the review
-// data, and `ReviewCarousel` itself is a client component.
-import { reviewCarouselRenders } from '@/data/reviews/reviews'
+// data, and `ReviewMarquee` itself is a client component.
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import type { HomePageContent, MasterPageRecord } from '@/types'
 
 /**
@@ -120,7 +120,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(reviewCarouselRenders() ? (['standard'] as const) : []),
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
@@ -217,14 +217,14 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       {/*
         `TestimonialBand` stays gated and empty — `data/business/proof.ts`
-        holds no verified single testimonial. `ReviewCarousel` is a
+        holds no verified single testimonial. `ReviewMarquee` is a
         different thing: real St. Louis Google reviews (DEC-084), safe
         here because the homepage is sitewide and St. Louis is the only
         market with a Business Profile (01 §20-21).
       */}
       <TestimonialBand />
 
-      <ReviewCarousel density="standard" />
+      <ReviewMarquee density="standard" />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks

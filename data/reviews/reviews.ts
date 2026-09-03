@@ -407,7 +407,39 @@ export const verifiedStarCount = publishedReviews.filter(
   (r) => r.stars !== null,
 ).length
 
+/**
+ * How many reviews the marquee carries.
+ *
+ * 50 is an upper bound, not a target. The marquee duplicates its set
+ * back to back for the seamless loop, so this is 100 rendered cards;
+ * putting all 278 in would be 556 nodes of DOM for no gain, and would
+ * bury the strongest proof behind the merely-present.
+ *
+ * Do not raise this without re-checking scroll smoothness on a real
+ * mid-range phone. The reference implementation this was measured
+ * against runs 47 reviews / 94 cards.
+ */
+export const MARQUEE_REVIEW_COUNT = 50
+
+/**
+ * The curated marquee set.
+ *
+ * `publishedReviews` is already ordered the way this wants: pinned
+ * reviews first, because each states the independent-inspection model
+ * in a customer's own words, then newest by age. Taking the head of
+ * that list is "strongest, then most recent" without a second
+ * ordering to keep in sync.
+ *
+ * Not a claim of completeness. The section's footer says plainly that
+ * this is a selection, which is the line that keeps a curated subset
+ * honest (CLAUDE.md §23).
+ */
+export const marqueeReviews: readonly GoogleReview[] = publishedReviews.slice(
+  0,
+  MARQUEE_REVIEW_COUNT,
+)
+
 /** 18 §120 — the section omits itself rather than render an empty shell. */
-export function reviewCarouselRenders(): boolean {
+export function reviewMarqueeRenders(): boolean {
   return publishedReviews.length > 0
 }

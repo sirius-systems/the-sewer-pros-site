@@ -48,9 +48,9 @@
  * Do not populate a gated module to "finish" a page.
  *
  * ---------------------------------------------------------------------------
- * ⚠ `ReviewCarousel` IS MARKET-SCOPED, NOT SITEWIDE
+ * ⚠ `ReviewMarquee` IS MARKET-SCOPED, NOT SITEWIDE
  * ---------------------------------------------------------------------------
- * `ReviewCarousel` carries real Google reviews from the ST. LOUIS
+ * `ReviewMarquee` carries real Google reviews from the ST. LOUIS
  * Business Profile (DEC-084). It is not a general proof section: only
  * St. Louis has a GBP (01 §21, DEC-020), and 01 §20 forbids carrying
  * one market's business facts onto another.
@@ -118,8 +118,8 @@ export type { ProofGalleryProps } from './ProofGallery'
 export { TestimonialBand } from './TestimonialBand'
 export type { TestimonialBandProps } from './TestimonialBand'
 
-export { ReviewCarousel } from './ReviewCarousel'
-export type { ReviewCarouselProps } from './ReviewCarousel'
+export { ReviewMarquee } from './ReviewMarquee'
+export type { ReviewMarqueeProps } from './ReviewMarquee'
 
 export { LeadFormSection } from './LeadFormSection'
 export type { LeadFormSectionProps } from './LeadFormSection'

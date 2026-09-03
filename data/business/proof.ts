@@ -19,7 +19,7 @@
  * would place St. Louis reviews on `/san-diego-ca/` and
  * `/las-vegas-nv/` automatically. CLAUDE.md §77 forbids reassigning a
  * review's market context (01 §35, 18 §69-70). See
- * `components/sections/ReviewCarousel.tsx` — that section exists
+ * `components/sections/ReviewMarquee.tsx` — that section exists
  * precisely so this one can stay gated.
  *
  * The sections that read these arrays return null while they are empty,
