@@ -121,15 +121,29 @@ export function AuthorityBand({
         fixed two-column grid would orphan a cell. 18 §5.6 prohibits
         forcing a count into a grid it does not divide into.
       */}
+      {/*
+        Card boundaries added on owner direction (2026-09-03). This band
+        sits on the brand surface, where `border-border` is invisible, so
+        the border is `border-white/15` — the value SiteFooter.tsx
+        already uses for a rule on this same surface, reused rather than
+        introducing a second dark-surface border value.
+
+        `rounded-md` matches components/ui/Card.tsx, so these read as the
+        same card family as the rest of the page despite not being able
+        to use `Card` itself (which hardcodes the light `bg-surface`).
+      */}
       <ul
-        className={`mt-10 grid gap-8 ${
+        className={`mt-10 grid gap-6 ${
           authorityProofPoints.length % 2 === 0
             ? 'sm:grid-cols-2'
             : 'sm:grid-cols-3'
         }`}
       >
         {authorityProofPoints.map((point) => (
-          <li key={point.label}>
+          <li
+            key={point.label}
+            className="rounded-md border border-white/15 p-6"
+          >
             <h3 className="text-base font-medium">{point.label}</h3>
             <p className="mt-1 text-sm leading-6 opacity-80">{point.detail}</p>
           </li>

@@ -74,6 +74,23 @@ export interface ProcessStepsProps {
   title: string
   intro?: string
   /**
+   * Cell treatment for the step band.
+   *
+   * `grid` is the documented default described in this file's header:
+   * a seamless hairline grid, no cards. It stays the default because
+   * four other templates render this band and none of them asked to
+   * change (AudiencePageTemplate, CommercialPageTemplate,
+   * ServiceLocationPageTemplate, ServicePageTemplate).
+   *
+   * `cards` is an OWNER-DIRECTED EXCEPTION, scoped to the homepage
+   * (2026-09-03). It departs from the header's "no cards" note the same
+   * way DEC-087's trust-bar icons departed from an equally documented
+   * default — an explicit instruction from the business, recorded here
+   * rather than silently overwriting the original rationale. Only
+   * HomePageTemplate passes it.
+   */
+  variant?: 'grid' | 'cards'
+  /**
    * The page's own sequence.
    *
    * Omit to render 18 §141's `Inspect → Understand → Decide` motif —
@@ -157,6 +174,7 @@ export function ProcessSteps({
   title,
   intro,
   steps,
+  variant = 'grid',
 }: ProcessStepsProps) {
   const resolved = steps ?? motifSteps
 
@@ -173,12 +191,28 @@ export function ProcessSteps({
     <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
-      <ol className={cn('mt-10 grid gap-px bg-border sm:grid-cols-2', wide)}>
+      {/*
+        Two cell treatments, one column logic. `grid` is the hairline
+        band; `cards` separates the same cells with real gaps and the
+        project's standard card chrome (`rounded-md border border-border`,
+        matching components/ui/Card.tsx rather than a second card style).
+        Everything else — numerals, headings, descriptions, column count,
+        the odd-tail span — is identical between the two.
+      */}
+      <ol
+        className={cn(
+          'mt-10 grid sm:grid-cols-2',
+          variant === 'cards' ? 'gap-6' : 'gap-px bg-border',
+          wide,
+        )}
+      >
         {resolved.map((step, index) => (
           <li
             key={step.title}
             className={cn(
-              'bg-background p-6',
+              variant === 'cards'
+                ? 'rounded-md border border-border bg-background p-6'
+                : 'bg-background p-6',
               index === resolved.length - 1 && span,
             )}
           >
