@@ -1666,6 +1666,22 @@ The default project position should be:
 
 > No self-serving aggregate rating schema for the company's own business entity.
 
+## Verified Exception — DEC-085
+
+`DEC-085` approves publication of the St. Louis aggregate Google rating as **visible, dated, source-backed text**, read from the live profile and rendered alongside its verification date.
+
+That approval covers what a visitor reads. It does not extend to structured data.
+
+`DEC-028` and the default stated above remain in force: no `AggregateRating`, `ratingValue`, or `reviewCount` property is emitted for the company's own `Organization` or `LocalBusiness`. `types/schema.ts` enforces this at the type level with `aggregateRating?: never`.
+
+This distinction is not a technicality. Google maintains that self-serving reviews — those an entity collects about itself — are ineligible for the review-snippet star feature on `LocalBusiness` and `Organization`:
+
+```text
+https://developers.google.com/search/docs/appearance/structured-data/review-snippet
+```
+
+`DEC-085` is a project decision about visible content. It cannot and does not create star eligibility, and it must not be cited as authority for adding rating markup.
+
 ---
 
 # 62. Review Content Still Matters
