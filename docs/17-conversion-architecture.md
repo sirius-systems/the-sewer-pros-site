@@ -3,7 +3,7 @@
 **Document:** `17-conversion-architecture.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Conversion Strategy / Source of Truth
+**Status:** Active Project-Specific Conversion Strategy / Source of Truth
 
 ---
 
@@ -38,12 +38,32 @@ This document does **not** duplicate generalized Site OS Master procedures for:
 * heatmap review
 * testing frameworks
 * analytics implementation
-* release gates
+* release validation and production controls
 * optimization cadence
 
 Site OS Master governs **how conversion performance is tested and improved**.
 
 This document defines **how The Sewer Pros website should convert visitors into qualified inquiries**.
+
+## 1.1 Build-First Conversion Governance
+
+Conversion research, UX planning, component development, form prototyping, CTA implementation, and protected-preview testing are not pre-build permission gates.
+
+The governing principle is:
+
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+Conversion work follows separate states:
+
+| State | Permitted work | Required control |
+|---|---|---|
+| Development | Build and test CTA components, forms, market routing, confirmation states, and analytics hooks | Use verified business facts and safe test data/endpoints |
+| Production publication | Expose calls, forms, offers, and contact paths to the public | Route and conversion path must be production-ready and selected in `04-master-page-build-list.md` |
+| Indexation | Allow a conversion page to participate in organic discovery | Page must have an explicit indexation state and satisfy search-quality requirements |
+
+A page may be built and conversion-tested in a local or protected preview before publication. Preview forms must not create unintended live leads or expose private data. Thank-you, confirmation, and other utility routes may be published while remaining `noindex`.
+
+The Master Page Build List controls production publication and indexation—not whether conversion architecture may be researched, designed, or implemented.
 
 ---
 
@@ -97,7 +117,7 @@ A visitor submits a form requesting:
 * hydro jetting
 * drain cleaning
 * sewer line locating
-* another approved service
+* another registry-listed service actually offered by The Sewer Pros
 
 ---
 
@@ -218,7 +238,7 @@ Avoid:
 Get Your Sewer Repaired Today
 ```
 
-unless repair services are explicitly approved later.
+unless repair services are formally added to the Master Service Registry later.
 
 ---
 
@@ -360,7 +380,7 @@ The homepage should provide two immediate high-intent paths:
 Request Service
 ```
 
-or an approved equivalent.
+or a documented equivalent.
 
 ### Secondary
 
@@ -397,7 +417,7 @@ Know what is happening inside the line before making a major repair decision.
 [Schedule an Inspection] [Call The Sewer Pros]
 ```
 
-Final copy is governed by approved brand and content documents.
+Final copy is governed by the documented brand and content sources of truth.
 
 ---
 
@@ -451,7 +471,7 @@ Schedule a Sewer Inspection in San Diego
 Request Sewer or Drain Service in Las Vegas
 ```
 
-Only use service availability that has been approved for the market.
+Only use service availability verified for the market in the service registry and service-location data.
 
 ---
 
@@ -617,7 +637,7 @@ Phone calls should remain highly visible on mobile and desktop.
 Phone links should:
 
 * use clickable `tel:` links
-* use the correct approved number
+* use the correct verified public number
 * be market-specific where verified
 * appear consistently
 * be trackable where appropriate
@@ -687,7 +707,7 @@ The visible phone number should still be available where appropriate.
 If dynamic call tracking is implemented later:
 
 * NAP consistency must be protected
-* schema should use approved canonical business numbers
+* schema should use verified canonical business numbers
 * tracking numbers should not create entity confusion
 * source attribution should remain accurate
 
@@ -776,7 +796,7 @@ If both are required for workflow reasons, the user experience should remain sho
 
 # 32. Service Selection
 
-The form should use approved services from:
+The form should use registry-listed services from:
 
 `06-master-service-registry.md`
 
@@ -818,7 +838,7 @@ For general forms, market selection should support:
 * San Diego
 * Las Vegas
 
-Additional approved locations may be derived from the provided address rather than requiring users to navigate hundreds of geographic options.
+Additional registry-supported locations may be derived from the provided address rather than requiring users to navigate hundreds of geographic options.
 
 ---
 
@@ -917,7 +937,7 @@ Avoid forcing commercial users through homeowner terminology.
 
 # 40. Commercial Property Types
 
-Potential selections may include only approved categories such as:
+Potential selections may include only verified categories such as:
 
 * Office
 * Retail
@@ -1028,7 +1048,7 @@ However, the site should also maintain a dedicated conversion destination such a
 /request-service/
 ```
 
-or the approved equivalent.
+or the documented equivalent.
 
 Exact routing belongs in:
 
@@ -1060,7 +1080,7 @@ The confirmation should explain:
 * that the request was received
 * what happens next
 * how The Sewer Pros may contact them
-* what to do if the issue is urgent, if an approved process exists
+* what to do if the issue is urgent, if a verified business process exists
 
 Do not promise a response time unless operationally verified.
 
@@ -1661,9 +1681,9 @@ Do not use:
 * Same-Day Guaranteed
 * We Arrive in 60 Minutes
 
-unless explicitly verified and approved.
+unless explicitly verified and documented in the business source of truth.
 
-Competitor use of emergency language does not authorize The Sewer Pros to use it.
+Competitor use of emergency language does not justify The Sewer Pros using it.
 
 ---
 
@@ -1676,7 +1696,7 @@ Do not:
 * create "$49 inspection" offers
 * advertise free services
 
-unless approved by the business.
+unless explicitly offered and documented by the business.
 
 Pricing is a business decision, not a CRO assumption.
 
@@ -1868,7 +1888,7 @@ If asked:
 What happens if you find a broken sewer line?
 ```
 
-The site should clearly explain the approved process.
+The site should clearly explain the documented business process.
 
 The answer should reinforce:
 
@@ -2072,7 +2092,7 @@ Example:
 [Call 000-000-0000] [Request Service]
 ```
 
-Use actual approved contact information at implementation time.
+Use actual verified public contact information at implementation time.
 
 ---
 
@@ -2237,13 +2257,15 @@ The website should clearly communicate specialization so it does not become a le
 * toilet replacement
 * repiping
 
-unless those services are later approved.
+unless those services are later added to the Master Service Registry.
 
 Specialization improves both conversion quality and entity clarity.
 
 ---
 
 # 109. Conversion Architecture by Market
+
+All three markets are operational. Conversion research, page development, form routing, and CTA implementation may proceed for each market without a separate market gate. Public claims and contact paths must still match verified market operations.
 
 ## St. Louis
 
@@ -2273,6 +2295,8 @@ Highest-value pathways:
 ---
 
 ## Las Vegas
+
+Las Vegas is an active operational market. Its conversion paths should be treated as active—not deferred pending a GBP, office, or separate SEO authorization. Do not imply a physical Las Vegas office unless one is verified.
 
 Highest-value pathways:
 
@@ -2386,12 +2410,12 @@ without requiring navigation to the homepage.
 
 # 113. Google Business Profile Landing Pages
 
-Where appropriate, GBP links should point to the most useful approved page for the market.
+Where appropriate, GBP links should point to the most useful published page for the market.
 
 For St. Louis, the landing-page strategy may involve:
 
 * St. Louis market hub
-* another approved high-conversion local landing page
+* another published high-conversion local landing page
 
 depending on final GBP strategy.
 
@@ -2602,7 +2626,7 @@ Commercial Inquiry
 
 The following rules are mandatory:
 
-1. Do not position The Sewer Pros as a sewer repair/replacement contractor unless approved.
+1. Do not position The Sewer Pros as a sewer repair/replacement contractor unless those services are formally added to the Master Service Registry and Decisions & Change Log.
 2. Do not invent 24/7 or emergency availability.
 3. Do not invent response times.
 4. Do not invent discounts.
@@ -2649,3 +2673,4 @@ Simple Next Step
 The governing standard is:
 
 > **Every high-value page should give the visitor enough information to understand the problem, enough evidence to trust The Sewer Pros' specialized approach, and a clear, low-friction path to request the appropriate service—without exaggerating urgency, inventing capabilities, or turning an independent inspection brand into a repair-driven sales funnel.**
+

@@ -3,7 +3,7 @@
 **Document:** `16-internal-linking-strategy.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Internal Linking Source of Truth
+**Status:** Active Project-Specific Internal Linking Source of Truth
 
 ---
 
@@ -34,7 +34,7 @@ This document does **not** duplicate Site OS Master procedures for:
 
 * automated crawl audits
 * internal-link QA workflows
-* release gates
+* release validation and production controls
 * broken-link testing
 * orphan detection tooling
 * link-analysis methodology
@@ -43,6 +43,25 @@ This document does **not** duplicate Site OS Master procedures for:
 Site OS Master governs **how internal linking is tested and maintained**.
 
 This document defines **how The Sewer Pros pages should relate to one another**.
+
+## 1.1 Build-First Linking Governance
+
+Internal-link planning and implementation are not pre-build permission gates. Teams may model relationships, implement reusable link components, connect candidate routes, and test complete link graphs in local or protected previews before routes are selected for production.
+
+The governing principle is:
+
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+Link behavior depends on environment and route state:
+
+| Context | Link behavior |
+|---|---|
+| Local or protected preview | Candidate routes may link to other implemented candidate routes for navigation and QA |
+| Production | Navigation and contextual links must resolve only to live, useful public destinations |
+| Indexable architecture | Crawlable links should reinforce quality-qualified, indexable canonical routes |
+| Withheld or retired route | Must not be exposed through production navigation, link modules, sitemaps, or public indexes |
+
+The Master Page Build List controls which routes may be linked publicly and which are indexable. It does not control whether candidate relationships may be designed or built.
 
 ---
 
@@ -64,7 +83,7 @@ What Problems Those Services Solve
 What Supporting Information Exists
 ```
 
-Internal linking should reinforce the site's approved entity and information architecture.
+Internal linking should reinforce the site's documented entity and information architecture.
 
 The primary goal is not maximizing the number of links.
 
@@ -116,14 +135,14 @@ The project should follow these rules:
 6. Reinforce parent-child relationships.
 7. Connect related services.
 8. Connect services to applicable markets.
-9. Connect markets to approved local services.
+9. Connect markets to published local services.
 10. Connect audiences to services that solve their needs.
 11. Connect resources to commercial pages.
 12. Avoid unnecessary cross-market linking.
 13. Avoid keyword-stuffed anchors.
 14. Avoid sitewide link bloat.
 15. Prevent orphan pages.
-16. Do not create links to unapproved routes.
+16. Do not expose withheld, nonexistent, or retired routes through production links.
 
 ---
 
@@ -131,11 +150,11 @@ The project should follow these rules:
 
 Internal links must respect the following project documents.
 
-## Approved Routes
+## Production and Indexation States
 
 `04-master-page-build-list.md`
 
-Only approved public routes should be included in navigation or contextual linking.
+Only live public routes should be included in production navigation or contextual linking. Indexable link architecture should prioritize routes marked indexable.
 
 ## URL Structure
 
@@ -159,7 +178,7 @@ Controls geographic relationships.
 
 `08-service-location-matrix.md`
 
-Provides opportunity intelligence but does not authorize links to routes that are not approved.
+Provides opportunity intelligence and may support candidate link graphs in protected previews. It does not make a destination eligible for production linking or indexation.
 
 ## Audiences and Commercial
 
@@ -241,7 +260,7 @@ The homepage should not attempt to link directly to every location or every serv
 
 # 8. Homepage to Service Links
 
-The homepage should prominently link to major approved canonical services.
+The homepage should prominently link to major published canonical services.
 
 Potential examples include:
 
@@ -254,7 +273,7 @@ Potential examples include:
 * Pre-Purchase Sewer Inspection
 * Commercial Sewer Services
 
-The final set should reflect approved launch priorities.
+The final set should reflect the selected launch priorities in the Master Page Build List.
 
 ---
 
@@ -291,7 +310,7 @@ The homepage should point users toward major hubs.
 
 The Services hub should act as the primary navigation and authority-distribution page for canonical services.
 
-It should link to every approved canonical service page.
+It should link to every published canonical service page.
 
 Example:
 
@@ -315,7 +334,7 @@ Every canonical service page should link to:
 * the Services hub
 * relevant related services
 * relevant market hubs
-* approved service + location pages
+* published service + location pages
 * relevant audience pages
 * supporting resource articles
 * conversion page or CTA
@@ -438,7 +457,7 @@ Property Managers
 Relevant Market Pages
 ```
 
-Where industry-specific pages are approved, they may connect underneath this structure.
+Where industry-specific pages are selected for production, they may connect underneath this structure.
 
 ---
 
@@ -452,7 +471,7 @@ Example:
 St. Louis
 │
 ├── St. Louis Service Pages
-├── Approved St. Louis Location Pages
+├── Published St. Louis Location Pages
 ├── Audience + St. Louis Pages
 ├── Commercial + St. Louis Pages
 └── St. Louis Resources
@@ -466,8 +485,8 @@ Equivalent architectures should exist for San Diego and Las Vegas.
 
 Each market hub should generally link to:
 
-* primary approved service + market pages
-* approved location pages within the market
+* primary published service + market pages
+* published location pages within the market
 * relevant audience pages
 * relevant commercial pages
 * local educational resources where appropriate
@@ -499,7 +518,7 @@ Home Buyers
 Real Estate Agents
 Sewer Lateral Content
         ↓
-Approved St. Louis-Area Locations
+Published St. Louis-Area Locations
 ```
 
 The St. Louis ecosystem should be particularly strong around:
@@ -528,7 +547,7 @@ Home Buyers
 Real Estate Agents
 Property Managers
         ↓
-Approved San Diego County Communities
+Published San Diego County Communities
 ```
 
 Service pages should reinforce the relevant community/location architecture without creating uncontrolled link grids.
@@ -536,6 +555,8 @@ Service pages should reinforce the relevant community/location architecture with
 ---
 
 # 22. Las Vegas Link Ecosystem
+
+Las Vegas is an active operational market. Its link ecosystem may be researched, built, and tested without a separate market gate; production links still follow destination publication and indexation states.
 
 The Las Vegas architecture should emphasize:
 
@@ -551,7 +572,7 @@ Sewer Line Locating
 Commercial
 Property Managers
         ↓
-Approved Las Vegas Valley Locations
+Published Las Vegas Valley Locations
 ```
 
 Commercial and property-management linking may have greater importance here than in other markets.
@@ -560,15 +581,15 @@ Commercial and property-management linking may have greater importance here than
 
 # 23. Location Page Strategy
 
-An approved location page should act as a local navigation node.
+A published location page should act as a local navigation node.
 
 It should generally link to:
 
 * parent market hub
-* approved service + location pages
+* published service + location pages
 * relevant audience + location pages
 * relevant commercial + location pages
-* nearby approved locations where useful
+* nearby published locations where useful
 * broader canonical services
 * conversion page
 
@@ -586,7 +607,7 @@ Hydro Jetting in Kirkwood
 Sewer Cleaning in Kirkwood
 ```
 
-Only link to these routes if they are approved in the Master Page Build List.
+Only link to these routes in production when they are live and marked for public linking in the Master Page Build List. Candidate links may be tested in protected previews.
 
 Do not generate destination links directly from the 10,422 opportunity relationships.
 
@@ -594,7 +615,7 @@ Do not generate destination links directly from the 10,422 opportunity relations
 
 # 25. Service + Location Page Strategy
 
-An approved service + location page should link to:
+A published service + location page should link to:
 
 * canonical service page
 * parent market hub
@@ -725,7 +746,7 @@ Real estate agent pages should connect to:
 
 * pre-purchase sewer inspection
 * home buyer content
-* seller content where approved
+* published seller content where relevant
 * local inspection pages
 * transaction-related resources
 
@@ -774,7 +795,7 @@ Local Context
 
 # 34. Commercial Hub Strategy
 
-The Commercial hub should distribute authority to all approved commercial service categories.
+The Commercial hub should distribute authority to all published commercial service categories.
 
 Potential hierarchy:
 
@@ -794,7 +815,7 @@ It may also link to:
 * Facility Managers
 * relevant markets
 
-where approved.
+when those destinations are published and relevant.
 
 ---
 
@@ -819,7 +840,7 @@ should link to:
 
 # 36. Industry-Specific Commercial Linking
 
-If pages are later approved for industries such as:
+If pages are later selected for production for industries such as:
 
 * restaurants
 * hospitality
@@ -838,7 +859,7 @@ Commercial Drain Cleaning
 Commercial Hydro Jetting
 ```
 
-Do not create large industry link grids unless those pages are approved and substantively differentiated.
+Do not create large production industry link grids unless those pages are published and substantively differentiated.
 
 ---
 
@@ -978,7 +999,7 @@ may link to:
 * hydro jetting
 * second-opinion inspection
 
-It should not link to a Sewer Replacement service page unless such a service is formally approved.
+It should not link to a Sewer Replacement service page unless that service is formally added to the Master Service Registry and a live destination exists.
 
 ---
 
@@ -1071,7 +1092,7 @@ Locations
 └── Las Vegas
 ```
 
-Do not use mega menus as an excuse to expose every approved SEO page globally.
+Do not use mega menus as an excuse to expose every published SEO page globally.
 
 ---
 
@@ -1134,7 +1155,7 @@ Services
 Sewer Camera Inspection
 ```
 
-depending on the approved URL/information architecture.
+depending on the documented URL and information architecture.
 
 Breadcrumbs should be visible to users and supported by `BreadcrumbList` structured data.
 
@@ -1210,7 +1231,7 @@ Do not add them merely to increase internal-link count.
 
 # 54. Nearby Location Linking
 
-Location pages may link to nearby approved locations where this helps users navigate.
+Location pages may link to nearby published locations where this helps users navigate.
 
 Example:
 
@@ -1225,7 +1246,7 @@ Maplewood
 Only when:
 
 * geographic relationship is real
-* routes are approved
+* destinations are live in the current environment
 * service coverage is accurate
 * the links are useful
 
@@ -1256,9 +1277,9 @@ Preferred model:
 ```text
 Market Hub
     ↓
-Approved Cities / Communities
+Published Cities / Communities
         ↓
-Approved Local Services
+Published Local Services
 ```
 
 rather than:
@@ -1310,7 +1331,7 @@ Long-tail resources or secondary location pages may sit deeper within their appr
 
 # 59. Orphan Page Rule
 
-No approved indexable page should be published without at least one meaningful internal link from another crawlable page.
+No indexable page should be published without at least one meaningful internal link from another crawlable page.
 
 Prefer multiple contextual pathways for strategically important pages.
 
@@ -1320,13 +1341,16 @@ An XML sitemap is not a substitute for internal linking.
 
 # 60. New Page Integration Requirement
 
-When a new page is approved, the build process should determine:
+When a candidate page is created, the development process should determine:
 
-1. Which parent page links to it?
-2. Which related pages link to it?
+1. Which parent page links to it in preview?
+2. Which related pages should link to it?
 3. Which pages should it link back to?
 4. Which breadcrumb path applies?
 5. Which resource or commercial cluster it belongs to?
+6. Whether those links become public when the route enters production?
+
+A route selected for production must have a complete production link plan before publication.
 
 A page is not complete merely because the route exists.
 
@@ -1396,7 +1420,7 @@ St. Louis Home Buyers
 San Diego Home Buyers
 ```
 
-where these localized audience routes are approved.
+where these localized audience routes are published.
 
 ---
 
@@ -1528,7 +1552,7 @@ Related Services
 
 component.
 
-The component should be controlled by approved service relationships rather than automatically showing random services.
+The component should be controlled by documented service relationships rather than automatically showing random services.
 
 Example:
 
@@ -1563,7 +1587,7 @@ This helps build topic clusters.
 
 # 74. Related Location Components
 
-Canonical service pages may show major approved markets.
+Canonical service pages may show major operational markets.
 
 Example:
 
@@ -1576,7 +1600,7 @@ Available in:
 - Las Vegas
 ```
 
-These should link to the most appropriate approved market-specific route.
+These should link to the most appropriate published market-specific route.
 
 ---
 
@@ -1588,25 +1612,25 @@ Market or location pages may use:
 Services Available in [Location]
 ```
 
-with approved local service links.
+with published local service links.
 
-This component should be data-driven from the Master Page Build List rather than every theoretical matrix relationship.
+This component should be data-driven from the Master Page Build List in production. Protected previews may use implemented candidate routes for QA, but not every theoretical matrix relationship.
 
 ---
 
 # 76. Data Source Rule
 
-Internal-link components should prefer route approval data from:
+Production internal-link components should use publication and indexation states from:
 
 `04-master-page-build-list.md`
 
 or its technical equivalent.
 
-Do not dynamically expose all combinations from:
+Development components may use implemented candidate routes in local or protected previews. Do not dynamically expose all theoretical combinations from:
 
 `08-service-location-matrix.md`
 
-unless those combinations are separately marked as approved.
+in production. Matrix existence alone is not a public-link state.
 
 ---
 
@@ -1623,13 +1647,13 @@ Do not:
 * create automated "related locations" based only on matrix existence
 * expose unpublished route patterns
 
-The Master Page Build List remains the linkable-route authority.
+The Master Page Build List remains the production linkability and indexation authority.
 
 ---
 
 # 78. Sitemap vs. Internal Links
 
-The XML sitemap should help search engines discover approved URLs.
+The XML sitemap should help search engines discover published, indexable URLs.
 
 Internal linking should explain their relationships.
 
@@ -1641,7 +1665,7 @@ Do not rely on the sitemap to compensate for poor internal architecture.
 
 # 79. HTML Sitemap
 
-A user-facing HTML sitemap may be considered later if the approved page inventory becomes sufficiently large.
+A user-facing HTML sitemap may be considered later if the published page inventory becomes sufficiently large.
 
 If implemented, it should:
 
@@ -1717,7 +1741,7 @@ Chronological archives may exist, but topic relationships should drive internal 
 └── /las-vegas-nv/sewer-camera-inspection/
 ```
 
-Exact routes depend on approved URL strategy.
+Exact routes depend on the documented URL strategy.
 
 ---
 
@@ -1730,7 +1754,7 @@ Exact routes depend on approved URL strategy.
 ├── /sewer-camera-inspection/
 ├── /real-estate-agents/
 ├── /resources/sewer-inspection-before-buying-a-house/
-└── Approved Local Buyer Pages
+└── Published Local Buyer Pages
 ```
 
 This creates a defined real-estate authority cluster.
@@ -1747,7 +1771,7 @@ This creates a defined real-estate authority cluster.
 ├── /commercial/hydro-jetting/
 ├── /commercial/drain-cleaning/
 ├── /property-managers/
-└── Approved Commercial + Market Pages
+└── Published Commercial + Market Pages
 ```
 
 ---
@@ -1972,24 +1996,26 @@ Do not allow dead internal links to remain.
 
 # 99. New Market Expansion
 
-When a new market is added:
+When a verified operational market is added, its complete ecosystem may be researched and built before public release:
 
 ```text
-New Market Hub
+Candidate Market Hub
         ↓
-Approved Services
+Registry-Backed Services
         ↓
-Approved Locations
+Registry-Supported Locations
         ↓
-Approved Audiences
+Verified Audiences
         ↓
-Approved Commercial Pages
+Candidate Commercial Pages
+        ↓
+Production and Indexation Selection
 ```
 
 Then:
 
 * homepage or market navigation links to the new market
-* canonical services may link to the new approved local services
+* canonical services may link to the new published local services
 * new local pages link back to canonical services
 * relevant resources may gain market-specific links only where useful
 
@@ -1999,18 +2025,19 @@ The architecture should scale without rebuilding the global link model.
 
 # 100. New Service Expansion
 
-When a service is approved:
+When an actual service is formally added:
 
-1. add it to the service registry
-2. approve routes
+1. add it to the Master Service Registry
+2. create candidate routes and relationship records
 3. determine parent service/category
-4. link it from Services hub
+4. identify its Services-hub placement
 5. identify related services
 6. identify markets where offered
 7. identify supporting audiences
 8. identify resources
-9. update contextual links
-10. update schema relationships
+9. implement preview links and schema relationships
+10. select production routes and indexation states in the Master Page Build List
+11. expose only live destinations through production links
 
 ---
 
@@ -2036,7 +2063,7 @@ Do not insert less-relevant links merely because the destination needs more auth
 
 Do not use internal `nofollow` attributes to manipulate internal authority flow.
 
-Normal approved internal links should generally remain crawlable.
+Normal production internal links to indexable destinations should generally remain crawlable.
 
 Use `nofollow` only where technically appropriate for a reason unrelated to manipulating internal PageRank.
 
@@ -2106,7 +2133,7 @@ Do I Need Sewer Replacement?
 Sewer Replacement Service
 ```
 
-unless repair services are formally approved later.
+unless repair services are formally added to the Master Service Registry later.
 
 ---
 
@@ -2218,7 +2245,7 @@ Do not create ambiguous parallel pages without clear relationships.
 If the site later includes internal search, results should use the same:
 
 * canonical titles
-* approved routes
+* live canonical routes
 * service taxonomy
 * location taxonomy
 
@@ -2275,7 +2302,7 @@ Commercial Services
 Next Steps
 ```
 
-Each module should be populated from approved relationships.
+Each module should be populated from documented relationships and the current environment's route states.
 
 ---
 
@@ -2289,7 +2316,7 @@ same city
 same category
 ```
 
-without an approved relationship model.
+without a documented relationship model.
 
 Automation should implement strategy, not invent it.
 
@@ -2340,17 +2367,16 @@ This can prevent automated modules from becoming excessively large.
 
 ---
 
-# 117. Page Build Approval and Linking
+# 117. Route State and Linking
 
-If an opportunity exists in a matrix but the destination page is not approved:
+If an opportunity exists in a matrix but the destination page has not been built, do not link to a nonexistent URL in any environment.
 
-Do not link to a nonexistent future URL.
+A candidate destination that exists in a protected preview may be linked there for development and QA. In production:
 
-Instead:
-
-* link to the closest approved canonical page
-* omit the link
-* add the route later when formally approved
+* link to the closest relevant published canonical page
+* omit the link when no useful live destination exists
+* expose the candidate link only after the destination is published
+* include it in crawlable authority paths only when its indexation state permits
 
 ---
 
@@ -2381,7 +2407,7 @@ At launch, internal linking should prioritize:
 1. homepage
 2. core services
 3. three market hubs
-4. launch-approved service + market pages
+4. launch-selected service + market pages
 5. major audiences
 6. commercial hub/pages
 7. launch resources
@@ -2432,7 +2458,7 @@ A page should pass questions such as:
 * Are relevant resources linked?
 * Are geographic relationships accurate?
 * Are audience relationships accurate?
-* Are there links to unapproved pages?
+* Are production links limited to live public destinations?
 * Are anchor texts descriptive?
 * Is the page orphaned?
 * Does the linking pattern align with schema?
@@ -2446,7 +2472,7 @@ The specific testing workflow remains governed by Site OS Master.
 
 The following are prohibited:
 
-* linking to unapproved service + location routes
+* production links to withheld, nonexistent, or retired service + location routes
 * creating giant sitewide location link blocks
 * cross-linking every city to every other city
 * footer keyword stuffing
@@ -2510,8 +2536,8 @@ Commercial Markets
 St. Louis
 San Diego
 Las Vegas
-Approved Locations
-Approved Local Services
+Published Locations
+Published Local Services
 ```
 
 ---

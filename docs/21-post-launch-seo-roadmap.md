@@ -3,7 +3,7 @@
 **Document:** `21-post-launch-seo-roadmap.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Post-Launch Growth Roadmap / Source of Truth
+**Status:** Active Project-Specific Post-Launch Growth Roadmap / Source of Truth
 
 ---
 
@@ -43,13 +43,31 @@ This document does **not** duplicate generalized Site OS Master procedures for:
 * publishing workflows
 * reporting cadence
 * prompt systems
-* content-production gates
+* content validation and release controls
 * experiment design
 * technical monitoring procedures
 
 Site OS Master governs **how post-launch SEO work is executed**.
 
 This document defines **what The Sewer Pros should prioritize after launch**.
+
+## 1.1 Build-First Post-Launch Governance
+
+Post-launch research, briefs, templates, candidate routes, content production, optimization experiments, and protected-preview builds may proceed continuously. They do not require pre-build permission from a prior performance cohort.
+
+The governing principle is:
+
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+Post-launch growth uses three independent states:
+
+| State | Roadmap behavior |
+|---|---|
+| Development | Research and build opportunities in bounded, manageable work batches |
+| Production publication | Release complete routes deliberately according to business priority and operational readiness |
+| Indexation | Make only quality-qualified, differentiated routes eligible for organic discovery |
+
+Performance data informs all three states but does not automatically publish, index, delete, consolidate, redirect, or retire a route. The Master Page Build List records production and indexation decisions; it is not permission to begin development.
 
 ---
 
@@ -105,13 +123,15 @@ The project already contains:
 
 These provide significant expansion potential.
 
-They are **not a publishing queue**.
+They are **opportunity intelligence, not an automatic production or indexation queue**.
 
-The post-launch roadmap should convert opportunity data into approved publishing decisions gradually.
+The roadmap may convert that intelligence into research, briefs, templates, candidate routes, and protected-preview builds immediately. Publication and indexation should then be selected deliberately and recorded in:
 
-The rule remains:
+`04-master-page-build-list.md`
 
-> **Only routes explicitly approved in `04-master-page-build-list.md` should be generated and indexed.**
+The rule is:
+
+> **Candidate routes may be developed without a pre-build gate. Only routes selected for production should be published, and only quality-qualified routes should be indexable.**
 
 ---
 
@@ -307,8 +327,8 @@ Indexed URLs
 
 Investigate:
 
-* approved pages not indexed
-* unapproved pages indexed
+* routes marked indexable but not indexed
+* routes marked noindex or withheld but indexed
 * duplicate URLs
 * staging URLs
 * incorrect canonical selections
@@ -479,7 +499,7 @@ Comparison Content
         ↓
 Audience Content
         ↓
-Approved Local Pages
+Published Local Pages
 ```
 
 The canonical service should remain the primary general authority node.
@@ -584,9 +604,9 @@ These pages should connect symptoms to diagnosis rather than attempt to diagnose
 
 # 25. Phase 4 — Geographic Expansion
 
-Geographic growth should happen through controlled page cohorts.
+Geographic research and candidate development may proceed continuously in bounded work batches. Production publication and indexation should happen through controlled cohorts.
 
-Do not publish all geographic combinations at once.
+Do not publish or index all geographic combinations at once.
 
 Preferred progression:
 
@@ -654,7 +674,7 @@ Example:
 ```text
 Sewer Camera Inspection
 +
-Top Approved Locations
+Top Registry-Supported Locations
 ```
 
 may launch first.
@@ -688,18 +708,20 @@ relationship_exists
         ↓
 SEO Opportunity
         ↓
-Evaluation
+Research / Candidate Build
         ↓
-Approval
+Quality and Business-Truth Validation
         ↓
-Publication
+Production Selection
+        ↓
+Indexation When Qualified
 ```
 
 ---
 
-# 30. Location Expansion Stop Conditions
+# 30. Location Publication and Indexation Stop Conditions
 
-Pause or reduce local page expansion if cohorts show:
+Pause or reduce production publication and indexation—not necessarily research or development—if released cohorts show:
 
 * poor indexation
 * no meaningful impressions
@@ -715,7 +737,7 @@ The correct response to poor performance is not automatically more pages.
 
 # 31. Location Expansion Success Signals
 
-Expand when approved cohorts show:
+Expand publication or indexation when released cohorts show:
 
 * distinct query coverage
 * relevant impressions
@@ -811,7 +833,7 @@ Property Management
 Until a legitimate GBP exists:
 
 * strengthen the San Diego market hub
-* build high-quality approved local content
+* build high-quality local content for registry-supported communities
 * acquire local references
 * develop market-specific proof
 * target audience intent
@@ -839,7 +861,9 @@ A GBP should amplify a real operating market, not manufacture one.
 
 # 38. Las Vegas Post-Launch Priority
 
-Las Vegas should likely emphasize:
+Las Vegas is an active operational market. Post-launch research, content development, technical SEO, local-page development, and commercial expansion may proceed without a separate market, GBP, website, or SEO gate. The absence of a GBP or verified physical office must not block accurate market work or be misrepresented as a local branch.
+
+Las Vegas should emphasize:
 
 ```text
 Sewer Diagnostics
@@ -987,7 +1011,7 @@ Commercial Resources
 
 # 47. Commercial Content Depth
 
-Develop approved content around:
+Develop verified, business-relevant content around:
 
 * recurring drain problems
 * grease
@@ -1024,7 +1048,7 @@ such as:
 * Commercial Sewer Inspection in San Diego
 * Commercial Sewer Cleaning in St. Louis
 
-These should require approval based on actual opportunity.
+These may be researched and built as candidates immediately. Production publication and indexation should be selected based on actual opportunity, differentiation, and quality.
 
 ---
 
@@ -1169,7 +1193,7 @@ Supporting Resources
 
 A resource topic should score well on some combination of:
 
-* relevance to approved services
+* relevance to registry-listed services
 * search demand
 * People Also Ask / question demand
 * conversion assistance
@@ -1276,7 +1300,7 @@ New Hydro Jetting Resource
         ↓
 Hydro Jetting Service
         ↓
-Approved Market Hydro Jetting Pages
+Published Market Hydro Jetting Pages
 ```
 
 Do not allow post-launch publishing to create content islands.
@@ -1710,47 +1734,43 @@ If most pages fail to demonstrate value, revise the publishing model before scal
 
 ---
 
-# 88. Page Approval Feedback Loop
+# 88. Development, Publication, and Indexation Feedback Loop
 
 Performance data should inform:
 
 `04-master-page-build-list.md`
 
-Future page decisions may change from:
+Development may begin whenever an opportunity is supported by business truth and a coherent intent. Production and indexation states may then change independently:
 
 ```text
-Candidate
+Candidate → Built
+Built → Selected for Production
+Published + Noindex → Indexable
+Indexable → Noindex / Consolidation / Retired
 ```
 
-to:
-
-```text
-Approved
-```
-
-when evidence strengthens the opportunity.
-
-Likewise, approved but not-yet-built pages may be deprioritized when data changes.
+Evidence may reprioritize unbuilt candidates, publication timing, indexation eligibility, optimization, consolidation, or retirement. It must not collapse these decisions into one approval status.
 
 ---
 
 # 89. Master Page Build List Maintenance
 
-The Master Page Build List should remain dynamic after launch.
+The Master Page Build List should remain dynamic after launch and keep development, production, and indexation states separate.
 
-Potential statuses may include:
+Potential state groups may include:
 
 ```text
-Published
-Optimizing
-Approved
-Backlog
-Deferred
-Consolidation Candidate
-Retired
+Development:
+Research / Draft / Build Ready / Built / Needs Update
+
+Production:
+Withheld / Selected / Published / Unpublished / Retired
+
+Indexation:
+Noindex / Eligible / Indexable / Temporarily Removed / Retired
 ```
 
-Changes should be recorded deliberately.
+Changes should be recorded deliberately without turning development status into a permission gate.
 
 ---
 
@@ -1767,7 +1787,7 @@ Examples:
 * GBP launch
 * new commercial audience
 * revised URL decision
-* major content cohort approval
+* major content cohort publication or indexation decision
 * repair capability change
 
 ---
@@ -1851,7 +1871,7 @@ The architecture should support:
 
 * new markets
 * deeper locations
-* new approved services
+* new registry-listed services
 * larger resource clusters
 * more audience segmentation
 * stronger commercial authority
@@ -1890,7 +1910,7 @@ Then update:
 
 # 97. New Service Entry
 
-A new service should first be approved in:
+A new service must first be formally documented in:
 
 `06-master-service-registry.md`
 
@@ -2023,21 +2043,21 @@ Scale should follow system maturity.
 
 # 104. Programmatic SEO Guardrail
 
-The site's data architecture can support scalable generation.
+The site's data architecture can support scalable candidate generation and bounded builds.
 
 However:
 
 ```text
-Scalable Architecture
+Scalable Development
 ≠
-Automatic Programmatic SEO
+Automatic Production or Indexation
 ```
 
 Every indexable route must still satisfy:
 
-* business relevance
+* verified business relevance
 * unique value
-* explicit approval
+* an explicit indexation state
 * adequate content quality
 
 ---
@@ -2291,7 +2311,7 @@ If a page attracts users outside actual coverage:
 * clarify location
 * review broad keyword targeting
 
-Do not imply national availability unless approved.
+Do not imply national availability unless it is verified and documented in the location registry.
 
 ---
 
@@ -2306,7 +2326,7 @@ Search Console should become a major source for:
 * audience questions
 * local variants
 
-However, query appearance alone does not authorize a page.
+Query appearance may justify research or a candidate build, but it does not by itself justify production publication or indexation.
 
 ---
 
@@ -2618,7 +2638,7 @@ Redirect appropriately and preserve value.
 Potential candidates:
 
 * outdated promotional pages
-* unapproved services
+* services not actually offered or documented
 * obsolete information
 * pages with no useful intent
 * thin routes that cannot be improved
@@ -2657,7 +2677,7 @@ Strong Resource Clusters
 
 The desired category position is:
 
-> **The Sewer Pros is a trusted source for independent sewer inspection, diagnostics, sewer cleaning, hydro jetting, locating, pre-purchase sewer inspections, and commercial sewer/drain expertise across its approved markets.**
+> **The Sewer Pros is a trusted source for independent sewer inspection, diagnostics, sewer cleaning, hydro jetting, locating, pre-purchase sewer inspections, and commercial sewer/drain expertise across its operational markets.**
 
 Search engines and AI systems should increasingly associate the brand with:
 
@@ -2711,7 +2731,7 @@ The following rules remain mandatory after launch:
 
 1. Do not publish every matrix opportunity automatically.
 2. Do not create pages solely because competitors have them.
-3. Do not create sewer repair/replacement service pages without approval.
+3. Do not create sewer repair/replacement service pages unless those services are formally added to the Master Service Registry and Decisions & Change Log.
 4. Do not create fake physical locations.
 5. Do not expand faster than QA and content quality can support.
 6. Do not judge success by page count.
@@ -2723,7 +2743,7 @@ The following rules remain mandatory after launch:
 12. Do not allow commercial pages to become generic residential copies.
 13. Do not allow new content to become orphaned.
 14. Do not create new service taxonomy outside the Master Service Registry.
-15. Do not bypass the Master Page Build List.
+15. Use the Master Page Build List as the production and indexation control plane, never as a pre-build gate.
 
 ---
 
@@ -2821,3 +2841,4 @@ The launch is the beginning of the SEO strategy, not the completion of it.
 The governing standard is:
 
 > **Use the new website architecture as a controlled growth platform. Protect existing authority first, measure real search and conversion behavior, strengthen pages showing opportunity, then expand services, locations, audiences, commercial content, and resources in deliberate cohorts. The Sewer Pros should grow topical and local authority through evidence-driven publishing—not through uncontrolled page generation.**
+
