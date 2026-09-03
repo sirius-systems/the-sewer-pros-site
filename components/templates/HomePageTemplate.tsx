@@ -81,9 +81,10 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  *
  * 18 §14: a hero must not be an "oversized empty hero that forces the
  * visitor to scroll before understanding the page". It stays editorial
- * because no photography exists in this repo to use — there is no
- * `public/` directory at all, so §40-41's priority subjects have no
- * assets behind them yet. §42 does now permit AI-generated imagery
+ * because no photography exists in this repo to use. `public/images/`
+ * now holds the full production folder structure, but every leaf is
+ * empty — §40-41's priority subjects still have no assets behind them.
+ * §42 does now permit AI-generated imagery
  * subject to conditions (photorealistic, accurate to the service, no
  * fabricated business claims or invented staff); adopting it is an
  * owner decision about asset direction, not a composition change, so
@@ -163,6 +164,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       <ServiceIndex
         density="dense"
+        surface="muted"
         id="services"
         title="What we do"
         items={content.services}
@@ -183,6 +185,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           id="how-it-works"
           title="How it works"
           steps={content.process}
+          variant="cards"
         />
       )}
 
@@ -213,10 +216,13 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         <RelatedLinks
           title={content.relatedTitle ?? 'Guides and resources'}
           pageIds={content.relatedPageIds}
+          variant="image"
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {content.faq !== undefined && (
+        <FaqSection entries={content.faq} columns={2} />
+      )}
 
       <CtaSection
         variant="panel"
