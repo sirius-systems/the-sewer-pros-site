@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { HeaderPhoneLink } from '@/components/layout/HeaderPhoneLink'
 import { resolvePrimaryNav } from '@/data/navigation'
@@ -57,12 +58,33 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface">
       <div className="mx-auto flex max-w-[var(--container-max)] items-center justify-between gap-6 px-4 py-4 sm:px-6">
-        {/* 18 §7 — no logo asset has been approved; wordmark until then. */}
-        <Link
-          href="/"
-          className="text-base font-semibold tracking-tight text-foreground"
-        >
-          {SITE_NAME}
+        {/*
+          18 §7 — the wordmark is replaced by the approved logo, which
+          arrived with the DEC-096 brand package.
+
+          The full-colour lockup, because the header sits on
+          `bg-surface` (white). The footer takes the white one-colour
+          variant for the same reason in reverse.
+
+          `alt` is the company name, not "logo": this is a link to the
+          home page, and a screen reader should hear where it goes. The
+          artwork already contains the name, so there is no visible
+          wordmark beside it to duplicate.
+
+          `priority` because it is above the fold on every route and
+          would otherwise lazy-load into a layout shift. Intrinsic size
+          is 926x184; the rendered box is a third of that, which keeps
+          it sharp on a 2x display without shipping a second asset.
+        */}
+        <Link href="/" className="shrink-0">
+          <Image
+            src="/images/brand/logos/01-primary-logo/the-sewer-pros-logo-primary-transparent.png"
+            alt={SITE_NAME}
+            width={926}
+            height={184}
+            priority
+            className="h-9 w-auto sm:h-10"
+          />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">

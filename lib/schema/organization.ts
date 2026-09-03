@@ -42,7 +42,10 @@
  * `sameAs`           — 15 §26-27. 01 §22 records San Diego social
  *                      presence but supplies no URLs, and a profile must
  *                      be verified as official and controlled first
- * `logo` / `image`   — no approved asset
+ * `image`            — no approved photograph of the business. `logo`
+ *                      IS now present: the DEC-096 brand package
+ *                      supplied one, so the reason for its absence is
+ *                      gone. `image` is a different claim and stays out
  * `foundingDate`     — St. Louis 2011 and San Diego 2015 are per-market
  *                      facts (DEC-070, DEC-071). The ORGANISATION has no
  *                      single founding year, and 01 §20 forbids electing
@@ -66,6 +69,17 @@ import { serviceList } from '@/data/services'
 
 export function organizationId(): SchemaId {
   return `${siteOrigin()}/${SCHEMA_FRAGMENT.organization}`
+}
+
+/**
+ * The logo node's stable id.
+ *
+ * Every node in this graph is addressable (15 §85), the logo included,
+ * so anything that needs to reference the mark points at one id rather
+ * than repeating the URL and risking two nodes for one image.
+ */
+export function logoId(): SchemaId {
+  return `${siteOrigin()}/${SCHEMA_FRAGMENT.logo}`
 }
 
 export function websiteId(): SchemaId {
@@ -162,6 +176,23 @@ export function organizationNode(): OrganizationNode {
     name: orgFacts.name,
     url: `${siteOrigin()}/`,
     description: orgFacts.description,
+    /*
+      15 §26: the logo is how Google ties this entity to a mark it can
+      show in a Knowledge Panel, so it is worth stating precisely
+      rather than as a bare URL string.
+
+      Absolute, because a schema URL is read outside the page's own
+      context and a relative path resolves against nothing. Dimensions
+      are the artwork's real 926x184, not a guess: a stated size that
+      does not match the file is worse than none.
+    */
+    logo: {
+      '@type': 'ImageObject',
+      '@id': logoId(),
+      url: `${siteOrigin()}/images/brand/logos/01-primary-logo/the-sewer-pros-logo-primary-transparent.png`,
+      width: 926,
+      height: 184,
+    },
     contactPoint: contactPoints(),
     knowsAbout: knowsAbout(),
   }
