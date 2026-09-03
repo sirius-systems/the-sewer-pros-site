@@ -186,7 +186,12 @@ export interface LocalBusinessNode extends SchemaNodeBase {
   geo?: GeoCoordinatesNode
   openingHoursSpecification?: OpeningHoursNode[]
   parentOrganization: SchemaRef
-  /** ⚠ 15 §61 — never emit without genuine, verifiable review data. */
+  /**
+   * ⚠ 15 §61, DEC-028 — withheld regardless of data quality, not
+   * pending verification. DEC-085 verified 4.9/595 and approved it as
+   * visible text only; self-serving Organization/LocalBusiness ratings
+   * stay ineligible for Google review-snippet stars either way.
+   */
   aggregateRating?: never
 }
 
