@@ -429,6 +429,7 @@ The project currently includes:
 20-migration-redirect-plan.md
 21-post-launch-seo-roadmap.md
 22-decisions-change-log.md
+23-content-objective-charter.md
 CLAUDE.md
 ```
 
