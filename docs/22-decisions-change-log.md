@@ -2062,6 +2062,68 @@ Options if revisited: a market-scoped route group with its own layout, or accept
 
 ---
 
+## PENDING-018 — Lead Form Submission Endpoint
+
+**Status:** OPEN — owner confirmed 2026-09-03 this will be wired prelaunch
+
+The unified lead form is BUILT AND RENDERING on seven templates
+(Audience, Commercial, Home, Location, Market, ServiceLocation,
+Service) as of DEC-096-era work, but `handleSubmit` in
+`components/sections/LeadFormSection.tsx` is a documented stub. No
+submission endpoint exists anywhere in this repository: no `functions/`
+directory, no form service in `.env.example`, and no API route is
+possible under `output: 'export'`.
+
+**Until this resolves, the form collects nothing.** A visitor who
+completes it and presses the button is not contacting anyone.
+
+Two deliberate consequences, both of which should stay until an
+endpoint exists:
+
+* it does NOT fire `trackFormSubmitted` — 19 §17 reserves the
+  conversion event for a successful send, and firing it on a stub
+  would report leads that were never received
+* it shows NO confirmation message — "we will be in touch" would be a
+  false statement of fact to a customer (CLAUDE.md §24)
+
+**Launch gate.** The new site is not yet on the production domain
+(`www.thesewerpros.com` still serves the legacy site), so no real lead
+is being lost today. That stops being true at cutover. Do not publish
+this form to the production domain unwired.
+
+Resolution needs a chosen submission path (a Cloudflare Pages Function,
+a third-party form endpoint, or equivalent), then the handler wired and
+`trackFormSubmitted` called on success only.
+
+---
+
+## PENDING-019 — TCPA Consent Disclosure for the "Text" Contact Option
+
+**Status:** OPEN — compliance gap knowingly carried forward at owner direction
+
+The lead form's preferred-contact radio ships with "Text" selectable.
+Offering it implies the business may text whoever picks it, which
+normally requires a short consent disclosure near the submit button
+under the TCPA.
+
+`claude/form-fields-and-consent-decision.md` (2026-09-01) held that
+"Text" should not ship selectable until that copy exists and is
+approved. The owner directed it to ship regardless, so it did. This
+entry records that as a known, accepted gap rather than an oversight.
+
+A `TODO(legal):` marker sits on the radio group in
+`components/sections/LeadFormSection.tsx`.
+
+**No consent language has been drafted, and none should be invented.**
+Consent wording is a legal claim, which CLAUDE.md §3 and §24 reserve to
+the business. Resolution needs approved copy supplied, not written
+here.
+
+Relates to [PENDING-018] — both must close before the form is
+launch-ready.
+
+---
+
 ## DEC-072 — Business Owner Determinations on Open Content Questions
 
 **Date:** 2026-08-16
