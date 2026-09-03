@@ -1,0 +1,311 @@
+'use client'
+
+import { useState } from 'react'
+import { Badge, Section, type SectionDensity } from '@/components/ui'
+import { SectionHeading } from './SectionHeading'
+import {
+  marqueeReviews,
+  ratingSnapshot,
+  googleProfileReviewsUrl,
+  type GoogleReview,
+} from '@/data/reviews/reviews'
+
+/**
+ * Auto-scrolling review marquee.
+ *
+ * ===========================================================================
+ * ⚠ THIS REPLACES A COMPONENT THAT ARGUED THE OPPOSITE, ON PURPOSE
+ * ===========================================================================
+ * `ReviewCarousel` was a click-through, one-at-a-time carousel, and its
+ * header argued at length for a calm register with no self-moving
+ * content. The business owner directed a continuously scrolling
+ * marquee on 2026-09-03, which reverses that specific reading.
+ *
+ * The reversal is scoped to THIS SECTION. It is not licence for
+ * autoplay, sliders, or self-moving content elsewhere, and 18 §66's
+ * motion guidance is otherwise untouched. No DEC entry: a UI pattern
+ * choice is not a business fact or a strategy change (22 §26,
+ * DEC-092), and git plus this comment are the record.
+ *
+ * The accessibility cost of moving content is real, so it is paid in
+ * full rather than waved at: motion is opt-in under
+ * `prefers-reduced-motion`, the track pauses on hover and on
+ * focus-within, there is a persistent visible pause control per WCAG
+ * 2.2.2, and the duplicated half is hidden from assistive technology.
+ *
+ * ---------------------------------------------------------------------------
+ * WHAT CARRIES OVER UNCHANGED
+ * ---------------------------------------------------------------------------
+ * DEC-085's aggregate stat, with its verification date stated in the
+ * same breath as the number. DEC-028's prohibition on
+ * `AggregateRating` / `Review` markup: this is visible content only,
+ * and nothing here emits schema. The footer disclosure, verbatim,
+ * because a curated set of 50 out of 278 needs it more than the old
+ * carousel did.
+ */
+
+/** Card width in px. Fixed, so the loop length is computable without measuring the DOM. */
+const CARD_WIDTH = 380
+
+/** Gap between cards, px. Mirrors `--marquee-gap` set on the track below. */
+const CARD_GAP = 28
+
+/**
+ * Scroll speed.
+ *
+ * Duration is derived from this rather than hardcoded, so adding or
+ * removing reviews changes how long a lap takes and never how fast the
+ * text moves past the eye. A hardcoded duration silently speeds up as
+ * the set grows, which is how a marquee becomes unreadable.
+ *
+ * 45px/s is roughly nine seconds per card: enough to read a line or
+ * two in passing, which is the point of the section.
+ */
+const PX_PER_SECOND = 45
+
+export interface ReviewMarqueeProps {
+  density?: SectionDensity
+  id?: string
+  title?: string
+}
+
+/**
+ * The aggregate rating line (DEC-085).
+ *
+ * ⚠ The date is not decoration. Without it the line asserts a currency
+ * this project cannot support, so it stays even when the layout would
+ * be tidier without it (CLAUDE.md §23).
+ *
+ * ⚠ TEXT ONLY. No `AggregateRating`, no `ratingValue`, no
+ * `reviewCount` in structured data. DEC-028 stands and DEC-085 says so
+ * in as many words.
+ */
+function AggregateStat() {
+  const { rating, reviewCount, verifiedAt } = ratingSnapshot
+  // Fixed locale: `output: 'export'` prerenders this, so a
+  // locale-dependent format would differ between build and browser.
+  const readable = new Date(`${verifiedAt}T00:00:00Z`).toLocaleDateString(
+    'en-US',
+    { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' },
+  )
+
+  return (
+    <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm opacity-80">
+      <span className="text-h2 font-semibold tracking-tight opacity-100">
+        {rating}
+        <span aria-hidden="true" className="ml-1 text-rating-gold">
+          ★
+        </span>
+        <span className="sr-only"> out of 5</span>
+      </span>
+      <span>
+        from {reviewCount.toLocaleString('en-US')} Google reviews
+        {' · as of '}
+        <time dateTime={verifiedAt}>{readable}</time>
+      </span>
+    </p>
+  )
+}
+
+/**
+ * A verified star row.
+ *
+ * ⚠ Gated on a real value, and it has to stay gated. Only 8 of the 278
+ * captured reviews carry a star value confirmed individually; the rest
+ * are published without one. Filling those in from the profile average
+ * would attach a rating to a named person that they did not give,
+ * which CLAUDE.md §23 and §77 forbid outright.
+ *
+ * So most cards in this marquee show no stars. That is the honest
+ * state of the data, not a rendering bug.
+ */
+function StarRow({ value }: { value: number }) {
+  const filled = Math.max(0, Math.min(5, Math.round(value)))
+  return (
+    <p className="flex items-center gap-1 text-rating-gold">
+      <span aria-hidden="true" className="tracking-[0.15em]">
+        {'★'.repeat(filled)}
+        <span className="opacity-40">{'☆'.repeat(5 - filled)}</span>
+      </span>
+      <span className="sr-only">Rated {filled} out of 5 on Google</span>
+    </p>
+  )
+}
+
+/**
+ * One review card.
+ *
+ * Translucent white over the brand surface rather than a new hex. 18
+ * §28 already assigns testimonial bands the brand dark treatment, and
+ * DEC-096 fixed the palette, so a card colour invented for this
+ * section would be a palette addition nobody approved. `rounded-md`
+ * and the 24px padding match components/ui/Card.tsx (18 §32-33).
+ *
+ * `duplicate` marks the second copy of the set. It exists only so the
+ * loop has something to scroll into, so it is hidden from assistive
+ * technology and taken out of the tab order: a keyboard user should
+ * meet each review once, not twice.
+ */
+function ReviewCard({
+  review,
+  duplicate = false,
+}: {
+  review: GoogleReview
+  duplicate?: boolean
+}) {
+  const initial = review.name.trim().charAt(0).toUpperCase()
+
+  return (
+    <li
+      className="flex shrink-0 flex-col gap-3 rounded-md border border-white/15 bg-white/5 p-6"
+      style={{ width: `${CARD_WIDTH}px` }}
+    >
+      <div className="flex items-center gap-3">
+        <span
+          aria-hidden="true"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-base font-semibold"
+        >
+          {initial}
+        </span>
+        <div className="min-w-0">
+          <p className="flex items-center gap-2 text-sm font-semibold">
+            <span className="truncate">{review.name}</span>
+            {review.isLocalGuide && <Badge tone="neutral">Local Guide</Badge>}
+          </p>
+          <p className="text-caption opacity-70">
+            Google · {review.relativeDate}
+          </p>
+        </div>
+      </div>
+
+      {review.stars !== null && <StarRow value={review.stars} />}
+
+      {/*
+        Clamped rather than expandable. The old carousel had a
+        "Read the full review" toggle, which a moving track cannot
+        offer: expanding a card mid-scroll reflows the whole loop and
+        invalidates the width the animation was computed from. The
+        profile link below is the way to the full text.
+      */}
+      <blockquote className="line-clamp-6 text-sm leading-6 opacity-90">
+        {review.quote}
+      </blockquote>
+
+      <a
+        className="mt-auto text-sm underline underline-offset-4 opacity-80 hover:opacity-100"
+        href={review.profileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        tabIndex={duplicate ? -1 : undefined}
+      >
+        View on Google
+        <span aria-hidden="true"> ↗</span>
+        <span className="sr-only">, review by {review.name}</span>
+      </a>
+    </li>
+  )
+}
+
+export function ReviewMarquee({
+  density = 'standard',
+  id = 'reviews',
+  title = 'What our customers say',
+}: ReviewMarqueeProps = {}) {
+  const [paused, setPaused] = useState(false)
+
+  if (marqueeReviews.length === 0) return null
+
+  /*
+    One copy's width, including its trailing gap. Computed from the two
+    constants rather than measured, so it is correct during the static
+    prerender and needs no layout pass in the browser.
+  */
+  const loopWidth = marqueeReviews.length * (CARD_WIDTH + CARD_GAP)
+  const durationSeconds = Math.round(loopWidth / PX_PER_SECOND)
+
+  return (
+    <Section density={density} surface="brand" labelledBy={id}>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <SectionHeading id={id} title={title} />
+          <AggregateStat />
+        </div>
+
+        {/*
+          WCAG 2.2.2. A persistent control, not a hover affordance:
+          hover is undiscoverable and does not exist on touch. Hidden
+          under reduced motion by CSS, where there is no animation for
+          it to act on.
+        */}
+        <button
+          type="button"
+          onClick={() => setPaused((v) => !v)}
+          aria-pressed={paused}
+          className="marquee-toggle inline-flex min-h-11 items-center gap-2 rounded-md border border-white/15 px-4 text-sm font-medium transition-colors hover:bg-white/10"
+        >
+          <span aria-hidden="true">{paused ? '▶' : '❚❚'}</span>
+          {paused ? 'Play reviews' : 'Pause reviews'}
+        </button>
+      </div>
+
+      <div className="marquee-viewport mt-10">
+        <ul
+          className="marquee-track"
+          data-paused={paused ? 'true' : 'false'}
+          style={
+            {
+              '--marquee-gap': `${CARD_GAP}px`,
+              '--marquee-duration': `${durationSeconds}s`,
+            } as React.CSSProperties
+          }
+        >
+          {marqueeReviews.map((review) => (
+            <ReviewCard key={review.profileUrl} review={review} />
+          ))}
+
+          {/*
+            The duplicate. Purely visual, so `aria-hidden` keeps it out
+            of a screen-reader pass and each card's link carries
+            tabIndex -1 to keep it out of the tab order.
+          */}
+          <li
+            aria-hidden="true"
+            className="marquee-duplicate contents"
+            role="presentation"
+          >
+            <ul className="contents">
+              {marqueeReviews.map((review) => (
+                <ReviewCard
+                  key={`dup-${review.profileUrl}`}
+                  review={review}
+                  duplicate
+                />
+              ))}
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      {/*
+        The complete picture lives on Google, including the reviews this
+        marquee does not carry. With a curated 50 of 278 this line does
+        more work than it did for the old carousel, so it stays
+        verbatim (CLAUDE.md §23).
+      */}
+      <p className="mt-8 text-sm opacity-80">
+        {googleProfileReviewsUrl !== null ? (
+          <a
+            className="underline underline-offset-4 hover:opacity-100"
+            href={googleProfileReviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            See all reviews on Google
+          </a>
+        ) : (
+          'These are a selection. Search The Sewer Pros on Google to read every review, including any not shown here.'
+        )}
+      </p>
+    </Section>
+  )
+}

@@ -247,3 +247,85 @@ h4 {
     scroll-behavior: auto !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Review marquee
+
+   ⚠ THIS IS A DELIBERATE, OWNER-DIRECTED EXCEPTION TO "NO AUTOPLAY"
+   (2026-09-03). The review section previously argued for a calm,
+   click-through register and no self-moving content. The business owner
+   directed a continuously scrolling marquee for THIS SECTION ONLY. It
+   does not license autoplay, carousels, or self-moving content anywhere
+   else, and 18 §66's motion guidance is otherwise unchanged.
+
+   The track holds the review set TWICE, back to back. Translating by
+   exactly one copy's width puts the duplicate where the original
+   started, so the reset at 100% is invisible.
+
+   The shift is `-50% - gap/2`, not a plain `-50%`. With 2n items and a
+   uniform gap the track measures 2n*card + (2n-1)*gap, so half of that
+   is half a gap short of one full copy. A plain -50% drifts by 14px per
+   lap, which reads as a stutter at the seam.
+   -------------------------------------------------------------------------- */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - (var(--marquee-gap) / 2)));
+  }
+}
+
+.marquee-viewport {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: var(--marquee-gap);
+  width: max-content;
+}
+
+/*
+  Motion is opt-in, not opt-out.
+
+  Declaring the animation only inside `no-preference` means a visitor
+  who has asked for less motion never has it applied in the first
+  place, rather than having it applied and then overridden. 18 §66 and
+  the base reduced-motion block below both take the same position.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee-scroll var(--marquee-duration, 300s) linear infinite;
+  }
+
+  /*
+    WCAG 2.2.2. Hover is a convenience, not the mechanism: it is
+    undiscoverable and unavailable on touch, which is why the visible
+    toggle exists. `focus-within` is the one that matters for a
+    keyboard user tabbing into a card's link, since a link sliding out
+    from under the focus ring is unusable.
+  */
+  .marquee-track:hover,
+  .marquee-track:focus-within,
+  .marquee-track[data-paused='true'] {
+    animation-play-state: paused;
+  }
+}
+
+/*
+  Reduced motion: no animation at all, and the duplicate copy is
+  removed rather than left as a silent tail of repeats. The viewport
+  becomes a normal horizontal scroller, so every card stays reachable
+  by trackpad, touch, or keyboard.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .marquee-viewport {
+    overflow-x: auto;
+  }
+
+  .marquee-duplicate,
+  .marquee-toggle {
+    display: none;
+  }
+}

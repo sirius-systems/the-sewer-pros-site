@@ -53,7 +53,7 @@ export function ConfidenceModule({
         real element or the landmark loses its accessible name. An
         `sr-only` heading keeps the name without the visible label,
         matching the `sr-only` convention already used in
-        ReviewCarousel.tsx.
+        ReviewMarquee.tsx.
       */}
       <h2 id={id} className="sr-only">
         Good to know
