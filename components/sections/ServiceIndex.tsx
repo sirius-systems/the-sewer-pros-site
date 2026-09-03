@@ -98,6 +98,15 @@ export interface ServiceIndexProps {
    * (18 §108, §155).
    */
   surface?: SectionSurface
+  /**
+   * Extra classes for this section's own `<Section>`.
+   *
+   * Used by a composing template to add a boundary between this section
+   * and the next, matching the divider TrustBar carries
+   * (`border-b border-border`). Optional and additive: a caller that
+   * passes nothing renders exactly as before.
+   */
+  className?: string
 }
 
 /**
@@ -133,6 +142,7 @@ export function ServiceIndex({
   surface = 'default',
   variant = 'index',
   flagshipPageId,
+  className,
 }: ServiceIndexProps) {
   // Gated pages drop out rather than failing the build — a service
   // whose page is pending validation simply is not listed yet (04 §4).
@@ -147,7 +157,12 @@ export function ServiceIndex({
     const flagship = flagshipPageId ?? links[0]?.pageId
 
     return (
-      <Section density={density} surface={surface} labelledBy={id}>
+      <Section
+        density={density}
+        surface={surface}
+        labelledBy={id}
+        className={className}
+      >
         <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
         <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -195,7 +210,12 @@ export function ServiceIndex({
   }
 
   return (
-    <Section density={density} surface={surface} labelledBy={id}>
+    <Section
+        density={density}
+        surface={surface}
+        labelledBy={id}
+        className={className}
+      >
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <ul className="mt-10 border-t border-border">

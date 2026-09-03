@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import { Section, CardGrid, LinkCard, type SectionDensity } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
+import { marketImages } from '@/data/business/card-images'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import { pagesOfType } from '@/data/pages'
@@ -49,6 +52,15 @@ export interface MarketCoverageProps {
   eyebrow?: string
   title?: string
   intro?: string
+  /**
+   * Extra classes for this section's own `<Section>`.
+   *
+   * Used by a composing template to add a boundary between this section
+   * and the next, matching the divider TrustBar carries
+   * (`border-b border-border`). Optional and additive: a caller that
+   * passes nothing renders exactly as before.
+   */
+  className?: string
 }
 
 /**
@@ -80,6 +92,7 @@ export function MarketCoverage({
   eyebrow,
   title = 'Where we work',
   intro,
+  className,
 }: MarketCoverageProps) {
   const marketPageIds = pagesOfType('market').map((page) => page.id as PageId)
   const links = resolveLinkableOnly(marketPageIds)
@@ -87,7 +100,7 @@ export function MarketCoverage({
   if (links.length === 0) return null
 
   return (
-    <Section density={density} labelledBy={id}>
+    <Section density={density} labelledBy={id} className={className}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       {/*
@@ -112,26 +125,50 @@ export function MarketCoverage({
         not branches, and a name plus an arrow implies no office.
       */}
       <CardGrid columns={3} itemCount={links.length} className="mt-10">
-        {links.map((link) => (
-          <LinkCard
-            key={link.pageId}
-            href={link.href}
-            actionLabel={link.label}
-            className="group"
-          >
-            <span className="flex items-center justify-between gap-4">
-              <span className="text-h3 font-medium tracking-tight text-foreground">
-                {link.label}
-              </span>
+        {links.map((link) => {
+          // Artwork is optional and currently absent for every market.
+          // A card with one grows to carry a 7:4 crop above the label
+          // row; a card without one keeps exactly its current compact
+          // shape, with no crop container rendered at all (18 §40-42).
+          const image = marketImages[link.pageId]
+
+          return (
+            <LinkCard
+              key={link.pageId}
+              href={link.href}
+              actionLabel={link.label}
+              padded={image === undefined}
+              className={cn('group', image !== undefined && 'overflow-hidden')}
+            >
+              {image !== undefined && (
+                <span className="relative block aspect-[7/4] w-full overflow-hidden">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </span>
+              )}
               <span
-                aria-hidden="true"
-                className="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                className={cn(
+                  'flex items-center justify-between gap-4',
+                  image !== undefined && 'p-6',
+                )}
               >
-                →
+                <span className="text-h3 font-medium tracking-tight text-foreground">
+                  {link.label}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
               </span>
-            </span>
-          </LinkCard>
-        ))}
+            </LinkCard>
+          )
+        })}
       </CardGrid>
     </Section>
   )

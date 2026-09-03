@@ -166,6 +166,16 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         />
       )}
 
+      {/*
+        Dividers on two pairs that read as one block. Same mechanism and
+        same class as TrustBar's (`border-b border-border` through
+        Section's className), so every boundary on this page is one
+        thing rather than three near-misses.
+
+        Services -> Differentiator: both sit on `muted` (ServiceIndex
+        was moved there to break the run above it), so there is no
+        surface change here to carry the boundary on its own.
+      */}
       <ServiceIndex
         density="dense"
         surface="muted"
@@ -173,6 +183,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         title="What we do"
         items={content.services}
         variant="mosaic"
+        className="border-b border-border"
       />
 
       {content.differentiator !== undefined && (
@@ -182,7 +193,8 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         />
       )}
 
-      <MarketCoverage density="dense" />
+      {/* Markets -> Process: both on the default surface. */}
+      <MarketCoverage density="dense" className="border-b border-border" />
 
       {content.process !== undefined && (
         <ProcessSteps
