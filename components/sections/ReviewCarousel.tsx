@@ -288,7 +288,7 @@ function AggregateStat() {
     <p className="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm text-muted-foreground">
       <span className="text-h3 font-medium tracking-tight text-foreground">
         {rating}
-        <span aria-hidden="true" className="ml-1 text-accent-secondary">
+        <span aria-hidden="true" className="ml-1 text-rating-gold">
           ★
         </span>
         <span className="sr-only"> out of 5</span>
@@ -322,7 +322,7 @@ function AggregateStat() {
 function StarRow({ value }: { value: number }) {
   const filled = Math.max(0, Math.min(5, Math.round(value)))
   return (
-    <p className="mb-3 flex items-center gap-1 text-accent-secondary">
+    <p className="mb-3 flex items-center gap-1 text-rating-gold">
       <span aria-hidden="true" className="tracking-[0.15em]">
         {'★'.repeat(filled)}
         <span className="text-muted-foreground">{'☆'.repeat(5 - filled)}</span>
