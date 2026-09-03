@@ -40,7 +40,7 @@ import { cn } from '@/lib/utils/cn'
 const CONTROL = cn(
   'block w-full rounded-md border border-border bg-background px-3 py-2',
   'text-sm text-foreground placeholder:text-muted-foreground',
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary',
 )
 
 export interface FieldProps {
@@ -175,7 +175,7 @@ export function RadioGroup({
                 name={name}
                 value={option.value}
                 required={required}
-                className="h-4 w-4 border-border text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="h-4 w-4 border-border text-accent-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
               />
               <label htmlFor={id} className="text-sm text-foreground">
                 {option.label}

@@ -1368,9 +1368,9 @@ Avoid forcing service-page conversion density onto purely informational pages.
 
 # 28. Color System
 
-Use the actual approved Sewer Pros brand colors when finalized.
+**The palette is approved.** DEC-096 (2026-09-03) fixed the production values; they are recorded as brand facts in `01-business-brand-foundation.md` §42 and implemented as tokens in `app/globals.css`.
 
-The reference designs demonstrate the desired **color roles**, not necessarily the final exact palette.
+The reference designs demonstrate the desired **color roles**, not the palette. Take composition from them and color from DEC-096.
 
 Core roles should include:
 
@@ -1447,6 +1447,8 @@ Most of the page should rely on:
 ---
 
 # 30. Typography
+
+**The typefaces are approved.** DEC-096 fixed Archivo for headings and eyebrows and Source Sans 3 for body, navigation, buttons, and form fields — two families, which is this section's own maximum. Weights and roles are tabulated in `01-business-brand-foundation.md` §42.
 
 Typography should feel:
 

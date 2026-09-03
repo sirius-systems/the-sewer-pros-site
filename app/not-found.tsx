@@ -31,22 +31,22 @@ export default function NotFound() {
 
       <ul className="mt-8 flex flex-col gap-3">
         <li>
-          <Link href="/" className="text-accent underline underline-offset-4">
+          <Link href="/" className="text-accent-secondary underline underline-offset-4">
             Home
           </Link>
         </li>
         <li>
-          <Link href="/services/" className="text-accent underline underline-offset-4">
+          <Link href="/services/" className="text-accent-secondary underline underline-offset-4">
             Services
           </Link>
         </li>
         <li>
-          <Link href="/locations/" className="text-accent underline underline-offset-4">
+          <Link href="/locations/" className="text-accent-secondary underline underline-offset-4">
             Service areas
           </Link>
         </li>
         <li>
-          <Link href="/contact/" className="text-accent underline underline-offset-4">
+          <Link href="/contact/" className="text-accent-secondary underline underline-offset-4">
             Contact
           </Link>
         </li>

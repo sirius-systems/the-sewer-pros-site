@@ -24,7 +24,7 @@ export type BadgeTone = 'neutral' | 'accent'
 
 const TONE: Record<BadgeTone, string> = {
   neutral: 'border-border bg-surface-muted text-muted-foreground',
-  accent: 'border-accent/30 bg-accent/10 text-accent',
+  accent: 'border-accent-secondary/30 bg-accent-secondary/10 text-accent-secondary',
 }
 
 export interface BadgeProps {

@@ -42,7 +42,7 @@ export function Prose({ className, children }: ProseProps) {
         '[&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6',
         '[&_li]:leading-7 [&_li+li]:mt-2',
         // Links — 18 §92
-        '[&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4',
+        '[&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4',
         '[&_a:hover]:text-foreground',
         // Tables — 18 §72, §100: must stay readable on mobile
         '[&_table]:w-full [&_table]:text-sm',

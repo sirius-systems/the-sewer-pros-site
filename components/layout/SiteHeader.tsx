@@ -83,7 +83,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-4 lg:flex">
           <HeaderPhoneLink
             ctaLocation="header"
-            className="text-sm font-medium text-foreground hover:text-accent"
+            className="text-sm font-medium text-foreground hover:text-accent-secondary"
           />
           <Link
             href={PRIMARY_CTA.href}

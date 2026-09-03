@@ -5,38 +5,48 @@
 
    Governed by docs/18-design-system.md §8, §122, §124.
 
-   ⚠ PLACEHOLDER VALUES — NOT BRAND COLORS
+   Colour and typography values are APPROVED BRAND FACTS, per DEC-096
+   (2026-09-03), which resolved PENDING-005 (palette) and PENDING-006
+   (typography) and superseded DEC-064. They are recorded in
+   01-business-brand-foundation.md.
 
-   DEC-064 (status: PROPOSED) has not been approved, and PENDING-005
-   (brand palette) and PENDING-006 (typography) are unresolved.
+   The palette evolves the existing blue-and-green identity rather than
+   replacing it, so it stays in harmony with the logo's own #2463AB
+   blue and #8F9094 grey. The logo asset itself is unmodified.
 
-   The token NAMES and ROLES below are the approved architecture
-   (18 §8 defines semantic roles rather than fixed values).
-   The VALUES are neutral greys chosen only so the scaffold renders.
+   Token NAMES and ROLES are unchanged from the scaffold, which is why
+   approving the palette touched this file and not the components
+   (18 §124).
 
-   Do not treat any hex value in this file as a brand decision, and do
-   not build finished visual design against them. When brand assets are
-   approved, replace the values here — component code should not need
-   to change (18 §124).
+   ⚠ GREEN IS FOR CONVERSION ACTIONS. `--accent` is the CTA colour and
+   should not be scattered across icons, borders, or headings; use
+   `--accent-secondary` or `--brand` for those. That discipline is the
+   point of the two-accent split (18 §29).
    ========================================================================== */
 
 :root {
   /* Surfaces */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1f2933;
   --surface: #ffffff;
-  --surface-muted: #f5f5f5;
-  --border: #e5e5e5;
+  --surface-muted: #f4f7f8;
+  --border: #d7e0e5;
 
-  /* Brand — PLACEHOLDER, see PENDING-005 */
-  --brand: #1f2937;
+  /* Brand (DEC-096) */
+  --brand: #0b2d45;
   --brand-foreground: #ffffff;
-  --accent: #0f766e;
+
+  /* Conversion accent. CTAs only — see the note above. 5.45:1 on white. */
+  --accent: #007a3d;
   --accent-foreground: #ffffff;
 
+  /* Authority accent: links, nav active states, non-CTA emphasis. 5.83:1. */
+  --accent-secondary: #1c6b97;
+  --accent-secondary-foreground: #ffffff;
+
   /* Text */
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
+  --muted: #f4f7f8;
+  --muted-foreground: #5f6b73;
 
   /* Semantic state (18 §8) */
   --success: #15803d;
@@ -74,6 +84,8 @@
   --color-brand-foreground: var(--brand-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-secondary-foreground: var(--accent-secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-success: var(--success);
@@ -87,9 +99,11 @@
      keeps long city and service names usable on narrow screens
      without fixed oversized headings that wrap awkwardly (18 §150).
 
-     ⚠ SIZES ONLY. Font FAMILY is unresolved (PENDING-006) and is
-     deliberately not set anywhere — the stack falls back to system
-     defaults until typography is approved.
+     Font families are set below from DEC-096: Archivo for headings
+     and eyebrows, Source Sans 3 for body, navigation, buttons and form
+     fields. Both are loaded through next/font/google in the root
+     layout, so the variables here point at those rather than naming a
+     family directly.
      ------------------------------------------------------------------ */
   --text-display: clamp(2.5rem, 5vw + 1rem, 4rem);
   --text-display--line-height: 1.05;
@@ -105,6 +119,26 @@
   --text-body-lg--line-height: 1.7;
   --text-caption: 0.8125rem;
   --text-caption--line-height: 1.5;
+
+  /* ------------------------------------------------------------------
+     Font families (18 §30, DEC-096)
+
+     Two families, which is 18 §30's stated maximum:
+
+       Archivo        headings and eyebrows. Technical and substantial
+                      rather than a generic franchise face, and it
+                      carries H1/H2/eyebrow weight without needing
+                      oversized or condensed display type.
+       Source Sans 3  body, navigation, buttons, form fields. Built for
+                      dense interface and body copy, which is what the
+                      service, FAQ, form and location pages are.
+
+     The values are the CSS variables next/font/google generates in the
+     root layout, never a hardcoded family name, so swapping a face is
+     a layout change rather than a search across components.
+     ------------------------------------------------------------------ */
+  --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -118,11 +152,47 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans);
 }
 
-/* 18 §94 — keyboard focus must remain clearly visible. */
+/*
+  Headings take Archivo. Set here rather than as a class on every
+  heading so a component that renders an h2 gets it without opting in,
+  and so the two families stay a global decision (18 §30, DEC-096).
+
+  Weights are per DEC-096: H1 700, H2 650-700, H3 600. Archivo is a
+  variable font, so 650 is a real weight rather than a rounded one.
+*/
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 650;
+}
+
+h3,
+h4 {
+  font-weight: 600;
+}
+
+/*
+  18 §94 — keyboard focus must remain clearly visible.
+
+  The ring is the authority blue, not the conversion green: a focus
+  affordance is not a call to action, and DEC-096 reserves green for
+  conversion. Blue also reads as focus rather than as "this is the
+  button you should press".
+*/
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-secondary);
   outline-offset: 2px;
 }
 

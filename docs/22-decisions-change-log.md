@@ -1444,7 +1444,7 @@ Tracked as PENDING-012. Note this gate is **independent of** PENDING-004 (GBP el
 ## DEC-064 — Interim Ownership of Visual Identity Values
 
 **Date:** 2026-08-14
-**Status:** PROPOSED
+**Status:** SUPERSEDED by DEC-096
 **Impact:** Medium
 **Decision Owner:** *Awaiting project approval*
 **Affected Documents:**
@@ -3517,6 +3517,87 @@ Verified The Sewer Pros content and branding must replace all example content.
 
 ---
 
+## DEC-096 — Brand Typography and Color System Approved
+
+**Date:** 2026-09-03
+**Status:** APPROVED
+**Impact:** High
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` — PENDING-005, PENDING-006, DEC-064
+* `01-business-brand-foundation.md` — new visual-identity section
+* `18-design-system.md` §28-§31
+* `app/globals.css`
+* `components/ui/index.ts` (comment only — token names/roles are unaffected)
+
+### Decision
+
+The Sewer Pros' production typography and brand color values are approved as follows. These are now verified brand facts, not placeholders.
+
+**Typography**
+
+| Element | Font | Weight |
+| --- | --- | --- |
+| Hero H1 | Archivo | 700 |
+| Section H2 | Archivo | 650-700 |
+| Card H3 | Archivo | 600 |
+| Eyebrows | Archivo | 600, uppercase, moderate letter-spacing |
+| Body copy | Source Sans 3 | 400 |
+| Navigation | Source Sans 3 | 600 |
+| Buttons | Source Sans 3 | 600 |
+| Form fields | Source Sans 3 | 400-600 |
+
+Rationale: Archivo reads as technical, substantial, and specialized rather than a generic plumbing franchise, and carries the hero/H2/eyebrow weight the design system calls for (18 §30) without oversized or condensed display type. Source Sans 3 is built for dense interface and body content, which matches this site's copy-dense pages. Two families total, satisfying 18 §30's maximum. Barlow Condensed and an Archivo-only system were considered and rejected: the first risks a compressed, promotional feel in body copy, the second is safe but less distinctive.
+
+**Color System**
+
+| Role | Token | Hex | Usage |
+| --- | --- | --- | --- |
+| Brand Dark | `--brand` | `#0B2D45` | header, hero, process sections, testimonials, CTA bands, footer |
+| Brand Foreground | `--brand-foreground` | `#FFFFFF` | text/icons on Brand Dark |
+| Primary Blue | `--accent-secondary` (new) | `#1C6B97` | secondary buttons, links, nav active states, authority accents |
+| Primary Surface | `--background` / `--surface` | `#FFFFFF` | content, cards, forms, resources |
+| Secondary Surface | `--surface-muted` | `#F4F7F8` | alternating section rhythm |
+| Border | `--border` | `#D7E0E5` | card borders, dividers |
+| Primary Accent (CTA) | `--accent` | `#007A3D` | primary buttons and conversion actions only |
+| Accent Foreground | `--accent-foreground` | `#FFFFFF` | text on Primary Accent |
+| Foreground / Body Text | `--foreground` | `#1F2933` | body copy |
+| Muted Foreground | `--muted-foreground` | `#5F6B73` | supporting/secondary text |
+
+Rationale: this evolves the existing blue-and-green identity rather than replacing it, preserving the recognition equity in the logo (`#2463AB` blue, `#8F9094` gray) instead of introducing a palette the logo would clash with. Brand Dark is a deepened, desaturated echo of the logo's own blue hue, for the dark bands 18 §28 calls for. CTA Green is deliberately darker than the legacy `#008E44` to improve white-text contrast. Per 18 §29 green is for conversion actions, not scattered across icons, borders, and headings. No gradients, consistent with 18 §28.
+
+**Contrast, verified at implementation** rather than taken on trust. Every pair clears WCAG AA (4.5:1):
+
+| Pair | Ratio |
+| --- | --- |
+| White on CTA green `#007A3D` | 5.45:1 |
+| White on primary blue `#1C6B97` | 5.83:1 |
+| White on brand dark `#0B2D45` | 14.23:1 |
+| Muted text `#5F6B73` on white | 5.47:1 |
+| Muted text on muted surface `#F4F7F8` | 5.08:1 |
+| Body text `#1F2933` on white | 14.76:1 |
+
+### Previous State
+
+`app/globals.css` and `components/ui/index.ts` carried explicit placeholder warnings pending PENDING-005 and PENDING-006. DEC-064 held interim, non-final authority over these roles while awaiting supplied brand assets or an approved decision.
+
+### New State
+
+PENDING-005 and PENDING-006 are RESOLVED. DEC-064 is SUPERSEDED by this entry. Visual-identity values now live in `01-business-brand-foundation.md` as verified brand facts, per DEC-064's own stated resolution path.
+
+### Implementation Notes
+
+Two accents now exist and are not interchangeable. `--accent` is conversion green; `--accent-secondary` is authority blue. Enforcing that split moved links, navigation hover, tertiary buttons, badges, radio controls, focus rings, the skip link, and review-carousel accents off green and onto blue. Green now appears in exactly three places, all primary conversion buttons.
+
+Review stars took the authority blue. The palette defines no star color, and inventing an amber outside the approved set would have been a brand decision this entry does not make.
+
+The logo asset is unmodified. `#2463AB` and `#8F9094` are recorded here only as the source values the palette was built to harmonize with.
+
+`src/app/globals.css` does not exist in this repository — there is no `src/` tree — so implementation item 6 had nothing to apply to.
+
+---
+
 # 11. Superseded Governance Interpretations
 
 The following earlier interpretations should no longer be used.
@@ -3710,7 +3791,7 @@ Evaluate GBP eligibility only if legitimate business presence/eligibility suppor
 
 ## PENDING-005 — Final Brand Color System
 
-**Status:** DEFERRED
+**Status:** RESOLVED by DEC-096 (2026-09-03)
 
 Final production brand colors should be based on approved Sewer Pros branding.
 
@@ -3720,7 +3801,7 @@ The visual reference templates define layout and hierarchy, not the requirement 
 
 ## PENDING-006 — Final Typography
 
-**Status:** DEFERRED
+**Status:** RESOLVED by DEC-096 (2026-09-03)
 
 Typography may be finalized during design implementation.
 
@@ -4050,7 +4131,7 @@ That belongs here.
 The next available decision ID after the current register is:
 
 ```text
-DEC-096
+DEC-097
 ```
 
 Use sequential IDs for new material decisions.
