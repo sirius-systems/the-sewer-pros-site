@@ -3,7 +3,7 @@
 **Document:** `14-content-specification.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Content Standard / Source of Truth
+**Status:** Active Project-Specific Content Standard / Source of Truth
 **Applies To:** All public-facing website content produced for The Sewer Pros
 
 ---
@@ -27,7 +27,7 @@ It establishes:
 * factual accuracy requirements
 * duplication safeguards
 * content quality standards
-* content approval requirements
+* content lifecycle, publication, and indexation requirements
 
 This document does **not** duplicate generalized Site OS Master procedures for:
 
@@ -35,7 +35,7 @@ This document does **not** duplicate generalized Site OS Master procedures for:
 * prompt sequencing
 * content-production workflows
 * QA methodology
-* editorial gates
+* editorial validation and release controls
 * automated validation
 * implementation sequencing
 
@@ -49,7 +49,7 @@ This document defines **what content for The Sewer Pros must contain and accompl
 
 Every page must justify its existence.
 
-A page should not be created merely because:
+A route should not be published or indexed merely because:
 
 * a keyword exists
 * a service/location relationship exists
@@ -57,6 +57,8 @@ A page should not be created merely because:
 * a page can be programmatically generated
 * the geographic registry contains the location
 * the service × location matrix contains the combination
+
+Any of these signals may justify research, a content brief, a candidate route, a draft, or a protected-preview build. They do not by themselves justify production publication or search indexation.
 
 Every indexable page must provide:
 
@@ -72,17 +74,19 @@ Sufficient Unique Content
 Clear Conversion Purpose
 ```
 
-If these conditions cannot be satisfied, the page should not be published as an indexable route.
+If these conditions cannot be satisfied, the page must remain non-indexable. It may remain in research, draft, or protected-preview status while the team improves or evaluates it.
 
 ---
 
-# 3. Master Page Build List Authority
+# 3. Build-First Content Governance
 
-This document defines how approved pages should be written.
+This document defines how candidate, published, and indexable pages should be written. It does **not** create a pre-build permission gate.
 
-It does **not** authorize new pages.
+The governing principle is:
 
-The authoritative publishing registry remains:
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+The authoritative production and indexation control plane remains:
 
 `04-master-page-build-list.md`
 
@@ -91,22 +95,22 @@ The governing sequence is:
 ```text
 Opportunity Identified
         ↓
-Master Page Build List Approval
+Research + Business-Truth Check
         ↓
-Research
+Content Brief / Candidate Route
         ↓
-Content Specification Applied
+Draft + Local or Protected-Preview Build
         ↓
-Content Production
+Content, Technical, and Release QA
         ↓
-QA
+Master Page Build List Publication State
         ↓
-Build
+Production Publication
         ↓
-Publication
+Indexation When Quality-Qualified
 ```
 
-No page should be generated solely from:
+Research, briefs, templates, drafts, candidate routes, and protected previews may proceed before a production decision. No route should be automatically published or indexed solely from:
 
 * the Master Service Registry
 * the Master Location Registry
@@ -114,6 +118,16 @@ No page should be generated solely from:
 * a keyword database
 * competitor research
 * AI recommendations
+
+Development status, production-publication status, and indexation status are separate controls:
+
+| Control | Example states | Meaning |
+|---|---|---|
+| Development | Research, Draft, Review, Build Ready, Built | Work may proceed without publication |
+| Production | Withheld, Selected, Published, Retired | Controls public release |
+| Indexation | Noindex, Eligible, Indexable, Removed | Controls search-engine eligibility |
+
+The Master Page Build List records production and indexation decisions. It does not determine whether research or development may begin.
 
 ---
 
@@ -172,7 +186,7 @@ It should not be repeated mechanically on every page.
 
 # 6. Repair and Replacement Guardrail
 
-The Sewer Pros must not be presented as a sewer repair or sewer replacement contractor unless specifically approved.
+The Sewer Pros must not be presented as a sewer repair or sewer replacement contractor unless that capability is formally added to the Master Service Registry and recorded in the Decisions & Change Log.
 
 Do not imply that The Sewer Pros directly provides:
 
@@ -216,7 +230,7 @@ Excavates
 Relines
 ```
 
-unless an approved change expands the company's actual service scope.
+unless a documented registry and change-log update expands the actual service scope of the company.
 
 ---
 
@@ -232,13 +246,13 @@ Help the page rank for a clearly defined search intent.
 
 ## 7.2 Local Relevance
 
-Establish legitimate relevance to an approved market or geographic area.
+Establish legitimate relevance to an operational market or registry-supported geographic area.
 
 ---
 
 ## 7.3 Topical Authority
 
-Strengthen The Sewer Pros' authority around sewer inspection, diagnostics, cleaning, locating, or related subjects.
+Strengthen the authority of The Sewer Pros around sewer inspection, diagnostics, cleaning, locating, or related subjects.
 
 ---
 
@@ -281,7 +295,7 @@ Move an appropriate user toward:
 
 # 8. Primary Content Audiences
 
-Content should account for the different motivations of each approved audience.
+Content should account for the different motivations of each defined audience.
 
 Primary audience families include:
 
@@ -372,7 +386,7 @@ Avoid:
 
 # 11. Customer-Centered Writing
 
-Content should primarily answer the customer's questions.
+Content should primarily answer the questions of the customer.
 
 The page should prioritize:
 
@@ -552,7 +566,7 @@ The user should not need to scroll through generic brand language before underst
 
 Use one primary H1.
 
-The H1 should communicate the page's primary topic clearly.
+The H1 should communicate the primary topic of the page clearly.
 
 Examples:
 
@@ -612,7 +626,7 @@ This structure supports:
 
 # 19. FAQ Standard
 
-FAQs should address genuine questions associated with the page's search intent.
+FAQs should address genuine questions associated with the search intent of the page.
 
 They should not exist only for keyword placement.
 
@@ -676,7 +690,7 @@ Never invent:
 * repair capabilities
 * commercial capabilities
 
-All factual claims must come from approved business data or verified research.
+All factual claims must come from documented business data or verified research.
 
 ---
 
@@ -692,7 +706,7 @@ Only if verified.
 
 Avoid unsupported statements such as:
 
-> St. Louis' most experienced sewer inspection company.
+> The most experienced sewer inspection company in St. Louis.
 
 ---
 
@@ -708,7 +722,7 @@ Do not use claims such as:
 * highest-rated
 * premier
 
-unless they can be objectively substantiated and are approved.
+unless they can be objectively substantiated and formally cleared for use.
 
 Prefer specific differentiation.
 
@@ -774,7 +788,7 @@ Clearly name primary services.
 
 ### Where The Sewer Pros Operates
 
-Present the three approved markets.
+Present the three operational markets.
 
 ### Why The Sewer Pros Is Different
 
@@ -850,7 +864,7 @@ How does The Sewer Pros approach the service?
 
 ### Related Services
 
-What other approved services naturally connect?
+What other registry-listed services actually offered by The Sewer Pros naturally connect?
 
 ### FAQs
 
@@ -877,7 +891,7 @@ The canonical sewer camera inspection page should explain:
 * pre-purchase use
 * recurring backup use
 * second-opinion use
-* The Sewer Pros' independent approach
+* the independent approach of The Sewer Pros
 * what customers should expect
 
 Do not imply that a camera can diagnose conditions it cannot reliably identify.
@@ -886,7 +900,7 @@ Do not imply that a camera can diagnose conditions it cannot reliably identify.
 
 # 30. Sewer Inspection Page Requirements
 
-If both `sewer inspection` and `sewer camera inspection` exist as approved canonical services, their intent must be differentiated.
+If both `sewer inspection` and `sewer camera inspection` are listed as distinct canonical services in the Master Service Registry, their intent must be differentiated.
 
 Possible distinction:
 
@@ -1007,7 +1021,7 @@ It should not guarantee that an inspection will identify every possible defect.
 
 # 36. Market Hub Page Specification
 
-Each approved market hub should serve as a substantial local authority page.
+Each market hub selected for production should serve as a substantial local authority page.
 
 Initial market hubs:
 
@@ -1019,11 +1033,11 @@ Market hubs should contain:
 
 ### Market Introduction
 
-Explain The Sewer Pros' service presence.
+Explain the service presence of The Sewer Pros.
 
 ### Local Services
 
-Link to approved market-specific service pages.
+Link to published market-specific service pages.
 
 ### Local Customer Context
 
@@ -1031,7 +1045,7 @@ Discuss relevant local use cases.
 
 ### Geographic Coverage
 
-Link to approved location pages.
+Link to published location pages.
 
 ### Audience Context
 
@@ -1051,7 +1065,7 @@ Include questions relevant to the market.
 
 ### Conversion
 
-Provide clear market-specific contact options where approved.
+Provide clear market-specific contact options where verified.
 
 ---
 
@@ -1092,7 +1106,7 @@ St. Louis content may appropriately explore topics such as:
 
 Municipality-specific rules must be independently verified before publication.
 
-Do not describe one municipality's sewer-lateral program as applying to the entire metropolitan area.
+Do not describe the sewer-lateral program of one municipality as applying to the entire metropolitan area.
 
 ---
 
@@ -1107,7 +1121,7 @@ San Diego content should develop genuine local relevance around:
 * sewer diagnostics
 * cleaning
 * hydro jetting
-* approved community coverage
+* registry-supported community coverage
 * commercial/property-management needs
 
 Avoid superficial localization based on:
@@ -1123,7 +1137,9 @@ unless directly relevant to sewer-service context.
 
 # 40. Las Vegas Content Requirements
 
-Las Vegas content should focus on actual sewer and drain service context.
+Las Vegas is an active operational market. Research, content production, route development, and SEO work for Las Vegas do not require a separate market gate.
+
+Las Vegas content should focus on actual sewer and drain service context. The absence of a verified Las Vegas Google Business Profile does not block development or accurate market content, but content must not imply a physical office or GBP that does not exist.
 
 Potential themes include:
 
@@ -1135,7 +1151,7 @@ Potential themes include:
 * hospitality
 * restaurants
 * commercial facilities
-* approved surrounding communities
+* registry-supported surrounding communities
 
 Do not fabricate climate-related sewer claims simply because Las Vegas is in a desert.
 
@@ -1147,14 +1163,14 @@ A location page should answer:
 
 > Why is this page genuinely useful to someone seeking The Sewer Pros in this location?
 
-An approved location page should generally include:
+A location page selected for production should generally include:
 
 * location-specific introduction
 * services actually available
 * relevant property/customer context
 * real geographic context
-* links to approved service + location pages
-* nearby approved locations where useful
+* links to published service + location pages
+* nearby published locations where useful
 * relevant FAQs
 * conversion path
 
@@ -1188,7 +1204,7 @@ Avoid irrelevant geographic trivia.
 
 # 43. Service + Location Page Specification
 
-An approved service + location page should combine genuine service intent with genuine geographic relevance.
+A service + location page selected for production should combine genuine service intent with genuine geographic relevance.
 
 Example:
 
@@ -1216,11 +1232,11 @@ Include location-relevant scenarios.
 
 ### Differentiation
 
-Explain The Sewer Pros' approach.
+Explain the approach of The Sewer Pros.
 
 ### Related Local Services
 
-Link to related approved routes.
+Link to related published routes.
 
 ### Local FAQs
 
@@ -1258,7 +1274,7 @@ Localized pages should not simply duplicate the canonical service page.
 
 # 45. Audience Page Specification
 
-Audience pages should focus on the customer's context, not merely repeat service descriptions.
+Audience pages should focus on the context of the customer, not merely repeat service descriptions.
 
 Example:
 
@@ -1338,7 +1354,7 @@ Agent-focused pages should help professionals understand:
 * buyer/seller concerns
 * independent inspection positioning
 
-Do not imply an agency relationship or endorsement without approval.
+Do not imply an agency relationship or endorsement without documented authorization.
 
 ---
 
@@ -1362,7 +1378,7 @@ The page should speak to operational reliability rather than homeowner concerns.
 
 # 50. Audience + Location Page Specification
 
-Approved audience + location pages must provide both:
+Audience + location pages selected for production must provide both:
 
 ```text
 Audience Specificity
@@ -1425,7 +1441,7 @@ Commercial pages should use business terminology naturally.
 
 # 52. Commercial Service Page Requirements
 
-Approved pages such as:
+Production pages such as:
 
 ```text
 Commercial Sewer Inspection
@@ -1458,7 +1474,7 @@ Example:
 Commercial Hydro Jetting in Las Vegas
 ```
 
-may appropriately address approved audiences such as:
+may appropriately address verified audiences such as:
 
 * restaurants
 * hospitality
@@ -1499,7 +1515,7 @@ Examples:
 
 # 55. Comparison Content Neutrality
 
-Comparison pages should not manipulate readers by artificially making The Sewer Pros' option win.
+Comparison pages should not manipulate readers by artificially making the preferred option of The Sewer Pros win.
 
 For example:
 
@@ -1657,7 +1673,7 @@ Potential Solutions
 When to Call
 ```
 
-Avoid diagnosing a customer's exact condition from symptoms alone.
+Avoid diagnosing the exact condition of a customer from symptoms alone.
 
 ---
 
@@ -1817,7 +1833,7 @@ Example:
 
 > Schedule an independent sewer camera inspection in St. Louis to identify blockages, roots, pipe damage, and other visible sewer-line conditions before making major repair decisions.
 
-Do not promise rankings, pricing, or availability not supported by approved information.
+Do not promise rankings, pricing, or availability not supported by documented information.
 
 ---
 
@@ -1988,7 +2004,7 @@ or:
 
 unless explicitly supported.
 
-Use approved service areas.
+Use registry-defined service areas.
 
 ---
 
@@ -2051,7 +2067,7 @@ These datasets can assist:
 * internal linking
 * expansion
 
-They should not produce templated content automatically without approved page strategy.
+They may support bounded candidate generation, structured briefs, and draft builds. They must not trigger automatic production publication or indexation without a page-specific strategy and quality review.
 
 ---
 
@@ -2128,7 +2144,7 @@ Reusable factual components may be centrally maintained where appropriate, but t
 
 # 87. Cannibalization Guardrail
 
-Before creating a page, determine whether another approved page already satisfies the same intent.
+Before publishing or indexing a route, determine whether another planned or published page already satisfies the same intent. Candidate research and drafts may proceed while that distinction is evaluated.
 
 Examples requiring careful distinction:
 
@@ -2342,9 +2358,9 @@ Appropriate:
 
 Pages supporting a Google Business Profile should align with:
 
-* approved business name
-* approved services
-* approved address/service area
+* verified business name
+* registry-listed and actually offered services
+* verified address or registry-defined service area
 * market-specific proof
 * actual operating information
 
@@ -2387,7 +2403,7 @@ Core Service
         ↓
 Market
         ↓
-Approved Service + Location
+Published Service + Location
         ↓
 Audience / Commercial
         ↓
@@ -2469,23 +2485,49 @@ The exact technical schema will be defined through the implementation architectu
 
 ---
 
-# 103. Content Status Model
+# 103. Content Lifecycle Model
 
-Pages may use statuses such as:
+Do not use one linear status field to collapse development, publication, and indexation into a single approval state.
+
+Content records should support three independent state groups:
+
+### Development Status
 
 ```text
 Research
+Brief Ready
 Draft
 Internal Review
-Approved
+Revision Needed
+Content Ready
 Build Ready
 Built
-Published
 Needs Update
 Retired
 ```
 
-Exact workflow statuses may be implemented according to Site OS Master.
+### Production Status
+
+```text
+Withheld
+Selected
+Scheduled
+Published
+Unpublished
+Retired
+```
+
+### Indexation Status
+
+```text
+Noindex
+Eligible
+Indexable
+Temporarily Removed
+Retired
+```
+
+A route may be built but withheld from production, or published with `noindex`. Exact workflow labels may be implemented according to Site OS Master, but the three control dimensions must remain distinct.
 
 ---
 
@@ -2505,7 +2547,7 @@ Content creators should defer to the following documents for project-specific fa
 
 `03-information-architecture.md`
 
-### Approved Pages
+### Production and Indexation Decisions
 
 `04-master-page-build-list.md`
 
@@ -2552,10 +2594,10 @@ Content creators should defer to the following documents for project-specific fa
 Before content is considered build-ready, it should satisfy the following project-specific conditions:
 
 * correct page intent
-* correct approved route
+* correct route and lifecycle states
 * accurate service terminology
 * accurate geography
-* no unapproved repair positioning
+* no unsupported repair or replacement positioning
 * clear independent-inspection differentiation where relevant
 * sufficient unique value
 * no material duplication
@@ -2567,7 +2609,7 @@ Before content is considered build-ready, it should satisfy the following projec
 * direct answers where appropriate
 * factual consistency with source-of-truth documents
 
-Site OS Master governs the actual validation workflow and QA gate mechanics.
+Site OS Master governs the detailed validation, QA, and release-control mechanics.
 
 ---
 
@@ -2650,7 +2692,7 @@ Clean or Maintain When Appropriate
 Make an Informed Repair Decision if Needed
 ```
 
-This narrative reflects The Sewer Pros' strongest competitive position.
+This narrative reflects the strongest competitive position of The Sewer Pros.
 
 ---
 
@@ -2675,7 +2717,7 @@ Avoid overusing any one phrase.
 
 # 110. Primary Content Promise
 
-The project's content should ultimately communicate:
+The content of the project should ultimately communicate:
 
 > **The Sewer Pros helps property owners, home buyers, real estate professionals, and commercial customers understand sewer-line conditions through independent inspection, diagnostics, locating, and cleaning—so they can make informed decisions based on evidence rather than assumptions.**
 
@@ -2685,8 +2727,8 @@ The project's content should ultimately communicate:
 
 The Sewer Pros website should not attempt to become the largest sewer-content site by publishing the greatest number of pages.
 
-It should become the most useful and credible resource possible within its approved service and market footprint.
+It should become the most useful and credible resource possible within its registry-defined service scope and operational market footprint.
 
 The governing standard is:
 
-> **Every published page must help a real customer understand a real sewer or drain problem, connect that problem to an approved service, demonstrate The Sewer Pros' expertise and independent approach, and provide a clear next step without exaggeration, duplication, or repair-driven positioning.**
+> **Every published page must help a real customer understand a real sewer or drain problem, connect that problem to a registry-listed service The Sewer Pros actually provides, demonstrate the expertise and independent approach of the company, and provide a clear next step without exaggeration, duplication, or repair-driven positioning.**
