@@ -86,7 +86,7 @@ export interface ReviewCarouselProps {
 export function ReviewCarousel({
   density = 'standard',
   id = 'reviews',
-  title = 'What St. Louis customers say',
+  title = 'What our customers say',
 }: ReviewCarouselProps) {
   const [index, setIndex] = useState(0)
   const [expanded, setExpanded] = useState(false)
@@ -180,12 +180,28 @@ export function ReviewCarousel({
                 aria-roledescription="slide"
                 aria-label={`Review ${i + 1} of ${total}`}
               >
+                {/*
+                  Card boundary around the active slide (owner-directed,
+                  2026-09-03). The quote previously sat directly on the
+                  section's muted surface with nothing marking it as a
+                  discrete card. `bg-background` against the muted
+                  section is what makes the boundary read; `rounded-md`
+                  and `border-border` match components/ui/Card.tsx.
+
+                  Additive only: ReviewSlide keeps its own
+                  `max-w-[var(--container-reading)]` measure, and no
+                  transition is introduced — this file's header argues
+                  for a calm register and a static swap, which still
+                  holds.
+                */}
                 {isActive && (
-                  <ReviewSlide
-                    review={review}
-                    expanded={expanded}
-                    onToggleExpand={() => setExpanded((v) => !v)}
-                  />
+                  <div className="rounded-md border border-border bg-background p-6 sm:p-8">
+                    <ReviewSlide
+                      review={review}
+                      expanded={expanded}
+                      onToggleExpand={() => setExpanded((v) => !v)}
+                    />
+                  </div>
                 )}
               </div>
             )
