@@ -401,7 +401,7 @@ function ReviewSlide({
           rel="noopener noreferrer"
         >
           Read on Google
-          <span className="sr-only"> — review by {review.name}</span>
+          <span className="sr-only">, review by {review.name}</span>
         </a>
       </figcaption>
     </figure>
