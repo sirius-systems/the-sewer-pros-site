@@ -48,6 +48,31 @@
   --muted: #f4f7f8;
   --muted-foreground: #5f6b73;
 
+  /* ------------------------------------------------------------------
+     Rating star fill
+
+     ⚠ NOT A BRAND ACCENT, AND NOT AVAILABLE AS ONE.
+
+     Single purpose: the fill of a review star icon. Nobody parses a
+     blue star as "five stars", which is why this exists at all, but it
+     is a UI convention rather than an addition to the DEC-096 palette.
+
+     Do not reach for it for emphasis, icons, borders, badges, or
+     headings. Those have owners already: --accent-secondary for
+     authority and --accent for conversion. A decorative token that
+     starts appearing as a general accent stops being a decorative
+     token, and that would be a real brand-system question rather than
+     an implementation one.
+
+     Contrast is deliberately not a concern here and must stay that
+     way: 2.03:1 on white would fail as text. It is legitimate only
+     because every star run is aria-hidden with an adjacent sr-only
+     equivalent ("Rated 5 out of 5 on Google"), so the meaning is
+     carried as text and the colour is pure decoration. If a star ever
+     becomes the sole carrier of meaning, this token is the wrong tool.
+     ------------------------------------------------------------------ */
+  --rating-gold: #f5a623;
+
   /* Semantic state (18 §8) */
   --success: #15803d;
   --warning: #b45309;
@@ -88,6 +113,7 @@
   --color-accent-secondary-foreground: var(--accent-secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-rating-gold: var(--rating-gold);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
