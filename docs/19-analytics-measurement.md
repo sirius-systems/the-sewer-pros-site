@@ -3,7 +3,7 @@
 **Document:** `19-analytics-measurement.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Analytics and Measurement Source of Truth
+**Status:** Active Project-Specific Analytics and Measurement Source of Truth
 
 ---
 
@@ -43,7 +43,7 @@ This document does **not** duplicate generalized Site OS Master procedures for:
 * analytics QA methodology
 * tag debugging workflows
 * measurement-plan templates
-* release gates
+* release validation and production controls
 * testing procedures
 * dashboard-building methodology
 * reporting cadence
@@ -52,6 +52,26 @@ This document does **not** duplicate generalized Site OS Master procedures for:
 Site OS Master governs **how analytics implementation is tested and maintained**.
 
 This document defines **what must be measured for The Sewer Pros project**.
+
+## 1.1 Build-First Measurement Governance
+
+Analytics architecture, event modeling, instrumentation, dashboard design, and preview validation are not pre-build permission gates. They may be implemented alongside candidate pages and conversion components.
+
+The governing principle is:
+
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+Measurement must distinguish three environments and decisions:
+
+| Context | Measurement rule |
+|---|---|
+| Development and protected preview | Test events, dimensions, consent behavior, and conversion logic using debug or isolated data |
+| Production publication | Collect live behavioral and conversion data only from deliberately published routes |
+| Indexation | Compare intended indexation states with actual search-engine discovery and indexing |
+
+Analytics may recommend further research, candidate development, publication changes, indexation changes, consolidation, or retirement. It must not automatically publish, index, delete, redirect, or retire a route.
+
+The Master Page Build List is the source of truth for intended production and indexation states. Analytics measures outcomes against those states; it does not act as a pre-build approval system.
 
 ---
 
@@ -153,7 +173,7 @@ Cloudflare Platform Analytics
 +
 Conversion Event Tracking
 +
-Call Tracking Where Approved
+Call Tracking Where Operationally and Legally Appropriate
 ```
 
 Additional tools may be introduced later if they solve a specific measurement need.
@@ -564,7 +584,7 @@ into GA4 event parameters.
 
 # 23. Service Attribution
 
-The website should identify which approved service was associated with a conversion where possible.
+The website should identify which registry-listed service was associated with a conversion where possible.
 
 Examples:
 
@@ -611,7 +631,7 @@ These identifiers should remain consistent across:
 
 # 25. Location Attribution
 
-For approved local pages, a conversion may also preserve:
+For published local pages, a conversion may also preserve:
 
 ```text
 location_id
@@ -881,8 +901,8 @@ Measurement should confirm:
 
 * sitemap discovered
 * expected URLs submitted
-* approved URLs indexed
-* unapproved URLs not entering the index unintentionally
+* routes marked indexable becoming indexed
+* routes marked noindex or withheld not entering the index unintentionally
 
 The sitemap should reflect:
 
@@ -897,7 +917,7 @@ and the actual production route set.
 The project should monitor:
 
 ```text
-Approved Indexable Pages
+Routes Marked Indexable
 vs.
 Actually Indexed Pages
 ```
@@ -911,7 +931,7 @@ Maximum Number of Indexed Pages
 The goal is:
 
 ```text
-Appropriate Approved Pages Indexed
+Appropriate Quality-Qualified Pages Indexed
 ```
 
 This distinction is critical because the project contains a large service/location opportunity matrix.
@@ -926,12 +946,12 @@ The measurement system should detect if search engines begin indexing:
 * query parameters
 * duplicate routes
 * staging URLs
-* unapproved service/location combinations
+* withheld or nonexistent service/location combinations
 * search results pages
 * form-success pages
 * technical utility routes
 
-Indexation growth should correspond to approved page growth.
+Indexation growth should correspond to deliberate growth in routes marked indexable—not merely to development or publication volume.
 
 ---
 
@@ -1044,12 +1064,12 @@ For each market, monitor visibility around combinations such as:
 
 ```text
 Service + Market
-Service + Approved Location
+Service + Registry-Supported Location
 Audience + Market
 Commercial Service + Market
 ```
 
-The exact keyword universe should remain aligned with approved pages.
+The tracked keyword universe should distinguish candidate opportunities, published pages, and indexable pages.
 
 ---
 
@@ -1064,7 +1084,7 @@ St. Louis measurement should emphasize:
 * GBP-supported traffic
 * branded local demand
 * conversion volume
-* approved local-page performance
+* published local-page performance
 
 ---
 
@@ -1086,6 +1106,8 @@ A future GBP would add another measurement layer.
 
 # 49. Las Vegas Measurement
 
+Las Vegas is an active operational market. Measurement planning, implementation, dashboards, and conversion attribution may proceed without a separate market, GBP, website, or SEO gate.
+
 Las Vegas measurement should emphasize:
 
 * organic market penetration
@@ -1095,7 +1117,7 @@ Las Vegas measurement should emphasize:
 * line locating
 * property management
 * commercial intent
-* approved local-service coverage
+* published local-service coverage
 
 Because no GBP currently exists, organic web performance is especially important.
 
@@ -1208,7 +1230,7 @@ Which supporting resources feed the service?
 
 # 56. Service + Location Measurement
 
-Approved service + location pages should be evaluated carefully because they represent a major scalable architecture.
+Published service + location pages should be evaluated carefully because they represent a major scalable architecture. Candidate cohorts may also be evaluated in isolated preview QA, but not as live search performance.
 
 Metrics should include:
 
@@ -1719,7 +1741,7 @@ Potential crawl/indexation concerns include:
 * duplicate pagination
 * malformed routes
 * preview URLs
-* unapproved matrix URLs
+* withheld, nonexistent, or unintended matrix URLs
 * duplicate slash variants
 
 The scalable architecture should remain controlled.
@@ -1778,7 +1800,7 @@ Ability to Create Unique Value
 Page Opportunity
 ```
 
-The final publishing authority remains:
+The production-publication and indexation control plane remains:
 
 `04-master-page-build-list.md`
 
@@ -1959,16 +1981,18 @@ This can reveal whether a scaled local strategy is working.
 
 ---
 
-# 95. Service + Location Publishing Feedback Loop
+# 95. Service + Location Development and Publishing Feedback Loop
 
 The matrix contains 10,422 potential service × location relationships.
 
-Analytics should create a disciplined feedback loop:
+Candidate batches may be researched and built without waiting for prior cohorts to earn production selection. Analytics should still create a disciplined release-and-learning loop:
 
 ```text
-Approved Pages Published
+Candidate Batch Built and QA-Validated
         ↓
-Indexation
+Selected Pages Published
+        ↓
+Quality-Qualified Pages Indexed
         ↓
 Impressions
         ↓
@@ -1976,10 +2000,10 @@ Clicks
         ↓
 Conversions
         ↓
-Lessons Applied to Next Approval Batch
+Lessons Applied to Development, Publication, and Indexation
 ```
 
-This prevents scaling based purely on theoretical keyword opportunity.
+This prevents automatic mass publication based purely on theoretical keyword opportunity while keeping development flexible.
 
 ---
 
@@ -2088,7 +2112,7 @@ This context helps prevent false conclusions.
 
 # 101. Analytics Environment Separation
 
-Production analytics should not be polluted by:
+Development and protected-preview analytics should be available for implementation QA, but production analytics should not be polluted by:
 
 * localhost
 * preview deployments
@@ -2096,7 +2120,7 @@ Production analytics should not be polluted by:
 * Cloudflare preview URLs
 * QA sessions where avoidable
 
-Development and production environments should be clearly separated.
+Use debug modes, separate properties/streams, environment flags, filters, or disabled transport as appropriate to the implementation. Development and production environments must remain clearly separated.
 
 ---
 
@@ -2174,7 +2198,7 @@ Any consent mechanism should reflect:
 * actual analytics technologies
 * advertising technologies if later added
 * applicable legal requirements
-* approved privacy policy
+* current published privacy policy
 
 Do not implement unnecessary cookie complexity if the underlying technologies do not require it.
 
@@ -2332,7 +2356,7 @@ CTA Engagement
 Organic Clicks
 Search Impressions
 Qualified Query Growth
-Indexed Approved Pages
+Indexed Quality-Qualified Pages
 ```
 
 ## Tier 4 — Supporting Indicators
@@ -3022,18 +3046,18 @@ shows strong:
 
 This may justify investigation of:
 
-* nearby approved markets
+* nearby registry-supported locations or operational markets
 * supporting buyer content
 * agent content
 * additional local pages
 
-It still does not bypass Master Page Build List approval.
+It may justify immediate research, briefs, candidate routes, and protected-preview builds. It does not automatically change production or indexation states in the Master Page Build List.
 
 ---
 
 # 153. Analytics and the Master Page Build List
 
-Performance data should inform future page approvals.
+Performance data should inform candidate development and future production and indexation decisions.
 
 Preferred relationship:
 
@@ -3046,10 +3070,12 @@ Business Priority
 +
 Content Capability
         ↓
-Master Page Build List Decision
+Candidate Research / Build
+        ↓
+Master Page Build List Publication and Indexation Decision
 ```
 
-Analytics does not directly publish pages.
+Analytics may trigger development work without a pre-build gate. It does not directly publish, index, delete, redirect, or retire pages.
 
 ---
 
@@ -3079,7 +3105,7 @@ The launch measurement foundation should establish reliable tracking for:
 
 * organic impressions
 * organic clicks
-* indexed approved pages
+* indexed quality-qualified pages
 
 ### Website
 
@@ -3204,7 +3230,7 @@ The following rules are mandatory:
 9. Avoid redundant tracking tools.
 10. Do not let analytics scripts materially degrade performance.
 11. Separate production from development measurement.
-12. Track approved page architecture, not theoretical matrix size.
+12. Track candidate, production, and indexation architecture separately—not theoretical matrix size.
 13. Measure qualified outcomes rather than page volume.
 14. Preserve migration baselines where possible.
 15. Use analytics to inform, not automatically dictate, publishing decisions.
@@ -3215,7 +3241,7 @@ The following rules are mandatory:
 
 Analytics implementation must remain consistent with:
 
-### Page Approval
+### Publication and Indexation States
 
 `04-master-page-build-list.md`
 
@@ -3320,4 +3346,5 @@ It should reward the project for creating a more effective business asset.
 
 The governing standard is:
 
-> **Measure whether approved pages earn relevant search visibility, attract qualified users, move those users toward the appropriate service, and generate attributable business opportunities across St. Louis, San Diego, and Las Vegas. Page count, keyword count, and traffic volume are supporting signals—not the final measure of success.**
+> **Measure whether deliberately published and quality-qualified pages earn relevant search visibility, attract qualified users, move those users toward the appropriate service, and generate attributable business opportunities across St. Louis, San Diego, and Las Vegas. Page count, keyword count, and traffic volume are supporting signals—not the final measure of success.**
+

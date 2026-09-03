@@ -3,7 +3,7 @@
 **Document:** `20-migration-redirect-plan.md`
 **Project:** The Sewer Pros Website Rebuild
 **Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Migration and Redirect Source of Truth
+**Status:** Active Project-Specific Migration and Redirect Source of Truth
 
 ---
 
@@ -45,12 +45,32 @@ This document does **not** duplicate generalized Site OS Master procedures for:
 * migration QA workflows
 * environment validation
 * DNS change workflows
-* deployment gates
+* production cutover validation and release controls
 * post-launch monitoring cadence
 
 Site OS Master governs **how the migration is executed and validated**.
 
 This document defines **what The Sewer Pros migration must preserve and how routing decisions should be handled**.
+
+## 1.1 Build-First Migration Governance
+
+Legacy discovery, URL inventory, redirect mapping, replacement-page development, redirect implementation, and production-equivalent testing are not pre-build permission gates.
+
+The governing principle is:
+
+> **Business truth stays strict. Development stays flexible. Publication is deliberate. Indexation is quality-controlled.**
+
+Migration work uses separate states:
+
+| State | Permitted work | Required control |
+|---|---|---|
+| Development | Inventory URLs, research intent, build candidate replacements, implement redirects, and crawl protected previews | Preserve verified business truth and legacy evidence |
+| Production cutover | Activate redirects, canonicals, sitemap, robots, DNS, and public routes | Every live target must exist, be accurate, and be selected for production |
+| Indexation transition | Submit and monitor canonical indexable routes while old URLs decline | Follow explicit indexation states in `04-master-page-build-list.md` |
+
+A valuable legacy URL may justify immediate research and a candidate replacement build. It does not automatically justify public release or indexation. Likewise, the absence of a final production decision must not block inventory, mapping, implementation, or preview validation.
+
+No DNS, canonical-host, public redirect, Search Console, GBP-link, or production robots change should occur merely because a development candidate exists.
 
 ---
 
@@ -60,7 +80,7 @@ The primary migration objective is:
 
 > **Replace the existing website with the new Next.js multi-market architecture without unnecessarily losing search visibility, backlinks, user pathways, or business continuity.**
 
-The migration should preserve legitimate existing value while moving the website into the approved new architecture.
+The migration should preserve legitimate existing value while moving the website into the documented new architecture.
 
 The process should prioritize:
 
@@ -71,7 +91,7 @@ Existing Backlinks
 +
 Existing User Paths
 +
-Approved New Architecture
+Documented New Architecture
 +
 Canonical Consistency
 ```
@@ -103,7 +123,7 @@ Where appropriate, that value should be transferred through direct permanent red
 
 Redirect decisions must align with:
 
-### Approved Routes
+### Production and Indexation States
 
 `04-master-page-build-list.md`
 
@@ -131,7 +151,7 @@ Redirect decisions must align with:
 
 `19-analytics-measurement.md`
 
-No redirect should point to an unapproved destination simply because a similar route could be generated.
+No production redirect should point to a withheld, nonexistent, or inaccurate destination simply because a similar route can be generated. Candidate destinations may be built and tested before cutover.
 
 ---
 
@@ -186,7 +206,7 @@ INVESTIGATE
 
 # 7. KEEP
 
-Use `KEEP` when the existing path remains appropriate within the approved new architecture.
+Use `KEEP` when the existing path remains appropriate within the documented new architecture.
 
 Example:
 
@@ -238,7 +258,7 @@ Example concept:
 /services/sewer-camera-inspection/
 ```
 
-Each legacy route should redirect directly to the approved canonical service page.
+Each legacy route should redirect directly to the published canonical service page.
 
 ---
 
@@ -247,7 +267,7 @@ Each legacy route should redirect directly to the approved canonical service pag
 Use `RETIRE` when a legacy page:
 
 * has no valid replacement
-* represents an unapproved service
+* represents a service not offered or listed in the Master Service Registry
 * contains obsolete information
 * has no meaningful backlinks or traffic
 * should not continue to exist
@@ -445,7 +465,7 @@ sewer scope
 sewer video inspection
 ```
 
-If these represent the same approved service, they should normally consolidate into the canonical service route.
+If these represent the same registry-listed service, they should normally consolidate into the canonical service route.
 
 The redirect system should preserve old search and backlink value while the new architecture maintains one primary service entity.
 
@@ -461,7 +481,7 @@ Special attention is required if the current site contains pages or references t
 * excavation
 * lining
 
-The Sewer Pros is not to be positioned as a repair or replacement contractor unless specifically approved.
+The Sewer Pros is not to be positioned as a repair or replacement contractor unless those capabilities are formally added to the Master Service Registry and Decisions & Change Log.
 
 Legacy repair-related URLs should therefore be reviewed individually.
 
@@ -507,13 +527,13 @@ or:
 Independent Sewer Repair Second Opinion
 ```
 
-may be a more accurate destination if approved.
+may be a more accurate destination if selected for production. It may be developed as a candidate replacement before that decision.
 
 ---
 
 # 21. Market Migration
 
-Existing geographically targeted pages should be mapped into the approved market architecture.
+Existing geographically targeted pages should be mapped into the documented market architecture.
 
 Primary market hubs:
 
@@ -529,7 +549,7 @@ Legacy local pages should be evaluated according to:
 * backlinks
 * geographic intent
 * actual service coverage
-* approved page inventory
+* production and candidate page inventory
 
 ---
 
@@ -560,7 +580,7 @@ If existing San Diego content exists, evaluate whether it maps to:
 * service + San Diego pages
 * audience + San Diego pages
 * commercial + San Diego pages
-* approved community pages
+* published or candidate community pages
 
 Because San Diego currently has no GBP, organic URL continuity may be especially valuable.
 
@@ -568,9 +588,9 @@ Because San Diego currently has no GBP, organic URL continuity may be especially
 
 # 24. Las Vegas Legacy Priority
 
-Apply the same logic to Las Vegas.
+Las Vegas is an active operational market. Migration research, replacement-page development, redirect mapping, and preview testing may proceed without a separate market, GBP, website, or SEO gate.
 
-If current legacy Las Vegas content has little existing history, the new architecture may have more freedom.
+Apply the same legacy-preservation logic to Las Vegas. If current legacy Las Vegas content has little existing history, the new architecture may have more freedom. The absence of a GBP or verified physical office does not block accurate market-route development, but migration must not fabricate either.
 
 However, any indexed or externally linked legacy routes must still be inventoried.
 
@@ -581,7 +601,7 @@ However, any indexed or externally linked legacy routes must still be inventorie
 Legacy location pages should map to:
 
 ```text
-Approved Location Page
+Published Location Page
 ```
 
 when a valid equivalent exists.
@@ -600,7 +620,7 @@ Exact paths depend on:
 
 `05-url-routing-strategy.md`
 
-Do not generate an approved replacement solely because the legacy URL exists.
+A legacy URL may justify researching and building a candidate replacement, but it does not automatically justify production publication or indexation.
 
 The location must still satisfy current business and page-quality requirements.
 
@@ -624,7 +644,7 @@ They may consolidate into:
 Kirkwood Location Hub
 ```
 
-or approved service + location pages based on intent.
+or published service + location pages based on intent. Candidate versions may be developed when needed for migration analysis.
 
 ---
 
@@ -633,11 +653,11 @@ or approved service + location pages based on intent.
 Neighborhood pages should only be preserved as dedicated destinations when:
 
 * actual service coverage exists
-* the route is approved
+* the route is selected for production
 * unique content value is possible
 * legacy search/backlink value justifies continuation
 
-Otherwise, redirect to the closest appropriate approved geographic parent.
+Otherwise, redirect to the closest appropriate published geographic parent.
 
 ---
 
@@ -649,7 +669,7 @@ If legacy routes already target:
 Service + Location
 ```
 
-map them to the approved canonical pattern.
+map them to the documented canonical pattern.
 
 Example:
 
@@ -673,7 +693,7 @@ Existing pages targeting audiences such as:
 * real estate agents
 * property managers
 
-should be mapped into the approved audience architecture.
+should be mapped into the documented audience architecture.
 
 Example:
 
@@ -691,13 +711,13 @@ home-buyers
 
 depending on the original intent.
 
-Do not create duplicate audience/service pages if one approved page satisfies the legacy purpose.
+Do not publish duplicate audience/service pages if one planned or published page satisfies the legacy purpose.
 
 ---
 
 # 30. Commercial Content Migration
 
-Legacy commercial pages should map to the appropriate approved commercial destination.
+Legacy commercial pages should map to the appropriate published commercial destination.
 
 Possible examples:
 
@@ -1003,7 +1023,7 @@ Avoid serving both variants as independent `200` pages.
 
 URLs should normally be lowercase.
 
-Requests containing uppercase route variants should normalize to the approved lowercase canonical route where necessary.
+Requests containing uppercase route variants should normalize to the documented lowercase canonical route where necessary.
 
 Example:
 
@@ -1086,7 +1106,7 @@ If the old site generated parameterized pages for:
 
 they should not automatically be preserved as indexable URLs.
 
-Determine whether a clean approved route replaces them.
+Determine whether a clean published route replaces them. A candidate may be built and tested when no suitable destination exists.
 
 ---
 
@@ -1097,8 +1117,8 @@ Every indexable production page should reference the correct canonical URL.
 Canonical tags should:
 
 * use production HTTPS domain
-* use approved host
-* use approved slash convention
+* use the documented production host
+* use the documented slash convention
 * not point to staging
 * not point through redirects
 
@@ -1134,7 +1154,7 @@ The new XML sitemap should contain only:
 * live
 * canonical
 * indexable
-* approved URLs
+* published, indexable URLs
 
 Do not include:
 
@@ -1142,7 +1162,7 @@ Do not include:
 * 404 URLs
 * noindex utility pages
 * staging URLs
-* unapproved matrix routes
+* withheld, nonexistent, or unintended matrix routes
 
 ---
 
@@ -1170,7 +1190,7 @@ After launch:
 4. monitor indexing
 5. investigate unexpected exclusions
 
-Do not submit thousands of unapproved opportunity URLs.
+Do not submit thousands of theoretical or non-indexable opportunity URLs.
 
 ---
 
@@ -1204,7 +1224,7 @@ Before launch, verify all:
 * CTA links
 * resource links
 
-against approved routes.
+against live production routes.
 
 Do not allow obsolete legacy paths to remain in global navigation.
 
@@ -1423,7 +1443,7 @@ This improves future maintenance.
 
 # 72. Cloudflare Redirect Implementation
 
-Because production hosting uses Cloudflare Pages, redirect implementation must be compatible with the approved deployment architecture.
+Because production hosting uses Cloudflare Pages, redirect implementation must be compatible with the documented deployment architecture.
 
 The technical implementation may use the appropriate Cloudflare-supported mechanism defined in:
 
@@ -1594,7 +1614,7 @@ Do not migrate a staging `Disallow: /` rule into production accidentally.
 
 # 83. Production Robots.txt
 
-Production should permit crawling of approved public routes while protecting appropriate technical or utility routes.
+Production should permit crawling of public routes marked indexable while protecting appropriate technical, utility, and noindex routes.
 
 Do not use robots.txt as a substitute for:
 
@@ -1896,7 +1916,7 @@ If legacy pages use:
 .asp
 ```
 
-they should redirect to clean approved Next.js routes.
+they should redirect to clean published Next.js routes.
 
 Example:
 
@@ -2108,7 +2128,7 @@ Review high-performing metadata for useful intent signals, but final metadata sh
 
 Likewise, old heading structures may inform keyword intent but are not architectural authority.
 
-New pages should follow the approved content system.
+New pages should follow the documented content system.
 
 ---
 
@@ -2185,7 +2205,7 @@ Prioritize fixing legitimate user/search paths.
 If a previously unknown legacy URL receives meaningful traffic or backlinks after launch:
 
 1. investigate its original intent
-2. identify closest approved destination
+2. identify the closest accurate published destination or candidate replacement
 3. add redirect if appropriate
 4. document change
 
@@ -2249,7 +2269,7 @@ The migration is progressing correctly when:
 
 * high-value legacy URLs redirect correctly
 * new canonical pages are crawled
-* approved pages enter the index
+* quality-qualified routes marked indexable enter the index
 * branded search remains stable
 * organic clicks stabilize/grow
 * backlinks resolve
@@ -2319,7 +2339,7 @@ Does it have backlinks?
 Does it rank?
 Does it convert?
 Does it satisfy useful intent?
-Does an approved replacement exist?
+Does a planned or published replacement exist?
 Does it conflict with current business positioning?
 ```
 
@@ -2360,31 +2380,31 @@ Existing search equity should be investigated before removal.
 
 # 131. Master Page Build List Interaction
 
-If a high-value legacy URL maps to a page not currently approved in:
+If a high-value legacy URL maps to a destination not currently selected for production in:
 
 `04-master-page-build-list.md`
 
-the issue should be resolved before launch.
+research, content development, route implementation, redirect mapping, and protected-preview testing may proceed immediately. The production outcome must be resolved before cutover.
 
 Possible outcomes:
 
 ```text
-Approve Needed Replacement
+Build Candidate and Select It for Production
 ```
 
 or:
 
 ```text
-Redirect to Existing Approved Page
+Redirect to an Existing Published Page
 ```
 
 or:
 
 ```text
-Retire With Documented Reason
+Retire With a Documented Reason
 ```
 
-Do not silently create the missing page.
+Record the route's production and indexation states explicitly. Do not activate a public redirect to a missing or withheld page.
 
 ---
 
@@ -2412,7 +2432,7 @@ The migration should ultimately be incorporated into the final Site OS launch QA
 
 This document defines project-specific migration requirements.
 
-Site OS Master should enforce the operational launch gate.
+Site OS Master should govern the operational cutover checklist, release validation, and rollback process. This is a production control, not a pre-build gate.
 
 ---
 
@@ -2480,7 +2500,7 @@ The project-specific migration sequence should conceptually be:
 ```text
 Legacy Inventory
         ↓
-New Route Approval
+Candidate Routes + Production Decisions
         ↓
 Old-to-New Mapping
         ↓
@@ -2608,7 +2628,7 @@ Canonical URL stability matters.
 
 # 144. Market Slug Stability
 
-Likewise, once market slugs are approved:
+Likewise, once market slugs are documented and published:
 
 ```text
 /st-louis-mo/
@@ -2616,7 +2636,7 @@ Likewise, once market slugs are approved:
 /las-vegas-nv/
 ```
 
-or their approved equivalents should remain stable.
+or their documented equivalents should remain stable.
 
 Do not change geographic formats casually after launch.
 
@@ -2700,7 +2720,7 @@ The following are mandatory:
 6. Avoid redirect loops.
 7. Preserve high-value legacy URLs when practical.
 8. Do not preserve inaccurate repair positioning.
-9. Do not create unapproved replacement pages.
+9. Do not publish replacement pages that misrepresent services, markets, or user intent.
 10. Do not leave staging URLs in production metadata.
 11. Do not allow HTTP/www/apex duplicates.
 12. Keep canonical URLs consistent.
@@ -2718,10 +2738,10 @@ The following are mandatory:
 When deciding what should happen to a legacy URL, use:
 
 ```text
-1. Exact approved replacement
-2. Closest approved page with same intent
-3. Relevant approved parent/hub
-4. Approved informational alternative
+1. Exact published replacement
+2. Closest published page with the same intent
+3. Relevant published parent/hub
+4. Published informational alternative
 5. Retire with proper 404/410
 ```
 
@@ -2744,7 +2764,7 @@ Valuable Legacy Intent Preserved
 +
 Weak Architecture Improved
 +
-Approved New Pages Indexed
+Quality-Qualified New Pages Indexed
 +
 Backlinks Preserved
 +
@@ -2761,4 +2781,4 @@ The Sewer Pros rebuild should modernize the architecture without unnecessarily d
 
 The governing standard is:
 
-> **Preserve what has earned value, consolidate what overlaps, retire what is inaccurate or unnecessary, and permanently redirect legacy URLs to the closest approved canonical destination based on user intent—not convenience. The new site should emerge with cleaner architecture, stronger positioning, stable search signals, and no dependence on broken legacy pathways.**
+> **Preserve what has earned value, consolidate what overlaps, retire what is inaccurate or unnecessary, and permanently redirect legacy URLs to the closest accurate published canonical destination based on user intent—not convenience. The new site should emerge with cleaner architecture, stronger positioning, stable search signals, and no dependence on broken legacy pathways.**
