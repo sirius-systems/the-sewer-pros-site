@@ -1,1045 +1,1460 @@
-# The Sewer Pros Website Rebuild — Project Overview
+# The Sewer Pros — Project Overview
 
-**Document:** `00-project-overview.md`
-**Project:** The Sewer Pros Website Rebuild
-**Repository:** `the-sewer-pros-site`
-**Status:** Foundation
-**Document Role:** Project-level source of truth
-**Primary Markets:** St. Louis, Missouri; San Diego, California; Las Vegas, Nevada
+**Document:** `00-project-overview.md`  
+**Project:** The Sewer Pros Website Rebuild  
+**Repository:** `the-sewer-pros-site`  
+**Status:** Active Project Foundation / Source of Truth  
+**Last Updated:** September 3, 2026
 
 ---
 
-## 1. Project Purpose
+# 1. Purpose
 
-This repository contains the website, project-specific documentation, structured data, content architecture, and implementation assets for the rebuild of **The Sewer Pros** website.
+This document defines the foundational direction for The Sewer Pros website rebuild.
 
-The project is designed to replace a fragmented or limited web presence with a scalable, multi-market digital platform capable of supporting:
+It establishes the project's:
 
-* organic search visibility
-* local search visibility
-* AI and answer-engine discovery
-* geographic expansion
+- mission
+- business positioning
+- initial markets
+- audience strategy
+- website role
+- technical stack
+- search objectives
+- content architecture
+- page architecture
+- design-reference system
+- development philosophy
+- publishing philosophy
+- indexation philosophy
+- governance model
+- long-term growth model
+
+This document should provide enough high-level context for Claude, Claude Code, developers, content strategists, and future project contributors to understand what the website is being built to accomplish.
+
+Detailed implementation requirements are maintained in the subject-specific repository documents.
+
+---
+
+# 2. Project Mission
+
+The Sewer Pros website should become a multi-market digital authority and customer-acquisition platform for sewer inspection, diagnostics, locating, cleaning, hydro jetting, pre-purchase inspections, drain services, and commercial sewer/drain needs.
+
+The site should function as more than a traditional service-business website.
+
+It should operate as a:
+
+- search visibility platform
+- local SEO platform
+- topical authority system
+- entity authority system
+- AEO and GEO platform
+- AI-search knowledge source
+- customer education resource
+- real-estate due-diligence resource
+- commercial customer acquisition platform
+- lead-generation system
+- conversion platform
+- scalable geographic expansion system
+- long-term content publishing system
+
+The long-term objective is to make The Sewer Pros easier to discover whenever homeowners, buyers, real-estate professionals, property managers, commercial operators, search engines, or AI systems need reliable information about sewer-line conditions, diagnostics, inspection, cleaning, or related decisions.
+
+---
+
+# 3. Core Business Positioning
+
+The Sewer Pros should be positioned as a specialized sewer inspection, diagnostics, locating, and cleaning company.
+
+Primary service themes include:
+
+- sewer inspection
+- sewer camera inspection
+- sewer diagnostics
+- sewer cleaning
+- hydro jetting
+- sewer line locating
+- drain cleaning
+- pre-purchase sewer inspection
+- commercial sewer services
+- commercial drain services
+
+The exact canonical service taxonomy is maintained in:
+
+`06-master-service-registry.md`
+
+The core strategic differentiator is:
+
+> **Independent sewer inspection and cleaning without repair-driven upselling.**
+
+The preferred customer journey is:
+
+```text
+Problem
+→ Inspection
+→ Evidence
+→ Diagnosis
+→ Cleaning or Maintenance When Appropriate
+→ Informed Next-Step Decision
+```
+
+The website should help customers understand what is actually happening inside a sewer line before making an expensive property decision.
+
+---
+
+# 4. Sewer Repair and Replacement Position
+
+The Sewer Pros should not be presented as a sewer repair or replacement contractor unless the business explicitly approves that capability later.
+
+Do not market the following as offered services unless approved:
+
+* sewer repair
+* sewer replacement
+* trenchless sewer replacement
+* sewer lining
+* CIPP
+* pipe bursting
+* excavation
+* structural sewer repair
+* sewer installation
+* major underground construction
+
+Repair and replacement may still be discussed educationally.
+
+Relevant topics may include:
+
+* sewer repair second opinions
+* sewer replacement second opinions
+* what to do before replacing a sewer
+* evaluating repair recommendations
+* sewer cleaning vs. structural repair
+* inspection before excavation
+* identifying visible defects
+* determining whether further repair evaluation may be appropriate
+
+The distinction should remain:
+
+```text
+The Sewer Pros
+=
+Inspect
+Diagnose
+Locate
+Clean
+Document
+Help Customers Understand the Condition
+```
+
+not:
+
+```text
+Inspect
+→ Sell Replacement
+```
+
+---
+
+# 5. Initial Markets
+
+The initial primary markets are:
+
+## St. Louis, Missouri
+
+St. Louis currently has the strongest established local entity presence and an existing Google Business Profile.
+
+Strategic opportunities include:
+
+* sewer inspection
+* sewer camera inspection
+* sewer lateral inspection
+* sewer cleaning
+* hydro jetting
+* line locating
+* pre-purchase inspection
+* home buyers
+* real-estate professionals
+* local sewer-lateral resources
+* approved nearby communities
+
+Municipality-specific sewer-lateral programs and requirements must be individually verified.
+
+A rule applying in one municipality must not automatically be applied throughout the St. Louis metro.
+
+---
+
+## San Diego, California
+
+San Diego should initially be treated as an organic-first service market.
+
+No current Google Business Profile has been identified.
+
+Strategic opportunities include:
+
+* sewer camera inspection
+* pre-purchase sewer inspection
+* home buyers
+* real-estate agents
+* independent second opinions
+* hydro jetting
+* sewer cleaning
+* property management
+* commercial sewer/drain services
+* selected San Diego-area communities
+
+Do not fabricate:
+
+* a San Diego office
+* a public San Diego address
+* a San Diego storefront
+* a San Diego branch
+* a San Diego GBP
+
+The website may legitimately target San Diego search intent based on actual service coverage without representing a physical branch.
+
+---
+
+## Las Vegas, Nevada
+
+Las Vegas should also initially be treated as an organic-first service market.
+
+No current Google Business Profile has been identified.
+
+Strategic opportunities include:
+
+* sewer inspection
+* sewer camera inspection
+* hydro jetting
+* drain cleaning
+* sewer cleaning
+* sewer line locating
+* property management
+* multifamily
+* commercial sewer services
+* commercial drain services
+* approved Las Vegas Valley locations
+
+Do not fabricate:
+
+* a Las Vegas office
+* a public Las Vegas address
+* a Las Vegas storefront
+* a Las Vegas branch
+* a Las Vegas GBP
+
+---
+
+# 6. One Company, Multiple Service Markets
+
+The website should use a single-domain, multi-market architecture.
+
+The Sewer Pros remains one business entity.
+
+Conceptually:
+
+```text
+The Sewer Pros
+        ↓
+Approved Services
+        ↓
+St. Louis
+San Diego
+Las Vegas
+        ↓
+Approved Locations
+Audiences
+Commercial Segments
+Resources
+```
+
+Do not create separate market brands or market microsites by default.
+
+Do not treat every service market as a physical business branch.
+
+The architecture should distinguish:
+
+```text
+Service Market
+```
+
+from:
+
+```text
+Physical Business Location
+```
+
+---
+
+# 7. Target Audiences
+
+The site should support multiple customer journeys rather than treating every visitor as a generic homeowner.
+
+Important audience categories may include:
+
+## Residential
+
+* homeowners
+* landlords
+* property investors
+
+## Real Estate
+
+* home buyers
+* home sellers
+* real-estate agents
+* brokers
+* home inspectors
+* investors
+
+## Property Management
+
+* property managers
+* multifamily operators
+* portfolio managers
+* community managers
+
+## Commercial
+
+* business owners
+* commercial property owners
+* facility managers
+* commercial property managers
+* other verified commercial audiences
+
+The detailed audience taxonomy is maintained in:
+
+`09-audience-commercial-matrix.md`
+
+---
+
+# 8. Real Estate Strategic Priority
+
+Real estate should be a major authority and conversion cluster.
+
+The core relationship is:
+
+```text
+Home Buyer
+→ Pre-Purchase Sewer Inspection
+→ Sewer Camera Inspection
+→ Evidence
+→ Better Property Decision
+```
+
+Potential supporting content may address:
+
+* sewer inspections before buying a home
+* sewer scope before closing
+* what sewer inspections reveal
+* sewer conditions in older properties
+* sewer inspection for real-estate agents
+* home inspection vs. sewer inspection
+* what happens when a sewer issue is discovered
+* second opinions during a property transaction
+
+The website should support due diligence without providing legal advice.
+
+---
+
+# 9. Independent Second-Opinion Strategy
+
+The independent inspection model creates an important search and conversion opportunity among users who have already been told that major sewer work may be necessary.
+
+Relevant content may address:
+
+* independent sewer inspections
+* sewer repair second opinions
+* sewer replacement second opinions
+* verifying sewer damage
+* what to do before excavation
+* questions to ask before replacing a sewer line
+* when cleaning may or may not be appropriate
+
+The strategic message is:
+
+> **Major sewer decisions deserve clear evidence.**
+
+Do not accuse repair companies of dishonesty.
+
+The differentiation should focus on the independent business model of The Sewer Pros.
+
+---
+
+# 10. Commercial Strategy
+
+Commercial sewer and drain services should have a dedicated architecture rather than functioning as a minor subsection of residential content.
+
+The commercial ecosystem may support:
+
+```text
+Commercial Hub
+        ↓
+Commercial Services
+        ↓
+Commercial Audiences
+        ↓
+Market-Specific Commercial Pages
+        ↓
+Commercial Resources
+```
+
+Relevant commercial themes may include:
+
+* sewer inspection
+* drain cleaning
+* sewer cleaning
+* hydro jetting
+* recurring backups
+* high-use drainage systems
+* preventative cleaning
+* property management
+* multifamily
+* documentation
+* operational disruption
+* multiple properties
+
+Only audiences, property types, and industries actually served should be represented.
+
+---
+
+# 11. Search and Discovery Objectives
+
+The website should be designed for visibility across the modern search ecosystem.
+
+Primary channels include:
+
+* Google organic search
+* Google local search
+* Google Business Profile where applicable
+* Bing
+* Apple search/discovery ecosystems where relevant
+* featured snippets
+* People Also Ask
+* AI Overviews
+* ChatGPT
+* Perplexity
+* Microsoft Copilot
+* Gemini
+* other AI-answer and search systems
+
+The site should support:
+
+* SEO
+* local SEO
+* AEO
+* GEO
+* entity SEO
+* semantic search
 * topical authority
-* commercial lead generation
-* residential lead generation
-* real estate and pre-purchase inspection demand
-* Google Business Profile support
-* structured data and entity development
+* local authority
+* LLM retrieval
+* AI citation potential
 * conversion optimization
-* long-term content expansion
 
-The website must support The Sewer Pros as a specialized sewer inspection, diagnostics, cleaning, and locating company without incorrectly positioning the business as a traditional sewer repair or replacement contractor.
+The objective is not merely to rank URLs.
+
+The objective is to make The Sewer Pros a recognizable, understandable, and useful sewer-service entity.
 
 ---
 
-## 2. Core Business Positioning
+# 12. Website Architecture
 
-The Sewer Pros specializes in identifying, documenting, locating, cleaning, and diagnosing sewer and drain problems.
+The platform should be capable of supporting the following page families:
 
-Primary areas of expertise include:
+## Core Pages
 
+* Homepage
+* About
+* Contact
+* Services
+* Locations
+* Commercial
+* Resources
+* supporting company pages
+
+## Canonical Service Pages
+
+Primary authority pages for approved services.
+
+## Market Pages
+
+Primary market hubs for:
+
+* St. Louis
+* San Diego
+* Las Vegas
+
+## Location Pages
+
+Pages for relevant approved cities, communities, neighborhoods, or other geographic entities.
+
+## Service + Location Pages
+
+Pages combining meaningful local search intent with a specific service.
+
+## Audience Pages
+
+Pages for audiences with distinct needs and conversion journeys.
+
+## Audience + Service Pages
+
+Pages combining a specific audience need with a specific service.
+
+## Audience + Location Pages
+
+Pages where audience and local intent meaningfully intersect.
+
+## Commercial Pages
+
+Commercial hubs, services, audiences, and industry content.
+
+## Commercial + Location Pages
+
+Local commercial pages where sufficient opportunity and differentiation exist.
+
+## Comparison Pages
+
+Decision-support content comparing meaningful alternatives.
+
+## Alternative Pages
+
+Content helping users understand options before major sewer decisions.
+
+## Resource Pages
+
+Educational content organized around topic clusters.
+
+The architecture should be scalable without requiring every possible combination to become an indexed landing page.
+
+---
+
+# 13. Build-First Development Philosophy
+
+The project should default to making progress.
+
+The preferred workflow is:
+
+```text
+Understand
+→ Research When Needed
+→ Draft / Generate
+→ Build
+→ Validate
+→ QA
+→ Publish
+→ Decide Indexation
+→ Measure
+→ Improve
+```
+
+Project documentation should establish:
+
+* business truth
+* architecture
+* canonical taxonomy
+* design direction
+* quality standards
+
+It should not create unnecessary administrative approval gates for ordinary development.
+
+Claude and Claude Code may make reasonable, reversible implementation decisions independently.
+
+---
+
+# 14. Build vs. Publish vs. Index
+
+These are separate concepts.
+
+A page may be:
+
+```text
+candidate
+draft
+build-ready
+published
+indexable
+noindex
+deferred
+retired
+```
+
+A route can be:
+
+* researched
+* drafted
+* generated
+* built
+* reviewed
+* deployed for QA
+
+without automatically becoming an intentional organic landing page.
+
+The primary SEO control should be intentional indexation.
+
+---
+
+# 15. Indexation Philosophy
+
+The site should be strict about intentional large-scale indexation, not normal development.
+
+Before intentionally indexing a substantial page cohort, evaluate whether the pages provide:
+
+* legitimate business relevance
+* real service coverage
+* useful search intent
+* adequate content
+* meaningful differentiation
+* appropriate internal links
+* good technical quality
+
+Do not intentionally mass-index thin token-swapped pages.
+
+At the same time, do not prevent the project from using automation and structured data to generate, analyze, build, and improve candidate inventory.
+
+---
+
+# 16. Master Page Build List Role
+
+`04-master-page-build-list.md` should function as the central page inventory and lifecycle tracker.
+
+It may contain statuses such as:
+
+```text
+candidate
+draft
+build-ready
+published
+indexable
+noindex
+deferred
+retired
+```
+
+It is not intended to function as a bureaucratic permission system that prevents useful development.
+
+Claude and Claude Code may create logical candidate pages and then update the inventory accordingly.
+
+The list should reflect the evolving site rather than requiring every implementation idea to be manually registered before work begins.
+
+---
+
+# 17. Structured Opportunity Data
+
+The project currently contains approximately:
+
+```text
+18 canonical service records
+579 normalized geographic records
+10,422 service × location relationships
+```
+
+This data should be treated as a valuable strategic asset.
+
+It may support:
+
+* keyword analysis
+* geographic analysis
+* route generation
+* draft page generation
+* metadata generation
+* internal relationship modeling
+* content planning
+* market prioritization
+* noindex candidate pages
+* future publishing cohorts
+
+The correct distinction is:
+
+```text
+Relationship Exists
+→ May Research / Generate / Build / Evaluate
+```
+
+not:
+
+```text
+Relationship Exists
+→ Must Index
+```
+
+---
+
+# 18. Controlled Scaling
+
+The architecture should support scale without uncontrolled index growth.
+
+A useful model is:
+
+```text
+Opportunity Dataset
+        ↓
+Candidate Inventory
+        ↓
+Build / Content Development
+        ↓
+Quality Evaluation
+        ↓
+Selective Indexation
+        ↓
+Performance Data
+        ↓
+Expansion or Consolidation
+```
+
+This allows the website to benefit from structured data and automation while protecting organic quality.
+
+---
+
+# 19. Page Quality Standard
+
+Important production pages should have:
+
+* a clear purpose
+* a distinct primary intent
+* accurate business relevance
+* useful content
+* relevant entity coverage
+* meaningful internal links
+* an appropriate conversion path
+
+Use practical quality checks.
+
+## Location Test
+
+Could the city name be swapped with another city while the page remained substantially unchanged?
+
+If yes, improve localization.
+
+## Service Test
+
+Could the service name be swapped while most of the page remained unchanged?
+
+If yes, improve service specificity.
+
+## Audience Test
+
+Could "home buyer" be replaced with "property manager" while the content still worked?
+
+If yes, improve audience specificity.
+
+## Commercial Test
+
+Could "commercial property" be replaced with "homeowner" while most content remained valid?
+
+If yes, improve commercial specificity.
+
+These tests should improve drafts rather than prevent them from being created.
+
+---
+
+# 20. Content Strategy
+
+Content should be written for customers first while remaining easy for search engines and AI systems to understand.
+
+Priorities include:
+
+* direct answers
+* clear explanations
+* accurate entities
+* useful headings
+* strong topic coverage
+* relevant FAQs
+* service relationships
+* local context
+* audience context
+* commercial context
+* comparison content
+* decision-support content
+* contextual conversion
+
+Avoid:
+
+* keyword stuffing
+* generic AI marketing copy
+* unsupported claims
+* city-token substitution
+* unnecessary filler
+* arbitrary word counts
+* duplicate pages
+
+---
+
+# 21. Answer-First Content
+
+Where a user has a clear question, use:
+
+```text
+Question
+→ Direct Answer
+→ Supporting Explanation
+→ Appropriate Next Step
+```
+
+This structure supports:
+
+* user experience
+* featured answers
+* AEO
+* semantic search
+* AI retrieval
+* LLM citations
+
+Do not bury straightforward answers beneath lengthy introductions.
+
+---
+
+# 22. Topical Authority Model
+
+The site should build topic ecosystems rather than a generic chronological blog.
+
+Priority clusters may include:
+
+* sewer inspection
 * sewer camera inspection
 * sewer diagnostics
 * sewer cleaning
 * hydro jetting
 * sewer line locating
 * drain cleaning
-* pre-purchase sewer inspections
-* commercial sewer services
-* commercial drain services
+* recurring sewer problems
+* pre-purchase inspection
+* real estate
+* second opinions
+* commercial sewer/drain services
 
-A major competitive differentiator is the company's ability to provide **independent sewer inspection and cleaning services without repair-driven upselling**.
+Conceptually:
 
-The website should reinforce the distinction between:
-
-1. identifying and documenting sewer conditions, and
-2. selling major sewer excavation, replacement, or repair projects.
-
-This positioning is especially important for:
-
-* homebuyers
-* homeowners seeking a second opinion
-* real estate agents
-* property investors
-* property managers
-* commercial property operators
-* customers concerned about unnecessary repair recommendations
-
-### Positioning Guardrail
-
-The Sewer Pros must **not** be presented as a sewer repair, replacement, excavation, trenchless replacement, or general plumbing contractor unless those services are specifically approved and added to the project source-of-truth documentation.
-
-Content must not imply that repair work is available simply because a sewer inspection may identify a condition requiring repair.
+```text
+Canonical Service
+        ↕
+Supporting Resources
+        ↕
+Problem Content
+        ↕
+Audience Content
+        ↕
+Local Pages
+```
 
 ---
 
-## 3. Project Markets
+# 23. Local SEO Philosophy
 
-The website will operate as a single scalable multi-market platform.
+Local SEO should be grounded in actual service coverage and legitimate business signals.
 
-Initial markets are:
+The site should not manufacture local relevance through:
 
-### St. Louis, Missouri
+* fake offices
+* fake addresses
+* fake map pins
+* fabricated local phone numbers
+* fake GBP entities
+* false claims of physical presence
 
-St. Louis is an established operating market and currently has an existing Google Business Profile.
+Local authority should come from:
 
-### San Diego, California
-
-San Diego is an operating or target market that currently does not have a Google Business Profile.
-
-### Las Vegas, Nevada
-
-Las Vegas is an operating or target market that currently does not have a Google Business Profile.
-
-The architecture must support future market expansion without requiring a redesign of the core routing, content, data, or component systems.
-
----
-
-## 4. Geographic Architecture
-
-Geographic targeting will be managed through structured market and location data rather than hard-coded page creation.
-
-Existing geographic research contains:
-
-* **579 normalized geographic records**
-
-These records may include combinations of:
-
-* states
-* metropolitan areas
-* cities
-* municipalities
-* communities
-* neighborhoods
-* service areas
-* other approved geographic entities
-
-The geographic registry represents the universe of researched geographic opportunities.
-
-It does **not** mean every geographic record should receive an indexable page.
-
-Publication eligibility will be governed by the approved page inventory.
+* real service coverage
+* market-specific content
+* reviews
+* citations
+* proof
+* local resources
+* relevant backlinks
+* legitimate Google Business Profiles where eligible
 
 ---
 
-## 5. Service Architecture
+# 24. Entity Strategy
 
-Existing service research contains:
+The website should maintain one coherent primary organization entity:
 
-* **18 canonical service records**
+```text
+The Sewer Pros
+```
 
-Canonical service records define the approved service entities used throughout the site architecture.
+That organization:
 
-These records will ultimately support:
+```text
+provides
+→ Approved Services
 
-* service pages
-* market pages
-* location pages
-* service + location combinations
-* audience combinations
-* commercial combinations
-* internal linking
-* breadcrumbs
-* metadata
-* schema
-* navigation
-* related-content systems
-* future programmatic expansion
+serves
+→ Approved Markets
 
-The canonical service registry, rather than ad hoc wording within individual pages, should determine the official service taxonomy.
+helps
+→ Relevant Audiences
+```
 
----
+Structured data should reflect the actual business graph rather than the keyword graph.
 
-## 6. Existing Service × Location Research
-
-The project currently contains:
-
-* **579 normalized geographic records**
-* **18 canonical service records**
-* **10,422 service × location relationships**
-
-These relationships identify potential search and content opportunities across the service and geographic datasets.
-
-### Critical Publishing Rule
-
-The service × location matrix is an **opportunity model**, not a publishing instruction.
-
-A relationship existing in the matrix does not automatically authorize:
-
-* route generation
-* page creation
-* indexing
-* sitemap inclusion
-* navigation inclusion
-
-Only routes explicitly approved within:
-
-`04-master-page-build-list.md`
-
-may be treated as authorized production pages.
-
-This distinction protects the site from:
-
-* uncontrolled programmatic page generation
-* doorway-page patterns
-* thin location content
-* excessive indexation
-* keyword cannibalization
-* low-value service/location combinations
-* accidental route explosion
+A market page does not automatically create a `LocalBusiness`.
 
 ---
 
-## 7. Planned Site Architecture
+# 25. Internal Linking Philosophy
 
-The website will use a scalable multi-market content architecture containing several page families.
+Internal links should help users and search systems understand relationships among:
 
-### 7.1 Core Pages
-
-Examples may include:
-
-* homepage
-* about
-* contact
-* service overview
-* market overview
-* commercial overview
-* resources
-* other approved company-level pages
-
-### 7.2 Core Service Pages
-
-Individual authoritative pages for approved canonical services.
-
-These pages establish the primary service entities and act as central nodes for related local, audience, and educational content.
-
-### 7.3 Market Hubs
-
-Dedicated market-level hubs for:
-
-* St. Louis, MO
-* San Diego, CA
-* Las Vegas, NV
-
-Market hubs should organize:
-
-* available services
-* relevant locations
-* market-specific trust signals
-* local content
-* customer use cases
-* commercial services
-* resource content
-* conversion paths
-
-### 7.4 Location Pages
-
-Approved city, municipality, community, or other geographic pages designed around genuine local relevance.
-
-### 7.5 Service + Location Pages
-
-Approved combinations of a canonical service and geographic entity where:
-
-* customer demand exists
-* search intent is meaningful
-* the business can genuinely serve the location
-* sufficient unique content can be created
-* the route has been approved in the Master Page Build List
-
-### 7.6 Audience Pages
-
-Dedicated pages for strategically important customer groups.
-
-Potential audiences may include:
-
-* homeowners
-* homebuyers
-* real estate agents
-* property investors
-* property managers
-* commercial property owners
-* other approved customer segments
-
-Final audience definitions will be controlled by project-specific documentation.
-
-### 7.7 Audience + Location Pages
-
-Approved local versions of high-value audience propositions where meaningful market-specific search or conversion intent exists.
-
-### 7.8 Commercial Pages
-
-Pages specifically addressing commercial sewer and drain requirements.
-
-These may cover:
-
-* commercial properties
-* property management
-* multifamily properties
-* restaurants
-* retail
-* offices
-* industrial facilities
-* other approved commercial segments or applications
-
-### 7.9 Commercial + Location Pages
-
-Market- or location-specific commercial landing pages where sufficient demand and unique local value justify publication.
-
-### 7.10 Comparison Pages
-
-Pages designed around users comparing:
-
-* inspection approaches
-* service types
-* diagnostic methods
-* contractor models
-* repair-company inspections versus independent inspections
-* other meaningful alternatives
-
-Comparison content must be factually accurate and should not rely on unsupported competitor claims.
-
-### 7.11 Alternative Pages
-
-Pages addressing alternative solutions, providers, approaches, or service options when strategically relevant to search intent and customer decision-making.
-
-### 7.12 Resource and Topic Clusters
-
-Educational content designed to build topical authority around sewer and drain subjects.
-
-Clusters may cover topics such as:
-
-* sewer inspections
-* sewer cameras
-* sewer line conditions
-* sewer cleaning
-* hydro jetting
-* root intrusion
-* sewer line locating
-* pre-purchase inspections
-* common sewer problems
-* commercial sewer maintenance
-* drain issues
-* homebuyer education
-* property management
-* sewer diagnostics
-
-Topic clusters must connect strategically to the site's transactional and commercial pages rather than operating as isolated blog content.
-
----
-
-## 8. Search and Discovery Objectives
-
-The site should be engineered for visibility across both traditional search systems and emerging AI-driven discovery systems.
-
-Project objectives include support for:
-
-* SEO
-* local SEO
-* geographic search intent
-* answer engine optimization
-* AI search
-* LLM retrieval
-* semantic search
-* Google Search
-* Google Search Console
-* Bing Search
-* Bing Webmaster Tools
-* Google Business Profile
-* featured snippets
-* People Also Ask results
-* rich results
-* structured data
-* knowledge graph/entity understanding
-* conversational search
-* ChatGPT discovery
-* Perplexity discovery
-* other AI-assisted search environments
-
-These objectives should be pursued through technically sound architecture, strong content, structured entities, meaningful internal linking, local relevance, and authoritative topic coverage rather than keyword repetition or mass page generation.
-
----
-
-## 9. Conversion Objectives
-
-Traffic growth alone is not sufficient.
-
-The website must convert qualified visitors into customer actions.
-
-Primary conversion actions may include:
-
-* requesting service
-* scheduling an inspection
-* calling the company
-* submitting a contact form
-* requesting commercial service
-* requesting a pre-purchase inspection
-* contacting the company for diagnostic assistance
-
-Secondary conversion actions may include:
-
-* exploring service details
-* reviewing service areas
-* learning about the inspection process
-* understanding the independent inspection model
-* accessing educational resources
-* moving from informational content to a relevant service page
-
-Conversion architecture will be defined in:
-
-`17-conversion-architecture.md`
-
----
-
-## 10. Technology Stack
-
-The project will use the following stack.
-
-### Research, Strategy, and Content
-
-* Claude Project
-
-Claude Project will contain project-specific knowledge and support:
-
-* research
-* planning
-* content development
-* architecture work
-* strategic reasoning
-* project-specific decision support
-
-### Workflow and Governance
-
-* Site OS Master Claude skill
-
-Site OS Master provides the reusable operating system for:
-
-* workflows
-* prompts
-* research methodology
-* QA methodology
-* production gates
-* efficiency practices
-* build governance
-* implementation methodology
-
-### Development
-
-* Next.js App Router
-* TypeScript
-* Tailwind CSS
-* VS Code
-
-### Version Control
-
-* Git
-* GitHub
-
-Recommended repository:
-
-`the-sewer-pros-site`
-
-### Hosting and Deployment
-
-* Cloudflare Pages
-
-The architecture should remain compatible with the deployment requirements established in the technical architecture documentation.
-
----
-
-## 11. Site OS Governance Rule
-
-Site OS Master is the reusable workflow and governance layer for this project.
-
-Project documentation must **not duplicate generalized Site OS procedures** unless The Sewer Pros requires a specific exception, modification, or override.
-
-### Site OS Owns
-
-Generalized processes such as:
-
-* research workflows
-* content workflows
-* reusable prompts
-* QA procedures
-* build gates
-* audit methodology
-* standard development methodology
-* recurring optimization processes
-* generalized publishing procedures
-
-### The Repository Owns
-
-The Sewer Pros-specific facts and decisions such as:
-
-* business positioning
-* approved services
-* approved markets
-* approved locations
-* page inventory
-* route definitions
-* service taxonomy
-* location taxonomy
-* audience definitions
-* commercial segments
-* page specifications
-* brand decisions
-* schema entities
-* redirect requirements
-* analytics requirements
-* project-specific exceptions
-* project decisions and changes
-
-### Override Principle
-
-When a project-specific requirement conflicts with a generalized Site OS convention, the explicit project-specific decision documented in this repository governs The Sewer Pros implementation.
-
-Any important override should also be recorded in:
-
-`22-decisions-change-log.md`
-
----
-
-## 12. Repository Source-of-Truth Principle
-
-The repository documentation will operate as the project-specific source of truth.
-
-Claude, Claude Code, developers, content creators, and future automation should derive implementation decisions from the approved project documents rather than improvising architecture or taxonomy.
-
-Examples include:
-
-* services must come from the canonical service registry
-* geographic entities must come from the location registry
-* publishable pages must come from the Master Page Build List
-* URLs must conform to the routing strategy
-* page structures must conform to content specifications
-* schema must conform to the schema/entity strategy
-* internal links must conform to the internal linking strategy
-
-Generated website code must remain downstream of approved project decisions.
-
----
-
-## 13. Source-of-Truth Hierarchy
-
-When implementation decisions need to be resolved, use the following hierarchy.
-
-### Level 1 — Approved Project Decisions
-
-Explicit decisions recorded in project-specific documentation.
-
-### Level 2 — Master Registries and Build Lists
-
-Including:
-
-* Master Page Build List
-* Master Service Registry
-* Master Location Registry
-* approved matrices
-
-### Level 3 — Project-Specific Strategy Documents
-
-Including:
-
-* information architecture
-* SEO strategy
-* content strategy
-* schema strategy
-* conversion architecture
-* design system
-* analytics strategy
-
-### Level 4 — Site OS Master
-
-Reusable workflow, methodology, QA, and governance rules.
-
-### Level 5 — Implementation
-
-Next.js components, routes, content files, utilities, configuration, and deployment code.
-
-Implementation must follow the approved sources above it and should not silently redefine them.
-
----
-
-## 14. Page Authorization Model
-
-The website must use an explicit page authorization model.
-
-A potential keyword, matrix relationship, location, audience, or service combination does not become a page simply because it exists in research.
-
-The publication workflow is:
-
-**Research Opportunity → Registry/Matrix → Strategic Evaluation → Master Page Build List Approval → Route Implementation → QA → Publication/Indexing**
-
-The **Master Page Build List** is the controlling document for page authorization.
-
-No automated process should generate indexable pages directly from the full service × location matrix.
-
----
-
-## 15. Multi-Market Scalability Principle
-
-The architecture should be designed for more than the initial three markets.
-
-Adding another approved market should primarily require:
-
-1. adding structured market and location data,
-2. approving relevant pages,
-3. adding market-specific content and entity information,
-4. generating approved routes using existing systems.
-
-It should not require rebuilding:
-
-* navigation architecture
-* routing logic
-* page templates
-* schema infrastructure
-* component systems
-* content models
-* sitemap architecture
-* internal linking systems
-
-Market-specific exceptions should be data-driven wherever practical.
-
----
-
-## 16. Content Quality Principle
-
-The project will prioritize **useful, differentiated, intent-matched content** over raw page volume.
-
-Every indexable page should have a legitimate reason to exist.
-
-A page should provide meaningful value based on one or more of the following:
-
-* distinct search intent
-* distinct service intent
-* geographic relevance
-* audience-specific needs
-* commercial use case
-* decision-stage comparison intent
-* educational value
-* conversion value
-* entity or topical authority value
-
-Changing only a city name, service name, heading, or metadata is not sufficient differentiation.
-
----
-
-## 17. Independent Inspection Differentiator
-
-Independent inspection should be treated as a central strategic concept across relevant sections of the site.
-
-The underlying customer problem is that a company financially motivated to perform a major sewer repair may also be the company diagnosing whether that repair is necessary.
-
-The Sewer Pros can differentiate through an inspection and diagnostic model that is not primarily dependent on selling large repair projects.
-
-Where factually applicable, site content should explain advantages such as:
-
-* objective condition documentation
-* video inspection evidence
-* clearer understanding of sewer conditions
-* identification of line location
-* cleaning before reassessment where appropriate
-* information useful for purchasing decisions
-* information useful when evaluating repair recommendations
-* reduced pressure from repair-driven sales processes
-
-This positioning must remain factual and professional.
-
-The site should not claim that all repair contractors provide biased inspections or unnecessary repairs.
-
----
-
-## 18. Real Estate and Pre-Purchase Opportunity
-
-Pre-purchase sewer inspection is a strategically important service category.
-
-Potential customers and referral audiences include:
-
-* homebuyers
-* real estate agents
-* real estate brokers
-* property investors
-* residential investors
-* property inspectors
-* property managers
-
-Relevant content should help users understand:
-
-* why sewer condition matters before purchasing property
-* what a sewer camera inspection can reveal
-* why visible plumbing condition does not necessarily indicate sewer lateral condition
-* what documentation the inspection provides
-* how sewer findings may affect further evaluation or purchase decisions
-
-Any legal, inspection, disclosure, or real estate claims must be written conservatively and accurately.
-
----
-
-## 19. Commercial Opportunity
-
-Commercial sewer and drain services will be treated as a distinct growth opportunity rather than simply an extension of residential copy.
-
-Commercial customers may have different requirements involving:
-
-* facility uptime
-* recurring drain problems
-* preventative cleaning
-* high-usage drain systems
-* property portfolios
-* tenant impact
-* restaurant operations
-* multifamily properties
-* maintenance coordination
-* documentation
-* scheduling
-* emergency response expectations
-
-Commercial architecture should therefore support dedicated:
-
-* commercial hub content
-* commercial services
-* commercial audiences
-* approved commercial + location opportunities
-
----
-
-## 20. Local Search and Google Business Profile Status
-
-Current Google Business Profile status:
-
-| Market        | GBP Status                  |
-| ------------- | --------------------------- |
-| St. Louis, MO | Existing GBP                |
-| San Diego, CA | No GBP currently identified |
-| Las Vegas, NV | No GBP currently identified |
-
-The website architecture must not imply the existence of a verified physical office or Google Business Profile where one does not exist.
-
-Local SEO strategy must distinguish between:
-
-* website service-area targeting
-* actual business locations
-* verified GBP locations
-* eligible future GBP expansion
-
-The detailed plan will be maintained in:
-
-`11-local-seo-gbp-strategy.md`
-
----
-
-## 21. Current Social Presence
-
-Current identified social presence is concentrated in San Diego.
-
-### Instagram
-
-* Market: San Diego
-* Followers: approximately 302
-* Last identified post: approximately 90 weeks ago
-
-### Facebook
-
-* Market: San Diego
-* Followers: approximately 5
-* Last identified post: April 19, 2024
-
-No additional market-specific social profiles should be assumed without verification.
-
-Social activity may become useful for:
-
-* brand validation
-* local trust
-* content distribution
-* project examples
-* educational sewer content
-* Google Business Profile support
-* referral relationships
-
-Social media, however, is not a substitute for the site's SEO, entity, and local-search architecture.
-
----
-
-## 22. Indexation Governance
-
-Indexation must be intentional.
-
-Not every:
-
-* service
-* location
-* service/location relationship
-* audience
-* commercial segment
-* comparison topic
-* content topic
-
-should automatically become indexable.
-
-Indexation decisions should account for:
-
-* customer demand
-* search demand
-* service availability
-* content quality
-* uniqueness
-* geographic relevance
-* business value
-* crawl efficiency
-* cannibalization risk
-* topical architecture
-* overall site quality
-
-Routes that are not approved should not accidentally enter:
-
-* XML sitemaps
-* navigation
-* internal-link modules
-* structured data
-* canonical systems
-* search engine indexes
-
----
-
-## 23. Initial Project Success Criteria
-
-The repository foundation will be considered successful when the project can reliably answer:
-
-* What does The Sewer Pros do?
-* What does The Sewer Pros explicitly not do?
-* Which services are canonical?
-* Which markets are approved?
-* Which locations are recognized?
-* Which audiences matter?
-* Which commercial segments matter?
-* Which pages are approved?
-* Which routes correspond to those pages?
-* Which pages should be indexed?
-* How should pages relate to each other?
-* Which schema entities should be represented?
-* How should conversions be captured?
-* How should performance be measured?
-* How should future markets be added?
-* Which decisions belong in Site OS versus the project repository?
-
-The implementation should never require guessing at these foundational questions.
-
----
-
-## 24. Planned Project Documentation
-
-The project documentation set is:
-
-1. `00-project-overview.md`
-2. `01-business-brand-foundation.md`
-3. `02-nextjs-technical-architecture.md`
-4. `03-information-architecture.md`
-5. `04-master-page-build-list.md`
-6. `05-url-routing-strategy.md`
-7. `06-master-service-registry.md`
-8. `07-master-location-registry.md`
-9. `08-service-location-matrix.md`
-10. `09-audience-commercial-matrix.md`
-11. `10-seo-strategy.md`
-12. `11-local-seo-gbp-strategy.md`
-13. `12-content-aeo-ai-strategy.md`
-14. `13-competitor-analysis.md`
-15. `14-content-specification.md`
-16. `15-schema-entity-strategy.md`
-17. `16-internal-linking-strategy.md`
-18. `17-conversion-architecture.md`
-19. `18-design-system.md`
-20. `19-analytics-measurement.md`
-21. `20-migration-redirect-plan.md`
-22. `21-post-launch-seo-roadmap.md`
-23. `22-decisions-change-log.md`
-24. `CLAUDE.md`
-
-These documents should be created individually and treated as interconnected project specifications.
-
----
-
-## 25. Document Responsibility Summary
-
-### Business and Brand
-
-`01-business-brand-foundation.md`
-
-Defines company facts, positioning, differentiators, messaging boundaries, trust elements, and approved brand information.
-
-### Technical Architecture
-
-`02-nextjs-technical-architecture.md`
-
-Defines the Next.js, TypeScript, Tailwind, build, rendering, data, component, and Cloudflare architecture.
-
-### Information Architecture
-
-`03-information-architecture.md`
-
-Defines site hierarchy, page families, hubs, relationships, and navigation logic.
-
-### Page Authorization
-
-`04-master-page-build-list.md`
-
-Defines exactly which pages are approved for creation and publication.
-
-### Routing
-
-`05-url-routing-strategy.md`
-
-Defines approved route structures and URL conventions.
-
-### Service Taxonomy
-
-`06-master-service-registry.md`
-
-Defines canonical services.
-
-### Geographic Taxonomy
-
-`07-master-location-registry.md`
-
-Defines canonical markets and geographic entities.
-
-### Opportunity Relationships
-
-`08-service-location-matrix.md`
-
-Defines researched service × geography relationships without automatically authorizing publication.
-
-### Audience and Commercial Architecture
-
-`09-audience-commercial-matrix.md`
-
-Defines audience, commercial, and related combinations.
-
-### Search Strategy
-
-`10-seo-strategy.md`
-
-Defines the project's organic search strategy.
-
-### Local Search
-
-`11-local-seo-gbp-strategy.md`
-
-Defines market-specific local SEO and Google Business Profile strategy.
-
-### AI and Answer Search
-
-`12-content-aeo-ai-strategy.md`
-
-Defines content strategy for AEO, AI retrieval, LLM search, and conversational discovery.
-
-### Competitive Research
-
-`13-competitor-analysis.md`
-
-Defines the competitive landscape and strategic opportunities.
-
-### Page Content Standards
-
-`14-content-specification.md`
-
-Defines the project-specific requirements for each page family.
-
-### Structured Data
-
-`15-schema-entity-strategy.md`
-
-Defines entities, structured data, schema relationships, and knowledge graph support.
-
-### Internal Linking
-
-`16-internal-linking-strategy.md`
-
-Defines hierarchical and contextual internal-link relationships.
-
-### Conversion
-
-`17-conversion-architecture.md`
-
-Defines calls to action, forms, conversion paths, and lead-generation architecture.
-
-### Design
-
-`18-design-system.md`
-
-Defines the website's visual and component system.
-
-### Measurement
-
-`19-analytics-measurement.md`
-
-Defines analytics, Search Console, Bing Webmaster, conversion measurement, and reporting requirements.
-
-### Migration
-
-`20-migration-redirect-plan.md`
-
-Defines legacy URL inventory, redirects, migration controls, and preservation requirements.
-
-### Growth
-
-`21-post-launch-seo-roadmap.md`
-
-Defines phased expansion after initial launch.
-
-### Decision History
-
-`22-decisions-change-log.md`
-
-Records material changes, approvals, overrides, and architectural decisions.
-
-### Claude Code Governance
-
-`CLAUDE.md`
-
-Provides concise repository-level operating context and implementation instructions for Claude Code without duplicating the generalized Site OS skill.
-
----
-
-## 26. Repository Philosophy
-
-The repository should function as both:
-
-1. the application codebase, and
-2. the durable project-specific knowledge base.
-
-The project should favor:
-
-* structured data over scattered constants
-* canonical registries over inconsistent naming
-* explicit approvals over implicit generation
-* reusable templates over duplicated page implementations
-* scalable architecture over market-specific hacks
-* strong content over page volume
-* factual differentiation over exaggerated claims
-* measurable conversions over traffic-only goals
-* durable documentation over undocumented decisions
-
----
-
-## 27. Foundation Rule
-
-Before large-scale page production begins, the project must establish reliable source-of-truth documentation for:
-
-* business identity
 * services
 * markets
 * locations
-* information architecture
-* approved page inventory
-* routes
-* SEO strategy
-* content rules
-* schema
-* linking
+* audiences
+* commercial topics
+* problems
+* resources
 * conversions
-* design
-* analytics
 
-The goal of the foundation phase is to make subsequent research, content production, coding, QA, and expansion **deterministic rather than improvisational**.
+Preferred conceptual hierarchy:
 
-The Sewer Pros website should be built from approved structured decisions—not from uncontrolled keyword lists, page-generation scripts, or assumptions.
+```text
+Homepage
+→ Primary Hubs
+→ Canonical Pages
+→ Specialized / Local Pages
+↔ Supporting Resources
+```
+
+Structured datasets may help identify useful relationships.
+
+Do not automatically expose every available relationship through navigation or footer links.
+
+---
+
+# 26. Conversion Philosophy
+
+The site should convert visitors through:
+
+```text
+Expertise
++
+Evidence
++
+Transparency
++
+Specialization
++
+Low Friction
+```
+
+rather than:
+
+```text
+Fear
++
+Artificial Urgency
++
+Fake Discounts
++
+Repair Pressure
+```
+
+Primary conversions may include:
+
+* phone calls
+* general service requests
+* inspection requests
+* pre-purchase sewer inspection requests
+* commercial inquiries
+
+CTA language should match the intent of the page.
+
+---
+
+# 27. Design Direction
+
+The website should visually communicate:
+
+```text
+Technical Sewer Expertise
++
+Modern Local-Service Design
++
+Clear Editorial Hierarchy
++
+Strong Conversion Architecture
+```
+
+The site should feel:
+
+* premium
+* specialized
+* technically capable
+* modern
+* trustworthy
+* conversion-oriented
+* professionally established
+
+It should not feel like:
+
+* a generic plumbing template
+* an emergency-franchise website
+* a bargain drain-cleaning site
+* a repair-heavy excavation contractor
+* a generic AI-generated website
+
+---
+
+# 28. Primary Design Reference System
+
+The project uses six supplied reference images as practical structural templates.
+
+Recommended repository location:
+
+```text
+/docs/design-references/
+```
+
+Reference files:
+
+```text
+homepage-performance.webp
+service-page-performance.webp
+location-page-performance.webp
+location-service-page-performance.webp
+audience-page-performance.webp
+audience-service-page.webp
+```
+
+Page-family mapping:
+
+| Page Family             | Primary Reference                        |
+| ----------------------- | ---------------------------------------- |
+| Homepage                | `homepage-performance.webp`              |
+| Core Service Page       | `service-page-performance.webp`          |
+| Location / Market Page  | `location-page-performance.webp`         |
+| Service + Location Page | `location-service-page-performance.webp` |
+| Audience Page           | `audience-page-performance.webp`         |
+| Audience + Service Page | `audience-service-page.webp`             |
+
+These images should guide:
+
+* hero hierarchy
+* section rhythm
+* content density
+* image placement
+* trust strips
+* service cards
+* problem cards
+* process sections
+* forms
+* proof sections
+* testimonials
+* local coverage sections
+* CTA placement
+* footer structure
+
+They are templates, not pixel-perfect specifications.
+
+---
+
+# 29. Reference Image Guardrail
+
+The reference images are from another example brand.
+
+Use their:
+
+* composition
+* visual hierarchy
+* section structure
+* conversion patterns
+* density
+* layout quality
+
+Do not copy:
+
+* business identity
+* logo
+* company name
+* phone numbers
+* addresses
+* testimonials
+* licenses
+* emergency claims
+* same-day claims
+* free estimates
+* pricing
+* warranties
+* service claims
+* years of experience
+* employee identities
+
+All final public content must use verified The Sewer Pros business information.
+
+---
+
+# 30. Design Flexibility
+
+The reference templates should accelerate the build rather than constrain it.
+
+Claude Code may adapt:
+
+* section order
+* card count
+* image position
+* layout composition
+* responsive sequence
+* CTA placement
+* background treatment
+* component variant
+* section inclusion
+
+based on the actual content.
+
+Do not create filler solely to imitate the reference image.
+
+The design system should create family resemblance across the site without making every page identical.
+
+---
+
+# 31. Technical Stack
+
+The project uses:
+
+```text
+Claude Project
+Site OS Master
+Claude Code
+VS Code
+Next.js App Router
+TypeScript
+Tailwind CSS
+Git
+GitHub
+Cloudflare Pages
+```
+
+The architecture should emphasize:
+
+* reusable components
+* typed structured data
+* centralized registries
+* scalable routing
+* performance
+* accessibility
+* maintainability
+* SEO
+* controlled indexation
+
+Detailed implementation requirements belong in:
+
+`02-nextjs-technical-architecture.md`
+
+---
+
+# 32. Claude Project Role
+
+Claude Project should function as the research, strategy, planning, content, and intelligence environment of the project.
+
+Claude may:
+
+* research
+* recommend
+* draft
+* create content
+* identify opportunities
+* evaluate competitors
+* refine architecture
+* develop page strategies
+* create briefs
+* improve content
+* recommend internal links
+* develop schema approaches
+* help plan SEO expansion
+* analyze post-launch performance
+
+Claude should make progress independently within verified business boundaries.
+
+---
+
+# 33. Claude Code Role
+
+Claude Code is the primary implementation agent.
+
+Claude Code should be empowered to:
+
+* build pages
+* create components
+* implement approved and candidate layouts
+* create routes
+* create data structures
+* refactor code
+* add metadata
+* implement schema
+* create responsive behavior
+* fix SEO issues
+* fix accessibility issues
+* improve performance
+* adapt design-reference templates
+
+Routine implementation should not require repeated human approval.
+
+---
+
+# 34. Site OS Master Role
+
+Site OS Master remains the reusable methodology layer.
+
+It governs how tasks may be:
+
+* researched
+* planned
+* validated
+* QA'd
+* tested
+* deployed
+
+It should support the project rather than become a procedural blocker.
+
+The relationship remains:
+
+```text
+Site OS Master
+=
+Reusable Methodology
+
+The Sewer Pros Project
+=
+Project-Specific Truth and Implementation
+```
+
+---
+
+# 35. Project Governance Model
+
+The project should operate using three levels of governance.
+
+## Level 1 — Hard Business Truth
+
+These cannot be changed through normal implementation.
+
+Examples:
+
+* what services the company actually offers
+* whether repair/replacement is offered
+* real physical locations
+* pricing
+* guarantees
+* verified business contact details
+* major business positioning
+
+## Level 2 — Project Defaults
+
+These guide implementation but may be adapted intelligently.
+
+Examples:
+
+* layout patterns
+* CTA patterns
+* page structure
+* internal linking patterns
+* schema implementation
+* metadata structure
+* component composition
+
+## Level 3 — Working Implementation
+
+Claude and Claude Code may independently evolve:
+
+* layouts
+* components
+* page drafts
+* candidate routes
+* structured relationships
+* responsive behavior
+* internal links
+* technical implementation
+* optimization
+
+This model should prevent ordinary development from becoming blocked by administrative approvals.
+
+---
+
+# 36. Decision Log Role
+
+`22-decisions-change-log.md` should be reserved for material strategic changes.
+
+Examples include:
+
+* new major service
+* sewer repair becomes offered
+* new primary market
+* new verified physical branch
+* production domain change
+* hosting architecture change
+* major business-positioning change
+* major post-launch URL restructuring
+
+Routine work does not require a decision-log entry.
+
+Git history should document normal implementation evolution.
+
+---
+
+# 37. Migration Objective
+
+The website rebuild should preserve useful value from the existing site.
+
+Important migration considerations include:
+
+* legacy URLs
+* organic traffic
+* backlinks
+* existing GBP destinations
+* redirects
+* canonical continuity
+* internal links
+
+Do not discard valuable legacy URLs simply because the site is being redesigned.
+
+Do not redirect every removed page to the homepage.
+
+Map legacy intent to the closest relevant new destination.
+
+---
+
+# 38. Analytics Objective
+
+The site should be measured as a business-growth system.
+
+Primary measurement questions include:
+
+* Which markets generate qualified traffic?
+* Which services generate leads?
+* Which audiences generate leads?
+* Which pages convert?
+* Which local cohorts perform?
+* Which resources assist conversions?
+* Is real-estate content generating opportunities?
+* Is commercial SEO generating opportunities?
+* Which page families deserve expansion?
+
+Success should not be measured primarily through page count.
+
+---
+
+# 39. Post-Launch Growth Model
+
+The launch is the beginning of the SEO program.
+
+Use:
+
+```text
+Stabilize
+→ Measure
+→ Improve
+→ Expand
+→ Measure Again
+```
+
+Priority should generally be given to:
+
+1. migration health
+2. technical stability
+3. protecting existing search equity
+4. improving pages already showing opportunity
+5. strengthening canonical service authority
+6. building real-estate authority
+7. controlled local expansion
+8. service + location expansion
+9. commercial authority
+10. second-opinion and comparison content
+11. reviews
+12. citations
+13. links
+14. content refresh
+
+Expansion should be informed by evidence rather than raw page-count goals.
+
+---
+
+# 40. Research Philosophy
+
+Research should resolve uncertainty and improve the site.
+
+Research is particularly important for:
+
+* municipality-specific information
+* local programs
+* competitors
+* current search behavior
+* market-specific facts
+* current GBP information
+* regulatory requirements
+* time-sensitive information
+
+Prefer primary sources when factual accuracy matters.
+
+Do not make research itself another approval gate.
+
+---
+
+# 41. Business-Fact Guardrail
+
+Do not invent:
+
+* licenses
+* certifications
+* guarantees
+* warranties
+* pricing
+* discounts
+* free inspections
+* free estimates
+* emergency availability
+* same-day availability
+* response times
+* offices
+* business addresses
+* phone numbers
+* operating hours
+* review counts
+* ratings
+* municipal approvals
+* employee counts
+* repair capabilities
+
+If a fact is not required and cannot be verified, omit it.
+
+If a fact is necessary to implementation but unresolved, use an obvious development placeholder without publishing it as business truth.
+
+---
+
+# 42. Primary Success Standard
+
+The project should be judged by whether The Sewer Pros becomes:
+
+* more discoverable
+* more authoritative
+* more understandable
+* more credible
+* easier to contact
+* stronger across its markets
+* more useful to home buyers
+* more useful to real-estate professionals
+* more relevant to commercial customers
+* more visible to search engines
+* more useful to AI-answer systems
+* capable of scalable future growth
+
+The objective is not:
+
+```text
+Maximum Number of Pages
+```
+
+The objective is:
+
+```text
+Maximum Useful Search Coverage
++
+Strong Business Accuracy
++
+Qualified Leads
++
+Scalable Authority
+```
+
+---
+
+# 43. Governing Project Principle
+
+> **Build The Sewer Pros as a controlled but highly productive multi-market authority platform. Use project documentation to preserve business truth, canonical data, strategy, and quality standards—not as a collection of bureaucratic approval gates. Allow Claude and Claude Code to research, draft, generate, build, test, and improve freely within verified business boundaries. Use structured datasets productively, control intentional indexation separately, and use the supplied page-reference images as the practical visual foundation for the major page families of the site.**
