@@ -55,6 +55,19 @@ export function Card({ className, children }: CardProps) {
 export interface LinkCardProps extends CardProps {
   href: string
   /**
+   * Whether the card supplies its own inner padding.
+   *
+   * `false` drops the default `p-6` so a child can run edge to edge,
+   * which is what an image crop at the top of a card needs.
+   *
+   * This is a prop rather than a `p-0` passed through `className`
+   * because `cn()` here is a plain join, not tailwind-merge: both
+   * classes would ship and the winner would be decided by stylesheet
+   * order, which currently favours `p-6`. A card that wanted no
+   * padding would quietly get padding.
+   */
+  padded?: boolean
+  /**
    * Accessible name for the card's action.
    *
    * 18 §47 requires descriptive labels — "Learn more" repeated across a
@@ -73,6 +86,7 @@ export interface LinkCardProps extends CardProps {
 export function LinkCard({
   href,
   actionLabel,
+  padded = true,
   className,
   children,
 }: LinkCardProps) {
@@ -81,7 +95,8 @@ export function LinkCard({
       href={href}
       aria-label={actionLabel}
       className={cn(
-        'block rounded-md border border-border bg-surface p-6',
+        'block rounded-md border border-border bg-surface',
+        padded && 'p-6',
         'transition-colors hover:border-foreground/30 hover:bg-surface-muted',
         className,
       )}

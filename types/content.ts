@@ -27,6 +27,7 @@
 
 import type { ReactNode } from 'react'
 import type { PageId } from './common'
+import type { CardImage } from './media'
 
 /* ==========================================================================
    Shared pieces
@@ -91,6 +92,14 @@ export interface InclusionContent {
 export interface RoutingContent {
   pageId: PageId
   description: string
+  /**
+   * Optional approved artwork.
+   *
+   * Unset on every entry today. `RoutingCards` grows a card to hold a
+   * 7:4 crop only when one is present, and renders no image area at
+   * all when it is not (18 §40-42).
+   */
+  image?: CardImage
 }
 
 /**

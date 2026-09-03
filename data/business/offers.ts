@@ -31,6 +31,8 @@
  * availability, never promise it.
  */
 
+import type { CardImage } from '@/types'
+
 export interface VerifiedOffer {
   /** Short label for compact placements (trust bar, confidence module). */
   label: string
@@ -38,6 +40,14 @@ export interface VerifiedOffer {
   detail: string
   /** Who confirmed this and when. */
   source: string
+  /**
+   * Optional approved artwork.
+   *
+   * Unset on both entries and intended to stay that way until real
+   * photography exists. A card only grows to hold an image when it has
+   * one; see the render in ConfidenceModule.tsx.
+   */
+  image?: CardImage
 }
 
 export const verifiedOffers: readonly VerifiedOffer[] = [

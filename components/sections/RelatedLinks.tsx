@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Section, LinkCard, type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
-import type { PageId } from '@/types'
+import type { CardImage, PageId } from '@/types'
 
 /**
  * Related-content module.
@@ -51,25 +51,11 @@ import type { PageId } from '@/types'
 /**
  * Artwork for one related-content card.
  *
- * Mirrors `ProofImage` in data/business/proof.ts: a path under
- * `public/`, meaningful alt text, and REQUIRED provenance. `source` is
- * not optional for the same reason it is not optional there — an image
- * whose origin nobody recorded is exactly the one that later turns out
- * to be stock, generated, or someone else's work.
- *
- * No images are supplied anywhere yet. This is the slot for real,
- * approved article artwork when it exists; it is not a hook for a
- * placeholder (18 §40-42, and the `image` variant below renders no
- * image area at all when none is present).
+ * Alias of the shared `CardImage` (types/media.ts), which three card
+ * sections now read. Kept as a name because it is exported and reads
+ * better at this call site; it is not a second, near-identical type.
  */
-export interface RelatedLinkImage {
-  /** Path under `public/`. Pre-optimized: `output: 'export'` disables the optimizer (02 §7, §8). */
-  src: string
-  /** Meaningful alt text (CLAUDE.md §55, §57). */
-  alt: string
-  /** Provenance of the asset. Required — see above. */
-  source: string
-}
+export type RelatedLinkImage = CardImage
 
 export interface RelatedLinksProps {
   /**
@@ -214,7 +200,8 @@ export function RelatedLinks({
                 <LinkCard
                   href={link.href}
                   actionLabel={link.label}
-                  className="flex h-full flex-col overflow-hidden p-0"
+                  padded={false}
+                  className="flex h-full flex-col overflow-hidden"
                 >
                   {image !== undefined && (
                     <span className="relative block aspect-[7/4] w-full overflow-hidden">

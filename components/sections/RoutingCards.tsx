@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import {
   Section,
   LinkCard,
@@ -6,7 +7,7 @@ import {
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
-import type { PageId } from '@/types'
+import type { CardImage, PageId } from '@/types'
 
 /**
  * Intent-routing cards — "how we can help".
@@ -43,6 +44,13 @@ export interface RoutingCardItem {
   pageId: PageId
   /** One line on what the visitor gets by going here. */
   description: string
+  /**
+   * Optional approved artwork.
+   *
+   * Unset on all four homepage entries. A card grows to hold an image
+   * only when it has one; see the render below.
+   */
+  image?: CardImage
 }
 
 export interface RoutingCardsProps {
@@ -94,6 +102,14 @@ export function RoutingCards({
   const descriptions = new Map(
     items.map((item) => [item.pageId, item.description]),
   )
+  // Parallel to `descriptions`, and keyed the same way, so a card that
+  // has no artwork simply misses from the map rather than carrying an
+  // undefined image field around.
+  const images = new Map(
+    items
+      .filter((item) => item.image !== undefined)
+      .map((item) => [item.pageId, item.image as CardImage]),
+  )
 
   // 18 §120 — omit entirely rather than render an empty shell.
   if (links.length === 0) return null
@@ -105,19 +121,49 @@ export function RoutingCards({
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <CardGrid columns={columns} itemCount={links.length} className="mt-10">
-        {links.map((link) => (
+        {links.map((link) => {
+          const image = images.get(link.pageId)
+
           // One anchor wraps the whole card, so the target is large
           // (18 §48) and assistive technology announces one action
           // rather than a card plus a nested "learn more" link.
-          <LinkCard key={link.pageId} href={link.href} actionLabel={link.label}>
-            <h3 className="text-h4 font-medium tracking-tight text-foreground">
-              {link.label}
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              {descriptions.get(link.pageId)}
-            </p>
-          </LinkCard>
-        ))}
+          //
+          // With artwork the card drops its own padding so the 7:4 crop
+          // can run edge to edge, and the text takes the padding back
+          // inside. Without artwork nothing changes: no crop container
+          // is rendered, and `padded` stays true, so the card is
+          // identical to what it is today (18 §40-42).
+          return (
+            <LinkCard
+              key={link.pageId}
+              href={link.href}
+              actionLabel={link.label}
+              padded={image === undefined}
+              className={
+                image !== undefined ? 'flex flex-col overflow-hidden' : undefined
+              }
+            >
+              {image !== undefined && (
+                <span className="relative block aspect-[7/4] w-full overflow-hidden">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </span>
+              )}
+              <span className={image !== undefined ? 'block p-6' : undefined}>
+                <h3 className="text-h4 font-medium tracking-tight text-foreground">
+                  {link.label}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {descriptions.get(link.pageId)}
+                </p>
+              </span>
+            </LinkCard>
+          )
+        })}
       </CardGrid>
     </Section>
   )
