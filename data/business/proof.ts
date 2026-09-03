@@ -9,8 +9,18 @@
  * BOTH ARRAYS ARE DELIBERATELY EMPTY
  * ===========================================================================
  * No approved photography exists (18 §28-34; §34 rules out unrealistic
- * AI imagery and staged stock). No verified review data exists
- * (01 §35, 18 §69-70, CLAUDE.md §77).
+ * AI imagery and staged stock).
+ *
+ * `testimonials` is empty for a different reason. Verified review data
+ * DOES exist — DEC-084 built the review carousel from real St. Louis
+ * Google reviews, in `data/reviews/reviews.ts`. Those reviews are
+ * ST. LOUIS-scoped, and `TestimonialBand` renders on six templates
+ * including `MarketPageTemplate`, so populating this array from them
+ * would place St. Louis reviews on `/san-diego-ca/` and
+ * `/las-vegas-nv/` automatically. CLAUDE.md §77 forbids reassigning a
+ * review's market context (01 §35, 18 §69-70). See
+ * `components/sections/ReviewCarousel.tsx` — that section exists
+ * precisely so this one can stay gated.
  *
  * The sections that read these arrays return null while they are empty,
  * and the page composition closes around them. That is the intended
@@ -65,10 +75,16 @@ export interface Testimonial {
 }
 
 /**
- * No verified review data exists — 01 §35, 18 §69-70, CLAUDE.md §77.
+ * Empty by design — not for want of reviews.
  *
- * CLAUDE.md §77 additionally forbids merging reviews, reassigning their
- * market context, or altering their meaning. Reviews enter here
- * verbatim with attribution, or not at all.
+ * Verified reviews live in `data/reviews/reviews.ts` (DEC-084), scoped
+ * to St. Louis. Filling this array would surface them on every template
+ * that renders `TestimonialBand`, including market pages for San Diego
+ * and Las Vegas — reassigning their market context, which CLAUDE.md §77
+ * forbids (01 §35, 18 §69-70). It needs a review cleared for
+ * cross-market display, or market-scoped data this array does not model.
+ *
+ * CLAUDE.md §77 additionally forbids merging reviews or altering their
+ * meaning. Reviews enter here verbatim with attribution, or not at all.
  */
 export const testimonials: readonly Testimonial[] = []
