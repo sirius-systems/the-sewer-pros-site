@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import { Section, type SectionDensity } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { verifiedOffers } from '@/data/business/offers'
 
 /**
@@ -57,18 +59,45 @@ export function ConfidenceModule({
         Good to know
       </h2>
 
+      {/*
+        SIZE FOLLOWS THE IMAGE, NOT THE OTHER WAY ROUND.
+
+        A card with approved artwork renders large, with a 7:4 crop
+        running edge to edge above the text. A card without one keeps
+        exactly today's compact treatment: no crop container, no grey
+        box, no gradient standing in for a photograph. Enlarging every
+        card for images that do not exist would just produce bigger
+        empty boxes (18 §40-42).
+
+        Both offers are imageless today, so both render unchanged.
+      */}
       <ul className="grid gap-6 sm:grid-cols-2">
         {verifiedOffers.map((offer) => (
           <li
             key={offer.label}
-            className="rounded-md border border-border bg-surface p-6"
+            className={cn(
+              'overflow-hidden rounded-md border border-border bg-surface',
+              offer.image === undefined && 'p-6',
+            )}
           >
-            <p className="text-sm font-semibold text-foreground">
-              {offer.label}
-            </p>
-            <p className="mt-1 text-sm leading-6 text-muted-foreground">
-              {offer.detail}
-            </p>
+            {offer.image !== undefined && (
+              <div className="relative aspect-[7/4] w-full overflow-hidden">
+                <Image
+                  src={offer.image.src}
+                  alt={offer.image.alt}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+            <div className={cn(offer.image !== undefined && 'p-6')}>
+              <p className="text-sm font-semibold text-foreground">
+                {offer.label}
+              </p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                {offer.detail}
+              </p>
+            </div>
           </li>
         ))}
       </ul>
