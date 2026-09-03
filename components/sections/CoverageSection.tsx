@@ -121,7 +121,7 @@ export function CoverageSection({
           <li key={link.pageId} className="border-t border-border pt-3">
             <Link
               href={link.href}
-              className="text-sm text-foreground transition-colors hover:text-accent"
+              className="text-sm text-foreground transition-colors hover:text-accent-secondary"
             >
               {link.label}
             </Link>

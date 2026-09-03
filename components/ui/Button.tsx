@@ -37,7 +37,7 @@ const VARIANT: Record<ButtonVariant, string> = {
   secondary:
     'border border-border bg-surface text-foreground hover:bg-surface-muted rounded-md px-5',
   tertiary:
-    'text-accent underline underline-offset-4 hover:text-foreground px-0',
+    'text-accent-secondary underline underline-offset-4 hover:text-foreground px-0',
 }
 
 /**

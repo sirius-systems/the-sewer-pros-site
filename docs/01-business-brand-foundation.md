@@ -1303,3 +1303,83 @@ The website should therefore be built around:
 The brand should not drift into a generic plumbing identity or an unapproved sewer repair and replacement identity simply because those keywords exist in search demand.
 
 **Business reality, approved services, and transparent customer value remain the governing principles for all content.**
+
+---
+
+# 42. Visual Identity
+
+**Approved 2026-09-03 by DEC-096.** These are verified brand facts, not
+placeholders. DEC-096 resolved PENDING-005 and PENDING-006 and superseded
+DEC-064's interim authority.
+
+## Typography
+
+| Element | Font | Weight |
+| --- | --- | --- |
+| Hero H1 | Archivo | 700 |
+| Section H2 | Archivo | 650-700 |
+| Card H3 | Archivo | 600 |
+| Eyebrows | Archivo | 600, uppercase, moderate letter-spacing |
+| Body copy | Source Sans 3 | 400 |
+| Navigation | Source Sans 3 | 600 |
+| Buttons | Source Sans 3 | 600 |
+| Form fields | Source Sans 3 | 400-600 |
+
+Two families, which is the maximum 18 §30 allows. Archivo reads as
+technical and specialized rather than as a generic franchise; Source Sans 3
+is built for the dense body and interface copy this site is made of.
+
+Both load through `next/font/google` in the root layout and are exposed as
+`--font-heading` and `--font-sans`. Components never name a family directly.
+
+## Color
+
+| Role | Token | Hex |
+| --- | --- | --- |
+| Brand Dark | `--brand` | `#0B2D45` |
+| Brand Foreground | `--brand-foreground` | `#FFFFFF` |
+| Primary Blue | `--accent-secondary` | `#1C6B97` |
+| Primary Surface | `--background` / `--surface` | `#FFFFFF` |
+| Secondary Surface | `--surface-muted` | `#F4F7F8` |
+| Border | `--border` | `#D7E0E5` |
+| Primary Accent (CTA) | `--accent` | `#007A3D` |
+| Accent Foreground | `--accent-foreground` | `#FFFFFF` |
+| Foreground / Body Text | `--foreground` | `#1F2933` |
+| Muted Foreground | `--muted-foreground` | `#5F6B73` |
+
+This palette **evolves** the existing identity rather than replacing it. It
+was built to harmonize with the logo's own `#2463AB` blue and `#8F9094`
+gray, which is why Brand Dark is a deepened, desaturated version of that
+hue rather than an unrelated color.
+
+**The logo asset is never recolored or modified.** Those two hex values are
+recorded here as the source the palette answers to, not as tokens to use.
+
+## The two accents are not interchangeable
+
+```text
+--accent            CTA green    conversion actions ONLY
+--accent-secondary  Authority blue    links, nav states, secondary
+                                      buttons, focus rings, emphasis
+```
+
+18 §29 makes this a discipline rather than a preference. A conversion color
+stops reading as one the moment it also appears on icons, borders, and
+headings. Green currently appears in exactly three places in the codebase,
+all primary conversion buttons.
+
+## Contrast
+
+Verified at implementation, not assumed. Every pair clears WCAG AA (4.5:1):
+
+| Pair | Ratio |
+| --- | --- |
+| White on CTA green | 5.45:1 |
+| White on primary blue | 5.83:1 |
+| White on brand dark | 14.23:1 |
+| Muted text on white | 5.47:1 |
+| Muted text on muted surface | 5.08:1 |
+| Body text on white | 14.76:1 |
+
+Re-verify any new pairing before shipping it. A token that is safe on white
+is not automatically safe on `--surface-muted` or on the brand surface.
