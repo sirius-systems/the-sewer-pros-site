@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { Section , type SectionDensity } from '@/components/ui'
+import { Section, CardGrid, LinkCard, type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import { pagesOfType } from '@/data/pages'
@@ -91,26 +90,49 @@ export function MarketCoverage({
     <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
-      <ul className="mt-8 border-t border-border">
+      {/*
+        Three cards across rather than the previous full-width row list
+        (owner-directed, 2026-09-03). `CardGrid` + `LinkCard` are the
+        primitives `RoutingCards` already uses, so this matches the card
+        treatment established elsewhere instead of hand-rolled markup.
+        Three markets into three columns divides evenly, so CardGrid's
+        orphaned-row warning does not apply.
+
+        Each card stays horizontal INTERNALLY — label left, arrow right,
+        as the row list read. Only the arrangement of the three cards
+        relative to each other changed.
+
+        `link.label` already ends in "Sewer Services" (it renders as
+        "St. Louis, MO Sewer Services"), so nothing is appended here —
+        doing so would print the phrase twice. The label comes from the
+        page registry, which also drives navigation, breadcrumbs and the
+        market pages' own titles, so it is read, never rewritten.
+
+        No map, pin, or address: 18 §86-87 — these are service markets,
+        not branches, and a name plus an arrow implies no office.
+      */}
+      <CardGrid columns={3} itemCount={links.length} className="mt-10">
         {links.map((link) => (
-          <li key={link.pageId} className="border-b border-border">
-            <Link
-              href={link.href}
-              className="group flex items-center justify-between gap-6 py-5 transition-colors hover:bg-surface-muted"
-            >
+          <LinkCard
+            key={link.pageId}
+            href={link.href}
+            actionLabel={link.label}
+            className="group"
+          >
+            <span className="flex items-center justify-between gap-4">
               <span className="text-h3 font-medium tracking-tight text-foreground">
                 {link.label}
               </span>
               <span
                 aria-hidden="true"
-                className="text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                className="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
               >
                 →
               </span>
-            </Link>
-          </li>
+            </span>
+          </LinkCard>
         ))}
-      </ul>
+      </CardGrid>
     </Section>
   )
 }
