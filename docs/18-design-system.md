@@ -1,1000 +1,331 @@
-# The Sewer Pros — Design System
+# The Sewer Pros — Design System & Page Template Architecture
 
-**Document:** `18-design-system.md`
-**Project:** The Sewer Pros Website Rebuild
-**Repository:** `the-sewer-pros-site`
-**Status:** Project-Specific Visual and UI Source of Truth
+**Document:** `18-design-system.md`  
+**Project:** The Sewer Pros Website Rebuild  
+**Repository:** `the-sewer-pros-site`  
+**Status:** Active Design System and Page Template Specification  
+**Last Updated:** September 3, 2026
 
 ---
 
 # 1. Purpose
 
-This document defines the visual design system for The Sewer Pros website rebuild.
+This document defines the visual design system, reusable page-template architecture, layout conventions, component patterns, imagery direction, responsive behavior, and conversion-oriented design standards for The Sewer Pros website.
 
-It establishes project-specific standards for:
+The primary goals are to:
 
-* visual direction
-* brand expression
-* typography
-* color usage
-* spacing
-* layout
-* responsive behavior
-* buttons
-* forms
-* cards
-* navigation
-* service modules
-* location modules
-* audience modules
-* commercial modules
-* reviews
-* trust components
-* FAQs
-* content presentation
-* imagery
-* icons
-* conversion components
-* accessibility
-* interaction
-* reusable UI patterns
+- create a premium, custom-designed website
+- maintain visual consistency across hundreds of potential pages
+- prevent generic AI-generated layouts
+- give Claude Code strong visual references
+- reduce unnecessary design decisions during implementation
+- create reusable page-family templates
+- support scalable page generation
+- maintain flexibility for content-specific variation
+- improve conversion without excessive sales pressure
+- preserve strong performance and accessibility
 
-This document does **not** duplicate generalized Site OS Master procedures for:
+The design system should **enable implementation rather than act as a design approval gate**.
 
-* component QA
-* design-review workflows
-* accessibility testing procedures
-* responsive testing procedures
-* implementation gates
-* visual regression workflows
-* build methodology
-
-Site OS Master governs **how the design system is implemented and validated**.
-
-This document defines **what The Sewer Pros website should look and feel like**.
+Claude Code should use this document, the supplied design-reference images, and the actual page content to make reasonable implementation decisions independently.
 
 ---
 
-# 2. Design Objective
+# 2. Design Operating Principle
 
-The rebuilt website should visually communicate:
+The governing design principle is:
+
+> **Use the supplied page references as practical structural templates, then adapt them intelligently to the brand, content, service, market, audience, and conversion intent of The Sewer Pros.**
+
+The reference images define:
+
+- layout quality
+- information density
+- section rhythm
+- visual hierarchy
+- hero composition
+- card behavior
+- image placement
+- CTA frequency
+- trust placement
+- process presentation
+- form integration
+- testimonial placement
+- footer depth
+
+They are **not pixel-perfect specifications**.
+
+Claude Code may modify the reference structure when doing so produces a better page.
+
+---
+
+# 3. Primary Design Reference Files
+
+Store the approved visual references locally in:
 
 ```text
-Specialized Sewer Expertise
-+
-Technical Precision
-+
-Independence
-+
-Trust
-+
-Transparency
-+
-Professionalism
-+
-Modern Service Delivery
+/docs/design-references/
 ```
 
-The design should feel like a specialized diagnostics and sewer-services company rather than:
+Use the following filenames:
 
-* a generic plumber
+```text
+/docs/design-references/homepage-performance.webp
+/docs/design-references/service-page-performance.webp
+/docs/design-references/location-page-performance.webp
+/docs/design-references/location-service-page-performance.webp
+/docs/design-references/audience-page-performance.webp
+/docs/design-references/audience-service-page.webp
+```
+
+If the source files currently contain `+` characters in their names, rename them to the hyphenated filenames above for consistency.
+
+---
+
+# 4. Page Family → Visual Reference Mapping
+
+| Page Family             | Primary Reference                        |
+| ----------------------- | ---------------------------------------- |
+| Homepage                | `homepage-performance.webp`              |
+| Core Service Page       | `service-page-performance.webp`          |
+| Market / Location Page  | `location-page-performance.webp`         |
+| Service + Location Page | `location-service-page-performance.webp` |
+| Audience Page           | `audience-page-performance.webp`         |
+| Audience + Service Page | `audience-service-page.webp`             |
+
+These six references form the foundational page-template system.
+
+Other page families should derive their design from the closest applicable template rather than creating an unrelated visual system.
+
+---
+
+# 5. Reference Image Usage
+
+The reference images should be treated as **visual architecture**, not content sources.
+
+Use them for:
+
+* section hierarchy
+* content density
+* hero proportions
+* dark/light section rhythm
+* image-to-copy ratios
+* CTA positioning
+* card composition
+* trust strips
+* form placement
+* testimonials
+* process sections
+* project/evidence sections
+* location cards
+* footer layout
+* overall visual polish
+
+Do not copy example-company:
+
+* branding
+* logo
+* colors without verification
+* phone numbers
+* addresses
+* testimonials
+* licenses
+* service claims
+* emergency claims
+* same-day claims
+* free estimate claims
+* pricing
+* warranties
+* guarantees
+* employees
+* statistics
+
+All public-facing business information must come from verified Sewer Pros project data.
+
+---
+
+# 6. Design Philosophy
+
+The Sewer Pros site should communicate:
+
+```text
+Technical Sewer Expertise
++
+Independent Diagnostics
++
+Professional Service
++
+Modern Local-Service Design
++
+Clear Conversion Architecture
+```
+
+The site should feel:
+
+* premium
+* specialized
+* technically competent
+* modern
+* established
+* trustworthy
+* clear
+* useful
+* conversion-oriented
+* visually intentional
+
+It should not feel like:
+
+* a generic plumber template
 * an emergency plumbing franchise
-* a construction contractor
-* a repair-heavy sewer company
-* a bargain drain-cleaning company
+* a bargain drain-cleaning site
+* an excavation contractor
+* a SaaS landing page
+* a generic AI-generated website
 
-The visual system should reinforce the brand position:
+---
+
+# 7. Visual Positioning
+
+The site should visually reinforce the core business positioning:
 
 > **Understand what is happening inside the sewer line before making a major decision.**
 
----
-
-# 3. Desired Brand Perception
-
-A visitor should perceive The Sewer Pros as:
-
-* specialized
-* experienced
-* technically capable
-* methodical
-* honest
-* transparent
-* practical
-* modern
-* trustworthy
-* easy to work with
-
-The site should not feel:
-
-* gimmicky
-* overly aggressive
-* cheap
-* cartoonish
-* cluttered
-* repair-sales-driven
-* fear-based
-* visually dated
-
----
-
-# 4. Core Visual Concept
-
-The overall aesthetic should combine:
-
-```text
-Industrial Precision
-+
-Clean Modern Editorial Design
-+
-Local Service Trust
-```
-
-The preferred design direction is:
-
-* dark or deep neutral brand foundation
-* bright white content surfaces
-* restrained accent colors
-* strong typography
-* clear hierarchy
-* technical imagery
-* generous spacing
-* subtle line/grid motifs
-* limited decorative effects
-* clear conversion paths
-
-The interface should feel engineered rather than decorated.
-
-That standard is governed by four pillars:
-
-```text
-Documentary — real equipment, real footage, real conditions; never staged or synthetic
-Editorial — strong typography, asymmetric composition, intentional whitespace
-Technical — diagrams, inspection data, process, evidence
-Conversional — clear next steps, contextual CTAs, low friction, no pressure
-```
-
-The site should feel photographed, documented, edited, and engineered — not generated. Appendix A (Composition Pattern Vocabulary) and Appendix B (Human-Designed / Anti-AI Visual Standard) operationalize this standard at the section-build and design-QA level.
-
----
-
-# 5. Design Principles
-
-The design system should follow these principles.
-
-## 5.1 Clarity First
-
-Users should immediately understand:
-
-* what service is being discussed
-* where it is available
-* why it matters
-* what action to take next
-
----
-
-## 5.2 Technical Without Feeling Cold
-
-The company uses inspection, cameras, locating, and cleaning equipment.
-
-The site can feel technical, but it should remain approachable to homeowners and buyers.
-
----
-
-## 5.3 Trust Through Restraint
-
-Avoid trying to establish trust through excessive badges, star graphics, flashing CTAs, or claims.
-
-Use:
-
-* real proof
-* clean structure
-* real imagery
-* precise language
-* readable content
-* clear process explanations
-
----
-
-## 5.4 Specialization Over Breadth
-
-Design should reinforce that The Sewer Pros is a sewer specialist.
-
-Do not visually resemble a generic multi-trade home-services company.
-
----
-
-## 5.5 Conversion Without Pressure
-
-Calls to action should be easy to find without overwhelming the page.
-
----
-
-## 5.6 Composition Over Componentry
-
-Cards are an organizational tool, not the default layout. A page built entirely from card grids is the single strongest visual signal of a templated or AI-generated site, regardless of how restrained the individual card styling is.
-
-* Do not force an item count into a grid it doesn't divide evenly into (five services in a three-column grid, an orphaned row) — use a scannable index, an uneven mosaic that gives the flagship item more space, or a different pattern entirely.
-* Vary composition pattern and density between adjacent sections. See Appendix A for the named pattern vocabulary.
-* Centered composition is the exception, not the default — reserve it for short, deliberate statements (a hero headline, a pull quote). Left-align long-form content, lists, and paragraph text.
-* Favor asymmetry over perfect balance where content genuinely isn't equal weight: uneven column splits, offset imagery, varying content widths.
-
----
-
-# 6. Brand Foundation Relationship
-
-The visual system must remain consistent with:
-
-`01-business-brand-foundation.md`
-
-If the approved brand foundation later defines:
-
-* official colors
-* logo usage
-* typography
-* iconography
-* photography style
-
-those approved values supersede provisional design-system recommendations in this document.
-
-Material changes should be recorded in:
-
-`22-decisions-change-log.md`
-
----
-
-# 7. Brand Asset Rule
-
-Do not redesign, distort, recolor, or reinterpret the approved The Sewer Pros logo without explicit approval.
-
-Approved logo variants should eventually include:
-
-* full-color primary logo
-* dark-background variant
-* light-background variant
-* icon/mark if available
-* favicon/app icon
-
-Do not create new brand marks solely for web convenience without approval.
-
----
-
-# 8. Color Strategy
-
-Until final brand colors are confirmed from approved assets, the design system should use semantic color roles rather than treating provisional HEX values as permanent brand truth.
-
-Recommended roles:
-
-```text
-Brand Primary
-Brand Secondary
-Accent
-Background Dark
-Background Light
-Surface
-Text Primary
-Text Secondary
-Border
-Success
-Warning
-Error
-```
-
-Exact values should be finalized during brand implementation.
-
----
-
-# 9. Recommended Visual Palette Direction
-
-A strong direction for The Sewer Pros would use:
-
-### Primary Dark
-
-Deep navy, charcoal, or near-black.
-
-Purpose:
-
-* authority
-* technical credibility
-* hero sections
-* navigation
-* footer
-
----
-
-### Primary Light
-
-White or near-white.
-
-Purpose:
-
-* content readability
-* service sections
-* cards
-* educational content
-
----
-
-### Technical Accent
-
-A high-visibility blue, cyan, aqua, green, or approved brand accent.
-
-Purpose:
-
-* primary CTA
-* links
-* active states
-* visual highlights
-
----
-
-### Secondary Industrial Accent
-
-Optional restrained use of:
-
-* safety orange
-* amber
-* utility yellow
-
-only if consistent with approved branding.
-
-This should not dominate the interface.
-
----
-
-# 10. Color Usage Principle
-
-Prefer:
-
-```text
-70–80% Neutral
-15–25% Brand Color
-5–10% Accent
-```
-
-as a conceptual balance.
-
-The interface should not become saturated with multiple competing brand colors.
-
----
-
-# 11. Background System
-
-Use a limited set of section backgrounds.
-
-Recommended:
-
-### Light Surface
-
-For:
-
-* service explanations
-* resources
-* FAQs
-* forms
-* comparisons
-
-### Soft Neutral Surface
-
-For:
-
-* alternating sections
-* proof sections
-* related content
-* local context
-
-### Dark Brand Surface
-
-For:
-
-* hero
-* major CTA
-* footer
-* occasional differentiation sections
-
-Avoid alternating background colors on every section simply for decoration.
-
----
-
-# 12. Contrast Requirements
-
-All text and interactive controls must maintain accessible contrast.
-
-Particular attention should be given to:
-
-* text over hero images
-* muted text
-* outlined buttons
-* links
-* placeholder text
-* disabled controls
-* accent backgrounds
-
-Do not sacrifice readability to preserve a brand color.
-
----
-
-# 13. Typography Philosophy
-
-Typography should feel:
-
-* modern
-* authoritative
-* easy to scan
-* technical
-* professional
-
-Avoid:
-
-* novelty fonts
-* plumbing-themed display fonts
-* overly condensed body text
-* decorative scripts
-* excessive all caps
-
----
-
-# 14. Font Strategy
-
-Use a maximum of two primary font families unless an approved brand system requires otherwise.
-
-Recommended structure:
-
-```text
-Display / Heading Font
-+
-Body / Interface Font
-```
-
-A single well-chosen variable font family may also be used throughout.
-
-Fonts should be:
-
-* web performant
-* legible
-* available through approved licensing
-* suitable for Next.js optimization
-
----
-
-# 15. Heading Typography
-
-Headings should use:
-
-* strong weight
-* compact line height
-* clear hierarchy
-* controlled width
-
-Large page headings should feel confident without becoming oversized marketing typography.
-
-Recommended hierarchy:
-
-```text
-H1 — Primary Page Intent
-H2 — Major Page Sections
-H3 — Subtopics / Cards
-H4 — Supporting Modules
-```
-
-Do not use heading size solely for visual styling.
-
-Semantic hierarchy must remain meaningful.
-
----
-
-# 16. Body Typography
-
-Body copy should prioritize readability.
-
-Recommended characteristics:
-
-* comfortable line height
-* medium text width
-* clear paragraph spacing
-* high contrast
-* minimum mobile legibility
-
-Avoid extremely wide text columns.
-
-Long-form content should typically remain within a readable measure.
-
----
-
-# 17. Recommended Content Width
-
-For body content:
-
-```text
-~65–80 characters per line
-```
-
-is a useful target.
-
-Full-width sections may still be used for:
-
-* grids
-* media
-* CTAs
-* market modules
-* service cards
-
----
-
-# 18. Type Scale
-
-Use a responsive modular type scale rather than arbitrary font sizes.
-
-Conceptual hierarchy:
-
-```text
-Display
-H1
-H2
-H3
-H4
-Body Large
-Body
-Body Small
-Caption
-Label
-```
-
-Typography should scale down proportionally on mobile.
-
----
-
-# 19. Spacing System
-
-Use a consistent spacing scale.
-
-Recommended conceptual increments:
-
-```text
-4
-8
-12
-16
-24
-32
-40
-48
-64
-80
-96
-128
-```
-
-The exact Tailwind implementation may use the framework's default or approved extended scale.
-
-Avoid one-off spacing values unless necessary.
-
----
-
-# 20. Section Spacing
-
-Major sections should feel clearly separated.
-
-Desktop pages should generally use generous vertical spacing.
-
-Mobile spacing should remain comfortable but more compact.
-
-The site should avoid both:
-
-* cramped page construction
-* excessive empty space that makes content feel disconnected
-
----
-
-# 21. Grid System
-
-Use a responsive grid capable of supporting:
-
-* 1-column mobile layouts
-* 2-column editorial layouts
-* 3-column card layouts
-* 4-column compact feature layouts
-
-Typical page container:
-
-```text
-max-width: approximately 1200–1400px
-```
-
-depending on final design.
-
-Long-form content should use a narrower inner container.
-
----
-
-# 22. Container Strategy
-
-Recommended container types:
-
-### Standard Container
-
-For:
-
-* navigation
-* services
-* cards
-* market grids
-
-### Narrow Reading Container
-
-For:
-
-* articles
-* FAQs
-* long explanations
-
-### Wide Container
-
-For:
-
-* image-led sections
-* comparison tables
-* larger content grids
-
----
-
-# 23. Border Radius
-
-Use restrained rounding.
-
-Recommended direction:
-
-* small-to-medium radius
-* consistent across cards and forms
-* slightly larger radius for hero media where appropriate
-
-Avoid highly rounded pill-style cards throughout the site unless part of the approved visual identity.
-
-Pills should primarily be reserved for:
-
-* tags
-* categories
-* status labels
-* compact controls
-
----
-
-# 24. Borders
-
-Borders should be subtle.
-
-Use them to define:
-
-* cards
-* form fields
-* tables
-* accordion items
-* comparison sections
-
-Avoid heavy outlines around every component.
-
----
-
-# 25. Shadows
-
-Use shadows sparingly.
-
-Preferred:
-
-* soft elevation
-* subtle card separation
-* modal or sticky-element hierarchy
-
-Avoid:
-
-* heavy drop shadows
-* glowing CTA buttons
-* dramatic floating cards
-
-The brand should feel grounded and technical.
-
----
-
-# 26. Iconography
-
-Icons should be:
-
-* simple
-* consistent
-* line-based or restrained filled style
-* recognizable
-* used for comprehension
-
-Potential concepts include:
-
-* inspection camera
-* pipe
-* locator
-* water pressure
-* drain
-* property
-* commercial building
-* home buyer
-* map pin
-* check mark
-
-Avoid cartoon plumbing icons.
-
----
-
-# 27. Icon Usage Guardrail
-
-Do not use an icon where:
-
-* the meaning is unclear
-* text is more understandable
-* the icon exists only as decoration
-
-Icons should support labels, not replace essential labels.
-
----
-
-# 28. Photography Strategy
-
-Photography should emphasize:
-
-* actual sewer inspection
-* camera equipment
-* sewer/drain equipment
-* hydro jetting equipment
-* locating equipment
-* sewer cleanouts
-* commercial drain environments
-* documented pipe conditions
-* clean technical work environments
-
-Prefer real company photography whenever quality permits.
-
----
-
-# 29. People in Imagery
-
-People may be used selectively where they improve trust.
-
-Useful contexts:
-
-* technician operating camera equipment
-* technician reviewing inspection footage
-* property owner reviewing findings
-* commercial technician working safely
-
-Avoid overusing staged smiling-contractor imagery.
-
-The work and expertise should remain the focus.
-
----
-
-# 30. No Repair-Heavy Imagery
-
-Avoid making the brand look like a repair/excavation contractor through excessive images of:
-
-* excavators
-* trenching
-* destroyed yards
-* broken concrete
-* replacement pipe installations
-* major excavation
-
-unless used specifically in educational content explaining repair decisions.
-
----
-
-# 31. Sewer Camera Imagery
-
-Camera and inspection visuals are highly valuable because they reinforce the differentiator.
-
-Potential imagery includes:
-
-* inspection monitor
-* camera reel
-* cleanout access
-* inside-pipe footage
-* locating equipment
-* technician reviewing footage
-
-This should become a major recurring visual theme.
-
-## Condition Library Module
-
-The strongest use of this imagery is structural, not decorative: a recurring module that pairs one real (or representative) inspection frame with a plain-language explanation of one condition — root intrusion, heavy buildup, offset joint, standing water, and similar. Each entry demonstrates expertise directly rather than claiming it. This module should become ownable to The Sewer Pros; label example footage clearly (e.g. "Example inspection footage — residential sewer lateral") and never imply a specific frame belongs to a specific customer's job unless it does.
-
----
-
-# 32. Before-and-After Imagery
-
-Before/after imagery may be useful for:
-
-* buildup removal
+The visual system should emphasize:
+
+* inspection
+* diagnostics
+* camera technology
+* evidence
+* cleaning
 * hydro jetting
-* drain cleaning
-* visible obstruction removal
+* line locating
+* professional equipment
+* pipe conditions
+* property context
 
-Labels should clearly explain what is shown.
-
-Do not imply structural repair when only cleaning occurred.
-
----
-
-# 33. Technical Diagrams
-
-Simple diagrams can support:
-
-* how a sewer camera inspection works
-* property-to-main sewer relationship
-* locating process
-* hydro jetting process
-* inspection → cleaning → reinspection workflow
-* homebuyer inspection process
-
-Diagrams should prioritize clarity over decorative detail.
+Avoid making excavation, replacement, trenches, or heavy repair work the dominant visual language.
 
 ---
 
-# 34. Image Style
+# 8. Design System Flexibility
 
-Preferred photography:
+Claude Code may independently:
 
-* realistic
-* sharp
-* clean
-* technically detailed
-* professionally lit
-* high contrast without being dramatic
+* adjust section order
+* change section spacing
+* change card counts
+* move imagery
+* change desktop grid composition
+* change mobile stacking order
+* create component variants
+* combine related sections
+* remove unnecessary sections
+* add content-specific sections
+* use dark/light variants
+* adjust CTA placement
+* modify image aspect ratios
+* choose the closest appropriate page-family template
 
-Avoid:
+These actions do not require separate approval.
 
-* unrealistic AI imagery
-* obviously staged stock plumbing scenarios
-* catastrophic flooding imagery used for fear
-* exaggerated damage
+Human approval is generally only required for major design decisions such as:
+
+* complete visual rebrand
+* major logo changes
+* replacement of the page-template system
+* fundamentally different global navigation
+* abandoning the approved design direction
 
 ---
 
-# 35. Image Aspect Ratios
+# 9. Do Not Force Content Into Templates
 
-Standardize common image ratios.
+The content should determine the final page structure.
 
-Recommended:
+Do not create filler merely because a reference page contains a section.
+
+For example:
+
+If a page has no legitimate project examples:
+
+> Do not invent a "Recent Projects" section.
+
+If a page has stronger comparison content than a standard problem-card section:
+
+> Use the comparison content.
+
+If local proof is limited:
+
+> Use useful service-area information rather than fabricating local evidence.
+
+The templates provide defaults, not section quotas.
+
+---
+
+# 10. No Section Quotas
+
+Do not require:
+
+* exactly 10 sections
+* exactly 4 service cards
+* exactly 3 CTAs
+* exactly 4 process steps
+* identical section orders across every page
+
+Use the reference images to establish the design language while allowing content-driven variation.
+
+---
+
+# 11. Global Page Rhythm
+
+The reference pages demonstrate a strong alternating visual rhythm.
+
+A typical page may use:
 
 ```text
-Hero: 16:9 or wide editorial
-Service card: 4:3
-Article card: 16:9
-Square proof/profile: 1:1
-Process/media sections: 4:3 or 3:2
+Dark / Image-Led Hero
+↓
+Trust or Utility Strip
+↓
+Light Content Section
+↓
+Card Grid
+↓
+Dark Process / Differentiator Section
+↓
+Light Proof or Supporting Content
+↓
+Image / Testimonial Section
+↓
+FAQ / Form / Related Content
+↓
+Strong Final CTA
+↓
+Dark Footer
 ```
 
-Consistent cropping improves visual cohesion.
+This should guide page composition without becoming rigid.
 
----
-
-# 36. Image Optimization
-
-All images should be:
-
-* responsive
-* appropriately compressed
-* dimensioned correctly
-* lazy loaded where appropriate
-* served in modern formats when possible
-* accompanied by meaningful alt text
-
-Technical implementation belongs in the Next.js architecture.
-
----
-
-# 37. Hero Design
-
-Primary page heroes should quickly communicate:
+Avoid pages consisting entirely of:
 
 ```text
-Page Topic
-+
-Primary Value
-+
-Differentiator
-+
-CTA
+Heading
+Paragraph
+Three Cards
+Heading
+Paragraph
+Three Cards
 ```
 
-A hero should not depend on a decorative image to explain the page.
+Repeated section structure makes the site appear templated and AI-generated.
 
 ---
 
-# 38. Homepage Hero
+# 12. Global Header
 
-The homepage hero should feel brand-defining.
+Use one primary header system across the website.
 
-Potential structure:
-
-```text
-Eyebrow:
-Independent Sewer Inspection & Cleaning
-
-H1:
-Know What Is Happening Inside the Sewer Line.
-
-Supporting copy:
-Inspection, diagnostics, locating, and cleaning across St. Louis, San Diego, and Las Vegas without repair-driven upselling.
-
-[Schedule a Sewer Inspection]
-[Call The Sewer Pros]
-```
-
-Final copy remains subject to approved content.
-
----
-
-# 39. Service Page Hero
-
-Service heroes should prioritize the service.
-
-Example:
-
-```text
-Sewer Camera Inspection
-
-See visible conditions inside the sewer line before making major repair, cleaning, or property decisions.
-
-[Schedule a Sewer Inspection]
-```
-
-Avoid large generic marketing slogans that obscure search intent.
-
----
-
-# 40. Market Page Hero
-
-Market heroes should combine:
-
-```text
-Service Presence
-+
-Location
-+
-Differentiator
-```
-
-Example structure:
-
-```text
-Sewer Inspection & Cleaning in St. Louis, MO
-
-Independent sewer diagnostics, camera inspection, cleaning, and locating for homeowners, home buyers, real estate professionals, and commercial properties.
-```
-
----
-
-# 41. Article Hero
-
-Resource pages should use a more editorial style.
-
-Include:
-
-* article title
-* short summary
-* optional category
-* updated date where appropriate
-* author if verified
-
-Avoid oversized conversion banners before the user receives the answer.
-
----
-
-# 42. Navigation Design
-
-The header should be:
-
-* simple
-* easy to scan
-* responsive
-* conversion-aware
-
-Potential structure:
+Recommended desktop navigation:
 
 ```text
 Logo
@@ -1005,2365 +336,2251 @@ Who We Help
 Commercial
 Resources
 About
+Contact
 
-Phone
+Phone / Secondary Action
 Primary CTA
 ```
 
-Exact navigation is controlled by information architecture.
+Final labels should follow the approved information architecture.
+
+The header should:
+
+* remain visually compact
+* use strong contrast
+* support dropdown navigation where useful
+* maintain an obvious conversion path
+* work consistently across page families
+* remain usable on mobile
+* avoid enormous mega-menus
+
+A sticky header is acceptable when implemented cleanly.
 
 ---
 
-# 43. Header Behavior
-
-A sticky header may be used if it:
-
-* remains compact
-* does not obscure content
-* preserves mobile usability
-
-Do not create a large persistent header that consumes significant viewport height.
-
----
-
-# 44. Dropdowns
-
-Dropdowns or mega menus should organize content clearly.
-
-Recommended groupings:
-
-### Services
-
-```text
-Inspection & Diagnostics
-Cleaning
-Locating
-Commercial
-```
-
-### Locations
-
-```text
-St. Louis
-San Diego
-Las Vegas
-```
-
-### Who We Help
-
-```text
-Homeowners
-Home Buyers
-Real Estate Agents
-Property Managers
-Commercial Customers
-```
-
----
-
-# 45. Mobile Navigation
+# 13. Mobile Navigation
 
 Mobile navigation should prioritize:
 
+* clear logo
+* accessible menu trigger
+* core navigation
+* phone action where appropriate
+* primary CTA
+
+Do not overcrowd the mobile header.
+
+A compact sticky conversion bar may be used when appropriate:
+
+```text
+Call
+Request Service
+```
+
+It must not interfere with page content, browser controls, or form interaction.
+
+---
+
+# 14. Hero System
+
+Heroes are a major defining component of the design system.
+
+Default hero characteristics:
+
+* strong visual hierarchy
+* page-family-specific context
+* prominent H1
+* concise supporting copy
+* primary CTA
+* optional secondary action
+* relevant service or property imagery
+* immediate trust context
+
+Avoid oversized empty heroes that force the visitor to scroll before understanding the page.
+
+Visitors should quickly understand:
+
+* what the page is about
+* who it is for
+* where the service applies
+* why The Sewer Pros is relevant
+* what they can do next
+
+---
+
+# 15. Hero Variants
+
+Create reusable variants such as:
+
+```text
+Hero
+├── homepage
+├── service
+├── market
+├── service-location
+├── audience
+├── audience-service
+├── commercial
+└── editorial
+```
+
+Each variant may share common primitives while changing:
+
+* layout
+* image ratio
+* eyebrow
+* CTA configuration
+* supporting proof
+* text width
+
+---
+
+# 16. Homepage Template
+
+Primary reference:
+
+```text
+homepage-performance.webp
+```
+
+The homepage should establish:
+
+* company positioning
+* core services
+* major markets
+* independent inspection differentiator
+* key audiences
+* trust
+* conversion
+
+Recommended structural pattern:
+
+## Hero
+
+Include:
+
+* eyebrow or positioning label
+* strong H1
+* concise supporting statement
+* primary CTA
+* secondary CTA or phone action
+* relevant image
+* optional trust/differentiator row
+
+The hero should immediately communicate that The Sewer Pros is a sewer inspection, diagnostics, and cleaning specialist.
+
+---
+
+## Primary Navigation / Pathway Cards
+
+Use a compact set of major user pathways such as:
+
 * Services
-* Markets
-* Call
-* Request Service
+* Locations
+* Home Buyers / Who We Help
+* Commercial
 
-Large lists should use sensible collapsible hierarchy.
-
-Do not expose hundreds of local routes in the mobile menu.
+These should be functional navigation choices, not decorative feature cards.
 
 ---
 
-# 46. Button System
+## Core Services
 
-Use a limited button hierarchy.
+Use strong image-led service cards for the most important approved services.
 
-## Primary Button
+Potential examples may include:
 
-Used for:
+* Sewer Inspection
+* Sewer Camera Inspection
+* Sewer Cleaning
+* Hydro Jetting
 
-* Request Service
-* Schedule Inspection
-* Request Commercial Service
-
-Visual treatment:
-
-* strong brand/accent fill
-* high contrast
-* clear hover/focus state
+Exact services must follow the canonical service registry.
 
 ---
 
-## Secondary Button
+## Primary Differentiator Section
 
-Used for:
+Use a major visual section explaining the independent inspection positioning.
 
-* Call
-* View Services
-* Learn More
-
-Visual treatment:
-
-* outline or secondary surface
-
----
-
-## Tertiary Action
-
-Used for:
-
-* inline links
-* card links
-* supporting navigation
-
-Visual treatment:
-
-* text link with subtle directional indicator
-
----
-
-# 47. Button Labels
-
-Use descriptive labels.
-
-Good:
+Possible composition:
 
 ```text
-Schedule a Sewer Inspection
-Request Commercial Service
-View Sewer Camera Inspection
+Differentiator Copy
++
+Service / Equipment Image
++
+CTA or Service Request Form
 ```
 
-Weak:
+This should communicate:
+
+> Inspection and diagnostics without repair-driven upselling.
+
+---
+
+## Trust / Proof Strip
+
+Use concise verified proof points.
+
+Possible themes:
+
+* specialized sewer diagnostics
+* independent inspection
+* camera inspection
+* professional cleaning
+* multi-market service
+
+Do not use unverified claims.
+
+---
+
+## Evidence / Service Imagery
+
+Use image-led cards or visual examples for:
+
+* camera inspection
+* hydro jetting
+* sewer cleaning
+* line locating
+
+Where verified real work is available, prefer it over generic stock imagery.
+
+---
+
+## Testimonial / Brand CTA
+
+Use a visually strong dark section containing:
+
+* verified review
+* supporting image
+* brand message
+* CTA
+
+---
+
+## Markets
+
+Feature the three primary markets:
+
+* St. Louis
+* San Diego
+* Las Vegas
+
+Market cards represent service markets and should not imply physical offices unless verified.
+
+---
+
+## Final CTA
+
+Use a strong final conversion section before the footer.
+
+---
+
+# 17. Core Service Page Template
+
+Primary reference:
 
 ```text
-Submit
-Go
-Click Here
-Learn
+service-page-performance.webp
 ```
 
----
-
-# 48. Button Size
-
-Buttons should be easy to use on touch devices.
-
-Minimum touch targets should meet current accessibility expectations.
-
-Primary CTA buttons should have sufficient padding without becoming oversized visual blocks.
-
----
-
-# 49. Button Interaction
-
-Buttons should provide:
-
-* hover feedback
-* keyboard focus
-* active state
-* disabled state where relevant
-* loading state on form submission
-
-Do not rely exclusively on color changes.
-
----
-
-# 50. Card System
-
-Cards may support:
-
-* services
-* markets
-* audiences
-* commercial categories
-* resources
-* reviews
-* related content
-
-Card designs should be consistent but not identical across every content type.
-
-Cards are one pattern among many, not the default. Before placing a section in a card grid, check whether an editorial split, a scannable index, a mosaic, or a full-bleed image break (see Appendix A) fits the content's actual shape better. A page family that uses cards for every list-like section is the pattern to avoid.
-
----
-
-# 51. Service Cards
+Service pages should establish deep canonical authority for each approved service.
 
 Recommended structure:
 
-```text
-Image/Icon
-Service Name
-Short Description
-View Service →
-```
+## Service Hero
 
-Avoid excessively promotional card copy.
+Include:
 
-The service name should remain the dominant element.
-
----
-
-# 52. Market Cards
-
-Market cards may include:
-
-```text
-Market Name
-Short Context
-Primary Services
-View Market →
-```
-
-Images should represent the actual market where used.
-
-Avoid stereotypical tourism imagery unless appropriate.
+* service eyebrow
+* service-specific H1
+* clear value statement
+* primary service CTA
+* secondary action
+* service imagery
+* concise trust signals
 
 ---
 
-# 53. Audience Cards
+## Service Benefit Strip
 
-Audience cards should communicate needs.
+Use 3–4 concise service-specific benefits or differentiators.
 
-Example:
+Avoid generic filler such as:
+
+* quality service
+* great customer care
+* professional technicians
+
+Prefer meaningful service distinctions.
+
+---
+
+## Service Explanation + Image + Conversion
+
+Use the strong upper-page composition from the reference:
 
 ```text
-Home Buyers
-
-See the condition of the sewer line before closing on a property.
-
-Explore Buyer Inspections →
+Service Explanation
++
+Relevant Image
++
+Form or CTA Panel
 ```
 
----
-
-# 54. Commercial Cards
-
-Commercial cards should feel more operational.
-
-Potential emphasis:
-
-* recurring maintenance
-* inspection
-* hydro jetting
-* property management
-* commercial drain issues
+This is a major conversion section.
 
 ---
 
-# 55. Resource Cards
+## Problems / Use Cases
 
-Resource cards should prioritize the topic.
+Use image or icon cards to explain situations where the service may be appropriate.
 
-Recommended:
+Examples for inspection might include:
 
-```text
-Category
-Headline
-Short Summary
-Read Guide →
-```
+* recurring backups
+* home purchase
+* unknown sewer condition
+* suspected roots
+* previous repair recommendation
 
-Avoid putting publication dates above topic relevance unless chronology matters.
-
----
-
-# 56. Forms
-
-Forms should feel:
-
-* simple
-* trustworthy
-* spacious
-* straightforward
-
-Use:
-
-* visible labels
-* clear required indicators
-* helpful validation
-* appropriate input types
-
-Avoid:
-
-* tiny labels
-* placeholders as the only labels
-* visually cramped form layouts
+Do not diagnose a problem solely from symptoms.
 
 ---
 
-# 57. Form Field Styling
+## Process Section
 
-Form fields should have:
-
-* clear border
-* obvious focus state
-* readable input text
-* sufficient height
-* accessible error state
-
-Textarea fields should allow adequate space without dominating the form.
-
----
-
-# 58. Form Layout
-
-Desktop forms may use two columns selectively.
-
-Mobile forms should generally collapse to one column.
-
-Keep fields in logical order.
-
----
-
-# 59. Multi-Step Forms
-
-Do not introduce multi-step forms unless:
-
-* form complexity genuinely requires it
-* analytics supports the decision
-* user testing demonstrates benefit
-
-A short single-page form should remain the default.
-
----
-
-# 60. Form Confirmation State
-
-Success should be visually clear.
-
-Example:
-
-```text
-Request Received
-
-Thanks. The Sewer Pros team has received your information and will review your request.
-```
-
-Do not rely on a subtle color-only success message.
-
----
-
-# 61. Error States
-
-Errors should:
-
-* appear near the field
-* explain what is wrong
-* remain visible
-* use accessible color + icon/text
-
-Do not clear all entered information after an error.
-
----
-
-# 62. CTA Sections
-
-Use reusable CTA sections throughout the site.
-
-Potential formats:
-
-### Dark CTA Band
-
-For strong end-of-page conversion.
-
-### Split CTA
-
-Copy on one side, contact/form action on the other.
-
-### Inline CTA
-
-Embedded within long content.
-
-### Market CTA
-
-Location-aware.
-
-### Commercial CTA
-
-Business-focused.
-
-Avoid making every CTA visually identical.
-
----
-
-# 63. Trust Bar
-
-A trust bar may feature verified differentiators.
-
-Potential examples:
-
-```text
-Independent Inspections
-Sewer & Drain Specialists
-Three Primary Markets
-Repair-Free Diagnostic Focus
-```
-
-Only use factual statements.
-
----
-
-# 64. Differentiator Section
-
-A major branded section should explain the independent model.
-
-Potential visual:
-
-```text
-Traditional Repair Contractor
-Inspection → Repair Recommendation → Repair Sale
-
-The Sewer Pros
-Inspection → Evidence → Cleaning/Next-Step Decision
-```
-
-Keep the presentation factual and non-accusatory.
-
----
-
-# 65. Process Components
-
-Process sections should make services easier to understand.
+Use a recurring dark numbered process component.
 
 Example:
 
 ```text
 1. Access the Sewer Line
-2. Inspect the Line
-3. Identify Visible Conditions
+2. Inspect or Evaluate
+3. Review the Findings
 4. Discuss Appropriate Next Steps
 ```
 
-Icons or numbered steps may be used.
-
-Avoid overengineering with animation.
+Actual steps should match the service.
 
 ---
 
-# 66. Comparison Components
+## Why The Sewer Pros
 
-Comparison pages may use:
+Use a split image/content section emphasizing:
 
-* side-by-side cards
-* comparison tables
-* checklists
-* decision summaries
-
-Tables must remain responsive on mobile.
-
-Do not manipulate visual emphasis to unfairly misrepresent alternatives.
+* specialization
+* independent diagnostics
+* process
+* evidence
+* communication
+* appropriate documentation where verified
 
 ---
 
-# 67. FAQ Design
+## Evidence / Work Examples
 
-FAQs should prioritize scanning.
-
-Recommended:
-
-* accordion or stacked questions
-* visible heading hierarchy
-* clear open/closed states
-* keyboard support
-
-Important direct-answer content should not be hidden unnecessarily if visibility would improve UX.
+Use service-specific imagery or verified project examples where available.
 
 ---
 
-# 68. Accordion Guardrail
+## Related Services
 
-Do not place nearly every page section inside accordions solely to shorten the page.
+Show only genuinely related services.
 
-Core content should remain visible.
-
-Accordions are best for:
-
-* supplementary FAQs
-* secondary detail
-* compact mobile presentation
+Do not display every company service.
 
 ---
 
-# 69. Reviews
+## Testimonial
 
-Reviews should use a restrained design.
+Use a verified review relevant to the service when available.
 
-Potential structure:
+---
+
+## Service Areas
+
+Feature relevant markets and approved geographic relationships.
+
+---
+
+## FAQ
+
+Answer service-specific questions directly.
+
+---
+
+## Final CTA
+
+End with a service-specific conversion opportunity.
+
+---
+
+# 18. Market / Location Page Template
+
+Primary reference:
 
 ```text
-Review Text
-Customer Name
-Market / Context where verified
-Source where appropriate
+location-page-performance.webp
 ```
 
-Avoid oversized star graphics dominating the page.
+Use for:
 
----
+* St. Louis market hub
+* San Diego market hub
+* Las Vegas market hub
+* approved geographic hubs
 
-# 70. Star Ratings
+Recommended structure:
 
-If star ratings are visually shown:
+## Location Hero
 
-* values must be accurate
-* review source should be clear
-* current rating should be maintained
-
-Do not manually display five stars beside every review if the source does not support that rating.
-
----
-
-# 71. Case Studies
-
-Case-study modules may contain:
+Establish:
 
 ```text
-Problem
-Inspection
-Finding
-Action
-Outcome
+Service Category
++
+Market
++
+Value
++
+CTA
 ```
 
-Use real photos or inspection visuals where available.
-
-They should feel like evidence, not advertisements.
-
----
-
-# 72. Tables
-
-Tables may be used for:
-
-* service comparisons
-* inspection findings
-* market differences
-* service suitability
-* process differences
-
-Tables should:
-
-* use clear headers
-* remain readable on mobile
-* avoid excessive columns
-
----
-
-# 73. Lists
-
-Use bullets when they improve comprehension.
-
-Examples:
-
-* signs of sewer problems
-* what an inspection may reveal
-* situations where hydro jetting is considered
-* customer preparation steps
-
-Avoid pages composed primarily of repetitive bullet lists.
-
----
-
-# 74. Content Callouts
-
-Callout styles may support:
-
-### Important
-
-Key warning or limitation.
-
-### Good to Know
-
-Helpful context.
-
-### Independent Inspection Note
-
-Differentiator-related information.
-
-### Buyer Tip
-
-Real-estate content.
-
-### Commercial Note
-
-Operational content.
-
-Do not overuse callouts.
-
----
-
-# 75. Information Hierarchy
-
-Pages should visually establish:
+Example structure:
 
 ```text
-Primary Intent
-        ↓
-Core Explanation
-        ↓
-Differentiation
-        ↓
-Details
-        ↓
-Proof
-        ↓
-Related Content
-        ↓
-Conversion
+Serving [Market]
+
+Sewer Inspection & Cleaning in [Market]
+
+Supporting Copy
+
+Request Service
+Call
 ```
 
-Design should help the user understand progression through the page.
-
----
-
-# 76. Long-Form Content Design
-
-Long resource and service pages should support:
-
-* clear section headings
-* readable text widths
-* optional table of contents
-* anchor navigation where useful
-* callouts
-* diagrams
-* contextual CTAs
-
-Avoid visually treating long-form articles like short landing pages.
-
----
-
-# 77. Table of Contents
-
-A table of contents may be used on substantial resources.
-
-It should:
-
-* reflect actual headings
-* support anchor navigation
-* remain compact
-
-Do not add a table of contents to short pages.
-
----
-
-# 78. Sticky Article Navigation
-
-Sticky article navigation may be considered on desktop for very long resources.
-
-It should not compete visually with the primary CTA or obscure content.
-
----
-
-# 79. Location Page Visuals
-
-Location pages should use local imagery only when meaningful.
-
-Appropriate:
-
-* recognizable local environment
-* local residential context
-* relevant commercial areas
-* actual service photography from the market
-
-Avoid:
-
-* generic skyline-only pages
-* tourism-heavy design
-* fake local technician imagery
-
----
-
-# 80. Market Differentiation
-
-Each primary market can use subtle visual variation without becoming a separate brand.
-
-Possible differentiation:
-
-* market-specific photography
-* local proof
-* local service cards
-* market-specific statistics where verified
-* market-specific resources
-
-Do not give each market a separate color palette or logo unless intentionally approved.
-
----
-
-# 81. St. Louis Visual Context
-
-Potential useful imagery:
-
-* residential neighborhoods
-* older housing context
-* sewer camera inspection
-* lateral access
-* local street/property environments
-
-Avoid clichés such as relying exclusively on Gateway Arch photography.
-
----
-
-# 82. San Diego Visual Context
-
-Potential useful imagery:
-
-* residential properties
-* multi-family
-* property management
-* real-estate settings
-* technical sewer inspection
-
-Avoid making the site look like a travel website with beaches and sunsets.
-
----
-
-# 83. Las Vegas Visual Context
-
-Potential useful imagery:
-
-* residential communities
-* commercial properties
-* hospitality/property management context
-* multi-family
-* technical drain/sewer service
-
-Avoid defaulting to:
-
-* casinos
-* Strip neon
-* tourist imagery
-
-unless directly relevant to commercial content.
-
----
-
-# 84. Commercial Design
-
-Commercial content should visually feel:
-
-* operational
-* scalable
-* professional
-* less residential
-
-Potential imagery:
-
-* commercial properties
-* apartment/multifamily
-* hospitality operations
-* commercial equipment
-* larger drain/sewer systems
-
----
-
-# 85. Real Estate Design
-
-Homebuyer and agent content should feel:
-
-* informative
-* due-diligence oriented
-* calm
-* evidence-focused
-
-Potential visual themes:
-
-* property inspection
-* camera footage
-* property documents
-* inspection workflow
-
-Avoid generic house-buying stock imagery without sewer relevance.
-
----
-
-# 86. Maps
-
-Maps may be used where they help users understand:
-
-* markets
-* approved service areas
-* geographic relationships
-
-Maps should not imply physical office locations where none exist.
-
-Do not place map pins representing The Sewer Pros offices in San Diego or Las Vegas unless verified.
-
----
-
-# 87. Service Area Map
-
-A market map should communicate:
+Do not say:
 
 ```text
-Areas We Serve
+Our [City] Office
 ```
 
-not:
-
-```text
-Our Offices
-```
-
-unless actual branches exist.
-
-This distinction must remain visually explicit.
+unless verified.
 
 ---
 
-# 88. Badges
+## Local Trust Strip
 
-Use badges sparingly.
-
-Potential legitimate badges:
-
-* market label
-* service category
-* article topic
-* commercial
-* home buyer
-
-Avoid decorative trust badges with unverifiable claims.
+Use concise service or business benefits.
 
 ---
 
-# 89. Urgency Visuals
+## Services in the Market
 
-Avoid:
+Feature the most important services actually relevant to the market.
 
-* flashing red buttons
-* countdown timers
-* animated warning banners
-* "CALL NOW" repeatedly in red
-
-The visual system should not contradict the independent, low-pressure brand position.
+Do not automatically display every service.
 
 ---
 
-# 90. Animation
+## Market / Service-Area Section
 
-Animation should be restrained and functional.
+Use a major split composition containing:
 
-Acceptable:
+* market context
+* service coverage explanation
+* geographic visual or map
+* CTA/form where useful
 
-* subtle fade/slide on initial appearance
-* menu transitions
-* accordion animation
-* button feedback
-
-Avoid:
-
-* parallax-heavy pages
-* constant motion
-* bouncing CTAs
-* animated plumbing icons
-* motion that delays content visibility
-
-Respect reduced-motion preferences.
+Maps should represent service coverage unless a real branch is being shown.
 
 ---
 
-# 91. Interaction Principle
-
-The interface should feel responsive but predictable.
-
-Users should always understand:
-
-* what is clickable
-* what happens next
-* where they are
-* how to go back
-
-Avoid hidden interactions with no visual affordance.
-
----
-
-# 92. Link Styling
-
-Inline links should be visually identifiable.
+## Local Proof / Differentiator
 
 Use:
 
-* accent color
-* underline or appropriate hover behavior
-* accessible focus styles
+* market-relevant imagery
+* real service imagery
+* verified local evidence
+* local business context
 
-Do not rely solely on subtle color differences.
-
----
-
-# 93. Hover States
-
-Hover states should provide subtle confirmation.
-
-Examples:
-
-* underline
-* minor background shift
-* small icon movement
-* border change
-
-Avoid large scaling that causes layout movement.
+Do not manufacture local proof.
 
 ---
 
-# 94. Focus States
+## Nearby Communities
 
-Keyboard focus must be clearly visible on:
+Show relevant communities when useful.
 
-* links
-* buttons
-* inputs
-* accordions
-* menus
-* cards that are interactive
-
-Never remove default focus behavior without replacing it.
+Cards should represent legitimate service areas.
 
 ---
 
-# 95. Accessibility Principles
+## Reviews
 
-The design system should support WCAG-aligned implementation.
+Use verified reviews associated with the market when available.
 
-Key requirements include:
-
-* semantic headings
-* keyboard navigation
-* visible focus
-* sufficient contrast
-* meaningful alt text
-* form labels
-* proper error messaging
-* accessible controls
-* reduced motion support
-* adequate touch targets
-
-Accessibility should be built into components rather than patched later.
+Do not reassign reviews from one market to another.
 
 ---
 
-# 96. Color Independence
+## Final Market CTA
 
-Important information must not rely on color alone.
+Use market-aware CTA language.
 
-Examples:
+---
 
-Bad:
+# 19. Service + Location Page Template
+
+Primary reference:
 
 ```text
-Red = unavailable
-Green = available
+location-service-page-performance.webp
 ```
 
-without text/icons.
+These pages are high-intent local conversion pages.
+
+Recommended structure:
+
+## Local Service Hero
+
+Include:
+
+* service + market/location eyebrow
+* service/location H1
+* concise value statement
+* primary CTA
+* secondary action
+* relevant imagery
+
+---
+
+## Benefits
+
+Use concise service-specific benefits.
+
+---
+
+## Local Service Explanation + Form
+
+Recommended composition:
+
+```text
+Service Content
++
+Service Image
++
+Context-Aware Request Form
+```
+
+If the page already knows the service and location, the visitor should not have to repeatedly select them.
+
+---
+
+## Common Problems / Reasons for Service
+
+Use relevant cards.
+
+---
+
+## Service Process
+
+Use the recurring process component of the site.
+
+---
+
+## Why The Sewer Pros in This Market
+
+Combine:
+
+* service expertise
+* market context
+* independent positioning
+* verified local relevance
+
+Avoid meaningless statements such as:
+
+> We proudly serve [City] with exceptional service.
+
+Provide useful information instead.
+
+---
+
+## Evidence / Recent Work
+
+Use verified service imagery or examples where available.
+
+---
+
+## Local Review
+
+Use relevant verified market proof.
+
+---
+
+## Related Services
+
+Link to genuinely related services within the market where routes exist.
+
+---
+
+## Nearby Areas
+
+Show relevant geographic relationships.
+
+---
+
+## FAQ
+
+Use local/service-specific questions where meaningful.
+
+---
+
+## Final CTA
+
+Use a local service conversion message.
+
+---
+
+# 20. Audience Page Template
+
+Primary reference:
+
+```text
+audience-page-performance.webp
+```
+
+Examples:
+
+* Home Buyers
+* Real Estate Agents
+* Property Managers
+* Commercial Property Owners
+
+The page should lead with the needs of the audience rather than the services of the company.
+
+Recommended structure:
+
+## Audience Hero
+
+Include:
+
+* audience-specific eyebrow
+* outcome-focused H1
+* concise supporting copy
+* primary CTA
+* secondary CTA
+* audience-relevant imagery
+
+---
+
+## Audience Value Strip
+
+Use 3–4 concise benefits specific to the audience.
+
+Home buyer examples might center on:
+
+* due diligence
+* visibility into sewer condition
+* documentation
+* transaction timing
+
+Property manager examples may center on:
+
+* communication
+* recurring maintenance
+* multiple properties
+* documentation
+
+---
+
+## Audience Problem / Outcome Section
+
+Use large image + copy.
+
+Focus on what the audience wants to accomplish.
+
+Prefer:
+
+> Better Information Before You Buy
+
+over:
+
+> Why Choose The Sewer Pros
+
+when audience context makes the former stronger.
+
+---
+
+## Relevant Services
+
+Show only the services most relevant to that audience.
+
+---
+
+## Audience Process
+
+Use the recurring process section.
+
+Example for home buyers:
+
+```text
+1. Provide Property Details
+2. Request Inspection
+3. Inspect the Sewer Line
+4. Review the Findings
+```
+
+---
+
+## Partnership / Trust Section
+
+Use audience-specific:
+
+* benefits
+* workflow details
+* proof
+* documentation
+* service expectations
+
+---
+
+## Evidence / Examples
+
+Use relevant verified imagery or case examples.
+
+---
+
+## Testimonial
+
+Prefer a testimonial from the same audience type when verified.
+
+---
+
+## FAQ + Conversion
+
+A strong lower-page pattern is:
+
+```text
+Audience FAQ
++
+Request Form
++
+Contact / Phone Panel
+```
+
+---
+
+# 21. Audience + Service Page Template
+
+Primary reference:
+
+```text
+audience-service-page.webp
+```
+
+Examples:
+
+* Sewer Inspection for Home Buyers
+* Hydro Jetting for Property Managers
+* Sewer Camera Inspection for Real Estate Agents
+
+These pages should satisfy both:
+
+```text
+Audience Intent
++
+Service Intent
+```
+
+Recommended structure:
+
+## Audience + Service Hero
+
+Use a clear combined H1.
+
+Example:
+
+> Sewer Inspections for Home Buyers
+
+or:
+
+> Hydro Jetting for Property Managers
+
+---
+
+## Audience-Specific Benefit Strip
+
+Use benefits unique to the intersection of audience and service.
+
+---
+
+## Audience Problem + Service Solution
+
+Explain why the service matters specifically to the audience.
+
+---
+
+## Use Cases
+
+Use cards for audience-specific service applications.
+
+Do not duplicate the canonical service-page cards automatically.
+
+---
+
+## Process
+
+Show the audience-specific workflow.
+
+---
+
+## Proof / Partnership
+
+Use relevant:
+
+* service imagery
+* documentation
+* operational benefits
+* audience proof
+* verified reviews
+
+---
+
+## Related Content
+
+Link to:
+
+* parent audience page
+* canonical service page
+* relevant resources
+* relevant locations
+
+---
+
+## Geographic Coverage
+
+Show applicable markets where useful.
+
+---
+
+## FAQ
+
+Answer combined audience/service questions.
+
+---
+
+## Final CTA
+
+Use a CTA specifically aligned with the audience/service intent.
+
+---
+
+# 22. Commercial Page Design
+
+Commercial pages should derive primarily from:
+
+```text
+audience-service-page.webp
+```
+
+and:
+
+```text
+service-page-performance.webp
+```
+
+depending on page intent.
+
+Commercial design should feel:
+
+* operational
+* professional
+* scalable
+* property-oriented
+* less residential
+
+Relevant visual subjects include:
+
+* commercial buildings
+* multifamily properties
+* commercial mechanical/service areas
+* hydro jetting equipment
+* drain/sewer inspection equipment
+* property management environments
+
+Do not simply reuse residential imagery for every commercial page.
+
+---
+
+# 23. Audience + Location Pages
+
+Audience + location pages should combine the strongest patterns from:
+
+```text
+audience-page-performance.webp
+```
+
+and:
+
+```text
+location-page-performance.webp
+```
+
+Typical structure:
+
+```text
+Audience + Market Hero
+↓
+Audience Benefits
+↓
+Local Context
+↓
+Relevant Services
+↓
+Audience Process
+↓
+Market Proof
+↓
+FAQ / Form
+↓
+CTA
+```
+
+Do not create a completely separate visual system.
+
+---
+
+# 24. Commercial + Location Pages
+
+Use patterns from:
+
+```text
+audience-service-page.webp
+```
+
+and:
+
+```text
+location-service-page-performance.webp
+```
+
+Focus on:
+
+* commercial need
+* service
+* geographic relevance
+* operational benefits
+* conversion
+
+---
+
+# 25. Comparison Pages
+
+Comparison pages should use a more editorial variation of the service template.
+
+Recommended structure:
+
+```text
+Hero
+↓
+Direct Answer / Summary
+↓
+Comparison Table
+↓
+Detailed Explanation
+↓
+When Option A Makes Sense
+↓
+When Option B Makes Sense
+↓
+Decision Factors
+↓
+Relevant Sewer Inspection Context
+↓
+FAQ
+↓
+CTA
+```
+
+Avoid forcing every comparison to conclude that the preferred option of The Sewer Pros is always correct.
+
+---
+
+# 26. Alternative Pages
+
+Recommended structure:
+
+```text
+Hero
+↓
+Direct Answer
+↓
+Available Options
+↓
+When Each May Apply
+↓
+Why Inspection Matters
+↓
+Decision Framework
+↓
+FAQ
+↓
+CTA
+```
+
+These pages should support independent decision-making.
+
+---
+
+# 27. Resource / Article Pages
+
+Resource pages should use a cleaner editorial template derived from the same visual system.
+
+Recommended structure:
+
+```text
+Article Hero
+↓
+Direct Answer / Intro
+↓
+Optional Table of Contents
+↓
+Main Content
+↓
+Images / Diagrams
+↓
+Related Questions
+↓
+Relevant Service CTA
+↓
+Related Resources
+↓
+Footer
+```
+
+Avoid forcing service-page conversion density onto purely informational pages.
+
+---
+
+# 28. Color System
+
+Use the actual approved Sewer Pros brand colors when finalized.
+
+The reference designs demonstrate the desired **color roles**, not necessarily the final exact palette.
+
+Core roles should include:
+
+## Brand Dark
+
+Used for:
+
+* header
+* hero
+* process sections
+* testimonial sections
+* CTA sections
+* footer
+
+Likely a deep navy, charcoal, or approved brand dark.
+
+## Primary Surface
+
+White or near-white.
+
+Used for:
+
+* content
+* cards
+* forms
+* resources
+
+## Secondary Surface
+
+Subtle neutral background used to create page rhythm.
+
+## Primary Accent
+
+Used for:
+
+* primary buttons
+* interactive emphasis
+* selected highlights
+
+## Secondary Accent
+
+Used sparingly for:
+
+* small details
+* icons
+* labels
+* secondary emphasis
+
+Do not create unnecessary gradients.
+
+---
+
+# 29. Color Usage
+
+Accent colors should be intentional.
+
+Avoid turning:
+
+* every icon
+* every heading
+* every border
+* every section
+
+into an accent-color element.
+
+Most of the page should rely on:
+
+* dark brand foundation
+* neutral surfaces
+* strong typography
+* photography
+* restrained accents
+
+---
+
+# 30. Typography
+
+Typography should feel:
+
+* bold
+* modern
+* authoritative
+* readable
+* compact
+
+Use no more than two primary font families unless there is a strong brand reason.
+
+Hierarchy should clearly distinguish:
+
+```text
+Hero H1
+Section H2
+Card H3
+Body
+Supporting Copy
+Eyebrow / Label
+```
+
+Avoid excessively thin typography.
+
+Avoid enormous display headings that create excessive empty vertical space.
+
+---
+
+# 31. Section Eyebrows
+
+Small contextual labels above headings are encouraged.
+
+Examples:
+
+```text
+SEWER CAMERA INSPECTION
+
+FOR HOME BUYERS
+
+SERVING SAN DIEGO
+
+COMMERCIAL SEWER SERVICES
+```
+
+Eyebrows should provide context.
+
+Do not force keyword repetition into every section label.
+
+---
+
+# 32. Card System
+
+Create reusable card families such as:
+
+```text
+ServiceCard
+ProblemCard
+MarketCard
+LocationCard
+AudienceCard
+BenefitCard
+ProjectCard
+ReviewCard
+ResourceCard
+```
+
+Cards may contain combinations of:
+
+* image
+* icon
+* title
+* concise description
+* link
+
+Cards should remain easy to scan.
+
+---
+
+# 33. Card Visual Style
+
+Preferred style:
+
+* clean surface
+* subtle border
+* limited shadow
+* moderate corner radius
+* strong image treatment
+* clear title hierarchy
+* concise descriptions
+* simple link treatment
+
+Avoid:
+
+* extreme rounded corners
+* excessive drop shadows
+* floating glass effects
+* SaaS-style neon gradients
+* excessive pill-shaped containers
+
+---
+
+# 34. Trust Strips
+
+Trust strips are an approved recurring pattern.
+
+Use 3–4 concise items such as:
+
+```text
+Icon
+Short Heading
+One-Line Explanation
+```
+
+They should communicate meaningful proof or differentiation.
+
+Do not fill trust strips with generic marketing phrases.
+
+---
+
+# 35. Process Sections
+
+The dark numbered process section should become a recognizable recurring visual component.
+
+Typical structure:
+
+```text
+01
+Step Title
+Short Explanation
+
+02
+Step Title
+Short Explanation
+
+03
+Step Title
+Short Explanation
+
+04
+Step Title
+Short Explanation
+```
+
+The number of steps may vary.
+
+Do not force four steps when the actual process has three or five.
+
+---
+
+# 36. Forms
+
+Forms should visually follow the design references.
+
+Use:
+
+* contained card/panel
+* clear heading
+* short supporting copy
+* visible labels
+* logical grouping
+* limited fields
+* large primary submit button
+* privacy reassurance where appropriate
+* secondary phone action where useful
+
+Forms should feel integrated into the page rather than embedded as an unrelated widget.
+
+---
+
+# 37. Form Placement
+
+High-intent page families may place a form relatively high on the page:
+
+* Service
+* Service + Location
+* Audience + Service
+* Commercial
+* Contact
+
+Lower-intent resources generally should not place a large lead form immediately below the hero.
+
+Use content intent to determine conversion density.
+
+---
+
+# 38. Testimonials
+
+Use visually strong testimonial sections similar to the references.
+
+Possible elements:
+
+* verified review text
+* customer name
+* customer context when verified
+* star rating when verified
+* supporting imagery
+* CTA
+
+Do not:
+
+* invent testimonials
+* change their meaning
+* assign a review to another market
+* fabricate a customer role
+
+---
+
+# 39. Evidence / Project Sections
+
+Use project/evidence sections where verified material exists.
+
+Potential imagery:
+
+* sewer camera equipment
+* pipe interior
+* cleaned line
+* hydro jetting equipment
+* locating equipment
+* commercial sewer environment
+* residential cleanout
+
+Cards may use:
+
+```text
+Image
+Service Type
+Short Verified Context
+```
+
+Do not invent project outcomes.
+
+---
+
+# 40. Image Direction
+
+Imagery should be:
+
+* photorealistic
+* technically plausible
+* service-specific
+* professionally composed
+* visually consistent
+* relevant to the page
+
+Priority subjects include:
+
+* sewer camera reel
+* inspection monitor
+* flexible camera cable
+* cleanouts
+* pipe interior
+* hydro jetting equipment
+* drain-cleaning equipment
+* sewer locating equipment
+* professional service vehicle
+* residential service environments
+* commercial properties
+* technicians where appropriate
+
+---
+
+# 41. Image Hierarchy
+
+Avoid using unrelated generic plumbing imagery when more specific sewer-service imagery can be used.
 
 Preferred:
 
 ```text
-✓ Available
-— Not Offered
-```
-
-with supporting color.
-
----
-
-# 97. Responsive Philosophy
-
-Design mobile-first.
-
-The site must remain fully usable across:
-
-* small phones
-* large phones
-* tablets
-* laptops
-* desktop monitors
-
-Components should reflow rather than simply shrink.
-
----
-
-# 98. Mobile Priorities
-
-On mobile, prioritize:
-
-1. page topic
-2. primary CTA
-3. phone action
-4. service content
-5. trust
-6. navigation
-
-Avoid placing decorative media before essential information.
-
----
-
-# 99. Mobile Cards
-
-Card grids should collapse naturally.
-
-Typical behavior:
-
-```text
-Desktop: 3 cards
-Tablet: 2 cards
-Mobile: 1 card
-```
-
-Horizontal scrolling cards should be used only when it materially improves UX.
-
----
-
-# 100. Mobile Tables
-
-Large tables should:
-
-* stack
-* scroll horizontally with clear affordance
-* transform into cards
-
-depending on the content.
-
-Do not allow columns to become unreadably narrow.
-
----
-
-# 101. Sticky Mobile CTA
-
-A sticky mobile conversion bar may contain:
-
-```text
-Call
-Request Service
-```
-
-It should:
-
-* remain compact
-* respect safe areas
-* not cover form controls
-* be removable where necessary for accessibility
-
----
-
-# 102. Desktop Layout
-
-Desktop design should use available space without stretching content excessively.
-
-Large screens should retain:
-
-* readable line lengths
-* centered containers
-* balanced grids
-
-Do not expand paragraph text across the entire screen.
-
----
-
-# 103. Performance-Aware Design
-
-Visual design should avoid performance-heavy decisions such as:
-
-* unnecessary video backgrounds
-* oversized hero images
-* complex animation libraries
-* large icon packages
-* multiple font families
-* heavy carousel dependencies
-
-Performance is part of the design system.
-
----
-
-# 104. Hero Video
-
-Background video should not be a default hero treatment.
-
-If used later, it must:
-
-* add meaningful brand value
-* be optimized
-* include poster fallback
-* respect mobile performance
-* not impair text contrast
-
-Static photography is the preferred launch default.
-
----
-
-# 105. Carousels
-
-Avoid carousels for critical content.
-
-Important services, markets, or CTAs should not require users to wait or swipe to discover them.
-
-Carousels may be used selectively for:
-
-* galleries
-* inspection examples
-* case-study media
-
----
-
-# 106. Conversion Visual Hierarchy
-
-The visual priority should generally be:
-
-```text
-Primary CTA
-Secondary CTA
-Navigation Link
-Tertiary Link
-```
-
-Do not visually style every action as primary.
-
----
-
-# 107. Section Pattern Library
-
-Recommended reusable page-section patterns include:
-
-```text
-Hero
-Trust Bar
-Service Overview
-Problem / Solution
-Process
-Differentiator
-Benefits
-Use Cases
-Market Coverage
-Audience Cards
-Commercial Section
-Proof / Reviews
-FAQ
-Related Resources
-Related Services
-CTA
-```
-
-Pages should use only the sections relevant to their intent.
-
----
-
-# 108. Avoid Template Repetition
-
-Reusable components are encouraged.
-
-Visually identical pages are not.
-
-For example, service + location pages should not all appear as:
-
-```text
-Hero
-3 Cards
-Text
-FAQ
-CTA
-```
-
-with only token substitutions.
-
-Layouts should vary where content warrants it while remaining within the same design system.
-
-This applies within a single page, not only across pages. A long page where every section shares the same density and visual weight reads as flat and templated even if the page-family structure is correct. Vary density (sparse / standard / dense) between adjacent sections so the page has rhythm, and reserve the strongest visual treatment on the page for the final conversion moment rather than repeating the hero's weight throughout. See Appendix A for the density system and Appendix B for the full checklist.
-
----
-
-# 109. Page Family Visual Identity
-
-Each page family may have subtle structural differences.
-
-## Core Service
-
-Service-led and technical.
-
-## Market
-
-Location-led and locally contextual.
-
-## Audience
-
-Problem/use-case led.
-
-## Commercial
-
-Operational and business-focused.
-
-## Resource
-
-Editorial and educational.
-
-## Comparison
-
-Decision-support oriented.
-
-This helps users understand page purpose.
-
----
-
-# 110. Home Page Structure Direction
-
-Implemented structure (DEC-081, DEC-084):
-
-```text
-Header (sticky)
-Hero
-Trust Bar
-Intent Routing            (even card grid)
-Core Services             (uneven mosaic, flagship at double width)
-Why Independent Inspection Matters
-Markets
-How It Works
-Body
-Authority Band            (brand surface)
-Proof*
-Testimonial*
-Google Reviews            (carousel — St. Louis GBP, DEC-084)
-Lead Form*
-Resources
-FAQ
-Final CTA                 (brand surface)
-Footer
-```
-
-`*` renders nothing until its data gate opens — see §120 and the
-`components/sections/index.ts` header.
-
-⚠ The Google review carousel and `Testimonial*` are **different
-sections**, and the carousel does not open the testimonial gate.
-`TestimonialBand` is sitewide and still empty; the carousel carries
-St. Louis Business Profile reviews and is scoped to the sitewide
-homepage and St. Louis pages only. Only St. Louis has a GBP (01 §21),
-and 01 §20 forbids carrying one market's business facts onto another —
-so this section must not be added to the market template, which also
-serves San Diego and Las Vegas.
-
-Intent routing and the services catalog must not read as the same
-component. Routing is decision support; the catalog is inventory. The
-separation is structural: an even grid above an uneven mosaic, which is
-also what §5.6's "vary composition pattern between adjacent sections"
-requires. Intent-routing content is unauthored, so that section does
-not yet render.
-
-Final page structure is controlled by the Master Page Build List and
-page-specific content.
-
----
-
-# 111. Service Page Structure Direction
-
-Implemented structure (DEC-081):
-
-```text
-Header (sticky)
-Service Hero
-Trust Bar
-Service Overview          (body)
-Independent-Model Split   (opt-in per page)
-When You May Need This    (card grid)
-What's Included           (card grid, spec-sheet treatment)
-Process
-Authority Band            (brand surface)
-Proof*
-Testimonial*
-Lead Form*
-Markets
-Related Services
-FAQ
-CTA                       (brand surface)
-Footer
-```
-
-The two card grids must stay visually distinct — different column
-behaviour, card shape, and surface. Collapsing them into the same
-treatment is a named failure.
-
-⚠ Tail order is **related → FAQ → CTA**. This reversed under DEC-081;
-earlier builds ran FAQ → related → CTA.
-
-⚠ The authority band and the closing CTA panel are the only two brand
-surfaces in the system. At least one non-brand section must separate
-them (§11).
-
----
-
-# 112. Market and Location Page Structure Direction
-
-Implemented market structure (DEC-081):
-
-```text
-Header (sticky)
-Local Hero
-Trust Bar
-Market Service Overview
-Primary Local Services
-Authority Band            (brand surface)
-Proof*
-Testimonial*
-Lead Form*
-Service Area Coverage
-Approved Locations
-FAQ
-CTA + market phone        (brand surface)
-Footer
-```
-
-The **location page** uses the same sequence minus the problem and
-inclusions grids: a location's service detail belongs on the
-service+location page (05 §119), and duplicating it gives two pages the
-same job. See also §79.
-
-⚠ NO map, pin, address, directions, or hours card on either type.
-PENDING-002 resolved the business model as service-area with no
-address, and CLAUDE.md §29-30 forbid implying an office in San Diego or
-Las Vegas.
-
-⚠ The market page is the ONLY template that displays a phone number in
-its CTA. Each market publishes a different number (DEC-070, DEC-071,
-DEC-073), and 01 §20 forbids copying one market's facts onto another's
-page. A template that does not know its market shows no number.
-
----
-
-# 113. Audience Page Structure Direction
-
-Implemented structure (DEC-081):
-
-```text
-Header (sticky)
-Audience Hero
-Trust Bar
-Audience Problem
-Why Independent Inspection Matters
-Common Situations         (card grid)
-What's Included           (card grid)
-Relevant Services         (dense)
-Process
-Authority Band            (brand surface)
-Proof*
-Testimonial*
-Lead Form*
-Related
-FAQ
-CTA                       (brand surface)
-Footer
-```
-
-The services section is denser than the home page's: it should read as
-framed around this audience's use cases, not as the general catalog.
-Tone stays operational rather than consumer-friendly.
-
----
-
-# 114. Commercial Page Structure Direction
-
-Implemented structure (DEC-081):
-
-```text
-Header (sticky)
-Commercial Hero
-Trust Bar
-Operational Problems
-What's Included           (card grid)
-Process
-Authority Band            (brand surface, commercial CTA)
-Lead Form*
-Related Commercial Services
-FAQ
-Commercial CTA            (brand surface)
-Footer
-```
-
-Every CTA on this page routes to "Request Commercial Service",
-including the authority band's. Leaving the band on its default would
-place the residential primary CTA mid-page, which §139 forbids.
-
-⚠ NO proof or testimonial section on this family yet — a tracked,
-resolvable gap, not a permanent exclusion. See DEC-081.
-
----
-
-# 115. Resource Page Structure Direction
-
-```text
-Header
-Article Hero
-Optional TOC
-Direct Answer
-Detailed Sections
-Visuals/Diagrams
-Related Questions
-Related Resources
-Relevant Service CTA
-Footer
-```
-
-⚠ This family is deliberately EXCLUDED from the DEC-081 composition:
-no trust bar, no grids, no authority band, no proof, no form, and the
-closing CTA stays a band rather than a panel. 17 §19 requires
-informational content to progress without forcing the reader into a
-form.
-
-**The FAQ precedes the related strip here — the reverse of every other
-family.** That is this section's order, not drift. Do not "correct" it
-for consistency: under CLAUDE.md §97 this subject-specific section
-governs its own family.
-
-⚠ The closing CTA moved to last in this chain under DEC-082. It sat
-between Related Questions and Related Resources until 2026-08-23, which
-no implementation ever matched — `ResourcePageTemplate` has rendered
-FAQ → related → CTA since it was written. DEC-082 corrected the
-document to the rendered order rather than moving the CTA in code,
-because a service CTA is the last thing an article should offer and
-every other family already closes on one. The FAQ/related inversion
-above is the only part of this family's tail that differs from the rest
-of the site.
-
----
-
-## 115.1 Families Without a Dedicated Structure Section
-
-Three implemented families have no numbered structure section above.
-Their maps are recorded here (DEC-081).
-
-**Hub** — `/services/`, `/locations/`, `/for/`, `/commercial/`,
-`/resources/`:
-
-```text
-Hero → Trust Bar → Items Index → Authority Band† → FAQ → CTA
-```
-
-† Only where a non-brand section follows it. `/for/` has no FAQ, so the
-band is omitted there rather than stacking two brand surfaces (§11).
-
-**Comparison** — `/compare/*`:
-
-```text
-Hero → Body → When Each Applies → Related → FAQ → CTA (band)
-```
-
-⚠ Takes NO trust bar, authority band, proof, testimonial, or form.
-Each argues for The Sewer Pros, and this page exists to help a reader
-choose between two options. §66 and CLAUDE.md §65 forbid putting a
-thumb on that scale; a brand-surface authority band would do it
-loudest. The closing CTA stays a band for the same reason.
-
-**Core** — `/about/`, `/contact/`, `/faq/`:
-
-```text
-Hero → Body → Trust Bar → Related → FAQ → CTA
-```
-
-Takes the trust bar and the tail order, but not the authority band:
-`/about/` is already a page about how the business works, so a band
-restating four proof points would repeat the body rather than reinforce
-it (§155). `/contact/` suppresses the CTA entirely.
-
----
-
-# 116. Footer Design
-
-The footer should contain:
-
-* logo
-* short brand positioning
-* primary services
-* primary markets
-* company links
-* resources
-* contact information
-* legal links
-
-The footer should remain organized and not become an SEO link dump.
-
----
-
-# 117. Footer Visual Treatment
-
-A dark footer is appropriate if aligned with the brand.
-
-Use high contrast and clear grouping.
-
-Avoid tiny low-contrast link text.
-
----
-
-# 118. Legal Pages
-
-Privacy, terms, accessibility, and other legal pages should use the same typography and header/footer but a simplified content layout.
-
-Do not overdesign legal content.
-
----
-
-# 119. 404 Page
-
-The 404 page should:
-
-* clearly state the page was not found
-* offer homepage link
-* offer Services link
-* offer Markets link
-* offer Contact/Request Service
-
-Avoid joke-heavy error messaging that undermines trust.
-
----
-
-# 120. Empty and Error States
-
-Any dynamic component should have a clean fallback.
-
-Examples:
-
-```text
-No related resources available.
-```
-
-or omit the section entirely.
-
-Do not expose:
-
-* undefined
-* empty cards
-* placeholder skeletons after load failure
-
----
-
-# 121. Content Management Safety
-
-Components should gracefully handle:
-
-* missing optional images
-* missing reviews
-* missing secondary CTA
-* varying title lengths
-* long location names
-
-The system should not break because content is not perfectly uniform.
-
----
-
-# 122. Design Tokens
-
-The implementation should use centralized design tokens for values such as:
-
-```text
-colors
-spacing
-font sizes
-font weights
-border radius
-container widths
-shadows
-z-index
-transitions
-```
-
-Avoid hard-coded arbitrary values across components.
-
----
-
-# 123. Tailwind Strategy
-
-Tailwind CSS should implement semantic reusable patterns.
-
-Prefer:
-
-* shared component classes
-* CSS variables
-* Tailwind theme tokens
-* reusable UI components
-
-Avoid large, duplicated utility strings when a component pattern is repeated sitewide.
-
-Exact implementation is governed by:
-
-`02-nextjs-technical-architecture.md`
-
----
-
-# 124. CSS Variable Strategy
-
-A useful semantic variable system may include:
-
-```text
---background
---foreground
---surface
---surface-muted
---border
---brand
---brand-foreground
---accent
---accent-foreground
---muted
---muted-foreground
---success
---warning
---error
-```
-
-This allows branding adjustments without rebuilding component logic.
-
----
-
-# 125. Dark Mode
-
-A public dark-mode toggle is not required.
-
-The site may use dark sections as part of the visual system.
-
-Do not add application-style dark mode unless there is a demonstrated user need.
-
----
-
-# 126. Component Naming
-
-Reusable UI components should use clear semantic naming.
-
-Examples:
-
-```text
-ServiceCard
-MarketCard
-AudienceCard
-CommercialCard
-ResourceCard
-ReviewCard
-ProcessSteps
-TrustBar
-PrimaryCTA
-ServiceRequestForm
-FAQAccordion
-RelatedServices
-RelatedResources
-MarketServiceGrid
-```
-
-Avoid ambiguous component names such as:
-
-```text
-Box1
-Section2
-BlueCard
-```
-
----
-
-# 127. Component Composition
-
-Favor composition over large monolithic components.
-
-Example:
-
-```text
-ServiceCard
-```
-
-should accept structured service data rather than containing service-specific hard-coded content.
-
-This supports the multi-market architecture.
-
----
-
-# 128. Design System and Routing
-
-The same component system should work across:
-
-* canonical service pages
-* local service pages
-* audience pages
-* commercial pages
-* resources
-
-without creating separate UI systems for every page family.
-
----
-
-# 129. Design and Internal Linking
-
-Components such as:
-
-```text
-RelatedServices
-RelatedResources
-MarketServices
-WhoWeHelp
-```
-
-should use relationships defined by:
-
-`16-internal-linking-strategy.md`
-
-The design system should render approved relationships rather than inventing them.
-
----
-
-# 130. Design and Conversion
-
-CTA components should use rules defined in:
-
-`17-conversion-architecture.md`
-
-The design system controls presentation.
-
-The conversion architecture controls:
-
-* purpose
-* destination
-* label hierarchy
-* form type
-
----
-
-# 131. Design and Schema
-
-Visible components must remain consistent with:
-
-`15-schema-entity-strategy.md`
-
-Examples:
-
-* market cards should not imply branch locations
-* reviews should match represented sources
-* business addresses should only appear when approved
-* service names should match canonical taxonomy
-
----
-
-# 132. Design and Content
-
-Page components should support the requirements in:
-
-`14-content-specification.md`
-
-Design should accommodate:
-
-* direct answers
-* detailed service explanations
-* local content
-* FAQs
-* comparison tables
-* educational resources
-* long-form copy
-
-The design must not force content into artificially short sections.
-
----
-
-# 133. Design and SEO
-
-The visual system should support SEO rather than interfere with it.
-
-Avoid hiding significant content behind:
-
-* client-only rendering
-* sliders
-* tabs inaccessible to crawlers
-* hover-only interactions
-
-Important content should render semantically in the page.
-
----
-
-# 134. Design and Local SEO
-
-Market pages should visually communicate geographic relevance without manufacturing local business signals.
-
-Use:
-
-```text
-Serving [Market]
-```
-
-when appropriate.
-
-Do not visually state:
-
-```text
-Our San Diego Office
-```
-
-unless a verified office exists.
-
----
-
-# 135. No Fake Local Office Cards
-
-Do not create UI cards containing:
-
-```text
-San Diego Office
-Las Vegas Office
-```
-
-with generic map pins or stock addresses.
-
-Markets are service markets unless verified otherwise.
-
----
-
-# 136. Map Labeling
-
-Market maps should use labels such as:
-
-```text
-Primary Service Market
-Areas We Serve
-Service Coverage
+Sewer camera inspection page
+→ camera equipment / pipe imagery
 ```
 
 not:
 
 ```text
-Office Locations
+Sewer camera inspection page
+→ generic plumber holding wrench
 ```
 
-unless that is factually correct.
+---
+
+# 42. AI-Generated Imagery
+
+AI-generated imagery may be used when real images are unavailable, provided it:
+
+* looks photorealistic
+* accurately depicts the service
+* contains plausible equipment
+* does not create fake business claims
+* does not misrepresent invented people as actual staff
+* fits the market/property context
+* matches the established visual system
+
+Real verified company imagery should replace generated imagery where practical over time.
 
 ---
 
-# 137. Trust Through Transparency
+# 43. Market Imagery
 
-Visual design should make important limitations easy to understand.
+Local imagery should establish context without turning pages into tourism content.
 
-Examples:
+## St. Louis
 
-* clearly state repair/replacement positioning
-* explain inspection limitations
-* distinguish cleaning from structural repair
-* identify service areas accurately
+Prefer:
 
-Small-print disclaimers should not be used to correct misleading primary messaging.
+* residential streets
+* older housing
+* local property contexts
+* sewer inspection environments
+
+Do not rely primarily on the Gateway Arch.
+
+## San Diego
+
+Prefer:
+
+* residential properties
+* multifamily
+* real-estate environments
+* commercial properties
+
+Do not rely primarily on beaches.
+
+## Las Vegas
+
+Prefer:
+
+* Las Vegas Valley residential architecture
+* stucco homes
+* desert landscaping
+* multifamily
+* commercial properties
+* service environments
+
+Do not rely primarily on casinos or the Strip.
 
 ---
 
-# 138. Alert and Notice Components
+# 44. Image Composition
 
-Use alert components for genuinely important information.
-
-Potential use:
+Use varied image layouts such as:
 
 ```text
-Important:
-A camera inspection can identify visible conditions but cannot guarantee detection of every possible hidden defect.
+Text Left / Image Right
+Image Left / Text Right
+Large Image + Supporting Cards
+Full-Width Image-Led Section
+Project Card Grid
+Hero Background / Split Hero
 ```
 
-Do not turn ordinary marketing content into warning boxes.
+Avoid using the same image placement on every section.
 
 ---
 
-# 139. Commercial Inquiry Visual Priority
+# 45. Dark Sections
 
-Commercial pages should make the commercial contact path visually distinct.
+Dark sections should act as visual anchors.
 
-Possible treatment:
+Strong uses include:
+
+* hero
+* process
+* differentiator
+* testimonial
+* major CTA
+* footer
+
+Do not make the entire site dark.
+
+Alternating backgrounds help long pages remain readable.
+
+---
+
+# 46. Light Sections
+
+Light sections work well for:
+
+* detailed explanations
+* service cards
+* problem cards
+* FAQs
+* forms
+* local cards
+* resource content
+* comparisons
+* tables
+
+---
+
+# 47. CTA System
+
+Primary CTA buttons should be visually obvious.
+
+Possible CTA concepts include:
 
 ```text
-Need Sewer or Drain Service for a Commercial Property?
-
-[Request Commercial Service]
+Request an Inspection
+Request Service
+Request a Sewer Camera Inspection
+Schedule a Pre-Purchase Sewer Inspection
+Request Commercial Service
 ```
 
-This CTA should not route users through a residential-focused form.
+Use only language supported by actual operational functionality.
 
----
-
-# 140. Real Estate Visual Priority
-
-Homebuyer and agent pages may feature a dedicated inspection CTA:
-
-```text
-Buying a Property?
-
-Schedule a Pre-Purchase Sewer Inspection.
-```
-
-This helps the audience immediately recognize relevance.
-
----
-
-# 141. Independent Inspection Visual Motif
-
-A recurring visual concept may contrast:
-
-```text
-Inspect
-→ Understand
-→ Decide
-```
-
-This can appear through:
-
-* process icons
-* diagrams
-* section dividers
-* branded steps
-
-It should become a recognizable part of the design system.
-
----
-
-# 142. Recommended Design Motifs
-
-Subtle motifs may include:
-
-* pipe-path line graphics
-* inspection-camera line art
-* grid overlays
-* technical diagram marks
-* locator/radar visual cues
-* circular camera-lens elements
-
-Use sparingly.
-
-The site should not resemble engineering software.
-
----
-
-# 143. Decorative Backgrounds
-
-Background patterns should be subtle.
-
-Potential:
-
-* technical grid
-* fine-line pipe geometry
-* topographic/locator style
-* understated dots
-
-Avoid:
-
-* water splash graphics
-* cartoon pipe patterns
-* heavy texture
-* generic wrench patterns
-
----
-
-# 144. Visual Brand Differentiation
-
-Most plumbing/sewer sites use:
-
-* red
-* blue
-* bright yellow
-* trucks
-* technicians
-* coupons
-* emergency banners
-
-The Sewer Pros should stand apart by emphasizing:
-
-```text
-Precision
-Evidence
-Inspection Technology
-Independent Expertise
-```
-
-rather than visual urgency.
-
----
-
-# 145. Coupon and Promotion Modules
-
-Do not build coupons into the primary design system unless promotions are approved.
-
-If promotions are introduced later, they should remain optional components rather than defining the site's visual identity.
-
----
-
-# 146. Accessibility and Motion
-
-Any animations should honor:
-
-```css
-prefers-reduced-motion
-```
-
-and should not be required to understand content.
-
----
-
-# 147. Accessible Images
-
-Alt text should describe meaningful images accurately.
-
-Examples:
-
-Good:
-
-```text
-Sewer camera entering a residential cleanout for inspection
-```
-
-Poor:
-
-```text
-Best sewer inspection St Louis sewer camera company
-```
-
-Decorative imagery should use appropriate empty alt handling.
-
----
-
-# 148. Accessible Forms
-
-Form design must include:
-
-* explicit labels
-* clear required state
-* keyboard focus
-* error association
-* accessible button labels
-* readable confirmation messages
-
-Placeholder text is not a substitute for a label.
-
----
-
-# 149. Accessible Icons
-
-Icons used alone as controls require accessible names.
-
-Example:
-
-Phone icon alone should expose:
+Secondary actions may include:
 
 ```text
 Call The Sewer Pros
+View Services
+Learn More
+Explore Locations
 ```
 
-to assistive technology.
+Not every link should become a button.
 
 ---
 
-# 150. Responsive Typography
+# 48. CTA Frequency
 
-Avoid fixed oversized headings that wrap awkwardly on narrow screens.
+High-intent pages may contain conversion opportunities at:
 
-Use responsive sizing such as:
+* hero
+* upper content/form section
+* mid-page transition
+* final CTA
+
+Do not make every section a sales banner.
+
+The reference pages demonstrate frequent conversion opportunities without making the page feel relentlessly promotional.
+
+---
+
+# 49. Location / Service-Area Cards
+
+The horizontal geographic card pattern shown in the references is approved.
+
+Use for:
+
+* primary markets
+* nearby communities
+* selected service areas
+
+Cards may include:
+
+* market/location image
+* location name
+* simple link
+
+Only link to routes that actually exist and provide value.
+
+---
+
+# 50. Maps
+
+Maps may be used where they improve geographic understanding.
+
+Maps on market or location pages should generally represent:
+
+> **Areas We Serve**
+
+not:
+
+> **Our Offices**
+
+unless physical branch data is verified.
+
+Do not place fake office pins.
+
+---
+
+# 51. FAQ Design
+
+FAQ sections may use:
+
+* accordion
+* stacked questions
+* two-column arrangement
+
+Keep question and answer text accessible in semantic HTML.
+
+Do not make important FAQ content available only after client-side interactions that prevent discovery.
+
+---
+
+# 52. Footer
+
+Use a substantial dark footer inspired by the references.
+
+Potential structure:
 
 ```text
-clamp()
+Brand / Positioning
+
+Services
+
+Locations
+
+Who We Help
+
+Commercial
+
+Resources / Company
+
+Contact
+
+Legal
 ```
 
-or Tailwind responsive classes.
+The footer should help navigation without becoming an SEO link dump.
 
-Long city/service names must remain usable.
+Do not include hundreds of geographic links.
 
 ---
 
-# 151. Responsive Hero Layout
+# 53. Responsive Design
 
-Desktop:
+The reference images primarily establish desktop composition.
+
+Claude Code should intelligently adapt layouts for:
+
+* desktop
+* tablet
+* mobile
+
+Typical transformations:
 
 ```text
-Copy | Image
+Desktop 4 Columns
+→ Tablet 2 Columns
+→ Mobile 1 Column
 ```
-
-may be appropriate.
-
-Mobile:
 
 ```text
-Copy
-CTA
-Image
+Desktop Split Section
+→ Mobile Stacked Section
 ```
-
-is usually preferred.
-
-The action should not be pushed below an oversized hero image.
-
----
-
-# 152. Responsive Navigation Priority
-
-On mobile, primary CTA actions should remain accessible without opening several nested menus.
-
-Potential persistent controls:
 
 ```text
-Call
-Request Service
+Desktop Text + Image + Form
+→ Mobile Text → Image → Form
 ```
 
----
-
-# 153. Performance Budget Mindset
-
-The design system should avoid unnecessary visual complexity that harms:
-
-* Core Web Vitals
-* mobile experience
-* conversion
-* crawl rendering
-
-A fast technical site reinforces the brand.
+Exact ordering may change when mobile conversion or comprehension improves.
 
 ---
 
-# 154. Design Acceptance Criteria
+# 54. Mobile Hero Priority
 
-A page should be considered visually build-ready when it demonstrates:
+Mobile hero order should generally prioritize:
 
-* clear hierarchy
-* correct brand expression
-* readable typography
-* consistent spacing
-* responsive layout
-* accessible controls
-* clear CTA hierarchy
-* appropriate imagery
-* no repair misrepresentation
-* correct market representation
-* no fake location signals
-* consistent reusable components
-* good mobile usability
+1. page context / eyebrow
+2. H1
+3. supporting statement
+4. primary CTA
+5. secondary action
+6. imagery
+
+Do not allow a large image to push the primary conversion action far below the fold.
 
 ---
 
-# 155. Design Failure Conditions
+# 55. Mobile Spacing
 
-A page should be revised if it:
+Avoid:
 
-* looks like a generic plumbing template
-* overuses emergency red/urgency visuals
-* uses inconsistent components
-* hides important content
-* has weak contrast
-* uses tiny text
-* overwhelms users with links
-* uses unverified badges
-* shows fake office locations
-* visually implies sewer repair capabilities
-* uses decorative imagery unrelated to the service
-* sacrifices mobile usability for desktop aesthetics
-* contains excessive animation
-* uses a card grid as the default for every list-like section, including where item counts don't divide evenly
-* keeps the same density and visual weight across every section on a page (no rhythm, nothing reads as the strongest moment)
-* centers long-form or paragraph text
-* renders the same CTA (e.g. the primary "Schedule a Sewer Inspection" action) with different button styles depending on where it appears on the page
-* could be mistaken for a generic SaaS landing page or a template with the copy swapped in
+* huge empty vertical gaps
+* oversized section padding
+* excessively tall card layouts
+* unnecessarily large headlines
 
-See Appendix B for the full Human-Designed / Anti-AI Visual Standard this list is drawn from.
+The mobile site should feel dense enough to be useful while remaining comfortable to scan.
 
 ---
 
-# 156. Launch Design Priorities
+# 56. Reusable Component Architecture
 
-The launch design system should prioritize:
-
-1. global typography
-2. color system
-3. header/navigation
-4. footer
-5. buttons
-6. forms
-7. hero patterns
-8. service cards
-9. market cards
-10. audience cards
-11. commercial modules
-12. resource cards
-13. trust components
-14. FAQ component
-15. CTA sections
-16. responsive behavior
-17. accessibility
-18. image standards
-
-Complex visual experimentation should follow after the foundation is stable.
-
----
-
-# 157. Post-Launch Design Evolution
-
-Future improvements may include:
-
-* more original photography
-* inspection-video integration
-* interactive diagrams
-* case-study modules
-* richer commercial content
-* local visual proof
-* conversion-tested CTA variants
-* interactive service-area maps
-* improved resource navigation
-
-These should evolve within the same design system rather than creating isolated page designs.
-
----
-
-# 158. Core Design Tokens Summary
-
-The design system should ultimately maintain standardized values for:
+Build reusable semantic components such as:
 
 ```text
-Brand Colors
-Neutral Colors
-Semantic Colors
-Font Families
-Type Scale
-Font Weights
-Line Heights
-Spacing Scale
-Container Widths
-Grid Gaps
-Border Radius
-Borders
-Shadows
-Transitions
-Z-Index
-Breakpoints
+Header
+MobileNavigation
+Footer
+
+Hero
+TrustStrip
+ProcessSteps
+CTASection
+TestimonialBanner
+
+ServiceCard
+ProblemCard
+MarketCard
+LocationCard
+AudienceCard
+BenefitCard
+ProjectCard
+ResourceCard
+ReviewCard
+
+SplitContentSection
+ImageContentSection
+CardGrid
+MarketCoverage
+RelatedServices
+RelatedLocations
+RelatedResources
+
+ServiceRequestForm
+PrePurchaseRequestForm
+CommercialRequestForm
+
+FAQAccordion
+ComparisonTable
+Breadcrumbs
 ```
 
-These values should be centralized.
+Use component variants instead of creating a unique component for every page.
 
 ---
 
-# 159. Visual Strategy Summary
+# 57. Component Naming
 
-The Sewer Pros should visually communicate:
-
-```text
-Not:
-"Call us before disaster strikes."
-
-But:
-"See what is actually happening."
-```
-
-Not:
+Prefer semantic names:
 
 ```text
-General Plumbing Company
+ServiceCard
+MarketCoverage
+ProcessSteps
 ```
 
-But:
+over implementation-specific names:
 
 ```text
-Specialized Sewer Inspection & Cleaning Experts
+BlueBox
+SectionThree
+CardThing
 ```
 
-Not:
-
-```text
-Repair Sales Funnel
-```
-
-But:
-
-```text
-Inspection
-→ Evidence
-→ Informed Decision
-```
+Component names should explain their purpose.
 
 ---
 
-# 160. Final Design Principle
+# 58. Component Variants
 
-The visual design should support the same promise as the business positioning:
+Examples:
 
-> **Clear evidence. Clear information. Clear next steps.**
+```text
+Hero
+├── homepage
+├── service
+├── location
+├── service-location
+├── audience
+├── audience-service
+└── editorial
+```
 
-The governing design standard is:
+```text
+CTASection
+├── dark
+├── split
+├── image
+└── compact
+```
 
-> **The Sewer Pros website should feel like a specialized, technically capable, independent sewer diagnostics company—using clean modern design, strong information hierarchy, real service imagery, restrained visual language, accessible components, and clear conversion paths without resorting to generic plumbing aesthetics, fake local signals, excessive urgency, or repair-driven visual positioning.**
+```text
+CardGrid
+├── services
+├── problems
+├── markets
+├── audiences
+├── projects
+└── resources
+```
 
----
-
-# Appendix A. Composition Pattern Vocabulary
-
-This appendix gives Section 107's page-section names (Hero, Process, Proof, FAQ, CTA, etc.) an actual *shape*, so a section is assigned a deliberate pattern instead of defaulting to a card grid. Use it alongside Sections 50, 106–109. Not a checklist to fill — pick the pattern whose shape matches what the content actually is.
-
-## Hero patterns
-
-* **Editorial hero** — headline + subhead only, no image. Use when the copy is confident enough to carry the section alone.
-* **Split hero** — headline/subhead on one side, a real supporting image on the other. The default for Homepage and Service Hero per Sections 38–39.
-* **Image-led hero** — full-bleed image with a smaller text block. Use only when the visual itself is the strongest asset.
-
-## Trust / proof
-
-* **Metric strip / credential strip** — a thin horizontal band, low visual weight. Not a card grid.
-* **Proof wall** — many short quotes, compact.
-* **Testimonial feature** — one quote given real visual weight, used when that quote does different work than the others (e.g. a commercial credibility signal among residential reviews).
-
-## Editorial / explanatory
-
-* **Editorial split** — narrow text column beside an image. Good for a "why us" or differentiator section with one clear idea.
-* **Editorial stack** — narrow text column alone, no card or border, full-bleed or contrasting background behind it. Use for content that should read like writing, not marketing copy in a box — this is the pattern for the plain, un-carded sections Section 5.6 calls for, without the "dramatic floating cards" treatment Section 25 warns against.
-* **Image break** — full-width image between two content-dense sections, no text. A rhythm device, not decoration.
-
-## Grids and lists (see Section 50's card guardrail first)
-
-* **Service/feature index** — a scannable list (numbered, iconed, or plain) instead of a grid. Use when item count doesn't divide evenly or items vary in length — the default for Services when there are 4, 5, or 7 items rather than a clean 3 or 6.
-* **Service mosaic** — a deliberately uneven grid where the flagship item (Sewer Camera Inspection) gets more visual space than supporting services.
-* **Service/feature grid** — even grid, equal weight. Only when items genuinely are equal weight and the count divides cleanly.
-
-## Process / sequence
-
-* **Numbered process** — simple vertical numbered steps, as in Section 65. Can run with no cards (Section 5.6), no decorative icons (Section 27), and no gradient (Appendix B).
-* **Sticky process** — steps reveal against a fixed image/diagram while text scrolls past. Reserve for a process genuinely worth walking through slowly (e.g. the full Inspect → Understand → Decide arc on the homepage), not a generic 3-step list.
-
-## Comparison / data
-
-* **Comparison table** — literal table, better than cards once there are more than ~4 comparison dimensions.
-* **Feature matrix** — checkmarks/values across features × options.
-
-## Conversion (extends Section 62)
-
-* **Conversion band** — thin, high-contrast strip with a single CTA, used mid-page after a relevant argument has been made.
-* **Conversion panel** — the strongest visual treatment on the page, for the final conversion moment.
-* **Conversion split** — CTA beside supporting proof or a testimonial, used when social proof should reinforce the ask directly.
-
-## Density system
-
-Every section gets one of three densities, and the point is variation down the page:
-
-* **Sparse** — generous whitespace. Hero, major positioning statements, final CTA.
-* **Standard** — balanced whitespace. Explanatory content, services, process.
-* **Dense** — tighter spacing, more per viewport. Comparisons, specifications, FAQs — this is what keeps long service/location pages from feeling padded, and what makes the sparse sections feel intentional by contrast.
-
-## Asymmetric column system (extends Section 21)
-
-Prefer uneven splits (roughly 7/5 or 5/7) over a perfectly even 6/6 when one side of a section is genuinely primary — an even split reads as templated even when the content itself is left-aligned.
+This maintains design consistency while allowing page variation.
 
 ---
 
-# Appendix B. Human-Designed / Anti-AI Visual Standard
+# 59. Avoid Monolithic Pages
 
-A judgment-based review to run once per page against the *rendered* result — after Claude Code has built the page, not as an automated pre-build gate, since most of these are design judgment calls rather than binary checks. Pairs with Sections 154–155. Present findings as fixes to make, not a score.
+Do not build each page as a massive JSX file containing:
 
-## Check the rendered page for
+* content
+* layout
+* data
+* schema
+* metadata
+* forms
+* related-content logic
 
-* More than two consecutive card-grid sections
-* A grid that forces an item count it doesn't divide into evenly
-* The same two-column layout repeated more than twice in a row
-* Long-form or paragraph text that's centered
-* Flat density — no section reads as sparser or denser than its neighbors, nothing reads as the page's strongest moment
-* The same CTA rendered with different button styles depending on where it sits on the page
-* Icons used as decoration next to text that already communicates the idea on its own
-* Gradients, glows, or decorative shapes with no compositional purpose tied to the brand
-* Photography that reads as staged, synthetic, or generic stock rather than real equipment/footage (Sections 28–34)
-* A page that could be mistaken for a generic SaaS landing page or another local-service business with the copy swapped
-* Generic conversion language ("Get Started Today," "Trusted Professionals," "Hassle-Free Service") in place of the specific, outcome-stated labels in Section 47
-* A CTA appearing after every section rather than at moments of rising intent (Section 106)
+Prefer:
 
-## What "authentic" means for imagery specifically
+```text
+Structured Page Data
++
+Reusable Components
++
+Page Composition
+```
 
-The target is *unstaged*, not *unpolished*. Real, professionally maintained equipment photographed in genuine use is correct; equipment that reads as neglected or a site that reads as low-production-value contradicts Section 3's "should not feel cheap." Don't sanitize the subject matter into a product render, and don't overcorrect into looking unmaintained — both are a miss.
+This is essential for scalable page families.
 
-## If several checks fail
+---
 
-Revise the specific section against Appendix A's pattern vocabulary rather than a full-page redesign — this is the same targeted-fix approach as Section 155's failure conditions, applied at the rendered-page stage instead of the spec stage.
+# 60. Content and Presentation Separation
+
+Where practical, store canonical content/data separately from presentation.
+
+Examples include:
+
+* services
+* markets
+* locations
+* audience relationships
+* FAQs
+* related pages
+* process steps
+* metadata inputs
+
+This makes the page-family templates reusable.
+
+---
+
+# 61. Design and Page Generation
+
+The reference-template system is specifically intended to support scalable page generation.
+
+Conceptually:
+
+```text
+Page Type
++
+Structured Content
++
+Design Template
++
+Page Relationships
+=
+Rendered Page
+```
+
+Examples:
+
+```text
+service
+→ service-page-performance template
+```
+
+```text
+location
+→ location-page-performance template
+```
+
+```text
+service-location
+→ location-service-page-performance template
+```
+
+Claude Code should be able to generate consistent pages without manually redesigning every route.
+
+---
+
+# 62. Avoid AI-Generated Website Patterns
+
+Actively avoid:
+
+* excessive gradients
+* glassmorphism
+* floating translucent cards
+* every section centered
+* repetitive three-card blocks
+* giant hero whitespace
+* excessive rounded pills
+* random decorative shapes
+* unnecessary animations
+* generic icon bubbles
+* endless "Why Choose Us" sections
+* excessive whitespace
+* cookie-cutter section repetition
+
+The supplied references should serve as the antidote to generic AI-generated layouts.
+
+---
+
+# 63. Visual Variety
+
+Long pages should maintain visual interest through:
+
+* alternating image position
+* changing grid structures
+* process timelines
+* testimonial blocks
+* dark/light transitions
+* large proof imagery
+* cards
+* forms
+* maps
+* editorial sections
+* FAQs
+
+Variation should remain within one recognizable design system.
+
+---
+
+# 64. Accessibility
+
+All visual components must support:
+
+* semantic HTML
+* keyboard interaction
+* visible focus states
+* correct heading hierarchy
+* sufficient contrast
+* descriptive labels
+* meaningful alt text
+* appropriate touch targets
+* reduced motion preferences
+* accessible form states
+
+Accessibility improvements should not require separate design approval.
+
+---
+
+# 65. Performance
+
+The design should remain performance-aware.
+
+Avoid unnecessary:
+
+* video backgrounds
+* animation frameworks
+* large JavaScript dependencies
+* oversized imagery
+* unoptimized fonts
+* heavy carousels
+* duplicated third-party scripts
+
+Use optimized responsive images.
+
+Prioritize Core Web Vitals and mobile experience.
+
+---
+
+# 66. Animation
+
+Animation should be restrained.
+
+Acceptable uses may include:
+
+* subtle entrance transitions
+* dropdowns
+* accordion transitions
+* hover feedback
+* small microinteractions
+
+Avoid excessive:
+
+* parallax
+* scroll-jacking
+* animated backgrounds
+* continuous motion
+* decorative movement
+
+Support `prefers-reduced-motion`.
+
+---
+
+# 67. Design and SEO
+
+Important page content should remain available in semantic HTML.
+
+Do not hide core SEO content exclusively inside:
+
+* carousels
+* tabs
+* hover interactions
+* client-only interfaces
+
+Design should support discoverability rather than interfere with it.
+
+---
+
+# 68. Design and Internal Linking
+
+Cards and related-content components should render useful relationships provided by the structured data of the project.
+
+The design system determines **how links appear**.
+
+It should not determine **which SEO pages should exist or be indexed**.
+
+---
+
+# 69. Design and Conversion
+
+Design should support the conversion architecture in:
+
+`17-conversion-architecture.md`
+
+The supplied reference pages demonstrate useful:
+
+* CTA prominence
+* form placement
+* repeated conversion opportunities
+* trust placement
+
+They do not authorize unsupported claims.
+
+---
+
+# 70. Design and Business Accuracy
+
+Visual design must not imply business facts that are not verified.
+
+Do not use:
+
+* "Our Las Vegas Office" cards
+* office map pins
+* fake employee photos presented as actual staff
+* fake local project counts
+* fake years-serving-a-market badges
+* unsupported award seals
+* fake certification badges
+
+Visual credibility must come from real positioning and professional execution.
+
+---
+
+# 71. Design and Local SEO
+
+Local page design should communicate service-area relevance without implying physical location.
+
+Prefer:
+
+```text
+Serving Las Vegas
+```
+
+over:
+
+```text
+Las Vegas Office
+```
+
+when no verified office exists.
+
+Use:
+
+```text
+Areas We Serve
+```
+
+for maps and location grids when appropriate.
+
+---
+
+# 72. Design QA
+
+Before considering a page visually complete, verify:
+
+* correct page-family reference was used
+* hero hierarchy is strong
+* page immediately communicates its purpose
+* section rhythm is varied
+* imagery is service relevant
+* cards are concise
+* CTAs are clear
+* form placement makes sense
+* dark/light sections are balanced
+* typography is readable
+* mobile behavior is intentional
+* content is not cramped
+* content is not excessively sparse
+* page does not look like a generic AI template
+* no unsupported business claims appear visually
+* page remains accessible
+* page performs well
+
+---
+
+# 73. Page Build Workflow
+
+For normal page implementation:
+
+```text
+1. Determine page family.
+2. Select corresponding visual reference.
+3. Gather structured page content/data.
+4. Build with reusable components.
+5. Adapt template to actual content.
+6. Apply Sewer Pros branding.
+7. Add relevant imagery.
+8. Add conversion components.
+9. Implement responsive behavior.
+10. Perform visual QA.
+11. Perform content/SEO/technical QA.
+```
+
+Do not create an additional approval gate between each step.
+
+---
+
+# 74. Claude Code Default Behavior
+
+When building a page, Claude Code should not stop merely because the design reference does not specify every detail.
+
+For ordinary decisions such as:
+
+* section padding
+* card count
+* breakpoint
+* image cropping
+* column proportions
+* background choice
+* component variant
+
+Claude Code should use:
+
+```text
+Reference Image
++
+Design System
++
+Actual Content
++
+Professional Judgment
+```
+
+and continue.
+
+---
+
+# 75. Design Reference Selection Examples
+
+```text
+Homepage
+→ homepage-performance.webp
+```
+
+```text
+Sewer Camera Inspection
+→ service-page-performance.webp
+```
+
+```text
+St. Louis, Missouri
+→ location-page-performance.webp
+```
+
+```text
+Sewer Camera Inspection in San Diego
+→ location-service-page-performance.webp
+```
+
+```text
+Home Buyers
+→ audience-page-performance.webp
+```
+
+```text
+Sewer Inspections for Home Buyers
+→ audience-service-page.webp
+```
+
+```text
+Commercial Hydro Jetting
+→ audience-service-page.webp
+or
+service-page-performance.webp
+```
+
+Choose based on whether audience or canonical service intent dominates.
+
+---
+
+# 76. Design Reference Priority
+
+When visual implementation guidance conflicts, use the following order:
+
+```text
+1. Explicit current project direction
+2. 18-design-system.md
+3. Corresponding supplied page reference
+4. Existing shared components
+5. Professional responsive-design judgment
+```
+
+Do not allow an older generic layout to override the approved reference-template system.
+
+---
+
+# 77. Final Design Standard
+
+The Sewer Pros website should feel like one professionally designed system rather than a collection of unrelated pages.
+
+Across all page families, preserve:
+
+```text
+Strong Hero Hierarchy
++
+Technical Imagery
++
+Clear Editorial Structure
++
+Alternating Visual Rhythm
++
+Useful Cards
++
+Process Sections
++
+Evidence and Trust
++
+Clear Conversion Paths
++
+Market Context
++
+Substantial Footer
++
+Responsive Quality
+```
+
+while allowing each page to reflect its specific:
+
+* service
+* audience
+* market
+* search intent
+* content depth
+* conversion objective
+
+---
+
+# 78. Final Governing Principle
+
+> **The six supplied page-reference images are the practical visual foundation for The Sewer Pros website. Use them to establish hierarchy, density, section rhythm, image treatment, trust placement, conversion structure, and overall page quality. Do not pixel-copy the example company or transfer its business claims. Adapt the templates intelligently to the actual brand and content of The Sewer Pros. Claude Code should default to building and making reasonable reversible design decisions rather than stopping for approval over ordinary layout choices.**

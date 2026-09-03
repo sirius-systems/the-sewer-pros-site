@@ -1,12 +1,10 @@
 # The Sewer Pros — Master Location Registry
 
-**Document:** `07-master-location-registry.md`
-**Project:** The Sewer Pros Website Rebuild
-**Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Canonical Geographic Authority
-**Document Role:** Geographic entity, market relationship, location eligibility, and geographic normalization source of truth
-**Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
-**Canonical Geographic Records:** 579
+**Document:** `07-master-location-registry.md`  
+**Project:** The Sewer Pros Website Rebuild  
+**Repository:** `the-sewer-pros-site`  
+**Status:** Active Canonical Geographic Taxonomy  
+**Last Updated:** September 3, 2026
 
 ---
 
@@ -14,80 +12,196 @@
 
 This document defines the canonical geographic taxonomy for The Sewer Pros website.
 
-It establishes:
+It establishes consistent geographic identities for use across:
 
-* primary markets
-* canonical location names
-* location slugs
-* canonical location URLs
-* geographic types
-* parent market relationships
-* submarket clusters
-* location priority
-* service-matrix eligibility
-* audience-matrix eligibility
-* commercial-matrix eligibility
-* aliases
-* operational validation requirements
-* research-only geographies
-* manual-review geographies
+- market pages
+- location pages
+- service + location pages
+- audience + location pages
+- commercial + location pages
+- routing
+- internal linking
+- service-area relationships
+- metadata
+- schema
+- analytics
+- forms
+- content generation
+- local SEO
+- page generation
+- future geographic expansion
 
-This registry should answer:
+The registry exists to create **consistent, reusable geographic data**.
 
-> **What geographic entities exist within The Sewer Pros SEO opportunity model, how are they normalized, and how may they participate in downstream page architecture?**
+It is not intended to function as a permission gate that prevents Claude or Claude Code from:
 
----
+- researching geographic opportunities
+- adding verified geographic records
+- drafting local pages
+- generating candidate routes
+- creating local content
+- modeling service-area relationships
+- building local page inventory
+- identifying nearby communities
+- refining geographic hierarchy
 
-# 2. Critical Geographic Governance Rule
-
-A geographic record existing in this registry does **not** automatically authorize a page.
-
-The governing model is:
+The key distinction is:
 
 ```text
-Geographic Research
-↓
-Master Location Registry
-↓
-Service / Audience / Commercial Opportunity Matrices
-↓
-Strategic Evaluation
-↓
-04-master-page-build-list.md
-↓
-Approved Route
+Canonical Geographic Data
+=
+Location Accuracy and Consistency
+
+Not
+=
+Human Approval Required Before Geographic Work
 ```
 
-The location registry answers:
+---
 
-> What geographic opportunities exist?
+# 2. Core Operating Principle
 
-The Master Page Build List answers:
+Use the location registry to answer:
 
-> Which geographic pages are actually authorized?
+> **What geographic entity does this page, relationship, service area, or search opportunity refer to?**
 
-These are intentionally separate systems.
+Do not use it to ask:
+
+> **Am I allowed to research or build anything related to this location?**
+
+Claude and Claude Code may work with verified geographic data freely.
+
+Business presence and service coverage remain separate questions.
 
 ---
 
-# 3. Registry Summary
+# 3. Geography vs. Business Presence
 
-| Market        | Total Records | Tier 1 / Market | Phase 2 | Phase 3 | Review / Hold |
-| ------------- | ------------: | --------------: | ------: | ------: | ------------: |
-| St. Louis, MO |           218 |              43 |     142 |      18 |            15 |
-| San Diego, CA |           222 |              34 |     154 |      23 |            11 |
-| Las Vegas, NV |           139 |              25 |      85 |      10 |            19 |
-| **Total**     |       **579** |                 |         |         |               |
+This distinction is mandatory:
 
-The registry represents the full geographic research universe.
+```text
+Geographic Entity
+≠
+Service Coverage
+≠
+Physical Business Location
+```
 
-It does not represent 579 pages to publish.
+For example:
+
+```text
+Las Vegas, Nevada
+```
+
+may exist in the registry because it is:
+
+* a real geographic entity
+* a primary service market
+* a search target
+* a parent location for nearby communities
+
+That does not automatically mean:
+
+* The Sewer Pros has a Las Vegas office
+* The Sewer Pros has a Las Vegas GBP
+* The Sewer Pros has a Las Vegas storefront
+* a dedicated Las Vegas phone number exists
+
+Geographic data should describe geography accurately.
+
+Other project systems determine business relationships.
 
 ---
 
-# 4. Market IDs
+# 4. Location Registry Role
 
-The initial canonical market IDs are:
+The registry should support five primary functions.
+
+## 4.1 Canonical Geographic Naming
+
+Provide one consistent internal identity for every geographic entity.
+
+## 4.2 Geographic Hierarchy
+
+Define parent/child relationships among:
+
+* primary markets
+* cities
+* communities
+* neighborhoods
+* counties
+* regions
+
+## 4.3 Relationship Modeling
+
+Connect geography to:
+
+* services
+* audiences
+* commercial segments
+* nearby areas
+* market hubs
+* local resources
+
+## 4.4 Page Generation
+
+Provide structured data for:
+
+* market pages
+* location pages
+* service + location pages
+* audience + location pages
+* commercial + location pages
+
+## 4.5 Analytics and Entity Consistency
+
+Keep geographic IDs consistent across:
+
+* page data
+* metadata
+* analytics
+* forms
+* schema
+* internal links
+
+---
+
+# 5. Current Dataset Scale
+
+The project research currently includes approximately:
+
+> **579 normalized geographic records**
+
+These records represent a substantial geographic knowledge base for:
+
+* St. Louis
+* San Diego
+* Las Vegas
+* surrounding cities
+* communities
+* neighborhoods
+* related geographic entities
+
+This dataset should be treated as an active project asset.
+
+It may be used for:
+
+* research
+* page generation
+* route planning
+* content development
+* internal-link modeling
+* market analysis
+* service-area expansion
+* SEO opportunity discovery
+
+The registry should not become a static spreadsheet that Claude is afraid to use.
+
+---
+
+# 6. Primary Market Records
+
+The three initial primary markets are:
 
 ```text
 st-louis-mo
@@ -95,2430 +209,1649 @@ san-diego-ca
 las-vegas-nv
 ```
 
-Canonical market URLs:
+These records are major geographic hubs.
+
+They should provide parent context for relevant local records where appropriate.
+
+---
+
+# 7. St. Louis Market
+
+Canonical primary market:
 
 ```text
-/st-louis-mo/
-/san-diego-ca/
-/las-vegas-nv/
+St. Louis, Missouri
 ```
 
-Market IDs should remain stable internal identifiers.
-
----
-
-# 5. Geographic Status Model
-
-| Status               | Meaning                                                             |
-| -------------------- | ------------------------------------------------------------------- |
-| `launch`             | Canonical market hub                                                |
-| `launch_candidate`   | Strong Tier 1 location opportunity                                  |
-| `phase_2_candidate`  | Valid geographic opportunity retained for expansion                 |
-| `phase_3_validation` | Extended territory requiring service/dispatch validation            |
-| `research_only`      | Weak standalone page intent, landmark, corridor, or research entity |
-| `manual_review`      | Geography, naming, alias, or entity requires verification           |
-
-A `launch_candidate` is **not automatically a launch page**.
-
-Only `04-master-page-build-list.md` grants that authorization.
-
----
-
-# 6. Matrix Eligibility Model
-
-Each geographic entity may have separate eligibility for:
-
-* service + location
-* audience + location
-* commercial + location
-
-Values:
-
-| Value         | Meaning                                                           |
-| ------------- | ----------------------------------------------------------------- |
-| `full`        | Strong candidate for applicable primary matrices                  |
-| `selective`   | Only high-value, differentiated combinations should be considered |
-| `conditional` | Requires operational or demand validation                         |
-| `hold`        | Do not generate matrix pages by default                           |
-
----
-
-# 7. Location Type Model
-
-Potential location types include:
+Recommended canonical ID:
 
 ```text
-market_hub
-primary_city
-independent_city_hub
-municipality_or_community
-city_or_major_community
-major_community
-community_or_neighborhood
-san_diego_community_or_neighborhood
-neighborhood_or_master_planned_community
+st-louis-mo
+```
+
+This market may include geographic relationships across:
+
+* St. Louis City
+* St. Louis County
+* relevant nearby municipalities
+* approved surrounding communities
+* broader metro service areas
+
+Do not treat:
+
+```text
+St. Louis
+```
+
+as one undifferentiated municipality when legal, municipal, or sewer-lateral information depends on jurisdiction.
+
+---
+
+# 8. San Diego Market
+
+Canonical primary market:
+
+```text
+San Diego, California
+```
+
+Recommended canonical ID:
+
+```text
+san-diego-ca
+```
+
+This market may include:
+
+* City of San Diego
+* surrounding cities
+* communities
+* neighborhoods
+* other verified service areas
+
+San Diego is currently a service market without a verified GBP.
+
+Geographic records do not create a physical San Diego branch.
+
+---
+
+# 9. Las Vegas Market
+
+Canonical primary market:
+
+```text
+Las Vegas, Nevada
+```
+
+Recommended canonical ID:
+
+```text
+las-vegas-nv
+```
+
+The broader Las Vegas Valley may include relevant geographic entities such as:
+
+* Las Vegas
+* Henderson
+* North Las Vegas
+* Enterprise
+* Spring Valley
+* Paradise
+* Summerlin-related communities
+* other verified areas
+
+Exact classification should reflect actual geography.
+
+Do not casually label every Las Vegas Valley community as an incorporated city.
+
+---
+
+# 10. Geographic Types
+
+Each location record should identify its geographic type.
+
+Recommended values may include:
+
+```text
+market
+city
+town
+village
+municipality
 county
-county_or_submarket_cluster
-submarket_cluster
-commercial_or_mixed_use_district
-community_or_extended_area
-extended_service_area
-landmark_or_corridor
-manual_review
+neighborhood
+community
+census-designated-place
+region
+metro
+service-area
 ```
 
-These types describe geographic function.
+Use the most accurate classification available.
 
-They do not independently determine page publication.
+Do not force every record into:
+
+```text
+city
+```
+
+for convenience.
 
 ---
 
-# 8. Canonical URL Rules
+# 11. Suggested Location Record Structure
 
-## Market
-
-```text
-/{market}/
-```
-
-## Standard Location
-
-```text
-/{market}/{location}/
-```
-
-## St. Louis City Neighborhood
-
-```text
-/st-louis-mo/st-louis-city/{neighborhood}/
-```
-
-## Service + Location
-
-```text
-/{canonical-location-path}/{service}/
-```
-
-## Audience + Location
-
-```text
-/{canonical-location-path}/for/{audience}/
-```
-
-## Commercial + Location
-
-```text
-/{canonical-location-path}/commercial/{service}/
-```
-
-Do not use flattened local keyword URLs such as:
-
-```text
-/san-diego-ca/sewer-camera-inspection-carlsbad/
-```
-
-Canonical:
-
-```text
-/san-diego-ca/carlsbad/sewer-camera-inspection/
-```
-
----
-
-# 9. Canonical Path Principle
-
-The complete canonical pathname is more authoritative than independently reconstructing a route from a location name.
-
-Example:
-
-```text
-St. Louis City
-/st-louis-mo/st-louis-city/
-```
-
-A neighborhood such as Soulard becomes:
-
-```text
-/st-louis-mo/st-louis-city/soulard/
-```
-
-not:
-
-```text
-/st-louis-mo/soulard/
-```
-
-unless the registry is intentionally changed.
-
----
-
-# 10. Normalization Decisions
-
-The following known normalization decisions are authoritative:
-
-```text
-bridgton
-→ bridgeton
-```
-
-```text
-river-view
-→ riverview
-```
-
-```text
-saint-charles-county
-→ st-charles-county
-```
-
-```text
-untincorporated-west-county
-→ unincorporated-west-county
-```
-
-```text
-ranch-santa-fe
-→ rancho-santa-fe
-```
-
-```text
-ranch-bernardo-business-park
-→ rancho-bernardo-business-park
-```
-
-Duplicate source occurrences should be merged into one canonical geographic entity.
-
-Original source variants should remain available as aliases where useful.
-
----
-
-# 11. Alias Rule
-
-Aliases help preserve:
-
-* historical research
-* common terminology
-* spelling variants
-* previous slugs
-* alternate geographic names
-
-Aliases do not create independent geographic entities.
-
-Example:
-
-```text
-bridgton
-→ Bridgeton
-```
-
-Canonical:
-
-```text
-/st-louis-mo/bridgeton/
-```
-
----
-
-# 12. Physical Location vs Service Area
-
-A website geographic page does not necessarily represent:
-
-* an office
-* a storefront
-* a physical business location
-* a Google Business Profile
-
-The registry must distinguish:
-
-```text
-Service Area Geography
-```
-
-from:
-
-```text
-Physical Business Location
-```
-
-Do not generate LocalBusiness entities for every location record.
-
----
-
-# 13. Current GBP Context
-
-Current known Google Business Profile status:
-
-| Market    | GBP Status                |
-| --------- | ------------------------- |
-| St. Louis | Existing GBP              |
-| San Diego | No current GBP identified |
-| Las Vegas | No current GBP identified |
-
-The geographic architecture may contain San Diego and Las Vegas market pages without implying that local GBPs or storefronts currently exist.
-
----
-
-# 14. Geographic Record Model
-
-A machine-readable location record should support fields comparable to:
+A structured implementation may resemble:
 
 ```ts
-export interface LocationRecord {
-  locationId: string
-  marketId: string
-  name: string
-  slug: string
-  canonicalUrl: string
-  locationType: string
-  parentLocationId?: string
-  cluster?: string
-  launchTier: string
-  indexStatus:
-    | 'launch'
-    | 'launch_candidate'
-    | 'phase_2_candidate'
-    | 'phase_3_validation'
-    | 'research_only'
-    | 'manual_review'
-  priorityTags: string[]
-  serviceMatrix:
-    | 'full'
-    | 'selective'
-    | 'conditional'
-    | 'hold'
-  audienceMatrix:
-    | 'full'
-    | 'selective'
-    | 'conditional'
-    | 'hold'
-  commercialMatrix:
-    | 'full'
-    | 'selective'
-    | 'conditional'
-    | 'hold'
-  validationStatus: string
-  aliases?: string[]
-  notes?: string
+type LocationStatus =
+  | "active"
+  | "candidate"
+  | "inactive"
+  | "retired";
+
+type LocationType =
+  | "market"
+  | "city"
+  | "town"
+  | "municipality"
+  | "county"
+  | "neighborhood"
+  | "community"
+  | "census-designated-place"
+  | "region"
+  | "metro"
+  | "service-area";
+
+interface LocationRecord {
+  id: string;
+  name: string;
+
+  state?: string;
+  stateCode?: string;
+
+  type: LocationType;
+  status: LocationStatus;
+
+  parentLocationId?: string;
+  marketId?: string;
+
+  aliases?: string[];
+
+  serviceAreaStatus?: "confirmed" | "candidate" | "excluded" | "unknown";
+
+  pageSlug?: string;
+  pageStatus?: string;
+
+  latitude?: number;
+  longitude?: number;
+
+  notes?: string;
 }
 ```
 
----
+The actual technical implementation may vary.
 
-# 15. Machine-Readable Registry
-
-The complete 579-record dataset is maintained in a machine-readable companion file.
-
-**Current location:**
-
-```text
-data/locations/master-location-registry.json
-```
-
-A typed TypeScript wrapper may later be added alongside it:
-
-```text
-data/locations/master-location-registry.ts
-```
-
-If added, it should derive from the JSON rather than duplicating the 579 records.
-
-The machine-readable registry should preserve, where available:
-
-* source sections
-* original research source
-* source line references
-* aliases
-* normalization history
-* market
-* location type
-* launch tier
-* validation status
-* matrix eligibility
-* priority tags
-* notes
-
-This Markdown document is the human-readable governance and planning layer.
+The important requirement is consistent geographic identity.
 
 ---
 
-# 16. St. Louis Market
+# 12. Stable Location IDs
 
-**Market ID:** `st-louis-mo`
-
-**Canonical URL:**
-
-```text
-/st-louis-mo/
-```
-
-## Geographic Strategy
-
-The St. Louis architecture includes:
-
-* St. Louis City
-* St. Louis County municipalities
-* North County
-* Central County
-* West County
-* South County
-* Jefferson County
-* St. Charles County
-* commercial districts
-* St. Louis City neighborhoods
-* extended service territories
-
-St. Louis contains the largest and most structurally complex geographic hierarchy in the project.
-
----
-
-# 17. St. Louis Market Hub
-
-| Name          | Canonical URL   | Type         | Service Matrix | Audience Matrix | Commercial Matrix |
-| ------------- | --------------- | ------------ | -------------- | --------------- | ----------------- |
-| St. Louis, MO | `/st-louis-mo/` | `market_hub` | full           | selective       | selective         |
-
-The market hub is approved separately in the Master Page Build List.
-
----
-
-# 18. St. Louis Tier 1 Geographic Registry
-
-These are the strongest geographic opportunities in the St. Louis registry.
-
-**Important:** Tier 1 means high-priority candidate, not automatic launch authorization.
-
-| Location         | Canonical URL                    | Cluster                         |
-| ---------------- | -------------------------------- | ------------------------------- |
-| Arnold           | `/st-louis-mo/arnold/`           | South County / Jefferson County |
-| Ballwin          | `/st-louis-mo/ballwin/`          | West County                     |
-| Black Jack       | `/st-louis-mo/black-jack/`       | North County                    |
-| Brentwood        | `/st-louis-mo/brentwood/`        | Central County                  |
-| Bridgeton        | `/st-louis-mo/bridgeton/`        | North County                    |
-| Chesterfield     | `/st-louis-mo/chesterfield/`     | West County                     |
-| Clayton          | `/st-louis-mo/clayton/`          | Central County                  |
-| Cottleville      | `/st-louis-mo/cottleville/`      | St. Charles County              |
-| Crestwood        | `/st-louis-mo/crestwood/`        | West County                     |
-| Creve Coeur      | `/st-louis-mo/creve-coeur/`      | St. Louis Metro                 |
-| Des Peres        | `/st-louis-mo/des-peres/`        | West County                     |
-| Eureka           | `/st-louis-mo/eureka/`           | West County                     |
-| Fenton           | `/st-louis-mo/fenton/`           | West County                     |
-| Ferguson         | `/st-louis-mo/ferguson/`         | Central County                  |
-| Festus           | `/st-louis-mo/festus/`           | South County / Jefferson County |
-| Florissant       | `/st-louis-mo/florissant/`       | North County                    |
-| Frontenac        | `/st-louis-mo/frontenac/`        | West County                     |
-| Hazelwood        | `/st-louis-mo/hazelwood/`        | North County                    |
-| High Ridge       | `/st-louis-mo/high-ridge/`       | South County / Jefferson County |
-| Imperial         | `/st-louis-mo/imperial/`         | South County / Jefferson County |
-| Kirkwood         | `/st-louis-mo/kirkwood/`         | Central County                  |
-| Ladue            | `/st-louis-mo/ladue/`            | West County                     |
-| Lake St. Louis   | `/st-louis-mo/lake-st-louis/`    | St. Charles County              |
-| Manchester       | `/st-louis-mo/manchester/`       | West County                     |
-| Maplewood        | `/st-louis-mo/maplewood/`        | Central County                  |
-| Maryland Heights | `/st-louis-mo/maryland-heights/` | North County                    |
-| O'Fallon, MO     | `/st-louis-mo/ofallon-mo/`       | St. Charles County              |
-| Olivette         | `/st-louis-mo/olivette/`         | Central County                  |
-| Overland         | `/st-louis-mo/overland/`         | Central County                  |
-| Richmond Heights | `/st-louis-mo/richmond-heights/` | Central County                  |
-| Rock Hill        | `/st-louis-mo/rock-hill/`        | Central County                  |
-| St. Ann          | `/st-louis-mo/st-ann/`           | Central County                  |
-| St. Charles      | `/st-louis-mo/st-charles/`       | St. Charles County              |
-| St. Louis City   | `/st-louis-mo/st-louis-city/`    | St. Louis City                  |
-| St. Peters       | `/st-louis-mo/st-peters/`        | St. Charles County              |
-| Sunset Hills     | `/st-louis-mo/sunset-hills/`     | West County                     |
-| Town and Country | `/st-louis-mo/town-and-country/` | West County                     |
-| University City  | `/st-louis-mo/university-city/`  | Central County                  |
-| Valley Park      | `/st-louis-mo/valley-park/`      | West County                     |
-| Webster Groves   | `/st-louis-mo/webster-groves/`   | Central County                  |
-| Wentzville       | `/st-louis-mo/wentzville/`       | St. Charles County              |
-| Wildwood         | `/st-louis-mo/wildwood/`         | West County                     |
-
-Default Tier 1 service-matrix eligibility:
-
-```text
-full
-```
-
-Audience and commercial combinations remain selective.
-
----
-
-# 19. St. Louis Launch-Authorized Locations
-
-The Master Page Build List currently authorizes these location pages for initial launch:
-
-```text
-/st-louis-mo/st-louis-city/
-/st-louis-mo/chesterfield/
-/st-louis-mo/ballwin/
-/st-louis-mo/florissant/
-/st-louis-mo/st-charles/
-```
-
-All remaining Tier 1 St. Louis records remain candidates until explicitly promoted in:
-
-`04-master-page-build-list.md`
-
----
-
-# 20. St. Louis Phase 2 — Municipality / Submarket Registry
-
-The following normalized Phase 2 opportunities remain available for staged expansion:
-
-```text
-Affton
-Avondale
-Bel Nor
-Bel Ridge
-Bellefontaine Neighbors
-Berkeley
-Beverly Hills Mo
-Breckenridge Hills
-Byrnes Mill
-Calverton Park
-Charlack
-Chesterfield Valley
-Clarkson Valley
-Concord
-Cool Valley
-Country Club Hills
-Crystal City
-Crystal Lake Park
-Dardenne Prairie
-Dellwood
-Earth City
-Edmundson
-Ellisville
-Flordell Hills
-Glasgow Village
-Glendale
-Grantwood Village
-Green Park
-Greendale
-Hanley Hills
-Harvester
-Herculaneum
-Hillsdale
-Historic St. Charles
-Huntleigh
-Jefferson County, MO
-Jennings
-Kimmswick
-Kinloch
-Lakeshire
-Lemay
-Mackenzie
-Marlborough
-Mehlville
-Moline Acres
-Normandy
-North County
-Northwoods
-Oakland Mo
-Oakville
-Old Town Florissant
-Pacific Mo
-Pagedale
-Pasadena Hills
-Pasadena Park
-Pevely
-Pine Lawn
-Riverview
-Sappington
-Shrewsbury
-Spanish Lake
-St. Charles County
-St. John
-St. Louis County
-St. Paul, MO
-Twin Oaks
-Unincorporated West County
-University City Loop
-Velda City
-Velda Village Hills
-Vinita Park
-Vinita Terrace
-Warson Woods
-Weldon Spring Heights
-Weldon Spring
-Wellston
-West County
-Westwood
-Wilbur Park
-Woodson Terrace
-```
-
-Default status:
-
-```text
-phase_2_candidate
-```
-
-Default matrix behavior:
-
-```text
-selective
-```
-
----
-
-# 21. St. Louis City Neighborhood Registry
-
-The following normalized St. Louis City neighborhood or district entities are retained as Phase 2 opportunities:
-
-```text
-Academy
-Baden
-Benton Park West
-Benton Park
-Bevo Mill
-Boulevard Heights
-Carondelet
-Carr Square
-Central West End
-Cheltenham
-Clifton Heights
-Columbus Square
-Compton Heights
-Cortex
-DeBaliviere Place
-Dogtown
-Downtown St. Louis
-Downtown West
-Dutchtown
-Ellendale
-Fairground
-Fontainebleau
-Forest Park Southeast
-Fox Park
-Holly Hills
-Hyde Park
-Jeff-Vander-Lou
-Kings Oak
-Kingsway East
-Kingsway West
-Lafayette Square
-Lindenwood Park
-Marine Villa
-Mark Twain / I-70 Industrial
-Midtown
-Mount Pleasant
-North Hampton
-North Point
-North Riverfront
-Northampton
-Old North St. Louis
-Patch
-Penrose
-Princeton Heights
-Shaw
-Skinker-DeBaliviere
-Soulard
-Southampton
-Southwest Garden
-St. Louis Hills Estates
-St. Louis Hills
-The Grove
-The Hill
-Tiffany
-Tower Grove East
-Tower Grove South
-Tyler Place
-Visitation Park
-Walnut Park East
-Walnut Park West
-West Cabanne Place
-West End
-```
-
-Canonical pattern:
-
-```text
-/st-louis-mo/st-louis-city/{neighborhood}/
-```
-
-These pages require substantially stronger differentiation and demand evidence than primary-city pages.
-
-Do not mass-publish the neighborhood inventory.
-
----
-
-# 22. St. Louis Commercial / Mixed-Use Entities
-
-Commercially relevant St. Louis research entities include:
-
-```text
-Chesterfield Valley
-Earth City
-Historic St. Charles
-Cortex
-Downtown St. Louis
-Downtown West
-Mark Twain / I-70 Industrial
-Midtown
-The Grove
-University City Loop
-West County
-North County
-```
-
-Commercial tagging does not automatically authorize a general location page or commercial service matrix.
-
-Commercial combinations remain selective.
-
----
-
-# 23. St. Louis Phase 3 / Operational Validation
-
-Extended service-area records:
-
-```text
-Augusta
-Barnhart
-Cedar Hill Lakes
-Cedar Hill
-De Soto
-Defiance
-Flint Hill
-Foristell
-Hillsboro
-House Springs
-Josephville
-New Melle
-Olympian Village
-Orchard Farm
-Parkdale
-Peaceful Village
-Portage Des Sioux
-West Alton
-```
-
-Status:
-
-```text
-phase_3_validation
-```
-
-Default matrix eligibility:
-
-```text
-conditional
-```
-
-Before promotion, validate:
-
-* actual service coverage
-* dispatch practicality
-* service availability
-* customer demand
-* content differentiation
-
----
-
-# 24. St. Louis Research-Only Targets
-
-```text
-Bablers Park
-Creve Coeur Lake
-Lemay Ferry
-Tower Grove Park
-```
-
-These are retained because they may have:
-
-* contextual value
-* commercial value
-* geographic research value
-
-They are not default residential location hubs.
-
----
-
-# 25. St. Louis Manual Review Queue
-
-```text
-Bellerive
-Chesterfield Grove
-Grover
-Old Jamestown
-Peruque
-Downtown East
-Downtown Loft District
-Mcdermott
-Neighborhoods Near North Riverfront
-Ope
-Volet
-```
-
-Status:
-
-```text
-manual_review
-```
-
-Do not publish until geographic identity and naming are verified.
-
----
-
-# 26. San Diego Market
-
-**Market ID:** `san-diego-ca`
-
-**Canonical URL:**
-
-```text
-/san-diego-ca/
-```
-
-## Geographic Strategy
-
-San Diego should not be treated as only the City of San Diego.
-
-The geographic model includes:
-
-* City of San Diego
-* North County coastal
-* North County inland
-* South Bay
-* East County
-* urban core
-* coastal communities
-* I-15 corridor
-* commercial districts
-* unincorporated / extended territory
-
-North County is particularly important to the market architecture.
-
----
-
-# 27. San Diego Market Hub
-
-| Name          | Canonical URL    | Type         | Service Matrix | Audience Matrix | Commercial Matrix |
-| ------------- | ---------------- | ------------ | -------------- | --------------- | ----------------- |
-| San Diego, CA | `/san-diego-ca/` | `market_hub` | full           | selective       | selective         |
-
----
-
-# 28. San Diego Tier 1 Geographic Registry
-
-| Location           | Canonical URL                       | Cluster                           |
-| ------------------ | ----------------------------------- | --------------------------------- |
-| Bonita             | `/san-diego-ca/bonita/`             | South Bay                         |
-| Carlsbad           | `/san-diego-ca/carlsbad/`           | North County Coastal              |
-| Carmel Valley      | `/san-diego-ca/carmel-valley/`      | City of San Diego / I-15 Corridor |
-| Chula Vista        | `/san-diego-ca/chula-vista/`        | South Bay                         |
-| Coronado           | `/san-diego-ca/coronado/`           | South Bay                         |
-| Del Mar            | `/san-diego-ca/del-mar/`            | North County Coastal              |
-| El Cajon           | `/san-diego-ca/el-cajon/`           | East County                       |
-| Encinitas          | `/san-diego-ca/encinitas/`          | North County Coastal              |
-| Escondido          | `/san-diego-ca/escondido/`          | North County Inland               |
-| Fallbrook          | `/san-diego-ca/fallbrook/`          | North County Inland               |
-| Hillcrest          | `/san-diego-ca/hillcrest/`          | Urban Core / Uptown               |
-| Imperial Beach     | `/san-diego-ca/imperial-beach/`     | South Bay                         |
-| La Jolla           | `/san-diego-ca/la-jolla/`           | Coastal                           |
-| La Mesa            | `/san-diego-ca/la-mesa/`            | East County                       |
-| Lakeside           | `/san-diego-ca/lakeside/`           | East County                       |
-| Lemon Grove        | `/san-diego-ca/lemon-grove/`        | East County                       |
-| Mira Mesa          | `/san-diego-ca/mira-mesa/`          | I-15 Corridor                     |
-| Mission Valley     | `/san-diego-ca/mission-valley/`     | Commercial / Mixed Use            |
-| National City      | `/san-diego-ca/national-city/`      | South Bay                         |
-| North Park         | `/san-diego-ca/north-park/`         | Urban Core / Uptown               |
-| Oceanside          | `/san-diego-ca/oceanside/`          | North County Coastal              |
-| Pacific Beach      | `/san-diego-ca/pacific-beach/`      | Coastal                           |
-| Poway              | `/san-diego-ca/poway/`              | North County Inland               |
-| Rancho Bernardo    | `/san-diego-ca/rancho-bernardo/`    | I-15 Corridor                     |
-| Rancho Peñasquitos | `/san-diego-ca/rancho-penasquitos/` | I-15 Corridor                     |
-| Rancho Santa Fe    | `/san-diego-ca/rancho-santa-fe/`    | North County Coastal              |
-| San Diego          | `/san-diego-ca/san-diego/`          | San Diego Metro                   |
-| San Marcos         | `/san-diego-ca/san-marcos/`         | North County Inland               |
-| Santee             | `/san-diego-ca/santee/`             | East County                       |
-| Scripps Ranch      | `/san-diego-ca/scripps-ranch/`      | I-15 Corridor                     |
-| Solana Beach       | `/san-diego-ca/solana-beach/`       | North County Coastal              |
-| Spring Valley      | `/san-diego-ca/spring-valley/`      | East County                       |
-| Vista              | `/san-diego-ca/vista/`              | North County Inland               |
-
----
-
-# 29. San Diego Launch-Authorized Locations
-
-Initial authorized location pages:
-
-```text
-/san-diego-ca/san-diego/
-/san-diego-ca/san-marcos/
-/san-diego-ca/carlsbad/
-/san-diego-ca/escondido/
-/san-diego-ca/oceanside/
-/san-diego-ca/chula-vista/
-/san-diego-ca/mission-valley/
-```
-
-Mission Valley is authorized as a **commercial/mixed-use district**, not as a residential city page. Its `service_matrix` remains `selective` while its `commercial_matrix` is `full`, so it should not be treated as a template for broad residential service + location expansion.
-
-See `22-decisions-change-log.md` → **DEC-065**.
-
-All other Tier 1 locations remain candidates until promoted in the Master Page Build List.
-
----
-
-# 30. San Diego Phase 2 Registry
-
-Normalized Phase 2 opportunities include:
-
-```text
-4S Ranch
-Allied Gardens
-Aviara
-Bankers Hill
-Barrio Logan
-Bay Ho
-Bay Park
-Bird Rock
-Birdland
-Black Mountain Ranch
-Bonita Long Canyon
-Bressi Ranch
-Broadway Heights
-Cardiff-by-the-Sea
-Carlsbad South
-Carlsbad Village
-Carmel Mountain Ranch
-Casa De Oro
-Chollas View
-City Heights
-Clairemont Mesa
-Clairemont
-Colina Del Sol
-College Area
-Columbia District
-Coronado Village
-Cortez Hill
-Crown Point
-Del Cerro
-Del Mar Heights
-Del Mar Mesa
-Discovery Hills
-Downtown Chula Vista
-Downtown Escondido
-Downtown San Diego
-East County
-East Otay Mesa
-East Village
-Eastlake Greens
-Eastlake Vistas
-Eastlake
-Eggers Highlands
-El Cerrito
-Emerald Hills
-Encanto
-Eucalyptus Hills
-Fairbanks Ranch
-Fashion Valley
-Fire Mountain
-Fletcher Hills
-Gaslamp Quarter
-Golden Hill
-Golden Triangle
-Granite Hills
-Grantville
-Harmony Grove
-Hidden Meadows
-Horton Plaza
-Jesmond Dene
-Kearny Mesa
-Kensington
-La Costa
-La Jolla Farms
-La Jolla Shores
-La Jolla Village
-La Mesa Village
-Lake San Marcos
-Leucadia
-Liberty Station
-Lincoln Park
-Linda Vista
-Little Italy
-Logan Heights
-Marina District
-Middletown
-Midway District
-Millenia
-Miramar Ranch North
-Miramar
-Mission Bay
-Mission Beach
-Mission Hills
-Mission Valley East
-Mission Valley West
-Mount Helix
-Mount Hope
-Mountain View
-Murphy Canyon
-Navajo
-Nestor
-New Encinitas
-Normal Heights
-North Clairemont
-North County
-North Pacific Beach
-Oak Park
-Ocean Beach
-Oceanside Harbor
-Old Creek Ranch
-Old Encinitas
-Old Poway
-Old Town
-Olivenhain
-Otay Mesa Industrial
-Otay Mesa-Nestor
-Otay Mesa West
-Otay Mesa
-Otay Ranch
-Pacific Highlands Ranch
-Pacific Highway
-Palm City
-Paradise Hills
-Point Loma
-Rancho Bernardo Business Park
-Rancho Del Rey
-Rancho San Diego
-Rolando Village
-Rolando
-Sabre Springs
-San Carlos
-San Elijo Hills
-San Ysidro
-Serra Mesa
-Shadowridge
-Shelltown
-Shelter Island
-Sherman Heights
-Silver Strand
-Skyline
-Sorrento Mesa
-Sorrento Valley
-South Bay
-South Oceanside
-South Park
-South San Diego
-Southcrest
-Stockton
-Sunbow
-Sunset Cliffs
-Talmadge
-Terra Nova
-Tierrasanta
-Tijuana River Valley
-Torrey Highlands
-Torrey Hills
-Torrey Pines
-University City
-University Heights
-Uptown San Diego
-UTC
-Valencia Park
-West Chula Vista
-Winter Gardens
-Wooded Area
-```
-
-Status:
-
-```text
-phase_2_candidate
-```
-
-Default matrices:
-
-```text
-selective
-```
-
-unless the machine-readable registry specifies stronger commercial eligibility.
-
----
-
-# 31. San Diego Strategic Submarket Clusters
-
-Important strategic geographic groupings include:
-
-```text
-North County
-South Bay
-East County
-City of San Diego
-```
-
-These may function as:
-
-* research clusters
-* navigation groupings
-* internal-link relationships
-* content-planning parents
-
-A submarket cluster is not automatically a standalone indexable page.
-
----
-
-# 32. San Diego Commercial / Mixed-Use Opportunities
-
-Important commercially tagged areas include:
-
-```text
-Mission Valley
-National City
-Chula Vista
-Bonita
-Coronado
-Imperial Beach
-Carlsbad Village
-Columbia District
-Downtown Chula Vista
-Downtown Escondido
-Downtown San Diego
-East Otay Mesa
-East Village
-Fashion Valley
-Gaslamp Quarter
-Golden Triangle
-Horton Plaza
-Kearny Mesa
-Liberty Station
-Marina District
-Midway District
-Miramar
-Oceanside Harbor
-Otay Mesa Industrial
-Otay Mesa West
-Otay Mesa
-Pacific Highway
-Sorrento Mesa
-Sorrento Valley
-University City
-UTC
-```
-
-Commercial-location pages remain selectively authorized.
-
----
-
-# 33. San Diego Phase 3 / Operational Validation
-
-```text
-Alpine
-Bonsall
-Borrego Springs
-Boulevard
-Campo
-Crest
-De Luz
-Descanso
-Dulzura
-Harbison Canyon
-High Valley
-Jacumba Hot Springs
-Jamul
-Julian
-Pala
-Pauma Valley
-Pine Valley
-Potrero
-Rainbow
-Ramona
-Rincon
-San Pasqual
-Valley Center
-```
-
-Status:
-
-```text
-phase_3_validation
-```
-
-Default matrices:
-
-```text
-conditional
-```
-
----
-
-# 34. San Diego Manual Review Queue
-
-```text
-Buena
-East San Diego
-Imperial Beach Military
-La Presita
-Memorial
-Paradise Valley
-Rancho Del Lago
-Richland
-San Elijo
-Vallecitos
-Warmlands
-```
-
-No public page should be generated until the geography or naming is verified.
-
----
-
-# 35. San Diego Normalization Notes
-
-Canonical normalization includes:
-
-```text
-ranch-santa-fe
-→ rancho-santa-fe
-```
-
-and:
-
-```text
-ranch-bernardo-business-park
-→ rancho-bernardo-business-park
-```
-
-Canonical pathnames should remain stable after approval.
-
----
-
-# 36. Las Vegas Market
-
-**Market ID:** `las-vegas-nv`
-
-**Canonical URL:**
-
-```text
-/las-vegas-nv/
-```
-
-## Critical Market Gate
-
-Las Vegas is part of the approved site architecture.
-
-However, operational service availability remains subject to validation.
-
-A geographic record may be strategically valid even when customer-facing service publication remains gated.
-
----
-
-# 37. Las Vegas Market Hub
-
-| Name          | Canonical URL    | Type         | Service Matrix | Audience Matrix | Commercial Matrix |
-| ------------- | ---------------- | ------------ | -------------- | --------------- | ----------------- |
-| Las Vegas, NV | `/las-vegas-nv/` | `market_hub` | full           | selective       | selective         |
-
-The Master Page Build List currently marks this market as:
-
-```text
-launch_pending_validation
-```
-
-for indexation purposes.
-
----
-
-# 38. Las Vegas Tier 1 Geographic Registry
-
-| Location           | Canonical URL                       | Cluster                        |
-| ------------------ | ----------------------------------- | ------------------------------ |
-| Aliante            | `/las-vegas-nv/aliante/`            | North Las Vegas                |
-| Boulder City       | `/las-vegas-nv/boulder-city/`       | Outer Coverage                 |
-| Centennial Hills   | `/las-vegas-nv/centennial-hills/`   | City of Las Vegas              |
-| Downtown Las Vegas | `/las-vegas-nv/downtown-las-vegas/` | City of Las Vegas / Commercial |
-| Enterprise         | `/las-vegas-nv/enterprise/`         | Unincorporated Valley          |
-| Green Valley       | `/las-vegas-nv/green-valley/`       | Henderson                      |
-| Henderson          | `/las-vegas-nv/henderson/`          | Henderson                      |
-| Las Vegas Strip    | `/las-vegas-nv/las-vegas-strip/`    | Paradise / Resort Corridor     |
-| Las Vegas          | `/las-vegas-nv/las-vegas/`          | Las Vegas Metro                |
-| Mountain's Edge    | `/las-vegas-nv/mountain-s-edge/`    | Enterprise / Southwest         |
-| North Las Vegas    | `/las-vegas-nv/north-las-vegas/`    | North Las Vegas                |
-| Paradise           | `/las-vegas-nv/paradise/`           | Unincorporated Valley          |
-| Peccole Ranch      | `/las-vegas-nv/peccole-ranch/`      | Enterprise / Southwest         |
-| Providence         | `/las-vegas-nv/providence/`         | City of Las Vegas              |
-| Skye Canyon        | `/las-vegas-nv/skye-canyon/`        | City of Las Vegas              |
-| Southern Highlands | `/las-vegas-nv/southern-highlands/` | Enterprise / Southwest         |
-| Spring Valley      | `/las-vegas-nv/spring-valley/`      | Unincorporated Valley          |
-| Summerlin South    | `/las-vegas-nv/summerlin-south/`    | City of Las Vegas              |
-| Summerlin West     | `/las-vegas-nv/summerlin-west/`     | City of Las Vegas              |
-| Summerlin          | `/las-vegas-nv/summerlin/`          | Northwest / Summerlin          |
-| Sunrise Manor      | `/las-vegas-nv/sunrise-manor/`      | Unincorporated Valley          |
-| The Lakes          | `/las-vegas-nv/the-lakes/`          | Enterprise / Southwest         |
-| Whitney            | `/las-vegas-nv/whitney/`            | Unincorporated Valley          |
-| Winchester         | `/las-vegas-nv/winchester/`         | Unincorporated Valley          |
-
----
-
-# 39. Las Vegas Launch-Authorized Locations
-
-Current initial build records:
-
-```text
-/las-vegas-nv/las-vegas/
-/las-vegas-nv/henderson/
-/las-vegas-nv/north-las-vegas/
-/las-vegas-nv/summerlin/
-```
-
-Current page status:
-
-```text
-launch_pending_validation
-```
-
-These pages may be built for preview and QA but should not be treated as indexable production service pages until operational validation is complete.
-
----
-
-# 40. Las Vegas Phase 2 Registry
-
-```text
-Angel Park
-Anthem Country Club
-Anthem
-Apex Industrial Park
-Arts District
-Black Mountain
-Cadence
-Canyon Gate
-Charleston Heights
-Cheyenne
-Chinatown
-Civic Center
-Craig Ranch
-Desert Breeze
-Desert Inn
-Desert Shores
-Downtown Summerlin
-East Tropicana
-Eldorado
-Elkhorn Springs
-Flamingo Corridor
-Foothills Ranch
-Fort Apache
-Fox Hill
-Fremont East
-Green Valley North
-Green Valley Ranch
-Green Valley South
-Henderson Industrial
-Historic Westside
-Inspirada
-Iron Mountain Ranch
-Lake Las Vegas
-Las Vegas Country Club
-Las Vegas Valley
-Lone Mountain
-Los Prados
-MacDonald Highlands
-MacDonald Ranch
-Medical District
-Mission Hills
-Monaco
-North Las Vegas Industrial
-North Valley
-Painted Desert
-Paradise Road
-Queensridge
-Rancho Charleston
-Rancho Oakey
-Red Rock Country Club
-Redpoint
-Rhodes Ranch
-Ridgebrook
-Sands Avenue
-Seven Hills
-Shadow Creek
-Silverado Ranch
-Silverstone Ranch
-Skye View
-South Las Vegas Boulevard
-Southeast Las Vegas
-Southern Highlands Golf Club
-Southwest Industrial
-Southwest Las Vegas
-Southwest Ridge
-Sterling Ridge
-Stonebridge
-Summerlin North
-Sun City Aliante
-Sun City Summerlin
-The Arbors
-The Crossing
-The Gardens
-The Hills
-The Paseos
-The Trails
-The Vistas
-The Willows
-Tiburon
-Tropicana Corridor
-Tule Springs
-Valley View
-Valley Vista
-Water Street District
-West Sahara
-```
-
-Status:
-
-```text
-phase_2_candidate
-```
-
-Default matrices are selective.
-
----
-
-# 41. Las Vegas Commercial Priority Entities
-
-Commercially significant geographic entities include:
-
-```text
-Downtown Las Vegas
-Las Vegas Strip
-Apex Industrial Park
-Arts District
-Chinatown
-Civic Center
-Downtown Summerlin
-East Tropicana
-Flamingo Corridor
-Fremont East
-Henderson Industrial
-Las Vegas Country Club
-Medical District
-North Las Vegas Industrial
-Paradise Road
-Sands Avenue
-South Las Vegas Boulevard
-Southeast Las Vegas
-Southwest Industrial
-Southwest Las Vegas
-Tropicana Corridor
-Water Street District
-West Sahara
-```
-
-Commercial architecture should particularly evaluate:
-
-* hospitality
-* restaurants
-* retail
-* multifamily
-* office
-* industrial
-* property management
-
-once operational coverage is confirmed.
-
----
-
-# 42. Las Vegas Phase 3 / Operational Validation
-
-```text
-Blue Diamond
-Goodsprings
-Indian Springs
-Jean
-Laughlin
-Mesquite
-Mount Charleston
-Red Rock
-Sandy Valley
-Searchlight
-```
-
-Status:
-
-```text
-phase_3_validation
-```
-
-Default matrix eligibility:
-
-```text
-conditional
-```
-
----
-
-# 43. Las Vegas Research-Only Targets
-
-```text
-Airport Area
-Allegiant Stadium Area
-Blue Diamond Road
-Exploration Peak Park
-Harry Reid International Airport Area
-Hoover Dam Area
-Lake Mead
-Las Vegas Convention Center
-Las Vegas Motor Speedway
-Las Vegas Wash
-Nellis Air Force Base
-Nellis
-Rae Road
-Railroad Pass
-South Point
-Town Square
-UNLV
-Windmill
-```
-
-These are not default residential landing-page targets.
-
-Some may have future commercial or contextual value.
-
----
-
-# 44. Las Vegas Manual Review Queue
-
-```text
-Virginia Street
-```
-
-Status:
-
-```text
-manual_review
-```
-
-Do not publish without verifying the intended geographic entity.
-
----
-
-# 45. Submarket Cluster Rule
-
-Some registry records function primarily as organizational concepts.
+Use stable machine-friendly IDs.
 
 Examples:
 
 ```text
-North County
-South Bay
-East County
-West County
-North County — St. Louis
-Las Vegas Valley
+st-louis-mo
+san-diego-ca
+las-vegas-nv
+henderson-nv
+north-las-vegas-nv
 ```
 
-These may support:
+Avoid inconsistent variants such as:
 
-* navigation
-* research grouping
-* internal linking
-* analytics
-* future hubs
+```text
+vegas
+las_vegas
+lasvegas
+lv
+```
 
-Their presence in the registry does not necessarily mean they should become standalone SEO landing pages.
+for the same canonical entity.
+
+Aliases may preserve natural variants while one canonical ID remains stable.
 
 ---
 
-# 46. Commercial District Rule
+# 13. Canonical Name vs. Search Language
 
-Commercial and mixed-use districts may have different matrix eligibility than residential locations.
-
-Example:
+The registry may distinguish:
 
 ```text
-Mission Valley
-```
-
-may be:
-
-```text
-service matrix = selective
-commercial matrix = full
-```
-
-This is intentional.
-
-A commercial district does not need broad residential service-location expansion to be strategically valuable.
-
----
-
-# 47. Landmark and Corridor Rule
-
-Locations such as:
-
-* airports
-* stadium districts
-* parks
-* convention areas
-* roads
-* corridors
-* resort landmarks
-
-must not automatically become generic local-service pages.
-
-Potential valid uses include:
-
-* commercial targeting
-* internal research
-* local context
-* future campaign pages
-
-They require explicit strategic evaluation.
-
----
-
-# 48. Neighborhood Publishing Rule
-
-Neighborhood-level pages require a higher publication threshold than city-level pages.
-
-Before approving a neighborhood page, evaluate:
-
-1. actual search demand
-2. geographic distinctness
-3. customer demand
-4. serviceability
-5. content differentiation
-6. internal-link value
-7. conversion opportunity
-8. overlap with parent city page
-
-Do not publish hundreds of neighborhood variations simply because the registry contains them.
-
----
-
-# 49. County and Submarket Page Rule
-
-County and broad submarket entities should be reviewed for intent overlap.
-
-For example:
-
-```text
-/st-louis-mo/
-```
-
-```text
-/st-louis-mo/st-louis-county/
-```
-
-```text
-/st-louis-mo/west-county/
-```
-
-may serve different intents, but those differences must be meaningful before all receive standalone indexable pages.
-
----
-
-# 50. Market Hub vs Same-Named City
-
-The registry intentionally distinguishes:
-
-```text
-/san-diego-ca/
+Canonical Geographic Name
 ```
 
 from:
 
 ```text
-/san-diego-ca/san-diego/
+Common Search Language
 ```
 
-and:
+Example:
+
+Canonical:
 
 ```text
-/las-vegas-nv/
+Las Vegas, Nevada
 ```
 
-from:
+Possible natural content/search usage:
 
-```text
-/las-vegas-nv/las-vegas/
-```
+* Las Vegas
+* Las Vegas, NV
+* Las Vegas Valley
 
-The first represents the broader operating market.
+These are not necessarily the same geographic entity.
 
-The second represents the specific city search entity.
-
-These should remain separate only while their intent and content remain meaningfully distinct.
+Use precise language when geography matters.
 
 ---
 
-# 51. Location Priority Tags
+# 14. Aliases
 
-Useful priority tags may include:
+Aliases may be stored where useful.
 
-```text
-launch_priority
-residential
-real_estate
-property_management
-commercial
-hospitality
-restaurants
-extended_service_area
+Example:
+
+```ts
+{
+  id: "st-louis-mo",
+  name: "St. Louis",
+  aliases: [
+    "Saint Louis",
+    "St Louis"
+  ]
+}
 ```
 
-These tags describe strategic relevance.
+Aliases may support:
 
-They do not authorize pages.
+* search research
+* internal search
+* normalization
+* migration
+* content parsing
+
+Do not create duplicate geographic records for spelling variations.
 
 ---
 
-# 52. Audience Matrix Logic
+# 15. Parent / Child Relationships
 
-Locations tagged for:
-
-```text
-residential
-real_estate
-```
-
-may be stronger candidates for:
-
-* home buyers
-* home sellers
-* real estate agents
-* home inspectors
-
-Locations tagged:
-
-```text
-property_management
-commercial
-```
-
-may be stronger candidates for:
-
-* property managers
-* HOAs
-* commercial owners
-* facility managers
-
-The audience matrix will formalize these relationships separately.
-
----
-
-# 53. Commercial Matrix Logic
-
-Commercial page opportunities should prioritize geographies with:
-
-* business density
-* restaurant concentration
-* multifamily
-* office properties
-* retail
-* hospitality
-* industrial
-* property-management activity
-
-A large residential location does not automatically justify a full commercial matrix.
-
----
-
-# 54. Service Matrix Logic
-
-A location marked:
-
-```text
-full
-```
-
-means it is eligible to participate broadly in service-opportunity analysis once service availability is confirmed.
-
-It does **not** mean:
-
-```text
-Build every service page here.
-```
-
-A `full` location may still receive only one or two approved service pages initially.
-
----
-
-# 55. Matrix Relationship Example
+Geography should be relational.
 
 Example:
 
 ```text
-Carlsbad
-location matrix = full
-```
-
-and:
-
-```text
-Sewer Camera Inspection
-service matrix = full
-```
-
-may produce a valid opportunity:
-
-```text
-/san-diego-ca/carlsbad/sewer-camera-inspection/
-```
-
-But publication still requires:
-
-```text
-04-master-page-build-list.md
-```
-
-approval.
-
----
-
-# 56. Extended Service Area Rule
-
-Records with:
-
-```text
-phase_3_validation
-```
-
-must remain excluded from production matrix generation until dispatch/service-area coverage is confirmed.
-
-Do not rely on geographic proximity alone.
-
-A location being near the market does not prove that the business serves it.
-
----
-
-# 57. Research Preservation Principle
-
-Questionable or lower-priority locations should not necessarily be deleted.
-
-Retaining them as:
-
-```text
-research_only
+Las Vegas Market
+    ↓
+Henderson
 ```
 
 or:
 
 ```text
-manual_review
+St. Louis Market
+    ↓
+Kirkwood
 ```
 
-preserves research without polluting production architecture.
+where appropriate.
 
-This allows later reevaluation without repeating discovery work.
+The exact relationship should reflect actual project geographic structure.
 
----
+Parent/child relationships can support:
 
-# 58. Geographic Deletion Rule
-
-Do not remove a canonical location record solely because it is not currently approved for a page.
-
-Remove or merge a geographic record only when:
-
-* it is a duplicate
-* it is demonstrably incorrect
-* it is an alias of another canonical entity
-* the research itself is invalid
-
-Publishing status and registry membership are separate decisions.
+* breadcrumbs
+* local navigation
+* related locations
+* page generation
+* analytics
+* schema
+* content hierarchy
 
 ---
 
-# 59. Canonical Location IDs
+# 16. Market ID
 
-Machine-readable records should use stable internal IDs.
-
-Recommended conceptual format:
-
-```text
-loc-stl-chesterfield
-loc-sd-carlsbad
-loc-lv-henderson
-```
-
-IDs should remain stable even if a display name or slug later changes.
-
----
-
-# 60. Geographic Alias Handling
-
-Aliases should resolve to one canonical entity.
+Every local record should generally identify its primary market where applicable.
 
 Example:
-
-```text
-river-view
-→
-Riverview
-→
-/st-louis-mo/riverview/
-```
-
-Do not maintain two canonical URLs for aliases.
-
----
-
-# 61. Geographic Collision Validation
-
-The data layer should detect:
-
-* duplicate canonical URLs
-* duplicate IDs
-* duplicate slugs within the same parent path
-* incompatible parent-market assignments
-* canonical/alias collisions
-* market-specific service-route collisions
-
-Invalid geography should fail validation.
-
----
-
-# 62. Cross-Market Name Duplication
-
-The same visible location name may exist in different markets.
-
-Example:
-
-```text
-Spring Valley
-```
-
-may exist in more than one geographic market.
-
-This is acceptable because canonical identity includes:
-
-* stable ID
-* market relationship
-* canonical path
-
-Do not treat visible name alone as a globally unique key.
-
----
-
-# 63. Geographic Routing Source
-
-Page components should consume:
-
-```text
-location.canonicalUrl
-```
-
-or equivalent approved page path.
-
-Do not independently create URLs from:
 
 ```ts
-location.name.toLowerCase()
-```
-
-because registry normalization may differ from generic slugification.
-
----
-
-# 64. Geographic Metadata
-
-Location records may eventually support verified metadata such as:
-
-* county
-* city
-* state
-* postal context
-* latitude/longitude
-* parent municipality
-* service cluster
-* property characteristics
-* market-specific research
-
-These fields should only be added when useful.
-
-Do not overload the registry with data that belongs to page content research.
-
----
-
-# 65. Local Content Differentiation
-
-A location becoming an approved page does not mean the location record alone provides enough content.
-
-Location content may require research into:
-
-* housing stock
-* sewer infrastructure
-* common property types
-* tree/root conditions
-* commercial districts
-* real estate activity
-* municipal sewer responsibility
-* local lateral programs
-* geography-specific customer concerns
-
-Do not fabricate these facts from the location name.
-
----
-
-# 66. Municipal Program Relationships
-
-St. Louis municipal sewer lateral content requires separate program validation.
-
-A location existing in this registry does not imply:
-
-* The Sewer Pros is approved by that municipality
-* a sewer lateral program exists there
-* a report is required
-* the company can submit reports there
-
-Those facts must be verified independently.
-
----
-
-# 67. Current Launch Geography Summary
-
-## St. Louis
-
-Approved launch location pages:
-
-```text
-St. Louis City
-Chesterfield
-Ballwin
-Florissant
-St. Charles
-```
-
-## San Diego
-
-Approved launch location pages:
-
-```text
-San Diego
-San Marcos
-Carlsbad
-Escondido
-Oceanside
-Chula Vista
-Mission Valley (commercial/mixed-use district)
-```
-
-## Las Vegas
-
-Initial build / validation pages:
-
-```text
-Las Vegas
-Henderson
-North Las Vegas
-Summerlin
-```
-
-Las Vegas pages remain behind the operational activation gate.
-
----
-
-# 68. Registry vs Launch Count
-
-The geographic research universe contains:
-
-```text
-579 locations
-```
-
-The initial page build uses only:
-
-```text
-16 location pages
-```
-
-This difference is intentional.
-
-The remaining records create a long-term local SEO roadmap rather than unfinished launch work.
-
----
-
-# 69. Expansion Prioritization
-
-Post-launch geographic expansion should consider:
-
-1. Google Search Console impressions
-2. existing rankings
-3. leads by city
-4. calls by geography
-5. customer address/service data
-6. real estate referrals
-7. commercial opportunities
-8. GBP performance
-9. competitor gaps
-10. service profitability
-11. operational coverage
-12. ability to create differentiated content
-
-Do not expand simply by proceeding alphabetically through the registry.
-
----
-
-# 70. Market-Specific Expansion Order
-
-## St. Louis
-
-Generally prioritize:
-
-```text
-Remaining Tier 1 municipalities
-↓
-High-value county/submarket opportunities
-↓
-Commercial districts
-↓
-Selected St. Louis City neighborhoods
-↓
-Phase 2 municipalities
-↓
-Validated extended territory
-```
-
-## San Diego
-
-Generally prioritize:
-
-```text
-Remaining Tier 1 cities
-↓
-North County
-↓
-Major City of San Diego communities
-↓
-South Bay / East County
-↓
-Commercial districts
-↓
-Selected neighborhoods
-↓
-Validated extended territory
-```
-
-## Las Vegas
-
-After operational validation:
-
-```text
-Core cities
-↓
-Major communities
-↓
-Commercial / resort districts
-↓
-Master-planned communities
-↓
-Commercial corridors
-↓
-Validated outer territory
-```
-
----
-
-# 71. Machine-Readable Registry Is Not Route Authorization
-
-Even when the JSON contains:
-
-```json
 {
-  "index_status": "launch_candidate",
-  "service_matrix": "full"
+  id: "henderson-nv",
+  marketId: "las-vegas-nv"
 }
 ```
 
-the application must not interpret that as:
+This allows the system to understand:
 
 ```text
-Generate the route.
+Henderson
+→ Las Vegas Market Ecosystem
 ```
 
-The production chain remains:
-
-```text
-Location Registry
-↓
-Matrix
-↓
-Master Page Build List
-↓
-Approved Page Registry
-↓
-Route
-```
+without implying Henderson is simply a neighborhood of Las Vegas.
 
 ---
 
-# 72. `generateStaticParams()` Guardrail
+# 17. Market Ecosystem vs. Legal Geography
 
-Never do:
-
-```ts
-return locations.map((location) => ({
-  market: location.market,
-  location: location.slug,
-}))
-```
-
-against the complete 579-record registry.
-
-Correct concept:
-
-```ts
-return approvedLocationPages.map((page) => ({
-  market: page.marketSlug,
-  segments: page.routeSegments,
-}))
-```
-
-The approved page inventory controls route generation.
-
----
-
-# 73. Research-Only Routes Must 404
-
-A research record may possess a conceptual canonical path in the registry for normalization purposes.
-
-That does **not** mean the route should resolve publicly.
+The website architecture may group locations into a marketing/service market even when the entities are legally independent.
 
 Example:
 
 ```text
-/las-vegas-nv/allegiant-stadium-area/
+Las Vegas Market
 ```
 
-may exist as a research entity.
+may function as the parent market of the site for:
 
-If it has not been approved in:
+* Las Vegas
+* Henderson
+* North Las Vegas
+* nearby valley communities
 
-`04-master-page-build-list.md`
+That is a website/service architecture relationship.
 
-the production website should return:
+It should not misstate legal geography.
+
+---
+
+# 18. Registry Is Not a Page Gate
+
+A location may exist in the registry without having a dedicated public page.
+
+Likewise, Claude may create a candidate location page before its page status has been manually documented.
+
+The registry answers:
+
+> **What is this place?**
+
+`04-master-page-build-list.md` answers:
+
+> **What is the lifecycle of the related page?**
+
+These responsibilities should remain separate.
+
+---
+
+# 19. Location Status
+
+Recommended statuses:
+
+## `active`
+
+Verified geographic record used within the current project.
+
+## `candidate`
+
+Legitimate geographic entity being evaluated for service-area or SEO relevance.
+
+## `inactive`
+
+Valid geographic record currently not being used.
+
+## `retired`
+
+A geographic record previously used by the project but no longer relevant.
+
+A retired geographic entity may still exist in real life.
+
+The status refers to project usage.
+
+---
+
+# 20. Service-Area Status
+
+Geographic existence does not automatically prove service coverage.
+
+A separate field may indicate:
 
 ```text
-404
+confirmed
+candidate
+excluded
+unknown
 ```
 
-rather than generating generic local content.
+Example:
+
+```ts
+serviceAreaStatus: "confirmed"
+```
+
+means the business is known to serve the geographic area generally.
+
+Detailed service availability may still vary by service and should be modeled through:
+
+`08-service-location-matrix.md`
 
 ---
 
-# 74. Geographic Indexation Rule
+# 21. Service Coverage Is Service-Specific
 
-A location can enter the XML sitemap only when:
+Do not assume:
 
 ```text
-Page exists in Master Page Build List
-+
-status permits production
-+
-indexable = true
-+
-content is complete
-+
-operational coverage is verified
+Business serves Henderson
 ```
 
-Registry membership alone is insufficient.
+means:
+
+```text
+Every service is available in Henderson.
+```
+
+The preferred model is:
+
+```text
+Location Registry
++
+Service Registry
++
+Service-Location Matrix
+```
+
+This keeps detailed coverage normalized.
 
 ---
 
-# 75. Location Removal and Redirects
+# 22. New Geographic Discovery
 
-If an indexed location page is later:
+Claude may identify geographic opportunities during:
 
-* merged
-* renamed
-* retired
-* consolidated
+* keyword research
+* competitor analysis
+* map research
+* Search Console analysis
+* local SEO research
+* customer/service-area research
+* municipal research
 
-the migration process must evaluate:
+When a valid geographic entity is discovered:
 
-* traffic
-* backlinks
-* conversions
-* destination relevance
+```text
+Verify Entity
+→ Add Candidate Record
+→ Assign Parent Market
+→ Evaluate Relationships
+→ Continue
+```
 
-before creating the appropriate redirect.
-
-Do not silently change location slugs.
-
----
-
-# 76. Future Market Addition
-
-Adding a future market requires:
-
-1. approved market decision
-2. market ID
-3. market canonical URL
-4. business/operational validation
-5. location research
-6. normalized geographic registry
-7. matrix generation
-8. page prioritization
-9. Master Page Build List approval
-
-The current three-market architecture should not need to be redesigned.
+Human approval is not normally required simply to add factual geographic data.
 
 ---
 
-# 77. Source Provenance
+# 23. Verification Standard
 
-The normalized registry was built from project-specific geography research for:
+Geographic records should be verified when necessary using reliable sources.
+
+Useful sources may include:
+
+* municipal websites
+* county websites
+* Census/geographic references
+* mapping platforms
+* official neighborhood/community sources
+* other reliable geographic data
+
+Do not invent neighborhood names or boundaries for SEO.
+
+---
+
+# 24. Adding New Candidate Locations
+
+A new location can be added as:
+
+```text
+status: candidate
+```
+
+when:
+
+* the geographic entity is legitimate
+* it is plausibly relevant to an existing market
+* additional business/search evaluation is warranted
+
+Candidate status does not automatically mean:
+
+* the area is served
+* a page should be indexed
+* the business has physical presence there
+
+---
+
+# 25. Confirmed Service Areas
+
+Once service coverage is verified, the location may be marked:
+
+```text
+serviceAreaStatus: confirmed
+```
+
+This may support:
+
+* service-area language
+* geographic page generation
+* related-location modules
+* forms
+* local content
+
+It still does not create a physical branch.
+
+---
+
+# 26. Excluded Locations
+
+Use:
+
+```text
+serviceAreaStatus: excluded
+```
+
+when the business does not serve the location.
+
+Excluded records may remain in the dataset for:
+
+* geographic completeness
+* competitor research
+* query normalization
+* future planning
+
+They should not generate public service claims.
+
+---
+
+# 27. Unknown Coverage
+
+Use:
+
+```text
+serviceAreaStatus: unknown
+```
+
+where geography is known but service coverage has not been confirmed.
+
+Claude may continue research without prematurely representing the location as served.
+
+---
+
+# 28. Physical Business Location
+
+If a location is a real public branch, that should be represented separately from normal geographic data.
+
+A possible field might be:
+
+```ts
+physicalBusinessLocation: true
+```
+
+but only after verification.
+
+Do not infer this field from:
+
+* market importance
+* location page existence
+* local search targeting
+* phone number area code
+* generated content
+
+---
+
+# 29. Google Business Profile Relationship
+
+GBP status should not be encoded casually from geographic page status.
+
+Conceptually:
+
+```text
+Location Record
++
+Verified Business Presence
++
+GBP Eligibility / Profile
+```
+
+are separate layers.
+
+Current baseline:
 
 ```text
 St. Louis
+→ Existing GBP
+```
+
+```text
 San Diego
+→ No verified GBP
+```
+
+```text
+Las Vegas
+→ No verified GBP
+```
+
+A future GBP can be added when legitimately established.
+
+---
+
+# 30. Address Guardrail
+
+Never invent a public address to strengthen a location page.
+
+If the business does not publicly maintain a location there:
+
+* omit address
+* use service-area language
+* use market/location content
+
+Do not manufacture NAP consistency around nonexistent branches.
+
+---
+
+# 31. Phone Number Guardrail
+
+Do not create fake market-specific phone numbers.
+
+Market pages should use verified contact data.
+
+If the project later uses legitimate market-specific numbers, update the relevant structured data.
+
+---
+
+# 32. Location Page Generation
+
+Location records may power reusable location templates.
+
+Conceptually:
+
+```text
+Location Record
++
+Market Content
++
+Page Template
+=
+Location Page
+```
+
+Primary reference:
+
+```text
+/docs/design-references/location-page-performance.webp
+```
+
+See:
+
+`18-design-system.md`
+
+---
+
+# 33. Service + Location Page Generation
+
+The registry provides the geographic side of:
+
+```text
+Service
++
+Location
++
+Relationship
+=
+Service + Location Page
+```
+
+Primary design reference:
+
+```text
+/docs/design-references/location-service-page-performance.webp
+```
+
+The service-location matrix determines whether the service/location relationship exists.
+
+---
+
+# 34. Audience + Location Generation
+
+Geographic records may also support audience-focused local pages.
+
+Example:
+
+```text
+Home Buyers
++
+San Diego
+```
+
+when there is meaningful audience/local intent.
+
+These relationships should generally be derived from:
+
+* audience data
+* geographic data
+* page strategy
+
+rather than creating a new geographic entity.
+
+---
+
+# 35. Commercial + Location Generation
+
+Likewise:
+
+```text
+Commercial Sewer Services
++
 Las Vegas
 ```
 
-The machine-readable companion should preserve source provenance for every record wherever available.
+may be built using canonical geographic records.
 
-Research provenance should not be discarded during repository conversion.
+Geographic identity should remain consistent across residential and commercial systems.
 
 ---
 
-# 78. Data Quality Rule
+# 36. Location Page Authority
 
-Before modifying a canonical geographic record, determine whether the proposed change is:
+Primary market pages should generally serve as the strongest broad geographic nodes.
 
-* a correction
-* an alias
-* a slug change
-* a hierarchy change
-* a market reassignment
-* a status change
-* a matrix change
+Conceptually:
 
-Material changes should be recorded in:
+```text
+Las Vegas Market Hub
+    ↓
+Henderson
+    ↓
+Relevant Service + Location Pages
+```
+
+or another hierarchy appropriate to the route strategy.
+
+Do not create dozens of pages competing for identical broad market intent.
+
+---
+
+# 37. Nearby Locations
+
+The registry may store or derive geographic proximity relationships.
+
+Examples may support:
+
+```text
+Nearby Areas We Serve
+```
+
+modules.
+
+Relationships should be geographically sensible.
+
+Do not create arbitrary cross-links between unrelated locations solely for SEO.
+
+---
+
+# 38. Coordinates
+
+Latitude and longitude may be stored for:
+
+* geographic calculations
+* map display
+* proximity sorting
+
+These coordinates describe the geographic entity.
+
+They must not be interpreted as a business office coordinate unless the point actually represents a verified business location.
+
+---
+
+# 39. Map Usage
+
+Map systems may use:
+
+```text
+location coordinates
+```
+
+to represent:
+
+* market
+* community
+* service coverage
+
+A map showing Henderson does not need to imply an office there.
+
+Use labels such as:
+
+> Areas We Serve
+
+when appropriate.
+
+---
+
+# 40. Municipal Research
+
+Some geographic content requires municipality-specific research.
+
+This is especially important for:
+
+* sewer-lateral programs
+* inspection requirements
+* property-owner responsibilities
+* public utility information
+* permits
+* local programs
+
+Do not attach the rules of one municipality to every location in the market.
+
+---
+
+# 41. St. Louis Municipal Guardrail
+
+St. Louis geography requires particular care.
+
+Distinguish when relevant among:
+
+* City of St. Louis
+* St. Louis County
+* individual municipalities
+* surrounding counties
+* metro region
+
+A search user may use "St. Louis" broadly.
+
+Legal/municipal claims may require a much narrower geographic entity.
+
+---
+
+# 42. San Diego Geographic Guardrail
+
+Similarly, distinguish:
+
+```text
+City of San Diego
+```
+
+from:
+
+```text
+San Diego County
+```
+
+and from individual surrounding cities.
+
+Do not attribute City of San Diego policies across the entire county.
+
+---
+
+# 43. Las Vegas Geographic Guardrail
+
+Distinguish:
+
+* City of Las Vegas
+* North Las Vegas
+* Henderson
+* Clark County
+* unincorporated Las Vegas Valley communities
+
+Many search users say "Las Vegas" broadly.
+
+Content should use precise geography when claims depend on jurisdiction.
+
+---
+
+# 44. Local Content Enrichment
+
+Location records may support structured local content fields such as:
+
+```ts
+localContext
+propertyContext
+municipalResources
+nearbyLocationIds
+marketRelationship
+```
+
+when verified and useful.
+
+Do not require every geographic record to have large amounts of custom prose before it can exist in the registry.
+
+---
+
+# 45. Location Data vs. Content Data
+
+Keep geographic facts separate from marketing copy where practical.
+
+Example:
+
+```ts
+{
+  id: "henderson-nv",
+  name: "Henderson",
+  stateCode: "NV",
+  type: "city",
+  marketId: "las-vegas-nv"
+}
+```
+
+should not need to store an entire SEO landing page inside the same record.
+
+Use structured geography to power content systems.
+
+---
+
+# 46. Localized Metadata
+
+Location records may provide variables for metadata generation.
+
+Example:
+
+```text
+Henderson, NV
+```
+
+may populate:
+
+* title
+* H1
+* breadcrumb
+* market label
+
+Metadata generation should still reflect actual page intent.
+
+Do not create indexable pages simply by combining geographic variables with services.
+
+---
+
+# 47. Analytics
+
+Canonical geographic IDs should be reused in analytics.
+
+Example:
+
+```ts
+market_id: "las-vegas-nv"
+location_id: "henderson-nv"
+```
+
+Avoid inconsistent analytics values such as:
+
+```text
+Vegas
+Las Vegas
+LV
+las_vegas
+```
+
+for the same dimension.
+
+---
+
+# 48. Forms
+
+Forms may preserve geographic context.
+
+Example:
+
+A user on a Henderson page may submit:
+
+```text
+location_id = henderson-nv
+market_id = las-vegas-nv
+```
+
+without being forced to select Henderson again.
+
+Do not send sensitive property-address information into analytics.
+
+---
+
+# 49. Schema
+
+Geographic records may power:
+
+* `Place`
+* `areaServed`
+* service-area relationships
+
+A normal location page does not automatically justify `LocalBusiness`.
+
+Structured data should reflect the actual business relationship.
+
+See:
+
+`15-schema-entity-strategy.md`
+
+---
+
+# 50. Place Entities
+
+Where useful, canonical geographic entities may receive stable IDs.
+
+Conceptually:
+
+```text
+https://example.com/#place-las-vegas-nv
+```
+
+or another system defined by the schema architecture.
+
+Use stable identity rather than recreating inconsistent Place nodes throughout the site.
+
+---
+
+# 51. Location Aliases and Redirects
+
+When users or legacy URLs use alternate geographic naming, aliases may support normalization.
+
+Example:
+
+```text
+saint-louis
+→ st-louis
+```
+
+if appropriate to the final route architecture.
+
+Do not automatically create separate pages for every alternate spelling.
+
+---
+
+# 52. Duplicate Geographic Records
+
+Avoid duplicates caused by:
+
+* abbreviations
+* spelling
+* state suffix variation
+* neighborhood aliases
+
+Example:
+
+```text
+North Las Vegas
+North Las Vegas, NV
+NLV
+```
+
+should generally normalize to one geographic record.
+
+---
+
+# 53. Neighborhood Records
+
+Neighborhoods may be useful for:
+
+* geographic knowledge
+* internal filtering
+* future SEO
+* service-area displays
+
+Not every neighborhood requires a dedicated indexable page.
+
+The registry may contain much more geography than the public index.
+
+This is intentional.
+
+---
+
+# 54. Geographic Data Scale vs. Page Scale
+
+Always preserve:
+
+```text
+579 Geographic Records
+≠
+579 Mandatory Location Pages
+```
+
+and:
+
+```text
+579 Locations × 18 Services
+≠
+Automatic Indexation of Every Combination
+```
+
+The data model should be broader than the public search index.
+
+---
+
+# 55. Candidate Route Generation
+
+Claude Code may use geographic records to generate candidate routes.
+
+For example:
+
+```text
+location record
++
+service relationship
++
+route strategy
+=
+candidate local route
+```
+
+Candidate generation does not require human approval for every location.
+
+Intentional indexation remains a separate decision.
+
+---
+
+# 56. Indexation Quality
+
+Before intentionally indexing a local page, evaluate:
+
+* actual service coverage
+* useful local intent
+* sufficient differentiation
+* relevant content
+* logical internal links
+* technical quality
+* accurate local representation
+
+A location may remain:
+
+* candidate
+* draft
+* noindex
+
+until it meets that standard.
+
+---
+
+# 57. Location Test
+
+For indexable pages, ask:
+
+> If the location name changed, would almost all the content still work?
+
+If yes:
+
+* improve local relevance
+* add useful geographic context
+* improve page differentiation
+* or keep it noindex
+
+This test should not prevent initial page generation.
+
+---
+
+# 58. Local Proof
+
+Do not fabricate proof for geographic differentiation.
+
+Never invent:
+
+* number of customers served locally
+* years serving a city
+* local case studies
+* local testimonials
+* local technicians
+* local offices
+
+Use verified evidence where available.
+
+---
+
+# 59. Market Imagery
+
+Location records may help select relevant imagery.
+
+Follow:
+
+`18-design-system.md`
+
+General guidance:
+
+## St. Louis
+
+Use property/service context rather than relying on the Arch.
+
+## San Diego
+
+Use residential, multifamily, real-estate, and commercial environments rather than generic beach imagery.
+
+## Las Vegas
+
+Use Las Vegas Valley residential and commercial environments rather than casino/Strip imagery.
+
+---
+
+# 60. Internal Linking
+
+Geographic hierarchy may power:
+
+* related areas
+* parent market links
+* nearby communities
+* location breadcrumbs
+
+Example:
+
+```text
+Henderson
+→ Las Vegas Market
+→ Nearby Relevant Areas
+```
+
+Links should remain useful and geographically sensible.
+
+---
+
+# 61. Footer and Navigation
+
+The geographic registry should not automatically dump all 579 locations into:
+
+* footer
+* header
+* mega-menu
+* HTML sitemap
+
+The location hub should provide a curated user-facing hierarchy.
+
+Large geographic datasets should remain manageable behind the interface.
+
+---
+
+# 62. Location Hub
+
+The Locations hub may organize geography by primary market.
+
+Example:
+
+```text
+St. Louis
+├── Selected Locations
+└── View Service Area
+
+San Diego
+├── Selected Locations
+└── View Service Area
+
+Las Vegas
+├── Selected Locations
+└── View Service Area
+```
+
+The exact presentation should reflect live useful pages, not every database record.
+
+---
+
+# 63. New Primary Market
+
+A new primary market represents a material strategic change.
+
+Process:
+
+```text
+Business Confirms Market
+→ Decision Log
+→ Add Primary Market Record
+→ Add Relationships
+→ Build Market Architecture
+```
+
+Routine community additions inside an existing market do not require this process.
+
+---
+
+# 64. New Physical Branch
+
+A new verified physical branch represents a material local-entity change.
+
+Process:
+
+```text
+Verify Branch
+→ Confirm Business Details
+→ Decision Log
+→ Update Location Data
+→ Update Schema
+→ Update Local SEO / GBP
+→ Update Website
+```
+
+Do not infer branch status from ordinary geographic expansion.
+
+---
+
+# 65. Routine Location Addition
+
+For a normal verified service-area location:
+
+```text
+Verify Geography
+→ Add Record
+→ Assign Market
+→ Add Relevant Service Relationships
+→ Generate Candidate Pages if Useful
+→ Continue
+```
+
+No strategic decision-log entry is normally required.
+
+---
+
+# 66. Registry Maintenance
+
+Routine maintenance may include:
+
+* fixing names
+* correcting geographic type
+* adding aliases
+* updating parent relationships
+* adding coordinates
+* adding verified locations
+* changing candidate status
+* adjusting service-area status
+
+These changes generally do not require material project approval.
+
+---
+
+# 67. Decision Log Relationship
+
+Use:
 
 `22-decisions-change-log.md`
 
----
+when location changes represent a material business decision.
 
-# 79. Critical Location Registry Rules
+Examples:
 
-### Rule 1
+```text
+The Sewer Pros enters Phoenix as a new primary market.
+```
 
-The registry contains 579 normalized geographic records.
+```text
+The Sewer Pros establishes a verified Las Vegas physical branch.
+```
 
-### Rule 2
-
-St. Louis contains 218 records.
-
-### Rule 3
-
-San Diego contains 222 records.
-
-### Rule 4
-
-Las Vegas contains 139 records.
-
-### Rule 5
-
-Registry membership does not authorize a page.
-
-### Rule 6
-
-Tier 1 status does not independently authorize launch.
-
-### Rule 7
-
-The Master Page Build List controls publication.
-
-### Rule 8
-
-Service, audience, and commercial matrix eligibility are independent fields.
-
-### Rule 9
-
-Research-only locations must not automatically generate routes.
-
-### Rule 10
-
-Manual-review locations require verification.
-
-### Rule 11
-
-Phase 3 areas require operational coverage validation.
-
-### Rule 12
-
-Neighborhood pages require stronger differentiation than primary-city pages.
-
-### Rule 13
-
-Commercial districts may favor commercial matrices over residential matrices.
-
-### Rule 14
-
-Landmarks and road corridors are not default residential location hubs.
-
-### Rule 15
-
-Aliases resolve to canonical locations rather than creating duplicate pages.
-
-### Rule 16
-
-Physical business locations and service areas must remain conceptually separate.
-
-### Rule 17
-
-Do not fabricate GBPs or offices from local landing pages.
-
-### Rule 18
-
-Las Vegas remains behind operational service validation.
-
-### Rule 19
-
-Canonical location paths must remain stable once indexed.
-
-### Rule 20
-
-The complete registry must never directly power `generateStaticParams()`.
+Do not use the decision log for every new community record.
 
 ---
 
-# 80. Final Geographic Principle
+# 68. Master Page Build List Relationship
 
-The Sewer Pros geographic architecture should scale through **structured local relevance**, not mass page generation.
+The location registry answers:
 
-The project contains:
+> **What geographic entities exist in our project data?**
 
-```text
-579 normalized geographic opportunities
-```
+`04-master-page-build-list.md` answers:
 
-but only a strategically approved subset should ever become indexed URLs.
+> **What is the lifecycle/indexation state of their pages?**
 
-The governing model is:
+These are separate systems.
 
-```text
-Real Operating Market
-↓
-Canonical Geography
-↓
-Service / Audience / Commercial Relevance
-↓
-Search + Conversion Opportunity
-↓
-Strategic Approval
-↓
-Unique Local Content
-↓
-Published Page
-```
+---
 
-not:
+# 69. Service-Location Matrix Relationship
+
+The registry provides the geographic side of:
 
 ```text
-Location Name
-↓
-Insert City Into Template
-↓
-Publish
+Service
+×
+Location
 ```
 
-The geographic registry exists to provide The Sewer Pros with a deep, reusable local-search opportunity model while protecting the site from:
+relationships.
 
-* thin location pages
-* doorway-page patterns
-* index bloat
-* geographic duplication
-* invented local presence
-* unsupported service-area claims
+Detailed service availability belongs in:
 
-**The registry models the geographic universe.
-The Master Page Build List decides what becomes a website page.**
+`08-service-location-matrix.md`
+
+Do not duplicate thousands of service relationships directly into every location record.
+
+---
+
+# 70. Audience Matrix Relationship
+
+Audience + location relationships may be derived from:
+
+```text
+Audience Data
++
+Location Data
+```
+
+where appropriate.
+
+Avoid creating unnecessary three-way duplicate data unless operationally useful.
+
+---
+
+# 71. URL Strategy Relationship
+
+The location registry supplies canonical geographic identity.
+
+Exact URL construction belongs in:
+
+`05-url-routing-strategy.md`
+
+Do not change geographic names casually merely to manipulate slugs.
+
+---
+
+# 72. Design Relationship
+
+Use:
+
+```text
+/docs/design-references/location-page-performance.webp
+```
+
+for primary market/location pages.
+
+Use:
+
+```text
+/docs/design-references/location-service-page-performance.webp
+```
+
+for service + location pages.
+
+See:
+
+`18-design-system.md`
+
+---
+
+# 73. Build-Time Validation
+
+Where practical, validate:
+
+* duplicate location IDs
+* missing names
+* invalid parent IDs
+* invalid market IDs
+* circular geographic relationships
+* duplicate aliases
+* malformed coordinates
+* excluded service areas being publicly represented
+* physical branch fields without verified data
+
+Validation should protect geographic integrity without blocking unrelated development.
+
+---
+
+# 74. Location Registry as Code
+
+The operational geographic dataset may live in structured data such as:
+
+```text
+/data/locations.ts
+```
+
+or:
+
+```text
+/content/locations.ts
+```
+
+or another architecture defined by the technical system.
+
+Avoid maintaining multiple conflicting location datasets.
+
+This document should define rules.
+
+Structured data should hold the current geographic records.
+
+---
+
+# 75. Single Geographic Source of Truth
+
+Avoid:
+
+```text
+locations.ts
+says Henderson is a city
+
+page content
+calls Henderson a neighborhood
+
+analytics
+calls it Vegas-Henderson
+
+schema
+uses another identity
+```
+
+Prefer:
+
+```text
+Canonical Location Record
+        ↓
+Page
+Metadata
+Schema
+Analytics
+Forms
+Relationships
+```
+
+---
+
+# 76. Geographic Data Should Enable Scale
+
+The registry should make it easier to manage:
+
+* 579 geographic records
+* thousands of service relationships
+* page generation
+* nearby-area modules
+* analytics
+* service-area expansion
+
+without hard-coding geographic facts repeatedly.
+
+It is infrastructure for scale.
+
+---
+
+# 77. Hard Geographic Guardrails
+
+Remain strict about:
+
+* fake offices
+* fake addresses
+* fake branches
+* fake GBPs
+* false service coverage
+* incorrect municipality-specific claims
+* misleading geographic classification
+
+These are business and factual integrity issues.
+
+---
+
+# 78. Flexible Geographic Work
+
+Claude and Claude Code may independently:
+
+* research new geographic entities
+* add candidate locations
+* correct geography
+* add aliases
+* create local page candidates
+* create nearby-area relationships
+* build location templates
+* generate service + location pages
+* improve local content
+* add verified municipal context
+
+without requesting approval for each routine change.
+
+---
+
+# 79. Registry Success Criteria
+
+The registry is working correctly when it:
+
+* keeps geographic naming consistent
+* distinguishes geography from business presence
+* simplifies page generation
+* supports local SEO
+* supports schema
+* supports analytics
+* supports forms
+* supports service relationships
+* allows easy geographic expansion
+* helps Claude Code move quickly
+
+It is failing when it:
+
+* blocks ordinary local page development
+* confuses service areas with offices
+* requires manual approval for every legitimate geographic record
+* creates duplicate geographic identities
+* becomes disconnected from implementation
+
+---
+
+# 80. Core Geographic Governance Model
+
+Use:
+
+```text
+Real Geographic Entity
+→ Verify and Store
+
+Service Coverage
+→ Model Separately
+
+Physical Branch
+→ Strict Verification
+
+Candidate Local Page
+→ Flexible
+
+Local Page Generation
+→ Flexible
+
+Intentional Indexation
+→ Quality Controlled
+
+Fake Local Presence
+→ Never
+```
+
+---
+
+# 81. Final Governing Principle
+
+> **The Master Location Registry is the canonical geographic data foundation for The Sewer Pros website. Use it to maintain accurate location IDs, names, geographic types, market relationships, service-area context, page generation, schema, analytics, and internal linking. Do not treat the registry as a pre-build permission gate. Allow Claude and Claude Code to research, add, organize, and use verified geographic records freely while keeping the important distinctions between geographic existence, service coverage, and physical business presence strict.**

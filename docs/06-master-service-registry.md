@@ -1,13 +1,10 @@
 # The Sewer Pros — Master Service Registry
 
-**Document:** `06-master-service-registry.md`
-**Project:** The Sewer Pros Website Rebuild
-**Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Canonical Service Authority
-**Document Role:** Canonical service taxonomy and service relationship source of truth
-**Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
-**Canonical Service Records:** 18
-**Service Hubs:** 2
+**Document:** `06-master-service-registry.md`  
+**Project:** The Sewer Pros Website Rebuild  
+**Repository:** `the-sewer-pros-site`  
+**Status:** Active Canonical Service Taxonomy  
+**Last Updated:** September 3, 2026
 
 ---
 
@@ -15,2171 +12,1769 @@
 
 This document defines the canonical service taxonomy for The Sewer Pros website.
 
-It establishes:
+It establishes consistent service identities for use across:
 
-* official service names
-* stable service IDs
-* canonical service slugs
-* canonical service URLs
-* service families
-* service types
-* service aliases
-* service intent
-* customer audiences
-* market availability
-* commercial applicability
-* matrix eligibility
-* page-build eligibility
-* service relationships
-* exclusions
-* service boundaries
+- website content
+- page generation
+- routing
+- navigation
+- service + location relationships
+- audience relationships
+- commercial relationships
+- internal linking
+- metadata
+- schema
+- analytics
+- forms
+- content clusters
+- future SEO expansion
 
-This registry should be treated as the authoritative answer to:
+The registry exists to create **consistency and reusable structured data**.
 
-> **What services does The Sewer Pros offer, how are those services represented, and where may they participate in the website architecture?**
+It is not intended to function as a permission gate that prevents Claude or Claude Code from:
 
----
+- researching service topics
+- drafting pages
+- creating supporting content
+- using natural-language service variations
+- building related resources
+- adding service relationships
+- improving existing pages
+- creating candidate page inventory
 
-# 2. Critical Service Governance Rule
-
-A keyword discovered through SEO research does not automatically become a service.
-
-A customer problem does not automatically become a service.
-
-A competitor service does not automatically become a Sewer Pros service.
-
-A service may enter the website architecture only when it is supported by:
-
-* confirmed business operations
-* existing service behavior
-* approved business positioning
-* explicit project approval
-
-The governing model is:
+The key distinction is:
 
 ```text
-Business Capability
-↓
-Canonical Service Registry
-↓
-Service Relationships
-↓
-Master Page Build List
-↓
-Approved Page
+Canonical Service Taxonomy
+=
+Consistent Business Data
+
+Not
+=
+Approval Required for Every Mention or Page
 ```
 
 ---
 
-# 3. Registry Summary
+# 2. Core Operating Principle
 
-The current normalized registry contains:
+Use the service registry to answer:
 
-| Category                            |  Count |
-| ----------------------------------- | -----: |
-| Core established services           |      6 |
-| Derived / high-intent services      |      4 |
-| St. Louis-specific services         |      1 |
-| Commercial services                 |      7 |
-| **Total canonical service records** | **18** |
-| Service hubs                        |      2 |
+> **What service concept does this content, route, relationship, or conversion belong to?**
 
-The service hubs are architectural entities and are not counted among the 18 canonical service records.
+Do not use it to ask:
 
----
+> **Am I allowed to build anything involving this topic?**
 
-# 4. Service Hubs
+Claude and Claude Code should use canonical service IDs and names wherever structured consistency matters.
 
-## 4.1 General Services Hub
-
-**ID:** `hub-services`
-**Name:** Services
-**Canonical URL:** `/services/`
-
-Purpose:
-
-* organize non-commercial canonical services
-* establish the general service taxonomy
-* provide a primary navigation path
-* reinforce specialization
-* link users into relevant service categories
+Natural-language content may use appropriate synonyms and customer terminology without creating a new canonical service record.
 
 ---
 
-## 4.2 Commercial Services Hub
+# 3. Service Registry Role
 
-**ID:** `hub-commercial`
-**Name:** Commercial Sewer & Drain Services
-**Canonical URL:** `/commercial/`
+The registry should support five major functions.
 
-Purpose:
+## 3.1 Canonical Naming
 
-* create a dedicated commercial acquisition pathway
-* organize commercial service offerings
-* separate commercial intent from residential content
-* support property managers, facility managers, restaurants, multifamily properties, and commercial property owners
+Provide one consistent internal identity for each major service.
 
-Commercial services should not be buried exclusively as subsections of residential pages.
+## 3.2 Relationship Modeling
 
----
+Connect services to:
 
-# 5. Service Record Types
+* locations
+* audiences
+* commercial segments
+* resources
+* related services
+* conversion forms
+* analytics
 
-Canonical services use one of the following record types.
+## 3.3 Page Generation
 
-| Record Type               | Meaning                                                                          |
-| ------------------------- | -------------------------------------------------------------------------------- |
-| `core_service`            | Established primary business capability                                          |
-| `derived_service`         | Existing capability/use case promoted to a distinct search and conversion entity |
-| `market_specific_service` | Confirmed service applicable only to a specific market                           |
-| `commercial_service`      | Commercial packaging of an approved capability                                   |
+Provide structured data for:
 
----
+* service pages
+* service + location pages
+* audience + service pages
+* commercial service pages
 
-# 6. Service Families
+## 3.4 Entity Consistency
 
-The current registry uses the following conceptual service families.
+Keep service naming consistent across:
 
-| Family                   | Purpose                                                                            |
-| ------------------------ | ---------------------------------------------------------------------------------- |
-| `inspection_diagnostics` | Inspection, documentation, diagnosis, and condition evaluation                     |
-| `cleaning`               | Removal of blockages, roots, buildup, grease, sludge, or other applicable material |
-| `locating`               | Locating sewer line direction, position, or approximate depth                      |
-| `maintenance`            | Recurring or preventative sewer/drain maintenance                                  |
-
-These families support:
-
-* navigation
-* related-service logic
-* content architecture
+* visible content
+* metadata
 * schema
-* internal linking
-* audience relationships
-* future reporting
+* internal links
+* structured data
+
+## 3.5 Search and Content Expansion
+
+Provide the parent service concepts under which:
+
+* questions
+* problems
+* comparisons
+* aliases
+* informational topics
+
+can be organized.
 
 ---
 
-# 7. Market Status Model
+# 4. Registry Is Not a Page-Build Gate
 
-Individual services may have different operational confidence by market.
-
-Recommended status values include:
-
-| Status                              | Meaning                                                                                 |
-| ----------------------------------- | --------------------------------------------------------------------------------------- |
-| `confirmed`                         | Existing service is confirmed in the market                                             |
-| `supported`                         | Existing business behavior/content supports the offering                                |
-| `capability_validate_packaging`     | Underlying capability exists, but standalone commercial packaging requires confirmation |
-| `requires_operational_confirmation` | Do not publish customer-facing market claims until availability is confirmed            |
-| `not_applicable`                    | Service does not apply to this market                                                   |
-
-**Updated by DEC-076 (2026-08-17).** The business owner confirmed all three markets deliver the full canonical service set. Two prior holds are released:
-
-* `requires_operational_confirmation` — no longer applies to any service in any market
-* `capability_validate_packaging` — the owner's confirmation IS the packaging validation §43 required, so the four commercial services move to `confirmed` in all three markets
-
-| Market | Available | Not applicable |
-| ------ | --------- | -------------- |
-| St. Louis | 18 of 18 | 0 |
-| San Diego | 17 of 18 | 1 |
-| Las Vegas | 17 of 18 | 1 |
-
-⚠ **The 17/18 in San Diego and Las Vegas is not a gap.** The eighteenth service is `svc-stl-sewer-lateral-inspection-reporting`, which documents ST. LOUIS municipal lateral programme reporting. It is `market_specific_service`, its canonical URL is `/st-louis-mo/{service}/`, its matrix eligibility is `selective_st_louis_only`, and §60 Rule 11 states it is St. Louis-specific.
-
-San Diego and Las Vegas have no St. Louis municipal lateral programmes — San Diego has the Carlsbad and CVSan grants, Las Vegas a paid private warranty. Marking it `confirmed` there would claim the business performs St. Louis municipal reporting in California and Nevada, which is not a capability question but a jurisdictional impossibility.
-
-Every service the business actually offers is available in every market. That is what 18/18 means in substance.
-
-⚠ This resolves DEC-063's release criterion 2. It does **not** release the indexation gate — criterion 7 (licensing) remains unconfirmed, so the five Las Vegas pages stay `launch_pending_validation` per PENDING-012.
-
----
-
-# 8. Matrix Eligibility Model
-
-The registry controls whether a service may participate in geographic matrices.
-
-| Value                                               | Meaning                                                                   |
-| --------------------------------------------------- | ------------------------------------------------------------------------- |
-| `full`                                              | May participate broadly in approved location opportunities                |
-| `full_on_residential_real_estate_locations`         | Appropriate mainly for residential / real estate geographies              |
-| `full_on_residential_property_management_locations` | Appropriate where recurring residential/property-management intent exists |
-| `full_on_commercial_eligible_locations`             | May participate in approved commercially relevant locations               |
-| `selective`                                         | Only high-value combinations should be considered                         |
-| `selective_st_louis_only`                           | Selective combinations within St. Louis only                              |
-| `none`                                              | No service-location matrix generation                                     |
-
-Matrix eligibility is **not page authorization**.
-
----
-
-# 9. Service Registry vs Master Page Build List
-
-These documents perform different functions.
-
-```text
-06-master-service-registry.md
-=
-What service entities exist?
-```
-
-```text
-08-service-location-matrix.md
-=
-Where may service opportunity exist?
-```
-
-```text
-04-master-page-build-list.md
-=
-Which actual pages are authorized?
-```
+The existence or absence of a dedicated service record should not unnecessarily stop ordinary content work.
 
 For example:
 
-`Preventative Sewer Maintenance`
-
-may be `selective` from a matrix perspective while still having its global service page explicitly approved for launch.
-
-Those decisions are not contradictory.
-
----
-
-# 10. Canonical URL Patterns
-
-## General Service
-
 ```text
-/services/{service}/
+Canonical Service:
+Sewer Camera Inspection
 ```
 
-## Commercial Service
-
-```text
-/commercial/{service}/
-```
-
-## Service + Location
-
-```text
-/{canonical-location-path}/{service}/
-```
-
-## Commercial Service + Location
-
-```text
-/{canonical-location-path}/commercial/{service}/
-```
-
-## St. Louis-Specific Service
-
-```text
-/st-louis-mo/{service}/
-```
-
-Do not use flat service-location URLs such as:
-
-```text
-/san-diego-ca/sewer-camera-inspection-carlsbad/
-```
-
-Canonical:
-
-```text
-/san-diego-ca/carlsbad/sewer-camera-inspection/
-```
-
----
-
-# 11. Core Service Registry
-
-The six established core services are:
-
-| ID                                     | Service                            | Canonical URL                                 | Family                 | Matrix |
-| -------------------------------------- | ---------------------------------- | --------------------------------------------- | ---------------------- | ------ |
-| `svc-sewer-camera-inspection`          | Sewer Camera Inspection            | `/services/sewer-camera-inspection/`          | inspection_diagnostics | full   |
-| `svc-sewer-cleaning`                   | Sewer Cleaning                     | `/services/sewer-cleaning/`                   | cleaning               | full   |
-| `svc-hydro-jetting`                    | Hydro Jetting                      | `/services/hydro-jetting/`                    | cleaning               | full   |
-| `svc-sewer-cleaning-camera-inspection` | Sewer Cleaning + Camera Inspection | `/services/sewer-cleaning-camera-inspection/` | inspection_diagnostics | full   |
-| `svc-sewer-line-locating`              | Sewer Line Locating                | `/services/sewer-line-locating/`              | locating               | full   |
-| `svc-drain-cleaning`                   | Drain Cleaning                     | `/services/drain-cleaning/`                   | cleaning               | full   |
-
-All six are approved global launch pages.
-
----
-
-# 12. Sewer Camera Inspection
-
-**ID:** `svc-sewer-camera-inspection`
-**Canonical Name:** Sewer Camera Inspection
-**Slug:** `sewer-camera-inspection`
-**Canonical URL:** `/services/sewer-camera-inspection/`
-**Record Type:** `core_service`
-**Family:** `inspection_diagnostics`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full`
-**Commercial Applicability:** Yes
-
-## Primary Intent
-
-* inspect sewer condition
-* identify visible defects or obstructions
-* document sewer condition
-* investigate sewer problems
-* support informed property decisions
-
-## Primary Audiences
-
-* homeowners
-* home buyers
-* home sellers
-* real estate agents
-* home inspectors
-* property managers
-* contractors
-
-## Approved Aliases
+may support content using phrases such as:
 
 * sewer scope
-* sewer scope inspection
-* sewer line camera inspection
+* sewer camera
+* sewer video inspection
+* camera inspection of the sewer line
 * video sewer inspection
-* sewer line inspection
+* pipe camera inspection
 
-Aliases belong to this canonical service unless later intent analysis supports a separate page.
+These terms do not require six separate canonical services.
 
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Strategic Role
-
-This is the flagship diagnostic service and one of the strongest entities for:
-
-* homebuyer acquisition
-* real estate referrals
-* second-opinion positioning
-* sewer-condition education
-* diagnostic search intent
-
----
-
-# 13. Sewer Cleaning
-
-**ID:** `svc-sewer-cleaning`
-**Canonical Name:** Sewer Cleaning
-**Slug:** `sewer-cleaning`
-**Canonical URL:** `/services/sewer-cleaning/`
-**Record Type:** `core_service`
-**Family:** `cleaning`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full`
-**Commercial Applicability:** Yes
-
-## Primary Intent
-
-* clear main sewer lines
-* remove applicable roots and obstructions
-* restore sewer flow
-* address recurring blockages
-
-## Primary Audiences
-
-* homeowners
-* landlords
-* property managers
-* commercial property owners
-
-## Approved Aliases
-
-* rooter service
-* main sewer line cleaning
-* sewer rooter
-* sewer cabling
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Service Boundary
-
-Root intrusion removal generally belongs under sewer cleaning unless future operational/search evidence justifies a separate service entity.
-
----
-
-# 14. Hydro Jetting
-
-**ID:** `svc-hydro-jetting`
-**Canonical Name:** Hydro Jetting
-**Slug:** `hydro-jetting`
-**Canonical URL:** `/services/hydro-jetting/`
-**Record Type:** `core_service`
-**Family:** `cleaning`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full`
-**Commercial Applicability:** Strong
-
-## Primary Intent
-
-* remove heavy buildup
-* remove applicable grease and sludge
-* clean stubborn sewer-line deposits
-* address recurring blockages
-* support preventative maintenance
-
-## Primary Audiences
-
-* homeowners
-* property managers
-* commercial property owners
-* restaurants
-* facility managers
-
-## Approved Aliases
-
-* hydro-jetting
-* sewer jetting
-* water jetting
-* high-pressure sewer cleaning
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Service Boundary
-
-Do not claim hydro jetting is appropriate for every pipe or condition.
-
-Inspection or evaluation may be appropriate before hydro jetting depending on system condition.
-
----
-
-# 15. Sewer Cleaning + Camera Inspection
-
-**ID:** `svc-sewer-cleaning-camera-inspection`
-**Canonical Name:** Sewer Cleaning + Camera Inspection
-**Slug:** `sewer-cleaning-camera-inspection`
-**Canonical URL:** `/services/sewer-cleaning-camera-inspection/`
-**Record Type:** `core_service`
-**Family:** `inspection_diagnostics`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full`
-**Commercial Applicability:** Yes
-
-## Primary Intent
-
-* clean then inspect a sewer line
-* investigate recurring backups
-* distinguish obstruction from visible structural problems
-* reassess a sewer after cleaning
-
-## Primary Audiences
-
-* homeowners
-* home buyers
-* property managers
-* commercial property owners
-
-## Approved Aliases
-
-* sewer cleaning and camera inspection
-* clean and camera
-* sewer cleaning with camera
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Strategic Role
-
-This service strongly supports the independent-inspection positioning because cleaning can improve visibility before reassessing the actual sewer condition.
-
----
-
-# 16. Sewer Line Locating
-
-**ID:** `svc-sewer-line-locating`
-**Canonical Name:** Sewer Line Locating
-**Slug:** `sewer-line-locating`
-**Canonical URL:** `/services/sewer-line-locating/`
-**Record Type:** `core_service`
-**Family:** `locating`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full`
-**Commercial Applicability:** Yes
-
-## Primary Intent
-
-* locate sewer-line direction
-* determine approximate sewer depth
-* identify where an inspection finding is located
-* support property projects
-* provide information for repair/remodeling planning by appropriate contractors
-
-## Primary Audiences
-
-* homeowners
-* contractors
-* remodelers
-* property managers
-* commercial property owners
-
-## Approved Aliases
-
-* line locating
-* sewer locating
-* sewer pipe locating
-* sewer line location
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Claim Guardrail
-
-Do not imply survey-grade accuracy unless specifically confirmed.
-
----
-
-# 17. Drain Cleaning
-
-**ID:** `svc-drain-cleaning`
-**Canonical Name:** Drain Cleaning
-**Slug:** `drain-cleaning`
-**Canonical URL:** `/services/drain-cleaning/`
-**Record Type:** `core_service`
-**Family:** `cleaning`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full`
-**Commercial Applicability:** Yes
-
-## Primary Intent
-
-* clear clogged drains
-* restore drain flow
-* reduce drain overflow risk
-* address applicable recurring drainage problems
-
-## Primary Audiences
-
-* homeowners
-* landlords
-* property managers
-* commercial property owners
-* restaurants
-
-## Approved Aliases
-
-* clogged drain cleaning
-* drain clearing
-* professional drain cleaning
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Service Boundary
-
-Do not automatically create separate services for:
-
-* kitchen drains
-* shower drains
-* bathtub drains
-* floor drains
-* laundry drains
-* every individual fixture
-
-unless service scope and distinct search intent justify separate pages.
-
----
-
-# 18. Derived / High-Intent Service Registry
-
-The four derived services are:
-
-| ID                                     | Service                                       | Canonical URL                                            | Current Page Status | Matrix                            |
-| -------------------------------------- | --------------------------------------------- | -------------------------------------------------------- | ------------------- | --------------------------------- |
-| `svc-pre-purchase-sewer-inspection`    | Pre-Purchase Sewer Inspection                 | `/services/pre-purchase-sewer-inspection/`               | Launch              | residential / real estate         |
-| `svc-recurring-sewer-backup-diagnosis` | Recurring Sewer Backup Diagnosis              | `/services/recurring-sewer-backup-diagnosis/`            | Launch              | residential / property management |
-| `svc-preventative-sewer-maintenance`   | Preventative Sewer Maintenance                | `/services/preventative-sewer-maintenance/`              | Launch              | selective                         |
-| `svc-independent-sewer-second-opinion` | Independent Sewer Inspection / Second Opinion | `/services/independent-sewer-inspection-second-opinion/` | Phase 2             | selective                         |
-
-These are supported by existing capabilities or positioning but represent distinct customer intent rather than entirely different technical methods.
-
----
-
-# 19. Pre-Purchase Sewer Inspection
-
-**ID:** `svc-pre-purchase-sewer-inspection`
-**Canonical Name:** Pre-Purchase Sewer Inspection
-**Slug:** `pre-purchase-sewer-inspection`
-**Canonical URL:** `/services/pre-purchase-sewer-inspection/`
-**Record Type:** `derived_service`
-**Family:** `inspection_diagnostics`
-**Parent Service:** `svc-sewer-camera-inspection`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full_on_residential_real_estate_locations`
-**Commercial Applicability:** No
-
-## Primary Intent
-
-* inspect a sewer before buying property
-* document sewer condition during a transaction
-* evaluate hidden sewer risk
-* support informed purchase decisions
-
-## Primary Audiences
-
-* home buyers
-* home sellers
-* real estate agents
-* home inspectors
-* real estate investors
-
-## Approved Aliases
-
-* home buyer sewer inspection
-* real estate sewer inspection
-* pre-sale sewer inspection
-* sewer scope before buying
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Supported |
-| San Diego | Supported |
-| Las Vegas | Supported |
-
-## Strategic Role
-
-This page exists because the **transactional intent** is meaningfully different from generic sewer camera inspection intent.
-
-It should remain closely linked to the parent camera-inspection entity.
-
----
-
-# 20. Recurring Sewer Backup Diagnosis
-
-**ID:** `svc-recurring-sewer-backup-diagnosis`
-**Canonical Name:** Recurring Sewer Backup Diagnosis
-**Slug:** `recurring-sewer-backup-diagnosis`
-**Canonical URL:** `/services/recurring-sewer-backup-diagnosis/`
-**Record Type:** `derived_service`
-**Family:** `inspection_diagnostics`
-**Parent Service:** `svc-sewer-cleaning-camera-inspection`
-**Registry Maturity:** `launch_candidate`
-**Current Page Authorization:** `launch`
-**Matrix Eligibility:** `full_on_residential_property_management_locations`
-**Commercial Applicability:** Yes
-
-## Primary Intent
-
-* diagnose repeated sewer backups
-* determine why a sewer keeps backing up
-* distinguish recurring blockage from visible line damage
-* investigate repeated sewer problems
-
-## Primary Audiences
-
-* homeowners
-* landlords
-* property managers
-* commercial property owners
-
-## Approved Aliases
-
-* repeated sewer backup diagnosis
-* multiple sewer backups
-* recurring sewer clog diagnosis
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Supported |
-| San Diego | Supported |
-| Las Vegas | Supported |
-
-## Strategic Role
-
-The service represents a high-intent diagnostic problem state.
-
-Its content should connect strongly to:
-
-* sewer cleaning
-* camera inspection
-* cleaning + camera inspection
-* relevant resource content
-
----
-
-# 21. Preventative Sewer Maintenance
-
-**ID:** `svc-preventative-sewer-maintenance`
-**Canonical Name:** Preventative Sewer Maintenance
-**Slug:** `preventative-sewer-maintenance`
-**Canonical URL:** `/services/preventative-sewer-maintenance/`
-**Record Type:** `derived_service`
-**Family:** `maintenance`
-**Parent Service:** `svc-sewer-cleaning`
-**Registry Maturity:** `launch_candidate`
-**Current Page Authorization:** `launch`
-**Matrix Eligibility:** `selective`
-**Commercial Applicability:** Strong
-
-## Primary Intent
-
-* reduce recurring sewer problems
-* schedule recurring sewer cleaning
-* maintain known problem sewer lines
-* proactively manage buildup or recurring obstruction risk
-
-## Primary Audiences
-
-* homeowners
-* landlords
-* property managers
-* commercial property owners
-* facility managers
-* restaurants
-
-## Approved Aliases
-
-* preventive sewer maintenance
-* sewer maintenance plan
-* annual sewer maintenance
-* scheduled sewer maintenance
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Supported |
-| San Diego | Supported |
-| Las Vegas | Supported |
-
-## Claim Guardrail
-
-Do not publish specific:
-
-* maintenance frequency
-* contract terms
-* subscription structure
-* included services
-* pricing
-
-without business confirmation.
-
----
-
-# 22. Independent Sewer Inspection / Second Opinion
-
-**ID:** `svc-independent-sewer-second-opinion`
-**Canonical Name:** Independent Sewer Inspection / Second Opinion
-**Slug:** `independent-sewer-inspection-second-opinion`
-**Canonical URL:** `/services/independent-sewer-inspection-second-opinion/`
-**Record Type:** `derived_service`
-**Family:** `inspection_diagnostics`
-**Parent Service:** `svc-sewer-cleaning-camera-inspection`
-**Page Authorization:** `phase_2`
-**Matrix Eligibility:** `selective`
-**Commercial Applicability:** Yes
-
-## Primary Intent
-
-* verify a major sewer recommendation
-* obtain another sewer evaluation
-* inspect without repair-driven upselling
-* obtain more information before committing to major repair work
-
-## Primary Audiences
-
-* homeowners
-* home buyers
-* real estate agents
-* property managers
-* commercial property owners
-
-## Approved Aliases
-
-* sewer repair second opinion
-* independent sewer evaluation
-* third-party sewer inspection
-* independent sewer inspection
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Supported |
-| San Diego | Supported |
-| Las Vegas | Supported |
-
-## Cannibalization Guardrail
-
-Do not use this page as another general sewer camera inspection page.
-
-Its intent must remain specifically focused on:
-
-* second opinions
-* existing repair recommendations
-* independent evaluation
-
----
-
-# 23. St. Louis Market-Specific Service
-
-The current registry contains one market-specific canonical service.
-
-## Sewer Lateral Inspection & Municipal Reporting
-
-**ID:** `svc-stl-sewer-lateral-inspection-reporting`
-**Canonical Name:** Sewer Lateral Inspection & Municipal Reporting
-**Slug:** `sewer-lateral-inspection-reporting`
-**Canonical URL:** `/st-louis-mo/sewer-lateral-inspection-reporting/`
-**Record Type:** `market_specific_service`
-**Family:** `inspection_diagnostics`
-**Parent Service:** `svc-sewer-camera-inspection`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `selective_st_louis_only`
-**Commercial Applicability:** Conditional
-
-## Primary Intent
-
-* sewer lateral inspection
-* municipal sewer lateral reporting
-* sewer lateral program documentation
-* real estate sewer lateral compliance-related inspection needs
-
-## Primary Audiences
-
-* homeowners
-* home buyers
-* home sellers
-* real estate agents
-* home inspectors
-
-## Approved Aliases
-
-* sewer lateral inspection
-* municipal sewer lateral report
-* sewer lateral program inspection
-
-## Market Status
-
-| Market    | Status         |
-| --------- | -------------- |
-| St. Louis | Confirmed |
-| San Diego | Not applicable |
-| Las Vegas | Not applicable |
-
-## Critical Geographic Rule
-
-This service is **St. Louis-only**.
-
-Never generate:
+Likewise, Claude may create:
 
 ```text
-/san-diego-ca/.../sewer-lateral-inspection-reporting/
+What Does a Sewer Camera Inspection Show?
 ```
 
-or:
+without creating a new service called:
 
 ```text
-/las-vegas-nv/.../sewer-lateral-inspection-reporting/
+Sewer Camera Findings Service
 ```
 
-from automated matrices.
+The registry controls canonical business concepts.
 
-## Municipal Program Guardrail
-
-Any statement that The Sewer Pros is:
-
-* licensed
-* approved
-* registered
-* authorized
-* accepted
-
-by a particular municipal sewer lateral program must be verified for that specific program before publication.
-
-Do not convert a broad historical claim into municipality-specific claims without evidence.
+It does not restrict useful language.
 
 ---
 
-# 24. Commercial Service Registry
+# 5. Canonical Service vs. Search Topic
 
-The commercial registry contains seven services.
-
-| ID                                        | Service                                           | URL                                     | Page Status | Matrix              |
-| ----------------------------------------- | ------------------------------------------------- | --------------------------------------- | ----------- | ------------------- |
-| `svc-commercial-sewer-camera-inspection`  | Commercial Sewer Camera Inspection                | `/commercial/sewer-camera-inspection/`  | Launch      | commercial eligible |
-| `svc-commercial-sewer-cleaning`           | Commercial Sewer Cleaning                         | `/commercial/sewer-cleaning/`           | Launch      | commercial eligible |
-| `svc-commercial-hydro-jetting`            | Commercial Hydro Jetting                          | `/commercial/hydro-jetting/`            | Launch      | commercial eligible |
-| `svc-commercial-drain-cleaning`           | Commercial Drain Cleaning                         | `/commercial/drain-cleaning/`           | Launch      | commercial eligible |
-| `svc-commercial-sewer-line-locating`      | Commercial Sewer Line Locating                    | `/commercial/sewer-line-locating/`      | Phase 2     | selective           |
-| `svc-commercial-preventative-maintenance` | Commercial Preventative Sewer & Drain Maintenance | `/commercial/preventative-maintenance/` | Launch      | commercial eligible |
-| `svc-commercial-grease-sludge-removal`    | Commercial Grease & Sludge Removal                | `/commercial/grease-sludge-removal/`    | Phase 2     | selective           |
-
----
-
-# 25. Commercial Sewer Camera Inspection
-
-**ID:** `svc-commercial-sewer-camera-inspection`
-**Canonical URL:** `/commercial/sewer-camera-inspection/`
-**Record Type:** `commercial_service`
-**Family:** `inspection_diagnostics`
-**Parent:** `svc-sewer-camera-inspection`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full_on_commercial_eligible_locations`
-
-## Primary Intent
-
-* inspect commercial sewer systems
-* document commercial sewer condition
-* diagnose commercial sewer problems
-* support facility or property-management decisions
-
-## Primary Audiences
-
-* commercial property owners
-* property managers
-* facility managers
-* restaurants
-* multifamily properties
-* HOAs
-
-## Aliases
-
-* commercial sewer scope
-* commercial sewer inspection
-
-## Market Status
-
-| Market    | Status                                           |
-| --------- | ------------------------------------------------ |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Commercial Content Requirements
-
-The page should emphasize:
-
-* documentation
-* scheduling
-* operational impact
-* property coordination
-* diagnostics
-* commercial use cases
-
-rather than simply duplicating residential inspection content.
-
----
-
-# 26. Commercial Sewer Cleaning
-
-**ID:** `svc-commercial-sewer-cleaning`
-**Canonical URL:** `/commercial/sewer-cleaning/`
-**Record Type:** `commercial_service`
-**Family:** `cleaning`
-**Parent:** `svc-sewer-cleaning`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full_on_commercial_eligible_locations`
-
-## Primary Intent
-
-* clear commercial sewer lines
-* remove applicable commercial blockages
-* restore sewer flow
-* address recurring commercial sewer problems
-
-## Primary Audiences
-
-* commercial property owners
-* property managers
-* facility managers
-* restaurants
-* multifamily properties
-* HOAs
-
-## Aliases
-
-* commercial main line cleaning
-* commercial sewer rooter
-
-## Market Status
-
-| Market    | Status                                           |
-| --------- | ------------------------------------------------ |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-## Validation Requirements
-
-Do not invent:
-
-* maximum pipe sizes
-* 24/7 service
-* emergency response times
-* equipment limitations
-* contract terms
-
----
-
-# 27. Commercial Hydro Jetting
-
-**ID:** `svc-commercial-hydro-jetting`
-**Canonical URL:** `/commercial/hydro-jetting/`
-**Record Type:** `commercial_service`
-**Family:** `cleaning`
-**Parent:** `svc-hydro-jetting`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full_on_commercial_eligible_locations`
-
-## Primary Intent
-
-* remove commercial grease and sludge
-* remove stubborn sewer-line buildup
-* reduce recurring commercial backups
-* perform scheduled commercial jetting maintenance
-
-## Primary Audiences
-
-* restaurants
-* commercial property owners
-* property managers
-* facility managers
-* multifamily properties
-
-## Aliases
-
-* commercial sewer jetting
-* restaurant hydro jetting
-* high-pressure commercial drain cleaning
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Supported |
-| San Diego | Supported |
-| Las Vegas | Supported |
-
-## Strategic Role
-
-This is currently the strongest established commercial service use case.
-
-It should play a major role in restaurant, property-management, and facility-maintenance architecture.
-
----
-
-# 28. Commercial Drain Cleaning
-
-**ID:** `svc-commercial-drain-cleaning`
-**Canonical URL:** `/commercial/drain-cleaning/`
-**Record Type:** `commercial_service`
-**Family:** `cleaning`
-**Parent:** `svc-drain-cleaning`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full_on_commercial_eligible_locations`
-
-## Primary Intent
-
-* clear commercial drains
-* restore commercial drain flow
-* reduce recurring business drain problems
-
-## Primary Audiences
-
-* restaurants
-* commercial property owners
-* property managers
-* facility managers
-* multifamily properties
-
-## Aliases
-
-* business drain cleaning
-* restaurant drain cleaning
-
-## Market Status
-
-| Market    | Status                                           |
-| --------- | ------------------------------------------------ |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
----
-
-# 29. Commercial Sewer Line Locating
-
-**ID:** `svc-commercial-sewer-line-locating`
-**Canonical URL:** `/commercial/sewer-line-locating/`
-**Record Type:** `commercial_service`
-**Family:** `locating`
-**Parent:** `svc-sewer-line-locating`
-**Page Authorization:** `phase_2`
-**Matrix Eligibility:** `selective`
-
-## Primary Intent
-
-* locate commercial sewer lines
-* understand sewer routing
-* support development or remodeling planning
-* provide location information before appropriate downstream work
-
-## Primary Audiences
-
-* contractors
-* commercial property owners
-* property managers
-* facility managers
-
-## Aliases
-
-* commercial sewer locating
-* commercial line locating
-
-## Market Status
-
-| Market    | Status                                |
-| --------- | ------------------------------------- |
-| St. Louis | Confirmed |
-| San Diego | Confirmed |
-| Las Vegas | Confirmed |
-
-This service remains selective because commercial search intent is narrower than:
-
-* camera inspection
-* sewer cleaning
-* drain cleaning
-* hydro jetting
-
----
-
-# 30. Commercial Preventative Sewer & Drain Maintenance
-
-**ID:** `svc-commercial-preventative-maintenance`
-**Canonical URL:** `/commercial/preventative-maintenance/`
-**Record Type:** `commercial_service`
-**Family:** `maintenance`
-**Parent:** `svc-preventative-sewer-maintenance`
-**Page Authorization:** `launch`
-**Matrix Eligibility:** `full_on_commercial_eligible_locations`
-
-## Primary Intent
-
-* schedule recurring sewer maintenance
-* schedule recurring drain maintenance
-* reduce business backup risk
-* coordinate maintenance across properties
-
-## Primary Audiences
-
-* restaurants
-* property managers
-* facility managers
-* commercial property owners
-* multifamily properties
-* HOAs
-
-## Aliases
-
-* commercial sewer maintenance plan
-* scheduled drain maintenance
-* preventive commercial sewer maintenance
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Supported |
-| San Diego | Supported |
-| Las Vegas | Supported |
-
-## Claim Guardrail
-
-Do not specify:
-
-* maintenance cadence
-* contractual frequency
-* annual plans
-* program pricing
-* guaranteed prevention
-
-until confirmed.
-
----
-
-# 31. Commercial Grease & Sludge Removal
-
-**ID:** `svc-commercial-grease-sludge-removal`
-**Canonical URL:** `/commercial/grease-sludge-removal/`
-**Record Type:** `commercial_service`
-**Family:** `cleaning`
-**Parent:** `svc-commercial-hydro-jetting`
-**Page Authorization:** `phase_2`
-**Matrix Eligibility:** `selective`
-
-## Primary Intent
-
-* remove grease buildup from sewer lines
-* remove sludge buildup
-* address restaurant or food-service sewer-line buildup
-
-## Primary Audiences
-
-* restaurants
-* food-service businesses
-* commercial property owners
-* facility managers
-
-## Aliases
-
-* grease buildup removal
-* sludge removal
-* restaurant sewer line cleaning
-
-## Market Status
-
-| Market    | Status                            |
-| --------- | --------------------------------- |
-| St. Louis | Supported |
-| San Diego | Supported |
-| Las Vegas | Supported |
-
-## Critical Boundary
-
-This service refers to:
-
-> **grease and sludge removal from sewer/drain lines**
-
-It does **not** automatically mean:
-
-> **grease trap cleaning**
-
-Grease-trap cleaning remains unconfirmed.
-
----
-
-# 32. Complete Canonical Service Table
-
-| ID                                           | Service                                           | Type            | Family                   | Page Status |
-| -------------------------------------------- | ------------------------------------------------- | --------------- | ------------------------ | ----------- |
-| `svc-sewer-camera-inspection`                | Sewer Camera Inspection                           | Core            | Inspection / Diagnostics | Launch      |
-| `svc-sewer-cleaning`                         | Sewer Cleaning                                    | Core            | Cleaning                 | Launch      |
-| `svc-hydro-jetting`                          | Hydro Jetting                                     | Core            | Cleaning                 | Launch      |
-| `svc-sewer-cleaning-camera-inspection`       | Sewer Cleaning + Camera Inspection                | Core            | Inspection / Diagnostics | Launch      |
-| `svc-sewer-line-locating`                    | Sewer Line Locating                               | Core            | Locating                 | Launch      |
-| `svc-drain-cleaning`                         | Drain Cleaning                                    | Core            | Cleaning                 | Launch      |
-| `svc-pre-purchase-sewer-inspection`          | Pre-Purchase Sewer Inspection                     | Derived         | Inspection / Diagnostics | Launch      |
-| `svc-recurring-sewer-backup-diagnosis`       | Recurring Sewer Backup Diagnosis                  | Derived         | Inspection / Diagnostics | Launch      |
-| `svc-preventative-sewer-maintenance`         | Preventative Sewer Maintenance                    | Derived         | Maintenance              | Launch      |
-| `svc-independent-sewer-second-opinion`       | Independent Sewer Inspection / Second Opinion     | Derived         | Inspection / Diagnostics | Phase 2     |
-| `svc-stl-sewer-lateral-inspection-reporting` | Sewer Lateral Inspection & Municipal Reporting    | Market-Specific | Inspection / Diagnostics | Launch      |
-| `svc-commercial-sewer-camera-inspection`     | Commercial Sewer Camera Inspection                | Commercial      | Inspection / Diagnostics | Launch      |
-| `svc-commercial-sewer-cleaning`              | Commercial Sewer Cleaning                         | Commercial      | Cleaning                 | Launch      |
-| `svc-commercial-hydro-jetting`               | Commercial Hydro Jetting                          | Commercial      | Cleaning                 | Launch      |
-| `svc-commercial-drain-cleaning`              | Commercial Drain Cleaning                         | Commercial      | Cleaning                 | Launch      |
-| `svc-commercial-sewer-line-locating`         | Commercial Sewer Line Locating                    | Commercial      | Locating                 | Phase 2     |
-| `svc-commercial-preventative-maintenance`    | Commercial Preventative Sewer & Drain Maintenance | Commercial      | Maintenance              | Launch      |
-| `svc-commercial-grease-sludge-removal`       | Commercial Grease & Sludge Removal                | Commercial      | Cleaning                 | Phase 2     |
-
----
-
-# 33. Parent Service Relationships
-
-Derived and commercial services should maintain explicit parent relationships.
+Always distinguish:
 
 ```text
-Sewer Camera Inspection
-├── Pre-Purchase Sewer Inspection
-├── Commercial Sewer Camera Inspection
-└── St. Louis Sewer Lateral Inspection & Reporting
-```
-
-```text
-Sewer Cleaning
-├── Preventative Sewer Maintenance
-└── Commercial Sewer Cleaning
-```
-
-```text
-Hydro Jetting
-└── Commercial Hydro Jetting
-    └── Commercial Grease & Sludge Removal
-```
-
-```text
-Sewer Cleaning + Camera Inspection
-├── Recurring Sewer Backup Diagnosis
-└── Independent Sewer Inspection / Second Opinion
-```
-
-```text
-Sewer Line Locating
-└── Commercial Sewer Line Locating
-```
-
-```text
-Drain Cleaning
-└── Commercial Drain Cleaning
-```
-
-These relationships support:
-
-* breadcrumbs
-* related service modules
-* schema
-* topical linking
-* content planning
-
----
-
-# 34. Service Relationship Philosophy
-
-A derived service does not necessarily represent a different piece of equipment or technical process.
-
-It may exist because the user intent is materially different.
-
-Example:
-
-```text
-Sewer Camera Inspection
-```
-
-and:
-
-```text
-Pre-Purchase Sewer Inspection
-```
-
-may use similar technical inspection methods.
-
-But their customer intent differs enough to justify separate pages:
-
-```text
-General diagnostic intent
-vs.
-Real estate transaction intent
-```
-
----
-
-# 35. Canonical Alias Rules
-
-Aliases may be used naturally in:
-
-* page copy
-* title variations
-* FAQs
-* metadata
-* resource content
-* internal anchors
-
-They do not create new canonical service entities.
-
-Examples:
-
-```text
-sewer scope
-→ Sewer Camera Inspection
-```
-
-```text
-rooter service
-→ Sewer Cleaning
-```
-
-```text
-commercial sewer jetting
-→ Commercial Hydro Jetting
-```
-
----
-
-# 36. Alias and Exclusion Registry
-
-| Term                    | Disposition                          | Canonical Target        |
-| ----------------------- | ------------------------------------ | ----------------------- |
-| Sewer Scope             | `alias_only`                         | Sewer Camera Inspection |
-| Rooter Service          | `alias_only`                         | Sewer Cleaning          |
-| Root Intrusion Removal  | `problem_or_subservice`              | Sewer Cleaning          |
-| Grease Trap Cleaning    | `hold_pending_confirmation`          | None                    |
-| Sewer Repair            | `not_offered`                        | None                    |
-| Sewer Line Replacement  | `not_offered`                        | None                    |
-| Trenchless Sewer Repair | `not_offered`                        | None                    |
-| Pipe Bursting           | `not_offered`                        | None                    |
-| Pipe Lining             | `not_offered`                        | None                    |
-| General Plumbing        | `do_not_expand_without_confirmation` | None                    |
-
----
-
-# 37. Sewer Repair Rule
-
-The following are explicitly **not offered services** under the current approved business model:
-
-* sewer repair
-* sewer replacement
-* trenchless sewer repair
-* pipe bursting
-* pipe lining
-
-These terms may be discussed when relevant to:
-
-* educational resources
-* sewer inspection findings
-* comparisons
-* second-opinion intent
-* customer decision-making
-
-They must not be represented as The Sewer Pros service offerings.
-
----
-
-# 38. General Plumbing Rule
-
-The website should not expand into generic plumbing categories without approval.
-
-Do not automatically create pages for:
-
-* faucet repair
-* water heater repair
-* toilet repair
-* repiping
-* water lines
-* general plumbing emergencies
-
-The Sewer Pros is being positioned as a specialized sewer and drain company.
-
----
-
-# 39. Problem Keywords Are Not Services
-
-Do not automatically convert these into service records:
-
-* tree roots
-* root intrusion
-* sewer belly
-* offset pipe
-* cracked sewer pipe
-* broken sewer line
-* sludge
-* slow drain
-* sewer smell
-* recurring backup
-* standing water
-
-These generally belong within:
-
-```text
-Problem / Resource Taxonomy
-↓
-Relevant Diagnostic Service
-↓
-Relevant Cleaning Service
-```
-
----
-
-# 40. Matrix Generation Rules
-
-## Core Services
-
-The six core services may participate in the primary service + location opportunity matrix where location eligibility and market availability allow.
-
----
-
-## Pre-Purchase Sewer Inspection
-
-Use primarily against locations with:
-
-* residential relevance
-* homebuyer demand
-* real estate activity
-* agent/referral opportunity
-
----
-
-## Recurring Sewer Backup Diagnosis
-
-Use where there is meaningful:
-
-* homeowner intent
-* landlord intent
-* property-management intent
-* recurring commercial problem intent
-
----
-
-## Preventative Sewer Maintenance
-
-Use selectively.
-
-Do not generate automatically across all locations.
-
----
-
-## Independent Second Opinion
-
-Use selectively.
-
-Primary opportunities should center on:
-
-* major repair recommendations
-* second-opinion search intent
-* independent inspection positioning
-
----
-
-## Commercial Services
-
-Commercial matrices should use only locations that have adequate:
-
-* commercial relevance
-* property-management relevance
-* restaurant relevance
-* multifamily relevance
-* facility-management relevance
-
----
-
-## St. Louis Sewer Lateral Service
-
-St. Louis-only.
-
-Never generate outside the St. Louis market.
-
----
-
-# 41. Matrix Does Not Equal Publishing Approval
-
-A valid relationship such as:
-
-```text
-Carlsbad
-+
-Hydro Jetting
-```
-
-may exist within opportunity research.
-
-That does not automatically authorize:
-
-```text
-/san-diego-ca/carlsbad/hydro-jetting/
-```
-
-Publication still requires:
-
-```text
-Service Registry
-+
-Location Registry
-+
-Valid Matrix Relationship
-+
-Master Page Build List Approval
-```
-
----
-
-# 42. Las Vegas Service Rule
-
-Current Las Vegas service records must retain:
-
-```text
-requires_operational_confirmation
-```
-
-until the business confirms actual operating capabilities.
-
-Before activating a Las Vegas service, verify:
-
-* service is actually offered
-* technicians/equipment are available
-* customer inquiries can be fulfilled
-* geographic coverage is accurate
-* applicable operational requirements are satisfied
-
-Do not assume that because St. Louis or San Diego provides a service, Las Vegas automatically provides it.
-
----
-
-# 43. Commercial Packaging Rule
-
-Several commercial services represent established technical capabilities packaged for commercial intent.
-
-For these services, content must distinguish:
-
-```text
-Technical capability is established
+Offered Service
 ```
 
 from:
 
 ```text
-Every commercial service detail is confirmed
+Search / Educational Topic
 ```
-
-Commercial pages must not invent:
-
-* response times
-* service contracts
-* maintenance terms
-* emergency availability
-* pipe-size capacity
-* fleet size
-* after-hours service
-* multi-location pricing
-* national account capabilities
-
----
-
-# 44. Service Naming Standard
-
-Canonical service names should remain stable.
-
-Use the approved canonical name for:
-
-* H1 architecture
-* navigation
-* structured data
-* internal identifiers
-* page registry references
-
-Synonyms may appear naturally in supporting copy.
-
-Do not rename canonical services based solely on temporary keyword-volume differences.
-
----
-
-# 45. Service Slug Standard
-
-Canonical service slugs must be:
-
-* lowercase
-* hyphen-separated
-* stable
-* controlled by this registry
-
-Examples:
-
-```text
-sewer-camera-inspection
-sewer-cleaning
-hydro-jetting
-sewer-line-locating
-pre-purchase-sewer-inspection
-```
-
-Do not independently re-slug them during implementation.
-
----
-
-# 46. Service ID Standard
-
-Stable internal IDs should use:
-
-```text
-svc-
-```
-
-prefix.
-
-Examples:
-
-```text
-svc-sewer-camera-inspection
-svc-hydro-jetting
-svc-pre-purchase-sewer-inspection
-```
-
-IDs should remain stable even if customer-facing wording evolves.
-
----
-
-# 47. Recommended TypeScript Model
-
-The implementation may use a model comparable to:
-
-```ts
-export type ServiceRecordType =
-  | 'core_service'
-  | 'derived_service'
-  | 'market_specific_service'
-  | 'commercial_service'
-
-export type ServiceFamily =
-  | 'inspection_diagnostics'
-  | 'cleaning'
-  | 'locating'
-  | 'maintenance'
-
-export interface Service {
-  serviceId: string
-  name: string
-  slug: string
-  canonicalUrl: string
-  recordType: ServiceRecordType
-  serviceFamily: ServiceFamily
-  parentServiceId?: string
-  pageStatus: 'launch' | 'phase_2' | 'phase_3' | 'hold'
-  matrixEligibility: string
-  commercialApplicability: boolean | 'strong' | 'conditional'
-  primaryIntents: string[]
-  primaryAudiences: string[]
-  aliases: string[]
-  markets: Record<string, string>
-  notes?: string
-}
-```
-
-The production schema may expand as implementation requirements become clearer.
-
----
-
-# 48. Machine-Readable Source of Truth
-
-The repository contains a machine-readable version of this registry.
-
-**Current location:**
-
-```text
-data/services/master-service-registry.json
-```
-
-A typed TypeScript wrapper may later be added alongside it:
-
-```text
-data/services/master-service-registry.ts
-```
-
-If added, the TypeScript module should import or derive from the JSON rather than duplicating its contents, so a single source of truth is preserved.
-
-This Markdown document is the human-readable governance layer and must remain synchronized with the JSON registry.
-
-If the two disagree about a canonical service name, slug, ID, or page status, resolve the discrepancy rather than allowing implementation to follow whichever is more convenient.
-
----
-
-# 49. Recommended Registry Usage
-
-The service registry should drive:
-
-* service entity resolution
-* service page configuration
-* service labels
-* canonical slugs
-* service family relationships
-* aliases
-* related services
-* matrix evaluation
-* commercial relationships
-* schema input
-* navigation configuration
-* page validation
-
-It should **not** independently drive route authorization.
-
----
-
-# 50. Service Validation Script
-
-A future service validation process should detect:
-
-* duplicate service IDs
-* duplicate canonical URLs
-* duplicate canonical slugs within the same namespace
-* missing family
-* missing record type
-* invalid parent ID
-* unsupported market
-* conflicting exclusions
-* commercial service without valid parent
-* market-specific service outside its allowed market
-
-Invalid service data should fail QA.
-
----
-
-# 51. New Service Approval Workflow
-
-Before adding a service:
-
-```text
-Customer / SEO Opportunity
-↓
-Confirm Business Capability
-↓
-Determine Distinct Intent
-↓
-Check Existing Canonical Service
-↓
-Evaluate Cannibalization
-↓
-Assign Service Type
-↓
-Assign Parent
-↓
-Assign Canonical ID + Slug
-↓
-Assign Market Availability
-↓
-Add to Registry
-↓
-Evaluate Master Page Build List
-```
-
-Finding search demand alone is not sufficient.
-
----
-
-# 52. Service Consolidation Workflow
-
-If two services later prove to represent the same intent:
-
-```text
-Compare Intent
-↓
-Choose Canonical Entity
-↓
-Merge Content
-↓
-Update Registry
-↓
-Update Page Build List
-↓
-Redirect Retired URL
-↓
-Update Internal Links
-↓
-Update Schema / Sitemap
-```
-
-Avoid maintaining duplicate services purely because both terms have search volume.
-
----
-
-# 53. Service Removal Workflow
-
-If The Sewer Pros stops offering a service:
-
-1. mark the service inactive
-2. identify affected global pages
-3. identify affected service + location pages
-4. identify affected commercial pages
-5. determine redirect destinations
-6. remove inappropriate internal links
-7. remove from navigation
-8. remove from sitemap
-9. update schema
-10. record the decision in `22-decisions-change-log.md`
-
-Do not simply delete the service record.
-
----
-
-# 54. Relationship With Content Strategy
-
-Service pages represent primary transactional entities.
-
-Resource content should support those service entities.
 
 Example:
 
 ```text
-What Does a Sewer Camera Inspection Show?
-↓
-Sewer Camera Inspection
+Sewer Replacement
 ```
 
-```text
-Why Does My Sewer Keep Backing Up?
-↓
-Recurring Sewer Backup Diagnosis
-↓
-Sewer Cleaning + Camera Inspection
-```
+may be a valuable educational or second-opinion topic.
 
-```text
-Hydro Jetting vs Snaking
-↓
-Hydro Jetting
-```
+That does **not** make it an offered service.
+
+It may support content such as:
+
+* Do I really need sewer replacement?
+* What should I do before replacing a sewer line?
+* Sewer cleaning vs. sewer replacement
+* Getting a second opinion before sewer replacement
+
+without appearing in the service registry as an offered service.
 
 ---
 
-# 55. Relationship With Audience Strategy
+# 6. Current Business Positioning
 
-Services should connect only to relevant audiences.
-
-Example:
-
-```text
-Home Buyers
-→ Pre-Purchase Sewer Inspection
-→ Sewer Camera Inspection
-```
-
-```text
-Property Managers
-→ Sewer Cleaning
-→ Hydro Jetting
-→ Preventative Maintenance
-```
-
-```text
-Restaurants
-→ Commercial Hydro Jetting
-→ Commercial Drain Cleaning
-→ Preventative Maintenance
-```
-
-Audience relationships will be formalized in:
-
-`09-audience-commercial-matrix.md`
-
----
-
-# 56. Relationship With Internal Linking
-
-Service relationships should eventually inform links such as:
-
-```text
-Sewer Camera Inspection
-↔ Pre-Purchase Sewer Inspection
-```
-
-```text
-Sewer Cleaning
-↔ Sewer Cleaning + Camera Inspection
-```
-
-```text
-Sewer Cleaning
-↔ Hydro Jetting
-```
-
-```text
-Hydro Jetting
-↔ Commercial Hydro Jetting
-```
-
-```text
-Sewer Line Locating
-↔ Sewer Camera Inspection
-```
-
-Detailed link rules belong in:
-
-`16-internal-linking-strategy.md`
-
----
-
-# 57. Relationship With Schema
-
-Service schema must reference actual approved service entities.
-
-Do not generate `Service` schema for:
-
-* unoffered repair services
-* keyword aliases
-* customer problems
-* research-only concepts
-
-Structured data should describe real service offerings.
-
----
-
-# 58. Relationship With AI / LLM Search
-
-Consistent canonical entities help AI systems understand:
-
-* what The Sewer Pros offers
-* how services relate
-* which terms are aliases
-* what the company does not offer
-* which services are commercial
-* which services are local-market-specific
-
-Entity consistency is preferable to generating dozens of overlapping keyword pages.
-
----
-
-# 59. Service Boundary Summary
-
-The Sewer Pros is currently positioned around:
+The Sewer Pros is primarily positioned around:
 
 ```text
 Inspection
 +
 Diagnostics
 +
-Cleaning
-+
-Hydro Jetting
-+
 Locating
 +
-Preventative Maintenance
+Cleaning
++
+Evidence
 ```
 
-The company is **not currently positioned around**:
+The primary strategic differentiator is:
 
-```text
-Repair
-+
-Replacement
-+
-Pipe Lining
-+
-Pipe Bursting
-+
-General Plumbing
-```
+> **Independent sewer inspection and cleaning without repair-driven upselling.**
 
-This boundary should remain clear throughout:
-
-* SEO
-* content
-* schema
-* navigation
-* Google Business Profile strategy
-* AI search optimization
-* comparison content
+Service taxonomy should reinforce this specialization.
 
 ---
 
-# 60. Critical Service Registry Rules
+# 7. Repair and Replacement Guardrail
 
-### Rule 1
+The following should **not** be added as offered services unless the business explicitly confirms that The Sewer Pros now performs them:
 
-There are currently 18 canonical service records.
+* Sewer Repair
+* Sewer Line Repair
+* Sewer Replacement
+* Sewer Line Replacement
+* Trenchless Sewer Replacement
+* Pipe Bursting
+* Sewer Lining
+* CIPP
+* Excavation
+* Structural Sewer Repair
+* Sewer Installation
 
-### Rule 2
+These terms may still appear as:
 
-The six established core services are the primary service foundation.
+* educational topics
+* comparison topics
+* alternative topics
+* second-opinion topics
+* diagnostic context
 
-### Rule 3
-
-Derived services must represent distinct customer intent.
-
-### Rule 4
-
-Aliases do not create new service entities.
-
-### Rule 5
-
-Customer problems do not automatically create services.
-
-### Rule 6
-
-Sewer repair and sewer replacement are not offered services.
-
-### Rule 7
-
-Pipe lining and pipe bursting are not offered services.
-
-### Rule 8
-
-General plumbing must not be added without approval.
-
-### Rule 9
-
-Grease-trap cleaning remains unconfirmed.
-
-### Rule 10
-
-Commercial grease/sludge removal refers to sewer/drain-line buildup, not automatically grease-trap cleaning.
-
-### Rule 11
-
-St. Louis sewer lateral reporting is St. Louis-specific.
-
-### Rule 12
-
-Las Vegas service availability must be operationally confirmed.
-
-### Rule 13
-
-Commercial packaging must not invent operational details.
-
-### Rule 14
-
-Matrix eligibility does not equal page authorization.
-
-### Rule 15
-
-The Master Page Build List controls actual page creation.
-
-### Rule 16
-
-Canonical service IDs and slugs must remain stable.
-
-### Rule 17
-
-New service additions require explicit business-capability confirmation.
+The distinction must remain clear.
 
 ---
 
-# 61. Final Service Registry Principle
+# 8. New Major Service Rule
 
-The service registry exists to prevent the website from drifting away from the actual business.
+A genuinely new offered service is a material business fact.
 
-The governing chain is:
+Before publicly marketing a new major service:
 
 ```text
-Real Business Capability
-↓
+Business Confirms Capability
+→ Add / Update Service Registry
+→ Update Relevant Page/Data Relationships
+→ Implement Public Representation
+```
+
+If the service represents a major strategic change, update:
+
+`22-decisions-change-log.md`
+
+This requirement applies to **real business capabilities**, not minor naming variations or supporting content.
+
+---
+
+# 9. Service Record Structure
+
+A service record may contain fields such as:
+
+```ts
+type ServiceStatus =
+  | "active"
+  | "candidate"
+  | "inactive"
+  | "retired";
+
+interface ServiceRecord {
+  id: string;
+  name: string;
+  shortName?: string;
+
+  status: ServiceStatus;
+
+  description: string;
+
+  aliases?: string[];
+  customerTerms?: string[];
+  searchTerms?: string[];
+
+  parentServiceId?: string;
+  relatedServiceIds?: string[];
+
+  category?: string;
+
+  residential?: boolean;
+  commercial?: boolean;
+  realEstate?: boolean;
+
+  marketIds?: string[];
+
+  pageSlug?: string;
+  pageStatus?: string;
+
+  schemaType?: string;
+
+  notes?: string;
+}
+```
+
+The actual technical structure may vary.
+
+The important requirement is that canonical service identity remains centralized.
+
+---
+
+# 10. Service IDs
+
+Use stable machine-friendly IDs.
+
+Preferred format:
+
+```text
+sewer-inspection
+sewer-camera-inspection
+sewer-cleaning
+hydro-jetting
+sewer-line-locating
+drain-cleaning
+pre-purchase-sewer-inspection
+```
+
+Avoid inconsistent duplicates such as:
+
+```text
+camera-service
+cameraInspection
+sewer_camera
+video-pipe
+```
+
+for the same underlying service.
+
+Once used broadly in:
+
+* URLs
+* structured data
+* analytics
+* relationships
+
+service IDs should remain stable.
+
+---
+
+# 11. Display Names vs. IDs
+
+Separate machine identity from display language.
+
+Example:
+
+```ts
+{
+  id: "sewer-camera-inspection",
+  name: "Sewer Camera Inspection"
+}
+```
+
+Content might naturally use:
+
+* sewer camera inspection
+* sewer scope
+* sewer video inspection
+* camera inspection
+* sewer-line video inspection
+
+while maintaining:
+
+```text
+serviceId = sewer-camera-inspection
+```
+
+behind the scenes.
+
+---
+
+# 12. Aliases
+
+Aliases help connect customer/search terminology to canonical services.
+
+Example:
+
+```ts
+{
+  id: "sewer-camera-inspection",
+  aliases: [
+    "sewer scope",
+    "sewer video inspection",
+    "video sewer inspection",
+    "sewer camera",
+    "pipe camera inspection"
+  ]
+}
+```
+
+Aliases may support:
+
+* search research
+* content writing
+* internal search
+* redirects
+* metadata
+* AI retrieval
+
+Aliases should not automatically create duplicate pages.
+
+---
+
+# 13. Customer Language
+
+The registry may distinguish:
+
+```text
+Canonical Business Name
+```
+
+from:
+
+```text
+Customer Search Language
+```
+
+For example:
+
+Canonical:
+
+> Sewer Line Locating
+
+Customers may search:
+
+* find sewer line
+* locate sewer pipe
+* sewer line locator
+* where does my sewer line run?
+
+Content should use natural customer language where appropriate.
+
+Do not force rigid canonical naming into every sentence.
+
+---
+
+# 14. Service Categories
+
+Services may be grouped into useful categories.
+
+Recommended conceptual categories include:
+
+## Inspection & Diagnostics
+
+Potential services:
+
+* Sewer Inspection
+* Sewer Camera Inspection
+* diagnostic-related approved services
+
+## Cleaning
+
+Potential services:
+
+* Sewer Cleaning
+* Hydro Jetting
+* Drain Cleaning
+
+## Locating
+
+Potential services:
+
+* Sewer Line Locating
+
+## Real Estate
+
+Potential services:
+
+* Pre-Purchase Sewer Inspection
+
+## Commercial
+
+Commercial variants of approved sewer/drain services where appropriate.
+
+Categories are organizational tools.
+
+They do not necessarily require dedicated public category pages.
+
+---
+
+# 15. Parent / Child Relationships
+
+Use parent-child relationships where they improve taxonomy.
+
+Example:
+
+```text
+Sewer Inspection
+    ↓
+Sewer Camera Inspection
+```
+
+or another relationship defined by the final canonical service model.
+
+A child service may still have its own canonical page when it represents distinct search and customer intent.
+
+Do not flatten all related concepts into one service merely to simplify data.
+
+Likewise, do not split every search synonym into a separate service.
+
+---
+
+# 16. Related Services
+
+Services may reference semantically useful related services.
+
+Example:
+
+```text
+Sewer Camera Inspection
+↔ Sewer Inspection
+↔ Sewer Line Locating
+↔ Sewer Cleaning
+```
+
+or:
+
+```text
+Sewer Cleaning
+↔ Hydro Jetting
+↔ Drain Cleaning
+↔ Sewer Camera Inspection
+```
+
+These relationships may power:
+
+* related-service modules
+* internal links
+* content recommendations
+* form logic
+* SEO clusters
+
+Related relationships should be useful rather than exhaustive.
+
+---
+
+# 17. Service Page Authority
+
+Each major canonical service may have one strongest general service page.
+
+Conceptually:
+
+```text
 Canonical Service
-↓
-Approved Market Availability
-↓
-Approved Customer Intent
-↓
-Approved Page
-↓
-SEO / AEO / AI Content
+→ Primary General Service Page
 ```
 
-not:
+Localized pages may then serve more specific intent:
 
 ```text
-Keyword
-↓
-Automatically Invent Service
-↓
-Publish Page
+Canonical Service
+→ Service + Market
+→ Service + Location
 ```
 
-The Sewer Pros should build topical authority by becoming deeply authoritative around the services it genuinely provides—not by expanding its service taxonomy to match every search phrase competitors target.
+Audience pages may serve:
 
-**This registry is the canonical service vocabulary for the project and should be used by all downstream page, content, matrix, schema, routing, and development systems.**
+```text
+Canonical Service
+→ Audience + Service
+```
+
+The canonical service page remains the strongest broad service authority unless search architecture calls for a different structure.
+
+---
+
+# 18. Service Page Generation
+
+Service records should be capable of powering reusable page templates.
+
+Conceptually:
+
+```text
+Service Record
++
+Service Content
++
+Page Template
+=
+Canonical Service Page
+```
+
+The registry may also supply data to:
+
+```text
+Service Record
++
+Location Record
++
+Relationship
++
+Location-Service Template
+=
+Service + Location Page
+```
+
+This structured architecture is encouraged.
+
+---
+
+# 19. Service + Location Relationships
+
+Service availability by geography should primarily be represented through:
+
+`08-service-location-matrix.md`
+
+The service registry does not need to duplicate all 10,422 geographic relationships.
+
+Prefer:
+
+```text
+Service Registry
++
+Location Registry
++
+Relationship Matrix
+```
+
+over embedding enormous geographic arrays directly into every service record.
+
+---
+
+# 20. Market Availability
+
+High-level market relationships may be stored with the service when operationally useful.
+
+Example:
+
+```ts
+marketIds: [
+  "st-louis-mo",
+  "san-diego-ca",
+  "las-vegas-nv"
+]
+```
+
+However, detailed local relationships should remain normalized.
+
+Do not assume every service is available in every market merely because the company serves all three markets generally.
+
+Use actual service data where available.
+
+---
+
+# 21. Audience Relationships
+
+Services may connect to audiences defined in:
+
+`09-audience-commercial-matrix.md`
+
+Example:
+
+```text
+Pre-Purchase Sewer Inspection
+↔ Home Buyers
+↔ Real Estate Agents
+↔ Home Inspectors
+```
+
+or:
+
+```text
+Hydro Jetting
+↔ Property Managers
+↔ Commercial Property Operators
+```
+
+Do not duplicate every audience relationship directly inside the service registry if the audience matrix already manages them.
+
+---
+
+# 22. Commercial Variants
+
+Commercial service taxonomy should be handled carefully.
+
+A commercial version of an existing service may be:
+
+```text
+same underlying technical service
++
+distinct commercial search / customer intent
+```
+
+For example:
+
+```text
+Hydro Jetting
+```
+
+may support:
+
+```text
+Commercial Hydro Jetting
+```
+
+as a public page concept.
+
+Whether that requires a separate canonical service ID or a service/audience relationship should be determined by:
+
+* actual business operations
+* route architecture
+* analytics needs
+* content differentiation
+* search intent
+
+Do not create unnecessary duplicate service identities solely because the audience is commercial.
+
+---
+
+# 23. Real Estate Variants
+
+Likewise:
+
+```text
+Pre-Purchase Sewer Inspection
+```
+
+may be the canonical service while supporting audience pages such as:
+
+```text
+Sewer Inspections for Home Buyers
+```
+
+and:
+
+```text
+Sewer Inspection for Real Estate Agents
+```
+
+Those audience pages do not necessarily require additional canonical service records.
+
+---
+
+# 24. Problem-Based Content
+
+Symptoms and problems are not automatically services.
+
+Examples:
+
+* recurring sewer backup
+* slow drains
+* sewer odor
+* root intrusion
+* standing water
+* offset pipe
+* cracked sewer line
+
+These should generally exist as:
+
+* problems
+* conditions
+* content topics
+* FAQ concepts
+* diagnostic use cases
+
+rather than independent offered services.
+
+---
+
+# 25. Equipment Is Not Automatically a Service
+
+Equipment or methods may be part of a service without becoming independent service categories.
+
+Examples:
+
+* sewer camera
+* jetter
+* locator
+* drain machine
+
+The service taxonomy should be customer- and outcome-oriented.
+
+Avoid creating pages solely because a piece of equipment exists.
+
+---
+
+# 26. Diagnostic Findings Are Not Services
+
+Examples:
+
+```text
+Root Intrusion
+Cracked Pipe
+Offset Joint
+Standing Water
+Buildup
+Blockage
+```
+
+are findings or conditions.
+
+They may support:
+
+* resource pages
+* FAQs
+* inspection content
+* problem sections
+* search-intent content
+
+They should not automatically become canonical service records.
+
+---
+
+# 27. Service Taxonomy Should Support Search Without Following Keywords Blindly
+
+Search research may reveal many variations.
+
+Example:
+
+```text
+sewer camera inspection
+sewer scope
+video sewer inspection
+sewer line camera
+camera sewer inspection
+```
+
+Do not create multiple services merely because keyword tools report separate phrases.
+
+Use:
+
+```text
+Search Variations
+→ Canonical Service
+```
+
+unless user intent genuinely differs enough to justify another business/service concept.
+
+---
+
+# 28. Service Research
+
+Claude may freely research:
+
+* search terminology
+* customer terminology
+* competitor terminology
+* emerging service language
+* FAQ opportunities
+* content gaps
+* market-specific service terms
+
+Research findings may update:
+
+* aliases
+* customer terms
+* descriptions
+* content strategy
+
+without requiring a material decision-log entry.
+
+Only actual changes to business capabilities need higher-level approval.
+
+---
+
+# 29. Candidate Service Concepts
+
+The registry may optionally contain:
+
+```text
+status: candidate
+```
+
+for potential future business services.
+
+Candidate means:
+
+> Being evaluated.
+
+It does not mean:
+
+> Publicly offered.
+
+Candidate services should not automatically:
+
+* appear in public service navigation
+* receive Service schema as active offerings
+* generate indexable service pages
+* appear in forms as selectable offered services
+
+unless business capability is confirmed.
+
+---
+
+# 30. Active Service Status
+
+Use:
+
+```text
+status: active
+```
+
+for confirmed services that may be publicly represented.
+
+Active does not necessarily mean:
+
+* available in every location
+* homepage priority
+* dedicated page required
+* navigation placement required
+
+Those are separate decisions.
+
+---
+
+# 31. Inactive Service Status
+
+Use:
+
+```text
+status: inactive
+```
+
+when a service exists historically or internally but is not currently being marketed/offered.
+
+Do not expose inactive services as current capabilities.
+
+---
+
+# 32. Retired Services
+
+Use:
+
+```text
+status: retired
+```
+
+when a previously offered service is permanently removed.
+
+Retirement may trigger:
+
+* page review
+* redirect planning
+* internal-link cleanup
+* form updates
+* schema changes
+
+Follow the migration strategy when a live service page is retired.
+
+---
+
+# 33. Current Foundational Service Themes
+
+The project currently centers on service themes including:
+
+* Sewer Inspection
+* Sewer Camera Inspection
+* Sewer Diagnostics
+* Sewer Cleaning
+* Hydro Jetting
+* Sewer Line Locating
+* Drain Cleaning
+* Pre-Purchase Sewer Inspection
+* Commercial Sewer Inspection
+* Commercial Sewer Cleaning
+* Commercial Hydro Jetting
+* Commercial Drain Services
+
+The project research contains approximately **18 canonical service records**.
+
+The exact final registry should retain the verified canonical service list already developed for the project.
+
+Do not delete valid existing service records merely because this document summarizes only the major themes.
+
+---
+
+# 34. Do Not Collapse Existing 18-Service Data Without Review
+
+The current structured research contains approximately 18 canonical services.
+
+When implementing this updated governance model:
+
+```text
+Keep Existing Valid Canonical Records
+→ Review for Duplication / Accuracy
+→ Improve Structure if Needed
+```
+
+Do not replace the existing service dataset with only the abbreviated list in this document.
+
+This document defines how the registry works.
+
+The structured data contains the actual service inventory.
+
+---
+
+# 35. Service Description Standard
+
+Each active service should have a concise canonical description that explains:
+
+* what the service is
+* what it does
+* when it is relevant
+
+Avoid promotional filler.
+
+Example structure:
+
+```text
+Service Name
+
+A [service] is used to [primary function]. It can help identify or address [relevant use cases] and may be used when [customer situations].
+```
+
+The canonical description is not necessarily the complete website copy.
+
+---
+
+# 36. Service Content Expansion
+
+Canonical service data may be supplemented with structured content such as:
+
+```ts
+benefits
+commonProblems
+processSteps
+faqs
+relatedResources
+relatedServiceIds
+audienceIds
+```
+
+when useful for page generation.
+
+Do not force all page copy into the service registry if another content architecture is more maintainable.
+
+---
+
+# 37. Service Metadata
+
+The registry may provide metadata defaults such as:
+
+```ts
+seoTitle
+metaDescription
+defaultH1
+```
+
+but production metadata may be page-specific.
+
+For example:
+
+```text
+Canonical Service Page
+```
+
+and:
+
+```text
+Service + Location Page
+```
+
+should not necessarily share identical metadata patterns.
+
+---
+
+# 38. Service Schema
+
+Active services may be represented through appropriate `Service` schema.
+
+Schema should use the same canonical service identity as the visible page.
+
+Conceptually:
+
+```text
+Canonical Service Record
+→ Visible Page
+→ Service Schema
+```
+
+Do not create schema for:
+
+* candidate services
+* repair services not offered
+* educational topics that are not actual services
+
+Detailed schema rules remain in:
+
+`15-schema-entity-strategy.md`
+
+---
+
+# 39. Service Analytics
+
+Canonical service IDs should be reused in analytics.
+
+Example:
+
+```ts
+service_id: "sewer-camera-inspection"
+```
+
+Use the same ID across:
+
+* page data
+* form context
+* analytics
+* page relationships
+
+Avoid analytics fragmentation caused by variations such as:
+
+```text
+camera
+camera-inspection
+video-inspection
+sewer-camera
+```
+
+for the same service.
+
+---
+
+# 40. Service Forms
+
+Where useful, forms may use canonical service IDs behind the scenes while presenting readable service names.
+
+Example:
+
+```html
+<option value="sewer-camera-inspection">
+  Sewer Camera Inspection
+</option>
+```
+
+A page already dedicated to a service may automatically preserve that service context rather than making visitors select it again.
+
+---
+
+# 41. Navigation
+
+The service registry may power navigation.
+
+However:
+
+```text
+Active Service
+≠
+Must Appear in Main Navigation
+```
+
+Main navigation should prioritize the most useful service pathways.
+
+Lower-priority services may remain available through:
+
+* Services hub
+* related-service modules
+* search
+* contextual links
+
+---
+
+# 42. Services Hub
+
+The Services hub should organize active services into a useful customer-facing structure.
+
+It may use service categories such as:
+
+* Inspection & Diagnostics
+* Cleaning
+* Locating
+* Real Estate
+* Commercial
+
+The exact presentation should follow the information architecture and design system.
+
+Do not simply dump every registry row into an unstructured list.
+
+---
+
+# 43. Internal Linking
+
+Service relationships may power:
+
+```text
+Related Services
+```
+
+modules.
+
+Example:
+
+```text
+Sewer Camera Inspection
+→ Sewer Inspection
+→ Sewer Line Locating
+→ Sewer Cleaning
+```
+
+The exact relationships should reflect meaningful customer journeys.
+
+Avoid creating circular links solely for SEO.
+
+---
+
+# 44. Content Cluster Relationships
+
+Each service may anchor a topic cluster.
+
+Example:
+
+```text
+Sewer Camera Inspection
+    ↓
+What Does a Sewer Camera Inspection Show?
+    ↓
+Common Sewer Problems Seen on Camera
+    ↓
+Sewer Inspection Before Buying a House
+    ↓
+Second Opinion Before Sewer Replacement
+```
+
+Supporting topics remain resources, not additional offered services.
+
+---
+
+# 45. Comparison Content
+
+Comparison topics may reference canonical services.
+
+Examples:
+
+```text
+Hydro Jetting vs. Snaking
+```
+
+```text
+Sewer Cleaning vs. Sewer Repair
+```
+
+```text
+Sewer Camera Inspection vs. Standard Home Inspection
+```
+
+Comparison pages should use service records for consistent naming.
+
+They do not require new service IDs.
+
+---
+
+# 46. Alternative Content
+
+Alternative topics may also connect to services.
+
+Example:
+
+```text
+Alternatives to Sewer Replacement
+```
+
+may connect to:
+
+* Sewer Inspection
+* Sewer Camera Inspection
+* Sewer Cleaning
+
+without creating:
+
+```text
+Sewer Replacement Alternative Service
+```
+
+as a canonical offering.
+
+---
+
+# 47. Localized Service Language
+
+Localized pages should preserve canonical service identity.
+
+Example:
+
+```text
+serviceId:
+sewer-camera-inspection
+
+locationId:
+las-vegas-nv
+```
+
+Visible H1:
+
+> Sewer Camera Inspection in Las Vegas, NV
+
+The localized phrase does not create a new service record.
+
+---
+
+# 48. Audience + Service Language
+
+Likewise:
+
+```text
+serviceId:
+pre-purchase-sewer-inspection
+
+audienceId:
+home-buyers
+```
+
+may render:
+
+> Sewer Inspections for Home Buyers
+
+without creating a duplicate service called:
+
+```text
+Home Buyer Sewer Inspection Service
+```
+
+---
+
+# 49. Commercial Service Language
+
+Commercial pages may adapt service names naturally.
+
+Example:
+
+Canonical:
+
+```text
+Hydro Jetting
+```
+
+Visible commercial page:
+
+> Commercial Hydro Jetting
+
+The data architecture may model this using:
+
+```text
+serviceId
++
+audience/commercial context
+```
+
+rather than duplicating service identity unnecessarily.
+
+---
+
+# 50. Registry Maintenance
+
+The registry should be actively maintained.
+
+Routine updates may include:
+
+* new aliases
+* corrected descriptions
+* new relationships
+* search terminology
+* categorization
+* metadata refinements
+* status updates
+* structured fields
+
+These changes do not normally require decision-log entries.
+
+---
+
+# 51. Decision Log Relationship
+
+Use:
+
+`22-decisions-change-log.md`
+
+when the service registry changes because of a **material business decision**.
+
+Examples:
+
+```text
+The Sewer Pros begins offering Sewer Replacement.
+```
+
+or:
+
+```text
+The Sewer Pros permanently discontinues Hydro Jetting.
+```
+
+Routine taxonomy cleanup does not require strategic decision logging.
+
+---
+
+# 52. Master Page Build List Relationship
+
+The service registry answers:
+
+> What are the canonical services?
+
+`04-master-page-build-list.md` answers:
+
+> What is the lifecycle/indexation state of pages?
+
+A service may exist without immediately having:
+
+* a dedicated page
+* a localized page in every market
+* an audience variant
+
+Do not combine these responsibilities.
+
+---
+
+# 53. Service-Location Matrix Relationship
+
+The service registry provides one side of:
+
+```text
+Service
+×
+Location
+```
+
+The relationship matrix determines relevant combinations.
+
+The service registry should not manually replicate thousands of service-location rows.
+
+---
+
+# 54. Audience Matrix Relationship
+
+Similarly:
+
+```text
+Service
+×
+Audience
+```
+
+relationships belong primarily in:
+
+`09-audience-commercial-matrix.md`
+
+Avoid unnecessary duplication.
+
+---
+
+# 55. URL Strategy Relationship
+
+Canonical services may inform URL slugs.
+
+Exact route structure belongs in:
+
+`05-url-routing-strategy.md`
+
+Do not change canonical service names casually solely to chase keyword variations if doing so destabilizes established URLs.
+
+---
+
+# 56. Design Relationship
+
+Canonical service pages should generally use:
+
+```text
+/docs/design-references/service-page-performance.webp
+```
+
+Service + location pages should generally use:
+
+```text
+/docs/design-references/location-service-page-performance.webp
+```
+
+Audience + service pages should generally use:
+
+```text
+/docs/design-references/audience-service-page.webp
+```
+
+See:
+
+`18-design-system.md`
+
+---
+
+# 57. Content Specification Relationship
+
+All service-page content should follow:
+
+`14-content-specification.md`
+
+The registry provides factual/taxonomic identity.
+
+The content specification governs how that identity becomes useful public content.
+
+---
+
+# 58. Build-First Service Workflow
+
+When creating a service-related page:
+
+```text
+Identify Canonical Service
+→ Use Existing Service ID
+→ Select Relevant Page Type
+→ Build Content / Route
+→ Add Related Data
+→ QA Business Accuracy
+→ Publish / Control Indexation
+```
+
+Do not require a new service-registry approval merely because a new page variation is being created.
+
+---
+
+# 59. New Alias Workflow
+
+If research reveals a legitimate synonym:
+
+```text
+Identify Search / Customer Term
+→ Confirm It Represents Existing Service
+→ Add Alias if Useful
+→ Continue
+```
+
+No strategic approval is normally required.
+
+---
+
+# 60. New Supporting Topic Workflow
+
+If research reveals:
+
+```text
+tree roots in sewer line
+```
+
+Claude may create:
+
+* FAQ
+* resource
+* problem section
+* comparison
+* supporting content
+
+without creating a new canonical service.
+
+---
+
+# 61. New Major Service Workflow
+
+If research suggests the company should offer a new service:
+
+```text
+Research Opportunity
+→ Recommend Service
+```
+
+Do not silently convert:
+
+```text
+Recommendation
+```
+
+into:
+
+```text
+Offered Business Capability
+```
+
+If the business approves:
+
+```text
+Confirm Capability
+→ Update Decision Log if Material
+→ Add Active Service Record
+→ Add Relationships
+→ Build Public Architecture
+```
+
+---
+
+# 62. Build-Time Validation
+
+Where practical, validate:
+
+* duplicate service IDs
+* missing names
+* invalid parent IDs
+* invalid related-service IDs
+* retired services appearing as active
+* unapproved repair capabilities appearing in active service inventory
+* malformed slugs
+
+These validations should protect data integrity.
+
+They should not stop unrelated development because optional content fields are incomplete.
+
+---
+
+# 63. Service Registry as Code
+
+The long-term operational source may live in a structured file such as:
+
+```text
+/data/services.ts
+```
+
+or:
+
+```text
+/content/services.ts
+```
+
+or another architecture defined in:
+
+`02-nextjs-technical-architecture.md`
+
+If structured code/data becomes the operational authority, avoid maintaining a separate conflicting service list manually in Markdown.
+
+This document should define the taxonomy rules.
+
+Structured project data should hold the current records.
+
+---
+
+# 64. Single Source of Truth
+
+Avoid situations where:
+
+```text
+services.ts says one thing
+service-registry.md says another
+page copy says another
+schema says another
+```
+
+The preferred architecture is:
+
+```text
+Canonical Service Data
+        ↓
+Pages
+Metadata
+Forms
+Schema
+Analytics
+Relationships
+```
+
+Use one canonical identity throughout the system.
+
+---
+
+# 65. Service Data Should Enable Scale
+
+The service registry should make it easier to build:
+
+* 18 service records
+* hundreds of local relationships
+* audience variants
+* commercial variants
+* resource clusters
+
+without duplicating service facts throughout the repository.
+
+The registry is infrastructure for scalability.
+
+It should not create administrative friction.
+
+---
+
+# 66. Hard Service Guardrails
+
+The following remain strict.
+
+Do not:
+
+* advertise unverified services
+* convert search topics into false offered services
+* advertise repair/replacement while unapproved
+* create schema claiming unoffered services
+* create form selections for services the business does not provide
+* imply availability in markets where service coverage is known to be false
+
+These are business-truth safeguards.
+
+---
+
+# 67. Flexible Service Decisions
+
+Claude and Claude Code may independently:
+
+* use natural service aliases
+* improve descriptions
+* add relevant relationships
+* add supporting content
+* add service FAQs
+* create localized service pages
+* create audience variants
+* create comparison content
+* create resources
+* refine category organization
+* improve structured data
+* improve service navigation
+
+provided the actual business capability is not being misrepresented.
+
+---
+
+# 68. Registry Success Criteria
+
+The registry is working correctly when it:
+
+* keeps service naming consistent
+* simplifies page generation
+* prevents duplicate canonical concepts
+* supports SEO relationships
+* supports analytics
+* supports schema
+* supports forms
+* allows natural-language content
+* helps Claude Code move faster
+
+It is failing when it:
+
+* blocks ordinary page development
+* creates duplicate service concepts from every keyword
+* requires manual approval for routine aliases or relationships
+* prevents useful supporting content
+* becomes disconnected from implementation data
+
+---
+
+# 69. Core Service Governance Model
+
+Use:
+
+```text
+Actual Business Capability
+→ Strict
+
+Canonical Service Identity
+→ Consistent
+
+Aliases / Search Language
+→ Flexible
+
+Supporting Topics
+→ Flexible
+
+Page Variants
+→ Flexible
+
+Service + Location Generation
+→ Flexible
+
+Public Claim of New Service
+→ Verify First
+```
+
+---
+
+# 70. Final Governing Principle
+
+> **The Master Service Registry is the canonical taxonomy and structured-data foundation for the real service offerings of The Sewer Pros. Use it to keep service IDs, names, relationships, schema, analytics, forms, routing, and page generation consistent. Do not treat it as a permission gate for normal research, content creation, page generation, aliases, audience variants, local variants, or supporting resources. Keep actual business capabilities strict—especially the current prohibition against presenting sewer repair or replacement as offered services—while allowing the content and implementation system to remain flexible, scalable, and productive.**

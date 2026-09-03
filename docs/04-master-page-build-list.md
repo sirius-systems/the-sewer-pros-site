@@ -1,1672 +1,1388 @@
 # The Sewer Pros — Master Page Build List
 
-**Document:** `04-master-page-build-list.md`
-**Project:** The Sewer Pros Website Rebuild
-**Repository:** `the-sewer-pros-site`
-**Status:** Foundation / Publishing Authority
-**Document Role:** Authoritative page inventory and route-generation gate
-**Primary Markets:** St. Louis, MO; San Diego, CA; Las Vegas, NV
+**Document:** `04-master-page-build-list.md`  
+**Project:** The Sewer Pros Website Rebuild  
+**Repository:** `the-sewer-pros-site`  
+**Status:** Active Page Inventory, Lifecycle, and Indexation Registry  
+**Last Updated:** September 3, 2026
 
 ---
 
 # 1. Purpose
 
-This document defines the **authorized page inventory** for The Sewer Pros website.
+This document tracks the page inventory and lifecycle of The Sewer Pros website.
 
-It is the controlling source of truth for determining:
+It should answer:
 
-* which pages may be built
-* which pages may generate routes
-* which pages may be indexed
-* which pages belong in the initial launch
-* which pages are reserved for post-launch expansion
-* which researched opportunities remain on hold
-* which matrix relationships must not generate pages
+- What pages exist?
+- What pages are planned?
+- What pages are being researched?
+- What pages are being drafted?
+- What pages are built?
+- What pages are published?
+- Which published pages should be indexable?
+- Which pages are intentionally noindex?
+- Which pages are deferred?
+- Which pages are being consolidated or retired?
 
-This document sits between research and implementation.
+This document is a **planning, inventory, lifecycle, and indexation-control system**.
 
-The governing workflow is:
+It is **not intended to function as a bureaucratic permission gate for ordinary development**.
+
+Claude and Claude Code may research, draft, generate, prototype, and build logical pages before every route has been manually entered here.
+
+The inventory should evolve with the project.
+
+---
+
+# 2. Core Operating Principle
+
+The page lifecycle should follow:
 
 ```text
-Research
-↓
-Canonical Registries
-↓
-Opportunity Matrices
-↓
-Master Page Build List
-↓
-Approved Route Registry
-↓
-Page Build
-↓
-QA
-↓
-Indexation
+Opportunity
+→ Candidate
+→ Draft
+→ Build-Ready
+→ Published
+→ Indexable / Noindex
+→ Measure
+→ Improve / Expand / Consolidate / Retire
 ```
 
-A service, location, audience, commercial segment, keyword, or matrix relationship existing in research does **not** authorize a public page.
-
----
-
-# 2. Critical Publishing Rule
-
-The project currently contains:
-
-* 18 canonical service records
-* 579 normalized geographic records
-* 10,422 service × location relationships
-
-The 10,422 relationships represent SEO opportunities.
-
-They do **not** represent 10,422 pages to publish.
-
-Only pages explicitly authorized by this document may proceed to route generation.
-
-The application must never generate pages directly from the full service × location matrix.
-
----
-
-# 3. Authorization Status Model
-
-Every page in this document receives one of the following statuses.
-
-| Status                      |      Build Route |              Index |            Sitemap | Meaning                                                                                |
-| --------------------------- | ---------------: | -----------------: | -----------------: | -------------------------------------------------------------------------------------- |
-| `launch`                    |              Yes |                Yes |                Yes | Approved for initial production launch                                                 |
-| `launch_pending_validation` |              Yes | No until validated | No until validated | Approved to build, but publication/indexation requires specified validation            |
-| `phase_2`                   | No during launch |                 No |                 No | Approved strategic expansion page after launch                                         |
-| `phase_3`                   |               No |                 No |                 No | Longer-term approved opportunity requiring stronger evidence or operational validation |
-| `hold`                      |               No |                 No |                 No | Known opportunity but not approved for production                                      |
-| `research_only`             |               No |                 No |                 No | Retained for research; not a publishing instruction                                    |
-| `retired`                   |               No |                 No |                 No | Previously approved route removed from active architecture                             |
-
----
-
-# 4. Route Generation Rule
-
-Production route generation must use only records whose status permits a route.
-
-Conceptually:
-
-```ts
-const buildablePages = masterPageBuildList.filter(
-  (page) =>
-    page.status === 'launch' ||
-    page.status === 'launch_pending_validation'
-)
-```
-
-Indexation must apply a second gate:
-
-```ts
-const indexablePages = masterPageBuildList.filter(
-  (page) =>
-    page.status === 'launch' &&
-    page.indexable === true
-)
-```
-
-A page marked:
+The most important distinction is:
 
 ```text
-launch_pending_validation
+Built
+≠
+Published
+≠
+Indexable
 ```
 
-must not enter:
-
-* XML sitemaps
-* indexable internal-link modules
-* production canonicals intended for indexing
-* search-engine submission workflows
-
-until its validation condition has been satisfied.
+A page may exist in development without being intended for search-engine indexation.
 
 ---
 
-# 5. Launch Build Summary
+# 3. Build-First Rule
 
-The initial approved build contains **71 page records**, of which **70 are indexable** — `core-privacy` is built but `noindex` (§7).
+Normal page creation should not be blocked because a route is not yet recorded in this document.
 
-| Page Family                       | Launch Build Count |
-| --------------------------------- | -----------------: |
-| Core / hub / conversion           |                 10 |
-| Core + high-intent services       |                 10 |
-| Market hubs                       |                  3 |
-| Priority location pages           |                 16 |
-| Priority service + location pages |                 14 |
-| Audience pages                    |                  6 |
-| Commercial service pages          |                  5 |
-| Comparison pages                  |                  2 |
-| Foundational resource pages       |                  5 |
-| **Total**                         |             **71** |
+Claude and Claude Code may independently:
 
-This fits the intended initial website scope while preserving a substantially larger post-launch SEO opportunity.
+* create candidate routes
+* create page shells
+* research page opportunities
+* draft page content
+* build template variations
+* generate metadata candidates
+* implement schema
+* create related-page relationships
+* generate noindex inventory
+* build future expansion pages
+* test page-family layouts
 
-The 71-page build represents the **launch foundation**, not the final size of the website. Sitemap and indexable-route counts remain 70.
+when those actions are consistent with the known project:
+
+* business capabilities
+* markets
+* services
+* audiences
+* architecture
+* design system
+
+The page registry can be updated during or after that work.
 
 ---
 
-# 6. Launch Priority Definitions
+# 4. What This Document Controls
 
-Launch pages are divided into three practical levels.
+This document should serve as the primary registry for:
 
-## L1 — Structural Foundation
+## Page Lifecycle
 
-Pages required to make the website complete and understandable.
+Where the page currently stands.
+
+## Publishing Intent
+
+Whether the route should exist in production.
+
+## Indexation Intent
+
+Whether the route is intended to appear in search-engine indexes.
+
+## Priority
+
+How important the page is to the current build or SEO roadmap.
+
+## Page Relationships
+
+What service, market, audience, or cluster owns the page.
+
+## Consolidation and Retirement
+
+Whether a page should be merged, redirected, noindexed, or removed.
+
+---
+
+# 5. What This Document Does Not Control
+
+This document should not prevent:
+
+* research
+* content ideation
+* page drafting
+* route prototyping
+* component development
+* noindex builds
+* template testing
+* candidate page generation
+* metadata generation
+* structured data generation
+* internal relationship modeling
+
+It also does not replace:
+
+* `05-url-routing-strategy.md`
+* `06-master-service-registry.md`
+* `07-master-location-registry.md`
+* `08-service-location-matrix.md`
+* `09-audience-commercial-matrix.md`
+
+Those documents provide taxonomy and relationships.
+
+This document tracks page lifecycle.
+
+---
+
+# 6. Page Status System
+
+Use the following statuses.
+
+## `candidate`
+
+A page opportunity has been identified.
+
+It may come from:
+
+* research
+* search demand
+* competitor gaps
+* service/location data
+* customer questions
+* commercial opportunity
+* audience need
+* Search Console data
+* AI/LLM query patterns
+
+A candidate does not need to be fully researched yet.
+
+---
+
+## `draft`
+
+Research or content development is underway.
+
+A draft may exist as:
+
+* content brief
+* Markdown copy
+* route shell
+* structured content object
+* page prototype
+
+Draft status does not imply production publication.
+
+---
+
+## `build-ready`
+
+The page has sufficient:
+
+* business relevance
+* content
+* route definition
+* design direction
+* internal-link relationships
+
+to be implemented as a production-quality page.
+
+---
+
+## `published`
+
+The page exists on the production website.
+
+Published does not automatically mean indexable.
+
+---
+
+## `indexable`
+
+The page is intentionally available for organic search discovery.
+
+Indexable pages should generally:
+
+* return `200`
+* use self-referencing canonical markup
+* appear in the production sitemap when appropriate
+* be accessible through meaningful internal links
+* avoid `noindex`
+* provide useful standalone content
+
+---
+
+## `noindex`
+
+The page may exist publicly but is not intended for search-engine indexing.
+
+Potential use cases include:
+
+* temporary pages
+* test pages
+* conversion confirmation pages
+* utility pages
+* candidate programmatic inventory
+* pages awaiting differentiation
+* internal campaign pages
+
+---
+
+## `deferred`
+
+The page is strategically valid but is not currently a priority.
+
+Deferred pages may later return to candidate or draft status.
+
+---
+
+## `consolidation-candidate`
+
+The page may overlap with another page and should be evaluated for:
+
+* merge
+* canonical restructuring
+* redirect
+* intent clarification
+
+Do not consolidate automatically without reviewing:
+
+* search traffic
+* backlinks
+* conversions
+* user intent
+
+---
+
+## `retired`
+
+The page should no longer function as an active page.
+
+Retirement may require:
+
+* redirect
+* 404
+* 410
+* removal from internal links
+* sitemap removal
+
+Follow:
+
+`20-migration-redirect-plan.md`
+
+---
+
+# 7. Indexation Is the Primary SEO Gate
+
+The project should be strictest when deciding whether pages become intentionally indexable.
+
+Before indexing a large page cohort, evaluate:
+
+* Does the business actually provide the service?
+* Does the business actually serve the market?
+* Is the intent useful?
+* Is the page sufficiently differentiated?
+* Is the content helpful?
+* Does it fit the entity architecture of the site?
+* Does it have appropriate internal links?
+* Does it avoid misleading local-business signals?
+* Is it technically sound?
+
+This does not require every page to be individually approved by a human.
+
+Claude and Claude Code may use structured quality rules and project context to make routine indexation recommendations.
+
+Human approval is most important for **large-scale indexation decisions or material business representation changes**.
+
+---
+
+# 8. Structured Data Scale
+
+The project currently contains approximately:
+
+```text
+18 canonical services
+579 normalized geographic records
+10,422 service × location relationships
+```
+
+These relationships should be used productively.
+
+They may support:
+
+* candidate inventory
+* page-generation systems
+* SEO research
+* market prioritization
+* metadata generation
+* internal relationship models
+* build prototypes
+* noindex page generation
+* publishing cohorts
+
+The relationship is:
+
+```text
+Opportunity Data
+→ Candidate Pages
+→ Build / Evaluate
+→ Selective Indexation
+```
+
+not:
+
+```text
+Opportunity Data
+→ Automatically Index Everything
+```
+
+---
+
+# 9. Programmatic Page Generation
+
+Programmatic generation is allowed as an implementation method.
+
+The project may generate:
+
+* service + location pages
+* audience + service pages
+* audience + location pages
+* commercial + location pages
+* structured resource pages
+
+provided that production indexation remains quality-controlled.
+
+Programmatic generation should be viewed as:
+
+```text
+Build Efficiency
+```
+
+not:
+
+```text
+Automatic SEO Approval
+```
+
+---
+
+# 10. Page Quality Before Indexation
+
+Pages intended for indexation should generally satisfy the following.
+
+## Clear Intent
+
+The page should answer a distinct search/user need.
+
+## Business Relevance
+
+The service, audience, and location should reflect actual business operations.
+
+## Useful Content
+
+The page should provide more than token substitution.
+
+## Conversion Purpose
+
+The visitor should have an appropriate next step.
+
+## Internal Context
+
+The page should connect naturally to relevant hubs, services, locations, audiences, or resources.
+
+## Entity Accuracy
+
+The page should not create false offices, services, or business entities.
+
+## Technical Quality
+
+The route should have:
+
+* correct canonical
+* correct metadata
+* correct indexation state
+* working links
+* acceptable performance
+* no obvious technical errors
+
+---
+
+# 11. Page Quality Tests
+
+Use the following as improvement tests rather than pre-build blockers.
+
+## Location Test
+
+Could the location name be swapped with another city and leave nearly all content unchanged?
+
+If yes, strengthen local differentiation before intentional indexation.
+
+## Service Test
+
+Could the service be swapped with another service while leaving most copy unchanged?
+
+If yes, strengthen service-specific content.
+
+## Audience Test
+
+Could the audience name be swapped without changing the customer journey?
+
+If yes, strengthen audience-specific value.
+
+## Commercial Test
+
+Could a commercial page become a residential page by replacing a few nouns?
+
+If yes, strengthen commercial differentiation.
+
+---
+
+# 12. Page Family Registry
+
+The site may support the following page families.
+
+| Page Family           | Example                              | Primary Role                    |
+| --------------------- | ------------------------------------ | ------------------------------- |
+| Core                  | `/about/`                            | Company information             |
+| Service               | `/services/sewer-camera-inspection/` | Canonical service authority     |
+| Market                | `/st-louis-mo/`                      | Primary geographic hub          |
+| Location              | approved local route                 | Geographic authority            |
+| Service + Location    | local service route                  | High-intent local search        |
+| Audience              | `/home-buyers/`                      | Audience authority              |
+| Audience + Service    | audience/service route               | Specific audience need          |
+| Audience + Location   | localized audience route             | Local audience intent           |
+| Commercial            | `/commercial/`                       | Commercial authority            |
+| Commercial Service    | commercial service route             | Commercial transactional intent |
+| Commercial + Location | localized commercial route           | Local commercial intent         |
+| Comparison            | comparison route                     | Decision support                |
+| Alternative           | alternatives route                   | Decision support                |
+| Resource              | educational route                    | Topical authority               |
+| Contact               | `/contact/`                          | General conversion              |
+| Conversion            | request/thank-you route              | Lead flow                       |
+
+Exact URL patterns remain controlled by:
+
+`05-url-routing-strategy.md`
+
+---
+
+# 13. Core Launch Pages
+
+The following represent the expected foundational site structure.
+
+Exact current status should be updated as the build progresses.
+
+## Company / Core
+
+| Page           | Status                  | Indexation |
+| -------------- | ----------------------- | ---------- |
+| Homepage       | build-ready / published | indexable  |
+| About          | build-ready / published | indexable  |
+| Contact        | build-ready / published | indexable  |
+| Services Hub   | build-ready / published | indexable  |
+| Locations Hub  | build-ready / published | indexable  |
+| Commercial Hub | build-ready / published | indexable  |
+| Resources Hub  | build-ready / published | indexable  |
+
+Status should reflect actual repository state rather than remaining static.
+
+---
+
+# 14. Primary Market Hubs
+
+The three initial market hubs are:
+
+| Market        | Status                  | Intended Indexation |
+| ------------- | ----------------------- | ------------------- |
+| St. Louis, MO | build-ready / published | indexable           |
+| San Diego, CA | build-ready / published | indexable           |
+| Las Vegas, NV | build-ready / published | indexable           |
+
+These are service-market pages.
+
+They must not automatically imply physical offices.
+
+---
+
+# 15. Canonical Service Pages
+
+Canonical service pages should be generated from the approved service taxonomy in:
+
+`06-master-service-registry.md`
+
+Each major service should generally have one strongest general authority page.
+
+Examples include approved services such as:
+
+* Sewer Inspection
+* Sewer Camera Inspection
+* Sewer Cleaning
+* Hydro Jetting
+* Sewer Line Locating
+* Drain Cleaning
+* Pre-Purchase Sewer Inspection
+* Commercial Sewer Services
+
+The service registry determines exact canonical names.
+
+This page inventory should track implementation status.
+
+---
+
+# 16. Service + Location Pages
+
+Service + location pages may be generated when they represent useful local search intent.
+
+Examples:
+
+```text
+Sewer Camera Inspection in St. Louis
+Hydro Jetting in Las Vegas
+Pre-Purchase Sewer Inspection in San Diego
+```
+
+These pages may move through:
+
+```text
+candidate
+→ draft
+→ build-ready
+→ published
+→ indexable
+```
+
+without requiring a separate strategic decision for each page.
+
+Indexation should be based on:
+
+* actual service coverage
+* page usefulness
+* market relevance
+* content differentiation
+* site architecture
+
+---
+
+# 17. Location Pages
+
+Location pages may be created from verified geographic data.
+
+They may support:
+
+* market navigation
+* service-area discovery
+* local search
+* nearby-area relationships
+* local content hubs
+
+A geographic record alone does not prove:
+
+* a physical office
+* a local branch
+* a GBP
+* a dedicated local phone number
+
+Location pages should accurately represent service coverage.
+
+---
+
+# 18. Audience Pages
+
+Audience pages may be created when the user journey meaningfully differs.
+
+Important candidate audiences include:
+
+* homeowners
+* home buyers
+* real-estate agents
+* home inspectors
+* property managers
+* commercial property owners
+
+The exact taxonomy should generally align with:
+
+`09-audience-commercial-matrix.md`
+
+A candidate audience page does not require a new decision-log entry.
+
+---
+
+# 19. Audience + Service Pages
+
+Audience + service pages may be especially valuable where the service takes on a different role for a specific customer type.
+
+Examples:
+
+```text
+Sewer Inspections for Home Buyers
+Hydro Jetting for Property Managers
+Commercial Drain Cleaning for Property Managers
+```
+
+These pages should combine genuinely distinct:
+
+```text
+Audience Intent
++
+Service Intent
+```
+
+rather than duplicating the canonical service page.
+
+---
+
+# 20. Audience + Location Pages
+
+Audience + location pages may be used when local and audience intent both add meaningful value.
+
+Examples may include:
+
+```text
+Sewer Inspections for Home Buyers in St. Louis
+```
+
+or another validated combination.
+
+These pages should not be created merely to multiply route count.
+
+They may still be generated as candidates and evaluated before indexation.
+
+---
+
+# 21. Commercial Pages
+
+Commercial architecture may include:
+
+* commercial hub
+* commercial service pages
+* property-management pages
+* approved industry pages
+* commercial + location pages
+* commercial educational resources
+
+Commercial content should address actual commercial needs.
+
+Do not create commercial pages by simply adding "commercial" to residential content.
+
+---
+
+# 22. Comparison Pages
+
+Comparison pages can be developed where users are making a meaningful choice.
+
+Potential topics include:
+
+* Hydro Jetting vs. Snaking
+* Sewer Cleaning vs. Sewer Repair
+* Sewer Camera Inspection vs. Standard Home Inspection
+* Independent Sewer Inspection vs. Repair-Company Inspection
+* Drain Cleaning vs. Sewer Cleaning
+
+Comparison pages should help users understand differences rather than forcing a predetermined answer.
+
+---
+
+# 23. Alternative Pages
+
+Alternative pages may serve users researching major sewer decisions.
+
+Potential topics include:
+
+* Alternatives to Sewer Replacement
+* What to Do Before Replacing a Sewer Line
+* Alternatives to Repeated Drain Snaking
+* Can a Sewer Be Cleaned Instead of Replaced?
+
+These pages should not imply that repair is never necessary.
+
+The primary strategic opportunity is independent inspection and evidence.
+
+---
+
+# 24. Resource Pages
+
+Resources should be organized into topic clusters.
+
+Priority clusters may include:
+
+* sewer inspection
+* sewer camera inspection
+* sewer cleaning
+* hydro jetting
+* sewer line locating
+* sewer problems
+* real estate
+* home buyers
+* second opinions
+* commercial services
+
+Resource pages may be added as research reveals useful questions.
+
+There is no requirement that every resource be manually pre-approved before drafting.
+
+---
+
+# 25. Resource Publishing Rule
+
+A resource should generally be indexable when it:
+
+* answers a useful question
+* supports a relevant topic cluster
+* contains accurate content
+* provides meaningful value
+* links to relevant services or resources
+* does not merely duplicate another article
+
+Do not impose arbitrary publication quotas.
+
+---
+
+# 26. Design Reference Mapping
+
+Pages should use the reference templates defined in:
+
+`18-design-system.md`
+
+Primary mapping:
+
+| Page Family        | Reference                                |
+| ------------------ | ---------------------------------------- |
+| Homepage           | `homepage-performance.webp`              |
+| Core Service       | `service-page-performance.webp`          |
+| Location / Market  | `location-page-performance.webp`         |
+| Service + Location | `location-service-page-performance.webp` |
+| Audience           | `audience-page-performance.webp`         |
+| Audience + Service | `audience-service-page.webp`             |
+
+The design template should accelerate building page inventory.
+
+It should not function as another approval gate.
+
+---
+
+# 27. Page Inventory Fields
+
+For structured implementation, each page record may include fields such as:
+
+```ts
+type PageStatus =
+  | "candidate"
+  | "draft"
+  | "build-ready"
+  | "published"
+  | "indexable"
+  | "noindex"
+  | "deferred"
+  | "consolidation-candidate"
+  | "retired";
+
+type PageRecord = {
+  id: string;
+  title: string;
+  slug: string;
+  pageType: string;
+  status: PageStatus;
+
+  serviceId?: string;
+  marketId?: string;
+  locationId?: string;
+  audienceId?: string;
+
+  indexable: boolean;
+  priority?: string;
+
+  parentId?: string;
+  relatedPageIds?: string[];
+
+  contentStatus?: string;
+  designReference?: string;
+
+  notes?: string;
+};
+```
+
+The actual implementation may use a different structure if technically preferable.
+
+---
+
+# 28. Suggested Page Priority Levels
+
+Priority may be tracked using:
+
+## `P0`
+
+Critical launch / business infrastructure.
 
 Examples:
 
 * homepage
-* services hub
-* market hubs
-* about
+* major services
+* primary market hubs
 * contact
-* commercial hub
+* essential conversion pages
 
-## L2 — Revenue / Search Priority
+## `P1`
 
-Pages expected to address meaningful service or local search intent.
+High-value near-term SEO or conversion pages.
 
 Examples:
 
-* canonical service pages
-* priority locations
-* service + location pages
-* commercial services
-* homebuyer pages
+* important service + market pages
+* pre-purchase inspection
+* home-buyer pages
+* major commercial pages
 
-## L3 — Authority / Decision Support
+## `P2`
 
-Pages supporting:
+Strategic expansion.
 
-* topical authority
-* AEO
-* AI retrieval
-* comparisons
-* real estate education
-* municipal/local information
+Examples:
 
----
+* selected location pages
+* secondary audience pages
+* supporting comparisons
+* important resources
 
-# 7. Core / Hub / Conversion Pages
+## `P3`
 
-## Approved Launch Pages
+Long-tail or experimental opportunity.
 
-| ID               | Page                              | URL            | Priority | Status   | Index |
-| ---------------- | --------------------------------- | -------------- | -------- | -------- | ----: |
-| `core-home`      | Home                              | `/`            | L1       | `launch` |   Yes |
-| `core-about`     | About The Sewer Pros              | `/about/`      | L1       | `launch` |   Yes |
-| `core-contact`   | Contact                           | `/contact/`    | L1       | `launch` |   Yes |
-| `hub-services`   | Services                          | `/services/`   | L1       | `launch` |   Yes |
-| `hub-locations`  | Locations / Service Areas         | `/locations/`  | L1       | `launch` |   Yes |
-| `hub-audiences`  | Who We Serve                      | `/for/`        | L1       | `launch` |   Yes |
-| `hub-commercial` | Commercial Sewer & Drain Services | `/commercial/` | L1       | `launch` |   Yes |
-| `hub-resources`  | Sewer & Drain Resources           | `/resources/`  | L1       | `launch` |   Yes |
-| `core-faq`       | Sewer & Drain FAQs                | `/faq/`        | L3       | `launch` |   Yes |
-| `core-privacy`   | Privacy Policy                    | `/privacy/`    | L1       | `launch` |    No |
+Examples:
 
-**Launch count:** 10
+* lower-demand local combinations
+* niche resources
+* emerging query patterns
 
-⚠ `core-privacy` is `launch` with **Index: No** — the route is built and publicly reachable, but carries `noindex` and is omitted from the sitemap. §4's indexation gate (`status === 'launch' && indexable === true`) expresses that combination directly.
-
-It is a legal utility page, and CLAUDE.md §48 asks utility pages to use `noindex`/sitemap omission rather than adding a thin record to a deliberately controlled index (§93-94). Noindex does not affect public accessibility, so the CPRA disclosure obligation the page exists to satisfy is unaffected. Flip to `Yes` if the business prefers it indexed — that is a preference, not a compliance question.
+Priority is a planning tool, not a hard build gate.
 
 ---
 
-# 8. Canonical Service Pages
+# 29. Candidate Page Creation
 
-The following pages establish the site's primary service entities.
+Candidate pages may be added based on:
 
-## 8.1 Established Core Services
+* keyword research
+* Search Console
+* Bing data
+* competitor research
+* customer questions
+* internal site-search data
+* sales feedback
+* local market research
+* matrix relationships
+* AI/LLM query analysis
+* new commercial opportunities
 
-| ID                                     | Service                            | URL                                           | Priority | Status   | Index |
-| -------------------------------------- | ---------------------------------- | --------------------------------------------- | -------- | -------- | ----: |
-| `svc-sewer-camera-inspection`          | Sewer Camera Inspection            | `/services/sewer-camera-inspection/`          | L1       | `launch` |   Yes |
-| `svc-sewer-cleaning`                   | Sewer Cleaning                     | `/services/sewer-cleaning/`                   | L1       | `launch` |   Yes |
-| `svc-hydro-jetting`                    | Hydro Jetting                      | `/services/hydro-jetting/`                    | L1       | `launch` |   Yes |
-| `svc-sewer-cleaning-camera-inspection` | Sewer Cleaning + Camera Inspection | `/services/sewer-cleaning-camera-inspection/` | L1       | `launch` |   Yes |
-| `svc-sewer-line-locating`              | Sewer Line Locating                | `/services/sewer-line-locating/`              | L1       | `launch` |   Yes |
-| `svc-drain-cleaning`                   | Drain Cleaning                     | `/services/drain-cleaning/`                   | L1       | `launch` |   Yes |
+Candidate creation should be easy.
 
----
-
-## 8.2 High-Intent Derived Services
-
-| ID                                     | Service                          | URL                                           | Priority | Status   | Index |
-| -------------------------------------- | -------------------------------- | --------------------------------------------- | -------- | -------- | ----: |
-| `svc-pre-purchase-sewer-inspection`    | Pre-Purchase Sewer Inspection    | `/services/pre-purchase-sewer-inspection/`    | L1       | `launch` |   Yes |
-| `svc-recurring-sewer-backup-diagnosis` | Recurring Sewer Backup Diagnosis | `/services/recurring-sewer-backup-diagnosis/` | L2       | `launch` |   Yes |
-| `svc-preventative-sewer-maintenance`   | Preventative Sewer Maintenance   | `/services/preventative-sewer-maintenance/`   | L2       | `launch` |   Yes |
-
-These services are allowed as standalone pages because they represent materially different customer intent, not merely keyword variations.
+The project should not require a formal strategic decision every time a useful page idea is discovered.
 
 ---
 
-## 8.3 St. Louis-Specific Service
+# 30. Build Cohorts
 
-| ID                                           | Service                                        | URL                                                | Priority | Status   | Index |
-| -------------------------------------------- | ---------------------------------------------- | -------------------------------------------------- | -------- | -------- | ----: |
-| `svc-stl-sewer-lateral-inspection-reporting` | Sewer Lateral Inspection & Municipal Reporting | `/st-louis-mo/sewer-lateral-inspection-reporting/` | L2       | `launch` |   Yes |
+Large page families may be built in cohorts.
 
-This service is **St. Louis-only**.
-
-It must never be programmatically generated into San Diego or Las Vegas.
-
-Municipal-program claims must be validated at the program level before publication.
-
-**Total launch service pages:** 10
-
----
-
-# 9. Service Pages Reserved for Phase 2
-
-| ID                                     | Service                                       | URL                                                      | Status    |
-| -------------------------------------- | --------------------------------------------- | -------------------------------------------------------- | --------- |
-| `svc-independent-sewer-second-opinion` | Independent Sewer Inspection / Second Opinion | `/services/independent-sewer-inspection-second-opinion/` | `phase_2` |
-
-This is strategically valuable but should initially be supported through:
-
-* homepage messaging
-* camera inspection content
-* cleaning + camera content
-* comparison content
-
-before receiving a dedicated service page.
-
-The purpose is to prevent unnecessary cannibalization with the canonical sewer camera inspection page.
-
----
-
-# 10. Market Hubs
-
-## 10.1 St. Louis
-
-| ID                   | Page                         | URL             | Status   | Index |
-| -------------------- | ---------------------------- | --------------- | -------- | ----: |
-| `market-st-louis-mo` | St. Louis, MO Sewer Services | `/st-louis-mo/` | `launch` |   Yes |
-
-St. Louis is an established market with an existing Google Business Profile.
-
----
-
-## 10.2 San Diego
-
-| ID                    | Page                         | URL              | Status   | Index |
-| --------------------- | ---------------------------- | ---------------- | -------- | ----: |
-| `market-san-diego-ca` | San Diego, CA Sewer Services | `/san-diego-ca/` | `launch` |   Yes |
-
-San Diego currently has no identified GBP.
-
-The page must not imply a verified storefront or GBP that does not exist.
-
----
-
-## 10.3 Las Vegas
-
-| ID                    | Page                         | URL              | Status                      |                                    Index |
-| --------------------- | ---------------------------- | ---------------- | --------------------------- | ---------------------------------------: |
-| `market-las-vegas-nv` | Las Vegas, NV Sewer Services | `/las-vegas-nv/` | `launch` | Yes |
-
-The Las Vegas market is part of the approved architecture.
-
-Indexation was withheld under DEC-063 until operational service availability was confirmed. DEC-080 (2026-08-17) released that gate; this page is now `launch` and indexable.
-
-Once the market is validated, this page may be promoted to:
+Example:
 
 ```text
-launch
+Cohort 1
+Top St. Louis service + location pages
+
+Cohort 2
+Top San Diego pre-purchase pages
+
+Cohort 3
+Las Vegas commercial pages
 ```
 
-without changing its URL.
+Cohorts allow:
 
-**Market hub count:** 3
+* efficient production
+* consistent QA
+* easier performance comparison
+* controlled indexation
 
----
-
-# 11. Priority Location Pages
-
-The 579-location registry is a research universe.
-
-Only the following location pages are authorized for the initial build.
+Cohorts are encouraged for scale, not required for individual pages.
 
 ---
 
-# 12. St. Louis Priority Locations
+# 31. Cohort Indexation
 
-| ID                      | Location       | URL                           | Status   | Index |
-| ----------------------- | -------------- | ----------------------------- | -------- | ----: |
-| `loc-stl-st-louis-city` | St. Louis City | `/st-louis-mo/st-louis-city/` | `launch` |   Yes |
-| `loc-stl-chesterfield`  | Chesterfield   | `/st-louis-mo/chesterfield/`  | `launch` |   Yes |
-| `loc-stl-ballwin`       | Ballwin        | `/st-louis-mo/ballwin/`       | `launch` |   Yes |
-| `loc-stl-florissant`    | Florissant     | `/st-louis-mo/florissant/`    | `launch` |   Yes |
-| `loc-stl-st-charles`    | St. Charles    | `/st-louis-mo/st-charles/`    | `launch` |   Yes |
-
-These locations provide launch coverage across several important St. Louis-area geographic clusters rather than concentrating the launch site in one part of the market.
-
----
-
-# 13. San Diego Priority Locations
-
-| ID                   | Location    | URL                          | Status   | Index |
-| -------------------- | ----------- | ---------------------------- | -------- | ----: |
-| `loc-sd-san-diego`   | San Diego   | `/san-diego-ca/san-diego/`   | `launch` |   Yes |
-| `loc-sd-san-marcos`  | San Marcos  | `/san-diego-ca/san-marcos/`  | `launch` |   Yes |
-| `loc-sd-carlsbad`    | Carlsbad    | `/san-diego-ca/carlsbad/`    | `launch` |   Yes |
-| `loc-sd-escondido`   | Escondido   | `/san-diego-ca/escondido/`   | `launch` |   Yes |
-| `loc-sd-oceanside`   | Oceanside   | `/san-diego-ca/oceanside/`   | `launch` |   Yes |
-| `loc-sd-chula-vista` | Chula Vista | `/san-diego-ca/chula-vista/` | `launch` |   Yes |
-| `loc-sd-mission-valley` | Mission Valley | `/san-diego-ca/mission-valley/` | `launch` |   Yes |
-
-San Marcos and the broader North County area receive substantial launch emphasis because they are strategically important to the San Diego operation.
-
-**Mission Valley note:** Mission Valley is classified in the location registry as `commercial_or_mixed_use_district` with `commercial_matrix: full` and `service_matrix: selective`. It is approved at launch primarily because it is the parent location for the approved hydro-jetting page in §18, and because `07-master-location-registry.md` §46 identifies it as the reference example of a commercial district whose value is commercial rather than broad residential.
-
-Its location page should therefore lean commercial/mixed-use in content emphasis rather than following the residential pattern used by the North County city pages. Approving it does not authorize broad residential service + location expansion within Mission Valley.
-
-See `22-decisions-change-log.md` → **DEC-065**.
-
----
-
-# 14. Las Vegas Priority Locations
-
-| ID                       | Location        | URL                              | Status                      | Index |
-| ------------------------ | --------------- | -------------------------------- | --------------------------- | ----: |
-| `loc-lv-las-vegas`       | Las Vegas       | `/las-vegas-nv/las-vegas/`       | `launch`                    |   Yes |
-| `loc-lv-henderson`       | Henderson       | `/las-vegas-nv/henderson/`       | `launch`                    |   Yes |
-| `loc-lv-north-las-vegas` | North Las Vegas | `/las-vegas-nv/north-las-vegas/` | `launch`                    |   Yes |
-| `loc-lv-summerlin`       | Summerlin       | `/las-vegas-nv/summerlin/`       | `launch`                    |   Yes |
-
-These four pages establish the first local architecture for Las Vegas. They were held behind the service-availability gate until DEC-080 released it (2026-08-17); all four are now `launch` and indexable.
-
-**Launch location-page count:** 16
+A cohort may be:
 
 ```text
-St. Louis:  5
-San Diego:  6 residential/city + 1 commercial district = 7
-Las Vegas:  4
+Built
+→ Published Noindex
+→ QA
+→ Selectively Index
 ```
 
----
+where appropriate.
 
-# 15. Remaining Tier 1 Locations
-
-Other Tier 1 records in the Master Location Registry are **not automatically approved for launch** merely because they carry a Tier 1 designation.
-
-They remain:
-
-```text
-phase_2
-```
-
-unless explicitly promoted in this document.
-
-This distinction is critical.
-
-For example, Tier 1 registry records such as:
-
-* Kirkwood
-* Clayton
-* Maryland Heights
-* O'Fallon
-* Webster Groves
-* Wentzville
-* Encinitas
-* La Jolla
-* Poway
-* Rancho Bernardo
-* Santee
-* Vista
-* Enterprise
-* Paradise
-* Spring Valley
-* Centennial Hills
-* Southern Highlands
-* Summerlin West
-
-may represent strong future opportunities but are not launch pages unless separately listed above.
+This provides flexibility to generate at scale without exposing low-quality inventory to search engines prematurely.
 
 ---
 
-# 16. Priority Service + Location Pages
+# 32. Publishing Does Not Require Indexation
 
-The following service + location combinations are explicitly approved.
+Useful pages may exist on the production site while remaining noindex.
 
-No other matrix relationships are authorized for launch.
+Examples:
 
-Canonical pattern:
+* campaign pages
+* unfinished expansion pages
+* forms
+* temporary pages
+* future market inventory
+* QA pages
 
-```text
-/{market}/{location}/{service}/
-```
-
----
-
-# 17. St. Louis Service + Location Launch Pages
-
-| ID                          | Page                                        | URL                                                      | Status   | Index |
-| --------------------------- | ------------------------------------------- | -------------------------------------------------------- | -------- | ----: |
-| `sl-stl-city-camera`        | Sewer Camera Inspection in St. Louis City    | `/st-louis-mo/st-louis-city/sewer-camera-inspection/`    | `launch` |   Yes |
-| `sl-chesterfield-camera`    | Sewer Camera Inspection in Chesterfield      | `/st-louis-mo/chesterfield/sewer-camera-inspection/`     | `launch` |   Yes |
-| `sl-ballwin-prepurchase`    | Pre-Purchase Sewer Inspection in Ballwin     | `/st-louis-mo/ballwin/pre-purchase-sewer-inspection/`    | `launch` |   Yes |
-| `sl-st-charles-prepurchase` | Pre-Purchase Sewer Inspection in St. Charles | `/st-louis-mo/st-charles/pre-purchase-sewer-inspection/` | `launch` |   Yes |
-| `sl-florissant-cleaning`    | Sewer Cleaning in Florissant                 | `/st-louis-mo/florissant/sewer-cleaning/`                | `launch` |   Yes |
-| `sl-chesterfield-hydro`     | Hydro Jetting in Chesterfield                | `/st-louis-mo/chesterfield/hydro-jetting/`               | `launch` |   Yes |
-
-**St. Louis launch service + location pages:** 6
+A production route is not automatically an SEO landing page.
 
 ---
 
-# 18. San Diego Service + Location Launch Pages
+# 33. Sitemap Rule
 
-| ID                        | Page                                     | URL                                                     | Status   | Index |
-| ------------------------- | ---------------------------------------- | ------------------------------------------------------- | -------- | ----: |
-| `sl-sd-city-camera`       | Sewer Camera Inspection in San Diego      | `/san-diego-ca/san-diego/sewer-camera-inspection/`      | `launch` |   Yes |
-| `sl-san-marcos-camera`    | Sewer Camera Inspection in San Marcos     | `/san-diego-ca/san-marcos/sewer-camera-inspection/`     | `launch` |   Yes |
-| `sl-carlsbad-camera`      | Sewer Camera Inspection in Carlsbad       | `/san-diego-ca/carlsbad/sewer-camera-inspection/`       | `launch` |   Yes |
-| `sl-chula-vista-camera`   | Sewer Camera Inspection in Chula Vista    | `/san-diego-ca/chula-vista/sewer-camera-inspection/`    | `launch` |   Yes |
-| `sl-escondido-cleaning`   | Sewer Cleaning in Escondido               | `/san-diego-ca/escondido/sewer-cleaning/`               | `launch` |   Yes |
-| `sl-oceanside-cleaning`   | Sewer Cleaning in Oceanside               | `/san-diego-ca/oceanside/sewer-cleaning/`               | `launch` |   Yes |
-| `sl-mission-valley-hydro` | Hydro Jetting in Mission Valley           | `/san-diego-ca/mission-valley/hydro-jetting/`           | `launch` |   Yes |
-| `sl-carlsbad-prepurchase` | Pre-Purchase Sewer Inspection in Carlsbad | `/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/` | `launch` |   Yes |
+Production sitemaps should contain intentional canonical indexable pages.
 
-**San Diego launch service + location pages:** 8
+Do not automatically generate sitemap entries from:
+
+* every service record
+* every location record
+* every matrix relationship
+* every candidate route
+
+Candidate, draft, noindex, and retired inventory should generally remain outside the indexable sitemap.
 
 ---
 
-# 19. Las Vegas Service + Location Gate
+# 34. Internal Linking Rule
 
-No Las Vegas service + location page is approved for indexation at initial build status.
+Internal links should generally point to useful live destinations.
 
-The following are designated **first-wave validation targets**, not build-authorized pages:
+Do not automatically expose all candidate inventory through:
 
-```text
-/las-vegas-nv/las-vegas/sewer-camera-inspection/
-/las-vegas-nv/henderson/sewer-camera-inspection/
-/las-vegas-nv/north-las-vegas/sewer-camera-inspection/
-/las-vegas-nv/summerlin/sewer-camera-inspection/
+* header
+* footer
+* service grids
+* location grids
+* related-page components
 
-/las-vegas-nv/las-vegas/sewer-cleaning/
-/las-vegas-nv/henderson/sewer-cleaning/
+Published indexable pages should receive meaningful internal integration.
 
-/las-vegas-nv/las-vegas/hydro-jetting/
-/las-vegas-nv/henderson/hydro-jetting/
-
-/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/
-/las-vegas-nv/henderson/pre-purchase-sewer-inspection/
-```
-
-Status for all:
-
-```text
-hold
-```
-
-These routes must not be generated until Las Vegas service availability is confirmed and the selected records are promoted in this document.
-
-**Launch service + location count:** 14
+Candidate or noindex pages may remain outside primary navigation until appropriate.
 
 ---
 
-# 20. Audience Hub
+# 35. Orphan Page Rule
 
-The parent audience hub is:
+An important indexable page should not be orphaned.
 
-| ID              | Page         | URL     | Status   | Index |
-| --------------- | ------------ | ------- | -------- | ----: |
-| `hub-audiences` | Who We Serve | `/for/` | `launch` |   Yes |
+Before intentional indexation, it should generally have:
 
-This page is already included in the core-page count.
+* a logical parent/hub
+* at least one meaningful contextual or navigational inbound path
+* useful outbound relationships
 
----
-
-# 21. Launch Audience Pages
-
-| ID                       | Audience           | URL                        | Status   | Index |
-| ------------------------ | ------------------ | -------------------------- | -------- | ----: |
-| `aud-home-buyers`        | Home Buyers        | `/for/home-buyers/`        | `launch` |   Yes |
-| `aud-home-sellers`       | Home Sellers       | `/for/home-sellers/`       | `launch` |   Yes |
-| `aud-real-estate-agents` | Real Estate Agents | `/for/real-estate-agents/` | `launch` |   Yes |
-| `aud-home-inspectors`    | Home Inspectors    | `/for/home-inspectors/`    | `launch` |   Yes |
-| `aud-property-managers`  | Property Managers  | `/for/property-managers/`  | `launch` |   Yes |
-| `aud-hoa-communities`    | HOA Communities    | `/for/hoa-communities/`    | `launch` |   Yes |
-
-**Launch audience count:** 6
+This does not mean every draft must immediately have a full internal-link network.
 
 ---
 
-# 22. Phase 2 Audience Pages
+# 36. Canonical Page Authority
 
-The following are approved for post-launch strategic evaluation/building:
+Canonical service pages should remain the strongest general source for their service topic.
 
-| Audience                             | Proposed URL                   | Status    |
-| ------------------------------------ | ------------------------------ | --------- |
-| Homeowners                           | `/for/homeowners/`             | `phase_2` |
-| Real Estate Investors                | `/for/real-estate-investors/`  | `phase_2` |
-| Landlords                            | `/for/landlords/`              | `phase_2` |
-| Contractors & Remodelers             | `/for/contractors-remodelers/` | `phase_2` |
-| Facility Managers                    | `/for/facility-managers/`      | `phase_2` |
-| Restaurants & Food-Service Operators | `/for/restaurants/`            | `phase_2` |
-| Commercial Property Owners           | `/for/commercial-properties/`  | `phase_2` |
+Service + location pages should support localized intent.
 
-These pages should be prioritized using conversion opportunity, search demand, commercial strategy, and overlap analysis.
+Audience pages should support audience intent.
+
+Resource pages should support informational intent.
+
+Avoid creating multiple pages with indistinguishable purposes.
 
 ---
 
-# 23. Audience + Location Pages
+# 37. Search Cannibalization
 
-No audience + location pages are approved for the initial launch.
+If multiple pages begin competing for the same search intent:
 
-Examples of potential future structures include:
+* review query patterns
+* compare page purpose
+* review conversions
+* inspect internal links
+* consider consolidation
+* clarify page positioning
 
-```text
-/{market}/{location}/for/{audience}/
-```
-
-Potential high-value future combinations include:
-
-* home buyers + priority real estate locations
-* real estate agents + major markets
-* property managers + commercial/multifamily markets
-* HOA communities + HOA-heavy markets
-
-Status:
-
-```text
-phase_2
-```
-
-Each page requires explicit promotion into this Master Page Build List before generation.
+Do not assume multiple ranking URLs automatically require deletion.
 
 ---
 
-# 24. Commercial Hub
+# 38. Consolidation
 
-The commercial parent page is:
+A page may become a consolidation candidate when:
 
-```text
-/commercial/
-```
+* another page satisfies the same intent better
+* content differentiation remains weak
+* search engines consistently favor another canonical page
+* maintenance cost exceeds strategic value
 
-and is included in the core launch inventory.
+Before consolidation, review:
 
-Commercial is treated as its own acquisition pathway rather than a subsection buried inside residential service pages.
+* traffic
+* backlinks
+* conversions
+* ranking history
 
----
-
-# 25. Launch Commercial Service Pages
-
-| ID                   | Page                                              | URL                                     | Status   | Index |
-| -------------------- | ------------------------------------------------- | --------------------------------------- | -------- | ----: |
-| `com-camera`         | Commercial Sewer Camera Inspection                | `/commercial/sewer-camera-inspection/`  | `launch` |   Yes |
-| `com-sewer-cleaning` | Commercial Sewer Cleaning                         | `/commercial/sewer-cleaning/`           | `launch` |   Yes |
-| `com-hydro-jetting`  | Commercial Hydro Jetting                          | `/commercial/hydro-jetting/`            | `launch` |   Yes |
-| `com-drain-cleaning` | Commercial Drain Cleaning                         | `/commercial/drain-cleaning/`           | `launch` |   Yes |
-| `com-maintenance`    | Commercial Preventative Sewer & Drain Maintenance | `/commercial/preventative-maintenance/` | `launch` |   Yes |
-
-Commercial copy must not invent:
-
-* emergency response guarantees
-* equipment capabilities
-* pipe-size capabilities
-* maintenance contract terms
-* service schedules
-* pricing
-
-unless confirmed.
-
-**Launch commercial service count:** 5
+Follow the migration strategy for redirects.
 
 ---
 
-# 26. Phase 2 Commercial Pages
+# 39. Retirement
 
-| Page                               | URL                                  | Status    |
-| ---------------------------------- | ------------------------------------ | --------- |
-| Commercial Sewer Line Locating     | `/commercial/sewer-line-locating/`   | `phase_2` |
-| Commercial Grease & Sludge Removal | `/commercial/grease-sludge-removal/` | `phase_2` |
+A page may be retired when:
 
-Commercial Grease & Sludge Removal refers to sewer/drain-line buildup removal.
+* service is no longer offered
+* market is no longer served
+* content is obsolete
+* intent is redundant
+* page no longer serves a strategic purpose
 
-It must **not** be presented as grease-trap cleaning unless grease-trap cleaning is separately confirmed as an offered service.
+Retirement should include appropriate:
 
----
+* redirects
+* sitemap updates
+* internal-link updates
+* canonical handling
 
-# 27. Commercial + Location Pages
-
-No commercial + location pages are approved for the initial launch.
-
-Canonical pattern:
-
-```text
-/{market}/{location}/commercial/{service}/
-```
-
-Priority post-launch opportunities should be selected from locations with strong commercial signals.
-
-Potential examples include:
-
-### St. Louis
-
-* St. Louis City
-* Maryland Heights
-* Florissant
-* Bridgeton
-* other verified commercial districts
-
-### San Diego
-
-* San Diego
-* Mission Valley
-* Chula Vista
-* National City
-* other verified commercial locations
-
-### Las Vegas
-
-After market validation:
-
-* Las Vegas
-* Las Vegas Strip
-* Downtown Las Vegas
-* North Las Vegas
-* Henderson
-* Paradise
-
-Status:
-
-```text
-phase_2
-```
+Do not simply delete valuable pages without review.
 
 ---
 
-# 28. Launch Comparison Pages
+# 40. Existing Page Protection
 
-Two comparison pages are approved for launch because they directly reinforce the primary differentiators and service decision journey.
+Post-launch, pages with strong:
 
-| ID                          | Page                                                      | URL                                                        | Status   | Index |
-| --------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- | -------- | ----: |
-| `cmp-independent-vs-repair` | Independent Sewer Inspection vs Repair Company Inspection | `/compare/independent-sewer-inspection-vs-repair-company/` | `launch` |   Yes |
-| `cmp-hydro-vs-snaking`      | Hydro Jetting vs Sewer Snaking                            | `/compare/hydro-jetting-vs-sewer-snaking/`                 | `launch` |   Yes |
-
-**Launch comparison count:** 2
-
----
-
-# 29. Phase 2 Comparison Pages
-
-| Page                                           | URL                                                        | Status    |
-| ---------------------------------------------- | ---------------------------------------------------------- | --------- |
-| Sewer Camera Inspection vs Sewer Scope         | `/compare/sewer-camera-inspection-vs-sewer-scope/`         | `phase_2` |
-| Sewer Camera Inspection vs Plumbing Inspection | `/compare/sewer-camera-inspection-vs-plumbing-inspection/` | `phase_2` |
-| Sewer Cleaning vs Hydro Jetting                | `/compare/sewer-cleaning-vs-hydro-jetting/`                | `phase_2` |
-| Sewer Line Locating vs Camera Inspection       | `/compare/sewer-line-locating-vs-camera-inspection/`       | `phase_2` |
-
-Comparison pages must:
-
-* answer legitimate decision questions
-* represent competitors or alternatives accurately
-* avoid defamatory claims
-* avoid false equivalence between services
-* link to the relevant canonical service page
-
----
-
-# 30. Alternative Pages
-
-No alternative page is required for initial launch.
-
-The following are approved as Phase 2 opportunities:
-
-| Page                                                | URL                                                      | Status    |
-| --------------------------------------------------- | -------------------------------------------------------- | --------- |
-| DIY Sewer Camera Inspection Alternative             | `/alternatives/diy-sewer-camera-inspection/`             | `phase_2` |
-| Renting a Sewer Snake Alternative                   | `/alternatives/renting-a-sewer-snake/`                   | `phase_2` |
-| Sewer Repair Company Inspection Alternative         | `/alternatives/sewer-repair-company-inspection/`         | `phase_2` |
-| Emergency Plumber for Recurring Backups Alternative | `/alternatives/emergency-plumber-for-recurring-backups/` | `phase_2` |
-
-These pages should educate rather than attack competing service providers.
-
----
-
-# 31. Launch Resource Pages
-
-The initial resource architecture should establish authority around inspection evidence, real estate use cases, and St. Louis-specific reporting.
-
-| ID                       | Page                                                  | URL                                                       | Status   | Index |
-| ------------------------ | ----------------------------------------------------- | --------------------------------------------------------- | -------- | ----: |
-| `res-stl-lateral-report` | St. Louis Sewer Lateral Report Guide                  | `/resources/st-louis-sewer-lateral-report/`               | `launch` |   Yes |
-| `res-stl-city-program`   | St. Louis City Sewer Lateral Program Guide            | `/resources/st-louis-city-sewer-lateral-program/`         | `launch` |   Yes |
-| `res-stl-county-program` | St. Louis County Sewer Lateral Program Guide          | `/resources/st-louis-county-sewer-lateral-program/`       | `launch` |   Yes |
-| `res-camera-report`      | What Is Included in a Sewer Camera Inspection Report? | `/resources/what-is-in-a-sewer-camera-inspection-report/` | `launch` |   Yes |
-| `res-read-video`         | How to Read a Sewer Camera Inspection Video           | `/resources/how-to-read-a-sewer-camera-inspection-video/` | `launch` |   Yes |
-
-**Launch resource count:** 5
-
-Local municipal content must be researched for accuracy before publication and should not generalize one municipality's program requirements to another.
-
----
-
-# 32. Post-Launch Resource Clusters
-
-The following clusters are approved for research and Phase 2 expansion.
-
-## Sewer Inspection Cluster
-
-Potential topics:
-
-* what a sewer camera inspection shows
-* how sewer cameras work
-* sewer camera inspection limitations
-* common sewer camera findings
-* how long an inspection takes
-* when to inspect a sewer line
-* what a sewer inspection report means
-
----
-
-## Pre-Purchase / Real Estate Cluster
-
-Potential topics:
-
-* sewer inspection before buying a house
-* who orders a sewer inspection
-* sewer inspection during due diligence
-* home inspection vs sewer inspection
-* sewer findings during a home purchase
-* sewer inspection for older homes
-* seller sewer inspection considerations
-
----
-
-## Sewer Problems Cluster
-
-Potential topics:
-
-* recurring sewer backups
-* tree roots in sewer lines
-* sewer line bellies
-* offset pipe joints
-* cracked sewer pipe
-* sewer blockage vs damaged pipe
-* slow main sewer line
-* sewer smells
-
-These are primarily **problem/resource topics**, not new offered services.
-
----
-
-## Sewer Cleaning Cluster
-
-Potential topics:
-
-* when sewer cleaning is needed
-* sewer cleaning methods
-* sewer snaking
-* root intrusion
-* recurring blockages
-* cleaning before camera inspection
-
----
-
-## Hydro Jetting Cluster
-
-Potential topics:
-
-* how hydro jetting works
-* hydro jetting vs snaking
-* when hydro jetting is appropriate
-* grease and sludge buildup
-* hydro jetting and pipe condition
-* preventative hydro jetting
-
----
-
-## Sewer Line Locating Cluster
-
-Potential topics:
-
-* how sewer line locating works
-* locating sewer line depth
-* locating sewer lines before remodeling
-* locating problem areas after camera inspection
-
----
-
-## Commercial Cluster
-
-Potential topics:
-
-* commercial drain maintenance
-* restaurant sewer maintenance
-* recurring commercial drain backups
-* preventative hydro jetting
-* property-management sewer maintenance
-* multifamily sewer inspection
-* commercial sewer camera reporting
-
----
-
-# 33. Phase 2 Location Expansion
-
-The Master Location Registry contains substantially more high-quality geographic targets than the launch site requires.
-
-Post-launch location expansion should generally proceed:
-
-```text
-Existing Tier 1 not used at launch
-↓
-Highest-value Phase 2 locations
-↓
-Supporting neighborhoods / districts
-↓
-Validated outer service areas
-```
-
-Priority should be determined using:
-
-* Search Console data
+* organic traffic
+* conversions
+* backlinks
 * rankings
-* lead source data
-* actual customer geography
-* call data
-* GBP data where available
-* real estate referral activity
-* commercial opportunities
-* operational service coverage
 
-Registry status alone is not sufficient.
+should be treated carefully.
+
+Before changing status from indexable or before major consolidation, evaluate existing value.
+
+The page registry should help protect successful assets.
 
 ---
 
-# 34. St. Louis Phase 2 Geographic Expansion
+# 41. Performance Feedback
 
-Initial expansion should evaluate remaining high-value Tier 1 locations such as:
+After launch, page status and priority may be influenced by:
 
-* Kirkwood
-* Clayton
-* Brentwood
-* Creve Coeur
-* Des Peres
-* Eureka
-* Fenton
-* Hazelwood
-* Maryland Heights
-* O'Fallon
-* St. Peters
-* Webster Groves
-* Wentzville
-* Wildwood
-* other validated Tier 1 records
+* search impressions
+* clicks
+* conversions
+* lead quality
+* backlink acquisition
+* AI referrals
+* market growth
+* commercial performance
 
-St. Louis City neighborhoods should remain selective.
-
-The existence of dozens of named neighborhoods does not justify automatic neighborhood-page publication.
+The page inventory should evolve based on evidence.
 
 ---
 
-# 35. San Diego Phase 2 Geographic Expansion
+# 42. Page Decision Framework
 
-Initial expansion should evaluate remaining Tier 1 areas such as:
-
-* Encinitas
-* Vista
-* La Jolla
-* Poway
-* Santee
-* Rancho Bernardo
-* Rancho Peñasquitos
-* Carmel Valley
-* Pacific Beach
-* North Park
-* La Mesa
-* Del Mar
-* Solana Beach
-* Imperial Beach
-* National City
-* other validated Tier 1 records
-
-North County should remain a major strategic cluster.
-
----
-
-# 36. Las Vegas Phase 2 Geographic Expansion
-
-Las Vegas expansion begins only after operational service validation.
-
-After validation, priority Tier 1 opportunities may include:
-
-* Enterprise
-* Paradise
-* Spring Valley
-* Centennial Hills
-* Green Valley
-* Aliante
-* Southern Highlands
-* Summerlin South
-* Summerlin West
-* Sunrise Manor
-* Skye Canyon
-* Mountain's Edge
-* Boulder City
-* Whitney
-* Winchester
-
-Commercial districts such as:
-
-* Las Vegas Strip
-* Downtown Las Vegas
-
-should be evaluated primarily through commercial intent rather than generic residential location-page expansion.
-
----
-
-# 37. Research-Only Geographic Records
-
-Records identified as:
+When reviewing a candidate for indexation, ask:
 
 ```text
-research_only
-manual_review
-phase_3_validation
+Does this page serve a real user?
+Does it represent a real service?
+Does the geography make sense?
+Is the intent distinct?
+Can we create useful content?
+Does it support the business?
+Does it fit the architecture?
+Can users reach it naturally?
 ```
 
-must not create public routes automatically.
+If yes, it may be a strong indexation candidate.
 
-Examples include:
-
-* landmarks
-* airports
-* stadium areas
-* road corridors
-* parks
-* questionable geographic names
-* extended service territories
-* weak standalone search entities
-
-These records exist so research is preserved.
-
-They do not represent publishing instructions.
-
----
-
-# 38. Phase 3 Geographic Validation
-
-Outer territories must pass operational service-area validation before any page can be promoted.
-
-Validation should answer:
-
-1. Does The Sewer Pros genuinely serve this area?
-2. Is dispatch practical?
-3. Is the relevant service available there?
-4. Does meaningful demand exist?
-5. Can locally differentiated content be produced?
-6. Is a dedicated page better than coverage from the parent market page?
-
-Until these questions are resolved:
+If the answer is uncertain, the page may remain:
 
 ```text
-status = phase_3
-indexable = false
+candidate
+draft
+or noindex
 ```
 
----
-
-# 39. Explicitly Excluded Service Pages
-
-The following must **not** be generated as offered-service pages under the current business model:
-
-```text
-Sewer Repair
-Sewer Line Replacement
-Trenchless Sewer Repair
-Pipe Bursting
-Pipe Lining
-General Plumbing
-```
-
-These topics may appear where relevant in:
-
-* educational content
-* comparison content
-* second-opinion content
-* FAQs
-
-but must not be presented as The Sewer Pros services.
+while the project learns more.
 
 ---
 
-# 40. Alias-Only Intents
+# 43. Hard Business Guardrails
 
-The following search terms do not receive standalone service pages at launch.
+Regardless of page status, do not publicly represent:
 
-## Sewer Scope
+* unverified services
+* fake physical offices
+* fake addresses
+* fake Google Business Profiles
+* unverified pricing
+* unverified guarantees
+* unverified certifications
+* unsupported emergency availability
+* repair/replacement as offered when it is not
 
-Canonical target:
-
-```text
-/services/sewer-camera-inspection/
-```
-
----
-
-## Rooter Service
-
-Canonical target:
-
-```text
-/services/sewer-cleaning/
-```
+These are business-truth restrictions, not page-inventory restrictions.
 
 ---
 
-## Root Intrusion Removal
+# 44. Decision Log Relationship
 
-Treat primarily as:
-
-* sewer problem
-* sewer cleaning use case
-* resource topic
-
-Do not create a standalone launch service.
-
----
-
-## Grease Trap Cleaning
-
-Status:
-
-```text
-hold
-```
-
-Do not claim The Sewer Pros performs grease-trap cleaning until operationally confirmed.
-
-Commercial grease/sludge removal refers to sewer-line cleaning, not automatically grease-trap service.
-
----
-
-# 41. Page Count Does Not Create Authorization
-
-The project should never attempt to "fill" an arbitrary target page count.
-
-The 70-page launch inventory exists because those pages form a useful initial architecture.
-
-If QA determines that a page:
-
-* lacks sufficient content
-* overlaps another page
-* lacks verified service coverage
-* lacks a useful purpose
-* introduces unsupported claims
-
-the page should be held rather than published merely to preserve the count.
-
-Quality controls page quantity.
-
----
-
-# 42. Launch Indexation Gate
-
-Before a `launch` page becomes indexable, verify:
-
-* approved URL
-* approved primary intent
-* complete content
-* unique value
-* service accuracy
-* market accuracy
-* title tag
-* meta description
-* canonical
-* breadcrumbs
-* schema where appropriate
-* internal links
-* CTA
-* responsive QA
-* accessibility QA
-* no material unsupported claims
-
-Site OS governs the reusable QA workflow.
-
-This document governs page authorization.
-
----
-
-# 43. Las Vegas Activation Gate
-
-Before changing Las Vegas pages from:
-
-```text
-launch_pending_validation
-```
-
-to:
-
-```text
-launch
-```
-
-confirm at minimum:
-
-* active operational coverage
-* services actually offered
-* contact routing
-* service request handling
-* geographic coverage
-* market-specific business facts
-* any required licensing or business requirements
-* accurate public messaging
-
-After validation, the status change must be recorded in:
+Normal page creation does not require a new entry in:
 
 `22-decisions-change-log.md`
 
----
+Use the decision log when page changes reflect a material strategic decision, such as:
 
-# 44. Master Page Record Requirements
+* new major service
+* new primary market
+* new physical branch
+* major business-positioning change
+* major post-launch route architecture change
 
-Every implementation record derived from this document should ultimately contain fields comparable to:
+Routine page expansion belongs in:
 
-```ts
-interface MasterPageRecord {
-  id: string
-  name: string
-  pageType: string
-  pathname: string
-  status:
-    | 'launch'
-    | 'launch_pending_validation'
-    | 'phase_2'
-    | 'phase_3'
-    | 'hold'
-    | 'research_only'
-    | 'retired'
-  indexable: boolean
-  marketId?: string
-  locationId?: string
-  serviceId?: string
-  audienceId?: string
-  commercialId?: string
-  parentId?: string
-}
-```
-
-The production implementation may expand this schema.
+* this inventory
+* project data
+* Git history
 
 ---
 
-# 45. Page Build List vs Registries
+# 45. Git Relationship
 
-The source-of-truth relationship is:
-
-```text
-Master Service Registry
-= what services exist
-```
+Git records:
 
 ```text
-Master Location Registry
-= what geographic entities exist
+What changed?
 ```
+
+This page registry records:
 
 ```text
-Service × Location Matrix
-= which relationships may contain opportunity
+What is the current lifecycle and search intent of our pages?
 ```
 
-```text
-Audience / Commercial Matrix
-= which audience and commercial relationships may contain opportunity
-```
+Do not duplicate every Git change here.
 
-```text
-Master Page Build List
-= which specific pages are authorized
-```
-
-These documents must not be treated as interchangeable.
+Update this document or its structured equivalent when page lifecycle materially changes.
 
 ---
 
-# 46. Page Build List vs URL Strategy
+# 46. Repository Implementation
 
-This document identifies approved page destinations.
+The Markdown document may eventually be supplemented or replaced operationally by structured data such as:
 
-`05-url-routing-strategy.md` defines the formal URL rules governing those destinations.
+```text
+data/pages.ts
+data/page-registry.ts
+content/page-registry.json
+```
 
-If a routing conflict is discovered while creating `05-url-routing-strategy.md`:
+provided that:
 
-1. do not silently change URLs in code
-2. resolve the architecture decision
-3. update this document
-4. record the decision in the change log
-5. then implement the approved route
+* the data is version-controlled
+* page lifecycle remains visible
+* indexation status remains explicit
+* project contributors can understand it
+
+The repository should avoid maintaining multiple conflicting page inventories.
 
 ---
 
-# 47. No Implicit Page Creation
+# 47. Automated Registry Updates
 
-The following must never create a page automatically:
+Where technically practical, tooling may automatically report:
 
-* adding a service to the service registry
-* adding a city to the location registry
-* adding a matrix relationship
-* adding an audience
-* finding a new keyword
-* finding competitor ranking pages
-* identifying a People Also Ask question
-* discovering search volume
-* adding a commercial segment
-* Claude suggesting a page
-* Claude Code detecting a potential route
+* routes built
+* routes published
+* indexable routes
+* sitemap routes
+* missing inventory records
 
-All new public pages must pass through this document.
+Automation is encouraged if it reduces manual administrative work.
+
+The page registry should support the build rather than become an obstacle to it.
 
 ---
 
-# 48. Addition Workflow
+# 48. Page Discovery Rule
 
-A proposed new page should follow:
+If Claude or Claude Code discovers a useful page opportunity while building another page:
 
 ```text
-Opportunity Identified
-↓
-Research
-↓
-Intent / Cannibalization Review
-↓
-Operational Validation
-↓
-Content Differentiation Review
-↓
-Add to Master Page Build List
-↓
-Assign Status
-↓
-Build
-↓
-QA
-↓
-Index
+Identify Opportunity
+→ Add Candidate
+→ Continue Current Work
 ```
+
+Do not interrupt productive work merely because the candidate was not known before the task began.
 
 ---
 
-# 49. Removal Workflow
+# 49. New Location Discovery Rule
 
-If a page is removed from the approved inventory:
+If legitimate geographic research identifies an additional relevant service area:
 
 ```text
-Existing Page
-↓
-Evaluate Traffic / Links / Leads
-↓
-Select Destination
-↓
-Create Redirect if Appropriate
-↓
-Mark Retired
-↓
-Remove From Sitemap
-↓
-Update Internal Links
-↓
-Deploy
+Verify Geography
+→ Add Candidate Location Data
+→ Evaluate Page Opportunity
+→ Continue
 ```
 
-Never simply delete an established indexed URL without migration review.
+Human approval is not necessary merely to record legitimate geographic research.
+
+Do not represent the location as a physical branch.
 
 ---
 
-# 50. Launch Build Inventory — Consolidated
+# 50. New Search Intent Discovery Rule
 
-## Core / Hubs
-
-```text
-/
-/about/
-/contact/
-/services/
-/locations/
-/for/
-/commercial/
-/resources/
-/faq/
-```
-
-## Services
+If research reveals a valuable search intent such as:
 
 ```text
-/services/sewer-camera-inspection/
-/services/sewer-cleaning/
-/services/hydro-jetting/
-/services/sewer-cleaning-camera-inspection/
-/services/sewer-line-locating/
-/services/drain-cleaning/
-/services/pre-purchase-sewer-inspection/
-/services/recurring-sewer-backup-diagnosis/
-/services/preventative-sewer-maintenance/
-/st-louis-mo/sewer-lateral-inspection-reporting/
+second opinion before sewer replacement
 ```
 
-## Markets
+Claude may:
 
-```text
-/st-louis-mo/
-/san-diego-ca/
-/las-vegas-nv/
-```
+* create a candidate
+* draft content
+* recommend its cluster placement
+* build a page if appropriate
 
-## St. Louis Locations
+without requiring a new strategic decision.
 
-```text
-/st-louis-mo/st-louis-city/
-/st-louis-mo/chesterfield/
-/st-louis-mo/ballwin/
-/st-louis-mo/florissant/
-/st-louis-mo/st-charles/
-```
-
-## San Diego Locations
-
-```text
-/san-diego-ca/san-diego/
-/san-diego-ca/san-marcos/
-/san-diego-ca/carlsbad/
-/san-diego-ca/escondido/
-/san-diego-ca/oceanside/
-/san-diego-ca/chula-vista/
-/san-diego-ca/mission-valley/
-```
-
-## Las Vegas Locations
-
-```text
-/las-vegas-nv/las-vegas/
-/las-vegas-nv/henderson/
-/las-vegas-nv/north-las-vegas/
-/las-vegas-nv/summerlin/
-```
-
-## St. Louis Service + Location
-
-```text
-/st-louis-mo/st-louis-city/sewer-camera-inspection/
-/st-louis-mo/chesterfield/sewer-camera-inspection/
-/st-louis-mo/ballwin/pre-purchase-sewer-inspection/
-/st-louis-mo/st-charles/pre-purchase-sewer-inspection/
-/st-louis-mo/florissant/sewer-cleaning/
-/st-louis-mo/chesterfield/hydro-jetting/
-```
-
-## San Diego Service + Location
-
-```text
-/san-diego-ca/san-diego/sewer-camera-inspection/
-/san-diego-ca/san-marcos/sewer-camera-inspection/
-/san-diego-ca/carlsbad/sewer-camera-inspection/
-/san-diego-ca/chula-vista/sewer-camera-inspection/
-/san-diego-ca/escondido/sewer-cleaning/
-/san-diego-ca/oceanside/sewer-cleaning/
-/san-diego-ca/mission-valley/hydro-jetting/
-/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/
-```
-
-## Audiences
-
-```text
-/for/home-buyers/
-/for/home-sellers/
-/for/real-estate-agents/
-/for/home-inspectors/
-/for/property-managers/
-/for/hoa-communities/
-```
-
-## Commercial
-
-```text
-/commercial/sewer-camera-inspection/
-/commercial/sewer-cleaning/
-/commercial/hydro-jetting/
-/commercial/drain-cleaning/
-/commercial/preventative-maintenance/
-```
-
-## Comparisons
-
-```text
-/compare/independent-sewer-inspection-vs-repair-company/
-/compare/hydro-jetting-vs-sewer-snaking/
-```
-
-## Resources
-
-```text
-/resources/st-louis-sewer-lateral-report/
-/resources/st-louis-city-sewer-lateral-program/
-/resources/st-louis-county-sewer-lateral-program/
-/resources/what-is-in-a-sewer-camera-inspection-report/
-/resources/how-to-read-a-sewer-camera-inspection-video/
-```
+Human approval is only needed if the page would materially misrepresent business capabilities.
 
 ---
 
-# 51. Initial Build Count Verification
+# 51. Launch Philosophy
 
-| Family                  |  Count |
-| ----------------------- | -----: |
-| Core / hub / conversion |      9 |
-| Service                 |     10 |
-| Markets                 |      3 |
-| Locations               |     16 |
-| Service + location      |     14 |
-| Audience                |      6 |
-| Commercial services     |      5 |
-| Comparison              |      2 |
-| Resources               |      5 |
-| **Total**               | **70** |
+At launch, prioritize a strong useful foundation rather than maximum route count.
 
-Of these, the Las Vegas market hub and four Las Vegas location pages remain behind an operational validation/indexation gate.
+Launch inventory should cover:
 
-**Indexable at launch:** 70
+* core business information
+* major services
+* three primary markets
+* high-value audiences
+* commercial entry points
+* conversion paths
+* initial resources
 
-Was 65 while DEC-063 gated the five Las Vegas records. DEC-080 released that gate, so all 70 launch records are indexable and none is gated.
-**Built but gated (`launch_pending_validation`):** 5
-
-No Las Vegas service + location page is authorized for generation at this stage.
+Additional inventory may already be built and kept noindex for later evaluation.
 
 ---
 
-# 52. Post-Launch Growth Principle
+# 52. Post-Launch Expansion
 
-After launch, page expansion should not simply continue numerically through the matrices.
-
-Expansion should respond to evidence.
-
-Priority signals include:
-
-1. existing page rankings
-2. Google Search Console impressions
-3. queries ranking positions 5–20
-4. conversion performance
-5. customer call geography
-6. commercial opportunities
-7. homebuyer/agent referral activity
-8. actual service demand
-9. GBP opportunities
-10. competitive gaps
-11. content gaps
-12. topical authority needs
-
----
-
-# 53. Recommended Post-Launch Expansion Order
-
-The default strategic order is:
+After launch, use:
 
 ```text
-1. Validate / activate Las Vegas
-2. Expand remaining Tier 1 location hubs
-3. Expand high-value service + location pages
-4. Expand homebuyer / real-estate architecture
-5. Expand commercial service + location pages
-6. Expand audience + location pages
-7. Publish comparison / alternative pages
-8. Build problem and diagnostic clusters
-9. Build commercial topic clusters
-10. Expand selected Phase 2 geographies
-11. Evaluate neighborhood-level opportunities
-12. Evaluate future markets
-```
-
-This is a strategic sequence, not permission to bypass the page-approval gate.
-
----
-
-# 54. Governance With Site OS
-
-Site OS Master owns reusable:
-
-* research workflows
-* page evaluation workflows
-* content workflows
-* QA
-* publishing gates
-* optimization procedures
-
-This document owns The Sewer Pros-specific answer to:
-
-> **Which pages are authorized?**
-
-Do not duplicate generalized Site OS procedures inside this document.
-
----
-
-# 55. Claude Code Rule
-
-`CLAUDE.md` should explicitly instruct Claude Code:
-
-> Never generate a public route solely because a record exists in the service registry, location registry, service-location matrix, audience matrix, or commercial matrix. A route must exist as an eligible record in `04-master-page-build-list.md`.
-
-The production page registry should be derived from this authorization layer.
-
----
-
-# 56. Critical Rules
-
-### Rule 1
-
-This document is the authoritative page-generation gate.
-
-### Rule 2
-
-The 10,422 service × location relationships are not 10,422 approved pages.
-
-### Rule 3
-
-Only explicit `launch` or otherwise build-authorized records may generate routes.
-
-### Rule 4
-
-Only `launch` records with `indexable: true` may enter the XML sitemap.
-
-### Rule 5
-
-`launch_pending_validation` pages remain noindex until their stated gate is satisfied.
-
-### Rule 6
-
-Tier 1 location status in the location registry does not independently authorize a page.
-
-### Rule 7
-
-Service matrix eligibility does not independently authorize a page.
-
-### Rule 8
-
-Audience and commercial relationships do not independently authorize pages.
-
-### Rule 9
-
-No sewer repair or replacement service pages may be generated under the current business model.
-
-### Rule 10
-
-No Las Vegas service + location pages may be generated until service availability is confirmed.
-
-### Rule 11
-
-Audience + location and commercial + location pages begin post-launch.
-
-### Rule 12
-
-Neighborhood-scale publishing remains selective.
-
-### Rule 13
-
-Comparison and alternative pages must have legitimate decision-stage value.
-
-### Rule 14
-
-Every new page must be explicitly added here before implementation.
-
-### Rule 15
-
-Removal or URL changes require redirect/migration review.
-
----
-
-# 57. Final Publishing Principle
-
-The Sewer Pros website should scale through **controlled expansion**, not automatic permutation.
-
-The project contains a large SEO opportunity universe:
-
-```text
-18 canonical service records
+Performance Data
 +
-579 geographic records
+Search Opportunity
 +
-10,422 service × location relationships
+Business Value
 +
-audiences
-+
-commercial segments
-+
-comparisons
-+
-alternatives
-+
-resources
+Content Capability
+→ Expansion
 ```
 
-That research provides strategic depth.
-
-The Master Page Build List provides editorial control.
-
-The governing principle is:
+not:
 
 ```text
-Opportunity ≠ Page
+Unused Matrix Row
+→ Automatically Publish
 ```
 
-and:
+The matrix should accelerate discovery, while performance helps determine priority.
+
+---
+
+# 53. Page Inventory Success
+
+The page inventory is working correctly when it helps the team understand:
+
+* what exists
+* what is being built
+* what is indexed
+* what is performing
+* what should be improved
+* what should be built next
+* what should be consolidated
+* what should be retired
+
+It is failing when developers avoid useful work because they believe every route requires manual permission before it can exist.
+
+---
+
+# 54. Core Page-Governance Summary
+
+Use:
 
 ```text
-Approved Page
-+
-Valid Business Reality
-+
-Distinct User Intent
-+
-Useful Content
-+
-QA
-=
-Publishable Route
+Business Truth
+→ Hard Guardrail
+
+Page Creation
+→ Flexible
+
+Drafting
+→ Flexible
+
+Route Generation
+→ Flexible
+
+Template Development
+→ Flexible
+
+Production Publication
+→ Deliberate
+
+Intentional Indexation
+→ Quality Controlled
+
+Large-Scale Indexation
+→ Strategic Review
 ```
 
-This architecture allows The Sewer Pros to build substantial topical and geographic authority without sacrificing site quality, business accuracy, crawl efficiency, or the company's independent sewer inspection and cleaning positioning.
+---
+
+# 55. Final Governing Principle
+
+> **The Master Page Build List is the evolving inventory and lifecycle system for The Sewer Pros website, not a pre-build permission gate. Claude and Claude Code should freely research, draft, generate, build, and evaluate useful page opportunities within verified business boundaries. The primary SEO control is intentional indexation: pages should earn indexability through real business relevance, useful content, distinct intent, and adequate quality. Use structured data and automation aggressively for efficiency while keeping search-engine indexation deliberate and controlled.**
