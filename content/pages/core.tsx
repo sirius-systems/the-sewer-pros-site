@@ -70,9 +70,9 @@ export const homeContent: HomePageContent = {
     title: 'Sewer camera inspection and cleaning.',
     intro: (
       <p>
-        Inspection, diagnostics, locating, and cleaning, from a company that
-        does not sell the repair. See the condition of the line, then decide
-        what to do about it.
+        Sewer camera inspection, diagnostics, locating, and cleaning:
+        documented evidence of the line&rsquo;s condition, so you can decide
+        the next step with confidence.
       </p>
     ),
   },
