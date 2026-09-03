@@ -54,6 +54,20 @@ export interface FaqSectionProps {
    * defaults to `muted` for supplementary content.
    */
   surface?: SectionSurface
+  /**
+   * Column count for the question list.
+   *
+   * `1` is the default and stays byte-identical to today's output for
+   * every other caller — most pages carry three to six entries, where a
+   * split would leave a column of one or two beside a column of two.
+   *
+   * `2` is opted into by HomePageTemplate, whose 14 entries split 7/7
+   * (owner-directed, 2026-09-03). The two-column branch drops
+   * `width="reading"`: a single reading measure cannot hold two
+   * accordion columns without each becoming unreadably narrow, so it
+   * uses the container's `standard` width instead.
+   */
+  columns?: 1 | 2
 }
 
 /**
@@ -85,26 +99,51 @@ export function FaqSection({
   openFirst = false,
   questionLevel = 'h3',
   surface = 'default',
+  columns = 1,
 }: FaqSectionProps) {
   // 18 §120 — render nothing rather than an empty shell.
   if (entries.length === 0) return null
+
+  // `startIndex` keeps `openFirst` meaning "the first entry on the
+  // page", not "the first entry in this column" — otherwise the split
+  // would open the top of both columns.
+  const renderList = (list: readonly FaqEntry[], startIndex: number) => (
+    <Accordion>
+      {list.map((entry, i) => (
+        <AccordionItem
+          key={entry.question}
+          question={entry.question}
+          headingLevel={questionLevel}
+          defaultOpen={openFirst && startIndex + i === 0}
+        >
+          {entry.answer}
+        </AccordionItem>
+      ))}
+    </Accordion>
+  )
+
+  if (columns === 2) {
+    // `ceil` puts the extra entry in the left column on odd counts, so
+    // the columns never differ by more than one.
+    const mid = Math.ceil(entries.length / 2)
+
+    return (
+      <Section density="dense" surface={surface} labelledBy={id}>
+        <SectionHeading id={id} title={title} intro={intro} />
+
+        <div className="mt-8 grid gap-x-12 sm:grid-cols-2">
+          {renderList(entries.slice(0, mid), 0)}
+          {renderList(entries.slice(mid), mid)}
+        </div>
+      </Section>
+    )
+  }
 
   return (
     <Section density="dense" width="reading" surface={surface} labelledBy={id}>
       <SectionHeading id={id} title={title} intro={intro} />
 
-      <Accordion className="mt-8">
-        {entries.map((entry, index) => (
-          <AccordionItem
-            key={entry.question}
-            question={entry.question}
-            headingLevel={questionLevel}
-            defaultOpen={openFirst && index === 0}
-          >
-            {entry.answer}
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <div className="mt-8">{renderList(entries, 0)}</div>
     </Section>
   )
 }

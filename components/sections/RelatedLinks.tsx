@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Section, LinkCard, type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
@@ -47,6 +48,29 @@ import type { PageId } from '@/types'
  * title-only rather than inventing a summary — 18 §51 already makes the
  * page name the dominant element.
  */
+/**
+ * Artwork for one related-content card.
+ *
+ * Mirrors `ProofImage` in data/business/proof.ts: a path under
+ * `public/`, meaningful alt text, and REQUIRED provenance. `source` is
+ * not optional for the same reason it is not optional there — an image
+ * whose origin nobody recorded is exactly the one that later turns out
+ * to be stock, generated, or someone else's work.
+ *
+ * No images are supplied anywhere yet. This is the slot for real,
+ * approved article artwork when it exists; it is not a hook for a
+ * placeholder (18 §40-42, and the `image` variant below renders no
+ * image area at all when none is present).
+ */
+export interface RelatedLinkImage {
+  /** Path under `public/`. Pre-optimized: `output: 'export'` disables the optimizer (02 §7, §8). */
+  src: string
+  /** Meaningful alt text (CLAUDE.md §55, §57). */
+  alt: string
+  /** Provenance of the asset. Required — see above. */
+  source: string
+}
+
 export interface RelatedLinksProps {
   /**
    * Overrides the section's natural density.
@@ -68,6 +92,28 @@ export interface RelatedLinksProps {
    * token-swapped filler, and 18 §51 already makes the name dominant.
    */
   descriptions?: Readonly<Partial<Record<PageId, string>>>
+  /**
+   * Optional artwork, keyed by page id. Only read by `variant="image"`.
+   *
+   * Absent entries render the card text-only at the larger size. A card
+   * with no image must NOT fall back to a grey box, a gradient, or a
+   * stock photograph — an empty crop is a placeholder in effect, which
+   * is what 18 §40-42 and this project's photography gate rule out.
+   */
+  images?: Readonly<Partial<Record<PageId, RelatedLinkImage>>>
+  /**
+   * Card treatment.
+   *
+   * `horizontal` is the leading-rule row used on every page today and
+   * stays the default — ten templates render this section, and its
+   * shape is deliberately different from the card grids above it
+   * (18 §11's variation rule). Changing it globally would remove that
+   * contrast everywhere.
+   *
+   * `image` is the larger card with a 7:4 artwork slot, opted into by
+   * HomePageTemplate only (owner-directed, 2026-09-03).
+   */
+  variant?: 'horizontal' | 'image'
   /** `muted` sets this apart from the body content above it. */
   surface?: 'default' | 'muted'
   /**
@@ -131,12 +177,73 @@ export function RelatedLinks({
   intro,
   pageIds,
   descriptions,
+  images,
   surface = 'muted',
   indexableContext = true,
+  variant = 'horizontal',
 }: RelatedLinksProps) {
   const links = resolveLinkableOnly(pageIds, { indexableContext })
 
   if (links.length === 0) return null
+
+  if (variant === 'image') {
+    return (
+      <Section density={density} surface={surface} as="aside" labelledBy={id}>
+        <SectionHeading id={id} title={title} level="h2" intro={intro} />
+
+        {/*
+          Larger cards: `gap-8` over the horizontal variant's `gap-4`,
+          `text-h4` over `text-base`, and the standard card padding
+          restored (the horizontal variant strips it to `p-0 pl-4`).
+
+          The 7:4 crop applies to the artwork only, never to the card —
+          the text block sizes to its content. When a link has no image
+          the crop container is not rendered at all, so an image-less
+          card is simply a bigger text card rather than a card with a
+          hole in it.
+        */}
+        <ul
+          className={`mt-8 grid grid-cols-1 gap-8 ${COLUMNS[links.length] ?? 'md:grid-cols-3'}`}
+        >
+          {links.map((link) => {
+            const description = descriptions?.[link.pageId]
+            const image = images?.[link.pageId]
+
+            return (
+              <li key={link.pageId}>
+                <LinkCard
+                  href={link.href}
+                  actionLabel={link.label}
+                  className="flex h-full flex-col overflow-hidden p-0"
+                >
+                  {image !== undefined && (
+                    <span className="relative block aspect-[7/4] w-full overflow-hidden">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                      />
+                    </span>
+                  )}
+                  <span className="flex flex-1 flex-col gap-2 p-6">
+                    <span className="text-h4 font-medium tracking-tight text-foreground">
+                      {link.label}
+                    </span>
+                    {description !== undefined && (
+                      <span className="text-sm leading-6 text-muted-foreground">
+                        {description}
+                      </span>
+                    )}
+                  </span>
+                </LinkCard>
+              </li>
+            )
+          })}
+        </ul>
+      </Section>
+    )
+  }
 
   return (
     <Section density={density} surface={surface} as="aside" labelledBy={id}>
