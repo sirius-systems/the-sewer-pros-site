@@ -54,6 +54,7 @@ export const SCHEMA_FRAGMENT = {
   breadcrumb: '#breadcrumb',
   article: '#article',
   faqPage: '#faq',
+  logo: '#logo',
 } as const
 
 /** A reference to another node in the graph (15 §85). */

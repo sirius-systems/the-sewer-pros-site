@@ -29,6 +29,21 @@ import type { MasterPageRecord } from '@/types'
 import { robotsForPage } from '@/types'
 import { absoluteUrl, siteOrigin, SITE_NAME } from '@/data/business'
 
+/**
+ * Brand assets used in metadata.
+ *
+ * Root-relative. `metadataBase` resolves them to absolute URLs, which
+ * Open Graph requires — a relative og:image is ignored by most
+ * platforms (02 §53, DEC-078 for the origin).
+ *
+ * Approved artwork from the DEC-096 brand package. The paths are
+ * literal rather than derived because they are asset locations, not
+ * content, and nothing else should be able to point og:image at an
+ * arbitrary file.
+ */
+const BRAND_ASSETS = '/images/brand/logos'
+const OG_IMAGE = `${BRAND_ASSETS}/04-digital/the-sewer-pros-open-graph.png`
+
 /** Content supplied per page for its metadata. */
 export interface PageMetadataInput {
   page: MasterPageRecord
@@ -73,6 +88,23 @@ export function pageMetadata({
       title,
       ...(description !== undefined && { description }),
       url: canonical,
+      // 1200x630, the size every major platform crops from. Declared
+      // per page rather than only at the root so a shared link to any
+      // route carries the brand mark rather than an empty card.
+      images: [
+        {
+          url: OG_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME}, sewer and drain specialists`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      ...(description !== undefined && { description }),
+      images: [OG_IMAGE],
     },
   }
 }
@@ -88,6 +120,30 @@ export function pageMetadata({
 export function rootMetadata(): Metadata {
   return {
     metadataBase: new URL(siteOrigin()),
+    /*
+      Icons.
+
+      `app/favicon.ico` is the brand favicon and Next's file convention
+      emits its own <link rel="icon"> for it, so it is deliberately NOT
+      repeated here — declaring it twice would ship two competing tags.
+      What is declared is everything the file convention does not cover:
+      the crisp PNG sizes modern browsers prefer, and the Apple touch
+      icon for a home-screen bookmark.
+
+      The android-chrome 192/512 assets in the brand package are web
+      app manifest icons. They stay unreferenced until a manifest
+      exists, since naming and theming an installable app is a business
+      decision rather than a wiring one.
+    */
+    icons: {
+      icon: [
+        { url: `${BRAND_ASSETS}/04-digital/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
+        { url: `${BRAND_ASSETS}/04-digital/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
+      ],
+      apple: [
+        { url: `${BRAND_ASSETS}/04-digital/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' },
+      ],
+    },
     title: {
       default: SITE_NAME,
       template: `%s | ${SITE_NAME}`,

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { resolveFooterNav } from '@/data/navigation'
 import { TrackedPhoneLink } from '@/components/tracking'
@@ -48,7 +49,22 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[var(--container-max)] px-4 py-16 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_1fr]">
           <div>
-            <p className="text-base font-semibold tracking-tight">{SITE_NAME}</p>
+            {/*
+              White one-colour variant: the footer is `bg-brand`, where
+              the full-colour lockup's charcoal text would nearly
+              disappear. Same artwork, correct value for the surface.
+
+              Not a link. The footer already carries navigation, and a
+              second unlabelled route to the home page adds a tab stop
+              without adding a destination.
+            */}
+            <Image
+              src="/images/brand/logos/02-one-color/the-sewer-pros-logo-white.png"
+              alt={SITE_NAME}
+              width={926}
+              height={184}
+              className="h-10 w-auto"
+            />
             {/* Approved positioning, 01 §3 — must match visible content (15 §67). */}
             <p className="mt-3 max-w-xs text-sm opacity-80">
               {organization.description}
