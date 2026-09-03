@@ -331,8 +331,8 @@ export const homeContent: HomePageContent = {
     id('cmp-hydro-vs-snaking'),
   ],
   cta: {
-    title: 'Find out what is actually in the line',
-    body: 'An inspection documents the condition, so the next decision is based on evidence rather than assumption.',
+    title: 'Schedule a sewer camera inspection.',
+    body: 'A camera inspection documents the condition of the line, so your next decision is based on evidence, not a guess.',
   },
 }
 
