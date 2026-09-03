@@ -35,16 +35,26 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
 /**
  * Home page.
  *
- * Structure ported from the `power` composition maps, resolved against
- * docs/18-design-system.md §110:
+ * Structure resolved against docs/18-design-system.md §16 (Homepage
+ * Template), which names `homepage-performance.webp` as this page's
+ * reference (§4):
  *
  *   Hero → Trust strip → Confidence module* → Intent routing → Services
- *   mosaic → Independent-model split → Markets → Process → Body
+ *   mosaic → Independent-model split → Markets → Process → Body*
  *   → Authority band → Proof* → Testimonial* → Google reviews
  *   → Form* → Resources → FAQ → Final CTA
  *
  * `*` renders nothing until its data gate opens. Confidence module:
  * DEC-088 — see components/sections/index.ts for what changed and why.
+ *
+ * This order is deliberately NOT §16's literal outline. §8 lets a
+ * template adjust section order, combine, remove, and add sections
+ * without separate approval; §9 and §10 add that the reference pages
+ * are defaults rather than section quotas, and explicitly do not
+ * require "identical section orders across every page". The sequence
+ * above is the content-driven arrangement §9 asks for — §16's outline
+ * with the sections DEC-084 through DEC-089 added in the places their
+ * content earns.
  *
  * The review carousel is the composition's testimonial slot finally
  * carrying real material (DEC-084). `TestimonialBand` above it remains
@@ -56,24 +66,28 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  * ---------------------------------------------------------------------------
  * The reference map requires the intent-routing section and the
  * services catalog below it to read as different things — routing is
- * decision support, the catalog is the inventory. 18 §5.6 says the same
- * in general terms: "vary composition pattern and density between
- * adjacent sections."
+ * decision support, the catalog is the inventory. 18 §11 says the same
+ * in general terms: a page that repeats "Heading / Paragraph / Three
+ * Cards" down its length "makes the site appear templated and
+ * AI-generated". §63 asks for changing grid structures as one of the
+ * ways a long page holds interest.
  *
  * So the separation here is structural, not cosmetic:
  *
  *   RoutingCards   an EVEN card grid
  *   ServiceIndex   an UNEVEN mosaic, flagship given double width
  *
- * Two different Appendix A patterns, adjacent, deliberately.
+ * Two different composition patterns, adjacent, deliberately.
  *
- * ⚠ `routing` is optional and currently unauthored, so the routing
- * section does not render yet. Authoring it is per-page content work,
- * outside the composition port.
- *
- * 18 §38: the homepage hero should feel brand-defining. It stays
- * editorial — no approved photography exists (18 §28-34), and §37 says
- * a hero must not depend on a decorative image to explain the page.
+ * 18 §14: a hero must not be an "oversized empty hero that forces the
+ * visitor to scroll before understanding the page". It stays editorial
+ * because no photography exists in this repo to use — there is no
+ * `public/` directory at all, so §40-41's priority subjects have no
+ * assets behind them yet. §42 does now permit AI-generated imagery
+ * subject to conditions (photorealistic, accurate to the service, no
+ * fabricated business claims or invented staff); adopting it is an
+ * owner decision about asset direction, not a composition change, so
+ * the hero stays text-led until that call is made.
  *
  * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="panel"`
  * are the only brand surfaces in the system. Resources and FAQ sit
