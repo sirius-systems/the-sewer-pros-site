@@ -186,11 +186,16 @@ export function TrustBar({
 
         ⚠ THIS IS A HORIZONTAL BUDGET, NOT A STYLE PREFERENCE. The
         32px it buys back is what keeps the row on one line at 1280px,
-        the most common desktop width. It was 12px, and 8px is the
-        owner-directed narrowing of 2026-09-04: at 12px the row fit
-        with 4.5px to spare, and it now has 12.5px. Restoring the
+        the most common desktop width. It was 12px; 8px is the
+        owner-directed narrowing of 2026-09-04, and the 8px it freed
+        was spent immediately on the larger icons below. Restoring the
         site's 24px gutter puts this band into horizontal scroll at
         1280px.
+
+        THE ROW MEASURES 1244.5px AGAINST 1249px AVAILABLE. That is the
+        whole budget: 4.5px. Anything that widens a statement, the
+        icons, or the gaps overflows, and there is nothing left to cut
+        except the gutter, which is already at 8px.
 
         ⚠ NOT TAKEN TO ZERO, DELIBERATELY. The list centres inside this
         box, so the gutter is invisible until the row overflows and
@@ -231,7 +236,15 @@ export function TrustBar({
             return (
               <li
                 key={statement.label}
-                className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-base leading-6"
+                /*
+                  ⚠ `gap-1` (4px), NOT `gap-1.5`. The 2px per item it
+                  gives up is what pays for the 28px icons: at 24px the
+                  row measured 1236.5px, and the larger mark would have
+                  put it 3.5px over the 1249px available at 1280. A
+                  budget line, not a spacing preference — see the
+                  gutter note above.
+                */
+                className="flex shrink-0 items-center gap-1 whitespace-nowrap text-base leading-6"
               >
                 {/*
                   `text-accent` is the owner-directed green — see the
@@ -239,8 +252,17 @@ export function TrustBar({
                   at 2.61:1 on this surface there is no contrast left to
                   spend on an opacity.
                 */}
+                {/*
+                  28px, up from 24px on owner direction (2026-09-04).
+
+                  ⚠ THAT IS THE CEILING AT 1280px, NOT A ROUND NUMBER.
+                  32px overflows by 11px even with the icon-to-label gap
+                  at 4px and the gutter at 8px. Larger means giving up
+                  the single line, shortening a statement, or dropping
+                  the inter-item gap below today's 20px.
+                */}
                 {Icon !== undefined && (
-                  <Icon className="h-6 w-6 shrink-0 text-accent" />
+                  <Icon className="h-7 w-7 shrink-0 text-accent" />
                 )}
                 <span>{statement.label}</span>
               </li>
