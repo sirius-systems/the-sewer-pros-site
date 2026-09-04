@@ -222,8 +222,8 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           ServiceIndex        default
           Differentiator      brand   ← comparison-table variant
           MarketCoverage      default
-          ProcessSteps        muted
-          AuthorityBand       brand
+          ProcessSteps        photo backdrop
+          AuthorityBand       brand   ← process variant
           ReviewMarquee       default
           RelatedLinks        muted
           FaqSection          default
@@ -297,7 +297,20 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         </Section>
       )}
 
-      <AuthorityBand title="How we work" />
+      {/*
+        ⚠ THE PROCESS VARIANT, HOMEPAGE ONLY. It takes no `title`:
+        `authorityProcess` owns its own eyebrow, heading, intro and
+        both actions, so there is one source for them. Every other
+        template still calls `<AuthorityBand title="How we work" />`
+        and renders the unchanged proof-point band.
+
+        ⚠ STILL `surface="brand"`, AND STILL NOT ADJACENT TO ANOTHER
+        DARK SECTION. `Differentiator` above is now brand too, but
+        `MarketCoverage` (default) and `ProcessSteps` sit between them,
+        plus the optional prose block. Re-checked 2026-09-04; see the
+        surface order above.
+      */}
+      <AuthorityBand variant="process" />
 
       <ProofGallery title="Recent work" />
 
