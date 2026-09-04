@@ -177,41 +177,77 @@ export function TrustBar({
       as="aside"
       width="full"
       /*
-        `[&>div]:px-3` reaches into Section's Container to cut its
-        gutter from 24px to 12px. Section passes `width` through but
+        `[&>div]:px-2` reaches into Section's Container to cut its
+        gutter from 24px to 8px. Section passes `width` through but
         not padding, and this is the only section that needs a gutter
         narrower than the site's, so the override lives here rather
         than becoming a Container prop nine other sections would then
         have to reason about.
 
-        The 24px it buys back is exactly what keeps the row on one line
-        at 1280px, the most common desktop width, once the icons went
-        to 24px.
+        ⚠ THIS IS A HORIZONTAL BUDGET, NOT A STYLE PREFERENCE. The
+        32px it buys back is what keeps the row on one line at 1280px,
+        the most common desktop width. It was 12px, and 8px is the
+        owner-directed narrowing of 2026-09-04: at 12px the row fit
+        with 4.5px to spare, and it now has 12.5px. Restoring the
+        site's 24px gutter puts this band into horizontal scroll at
+        1280px.
+
+        ⚠ NOT TAKEN TO ZERO, DELIBERATELY. The list centres inside this
+        box, so the gutter is invisible until the row overflows and
+        starts scrolling — which is precisely the narrow viewport where
+        text hard against the screen edge would look broken.
       */
-      className="[&>div]:px-3"
+      className="[&>div]:px-2"
     >
-      <ul className="flex flex-nowrap items-center justify-center gap-x-5 gap-y-2 overflow-x-auto">
-        {trustStatements.map((statement) => {
-          const Icon = TRUST_ICONS[statement.label]
-          return (
-            <li
-              key={statement.label}
-              className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-base leading-6"
-            >
-              {/*
-                `text-accent` is the owner-directed green — see the
-                token warning in the header. Opaque, not tinted down:
-                at 2.61:1 on this surface there is no contrast left to
-                spend on an opacity.
-              */}
-              {Icon !== undefined && (
-                <Icon className="h-6 w-6 shrink-0 text-accent" />
-              )}
-              <span>{statement.label}</span>
-            </li>
-          )
-        })}
-      </ul>
+      {/*
+        ⚠ THE SCROLL CONTAINER AND THE CENTRING ARE ON DIFFERENT
+        ELEMENTS, AND THAT IS THE FIX FOR A BUG.
+
+        This was one element: `justify-center` and `overflow-x-auto` on
+        the `<ul>` itself. Centred correctly whenever the row fit, and
+        broke as soon as it did not. A flex container centres by
+        splitting the overflow BOTH ways, but a scroll container only
+        scrolls right — so the left half went into negative scroll
+        space, where nothing can reach it. Measured at a 1015px
+        viewport the first statement started 130px left of the scroll
+        origin with `scrollLeft` pinned at 0, and at 375px it was
+        450px: "Independent inspection and diagnostics" was clipped and
+        unrecoverable on every phone.
+
+        Splitting the roles fixes both cases at once. The wrapper does
+        the scrolling. The list is `w-max`, so it is exactly as wide as
+        its four items, and `mx-auto` then centres it while it fits and
+        collapses to zero the moment it does not — leaving the row
+        starting at the true left edge with the whole of it scrollable.
+
+        Do not put `justify-center` back on the list. With `w-max` it
+        would do nothing, and without it, it would reintroduce exactly
+        the clipping described above.
+      */}
+      <div className="overflow-x-auto">
+        <ul className="mx-auto flex w-max flex-nowrap items-center gap-x-5">
+          {trustStatements.map((statement) => {
+            const Icon = TRUST_ICONS[statement.label]
+            return (
+              <li
+                key={statement.label}
+                className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-base leading-6"
+              >
+                {/*
+                  `text-accent` is the owner-directed green — see the
+                  token warning in the header. Opaque, not tinted down:
+                  at 2.61:1 on this surface there is no contrast left to
+                  spend on an opacity.
+                */}
+                {Icon !== undefined && (
+                  <Icon className="h-6 w-6 shrink-0 text-accent" />
+                )}
+                <span>{statement.label}</span>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </Section>
   )
 }
