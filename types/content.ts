@@ -142,6 +142,18 @@ export interface RoutingContent {
    */
   links?: readonly RoutingLink[]
   /**
+   * Renders the per-market phone and email block in this card.
+   *
+   * ⚠ IT CARRIES NO CONTACT DETAIL ITSELF, AND MUST NOT. The numbers
+   * and addresses come from `marketOperatingDetail` in
+   * `data/markets/markets.ts`, where each is owner-confirmed and cited
+   * (DEC-070, DEC-073, DEC-083, DEC-097). This flag only says WHICH
+   * card shows them. A copy of a phone number in content would be a
+   * second source of truth, and 01 §20 is specifically about contact
+   * facts drifting between markets.
+   */
+  showMarketContacts?: boolean
+  /**
    * Bottom-aligned closing link.
    *
    * Approved page id only, resolved through the approved-link layer at

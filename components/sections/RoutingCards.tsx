@@ -12,6 +12,8 @@ import {
 import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
+import { TrackedPhoneLink } from '@/components/tracking/TrackedPhoneLink'
+import { marketList, marketOperatingDetail } from '@/data/markets/markets'
 import {
   resolveApprovedLink,
   resolveLinkableOnly,
@@ -153,6 +155,35 @@ function MessageIcon(props: IconProps) {
     <svg {...baseIconProps(props)}>
       <path d="M20 15a2 2 0 0 1-2 2H8l-4 3V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2Z" />
       <path d="M8 9h8M8 12.5h5" />
+    </svg>
+  )
+}
+
+/** A plain pin, for the market name. Smaller and quieter than the card mark. */
+function PinIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M12 21s6.5-6 6.5-11a6.5 6.5 0 1 0-13 0c0 5 6.5 11 6.5 11Z" />
+      <circle cx="12" cy="10" r="2.25" />
+    </svg>
+  )
+}
+
+/** A handset. */
+function PhoneIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M7.5 3.5h-2a2 2 0 0 0-2 2.2A16.5 16.5 0 0 0 18.3 20.5a2 2 0 0 0 2.2-2v-2a1 1 0 0 0-.8-1l-3-.6a1 1 0 0 0-1 .4l-.9 1.2a13 13 0 0 1-5.3-5.3l1.2-.9a1 1 0 0 0 .4-1l-.6-3a1 1 0 0 0-1-.8Z" />
+    </svg>
+  )
+}
+
+/** An envelope. */
+function MailIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3.5 6.5 8.5 6 8.5-6" />
     </svg>
   )
 }
@@ -490,6 +521,96 @@ export function RoutingCards({
                         </span>
                       </li>
                     ))}
+                  </ul>
+                </div>
+              )}
+
+              {/*
+                ==================================================
+                PER-MARKET CONTACT ROWS (owner, 2026-09-04)
+                ==================================================
+                ⚠ EVERY VALUE COMES FROM `marketOperatingDetail`. Not
+                one number or address is written here. That registry is
+                where each is owner-confirmed and cited (DEC-070,
+                DEC-073, DEC-083, DEC-097), and it is why DEC-097's San
+                Diego email change reached the footer for free. A
+                hardcoded copy in this component would be the second
+                place to miss.
+
+                ⚠ SERVICE-AREA CONTACTS, NOT OFFICES. No street
+                address, no hours, no "visit us", and the pin marks a
+                MARKET NAME rather than a location on a map. San Diego
+                and Las Vegas have no verified public location
+                (CLAUDE.md §10-11), and 18 §86-87 forbids a pin that
+                implies one. The label says "Service area contacts" for
+                exactly that reason.
+
+                `marketOperatingDetail` is a `Partial` record, so a
+                market listed in navigation is not automatically a
+                market with published contact facts - the `undefined`
+                check is a real branch, not a formality. Same guard the
+                footer uses.
+              */}
+              {item.showMarketContacts === true && (
+                <div className="mt-6">
+                  <p className="text-caption font-medium tracking-wide text-muted-foreground uppercase">
+                    Service area contacts
+                  </p>
+
+                  <ul className="mt-2 divide-y divide-border border-t border-border">
+                    {marketList.map((market) => {
+                      const detail = marketOperatingDetail[market.id]
+                      if (detail === undefined) return null
+
+                      return (
+                        <li key={market.id} className="py-2.5">
+                          <p className="flex items-center gap-1.5 text-sm font-medium text-foreground">
+                            <PinIcon
+                              className="h-4 w-4 shrink-0 text-accent"
+                              aria-hidden="true"
+                            />
+                            {market.city}
+                          </p>
+
+                          {/*
+                            `gap-x-4` is the "sufficient spacing"
+                            between two adjacent tap targets; `flex-wrap`
+                            lets the Las Vegas address drop to its own
+                            line rather than squeezing the pair.
+
+                            `break-all` on the address only: it is the
+                            one string long enough to overflow a narrow
+                            card, and breaking a phone number would be
+                            worse than wrapping it.
+                          */}
+                          <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-caption">
+                            <TrackedPhoneLink
+                              phoneE164={detail.phoneE164}
+                              ctaLocation="section_cta"
+                              context={{ market_id: market.id }}
+                              className="inline-flex items-center gap-1.5 text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                            >
+                              <PhoneIcon
+                                className="h-3.5 w-3.5 shrink-0 text-accent"
+                                aria-hidden="true"
+                              />
+                              {detail.phone}
+                            </TrackedPhoneLink>
+
+                            <a
+                              href={`mailto:${detail.email}`}
+                              className="inline-flex items-center gap-1.5 text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                            >
+                              <MailIcon
+                                className="h-3.5 w-3.5 shrink-0 text-accent"
+                                aria-hidden="true"
+                              />
+                              <span className="break-all">{detail.email}</span>
+                            </a>
+                          </div>
+                        </li>
+                      )
+                    })}
                   </ul>
                 </div>
               )}

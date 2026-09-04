@@ -284,7 +284,14 @@ export const homeContent: HomePageContent = {
         No `links` and no `linksHeading`: there is nothing to enumerate
         under "contact us", and the render skips the whole block rather
         than putting a heading over an empty list (18 §120).
+
+        It shows the per-market phone and email block instead
+        (owner, 2026-09-04). ⚠ The details are NOT here - they are read
+        from `marketOperatingDetail`, so DEC-097's San Diego email
+        change reaches this card for free rather than needing a second
+        edit. See the flag's note in `RoutingContent`.
       */
+      showMarketContacts: true,
       secondaryLink: {
         pageId: id('core-contact'),
         label: 'Contact The Sewer Pros',
