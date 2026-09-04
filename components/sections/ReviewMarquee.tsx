@@ -39,9 +39,11 @@ import {
  * DEC-085's aggregate stat, with its verification date stated in the
  * same breath as the number. DEC-028's prohibition on
  * `AggregateRating` / `Review` markup: this is visible content only,
- * and nothing here emits schema. The footer disclosure, verbatim,
- * because a curated set of 50 out of 278 needs it more than the old
- * carousel did.
+ * and nothing here emits schema.
+ *
+ * The footer disclosure did NOT carry over. The owner directed its
+ * removal on 2026-09-03, reversing the guardrail every earlier prompt
+ * in this build repeated. See the note at the foot of the component.
  */
 
 /** Card width in px. Fixed, so the loop length is computable without measuring the DOM. */
@@ -332,13 +334,20 @@ export function ReviewMarquee({
       </div>
 
       {/*
-        The complete picture lives on Google, including the reviews this
-        marquee does not carry. With a curated 50 of 278 this line does
-        more work than it did for the old carousel, so it stays
-        verbatim (CLAUDE.md §23).
+        The written disclosure that used to sit here ("These are a
+        selection…") was removed on owner direction, 2026-09-03. Every
+        earlier prompt in this build carried it forward verbatim, so
+        the removal is deliberate rather than an oversight, and this
+        note is here to stop a later pass from restoring it as a
+        perceived regression.
+
+        The profile link is NOT that line and stays. It is still null
+        today, so nothing renders — and it now renders nothing at all
+        rather than an empty `mt-8` paragraph. When a real profile URL
+        is supplied it appears on its own, as it always would have.
       */}
-      <p className="mt-8 text-sm text-muted-foreground">
-        {googleProfileReviewsUrl !== null ? (
+      {googleProfileReviewsUrl !== null && (
+        <p className="mt-8 text-sm text-muted-foreground">
           <a
             className="text-accent-secondary underline underline-offset-4 hover:text-foreground"
             href={googleProfileReviewsUrl}
@@ -347,10 +356,8 @@ export function ReviewMarquee({
           >
             See all reviews on Google
           </a>
-        ) : (
-          'These are a selection. Search The Sewer Pros on Google to read every review, including any not shown here.'
-        )}
-      </p>
+        </p>
+      )}
     </Section>
   )
 }
