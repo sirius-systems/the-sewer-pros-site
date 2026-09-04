@@ -35,15 +35,27 @@ import { cn } from '@/lib/utils/cn'
  * borders) and §25 (no dramatic floating cards — border, not shadow).
  */
 export interface CardProps {
+  /**
+   * Whether the card supplies its own inner padding.
+   *
+   * `false` drops the default `p-6` so a child can run edge to edge,
+   * which is what an image crop at the top of a card needs. Same prop,
+   * same reason, and the same warning as `LinkCard.padded` below: this
+   * is a prop rather than a `p-0` through `className` because `cn()`
+   * is a plain join, not tailwind-merge — both classes would ship and
+   * stylesheet order would pick the winner.
+   */
+  padded?: boolean
   className?: string
   children: ReactNode
 }
 
-export function Card({ className, children }: CardProps) {
+export function Card({ padded = true, className, children }: CardProps) {
   return (
     <div
       className={cn(
-        'rounded-md border border-border bg-surface p-6',
+        'rounded-md border border-border bg-surface',
+        padded && 'p-6',
         className,
       )}
     >
