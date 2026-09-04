@@ -265,7 +265,13 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           title="How it works"
           steps={content.process}
           variant="cards"
+          /*
+            `surface` is the fallback, not the current appearance:
+            `backgroundImage` overrides it, and the muted band is what
+            comes back if that image is ever removed.
+          */
           surface="muted"
+          backgroundImage={content.processBackground}
         />
       )}
 

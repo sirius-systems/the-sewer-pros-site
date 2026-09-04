@@ -311,6 +311,12 @@ export const homeContent: HomePageContent = {
     { title: 'Understand', description: 'We review the footage and explain what it shows, root intrusion, blockages, or a structural issue, in plain language you can actually use.' },
     { title: 'Decide', description: 'You keep the video and the findings, so you can choose cleaning, monitoring, or your next step with real evidence, not a repair sale.' },
   ],
+  processBackground: {
+    src: '/images/homepage/differentiator/the-sewer-pros-st-louis-residential-property-exterior.webp',
+    alt: 'Street view of a brick two-story house on a tree-lined block',
+    source:
+      'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+  },
   faq: [
     {
       question: 'What does a sewer camera inspection show?',

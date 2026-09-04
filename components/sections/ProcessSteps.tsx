@@ -145,6 +145,24 @@ export interface ProcessStepsProps {
    * motif never overrides authored content.
    */
   steps?: readonly ProcessStep[]
+  /**
+   * Full-bleed artwork behind the whole band (owner, 2026-09-04).
+   *
+   * ⚠ DIFFERENT THING FROM `ProcessStep.image`, which is a crop inside
+   * one card. This sits behind every card at once, so it is a property
+   * of the section rather than of a step, and it works with either
+   * variant.
+   *
+   * ⚠ IT OVERRIDES `surface`. The image is the surface, the same way
+   * `Hero` passes `surface="none"` under its backdrop. The section
+   * heading turns white over a scrim; the cards keep their own opaque
+   * surface and sit on top, so nothing inside a card changes.
+   *
+   * Omit it and the band renders exactly as before, with no image
+   * layer at all — no tint and no gradient standing in for a missing
+   * photograph (18 §40-42).
+   */
+  backgroundImage?: CardImage
 }
 
 /**
@@ -297,6 +315,7 @@ export function ProcessSteps({
   intro,
   steps,
   variant = 'grid',
+  backgroundImage,
 }: ProcessStepsProps) {
   const resolved = steps ?? motifSteps
 
@@ -309,9 +328,28 @@ export function ProcessSteps({
   const wide = columnClass(resolved.length)
   const span = spanClasses(resolved.length, wide)
 
-  return (
-    <Section density={density} surface={surface} labelledBy={id}>
-      <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+  const body = (
+    <>
+      <SectionHeading
+        id={id}
+        title={title}
+        eyebrow={eyebrow}
+        intro={intro}
+        /*
+          The `<h2>` sets no colour of its own and inherits the white
+          from the wrapper below. The eyebrow and intro DO set
+          `text-muted-foreground`, which is tuned for a light surface,
+          so they are overridden here rather than left to fail quietly
+          the first time a caller passes one alongside a background.
+          `cn()` is a plain join, not tailwind-merge, so this has to be
+          a descendant selector rather than a competing text class.
+        */
+        className={
+          backgroundImage !== undefined
+            ? '[&_p]:text-white [&_div]:text-white'
+            : undefined
+        }
+      />
 
       {/*
         Two cell treatments, one column logic. `grid` is the hairline
@@ -396,6 +434,66 @@ export function ProcessSteps({
           )
         })}
       </ol>
-    </Section>
+    </>
+  )
+
+  if (backgroundImage === undefined) {
+    return (
+      <Section density={density} surface={surface} labelledBy={id}>
+        {body}
+      </Section>
+    )
+  }
+
+  /*
+    ⚠ `surface` IS DELIBERATELY NOT PASSED HERE. The image is the
+    surface — the same reason `Hero` drops to `surface="none"` under
+    its backdrop. A caller's `surface` stays meaningful as the
+    fallback for the day the image is removed, which is why the prop
+    is left in place rather than deleted at the call site.
+
+    `isolate` keeps the two `-z-10` layers inside this stacking
+    context instead of sliding behind the page background, and
+    `overflow-hidden` stops a cover-cropped frame widening the
+    document. Both copied from `Hero`, for the same two reasons.
+  */
+  return (
+    <div className="relative isolate overflow-hidden text-white">
+      {/*
+        ⚠ `alt=""`. The picture is a backdrop behind a heading that
+        already says what the section is; it carries no information a
+        reader would otherwise miss. `CardImage.alt` still holds a real
+        description so the asset stays identifiable in source.
+      */}
+      <Image
+        src={backgroundImage.src}
+        alt=""
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover"
+      />
+
+      {/*
+        ⚠⚠ THE SCRIM IS LOAD-BEARING, AND THIS FRAME IS THE BRIGHT ONE.
+
+        A sunlit exterior — sky, white trim, lit lawn — is close to the
+        worst case for white text, which is exactly why the value is
+        reused rather than re-derived. Black/55% was sized against PURE
+        WHITE, the brightest background any frame could present, where
+        it gives 4.76:1 against a 4.5:1 floor. That covers this
+        photograph and any replacement.
+
+        ⚠ Black/50% gives 4.39:1 and fails. Do not lighten it, and do
+        not dim the heading with an opacity, without remeasuring.
+
+        Same value as the hero overlay, the What we do cards and the
+        market cards, so every image treatment on this page agrees.
+      */}
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+
+      <Section density={density} surface="none" labelledBy={id}>
+        {body}
+      </Section>
+    </div>
   )
 }
