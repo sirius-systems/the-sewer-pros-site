@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { HeaderPhoneLink } from '@/components/layout/HeaderPhoneLink'
 import { resolvePrimaryNav } from '@/data/navigation'
 import { SITE_NAME } from '@/data/business'
 import { PRIMARY_CTA } from '@/components/layout/cta'
@@ -18,21 +17,28 @@ import { PRIMARY_CTA } from '@/components/layout/cta'
  * `<details>` is keyboard-operable and screen-reader-announced natively,
  * which satisfies 18 §94 and §95 without custom ARIA.
  *
- * ---------------------------------------------------------------------------
- * ⚠ THE HEADER PHONE CONTROL IS MARKET-AWARE (supersedes PENDING-017)
- * ---------------------------------------------------------------------------
- * 18 §42 places a phone link in the header. The business publishes a
- * different real, owner-confirmed number per market — St. Louis,
- * San Diego, and Las Vegas (DEC-070, DEC-071, DEC-073) — and 01 §20
- * forbids showing one market's number on another market's page.
+ * The header also no longer pulls in a client component of its own:
+ * `HeaderPhoneLink` was `'use client'`, and it was the only one here.
  *
- * `HeaderPhoneLink` resolves this by reading the CURRENT ROUTE (which
- * market page a visitor is on), not by guessing the visitor's location.
- * On a market page or its sub-pages it renders that market's own
- * tracked `tel:` link; on sitewide pages (homepage, `/services/`,
- * `/about/`, etc.) — which have no single correct number — it falls
- * back to "Call" -> `/contact/`, same as before. See that component for
- * the full reasoning.
+ * ---------------------------------------------------------------------------
+ * ⚠ THERE IS NO PHONE CONTROL IN THIS HEADER. THAT IS DELIBERATE.
+ * ---------------------------------------------------------------------------
+ * 18 §42 places a phone link in the header, and one used to be here:
+ * `HeaderPhoneLink` read the current route and rendered that market's
+ * own tracked `tel:` link on `/st-louis-mo/`, `/san-diego-ca/` and
+ * `/las-vegas-nv/`, falling back to "Call" -> `/contact/` on sitewide
+ * pages where no single number is correct (01 §20).
+ *
+ * The owner directed its removal on 2026-09-03. Do not restore it as a
+ * perceived regression: the header CTA is now the only action here by
+ * intent.
+ *
+ * Click-to-call is unaffected everywhere else and was checked before
+ * removing this, not assumed. `SiteFooter` carries the St. Louis and
+ * San Diego numbers as tracked `tel:` links on every page, `/contact/`
+ * lists all three including Las Vegas, and the Las Vegas market page
+ * states its own number in body copy. The component itself is in git
+ * history if the market-aware behaviour is ever wanted back.
  *
  * ---------------------------------------------------------------------------
  * STICKY
@@ -41,9 +47,8 @@ import { PRIMARY_CTA } from '@/components/layout/cta'
  * the ported page maps are materially longer than what they replaced,
  * so the primary CTA would otherwise scroll out of reach.
  *
- * Pure CSS, so the header still ships no JavaScript. The phone question
- * above is unchanged — sticky was adopted from the reference style;
- * click-to-call was not.
+ * Pure CSS, so the header still ships no JavaScript. Sticky was adopted
+ * from the reference style; click-to-call was not.
  *
  * A sticky header covers in-page anchor targets, so `app/globals.css`
  * carries a matching `:target { scroll-margin-top }`. Change both
@@ -102,18 +107,12 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <HeaderPhoneLink
-            ctaLocation="header"
-            className="text-sm font-medium text-foreground hover:text-accent-secondary"
-          />
-          <Link
-            href={PRIMARY_CTA.href}
-            className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            {PRIMARY_CTA.label}
-          </Link>
-        </div>
+        <Link
+          href={PRIMARY_CTA.href}
+          className="hidden min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 lg:inline-flex"
+        >
+          {PRIMARY_CTA.label}
+        </Link>
 
         {/* Mobile disclosure — 18 §45, §48 (44px minimum touch target). */}
         <details className="lg:hidden [&[open]>summary_.mark-open]:hidden [&[open]>summary_.mark-close]:block">
@@ -138,14 +137,10 @@ export function SiteHeader() {
               </ul>
             </nav>
 
-            {/* 18 §152 — primary actions stay reachable on mobile. */}
-            <HeaderPhoneLink
-              ctaLocation="mobile_bar"
-              className="mt-4 flex min-h-11 items-center justify-center rounded-md border border-border text-sm font-medium text-foreground"
-            />
+            {/* 18 §152 — the primary action stays reachable on mobile. */}
             <Link
               href={PRIMARY_CTA.href}
-              className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground"
+              className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground"
             >
               {PRIMARY_CTA.label}
             </Link>
