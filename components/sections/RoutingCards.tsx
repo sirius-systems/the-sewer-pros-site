@@ -198,34 +198,50 @@ const ACCENT: Record<
     rule: 'border-t-accent-secondary',
     mark: 'text-accent-secondary',
     tile: 'bg-[color-mix(in_srgb,var(--color-accent-secondary)_10%,white)]',
-    button: 'outline-blue',
+    button: 'accent',
   },
   green: {
     rule: 'border-t-accent',
     mark: 'text-accent',
     tile: 'bg-[color-mix(in_srgb,var(--color-accent)_10%,white)]',
-    button: 'outline-green',
+    button: 'primary',
   },
+  /*
+    ⚠ NAVY TAKES THE BLUE BUTTON, NOT A NAVY ONE, AND THAT IS THE ONLY
+    PLACE THIS MAP DISAGREES WITH ITSELF. Owner direction, 2026-09-04:
+    the commercial card keeps its navy mark and top rule but its action
+    is solid blue. Every other row's `button` follows its own accent.
+  */
   navy: {
     rule: 'border-t-brand',
     mark: 'text-brand',
     tile: 'bg-[color-mix(in_srgb,var(--color-brand)_10%,white)]',
-    button: 'outline-navy',
+    button: 'accent',
   },
 }
 
-/**
- * Cards whose footer action is the page's conversion rather than
- * another browse step.
+/*
+ * ============================================================================
+ * ⚠⚠ ALL FOUR ACTIONS ARE SOLID BUTTONS. OWNER-DIRECTED, 2026-09-04.
+ * ============================================================================
+ * They were outlined for a day, with only the contact card solid, on
+ * the reading that 18 §106 gives: "Do not visually style every action
+ * as primary." That is now knowingly set aside for this section — the
+ * owner asked for four filled buttons, and this is the record of it
+ * rather than a silent drift.
  *
- * ⚠ THIS IS WHY ONLY ONE OF THE FOUR IS SOLID. 18 §106: "Do not
- * visually style every action as primary." Three of these cards route
- * a visitor deeper into the site and take the outline treatment; the
- * contact card asks for the conversion and takes the solid green. A
- * second entry here would flatten that distinction, which is the thing
- * §106 rules out.
+ * ⚠ IT ALSO PUTS THE CONVERSION GREEN ON A BROWSE ACTION. DEC-096
+ * reserves `--accent` for conversion, and the locations card now wears
+ * it while only pointing deeper into the site. That is the third
+ * knowing use of green outside a conversion, after DEC-096's trust-bar
+ * icons and DEC-098's comparison table. A fourth should be a decision,
+ * not a habit.
+ *
+ * What the section still has instead of weight is COLOUR: blue for the
+ * two browse-the-catalogue cards, green for coverage and contact. If
+ * that stops being enough to separate them, the fix is to take a card
+ * back to an outline, not to add a fifth colour.
  */
-const SOLID_ACTION_PAGES: readonly string[] = ['core-contact']
 
 /** A right-facing chevron for the list rows. */
 function Chevron(props: IconProps) {
@@ -493,10 +509,15 @@ export function RoutingCards({
                 §106 both name.
 
                 `ButtonLink`, so it renders an `<a>` rather than a
-                `<button>`: these navigate. `w-full` because it is what
-                aligns the four across the grid, and the row already
-                sits on `mt-auto` so the cards' differing body lengths
-                do not stagger them.
+                `<button>`: these navigate.
+
+                ⚠ NOT `w-full` ANY MORE (owner, 2026-09-04). Each
+                button now sizes to its own label and sits at the
+                card's left edge, so the four differ in width by
+                design. They still line up VERTICALLY: the row sits on
+                `mt-auto`, which is what stops the cards' differing
+                body lengths from staggering them, and that has
+                nothing to do with the button's width.
 
                 Focus comes from the global `:focus-visible` rule in
                 `app/globals.css` (2px `--accent-secondary`, 2px
@@ -506,12 +527,7 @@ export function RoutingCards({
                 <div className="mt-auto pt-6">
                   <ButtonLink
                     href={resolveApprovedLink(item.secondaryLink.pageId).href}
-                    variant={
-                      SOLID_ACTION_PAGES.includes(link.pageId)
-                        ? 'primary'
-                        : accent.button
-                    }
-                    className="w-full"
+                    variant={accent.button}
                   >
                     {item.secondaryLink.label}
                     {/*
