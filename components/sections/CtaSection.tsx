@@ -146,7 +146,20 @@ export function CtaSection({
       className={className}
     >
       {variant === 'split' && proof !== undefined ? (
-        <div className="grid gap-10 lg:grid-cols-12">
+        /*
+          `lg:items-center` centres the ask against the proof column.
+
+          The proof slot on the homepage is the lead form, which is
+          roughly twice the height of the title and body beside it.
+          Grid's default is `stretch`, so the content cell filled the
+          row and its text sat at the top of it, leaving the heading
+          level with the form's first field and a large void beneath.
+
+          Scoped to `lg` because that is where the two columns exist.
+          Below it the grid is a single column and cross-axis alignment
+          has nothing to align against.
+        */
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           {content}
           <div className="lg:col-span-5">{proof}</div>
         </div>
