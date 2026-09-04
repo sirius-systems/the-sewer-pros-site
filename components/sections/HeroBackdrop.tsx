@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { useEffect, useState, useSyncExternalStore } from 'react'
-import { Container } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import {
   heroBackdropImages,
@@ -24,10 +23,33 @@ import {
  * scoped exception rather than a reversal of the rule. It covers THIS
  * BACKDROP only.
  *
- * The accessibility cost is paid rather than waved at, same as the
- * marquee: motion is opt-in under `prefers-reduced-motion`, there is a
- * persistent visible pause control per WCAG 2.2.2, and the whole layer
- * is hidden from assistive technology.
+ * ---------------------------------------------------------------------------
+ * ⚠ THERE IS NO PAUSE CONTROL, AND `prefers-reduced-motion` IS NOW THE
+ * ONLY THING STANDING BETWEEN THIS AND A WCAG 2.2.2 PROBLEM
+ * ---------------------------------------------------------------------------
+ * A pause button shipped with the first version and was removed on
+ * owner direction (2026-09-04). Removing it is defensible HERE, and
+ * the reasons are worth stating because they are also the conditions
+ * under which it stops being defensible:
+ *
+ *   - The frames are DECORATIVE. Every one carries `alt=""` and the
+ *     layer is `aria-hidden`. 2.2.2 governs moving or auto-updating
+ *     INFORMATION; these carry none, and the hero's meaning is
+ *     entirely in the copy on top.
+ *   - Nothing moves. This is an opacity cross-fade between two still
+ *     photographs — no scroll, no blink, no motion of any element.
+ *   - Motion is opt-in. Under `prefers-reduced-motion` no timer starts
+ *     and no transition is declared, so a visitor who asked for less
+ *     motion sees one static frame.
+ *
+ * ⚠ IF ANY OF THOSE THREE STOPS BEING TRUE, THE CONTROL HAS TO COME
+ * BACK. Giving a frame real alt text, captioning it, or replacing the
+ * cross-fade with a slide or a Ken Burns pan each turn this into
+ * moving information with no way to stop it.
+ *
+ * This is narrower than `ReviewMarquee`'s position, and deliberately
+ * so: that section scrolls real customer text, which IS moving
+ * information, so its WCAG 2.2.2 control stays.
  *
  * ---------------------------------------------------------------------------
  * ⚠ THE SCRIM IS NOT DECORATION. DO NOT LIGHTEN IT WITHOUT REMEASURING.
@@ -93,7 +115,6 @@ function motionPreferenceOnServer() {
 
 export function HeroBackdrop() {
   const [index, setIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
 
   /**
    * One flag, two jobs: the reduced-motion gate and the hydration gate.
@@ -115,12 +136,12 @@ export function HeroBackdrop() {
   const enhanced = !prefersReducedMotion
 
   useEffect(() => {
-    if (!enhanced || paused || heroBackdropImages.length < 2) return
+    if (!enhanced || heroBackdropImages.length < 2) return
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % heroBackdropImages.length)
     }, HOLD_SECONDS * 1000)
     return () => window.clearInterval(id)
-  }, [enhanced, paused])
+  }, [enhanced])
 
   if (!heroBackdropRenders()) return null
 
@@ -131,8 +152,11 @@ export function HeroBackdrop() {
     <>
       {/*
         `bg-brand` is the floor, not decoration: it is what shows before
-        the first frame decodes, so the hero opens as brand navy rather
-        than as a flash of page white under a navy scrim.
+        the first frame decodes, so the hero opens dark rather than as
+        a flash of page white under the overlay. It stays brand navy
+        while the overlay itself is black — under a 65% black it reads
+        as near-black anyway, and this is the one moment any brand
+        colour shows here at all.
       */}
       <div
         aria-hidden="true"
@@ -177,36 +201,6 @@ export function HeroBackdrop() {
         <div className="hero-scrim absolute inset-0" />
       </div>
 
-      {/*
-        WCAG 2.2.2. A persistent control, not a hover affordance, for
-        the same reason the marquee's is: hover is undiscoverable and
-        does not exist on touch.
-
-        Positioned rather than placed in the copy column because the
-        state lives here — threading it up into `Hero` to render the
-        button somewhere else would spread one concern across two
-        components for a cosmetic gain. It sits in the hero's bottom
-        padding, clear of both the copy and the form card.
-
-        Hidden by CSS under reduced motion, where nothing is rotating
-        for it to act on. `enhanced` also gates it, so it never appears
-        before the timer it controls exists.
-      */}
-      {enhanced && heroBackdropImages.length > 1 && (
-        <div className="absolute inset-x-0 bottom-4 z-10">
-          <Container>
-            <button
-              type="button"
-              onClick={() => setPaused((v) => !v)}
-              aria-pressed={paused}
-              className="hero-backdrop-toggle inline-flex min-h-11 items-center gap-2 rounded-md border border-white/40 px-3 text-caption font-medium text-white transition-colors hover:bg-white/15"
-            >
-              <span aria-hidden="true">{paused ? '▶' : '❚❚'}</span>
-              {paused ? 'Play background' : 'Pause background'}
-            </button>
-          </Container>
-        </div>
-      )}
     </>
   )
 }

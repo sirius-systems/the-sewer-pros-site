@@ -153,11 +153,19 @@ export function Hero({
     /*
       55/45, as directed. Expressed as 11fr/9fr because that IS 55/45
       exactly, where a 12-column grid can only approximate it (7/5 is
-      58/42). `items-start` rather than `items-center`: the form column
-      is much taller than the copy, and centring the copy against it
-      leaves the headline floating in the middle of the hero.
+      58/42).
+
+      `lg:items-center` centres the copy against the form, on owner
+      direction (2026-09-04), matching what CtaSection's split variant
+      does with the same pairing. This reverses `items-start`, which
+      shipped first on the argument that the form is much taller and
+      centring would leave the headline floating; the owner has seen
+      both and chosen this one.
+
+      `lg:` only. Below it the grid is one column and there is nothing
+      to align against.
     */
-    <div className="grid gap-10 lg:grid-cols-[11fr_9fr] lg:items-start lg:gap-12">
+    <div className="grid gap-10 lg:grid-cols-[11fr_9fr] lg:items-center lg:gap-12">
       <div>{copy}</div>
       <div>{aside}</div>
     </div>
