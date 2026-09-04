@@ -598,6 +598,51 @@ Reliable Sewer Inspection
 Expert Sewer Inspection
 ```
 
+## 17.1 FAQ Section Headings
+
+Owner directive, 2026-09-04.
+
+The FAQ section heading names the page's entity rather than using the
+shared default. The reasoning is the same one already applied to the
+homepage FAQ heading, the service index descriptions, and the final
+CTA: a heading that repeats the page's primary service, location, or
+audience keyword reinforces the entity signal the H1, meta description,
+and CTA on that page already carry.
+
+This is resolvable per page from `MasterPageRecord.serviceId`,
+`.locationId`, and `.audienceId` against the existing registries. It is
+not content to be hand-written per page.
+
+| Page type | Template component | Heading pattern | Example |
+| --- | --- | --- | --- |
+| Service | `ServicePageTemplate.tsx` | Common questions about **[Service]** | "Common questions about Hydro Jetting" |
+| Service + Location | `ServiceLocationPageTemplate.tsx` | Common questions about **[Service]** in **[Location]** | "Common questions about Sewer Camera Inspection in Chesterfield" |
+| Audience | `AudiencePageTemplate.tsx` | Answers to common questions **[Audience]** have | "Answers to common questions Home Buyers have" |
+| Audience + Service | *(documented spec, not yet built)* | **[Service]** FAQs for **[Audience]** *(unchanged — existing convention retained)* | "Hydro Jetting FAQs for Property Managers" |
+| Location (city/community, general) | `LocationPageTemplate.tsx` | Shared default — **not in scope for this change** | "Common questions" |
+| Market hub (St. Louis / San Diego / Las Vegas) | `MarketPageTemplate.tsx` | Shared default — **not in scope for this change** | "Common questions" |
+| Homepage | `HomePageTemplate.tsx` | Homepage-specific override | "Sewer Camera Inspection & Cleaning: Common Questions" |
+
+**Names carry the registry's own casing.** The examples above use
+`Service.name` and `Location.name` exactly as the registries store them
+("Hydro Jetting", not "hydro jetting"). The owner's source directive
+illustrated these in lower case mid-sentence; entity consistency is the
+stated purpose of the change, so the entity's canonical name is used
+instead. Lower-casing would also have to special-case acronyms such as
+"HOA Communities".
+
+**Why audience pages name no service.** An audience page shows a
+filtered index of several relevant services (18 §113), so there is no
+single canonical service to name. Audience + service pages are
+genuinely single-service and keep their existing "[Service] FAQs for
+[Audience]" convention from
+`docs/page-templates/power/service-audience-page.md` §14.
+
+**Why plain location and market hub pages are excluded.** Both are
+general across services in the same way audience pages are. Rather than
+guess a pattern, they stay on the shared default until the owner
+specifies one.
+
 ---
 
 # 18. AEO Answer-First Structure
