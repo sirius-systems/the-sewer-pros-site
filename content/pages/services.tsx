@@ -24,6 +24,7 @@
  * evidence-first positioning working (01 §14, 18 §137), not hedging.
  */
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type { PageId, ServicePageContent } from '@/types'
 
 const id = (value: string): PageId => value as PageId
@@ -33,15 +34,121 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Sewer Camera Inspection — 14 §29
      ====================================================================== */
   [id('svc-sewer-camera-inspection')]: {
+    /*
+      Expanded hero copy, owner-supplied and transcribed as given
+      (2026-09-04). Answer-first: the opening sentence names the actual
+      trigger conditions rather than defining the service, which is what
+      12 and 14 §35 ask for.
+
+      ⚠ THE H1 IS UNCHANGED. The brief's snippet carried
+      `title: 'Schedule a sewer camera inspection.'`, which is the HOME
+      page's closing-CTA heading, not this page's H1. Renaming the H1 of
+      the flagship service page is a routing and SEO decision, and the
+      brief itself said not to change it, so 'Sewer Camera Inspection'
+      stands.
+
+      ⚠ WHAT THIS COPY DOES NOT CLAIM, in line with this file's
+      header: no pricing, no timeframe, no guarantee, no certification,
+      no availability window. "Visible conditions inside accessible
+      portions of the line" is the same limit 14 §29 requires and the
+      body below already states — a camera sees what it can reach.
+
+      The closing clause routes onward work to "a separate repair
+      provider" rather than to us, which is CLAUDE.md §9's repair
+      boundary stated inside the sales copy rather than beside it.
+    */
     hero: {
-      eyebrow: 'Inspection and diagnostics',
+      eyebrow: 'Evidence before expensive decisions',
       title: 'Sewer Camera Inspection',
       intro: (
-        <p>
-          A camera inspection puts a video camera inside the sewer line so the
-          line&rsquo;s visible condition can be seen and documented, before
-          anyone recommends cleaning, repair, or replacement.
-        </p>
+        <>
+          <p>
+            Schedule a sewer camera inspection when you are dealing with
+            recurring sewer backups, slow drains, unexplained blockages, or
+            concerns about a property you plan to purchase. A professional
+            sewer scope provides video evidence of visible conditions inside
+            accessible portions of the line, including buildup, root intrusion,
+            offset joints, standing water, cracks, and other possible problem
+            areas.
+          </p>
+          {/*
+            ⚠ THE LINK STYLING IS ON THE PARAGRAPH, AND IT IS NOT
+            OPTIONAL. `ApprovedInlineLink` renders a bare `<Link>` with
+            no classes of its own, so without this the five entity
+            links inherit the paragraph colour and are indistinguishable
+            from the prose around them - not merely low contrast, but
+            carrying NO distinguishing feature at all, which fails
+            WCAG 1.4.1 outright.
+
+            Same class list `RoutingCards` puts on its descriptions,
+            reused rather than invented. `--accent-secondary` on this
+            surface measures 5.83:1.
+
+            It sits here rather than on `Hero`'s intro wrapper because
+            the home page's hero copy is white on a photographic
+            backdrop, where this blue would be unreadable. A hero-level
+            rule would have to know which of those two grounds it was
+            on.
+          */}
+          <p className="[&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground">
+            The Sewer Pros provides sewer inspection and diagnostic services
+            across the{' '}
+            <ApprovedInlineLink pageId={id('market-st-louis-mo')}>
+              St. Louis
+            </ApprovedInlineLink>
+            ,{' '}
+            <ApprovedInlineLink pageId={id('market-san-diego-ca')}>
+              San Diego
+            </ApprovedInlineLink>
+            , and{' '}
+            <ApprovedInlineLink pageId={id('market-las-vegas-nv')}>
+              Las Vegas
+            </ApprovedInlineLink>{' '}
+            service areas. We document what the camera shows and explain the
+            findings in plain language, helping you decide whether the evidence
+            supports{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
+              sewer cleaning
+            </ApprovedInlineLink>
+            ,{' '}
+            <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
+              hydro jetting
+            </ApprovedInlineLink>
+            , monitoring, or further evaluation by a separate repair provider.
+          </p>
+          {/*
+            Hyphen markers, `aria-hidden`, matching the featured guide
+            card in `RelatedLinks`. Tailwind's preflight already strips
+            list markers, so a bare `<ul>` would render three unmarked
+            lines that read as a stray paragraph.
+
+            The `mt-4` between blocks comes from the hero's own
+            `[&>*+*]:mt-4`, so nothing here sets its own vertical
+            rhythm.
+          */}
+          <ul className="flex flex-col gap-2">
+            {[
+              'See the visible condition of the line on video',
+              'Receive documented findings you can review',
+              'Choose your next step without a repair sale',
+            ].map((point) => (
+              <li key={point} className="flex gap-2">
+                <span aria-hidden="true" className="text-muted-foreground">
+                  -
+                </span>
+                {/*
+                  `font-semibold`, not `font-bold`: 600 is the heaviest
+                  weight this type system uses anywhere (headings,
+                  eyebrows, button labels), so 700 here would be the
+                  only 700 on the site (owner asked for bold,
+                  2026-09-04). The marker stays light so the three
+                  lines read as a list rather than three headings.
+                */}
+                <span className="font-semibold text-foreground">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </>
       ),
     },
     body: (
