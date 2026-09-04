@@ -342,14 +342,42 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
           title={content.relatedTitle ?? 'Guides and resources'}
+          intro={content.relatedIntro}
           pageIds={content.relatedPageIds}
           descriptions={content.relatedDescriptions}
-          variant="image"
+          /*
+            ⚠ `featured` VALIDATES ITSELF AND STANDS DOWN. Passing it
+            is a request, not a guarantee: if `relatedFeaturedPageId`
+            is absent or names a page not in `relatedPageIds`, or
+            fewer than three relations survive gating, the component
+            renders its default row list instead of a 7/5 split with a
+            hole in it.
+          */
+          variant="featured"
+          eyebrow={content.relatedEyebrow}
+          featuredPageId={content.relatedFeaturedPageId}
+          featuredPoints={content.relatedFeaturedPoints}
+          meta={content.relatedMeta}
+          viewAllPageId={content.relatedViewAllPageId}
         />
       )}
 
       {content.faq !== undefined && (
-        <FaqSection entries={content.faq} columns={2} />
+        <FaqSection
+          eyebrow={content.faqEyebrow}
+          /*
+            ⚠ SET HERE, NOT ON `FaqSection`'s DEFAULT. Six other
+            templates render that default - commercial, comparison,
+            core, hub, location and market - and "about sewer and
+            drain services" would be wrong on the About page and on a
+            market hub. The home page is the one that is genuinely
+            sitewide in scope, so it is the one that names the scope
+            (owner, 2026-09-04).
+          */
+          title="Common questions about sewer and drain services"
+          entries={content.faq}
+          columns={2}
+        />
       )}
 
       {/*
@@ -369,6 +397,17 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         variant="split"
         title={content.cta?.title ?? 'Schedule a sewer camera inspection.'}
         body={content.cta?.body}
+        /*
+          ⚠ `null`, NOT OMITTED. Undefined would fall back to the
+          global `PRIMARY_CTA` and put the button back.
+
+          The lead form sits in the `proof` slot beside this copy and
+          carries its own submit button. A second action pointing at
+          `/contact/` while a contact form is already on screen is a
+          competing ask rather than a stronger one, and 18 §62 warns
+          against exactly that (owner, 2026-09-04).
+        */
+        action={null}
         backgroundImage={content.ctaBackground}
         proof={
           /*

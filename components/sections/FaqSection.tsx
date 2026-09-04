@@ -35,6 +35,13 @@ export interface FaqEntry {
 
 export interface FaqSectionProps {
   id?: string
+  /**
+   * Small line above the title.
+   *
+   * Optional and unset everywhere but the home page, so every other
+   * caller renders byte-identically to before.
+   */
+  eyebrow?: string
   title?: string
   intro?: string
   entries: readonly FaqEntry[]
@@ -93,6 +100,7 @@ export function faqSectionRenders(
 
 export function FaqSection({
   id = 'faq',
+  eyebrow,
   title = 'Common questions',
   intro,
   entries,
@@ -129,7 +137,12 @@ export function FaqSection({
 
     return (
       <Section density="dense" surface={surface} labelledBy={id}>
-        <SectionHeading id={id} title={title} intro={intro} />
+        <SectionHeading
+          id={id}
+          eyebrow={eyebrow}
+          title={title}
+          intro={intro}
+        />
 
         <div className="mt-8 grid gap-x-12 sm:grid-cols-2">
           {renderList(entries.slice(0, mid), 0)}
@@ -141,7 +154,7 @@ export function FaqSection({
 
   return (
     <Section density="dense" width="reading" surface={surface} labelledBy={id}>
-      <SectionHeading id={id} title={title} intro={intro} />
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro} />
 
       <div className="mt-8">{renderList(entries, 0)}</div>
     </Section>
