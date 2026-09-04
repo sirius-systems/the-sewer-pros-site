@@ -446,24 +446,24 @@ export function RelatedLinks({
 
               <div className="mt-auto pt-8">
                 {/*
-                  ⚠ GREEN, WITH A LIGHT RING, AND THE RING IS THE POINT.
+                  ⚠ NO OUTLINE, ON OWNER DIRECTION (2026-09-04), AND
+                  THE TRADE IS RECORDED RATHER THAN HIDDEN.
 
-                  `--accent` on `--brand` measures 2.61:1 — under the
-                  3:1 that a control's own boundary needs to be
-                  identifiable. The white label on green is fine at
-                  5.45:1; it is the button's EDGE against navy that
-                  fails. Rather than swap the owner's green for a light
-                  fill, a `ring-white/60` gives the control a boundary
-                  at 6.05:1 against this card and the green stays.
+                  `--accent` on `--brand` measures 2.61:1. WCAG 1.4.11
+                  asks 3:1 for the visual information needed to
+                  identify a control, so the button's EDGE against this
+                  navy card sits under that floor. The LABEL is
+                  unaffected: white on green is 5.45:1 and reads
+                  normally.
 
-                  Do not remove the ring while the card is navy.
+                  This shipped briefly with `ring-white/60`, which put
+                  the boundary at 6.05:1. The owner asked for the
+                  outline gone, so it is gone. Anyone reinstating a
+                  boundary here should use that value; anyone changing
+                  the card's background should re-measure, because a
+                  lighter card would fix this on its own.
                 */}
-                <ButtonLink
-                  href={featured.href}
-                  className="ring-1 ring-white/60"
-                >
-                  Read the guide
-                </ButtonLink>
+                <ButtonLink href={featured.href}>Read the guide</ButtonLink>
               </div>
             </div>
           </div>
