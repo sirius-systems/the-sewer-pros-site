@@ -290,7 +290,17 @@ export function LeadFormSection({
         <Textarea id={`${idPrefix}-message`} name="message" />
       </Field>
 
-      <div className="sm:col-span-2">
+      {/*
+        Centred on owner direction. `flex justify-center` rather than
+        `text-center`: the Button is `inline-flex`, so centring the
+        text inside it would do nothing to where the button itself
+        sits.
+
+        This is the one submit button for every instance of this form —
+        the hero, the closing CTA, and the seven templates that render
+        it standalone — so they stay consistent with each other.
+      */}
+      <div className="flex justify-center sm:col-span-2">
         <Button type="submit">Request service</Button>
       </div>
     </form>
