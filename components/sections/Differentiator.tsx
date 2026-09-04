@@ -1,4 +1,8 @@
-import { Section , type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { differentiatorContrast } from '@/data/business/positioning'
 
@@ -38,6 +42,16 @@ export interface DifferentiatorProps {
    * a different value than this section would pick alone (18 §108).
    */
   density?: SectionDensity
+  /**
+   * Overrides the section's natural surface.
+   *
+   * Surface is a SEQUENCE decision, like `density` above: only the
+   * composing template knows what sits either side of this section,
+   * and the owner directed clear separation between adjacent sections
+   * (2026-09-04). A section cannot pick its own contrast against
+   * neighbours it cannot see.
+   */
+  surface?: SectionSurface
   id?: string
   eyebrow?: string
   title: string
@@ -46,6 +60,7 @@ export interface DifferentiatorProps {
 
 export function Differentiator({
   density = 'standard',
+  surface = 'muted',
   id = 'independent',
   eyebrow,
   title,
@@ -54,7 +69,7 @@ export function Differentiator({
   const columns = [differentiatorContrast.comparison, differentiatorContrast.ours]
 
   return (
-    <Section density={density} surface="muted" labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-2">

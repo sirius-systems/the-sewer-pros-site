@@ -190,6 +190,47 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       <TrustBar />
 
+      {/*
+        =====================================================================
+        SURFACES ALTERNATE DOWN THIS PAGE. NO TWO ADJACENT SECTIONS MATCH.
+        =====================================================================
+        Owner direction, 2026-09-04: separate sections with background
+        colour, not with a rule, and make the separation obvious.
+
+        ⚠ THIS REVERSES 18 §11 FOR THIS PAGE. That section says "avoid
+        alternating background colors on every section simply for
+        decoration" and assigns rhythm to density instead. The owner
+        has asked for the opposite and it is applied deliberately, not
+        by drift. Density still varies underneath; this is in addition
+        to it, not instead of it.
+
+        Two `border-b border-border` dividers used to sit on
+        `ServiceIndex` and `MarketCoverage`, patching the two pairs
+        that shared a surface. Both are GONE: a rule is the thing the
+        owner ruled out, and with the sequence below there is no
+        matching pair left for one to patch.
+
+        The order, hero downward:
+
+          Hero                photo backdrop
+          TrustBar            brand
+          ConfidenceModule    default
+          RoutingCards        muted
+          ServiceIndex        default
+          Differentiator      muted
+          MarketCoverage      default
+          ProcessSteps        muted
+          AuthorityBand       brand
+          ReviewMarquee       default
+          RelatedLinks        muted
+          FaqSection          default
+          CtaSection          muted
+
+        ⚠ INSERTING A SECTION HERE MEANS RE-CHECKING ITS NEIGHBOURS.
+        Adding one without flipping what follows it puts two matching
+        surfaces back together, which is the thing this sequence exists
+        to prevent.
+      */}
       <ConfidenceModule density="standard" />
 
       {content.routing !== undefined && (
@@ -197,27 +238,16 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           id="how-we-can-help"
           title="How we can help"
           items={content.routing}
+          surface="muted"
         />
       )}
 
-      {/*
-        Dividers on two pairs that read as one block. Same mechanism and
-        same class as TrustBar's (`border-b border-border` through
-        Section's className), so every boundary on this page is one
-        thing rather than three near-misses.
-
-        Services -> Differentiator: both sit on `muted` (ServiceIndex
-        was moved there to break the run above it), so there is no
-        surface change here to carry the boundary on its own.
-      */}
       <ServiceIndex
         density="dense"
-        surface="muted"
         id="services"
         title="What we do"
         items={content.services}
         variant="mosaic"
-        className="border-b border-border"
       />
 
       {content.differentiator !== undefined && (
@@ -227,8 +257,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         />
       )}
 
-      {/* Markets -> Process: both on the default surface. */}
-      <MarketCoverage density="dense" className="border-b border-border" />
+      <MarketCoverage density="dense" />
 
       {content.process !== undefined && (
         <ProcessSteps
@@ -236,6 +265,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           title="How it works"
           steps={content.process}
           variant="cards"
+          surface="muted"
         />
       )}
 

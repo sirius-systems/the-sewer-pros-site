@@ -1,5 +1,9 @@
 import Image from 'next/image'
-import { Section, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { verifiedOffers } from '@/data/business/offers'
 
@@ -31,6 +35,16 @@ import { verifiedOffers } from '@/data/business/offers'
  */
 export interface ConfidenceModuleProps {
   density?: SectionDensity
+  /**
+   * Overrides the section's natural surface.
+   *
+   * Surface is a SEQUENCE decision, like `density` above: only the
+   * composing template knows what sits either side of this section,
+   * and the owner directed clear separation between adjacent sections
+   * (2026-09-04). A section cannot pick its own contrast against
+   * neighbours it cannot see.
+   */
+  surface?: SectionSurface
   id?: string
 }
 
@@ -40,12 +54,13 @@ export function confidenceModuleRenders(): boolean {
 
 export function ConfidenceModule({
   density = 'dense',
+  surface = 'default',
   id = 'confidence-module',
 }: ConfidenceModuleProps = {}) {
   if (!confidenceModuleRenders()) return null
 
   return (
-    <Section density={density} labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       {/*
         The visible "Good to know" heading was removed on owner direction.
         `labelledBy` wires `aria-labelledby` on the section landmark

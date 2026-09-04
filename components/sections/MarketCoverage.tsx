@@ -1,5 +1,11 @@
 import Image from 'next/image'
-import { Section, CardGrid, LinkCard, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  CardGrid,
+  LinkCard,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { marketImages } from '@/data/business/card-images'
 import { SectionHeading } from './SectionHeading'
@@ -48,6 +54,16 @@ export interface MarketCoverageProps {
    * a different value than this section would pick alone (18 §108).
    */
   density?: SectionDensity
+  /**
+   * Overrides the section's natural surface.
+   *
+   * Surface is a SEQUENCE decision, like `density` above: only the
+   * composing template knows what sits either side of this section,
+   * and the owner directed clear separation between adjacent sections
+   * (2026-09-04). A section cannot pick its own contrast against
+   * neighbours it cannot see.
+   */
+  surface?: SectionSurface
   id?: string
   eyebrow?: string
   title?: string
@@ -88,6 +104,7 @@ export function marketCoverageRenders(): boolean {
 
 export function MarketCoverage({
   density = 'standard',
+  surface = 'default',
   id = 'markets',
   eyebrow,
   title = 'Where we work',
@@ -100,7 +117,12 @@ export function MarketCoverage({
   if (links.length === 0) return null
 
   return (
-    <Section density={density} labelledBy={id} className={className}>
+    <Section
+      density={density}
+      surface={surface}
+      labelledBy={id}
+      className={className}
+    >
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       {/*
