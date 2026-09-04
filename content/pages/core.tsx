@@ -156,9 +156,9 @@ export const homeContent: HomePageContent = {
       'We inspect, document, and clean. We do not perform sewer repair or replacement, so what we find does not become a quote from us.',
   },
   process: [
-    { title: 'Inspect', description: 'Put a camera in the line and see what is there.' },
-    { title: 'Understand', description: 'Establish what the footage shows, and what it does not.' },
-    { title: 'Decide', description: 'Choose the next step with the evidence in front of you.' },
+    { title: 'Inspect', description: 'We run a sewer camera inspection through the line to see its actual condition on video, not a guess based on symptoms.' },
+    { title: 'Understand', description: 'We review the footage and explain what it shows, root intrusion, blockages, or a structural issue, in plain language you can actually use.' },
+    { title: 'Decide', description: 'You keep the video and the findings, so you can choose cleaning, monitoring, or your next step with real evidence, not a repair sale.' },
   ],
   faq: [
     {
