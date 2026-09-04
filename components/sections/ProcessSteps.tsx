@@ -412,7 +412,7 @@ export function ProcessSteps({
                   the 3:1 a graphic needs.
                 */}
                 {StepIcon !== undefined ? (
-                  <StepIcon className="h-7 w-7 text-accent-secondary" />
+                  <StepIcon className="h-10 w-10 text-accent-secondary" />
                 ) : (
                   <span
                     aria-hidden="true"
