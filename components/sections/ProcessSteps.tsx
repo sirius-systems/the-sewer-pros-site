@@ -437,63 +437,14 @@ export function ProcessSteps({
     </>
   )
 
-  if (backgroundImage === undefined) {
-    return (
-      <Section density={density} surface={surface} labelledBy={id}>
-        {body}
-      </Section>
-    )
-  }
-
-  /*
-    ⚠ `surface` IS DELIBERATELY NOT PASSED HERE. The image is the
-    surface — the same reason `Hero` drops to `surface="none"` under
-    its backdrop. A caller's `surface` stays meaningful as the
-    fallback for the day the image is removed, which is why the prop
-    is left in place rather than deleted at the call site.
-
-    `isolate` keeps the two `-z-10` layers inside this stacking
-    context instead of sliding behind the page background, and
-    `overflow-hidden` stops a cover-cropped frame widening the
-    document. Both copied from `Hero`, for the same two reasons.
-  */
   return (
-    <div className="relative isolate overflow-hidden text-white">
-      {/*
-        ⚠ `alt=""`. The picture is a backdrop behind a heading that
-        already says what the section is; it carries no information a
-        reader would otherwise miss. `CardImage.alt` still holds a real
-        description so the asset stays identifiable in source.
-      */}
-      <Image
-        src={backgroundImage.src}
-        alt=""
-        fill
-        sizes="100vw"
-        className="absolute inset-0 -z-10 object-cover"
-      />
-
-      {/*
-        ⚠⚠ THE SCRIM IS LOAD-BEARING, AND THIS FRAME IS THE BRIGHT ONE.
-
-        A sunlit exterior — sky, white trim, lit lawn — is close to the
-        worst case for white text, which is exactly why the value is
-        reused rather than re-derived. Black/55% was sized against PURE
-        WHITE, the brightest background any frame could present, where
-        it gives 4.76:1 against a 4.5:1 floor. That covers this
-        photograph and any replacement.
-
-        ⚠ Black/50% gives 4.39:1 and fails. Do not lighten it, and do
-        not dim the heading with an opacity, without remeasuring.
-
-        Same value as the hero overlay, the What we do cards and the
-        market cards, so every image treatment on this page agrees.
-      */}
-      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
-
-      <Section density={density} surface="none" labelledBy={id}>
-        {body}
-      </Section>
-    </div>
+    <Section
+      density={density}
+      surface={surface}
+      backgroundImage={backgroundImage}
+      labelledBy={id}
+    >
+      {body}
+    </Section>
   )
 }
