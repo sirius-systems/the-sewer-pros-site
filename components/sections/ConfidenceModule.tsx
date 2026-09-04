@@ -300,17 +300,24 @@ export function ConfidenceModule({
                 ⚠ THIS BUTTON IS THE ONLY INTERACTIVE THING IN THE CARD.
                 See the header: the surface is deliberately not a link.
 
-                Estimate takes `secondary`, the site's outline button.
-                It is NOT tinted blue: `cn()` is a plain join rather
-                than tailwind-merge, so a `border-accent-secondary`
-                passed alongside the variant's own `border-border`
-                would ship both and let stylesheet order pick. The blue
-                is carried by the top rule and the mark instead.
+                Estimate takes `accent`, the solid authority blue,
+                on owner direction (2026-09-04) where it was the white
+                outline button. That variant exists in `Button.tsx`
+                rather than as a `className` here because `cn()` is a
+                plain join: a `bg-accent-secondary` passed alongside
+                `secondary`'s own `bg-surface` would ship both and let
+                stylesheet order decide.
+
+                ⚠ TWO SOLID BUTTONS, NOT TWO PRIMARIES. Green is the
+                conversion colour and only the scheduling card uses it
+                (DEC-096). Blue is `--accent-secondary`, whose
+                documented role is non-CTA emphasis. The pair still
+                reads as a hierarchy rather than as two equal asks.
               */}
               <div className="mt-auto pt-6">
                 <ButtonLink
                   href={card.action.href}
-                  variant={card.accent === 'green' ? 'primary' : 'secondary'}
+                  variant={card.accent === 'green' ? 'primary' : 'accent'}
                 >
                   {card.action.label}
                 </ButtonLink>

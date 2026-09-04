@@ -29,7 +29,7 @@ import { cn } from '@/lib/utils/cn'
  * Hover changes opacity and background but never scale — 18 §93 warns
  * against hover scaling that shifts layout.
  */
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary'
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'accent'
 
 const VARIANT: Record<ButtonVariant, string> = {
   primary:
@@ -38,6 +38,32 @@ const VARIANT: Record<ButtonVariant, string> = {
     'border border-border bg-surface text-foreground hover:bg-surface-muted rounded-md px-5',
   tertiary:
     'text-accent-secondary underline underline-offset-4 hover:text-foreground px-0',
+  /*
+    A solid button in the AUTHORITY BLUE, added 2026-09-04 on owner
+    direction for the estimate card in `ConfidenceModule`.
+
+    ⚠ IT IS NOT A SECOND PRIMARY. `--accent` green is the conversion
+    colour and stays the only one (DEC-096); this is
+    `--accent-secondary`, whose documented role in `globals.css` is
+    exactly "links, nav states, secondary buttons, focus rings, non-CTA
+    emphasis". A solid, weighty action that is deliberately not the
+    page's conversion is what it is for.
+
+    ⚠ IT EXISTS AS A VARIANT RATHER THAN A `className` FOR A REASON.
+    `cn()` is a plain join, not tailwind-merge, so a `bg-accent-secondary`
+    passed alongside `secondary`'s own `bg-surface` would ship both and
+    let stylesheet order decide. The colour has to be swapped here or
+    not at all.
+
+    White on this blue measures 5.83:1, and the fill against a white
+    card the same, so both the label and the control's boundary clear
+    their floors.
+
+    18 §106 still applies: one primary action per view. Reach for this
+    where an action needs weight without claiming to be the conversion.
+  */
+  accent:
+    'bg-accent-secondary text-accent-secondary-foreground hover:opacity-90 rounded-md px-5 shadow-none',
 }
 
 /**
