@@ -338,15 +338,23 @@ export function AuthorityBand(props: AuthorityBandProps) {
                   step.highlight === true ? HIGHLIGHT_CARD : STEP_CARD
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <Icon className="h-9 w-9 shrink-0 text-accent-secondary" />
-                  <span
-                    aria-hidden="true"
-                    className="text-caption font-semibold tabular-nums text-muted-foreground"
-                  >
-                    {step.number}
-                  </span>
-                </div>
+                {/*
+                  ⚠ NO VISIBLE NUMERAL, AND NO `sr-only` ONE EITHER
+                  (owner, 2026-09-04).
+
+                  The `01`-`04` markers are gone from the card. Sequence
+                  still comes from the `<ol>`/`<li>` below, which is why
+                  the numerals were `aria-hidden` in the first place: a
+                  screen reader has always announced "1, Inspect the
+                  sewer line" from the list itself.
+
+                  So this loses a sighted reader a cue and costs a
+                  screen reader nothing. Adding a hidden numeral back
+                  would reintroduce the double announcement the markup
+                  was written to avoid — the same reasoning
+                  `ProcessSteps` records for its own `cards` variant.
+                */}
+                <Icon className="h-9 w-9 shrink-0 text-accent-secondary" />
 
                 <h3
                   id={`process-${step.id}`}
