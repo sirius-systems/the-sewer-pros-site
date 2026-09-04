@@ -99,7 +99,10 @@ export { ConfidenceModule, confidenceModuleRenders } from './ConfidenceModule'
 export type { ConfidenceModuleProps } from './ConfidenceModule'
 
 export { RoutingCards, routingCardsRenders } from './RoutingCards'
-export type { RoutingCardsProps, RoutingCardItem } from './RoutingCards'
+// `RoutingCardItem` is gone: the component reads `RoutingContent` from
+// `@/types` directly now, rather than restating the item shape. Nothing
+// outside this barrel ever imported it.
+export type { RoutingCardsProps } from './RoutingCards'
 
 export { ProblemGrid, problemGridRenders } from './ProblemGrid'
 export type { ProblemGridProps, ProblemGridItem } from './ProblemGrid'

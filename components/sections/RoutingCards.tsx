@@ -1,19 +1,20 @@
+import type { SVGProps } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 import {
   Section,
-  Card,
   CardGrid,
   type SectionDensity,
   type SectionSurface,
 } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import {
   resolveApprovedLink,
   resolveLinkableOnly,
 } from '@/lib/links/approved-link'
-import type { CardImage, PageId } from '@/types'
+import type { CardImage, RoutingContent } from '@/types'
 
 /**
  * Intent-routing cards — "how we can help".
@@ -45,33 +46,176 @@ import type { CardImage, PageId } from '@/types'
  * Resolved through `resolveLinkableOnly`, so a gated route cannot
  * become a link on an indexable page (04 §4). CLAUDE.md §37: never
  * surface a URL solely because it could exist. 16 §25 says the same.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ THE NAMED LINKS CAME OUT OF THE PARAGRAPH (owner, 2026-09-04)
+ * ---------------------------------------------------------------------------
+ * For one day these descriptions were `ReactNode` carrying inline
+ * `ApprovedInlineLink`s. The owner asked for the named destinations to
+ * be pulled into a scannable list instead, so `description` is plain
+ * text again and `links` carries them.
+ *
+ * ⚠ DO NOT PUT A LINK BACK IN A DESCRIPTION. The same destination
+ * would then have two competing affordances in one card, and the list
+ * is the one a reader scans.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ STILL `Card`-SHAPED, NOT A `LinkCard`, AND STILL FORCED
+ * ---------------------------------------------------------------------------
+ * `LinkCard` wraps the whole card in one anchor: 18 §48 wants a large
+ * target and assistive technology announcing one action. This card now
+ * has up to six links inside it, and nested anchors are invalid HTML —
+ * the inner ones would not be reachable at all.
+ *
+ * So the shell is a plain element, the title is its own link, the list
+ * items are their own links, and the footer is a third. Same trade
+ * `MarketCoverage` makes for the same reason.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ NO CARD TITLE IN THE CONTENT, AND THAT IS DELIBERATE
+ * ---------------------------------------------------------------------------
+ * The title is `link.label`, the approved page record's own name.
+ * Adding a `title` field would put a second source beside it for
+ * strings that are currently identical ("Services", "Locations /
+ * Service Areas", "Commercial Sewer & Drain Services", "Contact"), and
+ * the day someone renames a page the card would quietly disagree with
+ * its own destination. Same resolution `Differentiator` and
+ * `AuthorityBand` reached for their headings.
  */
-export interface RoutingCardItem {
-  pageId: PageId
-  /**
-   * What the visitor gets by going here.
-   *
-   * ⚠ `ReactNode`, not `string`. The homepage's descriptions name
-   * specific pages and link each one inline (owner, 2026-09-04).
-   */
-  description: ReactNode
-  /**
-   * Closing link beneath the description.
-   *
-   * Approved page id only, resolved through the approved-link layer at
-   * render — never an href (CLAUDE.md §37, 16 §25).
-   *
-   * Optional: a caller without one renders a card with no closing
-   * link, which is what every non-homepage caller does today.
-   */
-  secondaryLink?: { pageId: PageId; label: string }
-  /**
-   * Optional approved artwork.
-   *
-   * Unset on all four homepage entries. A card grows to hold an image
-   * only when it has one; see the render below.
-   */
-  image?: CardImage
+
+/* ==========================================================================
+   Card marks — 18 §27, CLAUDE.md §56
+   ========================================================================== */
+
+/**
+ * Hand-drawn rather than imported.
+ *
+ * `package.json` has no icon library and CLAUDE.md §56 warns against
+ * adding one, so these follow the inline convention `TrustBar`,
+ * `ProcessSteps`, `Differentiator`, `AuthorityBand` and
+ * `ConfidenceModule` already use. Each is `aria-hidden` beside a
+ * visible title that names the card.
+ */
+type IconProps = SVGProps<SVGSVGElement>
+
+function baseIconProps(props: IconProps): IconProps {
+  return {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.75,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    'aria-hidden': true,
+    ...props,
+  }
+}
+
+/** Services — a magnifier with a check, for "find the right fit". */
+function SearchCheckIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m15.5 15.5 4.5 4.5" />
+      <path d="m7.8 10.6 1.9 1.9 3.5-3.5" />
+    </svg>
+  )
+}
+
+/** Locations — a pin over a mapped area. */
+function MapPinnedIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M12 12.8c1.7 0 3-1.4 3-3.1a3 3 0 1 0-6 0c0 1.7 1.3 3.1 3 3.1Z" />
+      <path d="M12 2.5c-3.6 0-6.5 2.9-6.5 6.5 0 4.4 6.5 9.5 6.5 9.5s6.5-5.1 6.5-9.5c0-3.6-2.9-6.5-6.5-6.5Z" />
+      <path d="M6 17.2 3.5 21.5h17L18 17.2" />
+    </svg>
+  )
+}
+
+/** Commercial — a multi-storey building. */
+function BuildingIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3 21h18" />
+      <path d="M5 21V6a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v15" />
+      <path d="M14 10h4a1 1 0 0 1 1 1v10" />
+      <path d="M8 9h3M8 13h3M8 17h3" />
+    </svg>
+  )
+}
+
+/** Contact — a message with lines, because this card starts a conversation. */
+function MessageIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M20 15a2 2 0 0 1-2 2H8l-4 3V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2Z" />
+      <path d="M8 9h8M8 12.5h5" />
+    </svg>
+  )
+}
+
+/**
+ * Card mark by name.
+ *
+ * A map rather than conditionals in the render, so a new card means an
+ * entry here and the compiler names the omission.
+ */
+const CARD_ICONS: Record<
+  RoutingContent['icon'],
+  (props: IconProps) => React.JSX.Element
+> = {
+  'search-check': SearchCheckIcon,
+  'map-pinned': MapPinnedIcon,
+  'building-2': BuildingIcon,
+  'message-square-text': MessageIcon,
+}
+
+/* ==========================================================================
+   Accents
+   ========================================================================== */
+
+/**
+ * The three accents, and nothing else.
+ *
+ * ⚠ ALL THREE ARE EXISTING PALETTE TOKENS. `blue` is
+ * `--accent-secondary`, `green` is `--accent`, `navy` is `--brand`. No
+ * fourth colour was introduced for this section, and none should be:
+ * `app/globals.css` treats the palette as a closed set (DEC-096).
+ *
+ * The icon tile is that token mixed 10% into white, the same
+ * derivation `Differentiator` and `AuthorityBand` use for their tints,
+ * so a palette change carries through rather than stranding a
+ * hard-coded pastel.
+ */
+const ACCENT: Record<
+  RoutingContent['accent'],
+  { rule: string; mark: string; tile: string }
+> = {
+  blue: {
+    rule: 'border-t-accent-secondary',
+    mark: 'text-accent-secondary',
+    tile: 'bg-[color-mix(in_srgb,var(--color-accent-secondary)_10%,white)]',
+  },
+  green: {
+    rule: 'border-t-accent',
+    mark: 'text-accent',
+    tile: 'bg-[color-mix(in_srgb,var(--color-accent)_10%,white)]',
+  },
+  navy: {
+    rule: 'border-t-brand',
+    mark: 'text-brand',
+    tile: 'bg-[color-mix(in_srgb,var(--color-brand)_10%,white)]',
+  },
+}
+
+/** A right-facing chevron for the list rows. */
+function Chevron(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="m9.5 5.5 6.5 6.5-6.5 6.5" />
+    </svg>
+  )
 }
 
 export interface RoutingCardsProps {
@@ -97,20 +241,19 @@ export interface RoutingCardsProps {
   eyebrow?: string
   title: string
   intro?: string
-  items: readonly RoutingCardItem[]
+  items: readonly RoutingContent[]
   /**
    * Full-bleed artwork behind the whole section (owner, 2026-09-04).
    *
-   * ⚠ DIFFERENT THING FROM `RoutingCardItem.image`, which is a 7:4 crop
-   * inside one card. This sits behind every card at once, so it is a
-   * property of the section rather than of an item, and the two can be
-   * used together.
-   *
-   * The cards are opaque, so the heading is the only thing that ends up
-   * over the photograph. See `Section` for what the backdrop does and
+   * The cards are opaque, so the heading block is the only thing that
+   * ends up over the photograph. See `Section` for the backdrop and
    * for the scrim measurement.
    */
   backgroundImage?: CardImage
+  /**
+   * Passed through to `Section`. `strong` is darker, never lighter.
+   */
+  scrim?: 'default' | 'strong'
 }
 
 /**
@@ -128,7 +271,7 @@ export interface RoutingCardsProps {
  * render read one condition, not two copies of it.
  */
 export function routingCardsRenders(
-  items: readonly RoutingCardItem[] | undefined,
+  items: readonly RoutingContent[] | undefined,
 ): boolean {
   if (items === undefined) return false
   return resolveLinkableOnly(items.map((item) => item.pageId)).length > 0
@@ -143,29 +286,12 @@ export function RoutingCards({
   intro,
   items,
   backgroundImage,
+  scrim,
 }: RoutingCardsProps) {
   const links = resolveLinkableOnly(items.map((item) => item.pageId))
-  const descriptions = new Map(
-    items.map((item) => [item.pageId, item.description]),
-  )
-  // Parallel to `descriptions`, and keyed the same way, so a card that
-  // has no artwork simply misses from the map rather than carrying an
-  // undefined image field around.
-  const images = new Map(
-    items
-      .filter((item) => item.image !== undefined)
-      .map((item) => [item.pageId, item.image as CardImage]),
-  )
-  // Same keying as `descriptions` and `images`: a card without a
-  // closing link simply misses from the map.
-  const secondaryLinks = new Map(
-    items
-      .filter((item) => item.secondaryLink !== undefined)
-      .map((item) => [
-        item.pageId,
-        item.secondaryLink as NonNullable<RoutingCardItem['secondaryLink']>,
-      ]),
-  )
+  // Keyed the same way the cards are, so a card whose page gated out
+  // simply misses rather than carrying a dangling record around.
+  const byPage = new Map(items.map((item) => [item.pageId, item]))
 
   // 18 §120 — omit entirely rather than render an empty shell.
   if (links.length === 0) return null
@@ -177,6 +303,7 @@ export function RoutingCards({
       density={density}
       surface={surface}
       backgroundImage={backgroundImage}
+      scrim={scrim}
       labelledBy={id}
     >
       <SectionHeading
@@ -185,92 +312,172 @@ export function RoutingCards({
         eyebrow={eyebrow}
         intro={intro}
         /*
-          The `<h2>` sets no colour of its own and inherits the white
-          `Section` puts on the wrapper. The eyebrow and intro DO set
-          `text-muted-foreground`, which is tuned for a light surface,
-          so they are overridden here rather than left to fail quietly
-          the first time a caller passes one alongside a background.
-          `cn()` is a plain join, not tailwind-merge, so this has to be
-          a descendant selector rather than a competing text class.
+          The `<h2>` inherits the white `Section` puts on an image
+          wrapper. The eyebrow and intro set `text-muted-foreground`,
+          tuned for a light surface, so they are overridden rather than
+          left to fail. `cn()` is a plain join, not tailwind-merge, so
+          this has to be a descendant selector rather than a competing
+          text class.
 
-          Nothing else needs it: every card below is opaque and its
-          contents never touch the photograph.
+          ⚠ THE EYEBROW IS WHITE, NOT GREEN, AND THAT IS A CORRECTION
+          TO THE BRIEF. Over this scrim the ground can be as bright as
+          black/65% over white. `--accent` there measures about 1.4:1,
+          and even lightened 60% toward white it reaches only ~3.8:1
+          against a 4.5:1 requirement for text this size. There is no
+          green on this palette that clears it without darkening the
+          scrim far enough to bury the photograph the owner asked to
+          keep visible. White measures 6.1:1. If the green eyebrow
+          matters more than the frame, the scrim has to go to ~70% and
+          that is a design decision, not a class change.
         */
-        className={
-          backgroundImage !== undefined
-            ? '[&_p]:text-white [&_div]:text-white'
-            : undefined
-        }
+        className="[&_p]:text-white [&_div]:text-white"
       />
 
-      <CardGrid columns={columns} itemCount={links.length} className="mt-10">
+      {/* 32px between the heading block and the grid (owner, 2026-09-04). */}
+      <CardGrid columns={columns} itemCount={links.length} className="mt-8">
         {links.map((link) => {
-          const image = images.get(link.pageId)
+          const item = byPage.get(link.pageId)
+          if (item === undefined) return null
 
-          const secondary = secondaryLinks.get(link.pageId)
+          const accent = ACCENT[item.accent]
+          const Icon = CARD_ICONS[item.icon]
+          const cardLinks = resolveLinkableOnly(
+            (item.links ?? []).map((entry) => entry.pageId),
+          )
+          const labelFor = new Map(
+            (item.links ?? []).map((entry) => [entry.pageId, entry.label]),
+          )
 
-          /*
-            ⚠ `Card`, NOT `LinkCard`, AND THAT IS FORCED.
-
-            `LinkCard` wraps the whole card in one anchor on purpose:
-            18 §48 wants a large target and assistive technology
-            announcing one action rather than a card plus a nested
-            link. The descriptions now carry inline links to the pages
-            they name, and those cannot live inside another anchor —
-            nested anchors are invalid HTML and the inner links would
-            not be reachable at all.
-
-            So the heading is its own link, the description sits beside
-            it as prose, and the closing link is a third sibling. Same
-            trade `MarketCoverage` made for the same reason: one large
-            target becomes several small ones, which is the cost of
-            having links inside the card rather than an oversight.
-
-            With artwork the card drops its own padding so the 7:4 crop
-            can run edge to edge, and the text takes the padding back
-            inside. Without artwork nothing changes (18 §40-42).
-          */
           return (
-            <Card
+            <div
               key={link.pageId}
-              padded={image === undefined}
-              className={
-                image !== undefined ? 'flex flex-col overflow-hidden' : undefined
-              }
+              className={cn(
+                /*
+                  ⚠ FULLY OPAQUE. This grid sits over a photograph, and
+                  a translucent card would put body text on an
+                  unpredictable backdrop. `bg-surface` is the site's
+                  opaque card white; nothing here is tinted or blurred.
+
+                  `rounded-lg` (8px) and the lifted shadow are this
+                  section's own, a step up from the `rounded-md` +
+                  border-only card language elsewhere, because these
+                  four have to read as objects sitting ON the
+                  photograph rather than holes cut into it. 18 §25
+                  rules out dramatic floating cards; this is one step,
+                  not a float.
+
+                  Hover moves nothing: only the border and shadow
+                  change. 18 §93 warns against hover scaling that
+                  shifts layout, and a 2x2 grid of moving cards is
+                  exactly that.
+                */
+                'group flex h-full flex-col rounded-lg border border-border border-t-4 bg-surface p-7 sm:p-8',
+                'shadow-[0_12px_30px_rgba(7,31,51,0.16)]',
+                'transition-[box-shadow,border-color] hover:border-foreground/25 hover:shadow-[0_18px_40px_rgba(7,31,51,0.24)]',
+                accent.rule,
+              )}
             >
-              {image !== undefined && (
-                <span className="relative block aspect-[7/4] w-full overflow-hidden">
+              {item.image !== undefined && (
+                <span className="relative mb-6 block aspect-[7/4] w-full overflow-hidden rounded-md">
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={item.image.src}
+                    alt={item.image.alt}
                     fill
                     className="object-cover"
                   />
                 </span>
               )}
-              <div className={image !== undefined ? 'block p-6' : undefined}>
-                <h3 className="text-h4 font-medium tracking-tight">
-                  <Link
-                    href={link.href}
-                    className="text-foreground hover:text-accent-secondary"
-                  >
-                    {link.label}
-                  </Link>
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground">
-                  {descriptions.get(link.pageId)}
-                </p>
-                {secondary !== undefined && (
-                  <Link
-                    href={resolveApprovedLink(secondary.pageId).href}
-                    className="mt-4 inline-block text-caption text-accent-secondary underline underline-offset-4 hover:text-foreground"
-                  >
-                    {secondary.label}
-                    <span aria-hidden="true"> →</span>
-                  </Link>
+
+              {/* 48px tinted tile. Decorative: the title names the card. */}
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'flex h-12 w-12 items-center justify-center rounded-md',
+                  accent.tile,
                 )}
-              </div>
-            </Card>
+              >
+                <Icon className={cn('h-6 w-6', accent.mark)} />
+              </span>
+
+              <p className="mt-4 text-caption font-semibold tracking-wide text-muted-foreground uppercase">
+                {item.category}
+              </p>
+
+              <h3 className="mt-2 text-h4 font-medium tracking-tight text-balance">
+                <Link
+                  href={link.href}
+                  className="text-foreground hover:text-accent-secondary"
+                >
+                  {link.label}
+                </Link>
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                {item.description}
+              </p>
+
+              {/*
+                Skipped entirely when there is nothing to enumerate —
+                no heading over an empty list (18 §120). The contact
+                card is that case.
+              */}
+              {cardLinks.length > 0 && (
+                <div className="mt-6">
+                  {item.linksHeading !== undefined &&
+                    item.linksHeading !== '' && (
+                      <p className="text-caption font-medium tracking-wide text-muted-foreground uppercase">
+                        {item.linksHeading}
+                      </p>
+                    )}
+
+                  <ul className="mt-2 flex flex-col">
+                    {cardLinks.map((entry) => (
+                      <li key={entry.pageId}>
+                        {/*
+                          `ApprovedInlineLink` rather than a bare
+                          `Link`: the destination is named by PAGE ID
+                          and resolved against the approved registry,
+                          so a gated or renamed page fails here rather
+                          than shipping a dead route.
+
+                          The label is the authored one, not the page
+                          record's name, because these read as short
+                          service names inside a list rather than as
+                          full page titles.
+                        */}
+                        <span className="group/row flex items-center gap-2 py-1.5 text-sm text-accent-secondary">
+                          <Chevron
+                            className="h-4 w-4 shrink-0 text-muted-foreground"
+                            aria-hidden="true"
+                          />
+                          <ApprovedInlineLink pageId={entry.pageId}>
+                            {labelFor.get(entry.pageId) ?? entry.label}
+                          </ApprovedInlineLink>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/*
+                `mt-auto` drops the footer to the card's floor so all
+                four line up regardless of how long the description and
+                list above them run. `pt-6` rather than a margin, which
+                the auto margin would absorb.
+              */}
+              {item.secondaryLink !== undefined && (
+                <div className="mt-auto pt-6">
+                  <Link
+                    href={resolveApprovedLink(item.secondaryLink.pageId).href}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                  >
+                    {item.secondaryLink.label}
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
+              )}
+            </div>
           )
         })}
       </CardGrid>

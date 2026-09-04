@@ -239,8 +239,22 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       {content.routing !== undefined && (
         <RoutingCards
           id="how-we-can-help"
+          eyebrow="Start here"
           title="How we can help"
+          /*
+            Navigational framing only. It says what the four cards are
+            for and makes no claim about the business, which is the
+            whole bar for copy written at the template layer rather
+            than in `data/business/`.
+          */
+          intro="Find the service, location, or contact path that matches what you need."
           items={content.routing}
+          /*
+            Darker than the site default, on owner direction: the cards
+            and heading sit over a bright daylight exterior. `strong`
+            only ever adds contrast - see the prop note on `Section`.
+          */
+          scrim="strong"
           /*
             `surface` is the fallback, not the current appearance:
             `backgroundImage` overrides it, and the muted band is what
