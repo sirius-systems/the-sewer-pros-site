@@ -1,3 +1,4 @@
+import type { SVGProps } from 'react'
 import Image from 'next/image'
 import {
   Section,
@@ -26,6 +27,27 @@ import type { CardImage } from '@/types'
  * Rendered as an ordered list so assistive technology announces the
  * sequence and its length — the numerals are decorative reinforcement,
  * marked `aria-hidden` to avoid double announcement.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ `cards` SHOWS AN ICON WHERE `grid` SHOWS A NUMERAL (owner, 2026-09-04)
+ * ---------------------------------------------------------------------------
+ * A second departure from Appendix A on this component, on top of the
+ * card treatment: §27 says no decorative icons. Owner-directed and
+ * scoped to `cards`, which is homepage-only. `grid` — the variant
+ * `CommercialPageTemplate` renders — keeps its numerals and is
+ * untouched.
+ *
+ * NO `sr-only` NUMERAL WAS ADDED, DELIBERATELY. The paragraph above is
+ * the reason: sequence already comes from `<ol>`/`<li>`, which is why
+ * the numerals were `aria-hidden` from the start. A visually hidden
+ * "01" would reintroduce exactly the double announcement that decision
+ * avoids — assistive technology would say "1, 01, Inspect". Losing the
+ * visible numeral costs a sighted reader a cue and costs a screen
+ * reader nothing.
+ *
+ * The icons are therefore `aria-hidden` too. Each sits above a visible
+ * `<h3>` that already names the step, so they reinforce rather than
+ * carry meaning — the same standing the trust bar's marks have.
  *
  * ===========================================================================
  * THE INDEPENDENT-INSPECTION MOTIF (18 §141)
@@ -192,6 +214,80 @@ export function processStepsRenders(
   return (steps ?? motifSteps).length > 0
 }
 
+/* ==========================================================================
+   Step icons — `cards` variant only
+   ========================================================================== */
+
+type StepIconProps = SVGProps<SVGSVGElement>
+
+function stepIconProps(props: StepIconProps): StepIconProps {
+  return {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.5,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    'aria-hidden': true,
+    ...props,
+  }
+}
+
+/** 01 Inspect — a camera, because this step is a camera down the line. */
+function InspectIcon(props: StepIconProps) {
+  return (
+    <svg {...stepIconProps(props)}>
+      <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+      <circle cx="12" cy="13.5" r="3.5" />
+    </svg>
+  )
+}
+
+/** 02 Understand — a written findings sheet, not a magnifier. */
+function UnderstandIcon(props: StepIconProps) {
+  return (
+    <svg {...stepIconProps(props)}>
+      <path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7l-4-4Z" />
+      <path d="M14 3v4h4" />
+      <path d="M9 13h6M9 17h4" />
+    </svg>
+  )
+}
+
+/**
+ * 03 Decide — a fork, not a tick.
+ *
+ * A checkmark would read as "done". This step is the customer choosing
+ * between cleaning, monitoring, or something else, so a path that
+ * splits says what the step actually is.
+ */
+function DecideIcon(props: StepIconProps) {
+  return (
+    <svg {...stepIconProps(props)}>
+      <path d="M12 21v-5" />
+      <path d="M12 16 6.9 11.4M12 16l5.1-4.6" />
+      <circle cx="5.5" cy="8.5" r="2.5" />
+      <circle cx="18.5" cy="8.5" r="2.5" />
+    </svg>
+  )
+}
+
+/**
+ * Icons by step position, `cards` only.
+ *
+ * ⚠ Positional and finite ON PURPOSE. These are drawn for Inspect,
+ * Understand and Decide specifically — a camera above a step that is
+ * not about a camera would be worse than no icon.
+ *
+ * A fourth step therefore falls off the end and renders its numeral
+ * instead, which is a deliberate fallback rather than a gap: the
+ * homepage's three steps are the only `cards` caller today, and a new
+ * step should get a drawn icon here rather than inherit an unrelated
+ * one.
+ */
+const CARD_STEP_ICONS: readonly ((props: StepIconProps) => React.JSX.Element)[] =
+  [InspectIcon, UnderstandIcon, DecideIcon]
+
 export function ProcessSteps({
   density = 'standard',
   surface = 'default',
@@ -241,6 +337,10 @@ export function ProcessSteps({
           // real photograph exists (18 §40-42).
           const image = variant === 'cards' ? step.image : undefined
 
+          // `grid` gets undefined here and falls through to its numeral.
+          const StepIcon =
+            variant === 'cards' ? CARD_STEP_ICONS[index] : undefined
+
           return (
             <li
               key={step.title}
@@ -263,12 +363,26 @@ export function ProcessSteps({
                 </div>
               )}
               <div className={cn(image !== undefined && 'p-6')}>
-                <span
-                  aria-hidden="true"
-                  className="text-caption tabular-nums text-muted-foreground"
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+                {/*
+                  ⚠ `cards` ONLY. `grid` keeps its numeral, unchanged —
+                  that is the variant CommercialPageTemplate renders.
+
+                  The icon takes --accent-secondary, NOT the numeral's
+                  --muted-foreground. That is a step up in prominence
+                  rather than a like-for-like swap, and it is the
+                  colour the owner named. 5.83:1 on the card, well past
+                  the 3:1 a graphic needs.
+                */}
+                {StepIcon !== undefined ? (
+                  <StepIcon className="h-7 w-7 text-accent-secondary" />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="text-caption tabular-nums text-muted-foreground"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                )}
                 <h3 className="mt-3 text-base font-medium text-foreground">
                   {step.title}
                 </h3>
