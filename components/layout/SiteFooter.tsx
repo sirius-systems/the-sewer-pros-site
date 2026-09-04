@@ -64,7 +64,24 @@ export function SiteFooter() {
   const groups = resolveFooterNav()
 
   return (
-    <footer className="mt-24 bg-brand text-brand-foreground">
+    /*
+      ⚠ NO TOP MARGIN, DELIBERATELY. It was `mt-24`, an undocumented
+      96px gutter that let the white page background show between the
+      last section and the footer. Nowhere else on this site do two
+      sections stand apart like that — surfaces meet edge to edge and
+      the colour change carries the separation — so the gap read as a
+      stray white band, most obviously under the homepage's full-bleed
+      photographic CTA (owner, 2026-09-04).
+
+      ‘border-t border-white/15’ replaces it. Every other template ends
+      on `CtaSection variant="panel"`, which is also `brand`, so
+      without a rule the two navy blocks merge into one. That border is
+      the value this file already uses for its internal divider rather
+      than a new one, and it is invisible against a non-brand section
+      above, which is correct: there the colour change already
+      separates them.
+    */
+    <footer className="border-t border-white/15 bg-brand text-brand-foreground">
       <div className="mx-auto max-w-[var(--container-max)] px-4 py-16 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_1fr]">
           <div>
