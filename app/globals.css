@@ -367,7 +367,7 @@ h4 {
 }
 
 /* ==========================================================================
-   ⚠⚠ THE HERO SCRIM IS LOAD-BEARING. IT IS NOT A DARKENING EFFECT.
+   ⚠⚠ THE HERO OVERLAY IS LOAD-BEARING. IT IS NOT A DARKENING EFFECT.
    ==========================================================================
    White hero copy sits on top of photographs. Measured on the five
    supplied frames, sampling the left 60% of each (where the copy sits),
@@ -379,46 +379,32 @@ h4 {
      commercial-drain-diagnostics   2.42:1
      pipe-condition-review          3.68:1
 
-   Every frame fails 4.5:1. The scrim is the only reason the hero is
+   Every frame fails 4.5:1. This overlay is the only reason the hero is
    readable.
 
-   THE ALPHA STOPS ARE SET AGAINST PURE WHITE, NOT AGAINST THESE FIVE
-   FILES. That is deliberate: sizing the scrim to today's images would
-   mean a brighter replacement frame silently breaks contrast, and
-   nobody would think to re-measure when swapping a picture.
+   70% FLAT, ON OWNER DIRECTION (2026-09-04). It replaced a responsive
+   gradient that ran 0.90 -> 0.52 across the frame.
+
+   THE VALUE IS CHECKED AGAINST PURE WHITE, NOT AGAINST THESE FIVE
+   FILES. That matters: sizing it to today's images would let a
+   brighter replacement frame silently break contrast, and nobody
+   re-measures when swapping a picture.
 
    Compositing #0B2D45 over #FFFFFF, white text on the result:
 
-     alpha 0.90  ->  9.9:1
-     alpha 0.74  ->  6.3:1
-     alpha 0.70  ->  5.5:1
-     alpha 0.60  ->  4.1:1   <- fails, do not go here behind copy
+     alpha 0.80  ->  7.6:1
+     alpha 0.70  ->  5.5:1   <- here, and still clear of AA at the
+                                worst background a frame can present
+     alpha 0.60  ->  4.1:1   <- fails, do not go below 0.66
 
-   So no stop that can sit behind hero copy drops below 0.74, and the
-   real-world figure is far better because no frame is actually white
-   there.
+   Against the actual frames it measures far better, because none of
+   them is white behind the copy. Anything below 0.66 needs the copy
+   colour rethought, not just a re-measure.
 
-   Below `lg` the layout stacks and the copy can be over any part of the
-   frame, so the gradient runs vertically and stays heavy throughout. At
-   `lg` the copy is in the left 55% and the form card covers the right,
-   so the right stop may lighten — nothing reads over it.
+   Flat rather than directional, so it holds wherever the copy lands:
+   the layout is two columns at `lg` and stacked below it, and a
+   gradient tuned for one is wrong for the other.
    ========================================================================== */
 .hero-scrim {
-  background: linear-gradient(
-    to bottom,
-    rgba(11, 45, 69, 0.86) 0%,
-    rgba(11, 45, 69, 0.78) 55%,
-    rgba(11, 45, 69, 0.74) 100%
-  );
-}
-
-@media (min-width: 64rem) {
-  .hero-scrim {
-    background: linear-gradient(
-      to right,
-      rgba(11, 45, 69, 0.9) 0%,
-      rgba(11, 45, 69, 0.74) 52%,
-      rgba(11, 45, 69, 0.52) 100%
-    );
-  }
+  background: rgba(11, 45, 69, 0.7);
 }
