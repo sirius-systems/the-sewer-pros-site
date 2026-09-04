@@ -329,3 +329,96 @@ h4 {
     display: none;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Homepage hero backdrop
+
+   ⚠ SELF-MOVING CONTENT, OWNER-DIRECTED (2026-09-03), SCOPED TO THE
+   HOMEPAGE HERO. Like the marquee above, this does not license autoplay
+   anywhere else, and 18 §66 is otherwise unchanged.
+   -------------------------------------------------------------------------- */
+
+.hero-backdrop-frame {
+  opacity: 0;
+}
+
+.hero-backdrop-frame[data-active='true'] {
+  opacity: 1;
+}
+
+/*
+  Motion is opt-in, not opt-out — the same position the marquee takes.
+  Declaring the transition only inside `no-preference` means a visitor
+  who asked for less motion never has one applied in the first place.
+
+  The component additionally refuses to START the timer under reduced
+  motion, because CSS can stop a transition but not a `setInterval`.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .hero-backdrop-frame {
+    transition: opacity 1200ms ease-in-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop-toggle {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   ⚠⚠ THE HERO SCRIM IS LOAD-BEARING. IT IS NOT A DARKENING EFFECT.
+   ==========================================================================
+   White hero copy sits on top of photographs. Measured on the five
+   supplied frames, sampling the left 60% of each (where the copy sits),
+   white text on the BARE image at the 95th percentile of luminance:
+
+     residential-camera-service     1.62:1   <- worst, bright sky and lawn
+     high-pressure-line-cleaning    2.58:1
+     homebuyer-sewer-due-diligence  2.53:1
+     commercial-drain-diagnostics   2.42:1
+     pipe-condition-review          3.68:1
+
+   Every frame fails 4.5:1. The scrim is the only reason the hero is
+   readable.
+
+   THE ALPHA STOPS ARE SET AGAINST PURE WHITE, NOT AGAINST THESE FIVE
+   FILES. That is deliberate: sizing the scrim to today's images would
+   mean a brighter replacement frame silently breaks contrast, and
+   nobody would think to re-measure when swapping a picture.
+
+   Compositing #0B2D45 over #FFFFFF, white text on the result:
+
+     alpha 0.90  ->  9.9:1
+     alpha 0.74  ->  6.3:1
+     alpha 0.70  ->  5.5:1
+     alpha 0.60  ->  4.1:1   <- fails, do not go here behind copy
+
+   So no stop that can sit behind hero copy drops below 0.74, and the
+   real-world figure is far better because no frame is actually white
+   there.
+
+   Below `lg` the layout stacks and the copy can be over any part of the
+   frame, so the gradient runs vertically and stays heavy throughout. At
+   `lg` the copy is in the left 55% and the form card covers the right,
+   so the right stop may lighten — nothing reads over it.
+   ========================================================================== */
+.hero-scrim {
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 45, 69, 0.86) 0%,
+    rgba(11, 45, 69, 0.78) 55%,
+    rgba(11, 45, 69, 0.74) 100%
+  );
+}
+
+@media (min-width: 64rem) {
+  .hero-scrim {
+    background: linear-gradient(
+      to right,
+      rgba(11, 45, 69, 0.9) 0%,
+      rgba(11, 45, 69, 0.74) 52%,
+      rgba(11, 45, 69, 0.52) 100%
+    );
+  }
+}
