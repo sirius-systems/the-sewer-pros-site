@@ -301,7 +301,7 @@ export function LeadFormSection({
         it standalone — so they stay consistent with each other.
       */}
       <div className="flex justify-center sm:col-span-2">
-        <Button type="submit">Request service</Button>
+        <Button type="submit">Request Service</Button>
       </div>
     </form>
   )
