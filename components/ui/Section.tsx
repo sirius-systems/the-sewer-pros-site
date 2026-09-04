@@ -75,8 +75,15 @@ export interface SectionProps {
    * white and nothing else. Anything inside that sets its own colour —
    * `text-muted-foreground`, `text-accent-secondary` — keeps it and
    * will not have been measured against a photograph, so a caller with
-   * such content must override it. Content inside an OPAQUE card is
-   * unaffected and needs nothing.
+   * such content must override it.
+   *
+   * ⚠⚠ AN OPAQUE CARD DOES NOT STOP THE INHERITANCE. `bg-surface`
+   * sets a background, not a colour, so white text keeps flowing into
+   * the card and any element that does not set its own colour
+   * disappears. Not hypothetical: the homepage CTA's lead form
+   * rendered its `<h2>` white on a white card, invisible, because the
+   * fields set their own colour and the heading did not. Give every
+   * opaque card inside an image section `text-foreground`.
    *
    * Omit it and this renders exactly as it always has: no wrapper, no
    * image layer, no tint. There is no placeholder state (18 §40-42).

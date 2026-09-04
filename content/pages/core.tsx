@@ -505,6 +505,12 @@ export const homeContent: HomePageContent = {
     title: 'Schedule a sewer camera inspection.',
     body: 'A camera inspection documents the condition of the line, so your next decision is based on evidence, not a guess.',
   },
+  ctaBackground: {
+    src: '/images/homepage/differentiator/the-sewer-pros-schedule-sewer-inspection-home-exterior.webp',
+    alt: 'Side of a house and its driveway on a clear day',
+    source:
+      'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+  },
 }
 
 /* ==========================================================================
