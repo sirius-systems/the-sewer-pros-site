@@ -236,6 +236,17 @@ export interface HomePageContent extends BasePageContent {
   /** Intent-routing cards, rendered between hero and services. */
   routing?: readonly RoutingContent[]
   process?: readonly ProcessContent[]
+  /**
+   * Full-bleed artwork behind the process band (owner, 2026-09-04).
+   *
+   * SECTION-level, unlike `services[].image` above, which is per card.
+   * The step cards keep their own opaque surface and sit on top of it.
+   *
+   * ⚠ Setting this overrides the band's `surface` — the image becomes
+   * the surface — and turns the section heading white over a scrim.
+   * See `ProcessSteps` for the measurement that fixes the scrim.
+   */
+  processBackground?: CardImage
   differentiator?: { title: string; intro?: string }
 }
 
