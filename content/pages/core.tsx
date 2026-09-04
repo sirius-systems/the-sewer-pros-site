@@ -805,7 +805,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           </li>
           <li>
             Email:{' '}
-            <a href="mailto:info@thesewerpros.com">info@thesewerpros.com</a>
+            <a href="mailto:admin@thesewerpros.com">admin@thesewerpros.com</a>
           </li>
           <li>Monday to Friday, 8:00am to 4:00pm. Closed weekends.</li>
         </ul>
