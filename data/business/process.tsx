@@ -64,7 +64,12 @@ import type { PageId } from '@/types'
  */
 export interface AuthorityProcessStep {
   id: string
-  number: string
+  /*
+    ⚠ NO `number`. The cards stopped rendering `01`-`04` on owner
+    direction (2026-09-04), and the field went with them rather than
+    sitting here unread. Order is carried by this array and by the
+    `<ol>` that renders it, which is where it always actually lived.
+  */
   title: string
   /** Prose with inline approved links — see the header. */
   body: ReactNode
@@ -114,7 +119,6 @@ export const authorityProcess: AuthorityProcessContent = {
   steps: [
     {
       id: 'inspect',
-      number: '01',
       title: 'Inspect the sewer line',
       icon: 'inspect',
       body: (
@@ -131,7 +135,6 @@ export const authorityProcess: AuthorityProcessContent = {
     },
     {
       id: 'document',
-      number: '02',
       title: 'Document the visible evidence',
       icon: 'document',
       body: (
@@ -144,7 +147,6 @@ export const authorityProcess: AuthorityProcessContent = {
     },
     {
       id: 'understand',
-      number: '03',
       title: 'Understand what the footage shows',
       icon: 'understand',
       body: (
@@ -165,7 +167,6 @@ export const authorityProcess: AuthorityProcessContent = {
     },
     {
       id: 'decide',
-      number: '04',
       title: 'Decide what happens next',
       icon: 'decide',
       highlight: true,

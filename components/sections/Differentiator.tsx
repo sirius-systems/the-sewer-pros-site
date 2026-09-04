@@ -360,7 +360,13 @@ export function Differentiator({
                     className="align-top text-base font-medium sm:whitespace-normal"
                   >
                     <span className="flex items-start gap-3">
-                      <Icon className="mt-0.5 h-5 w-5 shrink-0 opacity-80" />
+                      {/*
+                        28px, up from 20px on owner direction
+                        (2026-09-04). The row label sits beside it in a
+                        table cell with room to spare, so nothing had
+                        to be traded for the size.
+                      */}
+                      <Icon className="mt-0.5 h-7 w-7 shrink-0 opacity-80" />
                       <span>{row.label}</span>
                     </span>
                   </th>
@@ -407,7 +413,7 @@ export function Differentiator({
                 className="rounded-md border border-white/15 p-4"
               >
                 <h3 className="flex items-center gap-3 text-base font-medium">
-                  <Icon className="h-5 w-5 shrink-0 opacity-80" />
+                  <Icon className="h-7 w-7 shrink-0 opacity-80" />
                   {row.label}
                 </h3>
 
@@ -438,7 +444,7 @@ export function Differentiator({
           as a fifth row of it.
         */}
         <div className="mt-8 flex items-start gap-4 border-t border-white/15 pt-6">
-          <ConclusionIcon className="mt-0.5 h-6 w-6 shrink-0 text-accent" />
+          <ConclusionIcon className="mt-0.5 h-8 w-8 shrink-0 text-accent" />
           <p className="max-w-[var(--container-reading)] text-body-lg">
             {comparison.conclusion}
           </p>
