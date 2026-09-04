@@ -197,12 +197,13 @@ export const ratingSnapshot: RatingSnapshot = {
  *
  * CLAUDE.md §23 forbids filling that gap with a plausible-looking Maps
  * URL. When the owner supplies the real one, set it here and the
- * carousel's "See all reviews on Google" link appears on its own.
+ * marquee's "See all reviews on Google" link appears on its own.
  *
  * That link matters beyond convenience: it is where a visitor sees the
- * complete picture including the reviews excluded below. Until it
- * exists, the carousel says so in plain words rather than implying the
- * selection is everything.
+ * complete picture including the reviews excluded below. The marquee
+ * used to say so in plain words while the link was missing; the owner
+ * removed that sentence on 2026-09-03, so today the gap is simply
+ * unstated. Supplying the URL is what closes it.
  */
 export const googleProfileReviewsUrl: string | null = null
 
