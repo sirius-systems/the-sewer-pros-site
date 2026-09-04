@@ -307,11 +307,6 @@ export const homeContent: HomePageContent = {
     source:
       'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
   },
-  differentiator: {
-    title: 'Diagnosis separated from the sale',
-    intro:
-      'We inspect, document, and clean. We do not perform sewer repair or replacement, so what we find does not become a quote from us.',
-  },
   process: [
     { title: 'Inspect', description: 'We run a sewer camera inspection through the line to see its actual condition on video, not a guess based on symptoms.' },
     { title: 'Understand', description: 'We review the footage and explain what it shows, root intrusion, blockages, or a structural issue, in plain language you can actually use.' },

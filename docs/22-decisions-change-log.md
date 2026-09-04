@@ -4020,6 +4020,62 @@ does not mean forms cannot be built.
 
 ---
 
+## DEC-098 — Homepage Differentiator May Use Visual Emphasis
+
+**Date:** 2026-09-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `18-design-system.md` §66 (narrowed for one section on one page)
+* `22-decisions-change-log.md` DEC-096 (second knowing use of `--accent` outside a conversion action)
+* `components/sections/Differentiator.tsx`
+* `data/business/positioning.ts`
+* `components/templates/HomePageTemplate.tsx`
+
+### Decision
+
+The homepage differentiator renders a `comparison-table` variant in which **The Sewer Pros column carries visual emphasis** — a tinted cell and a green accent border — and the contractor column does not.
+
+This is a deliberate, scoped exception to the principle that neither column in a model comparison is styled as a winner.
+
+**The tone guardrail is unchanged and still fully binding.** Copy stays factual, non-accusatory, and about business models and incentives only.
+
+### Reason
+
+18 §66 forbids manipulating visual emphasis to misrepresent alternatives. `Differentiator` had applied that rule to itself, styling both columns identically. The owner asked for the distinction to land visually on the homepage.
+
+The rule's purpose is to stop a comparison misrepresenting the alternative. Emphasis added to one column does not do that; a mark placed against the other one would. The exception is drawn at exactly that line.
+
+### Previous State
+
+One editorial split, both columns styled identically, no colour distinction.
+
+### New State
+
+Two variants. `split` is unchanged and is what every service page renders (`showDifferentiator: true`). `comparison-table` is homepage-only and carries the emphasis.
+
+### Scope Limits
+
+This decision does **not** authorise:
+
+* any mark against the contractor column — no cross, X, red, warning colour, or strike-through
+* accusatory or integrity-based copy anywhere in the section
+* any new claim about repair contractors in general
+* extending the emphasis treatment to the `split` variant or to service pages
+
+A change doing any of those needs its own decision.
+
+### Implementation Notes
+
+Recorded here as well as in the file because it is the **second** knowing exception to DEC-096's "green is for conversion actions" rule — the first was the trust-bar icons, which was documented in `TrustBar.tsx` only. Two in-file exceptions with no central record is how a documented token rule quietly stops being one. A third use of `--accent` outside a conversion action should be a decision, not a habit.
+
+Desktop and mobile render from one `differentiatorComparison.rows` array, so the two layouts cannot drift apart in wording.
+
+
+---
+
 # 15. New Service Decision Process
 
 A new **major offered service** should follow:
