@@ -168,6 +168,7 @@ export function MarketPageTemplate({
           id="locations"
           title="Areas we serve"
           pageIds={content.locationPageIds}
+          descriptions={content.relatedDescriptions}
           surface="default"
           // A gated market hub may link to its gated locations: this
           // module is not an indexable link module, because the page

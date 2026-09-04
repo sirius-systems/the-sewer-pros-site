@@ -131,6 +131,7 @@ export function ComparisonPageTemplate({
         <RelatedLinks
           title={content.relatedTitle ?? 'Related pages'}
           pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
         />
       )}
 

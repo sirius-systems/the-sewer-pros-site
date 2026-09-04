@@ -174,6 +174,7 @@ export function ResourcePageTemplate({
         <RelatedLinks
           title={content.relatedTitle ?? 'Related resources'}
           pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
         />
       )}
 

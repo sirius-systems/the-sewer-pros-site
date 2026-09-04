@@ -343,6 +343,30 @@ export const homeContent: HomePageContent = {
     id('res-read-video'),
     id('cmp-hydro-vs-snaking'),
   ],
+  /*
+    ⚠ THESE THREE LIVE ON THE HOME PAGE, NOT ON THE SEWER CAMERA
+    INSPECTION SERVICE PAGE.
+
+    The brief asked for them under `svc-sewer-camera-inspection` in
+    services.tsx. That entry's `relatedPageIds` are three SERVICES —
+    sewer-cleaning-camera-inspection, pre-purchase, line-locating —
+    under the heading "Related services". `res-camera-report`,
+    `res-read-video` and `cmp-hydro-vs-snaking` are this page's list,
+    under "Guides and resources", which is the heading and the exact
+    three cards the brief described.
+
+    Put on the service page they would have rendered NOTHING:
+    `RelatedLinks` looks descriptions up by the ids it is rendering,
+    so keys for pages that page does not link to are never read.
+  */
+  relatedDescriptions: {
+    [id('res-camera-report')]:
+      'What a complete report should include, so you can compare quotes or revisit the findings later.',
+    [id('res-read-video')]:
+      'How to read root intrusion, cracks, and other defects on your own inspection video.',
+    [id('cmp-hydro-vs-snaking')]:
+      'When high-pressure hydro jetting is the right call, and when mechanical snaking is enough.',
+  },
   cta: {
     title: 'Schedule a sewer camera inspection.',
     body: 'A camera inspection documents the condition of the line, so your next decision is based on evidence, not a guess.',

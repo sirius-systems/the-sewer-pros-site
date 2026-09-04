@@ -119,6 +119,7 @@ export function LocationPageTemplate({
           id="local-services"
           title={content.relatedTitle ?? 'Services in this area'}
           pageIds={content.servicePageIds}
+          descriptions={content.relatedDescriptions}
           surface="default"
         />
       )}

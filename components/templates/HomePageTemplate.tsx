@@ -294,6 +294,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         <RelatedLinks
           title={content.relatedTitle ?? 'Guides and resources'}
           pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
           variant="image"
         />
       )}
