@@ -276,8 +276,95 @@ h4 {
   }
 }
 
+/*
+  Full-bleed track.
+
+  The section's heading, aggregate line and pause control stay in the
+  standard container; only the scrolling row leaves it. `50%` here is
+  half the container's content box, so `calc(50% - 50vw)` walks each
+  edge back out to the viewport — the ordinary breakout, and the first
+  one in this codebase, which is why it is a named class rather than
+  utilities inline.
+
+  ⚠ `.marquee-section` is load-bearing, not tidiness. `100vw` counts
+  the classic scrollbar Windows renders, so the track overhangs the
+  document by roughly 7px per side and would put a horizontal
+  scrollbar on the page. The section clips that overhang.
+
+  It must be `clip` and not `hidden`: `overflow-x: hidden` forces the
+  other axis to `auto`, which would make the section a scroll
+  container. `clip` leaves `overflow-y: visible` genuinely visible.
+*/
+.marquee-section {
+  overflow-x: clip;
+}
+
+.marquee-fullbleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+/*
+  ⚠ `contain: paint` IS A BUG FIX, NOT AN OPTIMISATION. DO NOT DROP IT.
+
+  Under `prefers-reduced-motion` the block at the bottom of this file
+  turns this element into a horizontal scroller (`overflow-x: auto`),
+  and at that point ~19,000px of track escapes into the DOCUMENT's
+  scrollable width: the whole page scrolls sideways into blank space.
+  Measured in Chrome at 18,899px, and confirmed by scrolling there and
+  finding an empty white viewport.
+
+  It predates the full-bleed track — the same measurement on the
+  container-width version reads 18,930px — so this is not a symptom of
+  the breakout. Paint containment holds the overflow inside this box in
+  both paths while leaving the reduced-motion scroller genuinely
+  scrollable, so every card stays reachable.
+*/
 .marquee-viewport {
   overflow: hidden;
+  contain: paint;
+}
+
+/*
+  Star glyphs on the blue cards only.
+
+  The --rating-gold note at the top of this file says contrast is not a
+  concern for a star, because every star run is aria-hidden with an
+  sr-only equivalent beside it. That still holds, and it is why the
+  aggregate row's star on white needs nothing.
+
+  This is the narrower case. On the card fill (--accent-secondary) the
+  gold measures 2.88:1, and a five-star row on a review card is close
+  enough to load-bearing that shipping it as a barely-visible smudge
+  would be a legibility failure whether or not WCAG 1.4.11 formally
+  bites. The hairline is white — 5.83:1 on that blue — so the glyph
+  edge is defined by a compliant boundary while the fill stays gold.
+
+  `paint-order` puts the stroke behind the fill so the gold is not
+  eaten from the inside. Where it is unsupported the stroke simply
+  centres on the outline, which is a slightly thinner star, not a
+  broken one.
+*/
+.marquee-stars {
+  -webkit-text-stroke: 0.5px #ffffff;
+  paint-order: stroke fill;
+}
+
+/*
+  Focus ring on the blue cards.
+
+  ⚠ NOT COSMETIC. The global ring at the top of this file is
+  --accent-secondary, and these cards are now filled with
+  --accent-secondary, so the default ring lands at 1.00:1 against the
+  card and a keyboard user tabbing through "View on Google" sees
+  nothing at all. Measured in the browser, not assumed.
+
+  White is the card's own foreground token and reads 5.83:1 there,
+  comfortably past the 3:1 a focus indicator needs. Scoped to the
+  track, so the ring stays blue everywhere else on the page.
+*/
+.marquee-track a:focus-visible {
+  outline-color: var(--accent-secondary-foreground);
 }
 
 .marquee-track {
