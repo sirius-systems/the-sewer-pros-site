@@ -464,9 +464,9 @@ h4 {
    Every frame fails 4.5:1. This overlay is the only reason the hero is
    readable.
 
-   BLACK AT 65%, ON OWNER DIRECTION (2026-09-04). It has been, in
+   BLACK AT 60%, ON OWNER DIRECTION (2026-09-04). It has been, in
    order: a responsive brand-navy gradient (0.90 -> 0.52), then flat
-   brand navy at 70%, now flat black at 65%.
+   brand navy at 70%, then flat black at 65%, now flat black at 60%.
 
    Black buys contrast back rather than spending it. Black is darker
    than the brand navy it replaced, so dropping the alpha from 0.70 to
@@ -479,9 +479,11 @@ h4 {
    THE VALUE IS CHECKED AGAINST PURE WHITE, NOT AGAINST THESE FIVE
    FILES. That matters: sizing it to today's images would let a
    brighter replacement frame silently break contrast, and nobody
-   re-measures when swapping a picture. At black/0.65 the worst
-   background any frame could present still gives 6.98:1 against a
-   4.5:1 requirement.
+   re-measures when swapping a picture. At black/0.60 the worst
+   background any frame could present still gives 5.74:1 against a
+   4.5:1 requirement — the smallest margin this overlay has had, and
+   the point at which further reductions start to matter. Black/0.50
+   would give 4.39:1 and fail.
 
    Black is also neutral, so it no longer tints the photography toward
    the brand hue — the frames read as photographs rather than as
@@ -492,5 +494,5 @@ h4 {
    gradient tuned for one is wrong for the other.
    ========================================================================== */
 .hero-scrim {
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.6);
 }

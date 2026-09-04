@@ -37,8 +37,35 @@ import { trustStatements } from '@/data/business/positioning'
  * No badge, credential, or certification graphic is implied by any of
  * them — that would reintroduce exactly what Appendix B warns against.
  *
- * Still no cards, borders, or backgrounds per item — this remains a
- * quiet band, not a card grid.
+ * Still no cards or borders per item — this remains a single band, not
+ * a card grid.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ BRAND SURFACE AND GREEN ICONS (owner decision, 2026-09-04) —
+ * SUPERSEDES "quiet band, low visual weight" ABOVE
+ * ---------------------------------------------------------------------------
+ * This band was `muted` with grey text: Appendix A's "thin horizontal
+ * band, low visual weight". The owner directed brand blue, white text
+ * at a larger size, and green icons, which makes it a loud band rather
+ * than a quiet one. That is a deliberate reversal of the register, not
+ * drift, and it applies on all nine templates that render this.
+ *
+ * ⚠⚠ THE GREEN ICONS BREAK A DOCUMENTED TOKEN RULE, KNOWINGLY.
+ * `app/globals.css` says in as many words: "GREEN IS FOR CONVERSION
+ * ACTIONS. `--accent` is the CTA colour and should not be scattered
+ * across icons, borders, or headings." Before this, green appeared in
+ * exactly three places, all primary conversion buttons (DEC-096).
+ *
+ * It also measures 2.61:1 against `--brand`, under the 3:1 floor for a
+ * meaningful graphic. That is survivable ONLY because every icon is
+ * `aria-hidden` beside text that states the same thing, so the mark is
+ * decoration and the meaning is carried in words — the same argument
+ * `--rating-gold` runs on. If an icon here ever becomes the sole
+ * carrier of its statement, this colour is the wrong tool.
+ *
+ * Recorded rather than quietly done, because the next person to see
+ * green on an icon should be able to tell an owner decision from a
+ * mistake.
  *
  * Density is `dense` deliberately: this band sits between two weightier
  * sections and should read as a quiet strip, contributing rhythm rather
@@ -65,7 +92,14 @@ function baseIconProps(props: IconProps): IconProps {
     viewBox: '0 0 24 24',
     fill: 'none',
     stroke: 'currentColor',
-    strokeWidth: 1.5,
+    /*
+      2, not 1.5. Owner asked for more prominent icons (2026-09-04),
+      and on a stroked pictogram weight does more of that work than
+      size alone. It also buys back a little of what the 2.61:1 green
+      on this surface costs: a heavier stroke is simply more of the
+      mark to see.
+    */
+    strokeWidth: 2,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
     'aria-hidden': true,
@@ -122,25 +156,56 @@ const TRUST_ICONS: Record<string, (props: IconProps) => React.JSX.Element> = {
 
 export function TrustBar({
   density = 'dense',
-  surface = 'muted',
+  surface = 'brand',
 }: TrustBarProps = {}) {
   return (
+    /*
+      `width="full"` drops the 1280px reading container to the viewport
+      gutters. The four statements run to roughly 150 characters plus
+      icons, and at the larger size they no longer fit one line inside
+      the standard container — the extra width is what keeps them on
+      one line rather than wrapping or scrolling.
+
+      No bottom border: it was `border-border`, a pale line that made
+      sense under a muted band and reads as a stray light rule between
+      this navy strip and the white section beneath it. The colour
+      change separates the sections on its own.
+    */
     <Section
       density={density}
       surface={surface}
       as="aside"
-      className="border-b border-border"
+      width="full"
+      /*
+        `[&>div]:px-3` reaches into Section's Container to cut its
+        gutter from 24px to 12px. Section passes `width` through but
+        not padding, and this is the only section that needs a gutter
+        narrower than the site's, so the override lives here rather
+        than becoming a Container prop nine other sections would then
+        have to reason about.
+
+        The 24px it buys back is exactly what keeps the row on one line
+        at 1280px, the most common desktop width, once the icons went
+        to 24px.
+      */
+      className="[&>div]:px-3"
     >
-      <ul className="flex flex-nowrap items-center justify-center gap-x-8 gap-y-2 overflow-x-auto">
+      <ul className="flex flex-nowrap items-center justify-center gap-x-5 gap-y-2 overflow-x-auto">
         {trustStatements.map((statement) => {
           const Icon = TRUST_ICONS[statement.label]
           return (
             <li
               key={statement.label}
-              className="flex shrink-0 items-center gap-2 whitespace-nowrap text-sm leading-6 text-muted-foreground"
+              className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-base leading-6"
             >
+              {/*
+                `text-accent` is the owner-directed green — see the
+                token warning in the header. Opaque, not tinted down:
+                at 2.61:1 on this surface there is no contrast left to
+                spend on an opacity.
+              */}
               {Icon !== undefined && (
-                <Icon className="h-4 w-4 shrink-0 text-foreground/70" />
+                <Icon className="h-6 w-6 shrink-0 text-accent" />
               )}
               <span>{statement.label}</span>
             </li>
