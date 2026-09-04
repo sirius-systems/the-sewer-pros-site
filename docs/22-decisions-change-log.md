@@ -3660,6 +3660,66 @@ The logo asset is unmodified. `#2463AB` and `#8F9094` are recorded here only as 
 
 ---
 
+## DEC-097 — San Diego Email Updated
+
+**Date:** 2026-09-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` DEC-071, DEC-083 (San Diego email row superseded)
+* `data/markets/markets.ts` (`MarketOperatingDetail.email` for San Diego)
+* `content/pages/core.tsx` (`/contact/`)
+* `components/layout/SiteFooter.tsx`
+
+### Decision
+
+San Diego's published email changes from `info@thesewerpros.com` to **`admin@thesewerpros.com`**. St. Louis's email is unchanged (`info@thesewerpros.com`).
+
+| Market | Phone | Email | Hours |
+| ------ | ----- | ----- | ----- |
+| St. Louis | (314) 821-1600 | info@thesewerpros.com | Mon-Fri 8:00am-4:00pm |
+| San Diego | (858) 257-2888 | **admin@thesewerpros.com** | Mon-Fri 8:00am-4:00pm |
+| Las Vegas | (725) 292-4030 | bookaninspection@thesewerpros.com | Mon-Fri 8:00am-4:00pm |
+
+### Reason
+
+Per 01 §24, an owner statement about the business's own contact facts is a Confirmed Business Fact — same standing as DEC-071/DEC-083, which is where San Diego's email was first recorded and last confirmed. This supersedes that value only; St. Louis and Las Vegas emails are untouched.
+
+### Previous State
+
+San Diego email: `info@thesewerpros.com` (DEC-083), identical to St. Louis's email — same string, two markets.
+
+### New State
+
+San Diego email: `admin@thesewerpros.com`, now distinct from St. Louis's `info@thesewerpros.com`.
+
+### Implementation Notes
+
+**The shared-string hazard was real and was resolved by market context, not by string matching.** A repo-wide grep for `info@thesewerpros.com` found six source occurrences. Four are St. Louis and were deliberately left alone:
+
+| Location | Market context | Action |
+| -------- | -------------- | ------ |
+| `data/markets/markets.ts` `marketOperatingDetail['st-louis-mo']` | St. Louis | unchanged |
+| `data/markets/markets.ts` `marketOperatingDetail['san-diego-ca']` | San Diego | **changed** |
+| `content/pages/core.tsx` under `<h2>St. Louis</h2>` | St. Louis | unchanged |
+| `content/pages/core.tsx` under `<h2>San Diego</h2>` | San Diego | **changed** |
+| `data/business/organization.ts` `contactPoints[0]` | St. Louis (`areaServed: ['st-louis-mo']`) | unchanged |
+| `data/business/organization.ts` `contact` | St. Louis (the export's own note attributes it there) | unchanged |
+
+One near-miss worth recording: `markets.ts` contains two maps keyed by the same market ids, and only the second (`marketOperatingDetail`) holds emails. A naive "first `'san-diego-ca': {`" match lands in the wrong map.
+
+**The footer now reads contact detail from `marketOperatingDetail` rather than hardcoding it.** This was the DEC-083 gap ("populated but not yet consumed"). Before, St. Louis came from `organization.ts`'s St. Louis-scoped `contact` export and San Diego's number was a literal in the markup, which is why San Diego had a phone and no email and Las Vegas had neither. All three markets now render phone and email from one source, and this decision's email change reached the footer without a second edit.
+
+### Not part of this decision
+
+* St. Louis and Las Vegas emails are unchanged.
+* Structured-data `contactPoints` still emits one St. Louis-scoped entry. Adding San Diego and Las Vegas remains the separate entity-graph decision DEC-083 deferred.
+* No street address is added for any market. All three remain service-area businesses.
+
+---
+
 # 11. Superseded Governance Interpretations
 
 The following earlier interpretations should no longer be used.

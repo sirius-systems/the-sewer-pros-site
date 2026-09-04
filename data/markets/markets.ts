@@ -214,7 +214,8 @@ export const marketOperatingDetail: Partial<
   'san-diego-ca': {
     phone: '(858) 257-2888',
     phoneE164: '+1-858-257-2888',
-    email: 'info@thesewerpros.com',
+    /** DEC-097 (2026-09-04): distinct from St. Louis's `info@` from here on. */
+    email: 'admin@thesewerpros.com',
     hours: 'Monday to Friday, 8:00am – 4:00pm',
     foundingYear: 2015,
     /**
