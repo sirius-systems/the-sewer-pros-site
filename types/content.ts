@@ -235,6 +235,14 @@ export interface HomePageContent extends BasePageContent {
   }[]
   /** Intent-routing cards, rendered between hero and services. */
   routing?: readonly RoutingContent[]
+  /**
+   * Full-bleed artwork behind the routing band (owner, 2026-09-04).
+   *
+   * SECTION-level, like `processBackground` below and unlike
+   * `services[].image` above, which is per card. The routing cards keep
+   * their own opaque surface and sit on top of it.
+   */
+  routingBackground?: CardImage
   process?: readonly ProcessContent[]
   /**
    * Full-bleed artwork behind the process band (owner, 2026-09-04).

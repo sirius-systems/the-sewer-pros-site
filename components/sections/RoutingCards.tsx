@@ -98,6 +98,19 @@ export interface RoutingCardsProps {
   title: string
   intro?: string
   items: readonly RoutingCardItem[]
+  /**
+   * Full-bleed artwork behind the whole section (owner, 2026-09-04).
+   *
+   * ⚠ DIFFERENT THING FROM `RoutingCardItem.image`, which is a 7:4 crop
+   * inside one card. This sits behind every card at once, so it is a
+   * property of the section rather than of an item, and the two can be
+   * used together.
+   *
+   * The cards are opaque, so the heading is the only thing that ends up
+   * over the photograph. See `Section` for what the backdrop does and
+   * for the scrim measurement.
+   */
+  backgroundImage?: CardImage
 }
 
 /**
@@ -129,6 +142,7 @@ export function RoutingCards({
   title,
   intro,
   items,
+  backgroundImage,
 }: RoutingCardsProps) {
   const links = resolveLinkableOnly(items.map((item) => item.pageId))
   const descriptions = new Map(
@@ -159,8 +173,35 @@ export function RoutingCards({
   const columns = links.length % 3 === 0 ? 3 : 2
 
   return (
-    <Section density={density} surface={surface} labelledBy={id}>
-      <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+    <Section
+      density={density}
+      surface={surface}
+      backgroundImage={backgroundImage}
+      labelledBy={id}
+    >
+      <SectionHeading
+        id={id}
+        title={title}
+        eyebrow={eyebrow}
+        intro={intro}
+        /*
+          The `<h2>` sets no colour of its own and inherits the white
+          `Section` puts on the wrapper. The eyebrow and intro DO set
+          `text-muted-foreground`, which is tuned for a light surface,
+          so they are overridden here rather than left to fail quietly
+          the first time a caller passes one alongside a background.
+          `cn()` is a plain join, not tailwind-merge, so this has to be
+          a descendant selector rather than a competing text class.
+
+          Nothing else needs it: every card below is opaque and its
+          contents never touch the photograph.
+        */
+        className={
+          backgroundImage !== undefined
+            ? '[&_p]:text-white [&_div]:text-white'
+            : undefined
+        }
+      />
 
       <CardGrid columns={columns} itemCount={links.length} className="mt-10">
         {links.map((link) => {

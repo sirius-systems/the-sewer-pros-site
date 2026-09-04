@@ -301,6 +301,12 @@ export const homeContent: HomePageContent = {
       secondaryLink: { pageId: id('core-contact'), label: 'Contact us' },
     },
   ],
+  routingBackground: {
+    src: '/images/homepage/differentiator/the-sewer-pros-commercial-multifamily-properties.webp',
+    alt: 'Exterior of a mixed-use multifamily building and its parking area',
+    source:
+      'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+  },
   differentiator: {
     title: 'Diagnosis separated from the sale',
     intro:

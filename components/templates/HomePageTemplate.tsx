@@ -238,7 +238,13 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           id="how-we-can-help"
           title="How we can help"
           items={content.routing}
+          /*
+            `surface` is the fallback, not the current appearance:
+            `backgroundImage` overrides it, and the muted band is what
+            comes back if that image is ever removed.
+          */
           surface="muted"
+          backgroundImage={content.routingBackground}
         />
       )}
 

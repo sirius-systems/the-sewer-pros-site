@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils/cn'
 import { Container, type ContainerWidth } from './Container'
+import type { CardImage } from '@/types'
 
 /**
  * Page section — the density and surface primitive.
@@ -61,6 +63,25 @@ export interface SectionProps {
   /** Associates the section with its heading for assistive technology. */
   labelledBy?: string
   className?: string
+  /**
+   * Full-bleed artwork behind the whole section.
+   *
+   * ⚠ IT OVERRIDES `surface`, because the image IS the surface — the
+   * same reason `Hero` passes `surface="none"` under its backdrop. A
+   * caller's `surface` is left meaningful as the fallback for the day
+   * the image is removed, so keep passing it.
+   *
+   * ⚠ SECTION TEXT GOES WHITE. The scrim below is sized for opaque
+   * white and nothing else. Anything inside that sets its own colour —
+   * `text-muted-foreground`, `text-accent-secondary` — keeps it and
+   * will not have been measured against a photograph, so a caller with
+   * such content must override it. Content inside an OPAQUE card is
+   * unaffected and needs nothing.
+   *
+   * Omit it and this renders exactly as it always has: no wrapper, no
+   * image layer, no tint. There is no placeholder state (18 §40-42).
+   */
+  backgroundImage?: CardImage
   children: ReactNode
 }
 
@@ -71,15 +92,72 @@ export function Section({
   as: Tag = 'section',
   labelledBy,
   className,
+  backgroundImage,
   children,
 }: SectionProps) {
-  return (
+  const body = (
     <Tag
       aria-labelledby={labelledBy}
-      className={cn(DENSITY[density], SURFACE[surface], className)}
+      className={cn(
+        DENSITY[density],
+        SURFACE[backgroundImage !== undefined ? 'none' : surface],
+        className,
+      )}
     >
       <Container width={width}>{children}</Container>
     </Tag>
+  )
+
+  if (backgroundImage === undefined) return body
+
+  /*
+    `isolate` keeps the two `-z-10` layers inside this stacking context
+    instead of sliding behind the page background, and
+    `overflow-hidden` stops a cover-cropped frame widening the
+    document. Both copied from `Hero`, for the same two reasons.
+  */
+  return (
+    <div className="relative isolate overflow-hidden text-white">
+      {/*
+        ⚠ `alt=""`. A backdrop sits behind a heading that already says
+        what the section is, so it carries nothing a reader would
+        otherwise miss. `CardImage.alt` still holds a real description
+        so the asset stays identifiable in source.
+      */}
+      <Image
+        src={backgroundImage.src}
+        alt=""
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover"
+      />
+
+      {/*
+        ⚠⚠ THE SCRIM IS LOAD-BEARING, AND IT IS SIZED FOR ANY FRAME,
+        NOT FOR TODAY'S.
+
+        Black/55% was measured against PURE WHITE — the brightest
+        background any photograph could present — where opaque white
+        text gives 4.76:1 against a 4.5:1 floor. That is deliberate:
+        sizing it to the current files would let a brighter replacement
+        silently break contrast, and nobody re-measures when swapping a
+        picture.
+
+        ⚠ 0.26 OF MARGIN. Black/50% gives 4.39:1 and FAILS. Do not
+        lighten this, and do not dim section text with an opacity,
+        without redoing the measurement.
+
+        ⚠ IT DOES NOT CHANGE ON HOVER. Anything that lifted it under a
+        pointer would drop the section's text below AA for as long as
+        the pointer sat there.
+
+        Same value as the hero overlay and the image cards, so every
+        image treatment on the site agrees.
+      */}
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+
+      {body}
+    </div>
   )
 }
 
