@@ -131,6 +131,22 @@ export interface LeadFormSectionProps {
    * existing bare call sites keep their standalone section.
    */
   bare?: boolean
+  /**
+   * Prefix for this instance's field ids. Defaults to `lead`.
+   *
+   * ⚠ REQUIRED WHEN A PAGE RENDERS THIS FORM TWICE. The homepage now
+   * does: once in the hero and once in the closing CTA. Field ids were
+   * hardcoded, so a second instance emitted a duplicate id for every
+   * input and each `<label>` resolved to the FIRST form's control —
+   * clicking "Phone" in the lower form focused the hero's. Invalid
+   * HTML, and a real keyboard and screen-reader failure rather than a
+   * validator complaint.
+   *
+   * Only the ids vary. `name` is untouched on every field, so whatever
+   * endpoint eventually closes PENDING-018 receives the same payload
+   * shape from either instance.
+   */
+  idPrefix?: string
 }
 
 export function LeadFormSection({
@@ -140,6 +156,7 @@ export function LeadFormSection({
   title = 'Request service',
   intro,
   bare = false,
+  idPrefix = 'lead',
 }: LeadFormSectionProps = {}) {
   const [started, setStarted] = useState(false)
 
@@ -174,9 +191,9 @@ export function LeadFormSection({
       noValidate={false}
       className="grid gap-x-6 gap-y-5 sm:grid-cols-2"
     >
-      <Field htmlFor="lead-first-name" label="First name" required>
+      <Field htmlFor={`${idPrefix}-first-name`} label="First name" required>
         <TextInput
-          id="lead-first-name"
+          id={`${idPrefix}-first-name`}
           name="firstName"
           type="text"
           autoComplete="given-name"
@@ -185,9 +202,9 @@ export function LeadFormSection({
         />
       </Field>
 
-      <Field htmlFor="lead-last-name" label="Last name" required>
+      <Field htmlFor={`${idPrefix}-last-name`} label="Last name" required>
         <TextInput
-          id="lead-last-name"
+          id={`${idPrefix}-last-name`}
           name="lastName"
           type="text"
           autoComplete="family-name"
@@ -196,9 +213,9 @@ export function LeadFormSection({
         />
       </Field>
 
-      <Field htmlFor="lead-phone" label="Phone" required>
+      <Field htmlFor={`${idPrefix}-phone`} label="Phone" required>
         <TextInput
-          id="lead-phone"
+          id={`${idPrefix}-phone`}
           name="phone"
           type="tel"
           autoComplete="tel"
@@ -225,19 +242,20 @@ export function LeadFormSection({
       */}
       <RadioGroup
         name="contactMethod"
+        idPrefix={`${idPrefix}-contact-method`}
         legend="Preferred method of contact"
         options={CONTACT_METHOD_OPTIONS}
         required
       />
 
       <Field
-        htmlFor="lead-service"
+        htmlFor={`${idPrefix}-service`}
         label="Service needed"
         required
         className="sm:col-span-2"
       >
         <Select
-          id="lead-service"
+          id={`${idPrefix}-service`}
           name="service"
           options={SERVICE_OPTIONS}
           placeholder="Select a service"
@@ -247,7 +265,7 @@ export function LeadFormSection({
       </Field>
 
       <Field
-        htmlFor="lead-market"
+        htmlFor={`${idPrefix}-market`}
         label="Location"
         required
         className="sm:col-span-2"
@@ -259,7 +277,7 @@ export function LeadFormSection({
           and quietly mislabel leads from the other two.
         */}
         <Select
-          id="lead-market"
+          id={`${idPrefix}-market`}
           name="market"
           options={MARKET_OPTIONS}
           placeholder="Select your location"
@@ -268,8 +286,8 @@ export function LeadFormSection({
         />
       </Field>
 
-      <Field htmlFor="lead-message" label="Message" className="sm:col-span-2">
-        <Textarea id="lead-message" name="message" />
+      <Field htmlFor={`${idPrefix}-message`} label="Message" className="sm:col-span-2">
+        <Textarea id={`${idPrefix}-message`} name="message" />
       </Field>
 
       <div className="sm:col-span-2">
