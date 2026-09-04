@@ -126,6 +126,14 @@ export interface ButtonProps extends CommonProps {
   'aria-controls'?: string
   /** Expanded state, for controls that disclose content. */
   'aria-expanded'?: boolean
+  /**
+   * Pressed state, for toggle buttons.
+   *
+   * A toggle is still a button, so it belongs on this primitive rather
+   * than being hand-rolled with the variant classes copied out — 18
+   * §46 wants one place where button appearance is decided.
+   */
+  'aria-pressed'?: boolean
 }
 
 export function Button({
@@ -140,6 +148,7 @@ export function Button({
   'aria-label': ariaLabel,
   'aria-controls': ariaControls,
   'aria-expanded': ariaExpanded,
+  'aria-pressed': ariaPressed,
 }: ButtonProps) {
   return (
     <button
@@ -149,6 +158,7 @@ export function Button({
       aria-label={ariaLabel}
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
+      aria-pressed={ariaPressed}
       onClick={onClick}
       className={cn(BASE, VARIANT[variant], className)}
     >

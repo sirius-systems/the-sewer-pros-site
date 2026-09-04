@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Badge, Section, type SectionDensity } from '@/components/ui'
+import { Badge, Button, Section, type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import {
   marqueeReviews,
@@ -90,8 +90,8 @@ function AggregateStat() {
   )
 
   return (
-    <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm opacity-80">
-      <span className="text-h2 font-semibold tracking-tight opacity-100">
+    <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm text-muted-foreground">
+      <span className="text-h2 font-semibold tracking-tight text-foreground">
         {rating}
         <span aria-hidden="true" className="ml-1 text-rating-gold">
           ★
@@ -118,12 +118,19 @@ function AggregateStat() {
  *
  * So most cards in this marquee show no stars. That is the honest
  * state of the data, not a rendering bug.
+ *
+ * ⚠ `marquee-stars` is not decoration on decoration. --rating-gold
+ * measures 2.88:1 against the card's --accent-secondary fill, under
+ * the 3:1 WCAG 1.4.11 floor for a meaningful graphic, so the glyphs
+ * carry a hairline white edge that is itself 5.83:1 on that blue. The
+ * aggregate row's star sits on white and is untouched. See the class
+ * in app/globals.css for why this is scoped to the cards.
  */
 function StarRow({ value }: { value: number }) {
   const filled = Math.max(0, Math.min(5, Math.round(value)))
   return (
     <p className="flex items-center gap-1 text-rating-gold">
-      <span aria-hidden="true" className="tracking-[0.15em]">
+      <span aria-hidden="true" className="marquee-stars tracking-[0.15em]">
         {'★'.repeat(filled)}
         <span className="opacity-40">{'☆'.repeat(5 - filled)}</span>
       </span>
@@ -135,11 +142,23 @@ function StarRow({ value }: { value: number }) {
 /**
  * One review card.
  *
- * Translucent white over the brand surface rather than a new hex. 18
- * §28 already assigns testimonial bands the brand dark treatment, and
- * DEC-096 fixed the palette, so a card colour invented for this
- * section would be a palette addition nobody approved. `rounded-md`
- * and the 24px padding match components/ui/Card.tsx (18 §32-33).
+ * Solid --accent-secondary (#1C6B97), the DEC-096 authority blue,
+ * against the section's white surface. Not a new hex: the owner moved
+ * this section from the brand dark treatment to white on 2026-09-03,
+ * and a translucent-white card built for a dark ground has nothing to
+ * sit on once the ground is white. White on that blue measures
+ * 5.83:1, so the card carries body text at AA with margin.
+ *
+ * No border. A solid blue card already separates itself from white;
+ * the old `border-white/15` existed to give a 5%-white card an edge on
+ * dark, and repeating it here would outline something already
+ * outlined. `rounded-md` and the 24px padding match
+ * components/ui/Card.tsx (18 §32-33).
+ *
+ * ⚠ Text on these cards is opaque white, not white at an opacity.
+ * Hierarchy is carried by size and weight instead. Blending white down
+ * over #1C6B97 spends the contrast margin for nothing: at 80% it lands
+ * near 4.4:1, which is under AA for body text.
  *
  * `duplicate` marks the second copy of the set. It exists only so the
  * loop has something to scroll into, so it is hidden from assistive
@@ -157,13 +176,13 @@ function ReviewCard({
 
   return (
     <li
-      className="flex shrink-0 flex-col gap-3 rounded-md border border-white/15 bg-white/5 p-6"
+      className="flex shrink-0 flex-col gap-3 rounded-md bg-accent-secondary p-6 text-accent-secondary-foreground"
       style={{ width: `${CARD_WIDTH}px` }}
     >
       <div className="flex items-center gap-3">
         <span
           aria-hidden="true"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-base font-semibold"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-base font-semibold"
         >
           {initial}
         </span>
@@ -172,7 +191,7 @@ function ReviewCard({
             <span className="truncate">{review.name}</span>
             {review.isLocalGuide && <Badge tone="neutral">Local Guide</Badge>}
           </p>
-          <p className="text-caption opacity-70">
+          <p className="text-caption">
             Google · {review.relativeDate}
           </p>
         </div>
@@ -187,12 +206,12 @@ function ReviewCard({
         invalidates the width the animation was computed from. The
         profile link below is the way to the full text.
       */}
-      <blockquote className="line-clamp-6 text-sm leading-6 opacity-90">
+      <blockquote className="line-clamp-6 text-sm leading-6">
         {review.quote}
       </blockquote>
 
       <a
-        className="mt-auto text-sm underline underline-offset-4 opacity-80 hover:opacity-100"
+        className="mt-auto text-sm underline decoration-white/60 underline-offset-4 hover:decoration-white"
         href={review.profileUrl}
         target="_blank"
         rel="noopener noreferrer"
@@ -224,7 +243,26 @@ export function ReviewMarquee({
   const durationSeconds = Math.round(loopWidth / PX_PER_SECOND)
 
   return (
-    <Section density={density} surface="brand" labelledBy={id}>
+    /*
+      White, not brand dark (owner direction, 2026-09-03).
+
+      This section sat between two dark sections, and a dark strip
+      between dark neighbours reads as one long unbroken band. The fix
+      is a genuine light section rather than a seam line between two
+      dark ones: 18 §11 wants surface changes to mean something, and
+      "this is a different kind of content" is a meaning a hairline
+      border cannot carry.
+
+      `marquee-section` clips the horizontal overhang of the full-bleed
+      track below. It has to live on the section root — see the class
+      in app/globals.css.
+    */
+    <Section
+      density={density}
+      surface="default"
+      labelledBy={id}
+      className="marquee-section"
+    >
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <SectionHeading id={id} title={title} />
@@ -237,18 +275,25 @@ export function ReviewMarquee({
           under reduced motion by CSS, where there is no animation for
           it to act on.
         */}
-        <button
-          type="button"
+        <Button
+          variant="secondary"
           onClick={() => setPaused((v) => !v)}
           aria-pressed={paused}
-          className="marquee-toggle inline-flex min-h-11 items-center gap-2 rounded-md border border-white/15 px-4 text-sm font-medium transition-colors hover:bg-white/10"
+          className="marquee-toggle"
         >
           <span aria-hidden="true">{paused ? '▶' : '❚❚'}</span>
           {paused ? 'Play reviews' : 'Pause reviews'}
-        </button>
+        </Button>
       </div>
 
-      <div className="marquee-viewport mt-10">
+      {/*
+        The track leaves the container; the heading and the control
+        above it do not. A strip that stops at the reading measure
+        reads as a widget that ran out of room, and it clipped the
+        fourth card against an invisible edge. Bleeding past both
+        viewport edges is what says "this continues".
+      */}
+      <div className="marquee-viewport marquee-fullbleed mt-10">
         <ul
           className="marquee-track"
           data-paused={paused ? 'true' : 'false'}
@@ -292,10 +337,10 @@ export function ReviewMarquee({
         more work than it did for the old carousel, so it stays
         verbatim (CLAUDE.md §23).
       */}
-      <p className="mt-8 text-sm opacity-80">
+      <p className="mt-8 text-sm text-muted-foreground">
         {googleProfileReviewsUrl !== null ? (
           <a
-            className="underline underline-offset-4 hover:opacity-100"
+            className="text-accent-secondary underline underline-offset-4 hover:text-foreground"
             href={googleProfileReviewsUrl}
             target="_blank"
             rel="noopener noreferrer"
