@@ -271,7 +271,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         below are both `default`, so no two brand surfaces meet — the
         adjacency 18 §11 names. See the surface order above.
       */}
-      <Differentiator variant="comparison-table" />
+      <Differentiator />
 
       <MarketCoverage density="dense" />
 

@@ -55,49 +55,6 @@ export const trustStatements: readonly TrustStatement[] = [
   },
 ]
 
-/**
- * The independent-model contrast (18 §64).
- *
- * ⚠ 18 §64: "Keep the presentation factual and non-accusatory."
- * 01 §72 and CLAUDE.md §32 are firmer still — do not claim competitors
- * are dishonest or that they recommend unnecessary work.
- *
- * The framing below therefore contrasts BUSINESS MODELS, not integrity.
- * A repair contractor selling repairs is a description of how that
- * business earns, not an accusation.
- *
- * ---------------------------------------------------------------------------
- * KEEP "CLEANING" IN THE CHAIN
- * ---------------------------------------------------------------------------
- * 18 §64 gives the motif as:
- *
- *   Inspection → Evidence → Cleaning/Next-Step Decision
- *
- * Cleaning belongs in the third step because it is an APPROVED SERVICE
- * (06; 01 §2.2, §3). Collapsing that step to "your decision" alone
- * implies the company only inspects and then hands the customer off,
- * which understates what it actually does and reads against 01 §3's
- * positioning of "inspection, diagnostics, locating, and cleaning".
- *
- * The wording stays plain-language rather than copying the doc's
- * title-case slash form; the three-beat structure and the cleaning
- * step are what §64 fixes.
- */
-export const differentiatorContrast = {
-  comparison: {
-    heading: 'A contractor who also sells the repair',
-    steps: ['Inspection', 'Repair recommendation', 'Repair sale'],
-  },
-  ours: {
-    heading: 'The Sewer Pros',
-    steps: [
-      'Inspection',
-      'Documented evidence',
-      'Cleaning or your next-step decision',
-    ],
-  },
-} as const
-
 /* ==========================================================================
    Differentiator comparison — the homepage `comparison-table` variant
    ========================================================================== */
@@ -124,9 +81,14 @@ export interface DifferentiatorComparison {
 /**
  * The model contrast as an aligned comparison (owner, 2026-09-04).
  *
- * ADDITIONAL TO `differentiatorContrast` ABOVE, NOT A REPLACEMENT.
- * That export still drives the `split` variant every service page
- * renders, and is untouched.
+ * THE ONLY SOURCE FOR THIS SECTION, ON EVERY PAGE THAT RENDERS IT
+ * (DEC-099). It replaced the plain two-column step lists this file
+ * used to hold, when the comparison table went site-wide and that
+ * export lost its last caller. 18 §141's
+ * "Inspection -> Evidence -> Cleaning/Next-Step Decision" motif that
+ * they carried now lives in the `what-happens-next` row below, which
+ * keeps cleaning in the chain for the same reason: cleaning is an
+ * approved service (06; 01 §2.2, §3), not a hand-off.
  *
  * ===========================================================================
  * ⚠ THE TONE CONSTRAINT IS UNCHANGED AND STILL BINDING

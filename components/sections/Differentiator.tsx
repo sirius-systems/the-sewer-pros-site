@@ -4,9 +4,7 @@ import {
   type SectionDensity,
   type SectionSurface,
 } from '@/components/ui'
-import { SectionHeading } from './SectionHeading'
 import {
-  differentiatorContrast,
   differentiatorComparison,
   type ComparisonRow,
   type DifferentiatorComparison,
@@ -36,34 +34,32 @@ import {
  * ⚠ THAT CONSTRAINT IS UNCHANGED BY EVERYTHING BELOW, AND IS THE ONE
  * PART OF THIS COMPONENT THAT IS NOT NEGOTIABLE PER PAGE.
  *
- * ---------------------------------------------------------------------------
- * TWO VARIANTS
- * ---------------------------------------------------------------------------
- *   split             Appendix A's editorial split, the original and
- *                     still the default. Reads `differentiatorContrast`.
- *                     Every service page renders this and nothing about
- *                     it changed.
- *
- *   comparison-table  An aligned three-column comparison on the brand
- *                     surface. Homepage only. Reads
- *                     `differentiatorComparison`.
- *
  * ===========================================================================
- * ⚠⚠ `comparison-table` DELIBERATELY BREAKS THIS FILE'S OWN "NEITHER
- * COLUMN IS A WINNER" RULE. OWNER-DIRECTED, 2026-09-04.
+ * ⚠⚠ THIS DELIBERATELY BREAKS THIS FILE'S OWN "NEITHER COLUMN IS A
+ * WINNER" RULE. OWNER-DIRECTED, 2026-09-04. DEC-098, DEC-099.
  * ===========================================================================
- * The `split` variant above was built to a rule this header used to
- * state flatly: "Neither column is styled as a winner: 18 §66 forbids
- * manipulating visual emphasis to misrepresent alternatives, and while
- * that rule addresses comparison pages, the same honesty applies
- * here." That reading is preserved for `split`, which still styles its
- * two columns identically.
+ * This section was built to a rule this header used to state flatly:
+ * "Neither column is styled as a winner: 18 §66 forbids manipulating
+ * visual emphasis to misrepresent alternatives, and while that rule
+ * addresses comparison pages, the same honesty applies here."
  *
- * `comparison-table` does the opposite ON PURPOSE. The Sewer Pros
- * column gets a tinted cell and a green accent border; the contractor
- * column gets the neutral site surface. The owner asked for the
- * distinction to land visually, and that is a knowing exception rather
- * than drift.
+ * It now does the opposite ON PURPOSE. The Sewer Pros column gets a
+ * tinted cell and a green accent border; the contractor column gets the
+ * neutral site surface. The owner asked for the distinction to land
+ * visually, and that is a knowing exception rather than drift.
+ *
+ * ⚠ SITE-WIDE, NOT HOMEPAGE-ONLY (DEC-099, superseding DEC-098's page
+ * scope). The plain editorial split and its data are GONE rather than
+ * left unreferenced: every template that renders this section now
+ * renders the comparison, so a second variant would have had no
+ * callers and a header claiming otherwise. Git holds it if it is
+ * wanted back.
+ *
+ * ⚠ THE CONTEXTUAL HEADINGS WENT WITH IT. Service pages passed
+ * "Inspection without a repair sale attached" and audience pages "Why
+ * an independent inspection matters here". `differentiatorComparison`
+ * owns one heading for every page now — see `comparison` below for why
+ * there is no override.
  *
  * It is the same category of decision as DEC-096's owner-directed green
  * icons on `TrustBar`, which broke the documented "green is for
@@ -251,7 +247,7 @@ const CONTRACTOR_CELL = 'bg-surface-muted text-foreground'
    Props
    ========================================================================== */
 
-interface DifferentiatorBaseProps {
+export interface DifferentiatorProps {
   /**
    * Overrides the section's natural density.
    *
@@ -268,49 +264,33 @@ interface DifferentiatorBaseProps {
    * and the owner directed clear separation between adjacent sections
    * (2026-09-04). A section cannot pick its own contrast against
    * neighbours it cannot see.
+   *
+   * ⚠ DEFAULTS TO `brand`, AND THE DEFAULT IS PART OF THE DESIGN. The
+   * dark band is what the tinted cells read against. A caller changing
+   * it is changing the treatment, not just the background.
    */
   surface?: SectionSurface
   id?: string
-}
-
-interface DifferentiatorSplitProps extends DifferentiatorBaseProps {
-  variant?: 'split'
-  eyebrow?: string
-  title: string
-  intro?: string
-}
-
-interface DifferentiatorComparisonProps extends DifferentiatorBaseProps {
-  variant: 'comparison-table'
   /**
    * The comparison to render. Defaults to the canonical one.
    *
-   * ⚠ NO `title`/`intro` PROP ON THIS VARIANT, AND THAT IS THE POINT.
-   * The comparison owns its own `heading` and `intro`, so there is
-   * exactly one source for them. A per-page override would put a
-   * second one beside it and let a page state the differentiator
-   * differently from the table underneath it.
+   * ⚠ NO `title`/`intro` PROP, AND THAT IS THE POINT. The comparison
+   * owns its own `heading` and `intro`, so there is exactly one source
+   * for them across every page that renders this. A per-page override
+   * would put a second one beside it and let a page state the
+   * differentiator differently from the table underneath it.
    */
   comparison?: DifferentiatorComparison
 }
 
-/**
- * ⚠ A UNION, NOT ONE OPTIONAL-EVERYTHING SHAPE. `split` requires a
- * `title`; `comparison-table` refuses one. The compiler enforces the
- * distinction, so neither variant can be called with the other's
- * fields.
- */
-export type DifferentiatorProps =
-  | DifferentiatorSplitProps
-  | DifferentiatorComparisonProps
+export function Differentiator({
+  density = 'standard',
+  surface = 'brand',
+  id = 'independent',
+  comparison = differentiatorComparison,
+}: DifferentiatorProps = {}) {
+  return (
 
-export function Differentiator(props: DifferentiatorProps) {
-  const { density = 'standard', id = 'independent' } = props
-
-  if (props.variant === 'comparison-table') {
-    const { surface = 'brand', comparison = differentiatorComparison } = props
-
-    return (
       <Section density={density} surface={surface} labelledBy={id}>
         {/*
           The heading is hand-rolled rather than `SectionHeading`, for
@@ -464,42 +444,5 @@ export function Differentiator(props: DifferentiatorProps) {
           </p>
         </div>
       </Section>
-    )
-  }
-
-  const { surface = 'muted', eyebrow, title, intro } = props
-  const columns = [differentiatorContrast.comparison, differentiatorContrast.ours]
-
-  return (
-    <Section density={density} surface={surface} labelledBy={id}>
-      <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
-
-      <div className="mt-10 grid gap-8 lg:grid-cols-2">
-        {columns.map((column) => (
-          <div key={column.heading} className="border-t border-border pt-6">
-            <h3 className="text-base font-medium text-foreground">
-              {column.heading}
-            </h3>
-
-            <ol className="mt-4 flex flex-col gap-3">
-              {column.steps.map((step, index) => (
-                <li
-                  key={step}
-                  className="flex items-baseline gap-3 text-sm leading-6 text-muted-foreground"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="text-caption tabular-nums"
-                  >
-                    {index + 1}
-                  </span>
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        ))}
-      </div>
-    </Section>
   )
 }
