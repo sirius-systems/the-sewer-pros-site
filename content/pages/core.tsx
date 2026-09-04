@@ -82,39 +82,48 @@ export const homeContent: HomePageContent = {
   services: [
     {
       pageId: id('svc-sewer-camera-inspection'),
-      description: 'Put a camera in the line and see its visible condition.',
+      description:
+        'A sewer camera inspection - often called a sewer scope - shows the line’s actual condition on video, so you get documented evidence before deciding on repairs.',
     },
     {
       pageId: id('svc-sewer-cleaning'),
-      description: 'Clear what has accumulated so the line drains as intended.',
+      description:
+        'Clears grease, scale, and buildup so the line drains as intended - the direct fix for slow or recurring backups.',
     },
     {
       pageId: id('svc-hydro-jetting'),
-      description: 'High-pressure cleaning for buildup on the pipe wall.',
+      description:
+        'High-pressure water strips grease, scale, sludge, and roots from the pipe wall for a deeper clean than snaking.',
     },
     {
       pageId: id('svc-sewer-cleaning-camera-inspection'),
-      description: 'Clean the line, then inspect what the buildup was hiding.',
+      description:
+        'Clear the line, then inspect it on camera - so you see the condition the blockage was hiding, not just a cleared drain.',
     },
     {
       pageId: id('svc-sewer-line-locating'),
-      description: 'Establish where the line runs and how deep it sits.',
+      description:
+        'Establishes exactly where your line runs and how deep it sits, before you dig, landscape, or plan utility work nearby.',
     },
     {
       pageId: id('svc-drain-cleaning'),
-      description: 'Clear fixture and branch drains.',
+      description:
+        'Clears fixture and branch drains - sinks, tubs, secondary lines - so isolated clogs get a targeted fix, not a bigger job.',
     },
     {
       pageId: id('svc-pre-purchase-sewer-inspection'),
-      description: 'Inspect the line before committing to a property.',
+      description:
+        'A sewer scope before closing, so a hidden sewer problem does not become a surprise you inherit with the property.',
     },
     {
       pageId: id('svc-recurring-sewer-backup-diagnosis'),
-      description: 'Find out why a line keeps backing up.',
+      description:
+        'Finds the actual cause of a line that keeps backing up - root intrusion, a low spot, a partial collapse - instead of clearing it again.',
     },
     {
       pageId: id('svc-preventative-sewer-maintenance'),
-      description: 'Service lines on an interval the evidence supports.',
+      description:
+        'Services the line on an interval the inspection evidence supports, not a generic annual visit, to catch problems early.',
     },
   ],
   routing: [
