@@ -3319,6 +3319,14 @@ Same-day copy is hedged to match the actual constraint: "sometimes available," n
 
 `data/business/offers.ts` (new) holds `verifiedOffers`, each entry citing this decision. `components/sections/ConfidenceModule.tsx` (new) renders it, gated the same way as every other data-backed section — empty data means the section is absent. Wired into `HomePageTemplate.tsx` directly under the trust bar.
 
+### Wording Updated 2026-09-04 (owner)
+
+The same-day `detail` now reads: "Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am–4:00pm. Not available on weekends."
+
+⚠ This entry above ties its approval to the words "sometimes available" and "not guaranteed", and both are gone. The hedge is not: "when scheduling permits" carries it in one clause instead of two, which is why no separate guarantee disclaimer replaced it. The weekday hours and the weekend exclusion are deliberately kept, because this entry requires the claim never imply weekend or 24-7 coverage and dropping that half would leave the card silent on exactly that point.
+
+The approval itself, its homepage-only scope, and the `CLAIMS_REQUIRING_VERIFICATION` guard are unchanged. The text quoted earlier in this entry is left as the historical record of what was approved on 2026-09-01.
+
 ⚠ `'same-day service'` and `'free estimates'` remain in `CLAIMS_REQUIRING_VERIFICATION` deliberately. That array still governs every appearance OTHER than this module — it is the guard against the same claim reappearing on a service page, a market page, or a CTA without DEC-088's scoping and hedged phrasing.
 
 ### Verification
