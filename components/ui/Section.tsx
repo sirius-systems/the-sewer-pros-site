@@ -89,7 +89,32 @@ export interface SectionProps {
    * image layer, no tint. There is no placeholder state (18 §40-42).
    */
   backgroundImage?: CardImage
+  /**
+   * How dark the scrim over `backgroundImage` sits.
+   *
+   * ⚠ THIS DIAL ONLY TURNS ONE WAY. `default` is the measured floor:
+   * black/55%, the value proved against pure white at 4.76:1 against a
+   * 4.5:1 requirement. `strong` is DARKER, which can only ever add
+   * contrast, so it needs no new measurement.
+   *
+   * There is deliberately no lighter option. A lighter scrim would
+   * need the whole measurement redone against every frame on the site,
+   * and black/50% already fails at 4.39:1.
+   */
+  scrim?: 'default' | 'strong'
   children: ReactNode
+}
+
+/**
+ * Scrim strengths.
+ *
+ * `strong` exists because the routing band's cards and heading sit over
+ * a bright daylight exterior and the owner asked for more separation
+ * (2026-09-04). Darker is always safe; see the prop note above.
+ */
+const SCRIM: Record<'default' | 'strong', string> = {
+  default: 'bg-black/55',
+  strong: 'bg-black/65',
 }
 
 export function Section({
@@ -100,6 +125,7 @@ export function Section({
   labelledBy,
   className,
   backgroundImage,
+  scrim = 'default',
   children,
 }: SectionProps) {
   const body = (
@@ -161,7 +187,10 @@ export function Section({
         Same value as the hero overlay and the image cards, so every
         image treatment on the site agrees.
       */}
-      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      <span
+        aria-hidden="true"
+        className={cn('absolute inset-0 -z-10', SCRIM[scrim])}
+      />
 
       {body}
     </div>

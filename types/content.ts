@@ -93,6 +93,12 @@ export interface InclusionContent {
   description: string
 }
 
+/** One named destination inside a routing card's link list. */
+export interface RoutingLink {
+  pageId: PageId
+  label: string
+}
+
 /**
  * An intent-routing destination on the home page.
  *
@@ -102,15 +108,41 @@ export interface InclusionContent {
 export interface RoutingContent {
   pageId: PageId
   /**
-   * ⚠ `ReactNode`, not `string`. These descriptions carry inline links
-   * to the specific pages they name (owner, 2026-09-04), authored with
-   * `ApprovedInlineLink` so every one resolves through the approved
-   * page registry and fails the build rather than shipping a dead or
-   * gated route.
+   * ⚠ PLAIN TEXT AGAIN, NOT `ReactNode` (owner, 2026-09-04).
+   *
+   * It carried inline `ApprovedInlineLink`s for one day. The owner
+   * asked for the named destinations to come OUT of the paragraph and
+   * into `links` below, where they are scannable and the card's
+   * outbound routes are legible at a glance instead of buried mid
+   * sentence. Do not put links back in here: a link in both places
+   * would give the same destination two competing affordances in one
+   * card.
    */
-  description: ReactNode
+  description: string
+  /** Small label above the title, e.g. "Explore services". */
+  category: string
+  /** Which mark the card wears — mapped to a component, not a raw name. */
+  icon: 'search-check' | 'map-pinned' | 'building-2' | 'message-square-text'
   /**
-   * Closing link beneath the description.
+   * Which accent the card wears.
+   *
+   * `blue` is `--accent-secondary`, `green` is `--accent`, `navy` is
+   * `--brand`. All three are existing palette tokens; no fourth colour
+   * was introduced for this.
+   */
+  accent: 'blue' | 'green' | 'navy'
+  /** Label above the link list. Ignored when `links` is empty. */
+  linksHeading?: string
+  /**
+   * Named destinations, rendered as a scannable list.
+   *
+   * Empty is a real state, not an oversight: the contact card has
+   * nothing to enumerate, and the block is skipped entirely rather
+   * than rendering a heading over nothing (18 §120).
+   */
+  links?: readonly RoutingLink[]
+  /**
+   * Bottom-aligned closing link.
    *
    * Approved page id only, resolved through the approved-link layer at
    * render — never an href (CLAUDE.md §37, 16 §25).

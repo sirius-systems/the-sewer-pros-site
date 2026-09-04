@@ -188,53 +188,65 @@ export const homeContent: HomePageContent = {
     Wording is unchanged from the approved copy. Only the named terms
     are wrapped.
   */
+  /*
+    ⚠ THE NAMED DESTINATIONS LIVE IN `links`, NOT IN `description`.
+
+    They were inline `ApprovedInlineLink`s inside the paragraph for one
+    day (2026-09-04) and the owner asked for them pulled out into a
+    scannable list the same day. `description` is plain text now.
+
+    Do not reintroduce a link inside a description: the same
+    destination would then carry two competing affordances in one card,
+    and the list is the one a reader scans.
+
+    Every `pageId` below still resolves through the approved registry at
+    render, so a gated or unauthored page fails there rather than
+    shipping a dead link (16 §25, CLAUDE.md §37, §51).
+
+    ⚠ THE COMMERCIAL IDS ARE `com-*`, NOT `svc-commercial-*`. The
+    latter are SERVICE ids in the service registry, not PAGE ids, and
+    would throw at the resolver. Same substitution the inline-links
+    version already made.
+  */
   routing: [
     {
       pageId: id('hub-services'),
-      description: (
-        <>
-          Browse our{' '}
-          <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
-            sewer camera inspection
-          </ApprovedInlineLink>
-          ,{' '}
-          <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
-            sewer cleaning
-          </ApprovedInlineLink>
-          ,{' '}
-          <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
-            hydro jetting
-          </ApprovedInlineLink>
-          , and{' '}
-          <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
-            sewer line locating
-          </ApprovedInlineLink>{' '}
-          services, so you find the right fit for what&rsquo;s happening in your
-          line before committing to any work.
-        </>
-      ),
+      category: 'Explore services',
+      icon: 'search-check',
+      accent: 'blue',
+      description:
+        'Sewer camera inspection, cleaning, hydro jetting, and line locating, so you find the right fit for what\u2019s happening in your line. See the evidence before committing to any work.',
+      linksHeading: 'Popular services',
+      links: [
+        {
+          pageId: id('svc-sewer-camera-inspection'),
+          label: 'Sewer Camera Inspection',
+        },
+        { pageId: id('svc-sewer-cleaning'), label: 'Sewer Cleaning' },
+        { pageId: id('svc-hydro-jetting'), label: 'Hydro Jetting' },
+        { pageId: id('svc-sewer-line-locating'), label: 'Sewer Line Locating' },
+      ],
       secondaryLink: { pageId: id('hub-services'), label: 'See all services' },
     },
     {
       pageId: id('hub-locations'),
-      description: (
-        <>
-          Check coverage in{' '}
-          <ApprovedInlineLink pageId={id('market-st-louis-mo')}>
-            St. Louis
-          </ApprovedInlineLink>
-          ,{' '}
-          <ApprovedInlineLink pageId={id('market-san-diego-ca')}>
-            San Diego
-          </ApprovedInlineLink>
-          , and{' '}
-          <ApprovedInlineLink pageId={id('market-las-vegas-nv')}>
-            Las Vegas
-          </ApprovedInlineLink>{' '}
-          so you know upfront whether service is available in your area before
-          you schedule.
-        </>
-      ),
+      category: 'Check coverage',
+      icon: 'map-pinned',
+      accent: 'green',
+      /*
+        ⚠ "We serve" is a SERVICE-AREA statement, not an office claim.
+        CLAUDE.md §11 draws that line and 18 §87 wants it visually
+        explicit. No address, no branch, no "our location" anywhere in
+        this card or the pages it links to.
+      */
+      description:
+        'We serve St. Louis, San Diego, and Las Vegas. Check coverage in your area so you know upfront whether service is available before you schedule.',
+      linksHeading: 'Service areas',
+      links: [
+        { pageId: id('market-st-louis-mo'), label: 'St. Louis' },
+        { pageId: id('market-san-diego-ca'), label: 'San Diego' },
+        { pageId: id('market-las-vegas-nv'), label: 'Las Vegas' },
+      ],
       secondaryLink: {
         pageId: id('hub-locations'),
         label: 'See all service locations',
@@ -242,24 +254,17 @@ export const homeContent: HomePageContent = {
     },
     {
       pageId: id('hub-commercial'),
-      description: (
-        <>
-          <ApprovedInlineLink pageId={id('com-camera')}>
-            Sewer inspection
-          </ApprovedInlineLink>
-          ,{' '}
-          <ApprovedInlineLink pageId={id('com-sewer-cleaning')}>
-            cleaning
-          </ApprovedInlineLink>
-          , and{' '}
-          <ApprovedInlineLink pageId={id('com-hydro-jetting')}>
-            hydro jetting
-          </ApprovedInlineLink>{' '}
-          for commercial properties, multi-family buildings, and property
-          managers, so recurring backups and drainage issues get handled without
-          disrupting your operations.
-        </>
-      ),
+      category: 'Property solutions',
+      icon: 'building-2',
+      accent: 'navy',
+      description:
+        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multi-family buildings, and property managers. Recurring backups and drainage issues get handled without disrupting your operations.',
+      linksHeading: 'Commercial services',
+      links: [
+        { pageId: id('com-camera'), label: 'Sewer Camera Inspection' },
+        { pageId: id('com-sewer-cleaning'), label: 'Sewer Cleaning' },
+        { pageId: id('com-hydro-jetting'), label: 'Hydro Jetting' },
+      ],
       secondaryLink: {
         pageId: id('hub-commercial'),
         label: 'See all commercial services',
@@ -267,13 +272,16 @@ export const homeContent: HomePageContent = {
     },
     {
       pageId: id('core-contact'),
-      description: (
-        <>
-          Reach out to schedule a sewer inspection, ask about a problem
-          you&rsquo;re already seeing, or get a straight answer before you
-          commit to bigger work.
-        </>
-      ),
+      category: 'Talk with us',
+      icon: 'message-square-text',
+      accent: 'green',
+      description:
+        'Reach out to schedule a sewer inspection or ask about a problem you\u2019re already seeing. Get a straight answer before you commit to bigger work.',
+      /*
+        No `links` and no `linksHeading`: there is nothing to enumerate
+        under "contact us", and the render skips the whole block rather
+        than putting a heading over an empty list (18 §120).
+      */
       secondaryLink: { pageId: id('core-contact'), label: 'Contact us' },
     },
   ],
