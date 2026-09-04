@@ -397,6 +397,17 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         variant="split"
         title={content.cta?.title ?? 'Schedule a sewer camera inspection.'}
         body={content.cta?.body}
+        /*
+          ⚠ `null`, NOT OMITTED. Undefined would fall back to the
+          global `PRIMARY_CTA` and put the button back.
+
+          The lead form sits in the `proof` slot beside this copy and
+          carries its own submit button. A second action pointing at
+          `/contact/` while a contact form is already on screen is a
+          competing ask rather than a stronger one, and 18 §62 warns
+          against exactly that (owner, 2026-09-04).
+        */
+        action={null}
         backgroundImage={content.ctaBackground}
         proof={
           /*
