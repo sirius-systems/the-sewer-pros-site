@@ -1,6 +1,7 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
+  HeroBackdrop,
   TrustBar,
   ConfidenceModule,
   confidenceModuleRenders,
@@ -146,12 +147,45 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         faq: content.faq,
       }}
     >
+      {/*
+        The hero carries a photographic backdrop and the lead form, on
+        owner direction (2026-09-03). Both are homepage-only.
+
+        `variant` stays `editorial` and that is not an oversight: the
+        variant governs the copy block, and the copy block here is
+        still headline-and-intro with no supporting picture inside the
+        container. The backdrop is behind the section and the form is
+        `aside`, neither of which is `media`.
+
+        ⚠ The form is `idPrefix="hero-lead"` because the closing
+        CtaSection renders the same form lower down. Two instances with
+        the default prefix emit duplicate field ids and break every
+        label in the second one. Change one, check the other.
+      */}
       <Hero
         variant="editorial"
         eyebrow={content.hero.eyebrow}
         title={content.hero.title}
         intro={content.hero.intro}
         secondaryAction={{ href: '/services/', label: 'View services' }}
+        backdrop={<HeroBackdrop />}
+        aside={
+          /*
+            A solid card, not a translucent panel. The form's inputs,
+            labels and focus rings are all built for a light surface
+            (components/ui/Field.tsx); floating them on a scrimmed
+            photograph would mean restyling every control for an
+            unpredictable backdrop, and unpredictable is the operative
+            word with five rotating frames.
+          */
+          <div className="rounded-md border border-border bg-surface p-6 shadow-sm sm:p-8">
+            <LeadFormSection
+              bare
+              id="hero-request-service"
+              idPrefix="hero-lead"
+            />
+          </div>
+        }
       />
 
       <TrustBar />
