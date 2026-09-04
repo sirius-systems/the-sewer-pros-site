@@ -226,7 +226,10 @@ export const homeContent: HomePageContent = {
         { pageId: id('svc-hydro-jetting'), label: 'Hydro Jetting' },
         { pageId: id('svc-sewer-line-locating'), label: 'Sewer Line Locating' },
       ],
-      secondaryLink: { pageId: id('hub-services'), label: 'See all services' },
+      secondaryLink: {
+        pageId: id('hub-services'),
+        label: 'Explore All Services',
+      },
     },
     {
       pageId: id('hub-locations'),
@@ -249,7 +252,7 @@ export const homeContent: HomePageContent = {
       ],
       secondaryLink: {
         pageId: id('hub-locations'),
-        label: 'See all service locations',
+        label: 'Check Service Areas',
       },
     },
     {
@@ -267,7 +270,7 @@ export const homeContent: HomePageContent = {
       ],
       secondaryLink: {
         pageId: id('hub-commercial'),
-        label: 'See all commercial services',
+        label: 'Explore Commercial Services',
       },
     },
     {
@@ -282,7 +285,10 @@ export const homeContent: HomePageContent = {
         under "contact us", and the render skips the whole block rather
         than putting a heading over an empty list (18 §120).
       */
-      secondaryLink: { pageId: id('core-contact'), label: 'Contact us' },
+      secondaryLink: {
+        pageId: id('core-contact'),
+        label: 'Contact The Sewer Pros',
+      },
     },
   ],
   routingBackground: {

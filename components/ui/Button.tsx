@@ -29,7 +29,14 @@ import { cn } from '@/lib/utils/cn'
  * Hover changes opacity and background but never scale — 18 §93 warns
  * against hover scaling that shifts layout.
  */
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'accent'
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'accent'
+  | 'outline-blue'
+  | 'outline-green'
+  | 'outline-navy'
 
 const VARIANT: Record<ButtonVariant, string> = {
   primary:
@@ -64,6 +71,45 @@ const VARIANT: Record<ButtonVariant, string> = {
   */
   accent:
     'bg-accent-secondary text-accent-secondary-foreground hover:opacity-90 rounded-md px-5 shadow-none',
+  /*
+    ==========================================================================
+    OUTLINED ACTIONS, ONE PER PALETTE ACCENT (owner, 2026-09-04)
+    ==========================================================================
+    Added for the homepage routing cards, where each card's footer action
+    has to carry the accent its own icon and top rule already use.
+
+    ⚠ THREE VARIANTS RATHER THAN ONE `outline` PLUS A COLOUR CLASS,
+    BECAUSE `cn()` IS A PLAIN JOIN AND NOT TAILWIND-MERGE. A caller
+    passing `border-accent` alongside a shared variant's own
+    `border-border` ships both and lets stylesheet order pick the
+    winner. Every competing declaration has to be resolved here, in one
+    string, or not at all.
+
+    ⚠ THESE ARE NOT PRIMARIES. `secondary` is still the neutral outline
+    button; these are the same weight with a stated accent. 18 §106's
+    "do not visually style every action as primary" holds: on the
+    routing grid three cards take an outline and only the contact card
+    takes the solid `primary` green.
+
+    Hover fills with the same token mixed 8% into white - the
+    derivation `Differentiator`, `AuthorityBand` and `RoutingCards`
+    already use for their tints, so a palette change carries through
+    rather than stranding a hard-coded pastel.
+
+    Contrast on the white card each of these sits on:
+      blue  `--accent-secondary`  5.83:1
+      green `--accent`            5.45:1
+      navy  `--brand`            14.2:1
+    and each holds on its own hover fill, which is 8% off white.
+    Borders are the same tokens, so the control's boundary clears 3:1
+    on all three.
+  */
+  'outline-blue':
+    'border border-accent-secondary bg-surface text-accent-secondary hover:bg-[color-mix(in_srgb,var(--color-accent-secondary)_8%,white)] rounded-md px-5',
+  'outline-green':
+    'border border-accent bg-surface text-accent hover:bg-[color-mix(in_srgb,var(--color-accent)_8%,white)] rounded-md px-5',
+  'outline-navy':
+    'border border-brand bg-surface text-brand hover:bg-[color-mix(in_srgb,var(--color-brand)_8%,white)] rounded-md px-5',
 }
 
 /**
