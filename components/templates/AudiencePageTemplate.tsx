@@ -187,7 +187,39 @@ export function AudiencePageTemplate({
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {/*
+        ⚠ THE AUDIENCE NAME COMES FROM `page.name`, NOT FROM A REGISTRY.
+
+        There is no audience data registry in this project. `types/audience.ts`
+        declares an `Audience` interface with a `name`, and
+        `LAUNCH_AUDIENCE_IDS`, but nothing under `data/` populates it — so
+        there is no `getAudience()` to call, unlike `getService` and
+        `requireLocation` used by the sibling templates.
+
+        `page.name` IS the audience's display name on all six approved
+        records ("Home Buyers", "Property Managers", "HOA Communities"),
+        so it is used directly rather than casing one out of the id,
+        which 09's slug note warns against for the analogous case.
+
+        The `audienceId` check is a guard on the page TYPE, not on where
+        the name comes from: it asserts this really is an audience page
+        before reading `page.name` as an audience name. If an audience
+        registry is ever added, this should read from it instead.
+
+        Heading pattern per the owner's FAQ heading structure
+        (2026-09-04): audience pages name no service, because an
+        audience page shows a filtered index of several (18 §113).
+      */}
+      {content.faq !== undefined && (
+        <FaqSection
+          title={
+            page.audienceId !== undefined
+              ? `Answers to common questions ${page.name} have`
+              : undefined
+          }
+          entries={content.faq}
+        />
+      )}
 
       <CtaSection
         variant="panel"
