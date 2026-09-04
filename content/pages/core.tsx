@@ -24,10 +24,8 @@
  * claims as though they covered another.
  */
 
-import Link from 'next/link'
-import type { ReactNode } from 'react'
 
-import { resolveApprovedLink } from '@/lib/links/approved-link'
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type {
   CorePageContent,
   HomePageContent,
@@ -37,28 +35,6 @@ import type {
 } from '@/types'
 
 const id = (value: string): PageId => value as PageId
-
-/**
- * Inline prose link to an approved page.
- *
- * Resolution happens at RENDER time, not module-evaluation time. This
- * file is loaded via `content/index.ts`, which is what
- * `approved-link.ts` reads `authoredPageIds` from — calling the
- * resolver while this module's body is still evaluating throws
- * "Cannot access before initialization" on that cycle.
- *
- * The href still comes from the registry rather than a literal, so
- * 16 §25 and CLAUDE.md §51 hold: the link names a page, never a path.
- */
-function ApprovedInlineLink({
-  pageId,
-  children,
-}: {
-  pageId: PageId
-  children: ReactNode
-}) {
-  return <Link href={resolveApprovedLink(pageId).href}>{children}</Link>
-}
 
 /* ==========================================================================
    Home — 18 §110, §38
