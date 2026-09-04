@@ -511,13 +511,23 @@ export function RoutingCards({
                 `ButtonLink`, so it renders an `<a>` rather than a
                 `<button>`: these navigate.
 
-                ⚠ NOT `w-full` ANY MORE (owner, 2026-09-04). Each
-                button now sizes to its own label and sits at the
-                card's left edge, so the four differ in width by
-                design. They still line up VERTICALLY: the row sits on
-                `mt-auto`, which is what stops the cards' differing
-                body lengths from staggering them, and that has
-                nothing to do with the button's width.
+                ⚠ FULL WIDTH ONLY WHERE THE CARDS STACK (owner,
+                2026-09-04). `w-full sm:w-auto`: below `sm` each card
+                is the full column and a content-width button floating
+                at its left edge reads as unfinished, so it fills. From
+                `sm` up the grid is two columns and the buttons size to
+                their own labels at the card's left edge, so the four
+                differ in width by design.
+
+                `sm` and not another breakpoint because that is exactly
+                where `CardGrid` goes from one column to two - the
+                button follows the layout rather than guessing at a
+                width.
+
+                They line up VERTICALLY at every size regardless: the
+                row sits on `mt-auto`, which is what stops the cards'
+                differing body lengths from staggering them, and that
+                has nothing to do with the button's width.
 
                 Focus comes from the global `:focus-visible` rule in
                 `app/globals.css` (2px `--accent-secondary`, 2px
@@ -528,6 +538,7 @@ export function RoutingCards({
                   <ButtonLink
                     href={resolveApprovedLink(item.secondaryLink.pageId).href}
                     variant={accent.button}
+                    className="w-full sm:w-auto"
                   >
                     {item.secondaryLink.label}
                     {/*
