@@ -139,6 +139,17 @@ export function Select({
 
 export interface RadioGroupProps {
   name: string
+  /**
+   * Prefix for the generated option ids. Defaults to `name`.
+   *
+   * ⚠ Set this when a page renders the same group twice. The ids below
+   * are derived, so two groups sharing a `name` would emit duplicate
+   * ids and every `<label>` would point at the first group's radio —
+   * clicking the second group's label would silently operate the
+   * first. `name` itself must NOT be varied to dodge that: radio
+   * grouping and the submitted field name both key off it.
+   */
+  idPrefix?: string
   legend: string
   options: readonly SelectOption[]
   required?: boolean
@@ -155,6 +166,7 @@ export interface RadioGroupProps {
  */
 export function RadioGroup({
   name,
+  idPrefix,
   legend,
   options,
   required = false,
@@ -166,7 +178,7 @@ export function RadioGroup({
       <legend className="text-sm font-medium text-foreground">{legend}</legend>
       <div className="mt-1.5 flex flex-wrap gap-x-6 gap-y-2">
         {options.map((option) => {
-          const id = `${name}-${option.value}`
+          const id = `${idPrefix ?? name}-${option.value}`
           return (
             <div key={option.value} className="flex items-center gap-2">
               <input

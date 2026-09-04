@@ -26,6 +26,23 @@ import { cn } from '@/lib/utils/cn'
  * — 18 §37 already states a hero "should not depend on a decorative
  * image to explain the page."
  *
+ * ---------------------------------------------------------------------------
+ * `backdrop` AND `aside` — THE HOMEPAGE COMPOSITION (2026-09-03)
+ * ---------------------------------------------------------------------------
+ * `backdrop` puts a full-bleed layer behind the hero and flips the copy
+ * to white. `aside` puts a second column beside the copy at 55/45,
+ * which is where the homepage lead form now lives, on owner direction.
+ *
+ * These are separate from `media` on purpose. `media` is a supporting
+ * picture INSIDE the container at 7/5; `aside` is a working column at
+ * 11/9, and a form is not a supporting picture. Passing both `media`
+ * and `aside` is meaningless, so `aside` wins and `media` is ignored.
+ *
+ * ⚠ `backdrop` IS WHAT MAKES THE COPY WHITE. The two are one decision:
+ * white copy without a backdrop is invisible on the page background,
+ * and dark copy over a photographic backdrop is unreadable. Do not
+ * split them.
+ *
  * Mobile order is copy → CTA → media (18 §151): the action must not be
  * pushed below an oversized hero image.
  *
@@ -43,6 +60,16 @@ export interface HeroProps {
   secondaryAction?: { href: string; label: string }
   /** Real photography only — see the note above. */
   media?: ReactNode
+  /**
+   * Full-bleed layer rendered behind the hero.
+   *
+   * Supplying this switches the copy to white and drops the section's
+   * own surface, so the backdrop must carry a scrim dark enough to
+   * hold that text. See `HeroBackdrop`.
+   */
+  backdrop?: ReactNode
+  /** Second column beside the copy at 55/45. Takes precedence over `media`. */
+  aside?: ReactNode
   className?: string
 }
 
@@ -54,14 +81,28 @@ export function Hero({
   primaryAction = PRIMARY_CTA,
   secondaryAction,
   media,
+  backdrop,
+  aside,
   className,
 }: HeroProps) {
-  const hasMedia = media !== undefined && variant !== 'editorial'
+  const hasAside = aside !== undefined
+  const hasMedia = !hasAside && media !== undefined && variant !== 'editorial'
+  const onBackdrop = backdrop !== undefined
 
   const copy = (
-    <div className={cn(!hasMedia && 'max-w-[var(--container-reading)]')}>
+    <div
+      className={cn(
+        !hasMedia && !hasAside && 'max-w-[var(--container-reading)]',
+        onBackdrop && 'text-white',
+      )}
+    >
       {eyebrow !== undefined && (
-        <p className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
+        <p
+          className={cn(
+            'text-caption font-semibold tracking-wide uppercase',
+            onBackdrop ? 'text-white' : 'text-muted-foreground',
+          )}
+        >
           {eyebrow}
         </p>
       )}
@@ -77,7 +118,18 @@ export function Hero({
       </h1>
 
       {intro !== undefined && (
-        <div className="mt-5 text-body-lg text-muted-foreground [&>*+*]:mt-4">
+        <div
+          className={cn(
+            'mt-5 text-body-lg [&>*+*]:mt-4',
+            /*
+              Opaque white, not white at an opacity. Hierarchy against
+              the headline is carried by size and weight instead —
+              blending white down over the scrim spends contrast margin
+              that the brightest frame has no room to give.
+            */
+            onBackdrop ? 'text-white' : 'text-muted-foreground',
+          )}
+        >
           {intro}
         </div>
       )}
@@ -97,19 +149,50 @@ export function Hero({
     </div>
   )
 
+  const body = hasAside ? (
+    /*
+      55/45, as directed. Expressed as 11fr/9fr because that IS 55/45
+      exactly, where a 12-column grid can only approximate it (7/5 is
+      58/42). `items-start` rather than `items-center`: the form column
+      is much taller than the copy, and centring the copy against it
+      leaves the headline floating in the middle of the hero.
+    */
+    <div className="grid gap-10 lg:grid-cols-[11fr_9fr] lg:items-start lg:gap-12">
+      <div>{copy}</div>
+      <div>{aside}</div>
+    </div>
+  ) : hasMedia ? (
+    // Appendix A: prefer an uneven split (7/5) over a balanced 6/6
+    // where one side is genuinely primary — an even split "reads as
+    // templated even when the content itself is left-aligned."
+    <div className="grid items-center gap-10 lg:grid-cols-12">
+      <div className="lg:col-span-7">{copy}</div>
+      <div className="lg:col-span-5">{media}</div>
+    </div>
+  ) : (
+    copy
+  )
+
+  if (!onBackdrop) {
+    return (
+      <Section density="sparse" className={className}>
+        {body}
+      </Section>
+    )
+  }
+
+  /*
+    `isolate` so the backdrop's negative z-index stays inside this
+    stacking context rather than sliding behind the page background,
+    and `overflow-hidden` so a cover-cropped frame cannot widen the
+    document. `surface="none"` because the backdrop is the surface.
+  */
   return (
-    <Section density="sparse" className={className}>
-      {hasMedia ? (
-        // Appendix A: prefer an uneven split (7/5) over a balanced 6/6
-        // where one side is genuinely primary — an even split "reads as
-        // templated even when the content itself is left-aligned."
-        <div className="grid items-center gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">{copy}</div>
-          <div className="lg:col-span-5">{media}</div>
-        </div>
-      ) : (
-        copy
-      )}
-    </Section>
+    <div className="relative isolate overflow-hidden">
+      {backdrop}
+      <Section density="sparse" surface="none" className={className}>
+        {body}
+      </Section>
+    </div>
   )
 }
