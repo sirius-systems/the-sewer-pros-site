@@ -4,6 +4,8 @@ import Link from 'next/link'
 import {
   Section,
   CardGrid,
+  ButtonLink,
+  type ButtonVariant,
   type SectionDensity,
   type SectionSurface,
 } from '@/components/ui'
@@ -190,24 +192,40 @@ const CARD_ICONS: Record<
  */
 const ACCENT: Record<
   RoutingContent['accent'],
-  { rule: string; mark: string; tile: string }
+  { rule: string; mark: string; tile: string; button: ButtonVariant }
 > = {
   blue: {
     rule: 'border-t-accent-secondary',
     mark: 'text-accent-secondary',
     tile: 'bg-[color-mix(in_srgb,var(--color-accent-secondary)_10%,white)]',
+    button: 'outline-blue',
   },
   green: {
     rule: 'border-t-accent',
     mark: 'text-accent',
     tile: 'bg-[color-mix(in_srgb,var(--color-accent)_10%,white)]',
+    button: 'outline-green',
   },
   navy: {
     rule: 'border-t-brand',
     mark: 'text-brand',
     tile: 'bg-[color-mix(in_srgb,var(--color-brand)_10%,white)]',
+    button: 'outline-navy',
   },
 }
+
+/**
+ * Cards whose footer action is the page's conversion rather than
+ * another browse step.
+ *
+ * ⚠ THIS IS WHY ONLY ONE OF THE FOUR IS SOLID. 18 §106: "Do not
+ * visually style every action as primary." Three of these cards route
+ * a visitor deeper into the site and take the outline treatment; the
+ * contact card asks for the conversion and takes the solid green. A
+ * second entry here would flatten that distinction, which is the thing
+ * §106 rules out.
+ */
+const SOLID_ACTION_PAGES: readonly string[] = ['core-contact']
 
 /** A right-facing chevron for the list rows. */
 function Chevron(props: IconProps) {
@@ -466,15 +484,48 @@ export function RoutingCards({
                 list above them run. `pt-6` rather than a margin, which
                 the auto margin would absorb.
               */}
+              {/*
+                ⚠ THE FOOTER ACTION IS A BUTTON; THE LINK LIST ABOVE IT
+                IS NOT. Owner direction, 2026-09-04. The named services,
+                markets and commercial services stay plain chevron links
+                - four cards each carrying five buttons would be a wall
+                of equal-weight actions, which is the failure 18 §62 and
+                §106 both name.
+
+                `ButtonLink`, so it renders an `<a>` rather than a
+                `<button>`: these navigate. `w-full` because it is what
+                aligns the four across the grid, and the row already
+                sits on `mt-auto` so the cards' differing body lengths
+                do not stagger them.
+
+                Focus comes from the global `:focus-visible` rule in
+                `app/globals.css` (2px `--accent-secondary`, 2px
+                offset) rather than a second treatment here.
+              */}
               {item.secondaryLink !== undefined && (
                 <div className="mt-auto pt-6">
-                  <Link
+                  <ButtonLink
                     href={resolveApprovedLink(item.secondaryLink.pageId).href}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                    variant={
+                      SOLID_ACTION_PAGES.includes(link.pageId)
+                        ? 'primary'
+                        : accent.button
+                    }
+                    className="w-full"
                   >
                     {item.secondaryLink.label}
-                    <span aria-hidden="true">&rarr;</span>
-                  </Link>
+                    {/*
+                      `shrink-0` so the arrow keeps its width when a
+                      long label meets a narrow card - "Explore
+                      Commercial Services" in a tablet column is the
+                      tight case. Without it the flex row would take
+                      the space out of the glyph before wrapping the
+                      text.
+                    */}
+                    <span aria-hidden="true" className="shrink-0">
+                      &rarr;
+                    </span>
+                  </ButtonLink>
                 </div>
               )}
             </div>
