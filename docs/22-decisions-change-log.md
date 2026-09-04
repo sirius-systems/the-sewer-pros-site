@@ -4023,7 +4023,7 @@ does not mean forms cannot be built.
 ## DEC-098 — Homepage Differentiator May Use Visual Emphasis
 
 **Date:** 2026-09-04
-**Status:** APPROVED
+**Status:** APPROVED — page scope SUPERSEDED by DEC-099 (the emphasis exception itself stands)
 **Impact:** Low
 **Decision Owner:** Business owner (Sedrick)
 **Affected Documents:**
@@ -4063,7 +4063,7 @@ This decision does **not** authorise:
 * any mark against the contractor column — no cross, X, red, warning colour, or strike-through
 * accusatory or integrity-based copy anywhere in the section
 * any new claim about repair contractors in general
-* extending the emphasis treatment to the `split` variant or to service pages
+* ~~extending the emphasis treatment to the `split` variant or to service pages~~ — superseded by DEC-099, which extends it site-wide and removes the `split` variant
 
 A change doing any of those needs its own decision.
 
@@ -4073,6 +4073,56 @@ Recorded here as well as in the file because it is the **second** knowing except
 
 Desktop and mobile render from one `differentiatorComparison.rows` array, so the two layouts cannot drift apart in wording.
 
+
+---
+
+## DEC-099 — Differentiator Comparison Table Applies Site-Wide
+
+**Date:** 2026-09-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` DEC-098 (page scope superseded)
+* `components/sections/Differentiator.tsx`
+* `components/templates/ServicePageTemplate.tsx`
+* `components/templates/AudiencePageTemplate.tsx`
+* `data/business/positioning.ts`
+
+### Decision
+
+**Every page that renders the differentiator renders the comparison table.** DEC-098 scoped it to the homepage; that limit is lifted one day later at the owner's direction.
+
+The plain editorial `split` variant and its `differentiatorContrast` data are **removed**, not left in place unreferenced.
+
+### Reason
+
+DEC-098's emphasis exception was written for one page because that is what had been asked for. The reasoning behind it — that emphasis added to one column does not misrepresent the alternative, where a mark against the other one would — was never page-specific, so nothing in it argued for keeping service and audience pages on a different treatment.
+
+Two renderings of the same claim across one site is the drift risk this project keeps designing against. One treatment, one data source.
+
+### Previous State
+
+| Page family | Variant | Heading |
+| ----------- | ------- | ------- |
+| Home | `comparison-table` | "Diagnosis separated from the sale" |
+| Core service (`showDifferentiator: true`, 5 pages) | `split` | "Inspection without a repair sale attached" |
+| Audience (6 pages) | `split` | "Why an independent inspection matters here" |
+
+### New State
+
+All twelve render `differentiatorComparison`, heading included.
+
+### Consequences Accepted
+
+**Two contextual headings are gone.** The service and audience headings above were tuned to their page family; `differentiatorComparison` owns one heading for every page, because DEC-098 fixed a single source for it and re-opening a per-page override would restore exactly the drift that decision closed. Reversing this means deciding where the second source lives.
+
+**The section moves to the brand surface on service and audience pages.** `TrustBar` is also `brand`, and 18 §11 names stacked dark sections as an anti-pattern. All eleven affected pages carry a `body` block between the two, audited on 2026-09-04. A future page reaching this section without one must pass `surface="muted"` rather than leave the pair adjacent — noted at both call sites.
+
+### Scope Limits
+
+DEC-098's other limits are unchanged and still binding: no mark against the contractor column, no accusatory or integrity-based copy, no new claim about repair contractors in general.
 
 ---
 

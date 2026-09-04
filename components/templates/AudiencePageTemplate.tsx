@@ -137,7 +137,20 @@ export function AudiencePageTemplate({
         </Section>
       )}
 
-      <Differentiator title="Why an independent inspection matters here" />
+      {/*
+        ⚠ BRAND SURFACE, AND THE SECTION ABOVE IT MATTERS. `TrustBar`
+        is also `brand`, so this must not follow it directly — 18 §11
+        names stacked dark sections as an anti-pattern, and the comment
+        at the top of this file relies on at least one non-brand
+        section separating them.
+
+        The `body` block above is that separator. Every page reaching
+        this branch has one (audited 2026-09-04). A page WITHOUT `body`
+        would put two brand surfaces together, so if that state ever
+        becomes reachable, give this section `surface="muted"` there
+        rather than leaving the pair adjacent.
+      */}
+      <Differentiator />
 
       {content.problems !== undefined && (
         <ProblemGrid

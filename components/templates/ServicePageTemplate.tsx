@@ -56,8 +56,10 @@ import type { MasterPageRecord, ServicePageContent } from '@/types'
  * authority band as separate sections, so both appear here and they are
  * not alternatives:
  *
- *   Differentiator  18 §64's model contrast — muted, editorial, two
- *                   columns. Opt-in per page via `showDifferentiator`.
+ *   Differentiator  18 §64's model contrast, as the aligned comparison
+ *                   table on the brand surface (DEC-098, DEC-099).
+ *                   Opt-in per page via `showDifferentiator`. It owns
+ *                   its own heading; this template passes none.
  *   AuthorityBand   the brand-surface proof points, always rendered.
  *
  * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="panel"`
@@ -142,9 +144,20 @@ export function ServicePageTemplate({
         </Section>
       )}
 
-      {content.showDifferentiator === true && (
-        <Differentiator title="Inspection without a repair sale attached" />
-      )}
+      {/*
+        ⚠ BRAND SURFACE, AND THE SECTION ABOVE IT MATTERS. `TrustBar`
+        is also `brand`, so this must not follow it directly — 18 §11
+        names stacked dark sections as an anti-pattern, and the comment
+        at the top of this file relies on at least one non-brand
+        section separating them.
+
+        The `body` block above is that separator. Every page reaching
+        this branch has one (audited 2026-09-04). A page WITHOUT `body`
+        would put two brand surfaces together, so if that state ever
+        becomes reachable, give this section `surface="muted"` there
+        rather than leaving the pair adjacent.
+      */}
+      {content.showDifferentiator === true && <Differentiator />}
 
       {content.problems !== undefined && (
         <ProblemGrid
