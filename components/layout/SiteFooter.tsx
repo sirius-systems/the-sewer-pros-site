@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { resolveFooterNav } from '@/data/navigation'
 import { TrackedPhoneLink } from '@/components/tracking'
-import { SITE_NAME, organization, contact } from '@/data/business'
+import { SITE_NAME, organization } from '@/data/business'
+import { marketList, marketOperatingDetail } from '@/data/markets/markets'
 
 /**
  * Site footer.
@@ -27,6 +28,24 @@ import { SITE_NAME, organization, contact } from '@/data/business'
  * Las Vegas WAS a third omission, held out while DEC-063 gated it.
  * DEC-080 released that gate, and `market-las-vegas-nv` is now listed
  * in `data/navigation/navigation.ts` alongside the other two markets.
+ * As of 2026-09-04 it carries a phone and email here too, closing the
+ * last place where it was listed as a market but not contactable.
+ *
+ * ---------------------------------------------------------------------------
+ * CONTACT DETAIL READS FROM THE MARKET REGISTRY
+ * ---------------------------------------------------------------------------
+ * ⚠ DO NOT HARDCODE A NUMBER OR AN EMAIL BACK INTO THIS FILE.
+ *
+ * It used to: St. Louis came from `contact` (the St. Louis-scoped
+ * export in organization.ts) and San Diego's number was a literal in
+ * the markup, which is how San Diego ended up with a phone and no
+ * email and Las Vegas with neither. DEC-083 flagged
+ * `marketOperatingDetail` as populated but not consumed everywhere;
+ * this closes that gap for the footer.
+ *
+ * The practical consequence: DEC-097 changed San Diego's email in
+ * `markets.ts` alone and it appeared here for free. A hardcoded copy
+ * would have been a second place to miss.
  */
 /**
  * Wide-breakpoint column count for the footer nav groups.
@@ -71,32 +90,45 @@ export function SiteFooter() {
             </p>
 
             {/*
-              Labelled by market. Two numbers exist (DEC-070, DEC-071)
-              and 01 §20 forbids presenting one market's contact detail
-              as though it covered another.
+              Labelled by market, and separately. Three markets publish
+              three different numbers, emails and founding years
+              (DEC-070, DEC-071, DEC-073). 01 §20 forbids presenting
+              one market's contact detail as though it covered another,
+              so these are never merged into a single block.
+
+              A market with no `marketOperatingDetail` record renders
+              nothing rather than a heading with nothing under it —
+              `marketOperatingDetail` is a `Partial` record, and a
+              market listed in navigation is not automatically a market
+              with published contact facts.
             */}
             <div className="mt-6 flex flex-col gap-1 text-sm">
-              <p className="opacity-70">St. Louis</p>
-              <TrackedPhoneLink
-                phoneE164={contact.phoneE164}
-                ctaLocation="footer"
-                context={{ market_id: 'st-louis-mo' }}
-                className="hover:underline"
-              >
-                {contact.phone}
-              </TrackedPhoneLink>
-              <a href={`mailto:${contact.email}`} className="hover:underline">
-                {contact.email}
-              </a>
-              <p className="mt-3 opacity-70">San Diego</p>
-              <TrackedPhoneLink
-                phoneE164="+1-858-257-2888"
-                ctaLocation="footer"
-                context={{ market_id: 'san-diego-ca' }}
-                className="hover:underline"
-              >
-                (858) 257-2888
-              </TrackedPhoneLink>
+              {marketList.map((market, i) => {
+                const detail = marketOperatingDetail[market.id]
+                if (detail === undefined) return null
+
+                return (
+                  <div key={market.id} className="flex flex-col gap-1">
+                    <p className={i === 0 ? 'opacity-70' : 'mt-3 opacity-70'}>
+                      {market.city}
+                    </p>
+                    <TrackedPhoneLink
+                      phoneE164={detail.phoneE164}
+                      ctaLocation="footer"
+                      context={{ market_id: market.id }}
+                      className="hover:underline"
+                    >
+                      {detail.phone}
+                    </TrackedPhoneLink>
+                    <a
+                      href={`mailto:${detail.email}`}
+                      className="hover:underline"
+                    >
+                      {detail.email}
+                    </a>
+                  </div>
+                )
+              })}
             </div>
           </div>
 
