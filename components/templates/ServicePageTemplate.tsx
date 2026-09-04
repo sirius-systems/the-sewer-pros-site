@@ -187,6 +187,7 @@ export function ServicePageTemplate({
         <RelatedLinks
           title={content.relatedTitle ?? 'Related services'}
           pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
         />
       )}
 

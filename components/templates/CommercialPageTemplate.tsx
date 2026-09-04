@@ -172,6 +172,7 @@ export function CommercialPageTemplate({
         <RelatedLinks
           title={content.relatedTitle ?? 'Related commercial services'}
           pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
         />
       )}
 

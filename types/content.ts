@@ -175,6 +175,24 @@ export interface BasePageContent {
    */
   relatedPageIds?: readonly PageId[]
   relatedTitle?: string
+  /**
+   * Optional one-line summary per related page, keyed by page id.
+   *
+   * Passed straight through to `RelatedLinks`' own `descriptions`
+   * prop. Absent entries render title-only, which is what
+   * `RelatedLinks` already does unprompted (18 §51 - the page name is
+   * the dominant element by default).
+   *
+   * ⚠ It describes whichever page list the template hands to
+   * `RelatedLinks`, not only `relatedPageIds`. Location pages render
+   * `servicePageIds` there and market pages render `locationPageIds`;
+   * both look up by page id, so one map serves all three.
+   *
+   * Keys that are not in the page's `relatedPageIds` are simply never
+   * read: `RelatedLinks` looks up by the ids it is rendering, so a
+   * stale or mistargeted key renders nothing rather than erroring.
+   */
+  relatedDescriptions?: Readonly<Partial<Record<PageId, string>>>
   cta?: CtaContent
 }
 

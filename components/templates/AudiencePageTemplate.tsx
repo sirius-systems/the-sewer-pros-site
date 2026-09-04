@@ -184,6 +184,7 @@ export function AudiencePageTemplate({
         <RelatedLinks
           title={content.relatedTitle ?? 'Related reading'}
           pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
         />
       )}
 

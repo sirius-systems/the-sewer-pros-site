@@ -118,6 +118,7 @@ export function CorePageTemplate({
         <RelatedLinks
           title={content.relatedTitle ?? 'Related pages'}
           pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
         />
       )}
 
