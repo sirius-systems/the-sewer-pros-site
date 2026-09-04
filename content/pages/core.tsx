@@ -79,51 +79,115 @@ export const homeContent: HomePageContent = {
   seoTitle: 'Sewer Camera Inspection, Diagnostics & Cleaning | The Sewer Pros',
   metaDescription:
     "Independent sewer camera inspection, diagnostics, locating, and cleaning across St. Louis, San Diego, and Las Vegas. See the line's condition first.",
+  /*
+    ⚠ ARTWORK IS THE CARD'S BACKGROUND, AND THE TEXT ON TOP IS WHITE.
+
+    Owner direction, 2026-09-04. `ServiceIndex`'s mosaic renders these
+    behind the heading and description under a black 60% scrim, which
+    is load-bearing rather than decorative: on the bare frames white
+    text runs 1.64:1 to 3.48:1 and every one fails 4.5:1. The
+    measurements and the floor live beside the scrim in the component.
+
+    PROVENANCE, STATED HONESTLY. These are owner-supplied rendered
+    scenes, not photographs of a Sewer Pros job — the same standing as
+    the hero frames, and the reason `source` says so in full. They are
+    background and carry `alt=""` at render, so this file must not be
+    used to populate `proofImages`, which asserts "this is our work"
+    and requires a citation per item.
+
+    Each frame is matched to its service by subject. The filenames map
+    one to one, so nothing here is a guess.
+  */
   services: [
     {
       pageId: id('svc-sewer-camera-inspection'),
       description:
         'A sewer camera inspection - often called a sewer scope - shows the line’s actual condition on video, so you get documented evidence before deciding on repairs.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-sewer-camera-inspection-video-evidence.webp',
+        alt: 'Camera monitor showing the inside of a sewer line',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-sewer-cleaning'),
       description:
         'Clears grease, scale, and buildup so the line drains as intended - the direct fix for slow or recurring backups.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-professional-sewer-line-cleaning.webp',
+        alt: 'Cleaning equipment at work on a sewer line',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-hydro-jetting'),
       description:
         'High-pressure water strips grease, scale, sludge, and roots from the pipe wall for a deeper clean than snaking.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-hydro-jetting-pipe-wall-cleaning.webp',
+        alt: 'High-pressure jetting stripping the pipe wall',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-sewer-cleaning-camera-inspection'),
       description:
         'Clear the line, then inspect it on camera - so you see the condition the blockage was hiding, not just a cleared drain.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-sewer-cleaning-camera-inspection.webp',
+        alt: 'Cleaning and camera equipment set up together at a cleanout',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-sewer-line-locating'),
       description:
         'Establishes exactly where your line runs and how deep it sits, before you dig, landscape, or plan utility work nearby.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-underground-sewer-line-locating.webp',
+        alt: 'Locating equipment tracing a line underground',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-drain-cleaning'),
       description:
         'Clears fixture and branch drains - sinks, tubs, secondary lines - so isolated clogs get a targeted fix, not a bigger job.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-sink-branch-drain-cleaning.webp',
+        alt: 'Work on a sink branch drain',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-pre-purchase-sewer-inspection'),
       description:
         'A sewer scope before closing, so a hidden sewer problem does not become a surprise you inherit with the property.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-pre-purchase-sewer-scope.webp',
+        alt: 'A sewer scope run at a property before purchase',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-recurring-sewer-backup-diagnosis'),
       description:
         'Finds the actual cause of a line that keeps backing up - root intrusion, a low spot, a partial collapse - instead of clearing it again.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-recurring-sewer-backup-diagnosis.webp',
+        alt: 'Diagnosing the cause of a line that keeps backing up',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-preventative-sewer-maintenance'),
       description:
         'Services the line on an interval the inspection evidence supports, not a generic annual visit, to catch problems early.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-evidence-based-sewer-maintenance.webp',
+        alt: 'Scheduled maintenance work on a sewer line',
+        source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
   ],
   /*

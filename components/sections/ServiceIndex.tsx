@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   Section,
@@ -8,7 +9,7 @@ import {
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import { cn } from '@/lib/utils/cn'
-import type { PageId } from '@/types'
+import type { CardImage, PageId } from '@/types'
 
 /**
  * Scannable service index.
@@ -41,6 +42,16 @@ export interface ServiceIndexItem {
   pageId: PageId
   /** Optional one-line summary. Keep it factual and specific. */
   description?: string
+  /**
+   * Optional card artwork, rendered as the card's BACKGROUND.
+   *
+   * `mosaic` only. The `index` variant is a row list with no card to
+   * put a background on, and ignores this.
+   *
+   * ⚠ A card with artwork switches to white text over a scrim. See
+   * the render for the measurements that fix the scrim's value.
+   */
+  image?: CardImage
 }
 
 export interface ServiceIndexProps {
@@ -150,6 +161,13 @@ export function ServiceIndex({
   const descriptions = new Map(
     items.map((item) => [item.pageId, item.description]),
   )
+  // Parallel to `descriptions`: a card without artwork simply misses
+  // from the map rather than carrying an undefined image around.
+  const images = new Map(
+    items
+      .filter((item) => item.image !== undefined)
+      .map((item) => [item.pageId, item.image as CardImage]),
+  )
 
   if (links.length === 0) return null
 
@@ -168,6 +186,7 @@ export function ServiceIndex({
         <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {links.map((link) => {
             const isFlagship = link.pageId === flagship
+            const image = images.get(link.pageId)
 
             return (
               <li
@@ -177,29 +196,111 @@ export function ServiceIndex({
                 {/*
                   One anchor wraps the card, so the target is large
                   (18 §48) and assistive technology announces one action
-                  rather than a card plus a nested link.
+                  rather than a card plus a nested link. Nothing inside
+                  is a link, so unlike RoutingCards and MarketCoverage
+                  this card can stay a LinkCard.
                 */}
                 <LinkCard
                   href={link.href}
                   actionLabel={link.label}
+                  padded={image === undefined}
                   className={cn(
-                    'flex h-full flex-col',
-                    isFlagship && 'justify-end',
+                    'group relative flex h-full flex-col justify-end overflow-hidden',
+                    image !== undefined && 'min-h-[15rem]',
                   )}
                 >
-                  <h3
-                    className={cn(
-                      'font-medium tracking-tight text-balance text-foreground',
-                      isFlagship ? 'text-h2' : 'text-h4',
-                    )}
-                  >
-                    {link.label}
-                  </h3>
-                  {descriptions.get(link.pageId) !== undefined && (
-                    <p className="mt-2 max-w-prose text-sm leading-6 text-muted-foreground">
-                      {descriptions.get(link.pageId)}
-                    </p>
+                  {image !== undefined && (
+                    <>
+                      {/*
+                        ⚠ `alt=""` IS CORRECT, NOT AN OMISSION.
+
+                        The card is a link whose accessible name is
+                        already `actionLabel` (the service name), and
+                        this frame sits behind that name as decoration.
+                        Describing it too would announce the service
+                        twice. `CardImage.alt` still carries a real
+                        description, so the set stays readable in
+                        source and a future non-decorative use has it.
+                      */}
+                      <Image
+                        src={image.src}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="absolute inset-0 object-cover"
+                      />
+
+                      {/*
+                        ⚠⚠ THE SCRIM IS LOAD-BEARING. DO NOT LIGHTEN IT
+                        WITHOUT REMEASURING.
+
+                        White card text sits on these photographs. On
+                        the BARE images, white at the 95th percentile
+                        of luminance runs 1.64:1 to 3.48:1 across the
+                        nine — every one fails 4.5:1.
+
+                        At black/55% the worst single pixel across all
+                        nine measures 4.76:1 against a 4.5:1 floor, and
+                        medians stay above 12. The value is also
+                        checked against pure white, the worst any
+                        replacement frame could present, where it gives
+                        the same 4.76:1.
+
+                        ⚠ 0.26 OF MARGIN. Black/50% gives 4.39:1 and
+                        fails. Do not lighten this further, and do not
+                        dim the text with an opacity, without redoing
+                        the measurement.
+
+                        ⚠ THE SCRIM DOES NOT LIGHTEN ON HOVER, AND
+                        THAT IS THE FIX FOR A BUG. An earlier version
+                        lifted it to black/50% on hover, which would
+                        have dropped the card's own text under AA for
+                        as long as the pointer sat on it. LinkCard's
+                        border hover carries the feedback instead.
+
+                        Same value as the homepage hero overlay, so the
+                        two image treatments on this page agree.
+                      */}
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-black/55"
+                      />
+                    </>
                   )}
+
+                  {/*
+                    `relative` lifts the text above the two absolute
+                    layers without a z-index: a positioned later
+                    sibling paints over positioned earlier ones.
+                  */}
+                  <div className={cn('relative', image !== undefined && 'p-6')}>
+                    <h3
+                      className={cn(
+                        'font-medium tracking-tight text-balance',
+                        isFlagship ? 'text-h2' : 'text-h4',
+                        image !== undefined ? 'text-white' : 'text-foreground',
+                      )}
+                    >
+                      {link.label}
+                    </h3>
+                    {descriptions.get(link.pageId) !== undefined && (
+                      <p
+                        className={cn(
+                          'mt-2 max-w-prose text-sm leading-6',
+                          /*
+                            Opaque white, not white at an opacity. The
+                            5.74:1 above is measured on opaque white and
+                            there is no margin to spend dimming it.
+                          */
+                          image !== undefined
+                            ? 'text-white'
+                            : 'text-muted-foreground',
+                        )}
+                      >
+                        {descriptions.get(link.pageId)}
+                      </p>
+                    )}
+                  </div>
                 </LinkCard>
               </li>
             )

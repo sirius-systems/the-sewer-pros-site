@@ -219,7 +219,20 @@ export interface BasePageContent {
 
 /** Home — 18 §110. */
 export interface HomePageContent extends BasePageContent {
-  services: readonly { pageId: PageId; description?: string }[]
+  /**
+   * Service cards for the mosaic.
+   *
+   * `image` is the card's BACKGROUND, not a crop above the text
+   * (owner, 2026-09-04). Homepage only: `MarketPageContent` and
+   * `AudiencePageContent` render `ServiceIndex`'s `index` variant,
+   * which is a row list with no card to put a background on, so their
+   * `services` deliberately keeps the narrower shape below.
+   */
+  services: readonly {
+    pageId: PageId
+    description?: string
+    image?: CardImage
+  }[]
   /** Intent-routing cards, rendered between hero and services. */
   routing?: readonly RoutingContent[]
   process?: readonly ProcessContent[]
