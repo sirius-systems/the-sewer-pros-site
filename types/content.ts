@@ -255,7 +255,14 @@ export interface HomePageContent extends BasePageContent {
    * See `ProcessSteps` for the measurement that fixes the scrim.
    */
   processBackground?: CardImage
-  differentiator?: { title: string; intro?: string }
+  /*
+   * ⚠ NO `differentiator` FIELD, DELIBERATELY. The homepage renders
+   * `Differentiator`'s `comparison-table` variant, which owns its own
+   * heading and intro in `differentiatorComparison`. A per-page
+   * override here would be a second source for the same two strings
+   * and would let the page state the differentiator differently from
+   * the table under it (owner, 2026-09-04).
+   */
 }
 
 /** Canonical service page — 18 §111. */

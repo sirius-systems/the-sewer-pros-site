@@ -114,7 +114,10 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
     ...(confidenceModuleRenders() ? (['standard'] as const) : []),
     ...(routingCardsRenders(content.routing) ? (['standard'] as const) : []),
     ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
-    ...(content.differentiator !== undefined ? (['standard'] as const) : []),
+    // The differentiator is unconditional now: it renders its own
+    // canonical comparison rather than per-page content that could be
+    // absent. No predicate to gate on, so the entry is a literal.
+    'standard',
     ...(marketCoverageRenders() ? (['dense'] as const) : []),
     ...(content.process !== undefined && processStepsRenders(content.process)
       ? (['standard'] as const)
@@ -217,7 +220,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           ConfidenceModule    default
           RoutingCards        muted
           ServiceIndex        default
-          Differentiator      muted
+          Differentiator      brand   ← comparison-table variant
           MarketCoverage      default
           ProcessSteps        muted
           AuthorityBand       brand
@@ -256,12 +259,19 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         variant="mosaic"
       />
 
-      {content.differentiator !== undefined && (
-        <Differentiator
-          title={content.differentiator.title}
-          intro={content.differentiator.intro}
-        />
-      )}
+      {/*
+        ⚠ NO `content.differentiator` GATE ANY MORE, AND NO title/intro
+        PASSED IN. `differentiatorComparison` owns its own heading and
+        intro, so `homeContent.differentiator` was a second source for
+        the same two strings — removed rather than left to drift out of
+        step with the table beneath it (owner, 2026-09-04).
+
+        ⚠ SURFACE IS `brand`, THE VARIANT'S DEFAULT, WHICH CHANGES THIS
+        SECTION'S NEIGHBOURS. `ServiceIndex` above and `MarketCoverage`
+        below are both `default`, so no two brand surfaces meet — the
+        adjacency 18 §11 names. See the surface order above.
+      */}
+      <Differentiator variant="comparison-table" />
 
       <MarketCoverage density="dense" />
 

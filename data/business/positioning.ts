@@ -98,6 +98,105 @@ export const differentiatorContrast = {
   },
 } as const
 
+/* ==========================================================================
+   Differentiator comparison — the homepage `comparison-table` variant
+   ========================================================================== */
+
+/** One criterion, with both business models' outcome for it. */
+export interface ComparisonRow {
+  id: string
+  label: string
+  /** Which mark represents this row — mapped to a component, not a raw name. */
+  icon: 'business-model' | 'what-you-receive' | 'what-happens-next' | 'repair-incentive'
+  contractor: string
+  ours: string
+}
+
+export interface DifferentiatorComparison {
+  heading: string
+  intro: string
+  contractorLabel: string
+  oursLabel: string
+  rows: readonly ComparisonRow[]
+  conclusion: string
+}
+
+/**
+ * The model contrast as an aligned comparison (owner, 2026-09-04).
+ *
+ * ADDITIONAL TO `differentiatorContrast` ABOVE, NOT A REPLACEMENT.
+ * That export still drives the `split` variant every service page
+ * renders, and is untouched.
+ *
+ * ===========================================================================
+ * ⚠ THE TONE CONSTRAINT IS UNCHANGED AND STILL BINDING
+ * ===========================================================================
+ * 18 §64 requires the presentation stay "factual and non-accusatory";
+ * 01 §72 and CLAUDE.md §32 forbid claiming competitors are dishonest
+ * or recommend unnecessary work. Every `contractor` string below is
+ * hedged to a MODEL and an INCENTIVE — "may perform", "may earn
+ * revenue" — because that is a description of how a business earns,
+ * not a claim about what it does to a customer.
+ *
+ * ⚠ DO NOT SHARPEN THESE. Dropping a "may", adding "instead of
+ * telling you the truth", or pairing a row with a cross or a warning
+ * colour turns a structural contrast into an accusation, which is the
+ * one thing this section may not do. The visual emphasis added on the
+ * homepage is emphasis on OUR column, never a mark against theirs —
+ * see the exception note in `Differentiator`.
+ *
+ * ⚠ NO NEW CLAIM ABOUT REPAIR CONTRACTORS IN GENERAL. Each row states
+ * only what follows from a company performing the repair it
+ * recommends, which is a definition rather than a finding.
+ *
+ * The `ours` side asserts nothing the site does not already say: no
+ * repair or replacement (CLAUDE.md §9), video evidence the customer
+ * keeps, cleaning as an approved service (06; 01 §2.2, §3).
+ */
+export const differentiatorComparison: DifferentiatorComparison = {
+  heading: 'Diagnosis separated from the sale',
+  intro:
+    'We inspect, document, and clean sewer lines. We do not perform sewer repair or replacement, so what we find does not become a repair quote from us.',
+  contractorLabel: 'A contractor that also sells repairs',
+  oursLabel: 'The Sewer Pros',
+  rows: [
+    {
+      id: 'business-model',
+      label: 'Business model',
+      icon: 'business-model',
+      contractor:
+        'Inspects the sewer line and may perform the repair it recommends.',
+      ours:
+        'We inspect, document, and clean sewer lines, but do not perform sewer repair or replacement.',
+    },
+    {
+      id: 'what-you-receive',
+      label: 'What you receive',
+      icon: 'what-you-receive',
+      contractor:
+        "Inspection findings that may lead directly to the contractor's own repair quote.",
+      ours: 'Video evidence and documented findings you can keep.',
+    },
+    {
+      id: 'what-happens-next',
+      label: 'What happens next',
+      icon: 'what-happens-next',
+      contractor: 'The same company may recommend and sell the repair.',
+      ours:
+        'You decide whether to clean the line, monitor the condition, or consult a separate repair provider.',
+    },
+    {
+      id: 'repair-incentive',
+      label: 'Repair incentive',
+      icon: 'repair-incentive',
+      contractor: 'The contractor may earn revenue from the repair it recommends.',
+      ours: 'We do not profit from a repair recommendation.',
+    },
+  ],
+  conclusion:
+    'Our job is to show you what is happening inside the line. The decision about what happens next remains yours.',
+}
+
 /**
  * The recurring process motif (18 §141).
  *
