@@ -4,6 +4,7 @@ import {
   LinkCard,
   CardGrid,
   type SectionDensity,
+  type SectionSurface,
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
@@ -62,6 +63,16 @@ export interface RoutingCardsProps {
    * a different value than this section would pick alone (18 §108).
    */
   density?: SectionDensity
+  /**
+   * Overrides the section's natural surface.
+   *
+   * Surface is a SEQUENCE decision, like `density` above: only the
+   * composing template knows what sits either side of this section,
+   * and the owner directed clear separation between adjacent sections
+   * (2026-09-04). A section cannot pick its own contrast against
+   * neighbours it cannot see.
+   */
+  surface?: SectionSurface
   id?: string
   eyebrow?: string
   title: string
@@ -92,6 +103,7 @@ export function routingCardsRenders(
 
 export function RoutingCards({
   density = 'standard',
+  surface = 'default',
   id = 'how-we-can-help',
   eyebrow,
   title,
@@ -117,7 +129,7 @@ export function RoutingCards({
   const columns = links.length % 3 === 0 ? 3 : 2
 
   return (
-    <Section density={density} labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <CardGrid columns={columns} itemCount={links.length} className="mt-10">
