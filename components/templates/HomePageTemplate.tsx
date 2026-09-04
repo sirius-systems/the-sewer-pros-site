@@ -365,6 +365,16 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       {content.faq !== undefined && (
         <FaqSection
           eyebrow={content.faqEyebrow}
+          /*
+            ⚠ SET HERE, NOT ON `FaqSection`'s DEFAULT. Six other
+            templates render that default - commercial, comparison,
+            core, hub, location and market - and "about sewer and
+            drain services" would be wrong on the About page and on a
+            market hub. The home page is the one that is genuinely
+            sitewide in scope, so it is the one that names the scope
+            (owner, 2026-09-04).
+          */
+          title="Common questions about sewer and drain services"
           entries={content.faq}
           columns={2}
         />
