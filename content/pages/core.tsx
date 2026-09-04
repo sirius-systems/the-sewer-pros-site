@@ -130,20 +130,24 @@ export const homeContent: HomePageContent = {
     {
       pageId: id('hub-services'),
       description:
-        'Browse sewer and drain services: inspection, cleaning, hydro jetting, and locating.',
+        
+        'Browse our sewer and drain services, including sewer camera inspection, sewer cleaning, hydro jetting, and sewer line locating, so you find the right fit for what’s happening in your line before committing to any work.',
     },
     {
       pageId: id('hub-locations'),
-      description: 'See coverage in St. Louis, San Diego, and Las Vegas.',
+      description:
+        'Check coverage in St. Louis, San Diego, and Las Vegas so you know upfront whether service is available in your area before you schedule.',
     },
     {
       pageId: id('hub-commercial'),
       description:
-        'Sewer and drain services for commercial properties and property managers.',
+        
+        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multi-family buildings, and property managers, so recurring backups and drainage issues get handled without disrupting your operations.',
     },
     {
       pageId: id('core-contact'),
-      description: 'Reach out to schedule an inspection or ask a question.',
+      description:
+        'Reach out to schedule a sewer inspection, ask about a problem you’re already seeing, or get a straight answer before you commit to bigger work.',
     },
   ],
   differentiator: {
