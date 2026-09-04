@@ -243,6 +243,14 @@ export interface HomePageContent extends BasePageContent {
    * their own opaque surface and sit on top of it.
    */
   routingBackground?: CardImage
+  /**
+   * Full-bleed artwork behind the final CTA (owner, 2026-09-04).
+   *
+   * SECTION-level, like `routingBackground` above and
+   * `processBackground` below. The lead form in the CTA's proof slot
+   * keeps its own opaque card and sits on top of it.
+   */
+  ctaBackground?: CardImage
   process?: readonly ProcessContent[]
   /**
    * Full-bleed artwork behind the process band (owner, 2026-09-04).

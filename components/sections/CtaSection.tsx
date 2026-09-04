@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Section, ButtonLink } from '@/components/ui'
 import { PRIMARY_CTA } from '@/components/layout/cta'
 import { cn } from '@/lib/utils/cn'
+import type { CardImage } from '@/types'
 
 /**
  * Conversion section.
@@ -64,6 +65,29 @@ export interface CtaSectionProps {
    * narrowed version of it.
    */
   phone?: { label: string; href: string }
+  /**
+   * Full-bleed artwork behind the whole section.
+   *
+   * ⚠ IT OVERRIDES THE VARIANT'S SURFACE, because the image is the
+   * surface. `Section` handles that and turns section text white; what
+   * this component owns is everything inside that sets its own colour.
+   *
+   * ⚠⚠ IT ALSO CHANGES THE BUTTON, AND THAT IS NOT COSMETIC. `band`
+   * and `split` use the green `primary` button, which is right on a
+   * light surface and wrong here: green against a scrimmed photograph
+   * is around 1.1:1 for the control's own boundary, against the 3:1
+   * that boundary needs to be identifiable. With an image the button
+   * drops to the light `secondary` fill, which is the same trade
+   * `panel` already makes on the brand surface.
+   *
+   * ⚠ ANY `proof` PASSED ALONGSIDE THIS MUST BRING ITS OWN OPAQUE
+   * SURFACE. The lead form's inputs, labels and focus rings are built
+   * for a light background (`components/ui/Field.tsx`); floating them
+   * on a photograph would mean restyling every control. The homepage
+   * hero already wraps the same form in a card for exactly this
+   * reason, and the final CTA does the same.
+   */
+  backgroundImage?: CardImage
   className?: string
 }
 
@@ -76,9 +100,15 @@ export function CtaSection({
   secondaryAction,
   proof,
   phone,
+  backgroundImage,
   className,
 }: CtaSectionProps) {
   const isPanel = variant === 'panel'
+  /*
+    Both states put light text on a dark ground, so they share most
+    treatments. They are NOT the same for opacity — see the body below.
+  */
+  const onDark = isPanel || backgroundImage !== undefined
 
   const content = (
     <div className={cn(variant === 'split' && 'lg:col-span-7')}>
@@ -96,7 +126,21 @@ export function CtaSection({
         <p
           className={cn(
             'mt-4 max-w-[var(--container-reading)] text-body-lg',
-            isPanel ? 'opacity-80' : 'text-muted-foreground',
+            /*
+              ⚠ OPAQUE WHITE OVER AN IMAGE, DIMMED ONLY ON `panel`.
+
+              `panel` sits on brand navy, which is dark enough that
+              white at 80% still measures about 11:1. A scrimmed
+              photograph is not: the scrim is sized so OPAQUE white
+              clears 4.5:1 by 0.26, and dimming to 80% drops the worst
+              case to 3.71:1, which fails. There is no margin here to
+              spend on an opacity.
+            */
+            backgroundImage !== undefined
+              ? 'text-white'
+              : isPanel
+                ? 'opacity-80'
+                : 'text-muted-foreground',
           )}
         >
           {body}
@@ -104,14 +148,25 @@ export function CtaSection({
       )}
 
       <div className="mt-8 flex flex-wrap items-center gap-3">
-        <ButtonLink
-          href={action.href}
-          variant={isPanel ? 'secondary' : 'primary'}
-        >
+        {/* See `backgroundImage` for why a dark ground forces `secondary`. */}
+        <ButtonLink href={action.href} variant={onDark ? 'secondary' : 'primary'}>
           {action.label}
         </ButtonLink>
         {secondaryAction !== undefined && (
-          <ButtonLink href={secondaryAction.href} variant="tertiary">
+          <ButtonLink
+            href={secondaryAction.href}
+            variant="tertiary"
+            /*
+              `tertiary` is `--accent-secondary`, tuned for a light
+              surface. Over a scrimmed photograph it is close to
+              invisible, so the link goes white and keeps its
+              underline.
+            */
+            className={cn(
+              backgroundImage !== undefined &&
+                'text-white hover:text-white hover:opacity-80',
+            )}
+          >
             {secondaryAction.label}
           </ButtonLink>
         )}
@@ -121,7 +176,11 @@ export function CtaSection({
         <p
           className={cn(
             'mt-4 text-sm',
-            isPanel ? 'opacity-80' : 'text-muted-foreground',
+            backgroundImage !== undefined
+              ? 'text-white'
+              : isPanel
+                ? 'opacity-80'
+                : 'text-muted-foreground',
           )}
         >
           Prefer to talk now?{' '}
@@ -141,7 +200,13 @@ export function CtaSection({
       // Panel is the page's strongest moment, so it gets sparse density
       // and the brand surface; band stays deliberately quiet.
       density={isPanel ? 'sparse' : 'dense'}
+      /*
+        `surface` is the fallback, not the current appearance: an image
+        overrides it inside `Section`, and this is what comes back if
+        the image is ever removed.
+      */
       surface={isPanel ? 'brand' : 'muted'}
+      backgroundImage={backgroundImage}
       labelledBy={id}
       className={className}
     >

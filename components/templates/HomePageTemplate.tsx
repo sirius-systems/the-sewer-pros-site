@@ -227,7 +227,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           ReviewMarquee       default
           RelatedLinks        muted
           FaqSection          default
-          CtaSection          muted
+          CtaSection          photo backdrop
 
         ⚠ INSERTING A SECTION HERE MEANS RE-CHECKING ITS NEIGHBOURS.
         Adding one without flipping what follows it puts two matching
@@ -345,16 +345,42 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         same change, since opening the gate would otherwise have
         rendered the same form twice on one page.
 
-        Note this drops the page's second brand surface: `split`
-        renders on `muted`, where `panel` used `brand`. AuthorityBand
-        remains the only brand section, which keeps 18 §11's rule
-        against stacking dark sections satisfied by a wider margin.
+        `split` renders on `muted` where `panel` used `brand`, so this
+        section is not one of the page's dark ones either way. With
+        `ctaBackground` set it is a photograph rather than the muted
+        band; `FaqSection` above it is `default`, so nothing dark meets
+        anything dark here.
       */}
       <CtaSection
         variant="split"
         title={content.cta?.title ?? 'Schedule a sewer camera inspection.'}
         body={content.cta?.body}
-        proof={<LeadFormSection bare density="standard" />}
+        backgroundImage={content.ctaBackground}
+        proof={
+          /*
+            ⚠ THE CARD IS WHAT MAKES THE FORM USABLE ON A PHOTOGRAPH,
+            NOT DECORATION. Its inputs, labels and focus rings are all
+            built for a light surface (components/ui/Field.tsx), and
+            floating them on a scrimmed frame would mean restyling
+            every control. This is the same wrapper, for the same
+            stated reason, that the hero puts around the same form.
+
+            It renders whether or not there is an image: on the muted
+            fallback surface a bordered white card still reads
+            correctly, and one form treatment on this page beats two.
+
+            ⚠ `text-foreground` IS LOAD-BEARING, NOT TIDINESS. An
+            image section sets `text-white` on its wrapper, and an
+            opaque card does NOT stop that inheriting. The form's
+            fields set their own colour and looked fine; its `<h2>`
+            does not, so "Request service" rendered white on white and
+            was invisible until this class was added. Any opaque card
+            dropped into an image section needs the same reset.
+          */
+          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            <LeadFormSection bare density="standard" />
+          </div>
+        }
       />
     </PageShell>
   )
