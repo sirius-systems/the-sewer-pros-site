@@ -39,6 +39,16 @@ import type { MarketId, PageId } from '@/types'
  * The heading default is therefore "Where we work", and callers should
  * keep any override in service-area terms.
  *
+ * ⚠ THE CARD BACKGROUNDS ADDED ON 2026-09-04 ARE MAPS, AND THAT IS
+ * DELIBERATELY NOT A CONTRADICTION OF THE ABOVE. 18 §50 permits a map
+ * that represents "Areas We Serve" and forbids fake office pins; 18
+ * §70 lists "office map pins", not maps, among the visuals that imply
+ * unverified facts. The three frames are metro-scale street maps with
+ * no marker, no address and no business name on them, so they show
+ * reach rather than a place the business occupies. A replacement map
+ * carrying a pin would break this section's whole premise — see
+ * `marketImages` for that warning and for the Google attribution one.
+ *
  * ⚠ The per-market location list added on 2026-09-04 does not change
  * that. It lists PUBLISHED PAGES, not places the business occupies:
  * no address, no pin, no hours, no office word anywhere in it.
@@ -190,8 +200,10 @@ export function MarketCoverage({
         string — which would quietly produce a wrong heading the day a
         record is renamed.
 
-        No map, pin, or address: 18 §86-87 — these are service markets,
-        not branches, and a name plus an arrow implies no office.
+        No pin and no address: 18 §86-87 — these are service markets,
+        not branches. The map behind the card shows the area served,
+        which 18 §50 allows; a name plus an arrow over it implies no
+        office.
       */}
       <CardGrid columns={3} itemCount={links.length} className="mt-10">
         {links.map((link) => {
@@ -221,40 +233,119 @@ export function MarketCoverage({
                     .filter((page) => page.marketId === marketId)
                     .map((page) => page.id as PageId),
                 )
-          // Artwork is optional and currently absent for every market.
-          // A card with one grows to carry a 7:4 crop above the label
-          // row; a card without one keeps exactly its current compact
-          // shape, with no crop container rendered at all (18 §40-42).
+          /*
+            Artwork is optional per market.
+
+            A card with one becomes an image card: the frame fills the
+            card as its BACKGROUND, the content sits at the bottom in
+            white over a scrim, and the card grows tall enough for that
+            composition to read (owner direction, 2026-09-04). A card
+            without one keeps exactly its previous compact shape, with
+            no image layer rendered at all — no grey box, no gradient
+            standing in for a missing picture (18 §40-42).
+          */
           const image = marketImages[link.pageId]
 
           return (
             <Card
               key={link.pageId}
               padded={image === undefined}
-              className={cn(image !== undefined && 'overflow-hidden')}
+              className={cn(
+                image !== undefined &&
+                  /*
+                    ⚠ THE HEIGHT IS ON THE CARD, NOT ON A CROP BOX.
+
+                    The image is a background here, so there is no
+                    aspect-ratio container to size. `min-h` rather than
+                    `h`: the location list is registry-driven and its
+                    length differs per market, so a fixed height would
+                    clip St. Louis or leave Las Vegas hollow. Cards in a
+                    grid row stretch to the tallest anyway.
+                  */
+                  'relative flex min-h-[20.8rem] flex-col justify-end overflow-hidden',
+              )}
             >
               {image !== undefined && (
-                <span className="relative block aspect-[7/4] w-full overflow-hidden">
+                <>
+                  {/*
+                    ⚠ `alt=""` IS CORRECT, NOT AN OMISSION.
+
+                    Unlike the previous crop — a picture above the
+                    label — this frame sits behind text as decoration,
+                    and the card's own heading link already names the
+                    market. Announcing "Map of the Las Vegas valley"
+                    on top of that says the place twice.
+                    `CardImage.alt` still carries a real description so
+                    the set stays readable in source.
+                  */}
                   <Image
                     src={image.src}
-                    alt={image.alt}
+                    alt=""
                     fill
-                    className="object-cover"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="absolute inset-0 object-cover"
                   />
-                </span>
+
+                  {/*
+                    ⚠⚠ THE SCRIM IS LOAD-BEARING. DO NOT LIGHTEN IT.
+
+                    Every piece of copy in this card turns white when
+                    there is an image behind it, including the location
+                    links at `text-sm` and the closing link at
+                    `text-caption` — both small text, both needing
+                    4.5:1.
+
+                    Black/55% is the value already measured for the
+                    homepage hero and the What we do cards, and it was
+                    measured against PURE WHITE rather than against the
+                    files of the day: the worst background any frame
+                    could ever present still gives 4.76:1. That is what
+                    makes it safe to reuse for these three maps without
+                    remeasuring, and it is why swapping in a brighter
+                    map later cannot break it.
+
+                    ⚠ 0.26 OF MARGIN. Black/50% gives 4.39:1 and fails.
+                    Do not lighten this, and do not dim the text with an
+                    opacity, without redoing the measurement.
+
+                    ⚠ IT DOES NOT LIGHTEN ON HOVER. Hover feedback lives
+                    on the individual links; changing the scrim under a
+                    pointer would drop the whole card under AA for as
+                    long as it sat there.
+                  */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-black/55"
+                  />
+                </>
               )}
 
-              <div className={cn(image !== undefined && 'p-6')}>
+              {/*
+                `relative` lifts the content above the two absolute
+                layers without a z-index: a positioned later sibling
+                paints over positioned earlier ones.
+              */}
+              <div className={cn(image !== undefined && 'relative p-6')}>
                 <Link
                   href={link.href}
                   className="group flex items-center justify-between gap-4"
                 >
-                  <span className="text-h3 font-medium tracking-tight text-foreground">
+                  <span
+                    className={cn(
+                      'text-h3 font-medium tracking-tight',
+                      image !== undefined ? 'text-white' : 'text-foreground',
+                    )}
+                  >
                     {heading}
                   </span>
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                    className={cn(
+                      'shrink-0 transition-transform group-hover:translate-x-0.5',
+                      image !== undefined
+                        ? 'text-white'
+                        : 'text-muted-foreground',
+                    )}
                   >
                     →
                   </span>
@@ -268,7 +359,22 @@ export function MarketCoverage({
                       names rather than "Chesterfield middle dot
                       Ballwin".
                     */}
-                    <ul className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+                    <ul
+                      className={cn(
+                        'mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm',
+                        /*
+                          Opaque white over an image, not a muted tone
+                          and not white at an opacity: the 4.76:1 above
+                          is measured on opaque white and there is no
+                          margin to spend dimming it. Hierarchy against
+                          the heading comes from size, as it does on the
+                          What we do cards.
+                        */
+                        image !== undefined
+                          ? 'text-white'
+                          : 'text-muted-foreground',
+                      )}
+                    >
                       {locations.map((location, i) => (
                         <li
                           key={location.pageId}
@@ -277,7 +383,13 @@ export function MarketCoverage({
                           {i > 0 && <span aria-hidden="true">·</span>}
                           <Link
                             href={location.href}
-                            className="underline-offset-4 hover:text-foreground hover:underline"
+                            className={cn(
+                              'underline-offset-4 hover:underline',
+                              // Hover cannot brighten text that is
+                              // already white, so the underline alone
+                              // carries the feedback there.
+                              image === undefined && 'hover:text-foreground',
+                            )}
                           >
                             {location.label}
                           </Link>
@@ -292,7 +404,18 @@ export function MarketCoverage({
                     */}
                     <Link
                       href={link.href}
-                      className="mt-4 inline-block text-caption text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                      className={cn(
+                        'mt-4 inline-block text-caption underline underline-offset-4',
+                        /*
+                          `text-accent-secondary` is tuned for the light
+                          card surface and has nothing like the margin
+                          to survive on an image. White is the only tone
+                          the 4.76:1 measurement covers.
+                        */
+                        image !== undefined
+                          ? 'text-white'
+                          : 'text-accent-secondary hover:text-foreground',
+                      )}
                     >
                       See all service locations
                       <span aria-hidden="true"> →</span>
