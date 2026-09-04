@@ -105,7 +105,7 @@ export const homeContent: HomePageContent = {
         'A sewer camera inspection - often called a sewer scope - shows the line’s actual condition on video, so you get documented evidence before deciding on repairs.',
       image: {
         src: '/images/homepage/services/the-sewer-pros-sewer-camera-inspection-video-evidence.webp',
-        alt: 'Camera monitor showing the inside of a sewer line',
+        alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
         source: 'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
       },
     },
