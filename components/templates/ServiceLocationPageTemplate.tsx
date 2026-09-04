@@ -21,6 +21,8 @@ import {
   problemGridRenders,
   inclusionsGridRenders,
 } from '@/components/sections'
+import { getService } from '@/data/services'
+import { requireLocation } from '@/data/locations'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServiceLocationPageContent } from '@/types'
 
@@ -185,7 +187,34 @@ export function ServiceLocationPageTemplate({
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {/*
+        The FAQ heading names the page's entity rather than using
+        `FaqSection`'s shared "Common questions" default.
+
+        Same reasoning as the service index descriptions and the final
+        CTA: a heading that repeats the page's primary keyword
+        reinforces the entity signal the H1, meta description and CTA
+        already carry. The name is resolved from the registry against
+        the id on the page record, so it is data this page already
+        holds rather than a string to hand-write per page.
+
+        `undefined` rather than a literal fallback: FaqSection owns the
+        default, and repeating it here would be a second place to
+        change it. No page record currently reaches this path without
+        the id (audited across all 14 service+location pages), so the branch is a guard, not
+        an expected state.
+      */}
+      {content.faq !== undefined && (
+        <FaqSection
+          title={
+            page.serviceId !== undefined && page.locationId !== undefined
+              ? `Common questions about ${getService(page.serviceId).name}` +
+                ` in ${requireLocation(page.locationId).name}`
+              : undefined
+          }
+          entries={content.faq}
+        />
+      )}
 
       <CtaSection
         variant="panel"
