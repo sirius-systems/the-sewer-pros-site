@@ -1,13 +1,18 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import type { ReactNode } from 'react'
 import {
   Section,
-  LinkCard,
+  Card,
   CardGrid,
   type SectionDensity,
   type SectionSurface,
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
-import { resolveLinkableOnly } from '@/lib/links/approved-link'
+import {
+  resolveApprovedLink,
+  resolveLinkableOnly,
+} from '@/lib/links/approved-link'
 import type { CardImage, PageId } from '@/types'
 
 /**
@@ -43,8 +48,23 @@ import type { CardImage, PageId } from '@/types'
  */
 export interface RoutingCardItem {
   pageId: PageId
-  /** One line on what the visitor gets by going here. */
-  description: string
+  /**
+   * What the visitor gets by going here.
+   *
+   * ⚠ `ReactNode`, not `string`. The homepage's descriptions name
+   * specific pages and link each one inline (owner, 2026-09-04).
+   */
+  description: ReactNode
+  /**
+   * Closing link beneath the description.
+   *
+   * Approved page id only, resolved through the approved-link layer at
+   * render — never an href (CLAUDE.md §37, 16 §25).
+   *
+   * Optional: a caller without one renders a card with no closing
+   * link, which is what every non-homepage caller does today.
+   */
+  secondaryLink?: { pageId: PageId; label: string }
   /**
    * Optional approved artwork.
    *
@@ -122,6 +142,16 @@ export function RoutingCards({
       .filter((item) => item.image !== undefined)
       .map((item) => [item.pageId, item.image as CardImage]),
   )
+  // Same keying as `descriptions` and `images`: a card without a
+  // closing link simply misses from the map.
+  const secondaryLinks = new Map(
+    items
+      .filter((item) => item.secondaryLink !== undefined)
+      .map((item) => [
+        item.pageId,
+        item.secondaryLink as NonNullable<RoutingCardItem['secondaryLink']>,
+      ]),
+  )
 
   // 18 §120 — omit entirely rather than render an empty shell.
   if (links.length === 0) return null
@@ -136,20 +166,32 @@ export function RoutingCards({
         {links.map((link) => {
           const image = images.get(link.pageId)
 
-          // One anchor wraps the whole card, so the target is large
-          // (18 §48) and assistive technology announces one action
-          // rather than a card plus a nested "learn more" link.
-          //
-          // With artwork the card drops its own padding so the 7:4 crop
-          // can run edge to edge, and the text takes the padding back
-          // inside. Without artwork nothing changes: no crop container
-          // is rendered, and `padded` stays true, so the card is
-          // identical to what it is today (18 §40-42).
+          const secondary = secondaryLinks.get(link.pageId)
+
+          /*
+            ⚠ `Card`, NOT `LinkCard`, AND THAT IS FORCED.
+
+            `LinkCard` wraps the whole card in one anchor on purpose:
+            18 §48 wants a large target and assistive technology
+            announcing one action rather than a card plus a nested
+            link. The descriptions now carry inline links to the pages
+            they name, and those cannot live inside another anchor —
+            nested anchors are invalid HTML and the inner links would
+            not be reachable at all.
+
+            So the heading is its own link, the description sits beside
+            it as prose, and the closing link is a third sibling. Same
+            trade `MarketCoverage` made for the same reason: one large
+            target becomes several small ones, which is the cost of
+            having links inside the card rather than an oversight.
+
+            With artwork the card drops its own padding so the 7:4 crop
+            can run edge to edge, and the text takes the padding back
+            inside. Without artwork nothing changes (18 §40-42).
+          */
           return (
-            <LinkCard
+            <Card
               key={link.pageId}
-              href={link.href}
-              actionLabel={link.label}
               padded={image === undefined}
               className={
                 image !== undefined ? 'flex flex-col overflow-hidden' : undefined
@@ -165,15 +207,29 @@ export function RoutingCards({
                   />
                 </span>
               )}
-              <span className={image !== undefined ? 'block p-6' : undefined}>
-                <h3 className="text-h4 font-medium tracking-tight text-foreground">
-                  {link.label}
+              <div className={image !== undefined ? 'block p-6' : undefined}>
+                <h3 className="text-h4 font-medium tracking-tight">
+                  <Link
+                    href={link.href}
+                    className="text-foreground hover:text-accent-secondary"
+                  >
+                    {link.label}
+                  </Link>
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                <p className="mt-2 text-sm leading-6 text-muted-foreground [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground">
                   {descriptions.get(link.pageId)}
                 </p>
-              </span>
-            </LinkCard>
+                {secondary !== undefined && (
+                  <Link
+                    href={resolveApprovedLink(secondary.pageId).href}
+                    className="mt-4 inline-block text-caption text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                  >
+                    {secondary.label}
+                    <span aria-hidden="true"> →</span>
+                  </Link>
+                )}
+              </div>
+            </Card>
           )
         })}
       </CardGrid>

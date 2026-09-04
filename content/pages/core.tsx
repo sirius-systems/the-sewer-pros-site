@@ -126,28 +126,115 @@ export const homeContent: HomePageContent = {
         'Services the line on an interval the inspection evidence supports, not a generic annual visit, to catch problems early.',
     },
   ],
+  /*
+    ⚠ THE COMMERCIAL LINKS USE PAGE IDS, NOT SERVICE IDS.
+
+    The brief named `svc-commercial-sewer-camera-inspection` and its
+    two siblings. Those are SERVICE REGISTRY ids;
+    `ApprovedInlineLink` takes a PAGE id and would have thrown the
+    build on all three.
+
+    The pages exist and are live, and the mapping is recorded in the
+    data rather than inferred — each commercial page record declares
+    the service it covers:
+
+      svc-commercial-sewer-camera-inspection -> com-camera
+      svc-commercial-sewer-cleaning          -> com-sewer-cleaning
+      svc-commercial-hydro-jetting           -> com-hydro-jetting
+
+    All three are status `launch` and indexable, so none had to fall
+    back to plain text.
+
+    Wording is unchanged from the approved copy. Only the named terms
+    are wrapped.
+  */
   routing: [
     {
       pageId: id('hub-services'),
-      description:
-        
-        'Browse our sewer and drain services, including sewer camera inspection, sewer cleaning, hydro jetting, and sewer line locating, so you find the right fit for what’s happening in your line before committing to any work.',
+      description: (
+        <>
+          Browse our{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+            sewer camera inspection
+          </ApprovedInlineLink>
+          ,{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
+            sewer cleaning
+          </ApprovedInlineLink>
+          ,{' '}
+          <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
+            hydro jetting
+          </ApprovedInlineLink>
+          , and{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
+            sewer line locating
+          </ApprovedInlineLink>{' '}
+          services, so you find the right fit for what&rsquo;s happening in your
+          line before committing to any work.
+        </>
+      ),
+      secondaryLink: { pageId: id('hub-services'), label: 'See all services' },
     },
     {
       pageId: id('hub-locations'),
-      description:
-        'Check coverage in St. Louis, San Diego, and Las Vegas so you know upfront whether service is available in your area before you schedule.',
+      description: (
+        <>
+          Check coverage in{' '}
+          <ApprovedInlineLink pageId={id('market-st-louis-mo')}>
+            St. Louis
+          </ApprovedInlineLink>
+          ,{' '}
+          <ApprovedInlineLink pageId={id('market-san-diego-ca')}>
+            San Diego
+          </ApprovedInlineLink>
+          , and{' '}
+          <ApprovedInlineLink pageId={id('market-las-vegas-nv')}>
+            Las Vegas
+          </ApprovedInlineLink>{' '}
+          so you know upfront whether service is available in your area before
+          you schedule.
+        </>
+      ),
+      secondaryLink: {
+        pageId: id('hub-locations'),
+        label: 'See all service locations',
+      },
     },
     {
       pageId: id('hub-commercial'),
-      description:
-        
-        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multi-family buildings, and property managers, so recurring backups and drainage issues get handled without disrupting your operations.',
+      description: (
+        <>
+          <ApprovedInlineLink pageId={id('com-camera')}>
+            Sewer inspection
+          </ApprovedInlineLink>
+          ,{' '}
+          <ApprovedInlineLink pageId={id('com-sewer-cleaning')}>
+            cleaning
+          </ApprovedInlineLink>
+          , and{' '}
+          <ApprovedInlineLink pageId={id('com-hydro-jetting')}>
+            hydro jetting
+          </ApprovedInlineLink>{' '}
+          for commercial properties, multi-family buildings, and property
+          managers, so recurring backups and drainage issues get handled without
+          disrupting your operations.
+        </>
+      ),
+      secondaryLink: {
+        pageId: id('hub-commercial'),
+        label: 'See all commercial services',
+      },
     },
     {
       pageId: id('core-contact'),
-      description:
-        'Reach out to schedule a sewer inspection, ask about a problem you’re already seeing, or get a straight answer before you commit to bigger work.',
+      description: (
+        <>
+          Reach out to schedule a sewer inspection, ask about a problem
+          you&rsquo;re already seeing, or get a straight answer before you
+          commit to bigger work.
+        </>
+      ),
+      secondaryLink: { pageId: id('core-contact'), label: 'Contact us' },
     },
   ],
   differentiator: {

@@ -101,7 +101,24 @@ export interface InclusionContent {
  */
 export interface RoutingContent {
   pageId: PageId
-  description: string
+  /**
+   * ⚠ `ReactNode`, not `string`. These descriptions carry inline links
+   * to the specific pages they name (owner, 2026-09-04), authored with
+   * `ApprovedInlineLink` so every one resolves through the approved
+   * page registry and fails the build rather than shipping a dead or
+   * gated route.
+   */
+  description: ReactNode
+  /**
+   * Closing link beneath the description.
+   *
+   * Approved page id only, resolved through the approved-link layer at
+   * render — never an href (CLAUDE.md §37, 16 §25).
+   *
+   * Optional: a caller without one renders a card with no closing
+   * link, which is what every non-homepage caller does today.
+   */
+  secondaryLink?: { pageId: PageId; label: string }
   /**
    * Optional approved artwork.
    *
