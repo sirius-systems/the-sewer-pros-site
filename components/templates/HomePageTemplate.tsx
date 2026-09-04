@@ -217,8 +217,8 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
           Hero                photo backdrop
           TrustBar            brand
-          ConfidenceModule    default
-          RoutingCards        muted
+          ConfidenceModule    muted
+          RoutingCards        photo backdrop
           ServiceIndex        default
           Differentiator      brand   ← comparison-table variant
           MarketCoverage      default
