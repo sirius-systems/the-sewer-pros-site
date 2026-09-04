@@ -194,6 +194,26 @@ export interface CtaContent {
    Base
    ========================================================================== */
 
+/**
+ * Per-related-page category label, mark and accent.
+ *
+ * Only read by `RelatedLinks`' `featured` variant. The `horizontal` and
+ * `image` variants render title plus description exactly as they do
+ * today and ignore this entirely.
+ */
+export type RelatedMeta = Readonly<
+  Partial<
+    Record<
+      PageId,
+      {
+        category: string
+        icon: 'clipboard-list' | 'file-video' | 'scale'
+        accent: 'blue' | 'green' | 'navy'
+      }
+    >
+  >
+>
+
 export interface BasePageContent {
   hero: HeroContent
   /**
@@ -242,6 +262,46 @@ export interface BasePageContent {
    * stale or mistargeted key renders nothing rather than erroring.
    */
   relatedDescriptions?: Readonly<Partial<Record<PageId, string>>>
+  /**
+   * Opts this page's `RelatedLinks` into the asymmetric featured
+   * layout instead of the default row list.
+   *
+   * ⚠ IT MUST NAME AN ID ALREADY IN `relatedPageIds`. The component
+   * checks, and falls back to its default treatment when the two
+   * disagree or when fewer than three relations survive gating — see
+   * the render. Setting this alone changes nothing.
+   */
+  relatedFeaturedPageId?: PageId
+  /** Small line above the related heading. `featured` only. */
+  relatedEyebrow?: string
+  /** Intro paragraph under the related heading. `featured` only. */
+  relatedIntro?: string
+  /** Category, mark and accent per related page. `featured` only. */
+  relatedMeta?: RelatedMeta
+  /**
+   * Destination for the featured heading row's closing link.
+   *
+   * An approved page id like every other link on the site, kept in
+   * content rather than cast in a template so `id()` and the
+   * registry stay the only route to a page reference.
+   */
+  relatedViewAllPageId?: PageId
+  /**
+   * Two or three short lines inside the featured card.
+   *
+   * ⚠ NOT A SUMMARY OF THE LINKED PAGE, and never a reading time or
+   * any other computed-looking figure. These are navigational labels
+   * for what the guide covers.
+   */
+  relatedFeaturedPoints?: readonly string[]
+  /**
+   * Small line above the FAQ heading.
+   *
+   * Per page rather than global: `FaqSection` renders on ten
+   * templates, and an eyebrow on all of them was not what was asked
+   * for.
+   */
+  faqEyebrow?: string
   cta?: CtaContent
 }
 

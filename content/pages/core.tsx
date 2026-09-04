@@ -509,6 +509,35 @@ export const homeContent: HomePageContent = {
     [id('cmp-hydro-vs-snaking')]:
       'When high-pressure hydro jetting is the right call, and when mechanical snaking is enough.',
   },
+  relatedTitle: 'Sewer Inspection Guides and Resources',
+  relatedEyebrow: 'Learn before you decide',
+  relatedIntro:
+    'Learn what sewer camera footage can show, what an inspection report should include, and how different sewer cleaning methods compare.',
+  relatedFeaturedPageId: id('res-camera-report'),
+  relatedFeaturedPoints: [
+    'What should be documented',
+    'What evidence you should receive',
+    'How to compare findings later',
+  ],
+  relatedMeta: {
+    [id('res-camera-report')]: {
+      category: 'Inspection guide',
+      icon: 'clipboard-list',
+      accent: 'navy',
+    },
+    [id('res-read-video')]: {
+      category: 'Video explainer',
+      icon: 'file-video',
+      accent: 'blue',
+    },
+    [id('cmp-hydro-vs-snaking')]: {
+      category: 'Service comparison',
+      icon: 'scale',
+      accent: 'green',
+    },
+  },
+  relatedViewAllPageId: id('hub-resources'),
+  faqEyebrow: 'Need a quick answer?',
   cta: {
     title: 'Schedule a sewer camera inspection.',
     body: 'A camera inspection documents the condition of the line, so your next decision is based on evidence, not a guess.',

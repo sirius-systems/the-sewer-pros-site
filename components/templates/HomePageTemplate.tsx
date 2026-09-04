@@ -342,14 +342,32 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
           title={content.relatedTitle ?? 'Guides and resources'}
+          intro={content.relatedIntro}
           pageIds={content.relatedPageIds}
           descriptions={content.relatedDescriptions}
-          variant="image"
+          /*
+            ⚠ `featured` VALIDATES ITSELF AND STANDS DOWN. Passing it
+            is a request, not a guarantee: if `relatedFeaturedPageId`
+            is absent or names a page not in `relatedPageIds`, or
+            fewer than three relations survive gating, the component
+            renders its default row list instead of a 7/5 split with a
+            hole in it.
+          */
+          variant="featured"
+          eyebrow={content.relatedEyebrow}
+          featuredPageId={content.relatedFeaturedPageId}
+          featuredPoints={content.relatedFeaturedPoints}
+          meta={content.relatedMeta}
+          viewAllPageId={content.relatedViewAllPageId}
         />
       )}
 
       {content.faq !== undefined && (
-        <FaqSection entries={content.faq} columns={2} />
+        <FaqSection
+          eyebrow={content.faqEyebrow}
+          entries={content.faq}
+          columns={2}
+        />
       )}
 
       {/*
