@@ -1,12 +1,14 @@
 import type { SVGProps } from 'react'
 import Link from 'next/link'
 import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { PRIMARY_CTA } from '@/components/layout/cta'
 import { authorityProofPoints } from '@/data/business/authority'
 import {
   authorityProcess,
   type AuthorityProcessStep,
 } from '@/data/business/process'
+import type { CardImage } from '@/types'
 
 /**
  * Authority band — the page's single dark section.
@@ -109,6 +111,16 @@ interface AuthorityBandProcessProps extends AuthorityBandBaseProps {
    * the one the content already carries and let the two drift.
    */
   process?: typeof authorityProcess
+  /**
+   * Full-bleed artwork behind the band.
+   *
+   * ⚠ IT CHANGES THREE TEXT TREATMENTS, NOT JUST THE BACKDROP. On the
+   * brand surface this section leans on navy being very dark: a pale
+   * green eyebrow and an opacity-dimmed intro both clear their floors
+   * against `--brand`. Against a scrimmed photograph they do not, and
+   * the render switches each one. See those notes.
+   */
+  backgroundImage?: CardImage
 }
 
 /**
@@ -274,9 +286,24 @@ export function AuthorityBand(props: AuthorityBandProps) {
 
   if (props.variant === 'process') {
     const content = props.process ?? authorityProcess
+    /*
+      ⚠ ONE FLAG, TWO CONTRAST DECISIONS. Everything below that reads
+      `onImage` is a floor, not a preference — see each note.
+    */
+    const onImage = props.backgroundImage !== undefined
 
+    /*
+      `surface` stays `brand`: it is the fallback this section returns
+      to if the image is ever removed, and `Section` overrides it while
+      one is set.
+    */
     return (
-      <Section density={density} surface="brand" labelledBy={id}>
+      <Section
+        density={density}
+        surface="brand"
+        backgroundImage={props.backgroundImage}
+        labelledBy={id}
+      >
         {/*
           ⚠⚠ THE EYEBROW IS A DERIVED PALE GREEN, NOT `text-accent`.
 
@@ -295,7 +322,26 @@ export function AuthorityBand(props: AuthorityBandProps) {
           ⚠ DO NOT "FIX" THIS BACK TO `text-accent`. It would match the
           other green on the page and be illegible.
         */}
-        <p className="text-caption font-semibold tracking-wide text-[color-mix(in_srgb,var(--color-accent)_40%,white)] uppercase">
+        {/*
+          ⚠ AND OVER A PHOTOGRAPH EVEN THAT GREEN FAILS. The 7.7:1
+          above is measured against `--brand`, which is very dark
+          (L 0.024). A scrim over a bright frame is not: the worst
+          ground it can present is L 0.171, where the same pale green
+          measures 2.59:1. No green on this palette clears 4.5:1 there
+          without darkening the scrim far enough to bury the picture.
+
+          So the eyebrow is green on the brand surface and WHITE on an
+          image, which is 4.76:1 by the same measurement that fixes
+          the scrim.
+        */}
+        <p
+          className={cn(
+            'text-caption font-semibold tracking-wide uppercase',
+            onImage
+              ? 'text-white'
+              : 'text-[color-mix(in_srgb,var(--color-accent)_40%,white)]',
+          )}
+        >
           {content.eyebrow}
         </p>
 
@@ -313,7 +359,18 @@ export function AuthorityBand(props: AuthorityBandProps) {
           here would be the only measure on the page answering to
           nothing.
         */}
-        <p className="mt-4 max-w-[var(--container-reading)] text-body-lg opacity-90 [&_a]:font-medium [&_a]:text-white [&_a]:underline [&_a]:underline-offset-4">
+        {/*
+          ⚠ OPAQUE OVER A PHOTOGRAPH, DIMMED ONLY ON BRAND. Navy is
+          dark enough that white at 90% still measures about 12:1. The
+          scrim is sized so OPAQUE white clears 4.5:1 by 0.26, and
+          there is no margin there to spend on an opacity.
+        */}
+        <p
+          className={cn(
+            'mt-4 max-w-[var(--container-reading)] text-body-lg [&_a]:font-medium [&_a]:text-white [&_a]:underline [&_a]:underline-offset-4',
+            onImage ? 'text-white' : 'opacity-90',
+          )}
+        >
           {content.intro}
         </p>
 

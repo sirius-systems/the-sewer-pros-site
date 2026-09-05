@@ -7,7 +7,6 @@ import {
   confidenceModuleRenders,
   RoutingCards,
   ServiceIndex,
-  ProcessSteps,
   Differentiator,
   AuthorityBand,
   ProofGallery,
@@ -22,7 +21,6 @@ import {
   routingCardsRenders,
   serviceIndexRenders,
   marketCoverageRenders,
-  processStepsRenders,
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
@@ -119,9 +117,6 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
     // absent. No predicate to gate on, so the entry is a literal.
     'standard',
     ...(marketCoverageRenders() ? (['dense'] as const) : []),
-    ...(content.process !== undefined && processStepsRenders(content.process)
-      ? (['standard'] as const)
-      : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
@@ -222,8 +217,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           ServiceIndex        default
           Differentiator      brand   ← comparison-table variant
           MarketCoverage      default
-          ProcessSteps        photo backdrop
-          AuthorityBand       brand   ← process variant
+          AuthorityBand       photo backdrop  ← process variant
           ReviewMarquee       default
           RelatedLinks        muted
           FaqSection          default
@@ -289,22 +283,6 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       <MarketCoverage density="dense" />
 
-      {content.process !== undefined && (
-        <ProcessSteps
-          id="how-it-works"
-          title="How it works"
-          steps={content.process}
-          variant="cards"
-          /*
-            `surface` is the fallback, not the current appearance:
-            `backgroundImage` overrides it, and the muted band is what
-            comes back if that image is ever removed.
-          */
-          surface="muted"
-          backgroundImage={content.processBackground}
-        />
-      )}
-
       {content.body !== undefined && (
         <Section density="standard" width="reading">
           <Prose>{content.body}</Prose>
@@ -318,13 +296,22 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         template still calls `<AuthorityBand title="How we work" />`
         and renders the unchanged proof-point band.
 
-        ⚠ STILL `surface="brand"`, AND STILL NOT ADJACENT TO ANOTHER
-        DARK SECTION. `Differentiator` above is now brand too, but
-        `MarketCoverage` (default) and `ProcessSteps` sit between them,
-        plus the optional prose block. Re-checked 2026-09-04; see the
-        surface order above.
+        ⚠ IT CARRIES THE PHOTOGRAPH THAT USED TO BACK "How it works"
+        (owner, 2026-09-04). That section is gone and its frame moved
+        here, which is why `processBackground` still reads correctly:
+        this band is the page's process section now.
+
+        ⚠ ADJACENCY RE-CHECKED AFTER THE REMOVAL. `Differentiator`
+        above is `brand`, and `ProcessSteps` used to sit between the
+        two. It no longer does, so the separator is now
+        `MarketCoverage` (default) plus the optional prose block - and
+        this section is an image rather than `brand` anyway, so no two
+        dark surfaces meet either way. See the surface order above.
       */}
-      <AuthorityBand variant="process" />
+      <AuthorityBand
+        variant="process"
+        backgroundImage={content.processBackground}
+      />
 
       <ProofGallery title="Recent work" />
 
