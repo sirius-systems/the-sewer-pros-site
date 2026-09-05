@@ -42,8 +42,17 @@ export type CtaVariant = "band" | "panel" | "split";
 export interface CtaSectionProps {
   variant?: CtaVariant;
   id?: string;
+  /**
+   * Short line above the title.
+   *
+   * ⚠ GREEN ONLY ON A LIGHT GROUND. `--accent` measures 2.61:1 on
+   * `--brand` and about 1.4:1 over a scrimmed photograph, so on either
+   * dark ground it renders white instead. See the render.
+   */
+  eyebrow?: string;
   title: string;
-  body?: string;
+  /** ⚠ `ReactNode` - see `CtaContent`. Existing string callers are unaffected. */
+  body?: ReactNode;
   /**
    * The section's own button.
    *
@@ -104,6 +113,7 @@ export interface CtaSectionProps {
 export function CtaSection({
   variant = "band",
   id = "cta",
+  eyebrow,
   title,
   body,
   action = PRIMARY_CTA,
@@ -122,10 +132,29 @@ export function CtaSection({
 
   const content = (
     <div className={cn(variant === "split" && "lg:col-span-7")}>
+      {eyebrow !== undefined && (
+        /*
+          ⚠ WHITE ON A DARK GROUND, GREEN ON A LIGHT ONE. `--accent` is
+          2.61:1 on `--brand` and about 1.4:1 over a scrimmed
+          photograph; neither is close to the 4.5:1 caption text needs.
+          On `muted` or `default` it measures 5.3:1 and reads as the
+          accent it is.
+        */
+        <p
+          className={cn(
+            "text-caption font-semibold tracking-wide uppercase",
+            onDark ? "text-white" : "text-accent",
+          )}
+        >
+          {eyebrow}
+        </p>
+      )}
+
       <h2
         id={id}
         className={cn(
           "font-semibold tracking-tight text-balance",
+          eyebrow !== undefined && "mt-2",
           isPanel ? "text-h1" : "text-h2",
         )}
       >
@@ -133,7 +162,14 @@ export function CtaSection({
       </h2>
 
       {body !== undefined && (
-        <p
+        /*
+          ⚠ A `div`, NOT A `p`. `body` is `ReactNode` now and the home
+          page passes two paragraphs and a list through it; a `<p>`
+          cannot legally contain either, and the browser would close it
+          early and take the nesting apart. The typography that was on
+          the `p` is unchanged.
+        */
+        <div
           className={cn(
             "mt-4 max-w-[var(--container-reading)] text-body-lg",
             /*
@@ -151,10 +187,27 @@ export function CtaSection({
               : isPanel
                 ? "opacity-80"
                 : "text-muted-foreground",
+            /*
+              ⚠ INLINE LINKS GO WHITE ON A DARK GROUND. The site's link
+              colour is `--accent-secondary`, tuned for a light
+              surface; over this scrim it measures close to 1.2:1 and
+              is effectively invisible. The underline carries the
+              affordance instead of the hue.
+
+              `[&>*+*]:mt-4` gives the multi-block case its own
+              vertical rhythm: a `body` can now be two paragraphs and a
+              list, and without this they would run together. It is the
+              same spacing rule `Hero` already uses for its own
+              `ReactNode` intro.
+            */
+            "[&>*+*]:mt-4",
+            onDark
+              ? "[&_a]:font-medium [&_a]:text-white [&_a]:underline [&_a]:underline-offset-4"
+              : "[&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground",
           )}
         >
           {body}
-        </p>
+        </div>
       )}
 
       {/*

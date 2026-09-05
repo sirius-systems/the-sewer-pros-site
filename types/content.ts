@@ -198,8 +198,19 @@ export interface CoverageContent {
  * constant so wording stays consistent (18 §155, PENDING-007).
  */
 export interface CtaContent {
+  /** Short line above the title. Optional; unset on every page but home. */
+  eyebrow?: string
   title: string
-  body?: string
+  /**
+   * ⚠ `ReactNode`, NOT `string`, SINCE 2026-09-04. The home page's
+   * closing copy runs to two paragraphs, five inline links and a short
+   * benefit list; a string could carry none of it.
+   *
+   * Widening only - every existing caller passes a plain string and
+   * still type-checks. A page that wants one sentence should keep
+   * passing one sentence.
+   */
+  body?: ReactNode
 }
 
 /* ==========================================================================

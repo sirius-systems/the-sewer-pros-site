@@ -559,9 +559,82 @@ export const homeContent: HomePageContent = {
   },
   relatedViewAllPageId: id('hub-resources'),
   faqEyebrow: 'Need a quick answer?',
+  /*
+    ⚠ FIVE INLINE LINKS AT THE CONVERSION POINT, AND THEY ARE ALL
+    REPEATS. Every one of these five pages is already linked earlier on
+    this page - the markets and both services in the routing cards, and
+    both services again in the process band. So this is neither a first
+    occurrence nor a new route out; it is a fifth and sixth link to the
+    same destinations, placed beside the form that is the page's actual
+    conversion.
+
+    Owner-supplied copy, transcribed as given (2026-09-04), and shipped
+    as written. Flagged rather than trimmed: dropping the markup would
+    change the owner's content, and 17's conversion architecture is the
+    owner's call to make, not a component's.
+  */
   cta: {
+    eyebrow: 'Evidence before expensive decisions',
     title: 'Schedule a sewer camera inspection.',
-    body: 'A camera inspection documents the condition of the line, so your next decision is based on evidence, not a guess.',
+    body: (
+      <>
+        <p>
+          Schedule a sewer camera inspection when you are dealing with
+          recurring sewer backups, slow drains, unexplained blockages, or
+          concerns about a property you plan to purchase. A professional sewer
+          scope provides video evidence of visible conditions inside accessible
+          portions of the line, including buildup, root intrusion, offset
+          joints, standing water, cracks, and other possible problem areas.
+        </p>
+        <p>
+          The Sewer Pros provides sewer inspection and diagnostic services
+          across the{' '}
+          <ApprovedInlineLink pageId={id('market-st-louis-mo')}>
+            St. Louis
+          </ApprovedInlineLink>
+          ,{' '}
+          <ApprovedInlineLink pageId={id('market-san-diego-ca')}>
+            San Diego
+          </ApprovedInlineLink>
+          , and{' '}
+          <ApprovedInlineLink pageId={id('market-las-vegas-nv')}>
+            Las Vegas
+          </ApprovedInlineLink>{' '}
+          service areas. We document what the camera shows and explain the
+          findings in plain language, helping you decide whether the evidence
+          supports{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
+            sewer cleaning
+          </ApprovedInlineLink>
+          ,{' '}
+          <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
+            hydro jetting
+          </ApprovedInlineLink>
+          , monitoring, or further evaluation by a separate repair provider.
+        </p>
+        {/*
+          Hyphen markers, `aria-hidden`, the same treatment the sewer
+          camera inspection hero and the featured guide card use.
+          Tailwind's preflight strips list markers, so a bare `<ul>`
+          would render three unmarked lines reading as a stray
+          paragraph.
+        */}
+        <ul className="flex flex-col gap-2">
+          {[
+            'See the visible condition of the line on video',
+            'Receive documented findings you can review',
+            'Choose your next step without a repair sale',
+          ].map((point) => (
+            <li key={point} className="flex gap-2">
+              <span aria-hidden="true" className="opacity-70">
+                -
+              </span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    ),
   },
   ctaBackground: {
     src: '/images/homepage/differentiator/the-sewer-pros-schedule-sewer-inspection-home-exterior.webp',
