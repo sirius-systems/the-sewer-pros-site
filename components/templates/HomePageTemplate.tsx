@@ -382,6 +382,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       */}
       <CtaSection
         variant="split"
+        eyebrow={content.cta?.eyebrow}
         title={content.cta?.title ?? 'Schedule a sewer camera inspection.'}
         body={content.cta?.body}
         /*
