@@ -51,6 +51,7 @@
  * promises approval, reimbursement, or eligibility.
  */
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type {
   LocationPageContent,
   MarketPageContent,
@@ -75,6 +76,35 @@ const MSD_RESPONSIBILITY = (
       MSD does not inspect or repair private laterals. That responsibility sits
       with the property owner, which is why understanding the condition of your
       own line is not something the utility will do for you.
+    </p>
+    {/*
+      The conversion bridge for this block (owner, 2026-09-04). The
+      section above establishes that the lateral is the owner's problem
+      and then stopped there; this is the sentence that says what to do
+      about it.
+
+      ⚠ `ApprovedInlineLink`, NOT AN ANCHOR OR A WRITTEN PATH. The
+      destination is a PAGE ID resolved against the approved registry
+      at render (16 §25, CLAUDE.md §37, §51), which is the mechanism
+      every in-body link on this site uses. This page had no in-body
+      link before, so there was no local pattern to match - the
+      sitewide one is the pattern.
+
+      ⚠ IT PROMISES AN ANSWER, NOT AN OUTCOME. "A clear, documented
+      answer" is what an inspection produces. It does not say the
+      programme will apply, that a claim will succeed, or that the line
+      is sound - none of which is knowable before the camera goes in,
+      and 01 §35 puts all three among facts requiring evidence.
+    */}
+    <p>
+      If you are not sure whether your sewer lateral falls under a municipal
+      repair programme or is your own responsibility to maintain, a sewer
+      camera inspection gives you a clear, documented answer.{' '}
+      <ApprovedInlineLink pageId={id('core-contact')}>
+        Request an inspection
+      </ApprovedInlineLink>{' '}
+      to see what is actually happening in your line before you decide on next
+      steps.
     </p>
   </>
 )
@@ -153,6 +183,57 @@ export const stLouisMarketContent: MarketPageContent = {
         address. What a specific line is made of, and what condition it is in,
         is what a camera inspection establishes.
       </p>
+
+      {/*
+        Real estate and pre-purchase intent (owner, 2026-09-04). Placed
+        last in `body` so it sits directly above the services band the
+        template renders next.
+
+        ⚠ WHAT THIS DOES NOT CLAIM. No share of housing stock, no age
+        threshold, no failure rate, no assertion about what an
+        inspection will find. "Much of the housing stock predates modern
+        sewer materials" is the same era correspondence the section
+        above already draws and stops where that section stops.
+
+        ⚠ AND IT DOES NOT SELL THE REPAIR. "Warrant further evaluation"
+        rather than "needs replacing": CLAUDE.md §9 forbids presenting
+        the business as a repair contractor, and the differentiator is
+        that the evidence comes from someone who does not perform the
+        work it might imply.
+
+        The three guides link by PAGE ID through `ApprovedInlineLink`,
+        not by written path. All three are `launch` and `indexable`; a
+        gated one would fail at the resolver rather than shipping a dead
+        link.
+      */}
+      <h2>Buying or selling a home in St. Louis? Know what is in the sewer line first</h2>
+      <p>
+        A sewer camera inspection gives home buyers, sellers, and real estate
+        agents documented evidence of a property&rsquo;s sewer line condition
+        before closing, not just an assumption based on the home&rsquo;s age.
+        In St. Louis, where much of the housing stock predates modern sewer
+        materials, a pre-purchase sewer inspection can confirm whether a line
+        is sound, needs cleaning, or shows signs that warrant further
+        evaluation, without pressuring anyone toward repair or replacement.
+      </p>
+      <p>Related resources:</p>
+      <ul>
+        <li>
+          <ApprovedInlineLink pageId={id('res-stl-lateral-report')}>
+            Sewer lateral reporting for St. Louis property owners
+          </ApprovedInlineLink>
+        </li>
+        <li>
+          <ApprovedInlineLink pageId={id('res-stl-city-program')}>
+            Understanding the St. Louis City sewer lateral programme
+          </ApprovedInlineLink>
+        </li>
+        <li>
+          <ApprovedInlineLink pageId={id('res-stl-county-program')}>
+            Which sewer lateral programme applies to me? (St. Louis County)
+          </ApprovedInlineLink>
+        </li>
+      </ul>
     </>
   ),
   services: [
@@ -172,13 +253,66 @@ export const stLouisMarketContent: MarketPageContent = {
       pageId: id('svc-sewer-cleaning'),
       description: 'Clear what has accumulated in the line.',
     },
+    /*
+      ⚠ `svc-hydro-jetting`, THE GLOBAL SERVICE, NOT
+      `sl-chesterfield-hydro`. This array is the market hub's fan-out to
+      canonical service spokes, and the three entries above it are
+      global taxonomy pages. Pointing one entry at a single suburb's
+      service+location page would make it resolve narrower than its
+      siblings and would imply hydro jetting is offered only in
+      Chesterfield, which nothing supports. That page is a spoke one
+      level further out, reached from the Chesterfield location page.
+
+      No `/st-louis-mo/hydro-jetting/` route exists, and 05 §27 permits
+      a market-level service route only where the intent belongs to
+      that market rather than the global taxonomy - which is why the
+      lateral-reporting entry above is market-scoped and this one is
+      not.
+    */
+    {
+      pageId: id('svc-hydro-jetting'),
+      description:
+        'High-pressure water clears grease, scale, and root intrusion from the line.',
+    },
   ],
   locationPageIds: [
     id('loc-stl-st-louis-city'),
     id('loc-stl-ballwin'),
     id('loc-stl-florissant'),
     id('loc-stl-st-charles'),
+    id('loc-stl-chesterfield'),
   ],
+  /*
+    ⚠ SERVICE AREA, NOT OFFICES. `CoverageSection` exists precisely so a
+    market can state where it works without implying a location it
+    occupies (CLAUDE.md §11, 18 §87). No address, no pin, no hours.
+
+    `pageIds` repeats `locationPageIds` deliberately: this section names
+    where service reaches, the related strip lower down is navigation to
+    those pages, and they happen to be the same five today. Both resolve
+    through the approved registry, so a gated location drops out of both
+    on its own.
+
+    ⚠ THE AVAILABILITY LINE NAMES AUDIENCES, NOT A GUARANTEE. It does
+    not promise same-day coverage, a response time, or that every
+    address inside the metro is serviceable - which is why the intro
+    asks people outside the listed communities to call and confirm
+    rather than asserting coverage on their behalf.
+  */
+  coverage: {
+    title: 'Where we serve in the St. Louis area',
+    intro:
+      'The Sewer Pros provides sewer inspection, diagnostics, locating, and cleaning across the St. Louis metro, including the communities listed below. Do not see your community? Call to confirm coverage before you book.',
+    pageIds: [
+      id('loc-stl-st-louis-city'),
+      id('loc-stl-ballwin'),
+      id('loc-stl-florissant'),
+      id('loc-stl-st-charles'),
+      id('loc-stl-chesterfield'),
+    ],
+    availabilityStatement:
+      'Serving homeowners, real estate professionals, property managers, and commercial properties throughout the greater St. Louis area.',
+  },
   faq: [
     {
       question: 'Does MSD inspect my sewer lateral?',
@@ -209,6 +343,60 @@ export const stLouisMarketContent: MarketPageContent = {
           No, and neither can anyone else. We are licensed through most of the
           area&rsquo;s municipal lateral programmes to submit reports, and we
           document what the inspection shows. The municipality decides claims.
+        </p>
+      ),
+    },
+    /*
+      ⚠ ANSWERS ARE `ReactNode`, NOT STRINGS. Every answer on this site
+      is JSX, and `lib/schema/faq.ts` reads FAQPage answer text out of
+      the same nodes `FaqSection` renders - so schema cannot drift from
+      visible copy, and a second copy of this text must never be added
+      anywhere for schema's sake (15 §67, DEC-089).
+    */
+    {
+      question:
+        'What is the difference between a general sewer inspection and a sewer camera inspection?',
+      answer: (
+        <p>
+          A general sewer inspection assesses overall sewer line condition and
+          function. A sewer camera inspection uses a video camera fed through
+          the line to visually document specific conditions, such as blockages,
+          root intrusion, cracks, and offsets, giving you recorded evidence
+          instead of an estimate based on symptoms alone.
+        </p>
+      ),
+    },
+    /*
+      ⚠ THIS ANSWERS A PRICE QUESTION WITHOUT STATING A PRICE, WHICH IS
+      THE ONLY WAY IT CAN BE ANSWERED HERE. CLAUDE.md §24 lists pricing
+      among facts that may not be invented and none is documented for
+      this business. Declining to quote is the honest answer; do not
+      later fill this with a range, a starting-at figure, or a "most
+      customers pay" line unless the owner publishes one.
+    */
+    {
+      question: 'How much does a sewer inspection cost?',
+      answer: (
+        <p>
+          Cost depends on the scope of the inspection and what we find once we
+          are on-site, so we are not able to quote a number without
+          understanding your specific situation first. Because we do not build
+          our business around selling repairs, our focus during the inspection
+          is on giving you accurate information about your sewer line&rsquo;s
+          condition, not steering you toward a bigger job than you need.
+        </p>
+      ),
+    },
+    {
+      question: 'Should I get a sewer inspection before buying a house in St. Louis?',
+      answer: (
+        <p>
+          Yes. A pre-purchase sewer camera inspection can reveal conditions
+          that a standard home inspection typically does not cover, giving you
+          documented evidence of the sewer line&rsquo;s condition before you
+          close. This matters especially in St. Louis, where much of the
+          housing stock is older and sewer materials and conditions vary widely
+          by property and municipality.
         </p>
       ),
     },
