@@ -26,7 +26,7 @@
  */
 
 import type { ReactNode } from 'react'
-import type { PageId } from './common'
+import type { MarketId, PageId } from './common'
 import type { CardImage } from './media'
 
 /* ==========================================================================
@@ -402,13 +402,58 @@ export interface ServicePageContent extends BasePageContent {
 }
 
 /** Market hub — 18 §112. */
+/**
+ * Market hub content.
+ *
+ * ⚠ EVERY FIELD BELOW IS OPTIONAL, AND THAT IS STRUCTURAL RATHER THAN
+ * TIDY. `MarketPageTemplate` is shared by all three markets. San Diego
+ * and Las Vegas populate only `hero`, `body`, `services`,
+ * `locationPageIds`, `faq` and `cta` today, so a required field would
+ * blank their pages the moment it shipped. Each new section below
+ * simply does not render for a market that has not written it - the
+ * same behaviour `coverage` has always had.
+ */
 export interface MarketPageContent extends BasePageContent {
   /** Approved location pages within this market. */
   locationPageIds?: readonly PageId[]
   /** Served communities plus an availability statement. No map. */
   coverage?: CoverageContent
-  /** Services to feature for this market. */
-  services?: readonly { pageId: PageId; description?: string }[]
+  /**
+   * Services to feature for this market.
+   *
+   * `image` turns the band into the home page's mosaic of image cards.
+   * Without one a market renders the plain row list it renders today.
+   */
+  services?: readonly {
+    pageId: PageId
+    description?: string
+    image?: CardImage
+  }[]
+  /** Full-bleed frame behind the hero. Unset renders the editorial hero. */
+  heroBackground?: CardImage
+  /**
+   * Puts the lead form beside the hero copy.
+   *
+   * ⚠ THE PAGE'S ONLY MID-PAGE FORM WAS REMOVED WHEN THIS ARRIVED
+   * (owner, 2026-09-04). A market that sets neither this nor a form
+   * elsewhere converts through the closing CTA alone, which is the
+   * accepted state for San Diego and Las Vegas until their hero
+   * content is written.
+   */
+  showHeroForm?: boolean
+  /** Which market the hero form preselects. */
+  heroFormMarketId?: MarketId
+  /** Intent-routing cards for this market. */
+  routing?: readonly RoutingContent[]
+  routingBackground?: CardImage
+  /** Three-card explainer, e.g. lateral responsibility. */
+  lateralCards?: { title: string; intro?: string; items: readonly ProblemContent[] }
+  /** Three-card explainer, e.g. pipe materials by era. */
+  materialCards?: { title: string; intro?: string; items: readonly ProblemContent[] }
+  /** Editorial block, e.g. buying or selling a home in this market. */
+  localFeature?: { title: string; body: ReactNode }
+  processBackground?: CardImage
+  ctaBackground?: CardImage
 }
 
 /** Location page — 18 §79, §112. */

@@ -15,6 +15,7 @@ import {
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { marketList } from '@/data/markets/markets'
+import type { MarketId } from '@/types'
 import type { ServiceId } from '@/types'
 
 /**
@@ -147,6 +148,17 @@ export interface LeadFormSectionProps {
    * shape from either instance.
    */
   idPrefix?: string
+  /**
+   * Preselects the Location field.
+   *
+   * ⚠ ONLY A PAGE THAT KNOWS ITS MARKET MAY PASS THIS. The note on the
+   * field below is still right for every other caller: the home page
+   * and sitewide pages are market-agnostic, and defaulting there would
+   * answer the question for the visitor and mislabel the lead. A
+   * market hub is the exception because the answer is already on the
+   * page.
+   */
+  defaultMarketId?: MarketId
 }
 
 export function LeadFormSection({
@@ -157,6 +169,7 @@ export function LeadFormSection({
   intro,
   bare = false,
   idPrefix = 'lead',
+  defaultMarketId,
 }: LeadFormSectionProps = {}) {
   const [started, setStarted] = useState(false)
 
@@ -271,16 +284,22 @@ export function LeadFormSection({
         className="sm:col-span-2"
       >
         {/*
-          No prefill. This form renders on market pages and sitewide
-          pages alike, and the homepage is market-agnostic: defaulting
-          to any one market would answer the question for the visitor
+          No prefill BY DEFAULT. This form renders on market pages and
+          sitewide pages alike, and the home page is market-agnostic:
+          defaulting there would answer the question for the visitor
           and quietly mislabel leads from the other two.
+
+          `defaultMarketId` is the narrow exception, passed only by a
+          page that already names its market in the heading above the
+          form. Everywhere else this is undefined and the field starts
+          genuinely unanswered, exactly as before.
         */}
         <Select
           id={`${idPrefix}-market`}
           name="market"
           options={MARKET_OPTIONS}
           placeholder="Select your location"
+          defaultValue={defaultMarketId}
           required
           aria-required
         />

@@ -55,9 +55,21 @@
  * St. Louis has a GBP (01 §21, DEC-020), and 01 §20 forbids carrying
  * one market's business facts onto another.
  *
- * It belongs on the sitewide homepage and on St. Louis pages. Do NOT
- * add it to `MarketPageTemplate` — that template also serves
- * `/san-diego-ca/` and `/las-vegas-nv/`.
+ * ⚠⚠ THAT RESTRICTION WAS LIFTED BY DEC-100 (2026-09-04), AND THIS
+ * PARAGRAPH IS THE RECORD OF IT RATHER THAN A STALE WARNING. It used
+ * to read: "Do NOT add it to `MarketPageTemplate` - that template also
+ * serves `/san-diego-ca/` and `/las-vegas-nv/`."
+ *
+ * `MarketPageTemplate` now renders it on all three hubs, gated on a
+ * per-market `showReviews` flag that every market sets. The owner
+ * directed that the 4.9/595 stat be treated as COMPANY-WIDE rather
+ * than scoped to the St. Louis profile, and shipped unattributed.
+ *
+ * ⚠ THE UNDERLYING FACT DID NOT CHANGE. The reviews are still St.
+ * Louis customers and the stat is still that profile's. Read DEC-100
+ * and DEC-085 together before extending this any further - to a
+ * location template, say - because the reasoning that made DEC-085
+ * restrictive still describes the data.
  *
  * This is exactly why it is separate from `TestimonialBand` rather
  * than a population of `data/business/proof.ts`: `TestimonialBand`

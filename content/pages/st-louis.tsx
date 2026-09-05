@@ -62,73 +62,212 @@ import type {
 
 const id = (value: string): PageId => value as PageId
 
-/** Shared, verified: MSD owns the main, the homeowner owns the lateral. */
-const MSD_RESPONSIBILITY = (
-  <>
-    <h2>Who is responsible for the lateral</h2>
-    <p>
-      The Metropolitan St. Louis Sewer District maintains the public mains and
-      the collection system. It states plainly that homeowners are responsible
-      for maintaining the sewer lateral: the line running from the building to
-      the public sewer.
-    </p>
-    <p>
-      MSD does not inspect or repair private laterals. That responsibility sits
-      with the property owner, which is why understanding the condition of your
-      own line is not something the utility will do for you.
-    </p>
-    {/*
-      The conversion bridge for this block (owner, 2026-09-04). The
-      section above establishes that the lateral is the owner's problem
-      and then stopped there; this is the sentence that says what to do
-      about it.
-
-      ⚠ `ApprovedInlineLink`, NOT AN ANCHOR OR A WRITTEN PATH. The
-      destination is a PAGE ID resolved against the approved registry
-      at render (16 §25, CLAUDE.md §37, §51), which is the mechanism
-      every in-body link on this site uses. This page had no in-body
-      link before, so there was no local pattern to match - the
-      sitewide one is the pattern.
-
-      ⚠ IT PROMISES AN ANSWER, NOT AN OUTCOME. "A clear, documented
-      answer" is what an inspection produces. It does not say the
-      programme will apply, that a claim will succeed, or that the line
-      is sound - none of which is knowable before the camera goes in,
-      and 01 §35 puts all three among facts requiring evidence.
-    */}
-    <p>
-      If you are not sure whether your sewer lateral falls under a municipal
-      repair programme or is your own responsibility to maintain, a sewer
-      camera inspection gives you a clear, documented answer.{' '}
-      <ApprovedInlineLink pageId={id('core-contact')}>
-        Request an inspection
-      </ApprovedInlineLink>{' '}
-      to see what is actually happening in your line before you decide on next
-      steps.
-    </p>
-  </>
-)
-
 /* ==========================================================================
    Market hub — /st-louis-mo/
    ========================================================================== */
 
 export const stLouisMarketContent: MarketPageContent = {
+  /*
+    ⚠ THE HERO NAMES A WIDER AREA THAN THE COVERAGE SECTION LISTS, AND
+    THAT IS DELIBERATE (owner, 2026-09-04).
+
+    "St. Louis County, St. Charles County, Jefferson County" is the
+    service area the business publishes about itself
+    (`marketOperatingDetail`, `serviceAreaSource: 'published'`,
+    DEC-070). The coverage section lists five communities because those
+    are the locations with approved PAGES - a smaller set, and a
+    different kind of statement.
+
+    Rather than narrow a published fact to match a page inventory, the
+    coverage section says which of the two it is. Do not "fix" this by
+    trimming the hero.
+  */
   hero: {
-    eyebrow: 'St. Louis, Missouri',
-    title: 'Sewer inspection and cleaning across the St. Louis area',
+    eyebrow: 'St. Louis sewer and drain specialists',
+    title: 'Sewer camera inspection and cleaning in St. Louis, MO',
     intro: (
       <p>
         Independent camera inspection, diagnostics, locating, and cleaning for
         properties in St. Louis County, St. Charles County, Jefferson County,
-        and surrounding areas.
+        and surrounding areas. We document what the line actually shows, and we
+        do not perform the repair, so the evidence is not a sales tool.
       </p>
     ),
   },
+  heroBackground: {
+    /*
+      ⚠ PLACEHOLDER, KNOWINGLY. This frame is also the process band's
+      background further down the page, so it currently appears twice
+      (owner, 2026-09-04: dedicated imagery comes after the template
+      locks in). Swap this src first when a St. Louis hero frame
+      exists; nothing else needs to change.
+    */
+    src: '/images/homepage/differentiator/the-sewer-pros-st-louis-residential-property-exterior.webp',
+    alt: 'Street view of a brick two-story house on a tree-lined block',
+    source:
+      'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+  },
+  showHeroForm: true,
+  heroFormMarketId: 'st-louis-mo',
+  routing: [
+    {
+      pageId: id('svc-sewer-camera-inspection'),
+      category: 'Homeowners',
+      icon: 'search-check',
+      accent: 'blue',
+      description:
+        'Recurring backups, slow drains, or a line you have never seen. Start with a camera inspection and decide from evidence.',
+      linksHeading: 'Common starting points',
+      links: [
+        {
+          pageId: id('svc-recurring-sewer-backup-diagnosis'),
+          label: 'Recurring Backup Diagnosis',
+        },
+        { pageId: id('svc-sewer-cleaning'), label: 'Sewer Cleaning' },
+        { pageId: id('svc-hydro-jetting'), label: 'Hydro Jetting' },
+      ],
+      secondaryLink: {
+        pageId: id('svc-sewer-camera-inspection'),
+        label: 'Camera Inspection',
+      },
+    },
+    {
+      pageId: id('svc-pre-purchase-sewer-inspection'),
+      category: 'Buying or selling',
+      icon: 'search-check',
+      accent: 'green',
+      description:
+        'Know the condition of the line before closing. A sewer scope documents what a standard home inspection does not cover.',
+      linksHeading: 'For the transaction',
+      links: [
+        { pageId: id('aud-home-buyers'), label: 'Home Buyers' },
+        { pageId: id('aud-home-sellers'), label: 'Home Sellers' },
+        { pageId: id('aud-real-estate-agents'), label: 'Real Estate Agents' },
+      ],
+      secondaryLink: {
+        pageId: id('svc-pre-purchase-sewer-inspection'),
+        label: 'Pre-Purchase Inspection',
+      },
+    },
+    {
+      pageId: id('svc-stl-sewer-lateral-inspection-reporting'),
+      category: 'Municipal reporting',
+      icon: 'map-pinned',
+      accent: 'navy',
+      description:
+        'Many St. Louis area municipalities run lateral repair programmes that ask for documentation before a claim is considered.',
+      linksHeading: 'Programme guides',
+      links: [
+        {
+          pageId: id('res-stl-lateral-report'),
+          label: 'What Goes in the Report',
+        },
+        { pageId: id('res-stl-city-program'), label: 'St. Louis City Program' },
+        {
+          pageId: id('res-stl-county-program'),
+          label: 'St. Louis County Program',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('svc-stl-sewer-lateral-inspection-reporting'),
+        label: 'Lateral Reporting',
+      },
+    },
+    {
+      pageId: id('hub-commercial'),
+      category: 'Property solutions',
+      icon: 'building-2',
+      accent: 'blue',
+      description:
+        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multi-family buildings, and property managers.',
+      linksHeading: 'Commercial services',
+      links: [
+        { pageId: id('com-camera'), label: 'Sewer Camera Inspection' },
+        { pageId: id('com-sewer-cleaning'), label: 'Sewer Cleaning' },
+        { pageId: id('com-hydro-jetting'), label: 'Hydro Jetting' },
+      ],
+      secondaryLink: {
+        pageId: id('hub-commercial'),
+        label: 'Explore Commercial Services',
+      },
+    },
+  ],
+  /*
+    ⚠ THREE CARDS CARRYING WHAT THE LONG "why lateral programmes make
+    documentation matter" SECTION USED TO SAY. The substance is
+    unchanged and nothing was sharpened: the programmes "can"
+    meaningfully change a cost, terms "vary", and whether one applies
+    is "a question about your specific municipality". The
+    programme-by-programme detail now lives in the three resource
+    guides, which the routing card above links.
+  */
+  lateralCards: {
+    title: 'Who is responsible for the lateral',
+    intro:
+      'The sewer lateral runs from the building to the public sewer. Understanding whose problem it is, and what documentation a municipal programme asks for, is most of what people come to this page to find out.',
+    items: [
+      {
+        title: 'MSD maintains the mains, not your lateral',
+        description:
+          'The Metropolitan St. Louis Sewer District states that homeowners are responsible for maintaining the sewer lateral. It does not inspect or repair private lines, so the condition of your own line is not something the utility will establish for you.',
+      },
+      {
+        title: 'Lateral programmes ask for documentation',
+        description:
+          'Many municipalities in the area operate sewer lateral repair programmes funded by a small annual charge on the real estate tax bill. They generally require documentation from a licensed plumber before a claim is considered, commonly including video of the line.',
+      },
+      {
+        title: 'The terms are not uniform',
+        description:
+          'Fees, caps, coverage boundaries, and exclusions differ between municipalities, and the City of St. Charles is not in MSD\u2019s service territory at all: it runs its own sewer system. Whether a programme applies to your address, and what it covers, is a question about your specific municipality.',
+      },
+    ],
+  },
+  /*
+    ⚠ THE ERA-CORRESPONDENCE QUALIFIER IS LOAD-BEARING AND IS CARRIED
+    VERBATIM IN `intro`. It is what keeps this section a statement
+    about materials used in a period rather than a claim about any
+    reader's address, and the no-fake-data governance depends on it.
+    Do not drop it, shorten it, or move it below the cards.
+  */
+  materialCards: {
+    title: 'Older lines, older materials',
+    intro:
+      'This is era correspondence, not a claim about any particular street or address. What a specific line is made of, and what condition it is in, is what a camera inspection establishes.',
+    items: [
+      {
+        title: 'Vitrified clay',
+        description:
+          'Common through much of the twentieth century. Clay separates at the joints and admits roots, which is the failure pattern a camera most often finds in older city and inner-suburb lines.',
+      },
+      {
+        title: 'Cast iron',
+        description:
+          'Also common in that period. Cast iron corrodes and scales internally, narrowing the bore over time rather than breaking suddenly.',
+      },
+      {
+        title: 'Orangeburg',
+        description:
+          'Bituminized fibre pipe, installed through the post-war decades until its manufacturer closed in 1974. It deforms under load, and any remaining Orangeburg is now well past its intended service life.',
+      },
+    ],
+  },
+  /*
+    ⚠ THREE SECTIONS LEFT THIS BLOCK ON 2026-09-04 AND ARE NOT LOST.
+
+      "Who is responsible for the lateral"   -> `lateralCards` card 1
+      "Why lateral programmes make ..."      -> `lateralCards` cards 2-3
+      "Older lines, older materials"         -> `materialCards`
+
+    Their substance is unchanged; only the presentation moved from a
+    five-section text wall to card grids. Do not restate any of them
+    here as prose - the page would then say each thing twice.
+
+    What remains is the proof paragraph, which is claim-bearing and
+    belongs in reviewable content rather than in a card.
+  */
   body: (
     <>
-      {MSD_RESPONSIBILITY}
-
       <h2>Our work in St. Louis</h2>
       <p>
         The Sewer Pros has inspected sewer lines across the St. Louis area since
@@ -141,49 +280,32 @@ export const stLouisMarketContent: MarketPageContent = {
         sounds, for the reason below.
       </p>
 
-      <h2>Why lateral programmes make documentation matter here</h2>
+      {/*
+        The conversion bridge that used to follow the MSD block.
+        It stays in prose because it is a sentence, not a card, and it
+        is the page's only in-body link to the contact page.
+      */}
       <p>
-        Many municipalities in the St. Louis area operate sewer lateral repair
-        programmes, funded by a small annual charge on the real estate tax bill.
-        Where a programme applies, it can meaningfully change what a lateral
-        failure costs a homeowner.
+        If you are not sure whether your sewer lateral falls under a municipal
+        repair programme or is your own responsibility to maintain, a sewer
+        camera inspection gives you a clear, documented answer.{' '}
+        <ApprovedInlineLink pageId={id('core-contact')}>
+          Request an inspection
+        </ApprovedInlineLink>{' '}
+        to see what is actually happening in your line before you decide on
+        next steps.
       </p>
-      <p>
-        These programmes generally require documentation from a licensed
-        plumber before a claim is considered, commonly including video of the
-        line. That makes a camera inspection more than a diagnostic here: it is
-        frequently the document the programme asks for.
-      </p>
-      <p>
-        The terms are not uniform. Fees, caps, coverage boundaries, and
-        exclusions differ between municipalities, and the City of St. Charles
-        is not in MSD&rsquo;s service territory at all: it runs its own sewer
-        system. Whether a programme applies to your address, and what it
-        covers, is a question about your specific municipality.
-      </p>
-
-      <h2>Older lines, older materials</h2>
-      <p>
-        The St. Louis area contains a wide span of construction eras, from
-        pre-war city neighbourhoods to subdivisions built through the 1960s and
-        1970s and newer development beyond that.
-      </p>
-      <p>
-        Era matters because lateral materials changed over time. Lines laid
-        through much of the twentieth century commonly used vitrified clay or
-        cast iron, and bituminized fibre pipe (Orangeburg) was installed in
-        the post-war decades until its manufacturer closed in 1974. Each has a
-        characteristic failure pattern: clay separates at joints and admits
-        roots, cast iron corrodes and scales internally, and Orangeburg
-        deforms under load. Any remaining Orangeburg is now well past its
-        intended service life.
-      </p>
-      <p>
-        This is era correspondence, not a claim about any particular street or
-        address. What a specific line is made of, and what condition it is in,
-        is what a camera inspection establishes.
-      </p>
-
+    </>
+  ),
+  /*
+    The real estate module, lifted out of `body` so it renders as its
+    own section between the material cards and the model comparison.
+    Copy is unchanged from the version approved on 2026-09-04.
+  */
+  localFeature: {
+    title: 'Buying or selling a home in St. Louis',
+    body: (
+      <>
       {/*
         Real estate and pre-purchase intent (owner, 2026-09-04). Placed
         last in `body` so it sits directly above the services band the
@@ -234,24 +356,56 @@ export const stLouisMarketContent: MarketPageContent = {
           </ApprovedInlineLink>
         </li>
       </ul>
-    </>
-  ),
+      </>
+    ),
+  },
+  /*
+    ⚠ SITEWIDE SERVICE ARTWORK, NOT ST. LOUIS PHOTOGRAPHY. These are
+    the same frames the home page mosaic uses. No St. Louis-specific
+    service imagery exists and none was sourced for this build; the
+    `image` field is what promotes the band from a row list to the
+    card mosaic, and swapping the src later needs no other change.
+  */
   services: [
     {
       pageId: id('svc-stl-sewer-lateral-inspection-reporting'),
       description: 'Video documentation prepared for municipal lateral programme submission.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-sewer-camera-inspection-video-evidence.webp',
+        alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
+        source:
+          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-sewer-camera-inspection'),
       description: 'See the visible condition of the line.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-sewer-cleaning-camera-inspection.webp',
+        alt: 'Cleaning and camera equipment set up together at a cleanout',
+        source:
+          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-pre-purchase-sewer-inspection'),
       description: 'Inspect the line before closing on a property.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-pre-purchase-sewer-scope.webp',
+        alt: 'A sewer scope run at a property before purchase',
+        source:
+          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     {
       pageId: id('svc-sewer-cleaning'),
       description: 'Clear what has accumulated in the line.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-professional-sewer-line-cleaning.webp',
+        alt: 'Cleaning equipment at work on a sewer line',
+        source:
+          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     /*
       ⚠ `svc-hydro-jetting`, THE GLOBAL SERVICE, NOT
@@ -273,6 +427,12 @@ export const stLouisMarketContent: MarketPageContent = {
       pageId: id('svc-hydro-jetting'),
       description:
         'High-pressure water clears grease, scale, and root intrusion from the line.',
+      image: {
+        src: '/images/homepage/services/the-sewer-pros-hydro-jetting-pipe-wall-cleaning.webp',
+        alt: 'High-pressure jetting stripping the pipe wall',
+        source:
+          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
   ],
   locationPageIds: [
@@ -302,7 +462,7 @@ export const stLouisMarketContent: MarketPageContent = {
   coverage: {
     title: 'Where we serve in the St. Louis area',
     intro:
-      'The Sewer Pros provides sewer inspection, diagnostics, locating, and cleaning across the St. Louis metro, including the communities listed below. Do not see your community? Call to confirm coverage before you book.',
+      'The Sewer Pros provides sewer inspection, diagnostics, locating, and cleaning across the St. Louis metro. The communities below are the ones with their own pages, not the limit of where we work: we also serve St. Louis County, St. Charles County, Jefferson County, and surrounding areas. Do not see your community? Call to confirm coverage before you book.',
     pageIds: [
       id('loc-stl-st-louis-city'),
       id('loc-stl-ballwin'),
@@ -400,10 +560,176 @@ export const stLouisMarketContent: MarketPageContent = {
         </p>
       ),
     },
+    /*
+      ⚠ SIX ENTRIES ADDED 2026-09-04, TAKING THIS FAQ TO TWELVE. Drawn
+      from real search and PAA-style questions confirmed against live
+      search, not invented. No competitor copy was reproduced; the
+      research established only that these are questions people
+      actually ask.
+
+      ⚠ THREE OF THE SIX ANSWER A QUESTION BY DECLINING TO ANSWER IT,
+      AND THAT IS THE POINT. Inspection frequency, duration, and
+      insurance coverage all have real answers that vary by property,
+      by line, and by policy - and this business has published no
+      interval, no timeframe, and no coverage position. Naming one
+      would be exactly the invented fact CLAUDE.md §24 rules out. Do
+      not later "improve" these by adding a number.
+    */
+    {
+      question: 'How often should I have my sewer line inspected?',
+      answer: (
+        <p>
+          There is no single interval that applies to every property. Older
+          lines, properties with a history of root intrusion or backups, and
+          homes on materials like clay or cast iron generally benefit from more
+          frequent checks than a newer line with no history of problems. If you
+          are not sure where your line falls on that spectrum, a camera
+          inspection is what establishes it. A common starting point homeowners
+          use is checking in every few years, or sooner after any backup, slow
+          drain pattern, or before a major landscaping or construction project
+          near the line.
+        </p>
+      ),
+    },
+    {
+      question: 'What can a sewer camera inspection show, and what can it miss?',
+      answer: (
+        <p>
+          A camera inspection shows the visible condition of the accessible
+          portion of the line: blockages, root intrusion, cracks, offset
+          joints, bellies, and standing water. It documents what the camera can
+          physically see and reach. It does not diagnose issues in sections the
+          camera cannot access, and it is not a structural engineering
+          assessment. What it does give you is documented, visual evidence of
+          the conditions that are present, which is the basis for deciding what
+          to do next.
+        </p>
+      ),
+    },
+    {
+      question: 'How long does a sewer camera inspection take?',
+      answer: (
+        <p>
+          Time varies with the length of the line, how many access points are
+          available, and what the camera finds along the way. A straightforward
+          inspection with clear access generally takes less time than one where
+          multiple sections need to be checked or where cleanup is needed
+          before the camera can proceed. We can give you a better estimate once
+          we know your property&rsquo;s setup.
+        </p>
+      ),
+    },
+    {
+      question: 'What happens if the inspection finds a problem?',
+      answer: (
+        <p>
+          You get the video and the documented findings, and you decide what
+          happens next. If the issue is something a cleaning or hydro jetting
+          can resolve, that is on the table as our service. If what is found
+          looks more serious, structural repair or replacement is not something
+          we sell. You are free to get a second opinion, consult a repair
+          contractor of your choosing, or simply monitor the condition. Nothing
+          about the inspection commits you to a specific next step.
+        </p>
+      ),
+    },
+    {
+      question: 'Does homeowners insurance cover sewer lateral damage?',
+      answer: (
+        <p>
+          Coverage for sewer lateral issues varies by policy and by insurer,
+          and some municipalities also offer a separate lateral repair
+          programme that is not the same thing as an insurance policy. We are
+          not able to tell you what your specific policy covers. Your insurance
+          provider is the right source for that answer, and a documented camera
+          inspection is often useful to have on hand either way, since insurers
+          and municipal programmes alike frequently want to see video evidence
+          before considering a claim.
+        </p>
+      ),
+    },
+    {
+      question: 'Can I be present during the sewer camera inspection?',
+      answer: (
+        <p>
+          Yes. Being present lets you see the footage in real time and ask
+          questions about what the camera is showing as the inspection happens,
+          rather than only reviewing a report afterward. If you are not able to
+          be there, the inspection is still fully documented on video so you
+          can review it and ask questions afterward.
+        </p>
+      ),
+    },
   ],
+  /*
+    ⚠ `processBackground` IS THE SAME FRAME AS `heroBackground`, AND
+    THAT IS THE ACKNOWLEDGED PLACEHOLDER STATE (owner, 2026-09-04).
+    One picture appears twice on this page until dedicated imagery
+    arrives. Swap either src independently.
+  */
+  processBackground: {
+    src: '/images/homepage/differentiator/the-sewer-pros-st-louis-residential-property-exterior.webp',
+    alt: 'Street view of a brick two-story house on a tree-lined block',
+    source:
+      'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+  },
+  /*
+    The three approved St. Louis lateral guides, in the home page's
+    featured layout. All three are `launch` and `indexable`; a gated
+    one would drop out at the resolver rather than ship a dead link.
+  */
+  relatedTitle: 'St. Louis sewer lateral guides',
+  relatedEyebrow: 'Before you file a claim',
+  relatedIntro:
+    'What a lateral report should contain, and which municipal programme applies to your address.',
+  relatedPageIds: [
+    id('res-stl-lateral-report'),
+    id('res-stl-city-program'),
+    id('res-stl-county-program'),
+  ],
+  relatedFeaturedPageId: id('res-stl-lateral-report'),
+  relatedFeaturedPoints: [
+    'What the programme asks for',
+    'What the video has to show',
+    'How the report is submitted',
+  ],
+  relatedDescriptions: {
+    [id('res-stl-lateral-report')]:
+      'What a lateral report should contain before it goes to a municipal programme.',
+    [id('res-stl-city-program')]:
+      'How the City of St. Louis programme works and what it asks of a property owner.',
+    [id('res-stl-county-program')]:
+      'Which county programme applies to your address, and where the boundaries fall.',
+  },
+  relatedMeta: {
+    [id('res-stl-lateral-report')]: {
+      category: 'Reporting guide',
+      icon: 'clipboard-list',
+      accent: 'navy',
+    },
+    [id('res-stl-city-program')]: {
+      category: 'City programme',
+      icon: 'file-video',
+      accent: 'blue',
+    },
+    [id('res-stl-county-program')]: {
+      category: 'County programme',
+      icon: 'scale',
+      accent: 'green',
+    },
+  },
+  relatedViewAllPageId: id('hub-resources'),
+  faqEyebrow: 'Need a quick answer?',
   cta: {
+    eyebrow: 'Evidence before expensive decisions',
     title: 'Find out what condition the lateral is in',
     body: 'Documented evidence of the line, from a company that does not perform the repair.',
+  },
+  ctaBackground: {
+    src: '/images/homepage/differentiator/the-sewer-pros-schedule-sewer-inspection-home-exterior.webp',
+    alt: 'Side of a house and its driveway on a clear day',
+    source:
+      'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
   },
 }
 
