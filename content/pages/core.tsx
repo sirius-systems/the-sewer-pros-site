@@ -304,11 +304,19 @@ export const homeContent: HomePageContent = {
     source:
       'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
   },
-  process: [
-    { title: 'Inspect', description: 'We run a sewer camera inspection through the line to see its actual condition on video, not a guess based on symptoms.' },
-    { title: 'Understand', description: 'We review the footage and explain what it shows, root intrusion, blockages, or a structural issue, in plain language you can actually use.' },
-    { title: 'Decide', description: 'You keep the video and the findings, so you can choose cleaning, monitoring, or your next step with real evidence, not a repair sale.' },
-  ],
+  /*
+    ⚠ THIS BACKS `AuthorityBand`'s PROCESS BAND NOW, NOT `ProcessSteps`.
+
+    The "How it works" section it was written for was removed on owner
+    direction (2026-09-04) and its frame moved to "How our sewer
+    inspection process works", which is the page's process section from
+    here on. The field name still reads correctly; the section it
+    points at changed.
+
+    `homeContent.process` went with that section rather than sitting
+    here unread - the three Inspect / Understand / Decide steps are in
+    git if they are wanted back.
+  */
   processBackground: {
     src: '/images/homepage/differentiator/the-sewer-pros-st-louis-residential-property-exterior.webp',
     alt: 'Street view of a brick two-story house on a tree-lined block',
