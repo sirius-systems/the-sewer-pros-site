@@ -1,22 +1,32 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
+import Image from 'next/image'
 import {
   Hero,
   TrustBar,
+  ConfidenceModule,
+  RoutingCards,
   ServiceIndex,
+  ProblemGrid,
+  InclusionsGrid,
+  Differentiator,
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
+  ReviewMarquee,
   LeadFormSection,
   CoverageSection,
   RelatedLinks,
   FaqSection,
   CtaSection,
   authorityBandRenders,
+  confidenceModuleRenders,
+  routingCardsRenders,
   serviceIndexRenders,
   coverageSectionRenders,
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
 import type { MarketPageContent, MasterPageRecord } from '@/types'
@@ -120,14 +130,131 @@ export function MarketPageTemplate({
         description: content.metaDescription,
       }}
     >
-      <Hero
-        variant="editorial"
-        eyebrow={content.hero.eyebrow}
-        title={content.hero.title}
-        intro={content.hero.intro}
-      />
+      {/*
+        ==================================================================
+        SECTION 1 - HERO
+        ==================================================================
+        ⚠ THIS TEMPLATE IS SHARED BY ALL THREE MARKETS, AND EVERY NEW
+        SECTION BELOW IS OPTIONAL FOR THAT REASON. San Diego and Las
+        Vegas populate only hero, body, services, locationPageIds, faq
+        and cta, so anything required here would blank their pages the
+        day it shipped. Each block is gated on the content that feeds
+        it, which is how `coverage` has always behaved.
+
+        The backdrop is a plain `<Image>` rather than `HeroBackdrop`:
+        that component takes NO props and rotates five hardcoded home
+        page frames, so it cannot carry a market's own picture.
+
+        `.hero-scrim` is the measured overlay from `app/globals.css`,
+        reused rather than re-derived - black/55%, sized against pure
+        white so any replacement frame stays legible.
+      */}
+      {content.heroBackground !== undefined ? (
+        <div className="relative isolate overflow-hidden">
+          <div aria-hidden="true" className="absolute inset-0 -z-10">
+            <Image
+              src={content.heroBackground.src}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="hero-scrim absolute inset-0" />
+          </div>
+
+          <Hero
+            eyebrow={content.hero.eyebrow}
+            title={content.hero.title}
+            intro={content.hero.intro}
+            backdrop={null}
+            aside={
+              content.showHeroForm === true ? (
+                /*
+                  ⚠ THE CARD IS WHAT MAKES THE FORM USABLE ON A
+                  PHOTOGRAPH. Its inputs, labels and focus rings are
+                  built for a light surface, so floating them on a
+                  scrimmed frame would mean restyling every control.
+                  Same wrapper, same reason, as the home page hero.
+                */
+                <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+                  <LeadFormSection
+                    bare
+                    id="hero-request-service"
+                    idPrefix="hero-lead"
+                    defaultMarketId={content.heroFormMarketId}
+                  />
+                </div>
+              ) : undefined
+            }
+          />
+        </div>
+      ) : (
+        <Hero
+          variant="editorial"
+          eyebrow={content.hero.eyebrow}
+          title={content.hero.title}
+          intro={content.hero.intro}
+        />
+      )}
 
       <TrustBar />
+
+      {/* SECTION 2 - appointment information. Sitewide data (DEC-088). */}
+      {confidenceModuleRenders() && <ConfidenceModule density="standard" />}
+
+      {/* SECTION 3 - customer-intent routing. */}
+      {content.routing !== undefined && routingCardsRenders(content.routing) && (
+        <RoutingCards
+          id="how-we-can-help"
+          eyebrow="Start here"
+          title="How we can help"
+          items={content.routing}
+          backgroundImage={content.routingBackground}
+          scrim="strong"
+        />
+      )}
+
+      {/* SECTION 4 - services. `mosaic` once a market supplies card art. */}
+      {content.services !== undefined && serviceIndexRenders(content.services) && (
+        <ServiceIndex
+          density="dense"
+          id="market-services"
+          title="What we do"
+          items={content.services}
+          variant={
+            content.services.some((item) => item.image !== undefined)
+              ? 'mosaic'
+              : 'index'
+          }
+        />
+      )}
+
+      {/* SECTION 5 - three-card explainer, e.g. lateral responsibility. */}
+      {content.lateralCards !== undefined && (
+        <ProblemGrid
+          id="lateral-responsibility"
+          title={content.lateralCards.title}
+          intro={content.lateralCards.intro}
+          items={content.lateralCards.items}
+        />
+      )}
+
+      {/* SECTION 6 - supporting local content. */}
+      {content.materialCards !== undefined && (
+        <InclusionsGrid
+          id="line-materials"
+          title={content.materialCards.title}
+          intro={content.materialCards.intro}
+          items={content.materialCards.items}
+        />
+      )}
+
+      {content.localFeature !== undefined && (
+        <Section density="standard" width="reading" surface="muted">
+          <Prose>{content.localFeature.body}</Prose>
+        </Section>
+      )}
 
       {content.body !== undefined && (
         <Section density="standard" width="reading">
@@ -135,24 +262,20 @@ export function MarketPageTemplate({
         </Section>
       )}
 
-      {content.services !== undefined && (
-        <ServiceIndex
-          density="dense"
-          id="market-services"
-          title="Services in this market"
-          items={content.services}
-        />
-      )}
+      {/* SECTION 7 - the model comparison. Sitewide copy (DEC-098). */}
+      <Differentiator />
 
-      <AuthorityBand title="How we work" />
+      {/*
+        SECTION 8 - one service-area section, not two.
 
-      <ProofGallery title="Recent work" />
-
-      <TestimonialBand />
-
-      <LeadFormSection />
-
-      {content.coverage !== undefined && (
+        ⚠ THE `RelatedLinks` "Areas we serve" BLOCK THAT USED TO SIT
+        BELOW THIS IS GONE. It listed the same five communities as
+        `CoverageSection` immediately above it, which read as a bug
+        rather than a pattern. Coverage keeps the list because it also
+        carries the availability statement; the related strip carried
+        nothing coverage did not.
+      */}
+      {coverageSectionRenders(content.coverage) && content.coverage !== undefined && (
         <CoverageSection
           id="service-area"
           title={content.coverage.title}
@@ -163,28 +286,96 @@ export function MarketPageTemplate({
         />
       )}
 
-      {content.locationPageIds !== undefined && (
-        <RelatedLinks
-          id="locations"
-          title="Areas we serve"
-          pageIds={content.locationPageIds}
-          descriptions={content.relatedDescriptions}
-          surface="default"
-          // A gated market hub may link to its gated locations: this
-          // module is not an indexable link module, because the page
-          // rendering it is not indexed (04 §4). Without this the
-          // cluster is orphaned from its own hub and cannot be QA'd.
-          indexableContext={page.status === 'launch'}
+      {/* SECTION 9 - the four-step process. Sitewide copy. */}
+      {authorityBandRenders() && (
+        <AuthorityBand
+          variant="process"
+          backgroundImage={content.processBackground}
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      <ProofGallery title="Recent work" />
 
+      <TestimonialBand />
+
+      {/*
+        SECTION 10 - reviews.
+
+        ⚠⚠ READ DEC-100 BEFORE CHANGING THIS. The reviews and the
+        4.9/595 stat come from the ST. LOUIS Google Business Profile;
+        San Diego and Las Vegas have no profile of their own (01 §21,
+        DEC-020, DEC-021, DEC-022). DEC-085 previously forbade showing
+        them on those two markets for exactly that reason.
+
+        The owner directed on 2026-09-04 that the stat be treated as
+        company-wide and shown on all three hubs, UNCONDITIONALLY and
+        unattributed. DEC-100 records that supersession.
+
+        ⚠ NO PER-MARKET FLAG, ON INSTRUCTION. An earlier pass gated
+        this on a `showReviews` field so the decision would stay
+        visible in content; the owner asked for it unconditional, which
+        also means San Diego and Las Vegas cannot silently miss it. The
+        only gate left is whether review data exists at all.
+      */}
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" />}
+
+      {/* SECTION 11 - guides. `featured` when a market names one. */}
+      {content.relatedPageIds !== undefined &&
+        relatedLinksRenders(content.relatedPageIds, {
+          indexableContext: page.status === 'launch',
+        }) && (
+          <RelatedLinks
+            id="guides"
+            title={content.relatedTitle ?? 'Guides and resources'}
+            eyebrow={content.relatedEyebrow}
+            intro={content.relatedIntro}
+            pageIds={content.relatedPageIds}
+            descriptions={content.relatedDescriptions}
+            variant={
+              content.relatedFeaturedPageId !== undefined
+                ? 'featured'
+                : 'horizontal'
+            }
+            featuredPageId={content.relatedFeaturedPageId}
+            featuredPoints={content.relatedFeaturedPoints}
+            meta={content.relatedMeta}
+            viewAllPageId={content.relatedViewAllPageId}
+            indexableContext={page.status === 'launch'}
+          />
+        )}
+
+      {/* SECTION 12 - FAQ, in the home page's two-column presentation. */}
+      {faqSectionRenders(content.faq) && content.faq !== undefined && (
+        <FaqSection
+          eyebrow={content.faqEyebrow}
+          entries={content.faq}
+          columns={2}
+        />
+      )}
+
+      {/*
+        SECTION 13 - closing CTA.
+
+        ⚠ THIS IS NOW THE PAGE'S ONLY FORM ON A MARKET WITHOUT A HERO
+        FORM. The standalone mid-page `LeadFormSection` was removed for
+        all three markets on owner direction (2026-09-04). San Diego and
+        Las Vegas convert through this section alone until their hero
+        content is written.
+      */}
       <CtaSection
-        variant="panel"
+        variant={content.ctaBackground !== undefined ? 'split' : 'panel'}
+        eyebrow={content.cta?.eyebrow}
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
+        backgroundImage={content.ctaBackground}
         phone={phone}
+        proof={
+          content.ctaBackground !== undefined ? (
+            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+              <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+            </div>
+          ) : undefined
+        }
       />
     </PageShell>
   )

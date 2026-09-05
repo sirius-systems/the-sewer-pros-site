@@ -123,8 +123,20 @@ export function Select({
   placeholder,
   ...props
 }: SelectProps) {
+  /*
+    ⚠ `props.defaultValue ?? ''`, NOT A HARDCODED `''`. The empty
+    default is what lets a required select start genuinely unanswered,
+    and it stays the default - but it used to be written AFTER the
+    spread, so a caller passing `defaultValue` had it silently
+    overwritten. A market hub preselecting its own market is the first
+    caller that needs it.
+  */
   return (
-    <select {...props} defaultValue="" className={cn(CONTROL, className)}>
+    <select
+      {...props}
+      defaultValue={props.defaultValue ?? ''}
+      className={cn(CONTROL, className)}
+    >
       <option value="" disabled>
         {placeholder}
       </option>

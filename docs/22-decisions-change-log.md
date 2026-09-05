@@ -3222,7 +3222,7 @@ The distribution is stored in `ratingSnapshot` but **not rendered** — DEC-085 
 
 * **No schema.** DEC-028 stays in force and DEC-085 says so explicitly. No `AggregateRating`, no `ratingValue`, no `reviewCount` structured-data property. The approval covers what a visitor reads, not what a crawler parses. Verified absent from built output.
 * **No implication of currency.** The figure renders as "4.9★ … from 595 Google reviews · as of September 1, 2026". The date is part of the claim, not a footnote — `verifiedAt` is a required field on `RatingSnapshot` and the component renders it in the same sentence. Removing it to tidy the layout would turn a dated reading into an assertion that the number is current.
-* **No extension to other markets.** St. Louis is the only market with a GBP (01 §21, DEC-020). Verified absent from `/san-diego-ca/` and `/las-vegas-nv/`.
+* ~~**No extension to other markets.** St. Louis is the only market with a GBP (01 §21, DEC-020). Verified absent from `/san-diego-ca/` and `/las-vegas-nv/`.~~ **Superseded by DEC-100 (2026-09-04)**, which extends the review band to all three market hubs. The underlying fact is unchanged: the reviews and the stat are still the St. Louis profile's.
 
 ### New State
 
@@ -4123,6 +4123,50 @@ All twelve render `differentiatorComparison`, heading included.
 ### Scope Limits
 
 DEC-098's other limits are unchanged and still binding: no mark against the contractor column, no accusatory or integrity-based copy, no new claim about repair contractors in general.
+
+---
+
+## DEC-100 — Google Review Band Extended to All Three Market Hubs
+
+**Date:** 2026-09-04
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` DEC-084, DEC-085 (placement restriction superseded)
+* `components/templates/MarketPageTemplate.tsx`, `components/sections/index.ts`
+* `types/content.ts` (`MarketPageContent.showReviews`)
+* `content/pages/st-louis.tsx`, and San Diego / Las Vegas when their content is written
+
+### Decision
+
+`ReviewMarquee` renders on **all three market hubs**, not the home page alone. The 4.9-star rating and 595-review count are presented as **company-wide**, and are shipped **unattributed** - no line naming the source profile.
+
+### What this supersedes
+
+DEC-085 read: "**No extension to other markets.** St. Louis is the only market with a GBP (01 §21, DEC-020). Verified absent from `/san-diego-ca/` and `/las-vegas-nv/`." That restriction is lifted.
+
+DEC-084 had already noted the opposite direction was open: "Whether the carousel should also appear on St. Louis market and location pages is a live option, and permitted by 01 §20." This decision goes further than that note, to San Diego and Las Vegas as well.
+
+### Reason
+
+The owner's position is that the rating and review count describe **The Sewer Pros as a company**, not a market. On that reading the number is not a local-legitimacy signal per market and 01 §20's prohibition on carrying one market's business facts to another does not bite.
+
+### ⚠ What did NOT change, and is recorded so a later pass does not have to rediscover it
+
+* Only St. Louis has a Google Business Profile (01 §21, DEC-020). San Diego and Las Vegas have none (DEC-021, DEC-022).
+* Every review body rendered is a **St. Louis customer's**, and the aggregate is that profile's.
+* Nothing on screen says so. The stat carries its verification date and no source attribution, so a visitor on `/las-vegas-nv/` has nothing distinguishing it from a Las Vegas rating. Shipping it unattributed was an explicit instruction, considered and confirmed twice.
+* `AggregateRating` / `Review` schema stays prohibited (DEC-028). This is visible content only.
+
+### Implementation Notes
+
+Rendered **unconditionally** in `MarketPageTemplate`, on instruction. An earlier pass gated it on a per-market `showReviews` field so the decision would stay visible in content; the owner asked for it unconditional, which also removes the failure mode where a market silently misses it. The only remaining gate is whether review data exists at all.
+
+The standing "Do NOT add it to `MarketPageTemplate`" warning in `components/sections/index.ts` was rewritten in place to record this reversal rather than deleted, so the next reader sees a decision instead of an absent rule.
+
+⚠ This does not extend to location or service+location templates. Read DEC-085 and this entry together before going further, because the reasoning that made DEC-085 restrictive still describes the data.
 
 ---
 
