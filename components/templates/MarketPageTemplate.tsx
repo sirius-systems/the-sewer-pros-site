@@ -372,7 +372,28 @@ export function MarketPageTemplate({
         proof={
           content.ctaBackground !== undefined ? (
             <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-              <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+              {/*
+                ⚠ THE CLOSING FORM PRESELECTS THE MARKET TOO, AND USED
+                NOT TO. It shipped without this on 2026-09-04, so St.
+                Louis's hero form knew its market and its closing form
+                did not - a visitor who scrolled past the hero had to
+                answer a question the page had already answered.
+
+                ⚠ THE FIELD IS STILL CALLED `heroFormMarketId` AND NOW
+                FEEDS BOTH FORMS. The name is narrower than the job.
+                Renaming it touches `types/content.ts` and all three
+                content files, which is out of this change's scope;
+                flagged rather than done quietly. A market that sets a
+                CTA background but no hero form must still set this or
+                its closing form falls back to unanswered, which is the
+                old behaviour and safe.
+              */}
+              <LeadFormSection
+                bare
+                density="standard"
+                idPrefix="cta-lead"
+                defaultMarketId={content.heroFormMarketId}
+              />
             </div>
           ) : undefined
         }

@@ -99,6 +99,34 @@ export const lasVegasMarketContent: MarketPageContent = {
       </p>
     ),
   },
+  /*
+    ⚠ NEUTRAL PLACEHOLDER IMAGERY, DELIBERATELY NOT THE ST. LOUIS
+    FRAME. That photograph is identifiably St. Louis by filename and
+    alt text, and putting it here would imply a local photograph that
+    does not exist. These are the equipment-and-cleanout frames the
+    home page hero rotates: no location markers, already owner-supplied
+    with provenance recorded.
+
+    ⚠ A VISITOR MOVING FROM THE HOME PAGE WILL RECOGNISE THEM. That is
+    the accepted cost of a placeholder; each market uses a different
+    frame so the two hubs do not read as clones. Swap these two srcs
+    first when real imagery arrives - nothing else changes.
+  */
+  heroBackground: {
+    src: '/images/homepage/hero/the-sewer-pros-high-pressure-line-cleaning-hero.webp',
+    alt: 'Jetting reel and hose run to a cleanout on a paved approach',
+    source:
+      'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.',
+  },
+  /*
+    ⚠ THE FORM DEFAULTS TO THIS MARKET, NOT ST. LOUIS. `heroFormMarketId`
+    feeds both the hero form and the closing one. Copying this block to
+    another market without changing the id would mislabel every lead
+    that page produces, which 19 §32's attribution and 01 §20's
+    market-separation rule both exist to prevent.
+  */
+  showHeroForm: true,
+  heroFormMarketId: 'las-vegas-nv',
   body: (
     <>
       <h2>Who governs your sewer here depends on where you live</h2>
@@ -202,6 +230,17 @@ export const lasVegasMarketContent: MarketPageContent = {
   cta: {
     title: 'Find out what condition the line is in',
     body: 'Documented evidence of the lateral, from a company that does not perform the repair.',
+  },
+  /*
+    Flips the closing CTA from the `panel` button to the split layout:
+    copy left, lead form right, over this frame. Same structure as the
+    home page and the St. Louis hub.
+  */
+  ctaBackground: {
+    src: '/images/homepage/hero/the-sewer-pros-homebuyer-sewer-due-diligence-hero.webp',
+    alt: 'Jetting equipment and an open cleanout beside a property wall',
+    source:
+      'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.',
   },
 }
 
