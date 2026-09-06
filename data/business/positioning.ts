@@ -50,7 +50,18 @@ export const trustStatements: readonly TrustStatement[] = [
     source: '01 §3 — core positioning',
   },
   {
-    label: 'Serving St. Louis, San Diego, and Las Vegas',
+    /*
+      ⚠ THE BULLETS ARE THE SEPARATOR, ON OWNER DIRECTION (2026-09-05).
+      Commas and "and" were removed so the three markets read as a list
+      of equals rather than a sentence.
+
+      ⚠ THIS EXACT STRING IS ALSO A KEY IN `TRUST_ICONS`
+      (components/sections/TrustBar.tsx). The icon is looked up by
+      label, so editing one without the other drops the map pin
+      SILENTLY - the component renders the statement with no mark
+      rather than failing. Change both or neither.
+    */
+    label: 'Serving St. Louis • San Diego • Las Vegas',
     source: '01 §19, DEC-011 — approved markets',
   },
 ]
