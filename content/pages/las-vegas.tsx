@@ -119,6 +119,24 @@ export const lasVegasMarketContent: MarketPageContent = {
       'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.',
   },
   /*
+    ⚠ THE CLIP IS LAS VEGAS'S OWN; THE STILL ABOVE IS STILL THE SHARED
+    PLACEHOLDER, AND IT IS NOW ALSO THIS CLIP'S POSTER. It is what
+    reduced-motion, data-saver, and pre-hydration visitors see, so the
+    note above it still applies in full - the video does not retire the
+    still, it layers over it.
+
+    `describes` is written from the supplied filename and the market it
+    was delivered for. The frames themselves were not inspected -
+    nothing in the repository can decode video - so this says what the
+    clip is FOR rather than asserting shot detail nobody has checked.
+  */
+  heroVideo: {
+    src: '/images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-sewer-camera-inspection-hero.mp4',
+    describes: 'Sewer camera inspection clip supplied for the Las Vegas hub hero',
+    source:
+      'Supplied by the business owner, 2026-09-05. Rendered scene, not footage of a Sewer Pros job.',
+  },
+  /*
     ⚠ THE FORM DEFAULTS TO THIS MARKET, NOT ST. LOUIS. `heroFormMarketId`
     feeds both the hero form and the closing one. Copying this block to
     another market without changing the id would mislabel every lead

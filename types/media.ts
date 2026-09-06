@@ -33,3 +33,44 @@ export interface CardImage {
   /** Provenance of the asset. Required — see above. */
   source: string
 }
+
+/**
+ * A background video layer.
+ *
+ * ⚠ THIS IS A BACKGROUND, NOT A PLAYER. It has no controls, no audio
+ * path, and no caption track, because it carries no information. The
+ * meaning of the section it sits behind is entirely in the copy on
+ * top, which is the condition under which a decorative, silent,
+ * looping clip is allowed at all. Giving one of these a spoken track,
+ * on-screen text, or anything a visitor would need to hear or read
+ * turns it into media content and pulls WCAG 1.2.x in with it.
+ *
+ * ⚠ A POSTER IS REQUIRED, AND IT IS NOT A LOADING STATE. It is what
+ * the market actually renders for a visitor who asked for reduced
+ * motion, is on a metered connection, or whose browser refused
+ * autoplay. Those visitors never see a frame of the video, so the
+ * poster has to be a finished hero background in its own right — see
+ * `MarketPageContent.heroBackground`, which is the poster.
+ *
+ * `source` is required for the same reason it is on `CardImage`.
+ */
+export interface BackgroundVideo {
+  /**
+   * Path under `public/`.
+   *
+   * Pre-encoded: `output: 'export'` means nothing transcodes at build
+   * time (02 §7, §8). H.264 in MP4 is the one combination that plays
+   * everywhere without a second source.
+   */
+  src: string
+  /**
+   * What the clip shows.
+   *
+   * Not rendered — the layer is decorative and `aria-hidden`. This
+   * exists so the set is readable in source, exactly as
+   * `HeroBackdropImage.describes` does.
+   */
+  describes: string
+  /** Provenance of the asset. Required — see `CardImage`. */
+  source: string
+}

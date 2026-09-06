@@ -500,3 +500,36 @@ h4 {
 .hero-scrim {
   background: rgba(0, 0, 0, 0.55);
 }
+
+/* --------------------------------------------------------------------------
+   Market hub hero video
+
+   ⚠ SELF-MOVING CONTENT, OWNER-DIRECTED (2026-09-05), SCOPED TO THE
+   THREE MARKET HUB HEROES. Like the marquee and the homepage backdrop
+   above, this does not license autoplay anywhere else, and 18 §66 is
+   otherwise unchanged.
+
+   ⚠ AND UNLIKE EITHER OF THOSE, IT HAS NO PAUSE CONTROL. The marquee
+   keeps one, the homepage backdrop can defend not having one because
+   nothing in it actually moves, and this one moves and has none
+   (owner, 2026-09-05). `components/sections/HeroVideoBackdrop.tsx`
+   carries that reasoning in full, including what the reduced-motion
+   gate does and does not cover.
+
+   The clip starts transparent and fades in over its own poster once a
+   frame has actually played, so a buffering or refused video never
+   shows as a flash of black between the still and the first frame.
+   `data-started` is set from the element's `playing` event.
+
+   No `prefers-reduced-motion` guard is needed on the transition: under
+   reduced motion the component mounts no `<video>` at all, so there is
+   nothing here to animate.
+   -------------------------------------------------------------------------- */
+.hero-video-frame {
+  opacity: 0;
+  transition: opacity 600ms ease-in-out;
+}
+
+.hero-video-frame[data-started='true'] {
+  opacity: 1;
+}

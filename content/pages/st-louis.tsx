@@ -107,6 +107,27 @@ export const stLouisMarketContent: MarketPageContent = {
     source:
       'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
   },
+  /*
+    ⚠ THE STILL ABOVE IS NOW ALSO THIS CLIP'S POSTER, AND THE TWO DO
+    NOT SHOW THE SAME THING. The still is a house exterior; the clip is
+    a camera inspection. Visitors who get the video see a cross-fade
+    from one subject to the other, which is a cosmetic cost accepted
+    while both assets are placeholders. A still lifted from this clip
+    would remove it, and that is the right fix once a frame can be
+    exported. Everyone in the fallback groups sees only the still, so
+    it has to keep working alone either way.
+
+    `describes` is written from the supplied filename and the market it
+    was delivered for. The frames themselves were not inspected -
+    nothing in the repository can decode video - so this says what the
+    clip is FOR rather than asserting shot detail nobody has checked.
+  */
+  heroVideo: {
+    src: '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-sewer-camera-inspection-hero.mp4',
+    describes: 'Sewer camera inspection clip supplied for the St. Louis hub hero',
+    source:
+      'Supplied by the business owner, 2026-09-05. Rendered scene, not footage of a Sewer Pros job.',
+  },
   showHeroForm: true,
   heroFormMarketId: 'st-louis-mo',
   routing: [

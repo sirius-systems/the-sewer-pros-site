@@ -27,7 +27,7 @@
 
 import type { ReactNode } from 'react'
 import type { MarketId, PageId } from './common'
-import type { CardImage } from './media'
+import type { BackgroundVideo, CardImage } from './media'
 
 /* ==========================================================================
    Shared pieces
@@ -431,6 +431,16 @@ export interface MarketPageContent extends BasePageContent {
   }[]
   /** Full-bleed frame behind the hero. Unset renders the editorial hero. */
   heroBackground?: CardImage
+  /**
+   * Looping clip layered over `heroBackground`.
+   *
+   * ⚠ IT DOES NOT REPLACE `heroBackground`, IT SITS ON TOP OF IT. The
+   * still is the poster and the fallback, and it is the only thing
+   * reduced-motion, data-saver, and pre-hydration visitors ever see -
+   * so this field does nothing at all without one. See
+   * `components/sections/HeroVideoBackdrop.tsx`.
+   */
+  heroVideo?: BackgroundVideo
   /**
    * Puts the lead form beside the hero copy.
    *
