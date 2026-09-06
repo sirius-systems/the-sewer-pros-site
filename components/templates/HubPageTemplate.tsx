@@ -11,6 +11,7 @@ import {
   faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
+import type { ReactNode } from 'react'
 import type { HubPageContent, MasterPageRecord } from '@/types'
 
 /**
@@ -46,6 +47,25 @@ export interface HubPageTemplateProps {
    * unbroken run of `default` surfaces. `/for/` sets this.
    */
   itemsSurface?: SectionSurface
+  /**
+   * Full-bleed layer behind the hero, e.g. `<HeroBackdrop set={...} />`.
+   *
+   * ⚠ SUPPLYING THIS FLIPS THE HERO COPY TO WHITE. `Hero` treats the
+   * backdrop and the white text as one decision, because they are:
+   * white copy without a backdrop is invisible and dark copy over a
+   * photograph is unreadable. Whatever is passed must therefore carry
+   * a scrim dark enough to hold that text - `HeroBackdrop` does.
+   *
+   * ⚠ HUBS ARE OTHERWISE EDITORIAL, AND THAT IS STILL THE DEFAULT.
+   * 18 §37 says a hero "should not depend on a decorative image to
+   * explain the page", and four of the five hubs pass nothing here.
+   * `/locations/` is the exception on owner direction (2026-09-05):
+   * its subject is three markets and its backdrop cycles one frame
+   * per market, which is the page's own content rather than dressing.
+   * A hub whose backdrop would not pass that test should stay
+   * editorial.
+   */
+  backdrop?: ReactNode
 }
 
 export function HubPageTemplate({
@@ -54,6 +74,7 @@ export function HubPageTemplate({
   itemsTitle = 'In this section',
   numbered = false,
   itemsSurface = 'default',
+  backdrop,
 }: HubPageTemplateProps) {
   // A hub only takes the authority band when a non-brand section
   // follows it. `AuthorityBand` and the closing `CtaSection
@@ -93,11 +114,19 @@ export function HubPageTemplate({
         description: content.metaDescription,
       }}
     >
+      {/*
+        `backdrop` is passed straight through rather than being wrapped
+        here. `Hero` already owns that composition: it supplies the
+        `relative isolate overflow-hidden` container, drops the
+        section's own surface, and switches the copy to white. Doing
+        any of that again at this level would fight it.
+      */}
       <Hero
         variant="editorial"
         eyebrow={content.hero.eyebrow}
         title={content.hero.title}
         intro={content.hero.intro}
+        backdrop={backdrop}
       />
 
       <TrustBar />

@@ -3,15 +3,24 @@
 import Image from 'next/image'
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import { cn } from '@/lib/utils/cn'
-import {
-  heroBackdropImages,
-  heroBackdropRenders,
-  HERO_BACKDROP_WIDTH,
-  HERO_BACKDROP_HEIGHT,
-} from '@/data/business/hero-backdrop'
+import { heroBackdropRenders, type HeroBackdropSet } from '@/data/business/hero-backdrop'
 
 /**
- * Cross-fading photographic backdrop for the homepage hero.
+ * Cross-fading photographic backdrop for a hero.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ NOT HOMEPAGE-ONLY ANY MORE. IT TAKES ITS FRAMES AS A PROP.
+ * ---------------------------------------------------------------------------
+ * This shipped reading one hardcoded module, and every note below was
+ * written about that one set. It now takes a `HeroBackdropSet`, and
+ * `/locations/` uses it as well as the home page (owner, 2026-09-05).
+ *
+ * ⚠ THE NOTES BELOW ARE ABOUT THE MECHANISM, NOT ABOUT ONE SET OF
+ * PICTURES, WITH ONE EXCEPTION: the contrast measurements name the
+ * five home page frames specifically. What generalises is the reason
+ * the scrim is sized against pure white instead of against those five
+ * files — a new set gets legibility from that choice rather than from
+ * anyone re-measuring. See `.hero-scrim` in app/globals.css.
  *
  * ===========================================================================
  * ⚠ SELF-MOVING CONTENT, ON OWNER DIRECTION (2026-09-03)
@@ -76,12 +85,17 @@ import {
  * ---------------------------------------------------------------------------
  * LCP
  * ---------------------------------------------------------------------------
- * The first frame renders on the server with `priority`; the other four
- * mount only after hydration. That is deliberate. All five in the
- * initial HTML would be ~485KB of in-viewport imagery competing for the
- * same connection as the frame that actually gets painted, and the
- * hero background is this page's LCP element. Frame one is therefore
- * the only one the browser sees before first paint.
+ * The first frame renders on the server with `priority`; the rest
+ * mount only after hydration. That is deliberate. The whole set in the
+ * initial HTML would be hundreds of kilobytes of in-viewport imagery
+ * competing for the same connection as the frame that actually gets
+ * painted, and the hero background is the LCP element on every page
+ * that uses this. Frame one is therefore the only one the browser sees
+ * before first paint.
+ *
+ * ⚠ THAT MAKES FRAME ORDER AN LCP DECISION, NOT ONLY AN EDITORIAL ONE.
+ * Whichever frame a set puts first is the one every visitor downloads
+ * before anything is painted.
  */
 
 /** Seconds each frame holds before the cross-fade to the next begins. */
@@ -113,7 +127,12 @@ function motionPreferenceOnServer() {
   return true
 }
 
-export function HeroBackdrop() {
+export interface HeroBackdropProps {
+  /** The frames and their shared intrinsic size. */
+  set: HeroBackdropSet
+}
+
+export function HeroBackdrop({ set }: HeroBackdropProps) {
   const [index, setIndex] = useState(0)
 
   /**
@@ -136,17 +155,17 @@ export function HeroBackdrop() {
   const enhanced = !prefersReducedMotion
 
   useEffect(() => {
-    if (!enhanced || heroBackdropImages.length < 2) return
+    if (!enhanced || set.images.length < 2) return
     const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % heroBackdropImages.length)
+      setIndex((i) => (i + 1) % set.images.length)
     }, HOLD_SECONDS * 1000)
     return () => window.clearInterval(id)
-  }, [enhanced])
+  }, [enhanced, set.images.length])
 
-  if (!heroBackdropRenders()) return null
+  if (!heroBackdropRenders(set)) return null
 
   // Before hydration, and under reduced motion, this is the whole set.
-  const frames = enhanced ? heroBackdropImages : heroBackdropImages.slice(0, 1)
+  const frames = enhanced ? set.images : set.images.slice(0, 1)
 
   return (
     <>
@@ -167,8 +186,8 @@ export function HeroBackdrop() {
             key={image.src}
             src={image.src}
             alt=""
-            width={HERO_BACKDROP_WIDTH}
-            height={HERO_BACKDROP_HEIGHT}
+            width={set.width}
+            height={set.height}
             /*
               Only the first frame is a real LCP candidate — it is the
               only one in the server-rendered HTML.

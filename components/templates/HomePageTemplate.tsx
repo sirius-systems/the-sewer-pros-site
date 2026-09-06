@@ -24,6 +24,7 @@ import {
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
+import { homeHeroBackdrop } from '@/data/business/hero-backdrop'
 import { PageShell } from './PageShell'
 // Imported from the data module rather than re-exported through the
 // section: whether this section renders is a question about the review
@@ -166,7 +167,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         title={content.hero.title}
         intro={content.hero.intro}
         secondaryAction={{ href: '/services/', label: 'View services' }}
-        backdrop={<HeroBackdrop />}
+        backdrop={<HeroBackdrop set={homeHeroBackdrop} />}
         aside={
           /*
             A solid card, not a translucent panel. The form's inputs,
