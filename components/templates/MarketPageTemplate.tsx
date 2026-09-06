@@ -100,26 +100,75 @@ export function MarketPageTemplate({
       ? { label: detail.phone, href: `tel:${detail.phoneE164}` }
       : undefined
 
-  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
-  // The three gated sections contribute no entry — they render nothing.
+  /*
+    Does the guides strip render?
+
+    ⚠ HOISTED BECAUSE THREE PLACES NEED THE SAME ANSWER, NOT AS A
+    TIDY-UP. The density array, the render gate and the FAQ's surface
+    below all have to agree about this section: a page where the array
+    says "guides render" and the composition disagrees checks a rhythm
+    nobody ships, and the FAQ picks its background based on whether
+    this sits above it. The predicate was already duplicated across the
+    first two before the reorder, and they had drifted - the array read
+    `content.locationPageIds` where the render reads
+    `content.relatedPageIds`.
+  */
+  /*
+    Does the routing band render? Read for the same reason as
+    `showsGuides`: the services index below picks its surface from it.
+  */
+  const showsRouting =
+    content.routing !== undefined && routingCardsRenders(content.routing)
+
+  const showsGuides =
+    content.relatedPageIds !== undefined &&
+    relatedLinksRenders(content.relatedPageIds, {
+      indexableContext: page.status === 'launch',
+    })
+
+  /*
+    Explicit sequence, checked against `sectionRhythmIssues()` at build.
+    `ProofGallery` and `TestimonialBand` contribute no entry — they are
+    data-gated and render nothing.
+
+    ⚠ THIS ARRAY IS IN RENDER ORDER AND MUST STAY THAT WAY. It was
+    rewritten alongside the 2026-09-05 reorder below; a list that no
+    longer matches the composition checks the rhythm of a page nobody
+    ships.
+
+    ⚠ IT WAS ALSO OUT OF SYNC BEFORE THAT, AND THE DRIFT IS FIXED HERE
+    RATHER THAN LEFT IN PLACE. The old array described a page this
+    template stopped rendering some time ago: it omitted the confidence
+    module, routing, the differentiator, the reviews and all four local
+    content blocks; it read `content.locationPageIds` where the related
+    module below reads `content.relatedPageIds`; and it ended `sparse`
+    for a closing CTA that renders `dense` whenever `ctaBackground` is
+    set, which is all three markets today. Every entry below now names
+    the section that actually renders and reads the same predicate.
+  */
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
-    ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
-    ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(coverageSectionRenders(content.coverage)
-      ? (['standard'] as const)
-      : []),
-    // Same `indexableContext` the module below is given, so a gated
-    // market hub's array follows its own links out of the page.
-    ...(relatedLinksRenders(content.locationPageIds, {
-      indexableContext: page.status === 'launch',
-    })
+    // Unconditional: the differentiator renders its own canonical
+    // comparison rather than per-page content that could be absent.
+    'standard',
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
+    ...(showsRouting ? (['standard'] as const) : []),
+    ...(content.services !== undefined && serviceIndexRenders(content.services)
       ? (['dense'] as const)
       : []),
+    ...(content.lateralCards !== undefined ? (['standard'] as const) : []),
+    ...(content.materialCards !== undefined ? (['dense'] as const) : []),
+    ...(content.localFeature !== undefined ? (['standard'] as const) : []),
+    ...(content.body !== undefined ? (['standard'] as const) : []),
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
+    ...(coverageSectionRenders(content.coverage) ? (['dense'] as const) : []),
+    ...(confidenceModuleRenders() ? (['standard'] as const) : []),
+    ...(showsGuides ? (['dense'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
-    'sparse',
+    // `split` renders dense on a muted surface; `panel` renders sparse
+    // on brand. The entry has to say which one actually ships.
+    content.ctaBackground !== undefined ? 'dense' : 'sparse',
   ]
 
   return (
@@ -219,13 +268,88 @@ export function MarketPageTemplate({
         />
       )}
 
-      <TrustBar />
+      {/*
+        ⚠ `muted`, NOT THE COMPONENT'S OWN `brand` DEFAULT, ON OWNER
+        DIRECTION (2026-09-05). It is what separates this strip from
+        the section beneath it.
 
-      {/* SECTION 2 - appointment information. Sitewide data (DEC-088). */}
-      {confidenceModuleRenders() && <ConfidenceModule density="standard" />}
+        The reorder put `Differentiator` directly below the trust bar,
+        and that section is `brand`. Two navy bands running together
+        read as one long dark region, which is the adjacency 18 §11
+        names and the owner ruled against on 2026-09-04 ("separate
+        sections with background colour, and make the separation
+        obvious").
 
-      {/* SECTION 3 - customer-intent routing. */}
-      {content.routing !== undefined && routingCardsRenders(content.routing) && (
+        ⚠ THE FLIP HAD TO HAPPEN ON THIS SIDE OF THE PAIR. The
+        differentiator cannot leave `brand`: its heading, intro and
+        conclusion are unstyled white inherited from the navy surface,
+        its mobile cards and conclusion rule are `border-white/15`, and
+        its two comparison cells are LIGHT tints chosen to read against
+        navy. Its own `surface` prop says as much - "the dark band is
+        what the tinted cells read against."
+
+        The strip survives the move: its labels take `text-foreground`
+        from the muted surface, and its green `text-accent` icons
+        measure about 4.9:1 against a near-white ground, well clear of
+        the 3:1 that non-text graphics need. The green was previously
+        measured at 2.61:1 against navy, so this is the better of the
+        two for the icons, not a compromise.
+
+        Hero (photo) -> here (muted) -> differentiator (brand) -> reviews
+        (default): four surfaces, no two alike.
+      */}
+      <TrustBar surface="muted" />
+
+      {/*
+        ==================================================================
+        SECTION 2 - THE MODEL COMPARISON. Sitewide copy (DEC-098).
+        ==================================================================
+        ⚠ REORDERED 2026-09-05, ON OWNER DIRECTION, TO MATCH THE HOME
+        PAGE'S CONVERSION SEQUENCE. This section, the reviews below it,
+        the confidence module and the service area all moved; nothing
+        about any of them changed but their position. The page now
+        answers "why trust this company" before it asks the visitor to
+        choose a path, which is the argument recorded in full on
+        `HomePageTemplate`.
+
+        ⚠ THE TRUST STRIP ABOVE IS `muted` SO IT DOES NOT MEET THIS
+        SECTION'S `brand`. Same flip, same reasoning, as the home page
+        - the reasoning is on the `TrustBar` call above. A `border-b`
+        is NOT an alternative; the owner ruled out rules as separators
+        (2026-09-04).
+      */}
+      <Differentiator />
+
+      {/*
+        SECTION 3 - reviews.
+
+        ⚠⚠ READ DEC-100 BEFORE CHANGING THIS. The reviews and the
+        4.9/595 stat come from the ST. LOUIS Google Business Profile;
+        San Diego and Las Vegas have no profile of their own (01 §21,
+        DEC-020, DEC-021, DEC-022). DEC-085 previously forbade showing
+        them on those two markets for exactly that reason.
+
+        The owner directed on 2026-09-04 that the stat be treated as
+        company-wide and shown on all three hubs, UNCONDITIONALLY and
+        unattributed. DEC-100 records that supersession.
+
+        ⚠ NO PER-MARKET FLAG, ON INSTRUCTION. An earlier pass gated
+        this on a `showReviews` field so the decision would stay
+        visible in content; the owner asked for it unconditional, which
+        also means San Diego and Las Vegas cannot silently miss it. The
+        only gate left is whether review data exists at all.
+
+        `TestimonialBand` stays gated and empty - `data/business/proof.ts`
+        holds no verified single testimonial. It sits here rather than
+        further down so the distinction between it and the real review
+        carousel stays visible where it is made.
+      */}
+      <TestimonialBand />
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" />}
+
+      {/* SECTION 4 - customer-intent routing. */}
+      {showsRouting && content.routing !== undefined && (
         <RoutingCards
           id="how-we-can-help"
           eyebrow="Start here"
@@ -233,10 +357,23 @@ export function MarketPageTemplate({
           items={content.routing}
           backgroundImage={content.routingBackground}
           scrim="strong"
+          /*
+            ⚠ THE FALLBACK, NOT THE CURRENT APPEARANCE. `backgroundImage`
+            overrides it, and the muted band is what shows for a market
+            that has not supplied one - which is every market today,
+            since none sets `routingBackground`.
+
+            Added with the reorder: the reviews section that now sits
+            above this is `default` and the services index below it is
+            `default`, so the site default would have put three
+            matching bands in a row. The home page already passes the
+            same value to the same component for the same reason.
+          */
+          surface="muted"
         />
       )}
 
-      {/* SECTION 4 - services. `mosaic` once a market supplies card art. */}
+      {/* SECTION 5 - services. `mosaic` once a market supplies card art. */}
       {content.services !== undefined && serviceIndexRenders(content.services) && (
         <ServiceIndex
           density="dense"
@@ -248,10 +385,34 @@ export function MarketPageTemplate({
               ? 'mosaic'
               : 'index'
           }
+          /*
+            ⚠ THE SURFACE DEPENDS ON WHAT IS ABOVE, WHICH DIFFERS BY
+            MARKET - same shape as the FAQ's note further down.
+
+              St. Louis  routing (muted)   above -> this takes `default`
+              SD and LV  reviews (default) above -> this takes `muted`
+
+            The reorder moved the reviews carousel above this band, and
+            San Diego and Las Vegas render no routing section in
+            between, so the site default would have put two `default`
+            bands together on both. `showsRouting` is the same
+            predicate that section renders on, so the two cannot
+            disagree.
+          */
+          surface={showsRouting ? 'default' : 'muted'}
         />
       )}
 
-      {/* SECTION 5 - three-card explainer, e.g. lateral responsibility. */}
+      {/*
+        SECTIONS 6-7 - local content, and the reason it stays HERE.
+
+        These four blocks are the market-specific material: they have
+        no counterpart on the home page, so the reorder had no slot to
+        move them into. They keep their position immediately after "What
+        we do", which is where a market's own explanation of its lines,
+        its materials and its rules has always followed the service
+        list. Only St. Louis populates all four today.
+      */}
       {content.lateralCards !== undefined && (
         <ProblemGrid
           id="lateral-responsibility"
@@ -261,7 +422,6 @@ export function MarketPageTemplate({
         />
       )}
 
-      {/* SECTION 6 - supporting local content. */}
       {content.materialCards !== undefined && (
         <InclusionsGrid
           id="line-materials"
@@ -283,11 +443,18 @@ export function MarketPageTemplate({
         </Section>
       )}
 
-      {/* SECTION 7 - the model comparison. Sitewide copy (DEC-098). */}
-      <Differentiator />
+      {/* SECTION 8 - the four-step process. Sitewide copy. */}
+      {authorityBandRenders() && (
+        <AuthorityBand
+          variant="process"
+          backgroundImage={content.processBackground}
+        />
+      )}
+
+      <ProofGallery title="Recent work" />
 
       {/*
-        SECTION 8 - one service-area section, not two.
+        SECTION 9 - one service-area section, not two.
 
         ⚠ THE `RelatedLinks` "Areas we serve" BLOCK THAT USED TO SIT
         BELOW THIS IS GONE. It listed the same five communities as
@@ -298,6 +465,29 @@ export function MarketPageTemplate({
       */}
       {coverageSectionRenders(content.coverage) && content.coverage !== undefined && (
         <CoverageSection
+          /*
+            ⚠ `dense`, AND IT IS THE ONE DENSITY VALUE THE 2026-09-05
+            REORDER CHANGED. Everything else moved without being
+            restyled.
+
+            The reorder put this band inside a five-section run of
+            `standard` (local feature, body, process, here, confidence
+            module), which `sectionRhythmIssues()` reported on
+            /st-louis-mo/ as "Sections 9-12 all use standard density".
+
+            ⚠ THAT RUN IS OLDER THAN THE REORDER. The previous density
+            array did not list this section, the differentiator, the
+            reviews or the local blocks at all, so the check was
+            reading a page this template had long stopped rendering -
+            the rendered order before this change carried a run of SIX.
+            Fixing the array is what made it visible.
+
+            `dense` rather than a new value because the home page
+            already renders its own "where we work" band that way
+            (`MarketCoverage density="dense"`). Matching it breaks the
+            run and keeps the two pages' equivalent sections alike.
+          */
+          density="dense"
           id="service-area"
           title={content.coverage.title}
           intro={content.coverage.intro}
@@ -307,63 +497,38 @@ export function MarketPageTemplate({
         />
       )}
 
-      {/* SECTION 9 - the four-step process. Sitewide copy. */}
-      {authorityBandRenders() && (
-        <AuthorityBand
-          variant="process"
-          backgroundImage={content.processBackground}
-        />
-      )}
-
-      <ProofGallery title="Recent work" />
-
-      <TestimonialBand />
-
-      {/*
-        SECTION 10 - reviews.
-
-        ⚠⚠ READ DEC-100 BEFORE CHANGING THIS. The reviews and the
-        4.9/595 stat come from the ST. LOUIS Google Business Profile;
-        San Diego and Las Vegas have no profile of their own (01 §21,
-        DEC-020, DEC-021, DEC-022). DEC-085 previously forbade showing
-        them on those two markets for exactly that reason.
-
-        The owner directed on 2026-09-04 that the stat be treated as
-        company-wide and shown on all three hubs, UNCONDITIONALLY and
-        unattributed. DEC-100 records that supersession.
-
-        ⚠ NO PER-MARKET FLAG, ON INSTRUCTION. An earlier pass gated
-        this on a `showReviews` field so the decision would stay
-        visible in content; the owner asked for it unconditional, which
-        also means San Diego and Las Vegas cannot silently miss it. The
-        only gate left is whether review data exists at all.
-      */}
-      {reviewMarqueeRenders() && <ReviewMarquee density="standard" />}
+      {/* SECTION 10 - appointment information. Sitewide data (DEC-088). */}
+      {confidenceModuleRenders() && <ConfidenceModule density="standard" />}
 
       {/* SECTION 11 - guides. `featured` when a market names one. */}
-      {content.relatedPageIds !== undefined &&
-        relatedLinksRenders(content.relatedPageIds, {
-          indexableContext: page.status === 'launch',
-        }) && (
-          <RelatedLinks
-            id="guides"
-            title={content.relatedTitle ?? 'Guides and resources'}
-            eyebrow={content.relatedEyebrow}
-            intro={content.relatedIntro}
-            pageIds={content.relatedPageIds}
-            descriptions={content.relatedDescriptions}
-            variant={
-              content.relatedFeaturedPageId !== undefined
-                ? 'featured'
-                : 'horizontal'
-            }
-            featuredPageId={content.relatedFeaturedPageId}
-            featuredPoints={content.relatedFeaturedPoints}
-            meta={content.relatedMeta}
-            viewAllPageId={content.relatedViewAllPageId}
-            indexableContext={page.status === 'launch'}
-          />
-        )}
+      {showsGuides && content.relatedPageIds !== undefined && (
+        <RelatedLinks
+          id="guides"
+          title={content.relatedTitle ?? 'Guides and resources'}
+          eyebrow={content.relatedEyebrow}
+          intro={content.relatedIntro}
+          pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
+          variant={
+            content.relatedFeaturedPageId !== undefined
+              ? 'featured'
+              : 'horizontal'
+          }
+          /*
+            ⚠ `default`, NOT THE COMPONENT'S OWN `muted`, AND IT IS AN
+            ADJACENCY FIX RATHER THAN A PREFERENCE. The reorder put
+            `ConfidenceModule` (muted) directly above this, so the
+            component's default would put two muted bands together.
+            The FAQ below takes `muted` in exchange - see its note.
+          */
+          surface="default"
+          featuredPageId={content.relatedFeaturedPageId}
+          featuredPoints={content.relatedFeaturedPoints}
+          meta={content.relatedMeta}
+          viewAllPageId={content.relatedViewAllPageId}
+          indexableContext={page.status === 'launch'}
+        />
+      )}
 
       {/* SECTION 12 - FAQ, in the home page's two-column presentation. */}
       {faqSectionRenders(content.faq) && content.faq !== undefined && (
@@ -371,6 +536,19 @@ export function MarketPageTemplate({
           eyebrow={content.faqEyebrow}
           entries={content.faq}
           columns={2}
+          /*
+            ⚠ THE SURFACE DEPENDS ON WHAT IS ABOVE, WHICH DIFFERS BY
+            MARKET. This template is shared, and the section above the
+            FAQ is not the same one on every hub:
+
+              St. Louis  guides (default)      -> this takes `muted`
+              SD and LV  confidence (muted)    -> this takes `default`
+
+            A fixed value clashes with one of the two. `showsGuides` is
+            the same predicate the section above renders on, so the two
+            cannot disagree.
+          */
+          surface={showsGuides ? 'muted' : 'default'}
         />
       )}
 
