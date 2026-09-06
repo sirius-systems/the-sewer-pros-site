@@ -37,29 +37,42 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  *
  * Structure resolved against docs/18-design-system.md §16 (Homepage
  * Template), which names `homepage-performance.webp` as this page's
- * reference (§4):
+ * reference (§4).
  *
- *   Hero → Trust strip → Confidence module* → Intent routing → Services
- *   mosaic → Independent-model split → Markets → Process → Body*
- *   → Authority band → Proof* → Testimonial* → Google reviews
- *   → Form* → Resources → FAQ → Final CTA
+ * ---------------------------------------------------------------------------
+ * ⚠ REORDERED FOR CONVERSION SEQUENCE (owner, 2026-09-05)
+ * ---------------------------------------------------------------------------
+ * The page now runs:
+ *
+ *   Hero + form → Trust strip → Differentiator → Google reviews
+ *   → Intent routing → Services mosaic → Process → Markets → Body*
+ *   → Confidence module → Resources → FAQ → Final CTA + form
  *
  * `*` renders nothing until its data gate opens. Confidence module:
  * DEC-088 — see components/sections/index.ts for what changed and why.
+ *
+ * ⚠ THIS WAS A REORDER, NOT A REWRITE. Every section below is the one
+ * that was already here, with its own props, gates, copy and styling
+ * untouched. What changed is the sequence, the surface assignments that
+ * sequence forces (see the surface note in the body), and the comments
+ * that described the old neighbours.
+ *
+ * The argument for the shape: the page now answers "why trust this
+ * company" (differentiator, then real reviews) BEFORE it asks the
+ * visitor to choose a path (routing, services). Orientation used to
+ * come first and the proof came two thirds of the way down.
  *
  * This order is deliberately NOT §16's literal outline. §8 lets a
  * template adjust section order, combine, remove, and add sections
  * without separate approval; §9 and §10 add that the reference pages
  * are defaults rather than section quotas, and explicitly do not
- * require "identical section orders across every page". The sequence
- * above is the content-driven arrangement §9 asks for — §16's outline
- * with the sections DEC-084 through DEC-089 added in the places their
- * content earns.
+ * require "identical section orders across every page".
  *
  * The review carousel is the composition's testimonial slot finally
  * carrying real material (DEC-084). `TestimonialBand` above it remains
  * gated and empty; the two are separate because the carousel is
- * ST. LOUIS-scoped and `TestimonialBand` is not (01 §20-21).
+ * ST. LOUIS-scoped and `TestimonialBand` is not (01 §20-21). They moved
+ * up the page together so that relationship stays readable in source.
  *
  * ---------------------------------------------------------------------------
  * ROUTING AND SERVICES MUST NOT LOOK ALIKE
@@ -77,7 +90,8 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  *   RoutingCards   an EVEN card grid
  *   ServiceIndex   an UNEVEN mosaic, flagship given double width
  *
- * Two different composition patterns, adjacent, deliberately.
+ * Two different composition patterns, adjacent, deliberately. They are
+ * still adjacent after the reorder, which is why this note survives it.
  *
  * 18 §14: a hero must not be an "oversized empty hero that forces the
  * visitor to scroll before understanding the page". It stays editorial
@@ -90,9 +104,11 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  * owner decision about asset direction, not a composition change, so
  * the hero stays text-led until that call is made.
  *
- * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="panel"`
- * are the only brand surfaces in the system. Resources and FAQ sit
- * between them; stacking dark sections is a named anti-pattern (18 §11).
+ * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="split"`
+ * both carry photographs on this page rather than the brand surface, so
+ * `Differentiator` is the only `brand` section left. `TrustBar` above it
+ * was moved to `muted` on owner direction so the two do not run
+ * together — see the surface note in the body.
  */
 export interface HomePageTemplateProps {
   page: MasterPageRecord
@@ -101,26 +117,36 @@ export interface HomePageTemplateProps {
 
 export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
-  // The three gated sections contribute no entry — they render nothing.
+  // The gated sections contribute no entry — they render nothing.
   //
-  // The services mosaic is `dense` and the markets band `dense` to
-  // break what was previously a four-section `standard` run through
-  // services → differentiator → markets → process. That run was a live
-  // rhythm warning on this page before the port.
+  // ⚠ THIS ARRAY IS IN RENDER ORDER AND MUST STAY THAT WAY. It was
+  // reordered in lockstep with the JSX below (owner, 2026-09-05); a
+  // list that no longer matches the composition checks the rhythm of a
+  // page nobody ships.
+  //
+  // With every gate open the sequence reads:
+  //
+  //   sparse dense standard standard standard dense standard dense
+  //   standard dense dense dense
+  //
+  // The longest run is three, against `sectionRhythmIssues()`'s
+  // threshold of four. Differentiator → reviews → routing is that run,
+  // and it is the one to watch if another `standard` section is ever
+  // inserted among them.
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
-    ...(confidenceModuleRenders() ? (['standard'] as const) : []),
+    // The differentiator is unconditional: it renders its own canonical
+    // comparison rather than per-page content that could be absent. No
+    // predicate to gate on, so the entry is a literal.
+    'standard',
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(routingCardsRenders(content.routing) ? (['standard'] as const) : []),
     ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
-    // The differentiator is unconditional now: it renders its own
-    // canonical comparison rather than per-page content that could be
-    // absent. No predicate to gate on, so the entry is a literal.
-    'standard',
+    ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(marketCoverageRenders() ? (['dense'] as const) : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
+    ...(confidenceModuleRenders() ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
@@ -187,7 +213,37 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         }
       />
 
-      <TrustBar />
+      {/*
+        ⚠ `muted`, NOT THE COMPONENT'S OWN `brand` DEFAULT, ON OWNER
+        DIRECTION (2026-09-05). It is what separates this strip from
+        the section beneath it.
+
+        The reorder put `Differentiator` directly below the trust bar,
+        and that section is `brand`. Two navy bands running together
+        read as one long dark region, which is the adjacency 18 §11
+        names and the owner ruled against on 2026-09-04 ("separate
+        sections with background colour, and make the separation
+        obvious").
+
+        ⚠ THE FLIP HAD TO HAPPEN ON THIS SIDE OF THE PAIR. The
+        differentiator cannot leave `brand`: its heading, intro and
+        conclusion are unstyled white inherited from the navy surface,
+        its mobile cards and conclusion rule are `border-white/15`, and
+        its two comparison cells are LIGHT tints chosen to read against
+        navy. Its own `surface` prop says as much - "the dark band is
+        what the tinted cells read against."
+
+        The strip survives the move: its labels take `text-foreground`
+        from the muted surface, and its green `text-accent` icons
+        measure about 4.9:1 against a near-white ground, well clear of
+        the 3:1 that non-text graphics need. The green was previously
+        measured at 2.61:1 against navy, so this is the better of the
+        two for the icons, not a compromise.
+
+        Hero (photo) -> here (muted) -> differentiator (brand) -> reviews
+        (default): four surfaces, no two alike.
+      */}
+      <TrustBar surface="muted" />
 
       {/*
         =====================================================================
@@ -203,33 +259,68 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         by drift. Density still varies underneath; this is in addition
         to it, not instead of it.
 
-        Two `border-b border-border` dividers used to sit on
-        `ServiceIndex` and `MarketCoverage`, patching the two pairs
-        that shared a surface. Both are GONE: a rule is the thing the
-        owner ruled out, and with the sequence below there is no
-        matching pair left for one to patch.
-
         The order, hero downward:
 
           Hero                photo backdrop
-          TrustBar            brand
-          ConfidenceModule    muted
+          TrustBar            muted   ← flipped, see below
+          Differentiator      brand   ← comparison-table variant
+          ReviewMarquee       default
           RoutingCards        photo backdrop
           ServiceIndex        default
-          Differentiator      brand   ← comparison-table variant
-          MarketCoverage      default
           AuthorityBand       photo backdrop  ← process variant
-          ReviewMarquee       default
-          RelatedLinks        muted
-          FaqSection          default
+          MarketCoverage      default
+          ConfidenceModule    muted
+          RelatedLinks        default ← flipped, see below
+          FaqSection          muted   ← flipped, see below
           CtaSection          photo backdrop
 
+        ---------------------------------------------------------------------
+        ⚠ THE TRUST STRIP IS `muted` HERE AND `brand` EVERYWHERE ELSE.
+        ---------------------------------------------------------------------
+        The 2026-09-05 reorder put the differentiator directly below the
+        trust strip, and that section is `brand`. The strip was flipped
+        to `muted` on owner direction so the two do not read as one long
+        navy region. The full reasoning, including why the flip had to
+        happen on the strip rather than on the differentiator, sits on
+        the `TrustBar` call above.
+
+        A `border-b` is NOT an alternative fix: a rule is the exact
+        thing the owner ruled out, and two such dividers were deleted
+        from this page for that reason.
+
         ⚠ INSERTING A SECTION HERE MEANS RE-CHECKING ITS NEIGHBOURS.
-        Adding one without flipping what follows it puts two matching
-        surfaces back together, which is the thing this sequence exists
-        to prevent.
+        Adding one without flipping what follows it puts two more
+        matching surfaces together, which is the thing this sequence
+        exists to prevent.
       */}
-      <ConfidenceModule density="standard" />
+
+      {/*
+        ⚠ NO `content.differentiator` GATE, AND NO title/intro PASSED
+        IN. `differentiatorComparison` owns its own heading and intro,
+        so `homeContent.differentiator` was a second source for the
+        same two strings — removed rather than left to drift out of
+        step with the table beneath it (owner, 2026-09-04).
+
+        ⚠ SURFACE IS `brand`, THE VARIANT'S DEFAULT, AND THE SECTIONS
+        EITHER SIDE ARE SET AROUND IT. `TrustBar` above is `muted`
+        precisely so it does not meet this one; `ReviewMarquee` below
+        is `default`. See the surface note above.
+      */}
+      <Differentiator />
+
+      {/*
+        `TestimonialBand` stays gated and empty — `data/business/proof.ts`
+        holds no verified single testimonial. `ReviewMarquee` is a
+        different thing: real St. Louis Google reviews (DEC-084), safe
+        here because the homepage is sitewide and St. Louis is the only
+        market with a Business Profile (01 §20-21).
+
+        The two moved up the page together in the 2026-09-05 reorder so
+        that distinction stays visible where it is made.
+      */}
+      <TestimonialBand />
+
+      <ReviewMarquee density="standard" />
 
       {content.routing !== undefined && (
         <RoutingCards
@@ -269,28 +360,6 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       />
 
       {/*
-        ⚠ NO `content.differentiator` GATE ANY MORE, AND NO title/intro
-        PASSED IN. `differentiatorComparison` owns its own heading and
-        intro, so `homeContent.differentiator` was a second source for
-        the same two strings — removed rather than left to drift out of
-        step with the table beneath it (owner, 2026-09-04).
-
-        ⚠ SURFACE IS `brand`, THE VARIANT'S DEFAULT, WHICH CHANGES THIS
-        SECTION'S NEIGHBOURS. `ServiceIndex` above and `MarketCoverage`
-        below are both `default`, so no two brand surfaces meet — the
-        adjacency 18 §11 names. See the surface order above.
-      */}
-      <Differentiator />
-
-      <MarketCoverage density="dense" />
-
-      {content.body !== undefined && (
-        <Section density="standard" width="reading">
-          <Prose>{content.body}</Prose>
-        </Section>
-      )}
-
-      {/*
         ⚠ THE PROCESS VARIANT, HOMEPAGE ONLY. It takes no `title`:
         `authorityProcess` owns its own eyebrow, heading, intro and
         both actions, so there is one source for them. Every other
@@ -302,12 +371,12 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         here, which is why `processBackground` still reads correctly:
         this band is the page's process section now.
 
-        ⚠ ADJACENCY RE-CHECKED AFTER THE REMOVAL. `Differentiator`
-        above is `brand`, and `ProcessSteps` used to sit between the
-        two. It no longer does, so the separator is now
-        `MarketCoverage` (default) plus the optional prose block - and
-        this section is an image rather than `brand` anyway, so no two
-        dark surfaces meet either way. See the surface order above.
+        ⚠ ADJACENCY RE-CHECKED AFTER THE 2026-09-05 REORDER. This band
+        used to follow `Differentiator` (brand) with `MarketCoverage`
+        between them. It now follows `ServiceIndex` (default) and is
+        followed by `MarketCoverage` (default) — and it is an image
+        rather than `brand` in any case, so no two dark surfaces meet
+        on either side. See the surface order above.
       */}
       <AuthorityBand
         variant="process"
@@ -316,16 +385,15 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
       <ProofGallery title="Recent work" />
 
-      {/*
-        `TestimonialBand` stays gated and empty — `data/business/proof.ts`
-        holds no verified single testimonial. `ReviewMarquee` is a
-        different thing: real St. Louis Google reviews (DEC-084), safe
-        here because the homepage is sitewide and St. Louis is the only
-        market with a Business Profile (01 §20-21).
-      */}
-      <TestimonialBand />
+      <MarketCoverage density="dense" />
 
-      <ReviewMarquee density="standard" />
+      {content.body !== undefined && (
+        <Section density="standard" width="reading">
+          <Prose>{content.body}</Prose>
+        </Section>
+      )}
+
+      <ConfidenceModule density="standard" />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -342,6 +410,18 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
             hole in it.
           */
           variant="featured"
+          /*
+            ⚠ `default`, NOT THE COMPONENT'S OWN `muted` DEFAULT, AND
+            IT IS AN ADJACENCY FIX RATHER THAN A PREFERENCE. The
+            2026-09-05 reorder moved `ConfidenceModule` (muted)
+            directly above this, so the component's default would put
+            two muted bands together. Flipping this one and the FAQ
+            below restores the alternation across all four of
+            MarketCoverage → ConfidenceModule → here → FaqSection.
+            Both components are light-surface designs either way, so
+            neither swap changes a treatment.
+          */
+          surface="default"
           eyebrow={content.relatedEyebrow}
           featuredPageId={content.relatedFeaturedPageId}
           featuredPoints={content.relatedFeaturedPoints}
@@ -365,6 +445,14 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           title="Common questions about sewer and drain services"
           entries={content.faq}
           columns={2}
+          /*
+            The other half of the adjacency fix noted on `RelatedLinks`
+            above: that section takes `default`, so this one takes
+            `muted`. `HubPageTemplate` already renders this section
+            muted, so the treatment is one the component ships with
+            rather than a new one.
+          */
+          surface="muted"
         />
       )}
 
@@ -378,8 +466,8 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         `split` renders on `muted` where `panel` used `brand`, so this
         section is not one of the page's dark ones either way. With
         `ctaBackground` set it is a photograph rather than the muted
-        band; `FaqSection` above it is `default`, so nothing dark meets
-        anything dark here.
+        band; `FaqSection` above it is now `muted`, so nothing dark
+        meets anything dark here and no two light bands match either.
       */}
       <CtaSection
         variant="split"
