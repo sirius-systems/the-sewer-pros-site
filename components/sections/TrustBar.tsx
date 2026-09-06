@@ -147,11 +147,18 @@ function MultiMarketIcon(props: IconProps) {
   )
 }
 
+/*
+  ⚠ KEYED BY THE STATEMENT LABEL, SO THE KEYS MUST TRACK
+  `trustStatements` IN data/business/positioning.ts CHARACTER FOR
+  CHARACTER. A label edited on one side only falls through to
+  `undefined` here and the statement renders WITHOUT ITS ICON - the
+  lookup is guarded, so nothing throws and nothing reports it.
+*/
 const TRUST_ICONS: Record<string, (props: IconProps) => React.JSX.Element> = {
   'Independent inspection and diagnostics': IndependentInspectionIcon,
   'Sewer and drain specialists, not general plumbing': SewerSpecialistIcon,
   'No repair-driven upselling': NoUpsellingIcon,
-  'Serving St. Louis, San Diego, and Las Vegas': MultiMarketIcon,
+  'Serving St. Louis • San Diego • Las Vegas': MultiMarketIcon,
 }
 
 export function TrustBar({
