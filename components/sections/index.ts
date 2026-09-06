@@ -103,6 +103,8 @@ export type { HeroProps, HeroVariant } from './Hero'
 // Client component: the homepage hero's cross-fading photographic
 // backdrop. Owner-directed and homepage-only — see the component.
 export { HeroBackdrop } from './HeroBackdrop'
+export { HeroVideoBackdrop } from './HeroVideoBackdrop'
+export type { HeroVideoBackdropProps } from './HeroVideoBackdrop'
 
 export { TrustBar } from './TrustBar'
 export type { TrustBarProps } from './TrustBar'

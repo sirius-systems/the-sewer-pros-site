@@ -2,6 +2,7 @@ import { Section, Prose, type SectionDensity } from '@/components/ui'
 import Image from 'next/image'
 import {
   Hero,
+  HeroVideoBackdrop,
   TrustBar,
   ConfidenceModule,
   RoutingCards,
@@ -148,20 +149,40 @@ export function MarketPageTemplate({
         `.hero-scrim` is the measured overlay from `app/globals.css`,
         reused rather than re-derived - black/55%, sized against pure
         white so any replacement frame stays legible.
+
+        ⚠ A MARKET THAT ALSO SETS `heroVideo` GETS `HeroVideoBackdrop`
+        INSTEAD, AND `heroBackground` BECOMES ITS POSTER. The still is
+        not skipped in that case - it is what reduced-motion,
+        data-saver, and pre-hydration visitors see, and it stays the
+        LCP element. The video never replaces it, it fades in over it.
+        All the reasoning lives in that component; owner direction,
+        2026-09-05.
+
+        The two branches are one `<Hero>` call with a swapped backdrop
+        layer rather than two, so the copy, the form, and the aside
+        wiring cannot drift apart between a market with video and one
+        without.
       */}
       {content.heroBackground !== undefined ? (
         <div className="relative isolate overflow-hidden">
-          <div aria-hidden="true" className="absolute inset-0 -z-10">
-            <Image
-              src={content.heroBackground.src}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
+          {content.heroVideo !== undefined ? (
+            <HeroVideoBackdrop
+              video={content.heroVideo}
+              poster={content.heroBackground}
             />
-            <div className="hero-scrim absolute inset-0" />
-          </div>
+          ) : (
+            <div aria-hidden="true" className="absolute inset-0 -z-10">
+              <Image
+                src={content.heroBackground.src}
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+              <div className="hero-scrim absolute inset-0" />
+            </div>
+          )}
 
           <Hero
             eyebrow={content.hero.eyebrow}
