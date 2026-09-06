@@ -48,9 +48,26 @@ export interface HeroBackdropImage {
   source: string
 }
 
-/** Intrinsic size of every frame, in px. */
-export const HERO_BACKDROP_WIDTH = 1672
-export const HERO_BACKDROP_HEIGHT = 941
+/**
+ * A complete backdrop set: the frames plus the intrinsic size they all
+ * share.
+ *
+ * ⚠ ONE SIZE FOR THE WHOLE SET, NOT ONE PER FRAME. `HeroBackdrop`
+ * cross-fades the frames against each other in a single stacking
+ * context, so a set whose members differ in aspect ratio would shift
+ * the crop under the copy every time the frame changed. Keeping the
+ * dimensions on the set rather than the image makes a mismatched
+ * addition a thing you have to notice rather than a thing that quietly
+ * works until someone looks at it.
+ */
+export interface HeroBackdropSet {
+  /** Display order. The first frame is the one rendered on the server. */
+  images: readonly HeroBackdropImage[]
+  /** Intrinsic width of every frame, in px. */
+  width: number
+  /** Intrinsic height of every frame, in px. */
+  height: number
+}
 
 const SOURCE = 'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.'
 
@@ -63,7 +80,7 @@ const SOURCE = 'Supplied by the business owner, 2026-09-03. Rendered scene, not 
  * also the only one rendered on the server, so it is the LCP candidate
  * — see `components/sections/HeroBackdrop.tsx`.
  */
-export const heroBackdropImages: readonly HeroBackdropImage[] = [
+const homeFrames: readonly HeroBackdropImage[] = [
   {
     src: '/images/homepage/hero/the-sewer-pros-residential-camera-service-hero.webp',
     describes:
@@ -92,7 +109,22 @@ export const heroBackdropImages: readonly HeroBackdropImage[] = [
   },
 ]
 
+/**
+ * The home page hero backdrop.
+ *
+ * ⚠ THE 1672x941 IS NOT INCIDENTAL. `output: 'export'` disables the
+ * Next image optimizer (02 §7, §8), so whatever is on disk is what
+ * every visitor downloads at every viewport. These were sized at
+ * authoring time to be the smallest frame that still holds up
+ * full-bleed on a desktop hero.
+ */
+export const homeHeroBackdrop: HeroBackdropSet = {
+  images: homeFrames,
+  width: 1672,
+  height: 941,
+}
+
 /** 18 §120 — the section omits the backdrop rather than render an empty layer. */
-export function heroBackdropRenders(): boolean {
-  return heroBackdropImages.length > 0
+export function heroBackdropRenders(set: HeroBackdropSet): boolean {
+  return set.images.length > 0
 }
