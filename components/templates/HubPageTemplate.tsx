@@ -3,11 +3,13 @@ import {
   Hero,
   TrustBar,
   ServiceIndex,
+  MarketCoverage,
   AuthorityBand,
   FaqSection,
   CtaSection,
   authorityBandRenders,
   serviceIndexRenders,
+  marketCoverageRenders,
   faqSectionRenders,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
@@ -94,12 +96,37 @@ export function HubPageTemplate({
   const showAuthority =
     faqSectionRenders(content.faq) && authorityBandRenders()
 
+  /*
+    Which member list renders, and it is EXACTLY ONE OF THE TWO.
+
+    ⚠ HOISTED BECAUSE THE DENSITY ARRAY AND THE RENDER BOTH READ IT. An
+    array that described the index while the page shipped the cards
+    would check a rhythm nobody sees.
+
+    `/locations/` is the only hub whose members are markets, so it is
+    the only one `MarketCoverage` can resolve cards for. The other four
+    keep the scannable index, unchanged.
+  */
+  const showsMarketCards =
+    content.marketCards !== undefined && marketCoverageRenders()
+  const showsItems =
+    !showsMarketCards && serviceIndexRenders(content.items)
+
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
-    ...(serviceIndexRenders(content.items) ? (['standard'] as const) : []),
+    /*
+      ⚠ THE CARDS ARE `dense` WHERE THE INDEX IS `standard`, AND THAT
+      IS THE HOME PAGE'S OWN VALUE RATHER THAN A NEW ONE. That page
+      renders `MarketCoverage density="dense"`, and the point of this
+      branch is that the two pages present the same section the same
+      way. It also breaks what would otherwise be body -> cards ->
+      process, three `standard` bands in a row.
+    */
+    ...(showsMarketCards ? (['dense'] as const) : []),
+    ...(showsItems ? (['standard'] as const) : []),
     ...(showAuthority ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
@@ -137,7 +164,44 @@ export function HubPageTemplate({
         </Section>
       )}
 
-      {content.items !== undefined && (
+      {/*
+        ⚠ THE MEMBER LIST, IN ONE OF TWO PRESENTATIONS. Not two
+        sections: a hub renders its members once.
+
+        `/locations/` takes the home page's market cards, on owner
+        direction (2026-09-07), because its members ARE the three
+        markets and the same geographic information should not be shown
+        in two competing designs across the site. Everything the plain
+        rows carried is still here and still a crawlable anchor - the
+        three hub links are the card headings and their closing links,
+        and each card now also exposes that market's community pages.
+
+        ⚠ `id="hub-items"` MOVES WITH IT so the anchor target and the
+        `aria-labelledby` on this band stay the same id whichever
+        presentation renders.
+      */}
+      {showsMarketCards && content.marketCards !== undefined && (
+        <MarketCoverage
+          density="dense"
+          id="hub-items"
+          eyebrow={content.marketCards.eyebrow}
+          title={content.marketCards.title}
+          intro={content.marketCards.intro}
+          descriptions={content.marketCards.descriptions}
+          actionLabels={content.marketCards.actionLabels}
+          /*
+            ⚠ `h3` HERE, `span` ON THE HOME PAGE. These cards are this
+            page's primary content and its only H3 level, so they carry
+            real headings; the home page keeps the span it renders
+            today, which is what leaves its output untouched. See
+            `MarketCoverage.headingAs`.
+          */
+          headingAs="h3"
+          surface={itemsSurface}
+        />
+      )}
+
+      {showsItems && content.items !== undefined && (
         <ServiceIndex
           id="hub-items"
           title={itemsTitle}

@@ -870,16 +870,56 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       </>
     ),
-    // All three markets are declared. `ServiceIndex` resolves through
-    // `resolveLinkableOnly`, so a market whose hub is still gated drops
-    // out of this indexable module rather than emitting a link to a
-    // noindex page (04 §4). Las Vegas is gated under DEC-063 today and
-    // will appear here automatically when that gate is released.
-    items: [
-      { pageId: id('market-st-louis-mo'), description: 'Serving the St. Louis metro area.' },
-      { pageId: id('market-san-diego-ca'), description: 'Serving the San Diego metro area.' },
-      { pageId: id('market-las-vegas-nv'), description: 'Serving the Las Vegas Valley.' },
-    ],
+    /*
+      ⚠ THE HOME PAGE'S MARKET CARDS, NOT A SECOND DESIGN FOR THE SAME
+      INFORMATION (owner direction, 2026-09-07). This replaced a plain
+      three-row `items` index carrying one line each; every destination
+      it had is still a crawlable anchor here, and each card now also
+      lists that market's own community pages.
+
+      ⚠ NO `items` ALONGSIDE THIS. `HubPageTemplate` renders one member
+      list, and it prefers this one - an `items` array left here would
+      be content nothing displays.
+
+      ⚠ THE CARDS ARE NOT DECLARED HERE, AND THAT IS THE POINT.
+      `MarketCoverage` builds them from approved `market` page records,
+      so a market whose hub is gated drops out of this indexable module
+      on its own (04 §4) rather than needing an edit in two places. All
+      three are `launch` and indexable today, which is why all three
+      render. The community lists come from approved `location` records
+      the same way, so no city name and no route is written in this
+      file.
+
+      ⚠ SERVICE MARKETS, NOT BRANCHES. The copy below says where work
+      happens, never where an office is (CLAUDE.md §11, 18 §87). The
+      hero and the FAQ on this page already make that explicit, and the
+      intro repeats the availability caveat rather than implying the
+      listed communities are the limit or the guarantee.
+    */
+    marketCards: {
+      eyebrow: 'Service areas',
+      title: 'Where we work',
+      intro:
+        'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services across the St. Louis, San Diego, and Las Vegas service markets. Choose a market to explore local service information and featured communities. The locations shown are not the full limit of our coverage, so contact us to confirm availability for your property.',
+      descriptions: {
+        [id('market-st-louis-mo')]:
+          'Sewer inspection, cleaning, locating, and diagnostic services across the greater St. Louis region.',
+        [id('market-san-diego-ca')]:
+          'Sewer inspection, cleaning, locating, and diagnostic services across the greater San Diego region.',
+        [id('market-las-vegas-nv')]:
+          'Sewer inspection, cleaning, locating, and diagnostic services across the Las Vegas Valley.',
+      },
+      /*
+        Each label names its own market rather than repeating one
+        string three times (18 §47). The home page keeps the shared
+        wording, where the card heading sits directly above the link.
+      */
+      actionLabels: {
+        [id('market-st-louis-mo')]: 'Explore St. Louis Service Locations',
+        [id('market-san-diego-ca')]: 'Explore San Diego Service Locations',
+        [id('market-las-vegas-nv')]: 'Explore Las Vegas Service Locations',
+      },
+    },
     faq: [
       {
         question: 'Do you have a local office I can visit?',
