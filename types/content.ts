@@ -639,6 +639,32 @@ export interface ResourcePageContent extends BasePageContent {
 /** Hub page — services, locations, for, commercial, resources. */
 export interface HubPageContent extends BasePageContent {
   items?: readonly { pageId: PageId; description?: string }[]
+  /**
+   * Renders the home page's market cards INSTEAD OF the `items` index.
+   *
+   * ⚠ ONLY `/locations/` SETS THIS, AND ONLY BECAUSE ITS MEMBERS ARE
+   * THE MARKETS. The other four hubs list services, audiences,
+   * commercial services and resources, none of which `MarketCoverage`
+   * knows how to resolve - it builds its cards from `market` page
+   * records, not from `items`.
+   *
+   * ⚠ SET THIS OR `items`, NOT BOTH. `HubPageTemplate` prefers this
+   * one, so a hub that set both would ship the index nowhere.
+   *
+   * The maps are keyed by MARKET PAGE ID, the way `marketImages` is,
+   * because the section resolves its own cards and there is no
+   * per-item slot to hang copy on.
+   */
+  marketCards?: {
+    eyebrow?: string
+    /** Defaults to the section's own "Where we work". */
+    title?: string
+    intro?: string
+    /** One line per card on what service means in that market. */
+    descriptions?: Partial<Record<PageId, string>>
+    /** Per-card closing link label. Defaults to the home page wording. */
+    actionLabels?: Partial<Record<PageId, string>>
+  }
 }
 
 /** Core page — about, contact, faq. */

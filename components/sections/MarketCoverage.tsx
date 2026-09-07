@@ -122,6 +122,51 @@ export interface MarketCoverageProps {
    * passes nothing renders exactly as before.
    */
   className?: string
+  /**
+   * One line of supporting copy per market card, keyed by market page id.
+   *
+   * ⚠ KEYED THE SAME WAY `marketImages` IS, AND FOR THE SAME REASON:
+   * this section builds its cards from the page registry rather than
+   * from an items prop, so there is no per-item slot to hang copy on.
+   *
+   * ⚠ IT IS DISPLAY COPY, NOT A BUSINESS FACT. It says what service
+   * means in a market; it must not state coverage, hours, a location,
+   * or anything `marketOperatingDetail` owns (01 §20, CLAUDE.md §11).
+   *
+   * A market with no entry renders no description, which is what the
+   * home page does for all three.
+   */
+  descriptions?: Partial<Record<PageId, string>>
+  /**
+   * Per-market label for the card's closing link.
+   *
+   * Defaults to "See all service locations" — the home page's wording,
+   * repeated across all three cards there because the card's own
+   * heading link already names the market immediately above it.
+   *
+   * A caller that needs each label to name its own market passes them
+   * here. 18 §47 prefers that; it is not the default only because
+   * changing it would rewrite the home page.
+   */
+  actionLabels?: Partial<Record<PageId, string>>
+  /**
+   * Element for the card's market name.
+   *
+   * ⚠ DEFAULTS TO `span`, WHICH IS WHAT THE HOME PAGE RENDERS TODAY,
+   * AND THE DEFAULT EXISTS TO KEEP IT THAT WAY. Owner direction on
+   * 2026-09-07 was to reuse this section on `/locations/` WITHOUT
+   * changing the home page's rendered output, and that page's cards
+   * are its primary content, so they need real headings.
+   *
+   * `h3` is correct under either section's H2 and costs nothing
+   * visually: `text-h3 font-medium` is a utility pair that outranks
+   * the element rule in `globals.css`, so both branches paint
+   * identically.
+   *
+   * ⚠ A PAGE PASSING `h3` MUST NOT ALREADY HAVE AN H3 BETWEEN THIS
+   * SECTION'S H2 AND THESE CARDS, or the outline skips.
+   */
+  headingAs?: 'span' | 'h3'
 }
 
 /**
@@ -163,6 +208,9 @@ export function MarketCoverage({
   title = 'Where we work',
   intro,
   className,
+  descriptions = {},
+  actionLabels = {},
+  headingAs: HeadingTag = 'span',
 }: MarketCoverageProps) {
   const marketPageIds = pagesOfType('market').map((page) => page.id as PageId)
   const links = resolveLinkableOnly(marketPageIds)
@@ -330,14 +378,24 @@ export function MarketCoverage({
                   href={link.href}
                   className="group flex items-center justify-between gap-4"
                 >
-                  <span
+                  {/*
+                    ⚠ `span` OR `h3`, AND THE DEFAULT IS `span` SO THE
+                    HOME PAGE IS BYTE-IDENTICAL. See `headingAs`.
+
+                    The heading sits INSIDE the anchor rather than
+                    wrapping it: the link is the whole row including
+                    the arrow, and an anchor inside a heading inside a
+                    card would give this section two focus stops per
+                    card where it wants one.
+                  */}
+                  <HeadingTag
                     className={cn(
                       'text-h3 font-medium tracking-tight',
                       image !== undefined ? 'text-white' : 'text-foreground',
                     )}
                   >
                     {heading}
-                  </span>
+                  </HeadingTag>
                   <span
                     aria-hidden="true"
                     className={cn(
@@ -350,6 +408,30 @@ export function MarketCoverage({
                     →
                   </span>
                 </Link>
+
+                {/*
+                  One line on what service means in this market. Absent
+                  on the home page, which passes no `descriptions` -
+                  and absent rather than blank, so no card grows a gap
+                  where a sentence would have been (18 §120).
+                */}
+                {descriptions[link.pageId] !== undefined && (
+                  <p
+                    className={cn(
+                      'mt-3 max-w-prose text-sm leading-6',
+                      /*
+                        Opaque white over an image, for the reason the
+                        scrim note above gives: 4.76:1 is measured on
+                        opaque white and there is no margin to dim it.
+                      */
+                      image !== undefined
+                        ? 'text-white'
+                        : 'text-muted-foreground',
+                    )}
+                  >
+                    {descriptions[link.pageId]}
+                  </p>
+                )}
 
                 {locations.length > 0 && (
                   <>
@@ -417,7 +499,7 @@ export function MarketCoverage({
                           : 'text-accent-secondary hover:text-foreground',
                       )}
                     >
-                      See all service locations
+                      {actionLabels[link.pageId] ?? 'See all service locations'}
                       <span aria-hidden="true"> →</span>
                     </Link>
                   </>
