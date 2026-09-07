@@ -64,6 +64,12 @@ import {
   combinedCleaningInspectionCardId,
 } from './service-cards'
 
+import {
+  CameraIcon,
+  DecisionIcon,
+  DocumentIcon,
+} from '@/components/sections/section-icons'
+
 const id = (value: string): PageId => value as PageId
 
 /* ==========================================================================
@@ -1147,33 +1153,49 @@ export const stLouisMarketContent: MarketPageContent = {
         </h3>
 
         {/*
-          ⚠ WHITE CHECKS, NOT GREEN, AND IT IS NOT A PREFERENCE. The
-          owner asked for green check icons. `--accent` measures about
-          1.15:1 against the worst ground this scrimmed photograph can
-          present, so a green mark here is not a dark green tick - it is
-          an invisible one. White is the only tone the scrim's 4.76:1
+          ⚠ AN ICON PER ITEM, NOT THREE CHECK MARKS (owner direction,
+          2026-09-07). Each mark is chosen for what the item actually
+          says: a camera for the recorded video, a page for the
+          documented findings, a balance for information used to reach
+          a decision. Three identical ticks said only "this is a list",
+          which the `<ul>` already said.
+
+          ⚠ THEY COME FROM `components/sections/section-icons.tsx`, THE
+          SAME FAMILY THE EXPERIENCE SECTION'S LIST USES. Hand-rolling
+          the SVG paths here would put a second version of the same
+          camera on one page.
+
+          ⚠ WHITE, NOT GREEN, AND IT IS NOT A PREFERENCE. The owner
+          asked for green marks. `--accent` measures about 1.15:1
+          against the worst ground this scrimmed photograph can
+          present, so a green mark here is not a dark icon - it is an
+          invisible one. White is the only tone the scrim's 4.76:1
           measurement covers, and it matches every other mark in this
           column. Flagged rather than done quietly.
+
+          Every mark is `aria-hidden` beside the sentence that states
+          the same thing, so a screen reader hears a three-item list of
+          plain text and nothing else (18 §96).
         */}
         <ul className="max-w-prose space-y-3">
-          {[
-            'Recorded video of accessible portions of the sewer line',
-            'Documented findings explained in clear language',
-            'Information you can use for cleaning, maintenance, a property purchase, or a second opinion',
-          ].map((item) => (
+          {(
+            [
+              [
+                'Recorded video of accessible portions of the sewer line',
+                CameraIcon,
+              ],
+              [
+                'Documented findings explained in clear language',
+                DocumentIcon,
+              ],
+              [
+                'Information you can use for cleaning, maintenance, a property purchase, or a second opinion',
+                DecisionIcon,
+              ],
+            ] as const
+          ).map(([item, Mark]) => (
             <li key={item} className="flex items-start gap-3">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-                className="mt-1 size-5 shrink-0 text-white"
-              >
-                <path d="m4.5 12.5 5 5 10-11" />
-              </svg>
+              <Mark className="mt-1 size-5 shrink-0 text-white" />
               <span className="text-body leading-7">{item}</span>
             </li>
           ))}
@@ -1188,8 +1210,22 @@ export const stLouisMarketContent: MarketPageContent = {
         </p>
       </>
     ),
-    actionLabel: 'Request a St. Louis Sewer Inspection',
-    greenPrimaryOnImage: true,
+    /*
+      ⚠ NO BUTTON OF ITS OWN, ON OWNER DIRECTION (2026-09-07), AND IT
+      IS THE SHAPE THE COMPONENT ALREADY RECOMMENDED. This CTA is the
+      `split` variant with the lead form in its proof slot, and that
+      form carries its own green submit. A second green button beside
+      it, pointing at `/contact/` while a contact form is already on
+      screen, is a competing ask rather than a stronger one (18 §62,
+      §106) - `CtaSectionProps.action` says exactly that.
+
+      A green "Request a St. Louis Sewer Inspection" button shipped
+      here earlier the same day and was removed. Restoring it means
+      restoring the competition; the form IS the ask on this section,
+      and the phone below is the alternative for anyone who would
+      rather talk.
+    */
+    hideAction: true,
     phoneAsButton: true,
     note: (
       <p>

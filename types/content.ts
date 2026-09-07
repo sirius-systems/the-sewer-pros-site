@@ -610,8 +610,24 @@ export interface CtaContent {
    * §155 lists inconsistent CTA wording as a failure, and `PRIMARY_CTA`
    * exists so one phrase covers the site. A market overrides it only
    * where naming the market is the point of the ask.
+   *
+   * Ignored when `hideAction` is set.
    */
   actionLabel?: string
+  /**
+   * Drops the section's own button entirely.
+   *
+   * ⚠ THIS IS WHAT `CtaSectionProps.action = null` IS FOR, AND IT IS
+   * THE RIGHT SHAPE FOR A `split` CTA CARRYING A LEAD FORM. The form
+   * has its own green submit; a second green button beside it, pointing
+   * at `/contact/` while a contact form is already on screen, is a
+   * competing ask rather than a stronger one (18 §62, §106). St. Louis
+   * sets this on owner direction, 2026-09-07.
+   *
+   * ⚠ IT IS NOT THE SAME AS OMITTING `actionLabel`. Leaving both unset
+   * falls back to the global `PRIMARY_CTA` and still renders a button.
+   */
+  hideAction?: boolean
   /**
    * Small print beneath the actions.
    *
@@ -634,6 +650,12 @@ export interface CtaContent {
    * scrimmed photograph is 1.15:1 for the control's own boundary
    * against a 3:1 floor. Read `CtaSectionProps.primaryOnImage` before
    * setting this anywhere else.
+   *
+   * ⚠ NO PAGE SETS THIS TODAY. St. Louis did for part of 2026-09-07 and
+   * then dropped its button entirely (`hideAction`), because the lead
+   * form beside it already carries a green submit. The option and its
+   * measurements are kept for a CTA that has no form; it is not dead by
+   * accident.
    */
   greenPrimaryOnImage?: boolean
 }

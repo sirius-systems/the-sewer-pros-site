@@ -823,10 +823,17 @@ export function MarketPageTemplate({
           `PRIMARY_CTA` when no label is given, which is what keeps CTA
           wording consistent across the site (18 §155).
         */
+        /*
+          ⚠ `null` DROPS THE BUTTON; `undefined` FALLS BACK TO THE
+          GLOBAL `PRIMARY_CTA`. The two are not interchangeable, which
+          is why `hideAction` is checked before `actionLabel`.
+        */
         action={
-          content.cta?.actionLabel !== undefined
-            ? { href: '/contact/', label: content.cta.actionLabel }
-            : undefined
+          content.cta?.hideAction === true
+            ? null
+            : content.cta?.actionLabel !== undefined
+              ? { href: '/contact/', label: content.cta.actionLabel }
+              : undefined
         }
         note={content.cta?.note}
         phoneVariant={content.cta?.phoneAsButton === true ? 'button' : 'text'}
