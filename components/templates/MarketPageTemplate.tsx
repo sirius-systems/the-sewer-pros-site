@@ -10,6 +10,7 @@ import {
   ProblemGrid,
   InclusionsGrid,
   Differentiator,
+  ExperienceSection,
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
@@ -26,6 +27,7 @@ import {
   serviceIndexRenders,
   coverageSectionRenders,
   serviceAreaRenders,
+  experienceRenders,
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
@@ -142,6 +144,13 @@ export function MarketPageTemplate({
     for. St. Louis sets `serviceArea`; San Diego and Las Vegas set
     `coverage` and are unchanged.
   */
+  /*
+    Does the company-experience band render? Hoisted for the same
+    reason as the others: the density array and the composition both
+    read it, and the reviews below it are positioned relative to it.
+  */
+  const showsExperience = experienceRenders(content.experience)
+
   const showsServiceArea = serviceAreaRenders(content.serviceArea)
   const showsCoverage =
     !showsServiceArea && coverageSectionRenders(content.coverage)
@@ -172,8 +181,26 @@ export function MarketPageTemplate({
     // Unconditional: the differentiator renders its own canonical
     // comparison rather than per-page content that could be absent.
     'standard',
-    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
+    /*
+      ⚠ ROUTING, EXPERIENCE, THEN REVIEWS — REORDERED 2026-09-07 ON
+      OWNER DIRECTION, AND THIS ARRAY MOVED WITH THE COMPOSITION. The
+      reviews entry used to sit first here; it now follows the two
+      sections that were moved above it.
+    */
     ...(showsRouting ? (['standard'] as const) : []),
+    /*
+      ⚠ `sparse`, WHICH IS THE PAGE'S SECOND-WIDEST BREATH AFTER THE
+      HERO, AND IT IS DOING TWO JOBS.
+
+      Appendix A gives `sparse` to "major positioning statements", and
+      a section whose whole content is why this company can be trusted
+      is one. It is also what breaks the run: differentiator, routing
+      and reviews are all `standard`, so a `standard` here would put
+      four in a row on St. Louis and `sectionRhythmIssues()` would
+      report it.
+    */
+    ...(showsExperience ? (['sparse'] as const) : []),
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(content.services !== undefined && serviceIndexRenders(content.services)
       ? (['dense'] as const)
       : []),
@@ -346,7 +373,86 @@ export function MarketPageTemplate({
       <Differentiator />
 
       {/*
-        SECTION 3 - reviews.
+        SECTION 3 - customer-intent routing.
+
+        ⚠ MOVED ABOVE THE REVIEWS ON 2026-09-07, ON OWNER DIRECTION.
+        The hub now answers the visitor's questions in the order they
+        ask them: what does this company do, can it help with my
+        situation, why should I trust it, what do customers say. The
+        routing band is the second of those, so it precedes both the
+        experience section and the reviews rather than following them.
+
+        ⚠ `default` NOW, WHERE IT WAS `muted`, AND IT IS AN ADJACENCY
+        FIX RATHER THAN A PREFERENCE. `Differentiator` directly above
+        is `brand`, and the experience band directly below is `muted`.
+        A muted band here would meet the one beneath it. The value is
+        still only the FALLBACK: `backgroundImage` overrides it, and no
+        market supplies one today.
+
+        Sequence through this run: brand -> default -> muted ->
+        default -> muted. No two alike (18 §11).
+      */}
+      {showsRouting && content.routing !== undefined && (
+        <RoutingCards
+          id="how-we-can-help"
+          eyebrow="Start here"
+          title="How we can help"
+          items={content.routing}
+          backgroundImage={content.routingBackground}
+          scrim="strong"
+          surface="default"
+        />
+      )}
+
+      {/*
+        ==================================================================
+        SECTION 4 - COMPANY EXPERIENCE. The credibility claim.
+        ==================================================================
+        ⚠ ADDED 2026-09-07 ON OWNER DIRECTION, AND ITS POSITION IS THE
+        POINT. It makes the trust argument, and the reviews immediately
+        below are third-party validation of it. The owner asked for
+        that pairing specifically: history first, then what customers
+        say about it.
+
+        ⚠⚠ IT CARRIES BUSINESS FACTS, AND THEY ARE MARKET-SCOPED.
+        DEC-072 approved "over 100,000 camera inspections" for
+        `/st-louis-mo/` ONLY, and founding years differ by market
+        (St. Louis 2011, San Diego 2015, Las Vegas none). 01 §20
+        forbids carrying either onto another market's page. The content
+        files hold each market's own copy; read `MARKET_SCOPED_CLAIMS`
+        in `data/business/organization.ts` before editing one.
+
+        ⚠ NO BACKGROUND IMAGE HERE, ON INSTRUCTION. The process band
+        further down already carries a full-bleed frame, and 18 §11
+        warns against decorating every section.
+
+        The phone is the market's own, from `marketOperatingDetail` -
+        the same source the closing CTA reads, so one page cannot
+        publish two numbers (01 §20).
+      */}
+      {showsExperience && content.experience !== undefined && (
+        <ExperienceSection
+          density="sparse"
+          surface="muted"
+          id="company-experience"
+          variant={content.experienceVariant ?? 'aside'}
+          content={content.experience}
+          phone={
+            detail !== undefined
+              ? { label: detail.phone, phoneE164: detail.phoneE164 }
+              : undefined
+          }
+        />
+      )}
+
+      {/*
+        SECTION 5 - reviews.
+
+        ⚠ MOVED BELOW THE EXPERIENCE BAND ON 2026-09-07. Nothing about
+        this section changed but its position: the owner asked that the
+        company's own history make the credibility claim and the
+        reviews validate it, rather than the reviews arriving before
+        anything had been claimed.
 
         ⚠⚠ READ DEC-100 BEFORE CHANGING THIS. The reviews and the
         4.9/595 stat come from the ST. LOUIS Google Business Profile;
@@ -373,32 +479,7 @@ export function MarketPageTemplate({
 
       {reviewMarqueeRenders() && <ReviewMarquee density="standard" />}
 
-      {/* SECTION 4 - customer-intent routing. */}
-      {showsRouting && content.routing !== undefined && (
-        <RoutingCards
-          id="how-we-can-help"
-          eyebrow="Start here"
-          title="How we can help"
-          items={content.routing}
-          backgroundImage={content.routingBackground}
-          scrim="strong"
-          /*
-            ⚠ THE FALLBACK, NOT THE CURRENT APPEARANCE. `backgroundImage`
-            overrides it, and the muted band is what shows for a market
-            that has not supplied one - which is every market today,
-            since none sets `routingBackground`.
-
-            Added with the reorder: the reviews section that now sits
-            above this is `default` and the services index below it is
-            `default`, so the site default would have put three
-            matching bands in a row. The home page already passes the
-            same value to the same component for the same reason.
-          */
-          surface="muted"
-        />
-      )}
-
-      {/* SECTION 5 - services. `mosaic` once a market supplies card art. */}
+      {/* SECTION 6 - services. `mosaic` once a market supplies card art. */}
       {content.services !== undefined && serviceIndexRenders(content.services) && (
         <ServiceIndex
           density="dense"
@@ -411,25 +492,23 @@ export function MarketPageTemplate({
               : 'index'
           }
           /*
-            ⚠ THE SURFACE DEPENDS ON WHAT IS ABOVE, WHICH DIFFERS BY
-            MARKET - same shape as the FAQ's note further down.
+            ⚠ `muted` FOR EVERY MARKET NOW, AND THE CONDITIONAL THAT
+            USED TO BE HERE IS GONE RATHER THAN SIMPLIFIED AWAY.
 
-              St. Louis  routing (muted)   above -> this takes `default`
-              SD and LV  reviews (default) above -> this takes `muted`
-
-            The reorder moved the reviews carousel above this band, and
-            San Diego and Las Vegas render no routing section in
-            between, so the site default would have put two `default`
-            bands together on both. `showsRouting` is the same
-            predicate that section renders on, so the two cannot
-            disagree.
+            It read `showsRouting ? 'default' : 'muted'`, because the
+            section directly above this one differed by market: routing
+            on St. Louis, reviews on the other two. The 2026-09-07
+            reorder put the reviews carousel directly above this band on
+            ALL THREE hubs - routing and the experience section both
+            moved above it - so there is one answer again, and it is
+            the one that does not meet the reviews' `default`.
           */
-          surface={showsRouting ? 'default' : 'muted'}
+          surface="muted"
         />
       )}
 
       {/*
-        SECTIONS 6-7 - local content, and the reason it stays HERE.
+        SECTIONS 7-8 - local content, and the reason it stays HERE.
 
         These four blocks are the market-specific material: they have
         no counterpart on the home page, so the reorder had no slot to
@@ -468,7 +547,7 @@ export function MarketPageTemplate({
         </Section>
       )}
 
-      {/* SECTION 8 - the four-step process. Sitewide copy. */}
+      {/* SECTION 9 - the four-step process. Sitewide copy. */}
       {authorityBandRenders() && (
         <AuthorityBand
           variant="process"
@@ -479,7 +558,7 @@ export function MarketPageTemplate({
       <ProofGallery title="Recent work" />
 
       {/*
-        SECTION 9 - one service-area section, not two.
+        SECTION 10 - one service-area section, not two.
 
         ⚠ THE `RelatedLinks` "Areas we serve" BLOCK THAT USED TO SIT
         BELOW THIS IS GONE. It listed the same five communities as
@@ -549,10 +628,10 @@ export function MarketPageTemplate({
         />
       )}
 
-      {/* SECTION 10 - appointment information. Sitewide data (DEC-088). */}
+      {/* SECTION 11 - appointment information. Sitewide data (DEC-088). */}
       {confidenceModuleRenders() && <ConfidenceModule density="standard" />}
 
-      {/* SECTION 11 - guides. `featured` when a market names one. */}
+      {/* SECTION 12 - guides. `featured` when a market names one. */}
       {showsGuides && content.relatedPageIds !== undefined && (
         <RelatedLinks
           id="guides"
@@ -582,7 +661,7 @@ export function MarketPageTemplate({
         />
       )}
 
-      {/* SECTION 12 - FAQ, in the home page's two-column presentation. */}
+      {/* SECTION 13 - FAQ, in the home page's two-column presentation. */}
       {faqSectionRenders(content.faq) && content.faq !== undefined && (
         <FaqSection
           eyebrow={content.faqEyebrow}
@@ -605,7 +684,7 @@ export function MarketPageTemplate({
       )}
 
       {/*
-        SECTION 13 - closing CTA.
+        SECTION 14 - closing CTA.
 
         ⚠ THIS IS NOW THE PAGE'S ONLY FORM ON A MARKET WITHOUT A HERO
         FORM. The standalone mid-page `LeadFormSection` was removed for

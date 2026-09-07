@@ -209,6 +209,125 @@ export const lasVegasMarketContent: MarketPageContent = {
       {LAS_VEGAS_CONTACT}
     </>
   ),
+  /*
+    ==========================================================================
+    COMPANY EXPERIENCE. Added 2026-09-07 on owner direction.
+    ==========================================================================
+    ⚠⚠ THIS MARKET STATES NO HISTORY AND NO INSPECTION COUNT, AND THAT
+    IS THE STRICTEST VERSION OF THE THREE FOR A REASON.
+
+    The brief said to publish "since 2011" and "more than 100,000 sewer
+    camera inspections" ONLY after confirming both remain approved in
+    the authoritative business documentation. Neither is approved here,
+    and Las Vegas is the market where importing them would be most
+    misleading:
+
+      'over 100,000 camera inspections'  DEC-072 scopes it to
+          `/st-louis-mo/` ONLY - see `MARKET_SCOPED_CLAIMS.stLouisOnly`.
+
+      '2011'  is ST. LOUIS's founding year. Las Vegas has NO founding
+          year at all: `marketOperatingDetail['las-vegas-nv'].foundingYear`
+          is 0, and its own comment says why - the market is newly
+          launching and importing St. Louis's 2011 or San Diego's 2015
+          would assert an operating history that does not exist
+          (DEC-073, DEC-077, 01 §20).
+
+    The supplied copy framed both as "company-wide", which is exactly
+    the framing DEC-072 declines: the figure is a St. Louis SITE claim,
+    not a company statistic the project has evidence for. So the
+    opening paragraph leads on the company's specialisation and its
+    model rather than on a number, and the three proof cards carry
+    approved positioning (01 §2.2, §3, §4) instead of statistics.
+
+    ⚠ DO NOT ADD A YEAR OR A COUNT HERE. Either needs a new owner
+    decision, not an edit to this file.
+
+    ⚠ THE SERVICE LIST IS SAFE TO STATE, AND THIS IS THE ONE PLACE THAT
+    IS EASY TO GET BACKWARDS. `data/markets/markets.ts` still carries a
+    note reading "NOT ONE of the 18 services is confirmed" for this
+    market. That note is STALE: DEC-076 confirmed 17 of 18 and DEC-080
+    released the indexation gate on that basis, recording that Las
+    Vegas "mirrors San Diego exactly". Naming these seven services is
+    approved; the eighteenth (St. Louis lateral reporting) is the only
+    one that is not applicable.
+
+    ⚠ NO EMERGENCY, WEEKEND, OR 24/7 LANGUAGE. Published hours are
+    weekdays only and affirmatively rule all three out (01 §35).
+  */
+  experience: {
+    eyebrow: 'Company experience, local service',
+    title: 'Sewer inspection experience for Las Vegas properties',
+    intro: [
+      'The Sewer Pros is a sewer and drain specialist rather than a general plumbing company, and Las Vegas customers receive the same evidence-first approach the company is built on. That matters when you need to understand a recurring sewer backup, investigate a slow or blocked line, evaluate a property before purchase, or determine whether sewer cleaning is the appropriate next step.',
+      'Our Las Vegas sewer services include sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, recurring backup diagnosis, pre-purchase sewer inspection, and preventative sewer maintenance. We focus on identifying and documenting visible conditions inside accessible portions of the sewer line, then explaining what the evidence means in plain language.',
+    ],
+    blocks: [
+      {
+        title: 'What does a Las Vegas sewer camera inspection provide?',
+        body: [
+          'A sewer camera inspection, also called a sewer scope, records the visible condition of the accessible sewer line. The footage may reveal buildup, root intrusion, blockages, offset joints, standing water, cracks, or other conditions that could be contributing to drainage problems.',
+          'You receive video evidence and an understandable explanation of the findings, helping you decide whether the line needs cleaning, continued monitoring, or further evaluation by a separate sewer repair provider.',
+        ],
+      },
+      {
+        title: 'Make your next decision with better information',
+        listIntro: 'A professional sewer inspection can help you:',
+        items: [
+          'See visible conditions inside the accessible sewer line',
+          'Investigate the cause of recurring sewer backups or slow drainage',
+          'Determine whether sewer cleaning or hydro jetting may be appropriate',
+          'Document the line before purchasing a Las Vegas-area property',
+          'Locate the sewer line before landscaping, excavation, or utility work',
+          'Review inspection findings before agreeing to a major sewer repair',
+          'Keep video evidence that can be reviewed or shared when seeking another opinion',
+        ],
+      },
+      {
+        title: 'An inspection-first approach without a repair sale',
+        body: [
+          'The Sewer Pros inspects, documents, locates, and cleans sewer lines. We do not perform sewer repair or replacement, so we do not profit from recommending a major repair.',
+          'Our role is to show you what is visible inside the line and explain the findings clearly. You remain in control of what happens next, including whether to schedule cleaning, monitor the condition, seek another opinion, or consult a sewer repair provider of your choosing.',
+        ],
+      },
+    ],
+    proof: [
+      {
+        title: 'Sewer and Drain Specialists',
+        body: 'Sewer inspection, diagnostics, locating, and cleaning are the work, not a sideline of a general plumbing business.',
+        icon: 'experience',
+        accent: 'blue',
+      },
+      {
+        title: 'Documented Camera Evidence',
+        body: 'Visible conditions inside the accessible line are recorded and explained, so the findings are something you can review rather than take on trust.',
+        icon: 'camera',
+        accent: 'blue',
+      },
+      {
+        title: 'No Repair-Driven Upselling',
+        body: 'We do not perform sewer repair or replacement. The inspection findings stay separate from the sale of a major repair.',
+        icon: 'independence',
+        accent: 'green',
+      },
+    ],
+    coverage: {
+      title: 'Sewer inspection and cleaning across the Las Vegas Valley',
+      body: [
+        'The Sewer Pros serves residential properties, home buyers, real estate professionals, property managers, multifamily buildings, and commercial properties throughout the Las Vegas Valley. Featured service areas include Las Vegas, Henderson, North Las Vegas, and Summerlin.',
+        'Service availability can vary by property location. Contact us with the address and the sewer or drainage issue you are experiencing so we can confirm coverage before scheduling.',
+      ],
+    },
+    actions: {
+      primary: {
+        label: 'Schedule a Las Vegas Sewer Inspection',
+        pageId: id('core-contact'),
+      },
+      secondary: {
+        label: 'Explore Las Vegas Sewer Services',
+        pageId: id('hub-services'),
+      },
+    },
+  },
   services: [
     { pageId: id('svc-sewer-camera-inspection'), description: 'See the visible condition of the line.' },
     { pageId: id('svc-sewer-cleaning'), description: 'Clear what has accumulated in the line.' },

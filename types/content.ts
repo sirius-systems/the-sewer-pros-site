@@ -295,6 +295,91 @@ export interface ServiceAreaContent {
   }
 }
 
+/* ==========================================================================
+   Company experience — the proof section on a market hub
+   ========================================================================== */
+
+/** Line icons available to a proof card. */
+export type ExperienceProofIcon =
+  | 'experience'
+  | 'camera'
+  | 'document'
+  | 'independence'
+
+/**
+ * One proof card.
+ *
+ * ⚠⚠ A QUANTIFIED CLAIM HERE IS A BUSINESS FACT AND IS MARKET-SCOPED.
+ * DEC-072 approved "over 100,000 camera inspections" for `/st-louis-mo/`
+ * ONLY, and 01 §20 forbids carrying it onto a San Diego or Las Vegas
+ * page. Founding years are scoped the same way: St. Louis 2011,
+ * San Diego 2015, Las Vegas NONE. Read `MARKET_SCOPED_CLAIMS` in
+ * `data/business/organization.ts` before writing a figure into one of
+ * these.
+ *
+ * ⚠ `accent: 'green'` IS FOR THE INDEPENDENCE CARD AND NOTHING ELSE.
+ * DEC-096 reserves green for conversion; the owner approved one green
+ * card to mark the differentiator (2026-09-07). See `ExperienceSection`.
+ */
+export interface ExperienceProofCard {
+  title: string
+  body: string
+  icon: ExperienceProofIcon
+  accent: 'blue' | 'green'
+}
+
+/** A heading with paragraphs and an optional list. */
+export interface ExperienceBlock {
+  title: string
+  /** Paragraphs before the list. */
+  body?: readonly string[]
+  /** Lead-in sentence for the list. */
+  listIntro?: string
+  items?: readonly string[]
+  /** Paragraphs after the list. */
+  after?: readonly string[]
+  /**
+   * Takes one column of the two-column body.
+   *
+   * `strip` variant only — the `aside` variant's content column is
+   * already narrow and runs everything full width.
+   */
+  half?: boolean
+}
+
+/**
+ * The market's credibility section.
+ *
+ * ⚠ EVERY CLAIM IN HERE IS PER-MARKET CONTENT AND IS NOT REUSABLE
+ * BETWEEN MARKETS. That is the whole reason it lives in the content
+ * files rather than in a shared data module: 01 §20, and 14 §79's
+ * substitution test, which a section of company history would fail
+ * loudest.
+ *
+ * ⚠ `coverage` IS REQUIRED, AND IT IS WHAT KEEPS THE REST HONEST. A
+ * section of capability copy with no availability caveat reads as a
+ * promise of blanket coverage. Every market's version ends by asking
+ * the visitor to confirm before scheduling (CLAUDE.md §24).
+ */
+export interface ExperienceContent {
+  eyebrow: string
+  title: string
+  intro: readonly string[]
+  blocks: readonly ExperienceBlock[]
+  proof: readonly ExperienceProofCard[]
+  coverage: ExperienceBlock
+  /**
+   * One primary action and one secondary (18 §106).
+   *
+   * The phone is NOT here: the template reads it from
+   * `marketOperatingDetail` so a page cannot publish two numbers.
+   */
+  actions: {
+    primary: { label: string; pageId: PageId }
+    secondary: { label: string; pageId: PageId }
+  }
+}
+
 /**
  * A closing conversion block.
  *
@@ -522,6 +607,17 @@ export interface MarketPageContent extends BasePageContent {
   locationPageIds?: readonly PageId[]
   /** Served communities plus an availability statement. No map. */
   coverage?: CoverageContent
+  /**
+   * Company experience and proof, above the reviews.
+   *
+   * ⚠ ITS COMPOSITION DIFFERS PER MARKET ON PURPOSE. Three hubs
+   * running one arrangement is the templated look 18 §155 names, so
+   * San Diego takes the `strip` variant where St. Louis and Las Vegas
+   * take `aside`. Same typography, cards, colour and spacing.
+   */
+  experience?: ExperienceContent
+  /** Layout for `experience`. Defaults to `aside`. */
+  experienceVariant?: 'aside' | 'strip'
   /**
    * Image-led service area, rendered INSTEAD OF `coverage`.
    *
