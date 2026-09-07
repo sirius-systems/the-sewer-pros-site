@@ -245,13 +245,14 @@ export const lasVegasMarketContent: MarketPageContent = {
     decision, not an edit to this file.
 
     ⚠ THE SERVICE LIST IS SAFE TO STATE, AND THIS IS THE ONE PLACE THAT
-    IS EASY TO GET BACKWARDS. `data/markets/markets.ts` still carries a
-    note reading "NOT ONE of the 18 services is confirmed" for this
-    market. That note is STALE: DEC-076 confirmed 17 of 18 and DEC-080
-    released the indexation gate on that basis, recording that Las
-    Vegas "mirrors San Diego exactly". Naming these seven services is
-    approved; the eighteenth (St. Louis lateral reporting) is the only
-    one that is not applicable.
+    IS EASY TO GET BACKWARDS. DEC-076 confirmed 17 of 18 services for
+    this market and DEC-080 released the indexation gate on that basis,
+    recording that Las Vegas "mirrors San Diego exactly". Naming these
+    seven services is approved; the eighteenth (St. Louis lateral
+    reporting) is the only one that is not applicable.
+
+    Counts and the supersession are in `data/markets/markets.ts`, which
+    carried the opposite claim until 2026-09-07.
 
     ⚠ NO EMERGENCY, WEEKEND, OR 24/7 LANGUAGE. Published hours are
     weekdays only and affirmatively rule all three out (01 §35).

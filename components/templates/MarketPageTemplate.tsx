@@ -61,9 +61,6 @@ import type { MarketPageContent, MasterPageRecord } from '@/types'
  * survives swapping the city name, it should not ship.
  *
  * ---------------------------------------------------------------------------
- * ⚠ THIS TEMPLATE ALSO SERVES A MARKET WITH NO CONFIRMED SERVICES
- * ---------------------------------------------------------------------------
- * ---------------------------------------------------------------------------
  * THE PHONE IS MARKET-SCOPED, AND THAT IS THE WHOLE POINT
  * ---------------------------------------------------------------------------
  * This is the only template that passes `phone` to `CtaSection`.
@@ -79,12 +76,26 @@ import type { MarketPageContent, MasterPageRecord } from '@/types'
  * as "not published" rather than falling back to another market's.
  *
  * ---------------------------------------------------------------------------
- * `/las-vegas-nv/` is an approved (gated) page where zero of 18
- * services are confirmed. `services` and `locationPageIds` are both
- * optional, and the link modules drop gated pages, so the template
- * renders a market page that makes no availability claim. The copy
- * still has to honour that — 01 §20 and §26 forbid implying service
- * where it is unconfirmed.
+ * ⚠ EVERY CONTENT FIELD IS OPTIONAL, AND THE REASON IS NO LONGER THE
+ * ONE THIS NOTE USED TO GIVE.
+ * ---------------------------------------------------------------------------
+ * It read: "`/las-vegas-nv/` is an approved (gated) page where zero of
+ * 18 services are confirmed... the template renders a market page that
+ * makes no availability claim." Both halves are superseded. DEC-076
+ * confirmed 17 of 18 services for that market and DEC-080 released
+ * DEC-063's gate on 2026-08-17, so Las Vegas is `launch`, indexable,
+ * and states its services like the other two. See `data/markets/markets.ts`
+ * for the registry counts.
+ *
+ * The optionality survives its original reason, and is worth keeping
+ * for a better one: this template is shared by three markets that have
+ * populated different amounts of it, so a required field would blank
+ * two pages the day it shipped. The link modules still drop a gated
+ * page on their own, which is what a FUTURE market gets for free.
+ *
+ * ⚠ WHAT DOES NOT CHANGE: 01 §20 and §26 still forbid implying service
+ * where a market's registry status does not support it. The gate moved;
+ * the rule did not.
  */
 export interface MarketPageTemplateProps {
   page: MasterPageRecord
