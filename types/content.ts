@@ -191,6 +191,110 @@ export interface CoverageContent {
   availabilityStatement: string
 }
 
+/* ==========================================================================
+   Service area — the image-led alternative to `CoverageContent`
+   ========================================================================== */
+
+/**
+ * A regional coverage card. NOT A PLACE THE BUSINESS OCCUPIES.
+ *
+ * ⚠ THERE IS DELIBERATELY NO `pageId`, NO `href`, AND NO CTA FIELD.
+ * No county landing page exists in the approved registry, and 05 §51
+ * forbids linking through an invented route. A card that carried an
+ * arrow or a "view county" label would promise a destination that is
+ * not there, so this shape cannot express one.
+ *
+ * ⚠ IT IS ALSO NOT A LOCAL ENTITY. `CoverageSection`'s whole premise
+ * applies here unchanged: no address, no pin, no hours (CLAUDE.md §11,
+ * 18 §86-87). `name` states where service reaches, and `description`
+ * says what service means there.
+ */
+export interface ServiceAreaCountyCard {
+  /** e.g. "St. Louis County, Missouri". Use the word "County". */
+  name: string
+  description: string
+  /** Card artwork. A card without one renders as a plain light card. */
+  image?: CardImage
+}
+
+/**
+ * A featured community with its own approved location page.
+ *
+ * The destination comes from `pageId` through the approved-link layer,
+ * so a gated or unwritten location drops out of the mosaic on its own
+ * rather than shipping a dead card (04 §4, 16 §25).
+ */
+export interface ServiceAreaCityCard {
+  pageId: PageId
+  /** Card title. Defaults to the registry page name. */
+  title?: string
+  description: string
+  /**
+   * The card's accessible name and its visible action label.
+   *
+   * 18 §47: descriptive, and naming the place — "Explore Ballwin", not
+   * "Learn more" repeated five times. It must keep the geographic
+   * context, because it is the whole accessible name of the link.
+   */
+  ctaLabel: string
+  /** Card artwork. A card without one renders as a plain light card. */
+  image?: CardImage
+}
+
+/**
+ * An image-led service area, replacing `coverage` where a market has
+ * the artwork and the local detail to carry it.
+ *
+ * ⚠ THIS IS PRESENTATION PLUS SHORT DISPLAY COPY, NOT A SECOND
+ * GEOGRAPHIC REGISTRY. Destinations and link labels still resolve from
+ * the approved page registry through `pageId`; the 579-record location
+ * registry is untouched. What lives here is the card art, the grid
+ * emphasis, and the sentence each card shows — none of which the
+ * registry holds or should.
+ *
+ * A market sets EITHER this or `coverage`. See `MarketPageTemplate`.
+ */
+export interface ServiceAreaContent {
+  title: string
+  intro: string
+  /** Regional coverage. Informational cards, never links. */
+  counties: {
+    title: string
+    intro?: string
+    items: readonly ServiceAreaCountyCard[]
+  }
+  /** Communities with dedicated pages, as a mosaic of linked cards. */
+  cities: {
+    title: string
+    intro?: string
+    items: readonly ServiceAreaCityCard[]
+    /**
+     * The card given the large mosaic tile. Defaults to the first.
+     *
+     * Pass explicitly rather than relying on ordering when the
+     * flagship is not first in the content file.
+     */
+    flagshipPageId?: PageId
+  }
+  /**
+   * The closing coverage clarification.
+   *
+   * ⚠ IT IS WHAT KEEPS A PARTIAL LIST HONEST, the same job
+   * `CoverageContent.availabilityStatement` does. The cards above name
+   * eight places; the metro has hundreds. This says so, and asks the
+   * visitor to confirm rather than asserting coverage on their behalf.
+   *
+   * The phone action is NOT here: the template already holds the
+   * market's published number in `marketOperatingDetail`, and 01 §20
+   * forbids a second copy of a business fact that could drift from it.
+   */
+  closing: {
+    title: string
+    body: string
+    action: { label: string; pageId: PageId }
+  }
+}
+
 /**
  * A closing conversion block.
  *
@@ -418,6 +522,14 @@ export interface MarketPageContent extends BasePageContent {
   locationPageIds?: readonly PageId[]
   /** Served communities plus an availability statement. No map. */
   coverage?: CoverageContent
+  /**
+   * Image-led service area, rendered INSTEAD OF `coverage`.
+   *
+   * ⚠ SET ONE OR THE OTHER, NOT BOTH. Both describe the same band of
+   * the page and `MarketPageTemplate` prefers this one, so a market
+   * that set both would silently ship the plain list nowhere.
+   */
+  serviceArea?: ServiceAreaContent
   /**
    * Services to feature for this market.
    *

@@ -16,6 +16,7 @@ import {
   ReviewMarquee,
   LeadFormSection,
   CoverageSection,
+  ServiceAreaSection,
   RelatedLinks,
   FaqSection,
   CtaSection,
@@ -24,6 +25,7 @@ import {
   routingCardsRenders,
   serviceIndexRenders,
   coverageSectionRenders,
+  serviceAreaRenders,
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
@@ -127,6 +129,24 @@ export function MarketPageTemplate({
     })
 
   /*
+    Which service-area band renders, and it is EXACTLY ONE OF THE TWO.
+
+    ⚠ HOISTED FOR THE SAME REASON AS `showsGuides`: the density array
+    and the render below both have to agree about this band, and a page
+    where the array says "coverage" while the composition ships the
+    image mosaic checks a rhythm nobody ships.
+
+    `serviceArea` wins where a market sets it. Both answer the same
+    question in the same slot, so rendering both would say it twice -
+    which is the duplication the old "Areas we serve" strip was removed
+    for. St. Louis sets `serviceArea`; San Diego and Las Vegas set
+    `coverage` and are unchanged.
+  */
+  const showsServiceArea = serviceAreaRenders(content.serviceArea)
+  const showsCoverage =
+    !showsServiceArea && coverageSectionRenders(content.coverage)
+
+  /*
     Explicit sequence, checked against `sectionRhythmIssues()` at build.
     `ProofGallery` and `TestimonialBand` contribute no entry — they are
     data-gated and render nothing.
@@ -162,7 +182,12 @@ export function MarketPageTemplate({
     ...(content.localFeature !== undefined ? (['standard'] as const) : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(coverageSectionRenders(content.coverage) ? (['dense'] as const) : []),
+    /*
+      One entry, because one of the two bands renders. `dense` either
+      way: see the note on the coverage call below, which the
+      service-area band inherited when it took the same slot.
+    */
+    ...(showsServiceArea || showsCoverage ? (['dense'] as const) : []),
     ...(confidenceModuleRenders() ? (['standard'] as const) : []),
     ...(showsGuides ? (['dense'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
@@ -463,7 +488,34 @@ export function MarketPageTemplate({
         carries the availability statement; the related strip carried
         nothing coverage did not.
       */}
-      {coverageSectionRenders(content.coverage) && content.coverage !== undefined && (
+      {showsServiceArea && content.serviceArea !== undefined && (
+        /*
+          ⚠ THE IMAGE-LED VARIANT OF THE SECTION BELOW, NOT AN
+          ADDITIONAL ONE. It occupies the same slot, answers the same
+          question, and carries the same availability caveat; what it
+          adds is a regional tier above the community list and card art
+          on both. St. Louis is the only market with the pictures and
+          the local detail to carry it (owner direction, 2026-09-07).
+
+          ⚠ THE PHONE COMES FROM THE TEMPLATE, NOT FROM CONTENT. Same
+          `marketOperatingDetail` value the closing CTA uses, so a
+          market cannot end up publishing two different numbers on one
+          page (01 §20). A market with no published number gets no
+          phone action rather than another market's.
+        */
+        <ServiceAreaSection
+          density="dense"
+          id="service-area"
+          content={content.serviceArea}
+          phone={
+            detail !== undefined
+              ? { label: detail.phone, phoneE164: detail.phoneE164 }
+              : undefined
+          }
+        />
+      )}
+
+      {showsCoverage && content.coverage !== undefined && (
         <CoverageSection
           /*
             ⚠ `dense`, AND IT IS THE ONE DENSITY VALUE THE 2026-09-05

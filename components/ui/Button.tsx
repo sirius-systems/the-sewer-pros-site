@@ -75,6 +75,27 @@ const BASE =
   'inline-flex min-h-11 items-center justify-center gap-2 text-sm font-medium ' +
   'transition-colors disabled:pointer-events-none disabled:opacity-50'
 
+/**
+ * The class string for a given button variant.
+ *
+ * ⚠ FOR ELEMENTS THAT CANNOT BE `Button` OR `ButtonLink`, NOT AS A
+ * GENERAL ESCAPE HATCH. `ButtonLink` renders `next/link`, which is for
+ * routes; a `tel:` href is not one, and the tracked phone link is its
+ * own client component with its own anchor. That anchor still has to
+ * look like a secondary button, and 18 §46 wants ONE place where
+ * button appearance is decided — so it borrows the classes from here
+ * rather than restating them at the call site, where they would drift
+ * the first time a variant changed.
+ *
+ * Reach for `Button` or `ButtonLink` in every other case.
+ */
+export function buttonClasses(
+  variant: ButtonVariant = 'primary',
+  className?: string,
+): string {
+  return cn(BASE, VARIANT[variant], className)
+}
+
 interface CommonProps {
   variant?: ButtonVariant
   className?: string

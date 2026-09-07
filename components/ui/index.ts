@@ -52,7 +52,7 @@ export type { ContainerProps, ContainerWidth } from './Container'
 export { Section, sectionRhythmIssues } from './Section'
 export type { SectionProps, SectionDensity, SectionSurface } from './Section'
 
-export { Button, ButtonLink } from './Button'
+export { Button, ButtonLink, buttonClasses } from './Button'
 export type { ButtonProps, ButtonLinkProps, ButtonVariant } from './Button'
 
 export { Prose, ScrollableTable } from './Prose'
