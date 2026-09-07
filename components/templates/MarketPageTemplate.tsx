@@ -11,6 +11,7 @@ import {
   InclusionsGrid,
   LateralResponsibility,
   PipeMaterials,
+  PrePurchase,
   Differentiator,
   ExperienceSection,
   AuthorityBand,
@@ -32,6 +33,7 @@ import {
   experienceRenders,
   lateralResponsibilityRenders,
   pipeMaterialsRenders,
+  prePurchaseRenders,
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
@@ -192,8 +194,16 @@ export function MarketPageTemplate({
   const showsMaterialCards =
     !showsMaterials && content.materialCards !== undefined
 
+  /*
+    ⚠ ITS OWN SECTION SINCE 2026-09-07, NOT A PANEL INSIDE THE MATERIALS
+    BAND. It renders `default` where materials renders `muted`, because
+    two adjacent sections on one surface read as one section - which is
+    what this content did the first time it sat below there (18 §11).
+  */
+  const showsPrePurchase = prePurchaseRenders(content.prePurchase)
+
   const showsLocalFeature =
-    !showsMaterials && content.localFeature !== undefined
+    !showsMaterials && !showsPrePurchase && content.localFeature !== undefined
 
   const showsServiceArea = serviceAreaRenders(content.serviceArea)
   const showsCoverage =
@@ -265,6 +275,13 @@ export function MarketPageTemplate({
       ? (['standard'] as const)
       : []),
     ...(showsMaterials || showsMaterialCards ? (['dense'] as const) : []),
+    /*
+      `standard` against the materials band's `dense` above and the
+      process band's `standard` below - two `standard` in a row is
+      within the run limit, and the SURFACE is what separates this
+      section from the one above it rather than the density.
+    */
+    ...(showsPrePurchase ? (['standard'] as const) : []),
     ...(showsLocalFeature ? (['standard'] as const) : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
@@ -615,6 +632,22 @@ export function MarketPageTemplate({
           title={content.materialCards.title}
           intro={content.materialCards.intro}
           items={content.materialCards.items}
+        />
+      )}
+
+      {showsPrePurchase && content.prePurchase !== undefined && (
+        <PrePurchase
+          density="standard"
+          /*
+            ⚠ `default`, AND IT MUST NOT MATCH THE MATERIALS BAND ABOVE.
+            That band is `muted`; a matching surface here would collapse
+            the two into one long section, which is the failure this
+            split exists to fix. The process band below carries a
+            full-bleed image, so nothing clashes on that side either.
+          */
+          surface="default"
+          id="pre-purchase"
+          content={content.prePurchase}
         />
       )}
 

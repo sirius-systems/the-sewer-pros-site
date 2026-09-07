@@ -373,46 +373,55 @@ export interface MaterialCard {
 }
 
 /**
- * The pipe-materials section, closing on the pre-purchase panel.
+ * The pipe-materials section.
  *
- * ⚠ THE PRE-PURCHASE CONTENT LIVES HERE RATHER THAN IN `localFeature`
- * (owner direction, 2026-09-07). It used to render as a standalone
- * narrow prose block directly beneath this section, repeating its
- * premise; as a closing panel it reads as the conclusion the materials
- * argument was already making. A market that sets `materials` should
- * NOT also set `localFeature`, or the same argument ships twice.
+ * ⚠ THE PRE-PURCHASE CONTENT USED TO LIVE ON THIS TYPE AS
+ * `prePurchase` AND NOW HAS ITS OWN. See `PrePurchaseContent`, which
+ * records why it moved. A market sets both fields independently.
  */
 export interface MaterialsContent {
   title: string
   intro: string
   items: readonly MaterialCard[]
-  prePurchase: {
-    title: string
-    body: string
-    image?: CardImage
-    /**
-     * Short benefit points.
-     *
-     * ⚠ EVERY POINT MUST BE A CONDENSATION OF `body`, NOT AN ADDITION
-     * TO IT. These sit beside approved copy and read as claims; one
-     * that `body` does not already support is a new business claim
-     * wearing a tick (01 §35, CLAUDE.md §24).
-     */
-    points: readonly string[]
-    primary: { label: string; pageId: PageId }
-    /** Only where a verified route exists. Never invent one (05 §51). */
-    secondary?: { label: string; pageId: PageId }
-    resourcesTitle: string
-    /**
-     * Related guides.
-     *
-     * ⚠ `label` OVERRIDES THE REGISTRY NAME ON PURPOSE. These three
-     * carry the wording readers already see on this page, which differs
-     * from the guides' registry titles. Resolving by page id keeps the
-     * destination canonical while the label stays put through a rename.
-     */
-    resources: readonly { pageId: PageId; label: string }[]
-  }
+}
+
+/**
+ * Buying or selling: the pre-purchase inspection section.
+ *
+ * ⚠ ITS OWN SECTION, NOT A PANEL INSIDE `materials` (owner direction,
+ * 2026-09-07). It must render on a DIFFERENT SURFACE from the materials
+ * band above it; two adjacent sections sharing a background read as one
+ * section however they are composed (18 §11).
+ *
+ * ⚠ A MARKET THAT SETS THIS SHOULD NOT ALSO SET `localFeature`, or the
+ * same argument ships twice on one page.
+ */
+export interface PrePurchaseContent {
+  title: string
+  body: string
+  image?: CardImage
+  /**
+   * Short benefit points.
+   *
+   * ⚠ EVERY POINT MUST BE A CONDENSATION OF `body`, NOT AN ADDITION TO
+   * IT. These sit beside approved copy and read as claims; one that
+   * `body` does not already support is a new business claim wearing an
+   * icon (01 §35, CLAUDE.md §24).
+   */
+  points: readonly string[]
+  primary: { label: string; pageId: PageId }
+  /** Only where a verified route exists. Never invent one (05 §51). */
+  secondary?: { label: string; pageId: PageId }
+  resourcesTitle: string
+  /**
+   * Related guides.
+   *
+   * ⚠ `label` OVERRIDES THE REGISTRY NAME ON PURPOSE. These three carry
+   * the wording readers already see on this page, which differs from
+   * the guides' registry titles. Resolving by page id keeps the
+   * destination canonical while the label stays put through a rename.
+   */
+  resources: readonly { pageId: PageId; label: string }[]
 }
 
 /* ==========================================================================
@@ -891,6 +900,13 @@ export interface MarketPageContent extends BasePageContent {
    * the pre-purchase argument ships twice on one page.
    */
   materials?: MaterialsContent
+  /**
+   * Buying or selling, as its own section beneath `materials`.
+   *
+   * ⚠ IT RENDERS ON A DIFFERENT SURFACE FROM `materials`. See
+   * `PrePurchaseContent` and the template.
+   */
+  prePurchase?: PrePurchaseContent
   /** Editorial block, e.g. buying or selling a home in this market. */
   localFeature?: { title: string; body: ReactNode }
   processBackground?: CardImage

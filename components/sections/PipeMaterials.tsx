@@ -1,15 +1,10 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import type { SVGProps } from 'react'
 import {
   Section,
-  ButtonLink,
   type SectionDensity,
   type SectionSurface,
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
-import { resolveApprovedLink } from '@/lib/links/approved-link'
-import { cn } from '@/lib/utils/cn'
 import type { MaterialsContent } from '@/types'
 
 /**
@@ -40,19 +35,18 @@ import type { MaterialsContent } from '@/types'
  * belongs to the camera, not to the styling.
  *
  * ---------------------------------------------------------------------------
- * ⚠ THE PRE-PURCHASE PANEL LIVES HERE RATHER THAN IN ITS OWN SECTION
+ * ⚠ THE PRE-PURCHASE CONTENT IS NOT HERE ANY MORE
  * ---------------------------------------------------------------------------
- * Owner direction, 2026-09-07. It used to render as a standalone
- * `width="reading"` prose block immediately below this one - two narrow
- * text sections in a row, the second repeating the first's premise. As
- * a closing panel it reads as the conclusion the materials argument was
- * already making: you cannot tell from the era, so look.
+ * It spent part of 2026-09-07 as this section's closing panel and now
+ * has its own section and its own H2 - see `PrePurchase`, which
+ * records why it moved twice. This section ends with the three
+ * material cards.
  *
- * ⚠ ITS COPY IS UNCHANGED AND SO ARE ITS THREE RESOURCE LINKS. They
- * resolve by PAGE ID through the approved-link layer with their
- * existing labels, so a gated resource fails at the resolver rather
- * than shipping a dead link, and the wording a reader recognises does
- * not quietly change with a registry rename.
+ * ⚠ THE SECTION BELOW MUST NOT SHARE THIS ONE'S SURFACE. This band is
+ * `muted` and `PrePurchase` is `default`. Two adjacent sections on one
+ * background read as a single section however they are composed, which
+ * is exactly what went wrong the first time this content sat below
+ * here (18 §11).
  */
 export interface PipeMaterialsProps {
   /**
@@ -82,53 +76,12 @@ export function pipeMaterialsRenders(
   return content !== undefined && content.items.length > 0
 }
 
-type IconProps = SVGProps<SVGSVGElement>
-
-/**
- * The benefit mark.
- *
- * ⚠ `aria-hidden` beside text that states the same thing (18 §96), and
- * a document rather than a tick: each point is about what the visitor
- * ends up holding, which is a record.
- */
-function DocumentIcon(props: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M14 3H6.5v18h11V6.5Z" />
-      <path d="M14 3v3.5h3.5M9 12h6M9 16h4" />
-    </svg>
-  )
-}
-
 export function PipeMaterials({
   density = 'dense',
   surface = 'muted',
   id = 'line-materials',
   content,
 }: PipeMaterialsProps) {
-  const { prePurchase } = content
-  const primary = resolveApprovedLink(prePurchase.primary.pageId, {
-    label: prePurchase.primary.label,
-  })
-  const secondary =
-    prePurchase.secondary !== undefined
-      ? resolveApprovedLink(prePurchase.secondary.pageId, {
-          label: prePurchase.secondary.label,
-        })
-      : undefined
-  const resources = prePurchase.resources.map((resource) =>
-    resolveApprovedLink(resource.pageId, { label: resource.label }),
-  )
-
   return (
     <Section density={density} surface={surface} labelledBy={id}>
       {/*
@@ -189,125 +142,6 @@ export function PipeMaterials({
         ))}
       </ul>
 
-      {/*
-        ==================================================================
-        THE PRE-PURCHASE PANEL. The conclusion, not a fifth topic.
-        ==================================================================
-        ⚠ DOM ORDER IS CONTENT THEN IMAGE, AND THE IMAGE MOVES LEFT ONLY
-        AT `lg`. The owner asked for the photograph on the left
-        (2026-09-07); a stacked phone must still read heading first.
-        `lg:order-*` gives the desktop arrangement without touching
-        source order, and it is safe here because the media column holds
-        no interactive element.
-      */}
-      <div className="mt-14 rounded-md border border-border bg-surface p-6 sm:p-8">
-        <div className="grid gap-x-10 gap-y-8 lg:grid-cols-12 lg:items-center">
-          <div className="lg:order-2 lg:col-span-7">
-            <h3 className="text-h3 font-semibold tracking-tight text-balance">
-              {prePurchase.title}
-            </h3>
-            <p className="mt-4 max-w-prose text-body leading-7 text-muted-foreground">
-              {prePurchase.body}
-            </p>
-
-            {prePurchase.points.length > 0 && (
-              /*
-                ⚠ EVERY POINT IS A CONDENSATION OF THE PARAGRAPH ABOVE
-                IT, NOT A NEW CLAIM. Each one is traced to its source
-                sentence in the content file. Real DOM text in a real
-                list; the mark beside it is `aria-hidden`.
-              */
-              <ul className="mt-6 space-y-3">
-                {prePurchase.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
-                    <DocumentIcon className="mt-1 size-5 shrink-0 text-accent-secondary" />
-                    <span className="text-body leading-7 text-muted-foreground">
-                      {point}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink
-                href={primary.href}
-                variant="primary"
-                className="w-full sm:w-auto"
-              >
-                {primary.label}
-              </ButtonLink>
-              {secondary !== undefined && (
-                <ButtonLink
-                  href={secondary.href}
-                  variant="secondary"
-                  className="w-full sm:w-auto"
-                >
-                  {secondary.label}
-                </ButtonLink>
-              )}
-            </div>
-          </div>
-
-          {prePurchase.image !== undefined && (
-            <div className="lg:order-1 lg:col-span-5">
-              {/*
-                `cover` here, unlike the responsibility diagram: this is
-                a photograph, and the asset is already 4:3, so the crop
-                is a no-op that stays safe if a replacement frame is not.
-              */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md border border-border bg-surface-muted">
-                <Image
-                  src={prePurchase.image.src}
-                  alt={prePurchase.image.alt}
-                  fill
-                  sizes="(min-width: 1024px) 35vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-
-        {resources.length > 0 && (
-          /*
-            The related guides, as their own group inside the panel.
-
-            ⚠ THE CARD IS THE LINK, SO THERE IS NOTHING TO NEST. One
-            anchor per card, its whole surface, with the arrow marked
-            `aria-hidden` because the label already names the
-            destination (18 §47, §48). No non-link space inside a card
-            pretends to be clickable.
-          */
-          <div className="mt-10 border-t border-border pt-8">
-            <h4 className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
-              {prePurchase.resourcesTitle}
-            </h4>
-            <ul className="mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-              {resources.map((resource) => (
-                <li key={resource.pageId}>
-                  <Link
-                    href={resource.href}
-                    className={cn(
-                      'group flex h-full items-start justify-between gap-3 rounded-md border border-border bg-surface-muted p-4',
-                      'text-body leading-7 text-foreground transition-colors',
-                      'hover:border-foreground/30 hover:text-accent-secondary',
-                    )}
-                  >
-                    <span>{resource.label}</span>
-                    <span
-                      aria-hidden="true"
-                      className="mt-1 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
-                    >
-                      →
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
     </Section>
   )
 }

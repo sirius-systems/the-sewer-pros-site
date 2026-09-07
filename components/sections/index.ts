@@ -149,6 +149,9 @@ export type { LateralResponsibilityProps } from './LateralResponsibility'
 export { PipeMaterials, pipeMaterialsRenders } from './PipeMaterials'
 export type { PipeMaterialsProps } from './PipeMaterials'
 
+export { PrePurchase, prePurchaseRenders } from './PrePurchase'
+export type { PrePurchaseProps } from './PrePurchase'
+
 export { ProofGallery } from './ProofGallery'
 export type { ProofGalleryProps } from './ProofGallery'
 
