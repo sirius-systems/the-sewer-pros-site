@@ -381,48 +381,148 @@ export const sanDiegoMarketContent: MarketPageContent = {
   */
   /*
     ==========================================================================
-    SERVICE AREA. Added 2026-09-07 to close an internal-linking hole.
+    SERVICE AREA. Upgraded from `coverage` to the image mosaic 2026-09-07.
     ==========================================================================
-    ⚠ THIS HUB LINKED TO NONE OF ITS OWN LOCATION PAGES BEFORE THIS.
-    The market set neither `serviceArea` nor `coverage`, so the section
-    never rendered and the 7 San Diego location pages had no path from
-    their own market hub. They were reachable only from `/locations/`
-    and the footer. 16 §25 and CLAUDE.md §31 both describe the hub to
-    spoke flow this restores.
+    ⚠ THIS REPLACED `coverage`, IT DID NOT JOIN IT. `MarketPageTemplate`
+    renders one or the other and prefers `serviceArea`, so a leftover
+    `coverage` here would be a second copy of the same statement that
+    nothing displays and nobody would notice going stale.
 
-    ⚠ `coverage`, NOT `serviceArea`, AND THAT IS DELIBERATE. The
-    image-led treatment needs per-market photography and hyper-local
-    detail this market does not have; St. Louis is the only one that
-    does. Owner direction 2026-09-07 also asks the three hubs to differ
-    in composition, and this is one of the places they should.
+    ⚠ THE REASON THIS MARKET WAS ON THE PLAIN LIST IS GONE. The earlier
+    note said the image-led treatment "needs per-market photography and
+    hyper-local detail this market does not have". The photography now
+    exists: 7 frames, one per approved location, in
+    `public/images/markets/san-diego-ca/service-locations/`.
 
-    ⚠⚠ THE COPY MUST NOT STATE A SERVICE AREA AS A PUBLISHED FACT.
-    `marketOperatingDetail['san-diego-ca'].serviceAreaSource` is
-    `derived_from_approved_locations`: the list below is assembled from
-    the pages doc 04 approves, NOT from anything the business publishes
-    about where it works. DEC-077 corrected an earlier value that was
-    inference presented as a published area. So the intro says these
-    communities have their own PAGES and asks the visitor to confirm;
-    it does not claim a county, a radius, or a boundary.
+    ⚠⚠ NO COUNTY TIER, AND THAT IS A FACTUAL DECISION RATHER THAN AN
+    UNFINISHED ONE. St. Louis names three counties because its PUBLISHED
+    service area names them (DEC-070). This market publishes no service
+    area at all - `marketOperatingDetail['san-diego-ca'].serviceAreaSource` is
+    `derived_from_approved_locations` - so a county tier would be
+    inference dressed as coverage, which DEC-077 already corrected once
+    here. `counties` is optional for exactly this reason.
 
-    ⚠ NO OFFICE LANGUAGE. `CoverageSection` renders no address, no pin
-    and no hours by design (PENDING-002, CLAUDE.md §29-30, 18 §86-87).
+    ⚠ THE INTRO AND THE CLOSING PANEL BOTH REFUSE TO CLAIM A BOUNDARY.
+    They say these communities have their own pages and ask the visitor
+    to confirm. No county, no radius, no "we serve everywhere in".
+
+    ⚠ NO OFFICE ANYWHERE. No address, no pin on a map, no hours
+    (CLAUDE.md §29-30, 18 §86-87, PENDING-002).
   */
-  coverage: {
+  serviceArea: {
     title: 'Where we serve in the San Diego area',
     intro:
-      'The communities below have their own service pages, each with local information for that area. They are where we have published that detail rather than the limit of where we work. Contact us with your property location so we can confirm availability before you schedule.',
-    pageIds: [
-      id('loc-sd-san-diego'),
-      id('loc-sd-san-marcos'),
-      id('loc-sd-carlsbad'),
-      id('loc-sd-escondido'),
-      id('loc-sd-oceanside'),
-      id('loc-sd-chula-vista'),
-      id('loc-sd-mission-valley'),
-    ],
-    availabilityStatement:
-      'Serving homeowners, home buyers, real estate professionals, property managers, and commercial properties across the greater San Diego region.',
+      'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services across the greater San Diego area. The communities highlighted below have dedicated service pages, but they do not define the full limits of our coverage. Contact us with your property location and service need so we can confirm current availability before you schedule.',
+    /*
+      Seven cards: the flagship takes the left half over three rows, and
+      the six others fill the right half two per row. See
+      `ServiceAreaContent.cities.rows` for why the count and the row
+      number have to agree.
+    */
+    cities: {
+      title: 'Featured San Diego-area service locations',
+      intro:
+        'Explore dedicated sewer inspection and cleaning information for featured communities across the San Diego area. Each local page includes services, coverage details, and guidance for property owners and professionals in that community.',
+      flagshipPageId: id('loc-sd-san-diego'),
+      rows: 3,
+      items: [
+        {
+          pageId: id('loc-sd-san-diego'),
+          title: 'San Diego, CA',
+          description:
+            'Sewer camera inspection, cleaning, locating, and diagnostic services for residential and commercial properties across San Diego.',
+          ctaLabel: 'Explore San Diego',
+          image: {
+            src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-san-diego-ca-sewer-services.webp',
+            alt: 'San Diego sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-sd-san-marcos'),
+          title: 'San Marcos, CA',
+          description:
+            'Explore sewer inspection and cleaning services for homes, buyers, property managers, and commercial properties in San Marcos.',
+          ctaLabel: 'Explore San Marcos',
+          image: {
+            src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-san-marcos-ca-sewer-services.webp',
+            alt: 'San Marcos, California sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-sd-carlsbad'),
+          title: 'Carlsbad, CA',
+          description:
+            'Find evidence-first sewer camera inspection, cleaning, and diagnostic services for properties in Carlsbad.',
+          ctaLabel: 'Explore Carlsbad',
+          image: {
+            src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-carlsbad-ca-sewer-services.webp',
+            alt: 'Carlsbad, California sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-sd-escondido'),
+          title: 'Escondido, CA',
+          description:
+            'Review sewer inspection, cleaning, hydro jetting, and locating services available for properties in Escondido.',
+          ctaLabel: 'Explore Escondido',
+          image: {
+            src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-escondido-ca-sewer-services.webp',
+            alt: 'Escondido, California sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-sd-oceanside'),
+          title: 'Oceanside, CA',
+          description:
+            'Explore sewer camera inspection and cleaning services for residential and commercial properties in Oceanside.',
+          ctaLabel: 'Explore Oceanside',
+          image: {
+            src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-oceanside-ca-sewer-services.webp',
+            alt: 'Oceanside, California sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-sd-chula-vista'),
+          title: 'Chula Vista, CA',
+          description:
+            'Find sewer inspection, diagnostic, locating, and cleaning services available for properties in Chula Vista.',
+          ctaLabel: 'Explore Chula Vista',
+          image: {
+            src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-chula-vista-ca-sewer-services.webp',
+            alt: 'Chula Vista, California sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          /*
+            ⚠ "Mission Valley, San Diego", NOT "Mission Valley, CA". It
+            is a neighbourhood inside the city, not an incorporated one,
+            and CLAUDE.md §26 treats city and neighbourhood as different
+            record types rather than interchangeable labels.
+          */
+          pageId: id('loc-sd-mission-valley'),
+          title: 'Mission Valley, San Diego',
+          description:
+            'Explore sewer inspection and cleaning services for homes, multifamily buildings, and commercial properties in Mission Valley.',
+          ctaLabel: 'Explore Mission Valley',
+          image: {
+            src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-mission-valley-san-diego-sewer-services.webp',
+            alt: 'Mission Valley sewer service area in San Diego',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+      ],
+    },
+    closing: {
+      title: 'Do not see your community listed?',
+      body: 'These featured locations do not represent the full limit of our greater San Diego service area. Tell us where the property is located and what is happening with the sewer line, and we will confirm whether service is currently available before you schedule.',
+      action: { label: 'Contact The Sewer Pros', pageId: id('core-contact') },
+    },
   },
   /*
     ==========================================================================

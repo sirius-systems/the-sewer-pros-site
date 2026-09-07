@@ -126,7 +126,7 @@ export function serviceAreaRenders(
   const cities = resolveLinkableOnly(
     content.cities.items.map((item) => item.pageId),
   )
-  return cities.length > 0 || content.counties.items.length > 0
+  return cities.length > 0 || (content.counties?.items.length ?? 0) > 0
 }
 
 type IconProps = SVGProps<SVGSVGElement>
@@ -185,6 +185,28 @@ function RegionIcon(props: IconProps) {
 const SCRIM = 'absolute inset-0 bg-black/55'
 
 /**
+ * The card scrim, weighted toward the copy.
+ *
+ * ⚠ IT IS DARKER THAN THE FLAT 55% WHERE THE TEXT SITS, NOT LIGHTER.
+ * The measurement above sets 55% as the FLOOR for opaque white; this
+ * runs 85% at the bottom of the card, where every word actually is,
+ * easing to 20% at the top where nothing is written. So contrast at
+ * the text improves on the flat value while more of the photograph
+ * stays visible above it.
+ *
+ * ⚠ THE STOPS ARE ORDERED FOR A BOTTOM-ANCHORED CARD. `to-t` runs FROM
+ * the bottom, so `from-black/85` is the text end. Flipping the
+ * direction would put the light end under the copy and break the floor
+ * everywhere at once.
+ *
+ * ⚠ IT DOES NOT CHANGE ON HOVER, for the same reason the flat scrim
+ * does not: lifting it under a pointer would drop the card's own text
+ * below AA for as long as the pointer sat there.
+ */
+const CARD_SCRIM =
+  'absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/20'
+
+/**
  * Card height floor.
  *
  * ⚠ IT IS NOT DECORATION, IT IS WHAT KEEPS THE COPY INSIDE THE BOX. A
@@ -222,8 +244,9 @@ export function ServiceAreaSection({
   )
   const flagship: PageId | undefined =
     content.cities.flagshipPageId ?? cityLinks[0]?.pageId
+  const rows = content.cities.rows ?? 2
 
-  const counties = content.counties.items
+  const counties = content.counties?.items ?? []
 
   // 18 §120 — omit entirely rather than render an empty shell.
   if (cityLinks.length === 0 && counties.length === 0) return null
@@ -248,7 +271,7 @@ export function ServiceAreaSection({
       {/* ================================================================
           TIER 1 — REGIONAL COVERAGE. Informational cards, never links.
           ================================================================ */}
-      {counties.length > 0 && (
+      {counties.length > 0 && content.counties !== undefined && (
         <div className="mt-12">
           <SectionHeading
             id={countiesHeadingId}
@@ -432,7 +455,18 @@ export function ServiceAreaSection({
             DOM order is reading order at every width, which is what
             keeps keyboard focus following the eye.
           */}
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-2">
+          <ul
+            className={cn(
+              'mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-12 lg:gap-6',
+              /*
+                ⚠ THE ROW COUNT IS EXPLICIT BECAUSE THE FLAGSHIP SPANS
+                IT. `auto-rows` would let the right-hand tiles decide
+                the height and the flagship would stop lining up with
+                the bottom of the column. See `cities.rows`.
+              */
+              rows === 3 ? 'lg:grid-rows-3' : 'lg:grid-rows-2',
+            )}
+          >
             {cityLinks.map((link) => {
               const card = cityCards.get(link.pageId)
               if (card === undefined) return null
@@ -445,8 +479,13 @@ export function ServiceAreaSection({
                   key={link.pageId}
                   className={cn(
                     isFlagship
-                      ? 'sm:col-span-2 lg:col-span-6 lg:row-span-2'
-                      : 'lg:col-span-3',
+                      ? cn(
+                          'sm:col-span-2 lg:col-span-6',
+                          rows === 3 ? 'lg:row-span-3' : 'lg:row-span-2',
+                        )
+                      : card.wide === true
+                        ? 'sm:col-span-2 lg:col-span-6'
+                        : 'lg:col-span-3',
                   )}
                 >
                   {/*
@@ -481,13 +520,13 @@ export function ServiceAreaSection({
                           alt=""
                           fill
                           sizes={
-                            isFlagship
+                            isFlagship || card.wide === true
                               ? '(min-width: 1024px) 50vw, 100vw'
                               : '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
                           }
                           className="absolute inset-0 object-cover"
                         />
-                        <span aria-hidden="true" className={SCRIM} />
+                        <span aria-hidden="true" className={CARD_SCRIM} />
                       </>
                     )}
 
