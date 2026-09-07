@@ -137,6 +137,9 @@ export type { CoverageSectionProps } from './CoverageSection'
 export { ServiceAreaSection, serviceAreaRenders } from './ServiceAreaSection'
 export type { ServiceAreaSectionProps } from './ServiceAreaSection'
 
+export { ExperienceSection, experienceRenders } from './ExperienceSection'
+export type { ExperienceSectionProps } from './ExperienceSection'
+
 export { ProofGallery } from './ProofGallery'
 export type { ProofGalleryProps } from './ProofGallery'
 

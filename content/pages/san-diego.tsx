@@ -200,6 +200,143 @@ export const sanDiegoMarketContent: MarketPageContent = {
       </p>
     </>
   ),
+  /*
+    ==========================================================================
+    COMPANY EXPERIENCE. Added 2026-09-07 on owner direction.
+    ==========================================================================
+    ⚠⚠ TWO FIGURES IN THE SUPPLIED COPY WERE NOT PUBLISHED HERE, AND
+    THE OWNER'S OWN INSTRUCTION IS WHY.
+
+    The brief said to publish "since 2011" and "more than 100,000
+    sewer camera inspections" ONLY after confirming both remain
+    approved in the authoritative business documentation. They are not
+    approved for this page:
+
+      'over 100,000 camera inspections'  DEC-072 scopes it to
+          `/st-louis-mo/` ONLY. `MARKET_SCOPED_CLAIMS.stLouisOnly` in
+          `data/business/organization.ts` is the list, and 01 §20
+          forbids carrying a market's facts onto another's page.
+
+      '2011'  is ST. LOUIS's founding year (DEC-070). San Diego's own
+          is 2015 - `marketOperatingDetail['san-diego-ca'].foundingYear`,
+          published on thesewerprossd.com and recorded in DEC-071.
+
+    So the opening paragraph and the first proof card state SAN DIEGO's
+    verified 2015, and the inspection-count card was replaced with a
+    documentation claim the site can stand behind. Nothing was softened
+    that did not have to be: the services, the findings, the
+    independence position and the coverage caveat are all as supplied.
+
+    ⚠ DO NOT "RESTORE" THE ORIGINAL WORDING. Both figures would need a
+    new owner decision widening DEC-072's scope, not an edit here.
+
+    ⚠ THE SERVICE LIST IS SAFE TO STATE. DEC-076 and DEC-080 confirm 17
+    of 18 services for this market (the eighteenth is St. Louis's
+    lateral reporting), superseding a stale note in `markets.ts` that
+    still reads as though none were confirmed.
+
+    ⚠ `strip` VARIANT, WHERE LAS VEGAS TAKES `aside`. Owner direction:
+    the two markets share typography, cards, colour and spacing but not
+    the arrangement, so the hubs do not read as one template with the
+    city swapped (18 §155, 14 §79).
+  */
+  experienceVariant: 'strip',
+  experience: {
+    eyebrow: 'Specialized experience, clear findings',
+    title: 'Sewer inspection experience San Diego property owners can use',
+    intro: [
+      'The Sewer Pros has served San Diego property owners since 2015, bringing a specialized, evidence-first approach to customers who need to investigate a drainage problem, evaluate a sewer line before buying a property, or understand the condition of a line before making a larger decision.',
+      'Our San Diego sewer services include sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, recurring sewer backup diagnosis, pre-purchase sewer inspection, and preventative sewer maintenance. We inspect accessible portions of the sewer line, document visible conditions on video, and explain what the footage shows in clear language.',
+    ],
+    blocks: [
+      {
+        title: 'What can a San Diego sewer camera inspection reveal?',
+        body: [
+          'A sewer camera inspection, commonly called a sewer scope, provides a direct view inside accessible portions of the sewer line. The recorded footage may reveal root intrusion, accumulated grease or scale, blockages, offset joints, standing water, cracks, or other visible conditions that may be contributing to slow drainage or recurring backups.',
+          'The inspection helps you understand what is happening before choosing sewer cleaning, hydro jetting, continued monitoring, or further evaluation by a separate sewer repair provider.',
+        ],
+      },
+      {
+        title: 'When a sewer inspection can help',
+        half: true,
+        listIntro:
+          'Consider scheduling a professional sewer camera inspection when:',
+        items: [
+          'A sewer line or drain continues to back up after being cleared',
+          'Multiple drains are slow at the same time',
+          'You need to distinguish an isolated drain clog from a main sewer-line problem',
+          'You are purchasing a home or commercial property in the San Diego area',
+          'A previous contractor has recommended an expensive sewer repair',
+          'You need to locate the sewer line before landscaping, excavation, or utility work',
+          'A property manager needs documentation for a recurring drainage issue',
+          'You want to establish an evidence-based preventative maintenance schedule',
+        ],
+        after: [
+          'A camera inspection does not automatically mean the sewer line needs repair. It provides information that helps determine whether cleaning, monitoring, or another type of evaluation is appropriate.',
+        ],
+      },
+      {
+        title: 'What you receive from the inspection',
+        half: true,
+        body: [
+          'The goal is to give you useful evidence, not simply tell you that a problem exists.',
+        ],
+        listIntro: 'You receive:',
+        items: [
+          'Recorded footage from accessible portions of the sewer line',
+          'Documentation of visible conditions found during the inspection',
+          'A plain-language explanation of what the camera shows',
+          'Guidance about whether sewer cleaning or hydro jetting may address the condition',
+          'Information you can review before approving a major sewer project',
+          'Evidence you can keep or share when seeking another professional opinion',
+        ],
+      },
+      {
+        title: 'Diagnosis without a repair-driven sales incentive',
+        body: [
+          'The Sewer Pros specializes in sewer inspection, diagnostics, locating, and cleaning. We do not perform sewer repair or replacement, so we do not earn revenue from selling the major repairs an inspection might identify.',
+          'Our responsibility is to document the visible condition of the line and help you understand the findings. You decide whether to schedule cleaning, monitor the condition, seek a second opinion, or consult a sewer repair provider of your choosing.',
+        ],
+      },
+    ],
+    proof: [
+      {
+        title: 'Serving San Diego Since 2015',
+        body: 'Specialized experience across coastal, inland, and older inner-city properties throughout the greater San Diego region.',
+        icon: 'experience',
+        accent: 'blue',
+      },
+      {
+        title: 'Evidence That Stays With You',
+        body: 'You receive recorded footage and understandable findings that can support cleaning, monitoring, property-purchase, or second-opinion decisions.',
+        icon: 'document',
+        accent: 'blue',
+      },
+      {
+        title: 'Diagnosis Without a Repair Sale',
+        body: 'We inspect, document, locate, and clean. Because we do not perform sewer repair or replacement, the findings stay separate from the sale of a major repair.',
+        icon: 'independence',
+        accent: 'green',
+      },
+    ],
+    coverage: {
+      title: 'Serving properties throughout the San Diego region',
+      body: [
+        'The Sewer Pros serves homeowners, home buyers, real estate professionals, property managers, multifamily buildings, and commercial properties throughout the greater San Diego region. Featured service areas include San Diego, San Marcos, Carlsbad, Escondido, Oceanside, Chula Vista, and Mission Valley.',
+        'Service availability can vary by property location. Contact us with the location and the sewer or drainage concern so we can confirm coverage before scheduling.',
+      ],
+    },
+    actions: {
+      primary: {
+        label: 'Schedule a San Diego Sewer Inspection',
+        pageId: id('core-contact'),
+      },
+      secondary: {
+        label: 'Explore San Diego Sewer Services',
+        pageId: id('hub-services'),
+      },
+    },
+  },
   services: [
     { pageId: id('svc-sewer-camera-inspection'), description: 'See the visible condition of the line.' },
     { pageId: id('svc-pre-purchase-sewer-inspection'), description: 'Inspect the line before closing on a property.' },

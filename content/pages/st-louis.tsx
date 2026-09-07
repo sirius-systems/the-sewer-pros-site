@@ -292,37 +292,111 @@ export const stLouisMarketContent: MarketPageContent = {
     What remains is the proof paragraph, which is claim-bearing and
     belongs in reviewable content rather than in a card.
   */
-  body: (
-    <>
-      <h2>Our work in St. Louis</h2>
-      <p>
-        The Sewer Pros has inspected sewer lines across the St. Louis area since
-        2011, completing over 100,000 camera inspections in that time. We are
-        the #1 choice in St. Louis for sewer inspections.
-      </p>
-      <p>
-        We are also licensed through most of the area&rsquo;s municipal sewer
-        lateral programmes for submitting reports, which matters more than it
-        sounds, for the reason below.
-      </p>
+  /*
+    ==========================================================================
+    THE PAGE'S CREDIBILITY CLAIM. Replaced `body` on 2026-09-07.
+    ==========================================================================
+    ⚠ THIS IS THE OLD "Our work in St. Louis" PROSE BLOCK, REBUILT AS A
+    SECTION. It was three paragraphs at `width="reading"` (42rem) sat
+    directly above the process band's full-bleed photograph, which the
+    owner called narrow and underdeveloped. The claims are the same
+    ones, expanded, in a two-column composition with three proof cards.
 
-      {/*
-        The conversion bridge that used to follow the MSD block.
-        It stays in prose because it is a sentence, not a card, and it
-        is the page's only in-body link to the contact page.
-      */}
-      <p>
-        If you are not sure whether your sewer lateral falls under a municipal
-        repair programme or is your own responsibility to maintain, a sewer
-        camera inspection gives you a clear, documented answer.{' '}
-        <ApprovedInlineLink pageId={id('core-contact')}>
-          Request an inspection
-        </ApprovedInlineLink>{' '}
-        to see what is actually happening in your line before you decide on
-        next steps.
-      </p>
-    </>
-  ),
+    ⚠ ONE CLAIM WAS DROPPED AND IT WAS DROPPED DELIBERATELY. The old
+    copy carried "We are the #1 choice in St. Louis for sewer
+    inspections". DEC-072 approves it for this page, so removing it is
+    not a correction - it is the owner's rewrite, which makes the
+    argument from evidence rather than from a superlative. 18 §71 and
+    CLAUDE.md §71 both preferred it gone; it can be restored under
+    DEC-072 if the owner wants it back.
+
+    ⚠⚠ TWO FIGURES HERE ARE APPROVED FOR THIS PAGE AND FOR NO OTHER.
+
+      'since 2011'                    thesewerpros.com/about, DEC-070
+      'more than 100,000 inspections' DEC-072, `/st-louis-mo/` ONLY
+
+    01 §20 forbids carrying either onto a San Diego or Las Vegas page,
+    and `MARKET_SCOPED_CLAIMS.stLouisOnly` in
+    `data/business/organization.ts` is the list build review reads. San
+    Diego states its own 2015 and Las Vegas states no year at all - see
+    their content files, where the difference is not an oversight.
+
+    ⚠ THE LATERAL-PROGRAMME PARAGRAPH IS DELIBERATELY HEDGED. The
+    verified fact (DEC-070) is "licensed through most area programmes
+    for submitting reports"; "most" is not "all", and requirements
+    differ by municipality, so the copy says "where current
+    requirements and credentials permit" rather than claiming blanket
+    participation.
+
+    ⚠ NO REPAIR ANYWHERE IN IT. Every next-step sentence routes to
+    cleaning, monitoring, or a SEPARATE repair provider (CLAUDE.md §9),
+    and the independence card describes this company's model without
+    characterising anyone else's (CLAUDE.md §27).
+  */
+  experience: {
+    eyebrow: 'Local sewer inspection experience',
+    title: 'St. Louis sewer inspections backed by documented evidence',
+    intro: [
+      'The Sewer Pros has inspected sewer lines throughout the greater St. Louis area since 2011. Our local work includes residential sewer camera inspections, pre-purchase sewer scopes, recurring sewer backup diagnosis, sewer line locating, sewer cleaning, and documentation for participating municipal sewer lateral programs.',
+      'With more than 100,000 sewer camera inspections completed, we understand the conditions commonly found in St. Louis-area sewer lines. A professional camera inspection can document visible root intrusion, grease and scale buildup, offset pipe joints, standing water, cracks, and other conditions that may be contributing to slow drains or recurring backups.',
+    ],
+    blocks: [
+      {
+        title: 'See what is happening before deciding what comes next',
+        body: [
+          'A sewer camera inspection gives you visual evidence instead of an opinion based only on symptoms. We record the accessible portions of the sewer line, explain what the footage shows in plain language, and provide findings you can use when deciding whether to clean the line, monitor a condition, or consult a separate sewer repair provider.',
+        ],
+        listIntro: 'You receive:',
+        items: [
+          'Video evidence of visible conditions inside the accessible sewer line',
+          'A clear explanation of the inspection findings',
+          'Documentation you can review or share when seeking another opinion',
+          'Guidance on whether cleaning or continued monitoring may be appropriate',
+          'Information that helps you avoid making a major sewer decision based on guesswork',
+        ],
+      },
+      {
+        title: 'Experience with St. Louis sewer lateral programs',
+        body: [
+          'Sewer lateral program requirements vary by municipality and property location. The Sewer Pros works with participating programs across the St. Louis region where current requirements and credentials permit. We can help document the condition of the line, prepare the required inspection information, and explain what the findings mean for the property owner.',
+          'If you are unsure whether your sewer lateral falls under a municipal program or remains your responsibility to maintain, contact us before scheduling. We can help you identify the appropriate next step based on the property location and the inspection you need.',
+        ],
+      },
+    ],
+    proof: [
+      {
+        title: 'Serving St. Louis Since 2011',
+        body: 'Local experience inspecting sewer laterals across older city properties, established suburbs, and growing communities throughout the St. Louis region.',
+        icon: 'experience',
+        accent: 'blue',
+      },
+      {
+        title: 'More Than 100,000 Camera Inspections',
+        body: 'Extensive inspection experience helps us recognize visible sewer-line conditions and explain the evidence clearly.',
+        icon: 'camera',
+        accent: 'blue',
+      },
+      {
+        title: 'Diagnosis Without a Repair Sale',
+        body: 'We inspect, document, locate, and clean sewer lines. Because we do not perform sewer repair or replacement, you remain in control of the next decision.',
+        icon: 'independence',
+        accent: 'green',
+      },
+    ],
+    coverage: {
+      title: 'Serving the greater St. Louis region',
+      body: [
+        'We provide sewer inspection, cleaning, locating, and diagnostic services throughout St. Louis City, St. Louis County, St. Charles County, Jefferson County, and surrounding communities. Service availability can vary by location, so contact us to confirm coverage for your property.',
+      ],
+    },
+    actions: {
+      primary: { label: 'Schedule a Sewer Inspection', pageId: id('core-contact') },
+      secondary: {
+        label: 'Learn About St. Louis Sewer Lateral Programs',
+        pageId: id('svc-stl-sewer-lateral-inspection-reporting'),
+      },
+    },
+  },
   /*
     The real estate module, lifted out of `body` so it renders as its
     own section between the material cards and the model comparison.
