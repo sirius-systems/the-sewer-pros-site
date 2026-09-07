@@ -299,12 +299,28 @@ export interface ServiceAreaContent {
    Company experience — the proof section on a market hub
    ========================================================================== */
 
-/** Line icons available to a proof card. */
-export type ExperienceProofIcon =
+/**
+ * Line icons available to a proof card OR a benefit-list item.
+ *
+ * ⚠ RENAMED FROM `ExperienceProofIcon` ON 2026-09-07. The set stopped
+ * being proof-card-only when the owner asked the benefit list to carry
+ * an icon per item rather than five identical check marks, and a name
+ * that says "Proof" would have sent the next reader looking for a
+ * second, parallel union.
+ *
+ * ⚠ EVERY MARK IS `aria-hidden` BESIDE TEXT THAT STATES THE SAME
+ * THING. 18 §96 allows an icon on that condition and no other: none of
+ * these is the sole carrier of its meaning, which is what keeps the
+ * list readable with images or CSS off.
+ */
+export type ExperienceIconName =
   | 'experience'
   | 'camera'
   | 'document'
   | 'independence'
+  | 'explanation'
+  | 'guidance'
+  | 'decision'
 
 /**
  * One proof card.
@@ -324,8 +340,26 @@ export type ExperienceProofIcon =
 export interface ExperienceProofCard {
   title: string
   body: string
-  icon: ExperienceProofIcon
+  icon: ExperienceIconName
   accent: 'blue' | 'green'
+}
+
+/**
+ * One benefit-list item with its own mark.
+ *
+ * ⚠ THE ICON IS PER ITEM BECAUSE THE ITEMS DIFFER. Owner direction,
+ * 2026-09-07: five identical check marks said only "this is a list",
+ * which the `<ul>` already said. A camera beside video evidence and a
+ * document beside documentation carry a little of the meaning; a check
+ * beside both carried none.
+ *
+ * A plain `string` item is still valid and renders unchanged, which is
+ * what keeps San Diego and Las Vegas untouched.
+ */
+export interface ExperienceListItem {
+  text: string
+  /** Defaults to a check mark. */
+  icon?: ExperienceIconName
 }
 
 /** A heading with paragraphs and an optional list. */
@@ -335,7 +369,14 @@ export interface ExperienceBlock {
   body?: readonly string[]
   /** Lead-in sentence for the list. */
   listIntro?: string
-  items?: readonly string[]
+  /**
+   * ⚠ STRINGS AND OBJECTS BOTH, AND THE UNION IS DELIBERATE. A market
+   * that wants a mark per item supplies `ExperienceListItem`; one that
+   * does not keeps plain strings and renders exactly as before. That
+   * is what let the icons ship on St. Louis without touching San Diego
+   * or Las Vegas.
+   */
+  items?: readonly (string | ExperienceListItem)[]
   /** Paragraphs after the list. */
   after?: readonly string[]
   /**
@@ -365,6 +406,21 @@ export interface ExperienceContent {
   eyebrow: string
   title: string
   intro: readonly string[]
+  /**
+   * ONE supporting photograph, beside the heading.
+   *
+   * ⚠ `editorial` VARIANT ONLY, AND IT IS A MEDIA BOX RATHER THAN A
+   * BACKDROP: no copy sits on it, so it carries no scrim and none of
+   * the section's contrast measurements apply. The other two variants
+   * ignore this field.
+   *
+   * ⚠ ONE, NOT A GALLERY. Owner direction, 2026-09-07: the process band
+   * further down the page already carries a full-bleed frame, and
+   * 18 §11 warns against decorating every section. A market with no
+   * suitable photograph omits this and the heading runs full width,
+   * which is a finished state rather than a gap (18 §40-42, §120).
+   */
+  image?: CardImage
   blocks: readonly ExperienceBlock[]
   proof: readonly ExperienceProofCard[]
   coverage: ExperienceBlock
@@ -617,7 +673,7 @@ export interface MarketPageContent extends BasePageContent {
    */
   experience?: ExperienceContent
   /** Layout for `experience`. Defaults to `aside`. */
-  experienceVariant?: 'aside' | 'strip'
+  experienceVariant?: 'aside' | 'strip' | 'editorial'
   /**
    * Image-led service area, rendered INSTEAD OF `coverage`.
    *

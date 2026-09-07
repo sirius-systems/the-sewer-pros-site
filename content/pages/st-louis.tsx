@@ -338,9 +338,37 @@ export const stLouisMarketContent: MarketPageContent = {
     and the independence card describes this company's model without
     characterising anyone else's (CLAUDE.md §27).
   */
+  /*
+    ⚠ `editorial`, WHERE SAN DIEGO IS `strip` AND LAS VEGAS IS `aside`
+    (owner direction, 2026-09-07). The three cards used to sit in a
+    5/12 sidebar beside a long content column, which read as a document
+    rather than a designed section; they are now a full-width row and
+    every group in the band spans the container.
+
+    ⚠ NOT A CONTENT CHANGE. Every paragraph, list item, proof card,
+    coverage sentence and action below is the copy this section shipped
+    with. Only the arrangement and one photograph are new.
+  */
+  experienceVariant: 'editorial',
   experience: {
     eyebrow: 'Local sewer inspection experience',
     title: 'St. Louis sewer inspections backed by documented evidence',
+    /*
+      ⚠ THE SECTION'S ONLY IMAGE, AND IT SITS BESIDE THE COPY RATHER
+      THAN BEHIND IT. 2896x2172, exactly the 4:3 the media box reserves,
+      so `object-cover` crops nothing and the box prevents layout shift.
+
+      ⚠ THE ALT TEXT DESCRIBES THE FRAME AND DOES NOT REPEAT THE
+      HEADING. This is NOT one of the site's decorative card
+      backgrounds: nothing is written over it and no adjacent element
+      states what it shows, so it takes real alt text rather than
+      `alt=""` (CLAUDE.md §55, §57).
+    */
+    image: {
+      src: '/images/markets/st-louis-mo/services/the-sewer-pros-st-louis-sewer-camera-inspection-experience.webp',
+      alt: 'Sewer camera inspection equipment documenting a St. Louis sewer line',
+      source: 'Supplied by the business owner, 2026-09-07.',
+    },
     intro: [
       'The Sewer Pros has inspected sewer lines throughout the greater St. Louis area since 2011. Our local work includes residential sewer camera inspections, pre-purchase sewer scopes, recurring sewer backup diagnosis, sewer line locating, sewer cleaning, and documentation for participating municipal sewer lateral programs.',
       'With more than 100,000 sewer camera inspections completed, we understand the conditions commonly found in St. Louis-area sewer lines. A professional camera inspection can document visible root intrusion, grease and scale buildup, offset pipe joints, standing water, cracks, and other conditions that may be contributing to slow drains or recurring backups.',
@@ -352,12 +380,37 @@ export const stLouisMarketContent: MarketPageContent = {
           'A sewer camera inspection gives you visual evidence instead of an opinion based only on symptoms. We record the accessible portions of the sewer line, explain what the footage shows in plain language, and provide findings you can use when deciding whether to clean the line, monitor a condition, or consult a separate sewer repair provider.',
         ],
         listIntro: 'You receive:',
+        /*
+          ⚠ AN ICON PER ITEM, NOT FIVE CHECK MARKS (owner, 2026-09-07).
+          Each mark is chosen for what the item actually says: a camera
+          for footage, a speech bubble for the explanation, a page for
+          the documentation, a compass for the guidance, a balance for
+          the decision. Every one is `aria-hidden` beside text that
+          states the same thing, so nothing rests on the picture.
+
+          ⚠ THE COPY IS UNCHANGED. Only the marker beside it is new.
+        */
         items: [
-          'Video evidence of visible conditions inside the accessible sewer line',
-          'A clear explanation of the inspection findings',
-          'Documentation you can review or share when seeking another opinion',
-          'Guidance on whether cleaning or continued monitoring may be appropriate',
-          'Information that helps you avoid making a major sewer decision based on guesswork',
+          {
+            text: 'Video evidence of visible conditions inside the accessible sewer line',
+            icon: 'camera',
+          },
+          {
+            text: 'A clear explanation of the inspection findings',
+            icon: 'explanation',
+          },
+          {
+            text: 'Documentation you can review or share when seeking another opinion',
+            icon: 'document',
+          },
+          {
+            text: 'Guidance on whether cleaning or continued monitoring may be appropriate',
+            icon: 'guidance',
+          },
+          {
+            text: 'Information that helps you avoid making a major sewer decision based on guesswork',
+            icon: 'decision',
+          },
         ],
       },
       {
