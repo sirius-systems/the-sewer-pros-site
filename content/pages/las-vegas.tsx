@@ -61,6 +61,7 @@
 
 import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { coreServiceCards } from './service-cards'
 
 const id = (value: string): PageId => value as PageId
@@ -147,8 +148,63 @@ export const lasVegasMarketContent: MarketPageContent = {
   */
   showHeroForm: true,
   heroFormMarketId: 'las-vegas-nv',
+  /*
+    ⚠ SET EXPLICITLY, WHERE BOTH USED TO FALL BACK TO THE HERO TITLE.
+    Keyword round 2 (2026-09-07) makes `sewer inspection las vegas` the
+    primary term; the hero title reads "Sewer inspection and cleaning in
+    the Las Vegas Valley", which is close but does not carry it.
+
+    ⚠ NO BRAND SUFFIX ON `seoTitle`. The root title template appends
+    "| The Sewer Pros" - writing it here would double it.
+
+    ⚠ THE DESCRIPTION MAKES NO CLAIM THE PAGE CANNOT KEEP. No price, no
+    same-day promise, no emergency service, no address. "Evidence before
+    major sewer decisions" is the differentiator stated as a model, not
+    a guarantee.
+  */
+  seoTitle: 'Sewer Inspection Las Vegas',
+  metaDescription:
+    'Independent sewer camera inspection, diagnostics, and cleaning across the Las Vegas Valley. Evidence before major sewer decisions, with no repair upselling. Schedule an inspection today.',
   body: (
     <>
+      {/*
+        ==================================================================
+        DIRECT ANSWER. Added 2026-09-07 (Gate 2 approved).
+        ==================================================================
+        ⚠ IT LEADS THE BODY BECAUSE IT IS THE DEFINITIONAL ANSWER. AEO
+        and voice results want the "what is it" sentence findable and
+        self-contained, so it sits above the jurisdictional material
+        rather than after it.
+
+        ⚠ THE SECOND PARAGRAPH IS THE ENTITY-AUTHORITY SENTENCE the
+        strategy pass asked to appear near the top of the page. It names
+        the company, the services, the area and the audiences in one
+        line, and claims nothing beyond them: no office, no tenure, no
+        volume, no rating.
+
+        ⚠ "WITHOUT DIGGING" IS A STATEMENT ABOUT CAMERA INSPECTION, NOT
+        A PROMISE THAT NO EXCAVATION WILL EVER BE NEEDED. Do not extend
+        it into one - this company does not perform the work that would
+        follow (CLAUDE.md §9).
+      */}
+      <h2>What a sewer inspection in Las Vegas actually shows</h2>
+      <p>
+        Sewer inspection in Las Vegas uses a high-resolution camera to
+        examine the inside of a sewer line, revealing blockages, root
+        intrusion, offset joints, cracks, and standing water without
+        digging. The Sewer Pros provides independent{' '}
+        <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+          sewer camera inspection
+        </ApprovedInlineLink>{' '}
+        across the Las Vegas Valley, giving property owners clear evidence
+        before committing to any repair or replacement decision.
+      </p>
+      <p>
+        The Sewer Pros provides independent sewer inspection, camera
+        inspection, and cleaning across the Las Vegas Valley for
+        homeowners, home buyers, and property managers.
+      </p>
+
       <h2>Who governs your sewer here depends on where you live</h2>
       <p>
         The Las Vegas Valley has no single sewer authority. Each incorporated
@@ -206,6 +262,52 @@ export const lasVegasMarketContent: MarketPageContent = {
         settlement, and damage from later construction or landscaping, all of
         which produce the same repeating slow-drainage pattern people associate
         with old pipe, from an entirely different cause.
+      </p>
+
+      {/*
+        ==================================================================
+        REAL ESTATE. Added 2026-09-07 (Gate 2 approved).
+        ==================================================================
+        ⚠ "INFORMATIONAL, NOT LEGAL ADVICE" IS PART OF THE COPY, NOT A
+        DISCLAIMER BOLTED ON. CLAUDE.md §26 forbids legal advice, and a
+        paragraph about what evidence to bring to a transaction is
+        exactly where that line gets crossed by accident.
+
+        ⚠ IT DESCRIBES WHAT AN INSPECTION DOCUMENTS, NEVER WHAT IT WILL
+        FIND. No claim about the state of any property's line, no age
+        threshold, no failure rate.
+
+        The three community links carry the anchor text the keyword pass
+        asked for. They duplicate the coverage section's list further
+        down, which is deliberate: those are navigation, these are in
+        context for a buyer reading about a transaction.
+      */}
+      <h2>Buying or selling a home in the Las Vegas Valley</h2>
+      <p>
+        A sewer camera inspection before buying a home in Las Vegas shows
+        the documented condition of the line before closing, not after.
+        Buyers, agents, and home inspectors can use recorded findings to
+        support informed decisions during a real estate transaction. This
+        content is informational, not legal advice.
+      </p>
+      <p>
+        Schedule a{' '}
+        <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>
+          pre-purchase sewer inspection
+        </ApprovedInlineLink>{' '}
+        before your closing date. Local information is available for{' '}
+        <ApprovedInlineLink pageId={id('loc-lv-henderson')}>
+          Henderson sewer inspection
+        </ApprovedInlineLink>
+        ,{' '}
+        <ApprovedInlineLink pageId={id('loc-lv-north-las-vegas')}>
+          North Las Vegas sewer inspection
+        </ApprovedInlineLink>
+        , and{' '}
+        <ApprovedInlineLink pageId={id('loc-lv-summerlin')}>
+          Summerlin sewer inspection
+        </ApprovedInlineLink>
+        .
       </p>
 
       {LAS_VEGAS_CONTACT}
@@ -542,6 +644,121 @@ export const lasVegasMarketContent: MarketPageContent = {
           of Las Vegas partners with a private provider on an optional paid
           warranty, $6.00 a month or $67.00 a year, which is insurance a
           homeowner buys rather than municipal assistance.
+        </p>
+      ),
+    },
+    /*
+      ==========================================================================
+      SIX ENTRIES ADDED 2026-09-07 (Gate 2 approved). Two to eight.
+      ==========================================================================
+      ⚠ THE STRATEGY OUTLINE LISTED EIGHT AND TWO OF ITS EIGHT WERE
+      DROPPED RATHER THAN DUPLICATED:
+
+        "Is my sewer line my responsibility in Las Vegas?" duplicates the
+            first entry above, which already answers it with the sourced
+            CCWRD and Henderson positions.
+        "What areas of the Las Vegas Valley do you serve?" is answered
+            directly by the coverage section further up the page, which
+            lists the four communities and the availability caveat.
+
+      ⚠ NO `FAQPage` SCHEMA. Deferred by standing decision; `PageShell`
+      emits it only where a template opts in, and this one does not.
+
+      ⚠ NO COMPETITOR IS NAMED OR ALLUDED TO ANYWHERE BELOW. A real
+      operator in this market brands on the phrase "second opinion", so
+      the last entry makes the argument from the business model - no
+      repair revenue behind the inspection - rather than from the phrase.
+    */
+    {
+      question: 'What does a sewer camera inspection show?',
+      answer: (
+        <p>
+          A sewer camera inspection shows the documented interior condition of
+          a sewer line, including blockages, root intrusion, offset joints,
+          cracks, and standing water. The Sewer Pros captures this on video so
+          property owners see the same evidence the technician does, before any
+          decision is made.
+        </p>
+      ),
+    },
+    {
+      /*
+        TODO: Confirm the exact Summerlin / Summerlin South incorporation
+        boundary against Clark County's official jurisdictional boundary
+        map before stating a precise line. NOT a launch blocker as
+        written - the copy says which jurisdiction each part falls under
+        and stops there, without drawing the boundary itself.
+      */
+      question:
+        'Why does Summerlin have two different sewer service jurisdictions?',
+      answer: (
+        <p>
+          Most of Summerlin falls within Las Vegas city limits, while Summerlin
+          South is unincorporated Clark County and falls under a separate water
+          reclamation district. Which jurisdiction applies depends on where a
+          property sits, and The Sewer Pros accounts for that difference during
+          an inspection.
+        </p>
+      ),
+    },
+    {
+      question:
+        'Should I get a sewer inspection before buying a home in Las Vegas?',
+      answer: (
+        <p>
+          A sewer inspection before buying a home in Las Vegas documents the
+          line&rsquo;s condition before closing, giving buyers and agents
+          evidence rather than assumptions. The Sewer Pros provides this as an
+          independent evaluation, separate from the standard home inspection.
+          This is informational, not legal advice.
+        </p>
+      ),
+    },
+    {
+      question: 'Can a sewer line be cleaned instead of replaced?',
+      answer: (
+        <p>
+          Sometimes. Cleaning resolves blockages and buildup, while replacement
+          addresses structural failure such as a collapsed or severely damaged
+          line. A camera inspection is what distinguishes the two, so The Sewer
+          Pros always starts with documented evidence before recommending
+          either path.
+        </p>
+      ),
+    },
+    {
+      /*
+        ⚠ EVERY CLAUSE HERE IS DEC-088's APPROVED HEDGE, NOT A PARAPHRASE
+        OF IT. "Sometimes possible but never guaranteed", the weekday
+        hours, and the explicit no-weekend / no-24-7 / no-emergency line
+        all match `data/business/offers.ts`. DEC-088 approved DESCRIBING
+        same-day availability and forbids promising it; do not tighten
+        any of this, and do not demote the limits to fine print.
+      */
+      question: 'Do you offer same-day sewer inspections in Las Vegas?',
+      answer: (
+        <p>
+          Same-day service is sometimes possible but never guaranteed. The
+          Sewer Pros operates Monday through Friday, 8:00am to 4:00pm, and is
+          closed weekends, with no 24/7 or emergency service. Ask about a free
+          estimate when you schedule.
+        </p>
+      ),
+    },
+    {
+      question: 'Should I get a second opinion before approving sewer replacement?',
+      answer: (
+        <p>
+          If a contractor has already told you your sewer line needs
+          replacement, it is worth getting an independent camera inspection
+          before authorizing the work. The Sewer Pros documents the
+          line&rsquo;s actual condition on video, so you can verify the
+          recommendation with your own evidence before committing to an
+          expensive repair. Our{' '}
+          <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
+            independent inspection compared with a repair company
+          </ApprovedInlineLink>{' '}
+          explains why that distinction matters.
         </p>
       ),
     },
