@@ -22,10 +22,12 @@
  * derivation helper arrives with the service registry loader (step 10).
  *
  * Index status is likewise NOT stored here. All three market hubs carry
- * `index_status: 'launch'` in the location registry, but doc 04 gates
- * `/las-vegas-nv/` as `launch_pending_validation` (DEC-063). Page
- * authorisation belongs to the approved page registry (step 12), not
- * to this file.
+ * `index_status: 'launch'` in the location registry, and all three are
+ * `launch` + `indexable` in the approved page registry — DEC-080
+ * (2026-08-17) released DEC-063's gate on `/las-vegas-nv/`, so
+ * `gatedPages` is empty and no record carries a `validationCondition`.
+ * Page authorisation belongs to the approved page registry (step 12),
+ * not to this file.
  */
 
 import type { Market, MarketId } from '@/types'
@@ -122,28 +124,66 @@ export const markets: Record<MarketId, Market> = {
     slug: 'las-vegas-nv',
     /**
      * 01 §21: "No current GBP identified." CLAUDE.md §30 forbids
-     * fabricating a physical office.
+     * fabricating a physical office, and that constraint is unchanged:
+     * no Las Vegas address, storefront, branch, or GBP.
      *
-     * ⚠ Las Vegas carries a second, stronger constraint that GBP status
-     * alone does not express: NOT ONE of the 18 services is confirmed
-     * or supported in this market. All 17 applicable services are
-     * `requires_operational_confirmation` in the service registry; the
-     * eighteenth is St. Louis-only and `not_applicable`.
+     * ---------------------------------------------------------------------
+     * ⚠⚠ THIS NOTE USED TO SAY NO LAS VEGAS SERVICE WAS CONFIRMED.
+     * THAT WAS SUPERSEDED ON 2026-08-17 AND IS RECORDED HERE RATHER
+     * THAN DELETED, BECAUSE THE OLD CLAIM WAS LOAD-BEARING.
+     * ---------------------------------------------------------------------
+     * It read: "NOT ONE of the 18 services is confirmed or supported in
+     * this market. All 17 applicable services are
+     * `requires_operational_confirmation`... no Las Vegas page may state
+     * that any service is offered." Every part of that is now false, and
+     * one part was never true:
      *
-     * So no Las Vegas page may state that any service is offered
-     * (01 §20, §26; 06 §42). DEC-063 gates the five Las Vegas pages as
-     * `launch_pending_validation` — built and routable, excluded from
-     * sitemap and indexing — pending PENDING-012.
+     *   `requires_operational_confirmation` DOES NOT EXIST in
+     *   `master-service-registry.json` — zero occurrences. It is a
+     *   defensive fallback CATEGORY in `types/service.ts`, returned for
+     *   an unrecognised status value, not a status any service carries.
+     *   No count could ever have been derived from it. DEC-080 makes
+     *   the same correction.
      *
-     * ⚠ Contact detail is owner-confirmed (DEC-073) and the owner has
-     * reported the market OPERATIONAL as of 2026-08-17 (DEC-074).
-     * Neither releases the gate.
+     * Counted directly from the registry, this market's 18 services are:
      *
-     * DEC-063 criterion 2 asks whether the SERVICE MENU is operationally
-     * confirmed, and the registry above still answers no for all 17
-     * applicable services. "The business operates here" and "these
-     * services are offered here" are different claims — this is the
-     * easiest place in the project to conflate them.
+     *   confirmed          10
+     *   supported_by_*      7
+     *   not_applicable      1   (svc-stl-sewer-lateral-inspection-reporting)
+     *                      --
+     *   applicable to LV   17 of 18
+     *
+     * ⚠ THAT DISTRIBUTION IS IDENTICAL TO SAN DIEGO'S — not similar,
+     * identical: no service differs between the two. DEC-080 records it
+     * as "Las Vegas mirrors San Diego exactly". St. Louis differs only
+     * on the eighteenth, which is `confirmed_market_specific_capability`
+     * there and `not_applicable` in both other markets.
+     *
+     * So a Las Vegas page MAY state that these services are offered.
+     * The one exclusion is the St. Louis lateral-reporting service,
+     * which must never appear here.
+     *
+     * ---------------------------------------------------------------------
+     * THE INDEXATION GATE IS ALSO GONE
+     * ---------------------------------------------------------------------
+     * DEC-063 gated the five Las Vegas pages as
+     * `launch_pending_validation`. DEC-080 released it against all eight
+     * of DEC-063's criteria — criterion 2, the SERVICE MENU question, was
+     * satisfied by DEC-076. All five records are now `launch` with
+     * `indexable: true`, `gatedPages` is empty, and PENDING-012 is
+     * resolved.
+     *
+     * Contact detail is owner-confirmed (DEC-073) and the owner reported
+     * the market OPERATIONAL on 2026-08-17 (DEC-074).
+     *
+     * ⚠ WHAT REMAINS TRUE, AND IT IS THE PART WORTH KEEPING: "the
+     * business operates here" and "these services are offered here" are
+     * DIFFERENT CLAIMS, and this is still the easiest place in the
+     * project to conflate them. Both now hold for Las Vegas. Neither
+     * implies a GBP, an address, or an operating history — this market
+     * has none of the three, `marketOperatingDetail` gives it
+     * `foundingYear: 0` deliberately, and 01 §20 forbids importing
+     * St. Louis's 2011 or San Diego's 2015 to fill the gap.
      */
     gbpStatus: 'none_identified',
     /** Owner-confirmed 2026-08-17 (DEC-073). No live site to source from. */

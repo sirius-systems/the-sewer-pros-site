@@ -102,9 +102,11 @@ markPending(
     .filter((p) => p.marketId !== 'st-louis-mo')
     // San Diego locations and service+locations: written (DEC-071).
     .filter((p) => p.marketId !== 'san-diego-ca')
-    // Las Vegas locations: written and GATED (DEC-063, DEC-073). They
-    // build and route; the registry keeps them out of the sitemap and
-    // every indexable link module until PENDING-012 resolves.
+    // Las Vegas locations: written (DEC-073). They were GATED under
+    // DEC-063 when this filter was added; DEC-080 released that gate on
+    // 2026-08-17, so they are `launch` and indexable like the other two.
+    // The filter is unchanged either way — it excludes them because
+    // they are WRITTEN, which is the only question this list asks.
     .filter((p) => p.marketId !== 'las-vegas-nv')
     .map((p) => p.id),
   LOCAL_RESEARCH,
@@ -122,15 +124,26 @@ markPending(
     .filter((p) => p.marketId !== 'las-vegas-nv')
     .map((p) => p.id),
   {
+    /*
+      ⚠ UNREACHABLE, AND KEPT DELIBERATELY. All three markets are
+      filtered out above, so this list is empty and neither string is
+      read. It is the shape the next market to launch will need.
+
+      ⚠ THE OLD TEXT HERE WAS STALE AND IS NOT PRESERVED. It read "Las
+      Vegas has zero of 18 services confirmed" and "nothing on the
+      public web can verify a Las Vegas presence" — DEC-073 supplied
+      phone, email and hours, DEC-076 confirmed 17 of 18 services, and
+      DEC-080 released the indexation gate. Leaving it in place would
+      have left a false claim in a string nothing prints.
+    */
     reason:
-      'Las Vegas has zero of 18 services confirmed, so its page cannot ' +
-      'state that any service is offered (01 §20, §26). The market ' +
-      'research additionally found NO Las Vegas business presence at ' +
-      'all — no site, phone, hours, or founding date exist to source, ' +
-      'unlike St. Louis and San Diego which each publish their own.',
+      'Market hub with no authored content. A market page cannot ship ' +
+      'until its service availability is confirmed in the service ' +
+      'registry and its operating facts are supplied by the business ' +
+      '(01 §20, §26).',
     unblockedBy:
-      'PENDING-012, and business-supplied operating facts. Nothing on ' +
-      'the public web can verify a Las Vegas presence.',
+      'Authored content, confirmed per-market service statuses, and ' +
+      'business-supplied operating facts.',
   },
 )
 

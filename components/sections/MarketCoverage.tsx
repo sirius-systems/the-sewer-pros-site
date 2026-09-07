@@ -86,9 +86,13 @@ import type { MarketId, PageId } from '@/types'
  * GATED MARKETS DISAPPEAR
  * ---------------------------------------------------------------------------
  * Markets are sourced from approved `market` pages and filtered to
- * indexable ones (04 §4), so Las Vegas is absent until PENDING-012
- * resolves — the same rule the header and footer follow. It returns
- * automatically once doc 04 promotes those records.
+ * indexable ones (04 §4) — the same rule the header and footer follow.
+ *
+ * ⚠ ALL THREE RENDER TODAY. This note used to end "so Las Vegas is
+ * absent until PENDING-012 resolves"; DEC-080 released that gate on
+ * 2026-08-17 and the market has rendered here since. The filter is
+ * what matters and it is unchanged: a market gated tomorrow drops out
+ * on its own, without an edit to this component.
  */
 export interface MarketCoverageProps {
   /**

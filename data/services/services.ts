@@ -357,13 +357,20 @@ export function servicesOfferedIn(marketId: MarketId): Service[] {
 /**
  * True when ANY service may be described as available in a market.
  *
- * ⚠ Currently FALSE for Las Vegas. All 17 applicable services are
- * `requires_operational_confirmation` and the eighteenth is
- * St. Louis-only. No Las Vegas page may state that a service is offered
- * until PENDING-012 resolves (01 §20, §26; DEC-063).
+ * ⚠ THE DOC HERE USED TO SAY "Currently FALSE for Las Vegas", AND IT
+ * WAS DOCUMENTING A RETURN VALUE THIS FUNCTION NO LONGER PRODUCES.
+ * It returns TRUE for all three markets: every market has 10
+ * `confirmed` and 7 `supported_by_*` services in the registry. The old
+ * note also cited `requires_operational_confirmation`, which appears
+ * ZERO times in the registry — it is the fallback category in
+ * `types/service.ts` for an unrecognised status, not a status any
+ * service carries. DEC-076 confirmed the Las Vegas menu and DEC-080
+ * released the indexation gate on that basis.
  *
  * Gate market-level availability copy on this rather than assuming a
- * market with an approved page also has approved services.
+ * market with an approved page also has approved services. The guard
+ * is still worth calling: it is what a future market gets for free on
+ * the day its page exists and its registry statuses do not.
  */
 export function marketOffersAnyService(marketId: MarketId): boolean {
   return serviceList.some((s) => isServiceAvailableInMarket(s.markets[marketId]))
