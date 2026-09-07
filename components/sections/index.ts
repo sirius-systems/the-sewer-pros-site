@@ -134,6 +134,9 @@ export type { AuthorityBandProps } from './AuthorityBand'
 export { CoverageSection, coverageSectionRenders } from './CoverageSection'
 export type { CoverageSectionProps } from './CoverageSection'
 
+export { ServiceAreaSection, serviceAreaRenders } from './ServiceAreaSection'
+export type { ServiceAreaSectionProps } from './ServiceAreaSection'
+
 export { ProofGallery } from './ProofGallery'
 export type { ProofGalleryProps } from './ProofGallery'
 

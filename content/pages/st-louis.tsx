@@ -68,19 +68,24 @@ const id = (value: string): PageId => value as PageId
 
 export const stLouisMarketContent: MarketPageContent = {
   /*
-    ⚠ THE HERO NAMES A WIDER AREA THAN THE COVERAGE SECTION LISTS, AND
+    ⚠ THE HERO NAMES A WIDER AREA THAN THE FEATURED COMMUNITIES, AND
     THAT IS DELIBERATE (owner, 2026-09-04).
 
     "St. Louis County, St. Charles County, Jefferson County" is the
     service area the business publishes about itself
     (`marketOperatingDetail`, `serviceAreaSource: 'published'`,
-    DEC-070). The coverage section lists five communities because those
-    are the locations with approved PAGES - a smaller set, and a
-    different kind of statement.
+    DEC-070). Only five communities have approved PAGES - a smaller
+    set, and a different kind of statement.
 
     Rather than narrow a published fact to match a page inventory, the
-    coverage section says which of the two it is. Do not "fix" this by
-    trimming the hero.
+    service-area section says which of the two it is. Do not "fix" this
+    by trimming the hero.
+
+    ⚠ THE TWO TIERS IN `serviceArea` BELOW ARE THAT DISTINCTION MADE
+    VISIBLE. The three published counties are the first tier and carry
+    no links because no county page exists; the five community pages
+    are the second. Before 2026-09-07 the same point was made in one
+    paragraph above a plain list.
   */
   hero: {
     eyebrow: 'St. Louis sewer and drain specialists',
@@ -464,35 +469,158 @@ export const stLouisMarketContent: MarketPageContent = {
     id('loc-stl-chesterfield'),
   ],
   /*
-    ⚠ SERVICE AREA, NOT OFFICES. `CoverageSection` exists precisely so a
+    ⚠ SERVICE AREA, NOT OFFICES. This section exists precisely so a
     market can state where it works without implying a location it
     occupies (CLAUDE.md §11, 18 §87). No address, no pin, no hours.
 
-    `pageIds` repeats `locationPageIds` deliberately: this section names
-    where service reaches, the related strip lower down is navigation to
-    those pages, and they happen to be the same five today. Both resolve
-    through the approved registry, so a gated location drops out of both
-    on its own.
+    ⚠ IT REPLACED `coverage` ON 2026-09-07, ON OWNER DIRECTION, AND
+    THE FIELD IS GONE RATHER THAN LEFT BESIDE IT. `MarketPageTemplate`
+    renders one or the other, so a leftover `coverage` here would be a
+    second copy of the same statement that nothing displays and nobody
+    would notice going stale. San Diego and Las Vegas keep `coverage`
+    and keep rendering `CoverageSection` exactly as before.
 
-    ⚠ THE AVAILABILITY LINE NAMES AUDIENCES, NOT A GUARANTEE. It does
-    not promise same-day coverage, a response time, or that every
-    address inside the metro is serviceable - which is why the intro
-    asks people outside the listed communities to call and confirm
-    rather than asserting coverage on their behalf.
+    The band answers the same question in the same place; what changed
+    is that it now answers it in two tiers. The region comes first
+    because that is what a visitor outside the five communities needs,
+    and the five pages come second because that is what a visitor
+    inside them is looking for.
+
+    ⚠ THE THREE COUNTIES ARE COVERAGE, NOT PAGES. No county route
+    exists in the approved registry and none is created here, so those
+    cards carry no link, no arrow and no CTA - `ServiceAreaCountyCard`
+    has no field to put one in. See that type.
+
+    ⚠ TWO GEOGRAPHIC DISTINCTIONS THE COPY MUST KEEP (CLAUDE.md §26).
+    St. Louis CITY is an independent jurisdiction and is NOT inside St.
+    Louis County: it is a city card, and the county tier does not claim
+    it. St. Charles COUNTY and the CITY of St. Charles are different
+    places, and both carry the word that says which is which.
+
+    ⚠ NAMING A COUNTY IS NOT PROMISING EVERY ADDRESS IN IT. The intro
+    and the closing block both ask the visitor to confirm before
+    booking rather than asserting coverage on their behalf, which is
+    the same job `coverage.availabilityStatement` used to do.
   */
-  coverage: {
+  serviceArea: {
     title: 'Where we serve in the St. Louis area',
     intro:
-      'The Sewer Pros provides sewer inspection, diagnostics, locating, and cleaning across the St. Louis metro. The communities below are the ones with their own pages, not the limit of where we work: we also serve St. Louis County, St. Charles County, Jefferson County, and surrounding areas. Do not see your community? Call to confirm coverage before you book.',
-    pageIds: [
-      id('loc-stl-st-louis-city'),
-      id('loc-stl-ballwin'),
-      id('loc-stl-florissant'),
-      id('loc-stl-st-charles'),
-      id('loc-stl-chesterfield'),
-    ],
-    availabilityStatement:
-      'Serving homeowners, real estate professionals, property managers, and commercial properties throughout the greater St. Louis area.',
+      'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services throughout the greater St. Louis region. The communities highlighted below have dedicated service pages, but they do not define the limits of our coverage. If your city or neighborhood is not listed, contact us to confirm service availability for your property.',
+    counties: {
+      title: 'Sewer service across the greater St. Louis region',
+      intro:
+        'Our St. Louis service area extends across communities in St. Louis County, St. Charles County, and Jefferson County. Contact us with your property location and service need so we can confirm current coverage before scheduling.',
+      items: [
+        {
+          name: 'St. Louis County, Missouri',
+          description:
+            'Sewer inspection, cleaning, locating, and diagnostic services for residential, commercial, and managed properties across St. Louis County.',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-county-mo-sewer-service-area.webp',
+            alt: 'Residential service area in St. Louis County, Missouri',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          name: 'St. Charles County, Missouri',
+          description:
+            'Evidence-first sewer inspection and cleaning services for homes, businesses, buyers, and property professionals across St. Charles County.',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-county-mo-sewer-service-area.webp',
+            alt: 'Residential service area in St. Charles County, Missouri',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          name: 'Jefferson County, Missouri',
+          description:
+            'Professional sewer camera inspection, cleaning, and diagnostic services for properties throughout Jefferson County and surrounding communities.',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-jefferson-county-mo-sewer-service-area.webp',
+            alt: 'Residential service area in Jefferson County, Missouri',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+      ],
+    },
+    /*
+      The same five pages the plain list carried, in the same order,
+      resolved the same way. St. Louis City takes the large tile as the
+      market's flagship community.
+    */
+    cities: {
+      title: 'Featured St. Louis-area service locations',
+      intro:
+        'Explore dedicated sewer inspection and cleaning information for featured communities across the St. Louis area. Each local page includes services, coverage details, and guidance for property owners and professionals in that community.',
+      flagshipPageId: id('loc-stl-st-louis-city'),
+      items: [
+        {
+          pageId: id('loc-stl-st-louis-city'),
+          title: 'St. Louis City, MO',
+          description:
+            'Explore sewer camera inspection, sewer cleaning, and diagnostic services for homes, buyers, property managers, and commercial properties across St. Louis City.',
+          ctaLabel: 'Explore St. Louis City',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-city-mo-sewer-service-area.webp',
+            alt: 'St. Louis City sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-stl-ballwin'),
+          title: 'Ballwin, MO',
+          description:
+            'Find sewer inspection, cleaning, and diagnostic services for residential and commercial properties in Ballwin.',
+          ctaLabel: 'Explore Ballwin',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-ballwin-mo-sewer-service-area.webp',
+            alt: 'Ballwin, Missouri sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-stl-florissant'),
+          title: 'Florissant, MO',
+          description:
+            'Review sewer camera inspection, sewer cleaning, and line-diagnostic services available for properties in Florissant.',
+          ctaLabel: 'Explore Florissant',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-florissant-mo-sewer-service-area.webp',
+            alt: 'Florissant, Missouri sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-stl-chesterfield'),
+          title: 'Chesterfield, MO',
+          description:
+            'Explore evidence-first sewer inspection, cleaning, and locating services for Chesterfield properties.',
+          ctaLabel: 'Explore Chesterfield',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-chesterfield-mo-sewer-service-area.webp',
+            alt: 'Chesterfield, Missouri sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+        {
+          pageId: id('loc-stl-st-charles'),
+          title: 'St. Charles, MO',
+          description:
+            'Find sewer camera inspection, sewer cleaning, and diagnostic services for homes and properties in St. Charles.',
+          ctaLabel: 'Explore St. Charles',
+          image: {
+            src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-mo-sewer-service-area.webp',
+            alt: 'St. Charles, Missouri sewer service area',
+            source: 'Supplied by the business owner, 2026-09-07.',
+          },
+        },
+      ],
+    },
+    closing: {
+      title: 'Do not see your community listed?',
+      body: 'These featured locations do not represent the full limit of our greater St. Louis service area. Tell us where the property is located and what is happening with the sewer line, and we will confirm whether service is currently available before you schedule.',
+      action: { label: 'Contact The Sewer Pros', pageId: id('core-contact') },
+    },
   },
   faq: [
     {
