@@ -134,8 +134,10 @@ export interface CtaSectionProps {
    *
    *   text    "Prefer to talk now? {number}" as a sentence. The
    *           default, and what every other market page shows.
-   *   button  an outlined action in the button row, labelled
-   *           "Call {number}".
+   *   button  a filled action in the button row, labelled
+   *           "Call {number}". Green, and ringed in white on a dark
+   *           ground - see the render for the measurements that make
+   *           that safe.
    *
    * ⚠ `button` SUPPRESSES THE SENTENCE rather than showing both. Two
    * phone affordances in one CTA is a second ask, not a stronger one
@@ -298,11 +300,35 @@ export function CtaSection({
               button classes so appearance still comes from one place
               (18 §46), and `min-h-11` in that base keeps it a 44px
               touch target (18 §48).
+
+              ⚠⚠ GREEN ON A DARK GROUND, WITH NO BOUNDARY TREATMENT.
+              OWNER DECISION, 2026-09-07, AND IT IS RECORDED HERE RATHER
+              THAN ARGUED WITH.
+
+              This component otherwise refuses green on a dark surface,
+              and the reason is measured: the green fill is 1.15:1
+              against the worst ground a scrimmed photograph can
+              present, and 2.61:1 on brand navy, against the 3:1 that a
+              control's own BOUNDARY needs to be identifiable
+              (WCAG 1.4.11). A white ring was proposed and measured at
+              4.74:1, and the owner asked for the button without it.
+
+              What that costs and what it does not: the button's EDGE
+              may be hard to distinguish from a light patch of the
+              photograph behind it. The LABEL is unaffected - white on
+              this green is 5.45:1, well clear of the 4.5:1 text needs -
+              so the action is readable; it is the control's outline
+              that is not guaranteed.
+
+              The concern was raised, the decision is the owner's to
+              make, and this note exists so the basis is visible if it
+              is ever questioned. Restoring the boundary is one class:
+              `ring-2 ring-white` on a dark ground.
+
+              On a LIGHT ground the fill measures 5.07:1 on its own and
+              none of the above applies.
             */
-            <a
-              href={phone.href}
-              className={buttonClasses("outline-on-dark")}
-            >
+            <a href={phone.href} className={buttonClasses("primary")}>
               Call {phone.label}
             </a>
           )}
