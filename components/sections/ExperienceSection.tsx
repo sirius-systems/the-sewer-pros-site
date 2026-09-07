@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { SVGProps } from 'react'
 import {
   Section,
@@ -9,7 +10,12 @@ import {
 import { TrackedPhoneLink } from '@/components/tracking'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
 import { cn } from '@/lib/utils/cn'
-import type { ExperienceBlock, ExperienceContent, ExperienceProofIcon } from '@/types'
+import type {
+  ExperienceBlock,
+  ExperienceContent,
+  ExperienceIconName,
+  ExperienceListItem,
+} from '@/types'
 
 /**
  * Company experience, stated as proof.
@@ -53,24 +59,44 @@ import type { ExperienceBlock, ExperienceContent, ExperienceProofIcon } from '@/
  * ---------------------------------------------------------------------------
  * TWO COMPOSITIONS, ONE SYSTEM
  * ---------------------------------------------------------------------------
- *   aside  A 7/12 content column beside a 5/12 column of three stacked
- *          proof cards, with the actions on a full-width row beneath.
- *   strip  A full-width heading, then the three proof cards as a
- *          horizontal strip, then the body in a two-column split.
+ *   aside      A 7/12 content column beside a 5/12 column of three
+ *              stacked proof cards, with the actions on a full-width
+ *              row beneath.
+ *   strip      A full-width heading, then the three proof cards as a
+ *              horizontal strip, then the body in a two-column split.
+ *   editorial  Four stacked full-width groups: heading beside a
+ *              supporting photograph (7/12 + 5/12), a three-card proof
+ *              row, two benefit panels, then a conversion panel.
  *
  * The variants exist because three market hubs running an identical
  * composition is the templated look 18 §155 names, and because the
- * owner asked San Diego to differ from Las Vegas (2026-09-07). They
- * share typography, card language, colour and spacing exactly; only
- * the arrangement changes.
+ * owner asked each market to differ (2026-09-07). They share
+ * typography, card language, colour and spacing exactly; only the
+ * arrangement changes.
+ *
+ * ⚠ `editorial` IS ST. LOUIS ONLY TODAY, AND THE COMPONENT DOES NOT
+ * ENFORCE THAT — the content does. Nothing in this file is
+ * market-specific; a market that wants this arrangement supplies its
+ * own copy, its own photograph, and its own proof cards. What must NOT
+ * travel is St. Louis's claims: the 100,000-inspections figure and the
+ * 2011 founding year are scoped to `/st-louis-mo/` by DEC-072 and
+ * DEC-070. See the note at the top of this file.
  *
  * ---------------------------------------------------------------------------
- * ⚠ NO BACKGROUND PHOTOGRAPH, ON PURPOSE
+ * ⚠ NO BACKGROUND PHOTOGRAPH, ON PURPOSE — AND A SUPPORTING ONE IS NOT
+ * THE SAME THING
  * ---------------------------------------------------------------------------
  * Owner direction, 2026-09-07: the process band that follows already
  * carries a full-bleed image, and 18 §11 warns against decorating every
  * section. This one is a light surface with text on it. That is also
  * why it takes `muted` rather than `default` - see the template.
+ *
+ * `editorial` adds ONE photograph, in its own bordered media box beside
+ * the heading. That is a different thing from a section backdrop: no
+ * text sits on it, it carries no scrim, and it is the only image in the
+ * section. It exists so the band reads as a designed section rather
+ * than a long document, which is what the owner asked for. Do not add a
+ * second, and do not move this one behind the copy.
  */
 export interface ExperienceSectionProps {
   /**
@@ -84,7 +110,7 @@ export interface ExperienceSectionProps {
   /** Sequence decision, like `density`. See the template. */
   surface?: SectionSurface
   id?: string
-  variant?: 'aside' | 'strip'
+  variant?: 'aside' | 'strip' | 'editorial'
   content: ExperienceContent
   /**
    * The market's published number.
@@ -184,14 +210,74 @@ function IndependenceIcon(props: IconProps) {
   )
 }
 
+/**
+ * A benefit marker, for the list inside a benefit panel.
+ *
+ * ⚠ `aria-hidden`, AND THE LIST IS STILL A `<ul>` OF REAL TEXT. The
+ * mark replaces a `border-l` rule visually and nothing else: 18 §96
+ * requires meaning never rest on an icon, and a screen reader hears the
+ * list semantics plus the item text exactly as it did before.
+ */
+function CheckIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="m4.5 12.5 5 5 10-11" />
+    </svg>
+  )
+}
+
+/** A plain-language explanation — a speech bubble. */
+function ExplanationIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M20.5 12c0 3.9-3.8 7-8.5 7a10 10 0 0 1-2.4-.3L4.5 20.5l1.2-3.4A6.8 6.8 0 0 1 3.5 12c0-3.9 3.8-7 8.5-7s8.5 3.1 8.5 7Z" />
+      <path d="M8.5 10.5h7M8.5 13.5h4" />
+    </svg>
+  )
+}
+
+/** Which way to go next — a compass. */
+function GuidanceIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8Z" />
+    </svg>
+  )
+}
+
+/** Weighing a major decision — a balance. */
+function DecisionIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M12 4.5v15M7.5 19.5h9M4.5 8h15" />
+      <path d="M4.5 8 2 13h5Z" />
+      <path d="M19.5 8 17 13h5Z" />
+    </svg>
+  )
+}
+
+/**
+ * ⚠ A CHECK IS THE FALLBACK, NOT THE DEFAULT CHOICE. An item that
+ * names no icon gets this; an item that names one gets a mark that
+ * carries a little of its meaning. Owner direction, 2026-09-07.
+ */
 const ICONS: Record<
-  ExperienceProofIcon,
+  ExperienceIconName,
   (props: IconProps) => React.JSX.Element
 > = {
   experience: ExperienceIcon,
   camera: CameraIcon,
   document: DocumentIcon,
   independence: IndependenceIcon,
+  explanation: ExplanationIcon,
+  guidance: GuidanceIcon,
+  decision: DecisionIcon,
+}
+
+/** Normalises the two shapes `ExperienceBlock.items` accepts. */
+function listItem(item: string | ExperienceListItem): ExperienceListItem {
+  return typeof item === 'string' ? { text: item } : item
 }
 
 /**
@@ -230,50 +316,120 @@ const ACCENT: Record<'blue' | 'green', { bar: string; icon: string }> = {
  * the owner asked for (2026-09-07) and the measure the rest of the site
  * already reads at.
  */
-function Block({ block }: { block: ExperienceBlock }) {
+function Block({
+  block,
+  /**
+   * Renders the list with check marks instead of the rule-topped
+   * treatment.
+   *
+   * ⚠ PRESENTATION ONLY. Same `<ul>`, same `<li>`, same text; the mark
+   * is `aria-hidden` and the rule it replaces was decorative too, so
+   * the accessible output is byte-identical either way.
+   */
+  checkItems = false,
+  /** Promotes the block heading where it titles a whole panel. */
+  headingLevel = 'h3',
+  /**
+   * Body-text weight.
+   *
+   * ⚠ `strong` EXISTS FOR A MEASURED REASON, NOT A STYLISTIC ONE.
+   * `--muted-foreground` (#5f6b73) measures 5.08:1 on this section's
+   * plain `muted` ground, but the editorial variant's conversion panel
+   * sits on a blue tint that composites to #e7eff2, where the same
+   * text drops to 4.70:1 - passing AA by 0.20, which is not enough
+   * margin to leave unremarked in a file whose other contrast notes
+   * treat 0.26 as tight.
+   *
+   * `--foreground` on that tint measures 12.67:1. It also reads
+   * correctly: a conversion panel's copy is primary, not supporting.
+   *
+   * Default is `muted`, so `aside` and `strip` are untouched.
+   */
+  tone = 'muted',
+}: {
+  block: ExperienceBlock
+  checkItems?: boolean
+  headingLevel?: 'h3' | 'h4'
+  tone?: 'muted' | 'strong'
+}) {
+  const Heading = headingLevel
+  const bodyTone = tone === 'strong' ? 'text-foreground' : 'text-muted-foreground'
   return (
     <div>
-      <h3 className="text-h4 font-semibold tracking-tight text-balance">
+      <Heading className="text-h4 font-semibold tracking-tight text-balance">
         {block.title}
-      </h3>
+      </Heading>
 
       {block.body?.map((paragraph) => (
         <p
           key={paragraph}
-          className="mt-3 max-w-prose text-body leading-7 text-muted-foreground"
+          className={cn('mt-3 max-w-prose text-body leading-7', bodyTone)}
         >
           {paragraph}
         </p>
       ))}
 
       {block.listIntro !== undefined && (
-        <p className="mt-3 max-w-prose text-body leading-7 text-muted-foreground">
+        <p className={cn('mt-3 max-w-prose text-body leading-7', bodyTone)}>
           {block.listIntro}
         </p>
       )}
 
       {block.items !== undefined && block.items.length > 0 && (
         /*
-          A real `<ul>`, and the marker is a border rather than a bullet
-          glyph so the rhythm matches `CoverageSection`'s rule-topped
-          list rather than introducing a third list treatment.
+          A real `<ul>` in both treatments. The default marker is a
+          border rather than a bullet glyph, so the rhythm matches
+          `CoverageSection`'s rule-topped list rather than introducing a
+          third list treatment; `checkItems` swaps that rule for a check
+          mark where the list is the point of a panel rather than an
+          aside.
+
+          ⚠ THE ICON IS NOT A LIST MARKER IN THE ACCESSIBILITY TREE. It
+          is `aria-hidden` inside the `<li>`, so the list still
+          announces its length and each item's text and nothing else
+          (18 §96).
         */
-        <ul className="mt-4 max-w-prose space-y-2">
-          {block.items.map((item) => (
-            <li
-              key={item}
-              className="border-l-2 border-border pl-4 text-body leading-7 text-muted-foreground"
-            >
-              {item}
-            </li>
-          ))}
+        <ul
+          className={cn(
+            'mt-4 max-w-prose',
+            checkItems ? 'space-y-4' : 'space-y-2',
+          )}
+        >
+          {block.items.map((raw) => {
+            const item = listItem(raw)
+            const Mark = item.icon !== undefined ? ICONS[item.icon] : CheckIcon
+
+            return checkItems ? (
+              <li key={item.text} className="flex items-start gap-3">
+                {/*
+                  ⚠ `size-5` AND `aria-hidden`. Large enough to read as
+                  the thing it depicts rather than a smudge, and hidden
+                  from assistive technology because the sentence beside
+                  it already says what it means (18 §96). A screen
+                  reader hears a five-item list of plain text, exactly
+                  as it did before the icons.
+                */}
+                <Mark className="mt-1 size-5 shrink-0 text-accent-secondary" />
+                <span className="text-body leading-7 text-muted-foreground">
+                  {item.text}
+                </span>
+              </li>
+            ) : (
+              <li
+                key={item.text}
+                className="border-l-2 border-border pl-4 text-body leading-7 text-muted-foreground"
+              >
+                {item.text}
+              </li>
+            )
+          })}
         </ul>
       )}
 
       {block.after?.map((paragraph) => (
         <p
           key={paragraph}
-          className="mt-3 max-w-prose text-body leading-7 text-muted-foreground"
+          className={cn('mt-3 max-w-prose text-body leading-7', bodyTone)}
         >
           {paragraph}
         </p>
@@ -285,14 +441,41 @@ function Block({ block }: { block: ExperienceBlock }) {
 function ProofCards({
   cards,
   layout,
+  /**
+   * Card weight.
+   *
+   *   compact  accent down the LEFT edge, icon inline with the title.
+   *            What `aside` and `strip` render, and the default so
+   *            neither changes.
+   *   feature  accent across the TOP edge, a larger icon on its own
+   *            line above the title, and more padding. For a row that
+   *            is a section group in its own right rather than a
+   *            sidebar or a strip under the introduction.
+   *
+   * ⚠ THE DEFAULT IS LOAD-BEARING. `feature` was added for the
+   * `editorial` variant on 2026-09-07 and San Diego and Las Vegas must
+   * render exactly as they did; a new default would have restyled both
+   * silently.
+   */
+  emphasis = 'compact',
 }: {
   cards: ExperienceContent['proof']
   layout: 'stacked' | 'row'
+  emphasis?: 'compact' | 'feature'
 }) {
+  const feature = emphasis === 'feature'
+
   return (
     <ul
       className={cn(
-        'grid gap-4',
+        'grid',
+        /*
+          ⚠ THE RESPONSIVE GUTTER IS `feature` ONLY. The owner's target
+          is 16 / 20 / 24px (2026-09-07), and `compact` keeps the flat
+          `gap-4` it shipped with so the two markets using it are
+          untouched.
+        */
+        feature ? 'gap-4 sm:gap-5 lg:gap-6' : 'gap-4',
         layout === 'row' ? 'sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1',
       )}
     >
@@ -306,18 +489,45 @@ function ProofCards({
             /*
               `overflow-hidden` so the painted accent bar is clipped by
               the card's own radius instead of squaring off its corners.
+
+              Grid items stretch by default, so cards in a row share the
+              tallest card's height without a fixed height that could
+              clip copy.
             */
-            className="relative overflow-hidden rounded-md border border-border bg-surface p-5 pl-6"
+            className={cn(
+              'relative overflow-hidden rounded-md border border-border bg-surface',
+              feature ? 'p-6 pt-7 sm:p-7 sm:pt-8' : 'p-5 pl-6',
+            )}
           >
             <span
               aria-hidden="true"
-              className={cn('absolute inset-y-0 left-0 w-1', accent.bar)}
+              className={cn(
+                'absolute',
+                feature ? 'inset-x-0 top-0 h-1' : 'inset-y-0 left-0 w-1',
+                accent.bar,
+              )}
             />
-            <h3 className="flex items-start gap-2.5 text-h4 font-semibold tracking-tight text-balance">
-              <Icon className={cn('mt-0.5 size-5 shrink-0', accent.icon)} />
-              {card.title}
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+
+            {feature ? (
+              <>
+                <Icon className={cn('size-8', accent.icon)} />
+                <h3 className="mt-4 text-h4 font-semibold tracking-tight text-balance">
+                  {card.title}
+                </h3>
+              </>
+            ) : (
+              <h3 className="flex items-start gap-2.5 text-h4 font-semibold tracking-tight text-balance">
+                <Icon className={cn('mt-0.5 size-5 shrink-0', accent.icon)} />
+                {card.title}
+              </h3>
+            )}
+
+            <p
+              className={cn(
+                'mt-2 leading-6 text-muted-foreground',
+                feature ? 'text-body' : 'text-sm',
+              )}
+            >
               {card.body}
             </p>
           </li>
@@ -427,6 +637,186 @@ export function ExperienceSection({
       </div>
     </div>
   )
+
+  if (variant === 'editorial') {
+    /*
+      ==================================================================
+      FOUR FULL-WIDTH GROUPS, NOT A COLUMN INSIDE A COLUMN
+      ==================================================================
+      Owner direction, 2026-09-07. The `aside` arrangement put the three
+      proof cards in a 5/12 sidebar, which left them narrow beside a
+      long content column and made the band read as a document rather
+      than a designed section. Every group here spans the container:
+
+        1  heading + intro (7/12) beside one photograph (5/12)
+        2  the three proof cards, full-width row
+        3  two benefit panels
+        4  coverage and conversion
+
+      ⚠ DOM ORDER IS THE MOBILE READING ORDER, AND NOTHING REORDERS
+      VISUALLY AGAINST IT. Eyebrow, heading, intro, image, proof cards,
+      inspection panel, lateral-programme panel, coverage. No `order-*`
+      class appears below, so keyboard focus follows the eye at every
+      width and the single-column stack needs no separate rule.
+
+      ⚠ SEPARATION IS `mt-14` BETWEEN GROUPS, NOT A RULE OR A COLOUR
+      CHANGE PER GROUP. The owner ruled out horizontal rules as
+      separators (2026-09-04) and 18 §11 warns against alternating
+      backgrounds for decoration. Whitespace does the work; only the
+      conversion panel changes surface, because it changes PURPOSE.
+    */
+    return (
+      <Section density={density} surface={surface} labelledBy={id}>
+        {/* ---- 1. heading and the one supporting photograph ---- */}
+        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-7">{heading}</div>
+
+          {content.image !== undefined && (
+            <div className="lg:col-span-5">
+              {/*
+                ⚠ A MEDIA BOX, NOT A BACKDROP. The frame sits in its own
+                bordered container beside the copy: nothing is written
+                over it, so it needs no scrim and none of this file's
+                contrast measurements apply to it.
+
+                ⚠ `aspect-[4/3]` PLUS `fill` IS WHAT PREVENTS LAYOUT
+                SHIFT. The box reserves its height from its width before
+                the image loads, so nothing below it moves when the
+                bytes arrive. The asset is 2896x2172, exactly 4:3, so
+                `object-cover` crops nothing.
+
+                ⚠ NOT `priority`. This band sits well below the fold on
+                every market hub, and 18 §59 and CLAUDE.md §59 both warn
+                against eager loading. Next's default lazy behaviour is
+                correct here.
+              */}
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-surface-muted">
+                <Image
+                  src={content.image.src}
+                  alt={content.image.alt}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ---- 2. the proof row, full width ---- */}
+        <div className="mt-14">
+          <ProofCards cards={content.proof} layout="row" emphasis="feature" />
+        </div>
+
+        {/* ---- 3. the two benefit panels ---- */}
+        {content.blocks.length > 0 && (
+          /*
+            ⚠ `lg:items-start`, SO EACH PANEL SIZES TO ITS OWN CONTENT.
+            The grid default is `stretch`, and with `h-full` on the
+            panels it gave two equal-height cards - which measured 187px
+            of dead space inside the shorter one, because the
+            lateral-programme block is two paragraphs where the
+            inspection block is a paragraph plus a five-item list. The
+            owner ruled out excessive empty space (2026-09-07) and asked
+            for panels that are "equal OR visually balanced"; two
+            bordered cards that each end where their copy does are the
+            balanced reading of that, and the tidier one.
+
+            No fixed heights anywhere, so nothing clips at any width.
+          */
+          <div className="mt-14 grid gap-4 sm:gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
+            {content.blocks.map((block, index) => (
+              <div
+                key={block.title}
+                className="rounded-md border border-border bg-surface p-6 sm:p-8"
+              >
+                {/*
+                  ⚠ THE SECOND PANEL WEARS THE RULE, THE FIRST WEARS THE
+                  CHECK MARKS. Both are `--accent-secondary`, both are
+                  restrained, and together they make the pair read as
+                  related without either becoming a second conversion
+                  colour (DEC-096 reserves green for that).
+
+                  The rule only appears on a panel with no list, so a
+                  panel never carries both marks.
+                */}
+                {block.items === undefined && (
+                  <span
+                    aria-hidden="true"
+                    className="mb-5 block h-0.5 w-10 bg-accent-secondary"
+                  />
+                )}
+                <Block block={block} checkItems={index === 0} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* ---- 4. coverage and conversion ---- */}
+        <div
+          /*
+            ⚠ A TINT DERIVED FROM AN APPROVED TOKEN, NOT A NEW COLOUR.
+            `--accent-secondary` at 6% over this section's `muted`
+            ground lands near #e9eff3: still pale slate, visibly bluer
+            than the ground behind it and than the white panels above
+            it, which is what marks this block as the conversion rather
+            than more information. 18 §11 allows a surface change that
+            carries meaning; this one does.
+
+            Body text here is `text-foreground` on that tint, which
+            measures well above 4.5:1 — the tint is far too light to
+            move it. Nothing in this panel is white text.
+          */
+          className="mt-14 rounded-md border border-accent-secondary/20 bg-accent-secondary/[0.06] p-6 sm:p-8"
+        >
+          <Block block={content.coverage} tone="strong" />
+
+          {/*
+            ⚠ THE WHOLE PANEL IS NOT A LINK. Three separate actions
+            live here and nesting them inside one anchor would be
+            invalid and unusable. One primary (18 §106), one secondary,
+            and the phone as a tertiary text action.
+
+            `w-full sm:w-auto` lets the buttons fill the column on a
+            phone, which the owner asked for, without stretching them
+            across a desktop row.
+          */}
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <ButtonLink
+              href={primary.href}
+              variant="primary"
+              className="w-full sm:w-auto"
+            >
+              {primary.label}
+            </ButtonLink>
+            <ButtonLink
+              href={secondary.href}
+              variant="secondary"
+              className="w-full sm:w-auto"
+            >
+              {secondary.label}
+            </ButtonLink>
+            {phone !== undefined && (
+              /*
+                `ButtonLink` renders `next/link`, which is for routes and
+                `tel:` is not one. The site's tracked phone anchor wears
+                the tertiary button's classes so appearance still comes
+                from one place (18 §46), and `min-h-11` in that base
+                keeps it a 44px touch target (18 §48).
+              */
+              <TrackedPhoneLink
+                phoneE164={phone.phoneE164}
+                ctaLocation="section_cta"
+                className={buttonClasses('tertiary', 'w-full sm:w-auto')}
+              >
+                Call {phone.label}
+              </TrackedPhoneLink>
+            )}
+          </div>
+        </div>
+      </Section>
+    )
+  }
 
   if (variant === 'strip') {
     return (
