@@ -380,73 +380,90 @@ export const stLouisMarketContent: MarketPageContent = {
         },
       },
     ],
-    prePurchase: {
-      title:
-        'Buying or selling a home in St. Louis? Know what is in the sewer line first',
-      body: 'A sewer camera inspection gives home buyers, sellers, and real estate agents documented evidence of a property\u2019s sewer line condition before closing, not just an assumption based on the home\u2019s age. In St. Louis, where much of the housing stock predates modern sewer materials, a pre-purchase sewer inspection can confirm whether a line is sound, needs cleaning, or shows signs that warrant further evaluation, without pressuring anyone toward repair or replacement.',
-      image: {
-        src: '/images/markets/st-louis-mo/services/the-sewer-pros-st-louis-pre-purchase-sewer-inspection.webp',
-        alt: 'Sewer camera inspection equipment at a St. Louis home before purchase',
-        source: 'Supplied by the business owner, 2026-09-07.',
-      },
-      /*
-        ⚠ EACH POINT IS A CONDENSATION OF THE PARAGRAPH ABOVE IT, AND
-        THE SOURCE CLAUSE IS NAMED SO THE NEXT READER CAN CHECK:
+  },
+  /*
+    ==========================================================================
+    SECTION 3 - BUYING OR SELLING. Its own section again.
+    ==========================================================================
+    ⚠ THIS CONTENT HAS MOVED TWICE IN ONE DAY AND THE HISTORY IS THE
+    POINT. It was `localFeature`, a narrow prose block on the SAME
+    `muted` surface as the materials section above it, so the two read
+    as one wall of text. It then became a closing panel inside
+    `materials`, which fixed the width but buried a section-level
+    subject under an H3. It is now its own section with its own H2 on
+    the `default` surface, which is what actually separates it from the
+    band above (owner direction, 2026-09-07).
 
-          1  "documented evidence of a property's sewer line condition
-             before closing"
-          2  "can confirm whether a line is sound, needs cleaning, or
-             shows signs that warrant further evaluation"
-          3  the page's approved deliverable, "Documentation you can
-             review or share when seeking another opinion", stated in
-             the experience section above
-
-        None of them adds a claim. A fourth point that `body` does not
-        support would be a new business claim wearing an icon (01 §35).
-      */
-      points: [
-        'Document the sewer line before closing',
-        'Identify visible conditions that may affect the purchase',
-        'Keep footage and findings for review or a second opinion',
-      ],
-      primary: {
-        label: 'Schedule a Pre-Purchase Sewer Inspection',
-        pageId: id('core-contact'),
-      },
-      /*
-        A verified route, not an invented one: the canonical
-        pre-purchase service page, `launch` and indexable.
-      */
-      secondary: {
-        label: 'Explore Pre-Purchase Sewer Inspection',
-        pageId: id('svc-pre-purchase-sewer-inspection'),
-      },
-      resourcesTitle: 'Related resources',
-      /*
-        ⚠ THE SAME THREE GUIDES, THE SAME THREE LABELS, THE SAME THREE
-        DESTINATIONS. They were an `<ul>` of `ApprovedInlineLink`s in
-        the old prose block and are resource cards now; the wording is
-        carried verbatim, including "programme", because it is what
-        readers see today. All three are `launch` and indexable, and
-        resolving by page id means a gated one fails at the resolver
-        rather than shipping a dead link.
-      */
-      resources: [
-        {
-          pageId: id('res-stl-lateral-report'),
-          label: 'Sewer lateral reporting for St. Louis property owners',
-        },
-        {
-          pageId: id('res-stl-city-program'),
-          label: 'Understanding the St. Louis City sewer lateral programme',
-        },
-        {
-          pageId: id('res-stl-county-program'),
-          label:
-            'Which sewer lateral programme applies to me? (St. Louis County)',
-        },
-      ],
+    ⚠ THE COPY IS UNCHANGED THROUGH ALL THREE MOVES. Heading, paragraph,
+    three resource labels and their destinations are byte-for-byte what
+    `localFeature` shipped.
+  */
+  prePurchase: {
+    title:
+      'Buying or selling a home in St. Louis? Know what is in the sewer line first',
+    body: 'A sewer camera inspection gives home buyers, sellers, and real estate agents documented evidence of a property\u2019s sewer line condition before closing, not just an assumption based on the home\u2019s age. In St. Louis, where much of the housing stock predates modern sewer materials, a pre-purchase sewer inspection can confirm whether a line is sound, needs cleaning, or shows signs that warrant further evaluation, without pressuring anyone toward repair or replacement.',
+    image: {
+      src: '/images/markets/st-louis-mo/services/the-sewer-pros-st-louis-pre-purchase-sewer-inspection.webp',
+      alt: 'Sewer camera inspection equipment at a St. Louis home before purchase',
+      source: 'Supplied by the business owner, 2026-09-07.',
     },
+    /*
+      ⚠ EACH POINT IS A CONDENSATION OF THE PARAGRAPH ABOVE IT, AND
+      THE SOURCE CLAUSE IS NAMED SO THE NEXT READER CAN CHECK:
+
+        1  "documented evidence of a property's sewer line condition
+           before closing"
+        2  "can confirm whether a line is sound, needs cleaning, or
+           shows signs that warrant further evaluation"
+        3  the page's approved deliverable, "Documentation you can
+           review or share when seeking another opinion", stated in
+           the experience section above
+
+      None of them adds a claim. A fourth point that `body` does not
+      support would be a new business claim wearing an icon (01 §35).
+    */
+    points: [
+      'Document the sewer line before closing',
+      'Identify visible conditions that may affect the purchase',
+      'Keep footage and findings for review or a second opinion',
+    ],
+    primary: {
+      label: 'Schedule a Pre-Purchase Sewer Inspection',
+      pageId: id('core-contact'),
+    },
+    /*
+      A verified route, not an invented one: the canonical
+      pre-purchase service page, `launch` and indexable.
+    */
+    secondary: {
+      label: 'Explore Pre-Purchase Sewer Inspection',
+      pageId: id('svc-pre-purchase-sewer-inspection'),
+    },
+    resourcesTitle: 'Related resources',
+    /*
+      ⚠ THE SAME THREE GUIDES, THE SAME THREE LABELS, THE SAME THREE
+      DESTINATIONS. They were an `<ul>` of `ApprovedInlineLink`s in
+      the old prose block and are resource cards now; the wording is
+      carried verbatim, including "programme", because it is what
+      readers see today. All three are `launch` and indexable, and
+      resolving by page id means a gated one fails at the resolver
+      rather than shipping a dead link.
+    */
+    resources: [
+      {
+        pageId: id('res-stl-lateral-report'),
+        label: 'Sewer lateral reporting for St. Louis property owners',
+      },
+      {
+        pageId: id('res-stl-city-program'),
+        label: 'Understanding the St. Louis City sewer lateral programme',
+      },
+      {
+        pageId: id('res-stl-county-program'),
+        label:
+          'Which sewer lateral programme applies to me? (St. Louis County)',
+      },
+    ],
   },
   /*
     ⚠ `editorial`, WHERE SAN DIEGO IS `strip` AND LAS VEGAS IS `aside`
