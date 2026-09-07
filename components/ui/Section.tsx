@@ -102,6 +102,31 @@ export interface SectionProps {
    * and black/50% already fails at 4.39:1.
    */
   scrim?: 'default' | 'strong'
+  /**
+   * A decorative texture behind the section's own surface colour.
+   *
+   * ⚠⚠ THIS IS NOT `backgroundImage`, AND CONFUSING THE TWO WOULD
+   * WRECK A SECTION. `backgroundImage` REPLACES the surface with a
+   * photograph, adds a measured scrim, and turns every unstyled child
+   * white. This paints a faint pattern BEHIND the surface colour,
+   * changes no text colour, and adds no scrim - the section keeps
+   * reading exactly as it did.
+   *
+   * ⚠ THE CALLER OWNS THE OPACITY, AND IT MUST BE FAINT. Pass it in
+   * `className` as Tailwind opacity utilities so it can step per
+   * breakpoint. Anything strong enough to read as an image belongs in
+   * `backgroundImage`, which is measured for text on top; this layer
+   * is not, so it must never get dark enough to matter to contrast.
+   *
+   * ⚠ IT IS `aria-hidden` AND `pointer-events-none`, always. It is
+   * decoration with no meaning and must never take a click or a focus
+   * stop.
+   *
+   * Setting it makes the section a clipped, isolated positioning
+   * context so the layer cannot escape the band or paint over content.
+   * Omit it and the section renders exactly as it always has.
+   */
+  texture?: { src: string; className?: string }
   children: ReactNode
 }
 
@@ -126,6 +151,7 @@ export function Section({
   className,
   backgroundImage,
   scrim = 'default',
+  texture,
   children,
 }: SectionProps) {
   const body = (
@@ -134,9 +160,43 @@ export function Section({
       className={cn(
         DENSITY[density],
         SURFACE[backgroundImage !== undefined ? 'none' : surface],
+        /*
+          `isolate` keeps the texture's negative z-index inside this
+          section instead of sliding behind the page background, and
+          `overflow-hidden` clips it to the band. Applied ONLY when a
+          texture is passed, so no existing section gains a stacking
+          context or a clip it did not have.
+
+          ⚠ THE CLIP IS SAFE FOR FOCUS RINGS because `Container` holds
+          every child inside the section's gutters - nothing
+          interactive sits on the edge being clipped.
+        */
+        texture !== undefined && 'relative isolate overflow-hidden',
         className,
       )}
     >
+      {texture !== undefined && (
+        /*
+          ⚠ `-z-10` PUTS IT BEHIND THE CONTAINER WITHOUT POSITIONING
+          THE CONTAINER. Same trick this component already uses for
+          `backgroundImage`: an unpositioned sibling paints above a
+          negative-z absolutely positioned one.
+
+          ⚠ THE PATH IS AN INLINE STYLE ON PURPOSE. It is per-section
+          DATA, not a design token, so it cannot live in a Tailwind
+          class without baking one page's asset into a shared
+          primitive. Size, position and repeat stay in classes where
+          they belong.
+        */
+        <span
+          aria-hidden="true"
+          className={cn(
+            'pointer-events-none absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat',
+            texture.className,
+          )}
+          style={{ backgroundImage: `url("${texture.src}")` }}
+        />
+      )}
       <Container width={width}>{children}</Container>
     </Tag>
   )

@@ -9,6 +9,8 @@ import {
   ServiceIndex,
   ProblemGrid,
   InclusionsGrid,
+  LateralResponsibility,
+  PipeMaterials,
   Differentiator,
   ExperienceSection,
   AuthorityBand,
@@ -28,6 +30,8 @@ import {
   coverageSectionRenders,
   serviceAreaRenders,
   experienceRenders,
+  lateralResponsibilityRenders,
+  pipeMaterialsRenders,
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
@@ -162,6 +166,35 @@ export function MarketPageTemplate({
   */
   const showsExperience = experienceRenders(content.experience)
 
+  /*
+    Which lateral-education treatment renders, and it is EXACTLY ONE OF
+    EACH PAIR.
+
+    ⚠ HOISTED BECAUSE THE DENSITY ARRAY AND THE COMPOSITION BOTH READ
+    THEM. St. Louis sets `responsibility` and `materials`; any market
+    still on the plain grids keeps `lateralCards` / `materialCards`,
+    which is why `ProblemGrid` and `InclusionsGrid` are untouched -
+    they are shared by six and five templates respectively and must not
+    be restyled for one page.
+
+    ⚠ `localFeature` IS SUPPRESSED WHERE `materials` RENDERS. The
+    pre-purchase panel moved INSIDE the materials section on owner
+    direction (2026-09-07); leaving the standalone prose block would
+    ship the same argument twice on one page.
+  */
+  const showsResponsibility = lateralResponsibilityRenders(
+    content.responsibility,
+  )
+  const showsLateralCards =
+    !showsResponsibility && content.lateralCards !== undefined
+
+  const showsMaterials = pipeMaterialsRenders(content.materials)
+  const showsMaterialCards =
+    !showsMaterials && content.materialCards !== undefined
+
+  const showsLocalFeature =
+    !showsMaterials && content.localFeature !== undefined
+
   const showsServiceArea = serviceAreaRenders(content.serviceArea)
   const showsCoverage =
     !showsServiceArea && coverageSectionRenders(content.coverage)
@@ -215,9 +248,24 @@ export function MarketPageTemplate({
     ...(content.services !== undefined && serviceIndexRenders(content.services)
       ? (['dense'] as const)
       : []),
-    ...(content.lateralCards !== undefined ? (['standard'] as const) : []),
-    ...(content.materialCards !== undefined ? (['dense'] as const) : []),
-    ...(content.localFeature !== undefined ? (['standard'] as const) : []),
+    /*
+      ⚠ ONE ENTRY PER PAIR, BECAUSE ONE OF EACH PAIR RENDERS. The
+      densities are the ones these bands already shipped with -
+      `standard` for responsibility, `dense` for materials - so the
+      only rhythm change here is that `localFeature` no longer
+      contributes an entry on a market whose pre-purchase panel moved
+      inside the materials section.
+
+      That removal also FIXES an adjacency: `InclusionsGrid` and the
+      standalone `localFeature` were both `muted`, so the two bands ran
+      together. The materials section is `muted` and the responsibility
+      section above it is `default`, so no two neighbours match now.
+    */
+    ...(showsResponsibility || showsLateralCards
+      ? (['standard'] as const)
+      : []),
+    ...(showsMaterials || showsMaterialCards ? (['dense'] as const) : []),
+    ...(showsLocalFeature ? (['standard'] as const) : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
     /*
@@ -528,7 +576,22 @@ export function MarketPageTemplate({
         its materials and its rules has always followed the service
         list. Only St. Louis populates all four today.
       */}
-      {content.lateralCards !== undefined && (
+      {/*
+        ⚠ THE IMAGE-LED TREATMENT, OR THE PLAIN GRID, NEVER BOTH. See
+        the predicates above. `default` here against the services band's
+        `muted` above and the materials band's `muted` below, so no two
+        neighbours share a surface (18 §11).
+      */}
+      {showsResponsibility && content.responsibility !== undefined && (
+        <LateralResponsibility
+          density="standard"
+          surface="default"
+          id="lateral-responsibility"
+          content={content.responsibility}
+        />
+      )}
+
+      {showsLateralCards && content.lateralCards !== undefined && (
         <ProblemGrid
           id="lateral-responsibility"
           title={content.lateralCards.title}
@@ -537,7 +600,16 @@ export function MarketPageTemplate({
         />
       )}
 
-      {content.materialCards !== undefined && (
+      {showsMaterials && content.materials !== undefined && (
+        <PipeMaterials
+          density="dense"
+          surface="muted"
+          id="line-materials"
+          content={content.materials}
+        />
+      )}
+
+      {showsMaterialCards && content.materialCards !== undefined && (
         <InclusionsGrid
           id="line-materials"
           title={content.materialCards.title}
@@ -546,7 +618,7 @@ export function MarketPageTemplate({
         />
       )}
 
-      {content.localFeature !== undefined && (
+      {showsLocalFeature && content.localFeature !== undefined && (
         <Section density="standard" width="reading" surface="muted">
           <Prose>{content.localFeature.body}</Prose>
         </Section>
