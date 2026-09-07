@@ -228,6 +228,17 @@ export interface ServiceAreaCityCard {
   pageId: PageId
   /** Card title. Defaults to the registry page name. */
   title?: string
+  /**
+   * Takes a HALF-WIDTH tile instead of a quarter-width one.
+   *
+   * ⚠ PRESENTATION, AND IT ONLY MEANS ANYTHING ON THE NON-FLAGSHIP
+   * CARDS. The flagship already owns the left half; this lets one of
+   * the remaining tiles run the full width of the right half rather
+   * than sharing its row. Las Vegas uses it for Henderson, which is
+   * what turns four cards into an asymmetric mosaic instead of a
+   * flagship plus three orphans.
+   */
+  wide?: boolean
   description: string
   /**
    * The card's accessible name and its visible action label.
@@ -257,8 +268,19 @@ export interface ServiceAreaCityCard {
 export interface ServiceAreaContent {
   title: string
   intro: string
-  /** Regional coverage. Informational cards, never links. */
-  counties: {
+  /**
+   * Regional coverage. Informational cards, never links.
+   *
+   * ⚠ OPTIONAL, AND ITS ABSENCE IS A FACTUAL STATEMENT RATHER THAN AN
+   * UNFINISHED SECTION. St. Louis names three counties because its
+   * published service area names them (DEC-070). San Diego and Las
+   * Vegas publish no service area at all - both are
+   * `derived_from_approved_locations` - so a county tier there would
+   * be inference presented as coverage, which DEC-077 already
+   * corrected once. Those two markets render the community mosaic and
+   * nothing above it.
+   */
+  counties?: {
     title: string
     intro?: string
     items: readonly ServiceAreaCountyCard[]
@@ -275,6 +297,21 @@ export interface ServiceAreaContent {
      * flagship is not first in the content file.
      */
     flagshipPageId?: PageId
+    /**
+     * Desktop rows the flagship spans, which sets the whole mosaic's
+     * shape.
+     *
+     * ⚠ IT MUST MATCH THE CARD COUNT OR THE GRID LEAVES A HOLE. The
+     * flagship takes the left half; the quarter-width tiles fill the
+     * right half two per row, and a `wide` tile fills a row alone:
+     *
+     *   2 rows, 4 quarter tiles          5 cards   St. Louis
+     *   2 rows, 1 wide + 2 quarter       4 cards   Las Vegas
+     *   3 rows, 6 quarter tiles          7 cards   San Diego
+     *
+     * Defaults to 2, which is what St. Louis shipped with.
+     */
+    rows?: 2 | 3
   }
   /**
    * The closing coverage clarification.
