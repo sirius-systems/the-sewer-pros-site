@@ -61,6 +61,8 @@
 
 import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
+import { coreServiceCards } from './service-cards'
+
 const id = (value: string): PageId => value as PageId
 
 /** Owner-confirmed contact (DEC-073). Repeated per page deliberately. */
@@ -328,12 +330,29 @@ export const lasVegasMarketContent: MarketPageContent = {
       },
     },
   },
-  services: [
-    { pageId: id('svc-sewer-camera-inspection'), description: 'See the visible condition of the line.' },
-    { pageId: id('svc-sewer-cleaning'), description: 'Clear what has accumulated in the line.' },
-    { pageId: id('svc-hydro-jetting'), description: 'High-pressure cleaning for buildup on the pipe wall.' },
-    { pageId: id('svc-pre-purchase-sewer-inspection'), description: 'Inspect the line before closing on a property.' },
-  ],
+  /*
+    ⚠ THE HOME PAGE'S "What we do" SECTION, NOT A LOCAL VARIANT OF IT
+    (owner direction, 2026-09-07).
+
+    This hub used to declare FOUR services with NO artwork, which meant
+    `ServiceIndex` fell back to its plain row list while the home page
+    rendered the nine-card image mosaic - two different presentations
+    of the same question on the same site. Both pages now read one
+    array.
+
+    ⚠ ALL NINE ARE SAFE TO STATE HERE, AND THAT WAS CHECKED RATHER THAN
+    ASSUMED. 01 §20 and §26 forbid claiming a service in a market that
+    has not confirmed it. Every service in `coreServiceCards` carries
+    an IDENTICAL registry status across all three markets, and DEC-080
+    records the same finding: this market "mirrors San Diego exactly".
+    The one St. Louis-specific service is `not_applicable` here and is
+    deliberately absent from the shared array.
+
+    ⚠ DO NOT ADD A LOCAL SERVICE TO THIS LIST. A service this market
+    offers and the others do not needs a registry status first; see the
+    St. Louis file, which composes rather than appends, and says why.
+  */
+  services: coreServiceCards,
   locationPageIds: [
     id('loc-lv-las-vegas'),
     id('loc-lv-henderson'),

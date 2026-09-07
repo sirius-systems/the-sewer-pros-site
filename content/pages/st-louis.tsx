@@ -60,6 +60,11 @@ import type {
   ServicePageContent,
 } from '@/types'
 
+import {
+  coreServiceCards,
+  combinedCleaningInspectionCardId,
+} from './service-cards'
+
 const id = (value: string): PageId => value as PageId
 
 /* ==========================================================================
@@ -460,16 +465,58 @@ export const stLouisMarketContent: MarketPageContent = {
     ),
   },
   /*
+    ==========================================================================
+    "What we do" — the home page's mosaic, plus this market's own service.
+    ==========================================================================
+    ⚠ COMPOSED FROM `coreServiceCards`, NOT COPIED FROM IT (owner
+    direction, 2026-09-07). The hub used to declare five services by
+    hand, of which four were transcriptions of home page entries that
+    had since drifted: the camera-inspection card wore the COMBINED
+    cleaning-and-camera frame, and four of the nine services were
+    simply missing. Reading the shared array fixes both and keeps them
+    fixed.
+
+    ⚠ THE ARITHMETIC IS NINE, AND IT IS DELIBERATE.
+
+      1  svc-stl-sewer-lateral-inspection-reporting   this market only
+      8  coreServiceCards minus the combined service
+      -
+      9  which fills the mosaic exactly
+
+    `ServiceIndex`'s mosaic gives the first card two columns and two
+    rows, so nine lands as flagship (2x2) + two beside it + two full
+    rows of three. A TENTH would sit alone in a trailing row - the
+    orphaned row 18 §5.6 prohibits by name - which is why this composes
+    with a filter instead of appending to all nine.
+
+    ⚠ THE FILTERED-OUT CARD IS THE COMBINED CLEANING-AND-INSPECTION
+    SERVICE, AND DROPPING IT COSTS THIS PAGE NOTHING. Both halves of it
+    are listed separately below, and this hub has never carried it - so
+    the filter preserves the status quo rather than removing something.
+
+    ⚠ THE LATERAL-REPORTING ENTRY IS FIRST BECAUSE FIRST IS THE
+    FLAGSHIP TILE. It is the market's differentiator, it is
+    `confirmed_market_specific_capability` in the service registry for
+    St. Louis and `not_applicable` in both other markets, and it is why
+    it lives here rather than in the shared array. `svc-hydro-jetting`
+    below it is the GLOBAL service, not `sl-chesterfield-hydro`: this
+    band fans out to canonical service spokes, and pointing an entry at
+    one suburb's service+location page would imply hydro jetting is
+    offered only in Chesterfield. No `/st-louis-mo/hydro-jetting/`
+    route exists, and 05 §27 permits a market-level service route only
+    where the intent belongs to that market rather than the global
+    taxonomy — which is exactly the test the lateral-reporting entry
+    passes and that one does not.
+
     ⚠ SITEWIDE SERVICE ARTWORK, NOT ST. LOUIS PHOTOGRAPHY. These are
     the same frames the home page mosaic uses. No St. Louis-specific
-    service imagery exists and none was sourced for this build; the
-    `image` field is what promotes the band from a row list to the
-    card mosaic, and swapping the src later needs no other change.
+    service imagery exists and none was sourced for this build.
   */
   services: [
     {
       pageId: id('svc-stl-sewer-lateral-inspection-reporting'),
-      description: 'Video documentation prepared for municipal lateral programme submission.',
+      description:
+        'Video documentation prepared for municipal lateral programme submission.',
       image: {
         src: '/images/homepage/services/the-sewer-pros-sewer-camera-inspection-video-evidence.webp',
         alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
@@ -477,63 +524,9 @@ export const stLouisMarketContent: MarketPageContent = {
           'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
       },
     },
-    {
-      pageId: id('svc-sewer-camera-inspection'),
-      description: 'See the visible condition of the line.',
-      image: {
-        src: '/images/homepage/services/the-sewer-pros-sewer-cleaning-camera-inspection.webp',
-        alt: 'Cleaning and camera equipment set up together at a cleanout',
-        source:
-          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
-      },
-    },
-    {
-      pageId: id('svc-pre-purchase-sewer-inspection'),
-      description: 'Inspect the line before closing on a property.',
-      image: {
-        src: '/images/homepage/services/the-sewer-pros-pre-purchase-sewer-scope.webp',
-        alt: 'A sewer scope run at a property before purchase',
-        source:
-          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
-      },
-    },
-    {
-      pageId: id('svc-sewer-cleaning'),
-      description: 'Clear what has accumulated in the line.',
-      image: {
-        src: '/images/homepage/services/the-sewer-pros-professional-sewer-line-cleaning.webp',
-        alt: 'Cleaning equipment at work on a sewer line',
-        source:
-          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
-      },
-    },
-    /*
-      ⚠ `svc-hydro-jetting`, THE GLOBAL SERVICE, NOT
-      `sl-chesterfield-hydro`. This array is the market hub's fan-out to
-      canonical service spokes, and the three entries above it are
-      global taxonomy pages. Pointing one entry at a single suburb's
-      service+location page would make it resolve narrower than its
-      siblings and would imply hydro jetting is offered only in
-      Chesterfield, which nothing supports. That page is a spoke one
-      level further out, reached from the Chesterfield location page.
-
-      No `/st-louis-mo/hydro-jetting/` route exists, and 05 §27 permits
-      a market-level service route only where the intent belongs to
-      that market rather than the global taxonomy - which is why the
-      lateral-reporting entry above is market-scoped and this one is
-      not.
-    */
-    {
-      pageId: id('svc-hydro-jetting'),
-      description:
-        'High-pressure water clears grease, scale, and root intrusion from the line.',
-      image: {
-        src: '/images/homepage/services/the-sewer-pros-hydro-jetting-pipe-wall-cleaning.webp',
-        alt: 'High-pressure jetting stripping the pipe wall',
-        source:
-          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
-      },
-    },
+    ...coreServiceCards.filter(
+      (card) => card.pageId !== combinedCleaningInspectionCardId,
+    ),
   ],
   locationPageIds: [
     id('loc-stl-st-louis-city'),
