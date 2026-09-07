@@ -29,7 +29,12 @@ import { cn } from '@/lib/utils/cn'
  * Hover changes opacity and background but never scale — 18 §93 warns
  * against hover scaling that shifts layout.
  */
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'accent'
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'accent'
+  | 'outline-on-dark'
 
 const VARIANT: Record<ButtonVariant, string> = {
   primary:
@@ -64,6 +69,25 @@ const VARIANT: Record<ButtonVariant, string> = {
   */
   accent:
     'bg-accent-secondary text-accent-secondary-foreground hover:opacity-90 rounded-md px-5 shadow-none',
+  /*
+    A SECONDARY ACTION ON A DARK GROUND, added 2026-09-07 for the
+    St. Louis closing CTA's phone action.
+
+    ⚠ IT EXISTS BECAUSE `secondary` IS THE WRONG SHAPE THERE, NOT
+    BECAUSE ANYONE WANTED A FIFTH BUTTON. `secondary` is a light FILL
+    (`bg-surface`); beside a filled primary on a scrimmed photograph
+    that reads as two solid buttons competing, and the owner asked for
+    an outlined one (2026-09-07).
+
+    ⚠ ONLY EVER ON A DARK GROUND. White border and white label measure
+    4.74:1 against the worst ground a scrimmed photograph can present
+    (black/55% over pure white), clearing the 3:1 a control's boundary
+    needs and the 4.5:1 its label needs. On a LIGHT surface both
+    vanish, which is why the name says so and why nothing picks this
+    variant automatically.
+  */
+  'outline-on-dark':
+    'border border-white text-white hover:bg-white/10 rounded-md px-5 shadow-none',
 }
 
 /**
