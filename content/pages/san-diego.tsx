@@ -361,6 +361,167 @@ export const sanDiegoMarketContent: MarketPageContent = {
     offers and the others do not needs a registry status first; see the
     St. Louis file, which composes rather than appends, and says why.
   */
+  /*
+    ==========================================================================
+    SERVICE AREA. Added 2026-09-07 to close an internal-linking hole.
+    ==========================================================================
+    ⚠ THIS HUB LINKED TO NONE OF ITS OWN LOCATION PAGES BEFORE THIS.
+    The market set neither `serviceArea` nor `coverage`, so the section
+    never rendered and the 7 San Diego location pages had no path from
+    their own market hub. They were reachable only from `/locations/`
+    and the footer. 16 §25 and CLAUDE.md §31 both describe the hub to
+    spoke flow this restores.
+
+    ⚠ `coverage`, NOT `serviceArea`, AND THAT IS DELIBERATE. The
+    image-led treatment needs per-market photography and hyper-local
+    detail this market does not have; St. Louis is the only one that
+    does. Owner direction 2026-09-07 also asks the three hubs to differ
+    in composition, and this is one of the places they should.
+
+    ⚠⚠ THE COPY MUST NOT STATE A SERVICE AREA AS A PUBLISHED FACT.
+    `marketOperatingDetail['san-diego-ca'].serviceAreaSource` is
+    `derived_from_approved_locations`: the list below is assembled from
+    the pages doc 04 approves, NOT from anything the business publishes
+    about where it works. DEC-077 corrected an earlier value that was
+    inference presented as a published area. So the intro says these
+    communities have their own PAGES and asks the visitor to confirm;
+    it does not claim a county, a radius, or a boundary.
+
+    ⚠ NO OFFICE LANGUAGE. `CoverageSection` renders no address, no pin
+    and no hours by design (PENDING-002, CLAUDE.md §29-30, 18 §86-87).
+  */
+  coverage: {
+    title: 'Where we serve in the San Diego area',
+    intro:
+      'The communities below have their own service pages, each with local information for that area. They are where we have published that detail rather than the limit of where we work. Contact us with your property location so we can confirm availability before you schedule.',
+    pageIds: [
+      id('loc-sd-san-diego'),
+      id('loc-sd-san-marcos'),
+      id('loc-sd-carlsbad'),
+      id('loc-sd-escondido'),
+      id('loc-sd-oceanside'),
+      id('loc-sd-chula-vista'),
+      id('loc-sd-mission-valley'),
+    ],
+    availabilityStatement:
+      'Serving homeowners, home buyers, real estate professionals, property managers, and commercial properties across the greater San Diego region.',
+  },
+  /*
+    ==========================================================================
+    INTENT ROUTING. Added 2026-09-07.
+    ==========================================================================
+    ⚠ A DIFFERENT SET FROM ST. LOUIS AND FROM LAS VEGAS, ON PURPOSE.
+    Owner direction 2026-09-07 is that the three hubs must not run one
+    composition. Routing itself is parity rather than a distinguishing
+    variant - it is a navigation aid, the same category as the hero
+    form - so all three carry the band, but none carries the same four
+    cards.
+
+    ⚠ `svc-stl-sewer-lateral-inspection-reporting` CANNOT APPEAR HERE.
+    It is `not_applicable` for this market in the service registry, and
+    St. Louis's third card is exactly that service. Every service below
+    is `confirmed` or `supported_by_existing_*` for San Diego, checked
+    against `master-service-registry.json`.
+
+    The third card is recurring backup diagnosis because this market's
+    own body copy turns on there being no single sewer authority and
+    almost no repair assistance, which makes knowing the actual cause
+    more consequential here, not less.
+  */
+  routing: [
+    {
+      pageId: id('svc-sewer-camera-inspection'),
+      category: 'Homeowners',
+      icon: 'search-check',
+      accent: 'blue',
+      description:
+        'Slow drains, a backup that keeps returning, or a line nobody has looked at. A camera inspection shows the visible condition before anything is decided.',
+      linksHeading: 'Common starting points',
+      links: [
+        {
+          pageId: id('svc-sewer-cleaning'),
+          label: 'Sewer Cleaning',
+        },
+        {
+          pageId: id('svc-sewer-line-locating'),
+          label: 'Sewer Line Locating',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('svc-sewer-camera-inspection'),
+        label: 'Explore Sewer Camera Inspection',
+      },
+    },
+    {
+      pageId: id('svc-pre-purchase-sewer-inspection'),
+      category: 'Buying or selling',
+      icon: 'search-check',
+      accent: 'green',
+      description:
+        'A sewer scope before closing, so the condition of the line is documented while it can still inform the decision.',
+      linksHeading: 'Useful for',
+      links: [
+        {
+          pageId: id('aud-home-buyers'),
+          label: 'Home Buyers',
+        },
+        {
+          pageId: id('aud-real-estate-agents'),
+          label: 'Real Estate Agents',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('svc-pre-purchase-sewer-inspection'),
+        label: 'Explore Pre-Purchase Inspection',
+      },
+    },
+    {
+      pageId: id('svc-recurring-sewer-backup-diagnosis'),
+      category: 'Recurring problems',
+      icon: 'search-check',
+      accent: 'navy',
+      description:
+        'A line that has been cleared before and backed up again. Diagnosis looks for the reason rather than clearing it once more.',
+      linksHeading: 'Related services',
+      links: [
+        {
+          pageId: id('svc-hydro-jetting'),
+          label: 'Hydro Jetting',
+        },
+        {
+          pageId: id('svc-preventative-sewer-maintenance'),
+          label: 'Preventative Maintenance',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('svc-recurring-sewer-backup-diagnosis'),
+        label: 'Explore Backup Diagnosis',
+      },
+    },
+    {
+      pageId: id('hub-commercial'),
+      category: 'Property solutions',
+      icon: 'building-2',
+      accent: 'blue',
+      description:
+        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multifamily buildings, and the people who manage them.',
+      linksHeading: 'Commercial services',
+      links: [
+        {
+          pageId: id('com-camera'),
+          label: 'Sewer Camera Inspection',
+        },
+        {
+          pageId: id('com-hydro-jetting'),
+          label: 'Hydro Jetting',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('hub-commercial'),
+        label: 'Explore Commercial Services',
+      },
+    },
+  ],
   services: coreServiceCards,
   locationPageIds: [
     id('loc-sd-san-diego'),
