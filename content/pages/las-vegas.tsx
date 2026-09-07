@@ -353,6 +353,168 @@ export const lasVegasMarketContent: MarketPageContent = {
     offers and the others do not needs a registry status first; see the
     St. Louis file, which composes rather than appends, and says why.
   */
+  /*
+    ==========================================================================
+    SERVICE AREA. Added 2026-09-07 to close an internal-linking hole.
+    ==========================================================================
+    ⚠ THIS HUB LINKED TO NONE OF ITS OWN LOCATION PAGES BEFORE THIS.
+    The market set neither `serviceArea` nor `coverage`, so the section
+    never rendered and the 4 Las Vegas location pages had no path from
+    their own market hub. They were reachable only from `/locations/`
+    and the footer. 16 §25 and CLAUDE.md §31 both describe the hub to
+    spoke flow this restores.
+
+    ⚠ `coverage`, NOT `serviceArea`, AND THAT IS DELIBERATE. The
+    image-led treatment needs per-market photography and hyper-local
+    detail this market does not have; St. Louis is the only one that
+    does. Owner direction 2026-09-07 also asks the three hubs to differ
+    in composition, and this is one of the places they should.
+
+    ⚠⚠ THE COPY MUST NOT STATE A SERVICE AREA AS A PUBLISHED FACT.
+    `marketOperatingDetail['las-vegas-nv'].serviceAreaSource` is
+    `derived_from_approved_locations`: the list below is assembled from
+    the pages doc 04 approves, NOT from anything the business publishes
+    about where it works. DEC-077 corrected an earlier value that was
+    inference presented as a published area. So the intro says these
+    communities have their own PAGES and asks the visitor to confirm;
+    it does not claim a county, a radius, or a boundary.
+
+    ⚠ NO OFFICE LANGUAGE. `CoverageSection` renders no address, no pin
+    and no hours by design (PENDING-002, CLAUDE.md §29-30, 18 §86-87).
+  */
+  coverage: {
+    title: 'Where we serve in the Las Vegas Valley',
+    intro:
+      'The communities below have their own service pages, each with local information for that area. They are where we have published that detail rather than the limit of where we work. Contact us with your property location so we can confirm availability before you schedule.',
+    pageIds: [
+      id('loc-lv-las-vegas'),
+      id('loc-lv-henderson'),
+      id('loc-lv-north-las-vegas'),
+      id('loc-lv-summerlin'),
+    ],
+    availabilityStatement:
+      'Serving homeowners, home buyers, real estate professionals, property managers, and commercial properties across the Las Vegas Valley.',
+  },
+  /*
+    ==========================================================================
+    INTENT ROUTING. Added 2026-09-07.
+    ==========================================================================
+    ⚠ A DIFFERENT SET FROM ST. LOUIS AND FROM SAN DIEGO, ON PURPOSE.
+    Owner direction 2026-09-07 is that the three hubs must not run one
+    composition. Routing itself is parity rather than a distinguishing
+    variant - it is a navigation aid, the same category as the hero
+    form - so all three carry the band, but none carries the same four
+    cards.
+
+    ⚠ `svc-stl-sewer-lateral-inspection-reporting` CANNOT APPEAR HERE.
+    It is `not_applicable` for this market. Every service below is
+    `confirmed` or `supported_by_existing_*` for Las Vegas, checked
+    against `master-service-registry.json` - DEC-076 confirmed 17 of 18
+    and DEC-080 released the indexation gate on that basis.
+
+    ⚠ NO TENURE CLAIM ANYWHERE IN THIS BAND. This market has no
+    confirmed founding year (`foundingYear: 0`), so the cards describe
+    what the work is, never how long it has been done here.
+
+    The second and third cards are cleaning and preventative
+    maintenance rather than San Diego's backup diagnosis, matching this
+    market's own body copy about newer housing and different failure
+    modes.
+  */
+  routing: [
+    {
+      pageId: id('svc-sewer-camera-inspection'),
+      category: 'Start with evidence',
+      icon: 'search-check',
+      accent: 'blue',
+      description:
+        'A camera inspection records the visible condition of the accessible line, so what happens next is decided from footage rather than symptoms.',
+      linksHeading: 'Common starting points',
+      links: [
+        {
+          pageId: id('svc-recurring-sewer-backup-diagnosis'),
+          label: 'Recurring Backup Diagnosis',
+        },
+        {
+          pageId: id('svc-sewer-line-locating'),
+          label: 'Sewer Line Locating',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('svc-sewer-camera-inspection'),
+        label: 'Explore Sewer Camera Inspection',
+      },
+    },
+    {
+      pageId: id('svc-sewer-cleaning'),
+      category: 'Slow or blocked drains',
+      icon: 'search-check',
+      accent: 'navy',
+      description:
+        'Clearing what has built up in the line, and inspecting afterwards so the condition the blockage was hiding does not go unseen.',
+      linksHeading: 'Related services',
+      links: [
+        {
+          pageId: id('svc-hydro-jetting'),
+          label: 'Hydro Jetting',
+        },
+        {
+          pageId: id('svc-drain-cleaning'),
+          label: 'Drain Cleaning',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('svc-sewer-cleaning'),
+        label: 'Explore Sewer Cleaning',
+      },
+    },
+    {
+      pageId: id('svc-preventative-sewer-maintenance'),
+      category: 'Planning ahead',
+      icon: 'search-check',
+      accent: 'green',
+      description:
+        'Servicing the line on an interval the inspection evidence supports, rather than a generic annual visit.',
+      linksHeading: 'Useful for',
+      links: [
+        {
+          pageId: id('aud-property-managers'),
+          label: 'Property Managers',
+        },
+        {
+          pageId: id('aud-hoa-communities'),
+          label: 'HOA Communities',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('svc-preventative-sewer-maintenance'),
+        label: 'Explore Preventative Maintenance',
+      },
+    },
+    {
+      pageId: id('hub-commercial'),
+      category: 'Property solutions',
+      icon: 'building-2',
+      accent: 'blue',
+      description:
+        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multifamily buildings, and the people who manage them.',
+      linksHeading: 'Commercial services',
+      links: [
+        {
+          pageId: id('com-camera'),
+          label: 'Sewer Camera Inspection',
+        },
+        {
+          pageId: id('com-sewer-cleaning'),
+          label: 'Sewer Cleaning',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('hub-commercial'),
+        label: 'Explore Commercial Services',
+      },
+    },
+  ],
   services: coreServiceCards,
   locationPageIds: [
     id('loc-lv-las-vegas'),
