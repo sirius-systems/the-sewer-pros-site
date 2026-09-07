@@ -51,7 +51,6 @@
  * promises approval, reimbursement, or eligibility.
  */
 
-import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type {
   LocationPageContent,
   MarketPageContent,
@@ -232,36 +231,120 @@ export const stLouisMarketContent: MarketPageContent = {
     programme-by-programme detail now lives in the three resource
     guides, which the routing card above links.
   */
-  lateralCards: {
+  /*
+    ==========================================================================
+    SECTION 1 - WHO IS RESPONSIBLE FOR THE LATERAL
+    ==========================================================================
+    ⚠ REPLACED `lateralCards` ON 2026-09-07. The same title, the same
+    intro, and the same three cards, verbatim - what changed is that
+    they now render through `LateralResponsibility` with a diagram, line
+    icons, accents and an action panel instead of `ProblemGrid`'s plain
+    three-up. `ProblemGrid` itself is untouched: six templates share it.
+
+    ⚠⚠ EVERY SENTENCE BELOW IS A STATEMENT ABOUT MUNICIPAL RULES AND
+    NONE OF IT WAS REWRITTEN. Fees, caps, coverage boundaries,
+    documentation requirements and exclusions differ by municipality,
+    and the City of St. Charles is outside MSD's territory entirely.
+    Nothing here says a property is eligible, that a claim will be
+    reimbursed, or that one municipality's terms travel. Do not
+    generalise any of it.
+
+    ⚠ THE THIRD CARD WEARS THE AMBER ACCENT because it is the one that
+    says the terms vary. That is `--warning`, an approved semantic-state
+    token (18 §8) that `Callout` already spends the same way - a rule
+    and a mark, never a filled alarm panel. It means "check yours", not
+    "danger" (18 §89).
+  */
+  responsibility: {
     title: 'Who is responsible for the lateral',
     intro:
       'The sewer lateral runs from the building to the public sewer. Understanding whose problem it is, and what documentation a municipal programme asks for, is most of what people come to this page to find out.',
+    /*
+      ⚠ THE FILE IS NAMED FOR WHAT IT DEPICTS, NOT FOR THIS SECTION.
+      `st-louis-residential-sewer-lateral-public-main.svg` is the asset
+      the owner supplied; the brief expected
+      `...-sewer-lateral-responsibility-diagram.svg`, which does not
+      exist. Renaming a supplied asset to match a brief would be the
+      wrong way round, so the verified path is used as-is.
+
+      1600x1200, exactly the 4:3 the media panel reserves, so nothing
+      letterboxes and nothing is cropped. It carries its own <title>
+      and <desc>, but an <img> does not expose those, so the alt text
+      below is what a screen reader hears.
+    */
+    diagram: {
+      src: '/images/markets/st-louis-mo/services/st-louis-residential-sewer-lateral-public-main.svg',
+      alt: 'Diagram showing a residential sewer lateral connecting a St. Louis property to the public sewer main',
+      source: 'Supplied by the business owner, 2026-09-07.',
+    },
     items: [
       {
         title: 'MSD maintains the mains, not your lateral',
         description:
           'The Metropolitan St. Louis Sewer District states that homeowners are responsible for maintaining the sewer lateral. It does not inspect or repair private lines, so the condition of your own line is not something the utility will establish for you.',
+        icon: 'utility',
+        accent: 'blue',
       },
       {
         title: 'Lateral programmes ask for documentation',
         description:
           'Many municipalities in the area operate sewer lateral repair programmes funded by a small annual charge on the real estate tax bill. They generally require documentation from a licensed plumber before a claim is considered, commonly including video of the line.',
+        icon: 'document',
+        accent: 'blue',
       },
       {
         title: 'The terms are not uniform',
         description:
           'Fees, caps, coverage boundaries, and exclusions differ between municipalities, and the City of St. Charles is not in MSD\u2019s service territory at all: it runs its own sewer system. Whether a programme applies to your address, and what it covers, is a question about your specific municipality.',
+        icon: 'variation',
+        accent: 'amber',
       },
     ],
+    /*
+      ⚠ NO PROGRAMME-SELECTION ROUTE EXISTS, AND NONE WAS INVENTED
+      (05 §51). The primary action points at the general St. Louis
+      lateral guide, which is the closest verified destination; the
+      city-specific and county-specific guides are linked by name from
+      the resource cards further down the page. "Ask About Your
+      Property" goes to `/contact/`, because an address-specific answer
+      is a conversation rather than a page.
+    */
+    action: {
+      title:
+        'Not sure which sewer lateral program applies to your property?',
+      body: 'Program rules, coverage boundaries, documentation requirements, and exclusions vary by municipality. Review the information for your property location or contact The Sewer Pros before scheduling an inspection.',
+      primary: {
+        label: 'Find Your Sewer Lateral Program',
+        pageId: id('res-stl-lateral-report'),
+      },
+      secondary: {
+        label: 'Ask About Your Property',
+        pageId: id('core-contact'),
+      },
+    },
   },
   /*
-    ⚠ THE ERA-CORRESPONDENCE QUALIFIER IS LOAD-BEARING AND IS CARRIED
-    VERBATIM IN `intro`. It is what keeps this section a statement
-    about materials used in a period rather than a claim about any
-    reader's address, and the no-fake-data governance depends on it.
-    Do not drop it, shorten it, or move it below the cards.
+    ==========================================================================
+    SECTION 2 - OLDER LINES, OLDER MATERIALS, AND THE PRE-PURCHASE PANEL
+    ==========================================================================
+    ⚠ REPLACED `materialCards` AND ABSORBED `localFeature` ON
+    2026-09-07. Title, intro and all three material descriptions are
+    verbatim; the pre-purchase heading and paragraph are verbatim from
+    the block that used to render below this one as a standalone narrow
+    prose section. Nothing was shortened.
+
+    ⚠⚠ THE INTRO IS THE DISCLAIMER AND IT STAYS ABOVE THE PICTURES.
+    "This is era correspondence, not a claim about any particular street
+    or address." Three photographs of pipe invite exactly the inference
+    that sentence forbids, so adding them makes it more load-bearing,
+    not less. Do not move it, and do not add an installation date, a
+    life expectancy, or a failure rate to any card (CLAUDE.md §73).
+
+    ⚠ THE THREE MATERIAL FRAMES ARE ILLUSTRATIONS OF A MATERIAL, NOT
+    PHOTOGRAPHS OF A CUSTOMER'S LINE. They must never be used to
+    populate `proofImages`, which asserts "this is our work".
   */
-  materialCards: {
+  materials: {
     title: 'Older lines, older materials',
     intro:
       'This is era correspondence, not a claim about any particular street or address. What a specific line is made of, and what condition it is in, is what a camera inspection establishes.',
@@ -270,74 +353,101 @@ export const stLouisMarketContent: MarketPageContent = {
         title: 'Vitrified clay',
         description:
           'Common through much of the twentieth century. Clay separates at the joints and admits roots, which is the failure pattern a camera most often finds in older city and inner-suburb lines.',
+        image: {
+          src: '/images/markets/st-louis-mo/services/the-sewer-pros-vitrified-clay-sewer-pipe.webp',
+          alt: 'Section of an older vitrified clay sewer pipe',
+          source: 'Supplied by the business owner, 2026-09-07.',
+        },
       },
       {
         title: 'Cast iron',
         description:
           'Also common in that period. Cast iron corrodes and scales internally, narrowing the bore over time rather than breaking suddenly.',
+        image: {
+          src: '/images/markets/st-louis-mo/services/the-sewer-pros-cast-iron-sewer-pipe.webp',
+          alt: 'Section of an aged cast-iron sewer pipe',
+          source: 'Supplied by the business owner, 2026-09-07.',
+        },
       },
       {
         title: 'Orangeburg',
         description:
           'Bituminized fibre pipe, installed through the post-war decades until its manufacturer closed in 1974. It deforms under load, and any remaining Orangeburg is now well past its intended service life.',
+        image: {
+          src: '/images/markets/st-louis-mo/services/the-sewer-pros-orangeburg-sewer-pipe.webp',
+          alt: 'Section of an older Orangeburg sewer pipe',
+          source: 'Supplied by the business owner, 2026-09-07.',
+        },
       },
     ],
+    prePurchase: {
+      title:
+        'Buying or selling a home in St. Louis? Know what is in the sewer line first',
+      body: 'A sewer camera inspection gives home buyers, sellers, and real estate agents documented evidence of a property\u2019s sewer line condition before closing, not just an assumption based on the home\u2019s age. In St. Louis, where much of the housing stock predates modern sewer materials, a pre-purchase sewer inspection can confirm whether a line is sound, needs cleaning, or shows signs that warrant further evaluation, without pressuring anyone toward repair or replacement.',
+      image: {
+        src: '/images/markets/st-louis-mo/services/the-sewer-pros-st-louis-pre-purchase-sewer-inspection.webp',
+        alt: 'Sewer camera inspection equipment at a St. Louis home before purchase',
+        source: 'Supplied by the business owner, 2026-09-07.',
+      },
+      /*
+        ⚠ EACH POINT IS A CONDENSATION OF THE PARAGRAPH ABOVE IT, AND
+        THE SOURCE CLAUSE IS NAMED SO THE NEXT READER CAN CHECK:
+
+          1  "documented evidence of a property's sewer line condition
+             before closing"
+          2  "can confirm whether a line is sound, needs cleaning, or
+             shows signs that warrant further evaluation"
+          3  the page's approved deliverable, "Documentation you can
+             review or share when seeking another opinion", stated in
+             the experience section above
+
+        None of them adds a claim. A fourth point that `body` does not
+        support would be a new business claim wearing an icon (01 §35).
+      */
+      points: [
+        'Document the sewer line before closing',
+        'Identify visible conditions that may affect the purchase',
+        'Keep footage and findings for review or a second opinion',
+      ],
+      primary: {
+        label: 'Schedule a Pre-Purchase Sewer Inspection',
+        pageId: id('core-contact'),
+      },
+      /*
+        A verified route, not an invented one: the canonical
+        pre-purchase service page, `launch` and indexable.
+      */
+      secondary: {
+        label: 'Explore Pre-Purchase Sewer Inspection',
+        pageId: id('svc-pre-purchase-sewer-inspection'),
+      },
+      resourcesTitle: 'Related resources',
+      /*
+        ⚠ THE SAME THREE GUIDES, THE SAME THREE LABELS, THE SAME THREE
+        DESTINATIONS. They were an `<ul>` of `ApprovedInlineLink`s in
+        the old prose block and are resource cards now; the wording is
+        carried verbatim, including "programme", because it is what
+        readers see today. All three are `launch` and indexable, and
+        resolving by page id means a gated one fails at the resolver
+        rather than shipping a dead link.
+      */
+      resources: [
+        {
+          pageId: id('res-stl-lateral-report'),
+          label: 'Sewer lateral reporting for St. Louis property owners',
+        },
+        {
+          pageId: id('res-stl-city-program'),
+          label: 'Understanding the St. Louis City sewer lateral programme',
+        },
+        {
+          pageId: id('res-stl-county-program'),
+          label:
+            'Which sewer lateral programme applies to me? (St. Louis County)',
+        },
+      ],
+    },
   },
-  /*
-    ⚠ THREE SECTIONS LEFT THIS BLOCK ON 2026-09-04 AND ARE NOT LOST.
-
-      "Who is responsible for the lateral"   -> `lateralCards` card 1
-      "Why lateral programmes make ..."      -> `lateralCards` cards 2-3
-      "Older lines, older materials"         -> `materialCards`
-
-    Their substance is unchanged; only the presentation moved from a
-    five-section text wall to card grids. Do not restate any of them
-    here as prose - the page would then say each thing twice.
-
-    What remains is the proof paragraph, which is claim-bearing and
-    belongs in reviewable content rather than in a card.
-  */
-  /*
-    ==========================================================================
-    THE PAGE'S CREDIBILITY CLAIM. Replaced `body` on 2026-09-07.
-    ==========================================================================
-    ⚠ THIS IS THE OLD "Our work in St. Louis" PROSE BLOCK, REBUILT AS A
-    SECTION. It was three paragraphs at `width="reading"` (42rem) sat
-    directly above the process band's full-bleed photograph, which the
-    owner called narrow and underdeveloped. The claims are the same
-    ones, expanded, in a two-column composition with three proof cards.
-
-    ⚠ ONE CLAIM WAS DROPPED AND IT WAS DROPPED DELIBERATELY. The old
-    copy carried "We are the #1 choice in St. Louis for sewer
-    inspections". DEC-072 approves it for this page, so removing it is
-    not a correction - it is the owner's rewrite, which makes the
-    argument from evidence rather than from a superlative. 18 §71 and
-    CLAUDE.md §71 both preferred it gone; it can be restored under
-    DEC-072 if the owner wants it back.
-
-    ⚠⚠ TWO FIGURES HERE ARE APPROVED FOR THIS PAGE AND FOR NO OTHER.
-
-      'since 2011'                    thesewerpros.com/about, DEC-070
-      'more than 100,000 inspections' DEC-072, `/st-louis-mo/` ONLY
-
-    01 §20 forbids carrying either onto a San Diego or Las Vegas page,
-    and `MARKET_SCOPED_CLAIMS.stLouisOnly` in
-    `data/business/organization.ts` is the list build review reads. San
-    Diego states its own 2015 and Las Vegas states no year at all - see
-    their content files, where the difference is not an oversight.
-
-    ⚠ THE LATERAL-PROGRAMME PARAGRAPH IS DELIBERATELY HEDGED. The
-    verified fact (DEC-070) is "licensed through most area programmes
-    for submitting reports"; "most" is not "all", and requirements
-    differ by municipality, so the copy says "where current
-    requirements and credentials permit" rather than claiming blanket
-    participation.
-
-    ⚠ NO REPAIR ANYWHERE IN IT. Every next-step sentence routes to
-    cleaning, monitoring, or a SEPARATE repair provider (CLAUDE.md §9),
-    and the independence card describes this company's model without
-    characterising anyone else's (CLAUDE.md §27).
-  */
   /*
     ⚠ `editorial`, WHERE SAN DIEGO IS `strip` AND LAS VEGAS IS `aside`
     (owner direction, 2026-09-07). The three cards used to sit in a
@@ -353,6 +463,23 @@ export const stLouisMarketContent: MarketPageContent = {
   experience: {
     eyebrow: 'Local sewer inspection experience',
     title: 'St. Louis sewer inspections backed by documented evidence',
+    /*
+      ⚠ DECORATION, NOT THE SECTION'S IMAGE. A faint technical-linework
+      texture behind the whole band at 4 to 6 percent, `aria-hidden`
+      and `pointer-events-none`. It is below the fold and lazy by
+      nature - a CSS background is never preloaded and never
+      prioritised.
+
+      ⚠ IF IT EVER READS AS AN IMAGE, LOWER THE OPACITY. Do not answer
+      a busy pattern with darker text or heavier card surfaces; the
+      cards are opaque `bg-surface` and the section must stay legible
+      with the layer switched off entirely.
+    */
+    texture: {
+      src: '/images/markets/st-louis-mo/services/the-sewer-pros-st-louis-sewer-inspection-linework-background.webp',
+      alt: 'Technical linework pattern of sewer inspection equipment',
+      source: 'Supplied by the business owner, 2026-09-07.',
+    },
     /*
       ⚠ THE SECTION'S ONLY IMAGE, AND IT SITS BESIDE THE COPY RATHER
       THAN BEHIND IT. 2896x2172, exactly the 4:3 the media box reserves,
@@ -454,68 +581,6 @@ export const stLouisMarketContent: MarketPageContent = {
         pageId: id('svc-stl-sewer-lateral-inspection-reporting'),
       },
     },
-  },
-  /*
-    The real estate module, lifted out of `body` so it renders as its
-    own section between the material cards and the model comparison.
-    Copy is unchanged from the version approved on 2026-09-04.
-  */
-  localFeature: {
-    title: 'Buying or selling a home in St. Louis',
-    body: (
-      <>
-      {/*
-        Real estate and pre-purchase intent (owner, 2026-09-04). Placed
-        last in `body` so it sits directly above the services band the
-        template renders next.
-
-        ⚠ WHAT THIS DOES NOT CLAIM. No share of housing stock, no age
-        threshold, no failure rate, no assertion about what an
-        inspection will find. "Much of the housing stock predates modern
-        sewer materials" is the same era correspondence the section
-        above already draws and stops where that section stops.
-
-        ⚠ AND IT DOES NOT SELL THE REPAIR. "Warrant further evaluation"
-        rather than "needs replacing": CLAUDE.md §9 forbids presenting
-        the business as a repair contractor, and the differentiator is
-        that the evidence comes from someone who does not perform the
-        work it might imply.
-
-        The three guides link by PAGE ID through `ApprovedInlineLink`,
-        not by written path. All three are `launch` and `indexable`; a
-        gated one would fail at the resolver rather than shipping a dead
-        link.
-      */}
-      <h2>Buying or selling a home in St. Louis? Know what is in the sewer line first</h2>
-      <p>
-        A sewer camera inspection gives home buyers, sellers, and real estate
-        agents documented evidence of a property&rsquo;s sewer line condition
-        before closing, not just an assumption based on the home&rsquo;s age.
-        In St. Louis, where much of the housing stock predates modern sewer
-        materials, a pre-purchase sewer inspection can confirm whether a line
-        is sound, needs cleaning, or shows signs that warrant further
-        evaluation, without pressuring anyone toward repair or replacement.
-      </p>
-      <p>Related resources:</p>
-      <ul>
-        <li>
-          <ApprovedInlineLink pageId={id('res-stl-lateral-report')}>
-            Sewer lateral reporting for St. Louis property owners
-          </ApprovedInlineLink>
-        </li>
-        <li>
-          <ApprovedInlineLink pageId={id('res-stl-city-program')}>
-            Understanding the St. Louis City sewer lateral programme
-          </ApprovedInlineLink>
-        </li>
-        <li>
-          <ApprovedInlineLink pageId={id('res-stl-county-program')}>
-            Which sewer lateral programme applies to me? (St. Louis County)
-          </ApprovedInlineLink>
-        </li>
-      </ul>
-      </>
-    ),
   },
   /*
     ==========================================================================

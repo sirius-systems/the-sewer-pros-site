@@ -140,6 +140,15 @@ export type { ServiceAreaSectionProps } from './ServiceAreaSection'
 export { ExperienceSection, experienceRenders } from './ExperienceSection'
 export type { ExperienceSectionProps } from './ExperienceSection'
 
+export {
+  LateralResponsibility,
+  lateralResponsibilityRenders,
+} from './LateralResponsibility'
+export type { LateralResponsibilityProps } from './LateralResponsibility'
+
+export { PipeMaterials, pipeMaterialsRenders } from './PipeMaterials'
+export type { PipeMaterialsProps } from './PipeMaterials'
+
 export { ProofGallery } from './ProofGallery'
 export type { ProofGalleryProps } from './ProofGallery'
 

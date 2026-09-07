@@ -545,6 +545,33 @@ export function ExperienceSection({
   content,
   phone,
 }: ExperienceSectionProps) {
+  /*
+    Section wiring shared by all three variants, so a caller cannot get
+    the texture on one arrangement and not another.
+
+    ⚠ `texture` IS `undefined` FOR EVERY MARKET BUT ST. LOUIS, so San
+    Diego and Las Vegas render byte-identically - `Section` adds no
+    stacking context, no clip and no layer without it.
+
+    ⚠ THE OPACITY STEPS DOWN ON SMALL SCREENS. A cropped pattern is
+    busiest where there is least room, so it runs 6% on desktop, 5% at
+    tablet and 4% on a phone. Owner target (2026-09-07) was 5-7 / 4-6 /
+    3-5; these sit inside all three, chosen against the rendered page
+    rather than picked off the range.
+  */
+  const sectionProps = {
+    density,
+    surface,
+    labelledBy: id,
+    texture:
+      content.texture !== undefined
+        ? {
+            src: content.texture.src,
+            className: 'opacity-[0.04] sm:opacity-[0.05] lg:opacity-[0.06]',
+          }
+        : undefined,
+  }
+
   const primary = resolveApprovedLink(content.actions.primary.pageId, {
     label: content.actions.primary.label,
   })
@@ -666,7 +693,7 @@ export function ExperienceSection({
       conversion panel changes surface, because it changes PURPOSE.
     */
     return (
-      <Section density={density} surface={surface} labelledBy={id}>
+      <Section {...sectionProps}>
         {/* ---- 1. heading and the one supporting photograph ---- */}
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">{heading}</div>
@@ -820,7 +847,7 @@ export function ExperienceSection({
 
   if (variant === 'strip') {
     return (
-      <Section density={density} surface={surface} labelledBy={id}>
+      <Section {...sectionProps}>
         {heading}
 
         {/* The proof strip, directly under the introduction. */}
@@ -850,7 +877,7 @@ export function ExperienceSection({
   }
 
   return (
-    <Section density={density} surface={surface} labelledBy={id}>
+    <Section {...sectionProps}>
       {heading}
 
       {/*

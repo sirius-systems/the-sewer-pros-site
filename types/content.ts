@@ -296,6 +296,126 @@ export interface ServiceAreaContent {
 }
 
 /* ==========================================================================
+   Sewer-lateral education — St. Louis's two explanatory sections
+   ========================================================================== */
+
+/** Line icons available to a responsibility card. */
+export type ResponsibilityIcon = 'utility' | 'document' | 'variation'
+
+/**
+ * One statement about who is responsible for what.
+ *
+ * ⚠⚠ THIS IS COPY ABOUT MUNICIPAL RULES AND IT IS THE HIGHEST-RISK
+ * TEXT ON THE ST. LOUIS HUB. Fees, caps, coverage boundaries,
+ * documentation requirements and exclusions differ by municipality, and
+ * the City of St. Charles sits outside MSD's territory entirely. A card
+ * may describe how programmes work in general; it must NOT state that a
+ * property is eligible, that a claim will be reimbursed, or that one
+ * municipality's terms apply anywhere else (01 §20, §35; CLAUDE.md §24,
+ * §26).
+ *
+ * ⚠ `accent: 'amber'` MEANS "THIS VARIES, CHECK YOURS", NOT "DANGER".
+ * It paints `--warning`, an approved semantic-state token (18 §8) that
+ * `Callout` already spends the same way. 18 §89 rules out urgency
+ * visuals; one restrained rule is the whole treatment.
+ */
+export interface ResponsibilityCard {
+  title: string
+  description: string
+  icon: ResponsibilityIcon
+  accent: 'blue' | 'amber'
+}
+
+/**
+ * The lateral-responsibility section.
+ *
+ * ⚠ `action` IS REQUIRED, AND IT IS WHAT KEEPS THE REST HONEST. The
+ * cards establish that the answer depends on the municipality and the
+ * address; without somewhere to send the visitor for THEIR answer, the
+ * section raises a question it declines to help with.
+ */
+export interface ResponsibilityContent {
+  title: string
+  intro: string
+  /**
+   * The explanatory diagram.
+   *
+   * ⚠ INFORMATIVE CONTENT, NOT A BACKDROP. It carries real alt text,
+   * nothing is written over it, and it renders `object-contain` inside
+   * a fixed 4:3 box because a cropped diagram is a wrong diagram. A
+   * market without one omits the field and the copy runs full width
+   * (18 §40-42, §120).
+   */
+  diagram?: CardImage
+  items: readonly ResponsibilityCard[]
+  action: {
+    title: string
+    body: string
+    primary: { label: string; pageId: PageId }
+    secondary: { label: string; pageId: PageId }
+  }
+}
+
+/**
+ * One pipe material.
+ *
+ * ⚠ THE IMAGE SHOWS WHAT THE MATERIAL LOOKS LIKE. It is NOT evidence
+ * about any reader's line, which is why the section intro says so
+ * before the first card. Do not add an installation date, a life
+ * expectancy, a failure rate, or a claim about a street: CLAUDE.md §73
+ * forbids fabricated localisation and no source ties a material to an
+ * address.
+ */
+export interface MaterialCard {
+  title: string
+  description: string
+  image?: CardImage
+}
+
+/**
+ * The pipe-materials section, closing on the pre-purchase panel.
+ *
+ * ⚠ THE PRE-PURCHASE CONTENT LIVES HERE RATHER THAN IN `localFeature`
+ * (owner direction, 2026-09-07). It used to render as a standalone
+ * narrow prose block directly beneath this section, repeating its
+ * premise; as a closing panel it reads as the conclusion the materials
+ * argument was already making. A market that sets `materials` should
+ * NOT also set `localFeature`, or the same argument ships twice.
+ */
+export interface MaterialsContent {
+  title: string
+  intro: string
+  items: readonly MaterialCard[]
+  prePurchase: {
+    title: string
+    body: string
+    image?: CardImage
+    /**
+     * Short benefit points.
+     *
+     * ⚠ EVERY POINT MUST BE A CONDENSATION OF `body`, NOT AN ADDITION
+     * TO IT. These sit beside approved copy and read as claims; one
+     * that `body` does not already support is a new business claim
+     * wearing a tick (01 §35, CLAUDE.md §24).
+     */
+    points: readonly string[]
+    primary: { label: string; pageId: PageId }
+    /** Only where a verified route exists. Never invent one (05 §51). */
+    secondary?: { label: string; pageId: PageId }
+    resourcesTitle: string
+    /**
+     * Related guides.
+     *
+     * ⚠ `label` OVERRIDES THE REGISTRY NAME ON PURPOSE. These three
+     * carry the wording readers already see on this page, which differs
+     * from the guides' registry titles. Resolving by page id keeps the
+     * destination canonical while the label stays put through a rename.
+     */
+    resources: readonly { pageId: PageId; label: string }[]
+  }
+}
+
+/* ==========================================================================
    Company experience — the proof section on a market hub
    ========================================================================== */
 
@@ -406,6 +526,24 @@ export interface ExperienceContent {
   eyebrow: string
   title: string
   intro: readonly string[]
+  /**
+   * A faint decorative linework texture behind the whole section.
+   *
+   * ⚠ DECORATION, AND THE ONLY THING KEEPING IT DECORATION IS THE
+   * OPACITY. It renders `aria-hidden`, `pointer-events-none`, behind
+   * the section's own surface colour, at 4 to 6 percent. It must never
+   * compete with the heading, the supporting photograph, the proof
+   * cards, or the panels; if it starts to, lower the opacity rather
+   * than darkening text or thickening card surfaces.
+   *
+   * ⚠ IT IS NOT THE SECTION'S IMAGE. `image` above is content with alt
+   * text; this has no alt, carries no meaning, and the section must
+   * read identically with it switched off.
+   *
+   * A market that omits it keeps the plain surface, which is a
+   * finished state (18 §40-42).
+   */
+  texture?: CardImage
   /**
    * ONE supporting photograph, beside the heading.
    *
@@ -720,10 +858,39 @@ export interface MarketPageContent extends BasePageContent {
   /** Intent-routing cards for this market. */
   routing?: readonly RoutingContent[]
   routingBackground?: CardImage
-  /** Three-card explainer, e.g. lateral responsibility. */
+  /**
+   * Three-card explainer, e.g. lateral responsibility.
+   *
+   * ⚠ SUPERSEDED ON ST. LOUIS BY `responsibility`, WHICH THE TEMPLATE
+   * PREFERS. Kept because it is the plain `ProblemGrid` treatment any
+   * other market can still use, and because `ProblemGrid` itself is
+   * shared by six templates and must not be restyled for one page.
+   */
   lateralCards?: { title: string; intro?: string; items: readonly ProblemContent[] }
-  /** Three-card explainer, e.g. pipe materials by era. */
+  /**
+   * Three-card explainer, e.g. pipe materials by era.
+   *
+   * ⚠ SUPERSEDED ON ST. LOUIS BY `materials`. Same reasoning as
+   * `lateralCards`: `InclusionsGrid` is shared by five templates.
+   */
   materialCards?: { title: string; intro?: string; items: readonly ProblemContent[] }
+  /**
+   * Image-led lateral-responsibility section, rendered INSTEAD OF
+   * `lateralCards`.
+   *
+   * ⚠ SET ONE OR THE OTHER. `MarketPageTemplate` prefers this one, so a
+   * market that set both would ship the plain grid nowhere.
+   */
+  responsibility?: ResponsibilityContent
+  /**
+   * Image-led pipe-materials section, rendered INSTEAD OF
+   * `materialCards`, and carrying the pre-purchase panel that
+   * `localFeature` used to render on its own.
+   *
+   * ⚠ A MARKET THAT SETS THIS SHOULD NOT ALSO SET `localFeature`, or
+   * the pre-purchase argument ships twice on one page.
+   */
+  materials?: MaterialsContent
   /** Editorial block, e.g. buying or selling a home in this market. */
   localFeature?: { title: string; body: ReactNode }
   processBackground?: CardImage
