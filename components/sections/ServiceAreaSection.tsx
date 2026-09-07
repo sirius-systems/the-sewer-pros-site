@@ -193,6 +193,12 @@ const SCRIM = 'absolute inset-0 bg-black/55'
  * plus a three-line description does not fit in it. `min-h` wins over
  * the ratio, so the card holds its shape at desktop and grows rather
  * than clipping where it has to.
+ *
+ * ⚠ IT IS ALSO HALF OF A TRAP. A `min-h` beside an `aspect-ratio` on
+ * an element with no definite width lets the browser size the width
+ * FROM this floor instead. That is exactly what happened to the county
+ * cards, and `w-full` on the card is what closes it. Read that note
+ * before moving either value.
  */
 const CARD_MIN_HEIGHT = 'min-h-[15rem]'
 
@@ -262,23 +268,50 @@ export function ServiceAreaSection({
             context, and the accent rule needs a layer of its own.
           */}
           {/*
-            ⚠ A WIDER GUTTER THAN THE MOSAIC BELOW, ON OWNER DIRECTION
-            (2026-09-07), AND IT IS NOT AN INCONSISTENCY.
+            ⚠ THE GUTTER STEPS WITH THE BREAKPOINT, AND `sm:` IS WHERE
+            IT STEPS BECAUSE THAT IS WHERE THE COLUMNS DO. Owner target
+            (2026-09-07): 16px stacked, 20px at two columns, 24px at
+            three. Putting the 20px at `md` instead would leave the
+            640-768px band running a two-column layout on the
+            one-column gutter.
 
-            All three frames are dark maps of the same metro at
-            similar zoom, so at the site's standard `gap-6` the row
-            read as one continuous picture with hairlines through it
-            rather than as three cards. The mosaic below does not have
-            that problem - its five frames are visibly different
-            places, and its uneven tile sizes separate the cards on
-            their own - so it keeps `gap-6`.
+            ⚠ A WIDER GUTTER IS NOT THE FIX FOR CARDS THAT LOOK
+            JOINED, AND WAS BRIEFLY MISTAKEN FOR ONE. These three read
+            as a single panel because each CARD overflowed its grid
+            track and painted over the gutter - see `w-full` on the
+            card below. The spacing was always there.
           */}
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-10">
+          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
             {counties.map((county) => (
               <li key={county.name}>
+                {/*
+                  ⚠⚠ `w-full` IS LOAD-BEARING. DO NOT DROP IT WHILE
+                  `aspect-[16/9]` IS ON THIS ELEMENT.
+
+                  This is a FLEX CONTAINER with an aspect ratio and a
+                  `min-h` floor. With no definite width, the browser is
+                  free to run the ratio the other way and size the
+                  WIDTH from the height: 240px x 16/9 = 427px, inside a
+                  384px grid track. Every card then overflowed its
+                  column by 43px, painted straight over the 24px
+                  gutter, and overlapped its neighbour by 2px - so the
+                  row rendered as one continuous map panel with
+                  hairlines through it, and widening the gap did
+                  nothing because the cards simply covered more of it.
+
+                  `w-full` makes the width definite, so the ratio can
+                  only derive the height, which is the direction it was
+                  always meant to run. Verified in the rendered page:
+                  cards land on the track edges exactly and all three
+                  gutters are visible.
+
+                  Each card also clips its OWN image and scrim -
+                  `overflow-hidden` and `rounded-md` are here, on the
+                  card, never on the list.
+                */}
                 <div
                   className={cn(
-                    'relative isolate flex h-full flex-col justify-end overflow-hidden rounded-md border border-border bg-surface',
+                    'relative isolate flex h-full w-full flex-col justify-end overflow-hidden rounded-md border border-border bg-surface',
                     county.image !== undefined
                       ? cn('aspect-[16/9]', CARD_MIN_HEIGHT)
                       : 'p-6',
