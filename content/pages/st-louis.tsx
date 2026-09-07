@@ -319,11 +319,11 @@ export const stLouisMarketContent: MarketPageContent = {
       title:
         'Not sure which sewer lateral program applies to your property?',
       body: 'Program rules, coverage boundaries, documentation requirements, and exclusions vary by municipality. Review the information for your property location or contact The Sewer Pros before scheduling an inspection.',
-      primary: {
+      guide: {
         label: 'Find Your Sewer Lateral Program',
         pageId: id('res-stl-lateral-report'),
       },
-      secondary: {
+      contact: {
         label: 'Ask About Your Property',
         pageId: id('core-contact'),
       },

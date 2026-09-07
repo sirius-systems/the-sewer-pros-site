@@ -348,11 +348,33 @@ export interface ResponsibilityContent {
    */
   diagram?: CardImage
   items: readonly ResponsibilityCard[]
+  /**
+   * The panel that sends the visitor to find THEIR answer.
+   *
+   * ⚠ THE FIELDS ARE NAMED FOR THEIR DESTINATIONS, NOT FOR VISUAL
+   * PRIORITY, AND THAT IS DELIBERATE. They shipped as `primary` and
+   * `secondary` on 2026-09-07 and the colours came out inverted: the
+   * GREEN conversion treatment landed on `primary`, which links to a
+   * programme GUIDE, while the actual conversion - contacting the
+   * business - wore the light secondary fill beside it.
+   *
+   * DEC-096 reserves green for conversion actions. Reading a guide is
+   * not one; asking about a property is. Naming the slots after where
+   * they go makes that impossible to get backwards again: `guide`
+   * renders blue, `contact` renders green, and neither name suggests
+   * an order that the colour then has to fight.
+   *
+   * `guide` still comes FIRST in reading order, because the panel's own
+   * copy says "review the information for your property location or
+   * contact The Sewer Pros" in that order.
+   */
   action: {
     title: string
     body: string
-    primary: { label: string; pageId: PageId }
-    secondary: { label: string; pageId: PageId }
+    /** Programme information. Renders blue: navigation, not conversion. */
+    guide: { label: string; pageId: PageId }
+    /** The conversion. Renders green. */
+    contact: { label: string; pageId: PageId }
   }
 }
 

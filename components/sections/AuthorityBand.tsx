@@ -439,21 +439,34 @@ export function AuthorityBand(props: AuthorityBandProps) {
 
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
           {/*
-            ⚠ `secondary`, NOT `primary`, AND NOT AN OVERSIGHT.
+            ⚠ GREEN SINCE 2026-09-07, WHERE THIS WAS THE LIGHT FILL.
 
-            This IS the primary action — it is the solid button, and the
-            secondary action beside it is a text link. But the solid
-            fill has to be the light one: `primary` is `bg-accent`, and
-            green on brand navy measures 2.61:1, under the 3:1 a
-            control's boundary needs to be identifiable. The light
-            button is what makes a primary action legible on this
-            surface, which is the reason this file already gave for the
-            single-CTA version.
+            This is the site's primary conversion action, and it now
+            wears the conversion colour on every surface: the header,
+            this band and the closing CTA all render `--accent`. The
+            light fill it replaced was chosen to keep a control legible
+            on a dark ground, and that reasoning is not wrong - it is
+            overridden:
+
+            ⚠ GREEN ON A DARK GROUND, NO BOUNDARY TREATMENT. Owner
+            direction, 2026-09-07, and the same decision recorded on
+            `CtaSection`'s phone action. The fill measures 2.61:1 on
+            brand navy and 1.15:1 over a scrimmed photograph, under the
+            3:1 a control's own BOUNDARY needs (WCAG 1.4.11); the white
+            LABEL on it is 5.45:1 and unaffected, so the action reads
+            even where its outline does not. The concern was raised and
+            the owner chose green for consistency with the header and
+            the closing CTA. Adding `ring-2 ring-white` restores the
+            boundary at 4.74:1 if that is ever wanted back.
+
+            ⚠ THIS BAND'S `process` VARIANT ONLY. The proof-point band
+            further down this file keeps its light button: eight
+            templates render that one, and nothing asked for it.
 
             The values come from `PRIMARY_CTA` via `authorityProcess`,
             so PENDING-007 stays a one-line change.
           */}
-          <ButtonLink href={content.primaryAction.href} variant="secondary">
+          <ButtonLink href={content.primaryAction.href} variant="primary">
             {content.primaryAction.label}
           </ButtonLink>
 

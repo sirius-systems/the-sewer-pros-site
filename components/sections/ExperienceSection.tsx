@@ -499,7 +499,15 @@ export function ExperienceSection({
         <ButtonLink href={primary.href} variant="primary">
           {primary.label}
         </ButtonLink>
-        <ButtonLink href={secondary.href} variant="secondary">
+        {/*
+          ⚠ BLUE, NOT THE LIGHT FILL. `accent` is `--accent-secondary`,
+          whose documented role is "secondary buttons, non-CTA
+          emphasis". This action navigates to another page rather than
+          converting, so it must NOT be green: DEC-096 keeps green for
+          the conversion, and a page where every action is green has no
+          hierarchy left to read.
+        */}
+        <ButtonLink href={secondary.href} variant="accent">
           {secondary.label}
         </ButtonLink>
         {phone !== undefined && (
@@ -675,9 +683,15 @@ export function ExperienceSection({
             >
               {primary.label}
             </ButtonLink>
+            {/*
+              ⚠ BLUE, MATCHING THE OTHER TWO VARIANTS' CLOSING ROW. This
+              action navigates to another page rather than converting,
+              so it must not be green: DEC-096 keeps green for the
+              conversion beside it.
+            */}
             <ButtonLink
               href={secondary.href}
-              variant="secondary"
+              variant="accent"
               className="w-full sm:w-auto"
             >
               {secondary.label}
@@ -686,14 +700,27 @@ export function ExperienceSection({
               /*
                 `ButtonLink` renders `next/link`, which is for routes and
                 `tel:` is not one. The site's tracked phone anchor wears
-                the tertiary button's classes so appearance still comes
-                from one place (18 §46), and `min-h-11` in that base
-                keeps it a 44px touch target (18 §48).
+                the button classes so appearance still comes from one
+                place (18 §46), and `min-h-11` in that base keeps it a
+                44px touch target (18 §48).
+
+                ⚠ GREEN, AND THAT IS A SECOND GREEN IN THIS PANEL. Owner
+                direction, 2026-09-07: calling is a conversion, so it
+                carries the conversion colour. 18 §106 asks for one
+                primary action per view and this panel now has two -
+                the trade the owner accepted, on the reading that a
+                caller and a scheduler are the same intent arriving by
+                different routes. The blue programme link beside them is
+                still clearly the one that is not an ask.
+
+                ⚠ `editorial` ONLY. The shared closing row further up
+                this file keeps its tertiary text link, so San Diego and
+                Las Vegas are unchanged.
               */
               <TrackedPhoneLink
                 phoneE164={phone.phoneE164}
                 ctaLocation="section_cta"
-                className={buttonClasses('tertiary', 'w-full sm:w-auto')}
+                className={buttonClasses('primary', 'w-full sm:w-auto')}
               >
                 Call {phone.label}
               </TrackedPhoneLink>
