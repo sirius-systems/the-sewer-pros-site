@@ -883,7 +883,21 @@ export interface ServicePageContent extends BasePageContent {
  * same behaviour `coverage` has always had.
  */
 export interface MarketPageContent extends BasePageContent {
-  /** Approved location pages within this market. */
+  /**
+   * Approved location pages within this market.
+   *
+   * ⚠⚠ NOTHING READS THIS FIELD TODAY. `MarketPageTemplate` mentions it
+   * only in comments; no section renders it. It fed the "Areas we
+   * serve" strip that was removed when it duplicated the coverage
+   * section beside it, and the field outlived the render.
+   *
+   * The consequence is live and worth knowing before deleting it: St.
+   * Louis links its communities through `serviceArea`, but San Diego
+   * and Las Vegas set neither `serviceArea` nor `coverage`, so their
+   * hubs link to NONE of their own location pages - seven and four
+   * respectively. Populating one of those two fields is the fix;
+   * repopulating this one would do nothing.
+   */
   locationPageIds?: readonly PageId[]
   /** Served communities plus an availability statement. No map. */
   coverage?: CoverageContent
@@ -892,8 +906,21 @@ export interface MarketPageContent extends BasePageContent {
    *
    * ⚠ ITS COMPOSITION DIFFERS PER MARKET ON PURPOSE. Three hubs
    * running one arrangement is the templated look 18 §155 names, so
-   * San Diego takes the `strip` variant where St. Louis and Las Vegas
-   * take `aside`. Same typography, cards, colour and spacing.
+   * each market picks a different arrangement of the same typography,
+   * cards, colour and spacing:
+   *
+   *   St. Louis   `editorial`
+   *   San Diego   `strip`
+   *   Las Vegas   `aside` (the default, set by omission)
+   *
+   * ⚠ THIS LIST WAS STALE AND IS CORRECTED HERE. It read "San Diego
+   * takes the `strip` variant where St. Louis and Las Vegas take
+   * `aside`", which was true for the hours between the variants
+   * shipping and `editorial` being added for St. Louis later the same
+   * day (2026-09-07). Behaviour was never wrong - `experienceVariant`
+   * defaults to `aside`, so Las Vegas rendered correctly under either
+   * reading - but a comment naming the wrong variant for a market is
+   * how the next person picks the wrong one.
    */
   experience?: ExperienceContent
   /** Layout for `experience`. Defaults to `aside`. */
