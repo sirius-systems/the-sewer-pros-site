@@ -347,24 +347,15 @@ export function ServiceAreaSection({
                   )}
 
                   {/*
-                    The authority blue accent, as its own layer rather
-                    than a `border-t-2` on the card.
-
-                    ⚠ THAT IS DELIBERATE. `cn()` is a plain join, not
-                    tailwind-merge, so a `border-t-2 border-t-accent-secondary`
-                    alongside the card's own `border border-border`
-                    would ship all four classes and let stylesheet
-                    order pick the winner. A painted bar cannot lose
-                    that argument.
-
-                    Blue, not green: DEC-096 reserves `--accent` for
-                    conversion, and a coverage card is not one.
+                    ⚠ NO ACCENT BAR ACROSS THE TOP OF THESE CARDS. One
+                    shipped on 2026-09-07 and was removed the same day
+                    on owner direction. Do not reinstate it without a
+                    new one: 18 §11 wants separation to come from the
+                    composition rather than from applied rules, and
+                    three blue lines over three dark maps read as
+                    decoration on a section whose job is a factual
+                    coverage statement.
                   */}
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 h-1 bg-accent-secondary"
-                  />
-
                   {/*
                     `relative` lifts the copy above the absolute layers
                     without a z-index: a positioned later sibling
