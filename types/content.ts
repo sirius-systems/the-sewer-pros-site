@@ -603,6 +603,39 @@ export interface CtaContent {
    * passing one sentence.
    */
   body?: ReactNode
+  /**
+   * Overrides the global CTA button label.
+   *
+   * ⚠ THE DEFAULT IS THE GLOBAL CONSTANT AND SHOULD USUALLY STAY. 18
+   * §155 lists inconsistent CTA wording as a failure, and `PRIMARY_CTA`
+   * exists so one phrase covers the site. A market overrides it only
+   * where naming the market is the point of the ask.
+   */
+  actionLabel?: string
+  /**
+   * Small print beneath the actions.
+   *
+   * ⚠ NOT FINE PRINT. St. Louis uses it for scheduling limits, which
+   * DEC-088 requires be stated at the same weight as the availability
+   * claim they qualify - never a footnote, an asterisk or a tooltip.
+   */
+  note?: ReactNode
+  /**
+   * Renders the phone as an outlined action rather than a sentence.
+   *
+   * ⚠ IT SUPPRESSES "Prefer to talk now?", because two phone
+   * affordances in one CTA is a second ask rather than a stronger one.
+   */
+  phoneAsButton?: boolean
+  /**
+   * Keeps the green primary button on an image ground.
+   *
+   * ⚠⚠ ONLY SAFE BECAUSE `CtaSection` RINGS IT IN WHITE. Green on a
+   * scrimmed photograph is 1.15:1 for the control's own boundary
+   * against a 3:1 floor. Read `CtaSectionProps.primaryOnImage` before
+   * setting this anywhere else.
+   */
+  greenPrimaryOnImage?: boolean
 }
 
 /* ==========================================================================

@@ -815,6 +815,24 @@ export function MarketPageTemplate({
         body={content.cta?.body}
         backgroundImage={content.ctaBackground}
         phone={phone}
+        /*
+          ⚠ FOUR OPTIONAL CTA TREATMENTS, ALL DEFAULTING TO WHAT EVERY
+          MARKET SHIPPED BEFORE. A market that sets none of them renders
+          exactly as it did; St. Louis sets all four on owner direction
+          (2026-09-07). `action` still falls back to the global
+          `PRIMARY_CTA` when no label is given, which is what keeps CTA
+          wording consistent across the site (18 §155).
+        */
+        action={
+          content.cta?.actionLabel !== undefined
+            ? { href: '/contact/', label: content.cta.actionLabel }
+            : undefined
+        }
+        note={content.cta?.note}
+        phoneVariant={content.cta?.phoneAsButton === true ? 'button' : 'text'}
+        primaryOnImage={
+          content.cta?.greenPrimaryOnImage === true ? 'accent' : 'surface'
+        }
         proof={
           content.ctaBackground !== undefined ? (
             <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">

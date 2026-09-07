@@ -1071,10 +1071,133 @@ export const stLouisMarketContent: MarketPageContent = {
   },
   relatedViewAllPageId: id('hub-resources'),
   faqEyebrow: 'Need a quick answer?',
+  /*
+    ==========================================================================
+    THE CLOSING CTA. Expanded 2026-09-07 on owner direction.
+    ==========================================================================
+    ⚠ THE BACKGROUND IMAGE AND THE FORM ARE UNCHANGED AND WERE ASKED TO
+    STAY. What grew is the left column, which held a heading, one
+    sentence and a phone line against a form roughly three times its
+    height - 425px of empty column beside it, measured.
+
+    ⚠⚠ THE SCHEDULING NOTE IS THE RISKIEST LINE ON THIS PAGE AND EVERY
+    CLAUSE OF IT IS CHECKED AGAINST DEC-088:
+
+      "Monday through Friday, 8:00am to 4:00pm"  matches
+          `verifiedOffers[1].card.facts[0].value` word for word.
+      "Same-day appointments may be available when scheduling permits"
+          is the APPROVED HEDGE. DEC-088 approved describing same-day
+          availability and forbids promising it. "May be available",
+          "when scheduling permits" - both halves are load-bearing and
+          neither may be dropped for brevity.
+      "We do not offer weekend, 24/7, or emergency service" matches
+          `facts[2].value`, and published weekday hours rule all three
+          out affirmatively (01 §35).
+
+    ⚠ DO NOT MOVE THIS NOTE INTO SMALLER OR DIMMER TEXT. DEC-088
+    requires the limits sit at the same weight as the claim they
+    qualify; `CtaSection` renders it in opaque white at `text-sm`, and
+    the scrim measurement forbids dimming it.
+
+    ⚠ THE COVERAGE SENTENCE NAMES THE PUBLISHED SERVICE AREA plus St.
+    Louis City, which has its own approved location page and appears in
+    the same list in the service-area section above. It ends by asking
+    the visitor to confirm rather than asserting coverage for them.
+
+    ⚠ NO REPAIR. "Because we do not perform sewer repair or
+    replacement" is the differentiator stated as this company's model,
+    not an accusation about anyone else's (CLAUDE.md §9, §27).
+  */
   cta: {
-    eyebrow: 'Evidence before expensive decisions',
-    title: 'Find out what condition the lateral is in',
-    body: 'Documented evidence of the line, from a company that does not perform the repair.',
+    eyebrow: 'Evidence before expensive sewer decisions',
+    title: 'Schedule a sewer camera inspection in St. Louis',
+    /*
+      ⚠ `max-w-prose` ON EACH BLOCK, NOT ON THE WRAPPER.
+      `CtaSection` caps `body` at `--container-reading` (672px); the
+      owner asked for 540 to 600px for this longer copy, and 65ch lands
+      at about 585. Setting it per block keeps that measure without a
+      new prop on a component six templates share.
+    */
+    body: (
+      <>
+        <p className="max-w-prose">
+          If you are dealing with recurring sewer backups, slow drainage
+          across multiple fixtures, concerns about an older sewer lateral,
+          or questions before purchasing a property, a professional sewer
+          camera inspection can show what is visible inside the accessible
+          line.
+        </p>
+        <p className="max-w-prose">
+          The Sewer Pros records the inspection and explains the footage in
+          plain language. A sewer scope may document root intrusion,
+          buildup, blockages, offset pipe joints, standing water, cracks, or
+          other visible conditions that can help determine whether sewer
+          cleaning, continued monitoring, or further evaluation is
+          appropriate.
+        </p>
+        <p className="max-w-prose">
+          Because we do not perform sewer repair or replacement, our
+          findings are not tied to selling you a major repair. You receive
+          evidence you can keep, review, and use when deciding what happens
+          next.
+        </p>
+
+        <h3 className="text-h4 font-semibold tracking-tight">
+          What you receive
+        </h3>
+
+        {/*
+          ⚠ WHITE CHECKS, NOT GREEN, AND IT IS NOT A PREFERENCE. The
+          owner asked for green check icons. `--accent` measures about
+          1.15:1 against the worst ground this scrimmed photograph can
+          present, so a green mark here is not a dark green tick - it is
+          an invisible one. White is the only tone the scrim's 4.76:1
+          measurement covers, and it matches every other mark in this
+          column. Flagged rather than done quietly.
+        */}
+        <ul className="max-w-prose space-y-3">
+          {[
+            'Recorded video of accessible portions of the sewer line',
+            'Documented findings explained in clear language',
+            'Information you can use for cleaning, maintenance, a property purchase, or a second opinion',
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-3">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="mt-1 size-5 shrink-0 text-white"
+              >
+                <path d="m4.5 12.5 5 5 10-11" />
+              </svg>
+              <span className="text-body leading-7">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p className="max-w-prose">
+          We provide sewer camera inspection, sewer cleaning, hydro jetting,
+          sewer line locating, and diagnostic services throughout St. Louis
+          City, St. Louis County, St. Charles County, Jefferson County, and
+          surrounding communities. Contact us to confirm availability for
+          your property.
+        </p>
+      </>
+    ),
+    actionLabel: 'Request a St. Louis Sewer Inspection',
+    greenPrimaryOnImage: true,
+    phoneAsButton: true,
+    note: (
+      <p>
+        Weekday appointments are available Monday through Friday, 8:00am to
+        4:00pm. Same-day appointments may be available when scheduling
+        permits. We do not offer weekend, 24/7, or emergency service.
+      </p>
+    ),
   },
   ctaBackground: {
     src: '/images/homepage/differentiator/the-sewer-pros-schedule-sewer-inspection-home-exterior.webp',

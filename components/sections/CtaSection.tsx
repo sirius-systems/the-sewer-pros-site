@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Section, ButtonLink } from "@/components/ui";
+import { Section, ButtonLink, buttonClasses } from "@/components/ui";
 import { PRIMARY_CTA } from "@/components/layout/cta";
 import { cn } from "@/lib/utils/cn";
 import type { CardImage } from "@/types";
@@ -107,6 +107,52 @@ export interface CtaSectionProps {
    * reason, and the final CTA does the same.
    */
   backgroundImage?: CardImage;
+  /**
+   * Keeps the green primary button on an image ground.
+   *
+   * ⚠⚠ THIS OVERRIDES A MEASURED DECISION, AND IT ONLY BECOMES SAFE
+   * BECAUSE OF THE RING. Read `backgroundImage` above first: green
+   * measures 1.15:1 against the worst ground a scrimmed photograph can
+   * present, against the 3:1 a control's own boundary needs, which is
+   * why an image normally drops the button to the light `secondary`
+   * fill.
+   *
+   * `accent` restores the green AND adds a white ring, which is what
+   * supplies the boundary the fill cannot: the ring measures 4.74:1
+   * against that worst ground and 5.45:1 against the green, and the
+   * white label on green is 5.45:1. All three clear their floors.
+   *
+   * ⚠ DO NOT PASS THIS WITHOUT THE RING STILL BEING THERE. Removing it
+   * leaves a green button that is, on some frames, invisible as a
+   * control. Owner direction, 2026-09-07.
+   *
+   * Defaults to `surface`, so every existing caller is unchanged.
+   */
+  primaryOnImage?: "surface" | "accent";
+  /**
+   * How the phone number renders.
+   *
+   *   text    "Prefer to talk now? {number}" as a sentence. The
+   *           default, and what every other market page shows.
+   *   button  an outlined action in the button row, labelled
+   *           "Call {number}".
+   *
+   * ⚠ `button` SUPPRESSES THE SENTENCE rather than showing both. Two
+   * phone affordances in one CTA is a second ask, not a stronger one
+   * (18 §62, §106).
+   */
+  phoneVariant?: "text" | "button";
+  /**
+   * Small print beneath the actions.
+   *
+   * ⚠ IT IS NOT FINE PRINT AND MUST NOT BE STYLED AS ANY. St. Louis
+   * uses it for scheduling limits - weekday hours, same-day hedged,
+   * and no weekend/24-7/emergency service - which DEC-088 requires be
+   * stated at the same weight as the availability claim itself, never
+   * demoted to a footnote or an asterisk. It renders at `text-sm` in
+   * the same opaque white as the body.
+   */
+  note?: ReactNode;
   className?: string;
 }
 
@@ -121,6 +167,9 @@ export function CtaSection({
   proof,
   phone,
   backgroundImage,
+  primaryOnImage = "surface",
+  phoneVariant = "text",
+  note,
   className,
 }: CtaSectionProps) {
   const isPanel = variant === "panel";
@@ -129,6 +178,15 @@ export function CtaSection({
     treatments. They are NOT the same for opacity — see the body below.
   */
   const onDark = isPanel || backgroundImage !== undefined;
+  /*
+    The green button survives an image ONLY with its ring. See
+    `primaryOnImage`. `panel` is excluded deliberately: its ground is
+    brand navy, where the existing light fill is already correct and no
+    owner decision asked for green.
+  */
+  const greenOnImage =
+    primaryOnImage === "accent" && backgroundImage !== undefined;
+  const phoneAsButton = phoneVariant === "button" && phone !== undefined;
 
   const content = (
     <div className={cn(variant === "split" && "lg:col-span-7")}>
@@ -215,16 +273,38 @@ export function CtaSection({
         secondary one, rather than leaving an empty flex box holding
         32px of top margin above nothing.
       */}
-      {(action !== null || secondaryAction !== undefined) && (
+      {(action !== null || secondaryAction !== undefined || phoneAsButton) && (
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          {/* See `backgroundImage` for why a dark ground forces `secondary`. */}
+          {/*
+            See `backgroundImage` for why a dark ground normally forces
+            `secondary`, and `primaryOnImage` for the one case that
+            opts back into green - the ring below is what makes that
+            legal rather than merely possible.
+          */}
           {action !== null && (
             <ButtonLink
               href={action.href}
-              variant={onDark ? "secondary" : "primary"}
+              variant={greenOnImage ? "primary" : onDark ? "secondary" : "primary"}
+              className={cn(greenOnImage && "ring-2 ring-white")}
             >
               {action.label}
             </ButtonLink>
+          )}
+
+          {phoneAsButton && phone !== undefined && (
+            /*
+              A plain `<a>`, not `ButtonLink`: that renders `next/link`,
+              which is for routes, and `tel:` is not one. It wears the
+              button classes so appearance still comes from one place
+              (18 §46), and `min-h-11` in that base keeps it a 44px
+              touch target (18 §48).
+            */
+            <a
+              href={phone.href}
+              className={buttonClasses("outline-on-dark")}
+            >
+              Call {phone.label}
+            </a>
           )}
           {secondaryAction !== undefined && (
             <ButtonLink
@@ -247,7 +327,7 @@ export function CtaSection({
         </div>
       )}
 
-      {phone !== undefined && (
+      {phone !== undefined && !phoneAsButton && (
         <p
           className={cn(
             "mt-4 text-sm",
@@ -266,6 +346,28 @@ export function CtaSection({
             {phone.label}
           </a>
         </p>
+      )}
+
+      {note !== undefined && (
+        /*
+          ⚠ OPAQUE WHITE OVER AN IMAGE, NEVER DIMMED. Same rule as the
+          body above: the scrim is sized so opaque white clears 4.5:1 by
+          0.26, and an opacity drops the worst case to 3.71:1. Small
+          text is exactly where that matters most, and DEC-088 requires
+          scheduling limits be as legible as the claim they qualify.
+        */
+        <div
+          className={cn(
+            "mt-6 max-w-prose text-sm leading-6",
+            backgroundImage !== undefined
+              ? "text-white"
+              : isPanel
+                ? "opacity-80"
+                : "text-muted-foreground",
+          )}
+        >
+          {note}
+        </div>
       )}
     </div>
   );
