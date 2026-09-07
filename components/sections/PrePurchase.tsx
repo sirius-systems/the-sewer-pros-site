@@ -195,9 +195,14 @@ export function PrePurchase({
               {primary.label}
             </ButtonLink>
             {secondary !== undefined && (
+              /*
+                ⚠ BLUE: this navigates to the service page rather than
+                converting. Green stays on the schedule action beside
+                it (DEC-096).
+              */
               <ButtonLink
                 href={secondary.href}
-                variant="secondary"
+                variant="accent"
                 className="w-full sm:w-auto"
               >
                 {secondary.label}

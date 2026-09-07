@@ -174,11 +174,11 @@ export function LateralResponsibility({
   id = 'lateral-responsibility',
   content,
 }: LateralResponsibilityProps) {
-  const primary = resolveApprovedLink(content.action.primary.pageId, {
-    label: content.action.primary.label,
+  const guide = resolveApprovedLink(content.action.guide.pageId, {
+    label: content.action.guide.label,
   })
-  const secondary = resolveApprovedLink(content.action.secondary.pageId, {
-    label: content.action.secondary.label,
+  const contact = resolveApprovedLink(content.action.contact.pageId, {
+    label: content.action.contact.label,
   })
 
   return (
@@ -292,24 +292,37 @@ export function LateralResponsibility({
         </p>
 
         {/*
-          One primary action (18 §106). `w-full sm:w-auto` fills the
-          column on a phone without stretching across a desktop row.
-          Nothing here is nested inside anything else interactive.
+          ⚠ COLOUR FOLLOWS THE DESTINATION, NOT THE READING ORDER, AND
+          THE ORDER HERE IS THE REVERSE OF THE EMPHASIS.
+
+          The guide comes first because the panel's copy offers it
+          first, but it navigates to a resource page - blue,
+          `--accent-secondary`, whose role is non-CTA emphasis. The
+          contact action is the conversion, so it carries the green
+          DEC-096 reserves for exactly that, even though it sits second.
+
+          This shipped inverted earlier the same day: green on the guide,
+          the light fill on `/contact/`. The fields are named `guide`
+          and `contact` now so the mistake cannot recur silently.
+
+          One green action per panel (18 §106). `w-full sm:w-auto` fills
+          the column on a phone without stretching across a desktop row,
+          and nothing here is nested inside anything else interactive.
         */}
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <ButtonLink
-            href={primary.href}
+            href={guide.href}
+            variant="accent"
+            className="w-full sm:w-auto"
+          >
+            {guide.label}
+          </ButtonLink>
+          <ButtonLink
+            href={contact.href}
             variant="primary"
             className="w-full sm:w-auto"
           >
-            {primary.label}
-          </ButtonLink>
-          <ButtonLink
-            href={secondary.href}
-            variant="secondary"
-            className="w-full sm:w-auto"
-          >
-            {secondary.label}
+            {contact.label}
           </ButtonLink>
         </div>
       </div>

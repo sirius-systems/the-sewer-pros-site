@@ -597,10 +597,18 @@ export function ServiceAreaSection({
                 closing CTA is further down, and 19 §32 exists to tell
                 the two placements apart.
               */
+              /*
+                ⚠ BLUE, BECAUSE THE GREEN BESIDE IT IS THE ASK. Calling
+                is a conversion too, but this panel already has one
+                primary (18 §106) and two greens side by side is no
+                hierarchy at all. `accent` is `--accent-secondary`,
+                whose role is exactly this: a weighty secondary action
+                that is not the page's conversion.
+              */
               <TrackedPhoneLink
                 phoneE164={phone.phoneE164}
                 ctaLocation="section_cta"
-                className={buttonClasses('secondary')}
+                className={buttonClasses('accent')}
               >
                 Call {phone.label}
               </TrackedPhoneLink>
