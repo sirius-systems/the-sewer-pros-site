@@ -55,6 +55,7 @@
 
 import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { coreServiceCards } from './service-cards'
 
 const id = (value: string): PageId => value as PageId
@@ -144,6 +145,23 @@ export const sanDiegoMarketContent: MarketPageContent = {
   */
   showHeroForm: true,
   heroFormMarketId: 'san-diego-ca',
+  /*
+    ⚠ SET EXPLICITLY, WHERE BOTH USED TO FALL BACK TO THE HERO TITLE.
+    Keyword round 1 (2026-09-07) makes `sewer inspection san diego` the
+    primary term; the hero reads "Sewer inspection and cleaning across
+    San Diego County", which carries the words in the wrong order.
+
+    ⚠ NO BRAND SUFFIX ON `seoTitle`. The root title template appends
+    "| The Sewer Pros"; writing it here would double it.
+
+    ⚠ THE DESCRIPTION CLAIMS NOTHING THE PAGE CANNOT KEEP. No price, no
+    same-day promise, no emergency service, no address, and no
+    competitor contrast. "Evidence before assumptions" is the
+    positioning stated as a model rather than a guarantee.
+  */
+  seoTitle: 'Sewer Inspection & Camera Inspection in San Diego',
+  metaDescription:
+    'Independent sewer camera inspection, diagnostics, and cleaning in San Diego. Evidence before assumptions, no repair-driven upselling. Request an inspection today.',
   body: (
     <>
       {CITY_OF_SAN_DIEGO_POLICY}
@@ -562,6 +580,133 @@ export const sanDiegoMarketContent: MarketPageContent = {
           to $3,000 and a CVSan lateral replacement grant programme in Chula
           Vista. In most of the county, including the City of San Diego, no
           programme was found.
+        </p>
+      ),
+    },
+    /*
+      ==========================================================================
+      SIX ENTRIES ADDED 2026-09-07 (Gate 2 approved). Three to nine.
+      ==========================================================================
+      ⚠ NINE, NOT EIGHT, AND THE DIFFERENCE FROM LAS VEGAS IS DELIBERATE.
+      Per-market composition is not supposed to converge (owner
+      direction, 2026-09-07), so this hub is not trimmed to match another
+      market's entry count.
+
+      ⚠ TWO OF THE EIGHT DRAFTED ENTRIES WERE DROPPED AS DUPLICATES, AND
+      THE THIRD THAT LOOKED LIKE ONE WAS KEPT:
+
+        "Does the City of San Diego pay for sewer lateral repairs?" is
+            the first live entry above, asked in different words.
+        "Why does sewer authority work differently across San Diego
+            County?" is answered by the two live entries above it.
+        "Who owns the sewer lateral, the homeowner or the city?" READS
+            like a duplicate of "Who is my sewer provider?" and is not.
+            One asks who bills you, the other asks who is liable for the
+            pipe. Both stay.
+
+      ⚠ NO `FAQPage` SCHEMA. Deferred by standing decision.
+
+      ⚠ NO COMPETITOR IS NAMED OR ALLUDED TO. Eleven were surfaced by
+      the competitive pass and none appears here, in the copy or in
+      these comments. The differentiation is the sourced City of San
+      Diego reimbursement position and the business model, nothing else.
+
+      ⚠ THE LINKS BELOW ADD NO WORDS. Each wraps a phrase the drafted
+      copy already contained, so the approved wording is verbatim. The
+      drain-cleaning and sewer-cleaning links in particular are the
+      agreed handling of `drain cleaning san diego`: point the intent at
+      `/services/drain-cleaning/`, which is its canonical target, rather
+      than building the hub a section that would compete with it.
+    */
+    {
+      question: 'Who owns the sewer lateral, the homeowner or the city?',
+      answer: (
+        <p>
+          In every San Diego County jurisdiction we have researched, the
+          property owner owns and is responsible for the lateral from the
+          building to the main sewer line. The city or district typically
+          maintains only the main line itself.
+        </p>
+      ),
+    },
+    {
+      question: 'What does a sewer camera inspection show?',
+      answer: (
+        <p>
+          A{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+            sewer camera inspection
+          </ApprovedInlineLink>{' '}
+          can reveal visible conditions inside accessible sewer piping,
+          including blockages, root intrusion, separated joints, offsets,
+          cracks, standing water, and other observable pipe conditions.
+        </p>
+      ),
+    },
+    {
+      /*
+        ⚠ THE LAST SENTENCE IS NOT OPTIONAL, AND IT IS COPIED RATHER
+        THAN REWORDED. "The buyer takes on full responsibility for that
+        line at closing" is a legal-consequence statement wearing the
+        clothes of a fact, and CLAUDE.md §26 keeps real estate content
+        informational. The disclaimer is the SAME STRING the Las Vegas
+        pre-purchase entry uses, verbatim, so the site carries one
+        version of it rather than two that drift apart.
+      */
+      question: 'Should I get a sewer inspection before buying a home in San Diego?',
+      answer: (
+        <p>
+          A sewer camera inspection gives you documented evidence of the sewer
+          line&rsquo;s condition before you close, which a standard home
+          inspection typically does not cover in the same depth. This is
+          especially useful given that San Diego&rsquo;s own lateral-ownership
+          rules mean the buyer takes on full responsibility for that line at
+          closing. This is informational, not legal advice.
+        </p>
+      ),
+    },
+    {
+      question: 'Is drain cleaning the same as sewer cleaning?',
+      answer: (
+        <p>
+          Not quite.{' '}
+          <ApprovedInlineLink pageId={id('svc-drain-cleaning')}>
+            Drain cleaning
+          </ApprovedInlineLink>{' '}
+          generally addresses individual fixture or branch-line clogs, while{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
+            sewer cleaning
+          </ApprovedInlineLink>{' '}
+          addresses the main sewer line itself. We offer both, and a camera
+          inspection can help identify which one actually addresses the problem
+          you are experiencing.
+        </p>
+      ),
+    },
+    {
+      question:
+        'Do you offer sewer inspections for commercial properties in San Diego?',
+      answer: (
+        <p>
+          Yes. We provide{' '}
+          <ApprovedInlineLink pageId={id('hub-commercial')}>
+            commercial sewer inspection and cleaning
+          </ApprovedInlineLink>{' '}
+          for property managers, facility operators, and commercial property
+          owners across the San Diego market.
+        </p>
+      ),
+    },
+    {
+      question:
+        'Does The Sewer Pros repair or replace sewer lines in San Diego?',
+      answer: (
+        <p>
+          No. We specialize in independent sewer inspection, diagnostics, and
+          cleaning, evidence before assumptions, rather than repair or
+          replacement work. If a camera inspection shows a problem that may
+          need repair, we can help you understand what you are looking at so
+          you can make an informed decision, without repair-driven pressure.
         </p>
       ),
     },
