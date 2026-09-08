@@ -296,6 +296,15 @@ export interface ScenarioCard {
    * an orphaned row, which 18 §5.6 prohibits by name.
    */
   featured?: boolean
+  /**
+   * Artwork for the FEATURED tile only.
+   *
+   * ⚠ IGNORED ON THE COMPACT CARDS, deliberately. They are a scannable
+   * row of situations; giving each one a photograph would turn the
+   * section into a gallery and make the featured tile stop reading as
+   * featured. One image, on the one card that has room for it.
+   */
+  image?: CardImage
 }
 
 /** When an inspection helps - customer situations, not symptoms. */
@@ -797,6 +806,12 @@ export interface ExperienceContent {
    * 18 §11 warns against decorating every section. A market with no
    * suitable photograph omits this and the heading runs full width,
    * which is a finished state rather than a gap (18 §40-42, §120).
+   *
+   * ⚠ `editorial` AND `strip` BOTH HONOUR IT SINCE 2026-09-08. It was
+   * read by `editorial` alone until San Diego, on `strip`, was given a
+   * 55/45 copy-and-frame split. `aside` still ignores it: that variant
+   * already puts a column beside the copy and has nowhere to put a
+   * second one.
    */
   image?: CardImage
   /**

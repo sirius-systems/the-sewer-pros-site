@@ -262,6 +262,18 @@ export const sanDiegoMarketContent: MarketPageContent = {
   */
   experienceVariant: 'strip',
   experience: {
+    /*
+      ⚠ ARRIVED 2026-09-08, AFTER THE STACK SHIPPED WITHOUT IT. The
+      section was built image-free because this file did not exist;
+      `strip` learned the 55/45 split when it did. 2896x2172, a true
+      4:3, so the frame crops nothing.
+    */
+    image: {
+      src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-inspection-experience.webp',
+      alt: 'Sewer camera inspection equipment at a San Diego residential property',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     eyebrow: 'Specialized experience, clear findings',
     title: 'Sewer inspection experience San Diego property owners can use',
     intro: [
@@ -430,6 +442,22 @@ export const sanDiegoMarketContent: MarketPageContent = {
           'Buyers can review recorded sewer-line evidence before closing instead of relying only on assumptions about a property’s underground systems.',
         icon: 'document',
         featured: true,
+        /*
+          ⚠ THE THIRD OF THE THREE SUPPLIED FRAMES, AND IT GOES HERE
+          RATHER THAN NOWHERE. The brief said to use it "only in the
+          featured pre-purchase card or as a restrained supporting
+          image", and not at all if it made the page repetitive. Two
+          frames sit above this one and both are 4:3 portrait-ish
+          crops; this is a wide 16:9 inside a card, which reads as a
+          different kind of element rather than a third photograph in
+          a row.
+        */
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-property-sewer-inspection.webp',
+          alt: 'San Diego residential property prepared for a sewer inspection',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
       },
       {
         title: 'Recurring sewer backups',
@@ -474,15 +502,22 @@ export const sanDiegoMarketContent: MarketPageContent = {
       'The goal of a sewer camera inspection is to give you useful evidence, not simply tell you that a problem exists. The footage and documented findings provide information you can review, revisit, and share when considering what happens next.',
     ],
     /*
-      ⚠ NO `image` KEY, DELIBERATELY. The intended asset
-      (`the-sewer-pros-san-diego-sewer-inspection-evidence.webp`) is
-      not in the repository; see the note above this stack.
+      ⚠ THE ASSET ARRIVED 2026-09-08 AND IS NOW WIRED. It was supplied
+      as a 2.5 MB PNG and converted to webp at 622 KB: every other
+      image on this site is webp and under 900 KB, and CLAUDE.md §59
+      names oversized assets directly. 2896x2172, a true 4:3.
 
       ⚠ NO "REPORT" ANYWHERE IN THIS LIST. "Documentation of visible
       conditions" is what the business produces; a formal written
       report is a different promise and is not verified for this
       service (CLAUDE.md §24).
     */
+    image: {
+      src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-inspection-evidence.webp',
+      alt: 'Sewer camera monitor and inspection documentation for a San Diego property',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     items: [
       {
         title: 'Recorded footage',
