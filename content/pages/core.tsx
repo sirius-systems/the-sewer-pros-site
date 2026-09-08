@@ -738,6 +738,29 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
   },
 
   [id('hub-locations')]: {
+    /*
+      ==========================================================================
+      CONVERSION AND TRUST PARITY WITH THE MARKET HUBS (DEC-103, 2026-09-07)
+      ==========================================================================
+      ⚠ THE ONLY HUB THAT SETS EITHER FLAG, AND THAT IS THE POINT. The
+      other four keep exactly the sections they had. This one is where
+      the gap cost the most: it is the page a visitor opens to find out
+      whether their area is covered, so it catches market-agnostic
+      intent that has nowhere better to land, and until now it answered
+      that intent with a single closing panel.
+
+      ⚠ NEITHER FLAG ADDS A CLAIM. `showTrustSections` renders reviews
+      that DEC-100 already established as company-wide and unattributed,
+      plus the confidence module, which is positioning rather than fact.
+      `showHeroForm` renders the same form the markets render, with the
+      Location field left unanswered because this page speaks for three
+      markets and cannot answer it (01 §20).
+
+      ⚠ NO PHONE NUMBER AND NO CTA IMAGE. Both are market-scoped and
+      neither exists for this page; see `HubPageTemplate`.
+    */
+    showHeroForm: true,
+    showTrustSections: true,
     hero: {
       title: 'Locations / Service Areas',
       intro: (
