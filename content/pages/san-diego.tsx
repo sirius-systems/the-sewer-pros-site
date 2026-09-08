@@ -377,25 +377,27 @@ export const sanDiegoMarketContent: MarketPageContent = {
       },
       {
         /*
-          ⚠ THE ONE CONDITION WITH NO PHOTOGRAPH, AND IT IS NOT AN
-          OVERSIGHT. Ten frames were supplied on 2026-09-08 and they
-          cover every card in this section and the scenarios below
-          except this one; nothing in the set depicts grease or scale.
+          ⚠ THE LAST CARD TO GET A FRAME, SUPPLIED 2026-09-08 AFTER THE
+          OTHER TEN. It held the icon fallback until then rather than
+          borrowing the blockage frame, which shows a different
+          condition; the note that explained that is gone because the
+          gap is.
 
-          It keeps its icon, which `ProblemGrid` renders inside the
-          same 4:3 frame the other five use, so the row stays one
-          geometry. Substituting the blockage frame would have been the
-          quickest fix and the wrong one: it shows a different
-          condition, and an image that contradicts its caption is worse
-          than no image (CLAUDE.md §24).
-
-          Drop a matching frame in and add an `image` key here.
+          ⚠ `icon` AND `accent` STAY. `ProblemGrid` uses them only when
+          a card has no image, so they cost nothing here and are what
+          the card falls back to if the frame is ever removed.
         */
         title: 'Grease and scale buildup',
         description:
           'Accumulated material can narrow the pipe and interfere with normal drainage.',
         icon: 'explanation',
         accent: 'green',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-grease-scale-buildup-camera-inspection.webp',
+          alt: 'Camera view of grease and scale buildup narrowing the inside of a sewer line',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
       },
       {
         title: 'Blockages',
