@@ -380,6 +380,26 @@ export interface IndependenceContent {
   }[]
 }
 
+/**
+ * Repair coverage and financial assistance, as a comparison.
+ *
+ * ⚠ ICON-LED AND DELIBERATELY PHOTOGRAPH-FREE. The sections either
+ * side of it carry 4:3 frames; a third in the middle would make the
+ * run read as a gallery, and there is nothing here a photograph could
+ * show that the text does not say better.
+ *
+ * ⚠ THE NOTE IS NOT DECORATION. Everything in this section is a
+ * statement about someone else's programme or policy, and those change.
+ * The note is where the reader is told to verify before relying on it.
+ */
+export interface RepairCoverageContent {
+  eyebrow?: string
+  title: string
+  intro?: readonly string[]
+  items: readonly ConditionCard[]
+  note: { title?: string; body: string }
+}
+
 /** Closing regional conversion panel. */
 export interface RegionalCoverageContent {
   eyebrow?: string
@@ -413,6 +433,19 @@ export interface RegionalCoverageContent {
    * whose page is gated drops out rather than shipping a dead link.
    */
   locations?: readonly { pageId: PageId; label: string }[]
+  /**
+   * ⚠ MARKET-SCOPED, like the phone. San Diego and Las Vegas publish
+   * different addresses (DEC-097), so this is authored per market and
+   * never supplied by the template.
+   */
+  email?: { label: string; href: string }
+  /**
+   * ⚠ STATE THE PUBLISHED HOURS AND NOTHING MORE. All three markets
+   * are weekdays 8:00am to 4:00pm, which affirmatively rules out
+   * emergency, weekend and 24/7 service (01 §35). Writing them here
+   * must never turn into a response-time or same-day promise.
+   */
+  hours?: string
   /**
    * Full-bleed frame behind the panel.
    *
@@ -1336,6 +1369,14 @@ export interface MarketPageContent extends BasePageContent {
    * Defaults to conditions, scenarios, deliverables.
    */
   authorityOrder?: readonly AuthoritySectionId[]
+  /**
+   * Repair coverage and assistance. Renders `ProblemGrid` plus a note.
+   *
+   * ⚠ ITS OWN SLOT RATHER THAN `lateralCards`, which renders the same
+   * component under `id="lateral-responsibility"`. Coverage is not
+   * lateral education and must not borrow that anchor.
+   */
+  repairCoverage?: RepairCoverageContent
   /** Conditions an inspection may reveal. Renders `ProblemGrid`. */
   conditions?: ConditionsContent
   /** When an inspection helps. Renders `ScenarioGrid`. */

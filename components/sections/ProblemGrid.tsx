@@ -93,6 +93,15 @@ export interface ProblemGridProps {
   items: readonly ProblemGridItem[]
   /** Overrides the section's natural surface. */
   surface?: SectionSurface
+  /**
+   * A highlighted note under the grid.
+   *
+   * ⚠ FOR CLAIMS THAT CAN GO STALE. It exists so a section describing
+   * someone else's programme, policy or eligibility rules can tell the
+   * reader to verify before relying on it, in a panel that does not
+   * read as one more card. Every existing caller omits it.
+   */
+  note?: { title?: string; body: string }
 }
 
 /**
@@ -124,6 +133,7 @@ export function ProblemGrid({
   intro,
   items,
   surface = 'default',
+  note,
 }: ProblemGridProps) {
   // 18 §120 — omit the section entirely rather than render an empty shell.
   if (items.length === 0) return null
@@ -196,6 +206,17 @@ export function ProblemGrid({
           )
         })}
       </div>
+
+      {note !== undefined && (
+        <div className="mt-8 rounded-md border border-warning/40 bg-warning/5 p-5 sm:p-6">
+          {note.title !== undefined && (
+            <p className="text-body font-semibold text-foreground">
+              {note.title}
+            </p>
+          )}
+          <p className="mt-1 text-body-sm text-muted-foreground">{note.body}</p>
+        </div>
+      )}
     </Section>
   )
 }
