@@ -758,7 +758,31 @@ export function ExperienceSection({
   if (variant === 'strip') {
     return (
       <Section {...sectionProps}>
-        {heading}
+        {/*
+          ⚠ THE IMAGE IS OPTIONAL AND ITS ABSENCE IS A COMPLETE LAYOUT.
+          With no frame the heading runs full width exactly as it did
+          before this variant learned about images, which is what keeps
+          Las Vegas and any future caller unchanged.
+
+          55/45 on the copy side, per the brief. `lg:items-start` so a
+          short intro does not drag the frame up the column.
+        */}
+        {content.image !== undefined ? (
+          <div className="grid gap-10 lg:grid-cols-[11fr_9fr] lg:items-start">
+            {heading}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-surface">
+              <Image
+                src={content.image.src}
+                alt={content.image.alt}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+            </div>
+          </div>
+        ) : (
+          heading
+        )}
 
         {/* The proof strip, directly under the introduction. */}
         <div className="mt-10">

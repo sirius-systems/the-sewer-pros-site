@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { SECTION_ICONS, CheckIcon } from './section-icons'
@@ -130,6 +131,30 @@ export function ScenarioGrid({
                 >
                   {item.title}
                 </h3>
+
+                {/*
+                  ⚠ FEATURED ONLY, AND BELOW THE HEADING RATHER THAN
+                  ABOVE IT. The tile leads with its icon and title so
+                  the card still scans as one of the six situations;
+                  an image at the top would make it read as a separate
+                  kind of block.
+
+                  ⚠ 16:9 HERE WHERE THE OTHER TWO FRAMES ON THIS PAGE
+                  ARE 4:3. The asset is 3344x1882 and the tile is wide
+                  and short, so the native ratio is also the one that
+                  crops least.
+                */}
+                {isFeatured && item.image !== undefined && (
+                  <div className="relative mt-4 aspect-[16/9] overflow-hidden rounded-md border border-border bg-surface-muted">
+                    <Image
+                      src={item.image.src}
+                      alt={item.image.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 42vw, 100vw"
+                    />
+                  </div>
+                )}
                 <p
                   className={cn(
                     'mt-2 text-muted-foreground',
