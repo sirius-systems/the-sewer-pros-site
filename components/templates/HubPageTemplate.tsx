@@ -4,6 +4,7 @@ import {
   TrustBar,
   ServiceIndex,
   MarketCoverage,
+  Differentiator,
   AuthorityBand,
   FaqSection,
   CtaSection,
@@ -229,6 +230,19 @@ export function HubPageTemplate({
   const showsRouting =
     content.routing !== undefined && routingCardsRenders(content.routing)
   const showsProcessBand = content.showProcessBand === true
+  /*
+    ⚠ TWO MORE HOME PAGE BANDS, BOTH OPT-IN (owner, 2026-09-08).
+    `Differentiator` is the comparison band and authors nothing per
+    page; `MarketCoverage` is "Where we work" as an EXTRA section
+    rather than as the member list, which is what `marketCards` makes
+    it. A hub setting `marketCards` already renders those cards, so the
+    flag is ignored there rather than shipping them twice.
+  */
+  const showsDifferentiator = content.showDifferentiator === true
+  const showsMarketCoverage =
+    content.showMarketCoverage === true &&
+    !showsMarketCards &&
+    marketCoverageRenders()
 
   /*
     ==========================================================================
@@ -266,6 +280,15 @@ export function HubPageTemplate({
   let previousSurface: SectionSurface = itemsSurface
   const servicesSurface = flip(previousSurface)
   if (showsServices) previousSurface = servicesSurface
+  /*
+    ⚠ THE PROCESS BAND SITS BETWEEN THESE TWO AND IS SKIPPED BY THE
+    CHAIN, exactly as it always has been: it renders over a photograph
+    where a page supplies `processBackground`, so it breaks the run on
+    its own and taking a turn here would flip the parity of everything
+    below it for no visible gain.
+  */
+  const marketCoverageSurface = flip(previousSurface)
+  if (showsMarketCoverage) previousSurface = marketCoverageSurface
   const confidenceSurface = flip(previousSurface)
   if (showsConfidence) previousSurface = confidenceSurface
   const faqSurface = flip(previousSurface)
@@ -274,9 +297,25 @@ export function HubPageTemplate({
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
-    ...(showsGuidance || content.body !== undefined
-      ? (['standard'] as const)
-      : []),
+    /*
+      ⚠ ONE ENTRY EACH, NOT ONE FOR THE PAIR. The prose band and the
+      guidance band used to be alternatives and shared a single entry;
+      `/services/` now renders both, so each contributes its own.
+    */
+    ...(content.body !== undefined ? (['standard'] as const) : []),
+    ...(showsGuidance ? (['standard'] as const) : []),
+    /*
+      ⚠ `dense`, WHERE THE HOME PAGE LETS THIS BAND DEFAULT TO
+      `standard`. Appendix A gives `dense` to comparisons and this
+      section IS one, so the value is the section's natural one rather
+      than a fix applied to make a check pass. It also has to be:
+      `/services/` renders prose, then guidance, then this, then the
+      reviews, and four `standard` bands in a row is the run
+      `sectionRhythmIssues()` reports by name. The composing template
+      is the only thing that can see that sequence, which is why
+      `Differentiator` takes a `density` prop at all.
+    */
+    ...(showsDifferentiator ? (['dense'] as const) : []),
     ...(showsReviews ? (['standard'] as const) : []),
     ...(showsRouting ? (['dense'] as const) : []),
     /*
@@ -300,6 +339,12 @@ export function HubPageTemplate({
     ...(showsServices ? (['dense'] as const) : []),
     // The process band, in the home page's slot. See the render.
     ...(showsProcessBand ? (['standard'] as const) : []),
+    /*
+      ⚠ `dense`, WHICH IS THE HOME PAGE'S OWN VALUE for this band and
+      the one `/locations/` gives it as a member list. The cards carry
+      their own internal rhythm.
+    */
+    ...(showsMarketCoverage ? (['dense'] as const) : []),
     // After the member list, as on the market hubs.
     ...(showsConfidence ? (['standard'] as const) : []),
     /*
@@ -377,15 +422,47 @@ export function HubPageTemplate({
         service-market distinction; the other four hubs keep the prose.
         See `HubPageContent.guidance` for why they are alternatives.
       */}
-      {showsGuidance && content.guidance !== undefined ? (
-        <MarketGuidance content={content.guidance} density="standard" />
-      ) : (
-        content.body !== undefined && (
-          <Section density="standard" width="reading">
-            <Prose>{content.body}</Prose>
-          </Section>
-        )
+      {/*
+        ⚠ BOTH, WHERE THIS USED TO BE ONE OR THE OTHER (owner,
+        2026-09-08). The two were alternatives while `/locations/` was
+        the only hub with a guidance band and its prose had been folded
+        into that band's cards. `/services/` was then asked for the
+        explainer ON TOP OF its own Prompt 04 paragraph, and dropping
+        the paragraph to add a section is not what "add a section"
+        means.
+
+        ⚠ PROSE FIRST, WHICH IS THE ORDER BOTH READINGS WANT. The
+        paragraph says what this page's services have in common; the
+        guidance band then says how the service areas work. Reversed,
+        the page would open on a digression about markets.
+
+        ⚠ NOTHING MOVES ON THE OTHER FOUR HUBS. `/locations/` sets only
+        `guidance`, the rest set only `body`, and a hub setting one
+        still renders exactly one band.
+      */}
+      {content.body !== undefined && (
+        <Section density="standard" width="reading">
+          <Prose>{content.body}</Prose>
+        </Section>
       )}
+
+      {showsGuidance && content.guidance !== undefined && (
+        <MarketGuidance content={content.guidance} density="standard" />
+      )}
+
+      {/*
+        ⚠ THE COMPARISON BAND, AND IT AUTHORS NOTHING PER PAGE.
+        `Differentiator` owns its heading and both columns, so the same
+        argument reads identically on every page that carries it, which
+        is what a positioning statement needs. `brand` is its own
+        default and is not overridden here.
+
+        ⚠ ITS NEIGHBOURS MUST NOT BE BRAND. Above it is the prose or the
+        guidance band, below it the review band; none of the three ever
+        takes that surface, so the one adjacency rule this fixed surface
+        imposes is already satisfied.
+      */}
+      {showsDifferentiator && <Differentiator density="dense" />}
 
       {/*
         ⚠ MUTED, WHERE THE MARKET HUBS RENDER THIS WHITE, AND THE
@@ -554,6 +631,27 @@ export function HubPageTemplate({
       )}
 
       {/* After the member list, as on the market hubs. */}
+      {/*
+        ⚠ "Where we work" AS AN EXTRA BAND, NOT AS THE MEMBER LIST.
+        `/locations/` renders these same cards from `marketCards`
+        BECAUSE its members are the markets; here the member list is
+        the service mosaic and this is a second section, in the home
+        page's own slot between the process band and the confidence
+        module.
+
+        ⚠ `dense`, MATCHING THE HOME PAGE AND `/locations/`. The cards
+        carry their own rhythm and the density array states the same
+        value.
+
+        ⚠ NO TITLE, EYEBROW OR PER-CARD COPY IS PASSED. `MarketCoverage`
+        titles itself "Where we work" and builds its cards from
+        approved `market` records, so a gated market drops out on its
+        own and this file names no city and no route.
+      */}
+      {showsMarketCoverage && (
+        <MarketCoverage density="dense" surface={marketCoverageSurface} />
+      )}
+
       {showsConfidence && (
         <ConfidenceModule density="standard" surface={confidenceSurface} />
       )}
@@ -576,7 +674,20 @@ export function HubPageTemplate({
         the module, not the flag, because the module is the neighbour.
       */}
       {content.faq !== undefined && (
-        <FaqSection entries={content.faq} surface={faqSurface} />
+        /*
+          ⚠ `columns` IS THE HUB'S OWN, DEFAULTING TO ONE. Passing
+          `content.faqColumns` straight through leaves every hub that
+          does not set it rendering exactly as before, including
+          `/commercial/` at three questions and `/locations/` at nine.
+          See `HubPageContent.faqColumns` for why this is authored
+          rather than derived from the entry count.
+        */
+        <FaqSection
+          entries={content.faq}
+          title={content.faqTitle}
+          columns={content.faqColumns}
+          surface={faqSurface}
+        />
       )}
 
       {/*

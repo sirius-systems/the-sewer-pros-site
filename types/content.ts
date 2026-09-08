@@ -1707,6 +1707,46 @@ export interface HubPageContent extends BasePageContent {
    */
   heroFormIntro?: string
   /**
+   * Splits the FAQ into two columns of questions.
+   *
+   * ⚠ AUTHORED, NOT DERIVED FROM THE ENTRY COUNT, and that is the
+   * whole point of the field. A threshold would put `/locations/` one
+   * new question away from silently changing layout: it carries nine
+   * today against `/services/`'s fourteen, and DEC-103 recorded its
+   * rendered output exactly. An opt-in cannot leak.
+   *
+   * ⚠ THE SPLIT IS EVEN, AND THE COLUMNS READ DOWN. `FaqSection`
+   * halves with `ceil`, so fourteen entries give seven and seven and an
+   * odd count puts the extra one on the left. Reading order is DOM
+   * order down the first column and then the second, so nothing is
+   * reordered to achieve the shape.
+   *
+   * ⚠ IT ALSO WIDENS THE BAND. The two-column branch drops
+   * `width="reading"`, because one reading measure cannot hold two
+   * accordion columns without each becoming unreadably narrow. A hub
+   * with a short list should stay at `1` for that reason alone.
+   *
+   * ⚠ ONLY `/services/` SETS THIS. `/commercial/` has three questions
+   * and `/locations/` nine; splitting either would leave thin columns,
+   * which is the case `FaqSection.columns` documents against.
+   */
+  faqColumns?: 1 | 2
+  /**
+   * Overrides the FAQ heading.
+   *
+   * ⚠ `FaqSection`'s default is "Common questions", which is right for
+   * a hub whose subject the heading above it already named.
+   * `/services/` takes the home page's fuller "Common questions about
+   * sewer and drain services" (owner, 2026-09-08): its FAQ is fourteen
+   * entries in two columns, far enough down a long page that the
+   * two-word heading stopped saying what the questions were about.
+   *
+   * ⚠ IT IS AN H2 AND THE SECTION'S OWN LABEL. `Section` points
+   * `aria-labelledby` at it, so this string names the landmark as well
+   * as heading the band.
+   */
+  faqTitle?: string
+  /**
    * Renders `ReviewMarquee` and `ConfidenceModule`, the two trust
    * sections the market hubs carry.
    *
@@ -1749,16 +1789,57 @@ export interface HubPageContent extends BasePageContent {
     image?: CardImage
   }[]
   /**
-   * The service-area explainer, REPLACING the plain `body` prose.
+   * The service-area explainer band.
    *
-   * ⚠ SET THIS OR `body`, NOT BOTH. The template prefers this one and
-   * skips the prose band entirely, so a hub setting both would author
-   * a paragraph nothing renders.
+   * ⚠ IT NO LONGER REPLACES `body`, AS OF 2026-09-08. It used to: the
+   * template rendered one intro band in one of two presentations, and
+   * this note said to set one or the other. `/services/` was then asked
+   * for BOTH - its own Prompt 04 paragraph and this explainer - so the
+   * template now renders whichever are present, prose first. `/locations/`
+   * sets only this one and is unaffected, and a hub that sets only
+   * `body` is likewise unchanged.
    *
    * ⚠ IT IS `muted`, WHICH THE REST OF THE PAGE IS DERIVED FROM. The
    * band below it takes the opposite surface; see `HubPageTemplate`.
    */
   guidance?: MarketGuidanceContent
+  /**
+   * Renders `Differentiator`, the home page's comparison band.
+   *
+   * ⚠ IT CARRIES NO PER-PAGE CONTENT, WHICH IS WHY THIS IS A BOOLEAN.
+   * The component owns its own heading and both columns of the
+   * comparison; a page opts into the band, it does not author it. That
+   * also means the argument reads identically wherever it appears,
+   * which is the point of a positioning statement.
+   *
+   * ⚠ `brand` AND FIXED. It is the section's own default and the
+   * template does not override it, so the bands either side must not be
+   * brand. Today they are the intro prose or the guidance band above
+   * and the review band below, none of which is.
+   *
+   * ⚠ ONLY `/services/` SETS THIS.
+   */
+  showDifferentiator?: boolean
+  /**
+   * Renders `MarketCoverage` as its own band, the way the home page
+   * does.
+   *
+   * ⚠ THIS IS NOT `marketCards`, AND THE DIFFERENCE MATTERS. That field
+   * makes the market cards the hub's MEMBER LIST, which is why setting
+   * it suppresses `items`; `/locations/` uses it because its members
+   * ARE the markets. This flag adds the same section as an EXTRA band
+   * on a hub whose member list is something else, so `/services/` keeps
+   * its service mosaic and gains "Where we work" below it.
+   *
+   * ⚠ IGNORED WHERE `marketCards` IS SET. A page cannot render the
+   * cards twice, and the member list wins.
+   *
+   * ⚠ NO COPY IS AUTHORED HERE. `MarketCoverage` builds its cards from
+   * approved `market` page records and titles itself "Where we work",
+   * so a gated market drops out on its own and no city name is written
+   * into the content file.
+   */
+  showMarketCoverage?: boolean
   /**
    * Intent-routing cards, the same "How we can help" band the home
    * page and the three market hubs render.
