@@ -782,6 +782,22 @@ export interface PrePurchaseContent {
    * destination canonical while the label stays put through a rename.
    */
   resources: readonly { pageId: PageId; label: string }[]
+  /**
+   * Fill for the resource cards.
+   *
+   * ⚠ DEFAULTS TO THE NEUTRAL CARD, WHICH IS WHAT ST. LOUIS SHIPS.
+   * That card already flips between `surface-muted` and `surface` so
+   * it reads as raised off whichever surface the section is on, and
+   * changing it globally would have restyled a page nobody asked
+   * about.
+   *
+   * `blue` fills them with `--accent-secondary`, this system's
+   * navigation and non-CTA emphasis colour (DEC-096). These cards are
+   * navigation, so it is the right half of the palette; it is opt-in
+   * only because the neutral treatment is also correct and one market
+   * asked to change.
+   */
+  resourcesAccent?: 'surface' | 'blue'
 }
 
 /* ==========================================================================
