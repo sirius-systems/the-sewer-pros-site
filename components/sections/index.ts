@@ -220,3 +220,10 @@ export type { MarketCoverageProps } from './MarketCoverage'
 
 export { CtaSection } from './CtaSection'
 export type { CtaSectionProps, CtaVariant } from './CtaSection'
+/*
+  Not a section - one list item for the closing CTA's body, shared by
+  the San Diego and Las Vegas hubs. It sits here because it reads
+  `SECTION_ICONS`, and a `components/ui` home would have pointed the
+  primitives layer at this one.
+*/
+export { CtaBenefit } from './CtaBenefit'

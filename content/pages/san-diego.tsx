@@ -56,7 +56,7 @@
 import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
-import { SECTION_ICONS } from '@/components/sections/section-icons'
+import { CtaBenefit } from '@/components/sections'
 import { coreServiceCards } from './service-cards'
 
 const id = (value: string): PageId => value as PageId
@@ -83,37 +83,6 @@ const CITY_OF_SAN_DIEGO_POLICY = (
     </p>
   </>
 )
-
-/**
- * One line of the closing CTA's "what you can expect" list.
- *
- * ⚠ LOCAL TO THIS FILE ON PURPOSE. It is four list items on one
- * section of one page, not a pattern; promoting it to a shared
- * component would put a card-grid-shaped thing in the sections barrel
- * for a job a `<li>` already does.
- *
- * ⚠ THE MARK IS DECORATIVE. `baseIconProps` sets `aria-hidden`, and
- * the item's own text carries the meaning.
- *
- * ⚠ WHITE, BECAUSE THIS CTA SITS ON A PHOTOGRAPH. `CtaSection` sets
- * `text-white` on the body wrapper and the icon inherits `currentColor`
- * from it, so nothing here names a colour.
- */
-function CtaBenefit({
-  icon,
-  children,
-}: {
-  icon: 'guidance' | 'camera' | 'explanation' | 'document'
-  children: React.ReactNode
-}) {
-  const Icon = SECTION_ICONS[icon]
-  return (
-    <li className="flex gap-3">
-      <Icon className="mt-1 h-5 w-5 shrink-0" />
-      <span>{children}</span>
-    </li>
-  )
-}
 
 /* ==========================================================================
    Market hub — /san-diego-ca/
