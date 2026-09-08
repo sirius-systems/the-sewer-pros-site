@@ -56,6 +56,7 @@
 import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
+import { SECTION_ICONS } from '@/components/sections/section-icons'
 import { coreServiceCards } from './service-cards'
 
 const id = (value: string): PageId => value as PageId
@@ -82,6 +83,37 @@ const CITY_OF_SAN_DIEGO_POLICY = (
     </p>
   </>
 )
+
+/**
+ * One line of the closing CTA's "what you can expect" list.
+ *
+ * ⚠ LOCAL TO THIS FILE ON PURPOSE. It is four list items on one
+ * section of one page, not a pattern; promoting it to a shared
+ * component would put a card-grid-shaped thing in the sections barrel
+ * for a job a `<li>` already does.
+ *
+ * ⚠ THE MARK IS DECORATIVE. `baseIconProps` sets `aria-hidden`, and
+ * the item's own text carries the meaning.
+ *
+ * ⚠ WHITE, BECAUSE THIS CTA SITS ON A PHOTOGRAPH. `CtaSection` sets
+ * `text-white` on the body wrapper and the icon inherits `currentColor`
+ * from it, so nothing here names a colour.
+ */
+function CtaBenefit({
+  icon,
+  children,
+}: {
+  icon: 'guidance' | 'camera' | 'explanation' | 'document'
+  children: React.ReactNode
+}) {
+  const Icon = SECTION_ICONS[icon]
+  return (
+    <li className="flex gap-3">
+      <Icon className="mt-1 h-5 w-5 shrink-0" />
+      <span>{children}</span>
+    </li>
+  )
+}
 
 /* ==========================================================================
    Market hub — /san-diego-ca/
@@ -1372,6 +1404,32 @@ export const sanDiegoMarketContent: MarketPageContent = {
       now?" above the number, so the note picks up after it.
     */
   cta: {
+    /*
+      ⚠ NO BUTTON IN THIS CTA (owner, 2026-09-08). The section already
+      carries the request-service form on its right, and its submit
+      control is the primary action. A "Schedule a Sewer Inspection"
+      button beside it was a second ask pointing at a different page,
+      which splits the conversion rather than strengthening it.
+
+      ⚠ `hideAction`, NOT AN EMPTY `actionLabel`. `CtaSection` treats
+      `null` as "no button" and `undefined` as "fall back to the global
+      PRIMARY_CTA", and it drops the whole actions row rather than
+      leaving an empty flex box holding 32px of margin above nothing.
+
+      ⚠ THE FORM GUIDANCE MOVED INTO THIS COLUMN and out of
+      `ctaFormIntro`. The owner's hierarchy puts it as the second-last
+      line of the copy, immediately before the phone, so a reader meets
+      it after the argument rather than as a label on the fields. Las
+      Vegas still uses `ctaFormIntro`; the field stays.
+
+      ⚠ THE PHONE LINE IS THE COMPONENT'S, NOT WRITTEN HERE.
+      `CtaSection` renders "Prefer to talk now?" followed by the
+      market's own number from `marketOperatingDetail`, and `note`
+      picks up after it with the published hours. Writing a second
+      phone sentence into this body would put two numbers in one
+      column.
+    */
+    hideAction: true,
     eyebrow: 'San Diego sewer inspection and cleaning',
     title: 'Get clear information about what is happening in your sewer line',
     body: (
@@ -1379,8 +1437,8 @@ export const sanDiegoMarketContent: MarketPageContent = {
         <p>
           Whether you are dealing with recurring sewer backups, multiple slow
           drains, an unknown sewer-line condition, or questions before buying a
-          property, The Sewer Pros can help you document what is visible inside
-          the accessible line.
+          property, The Sewer Pros can help document what is visible inside the
+          accessible line.
         </p>
         <p>
           Our San Diego sewer services include sewer camera inspection, sewer
@@ -1389,43 +1447,65 @@ export const sanDiegoMarketContent: MarketPageContent = {
           record visible conditions, and explain the findings in practical
           language so you can make your next decision with better information.
         </p>
-        <h3>What you can expect</h3>
-        <ul>
-          <li>
-            A service request matched to the symptoms or property concern you
-            describe
-          </li>
-          <li>
-            Recorded camera footage when a sewer camera inspection is performed
-          </li>
-          <li>
-            Documentation of visible conditions inside accessible portions of
-            the line
-          </li>
-          <li>
-            A clear explanation of what the inspection findings may mean
-          </li>
-          <li>
-            Cleaning, hydro jetting, or line locating when appropriate for the
-            condition
-          </li>
-          <li>
+        {/*
+          ⚠ FEATURED COMMUNITIES, THEN THE ASK, IN THAT ORDER AND IN ONE
+          PARAGRAPH. This market publishes no service area
+          (`serviceAreaSource` is `derived_from_approved_locations`,
+          DEC-077), so the list must never be read as a boundary. The
+          sentence that follows it is what prevents that and cannot be
+          separated from it.
+        */}
+        <p>
+          Service is available across the greater San Diego area, including
+          featured communities such as San Diego, San Marcos, Carlsbad,
+          Escondido, Oceanside, Chula Vista, and Mission Valley. Provide the
+          property location so current coverage can be confirmed.
+        </p>
+
+        <h3 className="text-body font-semibold">What you can expect</h3>
+        <ul className="space-y-3 text-body">
+          <CtaBenefit icon="guidance">
+            Help identifying an appropriate starting service based on the
+            symptoms you describe
+          </CtaBenefit>
+          <CtaBenefit icon="camera">
+            Recorded footage and documentation of visible conditions when an
+            inspection is performed
+          </CtaBenefit>
+          <CtaBenefit icon="explanation">
+            A clear explanation of what the accessible sewer line shows
+          </CtaBenefit>
+          <CtaBenefit icon="document">
             Evidence you can keep for maintenance planning, a property
             transaction, or a second opinion
-          </li>
+          </CtaBenefit>
         </ul>
-        <p>
+
+        {/*
+          ⚠ A RULE, NOT A CARD. The brief asked for the trust statement
+          to read as distinct; a bordered panel here would be the fifth
+          boxed thing in one column. A left rule separates it at a
+          fraction of the weight.
+
+          ⚠ IT IS ABOUT THIS BUSINESS ONLY, and must never be edited
+          into a claim about what other contractors do (CLAUDE.md §9).
+        */}
+        <p className="border-l-2 border-white/40 pl-4">
           The Sewer Pros does not perform sewer repair or replacement. If the
           inspection identifies a condition that may require structural work,
           you can use the documented findings when consulting a separate repair
           provider.
         </p>
+
+        <p>
+          Complete the service-request form and tell us what is happening at
+          the property. If you are unsure which service you need, describe the
+          symptoms in the message field.
+        </p>
       </>
     ),
     note: 'Monday through Friday, 8:00am to 4:00pm.',
   },
-  ctaFormIntro:
-    'Complete the service-request form and tell us what is happening at the property. If you are unsure which service you need, describe the symptoms in the message field and we can help identify the appropriate starting point.',
   /*
     Flips the closing CTA from the `panel` button to the split layout:
     copy left, lead form right, over this frame. Same structure as the
