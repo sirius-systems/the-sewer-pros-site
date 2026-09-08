@@ -69,6 +69,34 @@ export function ScenarioGrid({
   */
   const framed = content.items.some((item) => item.image !== undefined)
 
+  /*
+    ==========================================================================
+    TWO MOSAIC SHAPES. See `ScenariosContent.featureLayout`.
+    ==========================================================================
+    ⚠ `banner` DERIVES ITS COLUMN SPANS FROM `items`, NOT FROM FIXED
+    NUMBERS. The cards before the feature share the row above it and
+    the cards after share the row below, so each group divides the
+    six-column track between them: two before is 3 each, three after is
+    2 each. Hard-coding those would break the day a card moved.
+
+    ⚠ SIX COLUMNS BECAUSE SIX DIVIDES BY 1, 2, 3 AND 6. A group of four
+    or five has no clean span, so those fall back to a whole row each
+    rather than orphaning a cell (18 §5.6).
+  */
+  const banner = content.featureLayout === 'banner' && featuredIndex >= 0
+  const spanFor = (count: number): string =>
+    count === 1
+      ? 'lg:col-span-6'
+      : count === 2
+        ? 'lg:col-span-3'
+        : count === 3
+          ? 'lg:col-span-2'
+          : count === 6
+            ? 'lg:col-span-1'
+            : 'lg:col-span-6'
+  const beforeCount = featuredIndex
+  const afterCount = content.items.length - featuredIndex - 1
+
   const action =
     content.action !== undefined
       ? resolveApprovedLink(content.action.pageId, {
@@ -96,7 +124,19 @@ export function ScenarioGrid({
         CLEANLY. Without it the row heights are content-derived and the
         tall tile stops aligning with the pair beside it.
       */}
-      <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:auto-rows-fr lg:grid-cols-3">
+      <ul
+        className={cn(
+          'mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6',
+          /*
+            ⚠ NO `auto-rows-fr` ON THE BANNER. That exists to give the
+            corner tile two equal rows to span; with the feature on a
+            row of its own there is nothing to equalise, and forcing
+            equal tracks would make the two-card row as tall as the
+            banner.
+          */
+          banner ? 'lg:grid-cols-6' : 'lg:auto-rows-fr lg:grid-cols-3',
+        )}
+      >
         {content.items.map((item, index) => {
           const isFeatured = index === featuredIndex
           const Icon =
@@ -107,6 +147,25 @@ export function ScenarioGrid({
               key={item.title}
               className={cn(
                 'h-full',
+                /*
+                  ⚠ THE BANNER'S SPANS COME FROM THE ITEM'S POSITION
+                  RELATIVE TO THE FEATURE, so DOM order and visual
+                  order cannot drift apart. The last card of an odd
+                  trailing group fills the leftover column at `sm`,
+                  which is what `ProblemGrid` already does with a
+                  remainder rather than leaving a hole.
+                */
+                banner &&
+                  (isFeatured
+                    ? 'sm:col-span-2 lg:col-span-6'
+                    : cn(
+                        index < featuredIndex
+                          ? spanFor(beforeCount)
+                          : spanFor(afterCount),
+                        index === content.items.length - 1 &&
+                          afterCount % 2 === 1 &&
+                          'sm:col-span-2',
+                      )),
                 /*
                   ⚠ `lg:h-auto lg:self-start` IS THE WHOLE FIX FOR THE
                   BLANK HALF OF THIS CARD. The tile spans two rows so
@@ -127,13 +186,15 @@ export function ScenarioGrid({
                   feature sits beside one compact card, and `h-full` is
                   what keeps that pair level.
                 */
-                isFeatured && 'sm:col-span-2 lg:row-span-2 lg:h-auto lg:self-start',
+                !banner &&
+                  isFeatured &&
+                  'sm:col-span-2 lg:row-span-2 lg:h-auto lg:self-start',
               )}
             >
               <article
                 className={cn(
                   'flex h-full flex-col rounded-md border border-border bg-surface',
-                  isFeatured && 'lg:h-auto',
+                  !banner && isFeatured && 'lg:h-auto',
                   framed && 'overflow-hidden',
                   /*
                     ⚠ THE FEATURE'S VERTICAL PADDING IS TIGHTER THAN
@@ -190,7 +251,20 @@ export function ScenarioGrid({
                   <div
                     className={
                       isFeatured
-                        ? 'relative -mx-6 -mt-5 mb-3 aspect-[16/9] overflow-hidden rounded-t-md bg-surface-muted'
+                        ? cn(
+                            'relative -mx-6 -mt-5 mb-3 aspect-[16/9] overflow-hidden rounded-t-md bg-surface-muted',
+                            /*
+                              ⚠ WIDER WHEN THE FEATURE IS A FULL-WIDTH
+                              BANNER. 16:9 across six columns is over
+                              600px tall on a laptop, which is the
+                              "excessively tall" the brief rules out.
+                              21:9 crops a horizontal band from the
+                              same 3344x1882 asset and keeps the card
+                              in proportion; below `lg` the card is not
+                              full width, so 16:9 still applies.
+                            */
+                            banner && 'lg:aspect-[21/9]',
+                          )
                         : 'relative -mx-5 -mt-5 mb-4 aspect-[4/3] overflow-hidden rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6'
                     }
                   >
@@ -210,7 +284,10 @@ export function ScenarioGrid({
                   <div
                     className={
                       isFeatured
-                        ? '-mx-6 -mt-5 mb-3 flex aspect-[16/9] items-center justify-center rounded-t-md bg-surface-muted'
+                        ? cn(
+                            '-mx-6 -mt-5 mb-3 flex aspect-[16/9] items-center justify-center rounded-t-md bg-surface-muted',
+                            banner && 'lg:aspect-[21/9]',
+                          )
                         : '-mx-5 -mt-5 mb-4 flex aspect-[4/3] items-center justify-center rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6'
                     }
                   >
