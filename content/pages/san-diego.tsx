@@ -873,11 +873,21 @@ export const sanDiegoMarketContent: MarketPageContent = {
       ⚠ THE BRIEF SAID TO SKIP THIS IF ANOTHER FINAL CTA FOLLOWS, AND
       ONE DOES. It is used anyway, on two grounds: the page's closing
       CtaSection carries a DIFFERENT frame
-      (`homepage/hero/the-sewer-pros-pipe-condition-review-hero.webp`),
-      so nothing is duplicated, and Las Vegas already ships exactly
-      this pairing - a coverage panel on its own frame above a separate
-      closing CTA on another. Flag rather than assume: dropping the
-      `backgroundImage` key is all it takes to reverse.
+      (`homepage/hero/the-sewer-pros-san-diego-residential-service-cta.webp`
+      since 2026-09-08), so no asset is used twice, and Las Vegas
+      already ships exactly this pairing - a coverage panel on its own
+      frame above a separate closing CTA on another. Flag rather than
+      assume: dropping the `backgroundImage` key is all it takes to
+      reverse.
+
+      ⚠ THE TWO FRAMES NOW RHYME, WHERE THEY USED TO CONTRAST. The
+      closing CTA's old frame was an equipment close-up; its
+      replacement is another single-storey stucco house with a tile
+      roof and drought-tolerant planting, much like this one. Five
+      sections sit between them - service area, routing, services,
+      related locations and the FAQ - so they are never in view
+      together, but a third residential exterior on this page would
+      start to read as one repeated picture.
 
       ⚠ THE SCRIM IS CSS, THE ASSET CARRIES NONE. `Section` applies it,
       which is why the panel's text switches to white here.
@@ -1480,11 +1490,35 @@ export const sanDiegoMarketContent: MarketPageContent = {
     copy left, lead form right, over this frame. Same structure as the
     home page and the St. Louis hub.
   */
+  /*
+    ⚠ REPLACED THE PIPE-CONDITION FRAME ON OWNER DIRECTION
+    (2026-09-08). This one is a residential exterior rather than an
+    equipment close-up, so the closing ask sits against the kind of
+    property the market serves.
+
+    ⚠ THE PREVIOUS ASSET IS NOT ORPHANED.
+    `homepage/hero/the-sewer-pros-pipe-condition-review-hero.webp` is
+    still one of the five frames `data/business/hero-backdrop.ts`
+    rotates on the home page, so it stays where it is.
+
+    ⚠ IT NOW RHYMES WITH THE COVERAGE PANEL'S FRAME ABOVE, which is
+    also a single-storey stucco house with a tile roof and
+    drought-tolerant planting. Five sections separate them - service
+    area, routing, services, related locations and the FAQ - so they
+    are not seen together, and the note on `regionalCoverage` records
+    the same thing from its end. Worth knowing before a third
+    residential exterior is added to this page.
+
+    ⚠ NO ADDRESS, NUMBER, SIGNAGE OR PERSON IS VISIBLE IN THE FRAME,
+    which is what keeps it usable on an organic-first market with no
+    verified premises (CLAUDE.md §29). It illustrates a property type,
+    not a Sewer Pros location or job.
+  */
   ctaBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-pipe-condition-review-hero.webp',
-    alt: 'Gloved hands at a camera monitor showing the inside of a line',
+    src: '/images/homepage/hero/the-sewer-pros-san-diego-residential-service-cta.webp',
+    alt: 'Single-story San Diego area home with a tile roof and drought-tolerant front landscaping',
     source:
-      'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
   },
 }
 
