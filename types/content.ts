@@ -317,12 +317,34 @@ export interface ScenariosContent {
   action?: { label: string; pageId: PageId }
 }
 
+/**
+ * One thing the customer walks away with.
+ *
+ * ⚠ `InclusionContent` PLUS AN ICON, DECLARED SEPARATELY RATHER THAN
+ * WIDENING THAT TYPE. `InclusionContent` is shared by the service,
+ * audience, commercial and comparison templates, all of which render
+ * it in an even card grid with no icon slot. Adding a field there
+ * would put an option on four templates that cannot honour it.
+ */
+export interface DeliverableItem extends InclusionContent {
+  /**
+   * ⚠ THE MARK SHOULD CARRY A LITTLE OF THE ITEM'S MEANING, which is
+   * the whole reason these replaced a row of identical checkmarks
+   * (owner, 2026-09-08). Five ticks told the reader only that there
+   * were five of something.
+   *
+   * Falls back to a check when unset, so a list that names no icons
+   * still renders rather than showing nothing.
+   */
+  icon?: ExperienceIconName
+}
+
 /** What the customer receives, as an editorial split. */
 export interface DeliverablesContent {
   eyebrow?: string
   title: string
   intro?: readonly string[]
-  items: readonly InclusionContent[]
+  items: readonly DeliverableItem[]
   /**
    * Optional artwork for the split.
    *
@@ -358,8 +380,15 @@ export interface RegionalCoverageContent {
    * ⚠ MARKET-SCOPED, AND THE TEMPLATE DOES NOT SUPPLY IT. A phone
    * number belongs to one market; it is authored here so a page cannot
    * inherit another market's line by accident (01 §20).
+   *
+   * ⚠ `phoneE164`, NOT A RAW `href`. It renders through
+   * `TrackedPhoneLink`, which builds the `tel:` itself and fires the
+   * call event. This field shipped as `{ label, href }` for one day
+   * and rendered a plain anchor, so every call from this panel went
+   * unmeasured while the header, footer and every other section
+   * counted theirs.
    */
-  phone?: { label: string; href: string }
+  phone?: { label: string; phoneE164: string }
 }
 
 export interface CoverageContent {

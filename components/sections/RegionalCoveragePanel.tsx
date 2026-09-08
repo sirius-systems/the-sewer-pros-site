@@ -1,4 +1,10 @@
-import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  ButtonLink,
+  buttonClasses,
+  type SectionDensity,
+} from '@/components/ui'
+import { TrackedPhoneLink } from '@/components/tracking'
 import { SectionHeading } from './SectionHeading'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
 import type { RegionalCoverageContent } from '@/types'
@@ -102,12 +108,34 @@ export function RegionalCoveragePanel({
             </ButtonLink>
           )}
           {content.phone !== undefined && (
-            <a
-              href={content.phone.href}
-              className="text-body font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground"
+            /*
+              ⚠ GREEN BUTTON, NOT A TEXT LINK (owner, 2026-09-08). It
+              began as a tertiary underline on the reasoning that three
+              equal controls make a visitor choose before reading any
+              of them. The owner's call is that calling is a conversion
+              here and should look like one, which is the same call
+              made for the St. Louis closing CTA on 2026-09-07.
+
+              ⚠ TWO GREEN CONTROLS IN THIS ROW NOW, AND THAT IS THE
+              TRADE. DEC-096 reserves green for conversion actions;
+              both of these are conversions, so neither is a deviation
+              from the rule, but the row no longer has a single
+              strongest action. The blue middle button is what keeps
+              them readable as a pair rather than a wall.
+
+              ⚠ `TrackedPhoneLink`, NOT AN `<a>`. `ButtonLink` renders
+              `next/link`, which is for routes, and `tel:` is not one.
+              The tracked anchor wears `buttonClasses` so appearance
+              still comes from one place (18 §46) - and it fires the
+              call event, which the plain anchor this replaced did not.
+            */
+            <TrackedPhoneLink
+              phoneE164={content.phone.phoneE164}
+              ctaLocation="section_cta"
+              className={buttonClasses('primary', 'w-full sm:w-auto')}
             >
               {content.phone.label}
-            </a>
+            </TrackedPhoneLink>
           )}
         </div>
       </div>
