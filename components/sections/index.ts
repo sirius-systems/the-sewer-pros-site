@@ -218,6 +218,14 @@ export type { RelatedLinksProps } from './RelatedLinks'
 export { MarketCoverage, marketCoverageRenders } from './MarketCoverage'
 export type { MarketCoverageProps } from './MarketCoverage'
 
+/*
+  A hub's opening explainer. Not the home page's `Differentiator` and
+  not `MarketGuidance`: this one is the page's own argument in prose,
+  with the heading beside it rather than above it.
+*/
+export { HubIntro, hubIntroRenders } from './HubIntro'
+export type { HubIntroProps } from './HubIntro'
+
 export { CtaSection } from './CtaSection'
 export type { CtaSectionProps, CtaVariant } from './CtaSection'
 /*

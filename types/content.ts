@@ -1602,6 +1602,52 @@ export interface ResourcePageContent extends BasePageContent {
   dateModified?: string
 }
 
+/** One compact benefit beside the hub intro's prose. */
+export interface HubIntroBenefit {
+  title: string
+  description: string
+  icon: ExperienceIconName
+  /**
+   * Which accent the icon takes.
+   *
+   * ⚠ THE PALETTE ALREADY OWNS THIS SPLIT. `--accent` is the
+   * conversion green and `--accent-secondary` the authority blue
+   * (18 §21), so a diagnostic step is blue and the decision step is
+   * green. It is not a free colour choice per item.
+   */
+  accent: 'blue' | 'green'
+}
+
+/**
+ * A hub's opening explainer band.
+ *
+ * ⚠ IT REPLACES `body` ON A PAGE THAT SETS IT, and `HubPageTemplate`
+ * renders one or the other rather than both: they are two presentations
+ * of the same slot, unlike `body` and `guidance`, which are now two
+ * different bands.
+ *
+ * ⚠ EVERY STRING IS PLAIN TEXT, NOT `ReactNode`. The band takes no
+ * inline links: it sits above the service mosaic, the routing cards and
+ * the closing form, all of which are the page's real destinations, and
+ * a link inside the opening prose competes with them.
+ */
+export interface HubIntroContent {
+  eyebrow?: string
+  /** Rendered as an `h2`. The hero owns the page's only `h1`. */
+  title: string
+  body: readonly string[]
+  benefits: readonly HubIntroBenefit[]
+  /**
+   * A low-emphasis in-page link below the benefits.
+   *
+   * ⚠ `targetId` IS A FRAGMENT ON THIS PAGE, not an approved page id.
+   * It must match the `id` of a section already rendered below, and
+   * `:target` in `app/globals.css` supplies the sticky-header offset so
+   * the destination is visible when it is reached.
+   */
+  link?: { label: string; targetId: string }
+}
+
 /** Hub page — services, locations, for, commercial, resources. */
 export interface HubPageContent extends BasePageContent {
   /**
@@ -1788,6 +1834,19 @@ export interface HubPageContent extends BasePageContent {
     description?: string
     image?: CardImage
   }[]
+  /**
+   * The opening explainer band, REPLACING the plain `body` prose.
+   *
+   * ⚠ SET THIS OR `body`, NOT BOTH. They are two presentations of one
+   * slot and the template prefers this one, so a hub setting both would
+   * author a paragraph nothing renders. `guidance` is a different case:
+   * that band renders ALONGSIDE whichever of these two is present.
+   *
+   * ⚠ IT IS `muted` WITH A HAIRLINE TOP AND BOTTOM RULE. The rules are
+   * what let it sit against another light band, which is what the
+   * surface chain below it is derived around.
+   */
+  intro?: HubIntroContent
   /**
    * The service-area explainer band.
    *

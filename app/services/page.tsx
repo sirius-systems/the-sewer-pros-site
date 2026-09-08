@@ -27,26 +27,29 @@ export default function Page() {
   const content = getHubContent(PAGE_ID)
   if (page === undefined || content === undefined) notFound()
   /*
-    ⚠ `muted` SINCE 2026-09-08, WHERE THIS HUB TOOK THE DEFAULT BEFORE.
-    `HubPageTemplate` derives every surface BELOW the member list from
-    this value and cannot derive this one, because the prop is what the
-    route is for. With the home page's bands added, `default` here
-    walked the chain to a `muted` FAQ directly above the `muted` split
-    CTA, and the `AuthorityBand` that normally buffers that pair is
-    suppressed whenever the process band renders. One flip at the top
-    fixes the whole run: muted list, default coverage, muted confidence,
-    default FAQ, muted CTA.
-
-    ⚠ `numbered` IS INERT NOW AND KEPT ON PURPOSE. The member list
-    renders the mosaic, which ignores it; it is the setting the row-list
+    ⚠ `numbered` IS INERT AND KEPT ON PURPOSE. The member list renders
+    the mosaic, which ignores it; it is the setting the row-list
     fallback would use if the cards ever lost their artwork.
+
+    ⚠ `itemsId` IS THE INTRO BAND'S ANCHOR TARGET. The default is
+    `hub-items`, which is what the other hubs keep; this page names it
+    `services-grid` because its own opening band links down to it and
+    that is the id the link states. `:target` in `app/globals.css`
+    gives it the sticky-header offset.
+
+    ⚠ NO `itemsSurface`. It was `muted` for one build while the surface
+    chain below the member list resolved to a `muted` FAQ against the
+    `muted` split CTA. That is fixed at its source now - the coverage
+    band keeps the previous surface where the process band's photograph
+    separates them, as on the home page - so the service grid is back
+    on white, which is what the mosaic was designed against.
   */
   return (
     <HubPageTemplate
       page={page}
       content={content}
-      itemsTitle="Our services"
-      itemsSurface="muted"
+      itemsTitle="Explore our sewer and drain services"
+      itemsId="services-grid"
       numbered
     />
   )
