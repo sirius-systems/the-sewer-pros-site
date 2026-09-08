@@ -67,6 +67,18 @@ import { coreServiceCards } from './service-cards'
 const id = (value: string): PageId => value as PageId
 
 /** Owner-confirmed contact (DEC-073). Repeated per page deliberately. */
+
+/*
+  ⚠ STILL USED BY FOUR LOCATION PAGES IN THIS FILE, WHICH IS WHY IT
+  SURVIVED THE 2026-09-08 HUB RESTRUCTURE. The market hub's own copy of
+  it was folded into `regionalCoverage` (email, hours, and the
+  newer-market sentence); the Henderson, North Las Vegas, Summerlin and
+  Las Vegas location bodies still render it and are unchanged.
+
+  ⚠ DELETING THIS WOULD SILENTLY STRIP THE PHONE, EMAIL AND HOURS FROM
+  FOUR PAGES. It looked unused after the hub stopped referencing it,
+  and it is not.
+*/
 const LAS_VEGAS_CONTACT = (
   <>
     <h2>Reaching us in Las Vegas</h2>
@@ -165,154 +177,6 @@ export const lasVegasMarketContent: MarketPageContent = {
   seoTitle: 'Sewer Inspection Las Vegas',
   metaDescription:
     'Independent sewer camera inspection, diagnostics, and cleaning across the Las Vegas Valley. Evidence before major sewer decisions, with no repair upselling. Schedule an inspection today.',
-  body: (
-    <>
-      {/*
-        ==================================================================
-        DIRECT ANSWER. Added 2026-09-07 (Gate 2 approved).
-        ==================================================================
-        ⚠ IT LEADS THE BODY BECAUSE IT IS THE DEFINITIONAL ANSWER. AEO
-        and voice results want the "what is it" sentence findable and
-        self-contained, so it sits above the jurisdictional material
-        rather than after it.
-
-        ⚠ THE SECOND PARAGRAPH IS THE ENTITY-AUTHORITY SENTENCE the
-        strategy pass asked to appear near the top of the page. It names
-        the company, the services, the area and the audiences in one
-        line, and claims nothing beyond them: no office, no tenure, no
-        volume, no rating.
-
-        ⚠ "WITHOUT DIGGING" IS A STATEMENT ABOUT CAMERA INSPECTION, NOT
-        A PROMISE THAT NO EXCAVATION WILL EVER BE NEEDED. Do not extend
-        it into one - this company does not perform the work that would
-        follow (CLAUDE.md §9).
-      */}
-      <h2>What a sewer inspection in Las Vegas actually shows</h2>
-      <p>
-        Sewer inspection in Las Vegas uses a high-resolution camera to
-        examine the inside of a sewer line, revealing blockages, root
-        intrusion, offset joints, cracks, and standing water without
-        digging. The Sewer Pros provides independent{' '}
-        <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
-          sewer camera inspection
-        </ApprovedInlineLink>{' '}
-        across the Las Vegas Valley, giving property owners clear evidence
-        before committing to any repair or replacement decision.
-      </p>
-      <p>
-        The Sewer Pros provides independent sewer inspection, camera
-        inspection, and cleaning across the Las Vegas Valley for
-        homeowners, home buyers, and property managers.
-      </p>
-
-      <h2>Who governs your sewer here depends on where you live</h2>
-      <p>
-        The Las Vegas Valley has no single sewer authority. Each incorporated
-        city runs its own utility relationship, while the Clark County Water
-        Reclamation District, publicly branded the Clean Water Team, serves
-        the unincorporated areas of the valley.
-      </p>
-      <p>
-        That fragmentation is not administrative trivia. Which authority
-        governs your address determines who to contact, what rules apply, and
-        whether any assistance exists. Summerlin is the clearest illustration:
-        it genuinely straddles two authorities depending on which side of an
-        incorporation line a property sits on.
-      </p>
-
-      <h2>The lateral is the property owner&rsquo;s</h2>
-      <p>
-        The Clark County Water Reclamation District states it directly: a
-        damaged sewer lateral connecting a house to the sewer main in the street
-        is the responsibility of the property owner: cleaning, repair, and
-        replacement alike.
-      </p>
-      <p>
-        Henderson is equally explicit. The city states that homeowner
-        responsibility begins where the lateral connects to the city&rsquo;s
-        sewer main in the street, and that the owner must maintain and repair
-        from that point through the home&rsquo;s plumbing, bearing the cost.
-      </p>
-
-      <h2>Assistance here means insurance you buy, not a fund</h2>
-      <p>
-        This is a genuine difference from other markets. Rather than a
-        reimbursement programme, the City of Las Vegas partners with a private
-        company on an <strong>optional paid warranty</strong>: Service Line
-        Warranties of America, at $6.00 per month or $67.00 per year, with no
-        coverage cap and no deductible or service fee.
-      </p>
-      <p>
-        It is a product a homeowner chooses to buy, not a municipal fund that
-        contributes toward an eligible repair. Whether it is worth buying
-        depends on the condition of the line you actually have, which is a
-        question that can be answered rather than guessed at.
-      </p>
-
-      <h2>Newer housing, different failure modes</h2>
-      <p>
-        The Las Vegas Valley has among the newest housing of anywhere we work.
-        Most laterals here will be PVC rather than clay, cast iron, or
-        bituminized fibre, which removes the material decay that dominates older
-        regions.
-      </p>
-      <p>
-        What it does not remove is ground movement. On newer lines the recurring
-        findings are bellies holding standing water, joints opened by
-        settlement, and damage from later construction or landscaping, all of
-        which produce the same repeating slow-drainage pattern people associate
-        with old pipe, from an entirely different cause.
-      </p>
-
-      {/*
-        ==================================================================
-        REAL ESTATE. Added 2026-09-07 (Gate 2 approved).
-        ==================================================================
-        ⚠ "INFORMATIONAL, NOT LEGAL ADVICE" IS PART OF THE COPY, NOT A
-        DISCLAIMER BOLTED ON. CLAUDE.md §26 forbids legal advice, and a
-        paragraph about what evidence to bring to a transaction is
-        exactly where that line gets crossed by accident.
-
-        ⚠ IT DESCRIBES WHAT AN INSPECTION DOCUMENTS, NEVER WHAT IT WILL
-        FIND. No claim about the state of any property's line, no age
-        threshold, no failure rate.
-
-        The three community links carry the anchor text the keyword pass
-        asked for. They duplicate the coverage section's list further
-        down, which is deliberate: those are navigation, these are in
-        context for a buyer reading about a transaction.
-      */}
-      <h2>Buying or selling a home in the Las Vegas Valley</h2>
-      <p>
-        A sewer camera inspection before buying a home in Las Vegas shows
-        the documented condition of the line before closing, not after.
-        Buyers, agents, and home inspectors can use recorded findings to
-        support informed decisions during a real estate transaction. This
-        content is informational, not legal advice.
-      </p>
-      <p>
-        Schedule a{' '}
-        <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>
-          pre-purchase sewer inspection
-        </ApprovedInlineLink>{' '}
-        before your closing date. Local information is available for{' '}
-        <ApprovedInlineLink pageId={id('loc-lv-henderson')}>
-          Henderson sewer inspection
-        </ApprovedInlineLink>
-        ,{' '}
-        <ApprovedInlineLink pageId={id('loc-lv-north-las-vegas')}>
-          North Las Vegas sewer inspection
-        </ApprovedInlineLink>
-        , and{' '}
-        <ApprovedInlineLink pageId={id('loc-lv-summerlin')}>
-          Summerlin sewer inspection
-        </ApprovedInlineLink>
-        .
-      </p>
-
-      {LAS_VEGAS_CONTACT}
-    </>
-  ),
   /*
     ==========================================================================
     COMPANY EXPERIENCE. Added 2026-09-07 on owner direction.
@@ -643,6 +507,16 @@ export const lasVegasMarketContent: MarketPageContent = {
     body: [
       'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, drain cleaning, and diagnostic services for homeowners, home buyers, property managers, multifamily properties, and commercial properties across the Las Vegas Valley.',
       'These featured community pages do not define the full limit of the service area. Tell us where the property is located and what is happening with the line so we can confirm current coverage before scheduling.',
+      /*
+        ⚠ KEPT VERBATIM FROM `LAS_VEGAS_CONTACT`, AND IT IS A
+        BUSINESS-TRUTH STATEMENT RATHER THAN COPY. It is the sentence
+        that stops this page implying a Las Vegas track record the
+        project has no evidence for, which is the same reason the
+        experience band states no founding year and no inspection count
+        (DEC-073, 01 §20). Dropping it with the body would have been a
+        regression, not a tidy-up.
+      */
+      'We are operating in the Las Vegas Valley. This is a newer market for us, our longest-running work is in St. Louis and San Diego, and we would rather say that plainly than imply a local track record we have not built here yet.',
     ],
     locations: [
       { pageId: id('loc-lv-las-vegas'), label: 'Las Vegas' },
@@ -659,6 +533,20 @@ export const lasVegasMarketContent: MarketPageContent = {
       pageId: id('hub-services'),
     },
     phone: { label: 'Call (725) 292-4030', phoneE164: '+17252924030' },
+    /*
+      ⚠ EMAIL AND HOURS MOVED HERE FROM `LAS_VEGAS_CONTACT` rather than
+      getting a second contact panel. That block already duplicated
+      this one's phone; a whole section for two more lines would have
+      been the same information a third time.
+
+      ⚠ THE HOURS RULE OUT EMERGENCY, WEEKEND AND 24/7 SERVICE by
+      stating what is published and nothing more (01 §35).
+    */
+    email: {
+      label: 'bookaninspection@thesewerpros.com',
+      href: 'mailto:bookaninspection@thesewerpros.com',
+    },
+    hours: 'Monday to Friday, 8:00am to 4:00pm',
     backgroundImage: {
       src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-valley-sewer-service-cta.webp',
       alt: 'Las Vegas Valley residential street on a clear day',
@@ -696,6 +584,219 @@ export const lasVegasMarketContent: MarketPageContent = {
     ⚠ NO OFFICE ANYWHERE. No address, no pin on a map, no hours
     (CLAUDE.md §29-30, 18 §86-87, PENDING-002).
   */
+  /*
+    ==========================================================================
+    THE LOCAL-EDUCATION RUN. Four sections carved out of `body`
+    (owner direction, 2026-09-08).
+    ==========================================================================
+    ⚠ `body` IS GONE FROM THIS PAGE AND EVERY TOPIC IN IT SURVIVES HERE.
+    It carried six H2s inside one reading column:
+
+      "What a sewer inspection in Las Vegas actually shows"
+          -> already covered by `deliverables`, which says the same
+             thing with the same limitation sentence. NOT duplicated.
+      "Who governs your sewer here depends on where you live"
+      "The lateral is the property owner's"
+          -> `responsibility`, combined, which is how the brief asked
+             for them and how they read: one question, two halves.
+      "Assistance here means insurance you buy, not a fund"
+          -> `repairCoverage`
+      "Newer housing, different failure modes"
+          -> `materials`
+      "Buying or selling a home in the Las Vegas Valley"
+          -> `prePurchase`
+      "Reaching us in Las Vegas"
+          -> folded into `regionalCoverage`, which already carried the
+             phone, the four community links and both buttons. A second
+             contact panel would have been the same thing twice.
+
+    ⚠ THE FOUR ATTRIBUTED FACTS ARE UNCHANGED IN SUBSTANCE AND IN
+    HEDGE. CCWRD on lateral ownership, Henderson on where
+    responsibility begins, the City of Las Vegas warranty partnership
+    with its exact prices, and Summerlin straddling two authorities.
+    None was strengthened into a universal rule, and the jurisdiction
+    links in the FAQ further down this file are untouched.
+
+    ⚠ SURFACES ARE DERIVED, NOT AUTHORED. See `localSurface` in
+    `MarketPageTemplate`: inserting `repairCoverage` into this run
+    flips the parity of everything after it, which a literal value
+    would have got wrong.
+  */
+  responsibility: {
+    title: 'Who manages the sewer system depends on where you live',
+    intro:
+      'The Las Vegas Valley has no single sewer authority. Each incorporated city runs its own utility relationship, while the Clark County Water Reclamation District, publicly branded the Clean Water Team, serves the unincorporated areas of the valley. Which authority governs your address determines who to contact and what rules apply. Summerlin is the clearest illustration: it genuinely straddles two authorities depending on which side of an incorporation line a property sits on.',
+    /*
+      ⚠ THE DIAGRAM RENDERS THROUGH THE IMAGE COMPONENT AS AN <img>,
+      NOT INLINED. It carries `role="img"`, `aria-labelledby="diagram-title
+      diagram-desc"` and nine text labels; inlining would put those two
+      ids into the page namespace and the duplicate-id check would fail.
+      As an <img> the alt below is what assistive technology reads.
+
+      ⚠ IT IS GENERAL EDUCATION, NOT A BOUNDARY FOR ANY PROPERTY. The
+      notice under the cards says so in the visitor's own words.
+    */
+    diagram: {
+      src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-sewer-lateral-responsibility.svg',
+      alt: 'Diagram showing a private sewer lateral connecting a Las Vegas home to the public sewer main',
+      source:
+        'Supplied by the business owner, 2026-09-08. General illustration, not a survey of any property.',
+    },
+    items: [
+      {
+        title: 'The public authority varies by address',
+        description:
+          'Each incorporated city runs its own utility relationship and the Clean Water Team serves unincorporated areas, so the agency governing a property is a question of address rather than of city name.',
+        icon: 'variation',
+        accent: 'blue',
+      },
+      {
+        /*
+          ⚠ BOTH SOURCES ARE NAMED IN THE COPY, as they were in the
+          prose this replaced. CCWRD states owner responsibility for
+          cleaning, repair and replacement; Henderson states that it
+          begins where the lateral meets the main. Neither is
+          generalised to the whole valley.
+        */
+        title: 'The lateral is the property owner\u2019s',
+        description:
+          'The Clark County Water Reclamation District states that a damaged lateral connecting a house to the sewer main is the property owner\u2019s responsibility for cleaning, repair, and replacement alike. Henderson is equally explicit that responsibility begins where the lateral meets the city sewer main.',
+        icon: 'utility',
+        accent: 'amber',
+      },
+    ],
+    action: {
+      title: 'Confirm the rules for your address before authorizing work',
+      body: 'Sewer authority, ownership, and maintenance responsibility can vary by property address. Confirm the applicable rules with the local utility before making a repair decision.',
+      guide: {
+        label: 'Explore Las Vegas Valley service areas',
+        pageId: id('market-las-vegas-nv'),
+      },
+      contact: {
+        label: 'Confirm service availability for your property',
+        pageId: id('core-contact'),
+      },
+    },
+  },
+  /*
+    ⚠ THIS SECTION DESCRIBES A THIRD PARTY'S PRODUCT AND A MUNICIPAL
+    POSITION, WHICH IS WHY IT CARRIES A NOTE. The Sewer Pros neither
+    sells, administers, endorses nor guarantees any coverage, and
+    nothing here may be edited into an implication that it does.
+
+    ⚠ THE PRICES AND TERMS ARE THE ONES ALREADY PUBLISHED ON THIS PAGE
+    and are stated as the partnership's, not as a recommendation:
+    $6.00 per month or $67.00 per year, no coverage cap, no deductible
+    or service fee. Do not round them, drop the qualifier, or present
+    them as current without the verify-first note below.
+  */
+  repairCoverage: {
+    eyebrow: 'Coverage and assistance',
+    title: 'Understand sewer repair coverage before a problem occurs',
+    intro: [
+      'Assistance in the Las Vegas Valley works differently from markets that run a municipal reimbursement fund. Knowing which of the two applies to a property changes what a failed lateral actually costs.',
+    ],
+    items: [
+      {
+        title: 'Municipal repair program',
+        description:
+          'Our research found no generally available municipal lateral repair fund across the Las Vegas Valley. Rather than contributing toward an eligible repair, the local model is an optional product a property owner chooses to buy.',
+        icon: 'document',
+        accent: 'blue',
+      },
+      {
+        title: 'Optional service-line coverage',
+        description:
+          'The City of Las Vegas partners with Service Line Warranties of America on an optional paid warranty, published at $6.00 per month or $67.00 per year with no coverage cap and no deductible or service fee. It is a product a homeowner buys, subject to that provider\u2019s own eligibility rules, limits, exclusions, and policy terms.',
+        icon: 'independence',
+        accent: 'green',
+      },
+    ],
+    note: {
+      title: 'Confirm eligibility before relying on any coverage',
+      body: 'Before relying on any coverage, confirm that the property, sewer line, failure type, and proposed work are eligible under the current policy terms. The Sewer Pros does not sell, administer, endorse, or guarantee any coverage, and whether a policy is worth buying depends on the condition of the line you actually have.',
+    },
+  },
+  /*
+    ⚠ NEWER HOUSING IS A REGIONAL OBSERVATION, NOT A PROPERTY CLAIM.
+    Every card says "may" or "can" and none asserts a condition is
+    universal across Las Vegas developments.
+  */
+  materials: {
+    title: 'Newer homes can still develop sewer-line problems',
+    intro:
+      'The Las Vegas Valley has among the newest housing of anywhere we work, and most laterals here will be PVC rather than clay, cast iron, or bituminized fibre. That removes the material decay that dominates older regions. It does not remove ground movement, and depending on the property the recurring findings are bellies holding standing water, joints opened by settlement, and damage from later construction or landscaping, all producing the same repeating slow-drainage pattern people associate with old pipe from an entirely different cause.',
+    items: [
+      {
+        title: 'Recurring backups',
+        description:
+          'Look for visible conditions that may explain why the same drainage problem keeps returning.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-residential-sewer-conditions.webp',
+          alt: 'Accessible utility area beside a Las Vegas Valley stucco home',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
+      },
+      {
+        title: 'Property changes',
+        description:
+          'Document the accessible line after landscaping, remodeling, or other work near the sewer route.',
+      },
+      {
+        title: 'Maintenance planning',
+        description:
+          'Use inspection evidence to decide whether cleaning, monitoring, or another evaluation is appropriate.',
+      },
+    ],
+  },
+  /*
+    ⚠ "INFORMATIONAL, NOT LEGAL ADVICE" IS PART OF THE COPY, NOT A
+    DISCLAIMER BOLTED ON. CLAUDE.md §26 forbids legal advice, and a
+    section about what evidence to bring to a transaction is exactly
+    where that line gets crossed by accident.
+
+    ⚠ IT DESCRIBES WHAT AN INSPECTION DOCUMENTS, NEVER WHAT IT WILL
+    FIND. No claim about any property's line, no age threshold, no
+    failure rate, and no statement about what a repair would cost.
+
+    ⚠ THE THREE COMMUNITY LINKS CARRY THE ANCHOR TEXT THE KEYWORD PASS
+    ASKED FOR and are the ones the removed prose carried, so no
+    internal link was lost with the restructure.
+  */
+  prePurchase: {
+    title: 'Know what is in the sewer line before closing',
+    body: 'A pre-purchase sewer camera inspection gives buyers, sellers, and real estate professionals documented information about the accessible sewer line before a property transaction is complete. The footage can reveal visible conditions that may not appear during a standard home inspection. This content is informational, not legal advice.',
+    image: {
+      src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-pre-purchase-sewer-inspection.webp',
+      alt: 'Las Vegas home receiving a pre-purchase sewer camera inspection',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
+    points: [
+      'Review the accessible sewer line before closing',
+      'Document visible conditions',
+      'Reduce uncertainty about recurring drainage symptoms',
+      'Keep the footage for negotiation or future planning',
+    ],
+    primary: {
+      label: 'Schedule a Pre-Purchase Sewer Inspection',
+      pageId: id('core-contact'),
+    },
+    secondary: {
+      label: 'Learn About Pre-Purchase Sewer Inspections',
+      pageId: id('svc-pre-purchase-sewer-inspection'),
+    },
+    resourcesTitle: 'Local sewer inspection information',
+    resources: [
+      { pageId: id('loc-lv-henderson'), label: 'Henderson sewer inspection' },
+      {
+        pageId: id('loc-lv-north-las-vegas'),
+        label: 'North Las Vegas sewer inspection',
+      },
+      { pageId: id('loc-lv-summerlin'), label: 'Summerlin sewer inspection' },
+    ],
+  },
   serviceArea: {
     title: 'Where we serve in the Las Vegas Valley',
     intro:

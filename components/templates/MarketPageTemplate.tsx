@@ -283,6 +283,39 @@ export function MarketPageTemplate({
   */
   const showsPrePurchase = prePurchaseRenders(content.prePurchase)
 
+
+  /*
+    ==========================================================================
+    THE LOCAL-EDUCATION RUN, SURFACES DERIVED THE SAME WAY
+    ==========================================================================
+    Responsibility, repair coverage, materials and pre-purchase sit
+    between the services band and the authority band, and any of them
+    may be absent.
+
+    ⚠ THEY USED TO BE HARDCODED `default`, `muted`, `default`, WHICH
+    WORKED ONLY WHILE THE SET WAS FIXED. Las Vegas inserts a coverage
+    section in the middle of that run, which flips the parity of
+    everything after it: with a literal `muted` on materials, the page
+    would have shipped muted against muted.
+
+    ⚠ ALTERNATION REPRODUCES ST. LOUIS EXACTLY, which is the check that
+    matters. The services band above is `muted` on every market, so
+    index 0 is `default` and St. Louis's three come out
+    default / muted / default - the values it already had.
+  */
+  const showsRepairCoverage =
+    content.repairCoverage !== undefined &&
+    content.repairCoverage.items.length > 0
+
+  const localRun = [
+    showsResponsibility || showsLateralCards ? 'responsibility' : undefined,
+    showsRepairCoverage ? 'repairCoverage' : undefined,
+    showsMaterials || showsMaterialCards ? 'materials' : undefined,
+    showsPrePurchase ? 'prePurchase' : undefined,
+  ].filter((key): key is string => key !== undefined)
+  const localSurface = (key: string): SectionSurface =>
+    localRun.indexOf(key) % 2 === 0 ? 'default' : 'muted'
+
   const showsLocalFeature =
     !showsMaterials && !showsPrePurchase && content.localFeature !== undefined
 
@@ -368,6 +401,7 @@ export function MarketPageTemplate({
     ...(showsResponsibility || showsLateralCards
       ? (['standard'] as const)
       : []),
+    ...(showsRepairCoverage ? (['standard'] as const) : []),
     ...(showsMaterials || showsMaterialCards ? (['dense'] as const) : []),
     /*
       `standard` against the materials band's `dense` above and the
@@ -802,7 +836,7 @@ export function MarketPageTemplate({
       {showsResponsibility && content.responsibility !== undefined && (
         <LateralResponsibility
           density="standard"
-          surface="default"
+          surface={localSurface('responsibility')}
           id="lateral-responsibility"
           content={content.responsibility}
         />
@@ -810,6 +844,7 @@ export function MarketPageTemplate({
 
       {showsLateralCards && content.lateralCards !== undefined && (
         <ProblemGrid
+          surface={localSurface('responsibility')}
           id="lateral-responsibility"
           title={content.lateralCards.title}
           intro={content.lateralCards.intro}
@@ -817,10 +852,38 @@ export function MarketPageTemplate({
         />
       )}
 
+      {/*
+        ==================================================================
+        REPAIR COVERAGE AND ASSISTANCE - Las Vegas only today
+        ==================================================================
+        ⚠ `id="repair-coverage"`, NOT `lateral-responsibility`. The
+        same component renders St. Louis's lateral cards under that
+        anchor; coverage is a different subject and must not borrow it.
+
+        ⚠ NO PHOTOGRAPH HERE, ON INSTRUCTION. The sections either side
+        carry 4:3 frames and a third would make the run a gallery.
+
+        ⚠ THE NOTE CARRIES THE VERIFY-BEFORE-RELYING WARNING. Every
+        claim in this section is about someone else's programme or
+        policy and those change.
+      */}
+      {showsRepairCoverage && content.repairCoverage !== undefined && (
+        <ProblemGrid
+          density="standard"
+          surface={localSurface('repairCoverage')}
+          id="repair-coverage"
+          eyebrow={content.repairCoverage.eyebrow}
+          title={content.repairCoverage.title}
+          intro={content.repairCoverage.intro?.join(' ')}
+          items={content.repairCoverage.items}
+          note={content.repairCoverage.note}
+        />
+      )}
+
       {showsMaterials && content.materials !== undefined && (
         <PipeMaterials
           density="dense"
-          surface="muted"
+          surface={localSurface('materials')}
           id="line-materials"
           content={content.materials}
         />
@@ -839,13 +902,14 @@ export function MarketPageTemplate({
         <PrePurchase
           density="standard"
           /*
-            ⚠ `default`, AND IT MUST NOT MATCH THE MATERIALS BAND ABOVE.
-            That band is `muted`; a matching surface here would collapse
-            the two into one long section, which is the failure this
-            split exists to fix. The process band below carries a
-            full-bleed image, so nothing clashes on that side either.
+            ⚠ DERIVED, AND THE RULE IT ENCODES IS THE ONE THAT USED TO
+            BE WRITTEN HERE AS A LITERAL: it must not match the band
+            above. That was `default` while the run was always three
+            sections; Las Vegas inserts a fourth and flips the parity,
+            so the value is now computed from position rather than
+            asserted. St. Louis still comes out `default`.
           */
-          surface="default"
+          surface={localSurface('prePurchase')}
           id="pre-purchase"
           content={content.prePurchase}
         />
