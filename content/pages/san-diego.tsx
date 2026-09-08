@@ -873,7 +873,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       ⚠ THE BRIEF SAID TO SKIP THIS IF ANOTHER FINAL CTA FOLLOWS, AND
       ONE DOES. It is used anyway, on two grounds: the page's closing
       CtaSection carries a DIFFERENT frame
-      (`homepage/hero/the-sewer-pros-san-diego-residential-service-cta.webp`
+      (`markets/san-diego-ca/services/the-sewer-pros-san-diego-residential-service-cta.webp`
       since 2026-09-08), so no asset is used twice, and Las Vegas
       already ships exactly this pairing - a coverage panel on its own
       frame above a separate closing CTA on another. Flag rather than
@@ -1515,7 +1515,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     not a Sewer Pros location or job.
   */
   ctaBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-san-diego-residential-service-cta.webp',
+    src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-residential-service-cta.webp',
     alt: 'Single-story San Diego area home with a tile roof and drought-tolerant front landscaping',
     source:
       'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',

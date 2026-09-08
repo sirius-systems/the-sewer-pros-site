@@ -1387,7 +1387,7 @@ export const lasVegasMarketContent: MarketPageContent = {
     location or job.
   */
   ctaBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-las-vegas-residential-service-cta.webp',
+    src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-residential-service-cta.webp',
     alt: 'Single-story Las Vegas Valley home with a tile roof and desert gravel landscaping',
     source:
       'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
