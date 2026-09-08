@@ -140,7 +140,35 @@ export function Hero({
             <ButtonLink href={primaryAction.href}>{primaryAction.label}</ButtonLink>
           )}
           {secondaryAction !== undefined && (
-            <ButtonLink href={secondaryAction.href} variant="secondary">
+            /*
+              ⚠ `accent` (SOLID BLUE), NOT `secondary` (WHITE), SINCE
+              2026-09-08 ON OWNER DIRECTION. The white pill sat beside
+              the green primary on a scrimmed photograph and read as
+              the brighter of the two, which inverted the hierarchy:
+              the conversion action is the green one.
+
+              It follows the green/blue system the rest of the site now
+              uses - `--accent` green for conversion, `--accent-secondary`
+              blue for navigation and non-CTA emphasis (DEC-096). "View
+              services" is navigation.
+
+              ⚠ THE VARIANT, NOT A `className`. `cn()` here is a plain
+              join rather than tailwind-merge, so a `bg-accent-secondary`
+              passed alongside `secondary`'s own `bg-surface` would ship
+              both and let stylesheet order pick the winner.
+
+              ⚠ ONLY THE HOME PAGE IS AFFECTED TODAY. It is the single
+              caller that sets `secondaryAction`; a second one would
+              inherit this, which is correct - the reasoning is about
+              the pair of buttons, not about that page.
+
+              White on this blue measures 5.83:1. Against a scrimmed
+              photograph the fill's own boundary is softer than the
+              white pill's was; the owner ruled on that same trade-off
+              for the CTA phone button (2026-09-07) and the label
+              contrast, which is the AA requirement, is unaffected.
+            */
+            <ButtonLink href={secondaryAction.href} variant="accent">
               {secondaryAction.label}
             </ButtonLink>
           )}
