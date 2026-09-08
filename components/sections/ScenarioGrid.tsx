@@ -168,6 +168,17 @@ export function ScenarioGrid({
           label: content.action.label,
         })
       : undefined
+  /*
+    ⚠ ONE BUTTON, TWO PLACES IT CAN SIT. The other shapes put it in a
+    block below the whole grid; `masonry` puts it at the foot of the
+    primary column. Holding the element here rather than writing
+    `<ButtonLink>` in both branches keeps the label and the destination
+    single-sourced.
+  */
+  const actionButton =
+    action !== undefined ? (
+      <ButtonLink href={action.href}>{action.label}</ButtonLink>
+    ) : undefined
 
   /*
     ⚠ ONE CARD RENDERER, CALLED FROM THREE PLACES. `masonry` needs the
@@ -452,6 +463,48 @@ export function ScenarioGrid({
             <li className="contents lg:col-span-2 lg:block">
               <ul className="contents lg:grid lg:grid-cols-2 lg:gap-6">
                 {primary.map(({ item, index }) => renderCard(item, index))}
+                {/*
+                  ⚠ THE BUTTON LIVES INSIDE THE PRIMARY COLUMN, WHICH
+                  IS THE ONLY PLACE IT CAN SIT WITHOUT WAITING ON THE
+                  OTHER ONE. Below the whole mosaic it cleared the
+                  TALLER column, so it hung about 310px under the pair
+                  of cards it visually belongs to and left that space
+                  blank. Two columns that flow independently cannot
+                  share a row track for the button either - any grid
+                  placement below the mosaic resolves against the tall
+                  side - so the fix is to make it part of the short
+                  side's own flow.
+
+                  ⚠ AN `<li>`, NOT A `<div>`, BECAUSE OF WHAT HAPPENS
+                  BELOW `lg`. Both wrappers are `display: contents`
+                  there, so this element becomes a direct child of the
+                  outer `<ul>`; only a list item is valid in that
+                  position, at every width.
+
+                  ⚠ `role="presentation"` KEEPS THE LIST AT SIX
+                  SITUATIONS. The button is not a seventh reason to
+                  inspect, and the role drops the wrapper from the
+                  accessibility tree without touching the link inside
+                  it.
+
+                  ⚠ NO MARGIN. The gap is the grid's own - 24px from
+                  the subgrid at `lg`, and the outer grid's 20/24px
+                  below it - so the seam under the button matches every
+                  other seam in the mosaic without a second value to
+                  keep in step.
+
+                  ⚠ `order-last` PUTS IT AFTER ALL SIX CARDS BELOW
+                  `lg`, where the cards carry `CONTENT_ORDER` and this
+                  one would otherwise land in the middle of them.
+                */}
+                {actionButton !== undefined && (
+                  <li
+                    role="presentation"
+                    className="order-last sm:col-span-2 lg:order-none"
+                  >
+                    {actionButton}
+                  </li>
+                )}
               </ul>
             </li>
             <li className="contents lg:col-span-1 lg:block">
@@ -470,17 +523,13 @@ export function ScenarioGrid({
         )}
       </ul>
 
-      {action !== undefined && (
-        /*
-          ⚠ TIGHTER UNDER THE MASONRY. The button used to clear a
-          reserved row as well as this margin; with the mosaic ending
-          at its real height, 32px on top of that read as a second gap.
-          24px is the section's own card gap, so the button now sits
-          one seam below the mosaic rather than a seam and a half.
-        */
-        <div className={masonry ? 'mt-6' : 'mt-8'}>
-          <ButtonLink href={action.href}>{action.label}</ButtonLink>
-        </div>
+      {/*
+        ⚠ THE MASONRY HAS ALREADY RENDERED ITS BUTTON, at the foot of
+        the primary column - see the note there. Repeating it here
+        would put two of the same control in one section.
+      */}
+      {actionButton !== undefined && !masonry && (
+        <div className="mt-8">{actionButton}</div>
       )}
     </Section>
   )
