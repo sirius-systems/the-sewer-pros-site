@@ -60,6 +60,16 @@ export function ExperienceIcon(props: IconProps) {
   )
 }
 
+/** Service area - a map pin. */
+export function MapPinIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M12 21s6.5-5.4 6.5-10.5a6.5 6.5 0 0 0-13 0C5.5 15.6 12 21 12 21Z" />
+      <circle cx="12" cy="10.5" r="2.5" />
+    </svg>
+  )
+}
+
 /** Camera inspection — a camera body over a lens. */
 export function CameraIcon(props: IconProps) {
   return (
