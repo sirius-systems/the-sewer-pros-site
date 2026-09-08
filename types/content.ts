@@ -1141,6 +1141,60 @@ export interface HubPageContent extends BasePageContent {
     /** Per-card closing link label. Defaults to the home page wording. */
     actionLabels?: Partial<Record<PageId, string>>
   }
+  /*
+    ==========================================================================
+    CONVERSION AND TRUST PARITY WITH THE MARKET HUBS (DEC-103, 2026-09-07)
+    ==========================================================================
+    A hub used to have one conversion opportunity - the closing panel -
+    where a market hub has three. `/locations/` is the hub where that
+    gap costs the most: it is the page a visitor lands on to find out
+    whether their area is covered, so it catches market-agnostic intent
+    that has nowhere else to go.
+
+    ⚠ TWO FLAGS, NOT ONE, AND THEY ARE NOT THE SAME QUESTION.
+    "Should this page ASK for the job?" and "should this page SHOW
+    evidence?" are independent, and a hub could reasonably want the
+    second without the first. Collapsing them into one boolean would
+    make that combination unreachable without another type change.
+
+    ⚠ BOTH DEFAULT TO OFF, WHICH IS WHY THE OTHER FOUR HUBS ARE
+    UNTOUCHED. `/services/`, `/for/`, `/commercial/` and `/resources/`
+    set neither and render byte-for-byte as they did.
+  */
+  /**
+   * Puts the lead form in the hero aside AND switches the closing CTA
+   * to its `split` variant with a second copy of the form.
+   *
+   * ⚠ ONE FLAG FOR BOTH BECAUSE THEY ARE ONE FEATURE. Owner direction
+   * (2026-09-07): on this page the hero form and the split CTA are
+   * conversion parity, not two independently useful toggles.
+   *
+   * ⚠ NO BACKGROUND IMAGE IS INVOLVED, WHICH IS THE DIFFERENCE FROM
+   * THE MARKET HUBS. There they key the split off `ctaBackground`;
+   * here no such asset exists and inventing one would be a fabricated
+   * scene. `CtaSection` gates its split layout on `proof !== undefined`
+   * rather than on the image, so the two are genuinely separable.
+   *
+   * ⚠ NEITHER FORM PRESELECTS A MARKET, DELIBERATELY. `/locations/`
+   * represents all three, so defaulting the Location field to any one
+   * of them would put a market-scoped answer on a sitewide page
+   * (01 §20). Leaving it unanswered is the correct state.
+   */
+  showHeroForm?: boolean
+  /**
+   * Renders `ReviewMarquee` and `ConfidenceModule`, the two trust
+   * sections the market hubs carry.
+   *
+   * ⚠ STILL DATA-GATED ON TOP OF THIS. Both sections have their own
+   * `*Renders()` predicate and this flag is ANDed with it, so setting
+   * it cannot conjure a review band out of an empty dataset.
+   *
+   * ⚠ THE REVIEWS ARE COMPANY-WIDE, WHICH IS WHAT MAKES THEM LEGAL ON
+   * A SITEWIDE PAGE. DEC-100 settled that the 4.9/595 figures are
+   * presented unattributed and company-wide rather than as one
+   * market's, so they carry no market-scoped claim onto this hub.
+   */
+  showTrustSections?: boolean
 }
 
 /** Core page — about, contact, faq. */

@@ -4169,6 +4169,122 @@ The standing "Do NOT add it to `MarketPageTemplate`" warning in `components/sect
 ⚠ This does not extend to location or service+location templates. Read DEC-085 and this entry together before going further, because the reasoning that made DEC-085 restrictive still describes the data.
 
 ---
+## DEC-103 — Conversion and Trust Parity on the Locations Hub
+
+**Date:** 2026-09-07
+**Status:** APPROVED — IMPLEMENTED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `claude/dec-103-locations-hub-conversion-parity.md` (the decision as issued)
+* `claude/locations-hub-conversion-parity-build-prompt.md` (the gated build it authorised)
+* `components/templates/HubPageTemplate.tsx`, `components/sections/ReviewMarquee.tsx`
+* `types/content.ts` (`HubPageContent.showHeroForm`, `HubPageContent.showTrustSections`)
+* `content/pages/core.tsx` (`hub-locations`)
+* `22-decisions-change-log.md` DEC-100 (relied on, not superseded)
+
+### Decision
+
+`/locations/` renders the three conversion and trust sections the market hubs
+carry and the hub family did not: the **hero lead form**, the **closing CTA in
+its `split` variant with a second form**, and the **review band plus confidence
+module**.
+
+Nothing else in the hub family changes. `/services/`, `/for/`, `/commercial/`
+and `/resources/` render byte-for-byte as before.
+
+### Why this hub and not the family
+
+A hub had one conversion opportunity where a market hub has three. `/locations/`
+is the hub where that gap costs most: it is the page a visitor opens to find out
+whether their area is covered, so it catches market-agnostic intent with nowhere
+better to land, and it answered that intent with a single closing panel.
+
+The other four hubs orient a visitor toward a page that already converts. They
+were not given the sections merely because the mechanism now exists.
+
+### What is portable, and what is not
+
+Portable, because it carries no market-scoped fact:
+
+* `ReviewMarquee` — DEC-100 already established the 4.9 / 595 figures as
+  **company-wide and unattributed**. That is precisely what makes them safe on a
+  sitewide page. Had they stayed attributed to the St. Louis profile, this half
+  of the decision would not have been available.
+* `ConfidenceModule` — positioning, not fact.
+* The lead form, in both slots.
+
+**Deliberately not portable**, and this is the substance of the decision rather
+than an omission: the experience section, `coverage` / `serviceArea`, the
+services list and the routing cards are all market-scoped. `/locations/` is not
+a fourth market and must not be built to look like one.
+
+### Business-truth constraints observed
+
+* **Neither form preselects a market.** The page represents all three, so
+  defaulting the Location field to any one of them would put a market-scoped
+  answer on a sitewide page (01 §20). Both forms ship with the field unanswered,
+  which is the correct state, not an unfinished one.
+* **No phone number in the main content.** A phone number is market-scoped;
+  `MarketPageTemplate` is still the only template that passes one. The footer
+  carries all three sitewide, unchanged.
+* **No CTA background image.** None exists for this hub, and inventing a scene
+  for a page about three markets would be a fabricated image. `CtaSection` gates
+  its two-column layout on `proof`, not on the image, so the split renders
+  without one on its `muted` fallback surface.
+* No office, address, hours or local-entity claim is introduced anywhere.
+
+### Implementation notes
+
+**Two booleans, not one.** `showHeroForm` covers the hero form and the split CTA
+together — owner direction: on this page they are one feature, conversion
+parity, rather than two independently useful toggles. `showTrustSections` covers
+the review band and the confidence module. Collapsing the pair into a single
+flag would make "evidence without an ask" unreachable without another type
+change. Both default off, which is what leaves the other four hubs untouched,
+and both are ANDed with the existing `*Renders()` data predicates so an opt-in
+cannot conjure an empty band out of a cleared dataset.
+
+**`AuthorityBand` moves below the FAQ, but only on the split branch.** Its
+render condition is unchanged. The band has always existed to stop the FAQ's
+neighbour and the closing CTA sharing a surface: brand-on-brand when the CTA is
+a panel, and now muted-on-muted when it is a split. A global reorder was
+considered and rejected — `/services/` and `/commercial/` both render
+`AuthorityBand → FAQ` today, so moving it unconditionally would have changed two
+pages this decision does not cover.
+
+**`ReviewMarquee` gained a `surface` prop**, defaulting to the white it has
+always rendered. The three market hubs pass nothing and are unchanged.
+`/locations/` passes `muted` for the same reason the markets keep white: the
+band must read as a different kind of content from its neighbour, and here the
+neighbour above is the hub's white body prose rather than a dark section. Same
+rule, opposite value.
+
+### Verification
+
+* `npm run check` (typecheck, lint, production build) passes
+* **72 of 73 routes byte-identical** in rendered body with scripts stripped;
+  `/locations/` is the only page that changed
+* `/services/`, `/for/`, `/commercial/`, `/resources/` identical in **both**
+  rendered body and head/meta
+* All 73 routes identical in head/meta — no title, description or canonical moved
+* `sitemap.xml` and `robots.txt` identical; 70 sitemap URLs, 73 HTML routes
+* No `sectionRhythmIssues()` warnings; longest density run is 2
+* Surface sequence has no adjacent repeats:
+  hero image · brand · default · muted · default · muted · default · brand · muted
+* No duplicate element ids — the two forms use `hero-lead` and `cta-lead` prefixes
+* Both Location selects render "Select your location" selected — unanswered
+* No `tel:` link in the main content
+
+### Follow-up
+
+* **DEC-101 and DEC-102 are unrecorded.** This register goes DEC-100 → DEC-103.
+  Two decisions were taken between them and exist only in conversation; their
+  content is not reconstructed here because guessing it would be worse than the
+  gap. They should be written up from the session record.
+
+---
 
 # 15. New Service Decision Process
 

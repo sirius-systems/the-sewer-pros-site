@@ -1,7 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Badge, Button, Section, type SectionDensity } from '@/components/ui'
+import {
+  Badge,
+  Button,
+  Section,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import {
   marqueeReviews,
@@ -69,6 +75,28 @@ export interface ReviewMarqueeProps {
   density?: SectionDensity
   id?: string
   title?: string
+  /**
+   * Overrides the section's natural surface.
+   *
+   * ⚠ THE DEFAULT IS STILL WHITE, AND THAT IS OWNER DIRECTION RATHER
+   * THAN A COMPONENT PREFERENCE (2026-09-03). On the market hubs this
+   * band sits between two dark sections and a dark strip there reads
+   * as one unbroken band, so white is what makes the surface change
+   * mean something. All three markets pass nothing and keep it.
+   *
+   * ⚠ `/locations/` PASSES `muted` BECAUSE ITS NEIGHBOURS DIFFER, NOT
+   * BECAUSE THE DIRECTION CHANGED. There the band follows the hub's
+   * `default` body prose, so white against white would erase the
+   * boundary entirely - the same reasoning as above, reaching the
+   * opposite value because the neighbours are opposite. Muted is the
+   * light blue-grey `--surface-muted`, not brand dark, so the "not
+   * dark" half of the direction still holds.
+   *
+   * ⚠ DO NOT PASS `brand`. The two brand surfaces in the system are
+   * `AuthorityBand` and the closing CTA panel; a third would stop
+   * either of them reading as the page's emphasis (18 §11).
+   */
+  surface?: SectionSurface
 }
 
 /**
@@ -231,6 +259,7 @@ export function ReviewMarquee({
   density = 'standard',
   id = 'reviews',
   title = 'What our customers say',
+  surface = 'default',
 }: ReviewMarqueeProps = {}) {
   const [paused, setPaused] = useState(false)
 
@@ -261,7 +290,7 @@ export function ReviewMarquee({
     */
     <Section
       density={density}
-      surface="default"
+      surface={surface}
       labelledBy={id}
       className="marquee-section"
     >

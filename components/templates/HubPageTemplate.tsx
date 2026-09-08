@@ -7,11 +7,22 @@ import {
   AuthorityBand,
   FaqSection,
   CtaSection,
+  ConfidenceModule,
+  LeadFormSection,
+  ReviewMarquee,
   authorityBandRenders,
+  confidenceModuleRenders,
   serviceIndexRenders,
   marketCoverageRenders,
   faqSectionRenders,
 } from '@/components/sections'
+/*
+  ⚠ NOT FROM THE SECTIONS BARREL, UNLIKE EVERY OTHER PREDICATE ABOVE.
+  `reviewMarqueeRenders` asks whether the review DATASET has entries,
+  so it lives with the data; `ReviewMarquee` itself is a client
+  component. `MarketPageTemplate` imports it from the same place.
+*/
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { PageShell } from './PageShell'
 import type { ReactNode } from 'react'
 import type { HubPageContent, MasterPageRecord } from '@/types'
@@ -93,8 +104,41 @@ export function HubPageTemplate({
   // authored but empty entry list renders nothing, which would leave
   // the band against the closing CTA panel — the stacked brand
   // surfaces this whole condition exists to prevent.
+  //
+  // ⚠ THE SAME CONDITION NOW DOES DOUBLE DUTY, AND THE SECOND JOB IS
+  // THE MIRROR OF THE FIRST. On a hub that sets `showHeroForm` the
+  // closing CTA is `split`, so it is MUTED rather than brand — and the
+  // FAQ above it is muted too. The band is what separates them, which
+  // is why it MOVES BELOW THE FAQ in that case (see the render). One
+  // FAQ-gated band, two adjacency problems: brand-on-brand when the
+  // CTA is a panel, muted-on-muted when it is a split.
+  //
+  // The condition itself is unchanged. Whether the band renders has
+  // never depended on the CTA's surface and still does not.
   const showAuthority =
     faqSectionRenders(content.faq) && authorityBandRenders()
+
+  /*
+    ==========================================================================
+    CONVERSION AND TRUST PARITY (DEC-103, owner direction 2026-09-07)
+    ==========================================================================
+    Three sections the market hubs carry and the hubs did not. All
+    three are OFF unless the content file opts in, which is what leaves
+    `/services/`, `/for/`, `/commercial/` and `/resources/` byte-for-byte
+    unchanged - only `/locations/` sets either flag.
+
+    ⚠ THE FLAGS ARE ANDed WITH THE EXISTING DATA PREDICATES, NOT
+    SUBSTITUTED FOR THEM. `reviewMarqueeRenders()` and
+    `confidenceModuleRenders()` still decide whether there is anything
+    to show; the flag only decides whether this page family asks. An
+    opt-in that bypassed the predicate would ship an empty band the
+    day the dataset was cleared.
+  */
+  const showsHeroForm = content.showHeroForm === true
+  const showsReviews =
+    content.showTrustSections === true && reviewMarqueeRenders()
+  const showsConfidence =
+    content.showTrustSections === true && confidenceModuleRenders()
 
   /*
     Which member list renders, and it is EXACTLY ONE OF THE TWO.
@@ -125,11 +169,36 @@ export function HubPageTemplate({
       way. It also breaks what would otherwise be body -> cards ->
       process, three `standard` bands in a row.
     */
+    /*
+      ⚠ REVIEWS SIT ABOVE THE MEMBER LIST, WHICH IS WHERE THE MARKET
+      HUBS PUT THEM RELATIVE TO "what we offer". Mirroring the relative
+      ORDER rather than the absolute section list is the whole point:
+      a hub's member list is not a market's services band, but both
+      answer "what can you do for me", and evidence belongs before the
+      answer, not after it.
+    */
+    ...(showsReviews ? (['standard'] as const) : []),
     ...(showsMarketCards ? (['dense'] as const) : []),
     ...(showsItems ? (['standard'] as const) : []),
-    ...(showAuthority ? (['standard'] as const) : []),
+    // After the member list, as on the market hubs.
+    ...(showsConfidence ? (['standard'] as const) : []),
+    /*
+      ⚠ THE BAND APPEARS IN ONE OF TWO SLOTS AND NEVER BOTH. Above the
+      FAQ when the closing CTA is a brand panel, below it when the CTA
+      is a muted split — see the `showAuthority` comment for why the
+      buffer has to move. The two branches are mutually exclusive on
+      `showsHeroForm`, so the array length is unchanged either way.
+    */
+    ...(showAuthority && !showsHeroForm ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
-    'sparse',
+    ...(showAuthority && showsHeroForm ? (['standard'] as const) : []),
+    /*
+      ⚠ `CtaSection` SETS ITS OWN DENSITY FROM ITS VARIANT AND THIS HAS
+      TO AGREE WITH IT: `sparse` for the panel, `dense` for the split.
+      A mismatch here would have `sectionRhythmIssues()` check a rhythm
+      the page does not have.
+    */
+    showsHeroForm ? 'dense' : 'sparse',
   ]
 
   return (
@@ -154,6 +223,29 @@ export function HubPageTemplate({
         title={content.hero.title}
         intro={content.hero.intro}
         backdrop={backdrop}
+        aside={
+          showsHeroForm ? (
+            /*
+              ⚠ THE CARD IS WHAT MAKES THE FORM USABLE ON A PHOTOGRAPH.
+              Its inputs, labels and focus rings are built for a light
+              surface, so floating them on a scrimmed frame would mean
+              restyling every control. Same wrapper, same reason, as
+              the home page and market hero.
+
+              ⚠ NO `defaultMarketId`. This hub represents all three
+              markets, so preselecting one would answer a question the
+              page has no business answering (01 §20). The field ships
+              unanswered, which is correct rather than unfinished.
+            */
+            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+              <LeadFormSection
+                bare
+                id="hero-request-service"
+                idPrefix="hero-lead"
+              />
+            </div>
+          ) : undefined
+        }
       />
 
       <TrustBar />
@@ -163,6 +255,16 @@ export function HubPageTemplate({
           <Prose>{content.body}</Prose>
         </Section>
       )}
+
+      {/*
+        ⚠ MUTED, WHERE THE MARKET HUBS RENDER THIS WHITE, AND THE
+        REASON IS THE SAME REASON THEY RENDER IT WHITE. The band exists
+        to read as a different KIND of content from its neighbours; on
+        a market hub those neighbours are dark, here the neighbour
+        above is the hub's white body prose. Same rule, opposite value.
+        See `ReviewMarqueeProps.surface`.
+      */}
+      {showsReviews && <ReviewMarquee density="standard" surface="muted" />}
 
       {/*
         ⚠ THE MEMBER LIST, IN ONE OF TWO PRESENTATIONS. Not two
@@ -211,7 +313,14 @@ export function HubPageTemplate({
         />
       )}
 
-      {showAuthority && <AuthorityBand title="How we work" />}
+      {/*
+        After the member list, as on the market hubs. Its own default
+        surface is `muted`, which is what it needs here: the band above
+        it is `default` either way.
+      */}
+      {showsConfidence && <ConfidenceModule density="standard" />}
+
+      {!showsHeroForm && showAuthority && <AuthorityBand title="How we work" />}
 
       {/*
         Muted, deliberately. A hub runs hero → body → items → faq, and
@@ -221,15 +330,59 @@ export function HubPageTemplate({
         1440px its left edge sits ~300px inside the section above, which
         on a shared background looks like a misalignment rather than a
         narrower measure. One surface change fixes both.
+
+        ⚠ IT FLIPS TO `default` WHEN THE CONFIDENCE MODULE IS ABOVE IT,
+        WHICH IS THE SAME RULE REACHING THE OTHER ANSWER. That module
+        is muted, so muted here would be the unbroken run this comment
+        exists to prevent - just in the other colour. The condition is
+        the module, not the flag, because the module is the neighbour.
       */}
       {content.faq !== undefined && (
-        <FaqSection entries={content.faq} surface="muted" />
+        <FaqSection
+          entries={content.faq}
+          surface={showsConfidence ? 'default' : 'muted'}
+        />
       )}
 
+      {/*
+        ⚠ BELOW THE FAQ, NOT ABOVE IT, AND ONLY ON THIS BRANCH. The
+        closing CTA is `split` here, which `CtaSection` renders on
+        `muted` — the same surface the FAQ would be on. The band is the
+        buffer, exactly as it buffers the brand panel from a brand band
+        on the other branch.
+      */}
+      {showsHeroForm && showAuthority && <AuthorityBand title="How we work" />}
+
       <CtaSection
-        variant="panel"
+        /*
+          ⚠ `split` WITHOUT A BACKGROUND IMAGE, WHICH THE MARKET HUBS
+          NEVER DO. There the two travel together because `ctaBackground`
+          is what keys the variant. `CtaSection` actually gates its
+          two-column layout on `proof !== undefined`, so the image is
+          separable — and it has to be here, because no CTA asset exists
+          for this hub and inventing a scene for a page about three
+          markets would be a fabricated image, not a design choice.
+
+          With no image, `onDark` is false and the section keeps its
+          `muted` fallback surface and dark copy. That is the intended
+          appearance, not a degraded one.
+        */
+        variant={showsHeroForm ? 'split' : 'panel'}
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
+        /*
+          ⚠ NO `phone`. `MarketPageTemplate` is the only template that
+          passes one, because a phone number is market-scoped and this
+          page is not. The footer carries all three sitewide.
+        */
+        proof={
+          showsHeroForm ? (
+            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+              {/* No `defaultMarketId`, for the reason the hero form gives. */}
+              <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+            </div>
+          ) : undefined
+        }
       />
     </PageShell>
   )
