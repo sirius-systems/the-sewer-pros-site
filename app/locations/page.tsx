@@ -48,6 +48,16 @@ export default function Page() {
     <HubPageTemplate
       page={page}
       content={content}
+      /*
+        ⚠ `muted`, WHERE THE OTHER MEMBER-LIST HUBS TAKE THE DEFAULT.
+        The review band sits directly above the market cards on this
+        page and is `default` (it takes the opposite of the guidance
+        section, which is muted), so the cards have to be the other
+        one. `HubPageTemplate` derives every surface BELOW the member
+        list from this value; it cannot derive this one, because the
+        prop is what the route is for.
+      */
+      itemsSurface="muted"
       backdrop={<HeroBackdrop set={locationsHubBackdrop} />}
     />
   )

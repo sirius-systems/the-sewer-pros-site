@@ -761,6 +761,62 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     */
     showHeroForm: true,
     showTrustSections: true,
+    /*
+      ⚠ NO BUTTON IN THE CLOSING CTA (owner, 2026-09-07). That section
+      is the `split` variant and carries a lead form in its proof slot,
+      so the button was a second, weaker path to the same place: the
+      form asks for the job on the spot, the button navigated away from
+      it. St. Louis made the same call for the same reason.
+
+      ⚠ `hideAction`, NOT AN EMPTY `actionLabel`. `CtaSection` treats
+      `null` as "no button" and `undefined` as "fall back to the global
+      PRIMARY_CTA", so only this flag actually removes it.
+    */
+    cta: { title: 'Schedule a sewer inspection', hideAction: true },
+    /*
+      ==========================================================================
+      THREE HOME PAGE BANDS, ON OWNER DIRECTION (2026-09-07)
+      ==========================================================================
+      "How we can help", "What we do", and the process band.
+
+      ⚠ THE ROUTING ARRAY IS THIS PAGE'S, NOT A REFERENCE TO THE HOME
+      PAGE'S. `homeContent.routing` carries a fourth "Check coverage"
+      card whose links and secondary action both point at
+      `/locations/`. Rendering that here would route a visitor to the
+      page they are standing on, and its three market links would be
+      the THIRD copy of the same market navigation on this page after
+      the guidance panel and the market cards. Dropped for that reason,
+      not overlooked.
+
+      ⚠ THE THREE THAT REMAIN ARE COPIED VERBATIM FROM `homeContent`,
+      including the accents, so the band reads identically on both
+      pages. If that copy drifts, the two pages disagree; a shared
+      constant would be the fix, and is worth doing the next time a
+      third page needs it.
+    */
+    routing: [homeContent.routing![0]!, homeContent.routing![2]!, homeContent.routing![3]!],
+    routingBackground: homeContent.routingBackground,
+    /*
+      ⚠ THIS SWAPS THE "How we work" PROOF BAND OUT. Both are
+      `AuthorityBand` and this page should not argue its credibility
+      twice; the home page made the same call. See
+      `HubPageContent.showProcessBand`.
+    */
+    showProcessBand: true,
+    /*
+      ⚠ THE HOME PAGE'S OWN FRAME, AND ITS ALT SAYS NOTHING ABOUT A
+      MARKET. The filename mentions St. Louis; the alt text is a
+      generic street view, and it is decorative background rather than
+      a claim about where the photograph was taken. A sitewide page
+      must not caption an image with one market's name (01 §20).
+    */
+    processBackground: homeContent.processBackground,
+    /*
+      The home page's nine-card mosaic. Safe on a page speaking for all
+      three markets because every card in `coreServiceCards` carries an
+      identical status across all three; see that file.
+    */
+    services: coreServiceCards,
     hero: {
       title: 'Locations / Service Areas',
       intro: (
@@ -775,31 +831,75 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     seoTitle: 'Service Areas | St. Louis, San Diego & Las Vegas',
     metaDescription:
       'The Sewer Pros provides sewer and drain services across St. Louis, San Diego, and Las Vegas: service-area coverage, not branch offices.',
-    body: (
-      <>
-        <h2>Service markets, not branches</h2>
-        <p>
-          A service market is an area we travel to and work in. It does not
-          imply a storefront, a local depot, or a counter. We mention this
-          because &ldquo;areas served&rdquo; and &ldquo;office locations&rdquo;
-          are frequently presented as the same thing, and they are not.
-        </p>
+    /*
+      ==========================================================================
+      SERVICE-AREA EXPLAINER. Replaced the prose `body` 2026-09-07.
+      ==========================================================================
+      ⚠ THIS REPLACED `body`, IT DID NOT JOIN IT. `HubPageTemplate`
+      renders one intro band and prefers `guidance`, so a leftover
+      `body` here would be two paragraphs nothing displays.
 
-        <h2>Why sewer work varies by market</h2>
-        <p>
-          Sewer lines reflect where and when they were built. Housing age,
-          common pipe materials, soil movement, root pressure from mature
-          planting, and the rules of the local sewer authority all differ
-          between markets, and all affect what tends to go wrong and what can
-          be done about it.
-        </p>
-        <p>
-          That is why market pages are worth writing properly rather than
-          swapping a city name into the same paragraph, and why the ones here
-          are being researched before they are published.
-        </p>
-      </>
-    ),
+      ⚠ ONE SENTENCE WAS DELETED RATHER THAN REWRITTEN, ON OWNER
+      DIRECTION. The old closing line read: "That is why market pages
+      are worth writing properly rather than swapping a city name into
+      the same paragraph, and why the ones here are being researched
+      before they are published." That is production commentary about
+      how the site is built. It tells a visitor nothing about their
+      sewer, and "before they are published" describes an internal
+      pipeline state on a public page. It is gone from the site and
+      deliberately not relocated; the governance documentation that
+      discusses publication and indexation is untouched.
+
+      ⚠ EVERY FACTUAL CLAIM SURVIVED THE REWRITE. Service markets are
+      not offices; sewer conditions differ by market. Nothing was added
+      beyond what the prose already said, and no coverage guarantee,
+      response time, price, or availability promise entered with the
+      new format (CLAUDE.md §24).
+
+      ⚠ NO EM DASHES, INCLUDING IN THE CARD BODIES.
+    */
+    guidance: {
+      eyebrow: 'How our service areas work',
+      title: 'Local sewer service built around each market',
+      intro:
+        'The Sewer Pros serves properties across three active service markets. Select your market to find local sewer inspection, cleaning, coverage, scheduling, and contact information.',
+      cards: [
+        {
+          icon: 'map-pin',
+          accent: 'green',
+          title: 'Service markets, not office locations',
+          body: 'A service market identifies an area where The Sewer Pros travels to provide sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services. It does not automatically represent a storefront, branch, depot, or office.',
+          benefitLabel: 'What this means for you',
+          benefit:
+            'Confirm coverage using your property location before scheduling service.',
+        },
+        {
+          icon: 'camera',
+          accent: 'blue',
+          title: 'Sewer conditions vary by market',
+          body: 'Housing age, pipe materials, soil conditions, mature landscaping, property type, and local sewer requirements can vary between St. Louis, San Diego, and Las Vegas. Each market page provides information relevant to customers and properties in that service area.',
+          benefitLabel: 'What this means for you',
+          benefit:
+            'Review locally relevant service and scheduling information instead of generic content with only the city name changed.',
+        },
+      ],
+      /*
+        ⚠ ALL THREE MARKETS, IN ONE TREATMENT AND ONE ORDER. Las Vegas
+        is an active operational market (DEC-076, DEC-080) and must not
+        read as pending or secondary; St. Louis is the only one with a
+        GBP (01 §21) and must not read as the "real" one. Same button
+        variant, same label pattern, registry order.
+      */
+      panel: {
+        title: 'Find information for your service area',
+        body: 'Choose your market to review local sewer services, featured communities, contact information, scheduling details, and sewer inspection guidance.',
+        links: [
+          { pageId: id('market-st-louis-mo'), label: 'Explore St. Louis' },
+          { pageId: id('market-san-diego-ca'), label: 'Explore San Diego' },
+          { pageId: id('market-las-vegas-nv'), label: 'Explore Las Vegas' },
+        ],
+      },
+    },
     /*
       ⚠ THE HOME PAGE'S MARKET CARDS, NOT A SECOND DESIGN FOR THE SAME
       INFORMATION (owner direction, 2026-09-07). This replaced a plain
@@ -850,7 +950,48 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         [id('market-las-vegas-nv')]: 'Explore Las Vegas Service Locations',
       },
     },
+    /*
+      ==========================================================================
+      SIX ENTRIES ADDED 2026-09-07. Three to nine.
+      ==========================================================================
+      ⚠ INTERLEAVED, NOT APPENDED, so related questions sit together:
+      coverage first, then who we are, then what we do and do not do,
+      then hours, then the out-of-market case beside "how do I find
+      out".
+
+      ⚠ EVERY FACT WAS CHECKED AGAINST DATA, NOT AGAINST THE DRAFT.
+        hours       `data/markets/markets.ts` - all three markets carry
+                    'Monday to Friday, 8:00am - 4:00pm', so stating them
+                    once for every market is accurate rather than a
+                    generalisation. Weekends closed per
+                    `data/business/offers.ts`.
+        same-day    DEC-088's approved hedge, kept word for word in
+                    shape: "sometimes", "never guaranteed", weekday
+                    hours named. It must never harden into a promise.
+        one company 01 §776 - "one company with multiple markets rather
+                    than three unrelated brands".
+        no repair   CLAUDE.md §9. The guardrail, stated plainly.
+
+      ⚠ NO `FAQPage` SCHEMA. Deferred by standing decision, same as the
+      market hubs.
+
+      ⚠ NO EM DASHES, and the hours are written "8:00am to 4:00pm"
+      rather than with the en dash the data uses, because this is
+      visitor-facing prose rather than a data field.
+    */
     faq: [
+      {
+        question: 'What areas does The Sewer Pros serve?',
+        answer: (
+          <p>
+            The Sewer Pros currently works across three service markets: St.
+            Louis, Missouri; San Diego, California; and Las Vegas, Nevada.
+            Each market page above lists the communities we currently feature
+            for that area, though our coverage is not limited to only the
+            communities named there.
+          </p>
+        ),
+      },
       {
         question: 'Do you have a local office I can visit?',
         answer: (
@@ -862,11 +1003,71 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         ),
       },
       {
+        question: 'Is The Sewer Pros the same company in every market?',
+        answer: (
+          <p>
+            Yes. The Sewer Pros is one company operating across all three
+            service markets, not a franchise or a network of independently
+            owned locations. Service availability, hours, and pricing may
+            still vary by market, but the business behind the work is the
+            same.
+          </p>
+        ),
+      },
+      {
+        question:
+          'Does The Sewer Pros offer the same services in every market?',
+        answer: (
+          <p>
+            The core services, sewer camera inspection, sewer diagnostics,
+            sewer cleaning, hydro jetting, and sewer line locating, are the
+            focus in every market. Exact service availability can still vary
+            by location, so check the relevant market page above or contact
+            us to confirm what is currently available for your property.
+          </p>
+        ),
+      },
+      {
+        question: 'Does The Sewer Pros repair or replace sewer lines?',
+        answer: (
+          <p>
+            No. The Sewer Pros specializes in independent sewer inspection,
+            diagnostics, locating, and cleaning, not repair or replacement.
+            If an inspection shows that repair or replacement may be needed,
+            we can document what we found so you have clear evidence before
+            deciding on next steps or getting a second opinion.
+          </p>
+        ),
+      },
+      {
         question: 'Do you offer emergency service?',
         answer: (
           <p>
             No. We operate standard weekday hours in every market and do not
             provide 24/7 or emergency service.
+          </p>
+        ),
+      },
+      {
+        question: "What are The Sewer Pros' hours in these markets?",
+        answer: (
+          <p>
+            The Sewer Pros operates Monday to Friday, 8:00am to 4:00pm, in
+            every service market, and is closed Saturday and Sunday. A
+            same-day appointment is sometimes available within those hours,
+            but it is never guaranteed.
+          </p>
+        ),
+      },
+      {
+        question:
+          'Do you serve areas outside St. Louis, San Diego, and Las Vegas?',
+        answer: (
+          <p>
+            Our published coverage today is limited to the St. Louis, San
+            Diego, and Las Vegas service markets. If your property is outside
+            those areas, contact us directly with your location and we can
+            tell you quickly whether we are able to help.
           </p>
         ),
       },

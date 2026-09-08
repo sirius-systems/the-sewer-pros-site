@@ -176,6 +176,9 @@ export type { ProofGalleryProps } from './ProofGallery'
 export { TestimonialBand } from './TestimonialBand'
 export type { TestimonialBandProps } from './TestimonialBand'
 
+export { MarketGuidance, marketGuidanceRenders } from './MarketGuidance'
+export type { MarketGuidanceProps } from './MarketGuidance'
+
 export { ReviewMarquee } from './ReviewMarquee'
 export type { ReviewMarqueeProps } from './ReviewMarquee'
 

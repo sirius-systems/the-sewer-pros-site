@@ -105,6 +105,60 @@ export interface RoutingLink {
  * Approved page ids only, resolved through the approved-link layer —
  * never an href (CLAUDE.md §37, 16 §25).
  */
+/**
+ * One explainer card in `MarketGuidanceContent`.
+ *
+ * ⚠ THE ACCENT IS A ROLE, NOT A COLOUR VALUE. `MarketGuidance` maps it
+ * to `--accent` and `--accent-secondary`, so DEC-096's palette stays
+ * the single source. A card must not carry a hex.
+ */
+export interface MarketGuidanceCard {
+  /** Decorative mark beside the heading. Rendered `aria-hidden`. */
+  icon: 'map-pin' | 'camera'
+  accent: 'green' | 'blue'
+  title: string
+  body: string
+  /** Label above the reader-facing takeaway, e.g. "What this means for you". */
+  benefitLabel: string
+  benefit: string
+}
+
+/**
+ * The service-area explainer on a hub that routes to markets.
+ *
+ * ⚠ THIS REPLACES `body` RATHER THAN JOINING IT. `HubPageTemplate`
+ * renders one or the other, because both are the page's first content
+ * band and two of them would be the same explanation twice. The prose
+ * version is still what the other four hubs use.
+ *
+ * ⚠ PLAIN STRINGS, NOT `ReactNode`. Everything here is short enough to
+ * carry no markup, and keeping it flat means the copy can be read and
+ * checked without following JSX. The em-dash ban applies to every
+ * field (owner rule, standing).
+ *
+ * ⚠ EXACTLY TWO CARDS, ENFORCED BY THE TUPLE. The section is a
+ * two-column grid at desktop; a third card would leave an orphaned
+ * row, which 18 §5.6 prohibits by name.
+ */
+export interface MarketGuidanceContent {
+  eyebrow: string
+  title: string
+  intro: string
+  cards: readonly [MarketGuidanceCard, MarketGuidanceCard]
+  /**
+   * The full-width routing panel under the cards.
+   *
+   * ⚠ THE LINKS ARE PAGE IDS, NOT HREFS. They resolve through the
+   * approved-link layer, so a market that is ever gated drops out of
+   * the panel instead of shipping a dead button (16 §25).
+   */
+  panel: {
+    title: string
+    body: string
+    links: readonly { pageId: PageId; label: string }[]
+  }
+}
+
 export interface RoutingContent {
   pageId: PageId
   /**
@@ -1195,6 +1249,67 @@ export interface HubPageContent extends BasePageContent {
    * market's, so they carry no market-scoped claim onto this hub.
    */
   showTrustSections?: boolean
+  /**
+   * The home page's "What we do" band, as a SECOND section alongside
+   * the hub's own member list.
+   *
+   * ⚠ THIS IS NOT `items`, AND THE TWO ARE NOT ALTERNATIVES. `items`
+   * and `marketCards` are the hub's MEMBERS - the pages it exists to
+   * route to - and exactly one of them renders. This is the service
+   * mosaic, which on `/locations/` is not the member list: that hub's
+   * members are the three markets. A hub whose members already ARE the
+   * services (`/services/`) has no reason to set this and would render
+   * the same list twice.
+   *
+   * ⚠ SAME SHAPE AS `MarketPageContent['services']`, and it is meant to
+   * be fed the same `coreServiceCards` array. `image` is what promotes
+   * `ServiceIndex` from a row list to the mosaic, so a page that
+   * quietly loses its artwork loses the composition too.
+   *
+   * ⚠ ALL NINE SHARED CARDS ARE SAFE ON A SITEWIDE PAGE. Every service
+   * in `coreServiceCards` carries an identical status across all three
+   * markets (see that file), which is exactly the condition a hub
+   * speaking for all three needs. The St. Louis-only lateral-reporting
+   * service is deliberately absent from that array and must stay so.
+   */
+  services?: readonly {
+    pageId: PageId
+    description?: string
+    image?: CardImage
+  }[]
+  /**
+   * The service-area explainer, REPLACING the plain `body` prose.
+   *
+   * ⚠ SET THIS OR `body`, NOT BOTH. The template prefers this one and
+   * skips the prose band entirely, so a hub setting both would author
+   * a paragraph nothing renders.
+   *
+   * ⚠ IT IS `muted`, WHICH THE REST OF THE PAGE IS DERIVED FROM. The
+   * band below it takes the opposite surface; see `HubPageTemplate`.
+   */
+  guidance?: MarketGuidanceContent
+  /**
+   * Intent-routing cards, the same "How we can help" band the home
+   * page and the three market hubs render.
+   *
+   * ⚠ AUTHOR THE ARRAY FOR THE PAGE. Do not reuse the home page's
+   * verbatim: its "Check coverage" card points AT `/locations/`, and a
+   * card that routes a visitor to the page they are already on is a
+   * dead end rather than a route.
+   */
+  routing?: readonly RoutingContent[]
+  routingBackground?: CardImage
+  /**
+   * Swaps the closing `AuthorityBand` from its proof-point variant to
+   * the home page's process band.
+   *
+   * ⚠ IT SWAPS, IT DOES NOT ADD. Both are `AuthorityBand`, and a page
+   * carrying the proof points AND the process steps says "here is why
+   * to trust us" twice in one column. The home page made the same
+   * call: it renders the process variant and no proof band at all.
+   */
+  showProcessBand?: boolean
+  processBackground?: CardImage
 }
 
 /** Core page — about, contact, faq. */

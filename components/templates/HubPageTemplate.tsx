@@ -10,6 +10,10 @@ import {
   ConfidenceModule,
   LeadFormSection,
   ReviewMarquee,
+  RoutingCards,
+  MarketGuidance,
+  marketGuidanceRenders,
+  routingCardsRenders,
   authorityBandRenders,
   confidenceModuleRenders,
   serviceIndexRenders,
@@ -115,8 +119,14 @@ export function HubPageTemplate({
   //
   // The condition itself is unchanged. Whether the band renders has
   // never depended on the CTA's surface and still does not.
+  //
+  // ⚠ SUPPRESSED ENTIRELY WHEN THE PROCESS BAND TAKES THIS SLOT. Both
+  // are `AuthorityBand`; see the gate block below for why a page gets
+  // one or the other and never both.
   const showAuthority =
-    faqSectionRenders(content.faq) && authorityBandRenders()
+    content.showProcessBand !== true &&
+    faqSectionRenders(content.faq) &&
+    authorityBandRenders()
 
   /*
     ==========================================================================
@@ -156,11 +166,81 @@ export function HubPageTemplate({
   const showsItems =
     !showsMarketCards && serviceIndexRenders(content.items)
 
+  /*
+    The service mosaic, which is a SEPARATE band from the member list
+    above. See `HubPageContent.services` for why they are not
+    alternatives.
+  */
+  const showsServices = serviceIndexRenders(content.services)
+
+  /*
+    ==========================================================================
+    THE HOME PAGE'S SHARED BANDS, ON OWNER DIRECTION (2026-09-07)
+    ==========================================================================
+    "How we can help" and the process band, plus the service-area
+    explainer that replaces this hub's prose intro. Every one is opt-in
+    from content, so the other four hubs are unaffected.
+
+    ⚠ THE PROCESS BAND SWAPS THE PROOF BAND OUT RATHER THAN JOINING IT.
+    Both are `AuthorityBand`. A page carrying the proof points AND the
+    process steps makes the same "here is why to trust us" argument
+    twice in one column, and the home page already settled this: it
+    renders the process variant and no proof band at all.
+  */
+  const showsGuidance = marketGuidanceRenders(content.guidance)
+  const showsRouting =
+    content.routing !== undefined && routingCardsRenders(content.routing)
+  const showsProcessBand = content.showProcessBand === true
+
+  /*
+    ==========================================================================
+    SURFACES BELOW THE MEMBER LIST, DERIVED RATHER THAN HARDCODED
+    ==========================================================================
+    Four bands can follow the member list and any combination of the
+    middle two may be absent, so hardcoding each one's surface means
+    re-deriving the whole run by hand every time a section is added -
+    which is exactly what adding the service mosaic would have forced.
+
+    ⚠ THE FOUR OTHER HUBS COME OUT WHERE THEY ALWAYS WERE. They render
+    neither services nor the confidence module, so this collapses to
+    `flip(itemsSurface)` for the FAQ: `default` member list -> `muted`
+    FAQ, which is the value that used to be written literally.
+  */
+  const flip = (surface: SectionSurface): SectionSurface =>
+    surface === 'muted' ? 'default' : 'muted'
+
+  /*
+    ⚠ THE REVIEW BAND TAKES THE OPPOSITE OF WHATEVER OPENS THE PAGE.
+    The prose `body` is `default`, the guidance section is `muted`, and
+    the reviews sit directly under whichever one renders. Deriving it
+    here is what stops the pair silently matching the day a hub swaps
+    one intro for the other.
+
+    ⚠ `itemsSurface` MUST THEN BE THE OPPOSITE OF THE REVIEW BAND on a
+    hub rendering both, because the member list follows it. That prop
+    is route-provided rather than derived, so `/locations/` passes
+    `muted` explicitly. A mismatch there is the one adjacency this
+    chain cannot catch for itself.
+  */
+  const introSurface: SectionSurface = showsGuidance ? 'muted' : 'default'
+  const reviewsSurface = flip(introSurface)
+
+  let previousSurface: SectionSurface = itemsSurface
+  const servicesSurface = flip(previousSurface)
+  if (showsServices) previousSurface = servicesSurface
+  const confidenceSurface = flip(previousSurface)
+  if (showsConfidence) previousSurface = confidenceSurface
+  const faqSurface = flip(previousSurface)
+
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'sparse',
     'dense',
-    ...(content.body !== undefined ? (['standard'] as const) : []),
+    ...(showsGuidance || content.body !== undefined
+      ? (['standard'] as const)
+      : []),
+    ...(showsReviews ? (['standard'] as const) : []),
+    ...(showsRouting ? (['dense'] as const) : []),
     /*
       ⚠ THE CARDS ARE `dense` WHERE THE INDEX IS `standard`, AND THAT
       IS THE HOME PAGE'S OWN VALUE RATHER THAN A NEW ONE. That page
@@ -169,17 +249,15 @@ export function HubPageTemplate({
       way. It also breaks what would otherwise be body -> cards ->
       process, three `standard` bands in a row.
     */
-    /*
-      ⚠ REVIEWS SIT ABOVE THE MEMBER LIST, WHICH IS WHERE THE MARKET
-      HUBS PUT THEM RELATIVE TO "what we offer". Mirroring the relative
-      ORDER rather than the absolute section list is the whole point:
-      a hub's member list is not a market's services band, but both
-      answer "what can you do for me", and evidence belongs before the
-      answer, not after it.
-    */
-    ...(showsReviews ? (['standard'] as const) : []),
     ...(showsMarketCards ? (['dense'] as const) : []),
     ...(showsItems ? (['standard'] as const) : []),
+    /*
+      ⚠ `dense`, WHICH IS THE VALUE THE HOME PAGE AND ALL THREE MARKET
+      HUBS ALREADY GIVE THIS BAND. The mosaic carries its own internal
+      rhythm; padding it out to `standard` would leave the tiles
+      floating in the section.
+    */
+    ...(showsServices ? (['dense'] as const) : []),
     // After the member list, as on the market hubs.
     ...(showsConfidence ? (['standard'] as const) : []),
     /*
@@ -189,9 +267,13 @@ export function HubPageTemplate({
       buffer has to move. The two branches are mutually exclusive on
       `showsHeroForm`, so the array length is unchanged either way.
     */
-    ...(showAuthority && !showsHeroForm ? (['standard'] as const) : []),
+    ...((showAuthority || showsProcessBand) && !showsHeroForm
+      ? (['standard'] as const)
+      : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
-    ...(showAuthority && showsHeroForm ? (['standard'] as const) : []),
+    ...((showAuthority || showsProcessBand) && showsHeroForm
+      ? (['standard'] as const)
+      : []),
     /*
       ⚠ `CtaSection` SETS ITS OWN DENSITY FROM ITS VARIANT AND THIS HAS
       TO AGREE WITH IT: `sparse` for the panel, `dense` for the split.
@@ -250,10 +332,20 @@ export function HubPageTemplate({
 
       <TrustBar />
 
-      {content.body !== undefined && (
-        <Section density="standard" width="reading">
-          <Prose>{content.body}</Prose>
-        </Section>
+      {/*
+        ⚠ ONE INTRO BAND, IN ONE OF TWO PRESENTATIONS. `/locations/`
+        takes the card-led explainer because its subject IS the
+        service-market distinction; the other four hubs keep the prose.
+        See `HubPageContent.guidance` for why they are alternatives.
+      */}
+      {showsGuidance && content.guidance !== undefined ? (
+        <MarketGuidance content={content.guidance} density="standard" />
+      ) : (
+        content.body !== undefined && (
+          <Section density="standard" width="reading">
+            <Prose>{content.body}</Prose>
+          </Section>
+        )
       )}
 
       {/*
@@ -264,7 +356,46 @@ export function HubPageTemplate({
         above is the hub's white body prose. Same rule, opposite value.
         See `ReviewMarqueeProps.surface`.
       */}
-      {showsReviews && <ReviewMarquee density="standard" surface="muted" />}
+      {showsReviews && (
+        <ReviewMarquee density="standard" surface={reviewsSurface} />
+      )}
+
+      {/*
+        "How we can help" - the same intent-routing band the home page
+        and all three market hubs carry (owner, 2026-09-07).
+
+        ⚠ THE ARRAY IS AUTHORED PER PAGE, NOT SHARED. The home page's
+        includes a "Check coverage" card pointing at `/locations/`;
+        rendering that here would route a visitor to the page they are
+        already on. See `HubPageContent.routing`.
+      */}
+      {showsRouting && content.routing !== undefined && (
+        <RoutingCards
+          /*
+            ⚠ SET EXPLICITLY, WHERE THE HOME PAGE LETS IT DEFAULT. The
+            component's own default is `standard`, and the density
+            array above has to state what the page actually renders -
+            an array that disagrees with the render has
+            `sectionRhythmIssues()` checking a rhythm nobody sees. It
+            is also the value that breaks what would otherwise be
+            guidance -> reviews -> routing, three `standard` bands.
+          */
+          density="dense"
+          id="how-we-can-help"
+          eyebrow="Start here"
+          title="How we can help"
+          intro="Find the service, location, or contact path that matches what you need."
+          items={content.routing}
+          scrim="strong"
+          /*
+            `surface` is the fallback, not the current appearance: the
+            background image overrides it, and this is what comes back
+            if that image is ever removed.
+          */
+          surface="default"
+          backgroundImage={content.routingBackground}
+        />
+      )}
 
       {/*
         ⚠ THE MEMBER LIST, IN ONE OF TWO PRESENTATIONS. Not two
@@ -314,13 +445,52 @@ export function HubPageTemplate({
       )}
 
       {/*
-        After the member list, as on the market hubs. Its own default
-        surface is `muted`, which is what it needs here: the band above
-        it is `default` either way.
-      */}
-      {showsConfidence && <ConfidenceModule density="standard" />}
+        ==================================================================
+        THE SERVICE MOSAIC — A SECOND BAND, NOT THE MEMBER LIST
+        ==================================================================
+        Owner direction (2026-09-07): `/locations/` carries the home
+        page's "What we do" section. Its members are the three markets,
+        so unlike `/services/` this hub has no services band of its own
+        and the two do not compete.
 
-      {!showsHeroForm && showAuthority && <AuthorityBand title="How we work" />}
+        ⚠ SAME CALL AS THE MARKET HUBS, DOWN TO THE `variant` TEST.
+        `mosaic` only once the cards actually carry artwork - a page
+        that lost its frames would otherwise ship an empty-tiled grid
+        rather than falling back to the row list.
+
+        ⚠ `id="services"`, NOT `hub-items`. That id belongs to the
+        member list above whichever presentation it takes, and two
+        sections cannot share one anchor target.
+      */}
+      {showsServices && content.services !== undefined && (
+        <ServiceIndex
+          density="dense"
+          id="services"
+          title="What we do"
+          items={content.services}
+          variant={
+            content.services.some((item) => item.image !== undefined)
+              ? 'mosaic'
+              : 'index'
+          }
+          surface={servicesSurface}
+        />
+      )}
+
+      {/* After the member list, as on the market hubs. */}
+      {showsConfidence && (
+        <ConfidenceModule density="standard" surface={confidenceSurface} />
+      )}
+
+      {!showsHeroForm &&
+        (showsProcessBand ? (
+          <AuthorityBand
+            variant="process"
+            backgroundImage={content.processBackground}
+          />
+        ) : (
+          showAuthority && <AuthorityBand title="How we work" />
+        ))}
 
       {/*
         Muted, deliberately. A hub runs hero → body → items → faq, and
@@ -338,10 +508,7 @@ export function HubPageTemplate({
         the module, not the flag, because the module is the neighbour.
       */}
       {content.faq !== undefined && (
-        <FaqSection
-          entries={content.faq}
-          surface={showsConfidence ? 'default' : 'muted'}
-        />
+        <FaqSection entries={content.faq} surface={faqSurface} />
       )}
 
       {/*
@@ -351,7 +518,21 @@ export function HubPageTemplate({
         buffer, exactly as it buffers the brand panel from a brand band
         on the other branch.
       */}
-      {showsHeroForm && showAuthority && <AuthorityBand title="How we work" />}
+      {showsHeroForm &&
+        (showsProcessBand ? (
+          /*
+            ⚠ THE PROCESS VARIANT SITS WHERE THE PROOF BAND SAT, WHICH
+            KEEPS ITS STRUCTURAL JOB. That slot exists to stop the FAQ
+            and the closing CTA sharing a surface; an image-backed band
+            separates them as well as a brand one did.
+          */
+          <AuthorityBand
+            variant="process"
+            backgroundImage={content.processBackground}
+          />
+        ) : (
+          showAuthority && <AuthorityBand title="How we work" />
+        ))}
 
       <CtaSection
         /*
@@ -370,6 +551,13 @@ export function HubPageTemplate({
         variant={showsHeroForm ? 'split' : 'panel'}
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
+        /*
+          ⚠ `null` DROPS THE BUTTON; `undefined` FALLS BACK TO THE
+          GLOBAL `PRIMARY_CTA`. The two are not interchangeable, which
+          is why `hideAction` is checked rather than an empty label.
+          Same handling as `MarketPageTemplate`.
+        */
+        action={content.cta?.hideAction === true ? null : undefined}
         /*
           ⚠ NO `phone`. `MarketPageTemplate` is the only template that
           passes one, because a phone number is market-scoped and this
