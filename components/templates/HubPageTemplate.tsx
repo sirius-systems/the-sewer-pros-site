@@ -14,7 +14,6 @@ import {
   RoutingCards,
   MarketGuidance,
   HubIntro,
-  HeroCarousel,
   SelectionPanel,
   selectionPanelRenders,
   hubIntroRenders,
@@ -58,6 +57,36 @@ import type { HubPageContent, MasterPageRecord } from '@/types'
 export interface HubPageTemplateProps {
   page: MasterPageRecord
   content: HubPageContent
+  /**
+   * What sits beside the hero copy.
+   *
+   * ⚠ `form` (default) IS WHAT `showHeroForm` HAS ALWAYS MEANT, and
+   * `/locations/` keeps it: backdrop behind, copy left, lead form
+   * right. `none` is for a route that supplies its own hero
+   * composition - `/services/` passes a background carousel with
+   * controls, where a form in the second column would sit on top of
+   * the photographs the carousel exists to show.
+   *
+   * ⚠ IT DOES NOT TOUCH THE CLOSING CTA. `showHeroForm` still drives
+   * the `split` variant and the form inside it, so a hub setting `none`
+   * loses the hero form and keeps its real conversion moment.
+   */
+  heroAside?: 'form' | 'none'
+  /**
+   * Extra classes for the hero's own `<Section>`.
+   *
+   * ⚠ IT EXISTS FOR ONE THING: RESERVING ROOM UNDER THE COPY. A
+   * backdrop with controls pins them to the hero's bottom edge, and
+   * below `sm` they centre - straight onto the CTA row, which is the
+   * last thing in the section. The route that turns those controls on
+   * is the only place that knows they are there, so it is the place
+   * that adds the padding.
+   *
+   * ⚠ NOT A GENERAL STYLE HOOK. Anything that changes the hero's
+   * composition belongs in `Hero` behind a named prop, where the
+   * reasoning can live next to it.
+   */
+  heroClassName?: string
   /** Heading above the member list. */
   itemsTitle?: string
   /**
@@ -104,6 +133,8 @@ export interface HubPageTemplateProps {
 export function HubPageTemplate({
   page,
   content,
+  heroAside = 'form',
+  heroClassName,
   itemsTitle = 'In this section',
   itemsId = 'hub-items',
   numbered = false,
@@ -250,20 +281,6 @@ export function HubPageTemplate({
     prefers the richer one so a stale `body` cannot double up.
   */
   const showsIntro = hubIntroRenders(content.intro)
-  /*
-    ⚠ THE CAROUSEL TAKES THE HERO'S ASIDE SLOT FROM THE FORM, AND ONLY
-    THAT SLOT. `showsHeroForm` still drives the closing CTA's `split`
-    variant below, so a hub setting both opens on photographs and still
-    closes on the form. See `HubPageContent.heroCarousel`.
-
-    ⚠ TESTED INLINE, NOT VIA A `*Renders()` HELPER. `HeroCarousel` is a
-    `'use client'` module, and a client module cannot export a function
-    the server calls: Next.js throws at prerender rather than at build
-    of the component. `ReviewMarquee` solved the same problem by putting
-    its predicate with the data; this one has no dataset to put it in.
-  */
-  const showsHeroCarousel =
-    content.heroCarousel !== undefined && content.heroCarousel.length > 0
   const showsSelectionPanel = selectionPanelRenders(content.selectionPanel)
   const showsRouting =
     content.routing !== undefined && routingCardsRenders(content.routing)
@@ -451,6 +468,7 @@ export function HubPageTemplate({
         any of that again at this level would fight it.
       */}
       <Hero
+        className={heroClassName}
         variant="editorial"
         eyebrow={content.hero.eyebrow}
         title={content.hero.title}
@@ -459,16 +477,16 @@ export function HubPageTemplate({
         primaryAction={content.hero.primaryAction}
         secondaryAction={content.hero.secondaryAction}
         /*
-          ⚠ `media` PUTS THE PICTURE COLUMN AT 58% AND CAPS THE COPY.
-          The default balance is 55/45 in the copy's favour, which is
-          right for a form; a 16:9 carousel wants the larger half. See
-          `HeroProps.asideBalance`.
+          ⚠ `narrow` WHERE A BACKDROP CARRIES THE HERO. 42rem of copy
+          across a photograph is wider than the overlay ramp is tuned
+          for; 38rem keeps the text inside the heavy end of it. A hero
+          with no backdrop keeps the reading measure it always had.
         */
-        asideBalance={showsHeroCarousel ? 'media' : 'copy'}
+        copyWidth={
+          backdrop !== undefined && heroAside === 'none' ? 'narrow' : 'reading'
+        }
         aside={
-          showsHeroCarousel && content.heroCarousel !== undefined ? (
-            <HeroCarousel slides={content.heroCarousel} />
-          ) : showsHeroForm ? (
+          showsHeroForm && heroAside === 'form' ? (
             /*
               ⚠ THE CARD IS WHAT MAKES THE FORM USABLE ON A PHOTOGRAPH.
               Its inputs, labels and focus rings are built for a light

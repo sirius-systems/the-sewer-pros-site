@@ -5,6 +5,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { pageMetadata } from '@/lib/seo'
 import { HubPageTemplate } from '@/components/templates'
+import { HeroBackdrop } from '@/components/sections'
+import { servicesHubBackdrop } from '@/data/business/services-hub-backdrop'
 import { getHubContent } from '@/content'
 import { getPage } from '@/data/pages'
 import type { PageId } from '@/types'
@@ -44,13 +46,48 @@ export default function Page() {
     separates them, as on the home page - so the service grid is back
     on white, which is what the mosaic was designed against.
   */
+  /*
+    ⚠ THE SECOND HUB WITH A HERO BACKDROP, AND THE FIRST WITH CONTROLS.
+    `/locations/` cycles one frame per market behind its copy;
+    `/services/` cycles five frames of the work behind its own. Both are
+    decorative and unlabelled, which is what keeps them honest: these
+    are rendered scenes, so a captioned frame would assert a photograph
+    of a job that does not exist.
+
+    ⚠ `controls` IS THIS PAGE'S ALONE: pause, previous, next and
+    indicators, plus the timer switching off on hover, on focus and in
+    a hidden tab. `/locations/` and the home page pass nothing and are
+    unchanged in markup and in behaviour.
+
+    ⚠ THE OVERLAY IS THE HOME PAGE'S, ON OWNER DIRECTION (2026-09-08).
+    A left-weighted navy ramp shipped here for one build; the flat 55%
+    black `.hero-scrim` replaced it, which is the same treatment behind
+    the home page and `/locations/` heroes.
+  */
   return (
     <HubPageTemplate
       page={page}
       content={content}
+      /*
+        ⚠ NO FORM BESIDE THE HERO COPY. `showHeroForm` stays set in
+        content and still gives this page the `split` closing CTA with
+        its form; what it must not do here is put a white card over the
+        photographs the carousel exists to show.
+      */
+      heroAside="none"
+      /*
+        ⚠ ROOM FOR THE CONTROLS BELOW `sm`, WHERE THEY CENTRE. Above
+        that they sit in the lower right and the CTA row is on the
+        left, so the two never meet; centred, they land straight on the
+        buttons. 112px clears the 68px strip with breathing room.
+      */
+      heroClassName="max-sm:pb-28"
       itemsTitle="Explore our sewer and drain services"
       itemsId="services-grid"
       numbered
+      backdrop={
+        <HeroBackdrop set={servicesHubBackdrop} controls />
+      }
     />
   )
 }

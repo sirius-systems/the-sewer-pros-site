@@ -601,18 +601,6 @@ export const homeContent: HomePageContent = {
  * display order: inspection and diagnostics, then cleaning, then
  * locating and maintenance.
  */
-/**
- * Provenance for the services hub's five hero frames.
- *
- * ⚠ ONE CONSTANT BECAUSE ONE DELIVERY, the same rule
- * `content/pages/service-cards.ts` states for its nine. A frame from a
- * different source must carry its own `source` rather than borrow this
- * one: `CardImage.source` is required precisely so an asset whose
- * origin nobody recorded cannot slip in.
- */
-const SERVICES_HUB_RENDER =
-  'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.'
-
 const SERVICES_HUB_ORDER: readonly PageId[] = [
   // Inspection & Diagnostics
   id('svc-sewer-camera-inspection'),
@@ -932,55 +920,6 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       secondaryAction: { href: '#cta', label: 'Request Service' },
     },
     /*
-      ==========================================================================
-      THE HERO CAROUSEL - FIVE OWNER-SUPPLIED FRAMES
-      ==========================================================================
-      ⚠ THEY TAKE THE ASIDE SLOT FROM THE HERO LEAD FORM. `showHeroForm`
-      above is still true and still drives the closing CTA's `split`
-      variant, so the page opens on pictures and closes on the form
-      rather than carrying two.
-
-      ⚠ EVERY FRAME IS 3344x1882, AN EXACT 16:9, so the carousel's
-      `aspect-video` box crops nothing and no slide shifts the layout.
-
-      ⚠ THE ALT TEXT DESCRIBES EQUIPMENT AND SETTING, NEVER AN OUTCOME.
-      None of these says a defect was found, a line was repaired, or a
-      job was completed, because they are rendered scenes rather than
-      photographs of Sewer Pros work - which is exactly what `source`
-      records.
-
-      ⚠ THESE FIVE ARE THE HERO'S ALONE. The service mosaic below runs
-      on `coreServiceCards` and its own artwork; reusing a hero frame
-      there would put the same picture twice on one page.
-    */
-    heroCarousel: [
-      {
-        src: '/images/markets/services-hub/the-sewer-pros-sewer-inspection-cleaning-services-hero.webp',
-        alt: 'Sewer inspection, cleaning, hydro jetting, and locating equipment arranged beside a residential service access',
-        source: SERVICES_HUB_RENDER,
-      },
-      {
-        src: '/images/markets/services-hub/the-sewer-pros-sewer-inspection-cleaning-access-hero.webp',
-        alt: 'Sewer camera and cleaning equipment positioned at separate exterior service access points',
-        source: SERVICES_HUB_RENDER,
-      },
-      {
-        src: '/images/markets/services-hub/the-sewer-pros-documented-sewer-camera-findings-hero.webp',
-        alt: 'Documented sewer camera findings displayed on professional inspection equipment',
-        source: SERVICES_HUB_RENDER,
-      },
-      {
-        src: '/images/markets/services-hub/the-sewer-pros-multifamily-commercial-sewer-services-hero.webp',
-        alt: 'Sewer inspection and cleaning equipment at a multifamily or commercial property',
-        source: SERVICES_HUB_RENDER,
-      },
-      {
-        src: '/images/markets/services-hub/the-sewer-pros-sewer-diagnostic-equipment-services-hero.webp',
-        alt: 'Professional sewer diagnostic and cleaning equipment organized for a service visit',
-        source: SERVICES_HUB_RENDER,
-      },
-    ],
-    /*
       ⚠ NO BRAND SUFFIX, WHICH IS WHY THIS IS NOT THE STRING THE BRIEF
       GAVE. Prompt 04 specifies "Sewer & Drain Cleaning Services | The
       Sewer Pros"; `rootMetadata`'s `%s | ${SITE_NAME}` template appends
@@ -1291,6 +1230,33 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       rest of the page describes; it carries no response time,
       availability or price (CLAUDE.md §24, §42).
     */
+    /*
+      ⚠ THE CLOSING CTA GAINS A FRAME (owner, 2026-09-08). This hub
+      shipped without one because none existed: `HubPageContent`'s own
+      note said so, and `CtaSection` gates its `split` layout on the
+      form rather than on the image precisely so the section could
+      render without a picture. One was supplied, so the section takes
+      it.
+
+      ⚠ IT IS NOT IN THE HERO CAROUSEL, AND MUST NOT BE ADDED TO IT.
+      `data/business/services-hub-backdrop.ts` carries the five hero
+      frames and says the same thing from its end: one picture in two
+      places on one route reads as a mistake.
+
+      ⚠ NO ADDRESS, NUMBER, SIGNAGE OR PERSON IS VISIBLE. It shows a
+      property type, not a Sewer Pros location or a job (CLAUDE.md
+      §11, §24). The white standpipe by the foundation is the only
+      sewer-specific detail and it asserts nothing.
+
+      ⚠ THE SCRIM IS CSS AND THE SECTION'S TEXT GOES WHITE. `Section`
+      applies it; the form beside the copy keeps its own opaque card.
+    */
+    ctaBackground: {
+      src: '/images/markets/services-hub/the-sewer-pros-sewer-service-request-cta-background.webp',
+      alt: 'Single-story home with a stone-veneer base, a driveway and a visible sewer cleanout',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     cta: {
       title: "See what's actually happening in your line.",
       body: "Schedule a sewer camera inspection, or reach out about any of the services above. We'll walk you through what fits your situation before anything is scheduled.",

@@ -98,6 +98,21 @@ import { heroBackdropRenders, type HeroBackdropSet } from '@/data/business/hero-
  * before anything is painted.
  */
 
+/**
+ * Shared class for the optional controls.
+ *
+ * ⚠ TRANSLUCENT NAVY WITH A WHITE BORDER, NOT A SOLID FILL. The
+ * controls sit over five different photographs; a fill tuned to one of
+ * them fails on another, and the border is what gives the button an
+ * edge on every frame. `backdrop-blur-sm` applies to the control only,
+ * never to the hero copy.
+ *
+ * ⚠ 44px SQUARE. `h-11 w-11` is the touch-target minimum, kept at every
+ * width rather than shrunk on mobile where it matters most.
+ */
+const CONTROL =
+  'inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-brand/60 text-white backdrop-blur-sm transition-colors hover:bg-brand/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+
 /** Seconds each frame holds before the cross-fade to the next begins. */
 const HOLD_SECONDS = 6
 
@@ -130,10 +145,43 @@ function motionPreferenceOnServer() {
 export interface HeroBackdropProps {
   /** The frames and their shared intrinsic size. */
   set: HeroBackdropSet
+  /**
+   * Renders previous, next, pause and slide indicators.
+   *
+   * ⚠ OFF BY DEFAULT, WHICH IS WHAT LEAVES THE HOME PAGE AND
+   * `/locations/` BYTE-IDENTICAL. Neither passes it, neither gains a
+   * control, and the header note above records why those two can defend
+   * having none.
+   *
+   * ⚠ IT ALSO TURNS ON PAUSING. Hover, focus inside the hero and a
+   * hidden tab stop the timer only where controls render. Same scoping
+   * decision: a behaviour change on the two existing callers is still a
+   * change, and neither asked for one.
+   *
+   * ⚠ THE CONTROLS DO NOT MAKE THE FRAMES CONTENT. They stay `alt=""`
+   * under an `aria-hidden` layer, so nothing is announced when the
+   * picture changes and the page's meaning stays in the copy on top.
+   * The buttons are an additional way to stop and steer motion, which
+   * is strictly more than WCAG 2.2.2 asks of a decorative cross-fade.
+   */
+  controls?: boolean
 }
 
-export function HeroBackdrop({ set }: HeroBackdropProps) {
+export function HeroBackdrop({
+  set,
+  controls = false,
+}: HeroBackdropProps) {
   const [index, setIndex] = useState(0)
+  /*
+    ⚠ PAUSING EXISTS ONLY ON THE CONTROLLED VARIANT. `paused` is set by
+    the pause button, by hover, by focus inside the hero and by the tab
+    going hidden; with `controls` off nothing ever writes it and the two
+    existing callers keep the timer they have always had.
+  */
+  const [paused, setPaused] = useState(false)
+  const [pointerPaused, setPointerPaused] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const [announced, setAnnounced] = useState(false)
 
   /**
    * One flag, two jobs: the reduced-motion gate and the hydration gate.
@@ -154,13 +202,30 @@ export function HeroBackdrop({ set }: HeroBackdropProps) {
   )
   const enhanced = !prefersReducedMotion
 
+  /*
+    ⚠ A HIDDEN TAB STOPS THE TIMER. `setInterval` keeps firing in a
+    background tab, so without this a visitor returning after a minute
+    lands on whichever frame the clock happened to reach. Only wired
+    where controls render, for the scoping reason on the prop.
+  */
   useEffect(() => {
-    if (!enhanced || set.images.length < 2) return
+    if (!controls) return
+    const onChange = () => setHidden(document.hidden)
+    onChange()
+    document.addEventListener('visibilitychange', onChange)
+    return () => document.removeEventListener('visibilitychange', onChange)
+  }, [controls])
+
+  const running =
+    enhanced && !(controls && (paused || pointerPaused || hidden))
+
+  useEffect(() => {
+    if (!running || set.images.length < 2) return
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % set.images.length)
     }, HOLD_SECONDS * 1000)
     return () => window.clearInterval(id)
-  }, [enhanced, set.images.length])
+  }, [running, set.images.length])
 
   if (!heroBackdropRenders(set)) return null
 
@@ -212,14 +277,198 @@ export function HeroBackdrop({ set }: HeroBackdropProps) {
             className={cn(
               'absolute inset-0 h-full w-full object-cover',
               i > 0 && 'hero-backdrop-frame',
+              /*
+                ⚠ 700ms WHERE THE DEFAULT IS 1200ms. A hero a visitor
+                can page through by hand wants a transition that
+                finishes before they reach for the next button; the
+                two callers without controls keep the slower fade they
+                were tuned for.
+              */
+              i > 0 && controls && 'hero-backdrop-frame--swift',
             )}
             data-active={i === index ? 'true' : 'false'}
           />
         ))}
 
+        {/*
+          ⚠ ONE OVERLAY FOR EVERY CALLER, AND IT IS THE HOME PAGE'S.
+          A left-weighted navy gradient shipped here for one build, for
+          the services hub alone; the owner asked for the home page's
+          settings and colour instead (2026-09-08), so the variant and
+          its CSS are gone rather than left unused. See the measurements
+          beside `.hero-scrim` in `app/globals.css` for why a flat 55%
+          black is what the copy is legible against.
+        */}
         <div className="hero-scrim absolute inset-0" />
       </div>
 
+      {/*
+        ==================================================================
+        CONTROLS - OPT-IN, AND OUTSIDE THE `aria-hidden` LAYER
+        ==================================================================
+        ⚠ THEY ARE SIBLINGS OF THE FRAME STACK, NOT CHILDREN OF IT. That
+        layer is `aria-hidden` and at `-z-10`; a button inside it would
+        be hidden from assistive technology and painted behind the copy.
+
+        ⚠ HOVER AND FOCUS PAUSE FROM HERE, WHICH IS NARROWER THAN THE
+        WHOLE HERO ON PURPOSE. The copy above these frames carries the
+        page's two CTAs; pausing when a visitor tabs to "Explore Sewer
+        Services" would tie an unrelated control to the timer. Pointer
+        and focus over the controls themselves is the interaction that
+        means "I am steering this".
+
+        ⚠ LOWER RIGHT ON DESKTOP, CENTRED UNDER THE COPY ON MOBILE, and
+        never over the CTA row: the hero's buttons are on the left, so
+        `sm:justify-end` moves these away from them rather than on top.
+
+        ⚠ NO LIVE REGION FOR AUTOMATIC CHANGES. The frames are
+        decorative and the copy does not change, so there is nothing to
+        announce. The status line below is rendered only after a
+        control is pressed, which is the one case where the change was
+        the visitor's own action.
+      */}
+      {controls && set.images.length > 1 && (
+        <div
+          /*
+            ⚠ ABSOLUTELY POSITIONED, NOT IN FLOW. `Hero`'s backdrop
+            branch wraps everything in `relative isolate
+            overflow-hidden`, and this block is a sibling of the frame
+            stack rather than a child of it - so in normal flow it
+            would paint ABOVE the copy, at the top of the hero. Pinning
+            it to the bottom edge is what puts it under the copy on
+            mobile and in the lower right on desktop.
+
+            ⚠ `pointer-events-none` ON THE STRIP, RE-ENABLED ON THE
+            BUTTONS. The strip spans the hero's full width; without
+            this it would swallow clicks across the whole bottom band,
+            including on the copy behind it.
+          */
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-wrap items-center justify-center gap-2 px-4 pb-6 [&_button]:pointer-events-auto sm:justify-end sm:px-8 sm:pb-8"
+          onMouseEnter={() => setPointerPaused(true)}
+          onMouseLeave={() => setPointerPaused(false)}
+          onFocusCapture={() => setPointerPaused(true)}
+          onBlurCapture={() => setPointerPaused(false)}
+        >
+          <button
+            type="button"
+            aria-label="Previous background image"
+            onClick={() => {
+              setAnnounced(true)
+              setIndex(
+                (i) => (i - 1 + set.images.length) % set.images.length,
+              )
+            }}
+            className={CONTROL}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="h-5 w-5"
+            >
+              <path d="m14.5 6-6 6 6 6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            aria-label="Next background image"
+            onClick={() => {
+              setAnnounced(true)
+              setIndex((i) => (i + 1) % set.images.length)
+            }}
+            className={CONTROL}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="h-5 w-5"
+            >
+              <path d="m9.5 6 6 6-6 6" />
+            </svg>
+          </button>
+
+          {/*
+            ⚠ HIDDEN WHERE NOTHING AUTOPLAYS. Under reduced motion the
+            timer never starts, so a pause button would claim to stop
+            something that is not happening. Previous and next stay,
+            because paging by hand is what that visitor is left with.
+          */}
+          {enhanced && (
+            <button
+              type="button"
+              aria-label={
+                paused
+                  ? 'Play background image carousel'
+                  : 'Pause background image carousel'
+              }
+              aria-pressed={paused}
+              onClick={() => setPaused((was) => !was)}
+              className={CONTROL}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                className="h-4 w-4"
+              >
+                {paused ? (
+                  <path d="M8 5.5v13l11-6.5Z" />
+                ) : (
+                  <>
+                    <rect x="7" y="5.5" width="3.5" height="13" rx="1" />
+                    <rect x="13.5" y="5.5" width="3.5" height="13" rx="1" />
+                  </>
+                )}
+              </svg>
+            </button>
+          )}
+
+          {/*
+            ⚠ THE ACTIVE DOT IS WIDER AS WELL AS BRIGHTER, so the
+            current position is not carried by colour alone (18 §94).
+            The hit area is 44px tall whatever the dot measures.
+          */}
+          <ul className="ml-1 flex items-center gap-1">
+            {set.images.map((image, i) => (
+              <li key={image.src}>
+                <button
+                  type="button"
+                  aria-label={`Show background image ${i + 1} of ${set.images.length}`}
+                  aria-current={i === index ? 'true' : undefined}
+                  onClick={() => {
+                    setAnnounced(true)
+                    setIndex(i)
+                  }}
+                  className="flex h-11 w-6 items-center justify-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      'block h-2 rounded-full transition-all',
+                      i === index ? 'w-5 bg-white' : 'w-2 bg-white/50',
+                    )}
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <p className="sr-only" aria-live="polite">
+            {announced
+              ? `Background image ${index + 1} of ${set.images.length}`
+              : ''}
+          </p>
+        </div>
+      )}
     </>
   )
 }
