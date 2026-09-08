@@ -554,6 +554,15 @@ export function HubPageTemplate({
           appearance, not a degraded one.
         */
         variant={showsHeroForm ? 'split' : 'panel'}
+        /*
+          ⚠ ADDED 2026-09-08, AND IT WAS A SILENT DROP UNTIL NOW.
+          `CtaContent.eyebrow` has been on the type since it was added
+          and `MarketPageTemplate` already wires it; this call never
+          read it, so a hub setting `cta.eyebrow` got no eyebrow and no
+          error. `/locations/` is the first hub to set one, which is
+          the only reason the gap surfaced.
+        */
+        eyebrow={content.cta?.eyebrow}
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
         /*

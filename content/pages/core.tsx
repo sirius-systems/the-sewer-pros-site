@@ -772,7 +772,53 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       `null` as "no button" and `undefined` as "fall back to the global
       PRIMARY_CTA", so only this flag actually removes it.
     */
-    cta: { title: 'Schedule a sewer inspection', hideAction: true },
+    /*
+      ⚠ THE EYEBROW IS ST. LOUIS'S PHRASE, VERBATIM AND DELIBERATELY.
+      "Evidence before expensive sewer decisions" names no market, so
+      it is the company's own differentiator (CLAUDE.md §8) rather than
+      a St. Louis fact borrowed for a sitewide page. That distinction
+      is the whole test for what may cross markets here.
+
+      ⚠ THE BODY IS THE MARKET HUBS' THREE-PARAGRAPH SHAPE: qualifying
+      scenarios, what the visit produces, then the repair guardrail
+      stated as this company's model rather than a claim about anyone
+      else's (CLAUDE.md §9, §27).
+
+      ⚠ "ACROSS ALL THREE SERVICE MARKETS" IS THE ONE SUBSTITUTION A
+      SITEWIDE PAGE NEEDS. Every other structural element matches the
+      market hubs; a named city is the single thing that cannot.
+
+      ⚠ NO PROMISE ADDED. "Confirms availability for your address" is
+      the act of checking, not an assurance of coverage; no response
+      time, price, or same-day claim enters with this copy.
+    */
+    cta: {
+      eyebrow: 'Evidence before expensive sewer decisions',
+      title: 'Schedule a sewer inspection',
+      body: (
+        <>
+          <p>
+            If you are dealing with recurring sewer backups, multiple slow
+            drains, unexplained blockages, possible root intrusion, or
+            concerns about a property you are preparing to purchase, a sewer
+            camera inspection can show what is happening inside the
+            accessible portion of the line.
+          </p>
+          <p>
+            The Sewer Pros confirms availability for your address, records
+            the inspection, and explains what the footage shows in plain
+            language, across all three service markets.
+          </p>
+          <p>
+            Because we do not perform sewer repair or replacement, our
+            findings are not tied to selling you a major repair. You receive
+            evidence you can keep, review, and use when deciding what happens
+            next.
+          </p>
+        </>
+      ),
+      hideAction: true,
+    },
     /*
       ⚠ ONE FRAME, THREE PANELS, ONE PER MARKET (owner-supplied,
       2026-09-07). Brick and mature shade tree, stucco and palms,
