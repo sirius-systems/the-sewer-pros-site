@@ -268,57 +268,17 @@ export const sanDiegoMarketContent: MarketPageContent = {
       'The Sewer Pros has served San Diego property owners since 2015, bringing a specialized, evidence-first approach to customers who need to investigate a drainage problem, evaluate a sewer line before buying a property, or understand the condition of a line before making a larger decision.',
       'Our San Diego sewer services include sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, recurring sewer backup diagnosis, pre-purchase sewer inspection, and preventative sewer maintenance. We inspect accessible portions of the sewer line, document visible conditions on video, and explain what the footage shows in clear language.',
     ],
-    blocks: [
-      {
-        title: 'What can a San Diego sewer camera inspection reveal?',
-        body: [
-          'A sewer camera inspection, commonly called a sewer scope, provides a direct view inside accessible portions of the sewer line. The recorded footage may reveal root intrusion, accumulated grease or scale, blockages, offset joints, standing water, cracks, or other visible conditions that may be contributing to slow drainage or recurring backups.',
-          'The inspection helps you understand what is happening before choosing sewer cleaning, hydro jetting, continued monitoring, or further evaluation by a separate sewer repair provider.',
-        ],
-      },
-      {
-        title: 'When a sewer inspection can help',
-        half: true,
-        listIntro:
-          'Consider scheduling a professional sewer camera inspection when:',
-        items: [
-          'A sewer line or drain continues to back up after being cleared',
-          'Multiple drains are slow at the same time',
-          'You need to distinguish an isolated drain clog from a main sewer-line problem',
-          'You are purchasing a home or commercial property in the San Diego area',
-          'A previous contractor has recommended an expensive sewer repair',
-          'You need to locate the sewer line before landscaping, excavation, or utility work',
-          'A property manager needs documentation for a recurring drainage issue',
-          'You want to establish an evidence-based preventative maintenance schedule',
-        ],
-        after: [
-          'A camera inspection does not automatically mean the sewer line needs repair. It provides information that helps determine whether cleaning, monitoring, or another type of evaluation is appropriate.',
-        ],
-      },
-      {
-        title: 'What you receive from the inspection',
-        half: true,
-        body: [
-          'The goal is to give you useful evidence, not simply tell you that a problem exists.',
-        ],
-        listIntro: 'You receive:',
-        items: [
-          'Recorded footage from accessible portions of the sewer line',
-          'Documentation of visible conditions found during the inspection',
-          'A plain-language explanation of what the camera shows',
-          'Guidance about whether sewer cleaning or hydro jetting may address the condition',
-          'Information you can review before approving a major sewer project',
-          'Evidence you can keep or share when seeking another professional opinion',
-        ],
-      },
-      {
-        title: 'Diagnosis without a repair-driven sales incentive',
-        body: [
-          'The Sewer Pros specializes in sewer inspection, diagnostics, locating, and cleaning. We do not perform sewer repair or replacement, so we do not earn revenue from selling the major repairs an inspection might identify.',
-          'Our responsibility is to document the visible condition of the line and help you understand the findings. You decide whether to schedule cleaning, monitor the condition, seek a second opinion, or consult a sewer repair provider of your choosing.',
-        ],
-      },
-    ],
+    /*
+      ⚠ `blocks` WAS REMOVED HERE, NOT DELETED FROM THE SITE
+      (2026-09-08). Its four sub-headings each became a section of
+      their own further down this file: `conditions`, `scenarios`,
+      `deliverables`, `independence`. `coverage` and `actions` moved to
+      `regionalCoverage`. Every sentence survives; see those fields.
+
+      This band is now what its name says - the experience claim and
+      three proof cards - rather than the page's whole argument stacked
+      inside one container.
+    */
     proof: [
       {
         title: 'Serving San Diego Since 2015',
@@ -339,23 +299,284 @@ export const sanDiegoMarketContent: MarketPageContent = {
         accent: 'green',
       },
     ],
-    coverage: {
-      title: 'Serving properties throughout the San Diego region',
-      body: [
-        'The Sewer Pros serves homeowners, home buyers, real estate professionals, property managers, multifamily buildings, and commercial properties throughout the greater San Diego region. Featured service areas include San Diego, San Marcos, Carlsbad, Escondido, Oceanside, Chula Vista, and Mission Valley.',
-        'Service availability can vary by property location. Contact us with the location and the sewer or drainage concern so we can confirm coverage before scheduling.',
-      ],
-    },
-    actions: {
-      primary: {
-        label: 'Schedule a San Diego Sewer Inspection',
-        pageId: id('core-contact'),
+  },
+  /*
+    ==========================================================================
+    THE AUTHORITY STACK. Five sections carved out of `experience`
+    (owner direction, 2026-09-08).
+    ==========================================================================
+    ⚠ NOTHING WAS INVENTED AND NOTHING WAS DROPPED. Every sentence
+    below came from the four `blocks`, the `coverage` panel and the
+    `actions` that used to sit inside `ExperienceSection`. Where the
+    brief supplied fresh wording it says the same thing in shorter
+    sentences; the claims are identical.
+
+    ⚠⚠ THREE IMAGES WERE ASKED FOR AND NONE EXISTS IN THE REPOSITORY:
+      the-sewer-pros-san-diego-sewer-inspection-experience.webp
+      the-sewer-pros-san-diego-sewer-inspection-evidence.webp
+      the-sewer-pros-san-diego-property-sewer-inspection.webp
+    `public/images/markets/san-diego-ca/` holds a hero video, a service
+    area map and seven service-location frames, and nothing else.
+    Rather than point at files that are not there, or borrow an
+    unrelated pipe photograph to fill the space, these sections ship
+    without artwork - `DeliverablesSection` renders one readable column
+    when `image` is unset, which is a complete layout rather than a gap
+    where a picture should be. Drop the assets in and set
+    `deliverables.image` to light it up.
+
+    ⚠ NO NEW LOCAL CLAIM ENTERS HERE. No soil, climate, pipe-material,
+    licensing or municipal-programme statement that the body copy does
+    not already source. The jurisdictional detail stays in `body`,
+    where it is cited.
+
+    ⚠ EVERY DESCRIPTION SAYS "MAY" OR "CAN". CLAUDE.md §24 forbids
+    guaranteeing that a defect is visible or that a cause is
+    established, and these sections are written for people who already
+    have a problem, which is where that guarantee is most tempting.
+  */
+  conditions: {
+    eyebrow: 'What the camera shows',
+    title: 'What can a San Diego sewer camera inspection reveal?',
+    intro: [
+      'A sewer camera inspection provides a recorded view of accessible portions of the line. It may reveal root intrusion, accumulated grease or scale, blockages, offset joints, standing water, cracks, or other visible conditions that may be contributing to slow drainage or recurring backups.',
+      'The camera documents visible conditions inside accessible portions of the sewer line. It does not determine everything about buried pipe conditions, guarantee that every defect will be visible, or automatically establish whether repair or replacement is necessary.',
+    ],
+    /*
+      ⚠ SIX CARDS, WHICH `ProblemGrid` DIVIDES INTO THREE COLUMNS
+      EXACTLY. Five would orphan a cell; the component absorbs that
+      case, but six is the count this content actually has.
+
+      ⚠ THE ICON ACCENTS ALTERNATE FOR RHYTHM AND MEAN NOTHING. No
+      condition here is marked as more urgent than another.
+    */
+    items: [
+      {
+        title: 'Root intrusion',
+        description:
+          'Roots may enter through joints or openings and reduce the usable area inside the line.',
+        icon: 'camera',
+        accent: 'blue',
       },
-      secondary: {
-        label: 'Explore San Diego Sewer Services',
-        pageId: id('hub-services'),
+      {
+        title: 'Grease and scale buildup',
+        description:
+          'Accumulated material can narrow the pipe and interfere with normal drainage.',
+        icon: 'explanation',
+        accent: 'green',
       },
+      {
+        title: 'Blockages',
+        description:
+          'The camera may help identify visible debris or obstructions affecting flow.',
+        icon: 'guidance',
+        accent: 'blue',
+      },
+      {
+        title: 'Offset joints',
+        description:
+          'Misaligned connections may be visible where one section of pipe meets another.',
+        icon: 'document',
+        accent: 'green',
+      },
+      {
+        title: 'Standing water',
+        description:
+          'Water remaining in the line may indicate an area that is not draining as expected.',
+        icon: 'explanation',
+        accent: 'blue',
+      },
+      {
+        title: 'Cracks or deterioration',
+        description:
+          'Accessible footage may show visible cracking, corrosion, or material deterioration.',
+        icon: 'camera',
+        accent: 'green',
+      },
+    ],
+  },
+  scenarios: {
+    eyebrow: 'When it helps',
+    title: 'When should you schedule a sewer inspection?',
+    /*
+      ⚠ THE SECOND SENTENCE EXISTS TO KEEP TWO SCENARIOS THE SIX CARDS
+      DO NOT COVER. The list this section replaced had eight entries;
+      the brief specified six cards, and six is also the count that
+      fills the featured grid without orphaning a cell. The two that
+      would otherwise have vanished are:
+
+        "A previous contractor has recommended an expensive sewer
+         repair"  - the second-opinion case, which CLAUDE.md §27 names
+         a strategic cluster in its own right.
+        "You need to locate the sewer line before landscaping,
+         excavation, or utility work"  - sewer line locating is one of
+         the confirmed services for this market.
+
+      Folding them into the intro keeps both without a seventh card,
+      and without an eighth that would leave a hole in the grid.
+    */
+    intro:
+      'A sewer inspection can help when symptoms keep returning, when more than one drain is affected, or when you need documented information before making a property or maintenance decision. It can also help when the line needs locating before landscaping, excavation, or utility work, or when you want independent evidence before acting on a repair recommendation.',
+    /*
+      ⚠ ONE FEATURED CARD, AND PRE-PURCHASE IS IT. Both it and
+      recurring backups were candidates; pre-purchase wins because it
+      is the situation with a deadline, and because 26 names the real
+      estate cluster a strategic priority. It takes the green plate as
+      the one card carrying a conversion intent.
+    */
+    items: [
+      {
+        title: 'Pre-purchase property evaluation',
+        description:
+          'Buyers can review recorded sewer-line evidence before closing instead of relying only on assumptions about a property’s underground systems.',
+        icon: 'document',
+        featured: true,
+      },
+      {
+        title: 'Recurring sewer backups',
+        description:
+          'A camera inspection can help document the visible condition of a line that continues to back up after previous clearing.',
+        icon: 'camera',
+      },
+      {
+        title: 'Multiple slow drains',
+        description:
+          'When several fixtures are draining slowly, an inspection can help determine whether the concern may extend beyond one isolated branch drain.',
+        icon: 'explanation',
+      },
+      {
+        title: 'Preventative sewer maintenance',
+        description:
+          'Inspection findings can help property owners choose a maintenance interval based on observed conditions rather than a generic schedule.',
+        icon: 'guidance',
+      },
+      {
+        title: 'Property-management documentation',
+        description:
+          'Recorded findings can help property managers document recurring drainage concerns and communicate more clearly with owners or vendors.',
+        icon: 'document',
+      },
+      {
+        title: 'Concerns about an older sewer line',
+        description:
+          'A camera inspection can document accessible visible conditions when the age or history of a property raises questions about the sewer line.',
+        icon: 'decision',
+      },
+    ],
+    action: {
+      label: 'Schedule a Sewer Inspection',
+      pageId: id('core-contact'),
     },
+  },
+  deliverables: {
+    eyebrow: 'Documented findings',
+    title: 'Evidence you can review after the inspection',
+    intro: [
+      'The goal of a sewer camera inspection is to give you useful evidence, not simply tell you that a problem exists. The footage and documented findings provide information you can review, revisit, and share when considering what happens next.',
+    ],
+    /*
+      ⚠ NO `image` KEY, DELIBERATELY. The intended asset
+      (`the-sewer-pros-san-diego-sewer-inspection-evidence.webp`) is
+      not in the repository; see the note above this stack.
+
+      ⚠ NO "REPORT" ANYWHERE IN THIS LIST. "Documentation of visible
+      conditions" is what the business produces; a formal written
+      report is a different promise and is not verified for this
+      service (CLAUDE.md §24).
+    */
+    items: [
+      {
+        title: 'Recorded footage',
+        description:
+          'Video from accessible portions of the sewer line, captured during the inspection.',
+      },
+      {
+        title: 'Documentation of visible conditions',
+        description:
+          'What the camera showed inside the accessible line, recorded as findings rather than as a repair estimate.',
+      },
+      {
+        title: 'A plain-language explanation',
+        description:
+          'What the footage shows, described without trade shorthand.',
+      },
+      {
+        title: 'Guidance on cleaning or monitoring',
+        description:
+          'Whether the evidence supports cleaning the line, continuing to monitor a condition, or further evaluation.',
+      },
+      {
+        title: 'Evidence you can keep',
+        description:
+          'Material you can revisit or share when seeking a second opinion or making a later property decision.',
+      },
+    ],
+    panel: {
+      title: 'Why documented evidence matters',
+      body: 'You do not have to rely only on a verbal description. Recorded footage and documented findings give you information you can revisit, share, and use when deciding whether to clean the line, monitor a condition, or consult a separate repair provider.',
+    },
+  },
+  independence: {
+    eyebrow: 'Evidence before expensive decisions',
+    title: 'The inspection is not tied to a repair sale',
+    /*
+      ⚠ THIS IS THE BUSINESS MODEL, STATED ABOUT THIS BUSINESS. It says
+      what The Sewer Pros does and does not do. It must never be edited
+      into a claim about what other contractors do or why - CLAUDE.md
+      §9 and §27 both draw that line, and this is the section on the
+      page where crossing it would be easiest.
+    */
+    body: [
+      'The Sewer Pros provides sewer inspection, diagnostics, locating, and cleaning. We do not perform sewer repair or replacement, so the conditions documented during an inspection do not become a repair quote from us.',
+      'Our responsibility is to show you what is visible inside the accessible line, explain the findings clearly, and help you understand whether the evidence supports cleaning, monitoring, or consultation with a separate repair provider.',
+    ],
+    steps: [
+      {
+        title: 'We inspect',
+        description:
+          'A sewer camera is used to view accessible portions of the line.',
+        icon: 'camera',
+      },
+      {
+        title: 'We document and explain',
+        description:
+          'Visible conditions are recorded and explained in clear language.',
+        icon: 'document',
+      },
+      {
+        title: 'You decide what happens next',
+        description:
+          'You choose whether to clean, monitor, seek another opinion, or consult a separate repair provider.',
+        icon: 'decision',
+      },
+    ],
+  },
+  /*
+    ⚠ THE CLOSING PANEL, MOVED OUT OF `experience.coverage`. Same copy,
+    its own section, plus the market’s phone.
+
+    ⚠ IT NAMES FEATURED AREAS AND THEN ASKS. No county, no radius, no
+    "we serve all of". `serviceAreaSource` for this market is
+    `derived_from_approved_locations` - there is no published boundary
+    to state (DEC-077).
+
+    ⚠ THE PHONE IS SAN DIEGO’S OWN, matching `marketOperatingDetail`
+    and the number already in `body`. One page, one number (01 §20).
+  */
+  regionalCoverage: {
+    title: 'Serving properties throughout the San Diego region',
+    body: [
+      'The Sewer Pros serves homeowners, home buyers, real estate professionals, property managers, multifamily buildings, and commercial properties throughout the greater San Diego region. Featured service areas include San Diego, San Marcos, Carlsbad, Escondido, Oceanside, Chula Vista, and Mission Valley.',
+      'Service availability can vary by property location. Contact us with the property location, the service you are considering, and the symptoms you are seeing so we can confirm current coverage before scheduling.',
+    ],
+    primary: {
+      label: 'Schedule a San Diego Sewer Inspection',
+      pageId: id('core-contact'),
+    },
+    secondary: {
+      label: 'Explore San Diego Sewer Services',
+      pageId: id('hub-services'),
+    },
+    phone: { label: 'Call (858) 257-2888', href: 'tel:+18582572888' },
   },
   /*
     ⚠ THE HOME PAGE'S "What we do" SECTION, NOT A LOCAL VARIANT OF IT
