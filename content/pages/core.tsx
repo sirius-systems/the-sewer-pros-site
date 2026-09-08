@@ -31,6 +31,7 @@ import type {
   CorePageContent,
   HomePageContent,
   HubPageContent,
+  MarketGuidanceContent,
   PageId,
   ResourcePageContent,
 } from '@/types'
@@ -652,6 +653,78 @@ const reusedHomeFaq = REUSED_HOME_FAQ.flatMap((question) =>
   (homeContent.faq ?? []).filter((entry) => entry.question === question),
 )
 
+/**
+ * The service-area explainer, shared by `/locations/` and `/services/`.
+ *
+ * ⚠ ONE OBJECT, TWO PAGES, ON OWNER DIRECTION (2026-09-08). It was
+ * authored inline on `/locations/`; `/services/` was then asked for the
+ * same band. A second transcription of two cards, a panel and three
+ * market links is the drift `service-cards.ts` and the shared FAQ
+ * answers already exist to prevent, so the object is hoisted rather
+ * than copied.
+ *
+ * ⚠ IT CARRIES NO MARKET-SCOPED CLAIM, which is what makes it portable.
+ * Every line is about the service-market distinction itself: what a
+ * service market is, what it is not, and that conditions differ between
+ * the three. Nothing here states coverage, an office, hours or a local
+ * presence, so it says the same true thing on either page (CLAUDE.md
+ * §11, 18 §87).
+ */
+const SERVICE_AREA_GUIDANCE: MarketGuidanceContent = {
+    eyebrow: 'How our service areas work',
+    title: 'Local sewer service built around each market',
+    intro:
+      'The Sewer Pros serves properties across three active service markets. Select your market to find local sewer inspection, cleaning, coverage, scheduling, and contact information.',
+    cards: [
+      {
+        icon: 'map-pin',
+        accent: 'green',
+        title: 'Service markets, not office locations',
+        body: 'A service market identifies an area where The Sewer Pros travels to provide sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services. It does not automatically represent a storefront, branch, depot, or office.',
+        benefitLabel: 'What this means for you',
+        benefit:
+          'Confirm coverage using your property location before scheduling service.',
+      },
+      {
+        icon: 'camera',
+        accent: 'blue',
+        title: 'Sewer conditions vary by market',
+        body: 'Housing age, pipe materials, soil conditions, mature landscaping, property type, and local sewer requirements can vary between St. Louis, San Diego, and Las Vegas. Each market page provides information relevant to customers and properties in that service area.',
+        benefitLabel: 'What this means for you',
+        benefit:
+          'Review locally relevant service and scheduling information instead of generic content with only the city name changed.',
+      },
+    ],
+    /*
+      ⚠ ALL THREE MARKETS, IN ONE TREATMENT AND ONE ORDER. Las Vegas
+      is an active operational market (DEC-076, DEC-080) and must not
+      read as pending or secondary; St. Louis is the only one with a
+      GBP (01 §21) and must not read as the "real" one. Same button
+      variant, same label pattern, registry order.
+    */
+    panel: {
+      title: 'Find information for your service area',
+      body: 'Choose your market to review local sewer services, featured communities, contact information, scheduling details, and sewer inspection guidance.',
+      links: [
+        {
+          pageId: id('market-st-louis-mo'),
+          label: 'Explore St. Louis',
+          accent: 'green',
+        },
+        {
+          pageId: id('market-san-diego-ca'),
+          label: 'Explore San Diego',
+          accent: 'blue',
+        },
+        {
+          pageId: id('market-las-vegas-nv'),
+          label: 'Explore Las Vegas',
+          accent: 'green',
+        },
+      ],
+    },
+  }
+
 export const hubContent: Partial<Record<PageId, HubPageContent>> = {
   [id('hub-services')]: {
     /*
@@ -699,6 +772,98 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     */
     heroFormIntro:
       'Select the service you are considering and the property location. If none of the listed services matches, select Other and describe the symptoms.',
+    /*
+      ==========================================================================
+      THE HOME PAGE'S BANDS, ADDED HERE ON OWNER DIRECTION (2026-09-08)
+      ==========================================================================
+      Six sections from the home page and one from `/locations/`, named
+      by their headings:
+
+        Diagnosis separated from the sale      `showDifferentiator`
+        Local sewer service built around ...   `guidance`
+        What our customers say                 `showTrustSections`
+        How we can help                        `routing`
+        How our sewer inspection process ...   `showProcessBand`
+        Where we work                          `showMarketCoverage`
+        Planning Your Sewer Service ...        `showTrustSections`
+
+      ⚠ EVERY ONE IS AN EXISTING SECTION AND NONE AUTHORS A NEW FACT.
+      Five were already opt-in for `/locations/` under DEC-103;
+      `showDifferentiator` and `showMarketCoverage` are new flags, and
+      both render components that build themselves from shared data
+      rather than from copy written here.
+
+      ⚠ THIS GOES BEYOND WHAT DEC-104 APPROVED, DELIBERATELY. That
+      decision excluded the review band and the confidence module by
+      name. The owner asked for both here afterwards, which supersedes
+      the exclusion for this page; DEC-104's entry records it.
+
+      ⚠ "What we do" IS NOT AMONG THEM, AND MUST NOT BE ADDED. This
+      hub's member list already IS the nine service cards, so setting
+      `services` would render the same mosaic twice on one page.
+    */
+    showDifferentiator: true,
+    /*
+      ⚠ SHARED WITH `/locations/`, NOT COPIED. See
+      `SERVICE_AREA_GUIDANCE`. It renders BELOW this page's own `body`
+      paragraph rather than replacing it, which is a template change
+      made for this page; see `HubPageContent.guidance`.
+    */
+    guidance: SERVICE_AREA_GUIDANCE,
+    /*
+      ⚠ REVIEWS AND THE CONFIDENCE MODULE, BOTH DATA-GATED ON TOP OF
+      THIS FLAG. The figures are company-wide and unattributed per
+      DEC-100, which is what makes them legal on a sitewide page; the
+      confidence module is positioning rather than fact.
+    */
+    showTrustSections: true,
+    /*
+      ⚠ THREE CARDS, NOT THE HOME PAGE'S FOUR. Index 0 is the "Explore
+      services" card pointing at `/services/`, which is the page a
+      reader is already on. `/locations/` drops its own card for the
+      same reason and by the same arithmetic.
+    */
+    routing: [
+      homeContent.routing![1]!,
+      homeContent.routing![2]!,
+      homeContent.routing![3]!,
+    ],
+    routingBackground: homeContent.routingBackground,
+    /*
+      ⚠ THE PROCESS VARIANT REPLACES THE PROOF BAND, it does not join
+      it. `HubPageTemplate` suppresses `AuthorityBand`'s proof form
+      whenever this is set, because a page carrying both makes the same
+      "why trust us" argument twice in one column. The home page
+      settled that.
+    */
+    showProcessBand: true,
+    processBackground: homeContent.processBackground,
+    /*
+      ⚠ "Where we work" AS A BAND, NOT AS THIS HUB'S MEMBER LIST. The
+      member list is the service mosaic; see
+      `HubPageContent.showMarketCoverage` for why that distinction
+      needs its own flag.
+    */
+    showMarketCoverage: true,
+    /*
+      ⚠ THE HOME PAGE'S FULLER HEADING (owner, 2026-09-08), where the
+      default is the bare "Common questions". Fourteen entries in two
+      columns sit a long way down this page, and the short heading had
+      stopped saying what the questions were about.
+    */
+    faqTitle: 'Common questions about sewer and drain services',
+    /*
+      ⚠ FOURTEEN QUESTIONS SPLIT SEVEN AND SEVEN (owner, 2026-09-08),
+      which is the same shape and the same component setting the home
+      page has used since 2026-09-03 for its own fourteen. `FaqSection`
+      halves the list, so the count below IS the split: adding a
+      fifteenth would give eight and seven.
+
+      ⚠ NO OTHER HUB SETS THIS. `/commercial/` has three questions and
+      `/locations/` nine, and splitting either would leave the thin
+      columns `FaqSection.columns` documents against.
+    */
+    faqColumns: 2,
     hero: {
       eyebrow: 'Sewer & drain services',
       title: 'Sewer and drain services, inspected independently first.',
@@ -1249,60 +1414,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
 
       ⚠ NO EM DASHES, INCLUDING IN THE CARD BODIES.
     */
-    guidance: {
-      eyebrow: 'How our service areas work',
-      title: 'Local sewer service built around each market',
-      intro:
-        'The Sewer Pros serves properties across three active service markets. Select your market to find local sewer inspection, cleaning, coverage, scheduling, and contact information.',
-      cards: [
-        {
-          icon: 'map-pin',
-          accent: 'green',
-          title: 'Service markets, not office locations',
-          body: 'A service market identifies an area where The Sewer Pros travels to provide sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services. It does not automatically represent a storefront, branch, depot, or office.',
-          benefitLabel: 'What this means for you',
-          benefit:
-            'Confirm coverage using your property location before scheduling service.',
-        },
-        {
-          icon: 'camera',
-          accent: 'blue',
-          title: 'Sewer conditions vary by market',
-          body: 'Housing age, pipe materials, soil conditions, mature landscaping, property type, and local sewer requirements can vary between St. Louis, San Diego, and Las Vegas. Each market page provides information relevant to customers and properties in that service area.',
-          benefitLabel: 'What this means for you',
-          benefit:
-            'Review locally relevant service and scheduling information instead of generic content with only the city name changed.',
-        },
-      ],
-      /*
-        ⚠ ALL THREE MARKETS, IN ONE TREATMENT AND ONE ORDER. Las Vegas
-        is an active operational market (DEC-076, DEC-080) and must not
-        read as pending or secondary; St. Louis is the only one with a
-        GBP (01 §21) and must not read as the "real" one. Same button
-        variant, same label pattern, registry order.
-      */
-      panel: {
-        title: 'Find information for your service area',
-        body: 'Choose your market to review local sewer services, featured communities, contact information, scheduling details, and sewer inspection guidance.',
-        links: [
-          {
-            pageId: id('market-st-louis-mo'),
-            label: 'Explore St. Louis',
-            accent: 'green',
-          },
-          {
-            pageId: id('market-san-diego-ca'),
-            label: 'Explore San Diego',
-            accent: 'blue',
-          },
-          {
-            pageId: id('market-las-vegas-nv'),
-            label: 'Explore Las Vegas',
-            accent: 'green',
-          },
-        ],
-      },
-    },
+    guidance: SERVICE_AREA_GUIDANCE,
     /*
       ⚠ THE HOME PAGE'S MARKET CARDS, NOT A SECOND DESIGN FOR THE SAME
       INFORMATION (owner direction, 2026-09-07). This replaced a plain
