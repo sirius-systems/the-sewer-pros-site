@@ -4286,6 +4286,121 @@ rule, opposite value.
 
 ---
 
+## DEC-104 — Services Hub Conversion/Trust Parity Approved
+
+**Date:** 2026-09-08
+**Status:** APPROVED — PARTIALLY IMPLEMENTED (see Implementation status)
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `22-decisions-change-log.md` — DEC-103 (extends the same pattern to a second hub)
+* `types/content.ts` — no new fields required; `hub-services` will set fields `HubPageContent` already carries (`showHeroForm`, `heroFormIntro`)
+* `content/pages/core.tsx` (or wherever `hub-services` is keyed) — populate the new fields for this hub
+* `claude/services-hub-prompt-20-visibility-conversion-alignment.md` — `visibilityAlignmentConfirmed` flips to TRUE for this page as of this decision
+
+### Decision
+
+Per the recommendation in `claude/services-hub-prompt-20-visibility-conversion-alignment.md`, the owner approves extending DEC-103's conversion-parity pattern to `/services/`: a hero lead form (no market preselected, same as `/locations/`) and the split closing CTA. This is **Variant B** from `claude/services-hub-prompt-04-gap-fix.md`.
+
+### Reason
+
+Confirmed real keyword data shows `/services/` attracts a comparison-stage searcher ("sewer inspection companies," Prompt 01/pipeline verdict), not just a first-touch browser, a warmer visitor than the single-CTA-at-the-bottom structure serves well. The template fields needed already exist generically on `HubPageContent` (built for DEC-103's `/locations/` use), so this is a content-population change on a second hub, not new component work.
+
+### Previous State
+
+`/services/` set neither `showHeroForm` nor the reviews/confidence-module flags — single conversion moment (closing panel CTA), per DEC-103's own explicit scope ("`/services/`, `/for/`, `/commercial/` and `/resources/` set neither and render byte-for-byte as they did").
+
+### New State
+
+`/services/` sets `showHeroForm: true` with a `heroFormIntro` line, and renders the closing CTA in its `split` variant with a second lead-form instance — the same mechanical pattern DEC-103 used for `/locations/`.
+
+**Scope discipline, same as DEC-103:** this decision covers `/services/` only. `/for/`, `/commercial/`, and `/resources/` are unaffected and must continue to render byte-for-byte as before. This is not a blanket "give every hub the form" decision — each hub's conversion case should be evaluated on its own keyword/intent evidence the way this one was, not extended by pattern-matching alone.
+
+**Explicitly not included** (same exclusions DEC-103 applied): no reviews/`showTrustSections`, no confidence module — those are a separate, lower-priority piece of the original recommendation and were not part of what the owner approved here. Revisit separately if wanted later.
+
+### Implementation Impact
+
+1. **`content/pages/core.tsx`** (or the actual file — confirm path by reading how `hub-locations` is keyed, same lookup DEC-103's build prompt used) — on the `hub-services` entry, set `showHeroForm: true` and `heroFormIntro` to a short, promise-free guidance line (no response time, no availability claim — per `CLAUDE.md` §24/§42, same constraint `HubPageContent.heroFormIntro`'s own type comment states).
+2. Populate the rest of the `hub-services` content entry per `claude/services-hub-prompt-04-gap-fix.md` Part 8 (hero, body, 10-item grouped service index, 8-entry FAQ, closing CTA copy) — apply the two Prompt 13 editorial fixes (hero "ten services" phrasing, service item #4 description) before committing.
+3. Confirm `HubPageTemplate.tsx` requires no code change — per Prompt 20's confirmation, the hero-form/split-CTA rendering path already exists generically; only content-side fields are new for this hub.
+4. Confirm `/for/`, `/commercial/`, `/resources/`, and `/locations/` render unaffected (same regression check DEC-103's own build prompt specifies — this is the single most important check, since a shared-template change that leaks into unrelated hubs silently breaks live pages).
+5. Confirm all 10 individual service page routes referenced in the service index are live/indexable before wiring internal links (flagged, not yet independently verified, in Prompt 02).
+6. Update `claude/services-hub-prompt-20-visibility-conversion-alignment.md`'s open question to reflect this decision (informational — no code impact).
+
+### Implementation status (recorded 2026-09-08, added by the implementing session)
+
+Steps 1, 2, 3 and 4 are **done**. Step 2 landed once the owner supplied the
+Prompt 04 draft and the Prompt 13 editorial pass in session; before that it was
+held, because the build prompt's own Gate 1 says to stop rather than overwrite
+when the entry already holds content differing from the draft, and it did.
+
+Two items remain open, and neither is a skip:
+
+* **Step 5 (ten live service routes) — nine of ten exist, so nine shipped.**
+  The approved page registry and the production build both carry nine
+  `/services/*` pages. There is no
+  `/services/independent-sewer-inspection-second-opinion/`;
+  `svc-independent-sewer-second-opinion` appears only in
+  `data/matrices/service-location-master-matrix.csv`, marked
+  `phase_2_candidate` and `selective_candidate`, and every path it carries
+  there is market-scoped rather than sitewide. Prompt 04's item 4 is therefore
+  absent from the index and its new description is unused. Nine is also what
+  the mosaic wants: the flagship spans two columns by two rows, so nine fills
+  exactly at three columns and a tenth would orphan a trailing row (18 §5.6).
+  Adding the service later means solving that arithmetic too.
+* **Step 6 (Prompt 20 doc update) — the file is absent.** `claude/` holds only
+  `dec-103-locations-hub-conversion-parity.md`,
+  `locations-hub-conversion-parity-build-prompt.md` and `README.md`. None of
+  the `services-hub-prompt-*` documents this entry cites is in the repository,
+  so the open question it names cannot be edited. The decision is recorded
+  here instead.
+
+### Two deviations from the brief, both deliberate
+
+* **`seoTitle` carries no brand suffix.** Prompt 04 specifies "Sewer & Drain
+  Cleaning Services | The Sewer Pros"; `rootMetadata`'s `%s | ${SITE_NAME}`
+  template appends the suffix for every nested route
+  (`lib/seo/metadata.ts:149`), so writing it in would ship it twice. The
+  rendered `<title>` is the string the brief asked for.
+* **The `metaDescription` em dash is a full stop.** "...and more — independent
+  service..." became "...and more. Independent service...". This project does
+  not use em dashes in visitor-facing strings and the build prompt repeats the
+  rule in its own guardrails.
+
+### Out of scope, and flagged rather than built
+
+Prompt 04 Part 9 asks for `Service` ×10 and `FAQPage` ×14 on this page. Neither
+is emitted: hubs render `Organization`, `WebSite`, `CollectionPage` and
+`BreadcrumbList`, and `/commercial/` and `/locations/` are the same. Adding
+`FAQPage` means passing `content.faq` into `PageShell`'s schema from
+`HubPageTemplate`, which would also give `/commercial/` structured data it does
+not have today and break this decision's own byte-identical requirement for the
+other four hubs. `Service` entities need schema-layer work no hub currently has.
+Both are a separate decision.
+
+### Verification (of what shipped)
+
+* `npm run check` (typecheck, lint, production build) passes
+* 73 HTML routes before and after; no route added, removed or renamed
+* `/services/` is the only page whose rendered body OR head changed
+* The nine reused service descriptions and the five reused FAQ answers render
+  byte-identical to the home page's, because both are spread in from
+  `coreServiceCards` and `homeContent.faq` rather than retyped
+* The member list renders the home page's mosaic, `dense` on `bg-background`,
+  nine cards with artwork, same as `/` 
+* `/for/`, `/commercial/`, `/resources/` and `/locations/` identical in **both**
+  rendered body and head/meta
+* All 73 routes identical in head/meta — no title, description or canonical moved
+* `sitemap.xml` and `robots.txt` identical
+* No `sectionRhythmIssues()` warnings
+* No duplicate element ids — the two forms use `hero-lead` and `cta-lead` prefixes
+* Both Location selects render "Select your location" selected — unanswered
+* No `tel:` link in the main content
+* No em dash in any visitor-facing string; no raw hex introduced
+
+---
+
 # 15. New Service Decision Process
 
 A new **major offered service** should follow:

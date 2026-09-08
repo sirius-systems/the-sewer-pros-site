@@ -555,111 +555,374 @@ export const homeContent: HomePageContent = {
    Hubs
    ========================================================================== */
 
+/**
+ * `/services/`'s index, grouped by service family.
+ *
+ * ===========================================================================
+ * ⚠ REORDERED FROM `coreServiceCards`, NEVER RETYPED FROM IT
+ * ===========================================================================
+ * Prompt 04 asked for the nine descriptions "verbatim from the live
+ * homepage", and the only way to guarantee that next month as well as
+ * today is to hand back the SAME OBJECTS rather than a proofread copy
+ * of their text. Reordering by id does that: the descriptions, the
+ * artwork and the provenance all travel unchanged, and an edit to
+ * `content/pages/service-cards.ts` reaches this page automatically.
+ *
+ * ⚠ THE ARTWORK IS WHY THIS IS A MOSAIC RATHER THAN A ROW LIST.
+ * `HubPageTemplate` derives the variant from whether the items carry
+ * `image`, the same rule the home page's own band runs on. Dropping to
+ * a plain `{ pageId, description }` shape here would silently demote
+ * the section.
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ NINE, NOT THE TEN THE BRIEF ASKED FOR, AND THE REASON IS A ROUTE
+ * ---------------------------------------------------------------------------
+ * Prompt 04 lists "Independent Sewer Inspection Second Opinion" as
+ * item 4 of an Inspection & Diagnostics group. THAT PAGE DOES NOT
+ * EXIST. `svc-independent-sewer-second-opinion` appears only in
+ * `data/matrices/service-location-master-matrix.csv`, marked
+ * `phase_2_candidate` and `selective_candidate`, and every path it
+ * carries there is market-scoped (`/st-louis-mo/...`), never sitewide.
+ * The approved page registry has no record for it and the production
+ * build has no route. The build prompt's own Gate 1 says to link only
+ * to confirmed-live routes, so it is left out rather than wired to a
+ * 404 or silently dropped by the resolver.
+ *
+ * ⚠ NINE IS ALSO WHAT THE MOSAIC WANTS. `service-cards.ts` records the
+ * arithmetic: the flagship takes two columns by two rows, so nine fills
+ * exactly at three columns and a tenth would sit alone in a trailing
+ * row, the orphan 18 §5.6 prohibits by name. Adding the tenth service
+ * later means solving that too, not just adding a line here.
+ *
+ * ⚠ GROUPING IS ORDER, NOT HEADINGS. `ServiceIndex` renders one band;
+ * it has no sub-heading slot, and adding one would be a component
+ * change this build was scoped out of. The families read in Prompt 04's
+ * display order: inspection and diagnostics, then cleaning, then
+ * locating and maintenance.
+ */
+const SERVICES_HUB_ORDER: readonly PageId[] = [
+  // Inspection & Diagnostics
+  id('svc-sewer-camera-inspection'),
+  id('svc-sewer-cleaning-camera-inspection'),
+  id('svc-pre-purchase-sewer-inspection'),
+  id('svc-recurring-sewer-backup-diagnosis'),
+  // Cleaning
+  id('svc-sewer-cleaning'),
+  id('svc-hydro-jetting'),
+  id('svc-drain-cleaning'),
+  // Locating & Maintenance
+  id('svc-sewer-line-locating'),
+  id('svc-preventative-sewer-maintenance'),
+]
+
+/*
+  ⚠ `flatMap` OVER `find`, so a renamed id drops a card instead of
+  throwing a non-null assertion at module scope. The count is nine and
+  visible on the page, so a silent drop shows up as an orphaned mosaic
+  row rather than as nothing at all.
+*/
+const servicesHubItems = SERVICES_HUB_ORDER.flatMap((pageId) =>
+  coreServiceCards.filter((card) => card.pageId === pageId),
+)
+
+/**
+ * The five closing answers `/services/` shares with the home page.
+ *
+ * ⚠ PULLED BY QUESTION TEXT FROM `homeContent.faq`, NOT RETYPED. Same
+ * reason as the service cards above: two hand-maintained copies of one
+ * answer is exactly the drift `service-cards.ts` was created to end,
+ * and the repair-boundary answer is the highest-risk string on this
+ * page. If the home page rewords one of these, this page reads the new
+ * wording rather than quietly keeping the old one.
+ *
+ * ⚠ THE QUESTIONS ARE THE HOME PAGE'S, NOT PROMPT 04'S PARAPHRASES.
+ * The draft quotes the first as "Do you offer sewer repair?"; the
+ * source says "Do you do sewer repairs?". Verbatim reuse means the
+ * question travels with its answer.
+ */
+const REUSED_HOME_FAQ: readonly string[] = [
+  'Do you do sewer repairs?',
+  'What is the difference between an inspection and cleaning?',
+  'Should I get a second opinion before agreeing to a sewer replacement?',
+  'What causes recurring sewer backups?',
+  'Is hydro jetting different from regular drain cleaning?',
+]
+
+const reusedHomeFaq = REUSED_HOME_FAQ.flatMap((question) =>
+  (homeContent.faq ?? []).filter((entry) => entry.question === question),
+)
+
 export const hubContent: Partial<Record<PageId, HubPageContent>> = {
   [id('hub-services')]: {
+    /*
+      ==========================================================================
+      CONVERSION PARITY - DEC-104 (owner, 2026-09-08)
+      ==========================================================================
+      ⚠ THE SECOND HUB TO OPT IN, NOT THE FAMILY. DEC-103 gave
+      `/locations/` the hero lead form and the `split` closing CTA and
+      scoped itself to that page by name; DEC-104 extends the same
+      mechanism to this one on its own evidence - confirmed keyword data
+      puts a comparison-stage searcher on `/services/`, warmer than a
+      single closing panel serves well.
+
+      `/for/`, `/commercial/` and `/resources/` are NOT covered and must
+      keep rendering byte-for-byte as before. Each hub's conversion case
+      gets evaluated on its own intent evidence; nothing here licenses
+      pattern-matching the flag onto the remaining three.
+
+      ⚠ `showHeroForm` ALONE. It carries the hero form and the split CTA
+      together - owner direction on DEC-103, where they are one feature
+      rather than two toggles. `showTrustSections` is DELIBERATELY
+      ABSENT: DEC-104 excludes the review band and the confidence module
+      exactly as DEC-103 did, and they are a separate decision if ever
+      wanted.
+
+      ⚠ NO MARKET IS PRESELECTED, same as `/locations/`. This page
+      speaks for all three, so answering the Location field here would
+      put a market-scoped answer on a sitewide page (01 §20).
+
+      ⚠ SETTING THIS MOVES `AuthorityBand` BELOW THE FAQ ON THIS PAGE.
+      That is the template's existing `showHeroForm` branch, not a new
+      behaviour: the band exists to stop the FAQ's neighbour and the
+      closing CTA sharing a surface, and the split CTA is `muted` where
+      the panel was `brand`. `/commercial/` still renders
+      `AuthorityBand -> FAQ`, which is why DEC-103 refused to reorder it
+      globally.
+    */
+    showHeroForm: true,
+    /*
+      ⚠ GUIDANCE ON FILLING THE FORM IN, NOT A PROMISE ABOUT WHAT
+      HAPPENS AFTER. See `HubPageContent.heroFormIntro`: no response
+      time, no availability, no price. It names the two fields the
+      visitor has to answer and the escape hatch for the one case this
+      page creates, a reader still choosing between services.
+    */
+    heroFormIntro:
+      'Select the service you are considering and the property location. If none of the listed services matches, select Other and describe the symptoms.',
     hero: {
-      title: 'Services',
+      eyebrow: 'Sewer & drain services',
+      title: 'Sewer and drain services, inspected independently first.',
+      /*
+        ⚠ THE "TEN SERVICES" FRAMING IS GONE, per Prompt 13's first
+        recommended fix. It was a page-design fact rather than a
+        customer-facing one, and it is now also FALSE: the index below
+        carries nine, because the tenth service has no page.
+      */
       intro: (
         <p>
-          Inspection, diagnostics, locating, and cleaning for sewer and drain
-          lines. We do not perform sewer repair or replacement.
+          Camera inspection, diagnostics, locating, cleaning, and hydro
+          jetting, one company that doesn&rsquo;t sell the repair it might
+          recommend. Browse what we do, or schedule a sewer camera inspection
+          to see what&rsquo;s happening in your line.
         </p>
       ),
     },
-    // No brand suffix: rootMetadata's `%s | The Sewer Pros` template
-    // appends it for every nested route (lib/seo/metadata.ts).
-    seoTitle: 'Sewer & Drain Services',
+    /*
+      ⚠ NO BRAND SUFFIX, WHICH IS WHY THIS IS NOT THE STRING THE BRIEF
+      GAVE. Prompt 04 specifies "Sewer & Drain Cleaning Services | The
+      Sewer Pros"; `rootMetadata`'s `%s | ${SITE_NAME}` template appends
+      the suffix for every nested route (`lib/seo/metadata.ts:149`), so
+      writing it here would ship it twice.
+    */
+    seoTitle: 'Sewer & Drain Cleaning Services',
+    /*
+      ⚠ THE BRIEF'S EM DASH IS A FULL STOP HERE. Prompt 04 wrote
+      "...and more — independent service across..."; this project does
+      not use em dashes in visitor-facing strings, and the build
+      prompt's own guardrails repeat the rule. Nothing else changed,
+      and the line still fits the display limit.
+    */
     metaDescription:
-      'Sewer camera inspection, cleaning, hydro jetting, and line locating. Independent service without repair-driven upselling, across St. Louis, San Diego, and Las Vegas.',
+      'Sewer camera inspection, cleaning, hydro jetting, locating, and more. Independent service across St. Louis, San Diego, and Las Vegas. No repair upsell.',
+    /*
+      ⚠ ONE PARAGRAPH, NO `<h2>`, WHERE THIS BLOCK USED TO OPEN WITH
+      "How these services fit together" and run to two. Prompt 04
+      replaces it: the page's argument is now carried by the hero, the
+      mosaic and the FAQ, and a heading here would compete with the
+      index's own.
+    */
     body: (
-      <>
-        <h2>How these services fit together</h2>
-        <p>
-          Most sewer problems are answered by some combination of three things:
-          seeing the line, clearing it, and knowing where it runs.
-        </p>
-        <p>
-          Inspection establishes condition. Cleaning removes what has
-          accumulated. Locating establishes position and depth. Which you need
-          depends on whether the question is what is wrong, how to restore
-          flow, or where to dig.
-        </p>
-      </>
+      <p>
+        Every service on this page starts the same way: look at the line,
+        document what&rsquo;s actually there, and explain it in plain language
+        before anything gets scheduled. Whether the fix is a sewer cleaning, a
+        hydro jetting, or a second opinion before a repair decision,
+        you&rsquo;ll have the evidence first.
+      </p>
     ),
-    items: homeContent.services,
+    /*
+      ⚠ `servicesHubItems`, NOT `homeContent.services`. Same nine cards
+      and the same objects, reordered into Prompt 04's family grouping.
+      See the constant for why it is nine rather than ten.
+    */
+    items: servicesHubItems,
+    /*
+      ==========================================================================
+      FOURTEEN ANSWERS: FIVE THE HOME PAGE OWNS, NINE THIS PAGE'S OWN
+      ==========================================================================
+      ⚠ THE FIRST FIVE ARE SPREAD IN FROM `homeContent.faq`, NOT COPIED.
+      See `reusedHomeFaq`. They are the repair-boundary answer,
+      inspection-vs-cleaning, the second-opinion answer, recurring
+      backups and hydro-jetting-vs-cleaning, in Prompt 04's order.
+
+      ⚠ TWO OF THE NINE NEW ONES COVER GROUND THE HOME PAGE ALSO
+      COVERS, IN DIFFERENT WORDS. "What does sewer line locating do"
+      restates the home page's "What does sewer line locating involve",
+      and the sewer-scope terminology answer restates "What is a sewer
+      scope, and is it the same as a camera inspection?". Prompt 04
+      drafted both as new copy and Prompt 13 passed them, so they ship
+      as written - but they are now two facts with two authors, which
+      is the drift this file spreads the other five in to avoid. Worth
+      revisiting if either page's wording is ever revised.
+
+      ⚠ EVERY ANSWER IS ANSWER-FIRST AND NONE ADDS A FACT. No response
+      time, no price, no availability, no credential (CLAUDE.md §24).
+    */
     faq: [
+      ...reusedHomeFaq,
       {
-        question: 'Which service do I need?',
+        question: 'What is preventative sewer maintenance?',
         answer: (
           <p>
-            Start with what you&rsquo;re trying to answer. If you want to know
-            the condition of the line, start with inspection. If something
-            isn&rsquo;t draining, cleaning usually comes first. If you need to
-            know where the line runs before digging, that&rsquo;s locating.
-            Several services often combine: cleaning before inspection is
-            common, since buildup can hide what a camera would otherwise show.
+            A scheduled cleaning interval based on what an inspection actually
+            shows about your line, rather than a fixed annual visit. If camera
+            evidence shows root activity or buildup returning faster than
+            average, that sets the interval, not a generic calendar reminder.
           </p>
         ),
       },
       {
-        question: 'What is the difference between sewer cleaning and drain cleaning?',
+        question:
+          'What is recurring sewer backup diagnosis, and how is it different from a standard inspection?',
         answer: (
           <p>
-            Drain cleaning clears an individual fixture or branch line. Sewer
-            cleaning clears the main line that carries everything away from the
-            property. A single slow drain is usually a branch issue; several
-            fixtures backing up at once more often points to the main line.
+            It&rsquo;s a camera inspection specifically aimed at a line that
+            has backed up more than once. The goal isn&rsquo;t just to see the
+            current condition, it&rsquo;s to identify why the problem keeps
+            returning, so the fix addresses the cause instead of clearing it
+            again.
           </p>
         ),
       },
       {
         /*
-          The question asks two things, so the answer addresses both.
-          An earlier version answered only the emergency half, which
-          read as a decline on same-day as well — inaccurate since
-          DEC-088.
-
-          ⚠ Same-day wording is load-bearing. DEC-088 approved
-          availability, never a promise: published hours are Monday to
-          Friday, 8:00am–4:00pm (DEC-083), which rule out a guarantee,
-          weekend coverage, and any emergency or 24/7 claim. Keep
-          "sometimes" and "cannot promise"; do not tighten this into
-          an offer.
+          ⚠ THE SERVICE-AREA HEDGE IS LOAD-BEARING AND IS THE HOME
+          PAGE'S OWN. "We travel to you rather than working from a
+          public storefront" is what keeps this off a claim of premises
+          in three markets where only St. Louis has a verified profile
+          (CLAUDE.md §11, §29, §30). It must not be tightened into an
+          office, a branch or a local address.
         */
-        question: 'Do you offer emergency or same-day service?',
+        question: 'Do you serve St. Louis, San Diego, and Las Vegas?',
         answer: (
-          <>
-            <p>
-              No emergency service. Same-day is sometimes possible, but never
-              guaranteed. We operate Monday through Friday, 8:00am to 4:00pm,
-              and are closed weekends. We do not offer 24/7 or emergency
-              service.
-            </p>
-            <p>
-              Within those hours, a same-day appointment can sometimes be
-              arranged, depending on how the day is already booked. It is
-              worth asking when you get in touch, but we cannot promise it in
-              advance.
-            </p>
-          </>
+          <p>
+            Yes, across all three service areas as a service-area business, we
+            travel to you rather than working from a public storefront. See our{' '}
+            <ApprovedInlineLink pageId={id('hub-locations')}>
+              service areas
+            </ApprovedInlineLink>{' '}
+            for coverage specific to your area.
+          </p>
         ),
       },
       {
-        question: 'Do you perform sewer repairs?',
+        question:
+          'What is the difference between drain cleaning and sewer cleaning?',
         answer: (
           <p>
-            No. We inspect, diagnose, locate, and clean. If a finding suggests
-            repair may be worth considering, that is a separate decision. See{' '}
-            <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
-              how an independent inspection compares to going straight to a
-              repair quote
-            </ApprovedInlineLink>{' '}
-            for more on why that separation matters, whoever ends up performing
-            the work.
+            Drain cleaning clears fixture and branch lines, the pipes serving
+            one sink, tub, or laundry connection. Sewer cleaning clears the
+            main line that carries wastewater from the property to the
+            connection point. A single slow drain is often a drain cleaning
+            fix; backups affecting multiple fixtures usually point to the main
+            line.
+          </p>
+        ),
+      },
+      {
+        question: 'What does sewer line locating do, and when would I need it?',
+        answer: (
+          <p>
+            Sewer line locating establishes exactly where the line runs and how
+            deep it sits, without excavation. It&rsquo;s typically needed
+            before digging, landscaping, installing a fence or pool, or
+            planning utility work near the property, so you know what&rsquo;s
+            underground before work starts.
+          </p>
+        ),
+      },
+      {
+        /*
+          ⚠ "SOMETIMES", AND THE HEDGE STAYS. This is the question a
+          visitor arrives on after a replacement quote, and the answer
+          must describe what an inspection can SHOW rather than promise
+          that cleaning will be enough (CLAUDE.md §9, §24, §27). It also
+          must not characterise whoever quoted the replacement.
+        */
+        question: 'Should a sewer line be cleaned instead of replaced?',
+        answer: (
+          <p>
+            Sometimes. A camera inspection shows whether buildup, roots, or a
+            partial blockage is causing the problem, in which case cleaning or
+            hydro jetting may resolve it, or whether the pipe itself is damaged
+            in a way cleaning can&rsquo;t fix. That&rsquo;s the evidence an
+            independent inspection is meant to provide before a replacement
+            decision is made.
+          </p>
+        ),
+      },
+      {
+        question: 'What should I expect during a sewer camera inspection?',
+        answer: (
+          <p>
+            A camera is run through the accessible portion of the line while
+            the footage is recorded. We document what the camera shows as we
+            go, then walk you through the footage afterward and explain what it
+            means in plain language before recommending any next step.
+          </p>
+        ),
+      },
+      {
+        question: 'Is a sewer scope the same as a sewer camera inspection?',
+        answer: (
+          <p>
+            Yes. &ldquo;Sewer scope&rdquo; and &ldquo;sewer camera
+            inspection&rdquo; describe the same service: a camera run through
+            the line to document its condition on video.
+          </p>
+        ),
+      },
+      {
+        question:
+          'How is a sewer cleaning and camera inspection combo different from getting each separately?',
+        answer: (
+          <p>
+            The combo clears the line first, then inspects it on camera, so you
+            see the condition the blockage was hiding rather than just a line
+            that drains again. Done separately, an inspection before cleaning
+            can miss what&rsquo;s underneath existing buildup.
           </p>
         ),
       },
     ],
+    /*
+      ⚠ THE BUTTON STAYS, WHERE `/locations/` AND ST. LOUIS DROP IT.
+      Prompt 04 names "Schedule a Sewer Inspection" as this CTA's
+      action, which is the global `PRIMARY_CTA`, so neither
+      `actionLabel` nor `hideAction` is set and the default renders it.
+      `CtaContent.hideAction`'s own note argues the other way for a
+      split CTA carrying a form; that is an owner call rather than a
+      code one, and the brief made it.
+
+      ⚠ NO PROMISE IN THE BODY. "Walk you through what fits your
+      situation before anything is scheduled" describes the process the
+      rest of the page describes; it carries no response time,
+      availability or price (CLAUDE.md §24, §42).
+    */
+    cta: {
+      title: "See what's actually happening in your line.",
+      body: "Schedule a sewer camera inspection, or reach out about any of the services above. We'll walk you through what fits your situation before anything is scheduled.",
+    },
   },
 
   [id('hub-commercial')]: {
