@@ -1214,10 +1214,115 @@ export const lasVegasMarketContent: MarketPageContent = {
       ),
     },
   ],
+    /*
+      ==========================================================================
+      CLOSING CTA COPY (owner-supplied, 2026-09-08)
+      ==========================================================================
+      ⚠ IT REPLACED TWO LINES, AND THE ARGUMENT IS THE SAME ONE. The
+      old title and body said "documented evidence, from a company that
+      does not perform the repair"; this says it at length with the
+      benefit list and the trust statement spelled out. Nothing new is
+      claimed.
+
+      ⚠ EVERY BENEFIT IS CONDITIONAL WHERE THE SERVICE IS. "Recorded
+      footage WHEN a sewer camera inspection is performed", cleaning or
+      locating "when appropriate" or "when the evidence supports those
+      services". A visitor requesting a cleaning is not being promised
+      video (CLAUDE.md §24, §42).
+
+      ⚠ THE TRUST STATEMENT IS THE §9 GUARDRAIL IN THE VISITOR'S OWN
+      TERMS, and it is about this business only. It must never be
+      edited into a claim about what other contractors do.
+
+      ⚠ THE NOTE CARRIES PUBLISHED HOURS AND NOTHING MORE. No response
+      time, no same-day language, no emergency or weekend availability:
+      weekday hours state what is offered and rule the rest out by
+      omission (01 §35). `CtaSection` already renders "Prefer to talk
+      now?" above the number, so the note picks up after it.
+    */
   cta: {
-    title: 'Find out what condition the line is in',
-    body: 'Documented evidence of the lateral, from a company that does not perform the repair.',
+    eyebrow: 'Las Vegas Valley sewer inspection and cleaning',
+    title: 'Find out what is happening inside your sewer line',
+    body: (
+      <>
+        <p>
+          Recurring sewer backups, multiple slow drains, and unexplained
+          drainage problems can have several possible causes. A sewer camera
+          inspection helps document visible conditions inside the accessible
+          line so you can understand the problem before deciding what should
+          happen next.
+        </p>
+        <p>
+          The Sewer Pros provides sewer camera inspection, sewer cleaning,
+          hydro jetting, sewer line locating, recurring backup diagnosis,
+          preventative sewer maintenance, and pre-purchase sewer inspection
+          across the Las Vegas Valley. We inspect and document visible
+          conditions, explain the findings in practical language, and provide
+          cleaning or locating when the evidence supports those services.
+        </p>
+        <h3>Start with what you are seeing</h3>
+        <p>
+          Use the service-request form to tell us about the property and the
+          symptoms you have noticed. Helpful details can include how often the
+          problem occurs, whether several drains are affected, whether the line
+          has been cleared before, and whether the request is connected to a
+          home purchase or maintenance decision.
+        </p>
+        <h3>What you can expect</h3>
+        <ul>
+          <li>
+            Help identifying an appropriate starting service based on the
+            information you provide
+          </li>
+          <li>Recorded footage when a sewer camera inspection is performed</li>
+          <li>
+            Documentation of visible conditions inside accessible portions of
+            the line
+          </li>
+          <li>A clear explanation of what the inspection footage shows</li>
+          <li>
+            Sewer cleaning, hydro jetting, or line locating when appropriate
+          </li>
+          <li>
+            Evidence you can keep for maintenance planning, property
+            management, a home purchase, or a second opinion
+          </li>
+        </ul>
+        <p>
+          The Sewer Pros does not perform sewer repair or replacement. If an
+          inspection identifies a condition that may require structural work,
+          you can use the documented findings when consulting a separate repair
+          provider. The decision about what happens next remains yours.
+        </p>
+        {/*
+          ⚠ FEATURED AREAS, THEN THE ASK. `serviceAreaSource` for this
+          market is `derived_from_approved_locations`, so there is no
+          published boundary to state (DEC-077). The sentence naming
+          the four communities is immediately followed by the one
+          saying they are not the limit; the two must never be
+          separated.
+        */}
+        <p>
+          Service is available across the Las Vegas Valley, including featured
+          service areas in Las Vegas, Henderson, North Las Vegas, and
+          Summerlin. These communities do not define the full limit of
+          coverage. Submit the property location so current availability can be
+          confirmed.
+        </p>
+      </>
+    ),
+    note: (
+      <>
+        Monday through Friday, 8:00am to 4:00pm, or email{' '}
+        <a href="mailto:bookaninspection@thesewerpros.com">
+          bookaninspection@thesewerpros.com
+        </a>
+        .
+      </>
+    ),
   },
+  ctaFormIntro:
+    'Select the service that most closely matches your needs. If you are unsure, describe the drainage symptoms or property concern in the message field.',
   /*
     Flips the closing CTA from the `panel` button to the split layout:
     copy left, lead form right, over this frame. Same structure as the

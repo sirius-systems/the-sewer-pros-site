@@ -1167,6 +1167,7 @@ export function MarketPageTemplate({
                 density="standard"
                 idPrefix="cta-lead"
                 defaultMarketId={content.heroFormMarketId}
+                intro={content.ctaFormIntro}
               />
             </div>
           ) : undefined

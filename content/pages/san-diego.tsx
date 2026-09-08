@@ -1345,10 +1345,87 @@ export const sanDiegoMarketContent: MarketPageContent = {
       ),
     },
   ],
+    /*
+      ==========================================================================
+      CLOSING CTA COPY (owner-supplied, 2026-09-08)
+      ==========================================================================
+      ⚠ IT REPLACED TWO LINES, AND THE ARGUMENT IS THE SAME ONE. The
+      old title and body said "documented evidence, from a company that
+      does not perform the repair"; this says it at length with the
+      benefit list and the trust statement spelled out. Nothing new is
+      claimed.
+
+      ⚠ EVERY BENEFIT IS CONDITIONAL WHERE THE SERVICE IS. "Recorded
+      footage WHEN a sewer camera inspection is performed", cleaning or
+      locating "when appropriate" or "when the evidence supports those
+      services". A visitor requesting a cleaning is not being promised
+      video (CLAUDE.md §24, §42).
+
+      ⚠ THE TRUST STATEMENT IS THE §9 GUARDRAIL IN THE VISITOR'S OWN
+      TERMS, and it is about this business only. It must never be
+      edited into a claim about what other contractors do.
+
+      ⚠ THE NOTE CARRIES PUBLISHED HOURS AND NOTHING MORE. No response
+      time, no same-day language, no emergency or weekend availability:
+      weekday hours state what is offered and rule the rest out by
+      omission (01 §35). `CtaSection` already renders "Prefer to talk
+      now?" above the number, so the note picks up after it.
+    */
   cta: {
-    title: 'Find out what condition the line is in',
-    body: 'Documented evidence of the lateral, from a company that does not perform the repair.',
+    eyebrow: 'San Diego sewer inspection and cleaning',
+    title: 'Get clear information about what is happening in your sewer line',
+    body: (
+      <>
+        <p>
+          Whether you are dealing with recurring sewer backups, multiple slow
+          drains, an unknown sewer-line condition, or questions before buying a
+          property, The Sewer Pros can help you document what is visible inside
+          the accessible line.
+        </p>
+        <p>
+          Our San Diego sewer services include sewer camera inspection, sewer
+          cleaning, hydro jetting, sewer line locating, recurring backup
+          diagnosis, and pre-purchase sewer inspection. We inspect the line,
+          record visible conditions, and explain the findings in practical
+          language so you can make your next decision with better information.
+        </p>
+        <h3>What you can expect</h3>
+        <ul>
+          <li>
+            A service request matched to the symptoms or property concern you
+            describe
+          </li>
+          <li>
+            Recorded camera footage when a sewer camera inspection is performed
+          </li>
+          <li>
+            Documentation of visible conditions inside accessible portions of
+            the line
+          </li>
+          <li>
+            A clear explanation of what the inspection findings may mean
+          </li>
+          <li>
+            Cleaning, hydro jetting, or line locating when appropriate for the
+            condition
+          </li>
+          <li>
+            Evidence you can keep for maintenance planning, a property
+            transaction, or a second opinion
+          </li>
+        </ul>
+        <p>
+          The Sewer Pros does not perform sewer repair or replacement. If the
+          inspection identifies a condition that may require structural work,
+          you can use the documented findings when consulting a separate repair
+          provider.
+        </p>
+      </>
+    ),
+    note: 'Monday through Friday, 8:00am to 4:00pm.',
   },
+  ctaFormIntro:
+    'Complete the service-request form and tell us what is happening at the property. If you are unsure which service you need, describe the symptoms in the message field and we can help identify the appropriate starting point.',
   /*
     Flips the closing CTA from the `panel` button to the split layout:
     copy left, lead form right, over this frame. Same structure as the

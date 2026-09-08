@@ -1407,6 +1407,15 @@ export interface MarketPageContent extends BasePageContent {
   showHeroForm?: boolean
   /** Which market the hero form preselects. */
   heroFormMarketId?: MarketId
+  /**
+   * One line under the closing CTA form's heading.
+   *
+   * ⚠ GUIDANCE ON FILLING THE FORM IN, NOT A PROMISE ABOUT WHAT
+   * HAPPENS AFTER. It sits directly above the fields, so a response
+   * time, a price or an availability claim written here would read as
+   * a term of submitting (CLAUDE.md §24, §42).
+   */
+  ctaFormIntro?: string
   /** Intent-routing cards for this market. */
   routing?: readonly RoutingContent[]
   routingBackground?: CardImage
