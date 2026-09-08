@@ -37,6 +37,18 @@ import type { BackgroundVideo, CardImage } from './media'
 export interface HeroContent {
   eyebrow?: string
   /**
+   * Overrides the hero's primary button, or removes it with `null`.
+   *
+   * ⚠ THE DEFAULT IS THE GLOBAL `PRIMARY_CTA` AND SHOULD USUALLY STAY.
+   * 18 §155 lists inconsistent CTA wording as a failure. `/services/`
+   * overrides it because the page serves cleaning, jetting, locating
+   * and diagnostic intent as well as inspection, so "Schedule a Sewer
+   * Inspection" would name one of the ten as though it were the ask.
+   */
+  primaryAction?: { href: string; label: string } | null
+  /** A second, lower-emphasis hero action. Renders blue, not green. */
+  secondaryAction?: { href: string; label: string }
+  /**
    * The page H1.
    *
    * Should match the page's intent and be unique across the site
@@ -1648,6 +1660,23 @@ export interface HubIntroContent {
   link?: { label: string; targetId: string }
 }
 
+/**
+ * The "not sure where to start?" panel below a hub's member list.
+ *
+ * ⚠ IT POINTS AT A FORM, IT DOES NOT CARRY ONE. `action.href` is an
+ * in-page fragment or an approved route; a second form on the page
+ * would split the conversion and duplicate every field id.
+ */
+export interface SelectionPanelContent {
+  eyebrow?: string
+  title: string
+  body: string
+  icon: ExperienceIconName
+  action: { label: string; href: string }
+  /** An optional text link beside the button. Approved pages only. */
+  secondaryLink?: { label: string; pageId: PageId }
+}
+
 /** Hub page — services, locations, for, commercial, resources. */
 export interface HubPageContent extends BasePageContent {
   /**
@@ -1847,6 +1876,41 @@ export interface HubPageContent extends BasePageContent {
    * surface chain below it is derived around.
    */
   intro?: HubIntroContent
+  /**
+   * Photographs for the hero's second column, as a carousel.
+   *
+   * ⚠ IT TAKES THE ASIDE SLOT FROM THE HERO LEAD FORM, and only that
+   * slot. `showHeroForm` still gates the closing CTA's `split` variant
+   * and the form inside it, so a hub setting both keeps its second
+   * conversion moment and simply opens on pictures rather than on
+   * fields. `/services/` is the live case: the owner asked for the
+   * carousel there, and the page's own hero CTAs point at the service
+   * grid and at that closing form.
+   *
+   * ⚠ THESE ARE CONTENT, NOT WALLPAPER. Each carries real alt text and
+   * `HeroCarousel` ships the pause, previous, next and indicator
+   * controls that moving information requires. Do not feed this to
+   * `HeroBackdrop`, which is the decorative cross-fade and is
+   * `aria-hidden` by construction.
+   *
+   * ⚠ THE FIRST ENTRY IS THE PRIORITY IMAGE. Order is load order.
+   */
+  heroCarousel?: readonly CardImage[]
+  /**
+   * The compact service-selection panel, rendered below the member list.
+   *
+   * ⚠ ONLY `/services/` SETS THIS, and its `action.href` points at the
+   * closing CTA's own anchor rather than at a second form.
+   */
+  selectionPanel?: SelectionPanelContent
+  /**
+   * One line beneath the member list's heading.
+   *
+   * ⚠ NAVIGATIONAL, NOT A CLAIM. It says what the list is sorted by so
+   * a reader knows the axis before reading every card; it must not
+   * state what any service establishes or guarantees.
+   */
+  itemsIntro?: string
   /**
    * The service-area explainer band.
    *

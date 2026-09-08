@@ -70,6 +70,22 @@ export interface HeroProps {
   backdrop?: ReactNode
   /** Second column beside the copy at 55/45. Takes precedence over `media`. */
   aside?: ReactNode
+  /**
+   * Which half of the aside split gets the larger share.
+   *
+   * `copy`  (default) 11fr/9fr, which is 55/45 exactly. Right for a
+   *         lead form, where the copy is the argument and the form is
+   *         the response to it. Every existing caller takes this.
+   * `media` 5fr/7fr, which is 42/58. Right for a photograph or a
+   *         carousel, where the picture wants the larger half and the
+   *         copy wants a capped measure rather than a wide column.
+   *
+   * ⚠ THE FRACTIONS ARE EXACT, NOT APPROXIMATE. A 12-column grid can
+   * only round these; 11/9 and 5/7 hit 55/45 and 42/58 on the nose,
+   * which is why the balance is expressed this way rather than in
+   * `col-span`s.
+   */
+  asideBalance?: 'copy' | 'media'
   className?: string
 }
 
@@ -83,6 +99,7 @@ export function Hero({
   media,
   backdrop,
   aside,
+  asideBalance = 'copy',
   className,
 }: HeroProps) {
   const hasAside = aside !== undefined
@@ -93,6 +110,13 @@ export function Hero({
     <div
       className={cn(
         !hasMedia && !hasAside && 'max-w-[var(--container-reading)]',
+        /*
+          ⚠ THE COPY IS CAPPED BESIDE A PICTURE, NOT BESIDE A FORM. At
+          42/58 the copy column is already narrow, and 35rem keeps the
+          measure readable rather than letting the heading run the full
+          width of its cell on a wide display.
+        */
+        hasAside && asideBalance === 'media' && 'max-w-[35rem]',
         onBackdrop && 'text-white',
       )}
     >
@@ -193,7 +217,25 @@ export function Hero({
       `lg:` only. Below it the grid is one column and there is nothing
       to align against.
     */
-    <div className="grid gap-10 lg:grid-cols-[11fr_9fr] lg:items-center lg:gap-12">
+    <div
+      className={
+        /*
+          ⚠ 5fr/7fr IS 42/58, THE BALANCE A PICTURE COLUMN WANTS. The
+          note above this block explains why 11fr/9fr is the form's.
+
+          ⚠ BOTH BRANCHES ARE WRITTEN OUT IN FULL, AND THE `copy` ONE IS
+          CHARACTER-FOR-CHARACTER WHAT SHIPPED BEFORE THIS PROP EXISTED.
+          Composing it from a shared base plus a conditional reordered
+          the class list, which changes the rendered HTML on all five
+          pages that use an aside without changing a single pixel. Same
+          reason `ScenarioGrid` writes its two frame branches out rather
+          than appending to a base.
+        */
+        asideBalance === 'media'
+          ? 'grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-center lg:gap-12'
+          : 'grid gap-10 lg:grid-cols-[11fr_9fr] lg:items-center lg:gap-12'
+      }
+    >
       <div>{copy}</div>
       <div>{aside}</div>
     </div>

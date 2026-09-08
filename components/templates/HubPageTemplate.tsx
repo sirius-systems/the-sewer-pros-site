@@ -14,6 +14,9 @@ import {
   RoutingCards,
   MarketGuidance,
   HubIntro,
+  HeroCarousel,
+  SelectionPanel,
+  selectionPanelRenders,
   hubIntroRenders,
   marketGuidanceRenders,
   routingCardsRenders,
@@ -247,6 +250,21 @@ export function HubPageTemplate({
     prefers the richer one so a stale `body` cannot double up.
   */
   const showsIntro = hubIntroRenders(content.intro)
+  /*
+    ⚠ THE CAROUSEL TAKES THE HERO'S ASIDE SLOT FROM THE FORM, AND ONLY
+    THAT SLOT. `showsHeroForm` still drives the closing CTA's `split`
+    variant below, so a hub setting both opens on photographs and still
+    closes on the form. See `HubPageContent.heroCarousel`.
+
+    ⚠ TESTED INLINE, NOT VIA A `*Renders()` HELPER. `HeroCarousel` is a
+    `'use client'` module, and a client module cannot export a function
+    the server calls: Next.js throws at prerender rather than at build
+    of the component. `ReviewMarquee` solved the same problem by putting
+    its predicate with the data; this one has no dataset to put it in.
+  */
+  const showsHeroCarousel =
+    content.heroCarousel !== undefined && content.heroCarousel.length > 0
+  const showsSelectionPanel = selectionPanelRenders(content.selectionPanel)
   const showsRouting =
     content.routing !== undefined && routingCardsRenders(content.routing)
   const showsProcessBand = content.showProcessBand === true
@@ -298,6 +316,23 @@ export function HubPageTemplate({
   const reviewsSurface = flip(introSurface)
 
   let previousSurface: SectionSurface = itemsSurface
+  /*
+    ⚠ THE PANEL FOLLOWS THE MEMBER LIST AND MUST CONTRAST IT. It is a
+    contained card rather than a full band, so its own surface is what
+    separates it from the mosaic above.
+  */
+  const selectionPanelSurface = flip(previousSurface)
+  /*
+    ⚠ IT DOES NOT ADVANCE THE PARITY WHERE THE PROCESS BAND FOLLOWS IT,
+    for the same reason the coverage band does not flip there: that band
+    is image-backed and separates the panel from everything below, so
+    taking a turn here buys no visible contrast and flips the tail. It
+    did exactly that on the first build - a `muted` FAQ against the
+    `muted` split CTA, with no `AuthorityBand` to buffer them.
+  */
+  if (showsSelectionPanel && !showsProcessBand) {
+    previousSurface = selectionPanelSurface
+  }
   const servicesSurface = flip(previousSurface)
   if (showsServices) previousSurface = servicesSurface
   /*
@@ -361,6 +396,8 @@ export function HubPageTemplate({
     // `itemsDensity`, not a literal: the mosaic takes `dense` and the
     // row list `standard`. See where it is derived.
     ...(showsItems ? [itemsDensity] : []),
+    // The selection panel: one card, so `dense`. See the section.
+    ...(showsSelectionPanel ? (['dense'] as const) : []),
     /*
       ⚠ `dense`, WHICH IS THE VALUE THE HOME PAGE AND ALL THREE MARKET
       HUBS ALREADY GIVE THIS BAND. The mosaic carries its own internal
@@ -419,8 +456,19 @@ export function HubPageTemplate({
         title={content.hero.title}
         intro={content.hero.intro}
         backdrop={backdrop}
+        primaryAction={content.hero.primaryAction}
+        secondaryAction={content.hero.secondaryAction}
+        /*
+          ⚠ `media` PUTS THE PICTURE COLUMN AT 58% AND CAPS THE COPY.
+          The default balance is 55/45 in the copy's favour, which is
+          right for a form; a 16:9 carousel wants the larger half. See
+          `HeroProps.asideBalance`.
+        */
+        asideBalance={showsHeroCarousel ? 'media' : 'copy'}
         aside={
-          showsHeroForm ? (
+          showsHeroCarousel && content.heroCarousel !== undefined ? (
+            <HeroCarousel slides={content.heroCarousel} />
+          ) : showsHeroForm ? (
             /*
               ⚠ THE CARD IS WHAT MAKES THE FORM USABLE ON A PHOTOGRAPH.
               Its inputs, labels and focus rings are built for a light
@@ -610,10 +658,24 @@ export function HubPageTemplate({
           density={itemsDensity}
           id={itemsId}
           title={itemsTitle}
+          intro={content.itemsIntro}
           items={content.items}
           numbered={numbered}
           variant={itemsAreMosaic ? 'mosaic' : 'index'}
           surface={itemsSurface}
+        />
+      )}
+
+      {/*
+        ⚠ DIRECTLY UNDER THE MEMBER LIST, WHICH IS THE ONLY PLACE IT
+        WORKS. It answers the reader who has just scanned the cards and
+        not recognised their own situation, so it has to be the next
+        thing after them rather than a band further down.
+      */}
+      {showsSelectionPanel && content.selectionPanel !== undefined && (
+        <SelectionPanel
+          content={content.selectionPanel}
+          surface={selectionPanelSurface}
         />
       )}
 
