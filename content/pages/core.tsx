@@ -1022,9 +1022,21 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         title: 'Find information for your service area',
         body: 'Choose your market to review local sewer services, featured communities, contact information, scheduling details, and sewer inspection guidance.',
         links: [
-          { pageId: id('market-st-louis-mo'), label: 'Explore St. Louis' },
-          { pageId: id('market-san-diego-ca'), label: 'Explore San Diego' },
-          { pageId: id('market-las-vegas-nv'), label: 'Explore Las Vegas' },
+          {
+            pageId: id('market-st-louis-mo'),
+            label: 'Explore St. Louis',
+            accent: 'green',
+          },
+          {
+            pageId: id('market-san-diego-ca'),
+            label: 'Explore San Diego',
+            accent: 'blue',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            label: 'Explore Las Vegas',
+            accent: 'green',
+          },
         ],
       },
     },

@@ -1,5 +1,10 @@
 import type { ReactElement } from 'react'
-import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  ButtonLink,
+  type ButtonVariant,
+  type SectionDensity,
+} from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { CameraIcon, MapPinIcon, type IconProps } from './section-icons'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
@@ -34,10 +39,19 @@ import type { MarketGuidanceContent } from '@/types'
  * location", or "nearest branch" - nothing a reader could take as a
  * place they could drive to.
  *
- * ⚠ THE THREE MARKETS ARE STYLED IDENTICALLY, ON PURPOSE. St. Louis is
- * the only one with a Google Business Profile (01 §21, DEC-020), and
- * giving it a heavier button would imply an operational difference the
- * copy is careful not to claim. One variant for all three.
+ * ⚠ THE THREE BUTTONS ALTERNATE GREEN, BLUE, GREEN (owner, 2026-09-08),
+ * AND THE CONSTRAINT THAT SHIPPED FIRST STILL HOLDS. They were one
+ * variant originally because St. Louis is the only market with a
+ * Google Business Profile (01 §21, DEC-020) and a heavier button on it
+ * alone would imply an operational difference the copy does not claim.
+ * An alternating rhythm does not do that: it is a pattern across the
+ * row rather than a ranking, and the odd one out is San Diego, not the
+ * market with the profile. All three keep the same size, padding and
+ * label shape.
+ *
+ * ⚠ THE ACCENT IS PER LINK IN CONTENT, NOT DERIVED FROM THE INDEX.
+ * Index-based colouring would silently re-colour every market the day
+ * a fourth was added or the order changed.
  *
  * ---------------------------------------------------------------------------
  * ⚠ THE CARD ACCENT IS A TOP RULE, NOT A TINTED CARD
@@ -79,6 +93,21 @@ const ICONS: Record<
   utilities both ship and stylesheet order decides the winner, so these
   strings must not restate anything already on the element they land on.
 */
+/*
+  Green is `primary`, blue is `accent`.
+
+  ⚠ GREEN ON A NAVIGATION LINK IS A KNOWN DEVIATION FROM DEC-096, which
+  reserves `--accent` for conversion actions. It is owner-directed
+  (2026-09-08) and it is the fourth such use after the trust-bar icons,
+  the differentiator emphasis (DEC-098) and the card rules above. Worth
+  a decision entry if a fifth appears - at that point the rule is not
+  the rule any more.
+*/
+const BUTTON_VARIANT: Record<'green' | 'blue', ButtonVariant> = {
+  green: 'primary',
+  blue: 'accent',
+}
+
 const ACCENT: Record<
   MarketGuidanceContent['cards'][number]['accent'],
   { rule: string; plate: string }
@@ -104,8 +133,8 @@ export function MarketGuidance({
   const marketLinks = resolveLinkableOnly(
     content.panel.links.map((link) => link.pageId),
   )
-  const labels = new Map(
-    content.panel.links.map((link) => [link.pageId, link.label]),
+  const authored = new Map(
+    content.panel.links.map((link) => [link.pageId, link]),
   )
 
   return (
@@ -220,10 +249,14 @@ export function MarketGuidance({
                 <li key={link.pageId}>
                   <ButtonLink
                     href={link.href}
-                    variant="secondary"
+                    variant={
+                      BUTTON_VARIANT[
+                        authored.get(link.pageId)?.accent ?? 'blue'
+                      ]
+                    }
                     className="w-full justify-center sm:w-auto"
                   >
-                    {labels.get(link.pageId) ?? link.label}
+                    {authored.get(link.pageId)?.label ?? link.label}
                   </ButtonLink>
                 </li>
               ))}
