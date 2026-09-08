@@ -774,6 +774,31 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     */
     cta: { title: 'Schedule a sewer inspection', hideAction: true },
     /*
+      ⚠ ONE FRAME, THREE PANELS, ONE PER MARKET (owner-supplied,
+      2026-09-07). Brick and mature shade tree, stucco and palms,
+      stucco and desert gravel. That is the only image on the site
+      that depicts all three markets at once, which is what makes it
+      right for the page that speaks for all three and wrong for any
+      single market hub.
+
+      ⚠ IT DEPICTS NO BUSINESS PRESENCE, WHICH IS THE TEST THAT
+      MATTERS HERE. No signage, no address, no vehicle livery, no
+      storefront, no pin on a map. A CTA image on a sitewide page that
+      showed any of those would assert an office where none is
+      verified (01 §20-21, CLAUDE.md §24).
+
+      ⚠ THE ALT NAMES NO CITY. The panels read as regional housing
+      types rather than as photographs of a named place, and captioning
+      them with market names would turn a rendered scene into a
+      location claim.
+    */
+    ctaBackground: {
+      src: '/images/markets/locations-hub/the-sewer-pros-three-market-service-areas-cta.webp',
+      alt: 'Three residential street views side by side: a brick house under a mature shade tree, a stucco house with palms, and a stucco house with desert gravel planting',
+      source:
+        'Supplied by the business owner, 2026-09-07. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
+    /*
       ==========================================================================
       THREE HOME PAGE BANDS, ON OWNER DIRECTION (2026-09-07)
       ==========================================================================
@@ -817,16 +842,73 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       identical status across all three; see that file.
     */
     services: coreServiceCards,
+    /*
+      ==========================================================================
+      HERO REWRITTEN 2026-09-07 (owner copy, folded on owner direction).
+      ==========================================================================
+      ⚠ THE SUPPLIED COPY HAD A BULLET LIST AND THREE MARKET LINKS. Both
+      were dropped rather than fitted in, on owner direction: the hero
+      has no list slot and does not need one, and the market links would
+      have been a third copy of the same navigation two sections above
+      the guidance panel that already owns that job. "One hero, one
+      voice, no repeated slots."
+
+      ⚠ THE LIST BECAME THE SECOND PARAGRAPH'S MIDDLE CLAUSE. Confirm
+      availability, document on video, explain the findings - the five
+      bullets said this in five lines.
+
+      ⚠ ONE LINE WAS SOFTENED, AND THIS IS THE REASON. The supplied
+      bullet read "Choose your next step without a repair-driven sales
+      incentive", which implies other contractors push repairs that are
+      not needed. CLAUDE.md §9 draws that line explicitly: the
+      differentiator is The Sewer Pros' own business model, never an
+      accusation about anyone else. It now reads "based on evidence
+      rather than a repair recommendation", which keeps the contrast
+      and makes no claim about a third party. The site's established
+      phrasing, "without repair-driven upselling", was the alternative;
+      this one fits the sentence better and says the same thing.
+
+      ⚠ THE NO-REPAIR SENTENCE IS A GUARDRAIL, NOT A HEDGE. CLAUDE.md
+      §9 forbids presenting the business as a repair or replacement
+      contractor, and stating it in the hero is the clearest place.
+
+      ⚠ NO PROMISE ANYWHERE. No response time, no same-day, no price,
+      no coverage guarantee. "Confirm coverage" is an invitation to
+      ask, not an assurance of a yes.
+    */
     hero: {
-      title: 'Locations / Service Areas',
+      eyebrow: 'Sewer service across three markets',
+      title: 'Find sewer inspection and cleaning in your service area',
       intro: (
-        <p>
-          The Sewer Pros works across St. Louis, San Diego, and Las Vegas.
-          These are service markets: areas we work in, not offices you can
-          visit.
-        </p>
+        <>
+          <p>
+            The Sewer Pros provides sewer camera inspection, sewer cleaning,
+            hydro jetting, sewer line locating, drain cleaning, and diagnostic
+            services across the St. Louis, San Diego, and Las Vegas service
+            markets. These are service markets: areas we travel to and work
+            in, not offices you can visit. Select your location and tell us
+            what is happening so we can confirm coverage and identify the
+            appropriate service for your property.
+          </p>
+          <p>
+            Request service if you are dealing with recurring sewer backups,
+            multiple slow drains, unexplained blockages, possible root
+            intrusion, or concerns about a property you are preparing to
+            purchase. We confirm availability for your address, document
+            visible conditions inside accessible portions of the line on
+            video, and explain what is there, so you can decide your next step
+            based on evidence rather than a repair recommendation. The Sewer
+            Pros does not perform sewer repair or replacement.
+          </p>
+        </>
       ),
     },
+    /*
+      ⚠ GUIDANCE ON FILLING THE FORM IN, NOT A PROMISE ABOUT WHAT
+      HAPPENS AFTER. See `HubPageContent.heroFormIntro`.
+    */
+    heroFormIntro:
+      'Not sure which service you need? Select Other and briefly describe the symptoms you are seeing.',
     // No brand suffix: the root title template appends it.
     seoTitle: 'Service Areas | St. Louis, San Diego & Las Vegas',
     metaDescription:

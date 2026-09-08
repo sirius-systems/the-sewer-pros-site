@@ -1236,6 +1236,15 @@ export interface HubPageContent extends BasePageContent {
    */
   showHeroForm?: boolean
   /**
+   * One line under the hero form's heading.
+   *
+   * ⚠ IT MUST NOT CARRY A PROMISE. This slot sits above the fields, so
+   * a response time, a price, or an availability claim written here
+   * would read as a term of submitting the form (CLAUDE.md §24, §42).
+   * Guidance on how to fill the form in is what it is for.
+   */
+  heroFormIntro?: string
+  /**
    * Renders `ReviewMarquee` and `ConfidenceModule`, the two trust
    * sections the market hubs carry.
    *
@@ -1310,6 +1319,22 @@ export interface HubPageContent extends BasePageContent {
    */
   showProcessBand?: boolean
   processBackground?: CardImage
+  /**
+   * Full-bleed image behind the closing CTA.
+   *
+   * ⚠ IT DOES NOT SWITCH THE VARIANT, UNLIKE `MarketPageContent`'s
+   * field of the same name. There, `split` is keyed off the image;
+   * here it is keyed off `showHeroForm`, because this hub needed the
+   * two-column layout before any CTA asset existed. `CtaSection` gates
+   * its layout on `proof`, not on the image, so the two are genuinely
+   * independent and a hub may set either alone.
+   *
+   * ⚠ A SITEWIDE PAGE'S CTA IMAGE MUST NOT NAME OR DEPICT ONE MARKET
+   * AS THE BUSINESS'S PLACE. No signage, no address, no office marker,
+   * no vehicle livery standing in for a branch (01 §20-21, CLAUDE.md
+   * §24).
+   */
+  ctaBackground?: CardImage
 }
 
 /** Core page — about, contact, faq. */
