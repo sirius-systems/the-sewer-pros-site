@@ -130,6 +130,7 @@ export function PrePurchase({
           label: content.secondary.label,
         })
       : undefined
+  const accent = content.resourcesAccent ?? 'surface'
   const resources = content.resources.map((resource) =>
     resolveApprovedLink(resource.pageId, { label: resource.label }),
   )
@@ -255,16 +256,47 @@ export function PrePurchase({
               <li key={resource.pageId}>
                 <Link
                   href={resource.href}
-                  className={cn(
-                    'group flex h-full items-start justify-between gap-3 rounded-md border border-border bg-surface-muted p-4',
-                    'text-body leading-7 text-foreground transition-colors',
-                    'hover:border-foreground/30 hover:text-accent-secondary',
-                  )}
+                  /*
+                    ⚠ THE TWO BRANCHES ARE WRITTEN OUT IN FULL RATHER
+                    THAN COMPOSED FROM A SHARED BASE, AND THAT IS
+                    DELIBERATE. `cn()` here is a plain join, so the
+                    emitted class STRING depends on the order the
+                    fragments arrive in. A first pass factored the
+                    shared utilities out and reordered them; the CSS
+                    was identical and St. Louis still came back as a
+                    changed route in the diff. Keeping the neutral
+                    branch byte-for-byte as it shipped is what makes
+                    that page provably untouched.
+
+                    ⚠ FILL AND TEXT MOVE TOGETHER. The whole card is
+                    one anchor, so a background change without the text
+                    colour would leave `--foreground` on
+                    `--accent-secondary`, under 4.5:1. White on that
+                    blue is 5.83:1, the pair the `accent` button
+                    variant already ships.
+                  */
+                  className={
+                    accent === 'blue'
+                      ? cn(
+                          'group flex h-full items-start justify-between gap-3 rounded-md border border-accent-secondary bg-accent-secondary p-4',
+                          'text-body leading-7 text-white transition-colors',
+                          'hover:opacity-90',
+                        )
+                      : cn(
+                          'group flex h-full items-start justify-between gap-3 rounded-md border border-border bg-surface-muted p-4',
+                          'text-body leading-7 text-foreground transition-colors',
+                          'hover:border-foreground/30 hover:text-accent-secondary',
+                        )
+                  }
                 >
                   <span>{resource.label}</span>
                   <span
                     aria-hidden="true"
-                    className="mt-1 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                    className={
+                      accent === 'blue'
+                        ? 'mt-1 shrink-0 text-white/80 transition-transform group-hover:translate-x-0.5'
+                        : 'mt-1 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5'
+                    }
                   >
                     →
                   </span>

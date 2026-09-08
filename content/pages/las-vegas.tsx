@@ -409,6 +409,12 @@ export const lasVegasMarketContent: MarketPageContent = {
         title: 'Pre-purchase due diligence',
         description:
           'Review the accessible sewer line before closing so a hidden condition does not become an unexpected property expense.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-pre-purchase-sewer-camera-inspection.webp',
+          alt: 'Pre-purchase sewer camera inspection at a Las Vegas Valley property',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'document',
         featured: true,
       },
@@ -416,30 +422,60 @@ export const lasVegasMarketContent: MarketPageContent = {
         title: 'Recurring sewer backups',
         description:
           'Investigate why the sewer line continues to back up instead of clearing the same symptom repeatedly.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-recurring-sewer-backups-camera-inspection.webp',
+          alt: 'Camera inspection of a Las Vegas sewer line that keeps backing up',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'camera',
       },
       {
         title: 'Multiple slow drains',
         description:
           'Determine whether several slow fixtures may be connected to a larger sewer-line restriction.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-multiple-slow-drains-sewer-line-inspection.webp',
+          alt: 'Inspection checking whether several slow drains share one sewer-line restriction',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'explanation',
       },
       {
         title: 'Preventative maintenance planning',
         description:
           'Use inspection evidence to decide whether cleaning, monitoring, or a future inspection interval is appropriate.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-preventative-sewer-maintenance-planning.webp',
+          alt: 'Planning preventative sewer maintenance from inspection findings',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'guidance',
       },
       {
         title: 'Property-management documentation',
         description:
           'Create a clearer record of visible sewer conditions when managing multifamily, rental, or commercial properties.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-property-management-sewer-condition-documentation.webp',
+          alt: 'Documenting visible sewer conditions for a managed Las Vegas property',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'independence',
       },
       {
         title: 'Older or frequently blocked lines',
         description:
           'Check for visible buildup, root intrusion, joint problems, or other conditions that may contribute to repeated drainage issues.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-older-frequently-blocked-sewer-line-inspection.webp',
+          alt: 'Camera inspection of an older, frequently blocked sewer line',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'decision',
       },
     ],
@@ -727,13 +763,27 @@ export const lasVegasMarketContent: MarketPageContent = {
     intro:
       'The Las Vegas Valley has among the newest housing of anywhere we work, and most laterals here will be PVC rather than clay, cast iron, or bituminized fibre. That removes the material decay that dominates older regions. It does not remove ground movement, and depending on the property the recurring findings are bellies holding standing water, joints opened by settlement, and damage from later construction or landscaping, all producing the same repeating slow-drainage pattern people associate with old pipe from an entirely different cause.',
     items: [
+      /*
+        ⚠ ONE FRAME PER CARD SINCE 2026-09-08, WHERE ONLY THE FIRST HAD
+        ONE. `PipeMaterials` puts every card in image-then-text order at
+        a shared ratio, so a set where two of three had no picture left
+        the row visibly uneven.
+
+        ⚠ THE FIRST CARD'S FRAME CHANGED, AND THE OLD ONE IS NOW
+        UNUSED. It was `the-sewer-pros-las-vegas-residential-sewer-conditions`,
+        a stucco-home exterior; the replacement shows the diagnosis
+        itself, which is what the card is about. The exterior frame is
+        still in the repository and referenced by nothing - it is a
+        candidate for the experience band if that ever wants a second
+        image, or for deletion.
+      */
       {
         title: 'Recurring backups',
         description:
           'Look for visible conditions that may explain why the same drainage problem keeps returning.',
         image: {
-          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-residential-sewer-conditions.webp',
-          alt: 'Accessible utility area beside a Las Vegas Valley stucco home',
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-recurring-sewer-backup-diagnosis.webp',
+          alt: 'Diagnosing the cause of a sewer line that keeps backing up',
           source:
             'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
         },
@@ -742,11 +792,23 @@ export const lasVegasMarketContent: MarketPageContent = {
         title: 'Property changes',
         description:
           'Document the accessible line after landscaping, remodeling, or other work near the sewer route.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-sewer-line-inspection-after-property-changes.webp',
+          alt: 'Sewer line inspected after landscaping and other work near its route',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
       },
       {
         title: 'Maintenance planning',
         description:
           'Use inspection evidence to decide whether cleaning, monitoring, or another evaluation is appropriate.',
+        image: {
+          src: '/images/markets/las-vegas-nv/services/the-sewer-pros-sewer-maintenance-planning-inspection-evidence.webp',
+          alt: 'Inspection evidence used to plan sewer maintenance intervals',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
       },
     ],
   },
@@ -787,6 +849,15 @@ export const lasVegasMarketContent: MarketPageContent = {
       label: 'Learn About Pre-Purchase Sewer Inspections',
       pageId: id('svc-pre-purchase-sewer-inspection'),
     },
+    /*
+      ⚠ BLUE, ON OWNER DIRECTION (2026-09-08). These three cards are
+      navigation, and blue is this system's navigation colour; the
+      neutral card they shipped with read as white against this
+      section's muted ground. St. Louis keeps the neutral treatment -
+      the field is opt-in precisely so this did not restyle a page
+      nobody asked about.
+    */
+    resourcesAccent: 'blue',
     resourcesTitle: 'Local sewer inspection information',
     resources: [
       { pageId: id('loc-lv-henderson'), label: 'Henderson sewer inspection' },
