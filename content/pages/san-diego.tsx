@@ -523,26 +523,31 @@ export const sanDiegoMarketContent: MarketPageContent = {
         title: 'Recorded footage',
         description:
           'Video from accessible portions of the sewer line, captured during the inspection.',
+        icon: 'camera',
       },
       {
         title: 'Documentation of visible conditions',
         description:
           'What the camera showed inside the accessible line, recorded as findings rather than as a repair estimate.',
+        icon: 'document',
       },
       {
         title: 'A plain-language explanation',
         description:
           'What the footage shows, described without trade shorthand.',
+        icon: 'explanation',
       },
       {
         title: 'Guidance on cleaning or monitoring',
         description:
           'Whether the evidence supports cleaning the line, continuing to monitor a condition, or further evaluation.',
+        icon: 'guidance',
       },
       {
         title: 'Evidence you can keep',
         description:
           'Material you can revisit or share when seeking a second opinion or making a later property decision.',
+        icon: 'decision',
       },
     ],
     panel: {
@@ -611,7 +616,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       label: 'Explore San Diego Sewer Services',
       pageId: id('hub-services'),
     },
-    phone: { label: 'Call (858) 257-2888', href: 'tel:+18582572888' },
+    phone: { label: 'Call (858) 257-2888', phoneE164: '+18582572888' },
   },
   /*
     ⚠ THE HOME PAGE'S "What we do" SECTION, NOT A LOCAL VARIANT OF IT

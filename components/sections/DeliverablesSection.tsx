@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Section, type SectionDensity } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
-import { CheckIcon } from './section-icons'
+import { CheckIcon, SECTION_ICONS } from './section-icons'
 import { cn } from '@/lib/utils/cn'
 import type { DeliverablesContent } from '@/types'
 
@@ -71,8 +71,20 @@ export function DeliverablesSection({
           hasImage && 'lg:grid-cols-[5fr_7fr] lg:items-start',
         )}
       >
+        {/*
+          ⚠ `self-center` ON THE IMAGE COLUMN, NOT `items-center` ON THE
+          GRID (owner, 2026-09-08). The copy column is the taller of the
+          two - heading, intro, a five-item checklist and the closing
+          panel - so it is what sets the row height. Centring the whole
+          grid would work today only because of that, and would silently
+          start moving the COPY the day the image column grew taller.
+          Centring one child says what is meant.
+
+          Below `lg` the grid is a single column and cross-axis
+          alignment has nothing to align against, so this is scoped.
+        */}
         {hasImage && content.image !== undefined && (
-          <div className="order-2 lg:order-none">
+          <div className="order-2 lg:order-none lg:self-center">
             <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-surface-muted">
               <Image
                 src={content.image.src}
@@ -103,13 +115,31 @@ export function DeliverablesSection({
             ordered answer into a lookup table.
           */}
           <ul className="mt-8 space-y-4">
-            {content.items.map((item) => (
+            {content.items.map((item) => {
+              /*
+                ⚠ A MARK PER ITEM, NOT FIVE IDENTICAL TICKS (owner,
+                2026-09-08). A column of checkmarks confirms only that
+                the list has five entries; a camera, a document, an
+                explanation and so on each say something about the
+                item they sit beside.
+
+                ⚠ THE PLATE GREW FROM 24px TO 32px WITH THE CHANGE. A
+                check reads at 16px because it is two strokes; a camera
+                or a document does not, and shrinking them to fit the
+                old plate would have produced five smudges.
+
+                Still `aria-hidden`: the item's own title names it.
+              */
+              const Icon =
+                item.icon !== undefined ? SECTION_ICONS[item.icon] : CheckIcon
+
+              return (
               <li key={item.title} className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-accent text-white"
+                  className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-sm bg-accent text-white"
                 >
-                  <CheckIcon className="h-4 w-4" />
+                  <Icon className="h-5 w-5" />
                 </span>
                 <div>
                   <p className="text-body font-semibold text-foreground">
@@ -122,7 +152,8 @@ export function DeliverablesSection({
                   )}
                 </div>
               </li>
-            ))}
+              )
+            })}
           </ul>
 
           {content.panel !== undefined && (
