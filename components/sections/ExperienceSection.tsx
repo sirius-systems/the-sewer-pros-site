@@ -505,6 +505,32 @@ export function ExperienceSection({
     secondary, and the phone is a tertiary text action rather than a
     third button.
   */
+  /*
+    ==========================================================================
+    ⚠ THE CLOSING BLOCK RENDERS ONLY WHEN IT HAS SOMETHING BESIDES THE
+    PHONE (2026-09-08)
+    ==========================================================================
+    It was written when every market authored `coverage` and two
+    `actions`, so a rule, a coverage paragraph, two buttons and a phone
+    number always arrived together. San Diego and Las Vegas then moved
+    their coverage panel and both buttons into
+    `RegionalCoveragePanel`, and this block kept rendering: a
+    horizontal divider, an empty flex row, and one lone "Call ..."
+    link, with the margins of a full closing row underneath.
+
+    That is what the excessive space below the proof cards was. Not
+    padding, not a min-height - an empty container the layout still
+    reserved room for.
+
+    ⚠ THE PHONE IS NOT SUPPRESSED, IT SIMPLY HAS NO ROW TO SIT IN.
+    A market that still authors actions (St. Louis) renders the same
+    row it always did, phone included and unchanged. Nothing about the
+    header, footer, contact page, final CTA or schema is touched: this
+    is one section-level anchor, and it was only ever meaningful beside
+    the buttons.
+  */
+  const hasClosing = content.coverage !== undefined || actions !== undefined
+
   const closing = (
     <div className="border-t border-border pt-8">
       {content.coverage !== undefined && <Block block={content.coverage} />}
@@ -794,8 +820,16 @@ export function ExperienceSection({
           column; anything else spans both, so a full-width block can
           open or close the run without a second grid.
         */}
+        {/*
+          ⚠ GUARDED, BECAUSE AN EMPTY GRID IS NOT FREE. With no blocks
+          the element still carried `mt-12`, so the section paid a
+          margin for a row that rendered nothing. Together with the
+          closing block above it, that was most of the gap under the
+          proof cards.
+        */}
+        {content.blocks !== undefined && content.blocks.length > 0 && (
         <div className="mt-12 grid gap-x-10 gap-y-10 lg:grid-cols-2">
-          {content.blocks?.map((block) => (
+          {content.blocks.map((block) => (
             <div
               key={block.title}
               className={cn(block.half !== true && 'lg:col-span-2')}
@@ -804,8 +838,9 @@ export function ExperienceSection({
             </div>
           ))}
         </div>
+        )}
 
-        <div className="mt-12">{closing}</div>
+        {hasClosing && <div className="mt-12">{closing}</div>}
       </Section>
     )
   }
@@ -835,7 +870,7 @@ export function ExperienceSection({
         </aside>
       </div>
 
-      <div className="mt-12">{closing}</div>
+      {hasClosing && <div className="mt-12">{closing}</div>}
     </Section>
   )
 }
