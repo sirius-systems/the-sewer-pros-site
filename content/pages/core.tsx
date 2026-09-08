@@ -1217,13 +1217,28 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       },
     },
     /*
-      ⚠ THE BUTTON STAYS, WHERE `/locations/` AND ST. LOUIS DROP IT.
-      Prompt 04 names "Schedule a Sewer Inspection" as this CTA's
-      action, which is the global `PRIMARY_CTA`, so neither
-      `actionLabel` nor `hideAction` is set and the default renders it.
-      `CtaContent.hideAction`'s own note argues the other way for a
-      split CTA carrying a form; that is an owner call rather than a
-      code one, and the brief made it.
+      ⚠ NO BUTTON (owner, 2026-09-08), WHICH REVERSES WHAT PROMPT 04
+      ASKED FOR. That brief named "Schedule a Sewer Inspection" as this
+      CTA's action and it shipped for two builds; the owner has now
+      dropped it, which lands where `/locations/`, St. Louis, San Diego
+      and Las Vegas already are.
+
+      `CtaContent.hideAction`'s own note is the argument: this section
+      is the `split` variant and carries the request-service form on its
+      right, so the form's green submit is the ask. A second green
+      button beside it, pointing at `/contact/` while a contact form is
+      already on screen, is a competing path rather than a stronger one
+      (18 §62, §106).
+
+      ⚠ `hideAction`, NOT AN EMPTY `actionLabel`. Leaving both unset
+      falls back to the global `PRIMARY_CTA` and still renders a button;
+      only this flag drops the actions row, rather than leaving an empty
+      flex box holding 32px of margin above nothing.
+
+      ⚠ NOTHING ELSE LOSES A PATH. The hero's "Request Service" button
+      and the selection panel's "Describe the Problem" both point at
+      `#cta`, so every route to this form is intact and the header
+      keeps its own button sitewide.
 
       ⚠ NO PROMISE IN THE BODY. "Walk you through what fits your
       situation before anything is scheduled" describes the process the
@@ -1258,6 +1273,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
     },
     cta: {
+      hideAction: true,
       title: "See what's actually happening in your line.",
       body: "Schedule a sewer camera inspection, or reach out about any of the services above. We'll walk you through what fits your situation before anything is scheduled.",
     },
