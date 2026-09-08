@@ -300,6 +300,16 @@ export interface ConditionCard {
    * looking deliberate rather than broken.
    */
   image?: CardImage
+  /**
+   * The official page a claim on this card came from.
+   *
+   * ⚠ FOR CLAIMS ABOUT SOMEONE ELSE'S PROGRAMME. A grant amount, an
+   * eligibility rule or a service boundary must be checkable at its
+   * source, because those change and this site cannot promise they
+   * have not. It renders as an external link with a descriptive name,
+   * never a bare URL.
+   */
+  source?: { label: string; href: string }
 }
 
 /** Conditions a camera inspection may reveal. */
@@ -420,7 +430,15 @@ export interface RepairCoverageContent {
   title: string
   intro?: readonly string[]
   items: readonly ConditionCard[]
-  note: { title?: string; body: string }
+  /**
+   * A highlighted note under the cards.
+   *
+   * ⚠ OPTIONAL SINCE THE `authorities` SLOT REUSED THIS SHAPE. A
+   * section describing someone else's programme needs the
+   * verify-before-relying warning; a section of plain guidance cards
+   * does not, and an empty panel would be worse than none.
+   */
+  note?: { title?: string; body: string }
 }
 
 /** Closing regional conversion panel. */
@@ -469,6 +487,16 @@ export interface RegionalCoverageContent {
    * must never turn into a response-time or same-day promise.
    */
   hours?: string
+  /**
+   * Availability wording under the contact details.
+   *
+   * ⚠ IT MUST HEDGE, NOT PROMISE. DEC-088 approved the same-day line
+   * only as "sometimes available", scoped to published weekday hours,
+   * and 01 §35 rules out emergency, weekend and 24/7 service. This
+   * slot exists to say all of that in one place; it must never be
+   * edited into an assurance.
+   */
+  availabilityNote?: string
   /**
    * Full-bleed frame behind the panel.
    *
@@ -1415,6 +1443,14 @@ export interface MarketPageContent extends BasePageContent {
    * component under `id="lateral-responsibility"`. Coverage is not
    * lateral education and must not borrow that anchor.
    */
+  /**
+   * Which public agency serves which property. Renders `ProblemGrid`.
+   *
+   * ⚠ SAME SHAPE AS `repairCoverage`, DIFFERENT SLOT AND ANCHOR. Both
+   * are card grids about third-party bodies; sharing one slot would
+   * mean a market could not carry both, and San Diego carries both.
+   */
+  authorities?: RepairCoverageContent
   repairCoverage?: RepairCoverageContent
   /** Conditions an inspection may reveal. Renders `ProblemGrid`. */
   conditions?: ConditionsContent

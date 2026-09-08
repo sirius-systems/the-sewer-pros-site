@@ -162,104 +162,187 @@ export const sanDiegoMarketContent: MarketPageContent = {
   seoTitle: 'Sewer Inspection & Camera Inspection in San Diego',
   metaDescription:
     'Independent sewer camera inspection, diagnostics, and cleaning in San Diego. Evidence before assumptions, no repair-driven upselling. Request an inspection today.',
-  body: (
-    <>
-      {CITY_OF_SAN_DIEGO_POLICY}
-
-      <h2>No single sewer authority here</h2>
-      <p>
-        San Diego County has no regional sewer district covering the area the
-        way a single authority does in some metropolitan regions. Service comes
-        from a mix of city utility departments and independent special
-        districts, and which one governs your property is a question of address
-        rather than of city name.
-      </p>
-      <p>
-        San Marcos, for instance, is served by the Vallecitos Water District,
-        an independent special district that also serves parts of Carlsbad,
-        Escondido, and Vista. Chula Vista&rsquo;s sewer service comes from
-        CVSan, a sanitation district distinct from the city government itself.
-        Carlsbad is split: most of the city is served by its own utilities
-        department, while the southern portion falls to Leucadia Wastewater
-        District or Vallecitos.
-      </p>
-
-      <h2>Financial assistance is the exception</h2>
-      <p>
-        Lateral repair assistance programmes exist in this county, but they are
-        uncommon and they are not uniform. Of the areas we work across, we have
-        confirmed programmes in two: Carlsbad offers a grant of up to $3,000
-        toward lateral replacement or rehabilitation, and CVSan runs a lateral
-        replacement grant programme in Chula Vista.
-      </p>
-      <p>
-        Elsewhere (including the City of San Diego, Escondido, and San Marcos)
-        no such programme was found. In most of the county, a failed lateral
-        is funded entirely by the property owner.
-      </p>
-      <p>
-        That makes knowing the actual condition of a line more consequential
-        here, not less. Where no programme softens the cost, the difference
-        between a line that needs cleaning and a line that needs replacing is
-        the whole decision.
-      </p>
-
-      <h2>What we do here</h2>
-      <p>
-        We inspect, document, locate, and clean. We do not perform sewer repair
-        or replacement, so the footage we produce is not the first step toward a
-        quote from us for the remedy.
-      </p>
-
-      <h2>Reaching us in San Diego</h2>
-      <p>
-        San Diego enquiries go to{' '}
-        <a href="tel:+18582572888">(858) 257-2888</a>, Monday to Friday, 8:00am
-        to 4:00pm. This is a different line from our St. Louis number; please
-        use the San Diego one for work in this county.
-      </p>
-    </>
-  ),
   /*
     ==========================================================================
-    COMPANY EXPERIENCE. Added 2026-09-07 on owner direction.
+    THE LOCAL-EDUCATION RUN. Three sections carved out of `body`
+    (owner direction, 2026-09-08). Mirrors the Las Vegas build.
     ==========================================================================
-    ⚠⚠ TWO FIGURES IN THE SUPPLIED COPY WERE NOT PUBLISHED HERE, AND
-    THE OWNER'S OWN INSTRUCTION IS WHY.
+    ⚠ `body` IS GONE FROM THIS PAGE AND EVERY TOPIC IN IT SURVIVES.
+    It carried five H2s inside one reading column:
 
-    The brief said to publish "since 2011" and "more than 100,000
-    sewer camera inspections" ONLY after confirming both remain
-    approved in the authoritative business documentation. They are not
-    approved for this page:
+      "Who owns the lateral, and what the City will not do"
+          -> `responsibility`
+      "No single sewer authority here"
+          -> `authorities`
+      "Financial assistance is the exception"
+          -> `repairCoverage`, retitled to say what a reader gains
+             rather than what the county lacks
+      "What we do here"
+          -> already covered by `independence`, which says the same
+             thing at more length. NOT duplicated; its fourth step is
+             new and comes from this topic.
+      "Reaching us in San Diego"
+          -> folded into `regionalCoverage`, which already carried the
+             phone and both buttons. A second contact panel would have
+             been the same thing twice.
 
-      'over 100,000 camera inspections'  DEC-072 scopes it to
-          `/st-louis-mo/` ONLY. `MARKET_SCOPED_CLAIMS.stLouisOnly` in
-          `data/business/organization.ts` is the list, and 01 §20
-          forbids carrying a market's facts onto another's page.
+    ⚠ `CITY_OF_SAN_DIEGO_POLICY` STILL EXISTS AND IS STILL USED. The
+    hub no longer renders it; a location body further down this file
+    does. Deleting it would have stripped the ownership explanation
+    from that page, which is the same trap the Las Vegas restructure
+    hit with `LAS_VEGAS_CONTACT`.
 
-      '2011'  is ST. LOUIS's founding year (DEC-070). San Diego's own
-          is 2015 - `marketOperatingDetail['san-diego-ca'].foundingYear`,
-          published on thesewerprossd.com and recorded in DEC-071.
+    ⚠ NOT ONE HEDGE WAS STRENGTHENED. "The City repairs breaks within
+    the public right-of-way where they were not caused by neglect" is
+    conditional and stays conditional; "no reimbursement for plumbing
+    expenses" is the City's own stated position and is attributed as
+    such; the Carlsbad grant keeps its service-area qualifier and the
+    CVSan cap stays explicitly unconfirmed.
 
-    So the opening paragraph and the first proof card state SAN DIEGO's
-    verified 2015, and the inspection-count card was replaced with a
-    documentation claim the site can stand behind. Nothing was softened
-    that did not have to be: the services, the findings, the
-    independence position and the coverage caveat are all as supplied.
-
-    ⚠ DO NOT "RESTORE" THE ORIGINAL WORDING. Both figures would need a
-    new owner decision widening DEC-072's scope, not an edit here.
-
-    ⚠ THE SERVICE LIST IS SAFE TO STATE. DEC-076 and DEC-080 confirm 17
-    of 18 services for this market (the eighteenth is St. Louis's
-    lateral reporting), superseding a stale note in `markets.ts` that
-    still reads as though none were confirmed.
-
-    ⚠ `strip` VARIANT, WHERE LAS VEGAS TAKES `aside`. Owner direction:
-    the two markets share typography, cards, colour and spacing but not
-    the arrangement, so the hubs do not read as one template with the
-    city swapped (18 §155, 14 §79).
+    ⚠ FIVE IMAGES WERE ASKED FOR AND NONE EXISTS. The lateral diagram,
+    the authorities graphic, the assistance photograph, the evidence
+    photograph and the CTA background are all absent from
+    `public/images/markets/san-diego-ca/`. These sections ship without
+    artwork rather than pointing at files that are not there;
+    `LateralResponsibility` renders a single readable column when
+    `diagram` is unset.
   */
+  responsibility: {
+    title: 'Who owns the sewer lateral in the City of San Diego?',
+    intro:
+      'In the City of San Diego, the property owner owns the entire sewer lateral: the full run from the building to the public main, not merely the portion under private land. That is worth stating plainly, because it is the opposite of how sewer laterals work in some other parts of the country, and it means a lateral problem here is entirely the owner\u2019s to fund.',
+    items: [
+      {
+        title: 'The lateral is the property owner\u2019s, end to end',
+        description:
+          'Ownership runs the whole length from the building to the public main, including the portion under the street. There is no point along it where responsibility transfers to the City by default.',
+        icon: 'utility',
+        accent: 'blue',
+      },
+      {
+        /*
+          ⚠ TWO CONDITIONS, BOTH LOAD-BEARING. The City repairs breaks
+          in the right-of-way ONLY where they were not caused by
+          neglect, and bills the owner where they were. Dropping either
+          clause turns a qualified practice into a guarantee of free
+          City repair, which is the single most damaging thing this
+          section could get wrong.
+        */
+        title: 'Limited City involvement, and no reimbursement',
+        description:
+          'The City repairs breaks within the public right-of-way where they were not caused by neglect, and bills the owner where they were. On cost, the City\u2019s own guidance is unambiguous: there is no reimbursement for plumbing expenses.',
+        icon: 'document',
+        accent: 'amber',
+      },
+    ],
+    action: {
+      title: 'Confirm the current rules before authorizing work',
+      body: 'Sewer ownership, repair responsibility, and reimbursement policies can change. Confirm the current rules for the property address before authorizing work.',
+      guide: {
+        label: 'Explore San Diego service areas',
+        pageId: id('market-san-diego-ca'),
+      },
+      contact: {
+        label: 'Ask about your property',
+        pageId: id('core-contact'),
+      },
+    },
+  },
+  /*
+    ⚠ EVERY AGENCY NAMED HERE WAS ALREADY ON THIS PAGE. Vallecitos
+    serving San Marcos and parts of Carlsbad, Escondido and Vista;
+    CVSan in Chula Vista; Carlsbad split between its own utilities
+    department and Leucadia or Vallecitos in the south. No assignment
+    was added, changed, or inferred from a city name.
+
+    ⚠ NO SERVICE BOUNDARIES ARE DRAWN. The point of the section is that
+    the boundary is a question of address, and a map would contradict
+    the sentence it illustrates.
+  */
+  authorities: {
+    eyebrow: 'Local utility responsibility',
+    title: 'There is no single sewer authority for every San Diego property',
+    intro: [
+      'San Diego County has no regional sewer district covering the area the way a single authority does in some metropolitan regions. Wastewater service may come from a city utility department, a water district, a sanitation district, or another local public agency, and which one governs a property is a question of address rather than of city name.',
+      'San Marcos is served by the Vallecitos Water District, an independent special district that also serves parts of Carlsbad, Escondido, and Vista. Chula Vista\u2019s sewer service comes from CVSan, a sanitation district distinct from the city government. Carlsbad is split: most of the city is served by its own utilities department, while the southern portion falls to Leucadia Wastewater District or Vallecitos.',
+    ],
+    items: [
+      {
+        title: 'Identify the serving agency',
+        description:
+          'Confirm which utility, water district, or sanitation authority serves the exact property, not the city it sits in.',
+        icon: 'guidance',
+        accent: 'blue',
+      },
+      {
+        title: 'Review the local lateral rules',
+        description:
+          'Ownership, repair responsibility, permits, and assistance programs may vary by authority.',
+        icon: 'document',
+        accent: 'green',
+      },
+      {
+        title: 'Document the condition first',
+        description:
+          'A sewer camera inspection can provide visible evidence before the owner contacts the applicable agency or a separate repair provider.',
+        icon: 'camera',
+        accent: 'blue',
+      },
+    ],
+  },
+  /*
+    ⚠ RETITLED, NOT REWRITTEN. "Financial assistance is the exception"
+    described the county; this says what varies and what to do about
+    it. The finding underneath is identical: programmes exist, they are
+    uncommon, and they are not uniform.
+
+    ⚠ THE TWO PROGRAMME CARDS CARRY THEIR OWN SOURCE LINKS, which are
+    the URLs this file already used on the Carlsbad and Chula Vista
+    location pages. Both hedges travel with them: the Carlsbad grant is
+    described for the Carlsbad Wastewater service area and the CVSan
+    cap is explicitly unconfirmed.
+
+    ⚠ NO "INFORMATION CHECKED" DATE IS SHOWN, and that is deliberate.
+    The brief asked for one only where the project's research data
+    already holds it; nothing in `data/` records a verification date
+    for either programme. Inventing one would make an unverified claim
+    look audited.
+  */
+  repairCoverage: {
+    eyebrow: 'Possible assistance',
+    title: 'Sewer lateral assistance programs vary by community',
+    intro: [
+      'Lateral assistance programmes exist in San Diego County, but they are uncommon and they are not uniform. Funding, eligibility, covered work, service boundaries, and application requirements may differ by agency. Of the areas we work across we have confirmed two, and elsewhere, including the City of San Diego, Escondido, and San Marcos, no such programme was found.',
+    ],
+    items: [
+      {
+        title: 'Carlsbad',
+        description:
+          'Carlsbad offers a grant of up to $3,000 toward lateral replacement or rehabilitation. The programme is described as covering the Carlsbad Wastewater service area; whether it extends to properties served by Leucadia Wastewater District or Vallecitos is not something we have been able to confirm.',
+        icon: 'document',
+        accent: 'blue',
+        source: {
+          label: 'City of Carlsbad property-owner page',
+          href: 'https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners',
+        },
+      },
+      {
+        title: 'Chula Vista, through CVSan',
+        description:
+          'CVSan runs a lateral replacement grant programme. Eligibility depends on the applicable service authority and the property location, so a Chula Vista address does not by itself qualify, and we have not been able to confirm the programme\u2019s exact reimbursement cap.',
+        icon: 'guidance',
+        accent: 'green',
+        source: {
+          label: 'CVSan lateral replacement grant programme',
+          href: 'https://cvsan.org/wastewater/lateral_replacement_grant_program.php',
+        },
+      },
+    ],
+    note: {
+      title: 'Confirm eligibility with the agency before you rely on it',
+      body: 'Assistance is not available uniformly across San Diego County. Program funding, property eligibility, covered work, and application requirements can change. Contact the appropriate local agency before relying on assistance when planning sewer work. Where no programme softens the cost, the difference between a line that needs cleaning and a line that needs replacing is the whole decision.',
+    },
+  },
   experienceVariant: 'strip',
   experience: {
     /*
@@ -660,6 +743,17 @@ export const sanDiegoMarketContent: MarketPageContent = {
         icon: 'document',
       },
       {
+        /*
+          ⚠ THE FOURTH STEP CAME FROM `body`'s "What we do here", which
+          named cleaning and locating alongside inspection. Folding it
+          in here is why that topic needed no section of its own.
+        */
+        title: 'Clean or locate when appropriate',
+        description:
+          'Sewer cleaning, hydro jetting, or line locating when the evidence supports those services.',
+        icon: 'guidance',
+      },
+      {
         title: 'You decide what happens next',
         description:
           'You choose whether to clean, monitor, seek another opinion, or consult a separate repair provider.',
@@ -694,6 +788,20 @@ export const sanDiegoMarketContent: MarketPageContent = {
       pageId: id('hub-services'),
     },
     phone: { label: 'Call (858) 257-2888', phoneE164: '+18582572888' },
+    /*
+      ⚠ HOURS MOVED HERE FROM `body`'s "Reaching us in San Diego"
+      rather than getting a second contact panel. That block already
+      duplicated this one's phone.
+
+      ⚠ THE HOURS AND THE NOTE TOGETHER RULE OUT WHAT IS NOT OFFERED.
+      Published weekday hours plus DEC-088's approved same-day hedge:
+      "may be available when scheduling permits", never a promise, and
+      weekend, 24/7 and emergency service named as not offered (01
+      §35). Neither line may be edited into an assurance.
+    */
+    hours: 'Monday to Friday, 8:00am to 4:00pm',
+    availabilityNote:
+      'Same-day appointments may be available when scheduling permits. Weekend, 24/7, and emergency service are not offered.',
   },
   /*
     ⚠ THE HOME PAGE'S "What we do" SECTION, NOT A LOCAL VARIANT OF IT
