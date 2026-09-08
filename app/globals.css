@@ -445,6 +445,15 @@ h4 {
   .hero-backdrop-frame {
     transition: opacity 1200ms ease-in-out;
   }
+
+  /*
+    A hero the visitor can page through by hand wants a fade that
+    finishes before they reach for the next button. 1200ms is right for
+    a backdrop nobody steers; 700ms is right for one with controls.
+  */
+  .hero-backdrop-frame--swift {
+    transition-duration: 700ms;
+  }
 }
 
 

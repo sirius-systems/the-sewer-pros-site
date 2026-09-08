@@ -86,6 +86,19 @@ export interface HeroProps {
    * `col-span`s.
    */
   asideBalance?: 'copy' | 'media'
+  /**
+   * How wide the copy column runs.
+   *
+   * `reading` (default) `--container-reading`, 42rem. Every hero
+   *           without a backdrop takes it, and so does `/locations/`,
+   *           whose copy sits beside a form rather than over a picture.
+   * `narrow`  38rem, which is 608px. For a hero whose backdrop is the
+   *           whole composition rather than a partner to a form: the
+   *           copy is the only thing over the photograph, and 42rem of
+   *           it runs wide enough on a large display to read as a
+   *           block rather than as a column.
+   */
+  copyWidth?: 'reading' | 'narrow'
   className?: string
 }
 
@@ -100,6 +113,7 @@ export function Hero({
   backdrop,
   aside,
   asideBalance = 'copy',
+  copyWidth = 'reading',
   className,
 }: HeroProps) {
   const hasAside = aside !== undefined
@@ -109,7 +123,11 @@ export function Hero({
   const copy = (
     <div
       className={cn(
-        !hasMedia && !hasAside && 'max-w-[var(--container-reading)]',
+        !hasMedia &&
+          !hasAside &&
+          (copyWidth === 'narrow'
+            ? 'max-w-[38rem]'
+            : 'max-w-[var(--container-reading)]'),
         /*
           ⚠ THE COPY IS CAPPED BESIDE A PICTURE, NOT BESIDE A FORM. At
           42/58 the copy column is already narrow, and 35rem keeps the

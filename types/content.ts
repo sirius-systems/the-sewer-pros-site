@@ -1760,11 +1760,18 @@ export interface HubPageContent extends BasePageContent {
    * (2026-09-07): on this page the hero form and the split CTA are
    * conversion parity, not two independently useful toggles.
    *
-   * ⚠ NO BACKGROUND IMAGE IS INVOLVED, WHICH IS THE DIFFERENCE FROM
-   * THE MARKET HUBS. There they key the split off `ctaBackground`;
-   * here no such asset exists and inventing one would be a fabricated
-   * scene. `CtaSection` gates its split layout on `proof !== undefined`
-   * rather than on the image, so the two are genuinely separable.
+   * ⚠ THE SPLIT DOES NOT DEPEND ON A BACKGROUND IMAGE, WHICH IS THE
+   * DIFFERENCE FROM THE MARKET HUBS. There the two travel together,
+   * because `ctaBackground` is what keys the variant. `CtaSection`
+   * actually gates its split layout on `proof !== undefined`, so a hub
+   * renders it with or without a picture.
+   *
+   * ⚠ THAT SEPARATION WAS LOAD-BEARING AND STILL IS. It shipped
+   * because no CTA asset existed for either hub and inventing a scene
+   * would have been a fabricated image. `/services/` was given one on
+   * 2026-09-08 and now sets `ctaBackground` as well; `/locations/`
+   * still has none and still renders the split, which is the case this
+   * gate exists for.
    *
    * ⚠ NEITHER FORM PRESELECTS A MARKET, DELIBERATELY. `/locations/`
    * represents all three, so defaulting the Location field to any one
@@ -1876,26 +1883,6 @@ export interface HubPageContent extends BasePageContent {
    * surface chain below it is derived around.
    */
   intro?: HubIntroContent
-  /**
-   * Photographs for the hero's second column, as a carousel.
-   *
-   * ⚠ IT TAKES THE ASIDE SLOT FROM THE HERO LEAD FORM, and only that
-   * slot. `showHeroForm` still gates the closing CTA's `split` variant
-   * and the form inside it, so a hub setting both keeps its second
-   * conversion moment and simply opens on pictures rather than on
-   * fields. `/services/` is the live case: the owner asked for the
-   * carousel there, and the page's own hero CTAs point at the service
-   * grid and at that closing form.
-   *
-   * ⚠ THESE ARE CONTENT, NOT WALLPAPER. Each carries real alt text and
-   * `HeroCarousel` ships the pause, previous, next and indicator
-   * controls that moving information requires. Do not feed this to
-   * `HeroBackdrop`, which is the decorative cross-fade and is
-   * `aria-hidden` by construction.
-   *
-   * ⚠ THE FIRST ENTRY IS THE PRIORITY IMAGE. Order is load order.
-   */
-  heroCarousel?: readonly CardImage[]
   /**
    * The compact service-selection panel, rendered below the member list.
    *
