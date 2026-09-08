@@ -1258,6 +1258,24 @@ export const lasVegasMarketContent: MarketPageContent = {
       `regionalCoverage` renders it beside the published hours. This
       note now carries the hours alone, matching the supplied line.
     */
+    /*
+      ⚠ NO BUTTON IN THIS CTA (owner, 2026-09-08), matching San Diego.
+      The section already carries the request-service form on its
+      right, and its submit control is the primary action; a "Schedule
+      a Sewer Inspection" button beside it was a second ask pointing at
+      a different page, which splits the conversion rather than
+      strengthening it.
+
+      ⚠ `hideAction`, NOT AN EMPTY `actionLabel`. `CtaSection` treats
+      `null` as "no button" and `undefined` as "fall back to the global
+      PRIMARY_CTA", so only this flag removes it - and it drops the
+      whole actions row rather than leaving an empty flex box holding
+      32px of margin above nothing.
+
+      ⚠ THE PHONE SENTENCE IS UNAFFECTED. It renders outside that row,
+      so "Prefer to talk now?" and the number stay.
+    */
+    hideAction: true,
     eyebrow: 'Las Vegas Valley sewer inspection and cleaning',
     title: 'Find out what is happening inside your sewer line',
     body: (
