@@ -62,6 +62,13 @@ export function ScenarioGrid({
   const featuredIndex = content.items.findIndex(
     (item) => item.featured === true,
   )
+  /*
+    ⚠ SAME OPT-IN AS `ProblemGrid`. Las Vegas renders this section with
+    icons and no photographs; framing them would give that page six
+    large empty panels for no gain.
+  */
+  const framed = content.items.some((item) => item.image !== undefined)
+
   const action =
     content.action !== undefined
       ? resolveApprovedLink(content.action.pageId, {
@@ -106,59 +113,87 @@ export function ScenarioGrid({
               <article
                 className={cn(
                   'flex h-full flex-col rounded-md border border-border bg-surface',
+                  framed && 'overflow-hidden',
                   isFeatured ? 'p-6 sm:p-8' : 'p-5 sm:p-6',
                 )}
               >
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'flex shrink-0 items-center justify-center rounded-sm',
-                    /*
-                      The featured tile takes the green plate because it
-                      is the one card carrying a conversion intent; the
-                      rest are blue, which is this system's non-CTA
-                      emphasis (DEC-096).
-                    */
-                    isFeatured
-                      ? 'h-12 w-12 bg-accent text-white'
-                      : 'h-10 w-10 bg-accent-secondary text-white',
-                  )}
-                >
-                  <Icon className={isFeatured ? 'h-6 w-6' : 'h-5 w-5'} />
-                </span>
+                {/*
+                  ⚠ ONE FRAME SHAPE PER CARD, AND THE FEATURED TILE'S
+                  IS WIDER. It spans two columns, so a 4:3 crop there
+                  would be enormous; 16:9 keeps it proportionate while
+                  the compact cards stay 4:3.
+
+                  ⚠ THE ICON FALLBACK KEEPS THE GRID REGULAR when a
+                  card has no photograph. It carries the green plate on
+                  the featured tile and blue elsewhere, which is the
+                  accent split this section always used (DEC-096).
+                */}
+                {!framed ? (
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      'flex shrink-0 items-center justify-center rounded-sm',
+                      isFeatured
+                        ? 'h-12 w-12 bg-accent text-white'
+                        : 'h-10 w-10 bg-accent-secondary text-white',
+                    )}
+                  >
+                    <Icon className={isFeatured ? 'h-6 w-6' : 'h-5 w-5'} />
+                  </span>
+                ) : item.image !== undefined ? (
+                  <div
+                    className={cn(
+                      'relative -mx-5 -mt-5 mb-4 overflow-hidden rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6',
+                      isFeatured
+                        ? 'aspect-[16/9] sm:-mx-8 sm:-mt-8'
+                        : 'aspect-[4/3]',
+                    )}
+                  >
+                    <Image
+                      src={item.image.src}
+                      alt={item.image.alt}
+                      fill
+                      className="object-cover"
+                      sizes={
+                        isFeatured
+                          ? '(min-width: 1024px) 42vw, 100vw'
+                          : '(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw'
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className={cn(
+                      '-mx-5 -mt-5 mb-4 flex items-center justify-center rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6',
+                      isFeatured
+                        ? 'aspect-[16/9] sm:-mx-8 sm:-mt-8'
+                        : 'aspect-[4/3]',
+                    )}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        'flex items-center justify-center rounded-sm text-white',
+                        isFeatured
+                          ? 'h-14 w-14 bg-accent'
+                          : 'h-12 w-12 bg-accent-secondary',
+                      )}
+                    >
+                      <Icon className={isFeatured ? 'h-7 w-7' : 'h-6 w-6'} />
+                    </span>
+                  </div>
+                )}
 
                 <h3
                   className={cn(
-                    'mt-4 text-foreground',
+                    !framed && 'mt-4',
+                    'text-foreground',
                     isFeatured ? 'text-h4' : 'text-body font-semibold',
                   )}
                 >
                   {item.title}
                 </h3>
 
-                {/*
-                  ⚠ FEATURED ONLY, AND BELOW THE HEADING RATHER THAN
-                  ABOVE IT. The tile leads with its icon and title so
-                  the card still scans as one of the six situations;
-                  an image at the top would make it read as a separate
-                  kind of block.
-
-                  ⚠ 16:9 HERE WHERE THE OTHER TWO FRAMES ON THIS PAGE
-                  ARE 4:3. The asset is 3344x1882 and the tile is wide
-                  and short, so the native ratio is also the one that
-                  crops least.
-                */}
-                {isFeatured && item.image !== undefined && (
-                  <div className="relative mt-4 aspect-[16/9] overflow-hidden rounded-md border border-border bg-surface-muted">
-                    <Image
-                      src={item.image.src}
-                      alt={item.image.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 42vw, 100vw"
-                    />
-                  </div>
-                )}
                 <p
                   className={cn(
                     'mt-2 text-muted-foreground',

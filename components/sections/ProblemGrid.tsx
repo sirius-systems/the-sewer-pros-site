@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import {
   Section,
   Card,
@@ -7,7 +8,7 @@ import {
 import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 import { SECTION_ICONS } from './section-icons'
-import type { ExperienceIconName } from '@/types'
+import type { CardImage, ExperienceIconName } from '@/types'
 
 /**
  * Problem-recognition grid.
@@ -75,6 +76,15 @@ export interface ProblemGridItem {
    * mark one condition as more urgent.
    */
   accent?: 'blue' | 'green'
+  /**
+   * A 4:3 frame at the head of the card.
+   *
+   * ⚠ ALL OR NONE WITHIN ONE GRID, IDEALLY. A card without one falls
+   * back to its icon inside the same frame, which keeps the row
+   * regular; a row that mixed full frames with bare plates would read
+   * as images failing to load.
+   */
+  image?: CardImage
 }
 
 export interface ProblemGridProps {
@@ -154,6 +164,20 @@ export function ProblemGrid({
   //
   // Deliberately not `CardGrid`: its even-division warning would be a
   // false positive here, since the span makes the orphan impossible.
+  /*
+    ⚠ THE FRAMED HEAD IS OPT-IN PER GRID, AND THIS GUARD IS WHY. The
+    frame exists so a set where SOME cards have photographs still reads
+    as one row; a set with none has nothing to keep regular, and
+    framing its icons would turn a compact text comparison into two
+    large empty panels.
+
+    Caught in review: without this, Las Vegas's repair-coverage
+    section - explicitly briefed as icon-led with no photograph - grew
+    a pair of 4:3 muted blocks, and St. Louis's lateral cards would
+    have too.
+  */
+  const framed = items.some((item) => item.image !== undefined)
+
   const columns = items.length % 3 === 0 ? 3 : 2
   const remainder = items.length % columns
 
@@ -175,11 +199,24 @@ export function ProblemGrid({
             <Card
               key={item.title}
               className={cn(
+                framed && 'overflow-hidden',
                 fillsRow && columns === 2 && 'sm:col-span-2',
                 fillsRow && columns === 3 && 'lg:col-span-3',
               )}
             >
-              {item.icon !== undefined &&
+              {/*
+                ⚠ ONE FRAME SHAPE FOR EVERY CARD, PHOTOGRAPH OR NOT.
+                With artwork it holds a 4:3 crop; without, it holds the
+                card's icon centred on the muted surface. A row that
+                mixed full-bleed frames with bare 40px plates would
+                look like the images had failed to load.
+
+                ⚠ `-mx-6 -mt-6` PULLS THE FRAME TO THE CARD EDGES.
+                `Card` supplies the padding; an image inset by it would
+                read as a thumbnail rather than as the card's head.
+              */}
+              {!framed ? (
+                item.icon !== undefined &&
                 (() => {
                   const Icon = SECTION_ICONS[item.icon]
                   return (
@@ -195,7 +232,42 @@ export function ProblemGrid({
                       <Icon className="h-5 w-5" />
                     </span>
                   )
-                })()}
+                })()
+              ) : item.image !== undefined ? (
+                <div className="relative -mx-6 -mt-6 mb-5 aspect-[4/3] overflow-hidden rounded-t-md bg-surface-muted">
+                  <Image
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    className="object-cover"
+                    sizes={
+                      columns === 3
+                        ? '(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw'
+                        : '(min-width: 640px) 45vw, 100vw'
+                    }
+                  />
+                </div>
+              ) : (
+                item.icon !== undefined &&
+                (() => {
+                  const Icon = SECTION_ICONS[item.icon]
+                  return (
+                    <div className="-mx-6 -mt-6 mb-5 flex aspect-[4/3] items-center justify-center rounded-t-md bg-surface-muted">
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          'flex h-14 w-14 items-center justify-center rounded-sm text-white',
+                          item.accent === 'green'
+                            ? 'bg-accent'
+                            : 'bg-accent-secondary',
+                        )}
+                      >
+                        <Icon className="h-7 w-7" />
+                      </span>
+                    </div>
+                  )
+                })()
+              )}
               <h3 className="text-h4 font-medium tracking-tight text-foreground">
                 {item.title}
               </h3>
