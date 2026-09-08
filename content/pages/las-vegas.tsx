@@ -62,6 +62,7 @@
 import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
+import { CtaBenefit } from '@/components/sections'
 import { coreServiceCards } from './service-cards'
 
 const id = (value: string): PageId => value as PageId
@@ -404,6 +405,24 @@ export const lasVegasMarketContent: MarketPageContent = {
       situation with a deadline, and 26 names the real estate cluster a
       strategic priority.
     */
+    /*
+      ⚠ `masonry` REPLACED THE DEFAULT CORNER TILE HERE (2026-09-08).
+      The corner tile gave the feature two rows of a shared grid track,
+      and the two compact cards beside it were together much taller
+      than the feature's own content, so the mosaic shipped with a few
+      hundred pixels of empty white under the feature and the row below
+      could not start until the right-hand pair had cleared. `masonry`
+      splits the mosaic into two independently flowing columns, so the
+      pair below the feature moves up into that space.
+
+      ⚠ SAN DIEGO IS UNAFFECTED. It sets `banner` and keeps it.
+
+      ⚠ THE COLUMN SPLIT BELOW IS EDITORIAL. The three symptom
+      situations stack in the narrow column; pre-purchase and the two
+      planning situations take the wide one. Below `lg` the columns
+      collapse and the cards read in the order written here.
+    */
+    featureLayout: 'masonry',
     items: [
       {
         title: 'Pre-purchase due diligence',
@@ -453,6 +472,7 @@ export const lasVegasMarketContent: MarketPageContent = {
             'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
         },
         icon: 'guidance',
+        masonryColumn: 'primary',
       },
       {
         title: 'Property-management documentation',
@@ -465,6 +485,7 @@ export const lasVegasMarketContent: MarketPageContent = {
             'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
         },
         icon: 'independence',
+        masonryColumn: 'primary',
       },
       {
         title: 'Older or frequently blocked lines',
@@ -1292,14 +1313,32 @@ export const lasVegasMarketContent: MarketPageContent = {
           decision with clearer information.
         </p>
 
+        {/*
+          ⚠ MARKED WITH THE SAME ICONS AS SAN DIEGO'S CLOSING CTA
+          (owner, 2026-09-08), FROM THE SAME SHARED COMPONENT. Each
+          mark restates the line it sits beside rather than decorating
+          it: `guidance` for choosing a starting service, `camera` for
+          recorded footage, `explanation` for what the line shows.
+
+          ⚠ THE COPY IS UNCHANGED, AND SO IS THE PROMISE IT MAKES.
+          Recorded footage is scoped to "when an inspection is
+          performed" because a cleaning request is not a video
+          (CLAUDE.md §24, §42). `space-y-3` where it was `space-y-2`:
+          the marks add a line's own weight and the tighter rhythm
+          crowded them.
+        */}
         <h3 className="text-body font-semibold">What you can expect</h3>
-        <ul className="space-y-2 text-body">
-          <li>Help identifying an appropriate starting service</li>
-          <li>
+        <ul className="space-y-3 text-body">
+          <CtaBenefit icon="guidance">
+            Help identifying an appropriate starting service
+          </CtaBenefit>
+          <CtaBenefit icon="camera">
             Recorded footage and documented findings when an inspection is
             performed
-          </li>
-          <li>A clear explanation of the visible sewer-line condition</li>
+          </CtaBenefit>
+          <CtaBenefit icon="explanation">
+            A clear explanation of the visible sewer-line condition
+          </CtaBenefit>
         </ul>
 
         {/*

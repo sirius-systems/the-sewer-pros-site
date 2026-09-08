@@ -349,6 +349,25 @@ export interface ScenarioCard {
    * failed load.
    */
   image?: CardImage
+  /**
+   * Which column of the `masonry` mosaic this card belongs to.
+   *
+   * ⚠ READ BY `featureLayout: 'masonry'` AND BY NOTHING ELSE. The
+   * `tile` and `banner` shapes place every card from its position in
+   * `items`, so setting this under either has no effect.
+   *
+   * ⚠ THE SPLIT IS EDITORIAL, WHICH IS WHY IT IS AUTHORED RATHER THAN
+   * DERIVED. Las Vegas puts the two planning situations under the
+   * featured pre-purchase card and stacks the three symptom
+   * situations beside them. No rule about index arithmetic expresses
+   * that, and inventing one would silently reshuffle the mosaic the
+   * first time a card moved.
+   *
+   * ⚠ THE FEATURED CARD IS ALWAYS PRIMARY and always leads that
+   * column, whatever this says. Everything unset falls to
+   * `secondary`.
+   */
+  masonryColumn?: 'primary' | 'secondary'
 }
 
 /** When an inspection helps - customer situations, not symptoms. */
@@ -364,6 +383,10 @@ export interface ScenariosContent {
    *           grid and the compact cards flow around it.
    * `banner`  it spans the full width on its own row, with the compact
    *           cards in rows above and below it.
+   * `masonry` it heads a two-thirds column with a pair of compact
+   *           cards beneath it, and the remaining cards stack in a
+   *           one-third column beside them. The two columns flow
+   *           independently, so neither waits on the other's height.
    *
    * ⚠ THE NAME DESCRIBES THE SHAPE, NOT THE POSITION. It is not
    * "feature-third" or "feature-middle": where the feature lands is
@@ -376,10 +399,15 @@ export interface ScenariosContent {
    * the order in the content file IS the layout. San Diego runs 2, the
    * feature, then 3.
    *
-   * ⚠ ONLY SAN DIEGO SETS THIS. Las Vegas leaves it unset and keeps
-   * the corner tile it shipped with.
+   * ⚠ `masonry` READS ITS COLUMNS FROM `masonryColumn`, NOT FROM
+   * POSITION, because that split is an editorial judgement rather
+   * than an arithmetic one. See the field on `ScenarioCard`.
+   *
+   * ⚠ ONE MARKET EACH. San Diego sets `banner`, Las Vegas sets
+   * `masonry`, and every other template leaves this unset and keeps
+   * the corner tile the section shipped with.
    */
-  featureLayout?: 'tile' | 'banner'
+  featureLayout?: 'tile' | 'banner' | 'masonry'
   /** One contextual action. Must be an already-approved destination. */
   action?: { label: string; pageId: PageId }
 }
