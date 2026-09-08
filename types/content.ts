@@ -281,9 +281,25 @@ export type AuthoritySectionId = 'conditions' | 'scenarios' | 'deliverables'
 export interface ConditionCard {
   title: string
   description: string
-  /** Decorative. Falls back to a check when unset. */
+  /**
+   * Decorative. Falls back to a check when unset.
+   *
+   * ⚠ STILL USED WHEN `image` IS ABSENT, and that is the point: a card
+   * with no photograph shows its mark inside the same 4:3 frame the
+   * others use, so the grid keeps one geometry instead of one card
+   * being visibly shorter than its neighbours.
+   */
   icon?: ExperienceIconName
   accent?: 'blue' | 'green'
+  /**
+   * A 4:3 frame at the head of the card.
+   *
+   * ⚠ SUPPLY IT FOR EVERY CARD OR EXPECT THE ICON FALLBACK. Mixing
+   * photographs and bare icon plates in one row reads as a rendering
+   * fault; the framed fallback above is what keeps a partial set
+   * looking deliberate rather than broken.
+   */
+  image?: CardImage
 }
 
 /** Conditions a camera inspection may reveal. */
@@ -308,12 +324,19 @@ export interface ScenarioCard {
    */
   featured?: boolean
   /**
-   * Artwork for the FEATURED tile only.
+   * A frame at the head of the card.
    *
-   * ⚠ IGNORED ON THE COMPACT CARDS, deliberately. They are a scannable
-   * row of situations; giving each one a photograph would turn the
-   * section into a gallery and make the featured tile stop reading as
-   * featured. One image, on the one card that has room for it.
+   * ⚠ EVERY CARD NOW, WHERE IT WAS THE FEATURED TILE ALONE (owner,
+   * 2026-09-08). The earlier restriction reasoned that photographs on
+   * all six would turn the section into a gallery and stop the
+   * featured tile reading as featured. The owner supplied one frame
+   * per situation, and the hierarchy is carried instead by SIZE: the
+   * featured tile spans two columns and two rows and takes a 16:9
+   * crop, the compact cards take 4:3 at a third of the width.
+   *
+   * ⚠ A CARD WITHOUT ONE FALLS BACK TO ITS ICON IN THE SAME FRAME, so
+   * a partial set stays a regular grid rather than looking like a
+   * failed load.
    */
   image?: CardImage
 }

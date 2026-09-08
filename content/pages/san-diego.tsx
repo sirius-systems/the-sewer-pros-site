@@ -366,10 +366,31 @@ export const sanDiegoMarketContent: MarketPageContent = {
         title: 'Root intrusion',
         description:
           'Roots may enter through joints or openings and reduce the usable area inside the line.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-root-intrusion-camera-inspection.webp',
+          alt: 'Camera view of roots entering a sewer line through a joint',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'camera',
         accent: 'blue',
       },
       {
+        /*
+          ⚠ THE ONE CONDITION WITH NO PHOTOGRAPH, AND IT IS NOT AN
+          OVERSIGHT. Ten frames were supplied on 2026-09-08 and they
+          cover every card in this section and the scenarios below
+          except this one; nothing in the set depicts grease or scale.
+
+          It keeps its icon, which `ProblemGrid` renders inside the
+          same 4:3 frame the other five use, so the row stays one
+          geometry. Substituting the blockage frame would have been the
+          quickest fix and the wrong one: it shows a different
+          condition, and an image that contradicts its caption is worse
+          than no image (CLAUDE.md §24).
+
+          Drop a matching frame in and add an `image` key here.
+        */
         title: 'Grease and scale buildup',
         description:
           'Accumulated material can narrow the pipe and interfere with normal drainage.',
@@ -380,6 +401,12 @@ export const sanDiegoMarketContent: MarketPageContent = {
         title: 'Blockages',
         description:
           'The camera may help identify visible debris or obstructions affecting flow.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-blockage-camera-inspection.webp',
+          alt: 'Camera view of a blockage restricting flow inside a sewer line',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'guidance',
         accent: 'blue',
       },
@@ -387,6 +414,12 @@ export const sanDiegoMarketContent: MarketPageContent = {
         title: 'Offset joints',
         description:
           'Misaligned connections may be visible where one section of pipe meets another.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-offset-joint-camera-inspection.webp',
+          alt: 'Camera view of an offset joint where two sections of pipe meet',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'document',
         accent: 'green',
       },
@@ -394,6 +427,12 @@ export const sanDiegoMarketContent: MarketPageContent = {
         title: 'Standing water',
         description:
           'Water remaining in the line may indicate an area that is not draining as expected.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-standing-water-camera-inspection.webp',
+          alt: 'Camera view of standing water sitting in a section of sewer line',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'explanation',
         accent: 'blue',
       },
@@ -401,6 +440,12 @@ export const sanDiegoMarketContent: MarketPageContent = {
         title: 'Cracks or deterioration',
         description:
           'Accessible footage may show visible cracking, corrosion, or material deterioration.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-cracks-deterioration-camera-inspection.webp',
+          alt: 'Camera view of cracking and material deterioration in a sewer line',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'camera',
         accent: 'green',
       },
@@ -463,30 +508,60 @@ export const sanDiegoMarketContent: MarketPageContent = {
         title: 'Recurring sewer backups',
         description:
           'A camera inspection can help document the visible condition of a line that continues to back up after previous clearing.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-recurring-sewer-backup-camera-inspection.webp',
+          alt: 'Camera inspection of a sewer line that keeps backing up',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'camera',
       },
       {
         title: 'Multiple slow drains',
         description:
           'When several fixtures are draining slowly, an inspection can help determine whether the concern may extend beyond one isolated branch drain.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-multiple-slow-drains-sewer-camera-inspection.webp',
+          alt: 'Camera inspection checking whether several slow drains share one cause',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'explanation',
       },
       {
         title: 'Preventative sewer maintenance',
         description:
           'Inspection findings can help property owners choose a maintenance interval based on observed conditions rather than a generic schedule.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-preventative-sewer-maintenance-camera-inspection.webp',
+          alt: 'Camera inspection carried out as part of planned sewer maintenance',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'guidance',
       },
       {
         title: 'Property-management documentation',
         description:
           'Recorded findings can help property managers document recurring drainage concerns and communicate more clearly with owners or vendors.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-property-management-sewer-inspection-documentation.webp',
+          alt: 'Sewer inspection findings being documented for a managed property',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'document',
       },
       {
         title: 'Concerns about an older sewer line',
         description:
           'A camera inspection can document accessible visible conditions when the age or history of a property raises questions about the sewer line.',
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-older-sewer-line-camera-inspection.webp',
+          alt: 'Camera inspection of an older sewer line',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
         icon: 'decision',
       },
     ],
