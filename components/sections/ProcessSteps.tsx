@@ -170,6 +170,23 @@ export interface ProcessStepsProps {
    * photograph (18 §40-42).
    */
   backgroundImage?: CardImage
+  /**
+   * A frame beside the heading.
+   *
+   * ⚠⚠ NOT `backgroundImage`, AND THE TWO MUST NOT BE CONFUSED. That
+   * one REPLACES the surface and puts the copy on the photograph; this
+   * one sits in its own box next to it. A band on `brand` needs this
+   * kind: an overlay over navy is two dark layers and the step cells
+   * lose their contrast against it.
+   *
+   * ⚠ THE STEPS STAY FULL WIDTH BELOW IT. Squeezing four of them into
+   * half a row would drop each cell under a readable measure, and the
+   * grid's own column logic already handles four across. The split is
+   * the heading and the frame only.
+   *
+   * Omit it and the band renders exactly as it did before.
+   */
+  image?: CardImage
 }
 
 /**
@@ -323,6 +340,7 @@ export function ProcessSteps({
   steps,
   variant = 'grid',
   backgroundImage,
+  image,
 }: ProcessStepsProps) {
   const resolved = steps ?? motifSteps
 
@@ -335,9 +353,13 @@ export function ProcessSteps({
   const wide = columnClass(resolved.length)
   const span = spanClasses(resolved.length, wide)
 
-  const body = (
-    <>
-      <SectionHeading
+  /*
+    ⚠ THE HEADING SPLITS ONLY WHEN THERE IS A FRAME. Without one it is
+    the same single-column block it always was, which is what keeps the
+    four other templates that render this section unchanged.
+  */
+  const headingBlock = (
+    <SectionHeading
         id={id}
         title={title}
         eyebrow={eyebrow}
@@ -372,6 +394,36 @@ export function ProcessSteps({
             : undefined
         }
       />
+  )
+
+  const body = (
+    <>
+      {image !== undefined ? (
+        /*
+          ⚠ IMAGE ON THE RIGHT, WHICH REVERSES THE NEAREST IMAGE-LED
+          SECTION ABOVE. `DeliverablesSection` puts its frame on the
+          left; alternating the side is what stops two editorial splits
+          a few sections apart reading as the same block twice.
+
+          ⚠ `object-cover` HERE, UNLIKE `LateralResponsibility`. That
+          one carries a labelled diagram where a crop loses meaning;
+          this is a photograph, and the 4:3 box matches the asset.
+        */
+        <div className="grid gap-10 lg:grid-cols-[7fr_5fr] lg:items-center">
+          <div>{headingBlock}</div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-white/15 bg-white/5">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </div>
+        </div>
+      ) : (
+        headingBlock
+      )}
 
       {/*
         Two cell treatments, one column logic. `grid` is the hairline

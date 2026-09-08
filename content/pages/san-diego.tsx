@@ -208,6 +208,20 @@ export const sanDiegoMarketContent: MarketPageContent = {
     `diagram` is unset.
   */
   responsibility: {
+    /*
+      ⚠ GENERAL EDUCATION, NOT A DETERMINATION FOR ANY PROPERTY. The
+      notice under the cards says so in the visitor's own words, and
+      the alt says "general diagram" for the same reason.
+
+      ⚠ `LateralResponsibility` RENDERS IT `object-contain`. It carries
+      labels, and `cover` would crop them off the edges.
+    */
+    diagram: {
+      src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-lateral-responsibility-diagram.svg',
+      alt: 'General diagram showing a residential sewer lateral connecting a San Diego property to the public sewer main',
+      source:
+        'Supplied by the business owner, 2026-09-08. General illustration, not a survey of any property.',
+    },
     title: 'Who owns the sewer lateral in the City of San Diego?',
     intro:
       'In the City of San Diego, the property owner owns the entire sewer lateral: the full run from the building to the public main, not merely the portion under private land. That is worth stating plainly, because it is the opposite of how sewer laterals work in some other parts of the country, and it means a lateral problem here is entirely the owner\u2019s to fund.',
@@ -260,6 +274,18 @@ export const sanDiegoMarketContent: MarketPageContent = {
     the sentence it illustrates.
   */
   authorities: {
+    /*
+      ⚠ IT SHOWS THAT SEVERAL AGENCIES EXIST, NOT WHERE ANY OF THEM
+      STOPS. No boundary is drawn, because the copy's whole point is
+      that the boundary is a question of address; a map would
+      contradict the sentence beside it.
+    */
+    image: {
+      src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-wastewater-authorities-guide.svg',
+      alt: 'General illustration showing multiple wastewater service authorities across the San Diego region',
+      source:
+        'Supplied by the business owner, 2026-09-08. General illustration, not a service-boundary map.',
+    },
     eyebrow: 'Local utility responsibility',
     title: 'There is no single sewer authority for every San Diego property',
     intro: [
@@ -309,6 +335,17 @@ export const sanDiegoMarketContent: MarketPageContent = {
     look audited.
   */
   repairCoverage: {
+    /*
+      ⚠ DECORATIVE SUPPORT ONLY. Every programme fact, both grant
+      qualifiers and both source links are searchable HTML text in the
+      cards below; nothing a reader needs is inside this frame.
+    */
+    image: {
+      src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-assistance-programs.webp',
+      alt: 'Property planning documents representing sewer lateral assistance research in San Diego County',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     eyebrow: 'Possible assistance',
     title: 'Sewer lateral assistance programs vary by community',
     intro: [
@@ -716,6 +753,22 @@ export const sanDiegoMarketContent: MarketPageContent = {
     },
   },
   independence: {
+    /*
+      ⚠ A DEDICATED FRAME, NOT A BACKGROUND. This band is `brand`, and
+      an overlay on navy would be two dark layers with the step cells
+      losing contrast against it. `ProcessSteps.image` puts it in its
+      own box beside the copy; `backgroundImage` is the other thing and
+      must not be used here.
+
+      ⚠ IT SITS ON THE RIGHT, reversing `DeliverablesSection` above it,
+      so the two editorial splits do not read as one block repeated.
+    */
+    image: {
+      src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-evidence-first-sewer-inspection.webp',
+      alt: 'Sewer camera equipment documenting visible pipe conditions at a San Diego property',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     eyebrow: 'Evidence before expensive decisions',
     title: 'The inspection is not tied to a repair sale',
     /*
@@ -799,6 +852,25 @@ export const sanDiegoMarketContent: MarketPageContent = {
       weekend, 24/7 and emergency service named as not offered (01
       §35). Neither line may be edited into an assurance.
     */
+    /*
+      ⚠ THE BRIEF SAID TO SKIP THIS IF ANOTHER FINAL CTA FOLLOWS, AND
+      ONE DOES. It is used anyway, on two grounds: the page's closing
+      CtaSection carries a DIFFERENT frame
+      (`homepage/hero/the-sewer-pros-pipe-condition-review-hero.webp`),
+      so nothing is duplicated, and Las Vegas already ships exactly
+      this pairing - a coverage panel on its own frame above a separate
+      closing CTA on another. Flag rather than assume: dropping the
+      `backgroundImage` key is all it takes to reverse.
+
+      ⚠ THE SCRIM IS CSS, THE ASSET CARRIES NONE. `Section` applies it,
+      which is why the panel's text switches to white here.
+    */
+    backgroundImage: {
+      src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-service-cta-background.webp',
+      alt: 'Residential street in the San Diego area on a clear day',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     hours: 'Monday to Friday, 8:00am to 4:00pm',
     availabilityNote:
       'Same-day appointments may be available when scheduling permits. Weekend, 24/7, and emergency service are not offered.',

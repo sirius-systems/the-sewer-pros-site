@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 1000"
+     width="1600"
+     height="1000"
+     style="display:block;width:100%;height:auto;max-width:1600px"
+     preserveAspectRatio="xMidYMid meet"
+     role="img"
+     aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Conceptual San Diego regional wastewater authority guide</title>
+  <desc id="svg-desc">An abstract regional concept graphic showing separate service areas for a city utility department, water district, sanitation district, or another local public agency. Residential property markers demonstrate that the serving wastewater authority depends on the exact property address. This is not an official map.</desc>
+
+  <style>
+    .heading { font: 700 39px Arial, Helvetica, sans-serif; fill: #0B2D45; }
+    .statement { font: 700 30px Arial, Helvetica, sans-serif; fill: #0B2D45; }
+    .label { font: 600 25px Arial, Helvetica, sans-serif; fill: #0B2D45; }
+    .meta { font: 500 21px Arial, Helvetica, sans-serif; fill: #536B78; }
+    .qualifier { font: 400 22px Arial, Helvetica, sans-serif; fill: #405B6B; }
+    .chip-text { font: 700 20px Arial, Helvetica, sans-serif; fill: #FFFFFF; }
+    .support-line { fill: none; stroke: #8297A3; stroke-width: 3; stroke-linecap: round; }
+  </style>
+
+  <rect width="1600" height="1000" fill="#F4F7F8"/>
+
+  <g id="heading" aria-label="Illustration heading">
+    <text x="800" y="70" text-anchor="middle" class="heading">Wastewater service can vary across the San Diego region</text>
+    <text x="800" y="118" text-anchor="middle" class="meta">Conceptual regional pattern — not an official jurisdiction map</text>
+    <line x1="76" y1="145" x2="1524" y2="145" stroke="#D7E0E5" stroke-width="2"/>
+  </g>
+
+  <g id="central-statement" aria-label="Central statement">
+    <rect x="215" y="174" width="1170" height="82" rx="18" fill="#FFFFFF" stroke="#D7E0E5" stroke-width="2"/>
+    <circle cx="268" cy="215" r="17" fill="#007A3D"/>
+    <path d="M258 217 l8 8 15 -20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="830" y="226" text-anchor="middle" class="statement">The serving wastewater authority depends on the property address.</text>
+  </g>
+
+  <defs>
+    <clipPath id="regional-clip">
+      <!-- Deliberately abstract, county-inspired container; not geographic data -->
+      <path d="M270 325 Q320 286 416 300 L548 279 Q637 266 714 307 L823 291 Q914 275 991 322 L1113 305 Q1215 290 1302 344 L1370 421 L1352 520 L1390 614 L1334 705 L1244 759 L1115 750 L1001 786 L884 764 L758 796 L645 755 L529 773 L430 730 L322 714 L254 638 L274 548 L235 452 Z"/>
+    </clipPath>
+  </defs>
+
+  <g id="regional-concept" aria-label="Abstract connected service areas">
+    <path d="M270 325 Q320 286 416 300 L548 279 Q637 266 714 307 L823 291 Q914 275 991 322 L1113 305 Q1215 290 1302 344 L1370 421 L1352 520 L1390 614 L1334 705 L1244 759 L1115 750 L1001 786 L884 764 L758 796 L645 755 L529 773 L430 730 L322 714 L254 638 L274 548 L235 452 Z"
+          fill="#FFFFFF" stroke="#0B2D45" stroke-width="8" stroke-linejoin="round"/>
+
+    <g clip-path="url(#regional-clip)" stroke="#F4F7F8" stroke-width="12" stroke-linejoin="round">
+      <path id="area-city-1" aria-label="Conceptual city utility department service area" d="M210 285 H590 L622 452 L545 557 L220 530 Z" fill="#1C6B97"/>
+      <path id="area-water-1" aria-label="Conceptual water district service area" d="M590 270 H922 L963 420 L835 520 L622 452 Z" fill="#75AFCB"/>
+      <path id="area-sanitation-1" aria-label="Conceptual sanitation district service area" d="M922 270 H1240 L1415 385 L1360 555 L1113 535 L963 420 Z" fill="#0B2D45"/>
+      <path id="area-other-1" aria-label="Conceptual other local public agency service area" d="M220 530 L545 557 L650 770 L345 755 L205 650 Z" fill="#82949E"/>
+      <path id="area-city-2" aria-label="Second conceptual city utility department service area" d="M545 557 L835 520 L994 658 L920 815 L650 770 Z" fill="#1C6B97"/>
+      <path id="area-water-2" aria-label="Second conceptual water district service area" d="M835 520 L1113 535 L1165 758 L994 658 Z" fill="#75AFCB"/>
+      <path id="area-other-2" aria-label="Second conceptual other local public agency service area" d="M1113 535 L1360 555 L1420 690 L1248 795 L1165 758 Z" fill="#82949E"/>
+    </g>
+
+    <!-- Supporting network lines suggest coordination, not physical infrastructure -->
+    <path d="M392 407 C535 362 684 390 786 435 S1010 488 1187 403"
+          class="support-line" stroke="#FFFFFF" opacity="0.65"/>
+    <path d="M425 627 C600 594 744 650 882 662 S1102 650 1257 664"
+          class="support-line" stroke="#FFFFFF" opacity="0.65"/>
+    <circle cx="786" cy="435" r="7" fill="#FFFFFF" opacity="0.85"/>
+    <circle cx="882" cy="662" r="7" fill="#FFFFFF" opacity="0.85"/>
+  </g>
+
+  <!-- Reusable visual language: green home markers, category chips, and non-directional connector lines -->
+  <g id="property-markers" aria-label="Example residential properties in different conceptual service areas">
+    <g id="property-city" aria-label="Example property served by a city utility department">
+      <line x1="390" y1="390" x2="455" y2="349" class="support-line" stroke="#FFFFFF"/>
+      <circle cx="390" cy="390" r="34" fill="#007A3D" stroke="#FFFFFF" stroke-width="5"/>
+      <path d="M371 392 L390 376 L409 392 V410 H398 V398 H382 V410 H371 Z" fill="#FFFFFF"/>
+      <circle cx="466" cy="342" r="23" fill="#1C6B97" stroke="#FFFFFF" stroke-width="4"/>
+      <text x="466" y="349" text-anchor="middle" class="chip-text">1</text>
+    </g>
+
+    <g id="property-water" aria-label="Example property served by a water district">
+      <line x1="750" y1="377" x2="816" y2="344" class="support-line" stroke="#FFFFFF"/>
+      <circle cx="750" cy="377" r="34" fill="#007A3D" stroke="#FFFFFF" stroke-width="5"/>
+      <path d="M731 379 L750 363 L769 379 V397 H758 V385 H742 V397 H731 Z" fill="#FFFFFF"/>
+      <circle cx="828" cy="338" r="23" fill="#75AFCB" stroke="#FFFFFF" stroke-width="4"/>
+      <text x="828" y="345" text-anchor="middle" class="chip-text">2</text>
+    </g>
+
+    <g id="property-sanitation" aria-label="Example property served by a sanitation district">
+      <line x1="1150" y1="407" x2="1220" y2="375" class="support-line" stroke="#FFFFFF"/>
+      <circle cx="1150" cy="407" r="34" fill="#007A3D" stroke="#FFFFFF" stroke-width="5"/>
+      <path d="M1131 409 L1150 393 L1169 409 V427 H1158 V415 H1142 V427 H1131 Z" fill="#FFFFFF"/>
+      <circle cx="1232" cy="370" r="23" fill="#0B2D45" stroke="#FFFFFF" stroke-width="4"/>
+      <text x="1232" y="377" text-anchor="middle" class="chip-text">3</text>
+    </g>
+
+    <g id="property-other" aria-label="Example property served by another local public agency">
+      <line x1="470" y1="646" x2="533" y2="686" class="support-line" stroke="#FFFFFF"/>
+      <circle cx="470" cy="646" r="34" fill="#007A3D" stroke="#FFFFFF" stroke-width="5"/>
+      <path d="M451 648 L470 632 L489 648 V666 H478 V654 H462 V666 H451 Z" fill="#FFFFFF"/>
+      <circle cx="546" cy="694" r="23" fill="#82949E" stroke="#FFFFFF" stroke-width="4"/>
+      <text x="546" y="701" text-anchor="middle" class="chip-text">4</text>
+    </g>
+
+    <g id="property-water-second" aria-label="Second example property served by a water district">
+      <line x1="1035" y1="638" x2="1094" y2="685" class="support-line" stroke="#FFFFFF"/>
+      <circle cx="1035" cy="638" r="34" fill="#007A3D" stroke="#FFFFFF" stroke-width="5"/>
+      <path d="M1016 640 L1035 624 L1054 640 V658 H1043 V646 H1027 V658 H1016 Z" fill="#FFFFFF"/>
+      <circle cx="1107" cy="695" r="23" fill="#75AFCB" stroke="#FFFFFF" stroke-width="4"/>
+      <text x="1107" y="702" text-anchor="middle" class="chip-text">2</text>
+    </g>
+  </g>
+
+  <g id="legend" aria-label="Wastewater authority type categories">
+    <rect x="115" y="800" width="1370" height="138" rx="16" fill="#FFFFFF" stroke="#D7E0E5" stroke-width="2"/>
+    <text x="145" y="835" class="meta">Illustrative authority types</text>
+
+    <circle cx="430" cy="840" r="19" fill="#1C6B97"/>
+    <text x="430" y="847" text-anchor="middle" class="chip-text">1</text>
+    <text x="462" y="849" class="label">City utility department</text>
+
+    <circle cx="875" cy="840" r="19" fill="#75AFCB"/>
+    <text x="875" y="847" text-anchor="middle" class="chip-text">2</text>
+    <text x="907" y="849" class="label">Water district</text>
+
+    <circle cx="430" cy="897" r="19" fill="#0B2D45"/>
+    <text x="430" y="904" text-anchor="middle" class="chip-text">3</text>
+    <text x="462" y="906" class="label">Sanitation district</text>
+
+    <circle cx="875" cy="897" r="19" fill="#82949E"/>
+    <text x="875" y="904" text-anchor="middle" class="chip-text">4</text>
+    <text x="907" y="906" class="label">Other local public agency</text>
+  </g>
+
+  <g id="qualifier" aria-label="Conceptual guide qualifier">
+    <circle cx="125" cy="957" r="15" fill="#1C6B97"/>
+    <text x="125" y="964" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">i</text>
+    <text x="155" y="965" class="qualifier">Conceptual guide only. Confirm the serving agency directly before relying on local rules or programs.</text>
+  </g>
+</svg>
