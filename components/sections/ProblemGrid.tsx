@@ -1,4 +1,9 @@
-import { Section, Card, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  Card,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 import { SECTION_ICONS } from './section-icons'
@@ -86,6 +91,8 @@ export interface ProblemGridProps {
   title: string
   intro?: string
   items: readonly ProblemGridItem[]
+  /** Overrides the section's natural surface. */
+  surface?: SectionSurface
 }
 
 /**
@@ -116,6 +123,7 @@ export function ProblemGrid({
   title,
   intro,
   items,
+  surface = 'default',
 }: ProblemGridProps) {
   // 18 §120 — omit the section entirely rather than render an empty shell.
   if (items.length === 0) return null
@@ -140,7 +148,7 @@ export function ProblemGrid({
   const remainder = items.length % columns
 
   return (
-    <Section density={density} labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
       <div

@@ -266,6 +266,17 @@ export interface RoutingContent {
    grid. Separate slots, same components.
    ========================================================================== */
 
+/**
+ * The three reorderable sections of the authority stack.
+ *
+ * ⚠ `independence` AND `regionalCoverage` ARE NOT HERE, deliberately.
+ * They close the stack in a fixed order: the independence band is the
+ * argument's conclusion and the coverage panel is the conversion after
+ * it. Only the three explanatory sections between the experience band
+ * and that conclusion are worth reordering per market.
+ */
+export type AuthoritySectionId = 'conditions' | 'scenarios' | 'deliverables'
+
 /** One card in the conditions grid. */
 export interface ConditionCard {
   title: string
@@ -389,6 +400,30 @@ export interface RegionalCoverageContent {
    * counted theirs.
    */
   phone?: { label: string; phoneE164: string }
+  /**
+   * Featured community pages, as compact inline links.
+   *
+   * ⚠ FEATURED, NOT A BOUNDARY. The copy above them must say these do
+   * not define the limit of the service area, because for both San
+   * Diego and Las Vegas `serviceAreaSource` is
+   * `derived_from_approved_locations` and there is no published
+   * boundary to state (DEC-077).
+   *
+   * ⚠ THEY RESOLVE THROUGH THE APPROVED-LINK LAYER, so a community
+   * whose page is gated drops out rather than shipping a dead link.
+   */
+  locations?: readonly { pageId: PageId; label: string }[]
+  /**
+   * Full-bleed frame behind the panel.
+   *
+   * ⚠ SUPPLYING THIS CHANGES THE WHOLE TREATMENT, not just the
+   * backdrop. `Section` replaces the surface with the photograph, adds
+   * its measured scrim and turns unstyled children white, so the panel
+   * drops its white card and sits directly on the image. The two
+   * cannot be combined: a white card ON a scrimmed photograph would
+   * hide the thing the photograph was added for.
+   */
+  backgroundImage?: CardImage
 }
 
 export interface CoverageContent {
@@ -1284,6 +1319,23 @@ export interface MarketPageContent extends BasePageContent {
     `<Section>` with its own surface. See the type declarations above
     for why they are market-agnostic.
   */
+  /**
+   * The order of the three explanatory sections.
+   *
+   * ⚠ THE MARKETS GENUINELY DIFFER, WHICH IS WHY THIS IS AUTHORED.
+   * San Diego explains conditions, then when to inspect, then what you
+   * receive. Las Vegas leads with what the inspection provides and has
+   * no conditions grid. A single fixed order served one and produced a
+   * muted-on-muted adjacency on the other.
+   *
+   * ⚠ SURFACES ARE DERIVED FROM THIS, not authored. Whatever order is
+   * given, the sections alternate from `default` down, so a reorder
+   * cannot create an adjacency fault. Unlisted sections do not render
+   * even if their content is set.
+   *
+   * Defaults to conditions, scenarios, deliverables.
+   */
+  authorityOrder?: readonly AuthoritySectionId[]
   /** Conditions an inspection may reveal. Renders `ProblemGrid`. */
   conditions?: ConditionsContent
   /** When an inspection helps. Renders `ScenarioGrid`. */
