@@ -303,12 +303,15 @@ export function MarketPageTemplate({
     index 0 is `default` and St. Louis's three come out
     default / muted / default - the values it already had.
   */
+  const showsAuthorities =
+    content.authorities !== undefined && content.authorities.items.length > 0
   const showsRepairCoverage =
     content.repairCoverage !== undefined &&
     content.repairCoverage.items.length > 0
 
   const localRun = [
     showsResponsibility || showsLateralCards ? 'responsibility' : undefined,
+    showsAuthorities ? 'authorities' : undefined,
     showsRepairCoverage ? 'repairCoverage' : undefined,
     showsMaterials || showsMaterialCards ? 'materials' : undefined,
     showsPrePurchase ? 'prePurchase' : undefined,
@@ -401,6 +404,13 @@ export function MarketPageTemplate({
     ...(showsResponsibility || showsLateralCards
       ? (['standard'] as const)
       : []),
+    /*
+      ⚠ `dense` FOR AUTHORITIES, `standard` EITHER SIDE OF IT. Three
+      `standard` bands here would run into the authority band below and
+      make four in a row, which `sectionRhythmIssues()` reports. The
+      compact three-card grid is the one that suits `dense` anyway.
+    */
+    ...(showsAuthorities ? (['dense'] as const) : []),
     ...(showsRepairCoverage ? (['standard'] as const) : []),
     ...(showsMaterials || showsMaterialCards ? (['dense'] as const) : []),
     /*
@@ -849,6 +859,32 @@ export function MarketPageTemplate({
           title={content.lateralCards.title}
           intro={content.lateralCards.intro}
           items={content.lateralCards.items}
+        />
+      )}
+
+      {/*
+        ==================================================================
+        WHICH AGENCY SERVES WHICH PROPERTY - San Diego only today
+        ==================================================================
+        ⚠ `id="sewer-authorities"`, ITS OWN ANCHOR. It shares a shape
+        with `repairCoverage` and a component with St. Louis's lateral
+        cards; all three are card grids about third-party bodies and
+        none may borrow another's id.
+
+        ⚠ NO AGENCY IS INFERRED FROM A CITY NAME. The examples in this
+        content are the ones the page already carried; adding one needs
+        a source, not a map.
+      */}
+      {showsAuthorities && content.authorities !== undefined && (
+        <ProblemGrid
+          density="dense"
+          surface={localSurface('authorities')}
+          id="sewer-authorities"
+          eyebrow={content.authorities.eyebrow}
+          title={content.authorities.title}
+          intro={content.authorities.intro?.join(' ')}
+          items={content.authorities.items}
+          note={content.authorities.note}
         />
       )}
 

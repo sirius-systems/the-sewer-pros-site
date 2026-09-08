@@ -45,10 +45,17 @@ import type { RegionalCoverageContent } from '@/types'
  * ---------------------------------------------------------------------------
  * ⚠ NO OFFICE, ANYWHERE IN THIS SECTION
  * ---------------------------------------------------------------------------
- * No address, no "visit us", no map pin, no hours. A closing panel that
- * names a region and shows a phone number is the most natural place on
- * a page to imply a branch, and none of these markets has one
- * (CLAUDE.md §11, 18 §86-87).
+ * No address, no "visit us", no map pin. A closing panel that names a
+ * region and shows a phone number is the most natural place on a page
+ * to imply a branch, and none of these markets has one (CLAUDE.md §11,
+ * 18 §86-87).
+ *
+ * ⚠ PUBLISHED HOURS ARE THE EXCEPTION AND THEY HELP. An earlier
+ * version of this note ruled them out alongside the address. They are
+ * not the same thing: an address asserts a place, while weekday hours
+ * affirmatively rule OUT the emergency, weekend and 24/7 service this
+ * business does not offer (01 §35). What must never appear is a
+ * street.
  *
  * ⚠ THE PHONE IS AUTHORED, NOT DERIVED. It is market-scoped, so the
  * template does not supply it: a page inherits no other market's line.
@@ -162,6 +169,85 @@ export function RegionalCoveragePanel({
               ))}
             </ul>
           )}
+
+          {/*
+            ==============================================================
+            ⚠ CONTACT DETAILS WERE A SILENT DROP UNTIL 2026-09-08
+            ==============================================================
+            `email`, `hours` and `availabilityNote` were added to
+            `RegionalCoverageContent` and set on Las Vegas, and this
+            component never read them. The content was authored, the
+            types were satisfied, the build was green, and the page
+            shipped without its email or its hours. Nothing failed,
+            which is why it went unnoticed - the same shape of bug as
+            `LeadFormSection`'s dropped `intro`.
+
+            ⚠ THEY SIT WITH THE COPY, NOT IN THE BUTTON ROW. The phone
+            is both a detail and a conversion here, so it appears once
+            as the green button below; these are the reference lines.
+          */}
+          {(content.email !== undefined ||
+            content.hours !== undefined ||
+            content.availabilityNote !== undefined) && (
+            <div className="mt-6">
+              <dl className="space-y-1 text-body">
+                {content.email !== undefined && (
+                  <div className="flex flex-wrap gap-x-2">
+                    <dt
+                      className={cn(
+                        'font-semibold',
+                        onImage ? 'text-white' : 'text-foreground',
+                      )}
+                    >
+                      Email
+                    </dt>
+                    <dd>
+                      <a
+                        href={content.email.href}
+                        className={cn(
+                          'underline underline-offset-4',
+                          onImage
+                            ? 'text-white hover:text-white/80'
+                            : 'text-accent-secondary hover:text-foreground',
+                        )}
+                      >
+                        {content.email.label}
+                      </a>
+                    </dd>
+                  </div>
+                )}
+                {content.hours !== undefined && (
+                  <div className="flex flex-wrap gap-x-2">
+                    <dt
+                      className={cn(
+                        'font-semibold',
+                        onImage ? 'text-white' : 'text-foreground',
+                      )}
+                    >
+                      Hours
+                    </dt>
+                    <dd
+                      className={
+                        onImage ? 'text-white/90' : 'text-muted-foreground'
+                      }
+                    >
+                      {content.hours}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+              {content.availabilityNote !== undefined && (
+                <p
+                  className={cn(
+                    'mt-3 text-body-sm',
+                    onImage ? 'text-white/90' : 'text-muted-foreground',
+                  )}
+                >
+                  {content.availabilityNote}
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         {/*
@@ -173,6 +259,7 @@ export function RegionalCoveragePanel({
 
           Full width below `sm` so a phone gets real tap targets.
         */}
+
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
           <ButtonLink href={primary.href} className="w-full sm:w-auto">
             {primary.label}

@@ -57,6 +57,8 @@ import type { CardImage, ExperienceIconName } from '@/types'
 export interface ProblemGridItem {
   title: string
   description: string
+  /** Official page a claim on this card came from. */
+  source?: { label: string; href: string }
   /**
    * Decorative line mark beside the heading.
    *
@@ -274,6 +276,20 @@ export function ProblemGrid({
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 {item.description}
               </p>
+              {/*
+                ⚠ THE SOURCE IS PART OF THE CLAIM, NOT A FOOTNOTE. A
+                grant amount or an eligibility rule belongs to whoever
+                publishes it, and this link is how a reader checks it
+                is still current. Descriptive label, never a bare URL.
+              */}
+              {item.source !== undefined && (
+                <a
+                  href={item.source.href}
+                  className="mt-3 inline-block text-sm font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                >
+                  {item.source.label}
+                </a>
+              )}
             </Card>
           )
         })}
