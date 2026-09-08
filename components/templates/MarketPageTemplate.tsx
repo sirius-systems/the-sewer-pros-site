@@ -8,6 +8,14 @@ import {
   RoutingCards,
   ServiceIndex,
   ProblemGrid,
+  ScenarioGrid,
+  DeliverablesSection,
+  RegionalCoveragePanel,
+  ProcessSteps,
+  scenarioGridRenders,
+  deliverablesSectionRenders,
+  regionalCoverageRenders,
+  problemGridRenders,
   InclusionsGrid,
   LateralResponsibility,
   PipeMaterials,
@@ -169,6 +177,36 @@ export function MarketPageTemplate({
   const showsExperience = experienceRenders(content.experience)
 
   /*
+    ==========================================================================
+    THE AUTHORITY STACK. Five sections that used to be one.
+    ==========================================================================
+    `ExperienceSection` had grown to intro + four sub-blocks + three
+    proof cards + a coverage panel + two actions inside one container -
+    a page's worth of argument rendered as a single uniform band, which
+    is the composition 18 §5.6 warns about from the other direction.
+
+    ⚠ ONLY SAN DIEGO SETS THESE TODAY, AND NOTHING BREAKS WITHOUT THEM.
+    Each is independently gated, so St. Louis and Las Vegas skip every
+    one and their density arrays collapse to what they already were.
+
+    ⚠ THEY RENDER AS A CONTIGUOUS RUN, DIRECTLY AFTER THE EXPERIENCE
+    SECTION, because that is where this content already lived. Moving
+    the argument to a different part of the page would have been a
+    second change wearing the same commit.
+  */
+  const showsConditions =
+    content.conditions !== undefined &&
+    problemGridRenders(content.conditions.items)
+  const showsScenarios = scenarioGridRenders(content.scenarios)
+  const showsDeliverables = deliverablesSectionRenders(content.deliverables)
+  const showsIndependence =
+    content.independence !== undefined &&
+    content.independence.steps.length > 0
+  const showsRegionalCoverage = regionalCoverageRenders(
+    content.regionalCoverage,
+  )
+
+  /*
     Which lateral-education treatment renders, and it is EXACTLY ONE OF
     EACH PAIR.
 
@@ -254,6 +292,21 @@ export function MarketPageTemplate({
       report it.
     */
     ...(showsExperience ? (['sparse'] as const) : []),
+    /*
+      ⚠ THE AUTHORITY STACK, IN RENDER ORDER. Surfaces alternate
+      muted -> default -> muted -> default -> brand -> muted across
+      these five and the experience band above them, so no two
+      neighbours share one.
+
+      `standard` three times in the middle is a run of 3, one inside
+      the limit `sectionRhythmIssues()` enforces, and the surface
+      change is what separates those bands rather than the density.
+    */
+    ...(showsConditions ? (['dense'] as const) : []),
+    ...(showsScenarios ? (['standard'] as const) : []),
+    ...(showsDeliverables ? (['standard'] as const) : []),
+    ...(showsIndependence ? (['standard'] as const) : []),
+    ...(showsRegionalCoverage ? (['dense'] as const) : []),
     ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(content.services !== undefined && serviceIndexRenders(content.services)
       ? (['dense'] as const)
@@ -518,6 +571,93 @@ export function MarketPageTemplate({
               ? { label: detail.phone, phoneE164: detail.phoneE164 }
               : undefined
           }
+        />
+      )}
+
+      {/*
+        ==================================================================
+        THE AUTHORITY STACK - five sections, San Diego only today
+        ==================================================================
+        See the gate block near the top for why these exist and why
+        they sit here. Surfaces from the experience band down:
+
+          ExperienceSection      muted
+          ProblemGrid            default   conditions
+          ScenarioGrid           muted     when an inspection helps
+          DeliverablesSection    default   what you receive
+          ProcessSteps           brand     independence
+          RegionalCoveragePanel  muted     closing conversion panel
+
+        ⚠ THE `id`s ARE THIS STACK'S OWN. St. Louis's lateral education
+        already drives `ProblemGrid` and `InclusionsGrid` under
+        `id="lateral-responsibility"` and `id="line-materials"`;
+        borrowing those anchors for a conditions grid would point a
+        San Diego section at a St. Louis concept.
+      */}
+      {showsConditions && content.conditions !== undefined && (
+        <ProblemGrid
+          density="dense"
+          id="inspection-findings"
+          eyebrow={content.conditions.eyebrow}
+          title={content.conditions.title}
+          intro={content.conditions.intro?.join(' ')}
+          items={content.conditions.items}
+        />
+      )}
+
+      {showsScenarios && content.scenarios !== undefined && (
+        <ScenarioGrid
+          density="standard"
+          id="when-to-inspect"
+          content={content.scenarios}
+        />
+      )}
+
+      {showsDeliverables && content.deliverables !== undefined && (
+        <DeliverablesSection
+          density="standard"
+          id="what-you-receive"
+          content={content.deliverables}
+        />
+      )}
+
+      {showsIndependence && content.independence !== undefined && (
+        /*
+          ⚠ `brand` WITH NO IMAGE, WHICH IS A COMBINATION THIS
+          COMPONENT HAD NEVER SHIPPED. Its eyebrow and intro used to be
+          whitened only when a `backgroundImage` was present; that
+          condition now covers a brand surface too, or these two lines
+          would render muted grey on navy. See the note in
+          `ProcessSteps`.
+
+          ⚠ NO PHOTOGRAPH HERE, ON INSTRUCTION. The step cells stay
+          light on the dark band, which is what carries the contrast.
+        */
+        <ProcessSteps
+          density="standard"
+          surface="brand"
+          variant="cards"
+          id="independent-diagnosis"
+          eyebrow={content.independence.eyebrow}
+          title={content.independence.title}
+          intro={
+            <>
+              {content.independence.body.map((paragraph) => (
+                <span key={paragraph} className="mt-2 block first:mt-0">
+                  {paragraph}
+                </span>
+              ))}
+            </>
+          }
+          steps={content.independence.steps}
+        />
+      )}
+
+      {showsRegionalCoverage && content.regionalCoverage !== undefined && (
+        <RegionalCoveragePanel
+          density="dense"
+          id="regional-coverage"
+          content={content.regionalCoverage}
         />
       )}
 

@@ -431,12 +431,26 @@ export function ExperienceSection({
         : undefined,
   }
 
-  const primary = resolveApprovedLink(content.actions.primary.pageId, {
-    label: content.actions.primary.label,
-  })
-  const secondary = resolveApprovedLink(content.actions.secondary.pageId, {
-    label: content.actions.secondary.label,
-  })
+  /*
+    ⚠ THE ACTIONS ARE OPTIONAL NOW, AND SO IS EVERYTHING BELOW THAT
+    READS THEM. San Diego moved its coverage panel and both buttons to
+    `RegionalCoveragePanel`, so this band renders the claim and the
+    proof cards alone there. The two markets that still author actions
+    are unaffected.
+  */
+  const actions = content.actions
+  const primary =
+    actions !== undefined
+      ? resolveApprovedLink(actions.primary.pageId, {
+          label: actions.primary.label,
+        })
+      : undefined
+  const secondary =
+    actions !== undefined
+      ? resolveApprovedLink(actions.secondary.pageId, {
+          label: actions.secondary.label,
+        })
+      : undefined
 
   /*
     The heading area, identical in both variants: a short rule, the
@@ -493,12 +507,14 @@ export function ExperienceSection({
   */
   const closing = (
     <div className="border-t border-border pt-8">
-      <Block block={content.coverage} />
+      {content.coverage !== undefined && <Block block={content.coverage} />}
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <ButtonLink href={primary.href} variant="primary">
-          {primary.label}
-        </ButtonLink>
+        {primary !== undefined && (
+          <ButtonLink href={primary.href} variant="primary">
+            {primary.label}
+          </ButtonLink>
+        )}
         {/*
           ⚠ BLUE, NOT THE LIGHT FILL. `accent` is `--accent-secondary`,
           whose documented role is "secondary buttons, non-CTA
@@ -507,9 +523,11 @@ export function ExperienceSection({
           the conversion, and a page where every action is green has no
           hierarchy left to read.
         */}
-        <ButtonLink href={secondary.href} variant="accent">
-          {secondary.label}
-        </ButtonLink>
+        {secondary !== undefined && (
+          <ButtonLink href={secondary.href} variant="accent">
+            {secondary.label}
+          </ButtonLink>
+        )}
         {phone !== undefined && (
           /*
             `ButtonLink` renders `next/link`, which is for routes and
@@ -603,7 +621,7 @@ export function ExperienceSection({
         </div>
 
         {/* ---- 3. the two benefit panels ---- */}
-        {content.blocks.length > 0 && (
+        {content.blocks !== undefined && content.blocks.length > 0 && (
           /*
             ⚠ `lg:items-start`, SO EACH PANEL SIZES TO ITS OWN CONTENT.
             The grid default is `stretch`, and with `h-full` on the
@@ -619,7 +637,7 @@ export function ExperienceSection({
             No fixed heights anywhere, so nothing clips at any width.
           */
           <div className="mt-14 grid gap-4 sm:gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
-            {content.blocks.map((block, index) => (
+            {content.blocks?.map((block, index) => (
               <div
                 key={block.title}
                 className="rounded-md border border-border bg-surface p-6 sm:p-8"
@@ -663,7 +681,9 @@ export function ExperienceSection({
           */
           className="mt-14 rounded-md border border-accent-secondary/20 bg-accent-secondary/[0.06] p-6 sm:p-8"
         >
-          <Block block={content.coverage} tone="strong" />
+          {content.coverage !== undefined && (
+            <Block block={content.coverage} tone="strong" />
+          )}
 
           {/*
             ⚠ THE WHOLE PANEL IS NOT A LINK. Three separate actions
@@ -676,26 +696,30 @@ export function ExperienceSection({
             across a desktop row.
           */}
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <ButtonLink
-              href={primary.href}
-              variant="primary"
-              className="w-full sm:w-auto"
-            >
-              {primary.label}
-            </ButtonLink>
+            {primary !== undefined && (
+              <ButtonLink
+                href={primary.href}
+                variant="primary"
+                className="w-full sm:w-auto"
+              >
+                {primary.label}
+              </ButtonLink>
+            )}
             {/*
               ⚠ BLUE, MATCHING THE OTHER TWO VARIANTS' CLOSING ROW. This
               action navigates to another page rather than converting,
               so it must not be green: DEC-096 keeps green for the
               conversion beside it.
             */}
-            <ButtonLink
-              href={secondary.href}
-              variant="accent"
-              className="w-full sm:w-auto"
-            >
-              {secondary.label}
-            </ButtonLink>
+            {secondary !== undefined && (
+              <ButtonLink
+                href={secondary.href}
+                variant="accent"
+                className="w-full sm:w-auto"
+              >
+                {secondary.label}
+              </ButtonLink>
+            )}
             {phone !== undefined && (
               /*
                 `ButtonLink` renders `next/link`, which is for routes and
@@ -747,7 +771,7 @@ export function ExperienceSection({
           open or close the run without a second grid.
         */}
         <div className="mt-12 grid gap-x-10 gap-y-10 lg:grid-cols-2">
-          {content.blocks.map((block) => (
+          {content.blocks?.map((block) => (
             <div
               key={block.title}
               className={cn(block.half !== true && 'lg:col-span-2')}
@@ -777,7 +801,7 @@ export function ExperienceSection({
       */}
       <div className="mt-10 grid gap-x-12 gap-y-10 lg:grid-cols-12">
         <div className="space-y-10 lg:col-span-7">
-          {content.blocks.map((block) => (
+          {content.blocks?.map((block) => (
             <Block key={block.title} block={block} />
           ))}
         </div>

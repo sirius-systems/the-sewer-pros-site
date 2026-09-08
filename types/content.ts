@@ -245,6 +245,114 @@ export interface RoutingContent {
  * CLAUDE.md §29-30 forbid implying an office in San Diego or Las
  * Vegas. See `CoverageSection`.
  */
+/* ==========================================================================
+   San Diego authority stack (2026-09-08)
+   ==========================================================================
+   Six sections that replace one long `ExperienceSection`. The block had
+   grown to intro + four sub-blocks + three proof cards + a coverage
+   panel + two actions inside a single container, which is a page's
+   worth of argument rendered as one uniform band.
+
+   ⚠ EVERY FIELD IS OPTIONAL AND ONLY SAN DIEGO SETS THEM TODAY. The
+   shapes are market-agnostic on purpose - nothing here names a city, a
+   municipality, or a lateral programme - so St. Louis or Las Vegas can
+   adopt any one of them without inheriting the others.
+
+   ⚠ THESE ARE NOT THE ST. LOUIS LATERAL SLOTS. `lateralCards` and
+   `materialCards` already drive `ProblemGrid` and `InclusionsGrid` on
+   that market, but they carry `id="lateral-responsibility"` and
+   `id="line-materials"` and mean municipal lateral education. Reusing
+   them here would put a St. Louis anchor on a San Diego conditions
+   grid. Separate slots, same components.
+   ========================================================================== */
+
+/** One card in the conditions grid. */
+export interface ConditionCard {
+  title: string
+  description: string
+  /** Decorative. Falls back to a check when unset. */
+  icon?: ExperienceIconName
+  accent?: 'blue' | 'green'
+}
+
+/** Conditions a camera inspection may reveal. */
+export interface ConditionsContent {
+  eyebrow?: string
+  title: string
+  intro?: readonly string[]
+  items: readonly ConditionCard[]
+}
+
+/** One situation card in the scenarios grid. */
+export interface ScenarioCard {
+  title: string
+  description: string
+  icon?: ExperienceIconName
+  /**
+   * Takes the large tile.
+   *
+   * ⚠ EXACTLY ONE ITEM MAY SET THIS. `ScenarioGrid` gives the featured
+   * card two columns and two rows; a second would break the grid into
+   * an orphaned row, which 18 §5.6 prohibits by name.
+   */
+  featured?: boolean
+}
+
+/** When an inspection helps - customer situations, not symptoms. */
+export interface ScenariosContent {
+  eyebrow?: string
+  title: string
+  intro?: string
+  items: readonly ScenarioCard[]
+  /** One contextual action. Must be an already-approved destination. */
+  action?: { label: string; pageId: PageId }
+}
+
+/** What the customer receives, as an editorial split. */
+export interface DeliverablesContent {
+  eyebrow?: string
+  title: string
+  intro?: readonly string[]
+  items: readonly InclusionContent[]
+  /**
+   * Optional artwork for the split.
+   *
+   * ⚠ OMIT IT RATHER THAN POINT AT AN ASSET THAT DOES NOT EXIST. The
+   * section falls back to a single readable column, which is a
+   * complete layout rather than a gap where a picture should be.
+   */
+  image?: CardImage
+  /** Lightly tinted closing panel. */
+  panel?: { title: string; body: string }
+}
+
+/** The independence position, stated as a three-step sequence. */
+export interface IndependenceContent {
+  eyebrow?: string
+  title: string
+  body: readonly string[]
+  steps: readonly {
+    title: string
+    description: string
+    icon?: ExperienceIconName
+  }[]
+}
+
+/** Closing regional conversion panel. */
+export interface RegionalCoverageContent {
+  eyebrow?: string
+  title: string
+  body: readonly string[]
+  primary: { label: string; pageId: PageId }
+  secondary?: { label: string; pageId: PageId }
+  /**
+   * ⚠ MARKET-SCOPED, AND THE TEMPLATE DOES NOT SUPPLY IT. A phone
+   * number belongs to one market; it is authored here so a page cannot
+   * inherit another market's line by accident (01 §20).
+   */
+  phone?: { label: string; href: string }
+}
+
 export interface CoverageContent {
   title: string
   intro?: string
@@ -691,16 +799,24 @@ export interface ExperienceContent {
    * which is a finished state rather than a gap (18 §40-42, §120).
    */
   image?: CardImage
-  blocks: readonly ExperienceBlock[]
+  /**
+   * ⚠ OPTIONAL SINCE 2026-09-08. San Diego moved its four sub-blocks
+   * into sections of their own; a market may now carry the experience
+   * claim and its proof cards alone. St. Louis and Las Vegas still set
+   * this and are unchanged.
+   */
+  blocks?: readonly ExperienceBlock[]
   proof: readonly ExperienceProofCard[]
-  coverage: ExperienceBlock
+  /** Optional since 2026-09-08 - see `blocks`. */
+  coverage?: ExperienceBlock
   /**
    * One primary action and one secondary (18 §106).
    *
    * The phone is NOT here: the template reads it from
    * `marketOperatingDetail` so a page cannot publish two numbers.
    */
-  actions: {
+  /** Optional since 2026-09-08 - see `blocks`. */
+  actions?: {
     primary: { label: string; pageId: PageId }
     secondary: { label: string; pageId: PageId }
   }
@@ -1116,6 +1232,24 @@ export interface MarketPageContent extends BasePageContent {
   localFeature?: { title: string; body: ReactNode }
   processBackground?: CardImage
   ctaBackground?: CardImage
+  /*
+    ========================================================================
+    THE SAN DIEGO AUTHORITY STACK. Six sections, all optional.
+    ========================================================================
+    Rendered in this order by `MarketPageTemplate`, each in its own
+    `<Section>` with its own surface. See the type declarations above
+    for why they are market-agnostic.
+  */
+  /** Conditions an inspection may reveal. Renders `ProblemGrid`. */
+  conditions?: ConditionsContent
+  /** When an inspection helps. Renders `ScenarioGrid`. */
+  scenarios?: ScenariosContent
+  /** What the customer receives. Renders `InclusionsGrid`. */
+  deliverables?: DeliverablesContent
+  /** Independence, as a process. Renders `ProcessSteps` on brand. */
+  independence?: IndependenceContent
+  /** Closing regional conversion panel. */
+  regionalCoverage?: RegionalCoverageContent
 }
 
 /** Location page — 18 §79, §112. */

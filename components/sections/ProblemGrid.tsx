@@ -1,6 +1,8 @@
 import { Section, Card, type SectionDensity } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
+import { SECTION_ICONS } from './section-icons'
+import type { ExperienceIconName } from '@/types'
 
 /**
  * Problem-recognition grid.
@@ -49,6 +51,25 @@ import { SectionHeading } from './SectionHeading'
 export interface ProblemGridItem {
   title: string
   description: string
+  /**
+   * Decorative line mark beside the heading.
+   *
+   * ⚠ OPTIONAL, AND EVERY EXISTING CALLER OMITS IT. St. Louis's
+   * `lateralCards` render exactly as before; a card with no icon gets
+   * no icon rather than a fallback mark, because a grid where only
+   * some cards carry one reads as a rendering fault.
+   *
+   * ⚠ `aria-hidden` IS APPLIED BY `baseIconProps`, not here. The
+   * heading already names the card; the mark repeats it.
+   */
+  icon?: ExperienceIconName
+  /**
+   * Icon colour. Blue is this system's non-CTA emphasis and green is
+   * the conversion accent (DEC-096), so alternating them across a grid
+   * is decoration rather than meaning - use it for rhythm, never to
+   * mark one condition as more urgent.
+   */
+  accent?: 'blue' | 'green'
 }
 
 export interface ProblemGridProps {
@@ -140,6 +161,23 @@ export function ProblemGrid({
                 fillsRow && columns === 3 && 'lg:col-span-3',
               )}
             >
+              {item.icon !== undefined &&
+                (() => {
+                  const Icon = SECTION_ICONS[item.icon]
+                  return (
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        'mb-4 flex h-10 w-10 items-center justify-center rounded-sm text-white',
+                        item.accent === 'green'
+                          ? 'bg-accent'
+                          : 'bg-accent-secondary',
+                      )}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </span>
+                  )
+                })()}
               <h3 className="text-h4 font-medium tracking-tight text-foreground">
                 {item.title}
               </h3>

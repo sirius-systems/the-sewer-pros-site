@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { SVGProps } from 'react'
 import Image from 'next/image'
 import {
@@ -119,7 +120,13 @@ export interface ProcessStepsProps {
   id?: string
   eyebrow?: string
   title: string
-  intro?: string
+  /**
+   * ⚠ `ReactNode`, widened 2026-09-08. Every existing caller passes a
+   * string, which is still valid; the independence band on the San
+   * Diego hub needs two paragraphs, and `SectionHeading.intro` has
+   * always accepted a node.
+   */
+  intro?: ReactNode
   /**
    * Cell treatment for the step band.
    *
@@ -345,7 +352,22 @@ export function ProcessSteps({
           a descendant selector rather than a competing text class.
         */
         className={
-          backgroundImage !== undefined
+          /*
+            ⚠ `surface === 'brand'` WAS MISSING AND THAT WAS A REAL
+            CONTRAST BUG, not a hypothetical. This component advertises
+            a `surface` prop whose union includes `brand`, but only an
+            IMAGE triggered the white override - so the first caller to
+            pass `surface="brand"` with an eyebrow or intro shipped
+            `--muted-foreground` (#5f6b73) on `--brand` navy, which is
+            far below 4.5:1 and fails silently because the heading
+            itself inherits white and looks correct.
+
+            The step cells are unaffected either way: they are
+            `bg-background` with `text-foreground`, so they stay light
+            cards on the dark band and their own contrast never
+            depended on this.
+          */
+          backgroundImage !== undefined || surface === 'brand'
             ? '[&_p]:text-white [&_div]:text-white'
             : undefined
         }

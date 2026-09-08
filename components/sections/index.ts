@@ -176,6 +176,21 @@ export type { ProofGalleryProps } from './ProofGallery'
 export { TestimonialBand } from './TestimonialBand'
 export type { TestimonialBandProps } from './TestimonialBand'
 
+export { ScenarioGrid, scenarioGridRenders } from './ScenarioGrid'
+export type { ScenarioGridProps } from './ScenarioGrid'
+
+export {
+  DeliverablesSection,
+  deliverablesSectionRenders,
+} from './DeliverablesSection'
+export type { DeliverablesSectionProps } from './DeliverablesSection'
+
+export {
+  RegionalCoveragePanel,
+  regionalCoverageRenders,
+} from './RegionalCoveragePanel'
+export type { RegionalCoveragePanelProps } from './RegionalCoveragePanel'
+
 export { MarketGuidance, marketGuidanceRenders } from './MarketGuidance'
 export type { MarketGuidanceProps } from './MarketGuidance'
 
