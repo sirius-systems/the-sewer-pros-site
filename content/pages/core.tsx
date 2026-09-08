@@ -601,6 +601,18 @@ export const homeContent: HomePageContent = {
  * display order: inspection and diagnostics, then cleaning, then
  * locating and maintenance.
  */
+/**
+ * Provenance for the services hub's five hero frames.
+ *
+ * ⚠ ONE CONSTANT BECAUSE ONE DELIVERY, the same rule
+ * `content/pages/service-cards.ts` states for its nine. A frame from a
+ * different source must carry its own `source` rather than borrow this
+ * one: `CardImage.source` is required precisely so an asset whose
+ * origin nobody recorded cannot slip in.
+ */
+const SERVICES_HUB_RENDER =
+  'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.'
+
 const SERVICES_HUB_ORDER: readonly PageId[] = [
   // Inspection & Diagnostics
   id('svc-sewer-camera-inspection'),
@@ -864,24 +876,110 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       columns `FaqSection.columns` documents against.
     */
     faqColumns: 2,
+    /*
+      ==========================================================================
+      A SPLIT HERO: COPY LEFT, PHOTOGRAPHS RIGHT (owner, 2026-09-08)
+      ==========================================================================
+      ⚠ THE H1 CHANGED, AND IT IS STILL THE PAGE'S ONLY ONE. "Sewer and
+      drain services, inspected independently first" became the line
+      below; every other heading on this page is an `h2` or lower, and
+      `HubIntro` hard-codes its own level for that reason.
+
+      ⚠ THE HERO CTAS ARE THIS PAGE'S, NOT THE GLOBAL ONE. "Schedule a
+      Sewer Inspection" names one of ten services as though it were the
+      ask, on a page that also serves cleaning, jetting, drain cleaning,
+      locating and diagnostic intent. The primary sends a reader to the
+      grid; the secondary sends them to the closing form. The header's
+      own button is untouched and still says the global phrase.
+
+      ⚠ `#cta` IS THE EXISTING ANCHOR FOR THE CLOSING FORM, reused
+      rather than duplicated. `CtaSection` already labels that section
+      with it and `:target` in `app/globals.css` supplies the
+      sticky-header offset, so adding a second id for the same
+      destination would be redundant.
+
+      ⚠ NO CLAIM IS ADDED. The services named are the nine live pages
+      plus diagnostics; "accessible portions of the line" is the
+      standing hedge; the repair boundary is CLAUDE.md §9 stated in the
+      visitor's own terms. No response time, price, guarantee, office or
+      credential appears.
+    */
     hero: {
-      eyebrow: 'Sewer & drain services',
-      title: 'Sewer and drain services, inspected independently first.',
-      /*
-        ⚠ THE "TEN SERVICES" FRAMING IS GONE, per Prompt 13's first
-        recommended fix. It was a page-design fact rather than a
-        customer-facing one, and it is now also FALSE: the index below
-        carries nine, because the tenth service has no page.
-      */
+      eyebrow: 'Sewer inspection, cleaning, and diagnostics',
+      title: 'Sewer and drain services built around documented evidence',
       intro: (
-        <p>
-          Camera inspection, diagnostics, locating, cleaning, and hydro
-          jetting, one company that doesn&rsquo;t sell the repair it might
-          recommend. Browse what we do, or schedule a sewer camera inspection
-          to see what&rsquo;s happening in your line.
-        </p>
+        <>
+          <p>
+            From recurring sewer backups and slow drains to an unknown
+            sewer-line condition or questions before buying a property, the
+            right starting service depends on what is happening at the
+            property. The Sewer Pros provides sewer camera inspection, sewer
+            cleaning, hydro jetting, drain cleaning, sewer line locating,
+            recurring backup diagnosis, and preventative maintenance services.
+          </p>
+          <p className="mt-4">
+            We evaluate accessible portions of the line when appropriate,
+            document visible conditions, and explain the findings in practical
+            language. Because we do not perform sewer repair or replacement,
+            the information remains separate from a repair sale.
+          </p>
+        </>
       ),
+      primaryAction: {
+        href: '#services-grid',
+        label: 'Explore Sewer Services',
+      },
+      secondaryAction: { href: '#cta', label: 'Request Service' },
     },
+    /*
+      ==========================================================================
+      THE HERO CAROUSEL - FIVE OWNER-SUPPLIED FRAMES
+      ==========================================================================
+      ⚠ THEY TAKE THE ASIDE SLOT FROM THE HERO LEAD FORM. `showHeroForm`
+      above is still true and still drives the closing CTA's `split`
+      variant, so the page opens on pictures and closes on the form
+      rather than carrying two.
+
+      ⚠ EVERY FRAME IS 3344x1882, AN EXACT 16:9, so the carousel's
+      `aspect-video` box crops nothing and no slide shifts the layout.
+
+      ⚠ THE ALT TEXT DESCRIBES EQUIPMENT AND SETTING, NEVER AN OUTCOME.
+      None of these says a defect was found, a line was repaired, or a
+      job was completed, because they are rendered scenes rather than
+      photographs of Sewer Pros work - which is exactly what `source`
+      records.
+
+      ⚠ THESE FIVE ARE THE HERO'S ALONE. The service mosaic below runs
+      on `coreServiceCards` and its own artwork; reusing a hero frame
+      there would put the same picture twice on one page.
+    */
+    heroCarousel: [
+      {
+        src: '/images/markets/services-hub/the-sewer-pros-sewer-inspection-cleaning-services-hero.webp',
+        alt: 'Sewer inspection, cleaning, hydro jetting, and locating equipment arranged beside a residential service access',
+        source: SERVICES_HUB_RENDER,
+      },
+      {
+        src: '/images/markets/services-hub/the-sewer-pros-sewer-inspection-cleaning-access-hero.webp',
+        alt: 'Sewer camera and cleaning equipment positioned at separate exterior service access points',
+        source: SERVICES_HUB_RENDER,
+      },
+      {
+        src: '/images/markets/services-hub/the-sewer-pros-documented-sewer-camera-findings-hero.webp',
+        alt: 'Documented sewer camera findings displayed on professional inspection equipment',
+        source: SERVICES_HUB_RENDER,
+      },
+      {
+        src: '/images/markets/services-hub/the-sewer-pros-multifamily-commercial-sewer-services-hero.webp',
+        alt: 'Sewer inspection and cleaning equipment at a multifamily or commercial property',
+        source: SERVICES_HUB_RENDER,
+      },
+      {
+        src: '/images/markets/services-hub/the-sewer-pros-sewer-diagnostic-equipment-services-hero.webp',
+        alt: 'Professional sewer diagnostic and cleaning equipment organized for a service visit',
+        source: SERVICES_HUB_RENDER,
+      },
+    ],
     /*
       ⚠ NO BRAND SUFFIX, WHICH IS WHY THIS IS NOT THE STRING THE BRIEF
       GAVE. Prompt 04 specifies "Sewer & Drain Cleaning Services | The
@@ -928,7 +1026,12 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       prop for exactly that reason.
     */
     intro: {
-      eyebrow: 'Sewer inspection, diagnostics, and cleaning',
+      /*
+        ⚠ THE EYEBROW MOVED TO THE HERO AND THIS ONE REPLACED IT
+        (owner, 2026-09-08). Two bands opening on the same three words
+        would have read as one section restated.
+      */
+      eyebrow: 'Find the right starting service',
       title:
         'Find the right sewer service by starting with the condition of the line',
       body: [
@@ -987,6 +1090,14 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       See the constant for why it is nine rather than ten.
     */
     items: servicesHubItems,
+    /*
+      ⚠ ONE LINE UNDER THE GRID HEADING, on owner direction. It names
+      the five kinds of service the nine cards divide into, so a reader
+      scanning them knows what the axis is before reading nine
+      descriptions.
+    */
+    itemsIntro:
+      'Compare inspection, cleaning, locating, diagnostic, and maintenance services to find the most appropriate starting point for your property concern.',
     /*
       ==========================================================================
       FOURTEEN ANSWERS: FIVE THE HOME PAGE OWNS, NINE THIS PAGE'S OWN
@@ -1136,6 +1247,36 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         ),
       },
     ],
+    /*
+      ==========================================================================
+      "NOT SURE WHERE TO START?" - THE PANEL BELOW THE SERVICE GRID
+      ==========================================================================
+      ⚠ IT POINTS AT THE CLOSING FORM, IT DOES NOT CARRY ONE. `#cta` is
+      that section's existing anchor. A second form here would be two
+      places to submit one enquiry and a second set of field ids to keep
+      unique.
+
+      ⚠ THE COPY MAY NOT PROMISE A DIAGNOSIS. "Can help identify an
+      appropriate starting point" is the ceiling; CLAUDE.md §24 forbids
+      guaranteeing that a cause will be established, and this is the
+      section most tempted by it.
+
+      ⚠ THE SECONDARY LINK IS THE CANONICAL CAMERA INSPECTION PAGE,
+      resolved through the approved registry rather than written as a
+      path, so a gated page drops the link instead of shipping a dead
+      one.
+    */
+    selectionPanel: {
+      eyebrow: 'Not sure where to start?',
+      title: 'Tell us what is happening at the property',
+      body: 'Recurring backups, several slow drains, an unknown sewer-line location, or a concern before buying a property may require different starting services. Describe the symptoms, the property type, and what decision you are trying to make. We can help identify an appropriate inspection, cleaning, hydro jetting, locating, or diagnostic starting point.',
+      icon: 'guidance',
+      action: { label: 'Describe the Problem', href: '#cta' },
+      secondaryLink: {
+        label: 'Review sewer camera inspection',
+        pageId: id('svc-sewer-camera-inspection'),
+      },
+    },
     /*
       ⚠ THE BUTTON STAYS, WHERE `/locations/` AND ST. LOUIS DROP IT.
       Prompt 04 names "Schedule a Sewer Inspection" as this CTA's

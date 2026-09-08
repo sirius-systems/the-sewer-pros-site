@@ -223,6 +223,23 @@ export type { MarketCoverageProps } from './MarketCoverage'
   not `MarketGuidance`: this one is the page's own argument in prose,
   with the heading beside it rather than above it.
 */
+/*
+  Client component: the services hub's hero carousel. Real alt text and
+  full controls, which is what separates it from `HeroBackdrop`.
+
+  ⚠ NO `heroCarouselRenders` PREDICATE HERE, UNLIKE EVERY OTHER SECTION
+  IN THIS BARREL. A `'use client'` module cannot export a function the
+  server calls - Next.js throws "Attempted to call ... from the server
+  but ... is on the client" at prerender. `ReviewMarquee` hit the same
+  wall and put its predicate with the data; this one has no dataset, so
+  `HubPageTemplate` tests the array inline instead.
+*/
+export { HeroCarousel } from './HeroCarousel'
+export type { HeroCarouselProps } from './HeroCarousel'
+
+export { SelectionPanel, selectionPanelRenders } from './SelectionPanel'
+export type { SelectionPanelProps } from './SelectionPanel'
+
 export { HubIntro, hubIntroRenders } from './HubIntro'
 export type { HubIntroProps } from './HubIntro'
 
