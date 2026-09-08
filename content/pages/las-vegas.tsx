@@ -1361,11 +1361,36 @@ export const lasVegasMarketContent: MarketPageContent = {
     copy left, lead form right, over this frame. Same structure as the
     home page and the St. Louis hub.
   */
+  /*
+    ⚠ REPLACED THE JETTING-EQUIPMENT FRAME ON OWNER DIRECTION
+    (2026-09-08), matching the swap made on San Diego the same day.
+    This one is a residential exterior rather than an equipment
+    close-up, so the closing ask sits against the kind of property the
+    market serves.
+
+    ⚠ THE PREVIOUS ASSET IS NOT ORPHANED.
+    `homepage/hero/the-sewer-pros-homebuyer-sewer-due-diligence-hero.webp`
+    is still one of the five frames `data/business/hero-backdrop.ts`
+    rotates on the home page, so it stays where it is.
+
+    ⚠ IT RHYMES WITH `regionalCoverage`'s FRAME, which is also a
+    single-storey stucco house with a tile roof, stone veneer and
+    desert gravel. Nine content blocks sit between them - the lateral
+    run, materials, pre-purchase, service area, routing, services,
+    related locations and the FAQ - so they are never in view together,
+    but a third residential exterior on this page would start to read
+    as one repeated picture.
+
+    ⚠ NO ADDRESS, NUMBER, SIGNAGE OR PERSON IS VISIBLE IN THE FRAME,
+    which is what keeps it usable on a market with no verified premises
+    (CLAUDE.md §30). It illustrates a property type, not a Sewer Pros
+    location or job.
+  */
   ctaBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-homebuyer-sewer-due-diligence-hero.webp',
-    alt: 'Jetting equipment and an open cleanout beside a property wall',
+    src: '/images/homepage/hero/the-sewer-pros-las-vegas-residential-service-cta.webp',
+    alt: 'Single-story Las Vegas Valley home with a tile roof and desert gravel landscaping',
     source:
-      'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
   },
 }
 
