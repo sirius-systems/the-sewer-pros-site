@@ -60,6 +60,40 @@ export function HubIntro({
   if (content.body.length === 0) return null
 
   /*
+    ==========================================================================
+    THE TEXTURE FORCES TWO COLOUR SWAPS, AND THE NUMBERS ARE MEASURED
+    ==========================================================================
+    The drawing is pale, but "pale" is not an argument. Compositing its
+    darkest stroke over `--surface-muted` at 40% gives a background of
+    #c4cbd3, and against that:
+
+      --foreground        #1f2933   9.01:1   passes
+      --brand             #0b2d45   8.70:1   passes
+      --muted-foreground  #5f6b73   3.34:1   FAILS
+      --accent-secondary  #1c6b97   3.56:1   FAILS
+
+    So the body copy and the benefit descriptions take `foreground`
+    where they take `muted-foreground` on a bare surface, and the
+    eyebrow and the anchor link take `brand` where they take
+    `accent-secondary`. Both swaps make the text DARKER, so nothing
+    else on the band needs re-measuring.
+
+    ⚠ THE ALTERNATIVE WAS AN INVISIBLE DRAWING. Holding
+    `muted-foreground` at 4.5:1 against the worst stroke caps the
+    texture at 12% opacity, which is below the threshold where the
+    artwork reads at all. Strengthening the text was the trade that
+    kept both: every colour on this band is now at least 8.7:1, against
+    5.08:1 for the muted copy before the texture existed.
+
+    ⚠ THE ICONS AND THE ACCENT RULE ARE NOT SWAPPED, DELIBERATELY. Both
+    are `aria-hidden` decoration with the meaning in the text beside
+    them, so 1.4.11's 3:1 for meaningful graphics does not apply.
+  */
+  const textured = content.background !== undefined
+  const bodyText = textured ? 'text-foreground' : 'text-muted-foreground'
+  const accentText = textured ? 'text-brand' : 'text-accent-secondary'
+
+  /*
     ⚠ NOT AN APPROVED-PAGE LINK, AND DELIBERATELY NOT RESOLVED AS ONE.
     `resolveApprovedLink` exists for destinations in the page registry;
     this one is an in-page fragment on the page already being rendered,
@@ -84,6 +118,35 @@ export function HubIntro({
       surface={surface}
       labelledBy={id}
       className="border-y border-border"
+      /*
+        ⚠ `texture`, NOT `backgroundImage`. The asset is pale line art
+        on a transparent ground, so the photograph path - which scrims
+        at 55% black and turns the section's text white - would ruin
+        both it and the copy. `texture` paints behind the surface
+        colour, adds no scrim and changes no text colour. See
+        `HubIntroContent.background`.
+
+        ⚠ 40% IS THE MEASURED CEILING FOR THIS PAIRING, and the block
+        above the return records what it is measured against. Anything
+        stronger belongs in `backgroundImage`, which carries a scrim
+        sized for text on top; this layer has none.
+
+        ⚠ `bg-right-bottom` ONLY. `Section` already sets `bg-cover` on
+        this layer and `cn()` is a plain join rather than
+        tailwind-merge, so a `bg-contain` passed here would ship both
+        and let stylesheet order pick the winner. Cover is the right
+        behaviour anyway: the lateral runs along the lower edge of the
+        frame, and anchoring to the bottom right keeps that run and the
+        camera head in view while the crop takes the empty top.
+      */
+      texture={
+        content.background !== undefined
+          ? {
+              src: content.background.src,
+              className: 'bg-right-bottom opacity-40',
+            }
+          : undefined
+      }
     >
       {/*
         ⚠ 5 COLUMNS READ AS 40/60. Two and three of five is the closest
@@ -107,7 +170,12 @@ export function HubIntro({
             className="block h-1 w-10 rounded-full bg-accent-secondary"
           />
           {content.eyebrow !== undefined && (
-            <p className="mt-4 text-caption font-semibold tracking-wide text-accent-secondary uppercase">
+            <p
+              className={cn(
+                'mt-4 text-caption font-semibold tracking-wide uppercase',
+                accentText,
+              )}
+            >
               {content.eyebrow}
             </p>
           )}
@@ -131,10 +199,7 @@ export function HubIntro({
           {content.body.map((paragraph, index) => (
             <p
               key={paragraph.slice(0, 48)}
-              className={cn(
-                'text-body-lg text-muted-foreground',
-                index > 0 && 'mt-4',
-              )}
+              className={cn('text-body-lg', bodyText, index > 0 && 'mt-4')}
             >
               {paragraph}
             </p>
@@ -175,7 +240,7 @@ export function HubIntro({
                 <h3 className="text-body font-semibold text-foreground">
                   {benefit.title}
                 </h3>
-                <p className="mt-1 text-body-sm text-muted-foreground">
+                <p className={cn('mt-1 text-body-sm', bodyText)}>
                   {benefit.description}
                 </p>
               </div>
@@ -200,7 +265,10 @@ export function HubIntro({
         <p className="mt-6">
           <a
             href={`#${link.targetId}`}
-            className="rounded-sm text-body font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-secondary"
+            className={cn(
+              'rounded-sm text-body font-semibold underline underline-offset-4 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-secondary',
+              accentText,
+            )}
           >
             {link.label}
             {/*
