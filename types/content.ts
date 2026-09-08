@@ -357,6 +357,29 @@ export interface ScenariosContent {
   title: string
   intro?: string
   items: readonly ScenarioCard[]
+  /**
+   * How the featured card sits in the mosaic.
+   *
+   * `tile`    (default) it takes a 2x2 corner tile in a three-column
+   *           grid and the compact cards flow around it.
+   * `banner`  it spans the full width on its own row, with the compact
+   *           cards in rows above and below it.
+   *
+   * ⚠ THE NAME DESCRIBES THE SHAPE, NOT THE POSITION. It is not
+   * "feature-third" or "feature-middle": where the feature lands is
+   * decided by where its item sits in `items`, because DOM order is
+   * reading order. Naming the variant after a position would make the
+   * two disagree the first time an item moved.
+   *
+   * ⚠ `banner` READS ITS ROW STRUCTURE FROM `items`. The cards before
+   * the feature share one row and the cards after share another, so
+   * the order in the content file IS the layout. San Diego runs 2, the
+   * feature, then 3.
+   *
+   * ⚠ ONLY SAN DIEGO SETS THIS. Las Vegas leaves it unset and keeps
+   * the corner tile it shipped with.
+   */
+  featureLayout?: 'tile' | 'banner'
   /** One contextual action. Must be an already-approved destination. */
   action?: { label: string; pageId: PageId }
 }

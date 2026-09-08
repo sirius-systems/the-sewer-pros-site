@@ -574,6 +574,22 @@ export const sanDiegoMarketContent: MarketPageContent = {
     ],
   },
   scenarios: {
+    /*
+      ⚠ THE FEATURE SITS THIRD, ON ITS OWN FULL-WIDTH ROW (owner,
+      2026-09-08). Two diagnostic cards above it, three planning cards
+      below.
+
+      ⚠ THE ORDER OF `items` IS THE LAYOUT, WHICH IS WHY THE ARRAY WAS
+      REORDERED RATHER THAN THE GRID BEING TOLD WHERE TO PUT THINGS.
+      `ScenarioGrid` derives its spans from each card's position
+      relative to the feature, so DOM order, visual order, keyboard
+      order and reading order stay the same list. No CSS `order-*` is
+      used anywhere in this section.
+
+      ⚠ LAS VEGAS IS UNAFFECTED. It sets no `featureLayout` and keeps
+      the corner tile and its own item order.
+    */
+    featureLayout: 'banner',
     eyebrow: 'When it helps',
     title: 'When should you schedule a sewer inspection?',
     /*
@@ -604,29 +620,6 @@ export const sanDiegoMarketContent: MarketPageContent = {
     */
     items: [
       {
-        title: 'Pre-purchase property evaluation',
-        description:
-          'Buyers can review recorded sewer-line evidence before closing instead of relying only on assumptions about a property’s underground systems.',
-        icon: 'document',
-        featured: true,
-        /*
-          ⚠ THE THIRD OF THE THREE SUPPLIED FRAMES, AND IT GOES HERE
-          RATHER THAN NOWHERE. The brief said to use it "only in the
-          featured pre-purchase card or as a restrained supporting
-          image", and not at all if it made the page repetitive. Two
-          frames sit above this one and both are 4:3 portrait-ish
-          crops; this is a wide 16:9 inside a card, which reads as a
-          different kind of element rather than a third photograph in
-          a row.
-        */
-        image: {
-          src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-property-sewer-inspection.webp',
-          alt: 'San Diego residential property prepared for a sewer inspection',
-          source:
-            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
-        },
-      },
-      {
         title: 'Recurring sewer backups',
         description:
           'A camera inspection can help document the visible condition of a line that continues to back up after previous clearing.',
@@ -649,6 +642,29 @@ export const sanDiegoMarketContent: MarketPageContent = {
             'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
         },
         icon: 'explanation',
+      },
+      {
+        title: 'Pre-purchase property evaluation',
+        description:
+          'Buyers can review recorded sewer-line evidence before closing instead of relying only on assumptions about a property’s underground systems.',
+        icon: 'document',
+        featured: true,
+        /*
+          ⚠ THE THIRD OF THE THREE SUPPLIED FRAMES, AND IT GOES HERE
+          RATHER THAN NOWHERE. The brief said to use it "only in the
+          featured pre-purchase card or as a restrained supporting
+          image", and not at all if it made the page repetitive. Two
+          frames sit above this one and both are 4:3 portrait-ish
+          crops; this is a wide 16:9 inside a card, which reads as a
+          different kind of element rather than a third photograph in
+          a row.
+        */
+        image: {
+          src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-property-sewer-inspection.webp',
+          alt: 'San Diego residential property prepared for a sewer inspection',
+          source:
+            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        },
       },
       {
         title: 'Preventative sewer maintenance',
