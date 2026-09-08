@@ -167,6 +167,44 @@ export function HubPageTemplate({
     !showsMarketCards && serviceIndexRenders(content.items)
 
   /*
+    ==========================================================================
+    THE MEMBER LIST TAKES THE HOME PAGE'S MOSAIC WHEN IT HAS THE FRAMES
+    ==========================================================================
+    ⚠ THE SAME TEST THE SERVICE BAND BELOW ALREADY RUNS, and the rule
+    `content/pages/service-cards.ts` states in prose: `ServiceIndex`
+    promotes a band from row list to mosaic purely on whether `image`
+    is set. Deriving it here rather than adding a route prop means a
+    hub that loses its artwork falls back to the row list instead of
+    shipping an empty-tiled grid, which is the failure the services
+    band was written to avoid.
+
+    ⚠ THIS CHANGES ONE PAGE TODAY, `/services/`. It has always passed
+    `homeContent.services` - the home page's own nine cards, artwork
+    and all - and rendered them as a plain row list, because
+    `HubPageContent.items` carried no `image` field for the template to
+    read. `/for/`, `/commercial/` and `/resources/` list pages that
+    have no frames, and `/locations/` renders `MarketCoverage` instead
+    of this band, so none of the four moves.
+
+    ⚠ THE DENSITY MOVES WITH THE VARIANT, AND IT HAS TO. `dense` is
+    what the home page and all three market hubs give this mosaic: the
+    tiles carry their own internal rhythm and `standard` padding leaves
+    them floating in the section. The `densities` array below reads
+    this same constant, because an array that disagreed with the render
+    would have `sectionRhythmIssues()` check a rhythm the page does not
+    have.
+
+    ⚠ `numbered` SURVIVES ON THE ROUTE AND IS INERT HERE. It is an
+    `index`-only prop, so `/services/` passing it is now a statement
+    about the fallback rather than about what renders.
+  */
+  const itemsAreMosaic =
+    showsItems &&
+    content.items !== undefined &&
+    content.items.some((item) => item.image !== undefined)
+  const itemsDensity: SectionDensity = itemsAreMosaic ? 'dense' : 'standard'
+
+  /*
     The service mosaic, which is a SEPARATE band from the member list
     above. See `HubPageContent.services` for why they are not
     alternatives.
@@ -250,7 +288,9 @@ export function HubPageTemplate({
       process, three `standard` bands in a row.
     */
     ...(showsMarketCards ? (['dense'] as const) : []),
-    ...(showsItems ? (['standard'] as const) : []),
+    // `itemsDensity`, not a literal: the mosaic takes `dense` and the
+    // row list `standard`. See where it is derived.
+    ...(showsItems ? [itemsDensity] : []),
     /*
       ⚠ `dense`, WHICH IS THE VALUE THE HOME PAGE AND ALL THREE MARKET
       HUBS ALREADY GIVE THIS BAND. The mosaic carries its own internal
@@ -434,11 +474,20 @@ export function HubPageTemplate({
       )}
 
       {showsItems && content.items !== undefined && (
+        /*
+          ⚠ `variant` AND `density` BOTH COME FROM `itemsAreMosaic`,
+          derived once above so the render and the `densities` array
+          cannot disagree. `id` stays `hub-items` in either shape: it
+          is the member list's anchor whatever presentation it takes,
+          and the service band below owns `id="services"`.
+        */
         <ServiceIndex
+          density={itemsDensity}
           id="hub-items"
           title={itemsTitle}
           items={content.items}
           numbered={numbered}
+          variant={itemsAreMosaic ? 'mosaic' : 'index'}
           surface={itemsSurface}
         />
       )}

@@ -1604,7 +1604,33 @@ export interface ResourcePageContent extends BasePageContent {
 
 /** Hub page — services, locations, for, commercial, resources. */
 export interface HubPageContent extends BasePageContent {
-  items?: readonly { pageId: PageId; description?: string }[]
+  /**
+   * The hub's own members, rendered by `ServiceIndex`.
+   *
+   * ⚠ `image` IS WHAT PROMOTES THE BAND FROM ROW LIST TO MOSAIC, and
+   * that is the same rule the home page's "What we do" band and the
+   * three market hubs already run on: `ServiceIndex` takes `mosaic`
+   * only once the cards actually carry artwork, so a set that lost its
+   * frames falls back to the row list rather than shipping an
+   * empty-tiled grid. `HubPageTemplate` derives both the variant and
+   * the band's density from this field; see the note at its render.
+   *
+   * ⚠ THE FIELD CARRIED NO `image` UNTIL 2026-09-08, WHICH IS WHY
+   * `/services/` WAS RENDERING A ROW LIST OVER THE HOME PAGE'S OWN
+   * CARDS. It has always passed `homeContent.services`, artwork and
+   * all, but the narrower type meant the template could not see the
+   * frames and the band fell to `index` by default.
+   *
+   * ⚠ ARTWORK IS A CARD BACKGROUND WITH WHITE TEXT OVER A SCRIM, and
+   * the scrim is load-bearing rather than decorative. See
+   * `content/pages/service-cards.ts` for the provenance rule these
+   * frames carry and `ServiceIndex` for the contrast measurements.
+   */
+  items?: readonly {
+    pageId: PageId
+    description?: string
+    image?: CardImage
+  }[]
   /**
    * Renders the home page's market cards INSTEAD OF the `items` index.
    *
