@@ -331,6 +331,16 @@ export function LeadFormSection({
         <h2 id={id} className="text-h3 font-semibold tracking-tight">
           {title}
         </h2>
+        {/*
+          ⚠ `intro` USED TO BE SILENTLY DROPPED ON THIS BRANCH. The
+          standalone section rendered it through `SectionHeading` and
+          the bare card ignored it, so a caller that passed one got no
+          error and no text. It renders here now; every existing bare
+          call site passes nothing and is unchanged.
+        */}
+        {intro !== undefined && (
+          <p className="mt-2 text-body text-muted-foreground">{intro}</p>
+        )}
         <div className="mt-6">{form}</div>
       </div>
     )

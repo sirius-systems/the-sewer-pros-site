@@ -258,6 +258,8 @@ export function HubPageTemplate({
       floating in the section.
     */
     ...(showsServices ? (['dense'] as const) : []),
+    // The process band, in the home page's slot. See the render.
+    ...(showsProcessBand ? (['standard'] as const) : []),
     // After the member list, as on the market hubs.
     ...(showsConfidence ? (['standard'] as const) : []),
     /*
@@ -267,13 +269,9 @@ export function HubPageTemplate({
       buffer has to move. The two branches are mutually exclusive on
       `showsHeroForm`, so the array length is unchanged either way.
     */
-    ...((showAuthority || showsProcessBand) && !showsHeroForm
-      ? (['standard'] as const)
-      : []),
+    ...(showAuthority && !showsHeroForm ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
-    ...((showAuthority || showsProcessBand) && showsHeroForm
-      ? (['standard'] as const)
-      : []),
+    ...(showAuthority && showsHeroForm ? (['standard'] as const) : []),
     /*
       ⚠ `CtaSection` SETS ITS OWN DENSITY FROM ITS VARIANT AND THIS HAS
       TO AGREE WITH IT: `sparse` for the panel, `dense` for the split.
@@ -324,6 +322,7 @@ export function HubPageTemplate({
                 bare
                 id="hero-request-service"
                 idPrefix="hero-lead"
+                intro={content.heroFormIntro}
               />
             </div>
           ) : undefined
@@ -477,20 +476,40 @@ export function HubPageTemplate({
         />
       )}
 
+      {/*
+        ==================================================================
+        THE PROCESS BAND — HOME PAGE POSITION, AND IT MOVED HERE FOR A
+        REASON THE PAGE CAN SHOW YOU
+        ==================================================================
+        It first shipped in the `AuthorityBand` slot below the FAQ,
+        where its job was to keep the FAQ and a `muted` closing CTA off
+        the same surface. The owner then supplied a CTA background
+        (2026-09-07), which makes that CTA image-backed - and an
+        image-backed band directly above an image-backed CTA is two
+        full-bleed photographs stacked, which reads as one long dark
+        region. 18 §11 names that.
+
+        So it takes the position the home page gives it: directly after
+        "What we do", between a `default` band and a `muted` one. The
+        FAQ then meets the CTA directly, which is fine because
+        `default` against an image is a real surface change.
+
+        ⚠ IT IS STILL `AuthorityBand`, AND IT STILL REPLACES THE PROOF
+        BAND rather than joining it - see the gate block above.
+      */}
+      {showsProcessBand && (
+        <AuthorityBand
+          variant="process"
+          backgroundImage={content.processBackground}
+        />
+      )}
+
       {/* After the member list, as on the market hubs. */}
       {showsConfidence && (
         <ConfidenceModule density="standard" surface={confidenceSurface} />
       )}
 
-      {!showsHeroForm &&
-        (showsProcessBand ? (
-          <AuthorityBand
-            variant="process"
-            backgroundImage={content.processBackground}
-          />
-        ) : (
-          showAuthority && <AuthorityBand title="How we work" />
-        ))}
+      {!showsHeroForm && showAuthority && <AuthorityBand title="How we work" />}
 
       {/*
         Muted, deliberately. A hub runs hero → body → items → faq, and
@@ -518,21 +537,7 @@ export function HubPageTemplate({
         buffer, exactly as it buffers the brand panel from a brand band
         on the other branch.
       */}
-      {showsHeroForm &&
-        (showsProcessBand ? (
-          /*
-            ⚠ THE PROCESS VARIANT SITS WHERE THE PROOF BAND SAT, WHICH
-            KEEPS ITS STRUCTURAL JOB. That slot exists to stop the FAQ
-            and the closing CTA sharing a surface; an image-backed band
-            separates them as well as a brand one did.
-          */
-          <AuthorityBand
-            variant="process"
-            backgroundImage={content.processBackground}
-          />
-        ) : (
-          showAuthority && <AuthorityBand title="How we work" />
-        ))}
+      {showsHeroForm && showAuthority && <AuthorityBand title="How we work" />}
 
       <CtaSection
         /*
@@ -558,6 +563,14 @@ export function HubPageTemplate({
           Same handling as `MarketPageTemplate`.
         */
         action={content.cta?.hideAction === true ? null : undefined}
+        /*
+          ⚠ THE SPLIT VARIANT NO LONGER IMPLIES "NO IMAGE". It is still
+          keyed off `showHeroForm` rather than off this field, because
+          the form and the split layout are the one feature; the image
+          is an independent dressing that `CtaSection` applies over the
+          `muted` fallback. A hub can set either without the other.
+        */
+        backgroundImage={content.ctaBackground}
         /*
           ⚠ NO `phone`. `MarketPageTemplate` is the only template that
           passes one, because a phone number is market-scoped and this
