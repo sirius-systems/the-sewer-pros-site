@@ -155,7 +155,17 @@ export interface MarketGuidanceContent {
   panel: {
     title: string
     body: string
-    links: readonly { pageId: PageId; label: string }[]
+    /**
+     * ⚠ `accent` IS A ROLE HERE TOO, matching `MarketGuidanceCard`.
+     * `MarketGuidance` maps green to the `primary` button and blue to
+     * the `accent` one, so DEC-096's palette stays the single source
+     * and no hex reaches a content file.
+     */
+    links: readonly {
+      pageId: PageId
+      label: string
+      accent: 'green' | 'blue'
+    }[]
   }
 }
 
