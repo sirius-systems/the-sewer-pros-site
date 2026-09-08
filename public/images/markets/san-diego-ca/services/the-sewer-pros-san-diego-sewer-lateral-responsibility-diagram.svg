@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1600 1200"
+     width="1600"
+     height="1200"
+     style="display:block;width:100%;height:auto;max-width:1600px"
+     preserveAspectRatio="xMidYMid meet"
+     role="img"
+     aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">San Diego residential sewer lateral and public sewer main</title>
+  <desc id="diagram-desc">General side-view cutaway showing a stucco home, building drain, exterior sewer cleanout, private sewer lateral, property boundary, public right of way, sidewalk, street, connection point, and public sewer main. Responsibility varies by property location and current local rules.</desc>
+
+  <style>
+    .navy-stroke { stroke: #0B2D45; }
+    .blue-stroke { stroke: #1C6B97; }
+    .green-stroke { stroke: #007A3D; }
+    .gray-stroke { stroke: #A8BAC4; }
+    .label { font: 600 27px Arial, Helvetica, sans-serif; fill: #0B2D45; }
+    .small-label { font: 600 23px Arial, Helvetica, sans-serif; fill: #0B2D45; }
+    .qualifier { font: 400 23px Arial, Helvetica, sans-serif; fill: #405B6B; }
+    .callout { fill: none; stroke: #7E96A4; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .pipe { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <!-- Background and title band -->
+  <rect width="1600" height="1200" fill="#F4F7F8"/>
+  <g id="heading" aria-label="Diagram heading">
+    <text x="80" y="82" class="label" font-size="34">Residential sewer connection — general side view</text>
+    <line x1="80" y1="110" x2="1520" y2="110" stroke="#D7E0E5" stroke-width="2"/>
+  </g>
+
+  <!-- Sky / grade -->
+  <rect x="70" y="150" width="1460" height="390" rx="18" fill="#FFFFFF" stroke="#D7E0E5" stroke-width="2"/>
+  <path d="M70 480 H1530" stroke="#0B2D45" stroke-width="5"/>
+
+  <g id="residence" aria-label="Home">
+    <!-- Restrained Southern California planting -->
+    <g id="landscaping" aria-hidden="true">
+      <path d="M114 480 Q130 425 146 480 Q158 434 174 480 Q187 446 202 480" fill="#DDEBDD" stroke="#7FA58C" stroke-width="3"/>
+      <circle cx="550" cy="462" r="25" fill="#DDEBDD" stroke="#7FA58C" stroke-width="3"/>
+      <circle cx="596" cy="455" r="32" fill="#DDEBDD" stroke="#7FA58C" stroke-width="3"/>
+      <circle cx="642" cy="463" r="24" fill="#DDEBDD" stroke="#7FA58C" stroke-width="3"/>
+    </g>
+
+    <!-- Modest stucco home -->
+    <path d="M180 480 V270 L390 185 L600 270 V480 Z" fill="#FFFDF8" stroke="#0B2D45" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M145 282 L390 165 L635 282" fill="none" stroke="#0B2D45" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M176 268 L390 177 L604 268" fill="none" stroke="#B58B69" stroke-width="7" stroke-dasharray="22 9" stroke-linecap="round"/>
+    <rect x="225" y="326" width="105" height="154" rx="3" fill="#E9F0F3" stroke="#0B2D45" stroke-width="5"/>
+    <circle cx="308" cy="404" r="5" fill="#0B2D45"/>
+    <rect x="415" y="305" width="118" height="93" fill="#EAF5F8" stroke="#0B2D45" stroke-width="5"/>
+    <line x1="474" y1="305" x2="474" y2="398" stroke="#A8BAC4" stroke-width="3"/>
+    <line x1="415" y1="352" x2="533" y2="352" stroke="#A8BAC4" stroke-width="3"/>
+    <rect x="180" y="480" width="420" height="135" fill="#E5E9E7" stroke="#0B2D45" stroke-width="5"/>
+    <line x1="180" y1="534" x2="600" y2="534" stroke="#BAC7CC" stroke-width="3"/>
+    <text x="390" y="245" class="label" text-anchor="middle">Home</text>
+  </g>
+
+  <g id="building-drain" aria-label="Building drain">
+    <path class="pipe green-stroke" d="M262 565 H470 Q505 565 505 600 V690" stroke-width="20"/>
+    <path d="M276 565 h52 M314 553 l18 12 -18 12" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"/>
+  </g>
+
+  <g id="cleanout" aria-label="Sewer cleanout">
+    <path d="M505 690 V470" fill="none" stroke="#007A3D" stroke-width="20" stroke-linecap="round"/>
+    <path d="M486 467 H524 V486 H486 Z" fill="#FFFFFF" stroke="#007A3D" stroke-width="6"/>
+    <circle cx="505" cy="466" r="9" fill="#007A3D"/>
+    <path class="callout" d="M505 444 V370 H660"/>
+    <circle cx="505" cy="444" r="6" fill="#007A3D"/>
+    <text x="675" y="378" class="label">Sewer cleanout</text>
+  </g>
+
+  <g id="sidewalk" aria-label="Sidewalk">
+    <rect x="1010" y="450" width="150" height="30" fill="#E2E7EA" stroke="#0B2D45" stroke-width="4"/>
+    <line x1="1085" y1="451" x2="1085" y2="479" stroke="#B2C0C7" stroke-width="3"/>
+    <path class="callout" d="M1085 447 V350 H1175"/>
+    <text x="1190" y="358" class="small-label">Sidewalk</text>
+  </g>
+
+  <g id="street" aria-label="Street">
+    <rect x="1160" y="420" width="370" height="60" fill="#667784" stroke="#0B2D45" stroke-width="4"/>
+    <path d="M1220 451 H1300 M1360 451 H1440" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    <text x="1345" y="390" class="label" text-anchor="middle">Street</text>
+  </g>
+
+  <g id="subsurface" aria-label="Underground cutaway">
+    <rect x="70" y="485" width="1460" height="445" fill="#E9E2D5"/>
+    <path d="M70 575 Q270 555 470 580 T870 575 T1270 582 T1530 570" fill="none" stroke="#D2C7B5" stroke-width="3"/>
+    <path d="M70 720 Q300 700 510 725 T940 710 T1320 730 T1530 716" fill="none" stroke="#D2C7B5" stroke-width="3"/>
+    <path d="M70 845 Q260 825 455 850 T860 842 T1260 852 T1530 838" fill="none" stroke="#D2C7B5" stroke-width="3"/>
+  </g>
+
+  <!-- Redraw foundation and access elements above cutaway soil -->
+  <g aria-hidden="true">
+    <rect x="180" y="485" width="420" height="130" fill="#E5E9E7" stroke="#0B2D45" stroke-width="5"/>
+    <line x1="180" y1="534" x2="600" y2="534" stroke="#BAC7CC" stroke-width="3"/>
+  </g>
+
+  <g id="private-lateral" aria-label="Private sewer lateral">
+    <path class="pipe green-stroke" d="M262 565 H470 Q505 565 505 600 V690 Q505 730 545 738 L1238 838" stroke-width="22"/>
+    <path class="pipe" d="M262 565 H470 Q505 565 505 600 V690 Q505 730 545 738 L1238 838" stroke="#FFFFFF" stroke-width="7" opacity="0.92"/>
+    <!-- flow chevrons -->
+    <path d="M710 754 l18 13 -21 7 M895 781 l18 13 -21 7 M1074 807 l18 13 -21 7" fill="none" stroke="#007A3D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"/>
+    <path class="callout" d="M740 760 V670 H835"/>
+    <circle cx="740" cy="760" r="6" fill="#007A3D"/>
+    <text x="850" y="678" class="label" fill="#007A3D">Private sewer lateral</text>
+  </g>
+
+  <g id="cleanout-underground" aria-hidden="true">
+    <path d="M505 690 V470" fill="none" stroke="#007A3D" stroke-width="20" stroke-linecap="round"/>
+    <path d="M486 467 H524 V486 H486 Z" fill="#FFFFFF" stroke="#007A3D" stroke-width="6"/>
+  </g>
+
+  <g id="property-boundary" aria-label="Property boundary">
+    <path d="M990 428 V900" fill="none" stroke="#1C6B97" stroke-width="4" stroke-dasharray="13 10"/>
+    <path d="M974 435 H1006 M974 893 H1006" stroke="#1C6B97" stroke-width="4"/>
+    <rect x="802" y="528" width="176" height="44" rx="6" fill="#F4F7F8" stroke="#D7E0E5" stroke-width="2"/>
+    <text x="890" y="558" class="small-label" text-anchor="middle">Property boundary</text>
+  </g>
+
+  <g id="public-right-of-way" aria-label="Public right of way">
+    <path d="M1010 630 V605 H1518 V630" fill="none" stroke="#1C6B97" stroke-width="4" stroke-linecap="round"/>
+    <text x="1264" y="590" class="label" text-anchor="middle" fill="#1C6B97">Public right of way</text>
+  </g>
+
+  <g id="public-sewer-main" aria-label="Public sewer main">
+    <ellipse cx="1342" cy="847" rx="128" ry="80" fill="#DDE8EE" stroke="#0B2D45" stroke-width="18"/>
+    <ellipse cx="1342" cy="847" rx="91" ry="49" fill="#FFFFFF" stroke="#1C6B97" stroke-width="6"/>
+    <path d="M1253 848 Q1342 878 1431 848" fill="none" stroke="#1C6B97" stroke-width="11" stroke-linecap="round" opacity="0.65"/>
+    <path class="callout" d="M1388 913 V965 H1245"/>
+    <circle cx="1388" cy="913" r="6" fill="#0B2D45"/>
+    <text x="1230" y="973" class="label" text-anchor="end">Public sewer main</text>
+  </g>
+
+  <g id="connection" aria-label="Connection between private lateral and public sewer main">
+    <path d="M1218 835 Q1243 836 1261 842" fill="none" stroke="#007A3D" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="1249" cy="841" r="13" fill="#FFFFFF" stroke="#007A3D" stroke-width="5"/>
+    <path class="callout" d="M1249 816 V730 H1345"/>
+    <text x="1360" y="738" class="small-label">Connection</text>
+  </g>
+
+  <g id="legend" aria-label="Color key">
+    <rect x="82" y="972" width="655" height="102" rx="12" fill="#FFFFFF" stroke="#D7E0E5" stroke-width="2"/>
+    <line x1="112" y1="1010" x2="178" y2="1010" stroke="#007A3D" stroke-width="12" stroke-linecap="round"/>
+    <text x="198" y="1019" class="small-label">Private lateral / property-side system</text>
+    <line x1="112" y1="1047" x2="178" y2="1047" stroke="#0B2D45" stroke-width="12" stroke-linecap="round"/>
+    <text x="198" y="1056" class="small-label">Public sewer main</text>
+  </g>
+
+  <g id="qualifier" aria-label="Important qualifier">
+    <line x1="80" y1="1102" x2="1520" y2="1102" stroke="#D7E0E5" stroke-width="2"/>
+    <circle cx="100" cy="1140" r="14" fill="#1C6B97"/>
+    <text x="100" y="1148" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">i</text>
+    <text x="130" y="1148" class="qualifier">General illustration. Responsibility can vary by property location and current local rules.</text>
+  </g>
+</svg>

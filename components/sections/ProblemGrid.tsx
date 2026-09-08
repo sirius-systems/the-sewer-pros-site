@@ -114,6 +114,8 @@ export interface ProblemGridProps {
    * read as one more card. Every existing caller omits it.
    */
   note?: { title?: string; body: string }
+  /** Illustrative graphic beside the heading. Never a boundary map. */
+  image?: CardImage
 }
 
 /**
@@ -146,6 +148,7 @@ export function ProblemGrid({
   items,
   surface = 'default',
   note,
+  image,
 }: ProblemGridProps) {
   // 18 §120 — omit the section entirely rather than render an empty shell.
   if (items.length === 0) return null
@@ -185,7 +188,38 @@ export function ProblemGrid({
 
   return (
     <Section density={density} surface={surface} labelledBy={id}>
-      <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+      {/*
+        ⚠ THE GRAPHIC SITS BESIDE THE INTRO, NOT ABOVE THE CARDS. The
+        cards are the answer; the intro is the question, and an
+        illustration belongs with the question. Omitting it leaves the
+        heading full width, which is what every other caller renders.
+
+        ⚠ `object-contain`. These are diagrams with labels, and `cover`
+        would crop them off the edges.
+      */}
+      {image !== undefined ? (
+        <div className="grid gap-10 lg:grid-cols-[7fr_5fr] lg:items-center">
+          <div>
+            <SectionHeading
+              id={id}
+              title={title}
+              eyebrow={eyebrow}
+              intro={intro}
+            />
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-surface">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className="object-contain p-4"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </div>
+        </div>
+      ) : (
+        <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+      )}
 
       <div
         className={cn(

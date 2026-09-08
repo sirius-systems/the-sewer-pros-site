@@ -754,6 +754,7 @@ export function MarketPageTemplate({
             </>
           }
           steps={content.independence.steps}
+          image={content.independence.image}
         />
       )}
 
@@ -885,6 +886,7 @@ export function MarketPageTemplate({
           intro={content.authorities.intro?.join(' ')}
           items={content.authorities.items}
           note={content.authorities.note}
+          image={content.authorities.image}
         />
       )}
 
@@ -913,6 +915,7 @@ export function MarketPageTemplate({
           intro={content.repairCoverage.intro?.join(' ')}
           items={content.repairCoverage.items}
           note={content.repairCoverage.note}
+          image={content.repairCoverage.image}
         />
       )}
 

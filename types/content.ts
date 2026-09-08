@@ -406,6 +406,16 @@ export interface IndependenceContent {
   eyebrow?: string
   title: string
   body: readonly string[]
+  /**
+   * A frame beside the heading.
+   *
+   * ⚠ A DEDICATED FRAME, NOT A BACKGROUND. `ProcessSteps` also takes a
+   * `backgroundImage`, which replaces the surface and puts text on the
+   * photograph. This one sits in its own box beside the copy, which is
+   * what a band on `brand` needs: an overlay on top of navy would be
+   * two dark layers and the steps would lose their contrast.
+   */
+  image?: CardImage
   steps: readonly {
     title: string
     description: string
@@ -439,6 +449,16 @@ export interface RepairCoverageContent {
    * does not, and an empty panel would be worse than none.
    */
   note?: { title?: string; body: string }
+  /**
+   * A graphic beside the introduction.
+   *
+   * ⚠ ILLUSTRATIVE, NEVER AUTHORITATIVE. These sections describe which
+   * public agency serves which property and which programmes exist. A
+   * graphic here must not draw a service boundary or imply one: the
+   * whole point of the copy is that the boundary is a question of
+   * address, and a map would contradict the sentence it sits beside.
+   */
+  image?: CardImage
 }
 
 /** Closing regional conversion panel. */
