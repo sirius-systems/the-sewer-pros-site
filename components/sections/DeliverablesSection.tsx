@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { Section, type SectionDensity } from '@/components/ui'
+import { Section, type SectionDensity,
+  type SectionSurface } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { CheckIcon, SECTION_ICONS } from './section-icons'
 import { cn } from '@/lib/utils/cn'
@@ -47,17 +48,20 @@ export interface DeliverablesSectionProps {
   content: DeliverablesContent
   density?: SectionDensity
   id?: string
+  /** Overrides the section's natural surface. */
+  surface?: SectionSurface
 }
 
 export function DeliverablesSection({
   content,
   density = 'standard',
   id = 'what-you-receive',
+  surface = 'default',
 }: DeliverablesSectionProps) {
   const hasImage = content.image !== undefined
 
   return (
-    <Section density={density} labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       <div
         className={cn(
           'grid gap-10',

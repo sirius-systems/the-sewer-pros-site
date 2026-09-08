@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
+import { Section, ButtonLink, type SectionDensity,
+  type SectionSurface } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { SECTION_ICONS, CheckIcon } from './section-icons'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
@@ -42,12 +43,15 @@ export interface ScenarioGridProps {
   content: ScenariosContent
   density?: SectionDensity
   id?: string
+  /** Overrides the section's natural surface. */
+  surface?: SectionSurface
 }
 
 export function ScenarioGrid({
   content,
   density = 'standard',
   id = 'when-to-inspect',
+  surface = 'muted',
 }: ScenarioGridProps) {
   /*
     ⚠ EXACTLY ONE FEATURED TILE, AND THE FIRST ONE WINS. The type says
@@ -66,7 +70,7 @@ export function ScenarioGrid({
       : undefined
 
   return (
-    <Section density={density} surface="muted" labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       <div className="max-w-[52rem]">
         <SectionHeading
           id={id}

@@ -1,4 +1,9 @@
-import { Section, Prose, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  Prose,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import Image from 'next/image'
 import {
   Hero,
@@ -48,7 +53,7 @@ import {
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
-import type { MarketPageContent, MasterPageRecord } from '@/types'
+import type { AuthoritySectionId, MarketPageContent, MasterPageRecord } from '@/types'
 
 /**
  * Market hub page.
@@ -207,6 +212,44 @@ export function MarketPageTemplate({
   )
 
   /*
+    ==========================================================================
+    THE STACK'S ORDER AND SURFACES ARE DERIVED, NOT HARDCODED
+    ==========================================================================
+    ⚠ THE TWO MARKETS WANT DIFFERENT ORDERS, WHICH IS WHY THIS EXISTS.
+    San Diego runs conditions -> scenarios -> deliverables; Las Vegas
+    runs deliverables -> scenarios and has no conditions grid at all. A
+    fixed sequence served one and broke the other, and the breakage was
+    a SURFACE one rather than a visible mistake: Las Vegas came out
+    with a muted experience band against a muted scenario grid, which
+    reads as one long section.
+
+    ⚠ SURFACES ALTERNATE FROM THE EXPERIENCE BAND, which is always
+    `muted`, so the first of these is `default` and they flip from
+    there. Deriving it means neither market can author an adjacency
+    fault by reordering, and `independence` (always `brand`) and the
+    coverage panel below are unaffected either way.
+  */
+  const authorityOrder =
+    content.authorityOrder ?? (['conditions', 'scenarios', 'deliverables'] as const)
+  const authorityRenders: Record<AuthoritySectionId, boolean> = {
+    conditions: showsConditions,
+    scenarios: showsScenarios,
+    deliverables: showsDeliverables,
+  }
+  const authorityStack = authorityOrder
+    .filter((key) => authorityRenders[key] === true)
+    .map((key, index) => ({
+      key,
+      // The experience band above is `muted`, so index 0 is `default`.
+      surface: (index % 2 === 0 ? 'default' : 'muted') as SectionSurface,
+    }))
+  const authorityDensity: Record<AuthoritySectionId, SectionDensity> = {
+    conditions: 'dense',
+    scenarios: 'standard',
+    deliverables: 'standard',
+  }
+
+  /*
     Which lateral-education treatment renders, and it is EXACTLY ONE OF
     EACH PAIR.
 
@@ -302,9 +345,7 @@ export function MarketPageTemplate({
       the limit `sectionRhythmIssues()` enforces, and the surface
       change is what separates those bands rather than the density.
     */
-    ...(showsConditions ? (['dense'] as const) : []),
-    ...(showsScenarios ? (['standard'] as const) : []),
-    ...(showsDeliverables ? (['standard'] as const) : []),
+    ...authorityStack.map((entry) => authorityDensity[entry.key]),
     ...(showsIndependence ? (['standard'] as const) : []),
     ...(showsRegionalCoverage ? (['dense'] as const) : []),
     ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
@@ -594,32 +635,51 @@ export function MarketPageTemplate({
         borrowing those anchors for a conditions grid would point a
         San Diego section at a St. Louis concept.
       */}
-      {showsConditions && content.conditions !== undefined && (
-        <ProblemGrid
-          density="dense"
-          id="inspection-findings"
-          eyebrow={content.conditions.eyebrow}
-          title={content.conditions.title}
-          intro={content.conditions.intro?.join(' ')}
-          items={content.conditions.items}
-        />
-      )}
-
-      {showsScenarios && content.scenarios !== undefined && (
-        <ScenarioGrid
-          density="standard"
-          id="when-to-inspect"
-          content={content.scenarios}
-        />
-      )}
-
-      {showsDeliverables && content.deliverables !== undefined && (
-        <DeliverablesSection
-          density="standard"
-          id="what-you-receive"
-          content={content.deliverables}
-        />
-      )}
+      {/*
+        ⚠ RENDERED FROM `authorityStack`, SO THE ORDER AND THE SURFACES
+        COME FROM ONE PLACE. Writing the three out in sequence here is
+        what let the density array, the surfaces and the render drift
+        apart on Las Vegas; a map over the derived list cannot.
+      */}
+      {authorityStack.map((entry) => {
+        if (entry.key === 'conditions' && content.conditions !== undefined) {
+          return (
+            <ProblemGrid
+              key={entry.key}
+              density={authorityDensity[entry.key]}
+              surface={entry.surface}
+              id="inspection-findings"
+              eyebrow={content.conditions.eyebrow}
+              title={content.conditions.title}
+              intro={content.conditions.intro?.join(' ')}
+              items={content.conditions.items}
+            />
+          )
+        }
+        if (entry.key === 'scenarios' && content.scenarios !== undefined) {
+          return (
+            <ScenarioGrid
+              key={entry.key}
+              density={authorityDensity[entry.key]}
+              surface={entry.surface}
+              id="when-to-inspect"
+              content={content.scenarios}
+            />
+          )
+        }
+        if (entry.key === 'deliverables' && content.deliverables !== undefined) {
+          return (
+            <DeliverablesSection
+              key={entry.key}
+              density={authorityDensity[entry.key]}
+              surface={entry.surface}
+              id="what-you-receive"
+              content={content.deliverables}
+            />
+          )
+        }
+        return null
+      })}
 
       {showsIndependence && content.independence !== undefined && (
         /*

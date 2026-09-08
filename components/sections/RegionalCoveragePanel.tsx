@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {
   Section,
   ButtonLink,
@@ -6,7 +7,11 @@ import {
 } from '@/components/ui'
 import { TrackedPhoneLink } from '@/components/tracking'
 import { SectionHeading } from './SectionHeading'
-import { resolveApprovedLink } from '@/lib/links/approved-link'
+import {
+  resolveApprovedLink,
+  resolveLinkableOnly,
+} from '@/lib/links/approved-link'
+import { cn } from '@/lib/utils/cn'
 import type { RegionalCoverageContent } from '@/types'
 
 /**
@@ -69,9 +74,43 @@ export function RegionalCoveragePanel({
         })
       : undefined
 
+  const locations =
+    content.locations !== undefined
+      ? resolveLinkableOnly(content.locations.map((l) => l.pageId))
+      : []
+  const locationLabels = new Map(
+    (content.locations ?? []).map((l) => [l.pageId, l.label]),
+  )
+
+  /*
+    ⚠ TWO TREATMENTS, AND THE IMAGE PICKS WHICH. With a photograph the
+    panel sits directly on it: `Section` supplies the scrim and turns
+    unstyled children white, so a white card on top would hide the
+    frame entirely. Without one, the white card on the muted section is
+    what separates the panel from the band above it.
+  */
+  const onImage = content.backgroundImage !== undefined
+
   return (
-    <Section density={density} surface="muted" labelledBy={id}>
-      <div className="rounded-md border border-border bg-background p-6 sm:p-8 lg:p-10">
+    <Section
+      density={density}
+      surface="muted"
+      labelledBy={id}
+      backgroundImage={content.backgroundImage}
+      /*
+        `strong`, because conversion controls and a phone number sit on
+        this frame and the composition puts its busiest detail through
+        the middle. The lighter scrim is measured for text alone.
+      */
+      scrim="strong"
+    >
+      <div
+        className={cn(
+          onImage
+            ? 'max-w-[60rem]'
+            : 'rounded-md border border-border bg-background p-6 sm:p-8 lg:p-10',
+        )}
+      >
         <div className="max-w-[52rem]">
           <SectionHeading
             id={id}
@@ -79,10 +118,50 @@ export function RegionalCoveragePanel({
             title={content.title}
           />
           {content.body.map((paragraph) => (
-            <p key={paragraph} className="mt-4 text-body text-muted-foreground">
+            <p
+              key={paragraph}
+              className={cn(
+                'mt-4 text-body',
+                /*
+                  ⚠ `text-white/90`, NOT `text-muted-foreground`, ON A
+                  PHOTOGRAPH. The muted token is tuned for a light
+                  surface and drops well under 4.5:1 over a scrimmed
+                  frame. Same trap `ProcessSteps` had on a brand
+                  surface.
+                */
+                onImage ? 'text-white/90' : 'text-muted-foreground',
+              )}
+            >
               {paragraph}
             </p>
           ))}
+
+          {/*
+            ⚠ FEATURED COMMUNITIES AS LINKS, NOT CARDS. Both markets
+            already render a full image mosaic of their service
+            locations further up the page; repeating it as cards here
+            would be the same navigation twice. These are a compact
+            row that names the four and gets out of the way.
+          */}
+          {locations.length > 0 && (
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              {locations.map((link) => (
+                <li key={link.pageId}>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'text-body font-semibold underline underline-offset-4',
+                      onImage
+                        ? 'text-white hover:text-white/80'
+                        : 'text-accent-secondary hover:text-foreground',
+                    )}
+                  >
+                    {locationLabels.get(link.pageId) ?? link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/*

@@ -359,79 +359,72 @@ export const lasVegasMarketContent: MarketPageContent = {
     ⚠ NO EMERGENCY, WEEKEND, OR 24/7 LANGUAGE. Published hours are
     weekdays only and affirmatively rule all three out (01 §35).
   */
+  /*
+    ⚠ `editorial`, WHERE THIS MARKET DEFAULTED TO `aside` (2026-09-08).
+    `aside` puts the blocks in a 7/12 column and the proof cards in a
+    5/12 sidebar. With the blocks moved into sections of their own that
+    arrangement would have left three narrow cards beside an empty
+    column. `editorial` is the variant with a heading-and-image split
+    and a full-width proof row, which is the layout the brief asks for
+    and the one St. Louis already uses.
+
+    ⚠ IT DOES NOT MAKE THIS PAGE A COPY OF ST. LOUIS. The variant is
+    shared; the copy, the image, the proof cards, the scenarios and the
+    coverage panel below are all this market's own, and St. Louis keeps
+    four editorial blocks this page does not have.
+  */
+  experienceVariant: 'editorial',
   experience: {
+    /*
+      2896x2172, a true 4:3, so the frame crops nothing.
+    */
+    image: {
+      src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-sewer-inspection-experience.webp',
+      alt: 'Sewer camera inspection equipment beside a Las Vegas Valley home',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     eyebrow: 'Company experience, local service',
-    title: 'Sewer inspection experience for Las Vegas properties',
+    title: 'Sewer inspection experience Las Vegas property owners can use',
     intro: [
       'The Sewer Pros is a sewer and drain specialist rather than a general plumbing company, and Las Vegas customers receive the same evidence-first approach the company is built on. That matters when you need to understand a recurring sewer backup, investigate a slow or blocked line, evaluate a property before purchase, or determine whether sewer cleaning is the appropriate next step.',
       'Our Las Vegas sewer services include sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, recurring backup diagnosis, pre-purchase sewer inspection, and preventative sewer maintenance. We focus on identifying and documenting visible conditions inside accessible portions of the sewer line, then explaining what the evidence means in plain language.',
     ],
-    blocks: [
-      {
-        title: 'What does a Las Vegas sewer camera inspection provide?',
-        body: [
-          'A sewer camera inspection, also called a sewer scope, records the visible condition of the accessible sewer line. The footage may reveal buildup, root intrusion, blockages, offset joints, standing water, cracks, or other conditions that could be contributing to drainage problems.',
-          'You receive video evidence and an understandable explanation of the findings, helping you decide whether the line needs cleaning, continued monitoring, or further evaluation by a separate sewer repair provider.',
-        ],
-      },
-      {
-        title: 'Make your next decision with better information',
-        listIntro: 'A professional sewer inspection can help you:',
-        items: [
-          'See visible conditions inside the accessible sewer line',
-          'Investigate the cause of recurring sewer backups or slow drainage',
-          'Determine whether sewer cleaning or hydro jetting may be appropriate',
-          'Document the line before purchasing a Las Vegas-area property',
-          'Locate the sewer line before landscaping, excavation, or utility work',
-          'Review inspection findings before agreeing to a major sewer repair',
-          'Keep video evidence that can be reviewed or shared when seeking another opinion',
-        ],
-      },
-      {
-        title: 'An inspection-first approach without a repair sale',
-        body: [
-          'The Sewer Pros inspects, documents, locates, and cleans sewer lines. We do not perform sewer repair or replacement, so we do not profit from recommending a major repair.',
-          'Our role is to show you what is visible inside the line and explain the findings clearly. You remain in control of what happens next, including whether to schedule cleaning, monitor the condition, seek another opinion, or consult a sewer repair provider of your choosing.',
-        ],
-      },
-    ],
+    /*
+      ⚠ `blocks` WAS REMOVED HERE, NOT DELETED FROM THE SITE
+      (2026-09-08). Its three sub-headings each became a section of
+      their own further down this file:
+
+        "What does a Las Vegas sewer camera inspection provide?"
+            -> `deliverables`
+        "Make your next decision with better information"
+            -> `scenarios`
+        "An inspection-first approach without a repair sale"
+            -> `independence`
+
+      `coverage` and `actions` moved to `regionalCoverage`. Every claim
+      survives; see those fields.
+    */
     proof: [
       {
         title: 'Sewer and Drain Specialists',
-        body: 'Sewer inspection, diagnostics, locating, and cleaning are the work, not a sideline of a general plumbing business.',
+        body: 'We focus on sewer inspection, diagnostics, locating, and cleaning, giving Las Vegas Valley property owners specialized information about what is happening inside the line.',
         icon: 'experience',
         accent: 'blue',
       },
       {
         title: 'Documented Camera Evidence',
-        body: 'Visible conditions inside the accessible line are recorded and explained, so the findings are something you can review rather than take on trust.',
+        body: 'Visible conditions are recorded and explained so you can review the findings instead of relying only on symptoms or a verbal description.',
         icon: 'camera',
         accent: 'blue',
       },
       {
         title: 'No Repair-Driven Upselling',
-        body: 'We do not perform sewer repair or replacement. The inspection findings stay separate from the sale of a major repair.',
+        body: 'Because we do not perform sewer repair or replacement, the inspection findings remain separate from a repair sale.',
         icon: 'independence',
         accent: 'green',
       },
     ],
-    coverage: {
-      title: 'Sewer inspection and cleaning across the Las Vegas Valley',
-      body: [
-        'The Sewer Pros serves residential properties, home buyers, real estate professionals, property managers, multifamily buildings, and commercial properties throughout the Las Vegas Valley. Featured service areas include Las Vegas, Henderson, North Las Vegas, and Summerlin.',
-        'Service availability can vary by property location. Contact us with the address and the sewer or drainage issue you are experiencing so we can confirm coverage before scheduling.',
-      ],
-    },
-    actions: {
-      primary: {
-        label: 'Schedule a Las Vegas Sewer Inspection',
-        pageId: id('core-contact'),
-      },
-      secondary: {
-        label: 'Explore Las Vegas Sewer Services',
-        pageId: id('hub-services'),
-      },
-    },
   },
   /*
     ⚠ THE HOME PAGE'S "What we do" SECTION, NOT A LOCAL VARIANT OF IT
@@ -455,6 +448,224 @@ export const lasVegasMarketContent: MarketPageContent = {
     offers and the others do not needs a registry status first; see the
     St. Louis file, which composes rather than appends, and says why.
   */
+  /*
+    ==========================================================================
+    THE AUTHORITY STACK. Four sections carved out of `experience`
+    (owner direction, 2026-09-08). Mirrors the San Diego build.
+    ==========================================================================
+    ⚠ NOTHING WAS INVENTED AND NOTHING WAS DROPPED. Every claim below
+    came from the three `blocks`, the `coverage` panel and the
+    `actions` that used to sit inside `ExperienceSection`.
+
+    ⚠ ALL THREE REQUESTED IMAGES EXIST AND ARE WIRED, unlike the San
+    Diego build, which shipped image-free and was completed the next
+    day. Two are 2896x2172 (true 4:3) and the CTA frame is 3344x1882
+    (16:9), all webp between 398 and 426 KB.
+
+    ⚠ NO LAS VEGAS BUSINESS FACT IS ADDED. No office, no address, no
+    founding year, no inspection total, no GBP detail, no licence, no
+    response time. This market has none of those published (DEC-076,
+    DEC-080 confirm the SERVICES only), and the copy stays on what the
+    company does rather than on how long it has done it here. The
+    experience band above deliberately makes no local-history claim
+    for the same reason.
+
+    ⚠ EVERY DESCRIPTION SAYS "MAY" OR "CAN". CLAUDE.md §24 forbids
+    guaranteeing that a defect is visible or that a cause is
+    established.
+  */
+  /*
+    ⚠ THIS MARKET LEADS WITH WHAT THE INSPECTION PROVIDES, where San
+    Diego leads with the conditions it may reveal. Both orders are
+    authored rather than implied by field order, and the surfaces
+    alternate from whichever comes first, so neither page can grow an
+    adjacency fault by being reordered.
+
+    ⚠ NO `conditions` GRID HERE. This market's brief asked for four
+    explanatory sections, not five, and the conditions list it would
+    have carried is already inside the deliverables intro below.
+  */
+  authorityOrder: ['deliverables', 'scenarios'],
+  deliverables: {
+    eyebrow: 'Visible evidence',
+    title: 'See what is happening inside the sewer line',
+    intro: [
+      'A Las Vegas sewer camera inspection sends a camera through the accessible portion of the sewer line to document its visible condition. The footage may reveal blockages, root intrusion, scale, grease buildup, offset joints, cracks, standing water, or other conditions contributing to slow drains and recurring backups.',
+      'The camera shows what is visible inside the accessible line. It does not see through pipe walls, reach inaccessible portions, or definitively identify every underground problem.',
+    ],
+    image: {
+      src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-sewer-camera-evidence.webp',
+      alt: 'Sewer camera monitor displaying inspection evidence at a Las Vegas home',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
+    /*
+      ⚠ THREE ROWS, NOT ANOTHER THREE-CARD GRID. The brief asked for
+      this explicitly and the page has two card grids below it already.
+      `DeliverablesSection` renders a checklist beside the frame, which
+      is the variation.
+    */
+    items: [
+      {
+        title: 'Recorded camera footage',
+        description:
+          'Review the accessible portions of the sewer line instead of relying only on a verbal description.',
+        icon: 'camera',
+      },
+      {
+        title: 'Documented visible conditions',
+        description:
+          'See the conditions observed during the inspection and where they appear in the accessible line.',
+        icon: 'document',
+      },
+      {
+        title: 'A clear explanation',
+        description:
+          'Understand what the footage shows and which next steps may be reasonable for the property.',
+        icon: 'explanation',
+      },
+    ],
+  },
+  scenarios: {
+    eyebrow: 'Common reasons to inspect',
+    title: 'Make your next sewer decision with better information',
+    intro:
+      'A sewer camera inspection can help when symptoms keep returning, when the condition of a line is unknown, or when you need documentation before making a larger property or maintenance decision.',
+    /*
+      ⚠ ICONS, NOT PHOTOGRAPHS, ON INSTRUCTION. Two frames sit above
+      this section and a third grid of images would be the repetition
+      the brief warns about.
+
+      ⚠ PRE-PURCHASE IS THE FEATURED TILE, as on San Diego: it is the
+      situation with a deadline, and 26 names the real estate cluster a
+      strategic priority.
+    */
+    items: [
+      {
+        title: 'Pre-purchase due diligence',
+        description:
+          'Review the accessible sewer line before closing so a hidden condition does not become an unexpected property expense.',
+        icon: 'document',
+        featured: true,
+      },
+      {
+        title: 'Recurring sewer backups',
+        description:
+          'Investigate why the sewer line continues to back up instead of clearing the same symptom repeatedly.',
+        icon: 'camera',
+      },
+      {
+        title: 'Multiple slow drains',
+        description:
+          'Determine whether several slow fixtures may be connected to a larger sewer-line restriction.',
+        icon: 'explanation',
+      },
+      {
+        title: 'Preventative maintenance planning',
+        description:
+          'Use inspection evidence to decide whether cleaning, monitoring, or a future inspection interval is appropriate.',
+        icon: 'guidance',
+      },
+      {
+        title: 'Property-management documentation',
+        description:
+          'Create a clearer record of visible sewer conditions when managing multifamily, rental, or commercial properties.',
+        icon: 'independence',
+      },
+      {
+        title: 'Older or frequently blocked lines',
+        description:
+          'Check for visible buildup, root intrusion, joint problems, or other conditions that may contribute to repeated drainage issues.',
+        icon: 'decision',
+      },
+    ],
+    action: {
+      label: 'Schedule a Sewer Inspection',
+      pageId: id('core-contact'),
+    },
+  },
+  independence: {
+    eyebrow: 'Evidence before expensive decisions',
+    title: 'Inspection without a repair-driven incentive',
+    /*
+      ⚠ THIS IS THE BUSINESS MODEL, STATED ABOUT THIS BUSINESS. It must
+      never be edited into a claim about what other contractors do or
+      why (CLAUDE.md §9, §27).
+
+      ⚠ NO BACKGROUND PHOTOGRAPH HERE, ON INSTRUCTION. The brand
+      surface and the step cells carry the break on their own.
+    */
+    body: [
+      'The Sewer Pros inspects, documents, locates, and cleans sewer lines. We do not perform sewer repair or replacement, so our role is to show you the visible condition of the line and explain the findings clearly.',
+    ],
+    steps: [
+      {
+        title: 'We inspect',
+        description:
+          'A professional sewer camera is run through the accessible line to observe its visible condition.',
+        icon: 'camera',
+      },
+      {
+        title: 'We document and explain',
+        description:
+          'The footage and findings are recorded and reviewed in plain language.',
+        icon: 'document',
+      },
+      {
+        title: 'You decide',
+        description:
+          'You choose whether cleaning, monitoring, a second opinion, or consultation with a repair provider makes sense.',
+        icon: 'decision',
+      },
+    ],
+  },
+  /*
+    ⚠ THE CLOSING PANEL, MOVED OUT OF `experience.coverage`, now on the
+    supplied CTA frame. 3344x1882, and its composition is built for
+    this: calm space left for the copy, the architectural detail
+    through the middle, simpler space right. `Section` supplies the
+    scrim in CSS; the asset itself carries no overlay and no text.
+
+    ⚠ FEATURED COMMUNITIES, NOT A BOUNDARY. `serviceAreaSource` for
+    this market is `derived_from_approved_locations` - there is no
+    published service area to state (DEC-077) - so the copy names four
+    and asks the visitor to confirm.
+
+    ⚠ NO SECOND LEAD FORM. The page already carries the shared closing
+    CtaSection with its form further down; this is the compact panel
+    the brief asks for in that case.
+
+    ⚠ THE PHONE IS LAS VEGAS'S OWN, matching `marketOperatingDetail`.
+    One page, one number (01 §20).
+  */
+  regionalCoverage: {
+    title: 'Sewer inspection and cleaning across the Las Vegas Valley',
+    body: [
+      'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, drain cleaning, and diagnostic services for homeowners, home buyers, property managers, multifamily properties, and commercial properties across the Las Vegas Valley.',
+      'These featured community pages do not define the full limit of the service area. Tell us where the property is located and what is happening with the line so we can confirm current coverage before scheduling.',
+    ],
+    locations: [
+      { pageId: id('loc-lv-las-vegas'), label: 'Las Vegas' },
+      { pageId: id('loc-lv-henderson'), label: 'Henderson' },
+      { pageId: id('loc-lv-north-las-vegas'), label: 'North Las Vegas' },
+      { pageId: id('loc-lv-summerlin'), label: 'Summerlin' },
+    ],
+    primary: {
+      label: 'Schedule a Las Vegas Sewer Inspection',
+      pageId: id('core-contact'),
+    },
+    secondary: {
+      label: 'Explore Las Vegas Valley Service Areas',
+      pageId: id('hub-services'),
+    },
+    phone: { label: 'Call (725) 292-4030', phoneE164: '+17252924030' },
+    backgroundImage: {
+      src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-valley-sewer-service-cta.webp',
+      alt: 'Las Vegas Valley residential street on a clear day',
+      source:
+        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
+  },
   /*
     ==========================================================================
     SERVICE AREA. Upgraded from `coverage` to the image mosaic 2026-09-07.
