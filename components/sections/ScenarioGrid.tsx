@@ -107,14 +107,44 @@ export function ScenarioGrid({
               key={item.title}
               className={cn(
                 'h-full',
-                isFeatured && 'sm:col-span-2 lg:row-span-2',
+                /*
+                  ⚠ `lg:h-auto lg:self-start` IS THE WHOLE FIX FOR THE
+                  BLANK HALF OF THIS CARD. The tile spans two rows so
+                  the mosaic has no orphaned cell, and `auto-rows-fr`
+                  makes those two rows equal - so the card was being
+                  sized to the COMBINED height of the two compact cards
+                  beside it and padding the difference with empty
+                  white. Its own content never filled that.
+
+                  ⚠ THE ROW SPAN STAYS. Removing it would fix the
+                  height and break the grid: six items with a
+                  two-column feature and no row span leaves a trailing
+                  row of one, which is the orphan 18 §5.6 prohibits by
+                  name. `self-start` keeps the shape and drops the
+                  stretch, which is the actual cause.
+
+                  ⚠ SCOPED TO `lg`. Below it there is no row span, the
+                  feature sits beside one compact card, and `h-full` is
+                  what keeps that pair level.
+                */
+                isFeatured && 'sm:col-span-2 lg:row-span-2 lg:h-auto lg:self-start',
               )}
             >
               <article
                 className={cn(
                   'flex h-full flex-col rounded-md border border-border bg-surface',
+                  isFeatured && 'lg:h-auto',
                   framed && 'overflow-hidden',
-                  isFeatured ? 'p-6 sm:p-8' : 'p-5 sm:p-6',
+                  /*
+                    ⚠ THE FEATURE'S VERTICAL PADDING IS TIGHTER THAN
+                    ITS HORIZONTAL. 24px each side, 20px top and
+                    bottom: the image is pulled to the card edges, so
+                    the only padding that reads is the band under it,
+                    and 32px there was part of what made the card look
+                    empty. The negative margins on the frame below
+                    track these values and must move with them.
+                  */
+                  isFeatured ? 'px-6 py-5' : 'p-5 sm:p-6',
                 )}
               >
                 {/*
@@ -127,6 +157,22 @@ export function ScenarioGrid({
                   card has no photograph. It carries the green plate on
                   the featured tile and blue elsewhere, which is the
                   accent split this section always used (DEC-096).
+                */}
+                {/*
+                    ⚠ BOTH BRANCHES ARE WRITTEN OUT IN FULL. A first
+                    pass appended the feature's offsets to a shared
+                    base and shipped `-mx-5` AND `-mx-6` on the same
+                    element: `cn()` is a plain join, not
+                    tailwind-merge, so both survive and the CSS
+                    stylesheet order picks the winner rather than the
+                    order written here. There is no safe way to
+                    override a base utility by appending to it.
+
+                    ⚠ THE OFFSETS MIRROR THE CARD PADDING. The
+                    feature is `px-6 py-5` at every width, so its
+                    frame pulls 24px sideways and 20px up; the
+                    compact cards are `p-5 sm:p-6` and theirs tracks
+                    that instead.
                 */}
                 {!framed ? (
                   <span
@@ -142,12 +188,11 @@ export function ScenarioGrid({
                   </span>
                 ) : item.image !== undefined ? (
                   <div
-                    className={cn(
-                      'relative -mx-5 -mt-5 mb-4 overflow-hidden rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6',
+                    className={
                       isFeatured
-                        ? 'aspect-[16/9] sm:-mx-8 sm:-mt-8'
-                        : 'aspect-[4/3]',
-                    )}
+                        ? 'relative -mx-6 -mt-5 mb-3 aspect-[16/9] overflow-hidden rounded-t-md bg-surface-muted'
+                        : 'relative -mx-5 -mt-5 mb-4 aspect-[4/3] overflow-hidden rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6'
+                    }
                   >
                     <Image
                       src={item.image.src}
@@ -163,12 +208,11 @@ export function ScenarioGrid({
                   </div>
                 ) : (
                   <div
-                    className={cn(
-                      '-mx-5 -mt-5 mb-4 flex items-center justify-center rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6',
+                    className={
                       isFeatured
-                        ? 'aspect-[16/9] sm:-mx-8 sm:-mt-8'
-                        : 'aspect-[4/3]',
-                    )}
+                        ? '-mx-6 -mt-5 mb-3 flex aspect-[16/9] items-center justify-center rounded-t-md bg-surface-muted'
+                        : '-mx-5 -mt-5 mb-4 flex aspect-[4/3] items-center justify-center rounded-t-md bg-surface-muted sm:-mx-6 sm:-mt-6'
+                    }
                   >
                     <span
                       aria-hidden="true"
