@@ -1915,6 +1915,19 @@ export interface HubPageContent extends BasePageContent {
    */
   selectionPanel?: SelectionPanelContent
   /**
+   * One line above the closing CTA's form fields.
+   *
+   * ⚠ SAME SLOT `MarketPageContent.ctaFormIntro` FILLS, and the same
+   * constraint applies: it sits above the fields, so a response time,
+   * a price or an availability claim written here reads as a term of
+   * submitting the form (CLAUDE.md §24, §42). Guidance on what to put
+   * in the message field is what it is for.
+   *
+   * ⚠ THE HERO FORM HAS ITS OWN, `heroFormIntro`. A hub rendering both
+   * forms should not say the same thing twice.
+   */
+  ctaFormIntro?: string
+  /**
    * One line beneath the member list's heading.
    *
    * ⚠ NAVIGATIONAL, NOT A CLAIM. It says what the list is sorted by so

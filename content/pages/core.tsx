@@ -1236,6 +1236,22 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       },
     },
     /*
+      ⚠ GUIDANCE ON FILLING THE FORM IN, NOT A PROMISE ABOUT WHAT
+      HAPPENS AFTER. See `HubPageContent.ctaFormIntro`: no response
+      time, no availability, no price. "We will help identify an
+      appropriate starting point" is the same ceiling the selection
+      panel above it uses, and it is the strongest statement available
+      without promising that a cause will be established (CLAUDE.md
+      §24).
+
+      ⚠ IT DOES NOT REPEAT `heroFormIntro`. That one tells a reader
+      choosing between services which two fields to answer; this one
+      tells a reader who has scrolled the whole page what to put in the
+      message field.
+    */
+    ctaFormIntro:
+      'Tell us what is happening at the property. If you are unsure which service you need, describe the symptoms in the message field and we will help identify an appropriate starting point.',
+    /*
       ⚠ NO BUTTON (owner, 2026-09-08), WHICH REVERSES WHAT PROMPT 04
       ASKED FOR. That brief named "Schedule a Sewer Inspection" as this
       CTA's action and it shipped for two builds; the owner has now
@@ -1293,8 +1309,54 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     },
     cta: {
       hideAction: true,
-      title: "See what's actually happening in your line.",
-      body: "Schedule a sewer camera inspection, or reach out about any of the services above. We'll walk you through what fits your situation before anything is scheduled.",
+      eyebrow: 'Sewer service requests',
+      title: 'Tell us what is happening with your sewer line',
+      body: (
+        <>
+          <p>
+            Recurring backups, slow drains, drainage odors, or an uncertain
+            sewer-line condition can have more than one possible cause. The
+            Sewer Pros helps property owners, buyers, managers, and commercial
+            customers start with the right sewer inspection, cleaning, hydro
+            jetting, locating, or diagnostic service.
+          </p>
+          <p>
+            Use the form to describe the symptoms, property concern, or service
+            you are considering. Select your market and service, then include
+            helpful details such as how often the problem occurs, which fixtures
+            are affected, or whether you need documentation before a property or
+            maintenance decision.
+          </p>
+          <p>
+            We inspect accessible portions of the line when appropriate,
+            document visible conditions, and explain what the findings may mean
+            in practical language. Our evidence-first approach helps you decide
+            whether cleaning, monitoring, locating, further evaluation, or a
+            separate repair opinion is the appropriate next step.
+          </p>
+          <p>
+            The Sewer Pros serves the St. Louis, San Diego, and Las Vegas
+            service markets. We do not perform sewer repair or replacement, so
+            our findings remain separate from a repair sale and can be used when
+            consulting another provider.
+          </p>
+        </>
+      ),
+      /*
+        ⚠ IT REPLACES THE PHONE SENTENCE RATHER THAN ADDING TO IT.
+        `CtaSection` renders "Prefer to talk now?" plus a number only
+        when a `phone` is passed, and `HubPageTemplate` deliberately
+        passes none: a number is market-scoped and this page speaks for
+        three markets. This line does the same job without naming one,
+        by pointing at the form's market field and the footer's three
+        local teams.
+
+        ⚠ THE HOURS ARE THE PUBLISHED ONES AND NOTHING MORE. Monday to
+        Friday, 8:00 a.m. to 4:00 p.m. rules out weekend, 24/7 and
+        emergency service by omission (01 §35). No response time and no
+        same-day language may be added here.
+      */
+      note: 'Prefer to talk? Select your service market in the form, or contact the appropriate local team during Monday through Friday, 8:00 a.m. to 4:00 p.m.',
     },
   },
 

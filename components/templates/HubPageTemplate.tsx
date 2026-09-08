@@ -861,6 +861,19 @@ export function HubPageTemplate({
         */
         action={content.cta?.hideAction === true ? null : undefined}
         /*
+          ⚠ ADDED 2026-09-08, AND IT WAS THE SAME SILENT DROP THE
+          EYEBROW HAD. `CtaContent.note` has been on the type since St.
+          Louis needed it for scheduling limits and
+          `MarketPageTemplate` wires it; this call never read it, so a
+          hub setting `cta.note` got nothing and no error. `/services/`
+          is the first hub to set one.
+
+          ⚠ IT IS NOT FINE PRINT. The note renders at the same weight
+          as the copy it qualifies, which is what DEC-088 requires of
+          anything qualifying an availability statement.
+        */
+        note={content.cta?.note}
+        /*
           ⚠ THE SPLIT VARIANT NO LONGER IMPLIES "NO IMAGE". It is still
           keyed off `showHeroForm` rather than off this field, because
           the form and the split layout are the one feature; the image
@@ -877,7 +890,12 @@ export function HubPageTemplate({
           showsHeroForm ? (
             <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
               {/* No `defaultMarketId`, for the reason the hero form gives. */}
-              <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+              <LeadFormSection
+                bare
+                density="standard"
+                idPrefix="cta-lead"
+                intro={content.ctaFormIntro}
+              />
             </div>
           ) : undefined
         }
