@@ -60,15 +60,33 @@
  * to read: "Do NOT add it to `MarketPageTemplate` - that template also
  * serves `/san-diego-ca/` and `/las-vegas-nv/`."
  *
- * `MarketPageTemplate` now renders it on all three hubs, gated on a
- * per-market `showReviews` flag that every market sets. The owner
+ * `MarketPageTemplate` now renders it on all three hubs. The owner
  * directed that the 4.9/595 stat be treated as COMPANY-WIDE rather
  * than scoped to the St. Louis profile, and shipped unattributed.
  *
+ * ⚠ THERE IS NO `showReviews` FIELD, AND THIS PARAGRAPH USED TO SAY
+ * THERE WAS. An earlier pass gated it on a per-market flag; the owner
+ * asked for it unconditional, which is what shipped and what DEC-100's
+ * implementation note records. The only gate is whether review data
+ * exists at all - `reviewMarqueeRenders()`.
+ *
+ * ⚠⚠ DEC-103 (2026-09-07) EXTENDED IT AGAIN, TO `HubPageTemplate`.
+ * `/locations/` renders it behind `HubPageContent.showTrustSections`.
+ * That hub is sitewide rather than market-scoped, which is precisely
+ * why it is safe: DEC-100 had already made the figures company-wide
+ * and unattributed, so nothing market-scoped travelled with them. The
+ * other four hubs share the template, set no flag, and are unaffected.
+ *
+ * ⚠ `ReviewMarquee` ALSO GAINED A `surface` PROP THERE, defaulting to
+ * the white every existing caller renders. `/locations/` passes
+ * `muted` because its neighbour above is that hub's `default` body
+ * prose rather than a dark section - the same 18 §11 reasoning the
+ * component's own default encodes, reaching the opposite value.
+ *
  * ⚠ THE UNDERLYING FACT DID NOT CHANGE. The reviews are still St.
- * Louis customers and the stat is still that profile's. Read DEC-100
- * and DEC-085 together before extending this any further - to a
- * location template, say - because the reasoning that made DEC-085
+ * Louis customers and the stat is still that profile's. Read DEC-100,
+ * DEC-103 and DEC-085 together before extending this any further - to
+ * a location template, say - because the reasoning that made DEC-085
  * restrictive still describes the data.
  *
  * This is exactly why it is separate from `TestimonialBand` rather
