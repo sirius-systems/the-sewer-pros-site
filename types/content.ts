@@ -1644,6 +1644,30 @@ export interface HubIntroBenefit {
  * a link inside the opening prose competes with them.
  */
 export interface HubIntroContent {
+  /**
+   * A faint line drawing behind the band's surface colour.
+   *
+   * ⚠ IT IS A TEXTURE, NOT A `backgroundImage`, AND THE DIFFERENCE IS
+   * NOT COSMETIC. `Section.backgroundImage` replaces the surface with a
+   * photograph, adds a measured 55% black scrim and turns the section's
+   * text white. This asset is pale line art on a TRANSPARENT ground;
+   * putting it through that path would scrim a near-white drawing and
+   * flip the copy to white on top of it. `Section.texture` paints
+   * behind the surface, adds no scrim and changes no text colour, which
+   * is what this needs.
+   *
+   * ⚠ `describes` IS NOT RENDERED. The layer is `aria-hidden` and
+   * `pointer-events-none`, the same standing as `HeroBackdropImage`.
+   * It exists so the asset is readable in source.
+   *
+   * ⚠ SETTING THIS DARKENS THE BAND'S TEXT. At the measured 40%
+   * opacity the drawing's worst stroke drops `--muted-foreground` to
+   * 3.34:1, so `HubIntro` swaps the body copy to `--foreground` and
+   * the eyebrow and link to `--brand`, both of which clear 8.7:1. The
+   * band reads slightly stronger with the drawing than without it,
+   * which is the trade that kept the artwork visible at all.
+   */
+  background?: { src: string; describes: string; source: string }
   eyebrow?: string
   /** Rendered as an `h2`. The hero owns the page's only `h1`. */
   title: string

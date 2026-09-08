@@ -970,6 +970,25 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         (owner, 2026-09-08). Two bands opening on the same three words
         would have read as one section restated.
       */
+      /*
+        ⚠ A DRAWING, NOT A PHOTOGRAPH, WHICH IS WHY IT IS A TEXTURE.
+        Pale line art of a lateral running from a cleanout to the main,
+        with a camera head in the run, on a transparent ground. It
+        illustrates what the copy beside it describes without asserting
+        a job: nothing here is a photograph of Sewer Pros work, and the
+        drawing shows no property, no person and no outcome.
+
+        ⚠ IT MUST NOT BE MOVED TO `ctaBackground` OR THE HERO SET. Both
+        of those paths scrim and flip their section's text to white,
+        which a near-white line drawing cannot survive.
+      */
+      background: {
+        src: '/images/markets/services-hub/the-sewer-pros-sewer-line-inspection-intro-background.webp',
+        describes:
+          'Line drawing of a sewer lateral running from a cleanout to the main, with a camera head partway along the run',
+        source:
+          'Supplied by the business owner, 2026-09-08. Illustration, not a photograph of a Sewer Pros job.',
+      },
       eyebrow: 'Find the right starting service',
       title:
         'Find the right sewer service by starting with the condition of the line',
