@@ -4,6 +4,7 @@ import {
   ButtonLink,
   type ButtonVariant,
   type SectionDensity,
+  type SectionSurface,
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { CameraIcon, MapPinIcon, type IconProps } from './section-icons'
@@ -71,6 +72,19 @@ import type { MarketGuidanceContent } from '@/types'
  * thing that looks clickable.
  */
 export interface MarketGuidanceProps {
+  /**
+   * Overrides the section's natural surface.
+   *
+   * ⚠ DEFAULTS TO `muted`, WHICH IS WHAT THIS BAND HAS ALWAYS
+   * RENDERED, so `/locations/` and every existing caller are
+   * unchanged. `HubPageTemplate` passes `default` on a hub whose
+   * opening band is itself muted: the section has to read as a
+   * different band from its neighbour (18 §11), and only the composing
+   * template can see what that neighbour is. Same rule as
+   * `ReviewMarquee.surface`, reaching the opposite value for the same
+   * reason.
+   */
+  surface?: SectionSurface
   content: MarketGuidanceContent
   density?: SectionDensity
   id?: string
@@ -123,6 +137,7 @@ export function MarketGuidance({
   content,
   density = 'standard',
   id = 'market-guidance',
+  surface = 'muted',
 }: MarketGuidanceProps) {
   /*
     ⚠ `resolveLinkableOnly`, NOT `resolveApprovedLinks`. A market that is
@@ -138,7 +153,7 @@ export function MarketGuidance({
   )
 
   return (
-    <Section density={density} surface="muted" labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       {/*
         ⚠ THE INTRO IS CONSTRAINED, THE GRID BELOW IT IS NOT. 18 §5.6
         wants a readable measure for running prose; applying that same

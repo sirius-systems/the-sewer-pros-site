@@ -900,21 +900,87 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     metaDescription:
       'Sewer camera inspection, cleaning, hydro jetting, locating, and more. Independent service across St. Louis, San Diego, and Las Vegas. No repair upsell.',
     /*
-      ⚠ ONE PARAGRAPH, NO `<h2>`, WHERE THIS BLOCK USED TO OPEN WITH
-      "How these services fit together" and run to two. Prompt 04
-      replaces it: the page's argument is now carried by the hero, the
-      mosaic and the FAQ, and a heading here would compete with the
-      index's own.
+      ==========================================================================
+      THE OPENING BAND, REPLACING THE PROSE PARAGRAPH (owner, 2026-09-08)
+      ==========================================================================
+      ⚠ IT REPLACES `body`, WHICH IS WHY THAT FIELD IS GONE FROM THIS
+      ENTRY. `HubPageTemplate` renders one opening band or the other and
+      prefers this one; leaving the paragraph behind would have authored
+      copy nothing displays. The Prompt 04 sentence it carried
+      ("Every service on this page starts the same way...") is answered
+      by the second paragraph below, at more length.
+
+      ⚠ EVERY CLAIM HERE IS ONE THE SITE ALREADY MAKES. The service list
+      is the nine live pages plus diagnostics; the process is the
+      inspect / document / explain sequence the home page and all three
+      market hubs state; the repair boundary is CLAUDE.md §9 and §27 in
+      the visitor's own terms. No guarantee, response time, price,
+      credential, office or municipal affiliation appears, and the three
+      markets are named without implying premises in any of them.
+
+      ⚠ "ACCESSIBLE PORTIONS OF THE SEWER LINE" IS EXACT AND STAYS.
+      It is the hedge that keeps every inspection sentence on this site
+      truthful: a camera sees what it can reach, and nothing here may be
+      edited into a claim about the whole line.
+
+      ⚠ THE HEADING RENDERS AS AN `h2`. The hero owns the page's only
+      `h1`; `HubIntro` hard-codes the level rather than taking it as a
+      prop for exactly that reason.
     */
-    body: (
-      <p>
-        Every service on this page starts the same way: look at the line,
-        document what&rsquo;s actually there, and explain it in plain language
-        before anything gets scheduled. Whether the fix is a sewer cleaning, a
-        hydro jetting, or a second opinion before a repair decision,
-        you&rsquo;ll have the evidence first.
-      </p>
-    ),
+    intro: {
+      eyebrow: 'Sewer inspection, diagnostics, and cleaning',
+      title:
+        'Find the right sewer service by starting with the condition of the line',
+      body: [
+        'Recurring sewer backups, multiple slow drains, unexplained odors, and concerns about an older sewer line can have several possible causes. The Sewer Pros provides sewer camera inspection, sewer diagnostics, sewer cleaning, hydro jetting, drain cleaning, sewer line locating, pre-purchase sewer inspection, and preventative maintenance services for residential, commercial, and managed properties.',
+        'Our evidence-first process starts by understanding the symptoms, inspecting accessible portions of the sewer line when appropriate, and documenting visible conditions. Depending on what the line shows, the appropriate next step may be cleaning, hydro jetting, locating the sewer route, monitoring a condition, or consulting a separate repair provider.',
+        'Because The Sewer Pros does not perform sewer repair or replacement, our findings remain separate from a repair sale. You receive practical information that can help you make a more informed maintenance, property-purchase, or second-opinion decision.',
+        'Service is available across the St. Louis, San Diego, and Las Vegas markets. Select a service below to learn what it addresses, how the process works, and what information you can expect to receive.',
+      ],
+      /*
+        ⚠ ICONS FROM `SECTION_ICONS`, NOT A NEW DEPENDENCY. The three
+        map to the three steps the copy above describes: the speech
+        bubble for understanding the symptom, the camera for the
+        documented evidence, the branch for the decision that follows.
+
+        ⚠ BLUE, BLUE, GREEN. The palette already owns that split -
+        `--accent-secondary` is the authority colour and `--accent` the
+        conversion one - so the decision step is the green one.
+      */
+      benefits: [
+        {
+          title: 'Understand the problem',
+          description:
+            'Match the service to the symptoms or property concern you are experiencing.',
+          icon: 'explanation',
+          accent: 'blue',
+        },
+        {
+          title: 'Review documented evidence',
+          description:
+            'See visible conditions inside accessible portions of the sewer line when a camera inspection is performed.',
+          icon: 'camera',
+          accent: 'blue',
+        },
+        {
+          title: 'Choose the next step confidently',
+          description:
+            'Use clearer findings when deciding whether to clean, monitor, locate, or seek a separate repair opinion.',
+          icon: 'decision',
+          accent: 'green',
+        },
+      ],
+      /*
+        ⚠ THE TARGET IS THE MEMBER LIST'S OWN ID, which this route sets
+        to `services-grid`. It is a fragment on this page rather than an
+        approved page id, and `:target` in `app/globals.css` supplies
+        the sticky-header offset so the heading is visible on arrival.
+      */
+      link: {
+        label: 'Compare sewer and drain services',
+        targetId: 'services-grid',
+      },
+    },
     /*
       ⚠ `servicesHubItems`, NOT `homeContent.services`. Same nine cards
       and the same objects, reordered into Prompt 04's family grouping.

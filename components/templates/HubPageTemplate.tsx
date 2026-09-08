@@ -13,6 +13,8 @@ import {
   ReviewMarquee,
   RoutingCards,
   MarketGuidance,
+  HubIntro,
+  hubIntroRenders,
   marketGuidanceRenders,
   routingCardsRenders,
   authorityBandRenders,
@@ -55,6 +57,16 @@ export interface HubPageTemplateProps {
   content: HubPageContent
   /** Heading above the member list. */
   itemsTitle?: string
+  /**
+   * Anchor id for the member list, and its heading's id.
+   *
+   * ⚠ DEFAULTS TO `hub-items`, WHICH IS WHAT FOUR OF THE FIVE HUBS
+   * KEEP. `/services/` names it `services-grid` because its opening
+   * band links down to that fragment and the link has to state a real
+   * id. The heading carries it, `Section` points `aria-labelledby` at
+   * it, and `:target` supplies the sticky-header offset.
+   */
+  itemsId?: string
   /** Numbered rows suit an ordered family; plain suits a set. */
   numbered?: boolean
   /**
@@ -90,6 +102,7 @@ export function HubPageTemplate({
   page,
   content,
   itemsTitle = 'In this section',
+  itemsId = 'hub-items',
   numbered = false,
   itemsSurface = 'default',
   backdrop,
@@ -227,6 +240,13 @@ export function HubPageTemplate({
     renders the process variant and no proof band at all.
   */
   const showsGuidance = marketGuidanceRenders(content.guidance)
+  /*
+    ⚠ THE OPENING BAND, IN ONE OF TWO PRESENTATIONS. `intro` is the
+    heading-beside-prose explainer; `body` is the plain reading-width
+    paragraph every other hub still uses. A page sets one, and this
+    prefers the richer one so a stale `body` cannot double up.
+  */
+  const showsIntro = hubIntroRenders(content.intro)
   const showsRouting =
     content.routing !== undefined && routingCardsRenders(content.routing)
   const showsProcessBand = content.showProcessBand === true
@@ -281,13 +301,22 @@ export function HubPageTemplate({
   const servicesSurface = flip(previousSurface)
   if (showsServices) previousSurface = servicesSurface
   /*
-    ⚠ THE PROCESS BAND SITS BETWEEN THESE TWO AND IS SKIPPED BY THE
-    CHAIN, exactly as it always has been: it renders over a photograph
-    where a page supplies `processBackground`, so it breaks the run on
-    its own and taking a turn here would flip the parity of everything
-    below it for no visible gain.
+    ⚠ THE COVERAGE BAND KEEPS THE PREVIOUS SURFACE WHERE THE PROCESS
+    BAND RENDERS, AND FLIPS WHERE IT DOES NOT. The process band is
+    image-backed on every page that sets `processBackground`, so it
+    already separates the two and a flip here would be a change with
+    nothing to see. It is also what the home page does: "What we do" and
+    "Where we work" are both white there, with the process photograph
+    between them.
+
+    ⚠ THE PARITY IS LOAD-BEARING FURTHER DOWN. Flipping here anyway
+    walked the chain to a `muted` FAQ directly above the `muted` split
+    CTA, with no `AuthorityBand` to buffer them because the process band
+    suppresses it.
   */
-  const marketCoverageSurface = flip(previousSurface)
+  const marketCoverageSurface = showsProcessBand
+    ? previousSurface
+    : flip(previousSurface)
   if (showsMarketCoverage) previousSurface = marketCoverageSurface
   const confidenceSurface = flip(previousSurface)
   if (showsConfidence) previousSurface = confidenceSurface
@@ -302,7 +331,9 @@ export function HubPageTemplate({
       guidance band used to be alternatives and shared a single entry;
       `/services/` now renders both, so each contributes its own.
     */
-    ...(content.body !== undefined ? (['standard'] as const) : []),
+    ...(showsIntro || content.body !== undefined
+      ? (['standard'] as const)
+      : []),
     ...(showsGuidance ? (['standard'] as const) : []),
     /*
       ⚠ `dense`, WHERE THE HOME PAGE LETS THIS BAND DEFAULT TO
@@ -440,14 +471,31 @@ export function HubPageTemplate({
         `guidance`, the rest set only `body`, and a hub setting one
         still renders exactly one band.
       */}
-      {content.body !== undefined && (
-        <Section density="standard" width="reading">
-          <Prose>{content.body}</Prose>
-        </Section>
+      {showsIntro && content.intro !== undefined ? (
+        <HubIntro content={content.intro} />
+      ) : (
+        content.body !== undefined && (
+          <Section density="standard" width="reading">
+            <Prose>{content.body}</Prose>
+          </Section>
+        )
       )}
 
+      {/*
+        ⚠ `default` UNDER THE INTRO BAND, `muted` OTHERWISE, AND THE
+        REASON IS THE INTRO'S OWN SURFACE. `MarketGuidance` renders
+        `muted` by default because on `/locations/` its neighbour above
+        is that hub's white prose. Where the intro band renders, the
+        neighbour above is `muted` instead, so the same 18 §11 rule
+        reaches the opposite value. `/locations/` sets no intro and is
+        unchanged.
+      */}
       {showsGuidance && content.guidance !== undefined && (
-        <MarketGuidance content={content.guidance} density="standard" />
+        <MarketGuidance
+          content={content.guidance}
+          density="standard"
+          surface={showsIntro ? 'default' : 'muted'}
+        />
       )}
 
       {/*
@@ -560,7 +608,7 @@ export function HubPageTemplate({
         */
         <ServiceIndex
           density={itemsDensity}
-          id="hub-items"
+          id={itemsId}
           title={itemsTitle}
           items={content.items}
           numbered={numbered}
