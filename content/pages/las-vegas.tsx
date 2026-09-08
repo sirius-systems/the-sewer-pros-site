@@ -1241,88 +1241,64 @@ export const lasVegasMarketContent: MarketPageContent = {
       now?" above the number, so the note picks up after it.
     */
   cta: {
+    /*
+      ⚠ SHORTENED 2026-09-08, HOURS AFTER THE FIRST VERSION SHIPPED.
+      The owner replaced the long block with this: two paragraphs, a
+      three-item list, and a one-sentence guardrail. Gone with it are
+      the "Start with what you are seeing" subsection and the coverage
+      paragraph naming the four communities.
+
+      ⚠ NOTHING WAS LOST BY DROPPING THE COVERAGE PARAGRAPH. That
+      statement, with its "these do not define the full limit" caveat,
+      is still rendered by `regionalCoverage` further up the page and
+      by the service-area mosaic above it. It was the third copy on one
+      page, not the only one - which is presumably why it went.
+
+      ⚠ THE EMAIL WENT WITH IT TOO, and is likewise still on the page:
+      `regionalCoverage` renders it beside the published hours. This
+      note now carries the hours alone, matching the supplied line.
+    */
     eyebrow: 'Las Vegas Valley sewer inspection and cleaning',
     title: 'Find out what is happening inside your sewer line',
     body: (
       <>
         <p>
-          Recurring sewer backups, multiple slow drains, and unexplained
-          drainage problems can have several possible causes. A sewer camera
-          inspection helps document visible conditions inside the accessible
-          line so you can understand the problem before deciding what should
-          happen next.
+          Recurring backups, multiple slow drains, or an unknown sewer-line
+          condition can have several possible causes. The Sewer Pros provides
+          sewer camera inspection, sewer cleaning, hydro jetting, and sewer
+          line locating across the Las Vegas Valley.
         </p>
         <p>
-          The Sewer Pros provides sewer camera inspection, sewer cleaning,
-          hydro jetting, sewer line locating, recurring backup diagnosis,
-          preventative sewer maintenance, and pre-purchase sewer inspection
-          across the Las Vegas Valley. We inspect and document visible
-          conditions, explain the findings in practical language, and provide
-          cleaning or locating when the evidence supports those services.
+          We document visible conditions inside accessible portions of the line
+          and explain what the findings show, helping you make your next
+          decision with clearer information.
         </p>
-        <h3>Start with what you are seeing</h3>
-        <p>
-          Use the service-request form to tell us about the property and the
-          symptoms you have noticed. Helpful details can include how often the
-          problem occurs, whether several drains are affected, whether the line
-          has been cleared before, and whether the request is connected to a
-          home purchase or maintenance decision.
-        </p>
-        <h3>What you can expect</h3>
-        <ul>
+
+        <h3 className="text-body font-semibold">What you can expect</h3>
+        <ul className="space-y-2 text-body">
+          <li>Help identifying an appropriate starting service</li>
           <li>
-            Help identifying an appropriate starting service based on the
-            information you provide
+            Recorded footage and documented findings when an inspection is
+            performed
           </li>
-          <li>Recorded footage when a sewer camera inspection is performed</li>
-          <li>
-            Documentation of visible conditions inside accessible portions of
-            the line
-          </li>
-          <li>A clear explanation of what the inspection footage shows</li>
-          <li>
-            Sewer cleaning, hydro jetting, or line locating when appropriate
-          </li>
-          <li>
-            Evidence you can keep for maintenance planning, property
-            management, a home purchase, or a second opinion
-          </li>
+          <li>A clear explanation of the visible sewer-line condition</li>
         </ul>
-        <p>
-          The Sewer Pros does not perform sewer repair or replacement. If an
-          inspection identifies a condition that may require structural work,
-          you can use the documented findings when consulting a separate repair
-          provider. The decision about what happens next remains yours.
-        </p>
+
         {/*
-          ⚠ FEATURED AREAS, THEN THE ASK. `serviceAreaSource` for this
-          market is `derived_from_approved_locations`, so there is no
-          published boundary to state (DEC-077). The sentence naming
-          the four communities is immediately followed by the one
-          saying they are not the limit; the two must never be
-          separated.
+          ⚠ A RULE, NOT A CARD, matching San Diego's closing CTA. It is
+          about this business only and must never be edited into a
+          claim about what other contractors do (CLAUDE.md §9, §27).
         */}
-        <p>
-          Service is available across the Las Vegas Valley, including featured
-          service areas in Las Vegas, Henderson, North Las Vegas, and
-          Summerlin. These communities do not define the full limit of
-          coverage. Submit the property location so current availability can be
-          confirmed.
+        <p className="border-l-2 border-white/40 pl-4">
+          The Sewer Pros does not perform sewer repair or replacement, so the
+          findings remain separate from a repair sale.
         </p>
       </>
     ),
-    note: (
-      <>
-        Monday through Friday, 8:00am to 4:00pm, or email{' '}
-        <a href="mailto:bookaninspection@thesewerpros.com">
-          bookaninspection@thesewerpros.com
-        </a>
-        .
-      </>
-    ),
+    note: 'Monday through Friday, 8:00am to 4:00pm.',
   },
   ctaFormIntro:
-    'Select the service that most closely matches your needs. If you are unsure, describe the drainage symptoms or property concern in the message field.',
+    'Select a service and briefly describe what is happening at the property. If you are unsure what you need, describe the symptoms in the message field.',
   /*
     Flips the closing CTA from the `panel` button to the split layout:
     copy left, lead form right, over this frame. Same structure as the
