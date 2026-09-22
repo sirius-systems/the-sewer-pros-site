@@ -3099,3 +3099,16 @@ The final standard is:
 
 > **Use structured data to make The Sewer Pros easier for search engines, answer engines, AI systems, and other machines to understand accurately—while maintaining one coherent business identity, truthful service relationships, legitimate geographic relationships, and strict separation between service-area SEO pages and actual physical business entities.**
 
+
+
+---
+
+# 122. Implementation Snapshot (September 21, 2026)
+
+Verified in the built HTML of `out/` at commit `5b9586a` (DEC-079).
+
+* One Organization entity and one WebSite on all 70 pages; `@id` values use the production origin
+* BreadcrumbList on 69 pages (all but the home page); WebPage on 60; Service on 15; Article on 7; CollectionPage on 8; FAQPage on the home page only (DEC-089); ContactPage and AboutPage on one page each
+* No `LocalBusiness` on any page, and no `sameAs` on the Organization (external profiles not yet supplied)
+* No repair or replacement service schema
+* **Open:** validate the output with an external rich-results tool after deployment; add `sameAs` once verified profiles are supplied; review whether further FAQ blocks warrant FAQPage under the DEC-089 approach

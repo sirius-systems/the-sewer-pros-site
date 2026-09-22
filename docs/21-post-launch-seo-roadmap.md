@@ -2842,3 +2842,14 @@ The governing standard is:
 
 > **Use the new website architecture as a controlled growth platform. Protect existing authority first, measure real search and conversion behavior, strengthen pages showing opportunity, then expand services, locations, audiences, commercial content, and resources in deliberate cohorts. The Sewer Pros should grow topical and local authority through evidence-driven publishing—not through uncontrolled page generation.**
 
+
+
+---
+
+# 149. Implementation Snapshot (September 21, 2026)
+
+Verified at commit `5b9586a`. The site has not launched, so Phase 0 (`§7`) has not started.
+
+* **Built:** all 70 approved launch pages, sitemap, robots, schema, GA4 loader (inert), lead form (no endpoint)
+* **Before Phase 0:** close PENDING-018, PENDING-019, PENDING-010, PENDING-011, and PENDING-009; set the GA4 ID; deploy to Cloudflare Pages and verify
+* **Phase 1 and later:** not started. Candidate expansion (Las Vegas service + location pages, Phase 2 second-opinion page, additional locations) should follow measured evidence per `§29` and `§30`, not URL count

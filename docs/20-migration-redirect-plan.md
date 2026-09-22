@@ -2782,3 +2782,14 @@ The Sewer Pros rebuild should modernize the architecture without unnecessarily d
 The governing standard is:
 
 > **Preserve what has earned value, consolidate what overlaps, retire what is inaccurate or unnecessary, and permanently redirect legacy URLs to the closest accurate published canonical destination based on user intent—not convenience. The new site should emerge with cleaner architecture, stronger positioning, stable search signals, and no dependence on broken legacy pathways.**
+
+
+---
+
+# 153. Implementation Snapshot (September 21, 2026)
+
+Verified at commit `5b9586a`.
+
+* No redirect is implemented: there is no `public/_redirects` or `_headers`, and none in `out/`. `next.config.ts` uses `output: 'export'`, so redirects must be supplied through the hosting layer (Cloudflare Pages)
+* The complete legacy URL inventory is not in the repository (PENDING-010, in progress)
+* **Blocker before launch:** finish the inventory and classification, map each relevant URL to its canonical destination with no chains or homepage catch-alls, implement, and test on a preview host
