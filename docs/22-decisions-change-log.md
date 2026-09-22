@@ -4482,7 +4482,7 @@ The site functions as a connected platform rather than a collection of disconnec
 ### Service Model
 
 * The complete canonical service taxonomy remains authoritative: **18 canonical service records** (`data/services/master-service-registry.json`). The registry is not reduced to six services.
-* The registry's own `record_type` field already designates six `core_service` records as primary commercial service hubs — a designation this decision uses, not newly assigns: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, Drain Cleaning.
+* The registry's own `record_type` field already designates six `core_service` records as primary commercial service hubs — a designation this decision uses, not newly assigns: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, Drain Cleaning.
 * Supporting services (the remaining 12 `derived_service`, `market_specific_service`, and `commercial_service` records) remain available through the service registry, related-content modules, and secondary navigation.
 * Not every service or service-market combination requires equal navigation prominence or immediate indexation.
 

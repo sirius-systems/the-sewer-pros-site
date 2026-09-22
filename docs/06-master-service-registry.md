@@ -531,7 +531,7 @@ They do not necessarily require dedicated public category pages.
 
 ```text
 core_service               6 — Sewer Camera Inspection, Sewer Cleaning,
-                                Hydro Jetting, Sewer Cleaning + Camera
+                                Hydro Jetting, Sewer Cleaning & Camera
                                 Inspection, Sewer Line Locating, Drain
                                 Cleaning
 derived_service             4 — Pre-Purchase Sewer Inspection (launch),

@@ -194,7 +194,7 @@ export const approvedPages: readonly MasterPageRecord[] = [
   },
   {
     id: 'svc-sewer-cleaning-camera-inspection' as PageId,
-    name: 'Sewer Cleaning + Camera Inspection',
+    name: 'Sewer Cleaning & Camera Inspection',
     pageType: 'service',
     pathname: toPathname('/services/sewer-cleaning-camera-inspection/'),
     status: 'launch',

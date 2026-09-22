@@ -671,7 +671,7 @@ unless an explicit future decision establishes it as a separate search intent.
 
 All 18 canonical services (`06-master-service-registry.md`) use the same `/services/{service}/` pattern (or the market-specific pattern in §27 for the one `market_specific_service` record) — this section does not add a new route shape. It clarifies commercial and navigation emphasis only.
 
-The registry already distinguishes six `core_service` records as primary service hubs: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive first-tier navigation and commercial emphasis. The remaining 12 records (`derived_service`, `market_specific_service`, and `commercial_service`) keep the same canonical URL pattern and remain reachable through the services hub, related-service modules, or secondary navigation — a supporting classification affects prominence, not URL shape (`03-information-architecture.md` §12A, `04-master-page-build-list.md` §12A).
+The registry already distinguishes six `core_service` records as primary service hubs: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive first-tier navigation and commercial emphasis. The remaining 12 records (`derived_service`, `market_specific_service`, and `commercial_service`) keep the same canonical URL pattern and remain reachable through the services hub, related-service modules, or secondary navigation — a supporting classification affects prominence, not URL shape (`03-information-architecture.md` §12A, `04-master-page-build-list.md` §12A).
 
 ---
 

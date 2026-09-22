@@ -451,7 +451,7 @@ commercial_service       7 records — the commercial variants of the
                                       core and locating services
 ```
 
-The six `core_service` records (verified in the registry, not newly designated here) are: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive the initial commercial emphasis as primary service hubs. This does not remove or diminish the other 12 records — derived, market-specific, and commercial services remain part of the canonical taxonomy and may be built, linked, and expanded on their own merits (06 §3.5, §18).
+The six `core_service` records (verified in the registry, not newly designated here) are: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive the initial commercial emphasis as primary service hubs. This does not remove or diminish the other 12 records — derived, market-specific, and commercial services remain part of the canonical taxonomy and may be built, linked, and expanded on their own merits (06 §3.5, §18).
 
 Supporting service pages, and future or selective service-market opportunities, are evaluated using the structured service × location data (`08-service-location-matrix.md`) as a research and planning input, not a publishing queue (§17, §18).
 

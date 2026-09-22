@@ -486,7 +486,7 @@ These are different search and conversion intents.
 Sewer Camera Inspection
 Sewer Cleaning
 Hydro Jetting
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 Sewer Line Locating
 Drain Cleaning
 Recurring Sewer Backup Diagnosis
@@ -524,7 +524,7 @@ A generic homeowner + location page should not be generated everywhere because t
 ```text
 Pre-Purchase Sewer Inspection
 Sewer Camera Inspection
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 ```
 
 ## Secondary Services
@@ -597,7 +597,7 @@ but production publication and indexation still require specific evaluation.
 ```text
 Sewer Camera Inspection
 Pre-Purchase / Transaction Sewer Inspection
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 Independent Sewer Inspection / Second Opinion
 ```
 
@@ -639,7 +639,7 @@ Home seller + location pages should be more selective than home buyer pages unle
 ```text
 Pre-Purchase Sewer Inspection
 Sewer Camera Inspection
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 Independent Sewer Inspection / Second Opinion
 ```
 
@@ -679,7 +679,7 @@ Market-level agent targeting will usually be more useful than producing a separa
 ```text
 Sewer Camera Inspection
 Pre-Purchase Sewer Inspection
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 ```
 
 ## Location Matrix
@@ -720,7 +720,7 @@ rather than a full geographic matrix.
 Sewer Camera Inspection
 Sewer Cleaning
 Hydro Jetting
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 Drain Cleaning
 Recurring Sewer Backup Diagnosis
 Preventative Sewer Maintenance
@@ -810,7 +810,7 @@ Prioritize areas with meaningful:
 ```text
 Pre-Purchase Sewer Inspection
 Sewer Camera Inspection
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 Sewer Line Locating
 Independent Sewer Inspection / Second Opinion
 ```
@@ -882,7 +882,7 @@ selective
 ```text
 Sewer Line Locating
 Sewer Camera Inspection
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 ```
 
 ## Location Matrix

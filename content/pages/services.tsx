@@ -497,7 +497,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
   },
 
   /* ======================================================================
-     Sewer Cleaning + Camera Inspection
+     Sewer Cleaning & Camera Inspection
      ====================================================================== */
   [id('svc-sewer-cleaning-camera-inspection')]: {
     metaDescription:

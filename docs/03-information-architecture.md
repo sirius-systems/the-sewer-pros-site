@@ -529,7 +529,7 @@ Audience-Service or Problem-Service Relationship
 Conversion Action
 ```
 
-The six `core_service` records (registry-verified, not newly designated here): Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, and Drain Cleaning. The seven `commercial_service` records are the commercial variants of these and the locating service.
+The six `core_service` records (registry-verified, not newly designated here): Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. The seven `commercial_service` records are the commercial variants of these and the locating service.
 
 Service + market pages should only be created when the combination has legitimate value and differentiated content (§23, §24, §51A) — never as a mechanical product of the 18 × 579 relationship space (`00-project-overview.md` §17).
 
