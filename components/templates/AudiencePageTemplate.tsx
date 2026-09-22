@@ -6,7 +6,7 @@ import {
   InclusionsGrid,
   ServiceIndex,
   ProcessSteps,
-  Differentiator,
+  IndependentProcess,
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
@@ -149,8 +149,13 @@ export function AudiencePageTemplate({
         would put two brand surfaces together, so if that state ever
         becomes reachable, give this section `surface="muted"` there
         rather than leaving the pair adjacent.
+
+        ⚠ `Differentiator` (the comparison table, "Diagnosis separated
+        from the sale") REPLACED HERE with `IndependentProcess`,
+        site-wide swap 2026-09-22. Same unconditional call, `standard`
+        density unchanged in the `densities` array above.
       */}
-      <Differentiator />
+      <IndependentProcess density="standard" />
 
       {content.problems !== undefined && (
         <ProblemGrid

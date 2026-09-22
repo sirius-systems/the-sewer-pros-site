@@ -25,7 +25,7 @@ import {
   LateralResponsibility,
   PipeMaterials,
   PrePurchase,
-  Differentiator,
+  IndependentProcess,
   ExperienceSection,
   AuthorityBand,
   ProofGallery,
@@ -539,7 +539,7 @@ export function MarketPageTemplate({
         DIRECTION (2026-09-05). It is what separates this strip from
         the section beneath it.
 
-        The reorder put `Differentiator` directly below the trust bar,
+        The reorder put the independent-opinion band directly below the trust bar,
         and that section is `brand`. Two navy bands running together
         read as one long dark region, which is the adjacency 18 §11
         names and the owner ruled against on 2026-09-04 ("separate
@@ -568,7 +568,7 @@ export function MarketPageTemplate({
 
       {/*
         ==================================================================
-        SECTION 2 - THE MODEL COMPARISON. Sitewide copy (DEC-098).
+        SECTION 2 - THE INDEPENDENT-OPINION BAND. Sitewide copy (DEC-098).
         ==================================================================
         ⚠ REORDERED 2026-09-05, ON OWNER DIRECTION, TO MATCH THE HOME
         PAGE'S CONVERSION SEQUENCE. This section, the reviews below it,
@@ -583,8 +583,14 @@ export function MarketPageTemplate({
         - the reasoning is on the `TrustBar` call above. A `border-b`
         is NOT an alternative; the owner ruled out rules as separators
         (2026-09-04).
+
+        ⚠ `Differentiator` (the comparison table, "Diagnosis separated
+        from the sale") REPLACED HERE with `IndependentProcess`,
+        site-wide swap 2026-09-22. Same unconditional call, same
+        `standard` density in the `densities` array below — the section
+        that fills this slot changed, the slot itself did not.
       */}
-      <Differentiator />
+      <IndependentProcess density="standard" />
 
       {/*
         SECTION 3 - customer-intent routing.
@@ -597,7 +603,7 @@ export function MarketPageTemplate({
         experience section and the reviews rather than following them.
 
         ⚠ `default` NOW, WHERE IT WAS `muted`, AND IT IS AN ADJACENCY
-        FIX RATHER THAN A PREFERENCE. `Differentiator` directly above
+        FIX RATHER THAN A PREFERENCE. `IndependentProcess` directly above
         is `brand`, and the experience band directly below is `muted`.
         A muted band here would meet the one beneath it. The value is
         still only the FALLBACK: `backgroundImage` overrides it, and no

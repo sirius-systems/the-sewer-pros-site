@@ -5,7 +5,7 @@ import {
   ProblemGrid,
   InclusionsGrid,
   ProcessSteps,
-  Differentiator,
+  IndependentProcess,
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
@@ -56,10 +56,14 @@ import type { MasterPageRecord, ServicePageContent } from '@/types'
  * authority band as separate sections, so both appear here and they are
  * not alternatives:
  *
- *   Differentiator  18 §64's model contrast, as the aligned comparison
- *                   table on the brand surface (DEC-098, DEC-099).
- *                   Opt-in per page via `showDifferentiator`. It owns
- *                   its own heading; this template passes none.
+ *   IndependentProcess  the independent-opinion band (Inspect, Document,
+ *                   Decide, both callouts, closing statement), on the
+ *                   brand surface. Opt-in per page via
+ *                   `showDifferentiator` — same gate, same name, since
+ *                   the 2026-09-22 site-wide swap replaced the old
+ *                   `Differentiator` comparison table here without
+ *                   touching the flag any page sets. It owns its own
+ *                   heading; this template passes none.
  *   AuthorityBand   the brand-surface proof points, always rendered.
  *
  * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="panel"`
@@ -157,7 +161,9 @@ export function ServicePageTemplate({
         becomes reachable, give this section `surface="muted"` there
         rather than leaving the pair adjacent.
       */}
-      {content.showDifferentiator === true && <Differentiator />}
+      {content.showDifferentiator === true && (
+        <IndependentProcess density="standard" />
+      )}
 
       {content.problems !== undefined && (
         <ProblemGrid

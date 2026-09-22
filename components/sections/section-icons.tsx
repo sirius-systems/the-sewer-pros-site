@@ -141,6 +141,18 @@ export function GuidanceIcon(props: IconProps) {
   )
 }
 
+/** A choice made from a list of options — a checklist. */
+export function ChecklistIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="m4 6.5 1.5 1.5 2.5-3" />
+      <path d="m4 13.5 1.5 1.5 2.5-3" />
+      <path d="M11 6.5h9M11 13.5h9M11 19h9" />
+      <path d="M4.5 19h2" />
+    </svg>
+  )
+}
+
 /** Weighing a major decision — a balance. */
 export function DecisionIcon(props: IconProps) {
   return (

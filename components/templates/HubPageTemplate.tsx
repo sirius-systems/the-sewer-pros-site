@@ -4,7 +4,7 @@ import {
   TrustBar,
   ServiceIndex,
   MarketCoverage,
-  Differentiator,
+  IndependentProcess,
   AuthorityBand,
   FaqSection,
   CtaSection,
@@ -287,7 +287,7 @@ export function HubPageTemplate({
   const showsProcessBand = content.showProcessBand === true
   /*
     ⚠ TWO MORE HOME PAGE BANDS, BOTH OPT-IN (owner, 2026-09-08).
-    `Differentiator` is the comparison band and authors nothing per
+    `IndependentProcess` is the independent-opinion band and authors nothing per
     page; `MarketCoverage` is "Where we work" as an EXTRA section
     rather than as the member list, which is what `marketCards` makes
     it. A hub setting `marketCards` already renders those cards, so the
@@ -396,7 +396,7 @@ export function HubPageTemplate({
       reviews, and four `standard` bands in a row is the run
       `sectionRhythmIssues()` reports by name. The composing template
       is the only thing that can see that sequence, which is why
-      `Differentiator` takes a `density` prop at all.
+      `IndependentProcess` takes a `density` prop at all.
     */
     ...(showsDifferentiator ? (['dense'] as const) : []),
     ...(showsReviews ? (['standard'] as const) : []),
@@ -565,18 +565,25 @@ export function HubPageTemplate({
       )}
 
       {/*
-        ⚠ THE COMPARISON BAND, AND IT AUTHORS NOTHING PER PAGE.
-        `Differentiator` owns its heading and both columns, so the same
-        argument reads identically on every page that carries it, which
-        is what a positioning statement needs. `brand` is its own
-        default and is not overridden here.
+        ⚠ THE INDEPENDENT-OPINION BAND, AND IT AUTHORS NOTHING PER PAGE.
+        `IndependentProcess` owns its heading, cards, callouts and
+        closing statement, so the same argument reads identically on
+        every page that carries it, which is what a positioning
+        statement needs. `brand` is fixed inside the component and is
+        not overridden here.
 
         ⚠ ITS NEIGHBOURS MUST NOT BE BRAND. Above it is the prose or the
         guidance band, below it the review band; none of the three ever
         takes that surface, so the one adjacency rule this fixed surface
         imposes is already satisfied.
+
+        ⚠ REPLACES `Differentiator` (the comparison-table section,
+        "Diagnosis separated from the sale") HERE, site-wide swap
+        2026-09-22. `showsDifferentiator`/`showDifferentiator` keep
+        their name — same gate, new component — rather than touching
+        `content/pages/core.tsx`, which still sets the flag.
       */}
-      {showsDifferentiator && <Differentiator density="dense" />}
+      {showsDifferentiator && <IndependentProcess density="dense" />}
 
       {/*
         ⚠ MUTED, WHERE THE MARKET HUBS RENDER THIS WHITE, AND THE
