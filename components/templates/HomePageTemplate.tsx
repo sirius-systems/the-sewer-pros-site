@@ -87,11 +87,29 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  *
  * So the separation here is structural, not cosmetic:
  *
- *   RoutingCards   an EVEN card grid
- *   ServiceIndex   an UNEVEN mosaic, flagship given double width
+ *   RoutingCards   a four-card intent grid, image-backed
+ *   ServiceIndex   a nine-card equal-size grid, one per service
  *
- * Two different composition patterns, adjacent, deliberately. They are
- * still adjacent after the reorder, which is why this note survives it.
+ * ⚠ SERVICE GRID IS `variant="cards"` AS OF 2026-09-22, NOT THE
+ * FLAGSHIP MOSAIC. The section was given its own heading, its own
+ * intro paragraph, and its own nine cards
+ * (`content/pages/home-service-cards.ts`), and no single service is
+ * featured over the other eight, so the flagship 2x2 tile the market
+ * hubs and `/services/` still use was dropped here in favor of a plain
+ * three-column, three-row grid.
+ *
+ * ⚠ `cards`, NOT `mosaic` WITH `equalColumns`. The approved version of
+ * this section (owner, 2026-09-22) puts each image in its own region of
+ * the card rather than behind the heading with a scrim, and adds a
+ * visible "Learn more" link per card — a layout `mosaic`'s
+ * image-background treatment cannot produce. `ServiceIndex`'s `cards`
+ * variant exists for exactly this case; see its own doc comment. This
+ * is the ONLY page on `cards` — the three market hubs' and
+ * `/locations/`'s equal-size grids still use `mosaic`'s `equalColumns`,
+ * which this update deliberately left alone.
+ *
+ * The two sections stay visually distinct regardless: `RoutingCards`
+ * carries a photographic backdrop and `ServiceIndex` does not.
  *
  * 18 §14: a hero must not be an "oversized empty hero that forces the
  * visitor to scroll before understanding the page". It stays editorial
@@ -354,9 +372,25 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       <ServiceIndex
         density="dense"
         id="services"
-        title="What we do"
+        title="Sewer Inspection, Diagnostics & Cleaning Services"
+        /*
+          ⚠ APPROVED COPY, VERBATIM (2026-09-22). Not sourced from
+          `content` because it is fixed template-level text, the same
+          way `RoutingCards`' intro above is — see that call's own
+          note. Do not rewrite or add to it.
+        */
+        intro={
+          <p>
+            The Sewer Pros provides sewer camera inspections, sewer
+            diagnostics, sewer cleaning, hydro jetting, sewer line
+            locating, and drain cleaning for residential and commercial
+            properties. We document the conditions we observe so
+            property owners, homebuyers, and property managers can
+            understand the issue and consider appropriate next steps.
+          </p>
+        }
         items={content.services}
-        variant="mosaic"
+        variant="cards"
       />
 
       {/*

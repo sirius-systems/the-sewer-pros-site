@@ -811,13 +811,14 @@ export function MarketPageTemplate({
         <ServiceIndex
           density="dense"
           id="market-services"
-          title="What we do"
+          title={content.servicesTitle ?? 'What we do'}
           items={content.services}
           variant={
             content.services.some((item) => item.image !== undefined)
               ? 'mosaic'
               : 'index'
           }
+          equalColumns={content.servicesEqualColumns}
           /*
             ⚠ `muted` FOR EVERY MARKET NOW, AND THE CONDITIONAL THAT
             USED TO BE HERE IS GONE RATHER THAN SIMPLIFIED AWAY.

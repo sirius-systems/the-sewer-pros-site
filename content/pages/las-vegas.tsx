@@ -63,7 +63,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
-import { coreServiceCards } from './service-cards'
+import { homeServiceCards } from './home-service-cards'
 
 const id = (value: string): PageId => value as PageId
 
@@ -129,10 +129,10 @@ export const lasVegasMarketContent: MarketPageContent = {
     first when real imagery arrives - nothing else changes.
   */
   heroBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-high-pressure-line-cleaning-hero.webp',
-    alt: 'Jetting reel and hose run to a cleanout on a paved approach',
+    src: '/images/homepage/hero/the-sewer-pros-high-pressure-sewer-line-cleaning-hero.webp',
+    alt: 'Jetting trailer and hose run to a cleanout beside a house',
     source:
-      'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
   },
   /*
     ⚠ THE CLIP IS LAS VEGAS'S OWN; THE STILL ABOVE IS STILL THE SHARED
@@ -1089,7 +1089,17 @@ export const lasVegasMarketContent: MarketPageContent = {
       },
     },
   ],
-  services: coreServiceCards,
+  /*
+    ⚠ THE HOME PAGE'S APPROVED NINE-CARD SET, VERBATIM, AS OF
+    2026-09-22. `homeServiceCards` (not `coreServiceCards`) carries the
+    approved heading, copy, images, and equal-size grid; Las Vegas has
+    no market-specific service of its own to compose in, so it mirrors
+    the home page exactly, the same as it did with `coreServiceCards`
+    before the home page's section was revised.
+  */
+  services: homeServiceCards,
+  servicesTitle: 'Sewer Inspection, Diagnostics & Cleaning Services',
+  servicesEqualColumns: true,
   locationPageIds: [
     id('loc-lv-las-vegas'),
     id('loc-lv-henderson'),

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 import {
   Section,
   LinkCard,
@@ -43,13 +44,14 @@ export interface ServiceIndexItem {
   /** Optional one-line summary. Keep it factual and specific. */
   description?: string
   /**
-   * Optional card artwork, rendered as the card's BACKGROUND.
+   * Optional card artwork. Ignored by `index`, a row list with no card
+   * to put an image on.
    *
-   * `mosaic` only. The `index` variant is a row list with no card to
-   * put a background on, and ignores this.
-   *
-   * ⚠ A card with artwork switches to white text over a scrim. See
-   * the render for the measurements that fix the scrim's value.
+   * `mosaic` renders it as the card's BACKGROUND, with a scrim and
+   * white text laid over it — see the render for the measurements that
+   * fix the scrim's value. `cards` renders it as a normal top-of-card
+   * image instead, with the heading, description and link below it at
+   * normal contrast.
    */
   image?: CardImage
 }
@@ -66,7 +68,7 @@ export interface ServiceIndexProps {
   id?: string
   eyebrow?: string
   title: string
-  intro?: string
+  intro?: ReactNode
   items: readonly ServiceIndexItem[]
   /** Numbered rows suit a sequence; plain rows suit a set. `index` only. */
   numbered?: boolean
@@ -80,6 +82,12 @@ export interface ServiceIndexProps {
    *           (Sewer Camera Inspection) gets more visual space than
    *           supporting services" — Appendix A names both the pattern
    *           and that exact flagship.
+   *   cards   an equal-size three-column grid of standalone cards:
+   *           image on top, then a heading, a description, and a
+   *           visible "Learn more" link — never text laid over the
+   *           image. Approved 2026-09-22 for the home page's services
+   *           section specifically; see the render for why it does not
+   *           reuse `mosaic`'s image-background/scrim treatment.
    *
    * The home page uses `mosaic` so it does not repeat the shape of the
    * even `RoutingCards` grid directly above it. That satisfies 18 §5.6's
@@ -89,16 +97,28 @@ export interface ServiceIndexProps {
    *
    * `mosaic` is deliberately not built on `CardGrid`: its even-division
    * warning describes a failure mode that does not apply to a layout
-   * whose whole point is being uneven.
+   * whose whole point is being uneven. `cards` does not use it either —
+   * every consumer already has an item count that divides evenly by
+   * three, and `CardGrid`'s children are plain nodes rather than the
+   * link/description/image trio this variant renders per item.
    */
-  variant?: 'index' | 'mosaic'
+  variant?: 'index' | 'mosaic' | 'cards'
   /**
    * The item given extra space in `mosaic`. Defaults to the first.
    *
    * Pass explicitly rather than relying on ordering when the flagship
-   * is not first in the content file.
+   * is not first in the content file. Ignored when `equalColumns` is set.
    */
   flagshipPageId?: PageId
+  /**
+   * `mosaic` only. Renders every card at the same size instead of
+   * giving the flagship a 2x2 tile, so an even item count (nine, for
+   * instance) fills a plain three-column, three-row grid rather than
+   * the deliberately uneven flagship layout.
+   *
+   * Use for a card set with no single flagship service to feature.
+   */
+  equalColumns?: boolean
   /**
    * Surface for the index band.
    *
@@ -153,6 +173,7 @@ export function ServiceIndex({
   surface = 'default',
   variant = 'index',
   flagshipPageId,
+  equalColumns = false,
   className,
 }: ServiceIndexProps) {
   // Gated pages drop out rather than failing the build — a service
@@ -185,7 +206,7 @@ export function ServiceIndex({
 
         <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {links.map((link) => {
-            const isFlagship = link.pageId === flagship
+            const isFlagship = !equalColumns && link.pageId === flagship
             const image = images.get(link.pageId)
 
             return (
@@ -302,6 +323,103 @@ export function ServiceIndex({
                     )}
                   </div>
                 </LinkCard>
+              </li>
+            )
+          })}
+        </ul>
+      </Section>
+    )
+  }
+
+  if (variant === 'cards') {
+    return (
+      <Section
+        density={density}
+        surface={surface}
+        labelledBy={id}
+        className={className}
+      >
+        <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+
+        <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {links.map((link) => {
+            const image = images.get(link.pageId)
+            const description = descriptions.get(link.pageId)
+
+            return (
+              <li key={link.pageId} className="flex">
+                {/*
+                  ⚠ NOT A `LinkCard`. `mosaic` puts the whole card behind
+                  one anchor because its text sits ON the image; this
+                  variant keeps the image and the text in separate,
+                  normal-contrast regions, so the card itself carries no
+                  link and the "Learn more" link below is the one
+                  focusable, announced action. Two anchors covering the
+                  same card (an outer link plus this one) would give
+                  assistive technology and keyboard users a duplicate
+                  stop for one destination.
+                */}
+                <div className="flex h-full w-full flex-col overflow-hidden rounded-md border border-border bg-surface">
+                  {image !== undefined && (
+                    <div className="relative aspect-[4/3] w-full">
+                      {/*
+                        ⚠ REAL ALT TEXT, NOT `alt=""`. Unlike `mosaic`,
+                        this image is not decoration behind a heading —
+                        it is its own region of the card, so `CardImage
+                        .alt` is what a screen-reader user actually
+                        hears for it.
+                      */}
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-h4 font-medium tracking-tight text-balance text-foreground">
+                      {link.label}
+                    </h3>
+                    {description !== undefined && (
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                        {description}
+                      </p>
+                    )}
+
+                    {/*
+                      ⚠ `mt-auto` IS THE ALIGNMENT MECHANISM. Descriptions
+                      run different lengths, and the grid already gives
+                      every card in a row the same height (CSS Grid, not
+                      flex) — this pushes the link to the bottom of
+                      whichever height that turns out to be, rather than
+                      trailing directly under a shorter description.
+                    */}
+                    <div className="mt-auto pt-4">
+                      <Link
+                        href={link.href}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                      >
+                        Learn more
+                        {/*
+                          ⚠ THE VISIBLE LABEL STAYS SHORT; THE ACCESSIBLE
+                          NAME DOES NOT. Nine identical "Learn more"
+                          links on one page fail 18 §47's ban on
+                          repeated non-descriptive link text for
+                          assistive technology, even though sighted
+                          users reading the label beside its own heading
+                          are never confused. This span is not visually
+                          rendered but is announced, so the accessible
+                          name becomes "Learn more about {Service}".
+                        */}
+                        <span className="sr-only"> about {link.label}</span>
+                        <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </li>
             )
           })}

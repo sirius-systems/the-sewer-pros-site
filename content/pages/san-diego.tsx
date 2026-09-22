@@ -57,7 +57,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
-import { coreServiceCards } from './service-cards'
+import { homeServiceCards } from './home-service-cards'
 
 const id = (value: string): PageId => value as PageId
 
@@ -114,10 +114,10 @@ export const sanDiegoMarketContent: MarketPageContent = {
     first when real imagery arrives - nothing else changes.
   */
   heroBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-residential-camera-service-hero.webp',
+    src: '/images/homepage/hero/the-sewer-pros-residential-sewer-camera-inspection-hero.webp',
     alt: 'Camera reel and monitor at an open cleanout on a residential driveway',
     source:
-      'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
   },
   /*
     ⚠ THE CLIP IS SAN DIEGO'S OWN; THE STILL ABOVE IS STILL THE SHARED
@@ -1185,7 +1185,17 @@ export const sanDiegoMarketContent: MarketPageContent = {
       },
     },
   ],
-  services: coreServiceCards,
+  /*
+    ⚠ THE HOME PAGE'S APPROVED NINE-CARD SET, VERBATIM, AS OF
+    2026-09-22. `homeServiceCards` (not `coreServiceCards`) carries the
+    approved heading, copy, images, and equal-size grid; San Diego has
+    no market-specific service of its own to compose in, so it mirrors
+    the home page exactly, the same as it did with `coreServiceCards`
+    before the home page's section was revised.
+  */
+  services: homeServiceCards,
+  servicesTitle: 'Sewer Inspection, Diagnostics & Cleaning Services',
+  servicesEqualColumns: true,
   locationPageIds: [
     id('loc-sd-san-diego'),
     id('loc-sd-carlsbad'),
@@ -1497,7 +1507,8 @@ export const sanDiegoMarketContent: MarketPageContent = {
     property the market serves.
 
     ⚠ THE PREVIOUS ASSET IS NOT ORPHANED.
-    `homepage/hero/the-sewer-pros-pipe-condition-review-hero.webp` is
+    `homepage/hero/the-sewer-pros-sewer-pipe-condition-review-hero.webp`
+    (renamed from `pipe-condition-review-hero.webp` 2026-09-22) is
     still one of the five frames `data/business/hero-backdrop.ts`
     rotates on the home page, so it stays where it is.
 
