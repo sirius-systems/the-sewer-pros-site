@@ -4,8 +4,11 @@
  * ===========================================================================
  * ⚠ PROVENANCE: OWNER-SUPPLIED, NOT DOCUMENTED JOB PHOTOGRAPHY
  * ===========================================================================
- * These five files were supplied by the business owner on 2026-09-03 and
- * wired in on owner direction the same day.
+ * The original five files were supplied by the business owner on
+ * 2026-09-03 and wired in on owner direction the same day. That set was
+ * replaced 2026-09-22 with five remade frames of the same five subjects,
+ * same order, same 1672x941 size — see the file-by-file mapping on
+ * `homeFrames` below.
  *
  * 18 §28-34 asks for real inspection photography and §34 rules out
  * "unrealistic AI imagery". These are rendered scenes rather than
@@ -69,7 +72,7 @@ export interface HeroBackdropSet {
   height: number
 }
 
-const SOURCE = 'Supplied by the business owner, 2026-09-03. Rendered scene, not a photograph of a Sewer Pros job.'
+const SOURCE = 'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.'
 
 /**
  * The backdrop set, in display order.
@@ -79,22 +82,33 @@ const SOURCE = 'Supplied by the business owner, 2026-09-03. Rendered scene, not 
  * service, and it is the frame a first-time visitor should meet. It is
  * also the only one rendered on the server, so it is the LCP candidate
  * — see `components/sections/HeroBackdrop.tsx`.
+ *
+ * ⚠ SAME FIVE SUBJECTS, SAME ORDER, REMADE FILES (2026-09-22). Each
+ * `src` below is the new file matched to its predecessor by subject —
+ * filenames carried the mapping directly except for two that picked up
+ * a clearer name in the remake:
+ *
+ *   residential-camera-service-hero    -> residential-sewer-camera-inspection-hero
+ *   pipe-condition-review-hero         -> sewer-pipe-condition-review-hero
+ *   high-pressure-line-cleaning-hero   -> high-pressure-sewer-line-cleaning-hero
+ *   commercial-drain-diagnostics-hero  -> (unchanged)
+ *   homebuyer-sewer-due-diligence-hero -> (unchanged)
  */
 const homeFrames: readonly HeroBackdropImage[] = [
   {
-    src: '/images/homepage/hero/the-sewer-pros-residential-camera-service-hero.webp',
+    src: '/images/homepage/hero/the-sewer-pros-residential-sewer-camera-inspection-hero.webp',
     describes:
       'Camera reel and monitor at an open cleanout on a residential driveway',
     source: SOURCE,
   },
   {
-    src: '/images/homepage/hero/the-sewer-pros-pipe-condition-review-hero.webp',
-    describes: 'Gloved hands at a camera monitor showing the inside of a line',
+    src: '/images/homepage/hero/the-sewer-pros-sewer-pipe-condition-review-hero.webp',
+    describes: 'Camera monitor showing the inside of a line, reel and hose beside it',
     source: SOURCE,
   },
   {
-    src: '/images/homepage/hero/the-sewer-pros-high-pressure-line-cleaning-hero.webp',
-    describes: 'Jetting reel and hose run to a cleanout on a paved approach',
+    src: '/images/homepage/hero/the-sewer-pros-high-pressure-sewer-line-cleaning-hero.webp',
+    describes: 'Jetting trailer and hose run to a cleanout beside a house',
     source: SOURCE,
   },
   {
@@ -104,7 +118,7 @@ const homeFrames: readonly HeroBackdropImage[] = [
   },
   {
     src: '/images/homepage/hero/the-sewer-pros-homebuyer-sewer-due-diligence-hero.webp',
-    describes: 'Jetting equipment and an open cleanout beside a property wall',
+    describes: 'Camera monitor and reel at a driveway cleanout in front of a home',
     source: SOURCE,
   },
 ]
