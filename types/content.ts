@@ -1328,11 +1328,11 @@ export interface HomePageContent extends BasePageContent {
   processBackground?: CardImage
   /*
    * ⚠ NO `differentiator` FIELD, DELIBERATELY. The homepage renders
-   * `Differentiator`'s `comparison-table` variant, which owns its own
-   * heading and intro in `differentiatorComparison`. A per-page
-   * override here would be a second source for the same two strings
-   * and would let the page state the differentiator differently from
-   * the table under it (owner, 2026-09-04).
+   * `IndependentProcess`, which owns its own fixed heading, cards,
+   * callouts and closing statement. A per-page override here would be
+   * a second source for the same copy and would let the page state the
+   * independent-opinion argument differently from the section itself
+   * (owner, 2026-09-04; content fixed sitewide 2026-09-22).
    */
 }
 
@@ -1951,20 +1951,22 @@ export interface HubPageContent extends BasePageContent {
    */
   guidance?: MarketGuidanceContent
   /**
-   * Renders `Differentiator`, the home page's comparison band.
+   * Renders `IndependentProcess`, the independent-opinion band.
    *
    * ⚠ IT CARRIES NO PER-PAGE CONTENT, WHICH IS WHY THIS IS A BOOLEAN.
-   * The component owns its own heading and both columns of the
-   * comparison; a page opts into the band, it does not author it. That
-   * also means the argument reads identically wherever it appears,
-   * which is the point of a positioning statement.
+   * The component owns its own fixed heading, cards, callouts and
+   * closing statement; a page opts into the band, it does not author
+   * it. That also means the argument reads identically wherever it
+   * appears, which is the point of a positioning statement.
    *
-   * ⚠ `brand` AND FIXED. It is the section's own default and the
-   * template does not override it, so the bands either side must not be
-   * brand. Today they are the intro prose or the guidance band above
-   * and the review band below, none of which is.
+   * ⚠ `brand` AND FIXED, INSIDE THE COMPONENT. It is not a prop here,
+   * so the bands either side must not be brand. Today they are the
+   * intro prose or the guidance band above and the review band below,
+   * none of which is.
    *
-   * ⚠ ONLY `/services/` SETS THIS.
+   * ⚠ ONLY `/services/` SETS THIS. Field name unchanged from when it
+   * rendered `Differentiator` (retired 2026-09-22) — same gate, new
+   * component.
    */
   showDifferentiator?: boolean
   /**

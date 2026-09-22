@@ -7,7 +7,7 @@ import {
   confidenceModuleRenders,
   RoutingCards,
   ServiceIndex,
-  Differentiator,
+  IndependentProcess,
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
@@ -44,7 +44,7 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  * ---------------------------------------------------------------------------
  * The page now runs:
  *
- *   Hero + form → Trust strip → Differentiator → Google reviews
+ *   Hero + form → Trust strip → IndependentProcess → Google reviews
  *   → Intent routing → Services mosaic → Process → Markets → Body*
  *   → Confidence module → Resources → FAQ → Final CTA + form
  *
@@ -106,7 +106,7 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  *
  * ⚠ ADJACENCY: `AuthorityBand` and the final `CtaSection variant="split"`
  * both carry photographs on this page rather than the brand surface, so
- * `Differentiator` is the only `brand` section left. `TrustBar` above it
+ * `IndependentProcess` is the only `brand` section left. `TrustBar` above it
  * was moved to `muted` on owner direction so the two do not run
  * together — see the surface note in the body.
  */
@@ -130,7 +130,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
   //   standard dense dense dense
   //
   // The longest run is three, against `sectionRhythmIssues()`'s
-  // threshold of four. Differentiator → reviews → routing is that run,
+  // threshold of four. IndependentProcess → reviews → routing is that run,
   // and it is the one to watch if another `standard` section is ever
   // inserted among them.
   const densities: SectionDensity[] = [
@@ -139,7 +139,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
     // The differentiator is unconditional: it renders its own canonical
     // comparison rather than per-page content that could be absent. No
     // predicate to gate on, so the entry is a literal.
-    'standard',
+    'dense',
     ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(routingCardsRenders(content.routing) ? (['standard'] as const) : []),
     ...(serviceIndexRenders(content.services) ? (['dense'] as const) : []),
@@ -218,7 +218,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         DIRECTION (2026-09-05). It is what separates this strip from
         the section beneath it.
 
-        The reorder put `Differentiator` directly below the trust bar,
+        The reorder put `IndependentProcess` directly below the trust bar,
         and that section is `brand`. Two navy bands running together
         read as one long dark region, which is the adjacency 18 §11
         names and the owner ruled against on 2026-09-04 ("separate
@@ -263,7 +263,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
 
           Hero                photo backdrop
           TrustBar            muted   ← flipped, see below
-          Differentiator      brand   ← comparison-table variant
+          IndependentProcess      brand   ← comparison-table variant
           ReviewMarquee       default
           RoutingCards        photo backdrop
           ServiceIndex        default
@@ -306,7 +306,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         precisely so it does not meet this one; `ReviewMarquee` below
         is `default`. See the surface note above.
       */}
-      <Differentiator />
+      <IndependentProcess density="dense" />
 
       {/*
         `TestimonialBand` stays gated and empty — `data/business/proof.ts`
@@ -372,7 +372,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         this band is the page's process section now.
 
         ⚠ ADJACENCY RE-CHECKED AFTER THE 2026-09-05 REORDER. This band
-        used to follow `Differentiator` (brand) with `MarketCoverage`
+        used to follow `IndependentProcess` (brand) with `MarketCoverage`
         between them. It now follows `ServiceIndex` (default) and is
         followed by `MarketCoverage` (default) — and it is an image
         rather than `brand` in any case, so no two dark surfaces meet

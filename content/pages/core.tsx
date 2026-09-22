@@ -779,7 +779,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       Six sections from the home page and one from `/locations/`, named
       by their headings:
 
-        Diagnosis separated from the sale      `showDifferentiator`
+        Before You Approve an Expensive... *   `showDifferentiator`
         Local sewer service built around ...   `guidance`
         What our customers say                 `showTrustSections`
         How we can help                        `routing`
@@ -787,11 +787,18 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         Where we work                          `showMarketCoverage`
         Planning Your Sewer Service ...        `showTrustSections`
 
+      * `showDifferentiator` rendered `Differentiator` ("Diagnosis
+        separated from the sale") when this comment was written; it
+        renders `IndependentProcess` as of the 2026-09-22 site-wide
+        swap. Same flag, same gate — see IndependentProcess.tsx.
+
       ⚠ EVERY ONE IS AN EXISTING SECTION AND NONE AUTHORS A NEW FACT.
       Five were already opt-in for `/locations/` under DEC-103;
-      `showDifferentiator` and `showMarketCoverage` are new flags, and
-      both render components that build themselves from shared data
-      rather than from copy written here.
+      `showDifferentiator` and `showMarketCoverage` are new flags.
+      `showMarketCoverage` renders a component that builds itself from
+      shared data; `showDifferentiator` now renders `IndependentProcess`,
+      whose copy is fixed inline in the component rather than
+      data-driven (unlike the `Differentiator` it replaced).
 
       ⚠ THIS GOES BEYOND WHAT DEC-104 APPROVED, DELIBERATELY. That
       decision excluded the review band and the confidence module by

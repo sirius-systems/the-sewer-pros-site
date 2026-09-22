@@ -66,109 +66,19 @@ export const trustStatements: readonly TrustStatement[] = [
   },
 ]
 
-/* ==========================================================================
-   Differentiator comparison — the homepage `comparison-table` variant
-   ========================================================================== */
-
-/** One criterion, with both business models' outcome for it. */
-export interface ComparisonRow {
-  id: string
-  label: string
-  /** Which mark represents this row — mapped to a component, not a raw name. */
-  icon: 'business-model' | 'what-you-receive' | 'what-happens-next' | 'repair-incentive'
-  contractor: string
-  ours: string
-}
-
-export interface DifferentiatorComparison {
-  heading: string
-  intro: string
-  contractorLabel: string
-  oursLabel: string
-  rows: readonly ComparisonRow[]
-  conclusion: string
-}
-
 /**
- * The model contrast as an aligned comparison (owner, 2026-09-04).
- *
- * THE ONLY SOURCE FOR THIS SECTION, ON EVERY PAGE THAT RENDERS IT
- * (DEC-099). It replaced the plain two-column step lists this file
- * used to hold, when the comparison table went site-wide and that
- * export lost its last caller. 18 §141's
- * "Inspection -> Evidence -> Cleaning/Next-Step Decision" motif that
- * they carried now lives in the `what-happens-next` row below, which
- * keeps cleaning in the chain for the same reason: cleaning is an
- * approved service (06; 01 §2.2, §3), not a hand-off.
- *
- * ===========================================================================
- * ⚠ THE TONE CONSTRAINT IS UNCHANGED AND STILL BINDING
- * ===========================================================================
- * 18 §64 requires the presentation stay "factual and non-accusatory";
- * 01 §72 and CLAUDE.md §32 forbid claiming competitors are dishonest
- * or recommend unnecessary work. Every `contractor` string below is
- * hedged to a MODEL and an INCENTIVE — "may perform", "may earn
- * revenue" — because that is a description of how a business earns,
- * not a claim about what it does to a customer.
- *
- * ⚠ DO NOT SHARPEN THESE. Dropping a "may", adding "instead of
- * telling you the truth", or pairing a row with a cross or a warning
- * colour turns a structural contrast into an accusation, which is the
- * one thing this section may not do. The visual emphasis added on the
- * homepage is emphasis on OUR column, never a mark against theirs —
- * see the exception note in `Differentiator`.
- *
- * ⚠ NO NEW CLAIM ABOUT REPAIR CONTRACTORS IN GENERAL. Each row states
- * only what follows from a company performing the repair it
- * recommends, which is a definition rather than a finding.
- *
- * The `ours` side asserts nothing the site does not already say: no
- * repair or replacement (CLAUDE.md §9), video evidence the customer
- * keeps, cleaning as an approved service (06; 01 §2.2, §3).
+ * ⚠ THE COMPARISON-TABLE VARIANT THAT USED TO LIVE HERE IS RETIRED.
+ * `ComparisonRow`, `DifferentiatorComparison` and `differentiatorComparison`
+ * ("Diagnosis separated from the sale", the "contractor that also sells
+ * repairs" vs. "The Sewer Pros" table) were removed 2026-09-22 when the
+ * site-wide swap to `IndependentProcess` (`components/sections/
+ * IndependentProcess.tsx`) removed their last caller,
+ * `components/sections/Differentiator.tsx`, also removed. See
+ * `docs/22-decisions-change-log.md` for the decision-log entry.
+ * `IndependentProcess`'s content is fixed inline in that component
+ * rather than data-driven from this file — it is the same on every
+ * page it renders on, so there is nothing here for it to read.
  */
-export const differentiatorComparison: DifferentiatorComparison = {
-  heading: 'Diagnosis separated from the sale',
-  intro:
-    'We inspect, document, and clean sewer lines. We do not perform sewer repair or replacement, so what we find does not become a repair quote from us.',
-  contractorLabel: 'A contractor that also sells repairs',
-  oursLabel: 'The Sewer Pros',
-  rows: [
-    {
-      id: 'business-model',
-      label: 'Business model',
-      icon: 'business-model',
-      contractor:
-        'Inspects the sewer line and may perform the repair it recommends.',
-      ours:
-        'We inspect, document, and clean sewer lines, but do not perform sewer repair or replacement.',
-    },
-    {
-      id: 'what-you-receive',
-      label: 'What you receive',
-      icon: 'what-you-receive',
-      contractor:
-        "Inspection findings that may lead directly to the contractor's own repair quote.",
-      ours: 'Video evidence and documented findings you can keep.',
-    },
-    {
-      id: 'what-happens-next',
-      label: 'What happens next',
-      icon: 'what-happens-next',
-      contractor: 'The same company may recommend and sell the repair.',
-      ours:
-        'You decide whether to clean the line, monitor the condition, or consult a separate repair provider.',
-    },
-    {
-      id: 'repair-incentive',
-      label: 'Repair incentive',
-      icon: 'repair-incentive',
-      contractor: 'The contractor may earn revenue from the repair it recommends.',
-      ours: 'We do not profit from a repair recommendation.',
-    },
-  ],
-  conclusion:
-    'Our job is to show you what is happening inside the line. The decision about what happens next remains yours.',
-}
 
 /**
  * The recurring process motif (18 §141).

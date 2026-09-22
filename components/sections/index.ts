@@ -206,8 +206,8 @@ export type { ServiceIndexProps, ServiceIndexItem } from './ServiceIndex'
 export { ProcessSteps, processStepsRenders } from './ProcessSteps'
 export type { ProcessStepsProps, ProcessStep } from './ProcessSteps'
 
-export { Differentiator } from './Differentiator'
-export type { DifferentiatorProps } from './Differentiator'
+export { IndependentProcess } from './IndependentProcess'
+export type { IndependentProcessProps } from './IndependentProcess'
 
 export { FaqSection, faqSectionRenders } from './FaqSection'
 export type { FaqSectionProps, FaqEntry } from './FaqSection'
@@ -219,9 +219,9 @@ export { MarketCoverage, marketCoverageRenders } from './MarketCoverage'
 export type { MarketCoverageProps } from './MarketCoverage'
 
 /*
-  A hub's opening explainer. Not the home page's `Differentiator` and
-  not `MarketGuidance`: this one is the page's own argument in prose,
-  with the heading beside it rather than above it.
+  A hub's opening explainer. Not `IndependentProcess` and not
+  `MarketGuidance`: this one is the page's own argument in prose, with
+  the heading beside it rather than above it.
 */
 export { SelectionPanel, selectionPanelRenders } from './SelectionPanel'
 export type { SelectionPanelProps } from './SelectionPanel'
