@@ -97,6 +97,8 @@ export const stLouisMarketContent: MarketPageContent = {
     are the second. Before 2026-09-07 the same point was made in one
     paragraph above a plain list.
   */
+  metaDescription:
+    'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services in St. Louis, Missouri, with documented findings and informed next steps.',
   hero: {
     eyebrow: 'St. Louis sewer and drain specialists',
     title: 'Sewer camera inspection and cleaning in St. Louis, MO',
@@ -1248,6 +1250,17 @@ export const stLouisMarketContent: MarketPageContent = {
    ========================================================================== */
 
 export const lateralReportingContent: ServicePageContent = {
+  /*
+    ⚠ NOT THE PROPOSED COPY VERBATIM. The draft description's closing
+    clause was "documented findings for property and transaction
+    decisions" — this page is about municipal lateral repair-programme
+    reimbursement documentation (see body below), not a pre-purchase
+    or real-estate-transaction page (that's
+    svc-pre-purchase-sewer-inspection). Reworded the closing clause to
+    match what this page actually covers.
+  */
+  metaDescription:
+    'Learn about sewer lateral inspection and reporting services in St. Louis, including documented findings for municipal repair-program claims.',
   hero: {
     eyebrow: 'St. Louis area',
     title: 'Sewer Lateral Inspection & Municipal Reporting',
@@ -1366,6 +1379,8 @@ export const lateralReportingContent: ServicePageContent = {
 export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>> = {
   /* -------------------------------------------------------------- City -- */
   [id('loc-stl-st-louis-city')]: {
+    metaDescription:
+      'Explore sewer inspections, diagnostics, cleaning, hydro jetting, and drain services available for properties in St. Louis, Missouri.',
     hero: {
       eyebrow: 'St. Louis City',
       title: 'Sewer inspection and cleaning in St. Louis City',
@@ -1457,6 +1472,8 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
 
   /* ----------------------------------------------------------- Ballwin -- */
   [id('loc-stl-ballwin')]: {
+    metaDescription:
+      'Get information about sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available in Ballwin, Missouri.',
     hero: {
       eyebrow: 'Ballwin',
       title: 'Sewer inspection and cleaning in Ballwin',
@@ -1554,6 +1571,8 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
 
   /* -------------------------------------------------------- Florissant -- */
   [id('loc-stl-florissant')]: {
+    metaDescription:
+      'Explore sewer inspection, cleaning, diagnostics, and related drain services available for properties in Florissant, Missouri.',
     hero: {
       eyebrow: 'Florissant',
       title: 'Sewer inspection and cleaning in Florissant',
@@ -1650,6 +1669,8 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
 
   /* ------------------------------------------------------ Chesterfield -- */
   [id('loc-stl-chesterfield')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, and drain services available for properties in Chesterfield, Missouri.',
     hero: {
       eyebrow: 'Chesterfield',
       title: 'Sewer inspection and cleaning in Chesterfield',
@@ -1782,6 +1803,8 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
 
   /* ------------------------------------------------------- St. Charles -- */
   [id('loc-stl-st-charles')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in St. Charles, Missouri.',
     hero: {
       eyebrow: 'St. Charles',
       title: 'Sewer inspection and cleaning in St. Charles',
@@ -1896,6 +1919,8 @@ export const stLouisServiceLocationContent: Partial<
   Record<PageId, ServiceLocationPageContent>
 > = {
   [id('sl-stl-city-camera')]: {
+    metaDescription:
+      'Schedule a sewer camera inspection in St. Louis City with documented video findings to better understand the condition of your sewer line.',
     hero: {
       eyebrow: 'St. Louis City',
       title: 'Sewer Camera Inspection in St. Louis City',
@@ -1948,6 +1973,8 @@ export const stLouisServiceLocationContent: Partial<
   },
 
   [id('sl-chesterfield-camera')]: {
+    metaDescription:
+      "Schedule a sewer camera inspection in Chesterfield, Missouri, with documented findings to help clarify your sewer line's condition.",
     hero: {
       eyebrow: 'Chesterfield',
       title: 'Sewer Camera Inspection in Chesterfield',
@@ -2012,6 +2039,8 @@ export const stLouisServiceLocationContent: Partial<
   },
 
   [id('sl-chesterfield-hydro')]: {
+    metaDescription:
+      'Learn about hydro jetting in Chesterfield, Missouri, and when high-pressure cleaning may help address buildup inside sewer and drain lines.',
     hero: {
       eyebrow: 'Chesterfield',
       title: 'Hydro Jetting in Chesterfield',
@@ -2072,6 +2101,8 @@ export const stLouisServiceLocationContent: Partial<
   },
 
   [id('sl-ballwin-prepurchase')]: {
+    metaDescription:
+      'Schedule a pre-purchase sewer inspection in Ballwin with documented camera findings to help evaluate a property before closing.',
     hero: {
       eyebrow: 'Ballwin',
       title: 'Pre-Purchase Sewer Inspection in Ballwin',
@@ -2132,6 +2163,8 @@ export const stLouisServiceLocationContent: Partial<
   },
 
   [id('sl-st-charles-prepurchase')]: {
+    metaDescription:
+      'Schedule a pre-purchase sewer inspection in St. Charles, Missouri, with documented findings to support an informed property decision.',
     hero: {
       eyebrow: 'St. Charles',
       title: 'Pre-Purchase Sewer Inspection in St. Charles',
@@ -2184,6 +2217,8 @@ export const stLouisServiceLocationContent: Partial<
   },
 
   [id('sl-florissant-cleaning')]: {
+    metaDescription:
+      'Request professional sewer cleaning in Florissant, Missouri, to address buildup, blockages, and flow problems with inspection-focused service.',
     hero: {
       eyebrow: 'Florissant',
       title: 'Sewer Cleaning in Florissant',

@@ -57,6 +57,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       provider" rather than to us, which is CLAUDE.md §9's repair
       boundary stated inside the sales copy rather than beside it.
     */
+    metaDescription:
+      'See what is happening inside your sewer line with professional camera inspection, documented findings, and clear next-step information.',
     hero: {
       eyebrow: 'Evidence before expensive decisions',
       title: 'Sewer Camera Inspection',
@@ -293,6 +295,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Sewer Cleaning — 14 §31
      ====================================================================== */
   [id('svc-sewer-cleaning')]: {
+    metaDescription:
+      'Request professional sewer cleaning to address blockages, buildup, and flow problems with inspection-focused service from The Sewer Pros.',
     hero: {
       eyebrow: 'Cleaning',
       title: 'Sewer Cleaning',
@@ -386,6 +390,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Hydro Jetting — 14 §32
      ====================================================================== */
   [id('svc-hydro-jetting')]: {
+    metaDescription:
+      'Learn how hydro jetting can help clear buildup and restore flow in sewer and drain lines when the service is appropriate.',
     hero: {
       eyebrow: 'Cleaning',
       title: 'Hydro Jetting',
@@ -494,6 +500,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Sewer Cleaning + Camera Inspection
      ====================================================================== */
   [id('svc-sewer-cleaning-camera-inspection')]: {
+    metaDescription:
+      'Combine sewer cleaning with camera inspection to address buildup while documenting conditions inside the line before deciding what comes next.',
     hero: {
       eyebrow: 'Cleaning and diagnostics',
       title: 'Sewer Cleaning with Camera Inspection',
@@ -571,6 +579,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Sewer Line Locating — 14 §33
      ====================================================================== */
   [id('svc-sewer-line-locating')]: {
+    metaDescription:
+      'Locate sewer lines and document their position to support property planning, maintenance, inspections, and related project decisions.',
     hero: {
       eyebrow: 'Locating',
       title: 'Sewer Line Locating',
@@ -654,6 +664,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Drain Cleaning — 14 §34
      ====================================================================== */
   [id('svc-drain-cleaning')]: {
+    metaDescription:
+      'Get help with clogged, slow, or recurring drains through professional drain cleaning and diagnostic service from The Sewer Pros.',
     hero: {
       eyebrow: 'Cleaning',
       title: 'Drain Cleaning',
@@ -718,6 +730,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Pre-Purchase Sewer Inspection — 14 §35
      ====================================================================== */
   [id('svc-pre-purchase-sewer-inspection')]: {
+    metaDescription:
+      "Schedule a pre-purchase sewer inspection with documented camera findings to better understand a property's sewer line before closing.",
     hero: {
       eyebrow: 'Real estate',
       title: 'Pre-Purchase Sewer Inspection',
@@ -815,6 +829,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Recurring Sewer Backup Diagnosis
      ====================================================================== */
   [id('svc-recurring-sewer-backup-diagnosis')]: {
+    metaDescription:
+      'Investigate recurring sewer backups with camera inspection and documented diagnostics to better understand the condition of the line.',
     hero: {
       eyebrow: 'Diagnostics',
       title: 'Recurring Sewer Backup Diagnosis',
@@ -895,6 +911,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Preventative Sewer Maintenance
      ====================================================================== */
   [id('svc-preventative-sewer-maintenance')]: {
+    metaDescription:
+      'Reduce uncertainty around recurring sewer problems with inspection, cleaning, and preventative sewer maintenance from The Sewer Pros.',
     hero: {
       eyebrow: 'Maintenance',
       title: 'Preventative Sewer Maintenance',

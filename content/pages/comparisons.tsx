@@ -31,6 +31,8 @@ const id = (value: string): PageId => value as PageId
 
 export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> = {
   [id('cmp-hydro-vs-snaking')]: {
+    metaDescription:
+      'Compare hydro jetting and sewer snaking, including how each approach works, when it may help, and what a sewer inspection can clarify.',
     hero: {
       eyebrow: 'Comparison',
       title: 'Hydro Jetting vs Sewer Snaking',
@@ -133,6 +135,18 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
   },
 
   [id('cmp-independent-vs-repair')]: {
+    /*
+      ⚠ TITLE VS. H1. `hero.title` repeats "Inspection" (once for
+      "Independent Sewer Inspection," once trailing after "Repair
+      Company Inspection") — fine as a heading, where the repetition
+      reads as emphasis, but redundant and over-length (74 characters)
+      as a search-result title. `seoTitle` exists for exactly this
+      case (see its doc comment in types/content.ts): it overrides the
+      search-facing title without touching the H1 or any visible copy.
+    */
+    seoTitle: 'Independent Sewer Inspection vs. Repair Company',
+    metaDescription:
+      'Compare independent sewer inspection with repair-company evaluations and learn how documented findings can support an informed next-step decision.',
     hero: {
       eyebrow: 'Comparison',
       title: 'Independent Sewer Inspection vs Repair Company Inspection',

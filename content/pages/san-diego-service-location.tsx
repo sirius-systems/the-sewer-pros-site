@@ -50,6 +50,8 @@ export const sanDiegoServiceLocationContent: Partial<
 > = {
   /* ------------------------------------------- San Diego city / camera -- */
   [id('sl-sd-city-camera')]: {
+    metaDescription:
+      'Schedule a sewer camera inspection in San Diego with documented video findings to better understand the condition of your sewer line.',
     hero: {
       eyebrow: 'San Diego',
       title: 'Sewer Camera Inspection in San Diego',
@@ -114,6 +116,8 @@ export const sanDiegoServiceLocationContent: Partial<
 
   /* --------------------------------------------- San Marcos / camera -- */
   [id('sl-san-marcos-camera')]: {
+    metaDescription:
+      'Schedule a sewer camera inspection in San Marcos with documented findings to help clarify the condition of your sewer line.',
     hero: {
       eyebrow: 'San Marcos',
       title: 'Sewer Camera Inspection in San Marcos',
@@ -177,6 +181,8 @@ export const sanDiegoServiceLocationContent: Partial<
 
   /* ------------------------------------------------ Carlsbad / camera -- */
   [id('sl-carlsbad-camera')]: {
+    metaDescription:
+      'Schedule a sewer camera inspection in Carlsbad with documented video findings to better understand your sewer line before deciding what comes next.',
     hero: {
       eyebrow: 'Carlsbad',
       title: 'Sewer Camera Inspection in Carlsbad',
@@ -245,6 +251,8 @@ export const sanDiegoServiceLocationContent: Partial<
 
   /* ------------------------------------------- Carlsbad / pre-purchase -- */
   [id('sl-carlsbad-prepurchase')]: {
+    metaDescription:
+      'Schedule a pre-purchase sewer inspection in Carlsbad with documented camera findings to help evaluate a property before closing.',
     hero: {
       eyebrow: 'Carlsbad',
       title: 'Pre-Purchase Sewer Inspection in Carlsbad',
@@ -323,6 +331,8 @@ export const sanDiegoServiceLocationContent: Partial<
 
   /* --------------------------------------------- Chula Vista / camera -- */
   [id('sl-chula-vista-camera')]: {
+    metaDescription:
+      'Schedule a sewer camera inspection in Chula Vista with documented findings to help clarify the condition of your sewer line.',
     hero: {
       eyebrow: 'Chula Vista',
       title: 'Sewer Camera Inspection in Chula Vista',
@@ -392,6 +402,8 @@ export const sanDiegoServiceLocationContent: Partial<
 
   /* ------------------------------------------- Escondido / cleaning -- */
   [id('sl-escondido-cleaning')]: {
+    metaDescription:
+      'Request professional sewer cleaning in Escondido to address buildup, blockages, and flow problems with inspection-focused service.',
     hero: {
       eyebrow: 'Escondido',
       title: 'Sewer Cleaning in Escondido',
@@ -462,6 +474,8 @@ export const sanDiegoServiceLocationContent: Partial<
 
   /* ------------------------------------------- Oceanside / cleaning -- */
   [id('sl-oceanside-cleaning')]: {
+    metaDescription:
+      'Request professional sewer cleaning in Oceanside to address buildup, blockages, and flow problems with documented service information.',
     hero: {
       eyebrow: 'Oceanside',
       title: 'Sewer Cleaning in Oceanside',
@@ -540,6 +554,8 @@ export const sanDiegoServiceLocationContent: Partial<
 
   /* ------------------------------------- Mission Valley / hydro jetting -- */
   [id('sl-mission-valley-hydro')]: {
+    metaDescription:
+      'Learn about hydro jetting in Mission Valley and when high-pressure cleaning may help address buildup inside sewer and drain lines.',
     hero: {
       eyebrow: 'Mission Valley',
       title: 'Hydro Jetting in Mission Valley',

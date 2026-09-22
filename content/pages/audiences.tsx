@@ -44,6 +44,18 @@ const id = (value: string): PageId => value as PageId
 export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
   /* ========================================================= buyers -- */
   [id('aud-home-buyers')]: {
+    /*
+      ⚠ NOT THE PROPOSED COPY. The draft description for this page was
+      byte-identical to the one for svc-pre-purchase-sewer-inspection —
+      both batches proposed "Schedule a pre-purchase sewer inspection
+      with documented camera findings..." verbatim, which would have
+      shipped a duplicate meta description on two different pages
+      (exactly the site-wide problem this whole effort exists to fix).
+      Reworded to the audience's situation rather than repeating the
+      service page's own description.
+    */
+    metaDescription:
+      'Understand what a sewer inspection can reveal about a property you are considering, and why home buyers request one before closing.',
     hero: {
       eyebrow: 'For home buyers',
       title: 'Know the condition of the sewer line before you buy',
@@ -170,6 +182,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ======================================================== sellers -- */
   [id('aud-home-sellers')]: {
+    metaDescription:
+      'Prepare for property questions with documented sewer inspection findings and practical information for sellers and real-estate transactions.',
     hero: {
       eyebrow: 'For home sellers',
       title: 'Find out what a buyer’s inspection will find',
@@ -267,6 +281,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ========================================================= agents -- */
   [id('aud-real-estate-agents')]: {
+    metaDescription:
+      'Help clients understand sewer-line conditions with professional inspections, documented findings, and service pathways for real-estate transactions.',
     hero: {
       eyebrow: 'For real estate agents',
       title: 'A sewer inspection that does not become a sales process',
@@ -353,6 +369,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ===================================================== inspectors -- */
   [id('aud-home-inspectors')]: {
+    metaDescription:
+      'Coordinate sewer camera inspections with documented video findings and clear information to support home-inspection clients.',
     hero: {
       eyebrow: 'For home inspectors',
       title: 'The part of the property your scope does not cover',
@@ -439,6 +457,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* =============================================== property managers -- */
   [id('aud-property-managers')]: {
+    metaDescription:
+      'Explore sewer inspection, cleaning, diagnostics, and documentation services for property managers handling recurring sewer and drain concerns.',
     hero: {
       eyebrow: 'For property managers',
       title: 'Stop absorbing the same sewer call every few months',
@@ -552,6 +572,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ============================================================ HOA -- */
   [id('aud-hoa-communities')]: {
+    metaDescription:
+      'Explore sewer inspection, cleaning, diagnostics, and documentation services for HOA communities and shared property concerns.',
     hero: {
       eyebrow: 'For HOA communities',
       title: 'Evidence a board can actually make a decision on',
