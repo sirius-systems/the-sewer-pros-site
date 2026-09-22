@@ -1423,6 +1423,25 @@ export interface MarketPageContent extends BasePageContent {
     description?: string
     image?: CardImage
   }[]
+  /**
+   * Heading for the services band. Defaults to `'What we do'`.
+   *
+   * Set only when `services` carries the home page's approved nine-card
+   * set verbatim (San Diego, Las Vegas): those markets render the same
+   * heading the home page does. St. Louis composes its own nine
+   * (market-specific lateral service swapped in for the combined
+   * cleaning-and-inspection card) and keeps the default heading, since
+   * its card set is not the approved nine.
+   */
+  servicesTitle?: string
+  /**
+   * `mosaic` only. Gives every services-band card the same footprint
+   * instead of a 2x2 flagship tile — see `ServiceIndex.equalColumns`.
+   *
+   * Set only alongside `servicesTitle` for a market carrying the home
+   * page's approved nine-card set unmodified.
+   */
+  servicesEqualColumns?: boolean
   /** Full-bleed frame behind the hero. Unset renders the editorial hero. */
   heroBackground?: CardImage
   /**

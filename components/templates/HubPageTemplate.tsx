@@ -726,13 +726,22 @@ export function HubPageTemplate({
         <ServiceIndex
           density="dense"
           id="services"
-          title="What we do"
+          title="Sewer Inspection, Diagnostics & Cleaning Services"
           items={content.services}
           variant={
             content.services.some((item) => item.image !== undefined)
               ? 'mosaic'
               : 'index'
           }
+          /*
+            ⚠ ONLY CALLER OF `content.services` IS `/locations/`
+            (2026-09-22). This band mirrors the home page's approved
+            services section, which renders every card at equal size
+            rather than giving one a flagship tile — see
+            `ServiceIndex.equalColumns` and
+            `content/pages/home-service-cards.ts`.
+          */
+          equalColumns
           surface={servicesSurface}
         />
       )}

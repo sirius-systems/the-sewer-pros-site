@@ -27,6 +27,7 @@
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { coreServiceCards } from './service-cards'
+import { homeServiceCards } from './home-service-cards'
 import type {
   CorePageContent,
   HomePageContent,
@@ -58,22 +59,18 @@ export const homeContent: HomePageContent = {
   metaDescription:
     "Independent sewer camera inspection, diagnostics, locating, and cleaning across St. Louis, San Diego, and Las Vegas. See the line's condition first.",
   /*
-    ⚠ THE SAME ARRAY THE THREE MARKET HUBS RENDER, MOVED OUT OF THIS
-    FILE ON 2026-09-07 RATHER THAN COPIED INTO THEIRS.
+    ⚠ `homeServiceCards`, NOT `coreServiceCards`, AS OF 2026-09-22.
 
-    The owner asked the hubs to carry this page's "What we do" section.
-    Four hand-maintained transcriptions of one list is how the drift
-    that prompted the request happened in the first place - two hubs
-    had no artwork at all and were rendering a text index where this
-    page renders the mosaic. `content/pages/service-cards.ts` holds the
-    nine cards, the provenance, the market-availability check, and why
-    the count is nine rather than ten.
-
-    ⚠ THIS PAGE'S RENDERED OUTPUT IS UNCHANGED BY THE MOVE. Same nine
-    entries, same order, same descriptions, same frames. Verified
-    against the pre-change build.
+    This page's grid was given its own heading ("Sewer Inspection,
+    Diagnostics & Cleaning Services") and its own nine cards, dropping
+    Preventative Sewer Maintenance in favor of Commercial Sewer & Drain
+    Services and moving to an equal-size 3x3 grid rather than the
+    flagship mosaic. `coreServiceCards` stays exactly as it was for the
+    three market hubs and `/services/`, which still render the
+    flagship-mosaic nine — see `content/pages/home-service-cards.ts` for
+    why the two lists must stay separate.
   */
-  services: coreServiceCards,
+  services: homeServiceCards,
   /*
     ⚠ THE COMMERCIAL LINKS USE PAGE IDS, NOT SERVICE IDS.
 
@@ -1588,11 +1585,14 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     */
     processBackground: homeContent.processBackground,
     /*
-      The home page's nine-card mosaic. Safe on a page speaking for all
-      three markets because every card in `coreServiceCards` carries an
-      identical status across all three; see that file.
+      ⚠ `homeServiceCards`, NOT `coreServiceCards`, AS OF 2026-09-22.
+      The home page's approved services section (nine cards, equal-size
+      grid) — see `content/pages/home-service-cards.ts`. Safe on a page
+      speaking for all three markets for the same reason `service-cards
+      .ts` gives for `coreServiceCards`: every one of these nine carries
+      an identical status across all three markets.
     */
-    services: coreServiceCards,
+    services: homeServiceCards,
     /*
       ==========================================================================
       HERO REWRITTEN 2026-09-07 (owner copy, folded on owner direction).
