@@ -82,6 +82,20 @@ Search Accessibility
 Search + Answer + AI Visibility
 ```
 
+One authoritative content system, organized around one connected entity graph, not separate "SEO content," "AEO content," or "AI content" (§7):
+
+```text
+Brand
+→ Market
+→ Service
+→ Audience
+→ Problem
+→ Evidence
+→ Conversion
+```
+
+Content should connect: brand pages to service and market pages; service pages to audiences, problems, resources, and CTAs; market pages to legitimate service coverage; audience pages to audience-specific workflows; problem pages to useful explanations and relevant services; evidence pages to the service, market, or audience they support; and every relevant page to a clear conversion action (`00-project-overview.md` §3A, `03-information-architecture.md` §2).
+
 ---
 
 # 2A. Build-First Content and AEO Model
@@ -290,6 +304,12 @@ Bing AI visibility should therefore become measurable alongside:
 * clicks
 * rankings
 * leads
+
+---
+
+# 10A. No Inclusion Guarantee
+
+No strategy in this document can guarantee inclusion in ChatGPT, Perplexity, Google AI features, Bing Copilot, featured snippets, knowledge panels, People Also Ask, or rich results. The durable approach is publishing content that is crawlable, clear, accurate, entity-consistent, evidence-supported, easy to quote, easy to verify, and connected to authoritative service and market relationships (§6-9, `10-seo-strategy.md` §131). Do not write content as if speaking directly to an AI system — write accurate, useful content for people that machines can understand (§7).
 
 ---
 
@@ -1357,6 +1377,18 @@ Customer Decision
 
 This is one of the strongest brand-differentiation opportunities.
 
+Approved positioning concept for this cluster:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This describes The Sewer Pros' own business model (no repair contract to sell); it must not be used to accuse any competitor of dishonesty, and must not imply repair or replacement is never necessary (§62-63, CLAUDE.md §9, §27). The target page is `svc-independent-sewer-second-opinion`, registry-confirmed `phase_2_candidate` — approved as a concept, not yet built (`06-master-service-registry.md` §23A).
+
+---
+
+# 64A. Priority Audience Content Pathways
+
+Priority order for audience content investment: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers (`00-project-overview.md` §7A). Home inspectors, homeowners, and contractors/remodelers do not yet have dedicated sections below (§65-68 cover homebuyer, agent, property manager, and restaurant); homeowners and contractors/remodelers are `Phase 2` in the audience registry (`09-audience-commercial-matrix.md` §6-8). Each audience section should answer: the audience's situation, what they need to decide, relevant service workflows, what they receive, what information they should provide, what questions they should ask, and the correct CTA — not audience terms inserted into general service copy (§62, `03-information-architecture.md` §33A).
+
 ---
 
 # 65. Homebuyer Content Strategy
@@ -1455,6 +1487,8 @@ Relevant Audiences
 ```
 
 Each market must be materially different.
+
+"Business Presence" above means legitimate service coverage, not a physical-location claim. Market content must distinguish a primary service market, a service area, a normalized geographic record, a physical office, and a GBP location (`07-master-location-registry.md` §3, §28-29). St. Louis, San Diego, and Las Vegas remain the three markets; content must not create or imply an office, storefront, branch, local team, local address, local phone number, GBP, or local reviews for San Diego or Las Vegas unless separately verified.
 
 ---
 
@@ -3203,6 +3237,30 @@ Optimize existing pages before automatically publishing or indexing more pages. 
 ### Rule 30
 
 Useful content matters more than page volume.
+
+---
+
+# 162A. Document Hierarchy (Consolidated)
+
+```text
+00-project-overview.md            → Overall content objective
+03-information-architecture.md    → Entity and page relationships
+04-master-page-build-list.md      → Page lifecycle and indexation
+05-url-routing-strategy.md        → Canonical paths
+06-master-service-registry.md     → Canonical service entities
+07-master-location-registry.md    → Geographic truth
+08-service-location-matrix.md     → Service/geographic relationships
+09-audience-commercial-matrix.md  → Audience and commercial relationships
+10-seo-strategy.md                → SEO objectives and intent strategy
+11-local-seo-gbp-strategy.md      → Local execution
+12-content-aeo-ai-strategy.md     → Content, AEO, GEO, and AI retrieval execution (this document)
+14-content-specification.md       → Content brief and quality requirements
+15-schema-entity-strategy.md      → Structured data and entity implementation
+16-internal-linking-strategy.md   → Internal relationships
+17-conversion-architecture.md     → CTA and conversion behavior
+19-analytics-measurement.md       → Measurement implementation
+23-content-objective-charter.md   → Governing content objective (§2 aligns with it directly)
+```
 
 ---
 

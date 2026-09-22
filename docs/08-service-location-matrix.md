@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Opportunity, Generation, and Prioritization Dataset  
-**Last Updated:** September 3, 2026
+**Last Updated:** September 22, 2026
 
 ---
 
@@ -406,6 +406,37 @@ The important requirement is that:
 
 ---
 
+# 13A. Extended Relationship Fields
+
+Additive to `ServiceLocationRelationship` above:
+
+```text
+relationshipStatus     verified | supported | candidate | research |
+                        limited | pending-verification | deferred |
+                        not-eligible
+operationalCoverage    same as businessCoverage (§14); named field for
+                        clarity when read alongside the others below
+commercialPriority     primary | supporting | selective | future |
+                        educational  (06-master-service-registry.md §9A)
+searchIntent           see searchOpportunity above; retained as-is
+audienceRelevance      references 09-audience-commercial-matrix.md
+contentOpportunity     free text / content-brief reference
+pageEligibility        see §62 (Indexation Decision Framework)
+evidenceReadiness      verified | partially-verified | needs-collection |
+                        pending-verification | not-applicable
+conversionReadiness    same controlled values as evidenceReadiness
+buildStatus            not-started | in-progress | built | in-qa
+publicationStatus      not-published | published | removed
+indexationStatus       not-indexable | indexable | published-noindex |
+                        deferred | retired
+schemaStatus           free text / status reference
+internalLinkStatus     free text / status reference
+```
+
+A relationship should not be assigned a strong `relationshipStatus` or high `commercialPriority` based solely on keyword demand or geographic proximity — it must reflect actual business relevance, operational realism, and (where a page is being considered) available or attainable evidence (§14, §25).
+
+---
+
 # 14. Business Coverage
 
 Where actual service coverage is known, the matrix should represent it.
@@ -639,6 +670,40 @@ Lower-volume or future opportunities.
 Priority is a build-planning tool.
 
 It is not a requirement that P3 opportunities remain unbuilt indefinitely.
+
+---
+
+# 21A. Revised Priority Tiers (Business Value)
+
+A business-value-sequenced view of the same P0-P3 model, aligned with `00-project-overview.md` §0A and `04-master-page-build-list.md` §28A. Roughly: Tier 1 ≈ P0, Tier 2 ≈ P0-P1, Tier 3 ≈ P1-P2, Tier 4 ≈ P2, Tier 5 ≈ P2-P3.
+
+```text
+Tier 1 — Primary market and core service opportunities
+The three primary markets, primary commercial service hubs (the six
+core_service records, 06-master-service-registry.md §14A), strong
+business relevance, strong conversion potential, available evidence.
+
+Tier 2 — High-value service-market opportunities
+Distinct local commercial intent, verified service coverage, strong
+audience/customer need, differentiated content potential, reasonable
+evidence readiness.
+
+Tier 3 — Selective audience or commercial opportunities
+Home buyers, home inspectors, real estate agents, homeowners, property
+managers, contractors and remodelers, commercial property owners,
+facility managers.
+
+Tier 4 — Resource and authority opportunities
+Problem education, pipe-material education, buyer guidance, local
+sewer-lateral guidance, inspection-report education, service
+comparisons.
+
+Tier 5 — Research or future opportunities
+Future market expansion, research, internal linking, content
+planning, potential future service coverage.
+```
+
+Tiers are planning priorities, not automatic publication or indexation permissions.
 
 ---
 
@@ -1158,6 +1223,12 @@ Service ↔ Location
 ```
 
 rather than duplicating every possible three-way relationship.
+
+---
+
+# 46A. Independent Second-Opinion Relationship
+
+`svc-independent-sewer-second-opinion` appears in `data/matrices/service-location-master-matrix.csv`, marked `phase_2_candidate` and `selective_candidate`, with every path there market-scoped rather than sitewide (per the DEC-081 implementation note, `22-decisions-change-log.md`). This document does not resolve whether the eventual page should be sitewide (`/services/independent-sewer-inspection-second-opinion/`, `05-url-routing-strategy.md` §41A) or market-scoped — that remains an open routing decision, recorded here rather than silently chosen. See `06-master-service-registry.md` §23A for the service record and approved positioning.
 
 ---
 

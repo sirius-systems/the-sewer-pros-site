@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Strategic Decision Record  
-**Last Updated:** September 21, 2026
+**Last Updated:** September 22, 2026
 
 ---
 
@@ -4427,6 +4427,148 @@ The README and overview still described a scaffold. The repository at commit `5b
 * No route, page content, metadata, schema, sitemap entry, form, redirect, or indexation policy changed
 * The project is **not** declared launch-ready. Open blockers: PENDING-018 (form endpoint), PENDING-019 (TCPA copy), PENDING-010 (redirects), PENDING-011 (GPTBot), PENDING-009 (call tracking), analytics ID, and deployment verification
 * PENDING-001 status corrected to resolved, as DEC-078 already closed it
+
+---
+
+## DEC-106 — Adopt an Evidence-Led, Entity-Driven, Selective Three-Market Platform Strategy
+
+**Date:** 2026-09-22
+**Status:** APPROVED
+**Impact:** Critical
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `00-project-overview.md`
+* `03-information-architecture.md`
+* `04-master-page-build-list.md`
+* `05-url-routing-strategy.md`
+* `06-master-service-registry.md`
+* `07-master-location-registry.md`
+* `08-service-location-matrix.md`
+* `09-audience-commercial-matrix.md`
+* `10-seo-strategy.md`
+* `12-content-aeo-ai-strategy.md`
+* `14-content-specification.md`
+* `15-schema-entity-strategy.md`
+* `16-internal-linking-strategy.md`
+* `17-conversion-architecture.md`
+* `21-post-launch-seo-roadmap.md`
+* `23-content-objective-charter.md`
+
+This entry records the decision. It does not itself edit the documents above — each was updated separately, in its own task, and this entry is the consolidated record of the direction those updates already implement.
+
+### Decision
+
+The Sewer Pros website will operate as a three-market, entity-led sewer diagnostics platform centered on inspection, evidence, diagnosis, cleaning, documentation, informed customer decisions, and qualified conversion.
+
+The website will preserve its independent inspection-first positioning and will not be represented as a sewer repair, replacement, excavation, trenchless, lining, pipe-bursting, or sewer-installation contractor unless a future business decision explicitly approves those capabilities.
+
+### Strategic Model
+
+The site is organized around one connected entity graph, not separate systems for SEO, AEO, GEO, or AI platforms:
+
+```text
+Brand
+→ Market
+→ Service
+→ Audience
+→ Problem
+→ Evidence
+→ Conversion
+```
+
+The site functions as a connected platform rather than a collection of disconnected or city-swapped landing pages.
+
+### Service Model
+
+* The complete canonical service taxonomy remains authoritative: **18 canonical service records** (`data/services/master-service-registry.json`). The registry is not reduced to six services.
+* The registry's own `record_type` field already designates six `core_service` records as primary commercial service hubs — a designation this decision uses, not newly assigns: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, Drain Cleaning.
+* Supporting services (the remaining 12 `derived_service`, `market_specific_service`, and `commercial_service` records) remain available through the service registry, related-content modules, and secondary navigation.
+* Not every service or service-market combination requires equal navigation prominence or immediate indexation.
+
+### Market Model
+
+Three initial markets: St. Louis, Missouri; San Diego, California; Las Vegas, Nevada.
+
+* A market is not automatically a physical office.
+* A service area is not automatically a GBP location.
+* San Diego and Las Vegas must not be represented as physical offices, branches, storefronts, or GBP locations unless separately verified.
+* Geographic records support planning and service relationships but do not automatically create pages or local entities.
+
+### Page and Indexation Model
+
+The project continues the build-first, indexation-controlled model:
+
+```text
+Development
+→ Publication
+→ Indexation
+→ Measurement
+→ Improvement
+```
+
+* A matrix relationship does not automatically become a production page.
+* A built page does not automatically need to be indexable.
+* A published page may be `noindex`.
+* Service-market and audience-service pages must earn indexability through distinct intent, business relevance, useful content, differentiation, evidence, internal links, and conversion value.
+* The current 70-page inventory must be reviewed against these standards before assuming every page should remain permanently indexable (`04-master-page-build-list.md` §56A records this as a defined but not-yet-performed process).
+* The project will not mass-index thin service-location, audience-service, commercial, or geographic matrix pages.
+
+### Audience and Commercial Model
+
+Priority audience journeys: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers. Audience-service and commercial pages are created only when they represent a distinct workflow, need, deliverable, decision context, and CTA — not by inserting an audience or industry term into existing copy.
+
+### Evidence Model
+
+Page quality and local relevance will be strengthened through truthful evidence where available: verified business history, anonymized inspection findings, report examples, video stills, reviews, case studies, process documentation, buyer and agent checklists, market-specific resources, and verified municipal or sewer-lateral information. The project will not fabricate local proof, reviews, offices, addresses, teams, phone numbers, case studies, or operational claims.
+
+### Independent Second-Opinion Pathway
+
+The independent sewer second-opinion pathway (`svc-independent-sewer-second-opinion`, registry `phase_2_candidate`) is an approved strategic priority, not yet built. Approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This pathway helps customers separate the documented, observable condition of a sewer line from a proposed repair or replacement solution. It is not framed as an accusation against competitors, and it does not claim repair is never necessary.
+
+### Rationale
+
+This decision:
+
+* preserves the strongest existing business positioning
+* supports legitimate three-market expansion
+* protects against thin, duplicate, or doorway content
+* gives service, audience, and location data a structured role
+* improves topical authority and entity clarity
+* supports SEO, local intent, AEO, GEO, and AI retrieval through one authoritative content system
+* strengthens conversion paths by matching CTAs to customer intent
+* allows the site to expand without treating every possible matrix relationship as an indexable page
+* aligns the build plan with evidence, business truth, and measurable conversion value
+
+### Implementation Consequences
+
+The project will:
+
+1. Preserve the complete service and geographic registries.
+2. Audit the current page inventory for quality and indexation.
+3. Maintain the existing URL architecture unless a separate decision approves a migration.
+4. Prioritize primary service hubs, market hubs, audience journeys, and the independent second-opinion pathway.
+5. Require meaningful differentiation for service-market and audience-service pages.
+6. Build evidence and proof assets over time.
+7. Measure qualified visibility, qualified leads, conversion quality, and indexation health.
+8. Use no fabricated local entities or unsupported business capabilities.
+
+### Decision Boundaries
+
+This decision does **not**:
+
+* approve new physical offices
+* approve new GBPs
+* approve new services
+* approve sewer repair or replacement
+* approve a new URL architecture
+* approve mass publication or mass indexation
+* replace the canonical service or location registries
+* guarantee rankings, featured snippets, rich results, knowledge panels, or AI citations
 
 ---
 

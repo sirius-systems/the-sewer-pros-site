@@ -270,6 +270,30 @@ Lead Handling
 
 Every major page should support this journey.
 
+This is the visitor's path through the site; the underlying customer journey it should carry them through is the preferred journey stated in `00-project-overview.md` §3 and CLAUDE.md §9:
+
+```text
+Problem
+→ Inspection
+→ Evidence
+→ Diagnosis
+→ Cleaning or Maintenance When Appropriate
+→ Informed Next-Step Decision
+```
+
+Restated at the page level, per page:
+
+```text
+User Need
+→ Relevant Answer
+→ Evidence and Expectations
+→ Appropriate Service or Pathway
+→ Low-Friction Action
+→ Clear Next Step
+```
+
+Conversion design must match the user's intent, the page's primary topic, and the audience's decision context; set accurate expectations; explain what happens next; reduce unnecessary friction; use only verified business capabilities; provide appropriate evidence; offer one clear primary action; and preserve the independent, inspection-first positioning. It must not pressure users into repair decisions or imply that The Sewer Pros sells repair work (§7, §89).
+
 ---
 
 # 9. Conversion Intent by Page Family
@@ -1525,6 +1549,14 @@ Schedule Independent Inspection
 ```
 
 This should become a distinct acquisition pathway.
+
+Approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+Primary CTA: request an independent sewer evaluation. Secondary CTAs: learn what documentation may help, review sewer inspection findings, understand next steps after a repair recommendation. Target page `svc-independent-sewer-second-opinion` is registry-confirmed `phase_2_candidate`, not yet built (`06-master-service-registry.md` §23A) — this funnel activates once the page exists. Do not use competitor accusations or imply repair is never necessary (§89).
+
+Where a form collects second-opinion requests, only collect what the actual implemented process supports (e.g. existing inspection/repair documentation, description of the recommendation, property location, customer type, requested evaluation, preferred contact method), and do not imply a guaranteed written opinion, legal opinion, or engineering determination unless separately verified.
 
 ---
 

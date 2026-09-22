@@ -76,6 +76,21 @@ Clear Conversion Purpose
 
 If these conditions cannot be satisfied, the page must remain non-indexable. It may remain in research, draft, or protected-preview status while the team improves or evaluates it.
 
+Every important page should trace through:
+
+```text
+Clear intent
+→ Verified facts
+→ Meaningful differentiation
+→ Useful answer
+→ Relevant evidence
+→ Internal relationships
+→ Appropriate CTA
+→ Defined publication and indexation status
+```
+
+This is the same entity-led system described in `00-project-overview.md` §3A and `03-information-architecture.md` §2 (`Brand → Market → Service → Audience → Problem → Evidence → Conversion`), applied here as a brief and QA checklist. This document does not create a separate content system for SEO, AEO, GEO, LLMs, ChatGPT, or Perplexity — it aligns with the single governing objective in `23-content-objective-charter.md` §2.
+
 ---
 
 # 3. Build-First Content Governance
@@ -1767,6 +1782,12 @@ Instead:
 
 > When a recommended sewer repair involves significant cost or disruption, an independent camera inspection can provide additional information before the property owner makes a decision.
 
+Approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This states The Sewer Pros' own business model (no repair contract to sell); it is not an accusation against any provider, and it must not imply repair or replacement is never necessary (§6). Target page: `svc-independent-sewer-second-opinion`, registry-confirmed `phase_2_candidate`, not yet built (`06-master-service-registry.md` §23A). If this page is briefed, the brief must address: why an independent evaluation may help, what documentation may be reviewed, how findings differ from a proposed repair solution, what the service can and cannot determine, how the customer can use the documentation, and appropriate next steps.
+
 ---
 
 # 62. Local FAQ Specification
@@ -2160,6 +2181,27 @@ The objective is **complete intent satisfaction**, not arbitrary length.
 
 ---
 
+# 84A. "Why This Page Deserves to Exist Separately"
+
+Every important brief must include this section (or an equivalent `whyThisPageDeservesToExist` field, §102). It must explain the unique combination of user intent, business purpose, audience, service, market, evidence, workflow, CTA, and internal-link role that this page carries and a related page does not.
+
+Explicitly prohibited, regardless of what a registry or matrix supports:
+
+* city-swapped pages
+* audience-swapped pages
+* service-swapped pages
+* template-only variation
+* duplicate-intent pages
+* thin matrix pages
+* generic local descriptions
+* keyword stuffing
+* pages with no evidence or evidence plan
+* pages with no distinct conversion purpose
+
+This formalizes §42, §79-84, and §87 into one required brief section rather than leaving differentiation as an implicit expectation.
+
+---
+
 # 85. Content Depth Guidance
 
 While no rigid word count should govern production, page families will often require different levels of depth.
@@ -2548,6 +2590,31 @@ lastReviewed
 status
 ```
 
+Additive fields for a full content brief (§101 template philosophy applies — use what a page needs, not every field for every page):
+
+```text
+pageId                    stable identifier, distinct from pageName
+pageFamily                see 03-information-architecture.md §12/§12A
+canonicalRoute            governed by 05-url-routing-strategy.md
+secondaryIntents          supporting the one primaryIntent (§12)
+businessPurpose           why this page exists commercially
+audienceOrCommercialRelationship
+approvedFacts             verified facts this page may state
+claimsRequiringVerification
+unsupportedClaimsToAvoid  explicit list, not just "be careful"
+requiredEvidence          + evidenceStatus: verified | partially
+                            verified | needs collection | pending
+                            verification | not applicable
+whyThisPageDeservesToExist  see §84A below
+schemaRequirements        subject to 15-schema-entity-strategy.md
+imageRequirements
+accessibilityRequirements
+indexationRecommendation
+reviewStatus              pass | needs-revision | not-applicable |
+                            blocked | not-reviewed
+                            (04-master-page-build-list.md §11A)
+```
+
 The exact technical schema will be defined through the implementation architecture.
 
 ---
@@ -2653,6 +2720,28 @@ Content creators should defer to the following documents for project-specific fa
 ### Competitors
 
 `13-competitor-analysis.md`
+
+### Structured Data
+
+`15-schema-entity-strategy.md`
+
+### Internal Linking
+
+`16-internal-linking-strategy.md`
+
+### Conversion Behavior
+
+`17-conversion-architecture.md`
+
+### Measurement
+
+`19-analytics-measurement.md`
+
+### Governing Content Objective
+
+`23-content-objective-charter.md` — the "why" this document's "how" implements (§2).
+
+None of the above is silently overridden by a content brief. Where a brief and a source document disagree, the source document governs the fact; this document governs how that fact is expressed.
 
 ---
 

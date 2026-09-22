@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Project Foundation / Source of Truth  
-**Last Updated:** September 21, 2026
+**Last Updated:** September 22, 2026
 
 ---
 
@@ -30,9 +30,22 @@
 * **Lead form submission endpoint** (PENDING-018). The form renders on seven templates but submission is a stub and sends nothing
 * **TCPA consent copy** for the "text" contact option (PENDING-019)
 * Market-scoped header contact (PENDING-017)
-* Phase 2 page `svc-independent-sewer-second-opinion`: approved, not built
+* Phase 2 page `svc-independent-sewer-second-opinion`: a registry-confirmed `phase_2_candidate` (`data/services/master-service-registry.json`), approved as a strategic concept, not built as a standalone `/services/` page (see §9A below)
 * Build-time cross-registry validation (`validateCrossRegistry()` exists but is not wired into `npm run check`)
 * Content follow-ups: PENDING-014 (Chesterfield programme details), PENDING-015 (Census housing-age figures), PENDING-016 (three withheld claims)
+* **Existing page-inventory quality review.** All 70 built pages were approved and indexed under the prior strategic framing. The revised direction in §9A below applies the evidence-led quality model to that inventory; it does not automatically re-approve every page. See §0A, priority 4.
+
+## Documentation Work Still Required
+
+* Register the six `core_service` records already marked in `data/services/master-service-registry.json` as the primary service hubs within `06-master-service-registry.md`'s own narrative sections (§9A below records them here in the interim)
+* Reconcile `04-master-page-build-list.md`'s page-family status language against the evidence-led quality model in §9A
+* Confirm whether `svc-independent-sewer-second-opinion` should move from `phase_2_candidate` toward a launch-tier record, and where its canonical URL should live, before it is built (§9A, §0A priority 6)
+
+## Content and Evidence Gaps
+
+* No evidence layer exists yet: no anonymized inspection findings, report examples, video stills, case studies, or buyer/agent checklists are published (§0B)
+* Local reviews exist only for St. Louis (DEC-084); San Diego and Las Vegas have no review content because neither has a verified GBP
+* No audit has yet been performed against the location/service/audience/commercial quality tests in §19 for the existing 30 location and service+location pages
 
 ## Launch Preparation
 
@@ -43,13 +56,59 @@
 * Search Console and Bing property setup, sitemap submission, and Phase 0 baseline capture (`21` §7)
 * Mobile, accessibility, and performance QA on the deployed site. Not yet recorded in the repository
 
-## Post-Launch Work
+## Post-Launch Measurement
 
-Not started. Follows `21-post-launch-seo-roadmap.md`: stabilization, indexation review, measurement, then evidence-led expansion. No search performance, ranking, traffic, or lead data exists in this repository.
+Follows `21-post-launch-seo-roadmap.md`: stabilization, indexation review, measurement, then evidence-led expansion. No search performance, ranking, traffic, or lead data exists in this repository. Not started.
+
+## Future Expansion
+
+Governed by §0A priorities 7-8 below and `21-post-launch-seo-roadmap.md`: additional resources, proof assets, and selective service, location, and audience expansion, evaluated against real performance data rather than page-count goals (§17, §18, §42).
 
 ## Unchanged Safeguards
 
 Business positioning, the repair/replacement guardrail, the service-market versus physical-location distinction, and the no-fabricated-facts rule below are unchanged by this status update. San Diego and Las Vegas remain service markets with no office or GBP claimed.
+
+---
+
+# 0A. Implementation Priorities
+
+This sequence replaces the general priority framing this document previously carried only under post-launch growth (formerly §39). It applies to the whole project, not only the period after launch, and reflects the revised strategic direction in §3A-§9A below.
+
+```text
+1. Maintain the brand and conversion foundation.
+2. Complete and strengthen the primary service hubs (§6A).
+3. Maintain the three authentic market hubs.
+4. Audit the existing service-market pages for differentiation and evidence (§9A).
+5. Prioritize high-value audience journeys (§7A).
+6. Build the independent sewer second-opinion page (§9).
+7. Develop problem, pipe-material, buyer-education, and process resources.
+8. Strengthen proof assets and local evidence (§0B).
+9. Complete schema, sitemap, analytics, form, redirect, and launch QA.
+10. Review indexation based on actual page quality and performance.
+```
+
+This is a priority sequence for attention and resourcing, not a requirement to publish or index every possible service, location, audience, or matrix combination (§17, §18). Steps may proceed in parallel where they do not depend on each other; step 10 in particular is continuous rather than a one-time gate.
+
+---
+
+# 0B. Evidence and Authority Roadmap
+
+The site currently has no dedicated evidence layer. Building one from real business experience and verified research is priority 8 in §0A.
+
+Evidence content should be truthful, based on actual business experience or verified research, and attributable where appropriate (CLAUDE.md §24, §41 below). It may include:
+
+* anonymized inspection findings
+* report examples
+* video stills from actual inspections
+* case studies
+* local reviews (verified, per market — see §23; St. Louis has DEC-084 review content, San Diego and Las Vegas do not yet)
+* buyer and agent checklists
+* inspection-process explainers
+* sewer backup and tree-root education
+* pipe-material resources
+* local municipal or sewer-lateral guidance, verified individually per municipality (§5, St. Louis)
+
+None of this exists yet in the repository. Do not represent it as published until it is built. See `21-post-launch-seo-roadmap.md` for how proof assets fit the post-launch sequence, and §9A below for how evidence relates to page indexability.
 
 ---
 
@@ -144,6 +203,16 @@ Problem
 ```
 
 The website should help customers understand what is actually happening inside a sewer line before making an expensive property decision.
+
+---
+
+# 3A. Platform Definition
+
+The Sewer Pros is:
+
+> **A three-market, entity-led sewer diagnostics platform centered on accurate inspection, evidence, diagnosis, cleaning, documentation, and informed customer decisions.**
+
+This is the same positioning as §3 stated with more precision for site architecture, entity, and content-planning purposes. It does not add a new claim; it names what the existing service themes, the independent differentiator, and the customer journey already describe as one connected system: one organization entity (§24), serving three verified markets (§5), offering a defined service taxonomy (§6A), documented through evidence (§0B) rather than sales pressure.
 
 ---
 
@@ -288,6 +357,41 @@ Do not fabricate:
 
 ---
 
+# 5A. Service Market, Service Area, Geographic Record, Physical Location, and GBP
+
+Five distinct concepts, often conflated. Per `07-master-location-registry.md` §3, §28, §29:
+
+```text
+Primary Service Market
+A market The Sewer Pros actively serves and builds authority around
+(St. Louis, San Diego, Las Vegas).
+
+Service Area
+A community or neighborhood where service coverage is confirmed for
+one or more specific services. Service-specific, not market-wide
+(07 §21).
+
+Normalized Geographic Record
+An entry in the 579-record location registry. Describes real
+geography — it does not by itself confirm service coverage or
+business presence (07 §3).
+
+Physical Business Location
+A real, verified public branch or office. Represented only when
+`physicalBusinessLocation: true` is set after verification — never
+inferred from market importance, page existence, or content (07 §28).
+
+Google Business Profile Location
+A legitimate, verified GBP entity. Currently exists only for
+St. Louis (01 §21, 07 §29). San Diego and Las Vegas have none.
+```
+
+A normalized geographic record existing in the registry authorizes research, planning, and candidate-page evaluation. It does not by itself authorize an indexable page, and it never implies a physical location or GBP (§17, §18).
+
+San Diego and Las Vegas must not be represented as physical offices, storefronts, branches, or GBP locations unless independently verified and logged in `22-decisions-change-log.md`.
+
+---
+
 # 6. One Company, Multiple Service Markets
 
 The website should use a single-domain, multi-market architecture.
@@ -326,6 +430,30 @@ from:
 ```text
 Physical Business Location
 ```
+
+---
+
+# 6A. Service Model: Canonical Registry, Primary Hubs, and Selective Expansion
+
+The project maintains the full canonical service registry: **18 service records**, in `data/services/master-service-registry.json` and described narratively in `06-master-service-registry.md`. This model is preserved, not collapsed.
+
+Not every service or service-market combination requires equal navigation prominence or immediate indexation (06 §4). The registry itself already distinguishes four record types:
+
+```text
+core_service            6 records — the primary commercial service hubs
+derived_service          4 records — pre-purchase inspection, recurring-
+                                      backup diagnosis, preventative
+                                      maintenance, and the independent
+                                      second-opinion concept (§9)
+market_specific_service  1 record — the St. Louis lateral-inspection
+                                      and municipal-reporting page
+commercial_service       7 records — the commercial variants of the
+                                      core and locating services
+```
+
+The six `core_service` records (verified in the registry, not newly designated here) are: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive the initial commercial emphasis as primary service hubs. This does not remove or diminish the other 12 records — derived, market-specific, and commercial services remain part of the canonical taxonomy and may be built, linked, and expanded on their own merits (06 §3.5, §18).
+
+Supporting service pages, and future or selective service-market opportunities, are evaluated using the structured service × location data (`08-service-location-matrix.md`) as a research and planning input, not a publishing queue (§17, §18).
 
 ---
 
@@ -368,6 +496,34 @@ Important audience categories may include:
 The detailed audience taxonomy is maintained in:
 
 `09-audience-commercial-matrix.md`
+
+---
+
+# 7A. Priority Audience Pathways and Conversion Actions
+
+The site supports audience-specific journeys, not only generic service pages. `09-audience-commercial-matrix.md` §6 defines 13 canonical audience records; 6 are currently launch-status and built (`/for/home-buyers/`, `/for/home-sellers/`, `/for/real-estate-agents/`, `/for/home-inspectors/`, `/for/property-managers/`, `/for/hoa-communities/`), and 7 are Phase 2 candidates, including homeowners and contractors & remodelers.
+
+Priority pathways going forward:
+
+* Home buyers
+* Home inspectors
+* Real estate agents
+* Homeowners *(Phase 2 candidate per 09 §6; not yet built)*
+* Property managers
+* Contractors and remodelers *(Phase 2 candidate per 09 §6; not yet built)*
+
+An audience-service page should be created selectively, only when it represents a distinct workflow, need, deliverable, and CTA (§19, Audience Test) — not as a routine token-swap of an existing page.
+
+Relevant conversion pathways include:
+
+* scheduling a sewer inspection
+* requesting help with a sewer problem
+* coordinating a transaction (pre-purchase) inspection
+* requesting line locating
+* requesting commercial sewer or drain service
+* seeking an independent evaluation of a repair recommendation (§9)
+
+CTA language should still match page intent (§26); this list names the underlying actions, not final button copy.
 
 ---
 
@@ -418,9 +574,44 @@ The strategic message is:
 
 > **Major sewer decisions deserve clear evidence.**
 
+The homepage and the other pages that carry the independent-opinion section (`components/sections/IndependentProcess.tsx`) already use the approved concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
 Do not accuse repair companies of dishonesty.
 
 The differentiation should focus on the independent business model of The Sewer Pros.
+
+`svc-independent-sewer-second-opinion` (registry `phase_2_candidate`, `data/services/master-service-registry.json`) is the strategic expansion pathway this section supports: a standalone page dedicated to helping a customer distinguish the documented, observable condition of a sewer line from a proposed repair solution. It is priority 6 in §0A, and it is not yet built — `data/pages/approved-pages.ts` records it as approved for Phase 2, not part of the current 70-page launch inventory (04 §5).
+
+---
+
+# 9A. Evidence-Led Page Quality Model
+
+A local, service, or service-market page earns indexability. Existing approval or a matrix relationship does not, by itself, make a page an indexable asset (§17, §18).
+
+Where applicable, an indexable page should have:
+
+* a distinct search or customer intent
+* legitimate service relevance
+* accurate market coverage
+* meaningful local context
+* verified business facts
+* market-specific evidence or operational detail (§0B)
+* a clear conversion purpose
+* appropriate internal links
+* a defined parent and sibling relationship
+* content that is materially different from related pages (§19's quality tests)
+
+Explicitly prohibited, regardless of what the structured data supports:
+
+* city-name substitution
+* boilerplate service-market pages
+* unsupported local claims
+* fabricated offices, addresses, phone numbers, teams, reviews, or availability (§41)
+* mass indexation of weak matrix-generated pages
+
+This model applies going forward to new pages and, per §0A priority 4, as an audit standard for the existing 70-page inventory. It does not retroactively mark any built page as non-compliant; it defines the standard the audit in §0A/priority 4 evaluates against. `04-master-page-build-list.md` is the operational record of that audit.
 
 ---
 
@@ -1377,6 +1568,8 @@ Success should not be measured primarily through page count.
 ---
 
 # 39. Post-Launch Growth Model
+
+This section covers the sequence *after* launch specifically. For the whole-project priority sequence, including pre-launch work, see §0A.
 
 The launch is the beginning of the SEO program.
 

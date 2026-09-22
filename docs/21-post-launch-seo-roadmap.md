@@ -217,6 +217,23 @@ Phases may overlap when data supports it.
 
 They should not be treated as rigid calendar deadlines.
 
+Restated at a higher level, the same sequence reads:
+
+```text
+Launch Validation
+→ Technical Stabilization
+→ Measurement Baseline
+→ Indexation Review
+→ Conversion Optimization
+→ Evidence Production
+→ Selective Content Expansion
+→ Ongoing Improvement
+```
+
+Mapping: Launch Validation and Technical Stabilization correspond to Phase 0-1 (§7-11); Measurement Baseline and Indexation Review to Phase 2 and §11's review; Conversion Optimization runs throughout but concentrates at §80-81; Evidence Production is new emphasis threaded through §112-114 (case studies, local proof) and formalized in `00-project-overview.md` §0B; Selective Content Expansion corresponds to Phases 3-7 (§17-59), explicitly gated by the criteria in §29-31, §42, §100-106 rather than automatic; Ongoing Improvement corresponds to Phase 8 and the governance-maintenance sections (§125-132).
+
+The roadmap must not assume every existing page, matrix relationship, or future opportunity should be indexed or expanded automatically (§29-30, §104-106, `04-master-page-build-list.md` §11A).
+
 ---
 
 # 7. Phase 0 — Launch Baseline
@@ -335,6 +352,26 @@ Investigate:
 * malformed routes
 
 The objective is controlled indexation.
+
+---
+
+# 11A. Pre-Launch Verification and Evidence-Led Page Review
+
+Before Phase 0 begins, verify: production domain, canonical URLs, sitemap, robots directives, redirects, static export, Cloudflare Pages deployment, forms and submission endpoints, contact routing, analytics configuration, consent language where applicable, JSON-LD, metadata, Open Graph data, image loading, video loading, mobile layout, accessibility, internal links, broken links, and page status/indexation configuration. Do not mark launch readiness complete unless the repository contains evidence the relevant checks passed — see `00-project-overview.md` §0 (Launch Preparation) for the current, honest status of these items.
+
+Beyond the technical indexation review above, each production page should be evaluated per `04-master-page-build-list.md` §11A, §56A on: primary intent, business relevance, service accuracy, market legitimacy, content differentiation, evidence, internal-link role, conversion value, technical quality, search performance, cannibalization, and user engagement, with one of these outcomes:
+
+```text
+Keep indexable
+Revise before indexation
+Keep published but noindex
+Defer
+Consolidate
+Redirect
+Retire
+```
+
+Do not remove or noindex a page solely because it has not yet earned traffic. Base decisions on evidence and page quality, not on time-in-market alone.
 
 ---
 
@@ -1144,6 +1181,12 @@ Potential resources:
 * verify sewer damage before excavation
 * questions to ask before approving sewer repair
 * when another sewer camera inspection makes sense
+
+Approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+Target page `svc-independent-sewer-second-opinion` is registry-confirmed `phase_2_candidate`, not yet built (`06-master-service-registry.md` §23A; `00-project-overview.md` §0A priority 6). Building it is priority 6 in the whole-project sequence — after stabilization and baseline measurement (§91-94), not before.
 
 ---
 

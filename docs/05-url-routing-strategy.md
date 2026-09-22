@@ -667,6 +667,14 @@ unless an explicit future decision establishes it as a separate search intent.
 
 ---
 
+# 20A. Primary vs. Supporting Service Routes
+
+All 18 canonical services (`06-master-service-registry.md`) use the same `/services/{service}/` pattern (or the market-specific pattern in §27 for the one `market_specific_service` record) — this section does not add a new route shape. It clarifies commercial and navigation emphasis only.
+
+The registry already distinguishes six `core_service` records as primary service hubs: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive first-tier navigation and commercial emphasis. The remaining 12 records (`derived_service`, `market_specific_service`, and `commercial_service`) keep the same canonical URL pattern and remain reachable through the services hub, related-service modules, or secondary navigation — a supporting classification affects prominence, not URL shape (`03-information-architecture.md` §12A, `04-master-page-build-list.md` §12A).
+
+---
+
 # 21. Rooter Alias Rule
 
 Terms such as:
@@ -963,6 +971,22 @@ Audience
 
 ---
 
+# 33A. Audience + Service Pattern and Safeguards
+
+No audience-service route pattern is built today. Where one is created, the pattern is:
+
+```text
+/for/{audience}/{service}/
+```
+
+An audience-service route should only be created when the page has all of: a distinct audience need, a distinct service workflow, distinct deliverables, distinct objections or decision criteria, an audience-specific CTA, and sufficient content differentiation (`03-information-architecture.md` §33A, `04-master-page-build-list.md` §12A). Do not create an audience-service route by inserting an audience term into an existing service page's slug or content.
+
+Priority audience pathways for this pattern, when justified: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers (`00-project-overview.md` §7A). This is a priority list for evaluation, not an authorization to build all six routes.
+
+Preserve the current audience URL conventions (§29-33) unless a separately approved routing decision requires a change.
+
+---
+
 # 34. Commercial Hub
 
 The canonical commercial hub is:
@@ -1125,6 +1149,24 @@ Do not place them in:
 even when a comparison heavily discusses an offered service.
 
 This preserves intent separation.
+
+---
+
+# 41A. Independent Second-Opinion Route
+
+`svc-independent-sewer-second-opinion` is `phase_2_candidate` in the service registry — approved as a concept, not built. The decision log (DEC-081 implementation note, `22-decisions-change-log.md`) already proposes a slug:
+
+```text
+/services/independent-sewer-inspection-second-opinion/
+```
+
+This is the existing proposed slug, used here rather than inventing a new one. It has not been built. `data/matrices/service-location-master-matrix.csv` currently marks the relationship `selective_candidate` and market-scoped rather than sitewide — that scoping is an open question this document does not resolve; record it for a future routing decision rather than silently choosing sitewide or market-scoped here.
+
+The page should be positioned as an independent evaluation and documentation pathway, not an accusation against another business, using the approved concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This route belongs under `/services/` (§18-19), not `/compare/` (§41 above) — it is a service concept (independent evaluation), not a decision-stage comparison between two named alternatives, even though its content will discuss evaluating a repair recommendation.
 
 ---
 
