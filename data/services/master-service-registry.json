@@ -132,7 +132,7 @@
     },
     {
       "service_id": "svc-sewer-cleaning-camera-inspection",
-      "name": "Sewer Cleaning + Camera Inspection",
+      "name": "Sewer Cleaning & Camera Inspection",
       "slug": "sewer-cleaning-camera-inspection",
       "canonical_url": "/services/sewer-cleaning-camera-inspection/",
       "record_type": "core_service",

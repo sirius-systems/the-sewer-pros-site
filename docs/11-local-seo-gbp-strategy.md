@@ -599,7 +599,7 @@ Where supported by the selected categories and actual market availability, prior
 Sewer Camera Inspection
 Sewer Cleaning
 Hydro Jetting
-Sewer Cleaning + Camera Inspection
+Sewer Cleaning & Camera Inspection
 Sewer Line Locating
 Drain Cleaning
 Pre-Purchase Sewer Inspection
@@ -1147,7 +1147,7 @@ Where accurate, emphasize:
 * Sewer Camera Inspection
 * Sewer Cleaning
 * Hydro Jetting
-* Sewer Cleaning + Camera Inspection
+* Sewer Cleaning & Camera Inspection
 * Sewer Line Locating
 * Drain Cleaning
 * Pre-Purchase Sewer Inspection
