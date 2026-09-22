@@ -112,7 +112,26 @@ Tracks lifecycle, production publication, and indexation
 05-url-routing-strategy.md
 ↓
 Defines stable pathnames and canonical production routes
+
+08-service-location-matrix.md
+↓
+Defines service/geographic relationships (joined with this document
+per §11, rather than duplicated — see §46A there)
+
+15-schema-entity-strategy.md
+↓
+Defines schema implementation
+
+16-internal-linking-strategy.md
+↓
+Defines relationship links (§84-89 below)
+
+17-conversion-architecture.md
+↓
+Defines CTA and conversion behavior (§79-83 below)
 ```
+
+This document must not silently override the page build list, service registry, location registry, routing strategy, or verified business facts.
 
 ---
 
@@ -1810,6 +1829,33 @@ Not every commercial relationship requires its own pathname.
 
 ---
 
+# 60A. Extended Readiness and Lifecycle Fields
+
+Additive to `AudienceLocationRelationship` and `CommercialLocationRelationship` above — extends `intentFit`/`conversionFit`/`commercialFit` rather than replacing them:
+
+```text
+primaryNeed, decisionContext, workflow, deliverables, painPoints,
+objections, primaryCTA, secondaryCTA        — see §13-14, §15-28's
+                                                per-audience sections
+                                                for the content;
+                                                these are the field
+                                                names for it
+
+evidenceReadiness    verified | partially-verified | needs-collection |
+                       pending-verification | not-applicable
+contentReadiness     same controlled values as evidenceReadiness
+conversionReadiness  same controlled values as evidenceReadiness
+
+buildStatus          not-started | in-progress | built | in-qa
+publicationStatus    not-published | published | removed
+indexationStatus     not-indexable | indexable | published-noindex |
+                       deferred | retired
+```
+
+These mirror the equivalent fields in `06-master-service-registry.md` §9A, `07-master-location-registry.md` §21A, and `08-service-location-matrix.md` §13A, so a joined view across service, location, and audience/commercial relationships reads consistently. Do not fabricate `evidenceReadiness: verified` without support (§128).
+
+---
+
 # 61. Audience-to-Service Matrix Should Be Machine-Readable
 
 Recommended file:
@@ -3132,6 +3178,12 @@ Messaging may emphasize:
 * absence of repair-driven sales incentive
 
 without attacking competitors.
+
+The approved positioning concept for this differentiator:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This states The Sewer Pros' own business model (no repair contract to sell); it is not an accusation that any competitor is dishonest, and it does not imply repair or replacement is never necessary (`06-master-service-registry.md` §23A, CLAUDE.md §9, §27). It connects most directly to the audiences listed above who have already received, or may receive, a repair or replacement recommendation.
 
 ---
 

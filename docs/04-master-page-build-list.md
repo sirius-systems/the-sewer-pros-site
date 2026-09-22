@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Page Inventory, Lifecycle, and Indexation Registry  
-**Last Updated:** September 21, 2026
+**Last Updated:** September 22, 2026
 
 ---
 
@@ -292,6 +292,38 @@ Follow:
 
 ---
 
+# 6A. Status Field Model: Build, Publication, and Indexation Separated
+
+The single `status` field in §6 and §27 already conflates three questions a page record answers: is it built, is it published, and is it indexed. This section makes the three explicit without replacing the existing enum — extend records with the finer-grained fields when useful; the single `status` value remains valid and this section defines what it implies for each dimension.
+
+```text
+Relationship
+→ Candidate
+→ Build
+→ QA
+→ Publication
+→ Indexation
+→ Measurement
+```
+
+| This document's `status` | `buildStatus` | `publicationStatus` | `indexationStatus` |
+|---|---|---|---|
+| `candidate` | not started | not published | not indexable |
+| `draft` | in progress | not published | not indexable |
+| `build-ready` | ready to build (content/route ready, not yet rendered) | not published | not indexable |
+| *(no separate enum value; a built-but-unreviewed page uses `build-ready` or `published` with `indexationStatus: not-reviewed`)* | **built** | depends on `publicationStatus` | depends on `indexationStatus` |
+| *(QA is a build-status checkpoint, not a separate top-level status; use `notes` or the review fields in §11A)* | **in QA** | — | — |
+| `published` | built | **published** | not indexable *(unless `indexable: true`)* |
+| `indexable` | built | published | **indexable** |
+| `noindex` | built | published | **published-noindex** — this document's `noindex` status *is* "published-noindex"; no separate value is introduced |
+| `deferred` | varies | not published (or paused) | not indexable |
+| `consolidation-candidate` | built (typically) | published (typically) | under review |
+| `retired` | — | removed | removed/redirected |
+
+"In progress" and "In QA" are states within `draft`/`build-ready`, not separate top-level values — this document's existing nine-value enum (§6) already covers every state in the task's target list once read this way. Where a repository implementation needs the finer grain, add `buildStatus`, `publicationStatus`, and `indexationStatus` as their own fields (§27) rather than inventing new top-level `status` values.
+
+---
+
 # 7. Indexation Is the Primary SEO Gate
 
 The project should be strictest when deciding whether pages become intentionally indexable.
@@ -457,6 +489,64 @@ If yes, strengthen commercial differentiation.
 
 ---
 
+# 11A. Formal Indexability Standard and Review Fields
+
+## Minimum Requirements for an Indexable Page
+
+An indexable page should have:
+
+* a distinct search or customer intent
+* legitimate business relevance
+* accurate service and market coverage
+* meaningful content differentiation
+* verified claims
+* appropriate local, audience, or commercial context
+* a clear conversion purpose
+* relevant internal links
+* a defined parent and breadcrumb relationship
+* appropriate schema
+* acceptable technical QA
+* sufficient evidence, or a documented reason evidence is not applicable (`00-project-overview.md` §0B, `03-information-architecture.md` §44A)
+
+A page should **not** be intentionally indexable solely because:
+
+* it exists in a matrix (`08-service-location-matrix.md`, `09-audience-commercial-matrix.md`)
+* it contains a valid URL
+* it targets a city keyword
+* it is a token-swapped version of another page
+* it is part of a complete service-location grid
+* it has minimal generated content
+
+## Page-Quality Review Fields
+
+For every important production page, review and record:
+
+* intent clarity
+* business relevance
+* service legitimacy
+* market legitimacy
+* content differentiation
+* local evidence
+* audience relevance
+* conversion usefulness
+* internal-link completeness
+* schema accuracy
+* indexation recommendation
+
+Use these statuses for each criterion:
+
+```text
+pass
+needs-revision
+not-applicable
+blocked
+not-reviewed
+```
+
+Do not mark a criterion `pass` unless the repository contains evidence for that status. A page whose criteria have not yet been reviewed should be recorded `not-reviewed`, not silently assumed to pass (§56A).
+
+---
+
 # 12. Page Family Registry
 
 The site may support the following page families.
@@ -483,6 +573,48 @@ The site may support the following page families.
 Exact URL patterns remain controlled by:
 
 `05-url-routing-strategy.md`
+
+---
+
+# 12A. Page-Family Publication Standards
+
+Each major page family has a distinct purpose and a distinct publication standard. This does not replace §10's general indexability criteria; it applies them per family.
+
+## Core and Brand Pages
+
+Examples: homepage, About, Contact, reviews.
+
+Standard: establish brand, trust, conversion, and entity clarity.
+
+## Service Hubs
+
+Standard: establish a canonical service entity, explain the service clearly, connect to relevant markets, audiences, problems, resources, and CTAs, and use only verified business capabilities.
+
+## Market Hubs
+
+Standard: represent legitimate market coverage, avoid implying an office unless verified (`00-project-overview.md` §5A), include useful market-specific context, and connect users to relevant services and conversion paths.
+
+## Service-Market Pages
+
+Standard: have a distinct local commercial purpose, include meaningful market-specific content, include verified service coverage, include a differentiated CTA, and avoid city-name substitution.
+
+## Audience Pages
+
+Standard: address a specific audience need, explain the relevant workflow, connect to appropriate services, and use an audience-specific CTA.
+
+## Audience-Service Pages
+
+Standard: demonstrate a distinct audience-service workflow, with different needs, deliverables, objections, and conversion logic from the underlying service page — not simply an audience keyword inserted into service copy.
+
+## Problem and Resource Pages
+
+Standard: answer a real customer question, provide a direct and useful explanation, connect to relevant services or audiences, and avoid existing purely as informational content with no business or user value.
+
+## Evidence Pages
+
+Examples: case studies, inspection examples, report explainers, review and proof pages.
+
+Standard: use truthful, attributable, or appropriately anonymized evidence (`00-project-overview.md` §0B). None of this content currently exists in the repository.
 
 ---
 
@@ -546,6 +678,33 @@ Examples include approved services such as:
 The service registry determines exact canonical names.
 
 This page inventory should track implementation status.
+
+---
+
+# 15A. Independent Second-Opinion Page
+
+`svc-independent-sewer-second-opinion` is a registry-confirmed `derived_service` at `phase_2_candidate` tier (`data/services/master-service-registry.json`) — approved as a strategic concept, not built as a standalone page.
+
+| Field | Value |
+|---|---|
+| Page family | Service (canonical), comparison-adjacent |
+| Business purpose | Independent evaluation and documentation: help a customer distinguish the observed, documented condition of a sewer line from a proposed repair solution |
+| Primary audience | Any customer who has already received a repair or replacement recommendation — overlaps home buyers, home sellers, and homeowners rather than one exclusive audience |
+| Conversion purpose | Request an independent sewer second opinion (`00-project-overview.md` §7A) |
+| Relationship to inspection/diagnosis/repair | Inspect and document the line, present findings, and let the customer weigh them against a repair recommendation they already received. The Sewer Pros does not perform the repair itself, and has no financial incentive in the outcome |
+| Build status | Not built. No content file, no route |
+| Publication status | Not published |
+| Indexation status | Not indexable (no page exists) |
+
+Approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This concept is already implemented site-wide as a persuasive section on existing pages (`components/sections/IndependentProcess.tsx`, live on the homepage and 15 other pages as of the 2026-09-22 rollout) — that is a component embedded on already-built pages, not the standalone `svc-independent-sewer-second-opinion` service page itself, which remains unbuilt. Building the standalone page can reuse the same approved concept and copy pattern rather than originating new positioning.
+
+This is not an accusation against any provider — it states The Sewer Pros' own position (no repair contract to sell). Do not imply repair is never necessary; do not accuse competitors of dishonesty (CLAUDE.md §9, §27).
+
+Priority: `00-project-overview.md` §0A priority 6.
 
 ---
 
@@ -742,6 +901,26 @@ There is no requirement that every resource be manually pre-approved before draf
 
 ---
 
+# 24A. Evidence Pages and Evidence-Readiness
+
+Evidence is a distinct page family from resources (§12, §12A): anonymized inspection findings, report examples, video stills, case studies, local reviews, buyer/agent checklists (`00-project-overview.md` §0B, `03-information-architecture.md` §44A).
+
+For local, service-market, audience-service, and commercial pages, track an `evidenceStatus` field (§27):
+
+```text
+verified-local-proof-available
+verified-business-proof-available
+draft-proof-needed
+proof-not-applicable
+blocked-pending-verification
+```
+
+None of the current 70 pages has been reviewed against this field (§56A); it is a planning field going forward, not a retroactive audit result.
+
+Do not fabricate evidence to satisfy the field. If a page needs evidence it does not yet have, record `draft-proof-needed` rather than inventing a review, a statistic, or a case study.
+
+---
+
 # 25. Resource Publishing Rule
 
 A resource should generally be indexable when it:
@@ -797,31 +976,50 @@ type PageStatus =
   | "retired";
 
 type PageRecord = {
-  id: string;
+  id: string;              // pageId
   title: string;
   slug: string;
   pageType: string;
-  status: PageStatus;
+  pageFamily?: string;     // §12: Core, Service, Market, Service + Location, etc.
+  canonicalPath?: string;  // governed by 05-url-routing-strategy.md
+  status: PageStatus;      // the existing single-value status (§6, §6A)
+
+  parentId?: string;       // parentPage
+  primaryIntent?: string;  // one clear primary intent (§10, §11A)
+  relatedPageIds?: string[];
 
   serviceId?: string;
   marketId?: string;
   locationId?: string;
   audienceId?: string;
+  commercialSegmentId?: string;
 
-  indexable: boolean;
-  priority?: string;
-
-  parentId?: string;
-  relatedPageIds?: string[];
-
+  // Finer-grained lifecycle, additive to `status` (§6A). Optional:
+  // a record may carry only `status`, or `status` plus any of these.
+  buildStatus?: "not-started" | "in-progress" | "built" | "in-qa";
+  publicationStatus?: "not-published" | "published" | "removed";
+  indexationStatus?: "not-indexable" | "indexable" | "published-noindex" | "deferred" | "retired";
   contentStatus?: string;
+  evidenceStatus?:
+    | "verified-local-proof-available"
+    | "verified-business-proof-available"
+    | "draft-proof-needed"
+    | "proof-not-applicable"
+    | "blocked-pending-verification";
+  conversionStatus?: string; // e.g. which conversion action this page maps to
+  schemaStatus?: string;
+  internalLinkStatus?: string;
+
+  indexable: boolean;      // legacy convenience flag; keep in sync with indexationStatus
+  priority?: string;       // §28, §28A
+
   designReference?: string;
 
   notes?: string;
 };
 ```
 
-The actual implementation may use a different structure if technically preferable.
+The actual implementation may use a different structure if technically preferable. `data/pages/approved-pages.ts` today implements a subset of this model (`id`, `pageType`, `status`, `indexable`, market/service/location/audience associations, `parentId`) — the additional fields above are the planning model this document uses; they do not require an immediate code change to be useful for review and audit work (§11A, §56A).
 
 ---
 
@@ -874,6 +1072,34 @@ Examples:
 * emerging query patterns
 
 Priority is a planning tool, not a hard build gate.
+
+---
+
+# 28A. Revised Priority Framework (Business Value and Readiness)
+
+This sequenced framework supersedes the generic P0-P3 buckets above for whole-project planning; P0-P3 remain valid as a quick per-page tag (roughly: P0 ≈ Priority 1-2, P1 ≈ Priority 3, P2 ≈ Priority 3-4, P3 ≈ Priority 4-5). It mirrors `00-project-overview.md` §0A.
+
+## Priority 1 — Foundation and Conversion
+
+Homepage, About, Contact, core conversion components, market selector, forms and tracking, primary navigation.
+
+## Priority 2 — Primary Commercial Coverage
+
+Primary service hubs (the six `core_service` records, `06-master-service-registry.md`), the three authentic market hubs, highest-value service-market pages, high-value audience hubs.
+
+## Priority 3 — Audience Conversion Pathways
+
+Home buyer, home inspector, real estate agent, homeowner, property manager, and contractor/remodeler journeys; selective audience-service pages.
+
+## Priority 4 — Strategic Expansion
+
+The independent sewer second-opinion page (§15A), problem pages, pipe-material pages, buyer education, service comparisons, local guidance.
+
+## Priority 5 — Evidence and Authority
+
+Case studies, inspection findings, report examples, video stills, downloadable checklists, local proof assets (`00-project-overview.md` §0B).
+
+These tiers are planning and sequencing tools, not permission gates for ordinary development (§3, §54).
 
 ---
 
@@ -961,6 +1187,24 @@ A production route is not automatically an SEO landing page.
 
 ---
 
+# 32A. Indexation Review After Construction and QA
+
+Indexation must be reviewed after page construction and QA, not assumed from build status. Review should consider: page quality, search intent, business relevance, differentiation, evidence, internal-link value, conversion value, technical quality, potential cannibalization, and operational legitimacy (§11A).
+
+The project may build more pages than it intentionally indexes. The inventory must be able to record, in addition to §6's status values:
+
+```text
+Built but noindex           → status: noindex, buildStatus: built
+Published but deferred      → status: deferred, publicationStatus: published
+Draft candidate             → status: candidate or draft
+Indexable after QA          → status: indexable, following a completed §11A review
+Retired or redirected       → status: retired
+```
+
+These map onto the existing enum (§6, §6A) rather than adding new top-level values.
+
+---
+
 # 33. Sitemap Rule
 
 Production sitemaps should contain intentional canonical indexable pages.
@@ -1005,6 +1249,22 @@ Before intentional indexation, it should generally have:
 * useful outbound relationships
 
 This does not mean every draft must immediately have a full internal-link network.
+
+---
+
+# 35A. Page Relationship Audit Checklist
+
+Every production page must have:
+
+* a parent page
+* a defined page family (§12)
+* breadcrumb support where applicable
+* at least one relevant internal link from another page
+* links to relevant sibling or related pages
+* a clear conversion relationship
+* an intentional sitemap decision (§33)
+
+Add these checks to the page-audit process (§56A). Use the checklist to identify: orphan pages, duplicate intent, cannibalization, unsupported relationships, weak matrix-generated pages, and pages with no clear CTA.
 
 ---
 
@@ -1383,6 +1643,47 @@ Large-Scale Indexation
 
 ---
 
+# 54A. Document Hierarchy
+
+```text
+00-project-overview.md
+→ Overall project direction
+
+03-information-architecture.md
+→ Site relationships and page-family structure
+
+04-master-page-build-list.md (this document)
+→ Page lifecycle, production inventory, and indexation status
+
+05-url-routing-strategy.md
+→ Canonical paths and route rules
+
+06-master-service-registry.md
+→ Canonical services
+
+07-master-location-registry.md
+→ Canonical geographic records
+
+08-service-location-matrix.md
+→ Service/geographic relationships
+
+09-audience-commercial-matrix.md
+→ Audience and commercial relationships
+
+15-schema-entity-strategy.md
+→ Schema and entity implementation
+
+16-internal-linking-strategy.md
+→ Internal relationship rules
+
+17-conversion-architecture.md
+→ CTA and conversion behavior
+```
+
+This document should not duplicate or override the canonical data in the registries and matrices — it selects which of their relationships become production pages, and tracks each one's lifecycle.
+
+---
+
 # 55. Final Governing Principle
 
 > **The Master Page Build List is the evolving inventory and lifecycle system for The Sewer Pros website, not a pre-build permission gate. Claude and Claude Code should freely research, draft, generate, build, and evaluate useful page opportunities within verified business boundaries. The primary SEO control is intentional indexation: pages should earn indexability through real business relevance, useful content, distinct intent, and adequate quality. Use structured data and automation aggressively for efficiency while keeping search-engine indexation deliberate and controlled.**
@@ -1417,3 +1718,36 @@ Other lifecycle states:
 * **Not built and not in the registry:** audience + service, audience + location, commercial + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records
 
 The families table in §13 to §24 describes intent. Where it says "build-ready / published", the state above applies.
+
+---
+
+# 56A. 70-Page Inventory Audit Process
+
+§56's snapshot confirms *what exists*: 70 built, launch-status, indexable pages. It does not confirm that all 70 satisfy the evidence-led quality model in §11A — that per-page review has not been performed as of this writing (September 22, 2026).
+
+**Do not assume all 70 pages should remain permanently indexable, and do not retire or noindex any of them merely because they have not yet been individually reviewed.** Record each as requiring review where evidence is incomplete, per the outcomes below.
+
+## Required Audit Process, Per Page
+
+1. Confirm the page exists and renders.
+2. Confirm its route and canonical URL.
+3. Confirm its page family (§12).
+4. Confirm its primary intent.
+5. Confirm its business and market relevance.
+6. Confirm content differentiation (§11 tests).
+7. Confirm internal-link relationships (§35A).
+8. Confirm schema.
+9. Confirm conversion purpose.
+10. Assign a revised indexation recommendation.
+
+## Possible Outcomes
+
+* Keep indexable
+* Revise before indexation
+* Keep published but noindex
+* Defer
+* Retire or redirect
+
+## Current Status
+
+No page in the 70-page inventory has completed this audit. All 70 remain in their current implemented state (`status: launch`, `indexable: true`, per §56) until reviewed. This is priority 4 in `00-project-overview.md` §0A. Performing the audit is future work, not a task this document itself completes — this section defines the process, it does not execute it.

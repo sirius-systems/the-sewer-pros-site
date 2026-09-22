@@ -83,6 +83,23 @@ What Problems Those Services Solve
 What Supporting Information Exists
 ```
 
+Restated as the connected graph this document implements:
+
+```text
+Brand
+→ Market
+→ Service
+→ Audience
+→ Problem
+→ Evidence
+→ Resource
+→ Conversion
+```
+
+Every important production page must have a defined parent, a clear page-family relationship, relevant sibling or related-page links, a connection to at least one service/market/audience/problem/evidence/resource/conversion path, appropriate breadcrumb placement, and a logical place in the sitemap and internal-link graph:
+
+> **Every indexable page must have a reason to exist and a place in the site graph.**
+
 Internal linking should reinforce the site's documented entity and information architecture.
 
 The primary goal is not maximizing the number of links.
@@ -197,6 +214,28 @@ Controls page hierarchy.
 `15-schema-entity-strategy.md`
 
 Should align with visible internal linking.
+
+## SEO and Content Strategy
+
+`10-seo-strategy.md` and `12-content-aeo-ai-strategy.md` — define the intent and content model this linking strategy connects.
+
+## Content Quality
+
+`14-content-specification.md` — defines the page content that internal links point to.
+
+## Conversion Behavior
+
+`17-conversion-architecture.md` — defines the CTA behavior CTA links (§93 below) support.
+
+## Measurement
+
+`19-analytics-measurement.md` — defines how link/click behavior may be measured (§125A below).
+
+## Governing Content Objective
+
+`23-content-objective-charter.md` — the "why" this document's linking rules implement.
+
+This document must not silently override the page build list, service registry, location registry, routing strategy, or verified business facts.
 
 ---
 
@@ -1016,6 +1055,12 @@ Sewer Cleaning vs. Repair
 ```
 
 This cluster should reinforce the company's differentiator without creating negative competitor messaging.
+
+Approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+Target page `svc-independent-sewer-second-opinion` is registry-confirmed `phase_2_candidate`, not yet built (`06-master-service-registry.md` §23A) — this cluster's links point to it only once it exists. Where it exists, connect it to: sewer inspection, sewer diagnostics, repair recommendations, sewer replacement education, what to do after a sewer inspection, home buyers, homeowners, and the relevant conversion path. Use neutral, evidence-based language; do not use internal links to accuse competitors or imply repair is never necessary (§105 below).
 
 ---
 
@@ -2561,6 +2606,12 @@ Resource Content
 ```
 
 Supporting informational pages should strengthen commercial and entity pages rather than become disconnected content islands.
+
+---
+
+# 124A. Internal-Link Analytics
+
+Where supported by the implementation, measurable events may include: internal-link clicks, navigation clicks, related-service clicks, market-selector interactions, audience-selector interactions, resource clicks, CTA clicks, contact-path clicks, video or evidence interactions, and page-to-page conversion paths (`19-analytics-measurement.md`). Do not document an event as implemented unless it actually is; a planned event belongs in that document's own roadmap, not stated here as current tracking.
 
 ---
 

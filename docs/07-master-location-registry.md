@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Canonical Geographic Taxonomy  
-**Last Updated:** September 3, 2026
+**Last Updated:** September 22, 2026
 
 ---
 
@@ -670,6 +670,34 @@ This keeps detailed coverage normalized.
 
 ---
 
+# 21A. Location Truth Fields and Evidence Readiness
+
+Beyond `serviceAreaStatus` (§20), a location record may carry:
+
+```text
+locationId, locationName, locationType, state, stateCode, county,
+parentMarket, serviceAreaStatus, operationalStatus,
+physicalLocationStatus, gbpStatus, addressStatus, phoneStatus,
+hoursStatus, localProofStatus, localContentStatus, pageEligibility,
+publicationStatus, indexationStatus, priority, notes
+```
+
+These extend, rather than duplicate, the fields already in §11 (Suggested Location Record Structure), §19 (Location Status), and §28-31 (physical location, GBP, address, phone). Use the existing field names above where a record already has them.
+
+`localProofStatus` — evidence readiness for a market or location page — uses:
+
+```text
+verified
+partially verified
+pending verification
+not applicable
+not available
+```
+
+Do not mark evidence `verified` without support (§58).
+
+---
+
 # 22. New Geographic Discovery
 
 Claude may identify geographic opportunities during:
@@ -962,6 +990,14 @@ Las Vegas
 may be built using canonical geographic records.
 
 Geographic identity should remain consistent across residential and commercial systems.
+
+---
+
+# 35A. Audience and Commercial Geographic Relationships
+
+Location records may relate to approved audiences (`09-audience-commercial-matrix.md`): home buyers, homeowners, home inspectors, real estate agents, property managers, contractors and remodelers, commercial property owners, facility managers, HOA communities, and other approved audiences.
+
+Audience-location relationships should support relevant workflows (a real estate agent needing a transaction inspection in a specific market), not produce large volumes of thin local landing pages. The relationship existing in this registry does not authorize an audience + location page — see §33-35, `04-master-page-build-list.md` §11A.
 
 ---
 
@@ -1329,6 +1365,32 @@ The data model should be broader than the public search index.
 
 ---
 
+# 54A. Priority Tiers
+
+Practical planning tiers for location records and page opportunities:
+
+```text
+Tier 1 — Primary markets
+St. Louis, San Diego, Las Vegas.
+
+Tier 2 — High-value communities
+Verified service relevance, legitimate demand, available evidence,
+strong conversion potential. The 16 currently-built location pages
+(04-master-page-build-list.md §56) are examples.
+
+Tier 3 — Selective service-area opportunities
+Suitable for a specific service or audience relationship, not
+necessarily a standalone page.
+
+Tier 4 — Research or future opportunities
+Retained for planning, research, internal linking, or future
+expansion. Most of the 579 records sit here today.
+```
+
+Tiers are planning priorities, not automatic publication or indexation authorization (§18, §54).
+
+---
+
 # 55. Candidate Route Generation
 
 Claude Code may use geographic records to generate candidate routes.
@@ -1404,6 +1466,23 @@ Never invent:
 * local offices
 
 Use verified evidence where available.
+
+---
+
+# 58A. Anti-Doorway-Page Rules (Consolidated)
+
+Consolidating §21, §56-58, and §54A into one explicit list. Do not:
+
+* publish every community in the registry
+* publish every community for every service
+* reuse identical copy with only the city name changed
+* create pages with no local proof (§58)
+* create pages with no distinct conversion purpose
+* create pages that exist only to capture "near me" search variations
+* create pages that misrepresent business presence (§3, §28-31)
+* create pages with no meaningful internal relationship (§60)
+
+Local SEO must distinguish service-area SEO, organic market targeting, physical-location SEO, GBP optimization, and local citation management. Only a verified physical location may receive physical-location treatment. Detailed GBP rules belong to `11-local-seo-gbp-strategy.md`.
 
 ---
 
@@ -1560,6 +1639,8 @@ Routine maintenance may include:
 * adjusting service-area status
 
 These changes generally do not require material project approval.
+
+Periodic review should also cover: service-coverage accuracy, market status, operational changes, address/phone status (§30-31), GBP status (§29), local proof (§58), page performance, indexation quality (§56), and duplicate or cannibalizing pages. Do not represent data as current or verified unless it has actually been reviewed against the appropriate source of truth.
 
 ---
 

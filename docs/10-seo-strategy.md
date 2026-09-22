@@ -85,6 +85,20 @@ Conversion
 Sustainable Organic Growth
 ```
 
+The site is one connected graph, not separate systems for SEO, GEO, AEO, LLM visibility, featured snippets, or knowledge panels:
+
+```text
+Brand
+→ Market
+→ Service
+→ Audience
+→ Problem
+→ Evidence
+→ Conversion
+```
+
+SEO performance depends on clear entities, accurate business facts, distinct search intent, useful answers, local legitimacy, original evidence, strong internal relationships, accessible technical implementation, and measurable conversion paths — not on separately optimizing for each search surface (`00-project-overview.md` §3A, `03-information-architecture.md` §2).
+
 ---
 
 # 2A. Build-First SEO Operating Model
@@ -459,6 +473,8 @@ Priority pages include:
 /services/preventative-sewer-maintenance/
 ```
 
+Of these, six are registry-verified `core_service` primary hubs and receive the greatest commercial and navigation priority: sewer-camera-inspection, sewer-cleaning, hydro-jetting, sewer-cleaning-camera-inspection, sewer-line-locating, and drain-cleaning (`06-master-service-registry.md` §14A). The remaining three, plus the one market-specific and seven commercial-variant records not listed here, remain part of the canonical taxonomy and are not lower quality — they simply carry supporting rather than primary navigation and commercial emphasis (04-master-page-build-list.md §12A).
+
 ---
 
 # 14. Canonical Service Page Objectives
@@ -542,6 +558,20 @@ Recurring Sewer Backup Diagnosis
 ```
 
 targets a distinct diagnostic problem state.
+
+---
+
+# 17A. Independent Second-Opinion SEO Strategy
+
+`svc-independent-sewer-second-opinion` is `phase_2_candidate` in the service registry — an approved concept, not yet a built or indexed page (`06-master-service-registry.md` §23A). Its target intent is: independent evaluation and documentation intent — a customer who has already received a repair or replacement recommendation and wants a documented second opinion before approving it. This is distinct from general inspection intent (§14) and from decision-stage comparison intent (§45), even though its content will touch both.
+
+Approved positioning concept for this cluster:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This describes The Sewer Pros' own business model (no repair contract to sell); it must not be used to accuse any competitor of dishonesty, and must not imply repair or replacement is never necessary (§3, §4, CLAUDE.md §9, §27).
+
+Proposed canonical route: `/services/independent-sewer-inspection-second-opinion/` (`05-url-routing-strategy.md` §41A) — not yet built; the matrix currently scopes this relationship per-market rather than sitewide (`08-service-location-matrix.md` §46A), which remains an open routing decision.
 
 ---
 
@@ -890,6 +920,10 @@ Home Inspectors
 Property Managers
 HOA Communities
 ```
+
+Priority pathways for audience SEO investment going forward: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers (`00-project-overview.md` §7A). Homeowners and contractors/remodelers are `Phase 2` in the audience registry (`09-audience-commercial-matrix.md` §6-8) — prioritized for evaluation, not yet built.
+
+An audience-service page should only be created when it has distinct search intent, a distinct workflow, distinct audience questions, distinct deliverables, a distinct CTA, sufficient content depth, and evidence or a defined evidence plan (`03-information-architecture.md` §33A). Do not publish the full audience-service or commercial matrix automatically (`09-audience-commercial-matrix.md` §48-49).
 
 ---
 
@@ -2327,6 +2361,27 @@ Launch should establish:
 
 ---
 
+# 115A. Revised Implementation Priorities
+
+The same whole-project sequence as `00-project-overview.md` §0A, restated for SEO planning:
+
+```text
+1. Maintain the brand and conversion foundation.
+2. Complete and strengthen the primary service hubs.
+3. Maintain the three authentic market hubs.
+4. Audit the existing service-market pages for differentiation and evidence.
+5. Prioritize high-value audience journeys.
+6. Build the independent sewer second-opinion page.
+7. Develop problem, pipe-material, and buyer-education clusters.
+8. Produce original proof and evidence assets.
+9. Complete Search Console, Bing, analytics, sitemap, and conversion measurement.
+10. Expand selectively based on quality, evidence, and performance.
+```
+
+This is a priority sequence, not a permission gate — it does not require publishing every possible service, location, audience, or matrix combination (§2A, `08-service-location-matrix.md` §21A).
+
+---
+
 # 116. Post-Launch SEO Priority
 
 Initial expansion should prioritize:
@@ -2823,6 +2878,29 @@ Entities
 Related Entities
 →
 Supporting Content
+```
+
+---
+
+# 139A. Document Hierarchy (Consolidated)
+
+```text
+00-project-overview.md            → Overall project direction
+03-information-architecture.md    → Site entity relationships
+04-master-page-build-list.md      → Page lifecycle, publication, indexation
+05-url-routing-strategy.md        → Canonical routes
+06-master-service-registry.md     → Canonical services
+07-master-location-registry.md    → Geographic truth
+08-service-location-matrix.md     → Service/geographic opportunities
+09-audience-commercial-matrix.md  → Audience and commercial relationships
+10-seo-strategy.md (this doc)     → SEO objectives, intent, quality, measurement
+11-local-seo-gbp-strategy.md      → Local and GBP execution (§136)
+12-content-aeo-ai-strategy.md     → AEO and AI retrieval execution (§137)
+15-schema-entity-strategy.md      → Schema and entity implementation (§138)
+16-internal-linking-strategy.md   → Internal-link execution (§139)
+17-conversion-architecture.md     → Conversion execution
+19-analytics-measurement.md       → Analytics implementation
+21-post-launch-seo-roadmap.md     → Post-launch sequencing
 ```
 
 ---

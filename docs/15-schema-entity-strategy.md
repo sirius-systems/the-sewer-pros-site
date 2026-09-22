@@ -141,6 +141,21 @@ The Sewer Pros
 
 The schema layer should reinforce the visible site architecture rather than create a competing taxonomy.
 
+Restated as the connected entity model this document supports:
+
+```text
+Organization
+→ Service
+→ Market or Service Area
+→ Audience
+→ Problem or Topic
+→ Evidence
+→ WebPage
+→ Conversion Path
+```
+
+Structured data clarifies these legitimate relationships. It does not manufacture physical offices, local entities, services, reviews, addresses, phone numbers, hours, credentials, or partnerships that do not exist (§118). Schema does not create a business fact, does not create a location, does not create a service, and does not guarantee a rich result — it is subordinate to visible content and the project's source-of-truth hierarchy (CLAUDE.md §14).
+
 ---
 
 # 4. Core Entity Principle
@@ -2462,6 +2477,12 @@ Service: Sewer Replacement
 ```
 
 unless The Sewer Pros actually provides it.
+
+`svc-independent-sewer-second-opinion` is registry-confirmed `phase_2_candidate` — approved as a concept, not yet built as a page (`06-master-service-registry.md` §23A). No schema should be written for it until the page exists. Its approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+describes The Sewer Pros' own business model and must not appear in schema as, or alongside, a `Service` entity implying repair or replacement capability.
 
 ---
 

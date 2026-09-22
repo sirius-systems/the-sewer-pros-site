@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Canonical Service Taxonomy  
-**Last Updated:** September 3, 2026
+**Last Updated:** September 22, 2026
 
 ---
 
@@ -323,6 +323,28 @@ The important requirement is that canonical service identity remains centralized
 
 ---
 
+# 9A. Extended Planning Fields
+
+Beyond `ServiceRecord`, the following planning fields extend the model additively (they do not replace `status`, `category`, or the market/commercial/residential booleans above). `data/services/master-service-registry.json` already implements several of these under different names, noted below.
+
+```text
+commercialPriority    primary | supporting | selective | future | educational
+navigationPriority    primary | supporting | selective | future | educational
+pagePriority          primary | supporting | selective | future | educational
+marketPriority        primary | supporting | selective | future | educational
+audiencePriority      primary | supporting | selective | future | educational
+evidenceReadiness     available | partially available | needs collection |
+                       not applicable | pending verification
+conversionReadiness   available | partially available | needs collection |
+                       not applicable | pending verification
+```
+
+`primary` records the current commercial/navigation emphasis; it is never permission to create every possible service-market page (§4, §19, `04-master-page-build-list.md` §11A).
+
+**Already implemented in the registry data**, under its own field names — this document does not duplicate that field, it maps to it: `record_type` (`core_service`, `derived_service`, `market_specific_service`, `commercial_service`) and `launch_tier` (`launch`, `launch_candidate`, `phase_2_candidate`). `record_type: core_service` is the closest existing equivalent to `commercialPriority: primary` (§14A).
+
+---
+
 # 10. Service IDs
 
 Use stable machine-friendly IDs.
@@ -501,6 +523,45 @@ They do not necessarily require dedicated public category pages.
 
 ---
 
+# 14A. Registry-Verified Service Families and Primary Hubs
+
+`data/services/master-service-registry.json` classifies all 18 records by `record_type` and `service_family`. This section records that classification narratively; it does not create it. Do not treat this as inventing new capabilities — every service named below already exists in the registry.
+
+## By `record_type` (18 total)
+
+```text
+core_service               6 — Sewer Camera Inspection, Sewer Cleaning,
+                                Hydro Jetting, Sewer Cleaning + Camera
+                                Inspection, Sewer Line Locating, Drain
+                                Cleaning
+derived_service             4 — Pre-Purchase Sewer Inspection (launch),
+                                Recurring Sewer Backup Diagnosis
+                                (launch_candidate), Preventative Sewer
+                                Maintenance (launch_candidate),
+                                Independent Sewer Inspection / Second
+                                Opinion (phase_2_candidate — §23A)
+market_specific_service     1 — Sewer Lateral Inspection & Municipal
+                                Reporting (St. Louis only, launch)
+commercial_service          7 — the commercial variants of the core and
+                                locating services (5 launch, 2
+                                phase_2_candidate)
+```
+
+The six `core_service` records are the primary commercial service hubs — this designation is registry-verified, not newly assigned here (§9A). It affects navigation and commercial emphasis, not the taxonomy: all 18 records remain canonical, and none is deleted, collapsed, or removed from the registry by this designation.
+
+## By `service_family` (18 total)
+
+```text
+inspection_diagnostics    7
+cleaning                  7
+locating                  2
+maintenance               2
+```
+
+This supplements, and is consistent with, the conceptual categories in §14 above (Inspection & Diagnostics, Cleaning, Locating, Real Estate, Commercial); it is the registry's own machine-readable grouping rather than a competing taxonomy.
+
+---
+
 # 15. Parent / Child Relationships
 
 Use parent-child relationships where they improve taxonomy.
@@ -665,6 +726,23 @@ Use actual service data where available.
 
 ---
 
+# 20A. Market Relationship Safeguards
+
+A service being related to a market (§20) never implies:
+
+* a physical office
+* a staffed branch
+* a GBP listing
+* a local address
+* a local phone number
+* a dedicated local team
+* guaranteed availability
+* same-day or emergency response
+
+The three initial markets remain St. Louis, Missouri; San Diego, California; and Las Vegas, Nevada. `07-master-location-registry.md` §3, §28-29 governs the market-versus-physical-presence distinction in full; this section restates it in the service context so a service record's `marketIds` array is never read as a presence claim.
+
+---
+
 # 21. Audience Relationships
 
 Services may connect to audiences defined in:
@@ -751,6 +829,27 @@ Sewer Inspection for Real Estate Agents
 ```
 
 Those audience pages do not necessarily require additional canonical service records.
+
+---
+
+# 23A. Independent Second-Opinion Service
+
+`svc-independent-sewer-second-opinion` ("Independent Sewer Inspection / Second Opinion") is an approved registry record: `derived_service`, `service_family: inspection_diagnostics`, `launch_tier: phase_2_candidate` (`data/services/master-service-registry.json`). It is preserved as part of the 18-service taxonomy, not built as a page.
+
+Relationship to other concepts:
+
+* **Sewer inspection / diagnostics** — uses the same inspection and camera-diagnostic process as the core services; the "second opinion" framing is about *when* and *why* a customer requests it, not a different diagnostic method
+* **Repair and replacement recommendations** — the service exists specifically to evaluate a recommendation the customer already received elsewhere, without The Sewer Pros having a repair contract to sell (§7)
+* **Documentation** — the deliverable is video evidence and documented findings, same as the core inspection services
+* **Customer decision support** — the customer, not The Sewer Pros, decides what happens next
+
+Approved positioning concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This describes The Sewer Pros' own business model (no repair contract to sell); it is not an accusation that any competitor is dishonest, and it does not imply repair or replacement is never necessary (§7, CLAUDE.md §9, §27).
+
+Proposed canonical route (not yet built): `/services/independent-sewer-inspection-second-opinion/` (`05-url-routing-strategy.md` §41A).
 
 ---
 
@@ -962,6 +1061,22 @@ Follow the migration strategy when a live service page is retired.
 
 ---
 
+# 32A. Lifecycle and Indexation Safeguards
+
+A service record's registry `status` (§29-32: candidate, active, inactive, retired) is separate from its page's build, publication, and indexation status (`04-master-page-build-list.md` §6A). A service may be:
+
+* approved in the registry, with no standalone page
+* built but not published
+* supported only by a section on another page (e.g. the services hub)
+* published but `noindex`
+* deferred for future development
+* included only in internal navigation
+* represented through a resource page rather than a service page
+
+Do not automatically create an indexable page for every service and market combination merely because both exist in their respective registries (§4, `08-service-location-matrix.md`).
+
+---
+
 # 33. Current Foundational Service Themes
 
 The project currently centers on service themes including:
@@ -1026,6 +1141,43 @@ A [service] is used to [primary function]. It can help identify or address [rele
 ```
 
 The canonical description is not necessarily the complete website copy.
+
+---
+
+# 35A. Service Page Content Model, Intent, and Differentiation
+
+## Expected Content Model
+
+For each important service page:
+
+* direct answer beneath the H1
+* what the service is
+* when customers may need it
+* what the service can identify or accomplish
+* what the process includes
+* what the customer receives
+* limitations and exclusions
+* relevant audiences
+* relevant markets
+* related services
+* FAQs
+* evidence (§9A `evidenceReadiness`; `00-project-overview.md` §0B)
+* primary CTA
+* secondary CTA
+
+Content must be based on approved business information; do not invent strategic business claims to fill this model (§66).
+
+## Primary Intent per Service
+
+Each canonical service supports one or more customer-intent categories: immediate service request, diagnostic evaluation, pre-purchase due diligence, recurring maintenance, documentation, line locating, commercial coordination, independent evaluation, or educational research. Do not force every service into every category — each production page should have one primary intent and a clear conversion relationship (§37, `05-url-routing-strategy.md` §102).
+
+## Differentiation Rule
+
+Distinct service records must have distinct page purposes. Do not create multiple pages that vary only by synonym, keyword order, city name, audience keyword, or minor phrasing (§27). If two service records could target the same primary intent, document their relationship and identify which is the preferred canonical service, which is supporting, and whether the relationship is a redirect/alias, an educational-only relationship, or a genuine separate operational distinction.
+
+## Conversion Mapping
+
+Map each service to its most specific available conversion action rather than a generic "Call Now": schedule a sewer inspection, request sewer cleaning, get help with a backup or recurring drain problem, request hydro jetting, request line locating, schedule a pre-purchase inspection, coordinate an inspection for a client, request commercial sewer or drain service, request an independent sewer second opinion, or learn more before choosing a service (`17-conversion-architecture.md`). Do not invent emergency, same-day, response-time, pricing, warranty, or guarantee claims to support a CTA (§66, CLAUDE.md §24).
 
 ---
 
@@ -1505,6 +1657,38 @@ All service-page content should follow:
 The registry provides factual/taxonomic identity.
 
 The content specification governs how that identity becomes useful public content.
+
+---
+
+# 57A. Document Hierarchy (Consolidated)
+
+```text
+06-master-service-registry.md (this document)
+→ Canonical services and service entities
+
+04-master-page-build-list.md
+→ Page lifecycle, production inventory, and indexation (§52)
+
+05-url-routing-strategy.md
+→ Canonical URL patterns (§55)
+
+08-service-location-matrix.md
+→ Service/geographic relationships (§53)
+
+09-audience-commercial-matrix.md
+→ Audience and commercial relationships (§54)
+
+15-schema-entity-strategy.md
+→ Schema implementation (§38)
+
+16-internal-linking-strategy.md
+→ Service relationship links (§43)
+
+17-conversion-architecture.md
+→ Service-specific CTA behavior (§35A)
+```
+
+This registry does not silently override the page inventory, URL strategy, or business-truth rules in any of the above (§4, §66).
 
 ---
 

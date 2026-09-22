@@ -63,9 +63,23 @@ The architecture should allow users and search systems to move logically among:
 
 entities.
 
-The site should not function as a disconnected collection of SEO landing pages.
+The site should not function as a disconnected collection of SEO landing pages, nor a disconnected collection of city-swapped local landing pages.
 
 Every production indexable page should have a meaningful place within the broader site hierarchy. Drafts and candidate pages may be developed before publication, but they must use the same entity and relationship model so they can be evaluated accurately.
+
+The connected model, restated as a flow:
+
+```text
+Brand
+→ Market
+→ Service
+→ Audience
+→ Problem
+→ Evidence
+→ Conversion
+```
+
+Every page should trace back to this flow: it belongs to the brand, addresses a market and/or a service, speaks to an audience, answers a problem, and either carries or connects to evidence that supports a conversion action. A page that cannot be placed in this flow has not earned a place in the production index (§9A, §51A).
 
 ---
 
@@ -135,28 +149,26 @@ This build-first model does not relax business truth. Services, markets, locatio
 The site should be understood as several interconnected architectural layers.
 
 ```text
-Company Layer
-    ↓
-Service Layer
+Brand Layer
     ↓
 Market Layer
     ↓
-Location Layer
+Service Layer
     ↓
 Audience / Commercial Layer
     ↓
-Service + Location / Audience + Location / Commercial + Location
+Problem / Pipe-Material Layer
     ↓
-Comparison / Alternative Layer
+Service + Market / Audience + Service Relationships
+    ↓
+Evidence / Review / Case-Study Layer
     ↓
 Resource / Topic Authority Layer
+    ↓
+Conversion Layer
 ```
 
-These are conceptual layers.
-
-They do not necessarily represent literal URL depth.
-
-The final route depth will be defined separately.
+These are conceptual relationships, not a literal nesting order and not a literal URL depth. A route's actual depth is controlled separately by `05-url-routing-strategy.md`; a page can sit shallow in the URL structure while still representing a deep conceptual layer (a service + market page, for example, sits at Layer 6 conceptually but may be one or two segments deep in the URL).
 
 ---
 
@@ -265,6 +277,38 @@ Decision-stage topics comparing:
 ## Alternatives
 
 Decision-stage content addressing alternative services, approaches, or providers where strategically appropriate.
+
+---
+
+## Problems and Topics
+
+Customer symptoms, conditions, and questions that motivate a service search. Examples:
+
+* sewer backups
+* tree roots
+* slow drains
+* sewer odors
+* gurgling drains
+* cast iron sewer pipe
+* clay sewer pipe
+* sewer inspection before buying a home
+* repair recommendations and second opinions
+
+See §50-51 (Problem/Symptom Content, Problem-to-Service Relationships) for the content model and §44A (Evidence Architecture) for how these connect to proof.
+
+---
+
+## Evidence
+
+Reviews, case studies, inspection findings, report examples, video stills, process documentation, local proof, and buyer/agent resources that substantiate a claim with something concrete rather than assertion alone. See §44A (Evidence Architecture).
+
+Evidence is a formal site layer, not incidental content — see §4's updated layer model.
+
+---
+
+## Conversion Actions
+
+The specific things a visitor can do: schedule a sewer inspection, request sewer cleaning, get help with a sewer problem, request line locating, coordinate a real-estate inspection, request commercial service, or seek an independent second opinion. See `17-conversion-architecture.md` for CTA mechanics; this document treats conversion actions as an entity every other entity should connect toward (§2's flow).
 
 ---
 
@@ -459,6 +503,41 @@ Canonical Service
 ```
 
 The canonical service page should remain the primary generalized page for the service.
+
+---
+
+# 12A. Service Architecture: Primary Hubs and Supporting Services
+
+The full canonical service taxonomy — **18 records**, `06-master-service-registry.md` — remains authoritative and is not reduced by this document. Not every service warrants equal navigation prominence or indexation priority (06 §4).
+
+The registry already distinguishes four record types (`data/services/master-service-registry.json`):
+
+```text
+Services Hub
+    ↓
+Primary Service Hub          6 core_service records — greatest
+                              navigation and commercial emphasis
+    ↓
+Supporting Service Page      derived_service and market_specific_service
+                              records — accessible through internal
+                              links, resources, and secondary navigation
+    ↓
+Selective Service + Market Page
+    ↓
+Audience-Service or Problem-Service Relationship
+    ↓
+Conversion Action
+```
+
+The six `core_service` records (registry-verified, not newly designated here): Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning + Camera Inspection, Sewer Line Locating, and Drain Cleaning. The seven `commercial_service` records are the commercial variants of these and the locating service.
+
+Service + market pages should only be created when the combination has legitimate value and differentiated content (§23, §24, §51A) — never as a mechanical product of the 18 × 579 relationship space (`00-project-overview.md` §17).
+
+**Independent second-opinion pathway.** `svc-independent-sewer-second-opinion` is a registry-confirmed `derived_service` at `phase_2_candidate` tier — an approved strategic concept, not yet a built page. It is represented as a strategic service/comparison pathway: independent documentation and evaluation that helps a customer distinguish the observed, documented condition of a sewer line from a proposed repair solution, using the approved concept:
+
+> **Do Not Let a Sales-Driven Recommendation Make the Decision for You**
+
+This is not an accusation against any provider; it describes The Sewer Pros' own position of having no repair contract to sell (§9 of `00-project-overview.md`, CLAUDE.md §9, §27). Canonical route treatment for this page belongs to `05-url-routing-strategy.md`.
 
 ---
 
@@ -863,6 +942,48 @@ Before publishing and indexing an audience + location page, determine whether:
 
 ---
 
+# 33A. Priority Audience Pathways
+
+The audience model, restated as a flow:
+
+```text
+Who We Serve
+    ↓
+Audience Hub
+    ↓
+Audience Need
+    ↓
+Relevant Service
+    ↓
+Audience-Service Workflow
+    ↓
+Audience-Specific CTA
+```
+
+`09-audience-commercial-matrix.md` §6 defines 13 canonical audience records; 6 are launch-status and built (`/for/home-buyers/`, `/for/home-sellers/`, `/for/real-estate-agents/`, `/for/home-inspectors/`, `/for/property-managers/`, `/for/hoa-communities/`), and 7 are Phase 2 candidates.
+
+Priority pathways for architecture and development attention:
+
+* Home buyers
+* Home inspectors
+* Real estate agents
+* Homeowners *(Phase 2 candidate per 09 §6)*
+* Property managers
+* Contractors and remodelers *(Phase 2 candidate per 09 §6)*
+
+An audience-service page deserves standalone treatment only when it has all of the following, not merely an audience label applied to existing service copy (§26, §33 above):
+
+* a distinct audience need
+* a distinct workflow
+* distinct deliverables
+* a distinct decision context
+* a distinct CTA
+* sufficient content and evidence (§44A)
+
+Otherwise, the relationship should remain a section, internal link, or related-service module rather than a standalone route.
+
+---
+
 # 34. Commercial Hub Architecture
 
 Commercial services should have a dedicated architectural pathway.
@@ -1041,6 +1162,35 @@ These pages should not be generated automatically from competitor lists.
 
 ---
 
+# 44A. Evidence Architecture
+
+Evidence is a formal site layer (§4, §5), not incidental proof scattered across other page types.
+
+Evidence content may include:
+
+* verified reviews
+* local project examples
+* anonymized inspection findings
+* inspection video stills
+* report examples
+* process illustrations
+* customer documentation examples
+* market-specific operating information
+* buyer, agent, and inspector checklists
+
+Each evidence asset should connect to at minimum one of:
+
+* the relevant service
+* the relevant market, where applicable
+* the relevant audience
+* the relevant conversion action
+
+This keeps evidence load-bearing rather than decorative — an inspection video still, for example, belongs on or linked from the relevant service page and, where applicable, the relevant market page, not floating disconnected from either.
+
+Do not create fictional case studies, reviews, inspection results, or local proof. None of this content exists in the repository yet; `00-project-overview.md` §0B tracks it as a roadmap item, not a completed layer.
+
+---
+
 # 45. Resources Hub
 
 The site should include a resource architecture designed around topic authority.
@@ -1048,6 +1198,26 @@ The site should include a resource architecture designed around topic authority.
 A central resource hub should organize educational content into logical clusters.
 
 The resource section should not become an unstructured chronological blog archive.
+
+A potential parent concept, paralleling "Who We Serve" for audiences (§25) and "Commercial Sewer & Drain Services" for commercial (§34):
+
+**Sewer Learning Center**
+
+```text
+Sewer Learning Center
+    ↓
+Problem or Question
+    ↓
+Plain-Language Answer
+    ↓
+Relevant Service
+    ↓
+Market or Audience Pathway
+    ↓
+Conversion CTA
+```
+
+Resource pages should support commercial pages (service, market, audience, and commercial pages) rather than operate as disconnected informational content (§79 below, Resource-to-Money-Page Linking).
 
 ---
 
@@ -1192,6 +1362,41 @@ This supports AEO and conversion without overcommercializing the educational con
 
 ---
 
+# 51A. Evidence-Led Page Quality Model
+
+Local, service, and service-market pages must earn indexability through useful and differentiated content, not through matrix membership alone.
+
+Where relevant, an indexable page should have:
+
+* a defined page purpose
+* one primary intent
+* a legitimate business relationship
+* accurate service and market coverage
+* meaningful content differentiation
+* verified facts
+* local or audience-specific context
+* relevant evidence or proof (§44A)
+* a clear conversion goal
+* a parent page
+* sibling and related-page relationships
+* breadcrumb placement (§71-72)
+* appropriate sitemap treatment (`04-master-page-build-list.md` §33)
+
+Explicitly prohibited:
+
+* city-name substitution
+* token-swapped service pages
+* boilerplate audience pages
+* unsupported local claims
+* fabricated offices or local entities
+* fabricated phone numbers, reviews, teams, addresses, or availability
+* orphan pages (§113)
+* pages created solely to capture keyword variations
+
+This section formalizes the quality tests already present in §93-96 (content differentiation) and §112 (validation questions) into a single indexability standard. Where they overlap, they should read consistently; if a future edit to one drifts from the other, this section governs indexability specifically and the differentiation sections govern content quality generally.
+
+---
+
 # 52. Page Family Registry
 
 The project should maintain a clear set of page-family types.
@@ -1218,6 +1423,7 @@ Resource Hub
 Topic Hub
 Resource Article
 FAQ / Guide
+Evidence / Proof
 Legal / Utility
 ```
 
@@ -1487,7 +1693,9 @@ The Services menu may provide access to:
 * services hub
 * commercial services where appropriate
 
-If all 18 canonical services are not important enough for the main navigation, use hierarchy or grouping.
+If all 18 canonical services are not important enough for the main navigation, use hierarchy or grouping. The six primary service hubs (§12A) are the natural candidates for top-level or first-tier emphasis; supporting, market-specific, and commercial-variant services may remain reachable through the services hub, related-service modules, or secondary grouping rather than the primary menu itself.
+
+The header should stay conversion-led without adding unsupported emergency, response-time, local-office, or city-phone claims (`00-project-overview.md` §41).
 
 ---
 
@@ -2168,6 +2376,19 @@ Auto-Publish
 
 ---
 
+# 98A. Indexation Safeguard
+
+The governing principle for this whole document:
+
+```text
+The architecture may support broad relationships.
+The production index should contain only pages that earn indexability.
+```
+
+Indexation should be evaluated on: search intent, business relevance, content quality, differentiation, evidence, local legitimacy, internal-link value, conversion value, and technical quality (§51A). This document does not recommend mass indexation of the full service-location, audience-service, or geographic matrix — the 18 services, 579 locations, and their relationship space in `08-service-location-matrix.md` describe *supportable structure*, not a publishing mandate.
+
+---
+
 # 99. Initial Launch Architecture vs Expansion
 
 The website should be designed for a phased build.
@@ -2482,6 +2703,29 @@ where applicable.
 
 ---
 
+# 113A. Page Relationship Audit Checklist
+
+Every production page should be auditable against:
+
+* one intentional parent
+* a defined page family (§52)
+* breadcrumb support where applicable (§71-72)
+* at least one relevant internal link from another page
+* links to relevant sibling or related pages
+* a clear conversion relationship
+* an intentional sitemap decision (`04-master-page-build-list.md` §33)
+
+Use this checklist to audit for:
+
+* orphan pages
+* duplicate intent
+* cannibalization
+* unsupported relationships
+* weak matrix-generated pages
+* pages with no clear CTA
+
+---
+
 # 114. Dead-End Prevention
 
 Pages should generally provide useful onward paths.
@@ -2786,6 +3030,14 @@ Information architecture defines allowable structures; the Master Page Build Lis
 
 Site OS governs generalized workflow and QA; this repository governs project-specific site architecture.
 
+### Rule 18
+
+Evidence is a formal site layer (§4, §44A), not incidental proof. Evidence must be truthful, attributable where appropriate, and based on actual business experience or verified research — never fabricated to fill a page.
+
+### Rule 19
+
+A matrix or registry relationship existing is not sufficient reason to index a page. Indexability is earned per §51A and §98A.
+
 ---
 
 # 126. Governing Relationship Between Documents
@@ -2859,6 +3111,7 @@ It should be designed around a structured model of:
 * meaningful commercial use cases
 * customer questions
 * customer decisions
+* real evidence (§44A)
 
 The architecture should make those relationships easy to understand for:
 
@@ -2884,11 +3137,15 @@ URL Architecture
 ↓
 Content
 ↓
+Evidence
+↓
 Internal Links
 ↓
 Search Visibility
 ↓
 Conversion
 ```
+
+This is the build pipeline. §2's `Brand → Market → Service → Audience → Problem → Evidence → Conversion` flow is the entity-relationship test each individual page should satisfy within that pipeline.
 
 That structure should remain stable as The Sewer Pros grows from its initial three markets into a larger multi-market sewer inspection, diagnostics, cleaning, and locating platform.
