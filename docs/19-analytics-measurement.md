@@ -3348,3 +3348,15 @@ The governing standard is:
 
 > **Measure whether deliberately published and quality-qualified pages earn relevant search visibility, attract qualified users, move those users toward the appropriate service, and generate attributable business opportunities across St. Louis, San Diego, and Las Vegas. Page count, keyword count, and traffic volume are supporting signals—not the final measure of success.**
 
+
+
+---
+
+# 166. Implementation Snapshot (September 21, 2026)
+
+Verified in code at commit `5b9586a`. No analytics data exists in this repository.
+
+* `components/tracking/Analytics.tsx` loads GA4 only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set. The variable is not set in `.env.example`, so tracking is inert until it is configured
+* `lib/analytics/` provides typed events, contextual IDs, and a PII guard. Page-view and tracked phone-link components exist
+* `trackFormSubmitted()` is deliberately not called by the lead form, because submission is a stub (PENDING-018). No lead conversion event can fire until the endpoint exists
+* **Open:** set the measurement ID; decide call tracking (PENDING-009); wire form conversion after PENDING-018; configure Search Console and GA4 conversions after launch

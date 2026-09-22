@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Strategic Decision Record  
-**Last Updated:** September 3, 2026
+**Last Updated:** September 21, 2026
 
 ---
 
@@ -3872,7 +3872,7 @@ Only genuinely material unresolved items should remain here.
 
 ## PENDING-001 — Production Canonical Host
 
-**Status:** DEFERRED
+**Status:** RESOLVED by DEC-078 (2026-08-17): `https://www.thesewerpros.com`
 
 Determine final production canonical host format:
 
@@ -4398,6 +4398,35 @@ Both are a separate decision.
 * Both Location selects render "Select your location" selected — unanswered
 * No `tel:` link in the main content
 * No em dash in any visitor-facing string; no raw hex introduced
+
+---
+
+## DEC-105 — Project Status Advanced from Scaffold to Active Implementation
+
+**Date:** 2026-09-21
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `README.md`
+* `00-project-overview.md` §0
+* `04-master-page-build-list.md` §56
+* `10`, `15`, `19`, `20`, `21` — implementation snapshot sections
+
+### Decision
+
+The project's recorded phase changes from "scaffold, page implementation not started" to **active implementation, pre-launch**. Documentation now states the verified repository state instead of the state at scaffolding.
+
+### Reason
+
+The README and overview still described a scaffold. The repository at commit `5b9586a` contains 70 built pages, a 70-URL sitemap, robots, schema, a component library, and passing `typecheck`, `lint`, and `build`. Stale status language could mislead later work about what exists and what is gated.
+
+### Effect
+
+* No route, page content, metadata, schema, sitemap entry, form, redirect, or indexation policy changed
+* The project is **not** declared launch-ready. Open blockers: PENDING-018 (form endpoint), PENDING-019 (TCPA copy), PENDING-010 (redirects), PENDING-011 (GPTBot), PENDING-009 (call tracking), analytics ID, and deployment verification
+* PENDING-001 status corrected to resolved, as DEC-078 already closed it
 
 ---
 

@@ -2999,3 +2999,17 @@ Expand From Evidence
 ```
 
 This approach gives The Sewer Pros a scalable organic-search platform capable of building authority across services, markets, audiences, commercial segments, educational topics, and future geographies without compromising search quality or the specialized independent-inspection positioning of the company.
+
+
+---
+
+# 142. Implementation Snapshot (September 21, 2026)
+
+Verified against commit `5b9586a`. Records repository state only. No rankings, impressions, traffic, indexation, or Search Console data exists in this repository and none is claimed.
+
+* **Sitemap:** 70 URLs, exactly the approved indexable set. Generated from `indexablePages` filtered by content-ready pages (`app/sitemap.ts`). No `lastmod`
+* **Indexable:** 70 of 70 approved pages (`launch`, `indexable: true`). Trailing-slash canonicals on `https://www.thesewerpros.com` (DEC-061, DEC-078)
+* **Noindex, gated, draft, deferred:** none among approved pages. The five Las Vegas pages were released from DEC-063 by DEC-080. The framework 404 pages are the only noindex output
+* **Robots:** allow-all for `*`, explicit allow for `OAI-SearchBot`, sitemap declared. No `Disallow`, deliberately, so `noindex` stays readable. No GPTBot directive; PENDING-011 is open, so GPTBot is currently permitted by the general allow
+* **Not built:** Las Vegas service + location pages, audience + service, audience + location, commercial + location, and alternatives. None is in the sitemap
+* **Remaining SEO tasks:** decide PENDING-011; implement redirects (see `20`); submit the sitemap and capture the Phase 0 baseline after deployment; verify canonicals, sitemap, and robots on the deployed host; review the 14 service + location pages against the quality tests in `04` §11 before treating them as proven

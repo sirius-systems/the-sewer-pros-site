@@ -4,7 +4,52 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Project Foundation / Source of Truth  
-**Last Updated:** September 3, 2026
+**Last Updated:** September 21, 2026
+
+---
+
+# 0. Current Implementation Status
+
+**Verified:** September 21, 2026, against commit `5b9586a` on `main`.
+
+**Phase:** Active implementation, pre-launch. This project is no longer a scaffold. All 70 approved launch pages are built, and the repository passes `npm run typecheck`, `npm run lint`, and `npm run build`. It is not yet launch-ready.
+
+## Completed Implementation
+
+* 70 approved pages built and rendering as static HTML (Next.js 16, `output: 'export'`): 9 core and hub, 10 service, 3 market, 16 location, 14 service + location, 6 audience, 5 commercial, 2 comparison, 5 resource
+* 70 of 70 pages `launch` and indexable; none gated, noindex, or deferred. The five Las Vegas pages were released from DEC-063 by DEC-080
+* Sitemap of 70 URLs, matching the approved set; `robots.txt` allows all crawlers plus `OAI-SearchBot` and declares the sitemap
+* JSON-LD on all 70 pages (single Organization entity, WebSite, breadcrumbs, and page-type schema); no per-location `LocalBusiness`
+* Production canonical host `https://www.thesewerpros.com` (DEC-078)
+* Brand colour and typography (DEC-096), six page-family design references, and a reusable template and section component library
+* Verified business facts for all three markets (DEC-070 to DEC-077, DEC-083, DEC-088)
+* Lead form component, GA4 loader, and typed analytics events with a PII guard
+
+## Remaining Implementation
+
+* **Lead form submission endpoint** (PENDING-018). The form renders on seven templates but submission is a stub and sends nothing
+* **TCPA consent copy** for the "text" contact option (PENDING-019)
+* Market-scoped header contact (PENDING-017)
+* Phase 2 page `svc-independent-sewer-second-opinion`: approved, not built
+* Build-time cross-registry validation (`validateCrossRegistry()` exists but is not wired into `npm run check`)
+* Content follow-ups: PENDING-014 (Chesterfield programme details), PENDING-015 (Census housing-age figures), PENDING-016 (three withheld claims)
+
+## Launch Preparation
+
+* Legacy URL inventory and redirect implementation (PENDING-010); no redirect file exists in `public/` or `out/`
+* Set `NEXT_PUBLIC_GA_MEASUREMENT_ID`; decide call tracking (PENDING-009)
+* Decide GPTBot policy (PENDING-011); GPTBot is currently permitted by the general allow
+* Deploy to Cloudflare Pages with `NEXT_PUBLIC_SITE_URL` set to the production origin, then verify canonicals, sitemap, and robots on the deployed host
+* Search Console and Bing property setup, sitemap submission, and Phase 0 baseline capture (`21` §7)
+* Mobile, accessibility, and performance QA on the deployed site. Not yet recorded in the repository
+
+## Post-Launch Work
+
+Not started. Follows `21-post-launch-seo-roadmap.md`: stabilization, indexation review, measurement, then evidence-led expansion. No search performance, ranking, traffic, or lead data exists in this repository.
+
+## Unchanged Safeguards
+
+Business positioning, the repair/replacement guardrail, the service-market versus physical-location distinction, and the no-fabricated-facts rule below are unchanged by this status update. San Diego and Las Vegas remain service markets with no office or GBP claimed.
 
 ---
 

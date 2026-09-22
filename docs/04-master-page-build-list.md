@@ -4,7 +4,7 @@
 **Project:** The Sewer Pros Website Rebuild  
 **Repository:** `the-sewer-pros-site`  
 **Status:** Active Page Inventory, Lifecycle, and Indexation Registry  
-**Last Updated:** September 3, 2026
+**Last Updated:** September 21, 2026
 
 ---
 
@@ -1386,3 +1386,34 @@ Large-Scale Indexation
 # 55. Final Governing Principle
 
 > **The Master Page Build List is the evolving inventory and lifecycle system for The Sewer Pros website, not a pre-build permission gate. Claude and Claude Code should freely research, draft, generate, build, and evaluate useful page opportunities within verified business boundaries. The primary SEO control is intentional indexation: pages should earn indexability through real business relevance, useful content, distinct intent, and adequate quality. Use structured data and automation aggressively for efficiency while keeping search-engine indexation deliberate and controlled.**
+
+---
+
+# 56. Implementation Snapshot (September 21, 2026)
+
+This section reconciles the inventory with the repository. The authoritative machine-readable registry is `data/pages/approved-pages.ts`; this section summarizes it and does not replace it.
+
+Verified against commit `5b9586a`: 70 approved records, all `status: launch` and `indexable: true`; `gatedPages` is empty; all 70 are built (content exists and a route is generated); the production sitemap lists exactly those 70 URLs. Built and indexable here reflects the registry's own `launch` decision, not the existence of a route.
+
+| Family | Built | Indexable | Paths |
+|---|---|---|---|
+| Home | 1 | 1 | `/` |
+| Core | 3 | 3 | `/about/`, `/contact/`, `/faq/` |
+| Hubs | 5 | 5 | `/services/`, `/locations/`, `/for/`, `/commercial/`, `/resources/` |
+| Service | 10 | 10 | 9 under `/services/` (drain-cleaning, hydro-jetting, pre-purchase-sewer-inspection, preventative-sewer-maintenance, recurring-sewer-backup-diagnosis, sewer-camera-inspection, sewer-cleaning-camera-inspection, sewer-cleaning, sewer-line-locating) plus `/st-louis-mo/sewer-lateral-inspection-reporting/` |
+| Market | 3 | 3 | `/st-louis-mo/`, `/san-diego-ca/`, `/las-vegas-nv/` |
+| Location | 16 | 16 | St. Louis 5 (St. Louis City, Chesterfield, Ballwin, Florissant, St. Charles); San Diego 7 (San Diego, Mission Valley, Carlsbad, Chula Vista, Escondido, Oceanside, San Marcos); Las Vegas 4 (Las Vegas, Henderson, North Las Vegas, Summerlin) |
+| Service + Location | 14 | 14 | St. Louis 6, San Diego 8. **Las Vegas has none** |
+| Audience | 6 | 6 | `/for/` home-buyers, home-sellers, real-estate-agents, home-inspectors, property-managers, hoa-communities |
+| Commercial | 5 | 5 | `/commercial/` sewer-camera-inspection, sewer-cleaning, hydro-jetting, drain-cleaning, preventative-maintenance |
+| Comparison | 2 | 2 | `/compare/` hydro-jetting-vs-sewer-snaking, independent-sewer-inspection-vs-repair-company |
+| Resource | 5 | 5 | `/resources/` how-to-read-a-sewer-camera-inspection-video, st-louis-city-sewer-lateral-program, st-louis-county-sewer-lateral-program, st-louis-sewer-lateral-report, what-is-in-a-sewer-camera-inspection-report |
+
+Other lifecycle states:
+
+* **Gated or noindex:** none. The five Las Vegas records moved from `launch_pending_validation` to `launch` under DEC-080. Only the framework 404 pages emit noindex
+* **Deferred:** `svc-independent-sewer-second-opinion` (Phase 2, approved, not built, not in the registry)
+* **Retired:** none
+* **Not built and not in the registry:** audience + service, audience + location, commercial + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records
+
+The families table in §13 to §24 describes intent. Where it says "build-ready / published", the state above applies.
