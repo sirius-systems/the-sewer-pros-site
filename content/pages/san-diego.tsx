@@ -1529,6 +1529,8 @@ export const sanDiegoMarketContent: MarketPageContent = {
 export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent>> = {
   /* ------------------------------------------------- San Diego (city) -- */
   [id('loc-sd-san-diego')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in San Diego, California.',
     hero: {
       eyebrow: 'San Diego',
       title: 'Sewer inspection and cleaning in San Diego',
@@ -1596,6 +1598,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* ---------------------------------------------------------- Carlsbad -- */
   [id('loc-sd-carlsbad')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in Carlsbad, California.',
     hero: {
       eyebrow: 'Carlsbad',
       title: 'Sewer inspection and cleaning in Carlsbad',
@@ -1685,6 +1689,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* ------------------------------------------------------- Chula Vista -- */
   [id('loc-sd-chula-vista')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Chula Vista, California.',
     hero: {
       eyebrow: 'Chula Vista',
       title: 'Sewer inspection and cleaning in Chula Vista',
@@ -1780,6 +1786,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* --------------------------------------------------------- Escondido -- */
   [id('loc-sd-escondido')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in Escondido, California.',
     hero: {
       eyebrow: 'Escondido',
       title: 'Sewer inspection and cleaning in Escondido',
@@ -1847,6 +1855,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* --------------------------------------------------------- Oceanside -- */
   [id('loc-sd-oceanside')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Oceanside, California.',
     hero: {
       eyebrow: 'Oceanside',
       title: 'Sewer inspection and cleaning in Oceanside',
@@ -1918,6 +1928,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* -------------------------------------------------------- San Marcos -- */
   [id('loc-sd-san-marcos')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in San Marcos, California.',
     hero: {
       eyebrow: 'San Marcos',
       title: 'Sewer inspection and cleaning in San Marcos',
@@ -2006,6 +2018,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* ----------------------------------------------------- Mission Valley -- */
   [id('loc-sd-mission-valley')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Mission Valley.',
     hero: {
       eyebrow: 'Mission Valley',
       title: 'Sewer and drain service in Mission Valley',

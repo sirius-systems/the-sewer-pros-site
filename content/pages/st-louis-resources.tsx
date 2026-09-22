@@ -53,6 +53,8 @@ const id = (value: string): PageId => value as PageId
 export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>> = {
   /* ============================================================ report -- */
   [id('res-stl-lateral-report')]: {
+    metaDescription:
+      'Learn what a St. Louis sewer-lateral report may include and how documented inspection findings can support property and transaction decisions.',
     hero: {
       eyebrow: 'Guide',
       title: 'St. Louis Sewer Lateral Report Guide',
@@ -210,6 +212,8 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
   /* ============================================================== city -- */
   [id('res-stl-city-program')]: {
+    metaDescription:
+      'Learn about St. Louis City sewer-lateral inspection and reporting considerations, including documentation that may support property decisions.',
     hero: {
       eyebrow: 'Guide',
       title: 'St. Louis City Sewer Lateral Program Guide',
@@ -370,6 +374,8 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
   /* ============================================================ county -- */
   [id('res-stl-county-program')]: {
+    metaDescription:
+      'Learn about St. Louis County sewer-lateral inspection and reporting considerations and how documented findings may support property decisions.',
     hero: {
       eyebrow: 'Guide',
       title: 'St. Louis County Sewer Lateral Program Guide',

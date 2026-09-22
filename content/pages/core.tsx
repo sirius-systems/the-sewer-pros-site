@@ -1938,6 +1938,17 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         </p>
       ),
     },
+    /*
+      ⚠ NOT THE PROPOSED COPY. The version drafted for this page named
+      hydro jetting, drain problems, pipe materials, and sewer backups —
+      none of which the two items below actually cover. This hub is
+      narrowly about interpreting inspection reports and footage, so
+      the description states that instead of the broader topic list,
+      per CLAUDE.md's rule against a title/description overstating page
+      content.
+    */
+    metaDescription:
+      'Practical explanations of what a sewer camera inspection shows and what the findings mean, so you can make sense of the evidence you are given.',
     items: [
       {
         pageId: id('res-camera-report'),
@@ -1966,6 +1977,8 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         </p>
       ),
     },
+    metaDescription:
+      'Learn how The Sewer Pros helps property owners and professionals understand sewer-line conditions through inspection, diagnostics, locating, and cleaning.',
     body: (
       <>
         <h2>What we do</h2>
@@ -2051,6 +2064,8 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
       title: 'Contact',
       intro: <p>Get in touch about an inspection, a recurring problem, or a commercial property.</p>,
     },
+    metaDescription:
+      'Contact The Sewer Pros to schedule sewer inspection, diagnostics, cleaning, hydro jetting, line locating, or related sewer and drain services.',
     body: (
       <>
         <h2>St. Louis</h2>
@@ -2133,6 +2148,8 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
       title: 'Sewer & Drain FAQs',
       intro: <p>Common questions about inspections, cleaning, and what findings mean.</p>,
     },
+    metaDescription:
+      'Get answers about sewer camera inspections, sewer cleaning, hydro jetting, drain problems, sewer backups, pipe materials, and pre-purchase inspections.',
     faq: [
       {
         question: 'What does a sewer camera inspection show?',
@@ -2217,6 +2234,8 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
 
 export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
   [id('res-camera-report')]: {
+    metaDescription:
+      'Learn what a sewer camera inspection report may include, how findings are documented, and what to consider when reviewing the results.',
     hero: {
       eyebrow: 'Guide',
       title: 'What Is Included in a Sewer Camera Inspection Report?',
@@ -2310,6 +2329,8 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
   },
 
   [id('res-read-video')]: {
+    metaDescription:
+      'Learn how to read a sewer camera inspection video, recognize common findings, and understand what the footage can and cannot determine.',
     hero: {
       eyebrow: 'Guide',
       title: 'How to Read a Sewer Camera Inspection Video',

@@ -1401,6 +1401,8 @@ export const lasVegasMarketContent: MarketPageContent = {
 export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent>> = {
   /* ------------------------------------------------- Las Vegas (city) -- */
   [id('loc-lv-las-vegas')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in the Las Vegas service market.',
     hero: {
       eyebrow: 'Las Vegas',
       title: 'Sewer inspection and cleaning in Las Vegas',
@@ -1489,6 +1491,8 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* ---------------------------------------------------------- Henderson -- */
   [id('loc-lv-henderson')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Henderson, Nevada.',
     hero: {
       eyebrow: 'Henderson',
       title: 'Sewer inspection and cleaning in Henderson',
@@ -1582,6 +1586,8 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* -------------------------------------------------- North Las Vegas -- */
   [id('loc-lv-north-las-vegas')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in North Las Vegas, Nevada.',
     hero: {
       eyebrow: 'North Las Vegas',
       title: 'Sewer inspection and cleaning in North Las Vegas',
@@ -1672,6 +1678,8 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
 
   /* --------------------------------------------------------- Summerlin -- */
   [id('loc-lv-summerlin')]: {
+    metaDescription:
+      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Summerlin, Nevada.',
     hero: {
       eyebrow: 'Summerlin',
       title: 'Sewer inspection and cleaning in Summerlin',

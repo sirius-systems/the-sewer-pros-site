@@ -44,6 +44,8 @@ const id = (value: string): PageId => value as PageId
 
 export const commercialContent: Partial<Record<PageId, CommercialPageContent>> = {
   [id('com-camera')]: {
+    metaDescription:
+      'Document commercial sewer-line conditions with professional camera inspection, video findings, and practical information for maintenance decisions.',
     hero: {
       eyebrow: 'Commercial',
       title: 'Commercial Sewer Camera Inspection',
@@ -118,6 +120,8 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
   },
 
   [id('com-sewer-cleaning')]: {
+    metaDescription:
+      'Request commercial sewer cleaning to address buildup, blockages, and flow concerns with inspection-focused service from The Sewer Pros.',
     hero: {
       eyebrow: 'Commercial',
       title: 'Commercial Sewer Cleaning',
@@ -170,6 +174,8 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
   },
 
   [id('com-hydro-jetting')]: {
+    metaDescription:
+      'Learn about commercial hydro jetting and when high-pressure cleaning may help address buildup inside sewer and drain lines.',
     hero: {
       eyebrow: 'Commercial',
       title: 'Commercial Hydro Jetting',
@@ -234,6 +240,8 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
   },
 
   [id('com-drain-cleaning')]: {
+    metaDescription:
+      'Explore commercial drain cleaning for clogged, slow, or recurring drains, with diagnostic service to help clarify the underlying problem.',
     hero: {
       eyebrow: 'Commercial',
       title: 'Commercial Drain Cleaning',
@@ -279,6 +287,8 @@ export const commercialContent: Partial<Record<PageId, CommercialPageContent>> =
   },
 
   [id('com-maintenance')]: {
+    metaDescription:
+      'Explore commercial preventative sewer maintenance through inspection, cleaning, documentation, and informed planning for property needs.',
     hero: {
       eyebrow: 'Commercial',
       title: 'Commercial Preventative Sewer & Drain Maintenance',
