@@ -58,6 +58,33 @@ export interface PageMetadataInput {
   description?: string
 }
 
+const TITLE_SUFFIX = ` | ${SITE_NAME}`
+
+/**
+ * The exact string the HTML `<title>` tag renders for a page whose raw
+ * title is `title`.
+ *
+ * The root layout's `title.template` (`'%s | The Sewer Pros'`) applies
+ * this suffix to `<title>` automatically — but only there. It has no
+ * effect on `openGraph.title` or `twitter.title`, which Next renders
+ * from whatever those fields are given directly. Before this helper,
+ * `pageMetadata()` passed the same raw `title` to all three, so the
+ * suffix appeared on `<title>` but not on the Open Graph/Twitter cards
+ * (confirmed 2026-09-22 on 69 of 70 pages).
+ *
+ * This computes the templated string once and gives it to `title`
+ * (via `absolute`, which deliberately opts that field out of the root
+ * template so it is never applied twice) and to `openGraph.title` /
+ * `twitter.title`, so all three always match exactly.
+ *
+ * Idempotent: a title that already ends with the literal suffix (the
+ * homepage's authored `seoTitle` includes it directly) is returned
+ * unchanged rather than suffixed twice.
+ */
+function brandedTitle(title: string): string {
+  return title.endsWith(TITLE_SUFFIX) ? title : `${title}${TITLE_SUFFIX}`
+}
+
 /**
  * Builds Next.js metadata for an approved page.
  *
@@ -73,9 +100,13 @@ export function pageMetadata({
 }: PageMetadataInput): Metadata {
   const robots = robotsForPage(page)
   const canonical = absoluteUrl(page.pathname)
+  const branded = brandedTitle(title)
 
   return {
-    title,
+    // `absolute` renders exactly this string and skips the root
+    // `title.template`, since `branded` already carries the suffix
+    // that template would otherwise add — see `brandedTitle()`.
+    title: { absolute: branded },
     ...(description !== undefined && { description }),
     alternates: { canonical },
     robots: {
@@ -85,7 +116,7 @@ export function pageMetadata({
     openGraph: {
       type: 'website',
       siteName: SITE_NAME,
-      title,
+      title: branded,
       ...(description !== undefined && { description }),
       url: canonical,
       // 1200x630, the size every major platform crops from. Declared
@@ -102,7 +133,7 @@ export function pageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: branded,
       ...(description !== undefined && { description }),
       images: [OG_IMAGE],
     },
@@ -148,7 +179,32 @@ export function rootMetadata(): Metadata {
       default: SITE_NAME,
       template: `%s | ${SITE_NAME}`,
     },
-    description:
-      'Independent sewer inspection, diagnostics, locating, and cleaning.',
+    /*
+      ⚠ NO ROOT `description`, DELIBERATELY — this was the bug.
+      `PageMetadataInput.description` above is documented as optional,
+      omitted rather than backfilled when a page has none. That is true
+      of `pageMetadata()`'s own return value: `...(description !==
+      undefined && { description })` really does omit the key. But
+      Next's metadata resolution fills an unset child `description`
+      from the nearest ancestor that has one — so a literal fallback
+      string here was filled into every page whose own metadata
+      omitted `description`, silently contradicting the comment above
+      it. Confirmed 2026-09-22: 63 of the 70 production pages were
+      rendering this exact string in `<meta name="description">`,
+      `og:description`, and `twitter:description` before each was
+      given an authored description.
+
+      All 70 current pages now author their own description (via
+      `pageMetadata()`, per page), so removing this root default does
+      not change any of their rendered metadata — verified by rebuild.
+      What it fixes is the *next* page built without one: with no root
+      value to inherit, an unauthored page now renders no `<meta
+      name="description">`, no `og:description`, and no
+      `twitter:description` at all, matching this file's own stated
+      intent instead of contradicting it. Do not reintroduce a string
+      here — if a sitewide default is ever wanted, it must be a
+      deliberate per-page decision (CLAUDE.md §24, §36; 14 §21), not a
+      layout-level catch-all.
+    */
   }
 }
