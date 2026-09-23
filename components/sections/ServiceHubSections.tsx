@@ -7,10 +7,24 @@ import {
   AccessPointIcon,
   CameraIcon,
   CheckIcon,
+  BuildingIcon,
+  CameraInPipeIcon,
   ChecklistIcon,
+  CleaningAndCameraIcon,
+  CleaningPathIcon,
   DocumentCheckIcon,
   ExplanationIcon,
+  FixturesIcon,
+  HomeIcon,
+  HouseKeyIcon,
+  HydroJetIcon,
+  LocatorRouteIcon,
   PipeIcon,
+  RepeatIcon,
+  RootRestrictionIcon,
+  SinkDrainIcon,
+  SingleDrainIcon,
+  WaterBackupIcon,
   type IconProps,
 } from './section-icons'
 import { CameraImageSlot } from './CameraImageSlot'
@@ -25,7 +39,7 @@ import {
   resolveHubImage,
   type HubImageKey,
 } from '@/data/business/hub-images'
-import type { HubProcessIcon, MarketId, ServiceHubContent } from '@/types'
+import type { HubAudienceIcon, HubComparisonIcon, HubProcessIcon, HubSymptomIcon, MarketId, ServiceHubContent } from '@/types'
 
 /**
  * Extra sections for a service hub page (`ServiceHubContent`).
@@ -166,23 +180,32 @@ export function DefinitionSection({
   if (content.label !== undefined) {
     return (
       <Section density="standard" surface="muted" labelledBy={id}>
-        <div className="max-w-[44rem]">
-          <p className="text-caption font-semibold uppercase tracking-wide text-accent-secondary">
-            {content.label}
-          </p>
-          <h2 id={id} className="mt-2 text-h2 font-semibold tracking-tight text-balance text-foreground">
-            {content.title}
-          </h2>
-          <p className="mt-4 text-body-lg text-foreground">{content.answer}</p>
-          {content.supporting.map((paragraph) => (
-            <p key={paragraph} className="mt-4 text-body text-muted-foreground">
-              {paragraph}
+        {/*
+          Two columns at `lg`: the copy on the left, the figure on the
+          right. Below `lg` the figure stacks under the whole text column.
+          Any extra slots follow underneath.
+        */}
+        <div className="grid gap-10 lg:grid-cols-[7fr_5fr] lg:items-center">
+          <div className="max-w-[44rem]">
+            <p className="text-caption font-semibold uppercase tracking-wide text-accent-secondary">
+              {content.label}
             </p>
-          ))}
+            <h2 id={id} className="mt-2 text-h2 font-semibold tracking-tight text-balance text-foreground">
+              {content.title}
+            </h2>
+            <p className="mt-4 text-body-lg text-foreground">{content.answer}</p>
+            {content.supporting.map((paragraph) => (
+              <p key={paragraph} className="mt-4 text-body text-muted-foreground">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          {main !== undefined && (
+            <CameraImageSlot slot={main} sizes="(min-width: 1024px) 40vw, 100vw" />
+          )}
         </div>
-        {main !== undefined && anyHubImage(slots) && (
+        {anyHubImage(extras) && (
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <CameraImageSlot slot={main} sizes="(min-width: 640px) 45vw, 100vw" />
             {extras.map((slot) => (
               <CameraImageSlot key={slot} slot={slot} sizes="(min-width: 640px) 45vw, 100vw" />
             ))}
@@ -236,6 +259,15 @@ export function DefinitionSection({
  * ⚠ EACH CARD IS ONE REAL LINK (`pageId` or an in-page `href`), reported
  * as `service_select` with stable ids only (19 §132).
  */
+const SYMPTOM_ICON_BY_NAME: Record<HubSymptomIcon, (props: IconProps) => ReactNode> = {
+  fixtures: FixturesIcon,
+  backup: WaterBackupIcon,
+  repeat: RepeatIcon,
+  restriction: RootRestrictionIcon,
+  fixture: SingleDrainIcon,
+  home: HomeIcon,
+}
+
 export function SymptomRouter({ content }: { content: NonNullable<Hub['symptomRouter']> }) {
   return (
     <Section density="standard" surface="default" labelledBy={content.id}>
@@ -245,18 +277,25 @@ export function SymptomRouter({ content }: { content: NonNullable<Hub['symptomRo
           const href =
             item.pageId !== undefined ? resolveApprovedLink(item.pageId).href : (item.href ?? '#')
           const active = item.urgency === 'active'
+          const Icon = item.icon !== undefined ? SYMPTOM_ICON_BY_NAME[item.icon] : undefined
           return (
             <li key={item.title} className="flex">
               <Card className="flex w-full flex-col">
-                <p
-                  className={
-                    active
-                      ? 'inline-flex w-fit rounded-sm border border-warning bg-[color-mix(in_srgb,var(--color-warning)_10%,white)] px-2 py-0.5 text-caption font-semibold text-foreground'
-                      : 'inline-flex w-fit rounded-sm bg-surface-muted px-2 py-0.5 text-caption font-semibold text-muted-foreground'
-                  }
-                >
-                  {item.status}
-                </p>
+                <div className="flex items-center gap-3">
+                  {/* Decorative: the status label and heading carry the meaning. */}
+                  {Icon !== undefined && (
+                    <Icon aria-hidden="true" className="h-6 w-6 shrink-0 text-accent-secondary" />
+                  )}
+                  <p
+                    className={
+                      active
+                        ? 'inline-flex w-fit rounded-sm border border-warning bg-[color-mix(in_srgb,var(--color-warning)_10%,white)] px-2 py-0.5 text-caption font-semibold text-foreground'
+                        : 'inline-flex w-fit rounded-sm bg-surface-muted px-2 py-0.5 text-caption font-semibold text-muted-foreground'
+                    }
+                  >
+                    {item.status}
+                  </p>
+                </div>
                 <h3 className="mt-3 text-h4 font-semibold text-foreground">{item.title}</h3>
                 <p className="mt-2 text-body-sm text-muted-foreground">{item.description}</p>
                 <div className="mt-auto pt-5">
@@ -408,15 +447,69 @@ export function EscalationPanel({ content }: { content: NonNullable<Hub['escalat
   )
 }
 
-export function LimitationsPanel({ content }: { content: NonNullable<Hub['limitations']> }) {
+function LimitationsFrame({
+  id,
+  backdrop,
+  children,
+}: {
+  id: string
+  backdrop?: string
+  children: ReactNode
+}) {
+  if (backdrop === undefined) {
+    return (
+      <Section density="dense" surface="muted" labelledBy={id}>
+        {children}
+      </Section>
+    )
+  }
+  return (
+    <div className="relative isolate overflow-hidden bg-brand">
+      <BackdropImage src={backdrop} />
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      <Section density="dense" surface="none" labelledBy={id}>
+        {children}
+      </Section>
+    </div>
+  )
+}
+
+/**
+ * ⚠ THE OPTIONAL BACKDROP SITS UNDER A BLACK SCRIM AT 55%, the value the
+ * hero and `Section`'s backgroundImage use (measured against pure white,
+ * where opaque white text gives 4.76:1). Every overlay in this project is
+ * black, never white or tinted. With a backdrop the heading, intro and
+ * closing line are white; both cards stay opaque `bg-surface`, so their
+ * contrast never depends on the photograph. The image is decorative
+ * (`alt=""`). A missing file leaves the plain muted section.
+ */
+export function LimitationsPanel({
+  content,
+  imageSrc,
+}: {
+  content: NonNullable<Hub['limitations']>
+  imageSrc?: string
+}) {
   const id = 'what-it-can-identify'
   const related =
     content.related !== undefined ? resolveApprovedLink(content.related.pageId) : undefined
+  const backdrop = imageSrc !== undefined && backdropExists(imageSrc) ? imageSrc : undefined
+  const dark = backdrop !== undefined
   return (
-    <Section density="dense" surface="muted" labelledBy={id}>
-      <SectionHeading id={id} title={content.title} />
+    <LimitationsFrame id={id} backdrop={backdrop}>
+      {dark ? (
+        <div className="max-w-[var(--container-reading)]">
+          <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance text-white">
+            {content.title}
+          </h2>
+        </div>
+      ) : (
+        <SectionHeading id={id} title={content.title} />
+      )}
       {/* Full content width, not the heading's reading measure. */}
-      <p className="mt-4 text-body-lg text-muted-foreground">{content.intro}</p>
+      <p className={dark ? 'mt-4 text-body-lg text-white' : 'mt-4 text-body-lg text-muted-foreground'}>
+        {content.intro}
+      </p>
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <Card className="bg-surface">
           <h3 className="text-h4 font-semibold text-foreground">{content.canIdentifyTitle}</h3>
@@ -442,14 +535,21 @@ export function LimitationsPanel({ content }: { content: NonNullable<Hub['limita
         </Card>
       </div>
       {content.related !== undefined && related !== undefined && (
-        <p className="mt-6 text-body text-muted-foreground">
+        <p className={dark ? 'mt-6 text-body text-white' : 'mt-6 text-body text-muted-foreground'}>
           {content.related.lead}{' '}
-          <Link href={related.href} className="font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground">
+          <Link
+            href={related.href}
+            className={
+              dark
+                ? 'font-semibold text-white underline underline-offset-4 hover:text-white/80'
+                : 'font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground'
+            }
+          >
             {content.related.label}
           </Link>
         </p>
       )}
-    </Section>
+    </LimitationsFrame>
   )
 }
 
@@ -651,17 +751,42 @@ export function InspectionProcess({
    Audience pathways
    ========================================================================== */
 
+const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => ReactNode> = {
+  building: BuildingIcon,
+  checklist: ChecklistIcon,
+  'house-key': HouseKeyIcon,
+  home: HomeIcon,
+}
+
+/**
+ * ⚠ `surface: 'muted'` (with a rule above and below) is how a hub keeps this
+ * section visibly apart from the default-surface market router above it.
+ * The icons are decorative (`aria-hidden`); the audience heading carries
+ * the meaning. No images.
+ */
 export function AudiencePathways({ content }: { content: NonNullable<Hub['audiences']> }) {
   const id = content.id ?? 'sewer-camera-inspection-for-your-situation'
+  const muted = content.surface === 'muted'
   return (
-    <Section density="dense" surface="default" labelledBy={id}>
+    <Section
+      density="dense"
+      surface={muted ? 'muted' : 'default'}
+      labelledBy={id}
+      className={muted ? 'border-y border-border' : undefined}
+    >
       <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
       <CardGrid columns={2} itemCount={content.items.length} className="mt-8">
         {content.items.map((item) => {
           const link = resolveApprovedLink(item.pageId)
+          const Icon = item.icon !== undefined ? AUDIENCE_ICON_BY_NAME[item.icon] : undefined
           return (
             <LinkCard key={item.pageId} href={link.href} actionLabel={item.actionLabel}>
-              <h3 className="text-h4 font-semibold text-foreground">{item.audience}</h3>
+              <div className="flex items-center gap-3">
+                {Icon !== undefined && (
+                  <Icon aria-hidden="true" className="h-6 w-6 shrink-0 text-accent-secondary" />
+                )}
+                <h3 className="text-h4 font-semibold text-foreground">{item.audience}</h3>
+              </div>
               <p className="mt-2 text-body-sm text-muted-foreground">{item.description}</p>
               <p className="mt-4 text-body-sm font-semibold text-accent-secondary">
                 {item.actionLabel} <span aria-hidden="true">&rarr;</span>
@@ -747,6 +872,15 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
  *
  * ⚠ THE IMAGE IS DECORATIVE (`alt=""`); the table carries the meaning.
  */
+const COMPARISON_ICON_BY_NAME: Record<HubComparisonIcon, (props: IconProps) => ReactNode> = {
+  cleaning: CleaningPathIcon,
+  hydro: HydroJetIcon,
+  drain: SinkDrainIcon,
+  camera: CameraInPipeIcon,
+  combined: CleaningAndCameraIcon,
+  locating: LocatorRouteIcon,
+}
+
 export function ServiceComparison({
   content,
   imageSrc,
@@ -771,6 +905,48 @@ export function ServiceComparison({
           </h2>
           <p className="mt-4 text-body-lg text-white">{content.intro}</p>
         </div>
+        {content.variant === 'cards' ? (
+          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {content.rows.map((row) => {
+              const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
+              const Icon = row.icon !== undefined ? COMPARISON_ICON_BY_NAME[row.icon] : undefined
+              return (
+                <li key={row.service} className="flex">
+                  {/* Opaque white card, so contrast never depends on the photograph. */}
+                  <div className="flex w-full flex-col rounded-md border border-border bg-surface p-6 text-foreground shadow-sm">
+                    {/* Decorative: the service name and copy carry the meaning. */}
+                    {Icon !== undefined && (
+                      <Icon aria-hidden="true" className="h-7 w-7 shrink-0 text-accent-secondary" />
+                    )}
+                    <h3 className="mt-3 text-h4 font-semibold text-foreground">
+                      {link !== undefined ? (
+                        <Link
+                          href={link.href}
+                          className="text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                        >
+                          {row.service}
+                        </Link>
+                      ) : (
+                        <>
+                          {row.service}{' '}
+                          <span className="text-body-sm font-normal text-muted-foreground">(this page)</span>
+                        </>
+                      )}
+                    </h3>
+                    <p className="mt-4 text-caption font-semibold uppercase tracking-wide text-muted-foreground">
+                      {colPurpose}
+                    </p>
+                    <p className="mt-1 text-body-sm text-foreground">{row.purpose}</p>
+                    <p className="mt-4 text-caption font-semibold uppercase tracking-wide text-muted-foreground">
+                      {colFit}
+                    </p>
+                    <p className="mt-1 text-body-sm text-foreground">{row.fit}</p>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        ) : (
         <div className="mt-8 overflow-x-auto rounded-md border border-border bg-surface px-4 sm:px-6">
           <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
             <caption className="sr-only">{content.title}</caption>
@@ -805,6 +981,7 @@ export function ServiceComparison({
             </tbody>
           </table>
         </div>
+        )}
         <p className="mt-6 max-w-[var(--container-reading)] text-body text-white">
           {content.note}
         </p>

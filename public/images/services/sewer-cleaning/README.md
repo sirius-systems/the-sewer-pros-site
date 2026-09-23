@@ -21,7 +21,7 @@ Rules for every image:
 
 | File | Aspect | Section | Shot |
 |---|---|---|---|
-| `sewer-cleaning-hero-16x9.webp` | 16:9, 1600px+ wide | Hero | Technician at an exterior cleanout with equipment and vehicle. Keep the subject left of center; copy sits on the left. |
+| `hero/the-sewer-pros-sewer-cleaning-ridgid-seesnake-hero-16x9.webp` | 16:9 | Hero (in place) | Cleaning machine and RIDGID SeeSnake camera reel at an open cleanout, subject on the right; copy sits on the left. |
 | `sewer-cleaning-comparison-16x9.webp` | 16:9 | Comparison table | Equipment lineup that matches equipment actually used. |
 | `sewer-cleaning-request-16x9.webp` | 16:9 | Request form | Wide field-service scene, subject on the left. |
 | `sewer-cleaning-closing-16x9.webp` | 16:9 | Closing form | Cleanout or job-site scene. |
@@ -30,8 +30,8 @@ Rules for every image:
 
 | File | Aspect | Slot key | Alt text | Shot |
 |---|---|---|---|---|
-| `sewer-cleaning-cleanout-access-4x3.webp` | 4:3 (1448x1086) | `cleaning-definition` | Sewer cleaning equipment set up beside an exterior cleanout | Equipment at a cleanout. No address visible. |
-| `sewer-cleaning-process-4x3.webp` | 4:3 | `cleaning-process` | Technician feeding cleaning cable into a sewer cleanout | Cable machine or cleaning head in use. |
+| `the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp` (in place) | 4:3 (1448x1086) | `cleaning-definition` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
+| `the-sewer-pros-sewer-cleaning-visit-process-ridgid-seesnake-4x3.webp` (in place) | 4:3 | `cleaning-process` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
 | `sewer-cleaning-equipment-4x3.webp` | 4:3 | `cleaning-equipment` | Sewer cleaning machine and hoses staged at a job site | Equipment and branded vehicle, plates and addresses blurred. |
 | `sewer-cleaning-monitor-still-4x3.webp` | 4:3 | `cleaning-monitor` | Inspection monitor showing the interior of a sewer pipe | Real monitor still, all customer data removed. Requires release. |
 

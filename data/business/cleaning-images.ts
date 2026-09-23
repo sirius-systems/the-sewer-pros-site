@@ -24,8 +24,9 @@ const DIR = '/images/services/sewer-cleaning/'
 
 export const cleaningImageSlots = {
   'cleaning-definition': {
-    preferred: `${DIR}sewer-cleaning-cleanout-access-4x3.webp`,
-    alt: 'Sewer cleaning equipment set up beside an exterior cleanout',
+    preferred: `${DIR}the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp`,
+    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor',
+    // Still accurate for the supplied photo: the cleaning cable is in the cleanout.
     caption: 'Cleaning equipment is connected at an accessible cleanout.',
     width: 1448,
     height: 1086,
@@ -34,9 +35,11 @@ export const cleaningImageSlots = {
     requiresRelease: false,
   },
   'cleaning-process': {
-    preferred: `${DIR}sewer-cleaning-process-4x3.webp`,
-    alt: 'Technician feeding cleaning cable into a sewer cleanout',
-    caption: 'The method depends on access and the suspected restriction.',
+    preferred: `${DIR}the-sewer-pros-sewer-cleaning-visit-process-ridgid-seesnake-4x3.webp`,
+    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor',
+    // Describes the photo only. It makes no claim about which equipment or
+    // method any given visit uses.
+    caption: 'Example: a cleaning machine at an open cleanout, with a separate camera-inspection reel beside it.',
     width: 1448,
     height: 1086,
     kind: 'photo',

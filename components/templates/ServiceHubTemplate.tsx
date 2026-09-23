@@ -145,9 +145,28 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
       copyWidth="narrow"
       backdrop={
         <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-brand">
-          <BackdropImage src={heroImage} priority className="object-cover object-[15%_50%]" />
+          <BackdropImage
+            src={heroImage}
+            priority
+            className={
+              images?.heroFocus === 'right'
+                ? 'object-cover object-[85%_50%]'
+                : 'object-cover object-[15%_50%]'
+            }
+          />
           <div className="hero-scrim absolute inset-0" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
+          {/*
+            Black only. The copy column is on the left in both cases, so
+            the gradient always runs from the left; a `right`-focus photo
+            is open pavement under the copy and gets a heavier start.
+          */}
+          <div
+            className={
+              images?.heroFocus === 'right'
+                ? 'absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent'
+                : 'absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent'
+            }
+          />
         </div>
       }
     />,
@@ -193,7 +212,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
   }
 
   if (hub.limitations !== undefined) {
-    add('dense', 'limitations', <LimitationsPanel content={hub.limitations} />)
+    add('dense', 'limitations', <LimitationsPanel content={hub.limitations} imageSrc={images?.limitations} />)
   }
 
   if (content.process !== undefined) {
