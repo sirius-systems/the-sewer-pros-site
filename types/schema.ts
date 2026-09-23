@@ -55,6 +55,7 @@ export const SCHEMA_FRAGMENT = {
   article: '#article',
   faqPage: '#faq',
   logo: '#logo',
+  person: '#person',
 } as const
 
 /** A reference to another node in the graph (15 §85). */
@@ -117,6 +118,25 @@ export interface OrganizationNode extends SchemaNodeBase {
   sameAs?: string[]
   contactPoint?: ContactPointNode[]
   knowsAbout?: string[]
+  founder?: SchemaRef[]
+  /** ISO year. See `organizationNode()` for what this asserts and what it does not. */
+  foundingDate?: string
+}
+
+/**
+ * A named individual, visible on the page that emits it.
+ *
+ * ⚠ FIELDS HERE MUST MATCH VISIBLE CONTENT ONLY (15 §67). No bio text,
+ * no `sameAs`, no `image` — `LeadershipProfile` on `/about/` renders a
+ * name, a role, and a prose bio; this node carries only the first two,
+ * which is what the schema-entity strategy's "add only what is visible"
+ * rule leaves room for without asserting anything the reader cannot see.
+ */
+export interface PersonNode extends SchemaNodeBase {
+  '@type': 'Person'
+  name: string
+  jobTitle?: string
+  worksFor?: SchemaRef
 }
 
 /** 15 §28. */
@@ -317,6 +337,7 @@ export interface FaqPageNode extends SchemaNodeBase {
 
 export type SchemaNode =
   | OrganizationNode
+  | PersonNode
   | WebSiteNode
   | WebPageNode
   | ServiceNode

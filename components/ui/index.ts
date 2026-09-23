@@ -64,6 +64,9 @@ export type { CalloutProps, CalloutKind } from './Callout'
 export { Card, LinkCard, CardGrid } from './Card'
 export type { CardProps, LinkCardProps, CardGridProps } from './Card'
 
+export { ImagePlaceholder } from './ImagePlaceholder'
+export type { ImagePlaceholderProps } from './ImagePlaceholder'
+
 export { Accordion, AccordionItem } from './Accordion'
 export type { AccordionProps, AccordionItemProps } from './Accordion'
 

@@ -2071,3 +2071,45 @@ export interface HubPageContent extends BasePageContent {
 export interface CorePageContent extends BasePageContent {
   placeholder?: never
 }
+
+/**
+ * One founder/leader profile on the About page.
+ *
+ * ⚠ `photoLabel` DESCRIBES THE PENDING PHOTOGRAPH, IT IS NOT ALT TEXT
+ * FOR ONE THAT EXISTS. No approved founder photography exists yet
+ * (18 §28-34), so `LeadershipProfile` renders `ImagePlaceholder` from
+ * this label rather than a picture — see that component.
+ */
+export interface LeadershipPerson {
+  name: string
+  role: string
+  bio: string
+  photoLabel: string
+  /** Real photograph, when approved. Falls back to `photoLabel`'s placeholder when unset. */
+  photo?: CardImage
+}
+
+/**
+ * About page — the entity/trust hub.
+ *
+ * ⚠ Bespoke content shape, not `CorePageContent`. `/about/` moved off
+ * `CorePageTemplate`'s reading-width layout to the composed sequence
+ * `AboutPageTemplate` renders (brand story, stats, leadership, markets,
+ * process); the fields below are what that composition needs beyond
+ * `BasePageContent`.
+ */
+export interface AboutPageContent extends BasePageContent {
+  /** "Who we are" narrative. Reading-width prose beside an image slot. */
+  brandStory: ReactNode
+  /** Exactly two — the founders. See `LeadershipPerson`. */
+  leadership: readonly [LeadershipPerson, LeadershipPerson]
+  /**
+   * Services + audience hub links for the internal-linking band.
+   *
+   * Approved page ids only, same rule as `relatedPageIds` (CLAUDE.md
+   * §37) — the hub pages themselves rather than a hand-picked subset of
+   * their children, so the band cannot drift out of sync with the
+   * service or audience registries.
+   */
+  exploreLinkPageIds: readonly PageId[]
+}

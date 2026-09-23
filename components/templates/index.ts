@@ -56,6 +56,9 @@ export type { HomePageTemplateProps } from './HomePageTemplate'
 export { CorePageTemplate } from './CorePageTemplate'
 export type { CorePageTemplateProps } from './CorePageTemplate'
 
+export { AboutPageTemplate } from './AboutPageTemplate'
+export type { AboutPageTemplateProps } from './AboutPageTemplate'
+
 export { HubPageTemplate } from './HubPageTemplate'
 export type { HubPageTemplateProps } from './HubPageTemplate'
 
