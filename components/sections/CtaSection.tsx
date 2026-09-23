@@ -65,7 +65,11 @@ export interface CtaSectionProps {
    */
   action?: { href: string; label: string } | null;
   secondaryAction?: { href: string; label: string };
-  /** Verified supporting content for the `split` variant only. */
+  /**
+   * Verified supporting content, e.g. a lead form. Any variant that
+   * supplies this renders the two-column layout below; `band` has no
+   * established case for it and is untested here.
+   */
   proof?: ReactNode;
   /**
    * Market phone number, rendered beside the CTA.
@@ -191,7 +195,7 @@ export function CtaSection({
   const phoneAsButton = phoneVariant === "button" && phone !== undefined;
 
   const content = (
-    <div className={cn(variant === "split" && "lg:col-span-7")}>
+    <div className={cn(proof !== undefined && "lg:col-span-7")}>
       {eyebrow !== undefined && (
         /*
           ⚠ WHITE ON A DARK GROUND, GREEN ON A LIGHT ONE. `--accent` is
@@ -413,11 +417,11 @@ export function CtaSection({
       labelledBy={id}
       className={className}
     >
-      {variant === "split" && proof !== undefined ? (
+      {proof !== undefined ? (
         /*
           `lg:items-center` centres the ask against the proof column.
 
-          The proof slot on the homepage is the lead form, which is
+          The proof slot's typical content is the lead form, which is
           roughly twice the height of the title and body beside it.
           Grid's default is `stretch`, so the content cell filled the
           row and its text sat at the top of it, leaving the heading
@@ -426,6 +430,14 @@ export function CtaSection({
           Scoped to `lg` because that is where the two columns exist.
           Below it the grid is a single column and cross-axis alignment
           has nothing to align against.
+
+          ⚠ NOT GATED ON `variant === "split"` ANY MORE. The two-column
+          layout is a property of HAVING a proof column, not of which
+          surface the section sits on — `panel` (brand navy) can carry
+          the same split now that `/about/` puts its closing lead form
+          there. Every other caller is unaffected: no existing `panel`
+          call site passes `proof`, so this branch was previously dead
+          for all of them and stays exactly as unreachable as before.
         */
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           {content}

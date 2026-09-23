@@ -2099,17 +2099,44 @@ export interface LeadershipPerson {
  * `BasePageContent`.
  */
 export interface AboutPageContent extends BasePageContent {
-  /** "Who we are" narrative. Reading-width prose beside an image slot. */
-  brandStory: ReactNode
+  /**
+   * Hero image, `split` variant's `media` slot.
+   *
+   * Optional: falls back to `ImagePlaceholder` in `AboutPageTemplate`
+   * while no approved photograph exists — see that template.
+   */
+  heroImage?: CardImage
+  /**
+   * "Our Story" section — eyebrow, H2, and prose beside the founder
+   * portraits.
+   *
+   * ⚠ STRUCTURED RATHER THAN A BARE `ReactNode`, so the eyebrow and H2
+   * are authored content (CLAUDE.md §36) instead of literals baked into
+   * `AboutPageTemplate`. `eyebrow` is sentence case; `Section`'s CSS
+   * applies the visual uppercase, the same convention every other
+   * eyebrow on the site follows.
+   */
+  brandStory: {
+    eyebrow: string
+    title: string
+    body: ReactNode
+  }
   /** Exactly two — the founders. See `LeadershipPerson`. */
   leadership: readonly [LeadershipPerson, LeadershipPerson]
   /**
-   * Services + audience hub links for the internal-linking band.
+   * "What to Expect When You Work With Us" — the page's own three-step
+   * sequence, rendered through `ProcessSteps` (the same reusable
+   * section every other process band on the site uses).
    *
-   * Approved page ids only, same rule as `relatedPageIds` (CLAUDE.md
-   * §37) — the hub pages themselves rather than a hand-picked subset of
-   * their children, so the band cannot drift out of sync with the
-   * service or audience registries.
+   * ⚠ EXACTLY THREE, so this stays a labelled Inspect/Understand/Decide
+   * sequence rather than an arbitrary-length list. `image` is ONE frame
+   * for the whole band (`ProcessSteps.image`, beside the heading), not
+   * per-step artwork.
    */
-  exploreLinkPageIds: readonly PageId[]
+  process: {
+    /** Renders under the heading, above the three cards. */
+    intro?: ReactNode
+    steps: readonly [ProcessContent, ProcessContent, ProcessContent]
+    image?: CardImage
+  }
 }

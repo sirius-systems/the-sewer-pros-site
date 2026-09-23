@@ -222,8 +222,10 @@ export type { MarketCoverageProps } from './MarketCoverage'
 export { StatsBand } from './StatsBand'
 export type { StatsBandProps } from './StatsBand'
 
-export { LeadershipProfile } from './LeadershipProfile'
-export type { LeadershipProfileProps } from './LeadershipProfile'
+// Client component: the count-up number inside `StatsBand`. Exported
+// separately because it is its own file (`'use client'` boundary).
+export { CountUpValue } from './CountUpValue'
+export type { CountUpValueProps } from './CountUpValue'
 
 /*
   A hub's opening explainer. Not `IndependentProcess` and not

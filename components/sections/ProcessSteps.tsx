@@ -140,8 +140,15 @@ export interface ProcessStepsProps {
    * (2026-09-03). It departs from the header's "no cards" note the same
    * way DEC-087's trust-bar icons departed from an equally documented
    * default — an explicit instruction from the business, recorded here
-   * rather than silently overwriting the original rationale. Only
-   * HomePageTemplate passes it.
+   * rather than silently overwriting the original rationale.
+   *
+   * ⚠ `AboutPageTemplate` IS A SECOND CALLER, NOT A DRIFT FROM "ONLY
+   * HomePageTemplate". `/about/`'s process band needed cards with no
+   * numeral (an explicit requirement — the `grid` variant's `01`/`02`/
+   * `03` were unwanted there), and its steps are the same Inspect,
+   * Understand, Decide sequence `CARD_STEP_ICONS` was drawn for, so
+   * this is the same approved treatment applied to a second page whose
+   * content happens to fit it exactly, not a new exception.
    */
   variant?: 'grid' | 'cards'
   /**
