@@ -45,12 +45,15 @@ import { approvedPages } from './approved-pages'
    Validation
    ========================================================================== */
 
-const EXPECTED_PAGE_COUNT = 70
+// 70 launch pages + the three market contact endpoints + the noindex
+// contact confirmation page.
+const EXPECTED_PAGE_COUNT = 74
 // Was 65 while DEC-063 gated the five Las Vegas pages. DEC-080 released
-// that gate, so all 70 approved pages are indexable and `gatedPages` is
-// empty. Keep this pinned: it is the guard that catches a page becoming
+// that gate. The 73 indexable pages are the original 70 plus the three
+// market contact pages; the contact confirmation page is deliberately
+// noindex. Keep this pinned: it is the guard that catches a page becoming
 // indexable without a decision behind it (CLAUDE.md §45).
-const EXPECTED_INDEXABLE_COUNT = 70
+const EXPECTED_INDEXABLE_COUNT = 73
 
 function fail(message: string): never {
   throw new Error(`Approved page registry invalid: ${message}`)
@@ -165,7 +168,10 @@ function validate(pages: readonly MasterPageRecord[]): void {
  * `/compare/` hub page. See the module header.
  */
 const ALLOWED_PARENT_TYPES: Partial<Record<PageType, readonly PageType[]>> = {
-  core: ['home'],
+  // `core` also parents to `core`: the contact confirmation page sits
+  // beneath /contact/.
+  core: ['home', 'core'],
+  'market-contact': ['market'],
   'service-hub': ['home'],
   'markets-hub': ['home'],
   'audience-hub': ['home'],

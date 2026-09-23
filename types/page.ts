@@ -137,6 +137,7 @@ export type PageType =
   // Geography
   | 'markets-hub'
   | 'market'
+  | 'market-contact'
   | 'location'
   | 'service-location'
   // Audience
@@ -209,6 +210,8 @@ export function analyticsPageType(pageType: PageType): AnalyticsPageType {
       return 'resource'
     case 'legal':
       return 'core'
+    case 'market-contact':
+      return 'contact'
     default:
       return pageType
   }

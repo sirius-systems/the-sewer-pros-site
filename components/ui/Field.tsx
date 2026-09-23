@@ -131,10 +131,14 @@ export function Select({
     overwritten. A market hub preselecting its own market is the first
     caller that needs it.
   */
+  // A caller that passes `value` controls the select; React warns if
+  // `defaultValue` is also set, so the empty default applies only to
+  // uncontrolled use.
+  const controlled = props.value !== undefined
   return (
     <select
       {...props}
-      defaultValue={props.defaultValue ?? ''}
+      {...(!controlled && { defaultValue: props.defaultValue ?? '' })}
       className={cn(CONTROL, className)}
     >
       <option value="" disabled>

@@ -89,6 +89,8 @@ function webPageType(page: MasterPageRecord): WebPageType {
       if (page.pathname === '/about/') return 'AboutPage'
       if (page.pathname === '/contact/') return 'ContactPage'
       return 'WebPage'
+    case 'market-contact':
+      return 'ContactPage'
     case 'service-hub':
     case 'markets-hub':
     case 'audience-hub':

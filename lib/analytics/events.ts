@@ -65,6 +65,7 @@ export type FormType =
   | 'general_service'
   | 'prepurchase_inspection'
   | 'commercial_service'
+  | 'contact_request'
 
 /** What kind of lead an event represents (19 §27). */
 export type LeadType = 'residential' | 'commercial' | 'real_estate'

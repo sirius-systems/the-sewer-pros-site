@@ -2140,3 +2140,35 @@ export interface AboutPageContent extends BasePageContent {
     image?: CardImage
   }
 }
+
+/**
+ * Contact hub and market contact pages.
+ *
+ * `/contact/` routes visitors to a market; each market contact page is
+ * the local conversion endpoint. Both share this shape. The market pages
+ * add a `localSection` and `serviceLinks`, which is where their copy is
+ * required to differ from each other (CLAUDE.md §22 location test).
+ */
+export interface ContactPageContent extends BasePageContent {
+  /** The four-step "what happens after you contact us" band. */
+  process: {
+    title: string
+    intro?: ReactNode
+    steps: readonly ProcessContent[]
+  }
+}
+
+export interface MarketContactContent extends ContactPageContent {
+  /** Local operating context, written per market rather than swapped in. */
+  localSection: {
+    eyebrow?: string
+    title: string
+    body: ReactNode
+  }
+  /** Approved service pages this market's visitors are most likely to want. */
+  serviceLinks: readonly {
+    pageId: PageId
+    label: string
+    description: string
+  }[]
+}
