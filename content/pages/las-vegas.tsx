@@ -151,10 +151,10 @@ export const lasVegasMarketContent: MarketPageContent = {
     clip is FOR rather than asserting shot detail nobody has checked.
   */
   heroVideo: {
-    src: '/images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-sewer-camera-inspection-hero.mp4',
-    describes: 'Sewer camera inspection clip supplied for the Las Vegas hub hero',
+    src: '/images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-residential-sewer-camera-inspection-hero.mp4',
+    describes: 'Residential sewer camera inspection clip supplied for the Las Vegas hub hero',
     source:
-      'Supplied by the business owner, 2026-09-05. Rendered scene, not footage of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-22. Rendered scene, not footage of a Sewer Pros job.',
   },
   /*
     ⚠ THE FORM DEFAULTS TO THIS MARKET, NOT ST. LOUIS. `heroFormMarketId`

@@ -136,10 +136,10 @@ export const sanDiegoMarketContent: MarketPageContent = {
     clip is FOR rather than asserting shot detail nobody has checked.
   */
   heroVideo: {
-    src: '/images/markets/san-diego-ca/hero/the-sewer-pros-san-diego-sewer-camera-inspection-hero.mp4',
-    describes: 'Sewer camera inspection clip supplied for the San Diego hub hero',
+    src: '/images/markets/san-diego-ca/hero/the-sewer-pros-san-diego-residential-sewer-camera-inspection-hero.mp4',
+    describes: 'Residential sewer camera inspection clip supplied for the San Diego hub hero',
     source:
-      'Supplied by the business owner, 2026-09-05. Rendered scene, not footage of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-22. Rendered scene, not footage of a Sewer Pros job.',
   },
   /*
     ⚠ THE FORM DEFAULTS TO THIS MARKET, NOT ST. LOUIS. `heroFormMarketId`
@@ -390,14 +390,15 @@ export const sanDiegoMarketContent: MarketPageContent = {
     /*
       ⚠ ARRIVED 2026-09-08, AFTER THE STACK SHIPPED WITHOUT IT. The
       section was built image-free because this file did not exist;
-      `strip` learned the 55/45 split when it did. 2896x2172, a true
-      4:3, so the frame crops nothing.
+      `strip` learned the 55/45 split when it did. A true 4:3
+      (1448x1086 as of the 2026-09-22 refresh), so the frame crops
+      nothing.
     */
     image: {
       src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-inspection-experience.webp',
       alt: 'Sewer camera inspection equipment at a San Diego residential property',
       source:
-        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
     },
     eyebrow: 'Specialized experience, clear findings',
     title: 'Sewer inspection experience San Diego property owners can use',
@@ -448,18 +449,15 @@ export const sanDiegoMarketContent: MarketPageContent = {
     brief supplied fresh wording it says the same thing in shorter
     sentences; the claims are identical.
 
-    ⚠⚠ THREE IMAGES WERE ASKED FOR AND NONE EXISTS IN THE REPOSITORY:
+    ⚠ STALE AS OF 2026-09-22: this originally said the three images
+    below did not exist yet and that the sections shipped without
+    artwork until they were supplied. All three have been supplied and
+    wired in (`experience.image` above, `deliverables.image` below, and
+    the featured pre-purchase card's `image`), so `DeliverablesSection`
+    no longer falls back to its unset-image column here.
       the-sewer-pros-san-diego-sewer-inspection-experience.webp
       the-sewer-pros-san-diego-sewer-inspection-evidence.webp
       the-sewer-pros-san-diego-property-sewer-inspection.webp
-    `public/images/markets/san-diego-ca/` holds a hero video, a service
-    area map and seven service-location frames, and nothing else.
-    Rather than point at files that are not there, or borrow an
-    unrelated pipe photograph to fill the space, these sections ship
-    without artwork - `DeliverablesSection` renders one readable column
-    when `image` is unset, which is a complete layout rather than a gap
-    where a picture should be. Drop the assets in and set
-    `deliverables.image` to light it up.
 
     ⚠ NO NEW LOCAL CLAIM ENTERS HERE. No soil, climate, pipe-material,
     licensing or municipal-programme statement that the body copy does
@@ -668,7 +666,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
           src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-property-sewer-inspection.webp',
           alt: 'San Diego residential property prepared for a sewer inspection',
           source:
-            'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+            'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
         },
       },
       {
@@ -720,10 +718,10 @@ export const sanDiegoMarketContent: MarketPageContent = {
       'The goal of a sewer camera inspection is to give you useful evidence, not simply tell you that a problem exists. The footage and documented findings provide information you can review, revisit, and share when considering what happens next.',
     ],
     /*
-      ⚠ THE ASSET ARRIVED 2026-09-08 AND IS NOW WIRED. It was supplied
-      as a 2.5 MB PNG and converted to webp at 622 KB: every other
-      image on this site is webp and under 900 KB, and CLAUDE.md §59
-      names oversized assets directly. 2896x2172, a true 4:3.
+      ⚠ WIRED SINCE 2026-09-08; REFRESHED 2026-09-22 (198 KB webp,
+      1448x1086, a true 4:3). Every other image on this site is webp
+      and under 900 KB, and CLAUDE.md §59 names oversized assets
+      directly.
 
       ⚠ NO "REPORT" ANYWHERE IN THIS LIST. "Documentation of visible
       conditions" is what the business produces; a formal written
@@ -734,7 +732,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       src: '/images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-inspection-evidence.webp',
       alt: 'Sewer camera monitor and inspection documentation for a San Diego property',
       source:
-        'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.',
+        'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
     },
     items: [
       {
