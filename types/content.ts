@@ -1364,13 +1364,21 @@ export interface HubMarketCard {
   actionLabel: string
 }
 
+/** An audience-card mark on a service hub. */
+export type HubAudienceIcon = 'building' | 'checklist' | 'house-key' | 'home'
+
 /** An audience destination on a service hub. */
 export interface HubAudienceCard {
   pageId: PageId
   audience: string
+  /** Decorative mark beside the audience label. */
+  icon?: HubAudienceIcon
   description: string
   actionLabel: string
 }
+
+/** A symptom-card mark on a service hub. */
+export type HubSymptomIcon = 'fixtures' | 'backup' | 'repeat' | 'restriction' | 'fixture' | 'home'
 
 /** A process-step mark on a service hub. */
 export type HubProcessIcon = 'explanation' | 'checklist' | 'access' | 'pipe' | 'camera' | 'document'
@@ -1385,12 +1393,23 @@ export interface HubSymptomCard {
   /** Small status label, e.g. "Active issue". Only `active` takes the orange accent. */
   status: string
   urgency?: 'active' | 'recurring' | 'planning'
+  /** Decorative mark beside the status label. Never the only carrier of meaning. */
+  icon?: HubSymptomIcon
   title: string
   description: string
   actionLabel: string
   pageId?: PageId
   href?: string
 }
+
+/** A comparison-card mark on a service hub. */
+export type HubComparisonIcon =
+  | 'cleaning'
+  | 'hydro'
+  | 'drain'
+  | 'camera'
+  | 'combined'
+  | 'locating'
 
 /** One row of the related-services comparison. */
 export interface HubComparisonRow {
@@ -1399,6 +1418,8 @@ export interface HubComparisonRow {
   fit: string
   /** Absent on the current page's own row. */
   pageId?: PageId
+  /** Decorative mark used by the `cards` variant. */
+  icon?: HubComparisonIcon
 }
 
 /**
@@ -1421,7 +1442,15 @@ export interface ServiceHubContent {
    */
   images?: {
     hero?: string
+    /**
+     * Which side of the hero photograph carries the subject. `left` (the
+     * default, camera hub) keeps the crop and scrim weighted left; `right`
+     * anchors the crop right so the copy column sits over open space.
+     */
+    heroFocus?: 'left' | 'right'
     schedule?: string
+    /** Faded photograph behind the limitations panel. */
+    limitations?: string
     comparison?: string
     request?: string
     closing?: string
@@ -1525,6 +1554,8 @@ export interface ServiceHubContent {
   /** Audience pathways. Existing audience pages only. */
   audiences?: {
     id?: string
+    /** `muted` sets the section apart from a default-surface neighbour. */
+    surface?: 'default' | 'muted'
     title: string
     intro: string
     items: readonly HubAudienceCard[]
@@ -1548,6 +1579,8 @@ export interface ServiceHubContent {
   /** Related-services comparison. */
   comparison?: {
     id?: string
+    /** `cards` renders one card per row; `table` (default) renders the table. */
+    variant?: 'table' | 'cards'
     /** Column headings. Default: Service / Primary purpose / May be the right fit when. */
     columns?: readonly [string, string, string]
     title: string

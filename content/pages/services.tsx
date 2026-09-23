@@ -624,8 +624,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         `public/images/services/sewer-cleaning/README.md` for the shot list).
       */
       images: {
-        hero: '/images/services/sewer-cleaning/sewer-cleaning-hero-16x9.webp',
+        hero: '/images/services/sewer-cleaning/hero/the-sewer-pros-sewer-cleaning-ridgid-seesnake-hero-16x9.webp',
+        heroFocus: 'right',
         comparison: '/images/services/sewer-cleaning/sewer-cleaning-comparison-16x9.webp',
+        limitations:
+          '/images/services/sewer-cleaning/the-sewer-pros-sewer-cleaning-camera-inspection-comparison-background-16x9.webp',
         request: '/images/services/sewer-cleaning/sewer-cleaning-request-16x9.webp',
         closing: '/images/services/sewer-cleaning/sewer-cleaning-closing-16x9.webp',
         definition: ['cleaning-definition'],
@@ -654,6 +657,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             status: 'Multiple fixtures',
             title: 'Multiple drains are slow or gurgling',
+            icon: 'fixtures',
             description:
               'When several fixtures drain slowly or make gurgling sounds, the main sewer line may need attention.',
             actionLabel: 'Explore sewer cleaning',
@@ -663,6 +667,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             status: 'Active issue',
             urgency: 'active',
             title: 'Toilets, tubs, or lower drains back up together',
+            icon: 'backup',
             description:
               'Wastewater backing up at several low points can indicate a main-line restriction. Talk with the team about what is happening.',
             actionLabel: 'Call about a sewer problem',
@@ -672,6 +677,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             status: 'Recurring issue',
             urgency: 'recurring',
             title: 'A clog keeps returning',
+            icon: 'repeat',
             description:
               'Repeated blockages may point to a visible condition in the line rather than ordinary buildup. A camera can help show what is there.',
             actionLabel: 'Consider a camera inspection',
@@ -680,6 +686,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             status: 'Possible restriction',
             title: 'Roots, buildup, or debris may be restricting the line',
+            icon: 'restriction',
             description:
               'Accumulated material can narrow a sewer line until flow slows. The right cleaning method depends on the line and the restriction.',
             actionLabel: 'Ask about cleaning options',
@@ -688,6 +695,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             status: 'Single fixture',
             title: 'One sink, tub, or toilet is slow',
+            icon: 'fixture',
             description:
               'A problem at one fixture is often a branch-line or fixture clog, which drain cleaning is designed to address.',
             actionLabel: 'Explore drain cleaning',
@@ -697,6 +705,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             status: 'Planning ahead',
             urgency: 'planning',
             title: 'You are buying a home',
+            icon: 'home',
             description:
               'A sewer camera inspection during a purchase can document visible conditions in the accessible line before closing.',
             actionLabel: 'Schedule a buyer sewer inspection',
@@ -732,6 +741,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       },
       comparison: {
         id: 'cleaning-vs-related-services',
+        variant: 'cards',
         columns: ['Service', 'Main purpose', 'Often appropriate when'],
         title: 'Sewer cleaning vs. hydro jetting, drain cleaning, and camera inspection',
         intro:
@@ -739,35 +749,41 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         rows: [
           {
             service: 'Sewer cleaning',
+            icon: 'cleaning',
             purpose: 'Clear certain restrictions in an accessible main sewer line',
             fit: 'Multiple fixtures are affected or a main-line blockage is suspected. Consider an inspection if symptoms return or the cause is unclear.',
           },
           {
             service: 'Hydro jetting',
+            icon: 'hydro',
             purpose: 'Use high-pressure water to clean a line where appropriate',
             fit: 'Buildup or recurring material may call for a more intensive approach. Suitability depends on pipe condition, access, and technician assessment.',
             pageId: id('svc-hydro-jetting'),
           },
           {
             service: 'Drain cleaning',
+            icon: 'drain',
             purpose: 'Address a clog in a branch line or individual fixture',
             fit: 'One sink, shower, tub, or toilet is affected. Escalate if several fixtures develop symptoms.',
             pageId: id('svc-drain-cleaning'),
           },
           {
             service: 'Sewer camera inspection',
+            icon: 'camera',
             purpose: 'View accessible interior line conditions',
             fit: 'A blockage keeps returning, the location is unclear, or the line’s condition is uncertain. Findings help select an appropriate next step.',
             pageId: id('svc-sewer-camera-inspection'),
           },
           {
             service: 'Sewer cleaning and camera inspection',
+            icon: 'combined',
             purpose: 'Review visible line conditions and address an appropriate restriction when warranted',
             fit: 'A problem is recurring, unclear, or affecting multiple fixtures. Inspection can help explain why cleaning alone may not settle it.',
             pageId: id('svc-sewer-cleaning-camera-inspection'),
           },
           {
             service: 'Line locating',
+            icon: 'locating',
             purpose: 'Identify the approximate underground path of a line',
             fit: 'Excavation, construction, or project planning is involved. Findings support coordination and planning.',
             pageId: id('svc-sewer-line-locating'),
@@ -783,23 +799,27 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         items: [
           {
             pageId: id('market-st-louis-mo'),
-            description: 'Explore sewer cleaning availability across the St. Louis region.',
+            description:
+              'Explore sewer cleaning availability across the St. Louis region. The St. Louis page covers sewer cleaning and hydro jetting, lists communities with local pages such as Ballwin, Florissant, and Chesterfield, and shows how to confirm coverage and request service.',
             actionLabel: 'Sewer Cleaning in St. Louis',
           },
           {
             pageId: id('market-san-diego-ca'),
-            description: 'Explore sewer cleaning availability across the San Diego region.',
+            description:
+              'Explore sewer cleaning availability across the San Diego region. The San Diego page covers sewer cleaning and hydro jetting, lists communities with local pages such as Carlsbad, Escondido, and Oceanside, and shows how to confirm coverage and request service.',
             actionLabel: 'Sewer Cleaning in San Diego',
           },
           {
             pageId: id('market-las-vegas-nv'),
-            description: 'Explore sewer cleaning availability across the Las Vegas Valley.',
+            description:
+              'Explore sewer cleaning availability across the Las Vegas Valley. The Las Vegas page covers sewer cleaning and hydro jetting, lists communities with local pages such as Henderson, North Las Vegas, and Summerlin, and shows how to confirm coverage and request service.',
             actionLabel: 'Sewer Cleaning in Las Vegas',
           },
         ],
       },
       audiences: {
         id: 'sewer-cleaning-for-your-situation',
+        surface: 'muted',
         title: 'Sewer cleaning for different property needs',
         intro:
           'Different people reach a sewer question from different starting points. These pages cover what matters most to each.',
@@ -807,6 +827,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             pageId: id('aud-property-managers'),
             audience: 'Property managers',
+            icon: 'building',
             description:
               'Coordinate service for recurring drainage concerns at occupied properties, and keep observations to share with owners or maintenance teams.',
             actionLabel: 'Property manager support',
@@ -814,6 +835,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             pageId: id('aud-home-inspectors'),
             audience: 'Home inspectors',
+            icon: 'checklist',
             description:
               'Coordinate next steps when a sewer concern is identified during a general inspection.',
             actionLabel: 'Working with home inspectors',
@@ -821,6 +843,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             pageId: id('aud-real-estate-agents'),
             audience: 'Real estate agents',
+            icon: 'house-key',
             description:
               'Support clients with appropriate sewer inspection and diagnostic paths during a transaction.',
             actionLabel: 'Transaction support',
@@ -828,6 +851,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             pageId: id('aud-home-buyers'),
             audience: 'Home buyers',
+            icon: 'home',
             description:
               'Understand visible sewer-line conditions before closing, and what cleaning does and does not address.',
             actionLabel: 'Home buyer sewer inspections',
