@@ -2150,6 +2150,11 @@ export interface AboutPageContent extends BasePageContent {
  * required to differ from each other (CLAUDE.md §22 location test).
  */
 export interface ContactPageContent extends BasePageContent {
+  /** Left-column copy beside the request form (hub page only). */
+  request?: {
+    title: string
+    body: ReactNode
+  }
   /** The four-step "what happens after you contact us" band. */
   process: {
     title: string

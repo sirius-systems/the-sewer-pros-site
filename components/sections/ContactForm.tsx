@@ -263,6 +263,13 @@ export interface ContactFormProps {
   /** Analytics/context page path is derived from the URL at submit time. */
   title?: string
   intro?: string
+  /**
+   * Omits the form's own `<h2>` when the page supplies the section
+   * heading elsewhere (the hub's two-column layout). Pass `labelledBy`
+   * with that heading's id so the form keeps its accessible name.
+   */
+  hideHeading?: boolean
+  labelledBy?: string
 }
 
 export function ContactForm({
@@ -271,6 +278,8 @@ export function ContactForm({
   shortcuts = false,
   title = 'Request service or schedule an inspection',
   intro,
+  hideHeading = false,
+  labelledBy,
 }: ContactFormProps) {
   const router = useRouter()
   const [market, setMarket] = useState<MarketId | ''>(defaultMarketId ?? '')
@@ -417,9 +426,11 @@ export function ContactForm({
 
   return (
     <div>
-      <h2 id={id('heading')} className="text-h3 font-semibold tracking-tight">
-        {title}
-      </h2>
+      {!hideHeading && (
+        <h2 id={id('heading')} className="text-h3 font-semibold tracking-tight">
+          {title}
+        </h2>
+      )}
       {intro !== undefined && (
         <p className="mt-2 text-body text-muted-foreground">{intro}</p>
       )}
@@ -457,8 +468,8 @@ export function ContactForm({
         onSubmit={handleSubmit}
         onInput={handleFirstInput}
         noValidate
-        aria-labelledby={id('heading')}
-        className="mt-6 grid gap-x-6 gap-y-5 sm:grid-cols-2"
+        aria-labelledby={hideHeading ? labelledBy : id('heading')}
+        className={(hideHeading && !shortcuts ? '' : 'mt-6 ') + 'grid gap-x-6 gap-y-5 sm:grid-cols-2'}
       >
         {/* Honeypot. Hidden from sighted users and assistive tech. */}
         <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">

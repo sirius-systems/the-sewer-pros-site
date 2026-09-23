@@ -6,7 +6,7 @@ back to an existing owner-supplied scene until then. No code change is needed to
 
 | Slot | Path | Subject |
 |---|---|---|
-| Hero | `hero/the-sewer-pros-contact-technician-camera-monitor.webp` | Technician reviewing a sewer camera monitor (authentic field photo) |
+| Hero | `hero/sewer-pros-contact-sewer-camera-inspection-hero-16x9.webp` | In place: camera reel and monitor beside a residential sewer cleanout |
 | St. Louis card | `markets/the-sewer-pros-contact-st-louis.webp` | Equipment or service scene, no signage or office |
 | San Diego card | `markets/the-sewer-pros-contact-san-diego.webp` | Equipment or service scene, no signage or office |
 | Las Vegas card | `markets/the-sewer-pros-contact-las-vegas.webp` | Equipment or service scene, no signage or office |

@@ -28,21 +28,23 @@ const PROCESS = {
   steps: [
     {
       title: 'We review your request',
-      description: 'We look at your market, the service you need, and your property ZIP code.',
-    },
-    {
-      title: 'A team member follows up',
       description:
-        'A team member confirms availability and gathers any details needed, using the contact method you chose.',
+        'We review the service area, the sewer or drain concern, and the property ZIP code you provide.',
     },
     {
-      title: 'You choose an appointment',
-      description: 'You receive the next available appointment options or scheduling instructions.',
-    },
-    {
-      title: 'We complete the service',
+      title: 'We discuss next steps',
       description:
-        'The requested inspection, cleaning, or locating work is done at your property, and the findings are explained.',
+        'The team uses your preferred contact method to discuss your request and any details needed to understand it.',
+    },
+    {
+      title: 'We confirm service options',
+      description:
+        'If the requested service is available for your location, the team can discuss scheduling options with you.',
+    },
+    {
+      title: 'You receive the requested service',
+      description:
+        'For a confirmed appointment, the inspection, cleaning, or locating work is completed, and findings are explained.',
     },
   ],
 } as const
@@ -53,13 +55,13 @@ const PROCESS = {
 
 export const contactHubContent: ContactPageContent = {
   hero: {
-    eyebrow: 'Contact',
+    eyebrow: 'Contact The Sewer Pros',
     title: 'Contact The Sewer Pros',
     intro: (
       <p>
-        Need a sewer camera inspection, drain cleaning, hydro jetting, sewer cleaning, or
-        line locating? Select your market to request service, schedule an inspection, or
-        call The Sewer Pros.
+        Need a sewer camera inspection, sewer cleaning, hydro jetting, drain cleaning, or
+        sewer line locating? Choose your service area to view local contact options, request
+        service, or schedule an inspection.
       </p>
     ),
     primaryAction: { href: '#choose-location', label: 'Select Your Location' },
@@ -68,45 +70,53 @@ export const contactHubContent: ContactPageContent = {
   seoTitle: 'Contact: St. Louis, San Diego & Las Vegas',
   metaDescription:
     'Contact The Sewer Pros to request sewer inspection, drain cleaning, hydro jetting, sewer cleaning, or line locating in St. Louis, San Diego, or Las Vegas.',
+  request: {
+    title: 'Request Sewer Service or Schedule an Inspection',
+    body: (
+      <>
+        <p>
+          Use the form to tell The Sewer Pros where service is needed and what you’re
+          experiencing. Choose your market and the service or problem that best fits. The team
+          can use those details to follow up about your request.
+        </p>
+        <p>
+          If you’re unsure which service to select, choose the closest option and describe the
+          issue in the message field. Helpful details may include the symptoms, when they
+          started, and whether the problem is affecting one drain or multiple fixtures.
+        </p>
+      </>
+    ),
+  },
   process: PROCESS,
   faq: [
     {
       question: 'How do I schedule a sewer camera inspection?',
       answer: (
         <p>
-          Choose your location above, then use the request form or call the number for your
-          market. Tell us the property ZIP code and what you want inspected. A team member
-          follows up to confirm availability and appointment options. See{' '}
-          <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
-            sewer camera inspection
-          </ApprovedInlineLink>{' '}
-          for what the service covers.
+          Choose your service area on the Contact page to find the market’s phone number and
+          contact options. You can call or submit the request form and select sewer camera
+          inspection.
         </p>
       ),
     },
     {
-      question: 'Which areas does The Sewer Pros serve?',
+      question: 'What areas does The Sewer Pros serve?',
       answer: (
         <p>
-          The Sewer Pros serves St. Louis, San Diego, and Las Vegas. Each market has its own
-          contact page listing the communities it works across, so pick your city to see the
-          areas and the phone number for your property. If your property sits near an edge of
-          an area, ask when you call.
+          The Sewer Pros serves areas associated with St. Louis, Missouri; San Diego,
+          California; and Las Vegas, Nevada. Visit the{' '}
+          <ApprovedInlineLink pageId={id('hub-locations')}>Locations page</ApprovedInlineLink>{' '}
+          or choose a market on the Contact page to review its listed service area.
         </p>
       ),
     },
     {
-      question: 'Can I request service for a sewer backup or recurring drain problem?',
+      question: 'Can I request help with a sewer backup or recurring drain problem?',
       answer: (
         <p>
-          Yes. Choose the sewer backup option on the form or call your market&apos;s number.
-          We inspect, diagnose, locate, and clean sewer and drain lines. We do not perform
-          sewer repair or replacement. A recurring problem is usually best handled with an
-          inspection first; see{' '}
-          <ApprovedInlineLink pageId={id('svc-recurring-sewer-backup-diagnosis')}>
-            recurring sewer backup diagnosis
-          </ApprovedInlineLink>
-          .
+          Yes. Call the number for your service area or submit a request through the Contact
+          page. Describe what is happening, when it started, and which drains or fixtures are
+          affected. For an active backup or overflow, call your local market.
         </p>
       ),
     },
@@ -114,13 +124,12 @@ export const contactHubContent: ContactPageContent = {
       question: 'Can home buyers schedule a sewer inspection before closing?',
       answer: (
         <p>
-          Yes. Select the home-buyer sewer scope option and tell us whether you are under
-          contract or within an inspection period, so we can plan around your timeline. Read
-          about the{' '}
+          The Sewer Pros offers{' '}
           <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>
-            pre-purchase sewer inspection
-          </ApprovedInlineLink>{' '}
-          before you book.
+            pre-purchase sewer inspections
+          </ApprovedInlineLink>
+          . Contact the market serving the property to discuss the inspection request and
+          scheduling options.
         </p>
       ),
     },
@@ -128,23 +137,18 @@ export const contactHubContent: ContactPageContent = {
       question: 'Can real estate agents and home inspectors coordinate an appointment?',
       answer: (
         <p>
-          Yes. Choose the agent or inspector option, add the property timeline, and say how
-          you would like to coordinate. Agents can also read how{' '}
-          <ApprovedInlineLink pageId={id('aud-real-estate-agents')}>
-            sewer inspections work for real estate agents
-          </ApprovedInlineLink>
-          .
+          Agents and home inspectors can contact the market serving the property to discuss a
+          sewer inspection request and coordination details.
         </p>
       ),
     },
     {
-      question: 'What information should I provide when requesting service?',
+      question: 'What information should I include when requesting service?',
       answer: (
         <p>
-          Your market, the service or problem, your property ZIP code, and a phone number.
-          Helpful extras: which fixtures are affected, whether it has happened before, what
-          work was already done, and whether there is an accessible cleanout. Everything
-          beyond the first four is optional.
+          Include the property ZIP code, the sewer or drain concern, the service you’re
+          requesting if known, and how you prefer to be contacted. A description of the
+          symptoms and when they began can also help explain the request.
         </p>
       ),
     },
@@ -152,9 +156,8 @@ export const contactHubContent: ContactPageContent = {
       question: 'Do I need to be home for the appointment?',
       answer: (
         <p>
-          The team needs access to your sewer line, usually through a cleanout. When you
-          request service, mention who can provide access and whether a cleanout is
-          available, and a team member will confirm what is needed for your appointment.
+          Ask the local team when discussing the appointment. Whether someone needs to be
+          present can depend on the property and the service requested.
         </p>
       ),
     },
@@ -162,9 +165,27 @@ export const contactHubContent: ContactPageContent = {
       question: 'How will The Sewer Pros contact me after I submit a request?',
       answer: (
         <p>
-          By the method you choose on the form: call, text, or email. Phone lines are staffed
-          Monday to Friday, 8:00am to 4:00pm. For an active backup, call the number for your
-          market instead of waiting on a form.
+          The team can use the preferred contact method selected on the form and may need
+          additional details to understand the request.
+        </p>
+      ),
+    },
+    {
+      question: 'Does The Sewer Pros have a storefront or office I can visit?',
+      answer: (
+        <p>
+          The Sewer Pros is a service-area business. Work takes place at the property, and
+          there is no storefront address to visit.
+        </p>
+      ),
+    },
+    {
+      question: 'Which services can I request through the Contact page?',
+      answer: (
+        <p>
+          The form includes options such as sewer camera inspection, sewer cleaning, hydro
+          jetting, drain cleaning, and sewer line locating. Choose the closest option and
+          describe the issue if you’re unsure.
         </p>
       ),
     },

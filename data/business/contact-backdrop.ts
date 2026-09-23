@@ -43,11 +43,11 @@ const PENDING_REAL = 'Pending: real Sewer Pros photography supplied for the cont
 export const contactImageSlots = {
   hero: {
     preferred:
-      '/images/contact/hero/the-sewer-pros-contact-technician-camera-monitor.webp',
+      '/images/contact/hero/sewer-pros-contact-sewer-camera-inspection-hero-16x9.webp',
     interim:
       '/images/markets/services-hub/the-sewer-pros-sewer-service-request-cta-background.webp',
-    alt: 'Sewer Pros technician reviewing a sewer camera inspection on a monitor',
-    source: PENDING_REAL,
+    alt: 'Sewer camera reel and monitor set up beside an open residential sewer cleanout',
+    source: 'Owner-approved contact hero image (3344x1882 WebP).',
   },
   'st-louis-mo': {
     preferred: '/images/contact/markets/the-sewer-pros-contact-st-louis.webp',
