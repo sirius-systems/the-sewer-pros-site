@@ -46,20 +46,43 @@
  *                      IS now present: the DEC-096 brand package
  *                      supplied one, so the reason for its absence is
  *                      gone. `image` is a different claim and stays out
- * `foundingDate`     — St. Louis 2011 and San Diego 2015 are per-market
- *                      facts (DEC-070, DEC-071). The ORGANISATION has no
- *                      single founding year, and 01 §20 forbids electing
- *                      one market's as the company's
  * `priceRange`       — never documented; 15 §103 names it explicitly
  *
  * 15 §103: "A smaller accurate schema object is preferable to a larger
  * inaccurate one."
+ *
+ * ---------------------------------------------------------------------------
+ * ⚠ `foundingDate` IS NOW PRESENT — OWNER OVERRIDE, RECORDED RATHER
+ * THAN SILENTLY REVERSING THE NOTE ABOVE
+ * ---------------------------------------------------------------------------
+ * This field was withheld for the reason once documented here: St.
+ * Louis (2011) and San Diego (2015) are separate per-market facts
+ * (DEC-070, DEC-071), and electing one as the ORGANISATION's founding
+ * year risked asserting something no single source states company-wide.
+ *
+ * `foundingYear` (`data/business/organization.ts`) is sourced
+ * separately, from the business's own `/about/` page rather than a
+ * market site, and is what the rebuilt `/about/` page now states as the
+ * company's founding year in its own visible copy (`content/pages/about.tsx`).
+ * 15 §67 requires schema to match visible content; it does not require
+ * inferring the organisation's founding year FROM the market sites when
+ * the organisation's own page already states one directly. The owner
+ * confirmed this reading and asked for the field. If that value is ever
+ * shown to have come from the St. Louis site rather than the company's
+ * own `/about/` page, remove this field rather than re-deriving it from
+ * a market fact.
  */
 
 import type { MarketId } from '@/types'
-import type { ContactPointNode, OrganizationNode, PlaceNode, SchemaId } from '@/types'
+import type {
+  ContactPointNode,
+  OrganizationNode,
+  PersonNode,
+  PlaceNode,
+  SchemaId,
+} from '@/types'
 import { SCHEMA_FRAGMENT } from '@/types'
-import { siteOrigin, organization as orgFacts } from '@/data/business'
+import { siteOrigin, organization as orgFacts, foundingYear } from '@/data/business'
 import { marketList, marketOperatingDetail } from '@/data/markets'
 import { serviceList } from '@/data/services'
 
@@ -88,6 +111,10 @@ export function websiteId(): SchemaId {
 
 export function marketPlaceId(market: MarketId): SchemaId {
   return `${siteOrigin()}/${market}/${SCHEMA_FRAGMENT.place}`
+}
+
+export function founderId(slug: string): SchemaId {
+  return `${siteOrigin()}/about/${SCHEMA_FRAGMENT.person}-${slug}`
 }
 
 export function serviceId(canonicalUrl: string): SchemaId {
@@ -177,6 +204,12 @@ export function organizationNode(): OrganizationNode {
     url: `${siteOrigin()}/`,
     description: orgFacts.description,
     /*
+      Owner-directed inclusion — see the header note above for why this
+      was withheld and why it is back. `foundingYear` is the company's
+      own stated founding year, not a market-site figure.
+    */
+    foundingDate: String(foundingYear),
+    /*
       15 §26: the logo is how Google ties this entity to a mark it can
       show in a Knowledge Panel, so it is worth stating precisely
       rather than as a bare URL string.
@@ -213,4 +246,42 @@ export function organizationNode(): OrganizationNode {
  */
 export function servedMarkets(): PlaceNode[] {
   return marketList.map((market) => marketPlace(market.id))
+}
+
+/* ==========================================================================
+   Founders — `/about/` only
+   ========================================================================== */
+
+/**
+ * The two founders, as `Person` nodes.
+ *
+ * ⚠ CALLER-GATED, NOT EMITTED BY DEFAULT. Only `pageSchema()` for
+ * `/about/` pushes these into the graph — see the caller. 15 §67 needs
+ * the visible page to carry the same names and roles, which is true of
+ * `/about/`'s `LeadershipProfile` section and nowhere else, so this is
+ * not part of `organizationNode()` itself.
+ *
+ * Name and role text is fixed here rather than read from
+ * `content/pages/about.tsx`'s `AboutPageContent.leadership`, because
+ * that array also carries the prose bio and `photoLabel`, neither of
+ * which belongs in schema (15 §67's "add only what is visible" reads
+ * narrowly: name and role are stated as fact, a bio is editorial).
+ */
+export function founders(): PersonNode[] {
+  return [
+    {
+      '@type': 'Person',
+      '@id': founderId('tracy-coffman'),
+      name: 'Tracy Coffman',
+      jobTitle: 'Co-Founder, Customer Experience and Operations',
+      worksFor: { '@id': organizationId() },
+    },
+    {
+      '@type': 'Person',
+      '@id': founderId('rick-coffman'),
+      name: 'Rick Coffman',
+      jobTitle: 'Co-Founder, Field Expertise and Real Estate Inspection Experience',
+      worksFor: { '@id': organizationId() },
+    },
+  ]
 }

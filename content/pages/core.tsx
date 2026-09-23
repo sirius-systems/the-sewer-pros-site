@@ -13,15 +13,9 @@
  * Still no street address and no form: none is published for any market
  * (15 §11), and PENDING-008 leaves form fields undecided.
  *
- * `/about/` carries the company-wide combined-experience claim approved
- * under DEC-072. It still asserts no staff count, no inspection volume,
- * no licensing, and no certification — 01 §35 lists those among claims
- * requiring documented evidence, and none has been supplied.
- *
- * ⚠ The St. Louis-scoped claims — "#1 choice in St. Louis" and the
- * 100,000-inspections figure — live on the St. Louis market hub, not
- * here. /about/ is sitewide, and 01 §20 forbids presenting one market's
- * claims as though they covered another.
+ * `/about/` moved to its own content module, `./about.tsx`, and its own
+ * template, `AboutPageTemplate` — see that file for its content and the
+ * scoping note on its St. Louis-attributed stat.
  */
 
 
@@ -1910,98 +1904,6 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
    ========================================================================== */
 
 export const coreContent: Partial<Record<PageId, CorePageContent>> = {
-  [id('core-about')]: {
-    hero: {
-      title: 'About The Sewer Pros',
-      intro: (
-        <p>
-          A sewer and drain specialist focused on inspection, diagnostics,
-          locating, and cleaning, deliberately not on repair.
-        </p>
-      ),
-    },
-    metaDescription:
-      'Learn how The Sewer Pros helps property owners and professionals understand sewer-line conditions through inspection, diagnostics, locating, and cleaning.',
-    body: (
-      <>
-        <h2>What we do</h2>
-        <p>
-          We inspect sewer and drain lines with cameras, diagnose why lines
-          block, locate where lines run, and clean them. That is the whole of
-          it, and the boundary is intentional.
-        </p>
-
-        <h2>What we do not do</h2>
-        <p>
-          We do not perform sewer repair, replacement, lining, pipe bursting, or
-          excavation. When an inspection turns up a condition that warrants
-          structural work, the next conversation is with a qualified repair
-          contractor, not with us.
-        </p>
-
-        <h2>Why that separation matters</h2>
-        <p>
-          Sewer findings are frequently ambiguous. A joint might be a
-          maintenance item or the beginning of a failure; footage often supports
-          more than one reading.
-        </p>
-        <p>
-          A company that both diagnoses and sells the remedy is interpreting
-          that ambiguity while standing to gain from one interpretation. That is
-          a structural position, not a comment on anyone&rsquo;s integrity, but
-          it is a position we chose not to occupy.
-        </p>
-
-        <h2>How we work</h2>
-        <p>
-          We put a camera in the line, document what is visible, and tell you
-          what the footage supports. Where a line cannot be properly assessed,
-          we say that rather than producing a confident conclusion the evidence
-          does not carry.
-        </p>
-        <p>
-          Where cleaning is likely to resolve the problem, we clean it. Where it
-          is not, we will tell you that too.
-        </p>
-
-        <h2>The business</h2>
-        <p>
-          The Sewer Pros has operated since 2011, with over 100 years of
-          combined experience across the team. We are locally owned and family
-          operated.
-        </p>
-        <p>
-          We work across the St. Louis area (St. Louis County, St. Charles
-          County, Jefferson County and surrounding areas) and across San Diego
-          County, which we have served since 2015. We are currently launching in
-          the Las Vegas Valley.
-        </p>
-
-        <h2>Municipal lateral reporting</h2>
-        <p>
-          Many municipalities in the St. Louis area run sewer lateral repair
-          programs, and most require documentation from a licensed plumber
-          before they will consider a claim. We are licensed through most of
-          those programs to submit reports.
-        </p>
-        <p>
-          We document conditions; the municipality decides claims. We cannot
-          promise an outcome, and any company that does is describing a
-          decision that is not theirs to make.
-        </p>
-
-        <h2>Affiliations</h2>
-        <ul>
-          <li>St. Louis Association of Realtors</li>
-          <li>American Society of Home Inspectors (ASHI)</li>
-          <li>Women&rsquo;s Council of Realtors</li>
-          <li>St. Charles Realtors</li>
-        </ul>
-      </>
-    ),
-    relatedPageIds: [id('cmp-independent-vs-repair'), id('hub-services')],
-  },
-
   [id('core-contact')]: {
     hero: {
       title: 'Contact',

@@ -4,8 +4,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { pageMetadata } from '@/lib/seo'
-import { CorePageTemplate } from '@/components/templates'
-import { getCoreContent } from '@/content'
+import { AboutPageTemplate } from '@/components/templates'
+import { getAboutContent } from '@/content'
 import { getPage } from '@/data/pages'
 import type { PageId } from '@/types'
 
@@ -13,7 +13,7 @@ const PAGE_ID = 'core-about' as PageId
 
 export function generateMetadata(): Metadata {
   const page = getPage(PAGE_ID)
-  const content = getCoreContent(PAGE_ID)
+  const content = getAboutContent(PAGE_ID)
   if (page === undefined || content === undefined) notFound()
   return pageMetadata({
     page,
@@ -24,7 +24,7 @@ export function generateMetadata(): Metadata {
 
 export default function Page() {
   const page = getPage(PAGE_ID)
-  const content = getCoreContent(PAGE_ID)
+  const content = getAboutContent(PAGE_ID)
   if (page === undefined || content === undefined) notFound()
-  return <CorePageTemplate page={page} content={content} />
+  return <AboutPageTemplate page={page} content={content} />
 }

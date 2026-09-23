@@ -59,6 +59,7 @@ import { absoluteUrl, siteOrigin, SITE_NAME } from '@/data/business'
 import { breadcrumbTrail } from '@/data/pages'
 import { getServiceByCanonicalUrl } from '@/data/services'
 import {
+  founders,
   marketPlace,
   organizationId,
   organizationNode,
@@ -284,7 +285,20 @@ export function pageSchema({
 }: PageSchemaInput): SchemaGraph | undefined {
   if (!isIndexable(page)) return undefined
 
-  const nodes: SchemaNode[] = [organizationNode()]
+  const organization = organizationNode()
+  const nodes: SchemaNode[] = [organization]
+
+  /*
+    Founders, `/about/` only. 15 §67 needs the visible page to carry the
+    same names and roles this adds — true of `LeadershipProfile` there
+    and nowhere else, so `organization.founder` stays unset (and no
+    Person node ships) on every other page.
+  */
+  if (page.pathname === '/about/') {
+    const founderNodes = founders()
+    nodes.push(...founderNodes)
+    organization.founder = founderNodes.map((person) => ref(person['@id']))
+  }
 
   // WebSite appears on every page; it is the entity WebPage belongs to.
   nodes.push({

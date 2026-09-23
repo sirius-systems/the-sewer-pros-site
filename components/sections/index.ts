@@ -218,6 +218,13 @@ export type { RelatedLinksProps } from './RelatedLinks'
 export { MarketCoverage, marketCoverageRenders } from './MarketCoverage'
 export type { MarketCoverageProps } from './MarketCoverage'
 
+/* /about/ only */
+export { StatsBand } from './StatsBand'
+export type { StatsBandProps } from './StatsBand'
+
+export { LeadershipProfile } from './LeadershipProfile'
+export type { LeadershipProfileProps } from './LeadershipProfile'
+
 /*
   A hub's opening explainer. Not `IndependentProcess` and not
   `MarketGuidance`: this one is the page's own argument in prose, with
