@@ -1,5 +1,16 @@
 /**
- * The core service mosaic, shared by the home page and every market hub.
+ * ⚠ UNUSED AS OF 2026-09-23. Every page that rendered `coreServiceCards`
+ * (home, San Diego, Las Vegas, `/locations/`, `/services/`, St. Louis)
+ * now renders `content/pages/home-service-cards.ts`'s `homeServiceCards`
+ * instead — the approved section, unmodified, everywhere it appears.
+ * Nothing in the codebase imports `coreServiceCards` or
+ * `combinedCleaningInspectionCardId` any longer. Left in place rather
+ * than deleted, since removing the module was outside the scope of the
+ * change that orphaned it; safe to delete in a future pass once
+ * confirmed nothing else is planned to read it.
+ *
+ * The core service mosaic, formerly shared by the home page and every
+ * market hub.
  *
  * Authority: docs/06-master-service-registry.md;
  *            docs/18-design-system.md §5.6, §50-51, Appendix A;

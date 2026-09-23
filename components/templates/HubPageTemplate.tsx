@@ -32,6 +32,10 @@ import {
   component. `MarketPageTemplate` imports it from the same place.
 */
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
+import {
+  approvedServicesTitle,
+  approvedServicesIntro,
+} from '@/content/pages/home-service-cards'
 import { PageShell } from './PageShell'
 import type { ReactNode } from 'react'
 import type { HubPageContent, MasterPageRecord } from '@/types'
@@ -90,6 +94,17 @@ export interface HubPageTemplateProps {
   /** Heading above the member list. */
   itemsTitle?: string
   /**
+   * Layout for the member list when it has artwork. Defaults to
+   * `mosaic` (flagship 2x2 tile), which is what four of the five hubs
+   * with artwork keep.
+   *
+   * `cards`: `ServiceIndex`'s approved layout — image on top,
+   * plain-contrast text below it, a visible "Learn more" link per
+   * card. `/services/` sets this because its member list IS the home
+   * page's approved nine-card section, reused rather than duplicated.
+   */
+  itemsVariant?: 'mosaic' | 'cards'
+  /**
    * Anchor id for the member list, and its heading's id.
    *
    * ⚠ DEFAULTS TO `hub-items`, WHICH IS WHAT FOUR OF THE FIVE HUBS
@@ -136,6 +151,7 @@ export function HubPageTemplate({
   heroAside = 'form',
   heroClassName,
   itemsTitle = 'In this section',
+  itemsVariant = 'mosaic',
   itemsId = 'hub-items',
   numbered = false,
   itemsSurface = 'default',
@@ -673,11 +689,18 @@ export function HubPageTemplate({
 
       {showsItems && content.items !== undefined && (
         /*
-          ⚠ `variant` AND `density` BOTH COME FROM `itemsAreMosaic`,
-          derived once above so the render and the `densities` array
-          cannot disagree. `id` stays `hub-items` in either shape: it
-          is the member list's anchor whatever presentation it takes,
-          and the service band below owns `id="services"`.
+          ⚠ `density` COMES FROM `itemsAreMosaic`, derived once above
+          so the render and the `densities` array cannot disagree.
+          `variant` also gates on `itemsAreMosaic` — an item list that
+          lost its artwork falls back to the row list rather than
+          shipping an empty-imaged grid — but WHICH image layout is the
+          caller's choice (`itemsVariant`, default `mosaic`).
+          `/services/` passes `cards`, since its member list is the
+          home page's approved nine-card section reused, not a
+          different family of content. `id` stays `hub-items` in
+          either shape: it is the member list's anchor whatever
+          presentation it takes, and the service band below owns
+          `id="services"`.
         */
         <ServiceIndex
           density={itemsDensity}
@@ -686,7 +709,7 @@ export function HubPageTemplate({
           intro={content.itemsIntro}
           items={content.items}
           numbered={numbered}
-          variant={itemsAreMosaic ? 'mosaic' : 'index'}
+          variant={itemsAreMosaic ? itemsVariant : 'index'}
           surface={itemsSurface}
         />
       )}
@@ -706,17 +729,17 @@ export function HubPageTemplate({
 
       {/*
         ==================================================================
-        THE SERVICE MOSAIC — A SECOND BAND, NOT THE MEMBER LIST
+        THE APPROVED SERVICES SECTION — A SECOND BAND, NOT THE MEMBER LIST
         ==================================================================
         Owner direction (2026-09-07): `/locations/` carries the home
-        page's "What we do" section. Its members are the three markets,
-        so unlike `/services/` this hub has no services band of its own
-        and the two do not compete.
+        page's services section. Its members are the three markets, so
+        unlike `/services/` this hub has no services band of its own and
+        the two do not compete.
 
-        ⚠ SAME CALL AS THE MARKET HUBS, DOWN TO THE `variant` TEST.
-        `mosaic` only once the cards actually carry artwork - a page
-        that lost its frames would otherwise ship an empty-tiled grid
-        rather than falling back to the row list.
+        ⚠ SAME CALL AS THE MARKET HUBS (San Diego, Las Vegas), DOWN TO
+        THE `variant` TEST. `cards` only once the items actually carry
+        artwork - a page that lost its frames would otherwise ship an
+        empty-imaged grid rather than falling back to the row list.
 
         ⚠ `id="services"`, NOT `hub-items`. That id belongs to the
         member list above whichever presentation it takes, and two
@@ -726,22 +749,23 @@ export function HubPageTemplate({
         <ServiceIndex
           density="dense"
           id="services"
-          title="Sewer Inspection, Diagnostics & Cleaning Services"
+          title={approvedServicesTitle}
+          intro={<p>{approvedServicesIntro}</p>}
           items={content.services}
           variant={
             content.services.some((item) => item.image !== undefined)
-              ? 'mosaic'
+              ? 'cards'
               : 'index'
           }
           /*
             ⚠ ONLY CALLER OF `content.services` IS `/locations/`
-            (2026-09-22). This band mirrors the home page's approved
-            services section, which renders every card at equal size
-            rather than giving one a flagship tile — see
-            `ServiceIndex.equalColumns` and
-            `content/pages/home-service-cards.ts`.
+            (2026-09-23). This band mirrors the home page's approved
+            services section exactly — same heading and intro (imported
+            from `content/pages/home-service-cards.ts` rather than
+            retyped here), same `cards` layout: image on top, plain-
+            contrast text below it, a visible "Learn more" link per
+            card.
           */
-          equalColumns
           surface={servicesSurface}
         />
       )}
