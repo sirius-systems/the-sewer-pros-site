@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { Section, type SectionDensity,
   type SectionSurface } from '@/components/ui'
@@ -50,6 +51,12 @@ export interface DeliverablesSectionProps {
   id?: string
   /** Overrides the section's natural surface. */
   surface?: SectionSurface
+  /**
+   * A ready-made media node for the image column, used instead of
+   * `content.image`. Lets a page pass a slot that resolves to nothing
+   * in production, in which case the section is a single column.
+   */
+  imageSlot?: ReactNode
 }
 
 export function DeliverablesSection({
@@ -57,8 +64,9 @@ export function DeliverablesSection({
   density = 'standard',
   id = 'what-you-receive',
   surface = 'default',
+  imageSlot,
 }: DeliverablesSectionProps) {
-  const hasImage = content.image !== undefined
+  const hasImage = imageSlot !== undefined || content.image !== undefined
 
   return (
     <Section density={density} surface={surface} labelledBy={id}>
@@ -87,7 +95,10 @@ export function DeliverablesSection({
           Below `lg` the grid is a single column and cross-axis
           alignment has nothing to align against, so this is scoped.
         */}
-        {hasImage && content.image !== undefined && (
+        {imageSlot !== undefined && (
+          <div className="order-2 lg:order-none lg:self-center">{imageSlot}</div>
+        )}
+        {imageSlot === undefined && content.image !== undefined && (
           <div className="order-2 lg:order-none lg:self-center">
             <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-surface-muted">
               <Image
