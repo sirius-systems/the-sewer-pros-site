@@ -87,8 +87,8 @@ export type ServiceLaunchTier = 'launch' | 'launch_candidate' | 'phase_2_candida
  *   pageStatus   — whether the page may be published
  *
  * Example: `svc-recurring-sewer-backup-diagnosis` carries
- * launch_tier `launch_candidate` but page status `launch`. 06 §20
- * shows both explicitly.
+ * launch_tier `launch_candidate` but page status `launch`. 06's
+ * "Registry launch tier is not page status" note shows both explicitly.
  *
  * Verified: all 18 services agree between doc 06 §32 and the JSON once
  * `launch` and `launch_candidate` are both read as authorising launch.

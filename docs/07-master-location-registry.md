@@ -1936,3 +1936,9 @@ Fake Local Presence
 # 81. Final Governing Principle
 
 > **The Master Location Registry is the canonical geographic data foundation for The Sewer Pros website. Use it to maintain accurate location IDs, names, geographic types, market relationships, service-area context, page generation, schema, analytics, and internal linking. Do not treat the registry as a pre-build permission gate. Allow Claude and Claude Code to research, add, organize, and use verified geographic records freely while keeping the important distinctions between geographic existence, service coverage, and physical business presence strict.**
+
+---
+
+# Candidate Page Opportunities Cross-Reference (September 23, 2026)
+
+Enterprise, Spring Valley, Paradise, O'Fallon, Wildwood, Vista, El Cajon, Encinitas, and La Mesa are candidate location-hub page opportunities (`04-master-page-build-list.md` section 56C). Their records here describe geography only. They do not establish operational coverage, a business presence, or page approval. No duplicate records were added.

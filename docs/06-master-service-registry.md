@@ -549,6 +549,40 @@ commercial_service          7 — the commercial variants of the core and
 
 The six `core_service` records are the primary commercial service hubs — this designation is registry-verified, not newly assigned here (§9A). It affects navigation and commercial emphasis, not the taxonomy: all 18 records remain canonical, and none is deleted, collapsed, or removed from the registry by this designation.
 
+## Nine Service Pages: Six Primary Hubs and Three Supporting Services
+
+The Services section (`/services/`) contains **nine** service pages and cards in total. Six are **primary service hubs** (`core_service`); three are **supporting services** (`derived_service`). All nine keep their existing routes, remain part of the service architecture, and may be linked from the Services page and from relevant service and location pages. Supporting-service tiers are quoted exactly from `data/services/master-service-registry.json`, which is authoritative; the three are not all `launch` tier, and this document does not relabel them.
+
+| Group | Registry `record_type` | Service (registry `service_id`) | Registry `launch_tier` |
+|---|---|---|---|
+| Primary service hub | `core_service` | Sewer Camera Inspection (`svc-sewer-camera-inspection`) | `launch` |
+| Primary service hub | `core_service` | Sewer Cleaning (`svc-sewer-cleaning`) | `launch` |
+| Primary service hub | `core_service` | Hydro Jetting (`svc-hydro-jetting`) | `launch` |
+| Primary service hub | `core_service` | Sewer Cleaning & Camera Inspection (`svc-sewer-cleaning-camera-inspection`) | `launch` |
+| Primary service hub | `core_service` | Sewer Line Locating (`svc-sewer-line-locating`) | `launch` |
+| Primary service hub | `core_service` | Drain Cleaning (`svc-drain-cleaning`) | `launch` |
+| Supporting service | `derived_service` | Pre-Purchase Sewer Inspection (`svc-pre-purchase-sewer-inspection`) | `launch` |
+| Supporting service | `derived_service` | Recurring Sewer Backup Diagnosis (`svc-recurring-sewer-backup-diagnosis`) | `launch_candidate` |
+| Supporting service | `derived_service` | Preventative Sewer Maintenance (`svc-preventative-sewer-maintenance`) | `launch_candidate` |
+
+### Registry launch tier is not page status
+
+`launch_tier` in `data/services/master-service-registry.json` records **registry maturity**. Page authorization is a separate field, owned by `data/pages/approved-pages.ts` and `04-master-page-build-list.md` (§6A separates build, publication, and indexation). They are read independently and are not expected to be identical.
+
+As of the September 23, 2026 repository state, the three supporting services compare as follows:
+
+| Service | Registry `launch_tier` | Approved-page `status` | Built | `indexable` |
+|---|---|---|---|---|
+| Pre-Purchase Sewer Inspection | `launch` | `launch` | yes | true |
+| Recurring Sewer Backup Diagnosis | `launch_candidate` | `launch` | yes | true |
+| Preventative Sewer Maintenance | `launch_candidate` | `launch` | yes | true |
+
+For the two `launch_candidate` services the approved-page registry authorizes launch, and the pages are built and indexable. That is a difference between two fields, not a defect: the tier records that the registry entry has not been promoted to `launch`, while the page was approved and built under its own decision. Changing a tier does not by itself remove, noindex, or unpublish a page; any such change is a separate page-lifecycle decision recorded in the page registry. No tier or page state was changed here. Promoting the two tiers to `launch` in the registry JSON is a possible follow-up if the owner wants the fields aligned.
+
+This classification does not remove, hide, rename, reclassify, or change the indexation of any page. (The St. Louis `sewer-lateral-inspection-reporting` page is a separate `market_specific_service` record, and the independent second-opinion record is a `phase_2_candidate` that is not built.)
+
+Primary-hub priority does not automatically authorize every possible service + location page. The service x location matrix may model relationships for all nine services, while page development, production publication, and indexation remain separate lifecycle decisions.
+
 ## By `service_family` (18 total)
 
 ```text

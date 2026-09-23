@@ -679,6 +679,8 @@ The service registry determines exact canonical names.
 
 This page inventory should track implementation status.
 
+**Nine service pages (six primary, three supporting).** The Services section contains nine service pages: six primary service hubs (`core_service`: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, Drain Cleaning) and three supporting services (`derived_service`: Pre-Purchase Sewer Inspection, `launch`; Recurring Sewer Backup Diagnosis, `launch_candidate`; Preventative Sewer Maintenance, `launch_candidate`, tiers as recorded in `data/services/master-service-registry.json`). All nine keep their routes and may be linked from `/services/` and from relevant service and location pages. Primary-hub priority does not authorize every service + location page; the matrix may model all nine, while build, publication, and indexation remain separate decisions.
+
 ---
 
 # 15A. Independent Second-Opinion Page
@@ -1715,7 +1717,7 @@ Other lifecycle states:
 * **Gated or noindex:** none. The five Las Vegas records moved from `launch_pending_validation` to `launch` under DEC-080. Only the framework 404 pages emit noindex
 * **Deferred:** `svc-independent-sewer-second-opinion` (Phase 2, approved, not built, not in the registry)
 * **Retired:** none
-* **Not built and not in the registry:** audience + service, audience + location, commercial + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records
+* **Pages not built and not in the approved page registry:** audience + service, audience + location, commercial + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records. Geographic records for candidate locations may already exist in `07-master-location-registry.md`; a geographic record is not a page approval. See §56C for the proposed expansion candidates
 
 The families table in §13 to §24 describes intent. Where it says "build-ready / published", the state above applies.
 
@@ -1901,8 +1903,82 @@ Confirmed result:
 
 ## Next Actions (priority order)
 
+> Status note (September 23, 2026): commits `ac36185` and `77804aa` authored meta descriptions across the remaining pages and branded the Open Graph/Twitter titles, so items 1 and 2 appear addressed. Verify against current `main` before marking them complete. Items 3 and 4 (PENDING-018, PENDING-019) remain open.
+
 1. Author a unique meta description for `/st-louis-mo/` (Finding H1).
 2. Author unique meta, Open Graph, and Twitter descriptions for the other 62 pages sharing the fallback (Finding H2).
 3. Wire the lead-form submission endpoint tracked by PENDING-018 (Finding H3).
 4. Add TCPA consent copy for the form's text-contact option, tracked by PENDING-019.
 5. Begin evidence production for San Diego and Las Vegas. Both markets currently have no reviews or case studies; St. Louis is the only market with verified reviews. Evidence production is a future improvement task per `00-project-overview.md` §0B and does not change any page's current disposition.
+
+---
+
+# 56C. Proposed Geographic Expansion Candidates (September 23, 2026)
+
+**Lifecycle for every route below: `candidate / not built / not published / not indexable`.** These are planning candidates from an external SEO proposal, reconciled against the registry. Candidate status supports research, drafting, and development. It does not approve publication, indexation, sitemap inclusion, service coverage, or entry into `data/pages/approved-pages.ts`. Existing routes are excluded from the counts. Total: **9 candidate location hubs and 49 candidate service + location pages.**
+
+Neither candidate status nor a geographic-registry record approves publication or indexation. The candidate locations exist in `07-master-location-registry.md`; the pages or routes are not in the approved page registry. Those are separate statements.
+
+## Candidate location hubs (9)
+
+Each hub's canonical parent is its market hub (`/las-vegas-nv/`, `/st-louis-mo/`, `/san-diego-ca/`).
+
+| Market | Candidate hub routes | Count |
+|---|---|---:|
+| Las Vegas | `/las-vegas-nv/enterprise/`, `/las-vegas-nv/spring-valley/`, `/las-vegas-nv/paradise/` | 3 |
+| St. Louis | `/st-louis-mo/ofallon-mo/`, `/st-louis-mo/wildwood/` | 2 |
+| San Diego | `/san-diego-ca/vista/`, `/san-diego-ca/el-cajon/`, `/san-diego-ca/encinitas/`, `/san-diego-ca/la-mesa/` | 4 |
+
+The proposal's other Tier 1 hubs already exist in the inventory. Las Vegas Valley communities use `/las-vegas-nv/{location}/`, never standalone routes such as `/henderson-nv/`. The O'Fallon slug follows the registry (`ofallon-mo`).
+
+## Las Vegas service + location candidates (27)
+
+Canonical parent of each route: its location hub, with the canonical service page as the service parent.
+
+* **Las Vegas, Henderson, North Las Vegas** (15): each for `sewer-camera-inspection`, `sewer-cleaning`, `drain-cleaning`, `hydro-jetting`, `sewer-line-locating`, e.g. `/las-vegas-nv/henderson/sewer-camera-inspection/`
+* **Enterprise** (3): `sewer-camera-inspection`, `drain-cleaning`, `sewer-line-locating`
+* **Spring Valley** (3): `sewer-camera-inspection`, `drain-cleaning`, `sewer-cleaning`
+* **Paradise** (3): `sewer-camera-inspection`, `drain-cleaning`, `hydro-jetting`
+* **Summerlin** (3): `sewer-camera-inspection`, `sewer-cleaning`, `drain-cleaning`
+
+The proposal's "27" and "29" totals conflicted. The enumerated set is 27 (15 + 12).
+
+## St. Louis service + location candidates (10)
+
+```text
+/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/
+/st-louis-mo/st-louis-city/drain-cleaning/
+/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/
+/st-louis-mo/florissant/sewer-camera-inspection/
+/st-louis-mo/florissant/drain-cleaning/
+/st-louis-mo/st-charles/sewer-camera-inspection/
+/st-louis-mo/st-charles/sewer-cleaning/
+/st-louis-mo/ofallon-mo/sewer-camera-inspection/
+/st-louis-mo/ofallon-mo/pre-purchase-sewer-inspection/
+/st-louis-mo/wildwood/sewer-camera-inspection/
+```
+
+## San Diego service + location candidates (12)
+
+```text
+/san-diego-ca/san-diego/drain-cleaning/
+/san-diego-ca/san-diego/pre-purchase-sewer-inspection/
+/san-diego-ca/chula-vista/sewer-cleaning/
+/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/
+/san-diego-ca/oceanside/sewer-camera-inspection/
+/san-diego-ca/escondido/sewer-camera-inspection/
+/san-diego-ca/vista/sewer-camera-inspection/
+/san-diego-ca/vista/sewer-cleaning/
+/san-diego-ca/el-cajon/sewer-cleaning/
+/san-diego-ca/el-cajon/sewer-camera-inspection/
+/san-diego-ca/encinitas/pre-purchase-sewer-inspection/
+/san-diego-ca/la-mesa/sewer-camera-inspection/
+```
+
+`/san-diego-ca/mission-valley/hydro-jetting/` is an **existing** route, not a new candidate. It is under review: keep it only if local intent, evidence, and commercial or property-management relevance support a distinct page; otherwise assess consolidation under a broader San Diego page.
+
+## Conditions before any candidate is selected
+
+* Confirm market coverage and service fit; several routes need local operational confirmation, and a page proposal does not establish service coverage
+* Confirm canonical location and service data, distinct page intent, and local evidence
+* Preserve nested market URLs; imply no physical office or Google Business Profile
