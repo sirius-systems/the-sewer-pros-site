@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
 import {
   Hero,
@@ -52,10 +53,10 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
 
   const densities: SectionDensity[] = [
     'sparse', // hero
+    'standard', // proof stats
     'standard', // audience cards
     'dense', // need router
     'standard', // location chooser
-    'standard', // proof stats
     'sparse', // closing CTA
   ]
 
@@ -123,6 +124,8 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
         />
       </div>
 
+      <StatsBand density="standard" surface="default" omitIds={['markets-served']} />
+
       <Section density="standard" surface="muted" labelledBy="audiences">
         <h2
           id="audiences"
@@ -185,17 +188,17 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
           {content.needs.title}
         </h2>
         <p className="mt-3 max-w-[var(--container-reading)] text-body">{content.needs.intro}</p>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {content.needs.items.map((item) => (
             <li key={item.href + item.label}>
               <TrackedLink
                 href={item.href}
                 event="cta_click"
                 ctaLocation="section_cta"
-                className="flex min-h-14 items-center justify-between gap-3 rounded-md border border-white/30 px-4 py-3 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="flex min-h-20 items-center justify-between gap-4 rounded-md border-2 border-white/70 px-6 py-5 text-lg font-semibold text-white transition-colors hover:border-white hover:bg-accent-secondary focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <span>{item.label}</span>
-                <span aria-hidden="true">→</span>
+                <span aria-hidden="true" className="shrink-0 text-2xl leading-none">→</span>
               </TrackedLink>
             </li>
           ))}
@@ -208,28 +211,39 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
         intro={content.locations.intro}
       />
 
-      <StatsBand density="standard" surface="muted" omitIds={['markets-served']} />
-
       <CtaSection
         variant="panel"
         title={content.cta.title}
         body={content.cta.body}
         action={null}
-        secondaryAction={{ href: '/about/', label: 'Learn About The Sewer Pros' }}
         backgroundImage={ctaImage}
         proof={
-          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-            <h2 className="text-h3 font-semibold tracking-tight">Choose your market</h2>
-            <div className="mt-5 flex flex-col gap-3">
-              {marketList.map((market) => (
-                <ButtonLink key={market.id} href={`${marketPathname(market.id)}contact/`}>
-                  {market.name}
-                </ButtonLink>
-              ))}
+          <div className="flex flex-col gap-4">
+            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+              <h2 className="text-h3 font-semibold tracking-tight">Choose your market</h2>
+              <div className="mt-5 flex flex-col gap-3">
+                {marketList.map((market) => (
+                  <ButtonLink key={market.id} href={`${marketPathname(market.id)}contact/`}>
+                    {market.name}
+                  </ButtonLink>
+                ))}
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground">
+                Prefer to call? Each market page lists the number to call.
+              </p>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Prefer to call? Each market page lists the number to call.
-            </p>
+            {/*
+              Outside the white card, on the dark panel: an outlined white
+              button would be invisible on the card's white surface. It is
+              the same width as the card, so it lines up with the market
+              buttons above it.
+            */}
+            <Link
+              href="/about/"
+              className="flex min-h-16 w-full items-center justify-center gap-2 rounded-md border-2 border-white px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-white hover:text-brand focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Learn More About The Sewer Pros <span aria-hidden="true">→</span>
+            </Link>
           </div>
         }
       />
