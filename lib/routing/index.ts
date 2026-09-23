@@ -30,6 +30,7 @@ export {
   comparisonParams,
   resourceParams,
   marketHubParams,
+  marketContactParams,
   marketCatchAllParams,
   unroutedPages,
 } from './static-params'

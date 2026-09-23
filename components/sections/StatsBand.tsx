@@ -3,7 +3,8 @@ import { Section, type SectionDensity, type SectionSurface } from '@/components/
 import { SectionHeading } from './SectionHeading'
 import { CountUpValue } from './CountUpValue'
 import { foundingYear, MARKET_SCOPED_CLAIMS } from '@/data/business/organization'
-import { markets } from '@/data/markets/markets'
+import { markets, marketOperatingDetail } from '@/data/markets/markets'
+import type { MarketId } from '@/types'
 
 /**
  * Proof stats band.
@@ -37,6 +38,16 @@ export interface StatsBandProps {
   density?: SectionDensity
   surface?: SectionSurface
   id?: string
+  /**
+   * Scopes the band to one market (the market contact pages).
+   *
+   * ⚠ ST. LOUIS CLAIMS NEVER LEAVE ST. LOUIS (01 §20, DEC-072). St.
+   * Louis shows its own founding year and inspection count; San Diego
+   * shows its own founding year; Las Vegas has no operating history to
+   * state. Only the company-wide experience figure appears in all three.
+   * Omit for the sitewide band.
+   */
+  marketId?: MarketId
 }
 
 const STATS: readonly {
@@ -76,16 +87,38 @@ const STATS: readonly {
   },
 ]
 
+type Stat = (typeof STATS)[number]
+
+function marketStats(marketId: MarketId): readonly Stat[] {
+  const combined = STATS.filter((s) => s.id === 'combined-experience')
+  if (marketId === 'st-louis-mo') {
+    return STATS.filter((s) => s.id !== 'markets-served')
+  }
+  const year = marketOperatingDetail[marketId]?.foundingYear ?? 0
+  if (year === 0) return combined
+  return [
+    {
+      id: 'market-founding-year',
+      label: `Serving ${markets[marketId].city} since`,
+      value: year,
+      suffix: '',
+    },
+    ...combined,
+  ]
+}
+
 export function StatsBand({
   density = 'standard',
   surface = 'muted',
   id = 'proof',
+  marketId,
 }: StatsBandProps) {
+  const stats = marketId === undefined ? STATS : marketStats(marketId)
   return (
     <Section density={density} surface={surface} labelledBy={id}>
       <SectionHeading id={id} title="Experience behind the findings" level="h2" />
-      <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
-        {STATS.map((stat) => (
+      <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-[repeat(auto-fit,minmax(11rem,1fr))]">
+        {stats.map((stat) => (
           <div key={stat.id} className="border-l-2 border-border pl-4">
             <dt className="text-sm leading-5 text-muted-foreground">
               {stat.label}

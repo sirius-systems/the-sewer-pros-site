@@ -17,7 +17,9 @@ import type {
   ServiceLocationPageContent,
   CommercialPageContent,
   ComparisonPageContent,
+  ContactPageContent,
   CorePageContent,
+  MarketContactContent,
   HubPageContent,
   PageId,
   ResourcePageContent,
@@ -28,6 +30,7 @@ import { commercialContent } from './pages/commercial'
 import { comparisonContent } from './pages/comparisons'
 import { coreContent, homeContent, hubContent, resourceContent } from './pages/core'
 import { aboutContent } from './pages/about'
+import { contactHubContent, marketContactContent } from './pages/contact'
 import {
   sanDiegoMarketContent,
   sanDiegoLocationContent,
@@ -116,6 +119,14 @@ export function getAboutContent(id: PageId): AboutPageContent | undefined {
   return id === ('core-about' as PageId) ? aboutContent : undefined
 }
 
+export function getContactHubContent(id: PageId): ContactPageContent | undefined {
+  return id === ('core-contact' as PageId) ? contactHubContent : undefined
+}
+
+export function getMarketContactContent(id: PageId): MarketContactContent | undefined {
+  return marketContactContent[id]
+}
+
 export function getHubContent(id: PageId): HubPageContent | undefined {
   return hubContent[id]
 }
@@ -138,6 +149,9 @@ export function getResourceContent(id: PageId): ResourcePageContent | undefined 
 export const authoredPageIds: ReadonlySet<PageId> = new Set<PageId>([
   'core-home' as PageId,
   'core-about' as PageId,
+  'core-contact' as PageId,
+  'core-contact-thank-you' as PageId,
+  ...(Object.keys(marketContactContent) as PageId[]),
   ...(Object.keys(serviceContent) as PageId[]),
   ...(Object.keys(commercialContent) as PageId[]),
   ...(Object.keys(comparisonContent) as PageId[]),

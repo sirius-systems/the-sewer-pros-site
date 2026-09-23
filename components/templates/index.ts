@@ -85,3 +85,9 @@ export type { ComparisonPageTemplateProps } from './ComparisonPageTemplate'
 
 export { ResourcePageTemplate } from './ResourcePageTemplate'
 export type { ResourcePageTemplateProps } from './ResourcePageTemplate'
+
+export { ContactPageTemplate } from './ContactPageTemplate'
+export type { ContactPageTemplateProps } from './ContactPageTemplate'
+
+export { MarketContactTemplate } from './MarketContactTemplate'
+export type { MarketContactTemplateProps } from './MarketContactTemplate'

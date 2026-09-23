@@ -282,3 +282,20 @@ export const CLAIMS_REQUIRING_VERIFICATION = [
   'exclusive equipment',
   'response-time guarantees',
 ] as const
+
+/**
+ * Average customer rating, owner-confirmed accurate on 2026-09-23.
+ *
+ * ⚠ VALUE ONLY. No review count or review platform is recorded, so
+ * neither is displayed and none may be implied. Add `count` and `source`
+ * here when supplied and the contact page will show them.
+ *
+ * ⚠ VISIBLE PROOF, NOT MARKUP. Do not emit `AggregateRating` from this:
+ * without a count and a supporting source it would not meet the
+ * structured-data policy for review markup.
+ */
+export const averageRating: {
+  value: number
+  count?: number
+  source?: string
+} = { value: 4.9 }

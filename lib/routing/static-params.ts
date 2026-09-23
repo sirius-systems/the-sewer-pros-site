@@ -102,6 +102,16 @@ export function marketHubParams(): { market: string }[] {
     })
 }
 
+/** `app/[market]/contact/page.tsx` — one local contact endpoint per market. */
+export function marketContactParams(): { market: string }[] {
+  return contentReadyPages
+    .filter((page) => page.pageType === 'market-contact')
+    .flatMap((page) => {
+      const params = toMarketRouteParams(page.pathname)
+      return params === undefined ? [] : [{ market: String(params.market) }]
+    })
+}
+
 /**
  * `app/[market]/[...segments]/page.tsx`
  *
@@ -112,6 +122,9 @@ export function marketHubParams(): { market: string }[] {
  */
 export function marketCatchAllParams(): { market: string; segments: string[] }[] {
   return contentReadyPages.flatMap((page) => {
+    // Market contact pages have their own static `contact` route, which
+    // outranks this catch-all (see `marketContactParams`).
+    if (page.pageType === 'market-contact') return []
     const params = toMarketRouteParams(page.pathname)
     if (params === undefined || params.segments.length === 0) return []
     return [{ market: String(params.market), segments: params.segments }]
@@ -146,6 +159,7 @@ export function unroutedPages(staticRoutes: readonly string[]): string[] {
   }
 
   for (const { market } of marketHubParams()) claimed.add(`/${market}/`)
+  for (const { market } of marketContactParams()) claimed.add(`/${market}/contact/`)
   for (const { market, segments } of marketCatchAllParams()) {
     claimed.add(`/${market}/${segments.join('/')}/`)
   }
