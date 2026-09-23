@@ -37,7 +37,8 @@ import type { HeroBackdropSet } from './hero-backdrop'
  * ⚠ SIZING: THESE ARE FULL-SIZE FRAMES AND `output: 'export'` MEANS NO
  * RESPONSIVE DOWNSCALE
  * ---------------------------------------------------------------------------
- * 3344x1882 WebP at 199KB to 539KB. The Next image optimizer is
+ * 3344x1882 WebP at 328KB to 413KB (refreshed 2026-09-22; the original
+ * 2026-09-08 set ran 199KB to 539KB). The Next image optimizer is
  * disabled by the static export (02 §7, §8), so every visitor
  * downloads the full file at every viewport, phones included. Only
  * frame 0 is on the critical path, but the bytes are still real.
@@ -54,7 +55,7 @@ import type { HeroBackdropSet } from './hero-backdrop'
  * here would put one picture in two places on one route.
  */
 const SOURCE =
-  'Supplied by the business owner, 2026-09-08. Rendered scene, not a photograph of a Sewer Pros job.'
+  'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.'
 
 const frames = [
   {
@@ -64,15 +65,15 @@ const frames = [
     source: SOURCE,
   },
   {
-    src: '/images/markets/services-hub/the-sewer-pros-sewer-inspection-cleaning-access-hero.webp',
+    src: '/images/markets/services-hub/the-sewer-pros-services-hub-sewer-inspection-services.webp',
     describes:
-      'Camera and cleaning equipment set up at two separate exterior access points',
+      'Camera monitor and reel at an open cleanout on a residential walkway with desert landscaping',
     source: SOURCE,
   },
   {
     src: '/images/markets/services-hub/the-sewer-pros-documented-sewer-camera-findings-hero.webp',
     describes:
-      'Gloved hands at an inspection monitor showing the inside of a line, with printed still frames on the case',
+      'Inspection monitor and reel beside printed findings photos and a binder laid out on a driveway',
     source: SOURCE,
   },
   {
