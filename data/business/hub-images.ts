@@ -7,22 +7,28 @@ import {
   type ResolvedCameraImage,
 } from './camera-inspection-images'
 import {
+  cleaningImageSlots,
   resolveCleaningImage,
   type CleaningImageKey,
   type ResolvedCleaningImage,
 } from './cleaning-images'
+import {
+  resolveHydroImage,
+  type HydroImageKey,
+  type ResolvedHydroImage,
+} from './hydro-images'
 
 /**
  * One lookup over every service hub's image slots, so the shared hub
  * sections do not need to know which hub they are rendering.
  */
-export type HubImageKey = CameraImageKey | CleaningImageKey
-export type ResolvedHubImage = ResolvedCameraImage | ResolvedCleaningImage
+export type HubImageKey = CameraImageKey | CleaningImageKey | HydroImageKey
+export type ResolvedHubImage = ResolvedCameraImage | ResolvedCleaningImage | ResolvedHydroImage
 
 export function resolveHubImage(key: HubImageKey): ResolvedHubImage | null {
-  return key in cameraImageSlots
-    ? resolveCameraImage(key as CameraImageKey)
-    : resolveCleaningImage(key as CleaningImageKey)
+  if (key in cameraImageSlots) return resolveCameraImage(key as CameraImageKey)
+  if (key in cleaningImageSlots) return resolveCleaningImage(key as CleaningImageKey)
+  return resolveHydroImage(key as HydroImageKey)
 }
 
 /** Whether any of the slots would render. */

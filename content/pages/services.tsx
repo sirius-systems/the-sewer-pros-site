@@ -958,110 +958,450 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Hydro Jetting — 14 §32
      ====================================================================== */
   [id('svc-hydro-jetting')]: {
+    /*
+      ⚠ THIS PAGE IS THE SERVICE HUB, NOT A CITY PAGE. Market targeting
+      lives on the market and service + location pages; here the three
+      markets are routed to, never listed city by city. Same hub template
+      as sewer cleaning (`decisionFirst`).
+
+      ⚠ THE POSITION IS METHOD SELECTION, NOT "WE JET EVERYTHING". Hydro
+      jetting is a cleaning method whose suitability depends on line
+      condition, access, and the restriction. Copy never says it is safe for
+      every pipe, non-invasive, permanent, like-new, or guaranteed.
+
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No pricing, timeframe, guarantee,
+      certification, availability window, emergency or same-day service,
+      equipment specification or review metric. No customer deliverable is
+      promised (video, written report, before and after photos) and no
+      camera-before or camera-after policy is stated, because neither is
+      documented for every market, so the deliverables panel is
+      deliberately absent. Repair stays educational: jetting does not
+      repair a pipe (CLAUDE.md §9, §24).
+    */
+    seoTitle: 'Hydro-Jetting for Buildup and Recurring Blockages',
     metaDescription:
-      'Learn how hydro jetting can help clear buildup and restore flow in sewer and drain lines when the service is appropriate.',
+      'Learn what hydro-jetting is, when it may be appropriate, when a camera inspection may come first, and how it differs from sewer and drain cleaning. Serving St. Louis, San Diego, and Las Vegas.',
     hero: {
-      eyebrow: 'Cleaning',
-      title: 'Hydro Jetting',
+      eyebrow: 'Sewer and Drain Cleaning Method',
+      title: 'Hydro-Jetting for Buildup, Recurring Blockages, and Sewer-Line Cleaning',
+      primaryAction: { href: '#choose-market', label: 'Choose Your Location' },
+      secondaryAction: { href: '/contact/', label: 'Call About a Sewer Problem' },
       intro: (
-        <p>
-          High-pressure water cleaning that scours the pipe wall rather than
-          punching a hole through a blockage, appropriate for some lines and
-          conditions, and not for others.
-        </p>
+        <>
+          <p>
+            Hydro-jetting uses controlled high-pressure water to clean certain
+            buildup, debris, grease, roots, and other material from accessible
+            sewer or drain lines. Whether it is appropriate depends on the
+            line’s condition, access, the type of blockage, and the
+            technician’s assessment.
+          </p>
+          <p>
+            <a href="#what-it-can-identify" className="font-semibold underline underline-offset-4">
+              Not sure whether hydro-jetting is right for your line?
+            </a>
+          </p>
+        </>
       ),
     },
-    body: (
-      <>
-        <h2>How hydro jetting works</h2>
-        <p>
-          A hose with a specialised nozzle is fed into the line and delivers
-          water at high pressure. Rear-facing jets propel the hose forward and
-          scour material off the pipe wall, flushing it downstream.
-        </p>
-        <p>
-          The distinction that matters: mechanical clearing can open a channel
-          through a blockage, while jetting is capable of removing material from
-          the full circumference of the pipe. That difference is why jetting is
-          often chosen for accumulation rather than a single obstruction.
-        </p>
-
-        <h2>What it is well suited to</h2>
-        <ul>
-          <li>Grease accumulation, particularly in food-service lines</li>
-          <li>Soap and sediment buildup narrowing the line over time</li>
-          <li>Scale on the interior wall</li>
-          <li>Sludge in lines carrying heavy or continuous volume</li>
-          <li>Root material, depending on extent and the line&rsquo;s condition</li>
-        </ul>
-
-        <h2>When hydro jetting may not be appropriate</h2>
-        <p>
-          Hydro jetting is not automatically the right answer for every
-          blockage. High-pressure water applied to a line that is already
-          structurally compromised can make a bad situation worse.
-        </p>
-        <ul>
-          <li>
-            Lines with known cracks, collapsed sections, or severe
-            deterioration may not be suitable candidates.
-          </li>
-          <li>
-            Older or brittle pipe materials warrant knowing the line&rsquo;s
-            condition before applying pressure to it.
-          </li>
-          <li>
-            A single localised obstruction may not require jetting at all.
-          </li>
-        </ul>
-        <p>
-          This is the argument for inspecting before jetting where the
-          line&rsquo;s condition is unknown, and for inspecting afterward to
-          confirm what the cleaning revealed.
-        </p>
-
-        <h2>Commercial use</h2>
-        <p>
-          Commercial kitchen and high-volume lines accumulate grease and solids
-          faster than residential lines, which is why jetting appears regularly
-          in commercial maintenance rather than only as a response to a backup.
-        </p>
-      </>
-    ),
     process: [
-      { title: 'Establish the line condition', description: 'Where condition is unknown, inspect before applying pressure.' },
-      { title: 'Set up access' },
-      { title: 'Jet the line', description: 'Scour accumulated material from the pipe wall.' },
-      { title: 'Re-inspect', description: 'Confirm the result and see the pipe now that it is clear.' },
+      {
+        title: 'Discuss the drainage concern',
+        description:
+          'The team gathers details about symptoms, affected fixtures, previous service, property type, and whether the issue is active or recurring.',
+      },
+      {
+        title: 'Assess whether hydro-jetting is appropriate',
+        description:
+          'The technician considers access, the suspected restriction, known or visible pipe condition, and whether an inspection or another service is a better starting point.',
+      },
+      {
+        title: 'Perform the recommended cleaning service',
+        description:
+          'When hydro-jetting is appropriate, controlled water pressure is used to clean the accessible pipe section.',
+      },
+      {
+        title: 'Review the work and next steps',
+        description:
+          'You receive a clear explanation of the work performed, relevant observed information, and recommended follow-up when needed.',
+      },
     ],
+    hub: {
+      decisionFirst: true,
+      mobileBar: true,
+      defaultServiceId: 'svc-hydro-jetting',
+      processIcons: ['explanation', 'checklist', 'pipe', 'document'],
+      /*
+        IMAGE SLOTS. Save the real files at these paths and they are used at
+        the next build; until then development shows a labelled placeholder
+        and production shows nothing (see
+        `public/images/services/hydro-jetting/README.md` for the shot list).
+      */
+      images: {
+        hero: '/images/services/hydro-jetting/hydro-jetting-hero-16x9.webp',
+        comparison: '/images/services/hydro-jetting/hydro-jetting-comparison-16x9.webp',
+        request: '/images/services/hydro-jetting/hydro-jetting-request-16x9.webp',
+        closing: '/images/services/hydro-jetting/hydro-jetting-closing-16x9.webp',
+        definition: ['hydro-definition'],
+        process: 'hydro-process',
+      },
+      headings: {
+        process: 'What happens during a hydro-jetting visit?',
+        faq: 'Hydro-jetting questions',
+      },
+      definition: {
+        id: 'what-is-hydro-jetting',
+        label: 'Quick answer',
+        title: 'What is hydro-jetting?',
+        answer:
+          'Hydro-jetting is a sewer and drain cleaning method that uses controlled high-pressure water to remove certain buildup, debris, grease, roots, and blockages from accessible pipe sections. It may be used for some recurring drainage problems, but it is not automatically appropriate for every line. A technician may recommend an inspection or another cleaning method based on the pipe’s condition, access, and the suspected cause of the restriction.',
+        supporting: [],
+      },
+      symptomRouter: {
+        id: 'could-hydro-jetting-be-right',
+        title: 'Could hydro-jetting be the right next step?',
+        intro:
+          'Start with what you are seeing. Each situation points to the service or question that usually fits it best.',
+        items: [
+          {
+            status: 'Recurring issue',
+            urgency: 'recurring',
+            title: 'The clog keeps returning',
+            description:
+              'If a line repeatedly clogs after clearing, hydro-jetting may be considered for certain buildup or debris, but the pipe’s condition should guide the method.',
+            actionLabel: 'Ask about hydro-jetting',
+            href: '#request-hydro-jetting',
+          },
+          {
+            status: 'Possible buildup',
+            title: 'Grease, scale, sludge, or buildup is suspected',
+            description:
+              'Hydro-jetting may help clean certain deposits where it is appropriate for the line.',
+            actionLabel: 'Explore hydro-jetting',
+            href: '#what-hydro-jetting-may-help-with',
+          },
+          {
+            status: 'Multiple fixtures',
+            title: 'Several fixtures drain slowly or gurgle',
+            description:
+              'A main-line issue may need evaluation before a cleaning method is chosen.',
+            actionLabel: 'Discuss a sewer problem',
+            pageId: id('svc-sewer-cleaning'),
+          },
+          {
+            status: 'Possible roots',
+            title: 'Roots may be affecting the line',
+            description:
+              'The cleaning method depends on visible conditions and pipe integrity, which a camera can help show.',
+            actionLabel: 'Schedule a camera inspection',
+            pageId: id('svc-sewer-camera-inspection'),
+          },
+          {
+            status: 'Single fixture',
+            title: 'One sink or tub is clogged',
+            description:
+              'A problem at one fixture is often a branch-line or fixture clog, which drain cleaning is designed to address.',
+            actionLabel: 'Explore drain cleaning',
+            pageId: id('svc-drain-cleaning'),
+          },
+          {
+            status: 'Condition unknown',
+            title: 'Pipe condition is unknown or damage is suspected',
+            description:
+              'Start with a camera inspection so the visible condition of the line can inform the next step.',
+            actionLabel: 'Schedule a sewer camera inspection',
+            pageId: id('svc-sewer-camera-inspection'),
+          },
+        ],
+      },
+      materials: {
+        id: 'what-hydro-jetting-may-help-with',
+        title: 'What hydro-jetting may help remove',
+        intro:
+          'Hydro-jetting may be used to clean certain materials inside accessible sewer or drain lines. The actual approach depends on the line’s material, age, known condition, access points, and the nature of the restriction.',
+        tiles: [
+          'Grease buildup',
+          'Sludge and organic material',
+          'Scale or mineral accumulation',
+          'Soap residue',
+          'Some root intrusion',
+          'Loose debris and soft blockages',
+        ],
+        columns: ['Material or condition', 'How hydro-jetting may help', 'Important qualification'],
+        rows: [
+          {
+            item: 'Grease and sludge',
+            help: 'Can help break up and flush certain accumulated material.',
+            qualification: 'Suitability depends on access, pipe condition, and system context.',
+          },
+          {
+            item: 'Scale or mineral buildup',
+            help: 'May help remove some interior buildup affecting flow.',
+            qualification: 'Heavier buildup or compromised pipe may require additional evaluation.',
+          },
+          {
+            item: 'Loose debris',
+            help: 'Can help move certain debris through the accessible line.',
+            qualification: 'The source and location of the debris still matter.',
+          },
+          {
+            item: 'Root intrusion',
+            help: 'May help address some accessible roots.',
+            qualification: 'Root recurrence, pipe damage, and line condition may call for an inspection.',
+          },
+          {
+            item: 'Organic buildup',
+            help: 'May help restore flow when buildup is contributing to a restriction.',
+            qualification: 'Results depend on the cause and the condition of the pipe.',
+          },
+        ],
+      },
+      limitations: {
+        title: 'When hydro-jetting may not be the first step',
+        intro:
+          'Hydro-jetting is a cleaning method, not a universal diagnosis or repair solution. When pipe condition is uncertain, a camera inspection may help identify visible conditions and determine a more appropriate next step.',
+        canIdentifyTitle: 'Start with inspection or assessment when',
+        canIdentify: [
+          'The pipe’s condition is unknown',
+          'A collapse, crack, offset, or other structural concern is suspected',
+          'The property has an older or potentially fragile line',
+          'The problem keeps returning without a known cause',
+          'Access is limited or uncertain',
+          'The blockage location is not known',
+        ],
+        cannotTitle: 'Consider another service path when',
+        cannot: [
+          'One fixture is affected: drain cleaning may fit better',
+          'A sewer line needs to be seen: a camera inspection may fit better',
+          'The sewer route needs identification: line locating may fit better',
+          'A standard accessible blockage is suspected: ask about sewer cleaning',
+          'A home purchase decision is involved: a pre-purchase sewer inspection may fit better',
+        ],
+        related: {
+          lead: 'If the line’s condition is uncertain,',
+          pageId: id('svc-sewer-camera-inspection'),
+          label: 'a sewer camera inspection can help identify visible conditions and inform the next decision.',
+        },
+      },
+      comparison: {
+        id: 'hydro-jetting-vs-related-services',
+        columns: ['Service', 'Main purpose', 'Often considered when'],
+        title: 'Hydro-jetting vs. sewer cleaning, drain cleaning, and camera inspection',
+        intro:
+          'These services sound alike but answer different questions. Compare what each one does and where it stops.',
+        rows: [
+          {
+            service: 'Hydro-jetting',
+            purpose: 'Clean certain buildup and restrictions with controlled high-pressure water',
+            fit: 'Buildup or recurring material may be affecting flow. It is not appropriate for every line or for an unknown pipe condition.',
+          },
+          {
+            service: 'Sewer cleaning',
+            purpose: 'Clear certain accessible main-line restrictions',
+            fit: 'Multiple fixtures are affected or a main-line blockage is suspected. It may not identify why a problem keeps returning.',
+            pageId: id('svc-sewer-cleaning'),
+          },
+          {
+            service: 'Drain cleaning',
+            purpose: 'Address a fixture or branch-line clog',
+            fit: 'One sink, shower, tub, or toilet is affected. It may not address a main sewer-line issue.',
+            pageId: id('svc-drain-cleaning'),
+          },
+          {
+            service: 'Sewer camera inspection',
+            purpose: 'View accessible interior line conditions',
+            fit: 'The cause, location, or line condition is uncertain. It does not itself clean a restriction.',
+            pageId: id('svc-sewer-camera-inspection'),
+          },
+          {
+            service: 'Line locating',
+            purpose: 'Identify the approximate underground path of the line',
+            fit: 'Excavation, construction, or planning is involved. It does not clean or inspect inside the line.',
+            pageId: id('svc-sewer-line-locating'),
+          },
+        ],
+        note: 'If sewage is actively backing up, contact the team to discuss the immediate issue and whether cleaning or assessment should come first.',
+      },
+      marketRouter: {
+        id: 'choose-market',
+        title: 'Find hydro-jetting service in your market',
+        intro:
+          'Choose your market for local service details and ways to request service.',
+        items: [
+          {
+            pageId: id('market-st-louis-mo'),
+            description: 'Explore hydro-jetting service availability across the St. Louis region.',
+            actionLabel: 'Hydro-Jetting in St. Louis',
+          },
+          {
+            pageId: id('market-san-diego-ca'),
+            description: 'Explore hydro-jetting service availability across the San Diego region.',
+            actionLabel: 'Hydro-Jetting in San Diego',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            description: 'Explore hydro-jetting service availability across the Las Vegas Valley.',
+            actionLabel: 'Hydro-Jetting in Las Vegas',
+          },
+        ],
+      },
+      audiences: {
+        id: 'hydro-jetting-for-your-situation',
+        title: 'Hydro-jetting support for different property needs',
+        intro:
+          'Different people reach a cleaning question from different starting points. These pages cover what matters most to each.',
+        items: [
+          {
+            pageId: id('aud-property-managers'),
+            audience: 'Property managers',
+            description:
+              'Coordinate cleaning needs for occupied or multi-unit properties, and keep observations to share with owners or maintenance teams.',
+            actionLabel: 'Property manager support',
+          },
+          {
+            pageId: id('aud-hoa-communities'),
+            audience: 'HOA communities',
+            description:
+              'Understand cleaning options for shared drainage concerns that recur across a community.',
+            actionLabel: 'HOA community support',
+          },
+          {
+            pageId: id('aud-home-inspectors'),
+            audience: 'Home inspectors',
+            description:
+              'Refer property concerns into an appropriate evaluation path.',
+            actionLabel: 'Working with home inspectors',
+          },
+          {
+            pageId: id('aud-real-estate-agents'),
+            audience: 'Real estate agents',
+            description:
+              'Help clients decide whether inspection or cleaning is the relevant next step.',
+            actionLabel: 'Transaction support',
+          },
+        ],
+      },
+      evidence: {
+        id: 'hydro-jetting-field-experience',
+        title: 'A condition-aware approach to sewer-line cleaning',
+        intro:
+          'The right cleaning method depends on what is happening inside the accessible line. The Sewer Pros can use inspection findings, observed symptoms, access conditions, and property context to help determine whether hydro-jetting is an appropriate next step.',
+        caveat:
+          'These are examples from individual properties, with identifying details removed. Findings and methods vary by line, access, and situation.',
+        items: [
+          {
+            slot: 'hydro-equipment',
+            title: 'Equipment used by the team',
+            description:
+              'Equipment is chosen for the line and the suspected restriction, and the technician leads the assessment.',
+          },
+          {
+            slot: 'hydro-monitor',
+            title: 'Reviewing the line on a monitor',
+            description:
+              'When a camera is used, the technician reviews visible conditions on a monitor. The view covers only the portions of the line the camera can reach.',
+          },
+        ],
+      },
+      request: {
+        id: 'request-hydro-jetting',
+        title: 'Ask about hydro-jetting',
+        intro:
+          'Tell us what you have noticed, which fixtures are affected, whether the problem has returned after prior clearing, and where the property is. The Sewer Pros provides sewer inspection, cleaning, and diagnostic services across St. Louis, San Diego, and Las Vegas.',
+      },
+      closing: {
+        title: 'Get clear guidance on the right sewer-line cleaning method',
+        intro: [
+          'Select your market to ask about hydro-jetting, discuss a recurring drainage problem, or determine whether sewer cleaning or a camera inspection may be a better starting point.',
+          'Use the form to request service or ask about availability for your property.',
+        ],
+      },
+    },
     faq: [
       {
-        question: 'Is hydro jetting better than snaking?',
+        question: 'What is hydro-jetting used for?',
         answer: (
           <p>
-            They do different jobs. Mechanical clearing is often the right tool
-            for a discrete obstruction; jetting removes accumulation from the
-            pipe wall. Neither is universally superior, and the line&rsquo;s
-            condition affects which is appropriate.
+            Hydro-jetting may be used to clean certain buildup, debris, grease,
+            roots, and restrictions from accessible sewer or drain lines.
+            Whether it is appropriate depends on the pipe’s condition, access,
+            the suspected material in the line, and technician assessment.
           </p>
         ),
       },
       {
-        question: 'Can hydro jetting damage a sewer line?',
+        question: 'Is hydro-jetting safe for older sewer pipes?',
         answer: (
           <p>
-            High-pressure water in an already-compromised line carries real
-            risk. That is why knowing the condition first matters, particularly
-            with older pipe or a line with a history of structural problems.
+            It may be appropriate in some situations, but older or
+            unknown-condition pipes should be assessed carefully. A camera
+            inspection may help identify visible conditions before selecting a
+            cleaning method.
+          </p>
+        ),
+      },
+      {
+        question: 'Can hydro-jetting remove tree roots?',
+        answer: (
+          <p>
+            Hydro-jetting may help address some accessible root intrusion, but
+            root recurrence and pipe condition still matter. If roots have
+            entered through a damaged or separated pipe section, cleaning alone
+            may not resolve the underlying issue.
+          </p>
+        ),
+      },
+      {
+        question: 'What is the difference between hydro-jetting and snaking?',
+        answer: (
+          <p>
+            A cable or “snake” typically works mechanically to clear or break
+            through a restriction. Hydro-jetting uses controlled high-pressure
+            water to clean material from the accessible interior of a pipe. The
+            best method depends on the restriction and the line condition.
+          </p>
+        ),
+      },
+      {
+        question: 'Do I need a camera inspection before hydro-jetting?',
+        answer: (
+          <p>
+            Not every situation follows the same workflow. However, a camera
+            inspection may be recommended when the line condition, blockage
+            location, or cause of recurring problems is uncertain.
+          </p>
+        ),
+      },
+      {
+        question: 'Can hydro-jetting fix a broken sewer line?',
+        answer: (
+          <p>
+            No. Hydro-jetting is a cleaning method and does not repair broken,
+            collapsed, separated, or severely damaged pipe sections.
+          </p>
+        ),
+      },
+      {
+        question: 'Can hydro-jetting help a multi-unit or managed property?',
+        answer: (
+          <p>
+            It may be relevant for certain recurring drainage or buildup
+            concerns, depending on the property’s line configuration, service
+            history, access, and condition. Share which units are affected and
+            how often the problem occurs when you reach out.
           </p>
         ),
       },
     ],
     relatedPageIds: [
       id('svc-sewer-cleaning'),
-      id('cmp-hydro-vs-snaking'),
       id('svc-sewer-camera-inspection'),
+      id('svc-drain-cleaning'),
+      id('cmp-hydro-vs-snaking'),
     ],
+    cta: {
+      title: 'Get clear guidance on the right sewer-line cleaning method',
+      body: 'Choose your market to ask about hydro-jetting, discuss a recurring drainage problem, or ask whether a camera inspection may be a better starting point.',
+    },
   },
 
   /* ======================================================================

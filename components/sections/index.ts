@@ -248,6 +248,7 @@ export {
   DefinitionSection,
   ScheduleGrid,
   LimitationsPanel,
+  MaterialsSection,
   InspectionProcess,
   AudiencePathways,
   EvidenceGallery,
