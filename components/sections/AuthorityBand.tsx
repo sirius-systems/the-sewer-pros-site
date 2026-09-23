@@ -1,8 +1,14 @@
 import type { SVGProps } from 'react'
 import Link from 'next/link'
-import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  ButtonLink,
+  type ButtonVariant,
+  type SectionDensity,
+} from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { PRIMARY_CTA } from '@/components/layout/cta'
+import { CameraIcon, DecisionIcon, EyeIcon, PipeIcon } from './section-icons'
 import { authorityProofPoints } from '@/data/business/authority'
 import {
   authorityProcess,
@@ -99,7 +105,25 @@ interface AuthorityBandProofPointsProps extends AuthorityBandBaseProps {
    * at moments of rising intent".
    */
   action?: { href: string; label: string } | null
+  /**
+   * A small decorative mark beside each card heading. Off by default:
+   * eight templates render this band and only the sewer camera hub asked.
+   *
+   * ⚠ POSITIONAL. The marks are camera, eye, pipe, scale, matched to the
+   * four points in `authorityProofPoints` order. With any other count they
+   * are not drawn rather than guessed at.
+   */
+  icons?: boolean
+  /**
+   * The button's variant. Defaults to `secondary`, the light button every
+   * other page renders. `primary` is the green conversion colour, the
+   * same choice the `process` variant already makes on this surface
+   * (owner direction 2026-09-07: label 5.45:1, fill boundary below 3:1).
+   */
+  actionVariant?: ButtonVariant
 }
+
+const POINT_ICONS = [CameraIcon, EyeIcon, PipeIcon, DecisionIcon] as const
 
 interface AuthorityBandProcessProps extends AuthorityBandBaseProps {
   variant: 'process'
@@ -487,7 +511,15 @@ export function AuthorityBand(props: AuthorityBandProps) {
     )
   }
 
-  const { eyebrow, title, intro, action = PRIMARY_CTA } = props
+  const {
+    eyebrow,
+    title,
+    intro,
+    action = PRIMARY_CTA,
+    icons = false,
+    actionVariant = 'secondary',
+  } = props
+  const showIcons = icons && authorityProofPoints.length === POINT_ICONS.length
 
   return (
     <Section density={density} surface="brand" labelledBy={id}>
@@ -539,15 +571,28 @@ export function AuthorityBand(props: AuthorityBandProps) {
             : 'sm:grid-cols-3'
         }`}
       >
-        {authorityProofPoints.map((point) => (
-          <li
-            key={point.label}
-            className="rounded-md border border-white/15 p-6"
-          >
-            <h3 className="text-base font-medium">{point.label}</h3>
-            <p className="mt-1 text-sm leading-6 opacity-80">{point.detail}</p>
-          </li>
-        ))}
+        {authorityProofPoints.map((point, index) => {
+          const Icon = showIcons ? POINT_ICONS[index] : undefined
+          return (
+            <li
+              key={point.label}
+              className="rounded-md border border-white/15 p-6"
+            >
+              {/*
+                ⚠ THE MARK IS `aria-hidden` AND SECONDARY: 24px, 80% white,
+                beside a heading that already names the card. Same size,
+                colour and gap on all four, so they align.
+              */}
+              <div className="flex items-center gap-3">
+                {Icon !== undefined && (
+                  <Icon aria-hidden="true" className="h-6 w-6 shrink-0 text-white/80" />
+                )}
+                <h3 className="text-base font-medium">{point.label}</h3>
+              </div>
+              <p className="mt-1 text-sm leading-6 opacity-80">{point.detail}</p>
+            </li>
+          )
+        })}
       </ul>
 
       {action !== null && (
@@ -558,7 +603,7 @@ export function AuthorityBand(props: AuthorityBandProps) {
             colour against the brand colour, and those two are too close
             in value to carry a button.
           */}
-          <ButtonLink href={action.href} variant="secondary">
+          <ButtonLink href={action.href} variant={actionVariant}>
             {action.label}
           </ButtonLink>
         </div>

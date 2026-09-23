@@ -1,5 +1,11 @@
 import type { ReactNode } from 'react'
-import { Section, Accordion, AccordionItem, type SectionSurface } from '@/components/ui'
+import {
+  Section,
+  Accordion,
+  AccordionItem,
+  type SectionDensity,
+  type SectionSurface,
+} from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 
 /**
@@ -75,6 +81,12 @@ export interface FaqSectionProps {
    * uses the container's `standard` width instead.
    */
   columns?: 1 | 2
+  /**
+   * Vertical spacing. Defaults to `dense`, which every existing caller
+   * renders. A page giving the FAQ its own band passes `standard` for
+   * clearer top and bottom room.
+   */
+  density?: SectionDensity
 }
 
 /**
@@ -108,6 +120,7 @@ export function FaqSection({
   questionLevel = 'h3',
   surface = 'default',
   columns = 1,
+  density = 'dense',
 }: FaqSectionProps) {
   // 18 §120 — render nothing rather than an empty shell.
   if (entries.length === 0) return null
@@ -136,7 +149,7 @@ export function FaqSection({
     const mid = Math.ceil(entries.length / 2)
 
     return (
-      <Section density="dense" surface={surface} labelledBy={id}>
+      <Section density={density} surface={surface} labelledBy={id}>
         <SectionHeading
           id={id}
           eyebrow={eyebrow}
@@ -153,7 +166,7 @@ export function FaqSection({
   }
 
   return (
-    <Section density="dense" width="reading" surface={surface} labelledBy={id}>
+    <Section density={density} width="reading" surface={surface} labelledBy={id}>
       <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro} />
 
       <div className="mt-8">{renderList(entries, 0)}</div>

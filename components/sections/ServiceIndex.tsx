@@ -120,6 +120,13 @@ export interface ServiceIndexProps {
    */
   equalColumns?: boolean
   /**
+   * Desktop column count for the `cards` variant. Default 3, which is what
+   * every existing caller renders. `2` gives a two-by-two grid for four
+   * items. Written out as literal classes because Tailwind scans source
+   * text and a template string would produce no class.
+   */
+  columns?: 2 | 3
+  /**
    * Surface for the index band.
    *
    * Defaults to `default` so existing pages are unchanged. A composing
@@ -174,6 +181,7 @@ export function ServiceIndex({
   variant = 'index',
   flagshipPageId,
   equalColumns = false,
+  columns = 3,
   className,
 }: ServiceIndexProps) {
   // Gated pages drop out rather than failing the build — a service
@@ -341,7 +349,12 @@ export function ServiceIndex({
       >
         <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
 
-        <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul
+          className={cn(
+            'mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2',
+            columns === 3 && 'lg:grid-cols-3',
+          )}
+        >
           {links.map((link) => {
             const image = images.get(link.pageId)
             const description = descriptions.get(link.pageId)

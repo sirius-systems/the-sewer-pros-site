@@ -1,14 +1,21 @@
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Section, Callout, Card, CardGrid, LinkCard, ButtonLink } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
-import { CheckIcon } from './section-icons'
+import {
+  AccessPointIcon,
+  CameraIcon,
+  CheckIcon,
+  DocumentCheckIcon,
+  ExplanationIcon,
+} from './section-icons'
 import { CameraImageSlot } from './CameraImageSlot'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
 import { getPage } from '@/data/pages'
 import { markets } from '@/data/markets/markets'
 import { marketImages } from '@/data/business/card-images'
-import { anyCameraImage } from '@/data/business/camera-inspection-images'
+import { anyCameraImage, resolveCameraImage } from '@/data/business/camera-inspection-images'
 import type { MarketId, ServiceHubContent } from '@/types'
 
 /**
@@ -88,41 +95,8 @@ export function MarketRouter({ content }: { content: NonNullable<Hub['marketRout
    Definition + pipe-path diagram
    ========================================================================== */
 
-/**
- * A labelled illustration, not footage. Side view: a house, its
- * cleanout, the accessible line, and the camera head partway along it.
- * It shows the mechanism only, and says so in its caption.
- */
-function PipePathDiagram({ label }: { label: string }) {
-  return (
-    <svg
-      viewBox="0 0 480 220"
-      role="img"
-      aria-label={label}
-      className="h-auto w-full text-foreground"
-    >
-      <rect x="0" y="120" width="480" height="100" className="fill-surface-muted" />
-      <line x1="0" y1="120" x2="480" y2="120" className="stroke-border" strokeWidth="2" />
-      {/* house */}
-      <polygon points="30,80 90,40 150,80" className="fill-none stroke-current" strokeWidth="2" />
-      <rect x="40" y="80" width="100" height="40" className="fill-none stroke-current" strokeWidth="2" />
-      {/* cleanout */}
-      <rect x="160" y="108" width="14" height="12" className="fill-none stroke-current" strokeWidth="2" />
-      {/* sewer line */}
-      <path d="M100 120 V150 H430" className="fill-none stroke-current" strokeWidth="10" strokeLinecap="round" opacity="0.25" />
-      <path d="M167 120 V150 H360" className="fill-none stroke-accent-secondary" strokeWidth="3" strokeDasharray="6 6" />
-      {/* camera head */}
-      <circle cx="360" cy="150" r="9" className="fill-accent-secondary" />
-      <text x="167" y="100" textAnchor="middle" className="fill-current text-[11px]">Access point</text>
-      <text x="300" y="185" textAnchor="middle" className="fill-current text-[11px]">Accessible line</text>
-      <text x="360" y="130" textAnchor="middle" className="fill-current text-[11px]">Camera</text>
-    </svg>
-  )
-}
-
 export function DefinitionSection({ content }: { content: NonNullable<Hub['definition']> }) {
   const id = 'what-is-a-sewer-camera-inspection'
-  const hasPhotos = anyCameraImage(['monitor', 'equipment'])
   return (
     <Section density="standard" surface="default" labelledBy={id}>
       <div className="grid gap-10 lg:grid-cols-[7fr_5fr] lg:items-start">
@@ -137,22 +111,78 @@ export function DefinitionSection({ content }: { content: NonNullable<Hub['defin
             </p>
           ))}
         </div>
-        <figure>
-          <div className="rounded-md border border-border bg-surface p-4">
-            <PipePathDiagram label={content.diagramLabel} />
-          </div>
-          <figcaption className="mt-2 text-caption text-muted-foreground">
-            {content.diagramCaption}
-          </figcaption>
-        </figure>
+        {/* 4:3 frame matching the files, so nothing is cropped or stretched. */}
+        <CameraImageSlot slot="process" sizes="(min-width: 1024px) 40vw, 100vw" />
       </div>
-      {hasPhotos && (
+      {anyCameraImage(['monitor', 'equipment']) && (
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <CameraImageSlot slot="monitor" sizes="(min-width: 640px) 45vw, 100vw" />
           <CameraImageSlot slot="equipment" sizes="(min-width: 640px) 45vw, 100vw" />
         </div>
       )}
     </Section>
+  )
+}
+
+/* ==========================================================================
+   When to schedule
+   ========================================================================== */
+
+/**
+ * Six text cards over a full-width photograph.
+ *
+ * ⚠ A DARK SCRIM, THE SAME `black/55` `Section`'S `backgroundImage` AND THE
+ * HERO USE. That value was measured against pure white, the brightest
+ * frame a photograph can present, where opaque white text gives 4.76:1
+ * against the 4.5:1 floor (see `Section`). Do not lighten it without
+ * redoing the measurement. The heading and intro are therefore white;
+ * the cards stay opaque white with dark text, so they do not depend on
+ * the scrim.
+ *
+ * ⚠ THE IMAGE IS DECORATIVE (`alt=""`); the heading and cards carry the
+ * meaning. Cover-cropped and centred, since the pipe vanishing point is
+ * near the middle of the frame.
+ */
+export function ScheduleGrid({
+  id,
+  title,
+  intro,
+  items,
+  imageSrc,
+}: {
+  id: string
+  title: string
+  intro: string
+  items: readonly { title: string; description: string }[]
+  imageSrc: string
+}) {
+  return (
+    <div className="relative isolate overflow-hidden">
+      <Image
+        src={imageSrc}
+        alt=""
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover object-center"
+      />
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      <Section density="standard" surface="none" labelledBy={id}>
+        <div className="max-w-[var(--container-reading)]">
+          <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance text-white">
+            {title}
+          </h2>
+          <p className="mt-4 text-body-lg text-white">{intro}</p>
+        </div>
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item) => (
+            <Card key={item.title}>
+              <h3 className="text-body font-semibold text-foreground">{item.title}</h3>
+              <p className="mt-2 text-body-sm text-muted-foreground">{item.description}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+    </div>
   )
 }
 
@@ -175,7 +205,9 @@ export function LimitationsPanel({ content }: { content: NonNullable<Hub['limita
     content.related !== undefined ? resolveApprovedLink(content.related.pageId) : undefined
   return (
     <Section density="dense" surface="muted" labelledBy={id}>
-      <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
+      <SectionHeading id={id} title={content.title} />
+      {/* Full content width, not the heading's reading measure. */}
+      <p className="mt-4 text-body-lg text-muted-foreground">{content.intro}</p>
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <Card className="bg-surface">
           <h3 className="text-h4 font-semibold text-foreground">{content.canIdentifyTitle}</h3>
@@ -213,22 +245,123 @@ export function LimitationsPanel({ content }: { content: NonNullable<Hub['limita
 }
 
 /* ==========================================================================
-   Before your appointment
+   Process steps + "Before your inspection" + image
    ========================================================================== */
 
-export function PrepPanel({ content }: { content: NonNullable<Hub['prep']> }) {
+/**
+ * The four-step sequence, its preparation checklist and the process
+ * illustration, as one section.
+ *
+ * ⚠ ONE SECTION, NOT `ProcessSteps` PLUS A PANEL. The steps, the
+ * checklist and the picture answer one question ("what happens").
+ *
+ * ⚠ DISTINCT FROM `LimitationsPanel` ABOVE, ON PURPOSE. That section is
+ * muted gray and dense; this one is white, `standard` density, with a
+ * rule on top and bottom, so the two consecutive sections read as two.
+ * The step cards take the muted surface so they still separate from
+ * the white ground. Both keep the same container, heading style and
+ * two-column rhythm, so they still read as one family.
+ *
+ * ⚠ THE MARKS ARE `aria-hidden` (`baseIconProps`). Each sits above a
+ * visible heading that names the step, and sequence comes from the
+ * `<ol>`, so no numeral is rendered or read out twice.
+ *
+ * ⚠ THE PICTURE IS THE PROCESS ILLUSTRATION, in a frame matching the
+ * file's 4:3, so no equipment is cropped. It is also used in the
+ * definition section above; both captions say it is an illustration.
+ */
+const STEP_ICONS = [
+  ExplanationIcon,
+  AccessPointIcon,
+  CameraIcon,
+  DocumentCheckIcon,
+] as const
+
+export function InspectionProcess({
+  title,
+  steps,
+  prep,
+}: {
+  title: string
+  steps: readonly { title: string; description?: string }[]
+  prep?: Hub['prep']
+}) {
+  const id = 'how-it-works'
+  const image = resolveCameraImage('process')
   return (
-    <Section density="dense" surface="default">
-      <Callout kind="good-to-know" label={content.title}>
-        <ul className="space-y-2">
-          {content.items.map((item) => (
-            <li key={item} className="flex gap-2">
-              <span aria-hidden="true" className="text-muted-foreground">-</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </Callout>
+    <Section density="standard" surface="default" labelledBy={id} className="border-y border-border">
+      {/*
+        ⚠ ONE GRID, THREE ROWS, SO THE PICTURE CAN LINE UP WITH THE CARDS.
+        At `lg` the heading is row 1, the 2x2 cards and the picture share
+        row 2, and the checklist is row 3, left column only. The picture
+        takes exactly the cards' height: its figure is `relative` with no
+        height of its own (so it cannot stretch the row) and its frame is
+        `absolute inset-0`, which fills whatever row 2 measures. The
+        caption is absolutely placed just below the frame, so it is kept
+        with the picture but is not part of the alignment; it lands in the
+        empty right cell of row 3.
+
+        ⚠ `object-cover`, CENTRED, ONLY WHERE THE FRAME IS NOT 4:3. The
+        cards' row is close to square beside a 5fr column, so this crops
+        a little off the sides; the reel is left of centre and the access
+        point is centre-right, both well inside the crop. Below `lg` the
+        frame is the file's own 4:3, so nothing is cropped, and the figure
+        follows the cards and checklist in source order.
+      */}
+      <div className="grid gap-y-6 lg:grid-cols-[7fr_5fr] lg:gap-x-10">
+        <div className="lg:col-start-1 lg:row-start-1">
+          <SectionHeading id={id} title={title} />
+        </div>
+        <ol className="mt-2 grid gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
+          {steps.map((step, index) => {
+            const Icon = STEP_ICONS[index] ?? CheckIcon
+            return (
+              <li key={step.title} className="rounded-md border border-border bg-surface-muted p-5">
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 items-center justify-center rounded-sm bg-accent-secondary text-white"
+                >
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 text-body font-semibold text-foreground">{step.title}</h3>
+                {step.description !== undefined && (
+                  <p className="mt-2 text-body-sm text-muted-foreground">{step.description}</p>
+                )}
+              </li>
+            )
+          })}
+        </ol>
+        {prep !== undefined && (
+          <Callout kind="good-to-know" label={prep.title} className="lg:col-start-1 lg:row-start-3">
+            <ul className="space-y-2">
+              {prep.items.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span aria-hidden="true" className="text-muted-foreground">-</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Callout>
+        )}
+        {image !== null && (
+          <figure className="lg:relative lg:col-start-2 lg:row-start-2">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-surface-muted lg:absolute lg:inset-0 lg:aspect-auto">
+              {!image.placeholder && (
+                <Image
+                  src={image.preferred}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-center"
+                />
+              )}
+            </div>
+            <figcaption className="mt-2 text-caption text-muted-foreground lg:absolute lg:inset-x-0 lg:top-full">
+              {image.caption}
+            </figcaption>
+          </figure>
+        )}
+      </div>
     </Section>
   )
 }
@@ -265,16 +398,21 @@ export function AudiencePathways({ content }: { content: NonNullable<Hub['audien
    ========================================================================== */
 
 /**
- * Footage stills and a report example. Renders nothing in production
- * until a real, anonymized asset exists (docs/18 §120). In development
- * it also shows the case-study placeholder, so the intended shape is
- * visible to whoever supplies the material.
+ * Four equal image cards: three footage stills and a findings summary.
+ * Renders nothing in production unless at least one image exists
+ * (docs/18 §120).
  *
- * ⚠ NO CASE STUDY IS AUTHORED. `data/business/proof.ts` holds none, and
+ * ⚠ NO CASE STUDY IS PUBLISHED. `data/business/proof.ts` holds none, and
  * a case study is a factual claim about a real customer (CLAUDE.md §24).
+ *
+ * ⚠ 2x2 AT `sm` AND ABOVE, NOT FOUR ACROSS. The card copy is a full
+ * paragraph; four columns would squeeze it into a narrow measure, and
+ * four items divide evenly into two columns so no fifth-cell gap can
+ * appear. Every frame is 4:3 to match the files, and the cards stretch
+ * to a common height.
  */
 export function evidenceRenders(content: Hub['evidence']): boolean {
-  return content !== undefined && anyCameraImage(content.slots)
+  return content !== undefined && anyCameraImage(content.items.map((item) => item.slot))
 }
 
 export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidence']> }) {
@@ -282,22 +420,21 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
   return (
     <Section density="standard" surface="muted" labelledBy={id}>
       <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {content.slots.map((slot) => (
-          <CameraImageSlot key={slot} slot={slot} sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" />
+      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        {content.items.map((item) => (
+          <article key={item.slot} className="flex h-full flex-col overflow-hidden rounded-md border border-border bg-surface">
+            <CameraImageSlot
+              slot={item.slot}
+              hideCaption
+              sizes="(min-width: 640px) 45vw, 100vw"
+              className="[&>div]:rounded-none [&>div]:border-0"
+            />
+            <div className="flex flex-1 flex-col p-5 sm:p-6">
+              <h3 className="text-h4 font-semibold text-foreground">{item.title}</h3>
+              <p className="mt-3 text-body-sm text-muted-foreground">{item.description}</p>
+            </div>
+          </article>
         ))}
-        {process.env.NODE_ENV !== 'production' && (
-          <div
-            data-image-placeholder="case-study"
-            className="rounded-md border-2 border-dashed border-border p-4 text-caption text-muted-foreground"
-          >
-            <p className="font-semibold text-foreground">Case study placeholder</p>
-            <p className="mt-1">
-              Situation, service, finding and outcome from one verified,
-              anonymized job. Author only when real. Development only.
-            </p>
-          </div>
-        )}
       </div>
       <p className="mt-6 max-w-[var(--container-reading)] text-body-sm text-muted-foreground">
         {content.caveat}
@@ -310,48 +447,160 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
    Related-services comparison
    ========================================================================== */
 
-export function ServiceComparison({ content }: { content: NonNullable<Hub['comparison']> }) {
+/**
+ * The comparison table over a full-width photograph.
+ *
+ * ⚠ A BLACK SCRIM AT 55%, the value `Section`'s `backgroundImage` and the
+ * hero use. It was measured against pure white, where opaque white text
+ * gives 4.76:1 against the 4.5:1 floor, so the heading, intro and closing
+ * note are white and the scrim must not be lightened without re-measuring.
+ *
+ * ⚠ ADJACENT TO A DARK SECTION. The authority band that follows is a brand
+ * (navy) surface, so this dark band and that one touch. 18 §11 names
+ * stacked dark sections as an anti-pattern; this was a light scrim until
+ * the owner asked for black (2026-09-23). Put a non-dark section between
+ * them if the pairing reads as too heavy.
+ *
+ * ⚠ THE TABLE SITS IN AN OPAQUE WHITE PANEL, so its contrast never depends
+ * on the photograph.
+ *
+ * ⚠ THE IMAGE IS DECORATIVE (`alt=""`); the table carries the meaning.
+ */
+export function ServiceComparison({
+  content,
+  imageSrc,
+}: {
+  content: NonNullable<Hub['comparison']>
+  imageSrc: string
+}) {
   const id = 'sewer-camera-inspection-vs-related-services'
   return (
-    <Section density="dense" surface="default" labelledBy={id}>
-      <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
-      <div className="mt-8 overflow-x-auto">
-        <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
-          <caption className="sr-only">{content.title}</caption>
-          <thead>
-            <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
-              <th scope="col" className="py-3 pr-4 font-semibold">Service</th>
-              <th scope="col" className="py-3 pr-4 font-semibold">Primary purpose</th>
-              <th scope="col" className="py-3 font-semibold">May be the right fit when</th>
-            </tr>
-          </thead>
-          <tbody>
-            {content.rows.map((row) => {
-              const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
-              return (
-                <tr key={row.service} className="border-b border-border align-top">
-                  <th scope="row" className="py-4 pr-4 font-semibold text-foreground">
-                    {link !== undefined ? (
-                      <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
-                        {row.service}
-                      </Link>
-                    ) : (
-                      <>
-                        {row.service} <span className="font-normal text-muted-foreground">(this page)</span>
-                      </>
-                    )}
-                  </th>
-                  <td className="py-4 pr-4 text-muted-foreground">{row.purpose}</td>
-                  <td className="py-4 text-muted-foreground">{row.fit}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-6 max-w-[var(--container-reading)] text-body text-muted-foreground">
-        {content.note}
-      </p>
-    </Section>
+    <div className="relative isolate overflow-hidden">
+      <Image
+        src={imageSrc}
+        alt=""
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover object-center"
+      />
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      <Section density="dense" surface="none" labelledBy={id}>
+        <div className="max-w-[var(--container-reading)]">
+          <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance text-white">
+            {content.title}
+          </h2>
+          <p className="mt-4 text-body-lg text-white">{content.intro}</p>
+        </div>
+        <div className="mt-8 overflow-x-auto rounded-md border border-border bg-surface px-4 sm:px-6">
+          <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
+            <caption className="sr-only">{content.title}</caption>
+            <thead>
+              <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
+                <th scope="col" className="py-3 pr-4 font-semibold">Service</th>
+                <th scope="col" className="py-3 pr-4 font-semibold">Primary purpose</th>
+                <th scope="col" className="py-3 font-semibold">May be the right fit when</th>
+              </tr>
+            </thead>
+            <tbody>
+              {content.rows.map((row) => {
+                const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
+                return (
+                  <tr key={row.service} className="border-b border-border align-top last:border-b-0">
+                    <th scope="row" className="py-4 pr-4 font-semibold text-foreground">
+                      {link !== undefined ? (
+                        <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
+                          {row.service}
+                        </Link>
+                      ) : (
+                        <>
+                          {row.service} <span className="font-normal text-muted-foreground">(this page)</span>
+                        </>
+                      )}
+                    </th>
+                    <td className="py-4 pr-4 text-muted-foreground">{row.purpose}</td>
+                    <td className="py-4 text-muted-foreground">{row.fit}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-6 max-w-[var(--container-reading)] text-body text-white">
+          {content.note}
+        </p>
+      </Section>
+    </div>
+  )
+}
+
+/* ==========================================================================
+   Request service: copy beside the lead form, over a photograph
+   ========================================================================== */
+
+/**
+ * Two columns at `lg`: heading and intro on the left, the existing lead
+ * form on the right; stacked below `lg`, copy first.
+ *
+ * ⚠ THE FORM IS PASSED IN, NOT IMPORTED. `LeadFormSection` is a client
+ * component with its own state and analytics; this file stays a server
+ * component and the form's fields, validation and handlers are untouched.
+ *
+ * ⚠ THE SCRIM IS BLACK AT 55%, the value the hero and `Section`'s
+ * `backgroundImage` use. It was measured against pure white, where opaque
+ * white text gives 4.76:1 against the 4.5:1 floor, so it must not be
+ * lightened without re-measuring. It was navy at 80% until the owner asked
+ * for black (2026-09-23). The reel in the photograph is on the left, under
+ * the copy, so the scrim has to hold there. The form sits in an opaque white card with `text-foreground`,
+ * because `bg-surface` sets a background and not a colour and white text
+ * would otherwise flow into it (see `Section`'s note on this). Its labels,
+ * inputs and button are therefore the same contrast as everywhere else.
+ *
+ * ⚠ THE IMAGE IS DECORATIVE (`alt=""`).
+ *
+ * ⚠ ADJACENT TO THE AUTHORITY BAND, which is also dark navy (18 §11).
+ * Owner-requested; put a light section between them if it reads heavy.
+ */
+export function RequestServiceSection({
+  content,
+  imageSrc,
+  children,
+  id = 'schedule-a-sewer-camera-inspection',
+  density = 'standard',
+}: {
+  content: { title: string; intro: string | readonly string[] }
+  imageSrc: string
+  children: ReactNode
+  id?: string
+  density?: 'sparse' | 'standard' | 'dense'
+}) {
+  const paragraphs = typeof content.intro === 'string' ? [content.intro] : content.intro
+  return (
+    <div className="relative isolate overflow-hidden bg-brand text-white">
+      <Image
+        src={imageSrc}
+        alt=""
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover object-center"
+      />
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      <Section density={density} surface="none" labelledBy={id}>
+        <div className="grid gap-10 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-14">
+          <div>
+            <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance">
+              {content.title}
+            </h2>
+            <div className="mt-4 max-w-[var(--container-reading)] space-y-4 text-body-lg">
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            {children}
+          </div>
+        </div>
+      </Section>
+    </div>
   )
 }

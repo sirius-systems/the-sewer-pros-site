@@ -3,35 +3,32 @@ import { type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
-  ProblemGrid,
-  ProcessSteps,
+  ScheduleGrid,
   IndependentProcess,
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
   LeadFormSection,
   FaqSection,
-  RelatedLinks,
-  CtaSection,
+  ServiceIndex,
   DeliverablesSection,
   CameraImageSlot,
   MarketRouter,
   DefinitionSection,
   LimitationsPanel,
-  PrepPanel,
+  InspectionProcess,
   AudiencePathways,
   EvidenceGallery,
   ServiceComparison,
+  RequestServiceSection,
   evidenceRenders,
   authorityBandRenders,
-  processStepsRenders,
-  relatedLinksRenders,
   faqSectionRenders,
   problemGridRenders,
   deliverablesSectionRenders,
 } from '@/components/sections'
+import { homeServiceCards } from '@/content/pages/home-service-cards'
 import { resolveCameraImage } from '@/data/business/camera-inspection-images'
-import { getService } from '@/data/services'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
 
@@ -44,7 +41,7 @@ import type { MasterPageRecord, ServicePageContent } from '@/types'
  * other service pages are untouched.
  *
  *   Hero -> Trust strip -> Market router -> Definition
- *   -> When to schedule -> Can / cannot show -> Process + prep
+ *   -> When to schedule -> Can / cannot show -> Process + prep + image
  *   -> What you receive -> Independent-model band -> Audiences
  *   -> Evidence* -> Comparison -> Authority band -> Proof* -> Testimonial*
  *   -> Form* -> Related -> FAQ -> Final CTA
@@ -61,6 +58,18 @@ import type { MasterPageRecord, ServicePageContent } from '@/types'
 const HERO_IMAGE =
   '/images/services/sewer-camera-inspection/hero/the-sewer-pros-ridgid-seesnake-camera-inspection-hero-16x9.webp'
 
+const SCHEDULE_IMAGE =
+  '/images/services/sewer-camera-inspection/the-sewer-pros-ridgid-seesnake-camera-reel-cable-equipment-detail-4x3.webp'
+
+const COMPARISON_IMAGE =
+  '/images/services/sewer-camera-inspection/the-sewer-pros-ridgid-seesnake-sewer-camera-inspection-comparison-background-16x9.webp'
+
+const REQUEST_IMAGE =
+  '/images/services/sewer-camera-inspection/the-sewer-pros-ridgid-seesnake-sewer-inspection-request-form-background-16x9.webp'
+
+const CLOSING_IMAGE =
+  '/images/services/sewer-camera-inspection/the-sewer-pros-ridgid-seesnake-camera-inspection-cleanout-cta-background-16x9.webp'
+
 export interface ServiceHubTemplateProps {
   page: MasterPageRecord
   content: ServicePageContent
@@ -70,7 +79,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
   const hub = content.hub
   if (hub === undefined) return null
 
-  const consult = resolveCameraImage('consult')
+  const findingsReview = resolveCameraImage('findings-review')
   const showEvidence = evidenceRenders(hub.evidence)
   const showDeliverables = deliverablesSectionRenders(hub.deliverables)
 
@@ -81,18 +90,16 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
     ...(hub.definition !== undefined ? (['standard'] as const) : []),
     ...(problemGridRenders(content.problems) ? (['standard'] as const) : []),
     ...(hub.limitations !== undefined ? (['dense'] as const) : []),
-    ...(content.process !== undefined && processStepsRenders(content.process)
-      ? (['dense'] as const)
-      : []),
-    ...(hub.prep !== undefined ? (['dense'] as const) : []),
+    ...(content.process !== undefined ? (['standard'] as const) : []),
     ...(showDeliverables ? (['standard'] as const) : []),
     ...(content.showDifferentiator === true ? (['standard'] as const) : []),
     ...(hub.audiences !== undefined ? (['dense'] as const) : []),
     ...(showEvidence ? (['standard'] as const) : []),
     ...(hub.comparison !== undefined ? (['dense'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(relatedLinksRenders(content.relatedPageIds) ? (['dense'] as const) : []),
-    ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
+    ...(hub.request !== undefined ? (['standard'] as const) : []),
+    ...(content.relatedPageIds !== undefined ? (['dense'] as const) : []),
+    ...(faqSectionRenders(content.faq) ? (['standard'] as const) : []),
     'sparse',
   ]
 
@@ -144,32 +151,31 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
       {hub.definition !== undefined && <DefinitionSection content={hub.definition} />}
 
       {content.problems !== undefined && (
-        <ProblemGrid
+        <ScheduleGrid
           id="when-to-schedule"
-          title="When should you schedule a sewer camera inspection?"
+          title="When to Consider a Sewer Camera Inspection"
+          intro="Use a camera inspection when you need visual information about a recurring drainage problem or want to understand the condition of an accessible portion of a sewer line."
           items={content.problems}
+          imageSrc={SCHEDULE_IMAGE}
         />
       )}
 
       {hub.limitations !== undefined && <LimitationsPanel content={hub.limitations} />}
 
       {content.process !== undefined && (
-        <ProcessSteps
-          density="dense"
-          id="how-it-works"
+        <InspectionProcess
           title="What happens during a sewer camera inspection?"
           steps={content.process}
+          prep={hub.prep}
         />
       )}
-
-      {hub.prep !== undefined && <PrepPanel content={hub.prep} />}
 
       {showDeliverables && hub.deliverables !== undefined && (
         <DeliverablesSection
           content={hub.deliverables}
           imageSlot={
-            consult !== null ? (
-              <CameraImageSlot slot="consult" sizes="(min-width: 1024px) 40vw, 100vw" />
+            findingsReview !== null ? (
+              <CameraImageSlot slot="findings-review" hideCaption sizes="(min-width: 1024px) 40vw, 100vw" />
             ) : undefined
           }
         />
@@ -185,46 +191,62 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         <EvidenceGallery content={hub.evidence} />
       )}
 
-      {hub.comparison !== undefined && <ServiceComparison content={hub.comparison} />}
+      {hub.comparison !== undefined && <ServiceComparison content={hub.comparison} imageSrc={COMPARISON_IMAGE} />}
 
-      <AuthorityBand title="How we work" />
+      <AuthorityBand title="How we work" icons actionVariant="primary" />
 
       <ProofGallery title="Recent work" />
 
       <TestimonialBand />
 
-      <LeadFormSection />
+      {hub.request !== undefined ? (
+        <RequestServiceSection content={hub.request} imageSrc={REQUEST_IMAGE}>
+          <LeadFormSection bare density="standard" idPrefix="request-lead" />
+        </RequestServiceSection>
+      ) : (
+        <LeadFormSection />
+      )}
 
       {content.relatedPageIds !== undefined && (
-        <RelatedLinks
+        <ServiceIndex
+          variant="cards"
+          columns={2}
+          density="dense"
+          id="related-services"
           title={content.relatedTitle ?? 'Related services'}
-          pageIds={content.relatedPageIds}
-          descriptions={content.relatedDescriptions}
+          items={content.relatedPageIds.map((pageId) => {
+            // Same card artwork and copy the /services/ hub uses, where a
+            // service has them; the two guides carry only their own text.
+            const card = homeServiceCards.find((c) => c.pageId === pageId)
+            return {
+              pageId,
+              description: card?.description ?? content.relatedDescriptions?.[pageId],
+              image: card?.image,
+            }
+          })}
         />
       )}
 
       {content.faq !== undefined && (
         <FaqSection
-          title={
-            page.serviceId !== undefined
-              ? `Common questions about ${getService(page.serviceId).name}`
-              : undefined
-          }
+          title="Common Questions About Sewer Camera Inspection"
           entries={content.faq}
+          columns={2}
+          surface="muted"
+          density="standard"
         />
       )}
 
-      <CtaSection
-        variant="panel"
-        title={content.cta?.title ?? 'Schedule an inspection'}
-        body={content.cta?.body}
-        action={null}
-        proof={
-          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-            <LeadFormSection bare density="standard" idPrefix="cta-lead" />
-          </div>
-        }
-      />
+      {hub.closing !== undefined && (
+        <RequestServiceSection
+          id="cta"
+          content={hub.closing}
+          imageSrc={CLOSING_IMAGE}
+          density="sparse"
+        >
+          <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+        </RequestServiceSection>
+      )}
     </PageShell>
   )
 }
