@@ -91,3 +91,6 @@ export type { ContactPageTemplateProps } from './ContactPageTemplate'
 
 export { MarketContactTemplate } from './MarketContactTemplate'
 export type { MarketContactTemplateProps } from './MarketContactTemplate'
+
+export { AudienceHubTemplate } from './AudienceHubTemplate'
+export type { AudienceHubTemplateProps } from './AudienceHubTemplate'

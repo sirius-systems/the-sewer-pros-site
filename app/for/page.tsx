@@ -4,8 +4,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { pageMetadata } from '@/lib/seo'
-import { HubPageTemplate } from '@/components/templates'
-import { getHubContent } from '@/content'
+import { AudienceHubTemplate } from '@/components/templates'
+import { getAudienceHubContent } from '@/content'
 import { getPage } from '@/data/pages'
 import type { PageId } from '@/types'
 
@@ -13,7 +13,7 @@ const PAGE_ID = 'hub-audiences' as PageId
 
 export function generateMetadata(): Metadata {
   const page = getPage(PAGE_ID)
-  const content = getHubContent(PAGE_ID)
+  const content = getAudienceHubContent(PAGE_ID)
   if (page === undefined || content === undefined) notFound()
   return pageMetadata({
     page,
@@ -24,10 +24,7 @@ export function generateMetadata(): Metadata {
 
 export default function Page() {
   const page = getPage(PAGE_ID)
-  const content = getHubContent(PAGE_ID)
+  const content = getAudienceHubContent(PAGE_ID)
   if (page === undefined || content === undefined) notFound()
-  // `/for/` has no FAQ, so the items index is the last content band
-  // before the CTA. Muted keeps this hub from rendering as an unbroken
-  // white column, the same break the other hubs get from their FAQ.
-  return <HubPageTemplate page={page} content={content} itemsSurface="muted" />
+  return <AudienceHubTemplate page={page} content={content} />
 }

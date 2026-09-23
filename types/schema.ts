@@ -54,6 +54,7 @@ export const SCHEMA_FRAGMENT = {
   breadcrumb: '#breadcrumb',
   article: '#article',
   faqPage: '#faq',
+  itemList: '#itemlist',
   logo: '#logo',
   person: '#person',
 } as const
@@ -157,6 +158,8 @@ export interface WebPageNode extends SchemaNodeBase {
   about?: SchemaRef
   breadcrumb?: SchemaRef
   primaryImageOfPage?: SchemaRef
+  /** A hub's visible member list, by reference to its `ItemList` node. */
+  mainEntity?: SchemaRef
 }
 
 /**
