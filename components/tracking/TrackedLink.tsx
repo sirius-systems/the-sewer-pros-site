@@ -15,7 +15,7 @@ import type { AnalyticsContext, CtaLocation } from '@/lib/analytics'
 export interface TrackedLinkProps {
   href: string
   /** `audience_select` and `market_select` name the choice; `cta_click` a plain CTA. */
-  event: 'audience_select' | 'market_select' | 'cta_click'
+  event: 'audience_select' | 'market_select' | 'service_select' | 'cta_click'
   context?: Omit<AnalyticsContext, 'cta_location'>
   ctaLocation?: CtaLocation
   className?: string

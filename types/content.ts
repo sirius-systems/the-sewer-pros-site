@@ -28,7 +28,8 @@
 import type { ReactNode } from 'react'
 import type { MarketId, PageId } from './common'
 import type { BackgroundVideo, CardImage } from './media'
-import type { CameraImageKey } from '@/data/business/camera-inspection-images'
+import type { ServiceId } from './service'
+import type { HubImageKey } from '@/data/business/hub-images'
 
 /* ==========================================================================
    Shared pieces
@@ -1371,6 +1372,26 @@ export interface HubAudienceCard {
   actionLabel: string
 }
 
+/** A process-step mark on a service hub. */
+export type HubProcessIcon = 'explanation' | 'checklist' | 'access' | 'pipe' | 'camera' | 'document'
+
+/**
+ * One symptom card on a hub's problem router.
+ *
+ * Exactly one destination: `pageId` (an approved page) or `href` (an
+ * in-page anchor such as `#choose-market`).
+ */
+export interface HubSymptomCard {
+  /** Small status label, e.g. "Active issue". Only `active` takes the orange accent. */
+  status: string
+  urgency?: 'active' | 'recurring' | 'planning'
+  title: string
+  description: string
+  actionLabel: string
+  pageId?: PageId
+  href?: string
+}
+
 /** One row of the related-services comparison. */
 export interface HubComparisonRow {
   service: string
@@ -1389,6 +1410,60 @@ export interface HubComparisonRow {
  * "guarantees", "finds every issue" or "certifies" (CLAUDE.md §24).
  */
 export interface ServiceHubContent {
+  /**
+   * Overrides for a hub that is not the camera inspection page. Every
+   * value defaults to the camera hub's, so that page is unchanged.
+   *
+   * ⚠ BACKDROPS ARE PATHS UNDER `public/`. A path whose file does not
+   * exist yet renders the brand surface under its black scrim, so copy
+   * stays readable while the photograph is pending (development shows a
+   * small labelled placeholder; production shows none).
+   */
+  images?: {
+    hero?: string
+    schedule?: string
+    comparison?: string
+    request?: string
+    closing?: string
+    /** Figure slots: `[main, ...extras]` beside the definition. */
+    definition?: readonly HubImageKey[]
+    /** Figure beside the process steps. */
+    process?: HubImageKey
+    /** Figure beside the deliverables. */
+    deliverables?: HubImageKey
+  }
+  /**
+   * Decision-first order: the related-services comparison follows the
+   * process, and the market router follows the comparison, so a visitor
+   * understands the service before being asked to choose a market. The
+   * default (camera hub) puts the router directly under the hero.
+   */
+  decisionFirst?: boolean
+  /** Mounts the sticky mobile Call / Schedule / Choose City bar. */
+  mobileBar?: boolean
+  /** Preselects "Service needed" in this page's lead forms. */
+  defaultServiceId?: ServiceId
+  /**
+   * One mark per process step. Defaults to explanation, access point,
+   * camera, document (the camera hub's set).
+   */
+  processIcons?: readonly HubProcessIcon[]
+  /** Section headings that default to the camera hub's. */
+  headings?: {
+    schedule?: { title: string; intro: string }
+    process?: string
+    faq?: string
+  }
+  /**
+   * Symptom router: cards that send a visitor to the right service from
+   * how the problem looks. Rendered instead of the plain `problems` grid.
+   */
+  symptomRouter?: {
+    id: string
+    title: string
+    intro: string
+    items: readonly HubSymptomCard[]
+  }
   /** Three-market router, directly under the hero. */
   marketRouter?: {
     id: string
@@ -1398,6 +1473,10 @@ export interface ServiceHubContent {
   }
   /** Answer-first definition beside a pipe-path diagram. */
   definition?: {
+    /** Heading id. Defaults to the camera hub's. */
+    id?: string
+    /** Small label above the answer, e.g. "Quick answer". */
+    label?: string
     title: string
     answer: string
     supporting: readonly string[]
@@ -1419,27 +1498,32 @@ export interface ServiceHubContent {
   deliverables?: DeliverablesContent
   /** Audience pathways. Existing audience pages only. */
   audiences?: {
+    id?: string
     title: string
     intro: string
     items: readonly HubAudienceCard[]
   }
-  /** Real inspection evidence. Renders nothing without real assets. */
+  /** Real field evidence. Renders nothing without real assets. */
   evidence?: {
+    id?: string
     title: string
     intro: string
     caveat: string
     items: readonly {
-      slot: CameraImageKey
+      slot: HubImageKey
       title: string
       description: string
     }[]
   }
   /** Request-service section: copy beside the lead form. */
-  request?: { title: string; intro: string | readonly string[] }
+  request?: { id?: string; title: string; intro: string | readonly string[] }
   /** Final call to action above the footer: copy beside the lead form. */
   closing?: { title: string; intro: string | readonly string[] }
   /** Related-services comparison. */
   comparison?: {
+    id?: string
+    /** Column headings. Default: Service / Primary purpose / May be the right fit when. */
+    columns?: readonly [string, string, string]
     title: string
     intro: string
     rows: readonly HubComparisonRow[]

@@ -159,6 +159,13 @@ export interface LeadFormSectionProps {
    * page.
    */
   defaultMarketId?: MarketId
+  /**
+   * Preselects "Service needed" with one of the service option values.
+   *
+   * ⚠ ONLY A SERVICE-SPECIFIC PAGE MAY PASS THIS, for the same reason as
+   * `defaultMarketId`: the page heading already names the service.
+   */
+  defaultServiceId?: LeadServiceValue
 }
 
 export function LeadFormSection({
@@ -170,6 +177,7 @@ export function LeadFormSection({
   bare = false,
   idPrefix = 'lead',
   defaultMarketId,
+  defaultServiceId,
 }: LeadFormSectionProps = {}) {
   const [started, setStarted] = useState(false)
 
@@ -272,6 +280,7 @@ export function LeadFormSection({
           name="service"
           options={SERVICE_OPTIONS}
           placeholder="Select a service"
+          defaultValue={defaultServiceId}
           required
           aria-required
         />
