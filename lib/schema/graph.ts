@@ -44,6 +44,7 @@ import type {
   ArticleNode,
   BreadcrumbListNode,
   FaqContent,
+  ItemListNode,
   ListItemNode,
   MasterPageRecord,
   PlaceNode,
@@ -267,6 +268,12 @@ export interface PageSchemaInput {
    * publish markup the reader cannot see (15 §67).
    */
   faq?: readonly FaqContent[]
+  /**
+   * A hub's VISIBLE member list, emitted as the page's `mainEntity`
+   * `ItemList` (15 §34-35). Pass only entries the page renders as links,
+   * in the order rendered, each with a real destination.
+   */
+  itemList?: readonly { name: string; pathname: string }[]
 }
 
 /**
@@ -284,6 +291,7 @@ export function pageSchema({
   description,
   dateModified,
   faq,
+  itemList,
 }: PageSchemaInput): SchemaGraph | undefined {
   if (!isIndexable(page)) return undefined
 
@@ -341,6 +349,21 @@ export function pageSchema({
   if (breadcrumb !== undefined) {
     nodes.push(breadcrumb)
     webPage.breadcrumb = ref(breadcrumb['@id'])
+  }
+
+  if (itemList !== undefined && itemList.length > 0) {
+    const list: ItemListNode = {
+      '@type': 'ItemList',
+      '@id': `${absoluteUrl(page.pathname)}${SCHEMA_FRAGMENT.itemList}`,
+      itemListElement: itemList.map((entry, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: entry.name,
+        item: absoluteUrl(entry.pathname),
+      })),
+    }
+    nodes.push(list)
+    webPage.mainEntity = ref(list['@id'])
   }
 
   // DEC-089. Text is derived from the same JSX the page renders, so

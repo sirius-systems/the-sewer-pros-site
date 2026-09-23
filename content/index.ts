@@ -11,6 +11,7 @@
 
 import type {
   AboutPageContent,
+  AudienceHubContent,
   AudiencePageContent,
   LocationPageContent,
   MarketPageContent,
@@ -30,6 +31,7 @@ import { commercialContent } from './pages/commercial'
 import { comparisonContent } from './pages/comparisons'
 import { coreContent, homeContent, hubContent, resourceContent } from './pages/core'
 import { aboutContent } from './pages/about'
+import { audienceHubContent } from './pages/audience-hub'
 import { contactHubContent, marketContactContent } from './pages/contact'
 import {
   sanDiegoMarketContent,
@@ -125,6 +127,10 @@ export function getContactHubContent(id: PageId): ContactPageContent | undefined
 
 export function getMarketContactContent(id: PageId): MarketContactContent | undefined {
   return marketContactContent[id]
+}
+
+export function getAudienceHubContent(id: PageId): AudienceHubContent | undefined {
+  return id === ('hub-audiences' as PageId) ? audienceHubContent : undefined
 }
 
 export function getHubContent(id: PageId): HubPageContent | undefined {

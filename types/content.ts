@@ -2177,3 +2177,35 @@ export interface MarketContactContent extends ContactPageContent {
     description: string
   }[]
 }
+
+/* ==========================================================================
+   Who We Serve hub (`/for/`)
+   ========================================================================== */
+
+/**
+ * The audience-routing hub. Deliberately light: it identifies the visitor's
+ * role or situation and routes them onward. Depth lives on the audience,
+ * service, and resource pages it links to.
+ */
+export interface AudienceHubContent extends BasePageContent {
+  audiences: {
+    title: string
+    intro: string
+    cards: readonly {
+      /** Approved audience page. Its pathname and name come from the registry. */
+      pageId: PageId
+      description: string
+      /** Three to five scannable topics. Plain text, not links. */
+      needs: readonly string[]
+      /** Descriptive anchor text, never "Learn more". */
+      linkLabel: string
+    }[]
+  }
+  needs: {
+    title: string
+    intro: string
+    items: readonly { label: string; href: string }[]
+  }
+  locations: { title: string; intro: string }
+  cta: { title: string; body: string }
+}

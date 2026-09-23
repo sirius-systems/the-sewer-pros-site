@@ -58,6 +58,8 @@ export interface PageShellProps {
      * out of that JSX (15 §67, lib/schema/faq.ts).
      */
     faq?: readonly FaqContent[]
+    /** A hub's visible member list; see `PageSchemaInput.itemList`. */
+    itemList?: readonly { name: string; pathname: string }[]
   }
   /**
    * Densities of the sections this template renders, in order.
@@ -93,6 +95,7 @@ export function PageShell({ page, densities, schema, children }: PageShellProps)
             description: schema.description,
             dateModified: schema.dateModified,
             faq: schema.faq,
+            itemList: schema.itemList,
           })}
         />
       )}
