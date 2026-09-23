@@ -1481,6 +1481,19 @@ export interface ServiceHubContent {
     answer: string
     supporting: readonly string[]
   }
+  /**
+   * Escalation panel on the brand surface: signs that a fixture problem
+   * may be a main-line problem, with links to the next service. Used by
+   * the drain cleaning hub.
+   */
+  escalation?: {
+    id?: string
+    title: string
+    answer: string
+    signsTitle: string
+    signs: readonly string[]
+    links: readonly { pageId: PageId; label: string }[]
+  }
   /** What the service can and cannot show, side by side. */
   limitations?: {
     title: string

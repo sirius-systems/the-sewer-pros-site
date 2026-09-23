@@ -18,6 +18,7 @@ import {
   MarketRouter,
   DefinitionSection,
   LimitationsPanel,
+  EscalationPanel,
   MaterialsSection,
   InspectionProcess,
   AudiencePathways,
@@ -185,6 +186,10 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
 
   if (hub.materials !== undefined) {
     add('standard', 'materials', <MaterialsSection content={hub.materials} />)
+  }
+
+  if (hub.escalation !== undefined) {
+    add('standard', 'escalation', <EscalationPanel content={hub.escalation} />)
   }
 
   if (hub.limitations !== undefined) {

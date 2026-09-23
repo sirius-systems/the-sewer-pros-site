@@ -357,6 +357,57 @@ function NeutralMark() {
   )
 }
 
+/**
+ * "When a clogged drain may be a sewer-line problem": the lead-qualifying
+ * panel of the drain cleaning hub. Brand surface, so it reads apart from
+ * the light sections around it. Links resolve through approved pages only.
+ */
+export function EscalationPanel({ content }: { content: NonNullable<Hub['escalation']> }) {
+  const id = content.id ?? 'when-a-drain-is-a-sewer-problem'
+  return (
+    <Section density="standard" surface="brand" labelledBy={id}>
+      <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance">
+        {content.title}
+      </h2>
+      <div className="mt-8 grid gap-8 lg:grid-cols-2">
+        <div>
+          <p className="max-w-[var(--container-reading)] text-body-lg">{content.answer}</p>
+          <ul className="mt-6 flex flex-col gap-3">
+            {content.links.map((link) => {
+              const resolved = resolveApprovedLink(link.pageId)
+              if (resolved === undefined) return null
+              return (
+                <li key={link.pageId}>
+                  <TrackedLink
+                    href={resolved.href}
+                    event="cta_click"
+                    ctaLocation="section_cta"
+                    className="inline-flex min-h-11 items-center gap-2 font-semibold underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  >
+                    <span>{link.label}</span>
+                    <span aria-hidden="true">→</span>
+                  </TrackedLink>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+        <div className="rounded-md border border-white/30 p-6">
+          <h3 className="text-h4 font-semibold">{content.signsTitle}</h3>
+          <ul className="mt-4 space-y-3">
+            {content.signs.map((sign) => (
+              <li key={sign} className="flex gap-3 text-body-sm">
+                <CheckIcon className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                <span>{sign}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
 export function LimitationsPanel({ content }: { content: NonNullable<Hub['limitations']> }) {
   const id = 'what-it-can-identify'
   const related =
