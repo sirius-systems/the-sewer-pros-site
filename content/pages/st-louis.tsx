@@ -141,10 +141,10 @@ export const stLouisMarketContent: MarketPageContent = {
     clip is FOR rather than asserting shot detail nobody has checked.
   */
   heroVideo: {
-    src: '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-sewer-camera-inspection-hero.mp4',
-    describes: 'Sewer camera inspection clip supplied for the St. Louis hub hero',
+    src: '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-residential-sewer-camera-inspection-hero.mp4',
+    describes: 'Residential sewer camera inspection clip supplied for the St. Louis hub hero',
     source:
-      'Supplied by the business owner, 2026-09-05. Rendered scene, not footage of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-22. Rendered scene, not footage of a Sewer Pros job.',
   },
   showHeroForm: true,
   heroFormMarketId: 'st-louis-mo',
@@ -518,9 +518,9 @@ export const stLouisMarketContent: MarketPageContent = {
       `alt=""` (CLAUDE.md §55, §57).
     */
     image: {
-      src: '/images/markets/st-louis-mo/services/the-sewer-pros-st-louis-sewer-camera-inspection-experience.webp',
-      alt: 'Sewer camera inspection equipment documenting a St. Louis sewer line',
-      source: 'Supplied by the business owner, 2026-09-07.',
+      src: '/images/markets/st-louis-mo/services/the-sewer-pros-st-louis-sewer-camera-inspection-equipment.webp',
+      alt: 'Sewer camera monitor and reel staged at a driveway cleanout at a brick home',
+      source: 'Supplied by the business owner, 2026-09-22.',
     },
     intro: [
       'The Sewer Pros has inspected sewer lines throughout the greater St. Louis area since 2011. Our local work includes residential sewer camera inspections, pre-purchase sewer scopes, recurring sewer backup diagnosis, sewer line locating, sewer cleaning, and documentation for participating municipal sewer lateral programs.',
