@@ -238,6 +238,20 @@ export type { SelectionPanelProps } from './SelectionPanel'
 export { HubIntro, hubIntroRenders } from './HubIntro'
 export type { HubIntroProps } from './HubIntro'
 
+/* Service hub pages (the sewer camera inspection hub). */
+export { CameraImageSlot } from './CameraImageSlot'
+export type { CameraImageSlotProps } from './CameraImageSlot'
+export {
+  MarketRouter,
+  DefinitionSection,
+  LimitationsPanel,
+  PrepPanel,
+  AudiencePathways,
+  EvidenceGallery,
+  evidenceRenders,
+  ServiceComparison,
+} from './ServiceHubSections'
+
 export { CtaSection } from './CtaSection'
 export type { CtaSectionProps, CtaVariant } from './CtaSection'
 /*

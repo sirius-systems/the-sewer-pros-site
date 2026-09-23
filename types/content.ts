@@ -28,6 +28,7 @@
 import type { ReactNode } from 'react'
 import type { MarketId, PageId } from './common'
 import type { BackgroundVideo, CardImage } from './media'
+import type { CameraImageKey } from '@/data/business/camera-inspection-images'
 
 /* ==========================================================================
    Shared pieces
@@ -1347,6 +1348,97 @@ export interface ServicePageContent extends BasePageContent {
   showDifferentiator?: boolean
   /** Shows market coverage beneath the service explanation. */
   showMarkets?: boolean
+  /**
+   * Service hub sections. Authored only by the sewer camera inspection
+   * page today; a page without it renders exactly as before.
+   */
+  hub?: ServiceHubContent
+}
+
+/** A market destination on a service hub. */
+export interface HubMarketCard {
+  pageId: PageId
+  /** Local message. No rating, address, availability or response claim. */
+  description: string
+  actionLabel: string
+}
+
+/** An audience destination on a service hub. */
+export interface HubAudienceCard {
+  pageId: PageId
+  audience: string
+  description: string
+  actionLabel: string
+}
+
+/** One row of the related-services comparison. */
+export interface HubComparisonRow {
+  service: string
+  purpose: string
+  fit: string
+  /** Absent on the current page's own row. */
+  pageId?: PageId
+}
+
+/**
+ * The extra sections of a service hub page.
+ *
+ * ⚠ EVERY FIELD IS OPTIONAL AND A MISSING ONE SIMPLY DOES NOT RENDER.
+ * Wording guardrail for everything authored here: "can help identify",
+ * "visible", "accessible portions of the line", "may indicate". Never
+ * "guarantees", "finds every issue" or "certifies" (CLAUDE.md §24).
+ */
+export interface ServiceHubContent {
+  /** Three-market router, directly under the hero. */
+  marketRouter?: {
+    id: string
+    title: string
+    intro: string
+    items: readonly HubMarketCard[]
+  }
+  /** Answer-first definition beside a pipe-path diagram. */
+  definition?: {
+    title: string
+    answer: string
+    supporting: readonly string[]
+    diagramLabel: string
+    diagramCaption: string
+  }
+  /** What the service can and cannot show, side by side. */
+  limitations?: {
+    title: string
+    intro: string
+    canIdentifyTitle: string
+    canIdentify: readonly string[]
+    cannotTitle: string
+    cannot: readonly string[]
+    /** Contextual link beneath the panels. */
+    related?: { lead: string; pageId: PageId; label: string }
+  }
+  /** "Before your appointment" panel, shown under the process steps. */
+  prep?: { title: string; items: readonly string[] }
+  /** "What you receive". */
+  deliverables?: DeliverablesContent
+  /** Audience pathways. Existing audience pages only. */
+  audiences?: {
+    title: string
+    intro: string
+    items: readonly HubAudienceCard[]
+  }
+  /** Real inspection evidence. Renders nothing without real assets. */
+  evidence?: {
+    title: string
+    intro: string
+    caveat: string
+    slots: readonly CameraImageKey[]
+  }
+  /** Related-services comparison. */
+  comparison?: {
+    title: string
+    intro: string
+    rows: readonly HubComparisonRow[]
+    note: string
+  }
 }
 
 /** Market hub — 18 §112. */

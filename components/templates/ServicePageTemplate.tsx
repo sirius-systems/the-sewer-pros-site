@@ -24,6 +24,7 @@ import {
 } from '@/components/sections'
 import { getService } from '@/data/services'
 import { PageShell } from './PageShell'
+import { ServiceHubTemplate } from './ServiceHubTemplate'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
 
 /**
@@ -90,6 +91,12 @@ export function ServicePageTemplate({
   page,
   content,
 }: ServicePageTemplateProps) {
+  // Hub pages (currently the sewer camera inspection page) carry extra
+  // sections and their own ordering; see `ServiceHubTemplate`.
+  if (content.hub !== undefined) {
+    return <ServiceHubTemplate page={page} content={content} />
+  }
+
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   //
   // The three gated sections contribute NO entry, because they render
