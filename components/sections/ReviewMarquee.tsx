@@ -97,6 +97,17 @@ export interface ReviewMarqueeProps {
    * either of them reading as the page's emphasis (18 §11).
    */
   surface?: SectionSurface
+  /**
+   * Renders only the pause control and the scrolling track, with no
+   * `Section`, heading, or aggregate line.
+   *
+   * ⚠ FOR A PAGE THAT ALREADY HOSTS ITS OWN RATING DISPLAY (the contact
+   * page). The host section must carry the `marquee-section` class: it
+   * clips the horizontal overhang of the full-bleed track and has to live
+   * on the section root (see `app/globals.css`). Same reviews, same
+   * behaviour, same pause control; nothing is duplicated or restated.
+   */
+  embedded?: boolean
 }
 
 /**
@@ -260,6 +271,7 @@ export function ReviewMarquee({
   id = 'reviews',
   title = 'What our customers say',
   surface = 'default',
+  embedded = false,
 }: ReviewMarqueeProps = {}) {
   const [paused, setPaused] = useState(false)
 
@@ -273,33 +285,8 @@ export function ReviewMarquee({
   const loopWidth = marqueeReviews.length * (CARD_WIDTH + CARD_GAP)
   const durationSeconds = Math.round(loopWidth / PX_PER_SECOND)
 
-  return (
-    /*
-      White, not brand dark (owner direction, 2026-09-03).
-
-      This section sat between two dark sections, and a dark strip
-      between dark neighbours reads as one long unbroken band. The fix
-      is a genuine light section rather than a seam line between two
-      dark ones: 18 §11 wants surface changes to mean something, and
-      "this is a different kind of content" is a meaning a hairline
-      border cannot carry.
-
-      `marquee-section` clips the horizontal overhang of the full-bleed
-      track below. It has to live on the section root — see the class
-      in app/globals.css.
-    */
-    <Section
-      density={density}
-      surface={surface}
-      labelledBy={id}
-      className="marquee-section"
-    >
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <SectionHeading id={id} title={title} />
-          <AggregateStat />
-        </div>
-
+  const toggle = (
+    <>
         {/*
           WCAG 2.2.2. A persistent control, not a hover affordance:
           hover is undiscoverable and does not exist on touch. Hidden
@@ -315,16 +302,11 @@ export function ReviewMarquee({
           <span aria-hidden="true">{paused ? '▶' : '❚❚'}</span>
           {paused ? 'Play reviews' : 'Pause reviews'}
         </Button>
-      </div>
+    </>
+  )
 
-      {/*
-        The track leaves the container; the heading and the control
-        above it do not. A strip that stops at the reading measure
-        reads as a widget that ran out of room, and it clipped the
-        fourth card against an invisible edge. Bleeding past both
-        viewport edges is what says "this continues".
-      */}
-      <div className="marquee-viewport marquee-fullbleed mt-10">
+  const viewport = (
+      <div className={`marquee-viewport marquee-fullbleed ${embedded ? 'mt-6' : 'mt-10'}`}>
         <ul
           className="marquee-track"
           data-paused={paused ? 'true' : 'false'}
@@ -361,6 +343,56 @@ export function ReviewMarquee({
           </li>
         </ul>
       </div>
+
+  )
+
+  if (embedded) {
+    return (
+      <>
+        <div className="flex justify-end">{toggle}</div>
+        {viewport}
+      </>
+    )
+  }
+
+  return (
+    /*
+      White, not brand dark (owner direction, 2026-09-03).
+
+      This section sat between two dark sections, and a dark strip
+      between dark neighbours reads as one long unbroken band. The fix
+      is a genuine light section rather than a seam line between two
+      dark ones: 18 §11 wants surface changes to mean something, and
+      "this is a different kind of content" is a meaning a hairline
+      border cannot carry.
+
+      `marquee-section` clips the horizontal overhang of the full-bleed
+      track below. It has to live on the section root — see the class
+      in app/globals.css.
+    */
+    <Section
+      density={density}
+      surface={surface}
+      labelledBy={id}
+      className="marquee-section"
+    >
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <SectionHeading id={id} title={title} />
+          <AggregateStat />
+        </div>
+
+        {toggle}
+      </div>
+
+      {/*
+        The track leaves the container; the heading and the control
+        above it do not. A strip that stops at the reading measure
+        reads as a widget that ran out of room, and it clipped the
+        fourth card against an invisible edge. Bleeding past both
+        viewport edges is what says "this continues".
+      */}
+      {viewport}
 
       {/*
         The written disclosure that used to sit here ("These are a

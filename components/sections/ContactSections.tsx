@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { Section, ButtonLink, buttonClasses } from '@/components/ui'
 import { TrackedPhoneLink } from '@/components/tracking/TrackedPhoneLink'
 import { marketList, marketOperatingDetail, marketPathname } from '@/data/markets/markets'
-import { resolveMarketContactImage } from '@/data/business/contact-backdrop'
-import type { MarketId } from '@/types'
+import { marketImages } from '@/data/business/card-images'
+import type { MarketId, PageId } from '@/types'
 
 /**
  * Contact-page sections that render on the server.
@@ -50,7 +50,7 @@ export interface LocationSelectorCardsProps {
 export function LocationSelectorCards({
   id = 'choose-location',
   title = 'Choose your location',
-  intro = 'Each market has its own phone number and contact page. Pick yours to call, schedule, or send a request.',
+  intro = 'Select your service area to view local contact options, request sewer service, or learn more about the communities served.',
 }: LocationSelectorCardsProps) {
   return (
     <Section density="standard" surface="default" labelledBy={id}>
@@ -64,21 +64,31 @@ export function LocationSelectorCards({
       <ul className="mt-8 grid gap-6 lg:grid-cols-3">
         {marketList.map((market) => {
           const d = detail(market.id)
-          const image = resolveMarketContactImage(market.id)
+          // The same unmarked service-area maps the Locations hub uses.
+          const image = marketImages[`market-${market.id}` as PageId]
           return (
             <li
               key={market.id}
               className="flex flex-col overflow-hidden rounded-md border border-border bg-surface"
             >
-              <div className="relative aspect-[16/9] bg-brand">
-                <Image
-                  src={image.src}
-                  alt={image.usingInterim ? '' : image.alt}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
+              {/*
+                ⚠ THE FRAME'S OWN ASPECT (2600x1352), NOT A CROP. The maps
+                carry Google's attribution baked into the bottom-right
+                corner, and its terms require it to stay legible (see
+                `data/business/card-images.ts`). Sizing the box to the
+                image keeps the whole map, attribution included, visible.
+              */}
+              {image !== undefined && (
+                <div className="relative aspect-[2600/1352] bg-brand">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <div className="flex flex-1 flex-col p-5">
                 <h3 className="text-h4 font-semibold tracking-tight">{market.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
@@ -121,20 +131,34 @@ export function LocationSelectorCards({
 
 export function UrgencyPanel({ id = 'urgent' }: { id?: string }) {
   return (
-    <Section density="dense" surface="brand" labelledBy={id}>
-      <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-        <div className="lg:col-span-6">
+    /*
+      `wide` container with the gutter cut to 12px each side (the same
+      `[&>div]` reach-in `TrustBar` uses, since `Section` passes width
+      but not padding). That budget lets the three market buttons sit on
+      one row from `xl` up: the copy takes the left column and the
+      buttons' own width (`auto`) takes the right. Below `xl` the buttons
+      wrap or stack inside the 6/6 split, so nothing overflows.
+    */
+    <Section
+      density="dense"
+      surface="brand"
+      width="wide"
+      labelledBy={id}
+      className="[&>div]:px-3"
+    >
+      <div className="grid gap-8 lg:grid-cols-12 lg:items-center xl:grid-cols-[minmax(0,1fr)_auto]">
+        <div className="lg:col-span-6 xl:col-auto xl:max-w-xl">
           <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance">
             Is this an urgent sewer or drain problem?
           </h2>
           <p className="mt-3 text-body-lg text-brand-foreground">
-            If you have an active backup, an overflow, or water where it should not be, call
-            the number for your market. Call for the next available appointment and guidance
-            on your service request.
+            If you have an active sewer backup, an overflowing drain, or wastewater coming up
+            where it shouldn’t, call the number for your service area. Call for the next
+            available appointment and guidance on your service request.
           </p>
         </div>
-        <div className="lg:col-span-6">
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <div className="lg:col-span-6 xl:col-auto">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap xl:flex-nowrap xl:justify-end">
             {marketList.map((market) => {
               const d = detail(market.id)
               return (
@@ -143,14 +167,14 @@ export function UrgencyPanel({ id = 'urgent' }: { id?: string }) {
                   phoneE164={d.phoneE164}
                   ctaLocation="section_cta"
                   context={{ market_id: market.id }}
-                  className={buttonClasses('secondary', 'w-full sm:w-auto')}
+                  className={buttonClasses('secondary', 'w-full whitespace-nowrap sm:w-auto')}
                 >
                   Call {market.city} {d.phone}
                 </TrackedPhoneLink>
               )
             })}
           </div>
-          <p className="mt-4 text-sm text-brand-foreground">
+          <p className="mt-4 text-sm text-brand-foreground xl:text-right">
             Not urgent?{' '}
             <a
               href="#request-service"
@@ -188,7 +212,7 @@ export interface MarketBusinessDetailsProps {
  */
 export function MarketBusinessDetails({
   id = 'business-details',
-  title = 'Service areas and business information',
+  title = 'Contact and Service Areas',
   intro,
   marketId,
 }: MarketBusinessDetailsProps) {
@@ -212,12 +236,35 @@ export function MarketBusinessDetails({
       >
         {shown.map((market) => {
           const d = detail(market.id)
+          // Hub only: the same unmarked service-area maps the Locations
+          // hub uses. The single-market contact pages keep their card as is.
+          const map =
+            marketId === undefined
+              ? marketImages[`market-${market.id}` as PageId]
+              : undefined
           return (
             <article
               key={market.id}
               className="rounded-md border border-border bg-surface p-5"
             >
               <h3 className="text-h4 font-semibold tracking-tight">{market.name}</h3>
+              {map !== undefined && (
+                /*
+                  Sized to the frame's own 2600x1352 aspect with `contain`,
+                  so nothing is cropped: the maps carry Google's attribution
+                  in the bottom-right corner and it must stay legible (see
+                  `data/business/card-images.ts`).
+                */
+                <div className="relative mt-3 aspect-[2600/1352] overflow-hidden rounded-md border border-border bg-brand">
+                  <Image
+                    src={map.src}
+                    alt={map.alt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-contain"
+                  />
+                </div>
+              )}
               <dl className="mt-3 grid gap-2 text-sm">
                 <div>
                   <dt className="font-medium text-foreground">Phone</dt>

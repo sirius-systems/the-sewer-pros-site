@@ -48,6 +48,11 @@ export interface StatsBandProps {
    * Omit for the sitewide band.
    */
   marketId?: MarketId
+  /**
+   * Stat ids to leave out. The contact page omits `markets-served`: a
+   * market count describes coverage, not business performance.
+   */
+  omitIds?: readonly string[]
 }
 
 const STATS: readonly {
@@ -55,12 +60,19 @@ const STATS: readonly {
   label: ReactNode
   value: number
   suffix: string
+  /**
+   * Renders the value as plain text, no count-up. For a year: counting
+   * 0 up to 2011 is not a meaningful quantity, and thousands separators
+   * would misprint it as "2,011".
+   */
+  static?: boolean
 }[] = [
   {
     id: 'founding-year',
     label: 'Serving customers since',
     value: foundingYear,
     suffix: '',
+    static: true,
   },
   {
     id: 'combined-experience',
@@ -102,6 +114,7 @@ function marketStats(marketId: MarketId): readonly Stat[] {
       label: `Serving ${markets[marketId].city} since`,
       value: year,
       suffix: '',
+      static: true,
     },
     ...combined,
   ]
@@ -112,8 +125,11 @@ export function StatsBand({
   surface = 'muted',
   id = 'proof',
   marketId,
+  omitIds = [],
 }: StatsBandProps) {
-  const stats = marketId === undefined ? STATS : marketStats(marketId)
+  const stats = (marketId === undefined ? STATS : marketStats(marketId)).filter(
+    (stat) => !omitIds.includes(stat.id),
+  )
   return (
     <Section density={density} surface={surface} labelledBy={id}>
       <SectionHeading id={id} title="Experience behind the findings" level="h2" />
@@ -124,7 +140,11 @@ export function StatsBand({
               {stat.label}
             </dt>
             <dd className="mt-1 text-h3 font-semibold tracking-tight text-foreground">
-              <CountUpValue value={stat.value} suffix={stat.suffix} />
+              {stat.static === true ? (
+                `${stat.value}${stat.suffix}`
+              ) : (
+                <CountUpValue value={stat.value} suffix={stat.suffix} />
+              )}
             </dd>
           </div>
         ))}

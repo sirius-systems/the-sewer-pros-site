@@ -86,6 +86,12 @@ export interface ProcessStep {
    * when one is present (18 §40-42).
    */
   image?: CardImage
+  /**
+   * A caller-supplied decorative icon, shown in place of the numeral
+   * (grid) or the positional Inspect/Understand/Decide icon (cards).
+   * Must be `aria-hidden`; the step heading carries the meaning.
+   */
+  icon?: ReactNode
 }
 
 /**
@@ -492,7 +498,9 @@ export function ProcessSteps({
                   colour the owner named. 5.83:1 on the card, well past
                   the 3:1 a graphic needs.
                 */}
-                {StepIcon !== undefined ? (
+                {step.icon !== undefined ? (
+                  step.icon
+                ) : StepIcon !== undefined ? (
                   <StepIcon className="h-10 w-10 text-accent-secondary" />
                 ) : (
                   <span

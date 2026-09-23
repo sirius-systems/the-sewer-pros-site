@@ -360,6 +360,16 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
         action={null}
+        /*
+          Background photograph. `CtaSection` handles the scrim and the
+          white heading and body; the form's own card is opaque with
+          `text-foreground`, as the `backgroundImage` note requires.
+        */
+        backgroundImage={{
+          src: '/images/brand/about/the-sewer-pros-about-contact-cta-sewer-camera-inspection-16x9.webp',
+          alt: 'Sewer camera inspection equipment set up at a residential property',
+          source: 'Owner-supplied About page CTA background (16:9 WebP).',
+        }}
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
             <LeadFormSection bare density="standard" idPrefix="about-cta-lead" />

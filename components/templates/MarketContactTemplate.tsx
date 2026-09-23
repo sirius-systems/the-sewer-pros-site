@@ -9,6 +9,7 @@ import {
   ContactForm,
   StatsBand,
   MobileContactBar,
+  contactStepIcons,
   MarketBusinessDetails,
   faqSectionRenders,
 } from '@/components/sections'
@@ -151,7 +152,11 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
         id="what-happens-next"
         title={content.process.title}
         intro={content.process.intro}
-        steps={content.process.steps}
+        steps={content.process.steps.map((step, index) => ({
+          ...step,
+          icon: contactStepIcons[index],
+        }))}
+        variant="cards"
       />
 
       <MarketBusinessDetails

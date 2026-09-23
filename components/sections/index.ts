@@ -261,3 +261,4 @@ export type {
   MarketBusinessDetailsProps,
 } from './ContactSections'
 export { ThankYouDetails } from './ThankYouDetails'
+export { contactStepIcons } from './ContactStepIcons'
