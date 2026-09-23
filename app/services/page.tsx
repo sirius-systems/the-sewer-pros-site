@@ -30,8 +30,10 @@ export default function Page() {
   if (page === undefined || content === undefined) notFound()
   /*
     ⚠ `numbered` IS INERT AND KEPT ON PURPOSE. The member list renders
-    the mosaic, which ignores it; it is the setting the row-list
-    fallback would use if the cards ever lost their artwork.
+    `itemsVariant="cards"` (2026-09-23: the approved nine-card section,
+    reused rather than duplicated), which ignores it; it is the setting
+    the row-list fallback would use if the items ever lost their
+    artwork.
 
     ⚠ `itemsId` IS THE INTRO BAND'S ANCHOR TARGET. The default is
     `hub-items`, which is what the other hubs keep; this page names it
@@ -82,7 +84,8 @@ export default function Page() {
         buttons. 112px clears the 68px strip with breathing room.
       */
       heroClassName="max-sm:pb-28"
-      itemsTitle="Explore our sewer and drain services"
+      itemsTitle="Sewer Inspection, Diagnostics & Cleaning Services"
+      itemsVariant="cards"
       itemsId="services-grid"
       numbered
       backdrop={

@@ -26,8 +26,10 @@
 
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
-import { coreServiceCards } from './service-cards'
-import { homeServiceCards } from './home-service-cards'
+import {
+  homeServiceCards,
+  approvedServicesIntro,
+} from './home-service-cards'
 import type {
   CorePageContent,
   HomePageContent,
@@ -554,74 +556,17 @@ export const homeContent: HomePageContent = {
    ========================================================================== */
 
 /**
- * `/services/`'s index, grouped by service family.
+ * `/services/`'s member list.
  *
- * ===========================================================================
- * ⚠ REORDERED FROM `coreServiceCards`, NEVER RETYPED FROM IT
- * ===========================================================================
- * Prompt 04 asked for the nine descriptions "verbatim from the live
- * homepage", and the only way to guarantee that next month as well as
- * today is to hand back the SAME OBJECTS rather than a proofread copy
- * of their text. Reordering by id does that: the descriptions, the
- * artwork and the provenance all travel unchanged, and an edit to
- * `content/pages/service-cards.ts` reaches this page automatically.
- *
- * ⚠ THE ARTWORK IS WHY THIS IS A MOSAIC RATHER THAN A ROW LIST.
- * `HubPageTemplate` derives the variant from whether the items carry
- * `image`, the same rule the home page's own band runs on. Dropping to
- * a plain `{ pageId, description }` shape here would silently demote
- * the section.
- *
- * ---------------------------------------------------------------------------
- * ⚠ NINE, NOT THE TEN THE BRIEF ASKED FOR, AND THE REASON IS A ROUTE
- * ---------------------------------------------------------------------------
- * Prompt 04 lists "Independent Sewer Inspection Second Opinion" as
- * item 4 of an Inspection & Diagnostics group. THAT PAGE DOES NOT
- * EXIST. `svc-independent-sewer-second-opinion` appears only in
- * `data/matrices/service-location-master-matrix.csv`, marked
- * `phase_2_candidate` and `selective_candidate`, and every path it
- * carries there is market-scoped (`/st-louis-mo/...`), never sitewide.
- * The approved page registry has no record for it and the production
- * build has no route. The build prompt's own Gate 1 says to link only
- * to confirmed-live routes, so it is left out rather than wired to a
- * 404 or silently dropped by the resolver.
- *
- * ⚠ NINE IS ALSO WHAT THE MOSAIC WANTS. `service-cards.ts` records the
- * arithmetic: the flagship takes two columns by two rows, so nine fills
- * exactly at three columns and a tenth would sit alone in a trailing
- * row, the orphan 18 §5.6 prohibits by name. Adding the tenth service
- * later means solving that too, not just adding a line here.
- *
- * ⚠ GROUPING IS ORDER, NOT HEADINGS. `ServiceIndex` renders one band;
- * it has no sub-heading slot, and adding one would be a component
- * change this build was scoped out of. The families read in Prompt 04's
- * display order: inspection and diagnostics, then cleaning, then
- * locating and maintenance.
+ * ⚠ `homeServiceCards`, NOT A FAMILY-GROUPED REORDER OF
+ * `coreServiceCards` (owner direction, 2026-09-23). This page used to
+ * reorder the nine services into inspection/cleaning/locating groups
+ * under its own heading, one of five different presentations of the
+ * same nine-service list across the site. It now renders the approved
+ * section unmodified — see `content/pages/home-service-cards.ts` and
+ * this page's `items`/`itemsTitle`/`itemsVariant` below and in
+ * `app/services/page.tsx`.
  */
-const SERVICES_HUB_ORDER: readonly PageId[] = [
-  // Inspection & Diagnostics
-  id('svc-sewer-camera-inspection'),
-  id('svc-sewer-cleaning-camera-inspection'),
-  id('svc-pre-purchase-sewer-inspection'),
-  id('svc-recurring-sewer-backup-diagnosis'),
-  // Cleaning
-  id('svc-sewer-cleaning'),
-  id('svc-hydro-jetting'),
-  id('svc-drain-cleaning'),
-  // Locating & Maintenance
-  id('svc-sewer-line-locating'),
-  id('svc-preventative-sewer-maintenance'),
-]
-
-/*
-  ⚠ `flatMap` OVER `find`, so a renamed id drops a card instead of
-  throwing a non-null assertion at module scope. The count is nine and
-  visible on the page, so a silent drop shows up as an orphaned mosaic
-  row rather than as nothing at all.
-*/
-const servicesHubItems = SERVICES_HUB_ORDER.flatMap((pageId) =>
-  coreServiceCards.filter((card) => card.pageId === pageId),
-)
 
 /**
  * The five closing answers `/services/` shares with the home page.
@@ -1047,19 +992,17 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       },
     },
     /*
-      ⚠ `servicesHubItems`, NOT `homeContent.services`. Same nine cards
-      and the same objects, reordered into Prompt 04's family grouping.
-      See the constant for why it is nine rather than ten.
+      ⚠ `homeServiceCards`, NOT THE FAMILY-GROUPED REORDER (owner
+      direction, 2026-09-23). This page previously reordered the nine
+      cards into inspection/cleaning/locating groups under its own
+      heading; that presentation is gone in favor of full parity with
+      the home page, San Diego, Las Vegas, and `/locations/` — same
+      nine cards, same order, same copy, same `cards` layout. See
+      `app/services/page.tsx` for the matching `itemsTitle`/
+      `itemsVariant`.
     */
-    items: servicesHubItems,
-    /*
-      ⚠ ONE LINE UNDER THE GRID HEADING, on owner direction. It names
-      the five kinds of service the nine cards divide into, so a reader
-      scanning them knows what the axis is before reading nine
-      descriptions.
-    */
-    itemsIntro:
-      'Compare inspection, cleaning, locating, diagnostic, and maintenance services to find the most appropriate starting point for your property concern.',
+    items: homeServiceCards,
+    itemsIntro: <p>{approvedServicesIntro}</p>,
     /*
       ==========================================================================
       FOURTEEN ANSWERS: FIVE THE HOME PAGE OWNS, NINE THIS PAGE'S OWN

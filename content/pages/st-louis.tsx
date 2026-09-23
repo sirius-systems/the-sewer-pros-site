@@ -60,9 +60,10 @@ import type {
 } from '@/types'
 
 import {
-  coreServiceCards,
-  combinedCleaningInspectionCardId,
-} from './service-cards'
+  homeServiceCards,
+  approvedServicesTitle,
+  approvedServicesIntro,
+} from './home-service-cards'
 
 import {
   CameraIcon,
@@ -609,68 +610,26 @@ export const stLouisMarketContent: MarketPageContent = {
   },
   /*
     ==========================================================================
-    "What we do" — the home page's mosaic, plus this market's own service.
+    THE APPROVED SERVICES SECTION, UNMODIFIED, AS OF 2026-09-23.
     ==========================================================================
-    ⚠ COMPOSED FROM `coreServiceCards`, NOT COPIED FROM IT (owner
-    direction, 2026-09-07). The hub used to declare five services by
-    hand, of which four were transcriptions of home page entries that
-    had since drifted: the camera-inspection card wore the COMBINED
-    cleaning-and-camera frame, and four of the nine services were
-    simply missing. Reading the shared array fixes both and keeps them
-    fixed.
+    ⚠ ST. LOUIS PREVIOUSLY SUBSTITUTED ITS OWN MARKET-SPECIFIC LATERAL-
+    INSPECTION SERVICE FOR THE COMBINED CLEANING-AND-CAMERA CARD HERE.
+    That composition is gone on owner direction (2026-09-23): this band
+    now renders `homeServiceCards` verbatim, the same nine cards, same
+    copy, same images, same `cards` layout as the home page, San Diego,
+    Las Vegas, and `/locations/` — full parity rather than a fifth
+    variant.
 
-    ⚠ THE ARITHMETIC IS NINE, AND IT IS DELIBERATE.
-
-      1  svc-stl-sewer-lateral-inspection-reporting   this market only
-      8  coreServiceCards minus the combined service
-      -
-      9  which fills the mosaic exactly
-
-    `ServiceIndex`'s mosaic gives the first card two columns and two
-    rows, so nine lands as flagship (2x2) + two beside it + two full
-    rows of three. A TENTH would sit alone in a trailing row - the
-    orphaned row 18 §5.6 prohibits by name - which is why this composes
-    with a filter instead of appending to all nine.
-
-    ⚠ THE FILTERED-OUT CARD IS THE COMBINED CLEANING-AND-INSPECTION
-    SERVICE, AND DROPPING IT COSTS THIS PAGE NOTHING. Both halves of it
-    are listed separately below, and this hub has never carried it - so
-    the filter preserves the status quo rather than removing something.
-
-    ⚠ THE LATERAL-REPORTING ENTRY IS FIRST BECAUSE FIRST IS THE
-    FLAGSHIP TILE. It is the market's differentiator, it is
-    `confirmed_market_specific_capability` in the service registry for
-    St. Louis and `not_applicable` in both other markets, and it is why
-    it lives here rather than in the shared array. `svc-hydro-jetting`
-    below it is the GLOBAL service, not `sl-chesterfield-hydro`: this
-    band fans out to canonical service spokes, and pointing an entry at
-    one suburb's service+location page would imply hydro jetting is
-    offered only in Chesterfield. No `/st-louis-mo/hydro-jetting/`
-    route exists, and 05 §27 permits a market-level service route only
-    where the intent belongs to that market rather than the global
-    taxonomy — which is exactly the test the lateral-reporting entry
-    passes and that one does not.
-
-    ⚠ SITEWIDE SERVICE ARTWORK, NOT ST. LOUIS PHOTOGRAPHY. These are
-    the same frames the home page mosaic uses. No St. Louis-specific
-    service imagery exists and none was sourced for this build.
+    ⚠ `svc-stl-sewer-lateral-inspection-reporting` IS NOT ORPHANED.
+    Dropping it from THIS band does not remove its page or its internal
+    links: it remains linked from this page's hero secondary action,
+    several `servicePageIds` entries below, and other market-specific
+    sections. Only its appearance IN THIS NINE-CARD BAND changed.
   */
-  services: [
-    {
-      pageId: id('svc-stl-sewer-lateral-inspection-reporting'),
-      description:
-        'Video documentation prepared for municipal lateral programme submission.',
-      image: {
-        src: '/images/homepage/services/the-sewer-pros-sewer-camera-inspection-video-evidence.webp',
-        alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
-        source:
-          'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
-      },
-    },
-    ...coreServiceCards.filter(
-      (card) => card.pageId !== combinedCleaningInspectionCardId,
-    ),
-  ],
+  services: homeServiceCards,
+  servicesTitle: approvedServicesTitle,
+  servicesIntro: <p>{approvedServicesIntro}</p>,
+  servicesVariant: 'cards',
   locationPageIds: [
     id('loc-stl-st-louis-city'),
     id('loc-stl-ballwin'),

@@ -5,28 +5,28 @@
  *            docs/18-design-system.md §5.6, §50-51;
  *            CLAUDE.md §18, §40, §53.
  *
- * ⚠ SEPARATE FROM `coreServiceCards`, ON PURPOSE. `service-cards.ts`'s
- * nine cards back `/services/` and the St. Louis market hub, both of
- * which compose or order that data differently (St. Louis swaps in a
- * market-specific lateral-inspection service; `/services/` groups the
- * nine by family and uses the flagship 2x2 mosaic) — that file
- * documents why those two stay on `coreServiceCards` rather than this
- * one.
+ * ⚠ SEPARATE FROM `coreServiceCards`, WHICH IS NOW UNUSED. This file
+ * once existed to keep the home page's presentation of nine services
+ * distinct from every other page's (each of which composed or ordered
+ * `service-cards.ts`'s `coreServiceCards` differently). As of
+ * 2026-09-23 every one of those pages — `/services/`, all three market
+ * hubs, `/locations/` — was moved onto this exact data and layout
+ * instead, so the distinction that named this file is gone; it kept
+ * its name to avoid a mechanical rename across six call sites.
  *
- * This file is the CANONICAL approved nine cards and copy: the home
- * page, the San Diego and Las Vegas market hubs, and `/locations/` all
- * render it unmodified, with the same heading and the same descriptions.
- * Editing a card's copy or image here reaches all four.
+ * This file is now the SOLE canonical source for the approved section:
+ * the home page, `/services/`, San Diego, Las Vegas, and `/locations/`
+ * all render it completely unmodified — same heading, same intro
+ * paragraph, same nine cards, same `ServiceIndex` `cards` layout (image
+ * on top, plain-contrast text below it, a visible "Learn more" link
+ * per card). St. Louis also renders it unmodified in this band; it
+ * differs only in still linking its own market-specific
+ * lateral-inspection service from OTHER sections of that page (hero,
+ * FAQ, community cards), never inside this nine-card list.
  *
- * ⚠ THE HOME PAGE'S LAYOUT DIVERGED FROM THE OTHER THREE (2026-09-22).
- * San Diego, Las Vegas, and `/locations/` still render this data through
- * `ServiceIndex`'s `mosaic` variant with `equalColumns` (image as card
- * background, scrim, white text, no visible link — see that variant).
- * The home page alone was moved to `variant="cards"`: image on top,
- * plain-contrast text below it, and a visible "Learn more" link per
- * card. See `HomePageTemplate`'s render call for why, and `ServiceIndex`
- * for the `cards` variant itself. The data is still one array; only the
- * home page's presentation of it changed.
+ * Editing a card's copy or image here, or `approvedServicesTitle` /
+ * `approvedServicesIntro` below, reaches every render call listed
+ * above.
  *
  * Card artwork lives in `public/images/services/service-cards/`, the
  * 2026-09-22 owner-supplied frame delivery (4:3, 1448x1086). All nine
@@ -38,6 +38,21 @@ import type { ServiceCard } from './service-cards'
 
 const id = (value: string): PageId => value as PageId
 
+/**
+ * The approved section's heading and intro paragraph.
+ *
+ * Plain strings, not JSX — this module stays a `.ts` data file, and
+ * `intro` needs wrapping in a `<p>` at each call site instead
+ * (`HomePageTemplate`; `MarketPageTemplate` for San Diego, Las Vegas,
+ * and St. Louis; `HubPageTemplate` for `/locations/`; `core.tsx`'s
+ * `itemsIntro` for `/services/`). Exported so the copy has one source
+ * rather than six transcriptions.
+ */
+export const approvedServicesTitle =
+  'Sewer Inspection, Diagnostics & Cleaning Services'
+export const approvedServicesIntro =
+  'The Sewer Pros provides sewer camera inspections, sewer diagnostics, sewer cleaning, hydro jetting, sewer line locating, and drain cleaning for residential and commercial properties. We document the conditions we observe so property owners, homebuyers, and property managers can understand the issue and consider appropriate next steps.'
+
 const OWNER_RENDER =
   'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.'
 
@@ -48,11 +63,11 @@ const image = (src: string, alt: string): CardImage => ({
 })
 
 /**
- * Nine cards, home page order. No entry is a flagship — unlike
- * `coreServiceCards`, every renderer of this array (`cards` on the home
- * page; `mosaic` with `equalColumns` on San Diego, Las Vegas, and
- * `/locations/`) gives each card the same size, so the count only has
- * to fill a plain 3x3 grid rather than clear a 2x2 flagship tile first.
+ * Nine cards, home page order. No entry is a flagship — every renderer
+ * of this array (the home page, `/services/`, all three market hubs,
+ * and `/locations/`, all on `ServiceIndex`'s `cards` variant) gives
+ * each card the same size, so the count only has to fill a plain 3x3
+ * grid rather than clear a 2x2 flagship tile first.
  */
 export const homeServiceCards: readonly ServiceCard[] = [
   {

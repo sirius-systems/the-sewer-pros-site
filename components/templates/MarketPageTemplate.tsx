@@ -806,19 +806,19 @@ export function MarketPageTemplate({
 
       {reviewMarqueeRenders() && <ReviewMarquee density="standard" />}
 
-      {/* SECTION 6 - services. `mosaic` once a market supplies card art. */}
+      {/* SECTION 6 - services. `mosaic`/`cards` once a market supplies card art. */}
       {content.services !== undefined && serviceIndexRenders(content.services) && (
         <ServiceIndex
           density="dense"
           id="market-services"
           title={content.servicesTitle ?? 'What we do'}
+          intro={content.servicesIntro}
           items={content.services}
           variant={
             content.services.some((item) => item.image !== undefined)
-              ? 'mosaic'
+              ? (content.servicesVariant ?? 'mosaic')
               : 'index'
           }
-          equalColumns={content.servicesEqualColumns}
           /*
             ⚠ `muted` FOR EVERY MARKET NOW, AND THE CONDITIONAL THAT
             USED TO BE HERE IS GONE RATHER THAN SIMPLIFIED AWAY.

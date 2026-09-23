@@ -57,7 +57,11 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
-import { homeServiceCards } from './home-service-cards'
+import {
+  homeServiceCards,
+  approvedServicesTitle,
+  approvedServicesIntro,
+} from './home-service-cards'
 
 const id = (value: string): PageId => value as PageId
 
@@ -1186,16 +1190,17 @@ export const sanDiegoMarketContent: MarketPageContent = {
     },
   ],
   /*
-    ⚠ THE HOME PAGE'S APPROVED NINE-CARD SET, VERBATIM, AS OF
-    2026-09-22. `homeServiceCards` (not `coreServiceCards`) carries the
-    approved heading, copy, images, and equal-size grid; San Diego has
-    no market-specific service of its own to compose in, so it mirrors
-    the home page exactly, the same as it did with `coreServiceCards`
-    before the home page's section was revised.
+    ⚠ THE HOME PAGE'S APPROVED SECTION, VERBATIM, AS OF 2026-09-23.
+    `homeServiceCards` (not `coreServiceCards`) carries the approved
+    heading, intro, copy, images, and `cards` layout; San Diego has no
+    market-specific service of its own to compose in, so it mirrors the
+    home page exactly, same as it did with `coreServiceCards` before the
+    home page's section was revised.
   */
   services: homeServiceCards,
-  servicesTitle: 'Sewer Inspection, Diagnostics & Cleaning Services',
-  servicesEqualColumns: true,
+  servicesTitle: approvedServicesTitle,
+  servicesIntro: <p>{approvedServicesIntro}</p>,
+  servicesVariant: 'cards',
   locationPageIds: [
     id('loc-sd-san-diego'),
     id('loc-sd-carlsbad'),

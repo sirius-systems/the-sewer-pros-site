@@ -103,10 +103,14 @@ import type { HomePageContent, MasterPageRecord } from '@/types'
  * the card rather than behind the heading with a scrim, and adds a
  * visible "Learn more" link per card — a layout `mosaic`'s
  * image-background treatment cannot produce. `ServiceIndex`'s `cards`
- * variant exists for exactly this case; see its own doc comment. This
- * is the ONLY page on `cards` — the three market hubs' and
- * `/locations/`'s equal-size grids still use `mosaic`'s `equalColumns`,
- * which this update deliberately left alone.
+ * variant exists for exactly this case; see its own doc comment.
+ * San Diego, Las Vegas, and `/locations/` were moved onto the same
+ * `cards` layout on 2026-09-23, so this page's rendering is no longer
+ * unique — see `MarketPageTemplate` and `HubPageTemplate` for their own
+ * calls. St. Louis and `/services/` were not: neither carries the
+ * approved section unmodified (St. Louis substitutes a market-specific
+ * service; `/services/` groups the nine by family under its own
+ * heading), so both stay on the flagship `mosaic`.
  *
  * The two sections stay visually distinct regardless: `RoutingCards`
  * carries a photographic backdrop and `ServiceIndex` does not.

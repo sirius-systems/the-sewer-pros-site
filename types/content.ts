@@ -1435,13 +1435,24 @@ export interface MarketPageContent extends BasePageContent {
    */
   servicesTitle?: string
   /**
-   * `mosaic` only. Gives every services-band card the same footprint
-   * instead of a 2x2 flagship tile — see `ServiceIndex.equalColumns`.
+   * Intro paragraph rendered directly under `servicesTitle`.
    *
    * Set only alongside `servicesTitle` for a market carrying the home
-   * page's approved nine-card set unmodified.
+   * page's approved section unmodified — St. Louis has no counterpart
+   * since its services band is not that section.
    */
-  servicesEqualColumns?: boolean
+  servicesIntro?: ReactNode
+  /**
+   * Layout for the services band when it has artwork. Defaults to
+   * `mosaic` (St. Louis's flagship 2x2 tile).
+   *
+   * `cards`: `ServiceIndex`'s approved layout — image on top, plain-
+   * contrast text below it, a visible "Learn more" link per card. Set
+   * only alongside `servicesTitle` for a market carrying the home
+   * page's approved nine-card section unmodified (San Diego, Las
+   * Vegas), so its layout matches the home page as well as its content.
+   */
+  servicesVariant?: 'mosaic' | 'cards'
   /** Full-bleed frame behind the hero. Unset renders the editorial hero. */
   heroBackground?: CardImage
   /**
@@ -1898,15 +1909,16 @@ export interface HubPageContent extends BasePageContent {
    * the same list twice.
    *
    * ⚠ SAME SHAPE AS `MarketPageContent['services']`, and it is meant to
-   * be fed the same `coreServiceCards` array. `image` is what promotes
-   * `ServiceIndex` from a row list to the mosaic, so a page that
-   * quietly loses its artwork loses the composition too.
+   * be fed the same `homeServiceCards` array
+   * (`content/pages/home-service-cards.ts`) every other renderer of the
+   * approved section uses. `image` is what promotes `ServiceIndex` from
+   * a row list to the mosaic/cards layout, so a page that quietly loses
+   * its artwork loses the composition too.
    *
-   * ⚠ ALL NINE SHARED CARDS ARE SAFE ON A SITEWIDE PAGE. Every service
-   * in `coreServiceCards` carries an identical status across all three
-   * markets (see that file), which is exactly the condition a hub
-   * speaking for all three needs. The St. Louis-only lateral-reporting
-   * service is deliberately absent from that array and must stay so.
+   * ⚠ ALL NINE APPROVED CARDS ARE SAFE ON A SITEWIDE PAGE. Every
+   * service in `homeServiceCards` carries an identical status across
+   * all three markets (see `data/services/master-service-registry.json`),
+   * which is exactly the condition a hub speaking for all three needs.
    */
   services?: readonly {
     pageId: PageId
@@ -1947,13 +1959,20 @@ export interface HubPageContent extends BasePageContent {
    */
   ctaFormIntro?: string
   /**
-   * One line beneath the member list's heading.
+   * Intro copy beneath the member list's heading.
    *
-   * ⚠ NAVIGATIONAL, NOT A CLAIM. It says what the list is sorted by so
-   * a reader knows the axis before reading every card; it must not
-   * state what any service establishes or guarantees.
+   * ⚠ NAVIGATIONAL, NOT A CLAIM, for a hub whose member list is its OWN
+   * content (a plain string is enough — it says what the list is
+   * sorted by so a reader knows the axis before reading every card; it
+   * must not state what any service establishes or guarantees).
+   *
+   * ⚠ `/services/` PASSES A REAL PARAGRAPH INSTEAD, on owner direction
+   * (2026-09-23): its member list is the home page's approved
+   * nine-card section reused, so this carries that section's approved
+   * intro paragraph rather than page-specific navigational copy. Typed
+   * as `ReactNode` for exactly that case.
    */
-  itemsIntro?: string
+  itemsIntro?: ReactNode
   /**
    * The service-area explainer band.
    *
