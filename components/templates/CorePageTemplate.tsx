@@ -4,6 +4,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  LeadFormSection,
   relatedLinksRenders,
   faqSectionRenders,
 } from '@/components/sections'
@@ -22,18 +23,19 @@ import type { CorePageContent, MasterPageRecord } from '@/types'
  * than bespoke design.
  *
  * ---------------------------------------------------------------------------
- * ⚠ /contact/ CANNOT YET SHOW CONTACT DETAILS
+ * ⚠ /contact/ STILL SHOWS NO PHONE NUMBER, ADDRESS, OR EMAIL
  * ---------------------------------------------------------------------------
- * No phone number, address, or email is documented anywhere in the
- * project (established when the business config was built), and
- * PENDING-008 leaves the service form's fields undecided, so no form is
- * rendered either.
+ * None of the three is documented anywhere in the project (established
+ * when the business config was built), and 01 §35/CLAUDE.md §23 treat a
+ * fabricated one as worse than a page that cannot yet show it. Resolving
+ * PENDING-002 is what completes this page — not a placeholder.
  *
- * That is an uncomfortable but honest state for a contact page, and it
- * is the correct one under 01 §35 and CLAUDE.md §23: a fabricated
- * number is worse than a page that cannot yet take a call. Resolving
- * PENDING-002 and PENDING-008 is what completes this page — not a
- * placeholder.
+ * This no longer describes the FORM, though — PENDING-008 closed and
+ * `LeadFormSection` is live sitewide (`components/sections/LeadFormSection.tsx`).
+ * `/contact/` passes `hideCta` and so never reaches the closing
+ * `CtaSection` this file renders below; giving that page its own form is
+ * a separate, larger change to this route, not something this template
+ * edit took on.
  *
  * ---------------------------------------------------------------------------
  * ⚠ /about/ CLAIMS
@@ -126,11 +128,25 @@ export function CorePageTemplate({
         <FaqSection entries={content.faq} openFirst />
       )}
 
+      {/*
+        ⚠ `action={null}`, NOT OMITTED. The form in `proof` carries its
+        own submit button, so a second one pointing at `/contact/` is a
+        competing ask beside a form already on screen rather than a
+        stronger one (18 §62) — the same rule the home page's and
+        `/about/`'s closing CTA already follow. `/contact/` itself never
+        reaches this branch (`hideCta`), so only `/faq/` renders it today.
+      */}
       {!hideCta && (
         <CtaSection
           variant="panel"
           title={content.cta?.title ?? 'Schedule an inspection'}
           body={content.cta?.body}
+          action={null}
+          proof={
+            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+              <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+            </div>
+          }
         />
       )}
     </PageShell>

@@ -238,10 +238,23 @@ export function ServicePageTemplate({
         />
       )}
 
+      {/*
+        ⚠ `action={null}`, NOT OMITTED. The form in `proof` carries its
+        own submit button, so a second one pointing at `/contact/` is a
+        competing ask beside a form already on screen rather than a
+        stronger one (18 §62) — the same rule the home page's and
+        `/about/`'s closing CTA already follow.
+      */}
       <CtaSection
         variant="panel"
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
+        action={null}
+        proof={
+          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+          </div>
+        }
       />
     </PageShell>
   )

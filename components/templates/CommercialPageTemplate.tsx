@@ -178,11 +178,24 @@ export function CommercialPageTemplate({
 
       {content.faq !== undefined && <FaqSection entries={content.faq} />}
 
+      {/*
+        ⚠ `action={null}`, WHERE THIS USED TO OVERRIDE THE BUTTON LABEL
+        INSTEAD. The commercial-specific wording still comes through in
+        `title`/`body`; the form in `proof` carries its own submit, and
+        a labelled button beside it is a competing ask rather than a
+        stronger one (18 §62) — the same rule the home page's and
+        `/about/`'s closing CTA already follow.
+      */}
       <CtaSection
         variant="panel"
         title={content.cta?.title ?? 'Request commercial service'}
         body={content.cta?.body}
-        action={{ href: '/contact/', label: 'Request Commercial Service' }}
+        action={null}
+        proof={
+          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+          </div>
+        }
       />
     </PageShell>
   )

@@ -894,12 +894,15 @@ export function HubPageTemplate({
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
         /*
-          ⚠ `null` DROPS THE BUTTON; `undefined` FALLS BACK TO THE
-          GLOBAL `PRIMARY_CTA`. The two are not interchangeable, which
-          is why `hideAction` is checked rather than an empty label.
-          Same handling as `MarketPageTemplate`.
+          ⚠ `null`, UNCONDITIONALLY NOW. `proof` below used to be
+          `showsHeroForm`-gated, so a hub with no hero form had no
+          button-vs-form conflict and kept the global `PRIMARY_CTA`
+          button. Every hub's closing CTA now always carries a form (see
+          `proof`), so the button is always the redundant one — same
+          rule the home page's, `/about/`'s, and every other template's
+          closing CTA already follow (18 §62).
         */
-        action={content.cta?.hideAction === true ? null : undefined}
+        action={null}
         /*
           ⚠ ADDED 2026-09-08, AND IT WAS THE SAME SILENT DROP THE
           EYEBROW HAD. `CtaContent.note` has been on the type since St.
@@ -926,18 +929,25 @@ export function HubPageTemplate({
           passes one, because a phone number is market-scoped and this
           page is not. The footer carries all three sitewide.
         */
+        /*
+          ⚠ ALWAYS RENDERED NOW, NOT GATED ON `showsHeroForm`. It used
+          to be: only `/locations/` puts a form in its hero, so it was
+          the only hub whose closing CTA got one either, and the other
+          four hubs' panels carried just a button. That coupling was
+          about where the FORM lived, not about whether the closing CTA
+          should ever have one — every hub's closing CTA now gets the
+          two-column form treatment regardless of what its hero does.
+        */
         proof={
-          showsHeroForm ? (
-            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-              {/* No `defaultMarketId`, for the reason the hero form gives. */}
-              <LeadFormSection
-                bare
-                density="standard"
-                idPrefix="cta-lead"
-                intro={content.ctaFormIntro}
-              />
-            </div>
-          ) : undefined
+          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            {/* No `defaultMarketId`, for the reason the hero form gives. */}
+            <LeadFormSection
+              bare
+              density="standard"
+              idPrefix="cta-lead"
+              intro={content.ctaFormIntro}
+            />
+          </div>
         }
       />
     </PageShell>

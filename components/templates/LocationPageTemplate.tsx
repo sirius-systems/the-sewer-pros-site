@@ -141,10 +141,33 @@ export function LocationPageTemplate({
 
       {content.faq !== undefined && <FaqSection entries={content.faq} />}
 
+      {/*
+        ⚠ `action={null}`, NOT OMITTED. The form in `proof` carries its
+        own submit button, so a second one pointing at `/contact/` is a
+        competing ask beside a form already on screen rather than a
+        stronger one (18 §62) — the same rule the home page's and
+        `/about/`'s closing CTA already follow.
+
+        ⚠ `defaultMarketId={page.marketId}`. A location page already
+        names its market, so the form starts with that answer filled in
+        rather than asking the visitor to repeat it — same reasoning as
+        `MarketPageTemplate`'s hero and closing forms.
+      */}
       <CtaSection
         variant="panel"
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
+        action={null}
+        proof={
+          <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            <LeadFormSection
+              bare
+              density="standard"
+              idPrefix="cta-lead"
+              defaultMarketId={page.marketId}
+            />
+          </div>
+        }
       />
     </PageShell>
   )
