@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react'
 import { Section, type SectionDensity, type SectionSurface } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
+import { CountUpValue } from './CountUpValue'
 import { foundingYear, MARKET_SCOPED_CLAIMS } from '@/data/business/organization'
 import { markets } from '@/data/markets/markets'
 
@@ -17,9 +19,19 @@ import { markets } from '@/data/markets/markets'
  * company-wide. A caller cannot mis-scope these because there is no
  * prop to pass different text into.
  *
- * No count-up animation (18 §65's "no overengineering with animation"
- * applied to a metrics band, and it avoids the layout-shift risk of an
- * animated counter mounting client-side).
+ * ---------------------------------------------------------------------------
+ * ⚠ COUNT-UP ANIMATION — OWNER REQUEST, RECORDED RATHER THAN SILENTLY
+ * REVERSING THE EARLIER NOTE
+ * ---------------------------------------------------------------------------
+ * This band shipped with no animation, reasoning that 18 §65 rules out
+ * "overengineering with animation" for a metrics band and that a
+ * client-mounted counter risks layout shift. The owner asked for a
+ * restrained count-up directly, and the layout-shift risk is closed by
+ * construction rather than argued away: `CountUpValue` server-renders
+ * the FINAL value as real text and only rewrites it in place once
+ * mounted, so the element's size never changes and nothing shifts.
+ * `prefers-reduced-motion` still gets the static value with no motion at
+ * all — see that component.
  */
 export interface StatsBandProps {
   density?: SectionDensity
@@ -27,15 +39,42 @@ export interface StatsBandProps {
   id?: string
 }
 
-const STATS = [
-  { label: 'Serving customers since', value: String(foundingYear) },
-  { label: MARKET_SCOPED_CLAIMS.companyWide[0], value: '100+ years' },
+const STATS: readonly {
+  id: string
+  label: ReactNode
+  value: number
+  suffix: string
+}[] = [
   {
-    label: `In St. Louis: ${MARKET_SCOPED_CLAIMS.stLouisOnly[1]}`,
-    value: '100,000+',
+    id: 'founding-year',
+    label: 'Serving customers since',
+    value: foundingYear,
+    suffix: '',
   },
-  { label: 'Markets served', value: String(Object.keys(markets).length) },
-] as const
+  {
+    id: 'combined-experience',
+    label: MARKET_SCOPED_CLAIMS.companyWide[0],
+    value: 100,
+    suffix: '+ years',
+  },
+  {
+    id: 'st-louis-inspections',
+    label: (
+      <>
+        <span className="font-semibold text-foreground">In St. Louis:</span>{' '}
+        {MARKET_SCOPED_CLAIMS.stLouisOnly[1]}
+      </>
+    ),
+    value: 100_000,
+    suffix: '+',
+  },
+  {
+    id: 'markets-served',
+    label: 'Markets served',
+    value: Object.keys(markets).length,
+    suffix: '',
+  },
+]
 
 export function StatsBand({
   density = 'standard',
@@ -47,12 +86,12 @@ export function StatsBand({
       <SectionHeading id={id} title="Experience behind the findings" level="h2" />
       <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
         {STATS.map((stat) => (
-          <div key={stat.label} className="border-l-2 border-border pl-4">
+          <div key={stat.id} className="border-l-2 border-border pl-4">
             <dt className="text-sm leading-5 text-muted-foreground">
               {stat.label}
             </dt>
             <dd className="mt-1 text-h3 font-semibold tracking-tight text-foreground">
-              {stat.value}
+              <CountUpValue value={stat.value} suffix={stat.suffix} />
             </dd>
           </div>
         ))}
