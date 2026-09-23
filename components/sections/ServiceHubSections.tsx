@@ -7,16 +7,25 @@ import {
   AccessPointIcon,
   CameraIcon,
   CheckIcon,
+  ChecklistIcon,
   DocumentCheckIcon,
   ExplanationIcon,
+  PipeIcon,
+  type IconProps,
 } from './section-icons'
 import { CameraImageSlot } from './CameraImageSlot'
+import { TrackedLink } from '@/components/tracking/TrackedLink'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
 import { getPage } from '@/data/pages'
 import { markets } from '@/data/markets/markets'
 import { marketImages } from '@/data/business/card-images'
-import { anyCameraImage, resolveCameraImage } from '@/data/business/camera-inspection-images'
-import type { MarketId, ServiceHubContent } from '@/types'
+import {
+  anyHubImage,
+  backdropExists,
+  resolveHubImage,
+  type HubImageKey,
+} from '@/data/business/hub-images'
+import type { HubProcessIcon, MarketId, ServiceHubContent } from '@/types'
 
 /**
  * Extra sections for a service hub page (`ServiceHubContent`).
@@ -35,6 +44,50 @@ import type { MarketId, ServiceHubContent } from '@/types'
  */
 
 type Hub = NonNullable<ServiceHubContent>
+
+/* ==========================================================================
+   Backdrop photograph
+   ========================================================================== */
+
+/**
+ * A decorative full-width photograph behind a section (`alt=""`).
+ *
+ * ⚠ A MISSING FILE IS A PLACEHOLDER, NOT A BROKEN IMAGE. The parent
+ * supplies the brand surface and the black scrim, so the copy stays
+ * readable. Development also shows a small label naming the file to
+ * add; production shows nothing (docs/18 §120).
+ */
+export function BackdropImage({
+  src,
+  priority = false,
+  className = 'object-cover object-center',
+}: {
+  src: string
+  priority?: boolean
+  className?: string
+}) {
+  if (backdropExists(src)) {
+    return (
+      <Image
+        src={src}
+        alt=""
+        fill
+        priority={priority}
+        sizes="100vw"
+        className={`absolute inset-0 -z-10 ${className}`}
+      />
+    )
+  }
+  if (process.env.NODE_ENV === 'production') return null
+  return (
+    <span
+      data-image-placeholder={src}
+      className="absolute bottom-2 right-3 z-0 rounded-sm border border-dashed border-white/60 px-2 py-1 text-caption text-white"
+    >
+      Image placeholder: {src.split('/').pop()} (development only)
+    </span>
+  )
+}
 
 /* ==========================================================================
    Market router
@@ -95,8 +148,50 @@ export function MarketRouter({ content }: { content: NonNullable<Hub['marketRout
    Definition + pipe-path diagram
    ========================================================================== */
 
-export function DefinitionSection({ content }: { content: NonNullable<Hub['definition']> }) {
-  const id = 'what-is-a-sewer-camera-inspection'
+const CAMERA_DEFINITION_SLOTS: readonly HubImageKey[] = ['process', 'monitor', 'equipment']
+
+export function DefinitionSection({
+  content,
+  slots = CAMERA_DEFINITION_SLOTS,
+}: {
+  content: NonNullable<Hub['definition']>
+  slots?: readonly HubImageKey[]
+}) {
+  const id = content.id ?? 'what-is-a-sewer-camera-inspection'
+  const [main, ...extras] = slots
+
+  // "Quick answer" variant: a single constrained column on a soft surface,
+  // for a hub whose definition is the featured-answer block. The figures,
+  // if any resolve, follow below it.
+  if (content.label !== undefined) {
+    return (
+      <Section density="standard" surface="muted" labelledBy={id}>
+        <div className="max-w-[44rem]">
+          <p className="text-caption font-semibold uppercase tracking-wide text-accent-secondary">
+            {content.label}
+          </p>
+          <h2 id={id} className="mt-2 text-h2 font-semibold tracking-tight text-balance text-foreground">
+            {content.title}
+          </h2>
+          <p className="mt-4 text-body-lg text-foreground">{content.answer}</p>
+          {content.supporting.map((paragraph) => (
+            <p key={paragraph} className="mt-4 text-body text-muted-foreground">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        {main !== undefined && anyHubImage(slots) && (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            <CameraImageSlot slot={main} sizes="(min-width: 640px) 45vw, 100vw" />
+            {extras.map((slot) => (
+              <CameraImageSlot key={slot} slot={slot} sizes="(min-width: 640px) 45vw, 100vw" />
+            ))}
+          </div>
+        )}
+      </Section>
+    )
+  }
+
   return (
     <Section density="standard" surface="default" labelledBy={id}>
       <div className="grid gap-10 lg:grid-cols-[7fr_5fr] lg:items-start">
@@ -112,14 +207,83 @@ export function DefinitionSection({ content }: { content: NonNullable<Hub['defin
           ))}
         </div>
         {/* 4:3 frame matching the files, so nothing is cropped or stretched. */}
-        <CameraImageSlot slot="process" sizes="(min-width: 1024px) 40vw, 100vw" />
+        {main !== undefined && (
+          <CameraImageSlot slot={main} sizes="(min-width: 1024px) 40vw, 100vw" />
+        )}
       </div>
-      {anyCameraImage(['monitor', 'equipment']) && (
+      {anyHubImage(extras) && (
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <CameraImageSlot slot="monitor" sizes="(min-width: 640px) 45vw, 100vw" />
-          <CameraImageSlot slot="equipment" sizes="(min-width: 640px) 45vw, 100vw" />
+          {extras.map((slot) => (
+            <CameraImageSlot key={slot} slot={slot} sizes="(min-width: 640px) 45vw, 100vw" />
+          ))}
         </div>
       )}
+    </Section>
+  )
+}
+
+/* ==========================================================================
+   Symptom router
+   ========================================================================== */
+
+/**
+ * Six situation cards that send a visitor to the right service from how
+ * the problem looks, before they know the service names.
+ *
+ * ⚠ ORANGE ONLY MARKS AN ACTIVE ISSUE (`urgency: 'active'`). Every other
+ * status stays neutral so the accent keeps its meaning.
+ *
+ * ⚠ EACH CARD IS ONE REAL LINK (`pageId` or an in-page `href`), reported
+ * as `service_select` with stable ids only (19 §132).
+ */
+export function SymptomRouter({ content }: { content: NonNullable<Hub['symptomRouter']> }) {
+  return (
+    <Section density="standard" surface="default" labelledBy={content.id}>
+      <SectionHeading id={content.id} title={content.title} intro={<p>{content.intro}</p>} />
+      <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {content.items.map((item) => {
+          const href =
+            item.pageId !== undefined ? resolveApprovedLink(item.pageId).href : (item.href ?? '#')
+          const active = item.urgency === 'active'
+          return (
+            <li key={item.title} className="flex">
+              <Card className="flex w-full flex-col">
+                <p
+                  className={
+                    active
+                      ? 'inline-flex w-fit rounded-sm border border-warning bg-[color-mix(in_srgb,var(--color-warning)_10%,white)] px-2 py-0.5 text-caption font-semibold text-foreground'
+                      : 'inline-flex w-fit rounded-sm bg-surface-muted px-2 py-0.5 text-caption font-semibold text-muted-foreground'
+                  }
+                >
+                  {item.status}
+                </p>
+                <h3 className="mt-3 text-h4 font-semibold text-foreground">{item.title}</h3>
+                <p className="mt-2 text-body-sm text-muted-foreground">{item.description}</p>
+                <div className="mt-auto pt-5">
+                  {item.pageId !== undefined ? (
+                    <TrackedLink
+                      href={href}
+                      event="service_select"
+                      ctaLocation="section_cta"
+                      context={{ page_type: 'service' }}
+                      className="inline-flex min-h-11 items-center font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                    >
+                      {item.actionLabel} <span aria-hidden="true">&rarr;</span>
+                    </TrackedLink>
+                  ) : (
+                    <a
+                      href={href}
+                      className="inline-flex min-h-11 items-center font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                    >
+                      {item.actionLabel} <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  )}
+                </div>
+              </Card>
+            </li>
+          )
+        })}
+      </ul>
     </Section>
   )
 }
@@ -157,14 +321,8 @@ export function ScheduleGrid({
   imageSrc: string
 }) {
   return (
-    <div className="relative isolate overflow-hidden">
-      <Image
-        src={imageSrc}
-        alt=""
-        fill
-        sizes="100vw"
-        className="absolute inset-0 -z-10 object-cover object-center"
-      />
+    <div className="relative isolate overflow-hidden bg-brand">
+      <BackdropImage src={imageSrc} />
       <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
       <Section density="standard" surface="none" labelledBy={id}>
         <div className="max-w-[var(--container-reading)]">
@@ -270,24 +428,39 @@ export function LimitationsPanel({ content }: { content: NonNullable<Hub['limita
  * file's 4:3, so no equipment is cropped. It is also used in the
  * definition section above; both captions say it is an illustration.
  */
-const STEP_ICONS = [
-  ExplanationIcon,
-  AccessPointIcon,
-  CameraIcon,
-  DocumentCheckIcon,
-] as const
+const STEP_ICON_BY_NAME: Record<HubProcessIcon, (props: IconProps) => ReactNode> = {
+  explanation: ExplanationIcon,
+  checklist: ChecklistIcon,
+  access: AccessPointIcon,
+  pipe: PipeIcon,
+  camera: CameraIcon,
+  document: DocumentCheckIcon,
+}
+
+const DEFAULT_STEP_ICONS: readonly HubProcessIcon[] = [
+  'explanation',
+  'access',
+  'camera',
+  'document',
+]
 
 export function InspectionProcess({
   title,
   steps,
   prep,
+  imageSlot = 'process',
+  icons = DEFAULT_STEP_ICONS,
 }: {
   title: string
   steps: readonly { title: string; description?: string }[]
   prep?: Hub['prep']
+  /** Figure beside the steps. Defaults to the camera hub's process image. */
+  imageSlot?: HubImageKey
+  /** One mark per step. Defaults to the camera hub's set. */
+  icons?: readonly HubProcessIcon[]
 }) {
   const id = 'how-it-works'
-  const image = resolveCameraImage('process')
+  const image = resolveHubImage(imageSlot)
   return (
     <Section density="standard" surface="default" labelledBy={id} className="border-y border-border">
       {/*
@@ -314,7 +487,7 @@ export function InspectionProcess({
         </div>
         <ol className="mt-2 grid gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
           {steps.map((step, index) => {
-            const Icon = STEP_ICONS[index] ?? CheckIcon
+            const Icon = STEP_ICON_BY_NAME[icons[index] ?? 'explanation'] ?? CheckIcon
             return (
               <li key={step.title} className="rounded-md border border-border bg-surface-muted p-5">
                 <span
@@ -371,7 +544,7 @@ export function InspectionProcess({
    ========================================================================== */
 
 export function AudiencePathways({ content }: { content: NonNullable<Hub['audiences']> }) {
-  const id = 'sewer-camera-inspection-for-your-situation'
+  const id = content.id ?? 'sewer-camera-inspection-for-your-situation'
   return (
     <Section density="dense" surface="default" labelledBy={id}>
       <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
@@ -412,11 +585,11 @@ export function AudiencePathways({ content }: { content: NonNullable<Hub['audien
  * to a common height.
  */
 export function evidenceRenders(content: Hub['evidence']): boolean {
-  return content !== undefined && anyCameraImage(content.items.map((item) => item.slot))
+  return content !== undefined && anyHubImage(content.items.map((item) => item.slot))
 }
 
 export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidence']> }) {
-  const id = 'real-inspection-evidence'
+  const id = content.id ?? 'real-inspection-evidence'
   return (
     <Section density="standard" surface="muted" labelledBy={id}>
       <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
@@ -473,16 +646,15 @@ export function ServiceComparison({
   content: NonNullable<Hub['comparison']>
   imageSrc: string
 }) {
-  const id = 'sewer-camera-inspection-vs-related-services'
+  const id = content.id ?? 'sewer-camera-inspection-vs-related-services'
+  const [colService, colPurpose, colFit] = content.columns ?? [
+    'Service',
+    'Primary purpose',
+    'May be the right fit when',
+  ]
   return (
-    <div className="relative isolate overflow-hidden">
-      <Image
-        src={imageSrc}
-        alt=""
-        fill
-        sizes="100vw"
-        className="absolute inset-0 -z-10 object-cover object-center"
-      />
+    <div className="relative isolate overflow-hidden bg-brand">
+      <BackdropImage src={imageSrc} />
       <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
       <Section density="dense" surface="none" labelledBy={id}>
         <div className="max-w-[var(--container-reading)]">
@@ -496,9 +668,9 @@ export function ServiceComparison({
             <caption className="sr-only">{content.title}</caption>
             <thead>
               <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
-                <th scope="col" className="py-3 pr-4 font-semibold">Service</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">Primary purpose</th>
-                <th scope="col" className="py-3 font-semibold">May be the right fit when</th>
+                <th scope="col" className="py-3 pr-4 font-semibold">{colService}</th>
+                <th scope="col" className="py-3 pr-4 font-semibold">{colPurpose}</th>
+                <th scope="col" className="py-3 font-semibold">{colFit}</th>
               </tr>
             </thead>
             <tbody>
@@ -576,13 +748,7 @@ export function RequestServiceSection({
   const paragraphs = typeof content.intro === 'string' ? [content.intro] : content.intro
   return (
     <div className="relative isolate overflow-hidden bg-brand text-white">
-      <Image
-        src={imageSrc}
-        alt=""
-        fill
-        sizes="100vw"
-        className="absolute inset-0 -z-10 object-cover object-center"
-      />
+      <BackdropImage src={imageSrc} />
       <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
       <Section density={density} surface="none" labelledBy={id}>
         <div className="grid gap-10 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-14">

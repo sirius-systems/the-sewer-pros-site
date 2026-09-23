@@ -1,12 +1,9 @@
 import Image from 'next/image'
 import { cn } from '@/lib/utils/cn'
-import {
-  resolveCameraImage,
-  type CameraImageKey,
-} from '@/data/business/camera-inspection-images'
+import { resolveHubImage, type HubImageKey } from '@/data/business/hub-images'
 
 /**
- * One sewer camera hub image slot.
+ * One service hub image slot (camera inspection or sewer cleaning).
  *
  * Renders the real image when the file exists, a labelled placeholder
  * frame in development, and nothing in a production build. See
@@ -18,7 +15,7 @@ import {
  * reaches structured data.
  */
 export interface CameraImageSlotProps {
-  slot: CameraImageKey
+  slot: HubImageKey
   sizes?: string
   priority?: boolean
   /** Hides the caption, where the surrounding section already carries one. */
@@ -33,7 +30,7 @@ export function CameraImageSlot({
   hideCaption = false,
   className,
 }: CameraImageSlotProps) {
-  const image = resolveCameraImage(slot)
+  const image = resolveHubImage(slot)
   if (image === null) return null
 
   return (

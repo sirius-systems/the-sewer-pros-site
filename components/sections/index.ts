@@ -242,6 +242,8 @@ export type { HubIntroProps } from './HubIntro'
 export { CameraImageSlot } from './CameraImageSlot'
 export type { CameraImageSlotProps } from './CameraImageSlot'
 export {
+  BackdropImage,
+  SymptomRouter,
   MarketRouter,
   DefinitionSection,
   ScheduleGrid,
