@@ -379,6 +379,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             pageId: id('svc-sewer-cleaning'),
           },
           {
+            service: 'Sewer cleaning and camera inspection',
+            purpose: 'Review visible line conditions and address an appropriate restriction when warranted',
+            fit: 'A problem keeps returning, the cause is unclear, or several fixtures are affected',
+            pageId: id('svc-sewer-cleaning-camera-inspection'),
+          },
+          {
             service: 'Drain cleaning',
             purpose: 'Restore drainage at affected fixtures and branch lines',
             fit: 'Clogs, slow drains, or backups at fixtures',
@@ -753,6 +759,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             purpose: 'View accessible interior line conditions',
             fit: 'A blockage keeps returning, the location is unclear, or the line’s condition is uncertain. Findings help select an appropriate next step.',
             pageId: id('svc-sewer-camera-inspection'),
+          },
+          {
+            service: 'Sewer cleaning and camera inspection',
+            purpose: 'Review visible line conditions and address an appropriate restriction when warranted',
+            fit: 'A problem is recurring, unclear, or affecting multiple fixtures. Inspection can help explain why cleaning alone may not settle it.',
+            pageId: id('svc-sewer-cleaning-camera-inspection'),
           },
           {
             service: 'Line locating',
@@ -1408,70 +1420,464 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Sewer Cleaning & Camera Inspection
      ====================================================================== */
   [id('svc-sewer-cleaning-camera-inspection')]: {
+    /*
+      ⚠ THIS PAGE IS THE COMBINED DECISION HUB, NOT A CITY PAGE. Market
+      targeting lives on the market and service + location pages; here the
+      three markets are routed to, never listed city by city. `hub` switches
+      the page to `ServiceHubTemplate`; `decisionFirst` puts the comparison
+      ahead of the market router.
+
+      ⚠ THE ORDER OF WORK IS NEVER FIXED IN COPY. Inspection may come before
+      cleaning, after it, or both, depending on the problem. Copy never says
+      "clean first" or "inspect first" as a rule.
+
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No pricing, timeframe, guarantee,
+      certification, availability window, emergency or same-day service,
+      same-visit completion, equipment specification, or review metric. No
+      customer deliverable is promised (video, written report, photos)
+      because none is documented for every market, so the deliverables panel
+      is deliberately absent. No case study, named outcome, or video exists,
+      so none is shown. Repair stays educational: neither service changes
+      pipe condition (CLAUDE.md §9, §24).
+
+      OPEN VALIDATION before any of this is strengthened: whether technicians
+      inspect before cleaning in all cases; whether cleaning is completed in
+      the same visit; hydro jetting availability per market; what footage,
+      report or photos are provided; which conditions prompt referral.
+    */
+    seoTitle: 'Sewer Camera Inspection and Cleaning for Recurring Drainage Problems',
     metaDescription:
-      'Combine sewer cleaning with camera inspection to address buildup while documenting conditions inside the line before deciding what comes next.',
+      'Learn how a sewer camera inspection and sewer cleaning can work together for recurring clogs, slow drains, and unclear sewer problems. Serving St. Louis, San Diego, and Las Vegas.',
     hero: {
-      eyebrow: 'Cleaning and diagnostics',
-      title: 'Sewer Cleaning with Camera Inspection',
+      eyebrow: 'Sewer Diagnostics and Cleaning',
+      title: 'Sewer Camera Inspection and Cleaning for Recurring Drainage Problems',
+      primaryAction: { href: '#choose-market', label: 'Choose Your Location' },
+      secondaryAction: { href: '/contact/', label: 'Call About a Sewer Problem' },
       intro: (
-        <p>
-          Clear the line, then look at it. Cleaning restores flow; the
-          inspection afterward shows what the buildup was covering.
-        </p>
+        <>
+          <p>
+            Recurring clogs, multiple slow drains, and sewer backups can have
+            different causes. The Sewer Pros can use a camera inspection to
+            review accessible line conditions and recommend sewer cleaning when
+            it is appropriate for the observed issue, pipe condition, and
+            access.
+          </p>
+          <p>
+            <a href="#cleaning-inspection-compared" className="font-semibold underline underline-offset-4">
+              Not sure whether you need inspection, cleaning, or hydro jetting?
+            </a>
+          </p>
+        </>
       ),
     },
-    body: (
-      <>
-        <h2>Why the two are combined</h2>
-        <p>
-          Cleaning and inspection answer complementary questions, and doing both
-          in sequence answers a third: why did this line block?
-        </p>
-        <p>
-          A line full of accumulated material cannot be assessed properly: the
-          camera sees the buildup, not the pipe. Cleaning first and inspecting
-          second means the footage shows the actual pipe wall, joints, and any
-          defect that caused material to catch in the first place.
-        </p>
-
-        <h2>What this combination is for</h2>
-        <ul>
-          <li>A line that has backed up more than once</li>
-          <li>A blockage where the cause is not obvious</li>
-          <li>Establishing a baseline condition for a line with no history</li>
-          <li>Confirming whether cleaning resolved the underlying issue</li>
-        </ul>
-
-        <h2>What the post-cleaning inspection can establish</h2>
-        <p>
-          With the line clear, the footage can show whether the blockage was
-          ordinary accumulation or the consequence of a condition that will
-          cause it again: roots entering at a joint, a section holding water,
-          a break collecting debris.
-        </p>
-        <p>
-          That distinction changes what happens next. Ordinary accumulation is a
-          maintenance question. A structural cause is a decision about repair,
-          and one worth making from documented evidence.
-        </p>
-      </>
-    ),
     process: [
-      { title: 'Clear the line' },
-      { title: 'Confirm flow is restored' },
-      { title: 'Inspect the cleaned line' },
-      { title: 'Review what the footage shows' },
+      {
+        title: 'Discuss symptoms and property context',
+        description:
+          'The team gathers information about affected fixtures, repeat clogs, prior service, access, property type, and timing.',
+      },
+      {
+        title: 'Assess the appropriate starting point',
+        description:
+          'Depending on the problem, the starting point may be a camera inspection, cleaning, hydro jetting, drain cleaning, or another service.',
+      },
+      {
+        title: 'Inspect accessible line conditions',
+        description:
+          'Where appropriate, a sewer camera reviews accessible portions of the line, before cleaning, after it, or both.',
+      },
+      {
+        title: 'Clean or recommend the next step',
+        description:
+          'If cleaning is appropriate, the recommended method is performed or scheduled. If something else is observed, you receive a clear explanation and practical next-step guidance.',
+      },
     ],
     showDifferentiator: true,
+    hub: {
+      decisionFirst: true,
+      mobileBar: true,
+      defaultServiceId: 'svc-sewer-cleaning-camera-inspection',
+      processIcons: ['explanation', 'checklist', 'camera', 'document'],
+      /*
+        IMAGE SLOTS. Save the real files at these paths and they are used at
+        the next build; until then development shows a labelled placeholder
+        and production shows nothing (see
+        `public/images/services/sewer-cleaning-camera-inspection/README.md`
+        for the shot list).
+      */
+      images: {
+        hero: '/images/services/sewer-cleaning-camera-inspection/combined-hero-16x9.webp',
+        comparison: '/images/services/sewer-cleaning-camera-inspection/combined-comparison-16x9.webp',
+        request: '/images/services/sewer-cleaning-camera-inspection/combined-request-16x9.webp',
+        closing: '/images/services/sewer-cleaning-camera-inspection/combined-closing-16x9.webp',
+        definition: ['combined-definition'],
+        process: 'combined-process',
+      },
+      headings: {
+        process: 'What happens during an inspection and cleaning visit?',
+        faq: 'Sewer cleaning and camera inspection questions',
+      },
+      definition: {
+        id: 'what-is-inspection-and-cleaning',
+        label: 'Quick answer',
+        title: 'What is a sewer camera inspection and cleaning visit?',
+        answer:
+          'A sewer camera inspection and cleaning visit combines diagnostic evaluation with an appropriate cleaning approach when conditions support it. A technician uses a specialized camera to view accessible portions of the sewer line and look for visible restrictions, buildup, root intrusion, pipe deterioration, or other conditions that may affect drainage. Based on what can be observed, the technician may recommend sewer cleaning, hydro jetting, further evaluation, or another practical next step.',
+        supporting: [
+          'The two services answer different questions. Cleaning may address a restriction; a camera inspection can help explain visible conditions when the restriction returns or the cause is unclear.',
+        ],
+      },
+      symptomRouter: {
+        id: 'what-is-happening',
+        title: 'What is happening with your drains or sewer line?',
+        intro:
+          'Start with what you are seeing. Each situation points to the service that usually fits it best.',
+        items: [
+          {
+            status: 'Multiple fixtures',
+            title: 'Multiple drains are slow, gurgling, or backing up',
+            description:
+              'When several fixtures are affected, the main sewer line may need assessment. Inspection and cleaning may both be part of the answer.',
+            actionLabel: 'Discuss a sewer problem',
+            href: '#request-service',
+          },
+          {
+            status: 'Recurring issue',
+            urgency: 'recurring',
+            title: 'A clog keeps returning after clearing',
+            description:
+              'Repeat clearing may address the immediate restriction without explaining why it keeps coming back. A camera inspection can help identify visible conditions and guide the next step.',
+            actionLabel: 'Inspect a recurring clog',
+            href: '#request-service',
+          },
+          {
+            status: 'Active issue',
+            urgency: 'active',
+            title: 'Wastewater is actively backing up',
+            description:
+              'Talk with the team about what is happening and whether cleaning or assessment should come first.',
+            actionLabel: 'Call about an active backup',
+            pageId: id('core-contact'),
+          },
+          {
+            status: 'Single fixture',
+            title: 'One fixture is clogged',
+            description:
+              'A problem at one sink, tub, or toilet is often a branch-line or fixture clog, which drain cleaning is designed to address.',
+            actionLabel: 'Explore drain cleaning',
+            pageId: id('svc-drain-cleaning'),
+          },
+          {
+            status: 'Possible cause',
+            title: 'Roots or pipe damage may be involved',
+            description:
+              'When roots, cracks, or offsets are suspected, a camera can show what is visible in the accessible line.',
+            actionLabel: 'Schedule a camera inspection',
+            pageId: id('svc-sewer-camera-inspection'),
+          },
+          {
+            status: 'Planning ahead',
+            urgency: 'planning',
+            title: 'A home purchase or sale is involved',
+            description:
+              'A sewer camera inspection during a transaction can document visible conditions in the accessible line.',
+            actionLabel: 'Schedule a buyer sewer inspection',
+            pageId: id('svc-pre-purchase-sewer-inspection'),
+          },
+        ],
+      },
+      materials: {
+        id: 'why-both',
+        title: 'Why recurring sewer problems may need both inspection and cleaning',
+        intro:
+          'Cleaning may help address a restriction. A camera inspection can help explain visible conditions when the restriction returns, the location is uncertain, or pipe condition needs a closer look.',
+        tiles: [
+          'Visible blockages',
+          'Root intrusion',
+          'Buildup or debris',
+          'Cracks or deterioration',
+          'Separated or offset connections',
+          'Low areas, where visible',
+          'Obstructions',
+          'Condition of accessible sections',
+        ],
+        columns: ['Situation', 'Cleaning alone may help with', 'Inspection can help clarify'],
+        rows: [
+          {
+            item: 'Material in the line',
+            help: 'Certain accessible buildup, roots, debris, grease, and soft blockages',
+            qualification:
+              'Whether visible conditions may be contributing to repeated restrictions.',
+          },
+          {
+            item: 'Restricted flow',
+            help: 'Restoring flow where material in the line is restricting drainage',
+            qualification: 'The approximate location and nature of a visible issue.',
+          },
+          {
+            item: 'Accessible line sections',
+            help: 'Removing certain material from an accessible line',
+            qualification:
+              'Signs of cracks, separations, offsets, deterioration, or obstructions where visible.',
+          },
+          {
+            item: 'Maintenance needs',
+            help: 'Maintenance-oriented cleaning',
+            qualification: 'Whether cleaning alone appears to be a reasonable next step.',
+          },
+        ],
+        note: 'A sewer camera inspection reviews accessible portions of a sewer line and may identify visible conditions. It cannot guarantee that every issue is visible, accessible, or detectable.',
+      },
+      limitations: {
+        title: 'What sewer cleaning may address, and what inspection and cleaning may not resolve',
+        intro:
+          'The cleaning method depends on pipe condition, access, the suspected material, and what can be safely and effectively addressed. Neither service changes the pipe itself.',
+        canIdentifyTitle: 'Sewer cleaning may help address',
+        canIdentify: [
+          'Grease buildup',
+          'Sludge and organic material',
+          'Soft blockages and loose debris',
+          'Some root intrusion',
+          'Scale or mineral buildup',
+          'Flow restrictions in accessible pipe sections',
+        ],
+        cannotTitle: 'Inspection and cleaning may not resolve',
+        cannot: [
+          'A collapsed or severely damaged pipe',
+          'Offset, separated, or broken connections',
+          'Sections the camera or cleaning equipment cannot reach',
+          'The underground route of a line, which line locating addresses',
+          'Issues outside the accessible sewer line, such as a municipal problem',
+          'Hidden defects, since not every condition can be detected',
+        ],
+        related: {
+          lead: 'To read more about what the camera side covers,',
+          pageId: id('svc-sewer-camera-inspection'),
+          label: 'see the sewer camera inspection page.',
+        },
+      },
+      comparison: {
+        id: 'cleaning-inspection-compared',
+        columns: ['Service', 'Main purpose', 'Often appropriate when'],
+        title: 'Sewer cleaning and camera inspection compared with related services',
+        intro:
+          'These services sound alike but answer different questions. Compare what each one does and what usually happens next.',
+        rows: [
+          {
+            service: 'Sewer camera inspection and cleaning',
+            purpose:
+              'Evaluate visible accessible conditions and address an appropriate restriction when warranted',
+            fit: 'A problem is recurring, unclear, or affecting multiple fixtures. It does not guarantee every issue is found.',
+          },
+          {
+            service: 'Sewer cleaning',
+            purpose: 'Clear certain accessible restrictions in a main sewer line',
+            fit: 'A main-line blockage or buildup is suspected. It may not explain why the problem returns.',
+            pageId: id('svc-sewer-cleaning'),
+          },
+          {
+            service: 'Sewer camera inspection',
+            purpose: 'Review accessible interior sewer-line conditions',
+            fit: 'Pipe condition, blockage location, or cause is uncertain. It does not itself remove a restriction.',
+            pageId: id('svc-sewer-camera-inspection'),
+          },
+          {
+            service: 'Hydro jetting',
+            purpose: 'Clean certain buildup using controlled high-pressure water',
+            fit: 'Buildup or recurring material may need a more intensive method. It is not automatically suitable for every pipe.',
+            pageId: id('svc-hydro-jetting'),
+          },
+          {
+            service: 'Drain cleaning',
+            purpose: 'Clear a fixture or branch-drain clog',
+            fit: 'One fixture is affected. It may not address a main-line issue.',
+            pageId: id('svc-drain-cleaning'),
+          },
+          {
+            service: 'Line locating',
+            purpose: 'Identify the approximate path of a line',
+            fit: 'Construction or excavation planning is involved. It does not inspect inside or clean the line.',
+            pageId: id('svc-sewer-line-locating'),
+          },
+        ],
+        note: 'If sewage is actively backing up, contact the team to discuss the immediate issue and whether cleaning or assessment should come first.',
+      },
+      marketRouter: {
+        id: 'choose-market',
+        title: 'Find inspection and sewer cleaning service in your market',
+        intro: 'Choose your market for local service details and ways to request service.',
+        items: [
+          {
+            pageId: id('market-st-louis-mo'),
+            description:
+              'Explore sewer inspection and cleaning availability across the St. Louis region.',
+            actionLabel: 'Inspection and Cleaning in St. Louis',
+          },
+          {
+            pageId: id('market-san-diego-ca'),
+            description:
+              'Explore sewer inspection and cleaning availability across the San Diego region.',
+            actionLabel: 'Inspection and Cleaning in San Diego',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            description:
+              'Explore sewer inspection and cleaning availability across the Las Vegas Valley.',
+            actionLabel: 'Inspection and Cleaning in Las Vegas',
+          },
+        ],
+      },
+      audiences: {
+        id: 'inspection-cleaning-for-your-situation',
+        title: 'Inspection and cleaning support for different property decisions',
+        intro:
+          'Different people reach a sewer question from different starting points. These pages cover what matters most to each.',
+        items: [
+          {
+            pageId: id('aud-home-buyers'),
+            audience: 'Home buyers',
+            description:
+              'Understand visible sewer-line conditions before closing, and what cleaning does and does not address.',
+            actionLabel: 'Home buyer sewer inspections',
+          },
+          {
+            pageId: id('aud-home-inspectors'),
+            audience: 'Home inspectors',
+            description:
+              'Coordinate a specialized sewer inspection around property findings.',
+            actionLabel: 'Working with home inspectors',
+          },
+          {
+            pageId: id('aud-real-estate-agents'),
+            audience: 'Real estate agents',
+            description:
+              'Support buyer and seller transaction workflows with an appropriate sewer path.',
+            actionLabel: 'Transaction support',
+          },
+          {
+            pageId: id('aud-property-managers'),
+            audience: 'Property managers',
+            description:
+              'Coordinate recurring-drainage and maintenance needs at occupied properties.',
+            actionLabel: 'Property manager support',
+          },
+        ],
+      },
+      evidence: {
+        id: 'inspection-cleaning-field-evidence',
+        title: 'Real field evidence helps inform the next step',
+        intro:
+          'Seeing the inside of a line can change what the right next step is. These examples come from real field work, with identifying details removed.',
+        caveat:
+          'These are examples from individual properties. Findings and methods vary by line, access, and situation.',
+        items: [
+          {
+            slot: 'combined-equipment',
+            title: 'Inspection and cleaning equipment in the field',
+            description:
+              'Equipment is chosen for the line and the suspected restriction. The method used depends on access and on what is known or visible about the line.',
+          },
+          {
+            slot: 'combined-monitor-buildup',
+            title: 'Reviewing buildup on a monitor',
+            description:
+              'When a camera is used, the technician reviews visible conditions on a monitor. The view covers only the portions of the line the camera can reach.',
+          },
+          {
+            slot: 'combined-monitor-clear',
+            title: 'Reviewing a cleaned section',
+            description:
+              'After cleaning, a camera may help show the visible condition of the pipe wall in the accessible section.',
+          },
+        ],
+      },
+      request: {
+        id: 'request-inspection-and-cleaning',
+        title: 'Request inspection and cleaning',
+        intro:
+          'Tell us what you have noticed, which fixtures are affected, and where the property is. The Sewer Pros provides sewer inspection, cleaning, and diagnostic services across St. Louis, San Diego, and Las Vegas.',
+      },
+      closing: {
+        title: 'Get clear next steps for a recurring sewer or drainage problem',
+        intro: [
+          'Choose your market to request sewer cleaning, ask about a camera inspection, or discuss which service path may be appropriate for your property.',
+          'Use the form to request service or ask about availability for your property.',
+        ],
+      },
+    },
     faq: [
       {
-        question: 'Why not just inspect first?',
+        question: 'Do I need a camera inspection before sewer cleaning?',
         answer: (
           <p>
-            You can, and sometimes that is right. But if the line is full, the
-            camera mostly shows buildup. Where the objective is understanding
-            the pipe rather than confirming a blockage exists, cleaning first
-            produces more usable footage.
+            Not every sewer problem follows the same process. A camera
+            inspection may be recommended when the cause, location, or visible
+            condition of the line is unclear, especially if a blockage returns
+            after prior cleaning.
+          </p>
+        ),
+      },
+      {
+        question: 'Can sewer cleaning remove tree roots?',
+        answer: (
+          <p>
+            Certain cleaning methods may help address accessible root
+            intrusion. However, roots can return, and pipe damage or separated
+            connections may call for a different next step.
+          </p>
+        ),
+      },
+      {
+        question: 'Can a camera inspection find the cause of a recurring clog?',
+        answer: (
+          <p>
+            A camera inspection may help identify visible conditions in
+            accessible portions of the line, such as buildup, root intrusion,
+            cracks, offsets, or obstructions. It cannot guarantee that every
+            issue will be visible or detectable.
+          </p>
+        ),
+      },
+      {
+        question: 'Does sewer cleaning repair a broken sewer line?',
+        answer: (
+          <p>
+            No. Sewer cleaning may clear some restrictions, but it does not
+            repair collapsed, cracked, separated, or otherwise structurally
+            damaged pipe.
+          </p>
+        ),
+      },
+      {
+        question: 'What is the difference between hydro jetting and sewer cleaning?',
+        answer: (
+          <p>
+            Hydro jetting is one possible cleaning method that uses controlled
+            high-pressure water. Sewer cleaning is a broader term that may
+            include different methods depending on pipe condition, access, and
+            the type of restriction.
+          </p>
+        ),
+      },
+      {
+        question: 'What are signs of a main sewer line problem?',
+        answer: (
+          <p>
+            Multiple slow drains, gurgling fixtures, repeated clogs, and water
+            backing up in lower drains can point to a main-line issue. If
+            wastewater is actively backing up, contact the local team to
+            discuss what is happening.
+          </p>
+        ),
+      },
+      {
+        question: 'Can I schedule this for a rental or multi-unit property?',
+        answer: (
+          <p>
+            Property managers and owners can request service for rental and
+            multi-unit properties. Share the property type, unit count,
+            affected areas, access needs, and timing when you reach out, and
+            confirm scope and scheduling with the local team.
           </p>
         ),
       },
@@ -1479,85 +1885,487 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     relatedPageIds: [
       id('svc-sewer-cleaning'),
       id('svc-sewer-camera-inspection'),
+      id('svc-hydro-jetting'),
       id('svc-recurring-sewer-backup-diagnosis'),
     ],
+    cta: {
+      title: 'Get clear next steps for a recurring sewer or drainage problem',
+      body: 'Choose your market to request sewer cleaning, ask about a camera inspection, or discuss which service path may be appropriate for your property.',
+    },
   },
 
   /* ======================================================================
      Sewer Line Locating — 14 §33
      ====================================================================== */
   [id('svc-sewer-line-locating')]: {
+    /*
+      ⚠ THIS PAGE IS THE SERVICE HUB, NOT A CITY PAGE. `hub` switches the
+      page to `ServiceHubTemplate`. Markets are routed to, never listed.
+
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. Locating is described as the
+      approximate route and position of a private sewer line. Never
+      "exact", "guaranteed", depth precision, utility clearance, permit
+      handling, or any equivalence with 811 or public utility marking. No
+      pricing, timeframe, emergency or same-day service, equipment
+      specification or deliverable is promised. No case study or video
+      exists, so none is rendered. Repair stays educational (CLAUDE.md §9,
+      §24). Confirm the actual equipment and method with the business
+      before adding any method detail.
+    */
+    seoTitle: 'Sewer Line Locating for Property Projects',
     metaDescription:
-      'Locate sewer lines and document their position to support property planning, maintenance, inspections, and related project decisions.',
+      'Sewer line locating helps identify the approximate route of a private sewer line before excavation, landscaping, or repair planning. Serving St. Louis, San Diego, and Las Vegas.',
     hero: {
-      eyebrow: 'Locating',
-      title: 'Sewer Line Locating',
+      eyebrow: 'Sewer Diagnostics and Project Planning',
+      title: 'Sewer Line Locating for Property Projects and Planning',
+      primaryAction: { href: '#request-service', label: 'Request Sewer Line Locating' },
+      secondaryAction: { href: '#choose-market', label: 'Choose Your Location' },
       intro: (
-        <p>
-          Establishing where the sewer line physically runs and how deep it
-          sits, information you need before anyone digs, and often before
-          anyone quotes.
-        </p>
+        <>
+          <p>
+            Sewer line locating helps identify the approximate route and
+            position of an underground sewer line so property owners and
+            project teams can make better-informed decisions before
+            excavation, construction, landscaping, repairs, or other work near
+            the line.
+          </p>
+          <p>
+            <a
+              href="#line-locating-vs-related-services"
+              className="font-semibold underline underline-offset-4"
+            >
+              Need to inspect the inside of the line instead?
+            </a>
+          </p>
+        </>
       ),
     },
-    body: (
-      <>
-        <h2>What locating establishes</h2>
-        <p>
-          Locating identifies the route of the line across the property and the
-          approximate depth along it. A transmitting sonde is moved through the
-          line and tracked from the surface, so the path can be marked above
-          ground.
-        </p>
-
-        <h2>Why it matters</h2>
-        <ul>
-          <li>
-            Excavation without knowing the line&rsquo;s route means digging
-            speculatively, which costs more and disturbs more.
-          </li>
-          <li>
-            A repair quote is more meaningful when the depth and position of the
-            problem are known rather than estimated.
-          </li>
-          <li>
-            Planning work on a property (landscaping, an addition, paving)
-            benefits from knowing what runs underneath and where.
-          </li>
-          <li>
-            Access points are not always where people assume, particularly on
-            older properties or after previous work.
-          </li>
-        </ul>
-
-        <h2>Locating and inspection together</h2>
-        <p>
-          Camera inspection shows the condition of the line and the distance
-          along it to a defect. Locating translates that distance into a
-          physical position on the property. Together they answer both what is
-          wrong and where it is.
-        </p>
-        <p>
-          That combination is what makes a repair decision concrete rather than
-          approximate, and it is information you own regardless of who
-          performs any subsequent work.
-        </p>
-      </>
-    ),
     process: [
-      { title: 'Access the line' },
-      { title: 'Track the route', description: 'Follow the line from the surface to establish its path.' },
-      { title: 'Establish depth' },
-      { title: 'Mark the findings' },
+      {
+        title: 'Review the project and property need',
+        description:
+          'The team gathers basic information about your project, property type, work area, timeline, and why locating information is needed.',
+      },
+      {
+        title: 'Confirm access and the likely approach',
+        description:
+          'The technician identifies relevant access points and determines whether line locating, camera inspection, or a combined approach is appropriate.',
+      },
+      {
+        title: 'Locate accessible line sections',
+        description:
+          'Appropriate locating equipment is used to identify the approximate route or position of accessible sewer line sections.',
+      },
+      {
+        title: 'Review findings and next steps',
+        description:
+          'You receive a clear explanation of the available location information and practical next steps for planning, inspection, coordination, or further service.',
+      },
     ],
+    hub: {
+      decisionFirst: true,
+      mobileBar: true,
+      defaultServiceId: 'svc-sewer-line-locating',
+      processIcons: ['explanation', 'access', 'pipe', 'document'],
+      /*
+        IMAGE SLOTS. Save the real files at these paths and they are used at
+        the next build; until then development shows a labelled placeholder
+        and production shows nothing (see
+        `public/images/services/sewer-line-locating/README.md`).
+      */
+      images: {
+        hero: '/images/services/sewer-line-locating/sewer-line-locating-hero-16x9.webp',
+        comparison: '/images/services/sewer-line-locating/sewer-line-locating-comparison-16x9.webp',
+        request: '/images/services/sewer-line-locating/sewer-line-locating-request-16x9.webp',
+        closing: '/images/services/sewer-line-locating/sewer-line-locating-closing-16x9.webp',
+        definition: ['locating-definition'],
+        process: 'locating-process',
+      },
+      headings: {
+        process: 'What happens during a sewer line locating visit?',
+        faq: 'Sewer line locating questions',
+      },
+      definition: {
+        id: 'what-is-sewer-line-locating',
+        label: 'Quick answer',
+        title: 'What is sewer line locating?',
+        answer:
+          'Sewer line locating is a service used to identify the approximate underground path and position of a property’s sewer line. A technician may use specialized locating equipment, access points, and information from a sewer camera inspection where appropriate. The results can help with project planning, excavation coordination, landscaping, property evaluation, and understanding where a sewer line runs.',
+        supporting: [
+          'Locating provides approximate route information for planning. It does not replace utility marking, permits, or professional excavation planning.',
+        ],
+      },
+      symptomRouter: {
+        id: 'why-locate-a-sewer-line',
+        title: 'Why do you need to locate a sewer line?',
+        intro:
+          'Start with the task. Each project points to the request that usually fits it best.',
+        items: [
+          {
+            status: 'Project planning',
+            urgency: 'planning',
+            title: 'Planning excavation, trenching, or construction',
+            description:
+              'Knowing the approximate path of a private sewer line can help you coordinate site planning before work begins near the line.',
+            actionLabel: 'Request line locating',
+            href: '#request-service',
+          },
+          {
+            status: 'Project planning',
+            urgency: 'planning',
+            title: 'Landscaping, tree planting, fence, or hardscape work',
+            description:
+              'Understand where the line may run before you plan work that involves digging.',
+            actionLabel: 'Plan a property project',
+            href: '#request-service',
+          },
+          {
+            status: 'Project planning',
+            urgency: 'planning',
+            title: 'Coordinating a sewer repair',
+            description:
+              'Identify the line route to support planning with the provider who will do the work.',
+            actionLabel: 'Discuss project coordination',
+            href: '#request-service',
+          },
+          {
+            status: 'Property evaluation',
+            urgency: 'planning',
+            title: 'Buying or evaluating a property',
+            description:
+              'Location information can be combined with a camera inspection when the line’s route and condition both matter.',
+            actionLabel: 'Schedule a sewer inspection',
+            pageId: id('svc-pre-purchase-sewer-inspection'),
+          },
+          {
+            status: 'Active issue',
+            urgency: 'active',
+            title: 'A drainage problem and an unknown line path',
+            description:
+              'When the line’s path and condition are both unclear, a camera inspection combined with a locating assessment may help.',
+            actionLabel: 'Discuss a sewer issue',
+            pageId: id('core-contact'),
+          },
+          {
+            status: 'Contractor request',
+            title: 'Contractor or project-team coordination',
+            description:
+              'Confirm the project need and the appropriate locating route with the team before work starts.',
+            actionLabel: 'Request contractor support',
+            href: '#request-service',
+          },
+        ],
+      },
+      materials: {
+        id: 'when-line-locating-is-useful',
+        title: 'When is sewer line locating useful?',
+        intro:
+          'Locating is most useful when work may come near a private sewer line. Each situation below carries its own qualification.',
+        tiles: [
+          'Excavation or trenching',
+          'Landscaping or tree planting',
+          'Fence, pool, or patio work',
+          'Repair planning',
+          'Home inspection follow-up',
+          'Property management planning',
+        ],
+        columns: ['Scenario', 'Why locating may help', 'Keep in mind'],
+        rows: [
+          {
+            item: 'Excavation or trenching',
+            help: 'Helps plan around the approximate route of the private sewer line.',
+            qualification: 'Follow the appropriate utility-location and permit process before digging.',
+          },
+          {
+            item: 'Landscaping or tree planting',
+            help: 'Supports property planning before digging near line areas.',
+            qualification: 'Approximate route only. Depth and every point along the line are not confirmed.',
+          },
+          {
+            item: 'Fence, pool, patio, or hardscape work',
+            help: 'Helps project teams understand potential sewer line placement.',
+            qualification: 'Property boundaries and easements are not identified by locating.',
+          },
+          {
+            item: 'Repair or replacement planning',
+            help: 'Can support coordination before a suspected line area is accessed.',
+            qualification: 'The Sewer Pros does not perform repair work. Locating informs planning only.',
+          },
+          {
+            item: 'Home inspection follow-up',
+            help: 'Helps clarify line routing when property-condition questions exist.',
+            qualification: 'Pipe condition needs a camera inspection.',
+          },
+          {
+            item: 'Property management planning',
+            help: 'Supports maintenance, access, and vendor coordination.',
+            qualification: 'Results depend on access and site conditions.',
+          },
+        ],
+        note: 'Sewer line locating does not replace required utility-location processes, public utility marking, permits, site plans, or professional excavation planning. Confirm the appropriate steps for your project before digging.',
+      },
+      limitations: {
+        title: 'What sewer line locating can help identify, and its limits',
+        intro:
+          'Locating gives approximate route information for planning. It is not a complete map of what is underground.',
+        canIdentifyTitle: 'Sewer line locating may help identify',
+        canIdentify: [
+          'The approximate route of a private sewer line',
+          'The approximate location of accessible line sections',
+          'Potential route information for planning',
+          'A starting point for repair or excavation coordination',
+          'Where a line may run relative to a planned work area',
+        ],
+        cannotTitle: 'Sewer line locating may not confirm',
+        cannot: [
+          'Every underground utility on a property',
+          'Exact depth at every point',
+          'Property boundaries or easements',
+          'Permit requirements or excavation approval',
+          'The condition inside the pipe without an inspection',
+          'Public utility clearance or official utility marks',
+        ],
+        related: {
+          lead: 'If you plan to dig, use your local utility-notification and project-planning process in addition to private sewer line locating. To see inside the line,',
+          pageId: id('svc-sewer-camera-inspection'),
+          label: 'a sewer camera inspection can help show visible conditions.',
+        },
+      },
+      comparison: {
+        id: 'line-locating-vs-related-services',
+        columns: ['Service or process', 'Primary purpose', 'Best used when'],
+        title: 'Sewer line locating vs. 811, camera inspection, and sewer cleaning',
+        intro:
+          'These services answer different questions. None of them stands in for the others.',
+        rows: [
+          {
+            service: 'Sewer line locating',
+            purpose: 'Identify the approximate route of a private sewer line',
+            fit: 'Work is planned near the line or access needs coordination. It does not replace public utility marking, permits, or full underground mapping.',
+          },
+          {
+            service: '811 / public utility notification',
+            purpose: 'Request marking of eligible public utilities before digging',
+            fit: 'Required or advisable before excavation, depending on jurisdiction. It is a separate process from private sewer locating.',
+          },
+          {
+            service: 'Sewer camera inspection',
+            purpose: 'View accessible interior conditions of a sewer line',
+            fit: 'Pipe condition, blockage cause, or visible damage is uncertain.',
+            pageId: id('svc-sewer-camera-inspection'),
+          },
+          {
+            service: 'Sewer cleaning',
+            purpose: 'Clear certain accessible restrictions',
+            fit: 'A main-line blockage or buildup is suspected. It does not diagnose pipe condition or map the route.',
+            pageId: id('svc-sewer-cleaning'),
+          },
+          {
+            service: 'Hydro jetting',
+            purpose: 'Clean certain buildup with controlled high-pressure water',
+            fit: 'A suitable line has recurring buildup or material restricting flow.',
+            pageId: id('svc-hydro-jetting'),
+          },
+          {
+            service: 'Drain cleaning',
+            purpose: 'Address a fixture or branch-line clog',
+            fit: 'One fixture is affected.',
+            pageId: id('svc-drain-cleaning'),
+          },
+        ],
+        note: 'If you are planning to dig, use the appropriate local utility-notification and project-planning process in addition to private sewer line locating. The Sewer Pros does not replace 811 or public utility marking.',
+      },
+      prep: {
+        title: 'What to prepare before scheduling',
+        items: [
+          'Property address and ZIP code',
+          'Description of the planned work',
+          'Project timeline',
+          'Approximate work area',
+          'Known sewer cleanout or access point information',
+          'Recent sewer reports, plans, or inspection video, if available',
+          'Contractor contact, if someone else is coordinating the work',
+        ],
+      },
+      marketRouter: {
+        id: 'choose-market',
+        title: 'Find sewer line locating in your market',
+        intro:
+          'Choose your market for local service details and ways to request service.',
+        items: [
+          {
+            pageId: id('market-st-louis-mo'),
+            description: 'Explore sewer line locating availability across the St. Louis region.',
+            actionLabel: 'Sewer Line Locating in St. Louis',
+          },
+          {
+            pageId: id('market-san-diego-ca'),
+            description: 'Explore sewer line locating availability across the San Diego region.',
+            actionLabel: 'Sewer Line Locating in San Diego',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            description: 'Explore sewer line locating availability across the Las Vegas Valley.',
+            actionLabel: 'Sewer Line Locating in Las Vegas',
+          },
+        ],
+      },
+      audiences: {
+        id: 'line-locating-for-your-situation',
+        title: 'Sewer line locating for property owners and project teams',
+        intro:
+          'People reach a locating question from different starting points. These pages cover what matters most to each.',
+        items: [
+          {
+            pageId: id('aud-property-managers'),
+            audience: 'Property managers',
+            description:
+              'Support maintenance, access planning, and vendor coordination.',
+            actionLabel: 'Property manager support',
+          },
+          {
+            pageId: id('aud-home-inspectors'),
+            audience: 'Home inspectors',
+            description:
+              'Help clients understand a line route or coordinate a specialist evaluation.',
+            actionLabel: 'Working with home inspectors',
+          },
+          {
+            pageId: id('aud-real-estate-agents'),
+            audience: 'Real estate agents',
+            description:
+              'Support property due diligence and project-planning questions.',
+            actionLabel: 'Transaction support',
+          },
+          {
+            pageId: id('aud-home-buyers'),
+            audience: 'Home buyers',
+            description:
+              'Understand a line’s route and visible condition before closing.',
+            actionLabel: 'Home buyer sewer inspections',
+          },
+        ],
+      },
+      evidence: {
+        id: 'line-locating-field-experience',
+        title: 'Clearer information for property planning',
+        intro:
+          'Locating a sewer line starts with the right access and the right question. The route information available depends on the property, accessible line sections, equipment signals, and the purpose of the project. A camera inspection may be useful when the route and the visible interior condition of the line both matter.',
+        caveat:
+          'These are examples from individual properties, with identifying details removed. Findings and methods vary by line, access, and situation.',
+        items: [
+          {
+            slot: 'locating-equipment',
+            title: 'Locating and camera equipment in the field',
+            description:
+              'The approach depends on access and on what the project needs to know about the line.',
+          },
+          {
+            slot: 'locating-field',
+            title: 'An example from one property',
+            description:
+              'Route information is approximate and depends on access, equipment signals, and site conditions.',
+          },
+        ],
+      },
+      request: {
+        id: 'request-sewer-line-locating',
+        title: 'Request sewer line locating',
+        intro:
+          'Tell us about the project, the property, and your timeline. The Sewer Pros provides sewer inspection, cleaning, and diagnostic services across St. Louis, San Diego, and Las Vegas.',
+      },
+      closing: {
+        title: 'Plan your project with clearer sewer line information',
+        intro: [
+          'Select your market to request sewer line locating, discuss a property project, or determine whether a camera inspection should be part of the next step.',
+          'Use the form to request service or ask about availability for your property.',
+        ],
+      },
+    },
     faq: [
       {
-        question: 'Do I need locating if I already had a camera inspection?',
+        question: 'What is sewer line locating?',
         answer: (
           <p>
-            They answer different questions. An inspection can tell you a defect
-            sits a certain distance along the line; locating tells you where
-            that point is on the property and how deep.
+            Sewer line locating helps identify the approximate path and
+            position of a private sewer line using appropriate equipment and
+            available access. It can support property planning, excavation
+            coordination, repair planning, and related decisions.
+          </p>
+        ),
+      },
+      {
+        question: 'Can you tell me exactly where my sewer line is?',
+        answer: (
+          <p>
+            Locating can provide useful approximate route information, but the
+            level of certainty depends on access, equipment signals, property
+            conditions, and the line itself. Do not rely on it as a substitute
+            for required utility marking, permits, or professional excavation
+            planning.
+          </p>
+        ),
+      },
+      {
+        question: 'Is sewer line locating the same as calling 811?',
+        answer: (
+          <p>
+            No. 811 is a utility-notification process related to eligible
+            public utilities. Private sewer line locating is a
+            property-specific service and does not replace required public
+            utility marking or other excavation-planning steps.
+          </p>
+        ),
+      },
+      {
+        question: 'Do I need a sewer camera inspection before locating?',
+        answer: (
+          <p>
+            Not always. A camera inspection may be useful when the line’s
+            interior condition or route needs further evaluation, or when the
+            locating approach benefits from access through the line.
+          </p>
+        ),
+      },
+      {
+        question: 'Can line locating help before landscaping or fence installation?',
+        answer: (
+          <p>
+            It may help identify the approximate path of a private sewer line
+            before you plan work near potential line areas. You should still
+            follow the appropriate utility-location, permitting, and
+            project-planning process before digging.
+          </p>
+        ),
+      },
+      {
+        question: 'Can line locating determine sewer pipe depth?',
+        answer: (
+          <p>
+            Available depth information may vary based on equipment, signals,
+            access, and site conditions. Do not assume a locating result
+            confirms precise depth at every point.
+          </p>
+        ),
+      },
+      {
+        question: 'Can you locate every utility on my property?',
+        answer: (
+          <p>
+            No. Sewer line locating is not a complete utility-location or
+            clearance service. Follow the appropriate public utility
+            notification process and engage qualified project professionals as
+            needed.
+          </p>
+        ),
+      },
+      {
+        question: 'Can line locating help with a sewer repair?',
+        answer: (
+          <p>
+            It may support planning and coordination by providing information
+            about the approximate line route. A camera inspection may also be
+            useful if the interior condition or likely issue needs evaluation.
           </p>
         ),
       },
@@ -1565,73 +2373,517 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     relatedPageIds: [
       id('svc-sewer-camera-inspection'),
       id('svc-sewer-cleaning'),
+      id('svc-hydro-jetting'),
+      id('svc-drain-cleaning'),
     ],
+    cta: {
+      title: 'Plan your project with clearer sewer line information',
+      body: 'Select your market to request sewer line locating, discuss a property project, or ask whether a camera inspection should be part of the next step.',
+    },
   },
 
   /* ======================================================================
      Drain Cleaning — 14 §34
      ====================================================================== */
   [id('svc-drain-cleaning')]: {
+    /*
+      ⚠ THIS PAGE IS THE SERVICE HUB, NOT A CITY PAGE. The three markets are
+      routed to, never listed city by city. `hub` switches the page to
+      `ServiceHubTemplate`; `decisionFirst` puts the comparison ahead of the
+      market router so the service is understood first.
+
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No pricing, timeframe, guarantee,
+      certification, availability window, emergency, 24/7 or same-day
+      service, equipment specification or review metric. No deliverable is
+      promised (video, written report) because none is documented for every
+      visit, so the deliverables panel is deliberately absent. Active
+      backups say "contact the team" and promise no response. Repair stays
+      educational (CLAUDE.md §9, §24).
+
+      ⚠ ROUTES THAT DO NOT EXIST ARE NOT LINKED. `/problems/*` and
+      `/who-we-help/*` are not built; symptom cards route to existing
+      service pages or to the in-page form, and audiences live under
+      `/for/`.
+    */
+    seoTitle: 'Drain Cleaning for Slow, Clogged, and Recurring Drains',
     metaDescription:
-      'Get help with clogged, slow, or recurring drains through professional drain cleaning and diagnostic service from The Sewer Pros.',
+      'Learn when drain cleaning fits a slow or clogged drain and when several affected fixtures point to the main sewer line. Serving St. Louis, San Diego, and Las Vegas.',
     hero: {
-      eyebrow: 'Cleaning',
-      title: 'Drain Cleaning',
+      eyebrow: 'Sewer and Drain Service',
+      title: 'Drain Cleaning for Slow, Clogged, and Recurring Drains',
+      primaryAction: { href: '#choose-market', label: 'Choose Your Location' },
+      secondaryAction: { href: '/contact/', label: 'Call About a Drain Problem' },
       intro: (
-        <p>
-          Clearing individual fixture and branch drains, and recognising when
-          a drain problem is actually a sewer problem.
-        </p>
+        <>
+          <p>
+            Drain cleaning helps address certain clogs, buildup, and flow
+            restrictions in sinks, tubs, showers, toilets, floor drains, and
+            connected drain lines. If more than one fixture is affected or the
+            problem keeps returning, a sewer-line evaluation or camera
+            inspection may be a better next step.
+          </p>
+          <p>
+            <a href="#when-a-drain-is-a-sewer-problem" className="font-semibold underline underline-offset-4">
+              Multiple drains affected? Explore sewer-line service options.
+            </a>
+          </p>
+        </>
       ),
     },
-    body: (
-      <>
-        <h2>Drain lines and sewer lines</h2>
-        <p>
-          A drain line serves a fixture or a group of fixtures and connects to
-          the main sewer line, which carries everything away from the property.
-          The distinction matters because it changes what the symptom means.
-        </p>
-        <p>
-          One slow fixture usually indicates a problem in that branch. Several
-          fixtures draining slowly, or the lowest fixtures backing up first,
-          more often points to the main line.
-        </p>
-
-        <h2>Common causes</h2>
-        <ul>
-          <li>Grease and soap accumulation in kitchen and bathroom branches</li>
-          <li>Hair and debris at or near the fixture</li>
-          <li>Foreign objects</li>
-          <li>Scale narrowing older branch lines</li>
-          <li>A restriction further downstream in the main line</li>
-        </ul>
-
-        <h2>When to look further</h2>
-        <p>
-          A drain that clears and stays clear was a drain problem. A drain that
-          blocks repeatedly, or blocks alongside other fixtures, is worth
-          investigating past the branch: clearing the same fixture repeatedly
-          does not address a main-line cause.
-        </p>
-      </>
-    ),
+    process: [
+      {
+        title: 'Discuss the fixture and symptoms',
+        description:
+          'The team gathers details about which fixture is affected, whether the problem is active or recurring, what other drains are doing, and when it began.',
+      },
+      {
+        title: 'Assess the likely location of the restriction',
+        description:
+          'The technician determines whether the problem appears local to the fixture or may involve a branch line, the main sewer line, or another condition.',
+      },
+      {
+        title: 'Perform the recommended cleaning method',
+        description:
+          'The method depends on fixture type, access, the suspected restriction, and the condition of the accessible drain line.',
+      },
+      {
+        title: 'Review findings and next steps',
+        description:
+          'You receive a clear explanation of the service performed, observed conditions where available, and whether further evaluation or another service may help.',
+      },
+    ],
+    hub: {
+      decisionFirst: true,
+      mobileBar: true,
+      defaultServiceId: 'svc-drain-cleaning',
+      processIcons: ['explanation', 'checklist', 'pipe', 'document'],
+      /*
+        IMAGE SLOTS. Save the real files at these paths and they are used at
+        the next build; until then development shows a labelled placeholder
+        and production shows nothing (see
+        `public/images/services/drain-cleaning/README.md` for the shot list).
+      */
+      images: {
+        hero: '/images/services/drain-cleaning/drain-cleaning-hero-16x9.webp',
+        comparison: '/images/services/drain-cleaning/drain-cleaning-comparison-16x9.webp',
+        request: '/images/services/drain-cleaning/drain-cleaning-request-16x9.webp',
+        closing: '/images/services/drain-cleaning/drain-cleaning-closing-16x9.webp',
+        definition: ['drain-definition'],
+        process: 'drain-process',
+      },
+      headings: {
+        process: 'What happens during a drain-cleaning visit?',
+        faq: 'Drain cleaning questions',
+      },
+      definition: {
+        id: 'what-is-drain-cleaning',
+        label: 'Quick answer',
+        title: 'What is drain cleaning?',
+        answer:
+          'Drain cleaning is the process of clearing certain clogs, buildup, debris, or flow restrictions from a sink, tub, shower, toilet, floor drain, or connected drain line. The right method depends on the affected fixture, the location of the restriction, access, and the condition of the line. If several fixtures are affected or the problem keeps returning, the issue may involve the main sewer line rather than a single drain.',
+        supporting: [
+          'A slow or clogged drain may be a fixture-level issue, but recurring or multiple affected drains can signal a broader sewer-line problem.',
+        ],
+      },
+      symptomRouter: {
+        id: 'what-drain-problem',
+        title: 'What drain problem are you experiencing?',
+        intro:
+          'Start with what you are seeing. Each situation points to the service that usually fits it best.',
+        items: [
+          {
+            status: 'Single fixture',
+            title: 'One sink drains slowly or is clogged',
+            description:
+              'A restriction in the sink drain or branch line may be affecting flow. Drain cleaning may be the appropriate starting point.',
+            actionLabel: 'Get help with a sink drain',
+            href: '#request-drain-cleaning',
+          },
+          {
+            status: 'Single fixture',
+            title: 'A shower, tub, or bathroom drain is slow',
+            description:
+              'Hair, soap residue, and buildup can reduce flow. If other fixtures are slow too, the issue may extend past the drain.',
+            actionLabel: 'Explore bathroom drain cleaning',
+            href: '#request-drain-cleaning',
+          },
+          {
+            status: 'Recurring issue',
+            urgency: 'recurring',
+            title: 'A toilet clogs repeatedly',
+            description:
+              'Repeat clogs can relate to fixture use, a branch-line restriction, or a larger sewer-line problem. A technician can help find the right starting point.',
+            actionLabel: 'Discuss a recurring toilet clog',
+            href: '#request-drain-cleaning',
+          },
+          {
+            status: 'Single fixture',
+            title: 'The kitchen sink is slow or backing up',
+            description:
+              'Grease, food residue, and soap can restrict a kitchen drain. The approach depends on where the restriction is located.',
+            actionLabel: 'Explore kitchen drain cleaning',
+            href: '#request-drain-cleaning',
+          },
+          {
+            status: 'Active issue',
+            urgency: 'active',
+            title: 'A floor drain backs up or smells',
+            description:
+              'This can be a local restriction or a broader sewer-line issue, especially if other drains are affected. Talk with the team about what is happening.',
+            actionLabel: 'Discuss a floor drain problem',
+            pageId: id('core-contact'),
+          },
+          {
+            status: 'Multiple fixtures',
+            urgency: 'active',
+            title: 'Multiple drains are slow, gurgling, or backing up',
+            description:
+              'When several fixtures are affected together, the main sewer line may need evaluation rather than a fixture-level cleaning.',
+            actionLabel: 'Explore sewer cleaning options',
+            pageId: id('svc-sewer-cleaning'),
+          },
+        ],
+      },
+      materials: {
+        id: 'common-drain-cleaning-needs',
+        title: 'Common drain-cleaning needs',
+        intro:
+          'These are the fixtures people ask about most. Each row describes what to look for, not a promised result.',
+        tiles: [
+          'Kitchen sink',
+          'Bathroom sink',
+          'Shower or tub',
+          'Toilet',
+          'Floor drain',
+          'Laundry drain',
+        ],
+        columns: ['Fixture or area', 'Common question', 'Guidance'],
+        rows: [
+          {
+            item: 'Kitchen sink',
+            help: 'Why is my kitchen sink draining slowly?',
+            qualification:
+              'Grease, food residue, soap, and debris can restrict flow. The appropriate cleaning approach depends on where the restriction is located.',
+          },
+          {
+            item: 'Bathroom sink',
+            help: 'Why does my bathroom sink clog repeatedly?',
+            qualification:
+              'Soap residue, hair, and debris can build up in a drain. Repeat clogs may need a closer look at the branch line or downstream conditions.',
+          },
+          {
+            item: 'Shower or tub',
+            help: 'Why is my shower drain slow?',
+            qualification:
+              'Hair, soap residue, and buildup can reduce flow. If other fixtures are affected, the issue may extend beyond the shower drain.',
+          },
+          {
+            item: 'Toilet',
+            help: 'Why does my toilet keep clogging?',
+            qualification:
+              'Repeated clogs can relate to fixture use, a branch-line restriction, or a larger sewer-line problem. A technician can help determine the right starting point.',
+          },
+          {
+            item: 'Floor drain',
+            help: 'Why is water coming up through a floor drain?',
+            qualification:
+              'A backup may involve a localized restriction or a broader sewer-line issue, especially if other drains are affected.',
+          },
+          {
+            item: 'Laundry drain',
+            help: 'Why does my washing-machine drain back up?',
+            qualification:
+              'Flow volume can expose restrictions in a branch line or downstream path. Repeated backup may warrant further evaluation.',
+          },
+        ],
+        note: 'No method resolves every fixture problem. The right starting point depends on the fixture, access, and what else in the property is affected.',
+      },
+      escalation: {
+        id: 'when-a-drain-is-a-sewer-problem',
+        title: 'When a clogged drain may be a sewer-line problem',
+        answer:
+          'A single slow sink or shower may be a localized drain issue. When several fixtures are affected, drainage problems recur, or wastewater backs up into lower drains, the main sewer line may need evaluation. Sewer cleaning or a camera inspection can help identify an appropriate next step.',
+        signsTitle: 'Signs of a broader sewer-line issue',
+        signs: [
+          'Multiple drains become slow at the same time',
+          'Toilets, tubs, showers, or lower-level drains back up together',
+          'Drains gurgle when another fixture is used',
+          'A clog returns after repeated cleaning',
+          'Wastewater appears in a tub, shower, or floor drain',
+          'A sewer odor is present alongside widespread drainage problems',
+        ],
+        links: [
+          { pageId: id('svc-sewer-cleaning'), label: 'Explore sewer cleaning for multiple affected fixtures' },
+          { pageId: id('svc-sewer-camera-inspection'), label: 'Schedule a sewer camera inspection for recurring problems' },
+          { pageId: id('svc-recurring-sewer-backup-diagnosis'), label: 'Learn about recurring sewer backup diagnosis' },
+        ],
+      },
+      limitations: {
+        title: 'What drain cleaning may help address, and when it may not be enough',
+        intro:
+          'Cleaning may restore flow when a localized restriction is contributing to the problem. It does not necessarily identify structural defects, inaccessible restrictions, or the reason a clog keeps returning.',
+        canIdentifyTitle: 'Drain cleaning may help address',
+        canIdentify: [
+          'Hair, soap residue, and organic material, depending on where the restriction is',
+          'Grease and food-related buildup in accessible kitchen drain lines',
+          'Paper, debris, or soft obstructions in accessible branch lines',
+          'Localized clogs, subject to access, pipe condition, and fixture type',
+          'Some recurring restrictions, though recurrence may call for an inspection',
+          'Slow drainage from buildup, which can also result from venting or main-line issues',
+        ],
+        cannotTitle: 'Drain cleaning may not resolve by itself',
+        cannot: [
+          'Multiple affected fixtures, which may involve the main sewer line',
+          'A drain that clogs repeatedly after cleaning',
+          'Suspected pipe damage such as cracks, collapse, offsets, or separated sections',
+          'A restriction that cannot be reached from an accessible point',
+          'A route or project question, where line locating fits better',
+          'An active sewage backup, which needs a call to the team and appropriate evaluation',
+        ],
+        related: {
+          lead: 'Not sure whether your problem is a drain clog or a sewer-line issue?',
+          pageId: id('svc-sewer-camera-inspection'),
+          label: 'A sewer camera inspection can help identify visible conditions and inform the next decision.',
+        },
+      },
+      comparison: {
+        id: 'drain-vs-related-services',
+        columns: ['Service', 'Main purpose', 'Often appropriate when'],
+        title: 'Drain cleaning vs. sewer cleaning, hydro jetting, and camera inspection',
+        intro:
+          'These services sound alike but answer different questions. Compare what each one does and its main limit.',
+        rows: [
+          {
+            service: 'Drain cleaning',
+            purpose: 'Clear certain localized clogs and restrictions',
+            fit: 'One sink, shower, tub, toilet, floor drain, or branch line is affected. It may not address a main sewer-line issue.',
+          },
+          {
+            service: 'Sewer cleaning',
+            purpose: 'Clear certain restrictions in an accessible main sewer line',
+            fit: 'Multiple fixtures are affected or a main-line blockage is suspected. It may not explain a recurring line condition.',
+            pageId: id('svc-sewer-cleaning'),
+          },
+          {
+            service: 'Hydro jetting',
+            purpose: 'Use controlled high-pressure water to clean certain buildup',
+            fit: 'A suitable line has recurring buildup or material restricting flow. It is not appropriate for every line or unknown pipe condition.',
+            pageId: id('svc-hydro-jetting'),
+          },
+          {
+            service: 'Sewer camera inspection',
+            purpose: 'View accessible interior line conditions',
+            fit: 'The cause, location, or pipe condition is uncertain. It does not itself remove a clog.',
+            pageId: id('svc-sewer-camera-inspection'),
+          },
+          {
+            service: 'Line locating',
+            purpose: 'Identify the approximate underground route of a sewer line',
+            fit: 'Excavation, construction, or property work is being planned. It does not clean or inspect inside the pipe.',
+            pageId: id('svc-sewer-line-locating'),
+          },
+        ],
+        note: 'If wastewater is actively backing up, contact the team to discuss the immediate issue and whether cleaning or assessment should come first.',
+      },
+      marketRouter: {
+        id: 'choose-market',
+        title: 'Find drain-cleaning service in your market',
+        intro:
+          'Choose your market for local service details and ways to request service.',
+        items: [
+          {
+            pageId: id('market-st-louis-mo'),
+            description: 'Explore drain-cleaning service availability across the St. Louis region.',
+            actionLabel: 'Drain Cleaning in St. Louis',
+          },
+          {
+            pageId: id('market-san-diego-ca'),
+            description: 'Explore drain-cleaning service availability across the San Diego region.',
+            actionLabel: 'Drain Cleaning in San Diego',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            description: 'Explore drain-cleaning service availability across the Las Vegas Valley.',
+            actionLabel: 'Drain Cleaning in Las Vegas',
+          },
+        ],
+      },
+      audiences: {
+        id: 'drain-cleaning-for-your-situation',
+        title: 'Drain-cleaning support for different property needs',
+        intro:
+          'Different people reach a drain question from different starting points. These pages cover what matters most to each.',
+        items: [
+          {
+            pageId: id('aud-property-managers'),
+            audience: 'Property managers',
+            description:
+              'Coordinate service for tenant-reported drainage problems at occupied and multi-unit properties, with a clear intake route.',
+            actionLabel: 'Property manager support',
+          },
+          {
+            pageId: id('com-drain-cleaning'),
+            audience: 'Commercial properties',
+            description:
+              'Recurring drain problems in commercial buildings have operational stakes. See how commercial drain cleaning differs.',
+            actionLabel: 'Commercial drain cleaning',
+          },
+          {
+            pageId: id('aud-home-inspectors'),
+            audience: 'Home inspectors',
+            description:
+              'Coordinate appropriate specialist follow-up for observed drainage concerns.',
+            actionLabel: 'Working with home inspectors',
+          },
+          {
+            pageId: id('aud-real-estate-agents'),
+            audience: 'Real estate agents',
+            description:
+              'Help clients understand whether a drain issue may need diagnostic follow-up during a transaction.',
+            actionLabel: 'Transaction support',
+          },
+        ],
+      },
+      evidence: {
+        id: 'drain-cleaning-field-experience',
+        title: 'Clear service decisions start with the right information',
+        intro:
+          'A slow drain can have different causes. Cleaning may be appropriate in some cases, while a camera inspection may help when the problem repeatedly returns or the location is unclear.',
+        caveat:
+          'These are examples from individual properties, with identifying details removed. Findings and methods vary by fixture, access, and situation.',
+        items: [
+          {
+            slot: 'drain-equipment',
+            title: 'Drain-cleaning equipment in the field',
+            description:
+              'Equipment is chosen for the fixture and the suspected restriction. The method used depends on access and on what is known about the line.',
+          },
+          {
+            slot: 'drain-monitor',
+            title: 'Reviewing a recurring drain issue on a monitor',
+            description:
+              'When a camera is used, the technician reviews visible conditions on a monitor. The view covers only the portions of the line the camera can reach.',
+          },
+          {
+            slot: 'drain-explainer-video-poster',
+            title: 'When is a slow drain a main sewer-line problem?',
+            description:
+              'A technician explains what usually points to a single fixture, what may point to the main line, and when a camera inspection may help.',
+          },
+        ],
+      },
+      request: {
+        id: 'request-drain-cleaning',
+        title: 'Request drain cleaning',
+        intro:
+          'Tell us which fixture is affected, whether other drains are slow, and where the property is. The Sewer Pros provides sewer inspection, cleaning, and diagnostic services across St. Louis, San Diego, and Las Vegas.',
+      },
+      closing: {
+        title: 'Get clear next steps for a clogged or slow drain',
+        intro: [
+          'Select your market to request drain cleaning, discuss a recurring clog, or determine whether your symptoms may require sewer cleaning or camera inspection.',
+          'Use the form to request service or ask about availability for your property.',
+        ],
+      },
+    },
     faq: [
       {
-        question: 'Multiple drains are slow. Is that different?',
+        question: 'What is the difference between drain cleaning and sewer cleaning?',
         answer: (
           <p>
-            Usually, yes. Several fixtures affected at once, especially the
-            lowest ones, points toward the main line rather than any individual
-            branch, and is worth inspecting rather than clearing repeatedly.
+            Drain cleaning generally addresses a clog or restriction in an
+            individual fixture drain or branch line. Sewer cleaning is more
+            relevant when the main line that carries wastewater away from the
+            property may be restricted, often affecting multiple fixtures.
+          </p>
+        ),
+      },
+      {
+        question: 'Why does my drain keep clogging after it has been cleaned?',
+        answer: (
+          <p>
+            A recurring clog may mean buildup is returning, the restriction is
+            deeper in the line, or another visible or structural condition is
+            affecting drainage. A camera inspection may help clarify the cause
+            when the problem repeats.
+          </p>
+        ),
+      },
+      {
+        question: 'Can drain cleaning help a slow shower or tub drain?',
+        answer: (
+          <p>
+            It may help when hair, soap residue, debris, or buildup is
+            restricting flow in an accessible drain line. If other fixtures are
+            slow or backing up, the problem may involve the main sewer line.
+          </p>
+        ),
+      },
+      {
+        question: 'Does drain cleaning fix a sewer-line backup?',
+        answer: (
+          <p>
+            Not necessarily. A sewer-line backup may involve the main line
+            rather than a single fixture drain. Multiple affected fixtures,
+            gurgling, recurring backup, or wastewater appearing in lower drains
+            may warrant sewer cleaning or a camera inspection.
+          </p>
+        ),
+      },
+      {
+        question: 'Can drain cleaning remove grease buildup?',
+        answer: (
+          <p>
+            It may help with certain grease and food-related buildup in
+            accessible kitchen drain lines. The appropriate approach depends on
+            the location and extent of the restriction.
+          </p>
+        ),
+      },
+      {
+        question: 'Do I need a camera inspection for a clogged drain?',
+        answer: (
+          <p>
+            Not every clog needs a camera inspection. It may be useful when a
+            problem repeatedly returns, multiple fixtures are affected, the
+            blockage location is unclear, or the line’s condition needs
+            evaluation.
+          </p>
+        ),
+      },
+      {
+        question: 'Can I schedule drain cleaning for a rental or multi-unit property?',
+        answer: (
+          <p>
+            Property managers and owners can request service for rental and
+            multi-unit properties. Share the property type, unit count where
+            relevant, affected fixtures, access needs, and preferred timing
+            when you reach out, and confirm scope and scheduling with the
+            local team.
+          </p>
+        ),
+      },
+      {
+        question: 'What should I do if wastewater is backing up into a tub or floor drain?',
+        answer: (
+          <p>
+            Stop using water fixtures if practical and contact the team for
+            your market. This pattern may indicate a main sewer-line problem
+            rather than a single drain clog.
           </p>
         ),
       },
     ],
     relatedPageIds: [
       id('svc-sewer-cleaning'),
+      id('svc-hydro-jetting'),
+      id('svc-sewer-camera-inspection'),
       id('svc-recurring-sewer-backup-diagnosis'),
     ],
+    cta: {
+      title: 'Get clear next steps for a clogged or slow drain',
+      body: 'Choose your market to request drain cleaning, discuss a recurring clog, or ask whether sewer cleaning or a camera inspection may be a better starting point.',
+    },
   },
 
   /* ======================================================================
