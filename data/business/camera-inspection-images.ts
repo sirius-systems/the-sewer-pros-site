@@ -73,8 +73,8 @@ export const cameraImageSlots = {
     requiresRelease: false,
   },
   'findings-review': {
-    preferred: `${DIR}the-sewer-pros-ridgid-seesnake-monitor-inspection-findings-review-4x3.webp`,
-    alt: 'RIDGID SeeSnake-series monitor showing sewer pipe footage beside a tablet displaying an inspection document with pipe images and charts, in front of a camera reel',
+    preferred: `${DIR}the-sewer-pros-ridgid-seesnake-inspection-footage-report-review-4x3.webp`,
+    alt: 'RIDGID SeeSnake-series monitor showing sewer pipe footage beside a tablet displaying an inspection report with pipe images, in front of a camera reel and equipment case',
     caption: 'Monitor footage and a findings document, side by side.',
     width: 1448,
     height: 1086,

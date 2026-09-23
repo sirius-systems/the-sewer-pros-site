@@ -244,7 +244,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
           imageSrc={CLOSING_IMAGE}
           density="sparse"
         >
-          <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+          <LeadFormSection bare density="standard" idPrefix="cta-lead" id="cta-request-service" />
         </RequestServiceSection>
       )}
     </PageShell>
