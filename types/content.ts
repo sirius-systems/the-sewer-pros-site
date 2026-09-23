@@ -1492,6 +1492,19 @@ export interface ServiceHubContent {
     /** Contextual link beneath the panels. */
     related?: { lead: string; pageId: PageId; label: string }
   }
+  /**
+   * What the service may help with: short tiles plus a qualified table.
+   * Every row carries its own qualification, so nothing reads as a promise.
+   */
+  materials?: {
+    id?: string
+    title: string
+    intro: string
+    tiles: readonly string[]
+    columns: readonly [string, string, string]
+    rows: readonly { item: string; help: string; qualification: string }[]
+    note?: string
+  }
   /** "Before your appointment" panel, shown under the process steps. */
   prep?: { title: string; items: readonly string[] }
   /** "What you receive". */

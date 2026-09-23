@@ -403,6 +403,63 @@ export function LimitationsPanel({ content }: { content: NonNullable<Hub['limita
 }
 
 /* ==========================================================================
+   What the service may help with: tiles + qualified table
+   ========================================================================== */
+
+/**
+ * Short tiles for scanning, then a table where every row states its own
+ * limit. White ground with a top rule so it separates from the router
+ * above and the muted limitations panel below.
+ */
+export function MaterialsSection({ content }: { content: NonNullable<Hub['materials']> }) {
+  const id = content.id ?? 'what-it-may-help-with'
+  const [colItem, colHelp, colQual] = content.columns
+  return (
+    <div className="border-t border-border">
+      <Section density="standard" surface="default" labelledBy={id}>
+        <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
+        <ul className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
+          {content.tiles.map((tile) => (
+            <li
+              key={tile}
+              className="flex min-h-11 items-center rounded-md border border-border bg-surface-muted px-4 py-3 text-body-sm font-semibold text-foreground"
+            >
+              {tile}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8 overflow-x-auto rounded-md border border-border bg-surface px-4 sm:px-6">
+          <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
+            <caption className="sr-only">{content.title}</caption>
+            <thead>
+              <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
+                <th scope="col" className="py-3 pr-4 font-semibold">{colItem}</th>
+                <th scope="col" className="py-3 pr-4 font-semibold">{colHelp}</th>
+                <th scope="col" className="py-3 font-semibold">{colQual}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {content.rows.map((row) => (
+                <tr key={row.item} className="border-b border-border align-top last:border-b-0">
+                  <th scope="row" className="py-4 pr-4 font-semibold text-foreground">{row.item}</th>
+                  <td className="py-4 pr-4 text-muted-foreground">{row.help}</td>
+                  <td className="py-4 text-muted-foreground">{row.qualification}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {content.note !== undefined && (
+          <p className="mt-6 max-w-[var(--container-reading)] text-body text-muted-foreground">
+            {content.note}
+          </p>
+        )}
+      </Section>
+    </div>
+  )
+}
+
+/* ==========================================================================
    Process steps + "Before your inspection" + image
    ========================================================================== */
 

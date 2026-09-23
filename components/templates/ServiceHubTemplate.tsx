@@ -18,6 +18,7 @@ import {
   MarketRouter,
   DefinitionSection,
   LimitationsPanel,
+  MaterialsSection,
   InspectionProcess,
   AudiencePathways,
   EvidenceGallery,
@@ -180,6 +181,10 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         imageSrc={images?.schedule ?? SCHEDULE_IMAGE}
       />,
     )
+  }
+
+  if (hub.materials !== undefined) {
+    add('standard', 'materials', <MaterialsSection content={hub.materials} />)
   }
 
   if (hub.limitations !== undefined) {
