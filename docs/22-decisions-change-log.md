@@ -4780,6 +4780,26 @@ If implementation reveals a genuinely material strategic change, flag it and cre
 
 ---
 
+## DEC-107 - Geographic Expansion List Incorporated as Candidate Planning Inventory
+
+**Date:** 2026-09-23
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Project
+**Affected Documents:**
+
+* `00-project-overview.md`
+* `04-master-page-build-list.md`
+* `07-master-location-registry.md`
+* `08-service-location-matrix.md`
+* `21-post-launch-seo-roadmap.md`
+
+An external SEO proposal was reconciled into 9 candidate location hubs and 49 candidate service + location routes (27 Las Vegas, 10 St. Louis, 12 San Diego), recorded in `04-master-page-build-list.md` section 56C and `08-service-location-matrix.md` section 17 as `candidate / not built / not published / not indexable`.
+
+This does **not** approve new service claims, physical offices, Google Business Profiles, production routes, sitemap inclusion, or mass indexation. Operational coverage must be confirmed per market and service before selection.
+
+---
+
 # 26. Decision Quality Standard
 
 A decision entry should be useful months later.

@@ -703,6 +703,8 @@ Future market expansion, research, internal linking, content
 planning, potential future service coverage.
 ```
 
+Nine service pages: six primary service hubs (`core_service`: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, Drain Cleaning) and three supporting services (`derived_service`: Pre-Purchase Sewer Inspection, `launch`; Recurring Sewer Backup Diagnosis, `launch_candidate`; Preventative Sewer Maintenance, `launch_candidate`; tiers as in `data/services/master-service-registry.json`). The matrix may model relationships for all nine, while primary-hub priority does not authorize every service + location page; development, production publication, and indexation remain separate lifecycle decisions.
+
 Tiers are planning priorities, not automatic publication or indexation permissions.
 
 ---
@@ -1636,3 +1638,28 @@ Performance Feedback
 # 67. Final Governing Principle
 
 > **The Service × Location Matrix is an active generation, research, relationship, and prioritization system—not a pre-build approval gate and not an automatic indexing engine. Use the 10,422 service-location relationships of the project productively to research, generate, organize, and scale the website. Keep business truth strict, allow development to move quickly, and control SEO risk at the point of intentional indexation through relevance, usefulness, differentiation, and technical quality.**
+
+---
+
+# 17. Proposed Expansion Cohorts (September 23, 2026)
+
+Records **49 proposed page relationships** (27 Las Vegas, 10 St. Louis, 12 San Diego) from an external SEO proposal. The route lists live in `04-master-page-build-list.md` section 56C and are not repeated here. Existing routes, including `/san-diego-ca/mission-valley/hydro-jetting/` (under review, not new), are excluded.
+
+Each relationship carries separate fields. Defaults for all 49:
+
+| Field | Value |
+|---|---|
+| Relationship / research status | `candidate` |
+| Build status | not built |
+| Publication status | not published |
+| Indexation recommendation | none; decide only after build and QA (section 7) |
+| Required confirmation | operational coverage for the service in that community, distinct page intent, local evidence |
+
+| Cohort | Market | Relationships | Note |
+|---|---|---:|---|
+| A | Las Vegas core cities (Las Vegas, Henderson, North Las Vegas) x 5 services | 15 | First development cohort |
+| B | Las Vegas communities (Enterprise 3, Spring Valley 3, Paradise 3, Summerlin 3) | 12 | Requires operational confirmation |
+| C | St. Louis (City, Chesterfield, Florissant, St. Charles, O'Fallon, Wildwood) | 10 | O'Fallon slug is `ofallon-mo` |
+| D | San Diego (San Diego, Chula Vista, Oceanside, Escondido, Vista, El Cajon, Encinitas, La Mesa) | 12 | Service market, no office or GBP |
+
+This matrix's business-coverage status (section 14) stays authoritative until verified. It currently marks the proposed Las Vegas community relationships as requiring operational confirmation and recommends holding them; the proposal does not change that. Do not treat any of these as confirmed on the strength of the proposal alone.

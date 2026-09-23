@@ -364,6 +364,8 @@ Example:
 
 Exact paths are governed by the URL strategy.
 
+The Services hub links to all nine service pages: the six primary service hubs (`core_service`) and the three supporting services (`derived_service`: pre-purchase, recurring backup diagnosis, preventative maintenance). The four-path example above is illustrative, not the full set. Classification follows `data/services/master-service-registry.json`.
+
 ---
 
 # 12. Core Service Page Linking

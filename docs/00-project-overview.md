@@ -29,7 +29,7 @@
 
 * **Lead form submission endpoint** (PENDING-018). The form renders on seven templates but submission is a stub and sends nothing
 * **TCPA consent copy** for the "text" contact option (PENDING-019)
-* Market-scoped header contact (PENDING-017)
+* ~~Market-scoped header contact (PENDING-017)~~ resolved; see the decision log entry that closed it
 * Phase 2 page `svc-independent-sewer-second-opinion`: a registry-confirmed `phase_2_candidate` (`data/services/master-service-registry.json`), approved as a strategic concept, not built as a standalone `/services/` page (see §9A below)
 * Build-time cross-registry validation (`validateCrossRegistry()` exists but is not wired into `npm run check`)
 * Content follow-ups: PENDING-014 (Chesterfield programme details), PENDING-015 (Census housing-age figures), PENDING-016 (three withheld claims)
@@ -75,17 +75,23 @@ Business positioning, the repair/replacement guardrail, the service-market versu
 This sequence replaces the general priority framing this document previously carried only under post-launch growth (formerly §39). It applies to the whole project, not only the period after launch, and reflects the revised strategic direction in §3A-§9A below.
 
 ```text
-1. Maintain the brand and conversion foundation.
-2. Complete and strengthen the primary service hubs (§6A).
-3. Maintain the three authentic market hubs.
-4. Audit the existing service-market pages for differentiation and evidence (§9A).
-5. Prioritize high-value audience journeys (§7A).
-6. Build the independent sewer second-opinion page (§9).
-7. Develop problem, pipe-material, buyer-education, and process resources.
-8. Strengthen proof assets and local evidence (§0B).
-9. Complete schema, sitemap, analytics, form, redirect, and launch QA.
-10. Review indexation based on actual page quality and performance.
+1. Complete launch-critical conversion and technical readiness work.
+2. Maintain and strengthen the six primary service hubs.
+3. Build the first selected candidate location hubs for Las Vegas,
+   St. Louis, and San Diego.
+4. Build and review the proposed service + location cohorts:
+   Las Vegas first, then selected St. Louis and San Diego routes.
+5. Collect and add verifiable local evidence; ensure each page has
+   distinct intent and useful local context.
+6. Continue priority audience pathways and the independent
+   second-opinion page.
+7. Develop supporting problem, buyer-education, process, and
+   pipe-material resources.
+8. Measure search visibility, qualified leads, and page quality,
+   then select the next expansion cohort.
 ```
+
+> **Expansion-plan note.** The proposed location hubs and service + location routes are candidates recorded in `04-master-page-build-list.md` (section 56C) and `08-service-location-matrix.md` (section 17). Candidate status supports research, drafting, and development. It does not add routes to the production page registry, sitemap, or indexable page set. Before production selection, confirm market coverage, service fit, canonical location/service data, distinct page intent, and evidence. Preserve nested market URLs and do not imply physical offices or Google Business Profiles.
 
 This is a priority sequence for attention and resourcing, not a requirement to publish or index every possible service, location, audience, or matrix combination (§17, §18). Steps may proceed in parallel where they do not depend on each other; step 10 in particular is continuous rather than a one-time gate.
 
@@ -452,6 +458,8 @@ commercial_service       7 records — the commercial variants of the
 ```
 
 The six `core_service` records (verified in the registry, not newly designated here) are: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive the initial commercial emphasis as primary service hubs. This does not remove or diminish the other 12 records — derived, market-specific, and commercial services remain part of the canonical taxonomy and may be built, linked, and expanded on their own merits (06 §3.5, §18).
+
+**Nine service pages (six primary, three supporting).** The Services section contains nine service pages: six primary service hubs (`core_service`: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, Drain Cleaning) and three supporting services (`derived_service`: Pre-Purchase Sewer Inspection, `launch`; Recurring Sewer Backup Diagnosis, `launch_candidate`; Preventative Sewer Maintenance, `launch_candidate`, tiers as recorded in `data/services/master-service-registry.json`). All nine keep their routes and may be linked from `/services/` and from relevant service and location pages. Primary-hub priority does not authorize every service + location page; the matrix may model all nine, while build, publication, and indexation remain separate decisions.
 
 Supporting service pages, and future or selective service-market opportunities, are evaluated using the structured service × location data (`08-service-location-matrix.md`) as a research and planning input, not a publishing queue (§17, §18).
 

@@ -519,6 +519,8 @@ Priority themes should likely include:
 
 The final priority order should use actual performance and business data.
 
+Note: the six primary service hubs (`core_service`) are the core of this phase. The three supporting services (`derived_service`: pre-purchase, recurring backup diagnosis, preventative maintenance) stay in the service architecture and are prioritized on their own evidence. Primary-hub priority does not authorize every service + location page; build, publication, and indexation remain separate decisions (`06-master-service-registry.md`, nine-service section).
+
 ---
 
 # 18. Service Authority Model
@@ -2896,3 +2898,30 @@ Verified at commit `5b9586a`. The site has not launched, so Phase 0 (`§7`) has 
 * **Built:** all 70 approved launch pages, sitemap, robots, schema, GA4 loader (inert), lead form (no endpoint)
 * **Before Phase 0:** close PENDING-018, PENDING-019, PENDING-010, PENDING-011, and PENDING-009; set the GA4 ID; deploy to Cloudflare Pages and verify
 * **Phase 1 and later:** not started. Candidate expansion (Las Vegas service + location pages, Phase 2 second-opinion page, additional locations) should follow measured evidence per `§29` and `§30`, not URL count
+
+---
+
+# Launch-Readiness Checklist and Planned Development Cohort (September 23, 2026)
+
+## Planned development cohort
+
+The 9 candidate location hubs and 49 candidate service + location routes in `04-master-page-build-list.md` section 56C are a **planned development cohort**: Las Vegas first, then selected St. Louis and San Diego routes. This supplements the earlier snapshot, which said no Las Vegas service + location candidates had been proposed. Production publication and indexation remain subject to the established quality process (sections 11, 29, 30).
+
+## Launch-readiness checklist
+
+Reconciled against `22-decisions-change-log.md`. "Repo" is implementation in this repository; "External" is account or platform setup.
+
+| Task | Type | Status | Evidence | Dependency |
+|---|---|---|---|---|
+| Lead-form submission endpoint | Repo | Open, launch blocker | PENDING-018 OPEN; `handleSubmit` is a stub | Choice of form service |
+| TCPA consent copy for text contact | Repo | Open, carried at owner direction | PENDING-019 OPEN | Owner/legal wording |
+| Market-scoped header contact | Repo | Resolved | PENDING-017 marked RESOLVED | None |
+| Legacy URL redirect inventory and implementation | Repo | Open | PENDING-010 DEFERRED / IN PROGRESS; no redirect file | Legacy URL inventory |
+| GPTBot policy | Repo | Open | PENDING-011 unresolved; GPTBot currently allowed by general allow | Owner decision |
+| Call-tracking decision | Repo/External | Deferred | PENDING-009 DEFERRED | Owner decision |
+| GA4 measurement ID | External | Open | `NEXT_PUBLIC_GA_MEASUREMENT_ID` unset | GA4 property |
+| Cloudflare Pages deploy and production-host verification | External | Open | Not deployed | `NEXT_PUBLIC_SITE_URL` set to production origin |
+| Search Console and Bing setup, sitemap submission | External | Open | Not started | Deployed host |
+| Mobile, accessibility, performance, schema, link, indexation QA | Repo/External | Open | Not recorded | Deployed site |
+
+Re-verify each row against the latest decision-log entry before declaring it a blocker or closing it.
