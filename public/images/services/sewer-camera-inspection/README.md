@@ -10,7 +10,7 @@ The slot list lives in `data/business/camera-inspection-images.ts`.
 | process | the-sewer-pros-ridgid-seesnake-sewer-camera-inspection-process-illustration-4x3.webp | 1448x1086 | Process illustration (in place) |
 | monitor | the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-pipe-footage-4x3.webp | 1448x1086 | Monitor with pipe footage (in place) |
 | equipment | the-sewer-pros-ridgid-seesnake-camera-reel-cable-equipment-4x3.webp | 1448x1086 | Reel, push cable and camera head (in place) |
-| findings-review | the-sewer-pros-ridgid-seesnake-monitor-inspection-findings-review-4x3.webp | 1448x1086 | Monitor beside a findings document (in place) |
+| findings-review | the-sewer-pros-ridgid-seesnake-inspection-footage-report-review-4x3.webp | 1448x1086 | Monitor beside an inspection report (in place) |
 | root-intrusion | the-sewer-pros-sewer-camera-root-intrusion-pipe-joint-4x3.webp | 1448x1086 | In place |
 | offset | the-sewer-pros-sewer-camera-footage-visible-pipe-offset-example-4x3.webp | 1448x1086 | In place |
 | standing-water | the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp | 1448x1086 | In place |
