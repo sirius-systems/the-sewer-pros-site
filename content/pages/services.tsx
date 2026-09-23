@@ -120,32 +120,32 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       {
         title: 'Recurring backups or clogs',
         description:
-          'A blockage that keeps returning can point to a condition worth seeing on camera, rather than clearing again.',
+          'Repeated blockages may warrant looking for a visible condition in the accessible line, rather than treating each clog as an isolated event.',
       },
       {
-        title: 'Slow drains in more than one fixture',
+        title: 'Slow drains in multiple fixtures',
         description:
-          'When several fixtures drain slowly, the shared sewer line is worth looking at.',
+          'When several fixtures drain slowly, an inspection can help determine whether a visible restriction may be in a shared sewer line.',
       },
       {
-        title: 'Gurgling, odors, or lower-fixture backups',
+        title: 'Gurgling, odors, or backups at lower fixtures',
         description:
-          'Sounds, smells, and water rising in the lowest fixtures can be signs of a restriction in the line.',
+          'These symptoms can have different causes. A camera inspection may help identify visible conditions in the accessible line.',
       },
       {
-        title: 'Buying a home',
+        title: 'Before buying a home',
         description:
-          'A sewer scope during the inspection period gives you a visual record of the accessible line before closing.',
+          'A sewer camera inspection can provide a visual record of accessible portions of the line during the home-buying process.',
       },
       {
         title: 'Before listing or remodeling',
         description:
-          'Know the visible condition of the line before a sale, an excavation, or a remodel.',
+          'Inspection footage can help document visible sewer-line conditions before a sale or planned project.',
       },
       {
-        title: 'Planning work or weighing a recommendation',
+        title: 'When reviewing a recommendation',
         description:
-          'Contractors, managers, and owners can review footage of the line before deciding what to do.',
+          'Homeowners, contractors, managers, and property owners can use documented footage to better understand what was observed before deciding on next steps.',
       },
     ],
     process: [
@@ -162,7 +162,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       {
         title: 'Inspect the accessible line',
         description:
-          'A specialized camera is guided through the line while visible conditions are reviewed. What cannot be assessed is stated.',
+          'A camera is guided through the line while visible conditions are reviewed. Any portions that cannot be assessed are noted.',
       },
       {
         title: 'Discuss findings and next steps',
@@ -201,39 +201,35 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       definition: {
         title: 'What is a sewer camera inspection?',
         answer:
-          'A sewer camera inspection uses a specialized waterproof camera to view the accessible interior of a sewer line. A technician guides the camera through the line to look for visible conditions such as blockages, root intrusion, cracks, separated connections, pipe deterioration, or other obstructions that may affect drainage. The footage and findings help homeowners and property professionals understand the condition of the line and decide on an appropriate next step.',
+          'A sewer camera inspection uses a waterproof camera to view accessible portions of a sewer line. A technician guides the camera through the line and reviews the video for visible conditions such as blockages, root intrusion, separated connections, pipe deterioration, or other obstructions that may affect drainage.',
         supporting: [
-          'The camera is fed through an appropriate access point, usually an existing cleanout, and moves through the accessible line while the technician watches the video feed.',
-          'Because a camera shows what it can reach, the inspection describes visible conditions, and says so where part of a line could not be assessed.',
+          'The footage helps homeowners and property professionals understand what was observed and consider an appropriate next step. Because the camera can only show areas it can reach, the inspection report should also identify portions of the line that could not be assessed.',
+          'The camera is guided through an appropriate access point, often an existing cleanout, while the technician monitors the video feed.',
         ],
-        diagramLabel:
-          'Illustration of a camera entering a sewer line through a cleanout beside a house',
-        diagramCaption:
-          'Illustration of the process, not inspection footage.',
       },
       limitations: {
         title: 'What can a sewer camera inspection identify?',
         intro:
-          'A camera inspection is a strong source of evidence, and it has limits. Knowing both keeps the result useful.',
+          'A sewer camera inspection can document visible conditions in the portions of the line the camera can reach. It can provide useful evidence, but it cannot assess areas outside the camera’s view or determine every next step on its own.',
         canIdentifyTitle: 'A camera inspection may help identify',
         canIdentify: [
-          'Visible blockages or buildup',
+          'Visible blocks or buildup',
           'Root intrusion',
-          'Visible cracks, breaks, offsets, or separated joints',
+          'Visible cracks, breaks, offsets, or separated joints in the camera view',
           'Deteriorated or damaged visible pipe sections',
-          'Standing water, bellies, or flow concerns where visible',
-          'Pipe material transitions or obstructions',
-          'General route and condition clues',
+          'Standing water or other visible flow concerns',
+          'Pipe material transitions or visible obstructions',
+          'Visual clues about the line’s route and condition',
         ],
         cannotTitle: 'It may not determine by itself',
         cannot: [
-          'The condition of inaccessible portions of a line',
-          'The cost of any future work',
+          'The condition of portions of the line the camera cannot reach',
+          'The cost of future work',
           'Whether an issue will never occur in the future',
-          'Every underground condition outside the camera view',
+          'Underground conditions outside the camera’s view',
           'A full structural engineering conclusion',
-          'Whether work is required, without further evaluation',
-          'Exact line depth or location, without a locating service',
+          'Whether work is required without further evaluation',
+          'Exact line depth or location without a separate locating service',
         ],
         related: {
           lead: 'Need to identify the approximate route of an underground line?',
@@ -246,12 +242,15 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         items: [
           'Confirm property access and any scheduling requirements.',
           'Tell us if this relates to a home sale, an inspection period, or a recurring backup.',
-          'Share any previous plumbing or sewer-line history if you have it.',
+          'Share previous plumbing or sewer-line history if you have it.',
           'Ask what documentation is included for your specific appointment.',
         ],
       },
       deliverables: {
         title: 'What do you receive after a sewer camera inspection?',
+        intro: [
+          'After the inspection, the technician explains the visible conditions observed and reviews what information is available for your appointment.',
+        ],
         items: [
           {
             icon: 'camera',
@@ -269,7 +268,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             icon: 'decision',
             title: 'Next-step information',
             description:
-              'Practical guidance on what the findings may mean and what to consider next.',
+              'Practical information about what the findings may mean and what to consider next.',
           },
           {
             icon: 'document',
@@ -284,52 +283,89 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
       },
       audiences: {
-        title: 'Sewer camera inspections for your situation',
+        title: 'Who Can Benefit from a Sewer Camera Inspection?',
         intro:
-          'The same inspection answers different questions depending on who is asking.',
+          'A sewer camera inspection can provide useful information to different people involved in a property decision or maintenance issue. The findings document visible conditions in accessible portions of the line and can be shared with relevant professionals.',
         items: [
           {
             pageId: id('aud-home-buyers'),
             audience: 'Home buyers',
             description:
-              'A sewer camera inspection can help you understand visible sewer-line conditions during your due-diligence period.',
+              'A sewer camera inspection can document visible conditions in accessible portions of the sewer line during the due diligence period. Buyers can use the findings to discuss the line’s condition before closing.',
             actionLabel: 'Learn about home-buyer sewer inspections',
           },
           {
             pageId: id('aud-home-inspectors'),
             audience: 'Home inspectors',
             description:
-              'Coordinate a specialist sewer scope for a client alongside the general inspection.',
+              'A specialist sewer camera inspection adds a closer view of accessible portions of the sewer line alongside a general home inspection. Coordinate scheduling and access for the property and appointment.',
             actionLabel: 'Learn about coordinating an inspection',
           },
           {
             pageId: id('aud-real-estate-agents'),
             audience: 'Real estate agents',
             description:
-              'Help clients keep a transaction moving with clear information about the sewer line.',
+              'Documented findings can give buyers and sellers clearer information to discuss during a transaction. The inspection records visible conditions; it does not guarantee future performance or determine repairs.',
             actionLabel: 'Learn about transaction support',
           },
           {
             pageId: id('aud-property-managers'),
             audience: 'Property managers',
             description:
-              'Document a recurring sewer or drain issue across a property before deciding how to address it.',
+              'Documented findings can help track recurring backups or drainage concerns at a property. Share the observations with owners or maintenance professionals when considering next steps.',
             actionLabel: 'Learn about property support',
           },
         ],
       },
       evidence: {
-        title: 'See what clearer sewer information can reveal',
+        title: 'See What a Sewer Camera Inspection Can Reveal',
         intro:
-          'Examples of conditions a camera can show inside an accessible line. Each image comes from a real inspection, with customer details removed.',
+          'A sewer camera inspection can document visible conditions in accessible portions of a sewer line. The examples below show findings that may appear on camera. What a finding means, and what to consider next, depends on the condition, location, and accessible portions of the specific line.',
         caveat:
-          'These are visible conditions on individual properties. What a camera shows, and what it means, differs from one property to the next.',
-        slots: ['root-intrusion', 'offset', 'standing-water', 'report'],
+          'These are examples of visible conditions from individual properties. Findings vary by line, access, and inspection. A camera cannot show portions of the system it cannot reach or determine every next step on its own.',
+        items: [
+          {
+            slot: 'root-intrusion',
+            title: 'Visible root intrusion',
+            description:
+              'Roots can enter a sewer line through joints or existing openings. Camera footage may show where roots are visible and how much of the pipe they appear to affect. The inspection documents what the camera can reach; it does not establish the full extent of a problem outside the camera\u2019s view.',
+          },
+          {
+            slot: 'offset',
+            title: 'A visible pipe offset',
+            description:
+              'An offset occurs when connected pipe sections are misaligned. Footage may show a change in alignment at a joint, which can help explain a restriction or an area where debris collects. The camera records the visible condition but does not determine the cause or a repair plan.',
+          },
+          {
+            slot: 'standing-water',
+            title: 'Standing water',
+            description:
+              'Water remaining in a section of pipe may be visible during an inspection. The footage can document where it appears, but standing water alone does not confirm why it is present or whether the line has a grade or flow issue. Interpretation depends on the inspection conditions and other visible evidence.',
+          },
+          {
+            slot: 'report',
+            title: 'Inspection footage and findings summary',
+            description:
+              'When included with the service, footage or a findings summary can help you review the visible conditions discussed during the inspection. Documentation and deliverables can vary by appointment, so confirm what is included when scheduling.',
+          },
+        ],
+      },
+      request: {
+        title: 'Schedule a Sewer Camera Inspection',
+        intro:
+          'Request an inspection to document visible conditions in the accessible portions of your sewer line. Share what you\u2019ve noticed, your property location, and whether the inspection relates to recurring symptoms or a home purchase. The Sewer Pros provides inspection and diagnostic services across St. Louis, San Diego, and Las Vegas.',
+      },
+      closing: {
+        title: 'Schedule a Sewer Camera Inspection',
+        intro: [
+          'Request a sewer camera inspection to document visible conditions in accessible portions of your sewer line. Choose your service area, tell us what you\u2019ve noticed, and let us know if the inspection is related to recurring backups, a home purchase, or another sewer concern. The inspection findings can help you understand what the camera observed and consider an appropriate next step.',
+          'The Sewer Pros provides sewer inspection and diagnostic services in St. Louis, San Diego, and Las Vegas. Use the form to request service or ask about availability for your property.',
+        ],
       },
       comparison: {
         title: 'Sewer camera inspection vs. related services',
         intro:
-          'These services answer different questions. Choosing the right one starts with what you need to know.',
+          'Sewer camera inspection, sewer cleaning, drain cleaning, hydro jetting, and line locating serve different purposes. Compare what each service does and when it may be relevant to help identify the right next step.',
         rows: [
           {
             service: 'Sewer camera inspection',
@@ -369,10 +405,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'What is a sewer camera inspection?',
         answer: (
           <p>
-            A sewer camera inspection uses a waterproof camera to view the
-            accessible interior of a sewer line. It can help identify visible
-            conditions such as blockages, root intrusion, offsets, cracks, and
-            standing water.
+            A sewer camera inspection uses a specialized waterproof camera to
+            view accessible portions of a sewer line. It can document visible
+            conditions such as buildup, root intrusion, offsets, cracks, or
+            standing water. The camera can only show areas it can reach and
+            access.
           </p>
         ),
       },
@@ -380,20 +417,24 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'How does a sewer camera inspection work?',
         answer: (
           <p>
-            A technician feeds the camera through an appropriate access point,
-            usually an existing cleanout, and guides it along the accessible
-            line while watching the video feed. Visible conditions are noted,
-            and anything that could not be assessed is stated.
+            A technician guides a camera through an appropriate access point,
+            often an existing cleanout, while viewing the live footage. The
+            inspection documents visible conditions along the accessible
+            route. Access, the condition of the line, and the camera&rsquo;s
+            reach affect what can be observed.
           </p>
         ),
       },
       {
-        question: 'When should I get a sewer camera inspection?',
+        question: 'When should I schedule a sewer camera inspection?',
         answer: (
           <p>
-            Common reasons include recurring backups, several slow drains,
-            gurgling or odors, buying or selling a property, and planning work
-            that depends on knowing the line&rsquo;s condition.
+            Consider an inspection when you have recurring backups, slow
+            drains affecting multiple fixtures, unexplained sewer concerns, or
+            want information about a line before a home purchase. If sewage is
+            actively backing up, contact a service provider promptly to
+            discuss the immediate issue and whether cleaning or assessment
+            should come first.
           </p>
         ),
       },
@@ -401,11 +442,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'Should I get a sewer camera inspection before buying a house?',
         answer: (
           <p>
-            It can be a useful part of due diligence because it gives a visual
-            review of the accessible sewer line before closing. It may help
-            identify visible issues that warrant further evaluation or
-            discussion with the appropriate parties. Availability, property
-            access, and inspection-period timing can vary by market.
+            A sewer camera inspection during the due diligence period can
+            document visible conditions in accessible portions of the line.
+            Ask about access, scheduling, and what documentation is included
+            so you know what to expect before your inspection period ends.
           </p>
         ),
       },
@@ -413,10 +453,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'What can a sewer camera inspection find?',
         answer: (
           <p>
-            It can help identify visible blockages, root intrusion, cracks,
-            separated or offset joints, standing water, debris, and changes in
-            pipe material. It cannot guarantee detection of every hidden
-            defect or assess parts of the line it cannot reach.
+            It may show visible blockages or buildup, root intrusion, cracks,
+            breaks, offsets, separated joints, damaged pipe sections, standing
+            water, or material transitions. Findings depend on the condition
+            and accessibility of the line. A camera inspection does not assess
+            areas it cannot reach.
           </p>
         ),
       },
@@ -424,9 +465,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'Can a sewer camera inspection find tree roots?',
         answer: (
           <p>
-            Yes, where roots are visible inside the accessible line, often at
-            joints or cracks. The footage shows where they enter and how far
-            the intrusion extends along the section that was inspected.
+            It can show roots that are visible inside accessible portions of
+            the sewer line. Footage may document where roots appear and their
+            visible extent, but it cannot establish the full condition of the
+            line beyond the camera&rsquo;s view or determine every cause of
+            root entry.
           </p>
         ),
       },
@@ -434,19 +477,23 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'Will a sewer camera inspection show the exact repair cost?',
         answer: (
           <p>
-            No. A camera shows visible conditions, not the price of future
-            work. If the findings point to something beyond cleaning, the cost
-            depends on a separate evaluation by a qualified provider.
+            No. A camera inspection documents visible conditions; it does not
+            provide a repair quote or determine the cost of future work. If
+            additional evaluation or repair is being considered, the footage
+            and findings may help you discuss the observed condition with a
+            qualified provider.
           </p>
         ),
       },
       {
-        question: 'Is a sewer camera inspection the same as line locating?',
+        question: 'Is a sewer camera inspection the same as sewer line locating?',
         answer: (
           <p>
-            No. Inspection shows the condition inside the line. Locating
-            establishes the approximate path and depth of the line
-            underground. They are often used together on the same property.
+            No. A camera inspection views the inside of accessible portions of
+            a sewer line. Line locating uses locating equipment to estimate
+            the route or position of an underground line. If you need the
+            approximate path for planning or excavation, ask about a separate
+            line locating service.
           </p>
         ),
       },
@@ -454,11 +501,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'What should I do if the inspection finds a problem?',
         answer: (
           <p>
-            Review the footage and findings, then decide on a next step. That
-            may mean cleaning, monitoring, or having the footage evaluated by a
-            qualified repair contractor. The Sewer Pros is an independent
-            inspection and cleaning company, so findings are not tied to a
-            repair sale.
+            Review the footage and findings, ask what was directly observed
+            and what could not be assessed, and consider whether you need a
+            separate evaluation. The inspection can inform your next decision,
+            but it does not by itself determine whether work is required or
+            which provider should perform it.
           </p>
         ),
       },
@@ -466,9 +513,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         question: 'Which areas does The Sewer Pros serve?',
         answer: (
           <p>
-            We serve the St. Louis, San Diego, and Las Vegas markets. Choose
-            your market at the top of this page for local details and
-            scheduling.
+            The Sewer Pros provides sewer inspection and diagnostic services
+            in St. Louis, Missouri; San Diego, California; and Las Vegas,
+            Nevada. Select your service area or contact the team to confirm
+            availability for your property.
           </p>
         ),
       },
@@ -479,6 +527,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('res-camera-report'),
       id('res-read-video'),
     ],
+    relatedDescriptions: {
+      [id('res-camera-report')]:
+        'What a complete report should include, so you can compare quotes or revisit the findings later.',
+      [id('res-read-video')]:
+        'How to read root intrusion, cracks, and other defects on your own inspection video.',
+    },
     cta: {
       title: 'Get a clearer view of your sewer line',
       body: 'Choose your market above to schedule a sewer camera inspection, ask about availability, or get help with a current sewer or drain concern.',

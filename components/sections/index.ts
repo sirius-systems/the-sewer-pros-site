@@ -244,12 +244,14 @@ export type { CameraImageSlotProps } from './CameraImageSlot'
 export {
   MarketRouter,
   DefinitionSection,
+  ScheduleGrid,
   LimitationsPanel,
-  PrepPanel,
+  InspectionProcess,
   AudiencePathways,
   EvidenceGallery,
   evidenceRenders,
   ServiceComparison,
+  RequestServiceSection,
 } from './ServiceHubSections'
 
 export { CtaSection } from './CtaSection'

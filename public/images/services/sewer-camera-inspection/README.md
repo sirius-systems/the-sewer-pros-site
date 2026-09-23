@@ -7,13 +7,14 @@ The slot list lives in `data/business/camera-inspection-images.ts`.
 
 | Slot | Filename | Size | Shows |
 |---|---|---|---|
-| monitor | sewer-camera-monitor-pipe-footage.webp | 1200x800 | Monitor with real pipe footage |
-| equipment | sewer-camera-reel-equipment.webp | 1200x800 | Reel and camera head at a cleanout |
-| consult | home-buyer-sewer-inspection-consultation.webp | 1200x800 | Technician explaining findings |
-| root-intrusion | sewer-line-root-intrusion-example.webp | 1200x800 | Anonymized footage still |
-| offset | sewer-line-offset-example.webp | 1200x800 | Anonymized footage still |
-| standing-water | sewer-line-standing-water-example.webp | 1200x800 | Anonymized footage still |
-| report | sewer-camera-inspection-report-example.webp | 1200x800 | Redacted real report |
+| process | the-sewer-pros-ridgid-seesnake-sewer-camera-inspection-process-illustration-4x3.webp | 1448x1086 | Process illustration (in place) |
+| monitor | the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-pipe-footage-4x3.webp | 1448x1086 | Monitor with pipe footage (in place) |
+| equipment | the-sewer-pros-ridgid-seesnake-camera-reel-cable-equipment-4x3.webp | 1448x1086 | Reel, push cable and camera head (in place) |
+| findings-review | the-sewer-pros-ridgid-seesnake-monitor-inspection-findings-review-4x3.webp | 1448x1086 | Monitor beside a findings document (in place) |
+| root-intrusion | the-sewer-pros-sewer-camera-root-intrusion-pipe-joint-4x3.webp | 1448x1086 | In place |
+| offset | the-sewer-pros-sewer-camera-footage-visible-pipe-offset-example-4x3.webp | 1448x1086 | In place |
+| standing-water | the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp | 1448x1086 | In place |
+| report | the-sewer-pros-sewer-camera-inspection-monitor-findings-summary-review-4x3.webp | 1448x1086 | In place |
 
 ## Rules
 

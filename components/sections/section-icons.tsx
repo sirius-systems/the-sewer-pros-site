@@ -153,6 +153,48 @@ export function ChecklistIcon(props: IconProps) {
   )
 }
 
+/** Seeing the evidence - an eye. */
+export function EyeIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  )
+}
+
+/** Sewer and drain specialists - a pipe run with an elbow and flanges. */
+export function PipeIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3 8h10a4 4 0 0 1 4 4v9" />
+      <path d="M3 13h5.5a1.5 1.5 0 0 0 1.5-1.5" />
+      <path d="M1.5 6.5v3M14.5 21h5" />
+    </svg>
+  )
+}
+
+/** An access point - a round cleanout or manhole cover, seen at an angle. */
+export function AccessPointIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <ellipse cx="12" cy="9" rx="8.5" ry="3.5" />
+      <path d="M3.5 9v5c0 1.9 3.8 3.5 8.5 3.5s8.5-1.6 8.5-3.5V9" />
+      <path d="M8.5 9h7" />
+    </svg>
+  )
+}
+
+/** Findings written up - a document with a check. */
+export function DocumentCheckIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M14 3H6.5v18h11V6.5Z" />
+      <path d="M14 3v3.5h3.5M9.5 14.5l2 2 3.5-4" />
+    </svg>
+  )
+}
+
 /** Weighing a major decision — a balance. */
 export function DecisionIcon(props: IconProps) {
   return (

@@ -1401,8 +1401,6 @@ export interface ServiceHubContent {
     title: string
     answer: string
     supporting: readonly string[]
-    diagramLabel: string
-    diagramCaption: string
   }
   /** What the service can and cannot show, side by side. */
   limitations?: {
@@ -1430,8 +1428,16 @@ export interface ServiceHubContent {
     title: string
     intro: string
     caveat: string
-    slots: readonly CameraImageKey[]
+    items: readonly {
+      slot: CameraImageKey
+      title: string
+      description: string
+    }[]
   }
+  /** Request-service section: copy beside the lead form. */
+  request?: { title: string; intro: string | readonly string[] }
+  /** Final call to action above the footer: copy beside the lead form. */
+  closing?: { title: string; intro: string | readonly string[] }
   /** Related-services comparison. */
   comparison?: {
     title: string
