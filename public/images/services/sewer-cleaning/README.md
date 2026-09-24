@@ -23,8 +23,8 @@ Rules for every image:
 |---|---|---|---|
 | `hero/the-sewer-pros-sewer-cleaning-ridgid-seesnake-hero-16x9.webp` | 16:9 | Hero (in place) | Cleaning machine and RIDGID SeeSnake camera reel at an open cleanout, subject on the right; copy sits on the left. |
 | `sewer-cleaning-comparison-16x9.webp` | 16:9 | Comparison table | Equipment lineup that matches equipment actually used. |
-| `sewer-cleaning-request-16x9.webp` | 16:9 | Request form | Wide field-service scene, subject on the left. |
-| `sewer-cleaning-closing-16x9.webp` | 16:9 | Closing form | Cleanout or job-site scene. |
+| `the-sewer-pros-sewer-cleaning-request-cta-background-ridgid-seesnake-16x9.webp` (in place) | 16:9 | Request form | Cleaning machine at a cleanout with a separate RIDGID SeeSnake camera reel; equipment on the left, open pavement right. |
+| `the-sewer-pros-sewer-cleaning-request-cta-background-cleanout-ridgid-seesnake-16x9.webp` (in place) | 16:9 | Closing form | Cleaning machine at a cleanout with a separate RIDGID SeeSnake camera reel; equipment left, quiet dark pavement right. |
 
 ## Figures (real alt text and captions)
 
@@ -32,8 +32,8 @@ Rules for every image:
 |---|---|---|---|---|
 | `the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp` (in place) | 4:3 (1448x1086) | `cleaning-definition` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
 | `the-sewer-pros-sewer-cleaning-visit-process-ridgid-seesnake-4x3.webp` (in place) | 4:3 | `cleaning-process` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
-| `sewer-cleaning-equipment-4x3.webp` | 4:3 | `cleaning-equipment` | Sewer cleaning machine and hoses staged at a job site | Equipment and branded vehicle, plates and addresses blurred. |
-| `sewer-cleaning-monitor-still-4x3.webp` | 4:3 | `cleaning-monitor` | Inspection monitor showing the interior of a sewer pipe | Real monitor still, all customer data removed. Requires release. |
+| `the-sewer-pros-sewer-cleaning-equipment-accessible-cleanout-4x3.webp` (in place, needs replacing) | 4:3 | `cleaning-equipment` | RIDGID SeeSnake series inspection monitor beside a camera reel | Supplied file shows camera equipment, not cleaning equipment. Replace with cleaning equipment at a cleanout, camera equipment nearby as a separate tool. |
+| `the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-review-4x3.webp` (in place) | 4:3 | `cleaning-monitor` | RIDGID SeeSnake series monitor showing sewer camera footage, beside a camera reel and camera head | Monitor with non-dramatic footage. No customer data, address, GPS or readable text. |
 
 The field-evidence section (`cleaning-equipment`, `cleaning-monitor`) renders
 only when at least one of its files exists.

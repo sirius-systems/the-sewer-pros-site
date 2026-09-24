@@ -1364,6 +1364,9 @@ export interface HubMarketCard {
   actionLabel: string
 }
 
+/** An approach-card mark on a service hub. */
+export type HubApproachIcon = 'conversation' | 'camera' | 'document' | 'decision'
+
 /** An audience-card mark on a service hub. */
 export type HubAudienceIcon = 'building' | 'checklist' | 'house-key' | 'home'
 
@@ -1448,6 +1451,10 @@ export interface ServiceHubContent {
      * anchors the crop right so the copy column sits over open space.
      */
     heroFocus?: 'left' | 'right'
+    /** `right` when the request photograph's equipment sits left, under the copy. */
+    requestFocus?: 'right'
+    /** Same as `requestFocus`, for the closing form section. */
+    closingFocus?: 'right'
     schedule?: string
     /** Faded photograph behind the limitations panel. */
     limitations?: string
@@ -1468,6 +1475,16 @@ export interface ServiceHubContent {
    * default (camera hub) puts the router directly under the hero.
    */
   decisionFirst?: boolean
+  /**
+   * Page-specific navy "How we work" band, used instead of the shared
+   * `AuthorityBand` (whose four cards come from one governed dataset).
+   */
+  approach?: {
+    id?: string
+    title: string
+    intro: string
+    items: readonly { title: string; description: string; icon: HubApproachIcon }[]
+  }
   /** Mounts the sticky mobile Call / Schedule / Choose City bar. */
   mobileBar?: boolean
   /** Preselects "Service needed" in this page's lead forms. */

@@ -614,6 +614,37 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     ],
     hub: {
       decisionFirst: true,
+      approach: {
+        title: 'How independent sewer inspection helps you choose a next step',
+        intro:
+          'A recurring sewer problem can have more than one cause. The Sewer Pros focuses on inspection, diagnostics, and cleaning to help you understand what may be happening in the accessible portions of the line. When camera inspection is used, the findings can inform whether cleaning is appropriate or whether another next step should be considered.',
+        items: [
+          {
+            title: 'Start with the problem',
+            icon: 'conversation',
+            description:
+              'We discuss the symptoms you have noticed, such as recurring clogs, multiple slow drains, or a backup. That context helps determine whether sewer cleaning, camera inspection, or another available service may be a useful starting point.',
+          },
+          {
+            title: 'Review visible conditions',
+            icon: 'camera',
+            description:
+              'When a camera inspection is appropriate, a RIDGID SeeSnake camera can show conditions in portions of the line it can reach. The view is limited to accessible areas and may not establish every cause of a recurring problem.',
+          },
+          {
+            title: 'Explain the findings',
+            icon: 'document',
+            description:
+              'We explain what was observed and how it relates to the reported problem. If cleaning is appropriate for an accessible restriction, the method depends on the line, access, and suspected material.',
+          },
+          {
+            title: 'You decide what happens next',
+            icon: 'decision',
+            description:
+              'Use the findings to make an informed decision. If a concern involves work beyond sewer inspection or cleaning, you decide whether to consult another qualified provider.',
+          },
+        ],
+      },
       mobileBar: true,
       defaultServiceId: 'svc-sewer-cleaning',
       processIcons: ['explanation', 'checklist', 'pipe', 'document'],
@@ -629,14 +660,18 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         comparison: '/images/services/sewer-cleaning/sewer-cleaning-comparison-16x9.webp',
         limitations:
           '/images/services/sewer-cleaning/the-sewer-pros-sewer-cleaning-camera-inspection-comparison-background-16x9.webp',
-        request: '/images/services/sewer-cleaning/sewer-cleaning-request-16x9.webp',
-        closing: '/images/services/sewer-cleaning/sewer-cleaning-closing-16x9.webp',
+        request:
+          '/images/services/sewer-cleaning/the-sewer-pros-sewer-cleaning-request-cta-background-ridgid-seesnake-16x9.webp',
+        requestFocus: 'right',
+        closing:
+          '/images/services/sewer-cleaning/the-sewer-pros-sewer-cleaning-request-cta-background-cleanout-ridgid-seesnake-16x9.webp',
+        closingFocus: 'right',
         definition: ['cleaning-definition'],
         process: 'cleaning-process',
       },
       headings: {
         process: 'What happens during a sewer cleaning visit?',
-        faq: 'Sewer cleaning questions',
+        faq: 'Sewer cleaning FAQs: blockages, methods, and next steps',
       },
       definition: {
         id: 'what-is-sewer-cleaning',
@@ -860,23 +895,23 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       },
       evidence: {
         id: 'sewer-cleaning-field-experience',
-        title: 'Clear information starts with real field experience',
+        title: 'Examples of sewer cleaning and camera inspection',
         intro:
-          'A recurring drainage problem can have different causes. Cleaning may be appropriate in some cases, while a camera inspection may help identify visible conditions when the issue repeatedly returns or the location is unclear.',
+          'A recurring sewer problem can have more than one cause. Cleaning may be appropriate when material is restricting flow in an accessible section of the line. When the cause or line condition is unclear, a RIDGID SeeSnake camera inspection can help show visible conditions in the portions of the pipe the camera can reach.',
         caveat:
-          'These are examples from individual properties, with identifying details removed. Findings and methods vary by line, access, and situation.',
+          'These examples are from separate properties. Equipment, methods, and findings vary by line, access, and situation.',
         items: [
           {
             slot: 'cleaning-equipment',
             title: 'Cleaning equipment in the field',
             description:
-              'Equipment is chosen for the line and the suspected restriction. The method used depends on access and on what is known or visible about the line.',
+              'Sewer-cleaning equipment is selected based on access and the suspected restriction. The method used depends on the conditions of the line and what is known or visible before work begins.',
           },
           {
             slot: 'cleaning-monitor',
             title: 'Reviewing the line on a monitor',
             description:
-              'When a camera is used, the technician reviews visible conditions on a monitor. The view covers only the portions of the line the camera can reach.',
+              'When camera inspection is used, the RIDGID SeeSnake displays video from the accessible portion of the sewer line. The view can help identify visible conditions, but it does not show areas the camera cannot reach or determine every cause of a recurring problem.',
           },
         ],
       },
@@ -897,85 +932,31 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     faq: [
       {
         question: 'What is the difference between sewer cleaning and drain cleaning?',
-        answer: (
-          <p>
-            Sewer cleaning generally addresses restrictions in the main line
-            that carries wastewater away from the property. Drain cleaning
-            often focuses on an individual fixture or smaller branch line. If
-            several fixtures are affected, the main sewer line may need
-            evaluation; if one fixture is affected, drain cleaning may be the
-            more relevant starting point.
-          </p>
-        ),
-      },
-      {
-        question: 'When should I schedule sewer cleaning instead of a camera inspection?',
-        answer: (
-          <p>
-            Sewer cleaning may fit when several fixtures are slow and a
-            main-line restriction is suspected. A camera inspection may fit
-            better when a blockage keeps returning, the location is unclear,
-            or you want to understand the visible condition of the line. If
-            sewage is actively backing up, contact the team to discuss which
-            should come first.
-          </p>
-        ),
-      },
-      {
-        question: 'Can sewer cleaning remove tree roots?',
-        answer: (
-          <p>
-            Cleaning can address certain roots that are restricting an
-            accessible line. It does not remove the reason roots entered, such
-            as a joint or opening, so roots may return. A camera inspection can
-            help show where roots are visible.
-          </p>
-        ),
-      },
-      {
-        question: 'Does sewer cleaning repair a damaged sewer line?',
-        answer: (
-          <p>
-            No. Cleaning removes material from inside the pipe and does not
-            change the pipe’s structural condition. If an inspection shows a
-            visible defect, the findings can help you consider whether a
-            separate evaluation by a repair provider is appropriate.
-          </p>
-        ),
+        answer: <p>{'Sewer cleaning addresses restrictions in an accessible portion of the main sewer line. Drain cleaning addresses a clog affecting an individual fixture or branch drain. The right service depends on which fixtures are affected and what the symptoms suggest.'}</p>,
       },
       {
         question: 'What are common signs of a main sewer line blockage?',
-        answer: (
-          <p>
-            Common signs include several fixtures draining slowly, gurgling
-            sounds, and toilets, tubs, or lower drains backing up together.
-            These symptoms can have different causes, so a technician’s
-            assessment helps decide whether cleaning or an inspection is the
-            better next step.
-          </p>
-        ),
+        answer: <p>{'Several slow or gurgling drains, backups at multiple fixtures, or recurring clogs can indicate a main-line restriction. These symptoms do not confirm the cause; inspection may be useful when the problem keeps returning or its location is unclear.'}</p>,
       },
       {
-        question: 'Is hydro jetting always the best sewer cleaning method?',
-        answer: (
-          <p>
-            No. Hydro jetting uses high-pressure water and can suit some
-            buildup, but whether it is appropriate depends on the pipe’s
-            condition, access, and the type of restriction. The technician
-            assesses the line before recommending a method.
-          </p>
-        ),
+        question: 'When should I schedule sewer cleaning instead of a camera inspection?',
+        answer: <p>{'Cleaning may be appropriate when a restriction is suspected and the line is accessible. Camera inspection can help show visible conditions when the cause or line condition is uncertain. The appropriate next step depends on the symptoms, access, and available information about the line.'}</p>,
+      },
+      {
+        question: 'Is hydro jetting always the best sewer-cleaning method?',
+        answer: <p>{'No. The appropriate method depends on the suspected material, access, and known or visible line conditions. Hydro jetting may be considered when suitable, but it is not automatically the right choice for every line.'}</p>,
+      },
+      {
+        question: 'Can sewer cleaning remove tree roots?',
+        answer: <p>{'Cleaning may clear root material from an accessible section of a line when the method is appropriate. It does not repair the point where roots entered, so roots may return. A camera inspection can help show visible conditions in portions of the line it can reach.'}</p>,
       },
       {
         question: 'Can I schedule sewer cleaning for a rental or multi-unit property?',
-        answer: (
-          <p>
-            Property managers and owners can request service for rental and
-            multi-unit properties. Share which units are affected, how often
-            the problem occurs, and any access details when you reach out, and
-            confirm scope and scheduling with the local team.
-          </p>
-        ),
+        answer: <p>{'Contact the team with the property location, affected fixtures or units, and any relevant access details. For rental or multi-unit properties, make sure you have authorization to arrange service and provide access.'}</p>,
+      },
+      {
+        question: 'Does sewer cleaning repair a damaged sewer line?',
+        answer: <p>{'No. Sewer cleaning can address certain material or restrictions inside an accessible line, but it does not restore the pipe’s structural condition. If damage is suspected, inspection findings can help inform your next decision.'}</p>,
       },
     ],
     relatedPageIds: [

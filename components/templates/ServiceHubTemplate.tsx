@@ -14,6 +14,7 @@ import {
   DeliverablesSection,
   CameraImageSlot,
   BackdropImage,
+  ApproachBand,
   SymptomRouter,
   MarketRouter,
   DefinitionSection,
@@ -271,9 +272,15 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
     if (comparison !== null) add('dense', 'comparison', comparison)
   }
 
-  add(authorityBandRenders() ? 'standard' : null, 'authority', (
-    <AuthorityBand title="How we work" icons actionVariant="primary" />
-  ))
+  if (hub.approach !== undefined) {
+    // Page-specific copy on the same navy surface; the shared band's
+    // governed dataset is left alone.
+    add('standard', 'authority', <ApproachBand content={hub.approach} />)
+  } else {
+    add(authorityBandRenders() ? 'standard' : null, 'authority', (
+      <AuthorityBand title="How we work" icons actionVariant="primary" />
+    ))
+  }
   add(null, 'proof', <ProofGallery title="Recent work" />)
   add(null, 'testimonial', <TestimonialBand />)
 
@@ -285,6 +292,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         id={hub.request.id}
         content={hub.request}
         imageSrc={images?.request ?? REQUEST_IMAGE}
+        focus={images?.requestFocus === 'right' ? 'right' : 'default'}
       >
         <LeadFormSection
           bare
@@ -345,6 +353,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         content={hub.closing}
         imageSrc={images?.closing ?? CLOSING_IMAGE}
         density="sparse"
+        focus={images?.closingFocus === 'right' ? 'right' : 'default'}
       >
         <LeadFormSection
           bare
