@@ -46,14 +46,14 @@ export const cleaningImageSlots = {
     subject: 'Cable machine or cleaning head in use at a cleanout.',
     requiresRelease: false,
   },
-  // ⚠ CARD 1 FILE DOES NOT MATCH ITS HEADING. The supplied file is named for
-  // cleaning equipment at a cleanout, but it shows a RIDGID SeeSnake series
-  // monitor and camera reel (inspection equipment). The alt text describes
-  // what it shows. Replace the file with a real cleaning-equipment photo.
+  // Reuses the definition-section photograph: the cleaning machine with its
+  // cable in an open cleanout, and a separate camera reel beside it. The
+  // earlier `...equipment-accessible-cleanout-4x3.webp` file showed only
+  // camera equipment, so it no longer backs this slot.
   'cleaning-equipment': {
-    preferred: `${DIR}the-sewer-pros-sewer-cleaning-equipment-accessible-cleanout-4x3.webp`,
-    alt: 'RIDGID SeeSnake series inspection monitor showing the inside of a pipe, beside a camera reel with red push cable on a concrete surface',
-    caption: 'Camera-inspection equipment: a monitor and reel, shown separately from cleaning equipment.',
+    preferred: `${DIR}the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp`,
+    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor',
+    caption: 'Cleaning equipment is connected at an accessible cleanout.',
     width: 1448,
     height: 1086,
     kind: 'photo',
