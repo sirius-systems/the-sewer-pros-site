@@ -10,6 +10,8 @@ import {
   BuildingIcon,
   CameraInPipeIcon,
   ChecklistIcon,
+  DecisionIcon,
+  DocumentIcon,
   CleaningAndCameraIcon,
   CleaningPathIcon,
   DocumentCheckIcon,
@@ -39,7 +41,8 @@ import {
   resolveHubImage,
   type HubImageKey,
 } from '@/data/business/hub-images'
-import type { HubAudienceIcon, HubComparisonIcon, HubProcessIcon, HubSymptomIcon, MarketId, ServiceHubContent } from '@/types'
+import { PRIMARY_CTA } from '@/components/layout/cta'
+import type { HubApproachIcon, HubAudienceIcon, HubComparisonIcon, HubProcessIcon, HubSymptomIcon, MarketId, ServiceHubContent } from '@/types'
 
 /**
  * Extra sections for a service hub page (`ServiceHubContent`).
@@ -751,6 +754,64 @@ export function InspectionProcess({
    Audience pathways
    ========================================================================== */
 
+/* ==========================================================================
+   Approach band (page-specific "How we work")
+   ========================================================================== */
+
+const APPROACH_ICON_BY_NAME: Record<HubApproachIcon, (props: IconProps) => ReactNode> = {
+  conversation: ExplanationIcon,
+  camera: CameraIcon,
+  document: DocumentIcon,
+  decision: DecisionIcon,
+}
+
+/**
+ * The hub's own version of the navy "How we work" band.
+ *
+ * ⚠ WHY THIS EXISTS INSTEAD OF EDITING `AuthorityBand`. That band renders
+ * `authorityProofPoints`, one governed dataset shared by eight templates,
+ * and its rule is that copy is not a prop. This band takes its copy from
+ * the hub's own content, on the same navy surface with the same card
+ * treatment (`border-white/15`, white/80 marks), so the shared data is
+ * untouched.
+ *
+ * ⚠ THE MARKS ARE `aria-hidden` AND SECONDARY, beside headings that already
+ * name each card. The action is the site's existing primary CTA, unchanged.
+ * Two columns at `sm`, one below.
+ */
+export function ApproachBand({ content }: { content: NonNullable<Hub['approach']> }) {
+  const id = content.id ?? 'why-the-sewer-pros'
+  return (
+    <Section density="standard" surface="brand" labelledBy={id}>
+      <h2 id={id} className="max-w-2xl text-h2 font-semibold tracking-tight text-balance">
+        {content.title}
+      </h2>
+      <p className="mt-4 max-w-[var(--container-reading)] text-body-lg opacity-90">
+        {content.intro}
+      </p>
+      <ul className="mt-10 grid gap-6 sm:grid-cols-2">
+        {content.items.map((item) => {
+          const Icon = APPROACH_ICON_BY_NAME[item.icon]
+          return (
+            <li key={item.title} className="rounded-md border border-white/15 p-6">
+              <div className="flex items-center gap-3">
+                <Icon aria-hidden="true" className="h-6 w-6 shrink-0 text-white/80" />
+                <h3 className="text-base font-medium">{item.title}</h3>
+              </div>
+              <p className="mt-1 text-sm leading-6 opacity-80">{item.description}</p>
+            </li>
+          )
+        })}
+      </ul>
+      <div className="mt-10">
+        <ButtonLink href={PRIMARY_CTA.href} variant="primary">
+          {PRIMARY_CTA.label}
+        </ButtonLink>
+      </div>
+    </Section>
+  )
+}
+
 const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => ReactNode> = {
   building: BuildingIcon,
   checklist: ChecklistIcon,
@@ -1023,18 +1084,40 @@ export function RequestServiceSection({
   children,
   id = 'schedule-a-sewer-camera-inspection',
   density = 'standard',
+  focus = 'default',
 }: {
   content: { title: string; intro: string | readonly string[] }
   imageSrc: string
   children: ReactNode
   id?: string
   density?: 'sparse' | 'standard' | 'dense'
+  /**
+   * `right` is for a photograph whose equipment sits on the left, under
+   * the copy column: below `lg` the crop favours the left so the equipment
+   * stays faintly visible behind the copy, and a black left-weighted
+   * gradient (black only) is added to the standard scrim so the copy holds
+   * over it. The form card is opaque, so it never depends on the photo.
+   */
+  focus?: 'default' | 'right'
 }) {
   const paragraphs = typeof content.intro === 'string' ? [content.intro] : content.intro
   return (
     <div className="relative isolate overflow-hidden bg-brand text-white">
-      <BackdropImage src={imageSrc} />
+      <BackdropImage
+        src={imageSrc}
+        className={
+          focus === 'right'
+            ? 'object-cover object-[28%_50%] lg:object-center'
+            : 'object-cover object-center'
+        }
+      />
       <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      {focus === 'right' && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-black/50 via-black/25 to-transparent"
+        />
+      )}
       <Section density={density} surface="none" labelledBy={id}>
         <div className="grid gap-10 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-14">
           <div>

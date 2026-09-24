@@ -46,24 +46,28 @@ export const cleaningImageSlots = {
     subject: 'Cable machine or cleaning head in use at a cleanout.',
     requiresRelease: false,
   },
+  // ⚠ CARD 1 FILE DOES NOT MATCH ITS HEADING. The supplied file is named for
+  // cleaning equipment at a cleanout, but it shows a RIDGID SeeSnake series
+  // monitor and camera reel (inspection equipment). The alt text describes
+  // what it shows. Replace the file with a real cleaning-equipment photo.
   'cleaning-equipment': {
-    preferred: `${DIR}sewer-cleaning-equipment-4x3.webp`,
-    alt: 'Sewer cleaning machine and hoses staged at a job site',
-    caption: 'Field equipment staged for a cleaning visit.',
+    preferred: `${DIR}the-sewer-pros-sewer-cleaning-equipment-accessible-cleanout-4x3.webp`,
+    alt: 'RIDGID SeeSnake series inspection monitor showing the inside of a pipe, beside a camera reel with red push cable on a concrete surface',
+    caption: 'Camera-inspection equipment: a monitor and reel, shown separately from cleaning equipment.',
     width: 1448,
     height: 1086,
     kind: 'photo',
-    subject: 'Actual equipment and branded vehicle. Plates and addresses blurred.',
+    subject: 'Sewer-cleaning equipment beside an accessible cleanout, with the camera equipment nearby as a separate tool.',
     requiresRelease: false,
   },
   'cleaning-monitor': {
-    preferred: `${DIR}sewer-cleaning-monitor-still-4x3.webp`,
-    alt: 'Inspection monitor showing the interior of a sewer pipe',
-    caption: 'A monitor still, with property details removed.',
+    preferred: `${DIR}the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-review-4x3.webp`,
+    alt: 'RIDGID SeeSnake series monitor showing sewer camera footage of a pipe interior, beside a camera reel and camera head',
+    caption: 'A monitor showing camera footage, with property details removed.',
     width: 1448,
     height: 1086,
     kind: 'footage-still',
-    subject: 'Real monitor still. Customer data, address and GPS overlay removed.',
+    subject: 'Monitor showing non-dramatic footage with the camera equipment nearby. No customer data, address, GPS or readable text.',
     requiresRelease: true,
   },
 } as const satisfies Record<string, CameraImageSlotSpec>

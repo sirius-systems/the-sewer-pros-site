@@ -243,6 +243,7 @@ export { CameraImageSlot } from './CameraImageSlot'
 export type { CameraImageSlotProps } from './CameraImageSlot'
 export {
   BackdropImage,
+  ApproachBand,
   SymptomRouter,
   MarketRouter,
   DefinitionSection,
