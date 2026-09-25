@@ -37,30 +37,31 @@ export const audienceHubImageSlots = {
   /* Hero collage, 2x2. */
   'hero-monitor': {
     preferred: '/images/audience-hub/hero/the-sewer-pros-hub-camera-monitor.webp',
-    interim: '/images/audiences/audience-hub/the-sewer-pros-home-inspectors-specialized-sewer-inspection-equipment.webp',
-    alt: 'Sewer camera reel and monitor beside an open residential sewer cleanout',
+    interim:
+      '/images/audiences/audience-hub/hero/the-sewer-pros-home-inspectors-ridgid-seesnake-cs12x-monitor.webp',
+    alt: 'Sewer camera monitor for viewing live pipe footage',
     subject: 'Sewer camera monitor showing live pipe footage',
   },
   'hero-technician': {
     preferred: '/images/audience-hub/hero/the-sewer-pros-hub-technician-review.webp',
     interim:
-      '/images/audiences/audience-hub/the-sewer-pros-home-inspectors-specialized-sewer-inspection.webp',
-    alt: 'Technician reviewing sewer camera footage on site',
-    subject: 'Technician reviewing footage with camera equipment',
+      '/images/audiences/audience-hub/hero/the-sewer-pros-home-inspectors-seesnake-standard-camera-reel-trusense.webp',
+    alt: 'Sewer inspection camera reel',
+    subject: 'Sewer camera reel and push cable',
   },
   'hero-consultation': {
     preferred: '/images/audience-hub/hero/the-sewer-pros-hub-customer-consultation.webp',
     interim:
-      '/images/audiences/audience-hub/the-sewer-pros-home-buyers-pre-purchase-sewer-inspection.webp',
-    alt: 'Technician explaining sewer inspection findings to a property owner',
-    subject: 'Technician explaining findings to a homeowner or buyer',
+      '/images/audiences/audience-hub/hero/the-sewer-pros-home-inspectors-ridgid-seektech-sr-20-utility-line-locator.webp',
+    alt: 'Utility line locator used to trace sewer lines',
+    subject: 'Sewer line locator',
   },
   'hero-field': {
     preferred: '/images/audience-hub/hero/the-sewer-pros-hub-field-work.webp',
     interim:
-      '/images/audiences/audience-hub/the-sewer-pros-home-inspectors-sewer-inspection-documentation.webp',
-    alt: 'Sewer inspection and cleaning equipment set up at a property',
-    subject: 'Service vehicle or equipment at a property, no signage naming a market',
+      '/images/audiences/audience-hub/hero/the-sewer-pros-home-inspectors-ridgid-k-7500-drum-machine.webp',
+    alt: 'Drum machine used for sewer line cleaning',
+    subject: 'Sewer cleaning drum machine',
   },
   /* Audience cards, keyed by audience id. */
   'aud-home-buyers': {
