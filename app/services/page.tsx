@@ -5,8 +5,11 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { pageMetadata } from '@/lib/seo'
 import { HubPageTemplate } from '@/components/templates'
-import { HeroBackdrop } from '@/components/sections'
-import { servicesHubBackdrop } from '@/data/business/services-hub-backdrop'
+import { HeroVideoBackdrop } from '@/components/sections'
+import {
+  servicesHubHeroPoster,
+  servicesHubHeroVideo,
+} from '@/data/business/services-hub-backdrop'
 import { getHubContent } from '@/content'
 import { getPage } from '@/data/pages'
 import type { PageId } from '@/types'
@@ -49,22 +52,11 @@ export default function Page() {
     on white, which is what the mosaic was designed against.
   */
   /*
-    ⚠ THE SECOND HUB WITH A HERO BACKDROP, AND THE FIRST WITH CONTROLS.
-    `/locations/` cycles one frame per market behind its copy;
-    `/services/` cycles five frames of the work behind its own. Both are
-    decorative and unlabelled, which is what keeps them honest: these
-    are rendered scenes, so a captioned frame would assert a photograph
-    of a job that does not exist.
-
-    ⚠ `controls` IS THIS PAGE'S ALONE: pause, previous, next and
-    indicators, plus the timer switching off on hover, on focus and in
-    a hidden tab. `/locations/` and the home page pass nothing and are
-    unchanged in markup and in behaviour.
-
-    ⚠ THE OVERLAY IS THE HOME PAGE'S, ON OWNER DIRECTION (2026-09-08).
-    A left-weighted navy ramp shipped here for one build; the flat 55%
-    black `.hero-scrim` replaced it, which is the same treatment behind
-    the home page and `/locations/` heroes.
+    ⚠ THE HERO BACKDROP IS ONE VIDEO OVER ITS STILL (2026-09-26, owner
+    direction; it replaced a five-frame carousel). Decorative and
+    unlabelled: it is a rendered scene, so a caption would assert
+    footage of a job that does not exist. Reduced-motion and data-saver
+    visitors get the still. The overlay is the shared `.hero-scrim`.
   */
   return (
     <HubPageTemplate
@@ -77,19 +69,15 @@ export default function Page() {
         photographs the carousel exists to show.
       */
       heroAside="none"
-      /*
-        ⚠ ROOM FOR THE CONTROLS BELOW `sm`, WHERE THEY CENTRE. Above
-        that they sit in the lower right and the CTA row is on the
-        left, so the two never meet; centred, they land straight on the
-        buttons. 112px clears the 68px strip with breathing room.
-      */
-      heroClassName="max-sm:pb-28"
       itemsTitle="Sewer Inspection, Diagnostics & Cleaning Services"
       itemsVariant="cards"
       itemsId="services-grid"
       numbered
       backdrop={
-        <HeroBackdrop set={servicesHubBackdrop} controls />
+        <HeroVideoBackdrop
+          video={servicesHubHeroVideo}
+          poster={servicesHubHeroPoster}
+        />
       }
     />
   )
