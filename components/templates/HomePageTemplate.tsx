@@ -3,6 +3,7 @@ import {
   Hero,
   HeroBackdrop,
   TrustBar,
+  ExperienceCounterStrip,
   ConfidenceModule,
   confidenceModuleRenders,
   RoutingCards,
@@ -148,15 +149,22 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
   //
   // With every gate open the sequence reads:
   //
-  //   sparse dense standard standard standard dense standard dense
-  //   standard dense dense dense
+  //   sparse dense dense dense standard standard standard dense
+  //   standard dense standard dense dense dense
   //
-  // The longest run is three, against `sectionRhythmIssues()`'s
-  // threshold of four. IndependentProcess → reviews → routing is that run,
-  // and it is the one to watch if another `standard` section is ever
-  // inserted among them.
+  // The longest run is three (ExperienceCounterStrip → TrustBar →
+  // IndependentProcess, and separately IndependentProcess → reviews →
+  // routing), against `sectionRhythmIssues()`'s threshold of four —
+  // the one to watch if another `dense` or `standard` section is ever
+  // inserted among either run.
   const densities: SectionDensity[] = [
     'sparse',
+    // ExperienceCounterStrip — inserted below Hero, above TrustBar
+    // (owner, 2026-09-27). `dense` (2026-09-27, revised from
+    // `standard`): the owner asked for shorter vertical padding, and
+    // `dense` is the section's own default, so this entry doesn't
+    // diverge from what the component renders unstyled.
+    'dense',
     'dense',
     // The differentiator is unconditional: it renders its own canonical
     // comparison rather than per-page content that could be absent. No
@@ -236,6 +244,17 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       />
 
       {/*
+        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
+        `TrustBar` itself is unchanged — this is a second, animated
+        strip, not a replacement.
+
+        `surface="default"` (the component's own default): Hero carries
+        a photographic backdrop and `TrustBar` below is `muted`, so
+        `default` keeps this section from matching either neighbour.
+      */}
+      <ExperienceCounterStrip />
+
+      {/*
         ⚠ `muted`, NOT THE COMPONENT'S OWN `brand` DEFAULT, ON OWNER
         DIRECTION (2026-09-05). It is what separates this strip from
         the section beneath it.
@@ -262,8 +281,9 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         measured at 2.61:1 against navy, so this is the better of the
         two for the icons, not a compromise.
 
-        Hero (photo) -> here (muted) -> differentiator (brand) -> reviews
-        (default): four surfaces, no two alike.
+        Hero (photo) -> ExperienceCounterStrip (default) -> here (muted)
+        -> differentiator (brand) -> reviews (default): no two adjacent
+        surfaces alike.
       */}
       <TrustBar surface="muted" />
 
@@ -284,6 +304,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         The order, hero downward:
 
           Hero                photo backdrop
+          ExperienceCounterStrip  default ← inserted 2026-09-27, see below
           TrustBar            muted   ← flipped, see below
           IndependentProcess      brand   ← comparison-table variant
           ReviewMarquee       default

@@ -2,6 +2,7 @@ import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
+  ExperienceCounterStrip,
   ProblemGrid,
   InclusionsGrid,
   ProcessSteps,
@@ -108,6 +109,9 @@ export function ServicePageTemplate({
   // `standard` sections, which is exactly the run 18 §108 rejects.
   const densities: SectionDensity[] = [
     'sparse',
+    // ExperienceCounterStrip — inserted below Hero, above `TrustBar`
+    // (owner, 2026-09-27). `dense` is the section's own default.
+    'dense',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.showDifferentiator === true ? (['standard'] as const) : []),
@@ -146,6 +150,16 @@ export function ServicePageTemplate({
         title={content.hero.title}
         intro={content.hero.intro}
       />
+
+      {/*
+        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
+        `surface="muted"`, NOT THE COMPONENT'S OWN `default`. This hero
+        carries no backdrop, so it renders on `default` too, and the
+        component's own default would stack two `default` bands back to
+        back. `TrustBar` below is `brand`, so `muted` keeps this section
+        distinct from both neighbours.
+      */}
+      <ExperienceCounterStrip surface="muted" />
 
       <TrustBar />
 

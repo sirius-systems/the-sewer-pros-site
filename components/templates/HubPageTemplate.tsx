@@ -2,6 +2,7 @@ import { Section, Prose, type SectionDensity, type SectionSurface } from '@/comp
 import {
   Hero,
   TrustBar,
+  ExperienceCounterStrip,
   ServiceIndex,
   MarketCoverage,
   IndependentProcess,
@@ -393,6 +394,9 @@ export function HubPageTemplate({
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'sparse',
+    // ExperienceCounterStrip — inserted below Hero, above `TrustBar`
+    // (owner, 2026-09-27). `dense` is the section's own default.
+    'dense',
     'dense',
     /*
       ⚠ ONE ENTRY EACH, NOT ONE FOR THE PAIR. The prose band and the
@@ -526,6 +530,18 @@ export function HubPageTemplate({
           ) : undefined
         }
       />
+
+      {/*
+        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
+        `surface="muted"`, NOT THE COMPONENT'S OWN `default`. This
+        template is shared by five hubs and only `/locations/` passes a
+        photographic `backdrop`; the other four render an editorial hero
+        with no backdrop, which puts them on `default` too. `muted`
+        keeps this section distinct from a `default` hero on every hub
+        and from `TrustBar`'s `brand` below, regardless of which hero
+        composition the route uses.
+      */}
+      <ExperienceCounterStrip surface="muted" />
 
       <TrustBar />
 

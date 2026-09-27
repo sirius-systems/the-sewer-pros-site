@@ -9,6 +9,7 @@ import {
   Hero,
   HeroVideoBackdrop,
   TrustBar,
+  ExperienceCounterStrip,
   ConfidenceModule,
   RoutingCards,
   ServiceIndex,
@@ -348,6 +349,10 @@ export function MarketPageTemplate({
   */
   const densities: SectionDensity[] = [
     'sparse',
+    // ExperienceCounterStrip — inserted below Hero, above `TrustBar`
+    // (owner, 2026-09-27). `dense` is the section's own default, and
+    // matches the same insertion on `HomePageTemplate`.
+    'dense',
     'dense',
     // Unconditional: the differentiator renders its own canonical
     // comparison rather than per-page content that could be absent.
@@ -535,6 +540,16 @@ export function MarketPageTemplate({
       )}
 
       {/*
+        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27), the
+        same insertion made on `HomePageTemplate`. `surface="default"`
+        (the component's own default): the hero above carries either a
+        photograph/video backdrop or renders editorial with no backdrop,
+        and `TrustBar` below is `muted`, so `default` matches neither
+        neighbour.
+      */}
+      <ExperienceCounterStrip />
+
+      {/*
         ⚠ `muted`, NOT THE COMPONENT'S OWN `brand` DEFAULT, ON OWNER
         DIRECTION (2026-09-05). It is what separates this strip from
         the section beneath it.
@@ -561,8 +576,9 @@ export function MarketPageTemplate({
         measured at 2.61:1 against navy, so this is the better of the
         two for the icons, not a compromise.
 
-        Hero (photo) -> here (muted) -> differentiator (brand) -> reviews
-        (default): four surfaces, no two alike.
+        Hero (photo) -> ExperienceCounterStrip (default) -> here (muted)
+        -> differentiator (brand) -> reviews (default): no two adjacent
+        surfaces alike.
       */}
       <TrustBar surface="muted" />
 
