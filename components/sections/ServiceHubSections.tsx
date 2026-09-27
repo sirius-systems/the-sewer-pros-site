@@ -8,23 +8,17 @@ import {
   CameraIcon,
   CheckIcon,
   BuildingIcon,
-  CameraInPipeIcon,
   ChecklistIcon,
   DecisionIcon,
   DocumentIcon,
-  CleaningAndCameraIcon,
-  CleaningPathIcon,
   DocumentCheckIcon,
   ExplanationIcon,
   FixturesIcon,
   HomeIcon,
   HouseKeyIcon,
-  HydroJetIcon,
-  LocatorRouteIcon,
   PipeIcon,
   RepeatIcon,
   RootRestrictionIcon,
-  SinkDrainIcon,
   SingleDrainIcon,
   WaterBackupIcon,
   type IconProps,
@@ -42,7 +36,8 @@ import {
   type HubImageKey,
 } from '@/data/business/hub-images'
 import { PRIMARY_CTA } from '@/components/layout/cta'
-import type { HubApproachIcon, HubAudienceIcon, HubComparisonIcon, HubProcessIcon, HubSymptomIcon, MarketId, ServiceHubContent } from '@/types'
+import { homeServiceCards } from '@/content/pages/home-service-cards'
+import type { HubApproachIcon, HubAudienceIcon, HubProcessIcon, HubSymptomIcon, MarketId, ServiceHubContent } from '@/types'
 
 /**
  * Extra sections for a service hub page (`ServiceHubContent`).
@@ -933,21 +928,18 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
  *
  * ⚠ THE IMAGE IS DECORATIVE (`alt=""`); the table carries the meaning.
  */
-const COMPARISON_ICON_BY_NAME: Record<HubComparisonIcon, (props: IconProps) => ReactNode> = {
-  cleaning: CleaningPathIcon,
-  hydro: HydroJetIcon,
-  drain: SinkDrainIcon,
-  camera: CameraInPipeIcon,
-  combined: CleaningAndCameraIcon,
-  locating: LocatorRouteIcon,
-}
-
 export function ServiceComparison({
   content,
   imageSrc,
 }: {
   content: NonNullable<Hub['comparison']>
-  imageSrc: string
+  /**
+   * Backdrop photograph. Omit it for a plain navy section, no photo and no
+   * placeholder: right for the `cards` variant, whose own card artwork
+   * already carries the visual interest, unlike the `table` variant's
+   * plain white panel.
+   */
+  imageSrc?: string
 }) {
   const id = content.id ?? 'sewer-camera-inspection-vs-related-services'
   const [colService, colPurpose, colFit] = content.columns ?? [
@@ -957,8 +949,12 @@ export function ServiceComparison({
   ]
   return (
     <div className="relative isolate overflow-hidden bg-brand">
-      <BackdropImage src={imageSrc} />
-      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      {imageSrc !== undefined && (
+        <>
+          <BackdropImage src={imageSrc} />
+          <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+        </>
+      )}
       <Section density="dense" surface="none" labelledBy={id}>
         <div className="max-w-[var(--container-reading)]">
           <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance text-white">
@@ -970,16 +966,38 @@ export function ServiceComparison({
           <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {content.rows.map((row) => {
               const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
-              const Icon = row.icon !== undefined ? COMPARISON_ICON_BY_NAME[row.icon] : undefined
+              // Same artwork the /services/ hub's cards use for this service,
+              // where one exists. A row without a match (or without a
+              // `pageId`, such as "this page") gets a labelled placeholder
+              // frame instead of a broken image.
+              const imageId = row.imageId ?? row.pageId
+              const card =
+                imageId !== undefined ? homeServiceCards.find((c) => c.pageId === imageId) : undefined
               return (
                 <li key={row.service} className="flex">
-                  {/* Opaque white card, so contrast never depends on the photograph. */}
-                  <div className="flex w-full flex-col rounded-md border border-border bg-surface p-6 text-foreground shadow-sm">
-                    {/* Decorative: the service name and copy carry the meaning. */}
-                    {Icon !== undefined && (
-                      <Icon aria-hidden="true" className="h-7 w-7 shrink-0 text-accent-secondary" />
-                    )}
-                    <h3 className="mt-3 text-h4 font-semibold text-foreground">
+                  {/* Opaque white card, so contrast never depends on the backdrop photograph. */}
+                  <div className="flex w-full flex-col overflow-hidden rounded-md border border-border bg-surface shadow-sm">
+                    <div className="relative aspect-[16/10] w-full bg-surface-muted">
+                      {card?.image !== undefined ? (
+                        <Image
+                          src={card.image.src}
+                          alt={card.image.alt}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div
+                          data-image-placeholder={row.service}
+                          className="flex h-full w-full flex-col items-center justify-center gap-1 border-2 border-dashed border-border p-4 text-center text-caption text-muted-foreground"
+                        >
+                          <p className="font-semibold text-foreground">Image placeholder</p>
+                          <p>{row.service}</p>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-1 flex-col p-6 text-foreground">
+                    <h3 className="text-h4 font-semibold text-foreground">
                       {link !== undefined ? (
                         <Link
                           href={link.href}
@@ -1002,6 +1020,7 @@ export function ServiceComparison({
                       {colFit}
                     </p>
                     <p className="mt-1 text-body-sm text-foreground">{row.fit}</p>
+                    </div>
                   </div>
                 </li>
               )

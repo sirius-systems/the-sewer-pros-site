@@ -265,7 +265,12 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
     showEvidence && hub.evidence !== undefined ? <EvidenceGallery content={hub.evidence} /> : null
   const comparison =
     hub.comparison !== undefined ? (
-      <ServiceComparison content={hub.comparison} imageSrc={images?.comparison ?? COMPARISON_IMAGE} />
+      <ServiceComparison
+        content={hub.comparison}
+        imageSrc={
+          hub.comparison.variant === 'cards' ? images?.comparison : (images?.comparison ?? COMPARISON_IMAGE)
+        }
+      />
     ) : null
 
   if (decisionFirst) {

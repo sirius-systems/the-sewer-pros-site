@@ -1405,15 +1405,6 @@ export interface HubSymptomCard {
   href?: string
 }
 
-/** A comparison-card mark on a service hub. */
-export type HubComparisonIcon =
-  | 'cleaning'
-  | 'hydro'
-  | 'drain'
-  | 'camera'
-  | 'combined'
-  | 'locating'
-
 /** One row of the related-services comparison. */
 export interface HubComparisonRow {
   service: string
@@ -1421,8 +1412,13 @@ export interface HubComparisonRow {
   fit: string
   /** Absent on the current page's own row. */
   pageId?: PageId
-  /** Decorative mark used by the `cards` variant. */
-  icon?: HubComparisonIcon
+  /**
+   * Which service's card artwork to show on the `cards` variant, when it
+   * differs from `pageId`. Needed for the current page's own row, which has
+   * no `pageId` (so it renders "(this page)" rather than a link) but still
+   * has a matching `/services/` card image.
+   */
+  imageId?: PageId
 }
 
 /**
