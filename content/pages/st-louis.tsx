@@ -112,33 +112,22 @@ export const stLouisMarketContent: MarketPageContent = {
       </p>
     ),
   },
+  /*
+    ⚠ THE STILL IS THE CLIP'S OWN FRAME AND ITS POSTER (2026-09-26). It
+    is what reduced-motion, data-saver, and pre-hydration visitors see,
+    and it is the LCP element. It is a 1.5MB WebP; `output: 'export'`
+    disables the optimizer, so resizing it is worth doing when practical.
+  */
   heroBackground: {
-    /*
-      ⚠ PLACEHOLDER, KNOWINGLY. This frame is also the process band's
-      background further down the page, so it currently appears twice
-      (owner, 2026-09-04: dedicated imagery comes after the template
-      locks in). Swap this src first when a St. Louis hero frame
-      exists; nothing else needs to change.
-    */
-    src: '/images/homepage/differentiator/the-sewer-pros-st-louis-residential-property-exterior.webp',
-    alt: 'Street view of a brick two-story house on a tree-lined block',
+    src: '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-residential-sewer-camera-inspection-hero.webp',
+    alt: 'Camera reel and monitor at an open cleanout on a residential property',
     source:
-      'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-26. Rendered scene, not a photograph of a Sewer Pros job.',
   },
   /*
-    ⚠ THE STILL ABOVE IS NOW ALSO THIS CLIP'S POSTER, AND THE TWO DO
-    NOT SHOW THE SAME THING. The still is a house exterior; the clip is
-    a camera inspection. Visitors who get the video see a cross-fade
-    from one subject to the other, which is a cosmetic cost accepted
-    while both assets are placeholders. A still lifted from this clip
-    would remove it, and that is the right fix once a frame can be
-    exported. Everyone in the fallback groups sees only the still, so
-    it has to keep working alone either way.
-
     `describes` is written from the supplied filename and the market it
-    was delivered for. The frames themselves were not inspected -
-    nothing in the repository can decode video - so this says what the
-    clip is FOR rather than asserting shot detail nobody has checked.
+    was delivered for. It says what the clip is FOR rather than
+    asserting shot detail nobody has checked.
   */
   heroVideo: {
     src: '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-residential-sewer-camera-inspection-hero.mp4',
