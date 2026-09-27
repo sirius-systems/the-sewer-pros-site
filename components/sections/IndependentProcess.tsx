@@ -23,9 +23,19 @@ import {
  * `docs/22-decisions-change-log.md` for the entry recording this.
  *
  * Content is the fixed, approved copy below — the same on every page
- * that renders it, by design (carrying forward DEC-099's "one source
- * for every page" rule). `density` is the only thing that varies per
- * caller, matching each page's own section rhythm.
+ * that renders it, by default (carrying forward DEC-099's "one source
+ * for every page" rule) — UNLESS a caller passes `content`, an optional,
+ * fully partial override. Every field left out keeps this file's
+ * approved copy, so no existing page changes unless it explicitly opts
+ * in. `density` is the only other thing that varies per caller, matching
+ * each page's own section rhythm.
+ *
+ * ⚠ 2026-09-27: the sewer-cleaning-camera-inspection hub is the first
+ * page to pass `content` (a hub-specific rewrite — repair positioned as
+ * something The Sewer Pros does not do at all, not just something it
+ * has no contract to sell — was requested for that one page). Adding
+ * this override rather than editing the copy below in place keeps every
+ * other DEC-099 page byte-for-byte unchanged.
  *
  * Tone (01 §72, CLAUDE.md §9, §27): describes what The Sewer Pros does
  * and does not do, and what having no repair contract to sell means
@@ -50,17 +60,10 @@ import {
  * `ProblemGrid` already use for a caution note (18 §8), reused here
  * rather than adding an "amber" of its own.
  *
- * ⚠ CONTRAST FIX. The first cut used `border-warning/40 bg-warning/5`
- * — `ProblemGrid`'s treatment, but on a light section there, where a
- * 5%-opacity tint still sits on white. On this section's navy surface
- * the same classes let the brand background show through, so
- * `text-foreground` (tuned dark for a light background) rendered as
- * dark text on dark navy. Fixed the way the first callout already
- * solves it: an OPAQUE light tint — `--warning` mixed 10% into white,
- * matching the first callout's `--accent`-mixed derivation — so
- * `text-foreground` is dark-on-light again. Border moved from
- * all-around to `border-l-4 border-warning`, mirroring the first
- * callout's left-border shape rather than the boxed one.
+ * ⚠ NO TRIANGLE. 18 §89 and CLAUDE.md §27 rule out urgency/alarm
+ * visuals, and a warning triangle is exactly that. `ExplanationIcon`
+ * (a speech bubble, already used elsewhere for plain-language
+ * explanation) carries the "read this" role without it.
  *
  * ⚠ FOCUS. The global focus ring is `--accent-secondary`, which is
  * near-invisible on navy. The CTA overrides it to white, and the
@@ -89,41 +92,81 @@ const STEPS = [
   },
 ] as const
 
+/**
+ * Every field is optional; a caller passing `content` only overrides what
+ * it names, and each of the three `steps` entries only overrides that
+ * step's own `title`/`body` — its icon always comes from `STEPS` above
+ * by position, since the icon is not something a page rewrites.
+ */
+export interface IndependentProcessContent {
+  eyebrow?: string
+  title?: string
+  intro?: readonly string[]
+  steps?: readonly { title?: string; body?: string }[]
+  calloutOne?: { title?: string; body?: readonly string[] }
+  calloutTwo?: { title?: string; body?: readonly string[] }
+  ctaLabel?: string
+  ctaNote?: string
+  closing?: string
+}
+
 export interface IndependentProcessProps {
   density?: SectionDensity
   id?: string
+  /** Per-page override. Omit to render the shared, approved default copy (DEC-099). */
+  content?: IndependentProcessContent
 }
 
 export function IndependentProcess({
   density = 'dense',
   id = 'independent',
+  content,
 }: IndependentProcessProps = {}) {
+  const eyebrow = content?.eyebrow ?? 'Independent sewer inspection & second opinions'
+  const title =
+    content?.title ??
+    'Before You Approve an Expensive Sewer Repair, Get an Opinion With Nothing to Sell'
+  const intro = content?.intro ?? [
+    'A sewer backup or major repair recommendation can make a costly decision feel urgent. The Sewer Pros inspects and documents the condition inside your sewer line so you can understand what is actually happening before you approve cleaning, excavation, lining, or replacement.',
+    'Because we do not perform sewer repairs or replacements, we do not profit from selling you the work. Our role is to give you clear video evidence, straightforward findings, and an honest opinion you can use to make the next decision.',
+  ]
+  const ctaLabel = content?.ctaLabel ?? 'Get an Independent Second Opinion'
+  const ctaNote =
+    content?.ctaNote ??
+    'Already received a repair recommendation? Bring us in for an independent second opinion before you sign off on major work.'
+  const steps = STEPS.map((step, index) => ({
+    Icon: step.Icon,
+    title: content?.steps?.[index]?.title ?? step.title,
+    body: content?.steps?.[index]?.body ?? step.body,
+  }))
+  const calloutOneTitle = content?.calloutOne?.title ?? 'Why an independent opinion matters'
+  const calloutOneBody = content?.calloutOne?.body ?? [
+    'The Sewer Pros does not perform sewer repair or replacement, by design. We are not trying to turn an inspection into a repair sale, and we do not profit from recommending major work.',
+    'Our role is to inspect the line, document the visible condition on video, explain what we found in plain language, and give you an honest opinion you can use to decide what happens next.',
+  ]
+  const calloutTwoTitle =
+    content?.calloutTwo?.title ?? 'Do Not Let a Sales-Driven Recommendation Make the Decision for You'
+  const calloutTwoBody = content?.calloutTwo?.body ?? [
+    'A repair recommendation should be based on documented conditions inside the sewer line, not pressure to approve work before you understand the problem. When the company diagnosing the problem can also sell the repair, getting a second opinion can help you separate the actual condition of the line from the proposed solution.',
+    'The Sewer Pros does not repair or replace sewer lines. We provide video documentation and clear findings without a repair contract to sell, so you can understand what was observed and make an informed decision about what happens next.',
+  ]
+  const closing =
+    content?.closing ??
+    'Do not approve a major sewer repair based only on a sales-driven recommendation. The Sewer Pros does not repair or replace sewer lines, by design, so we have no repair contract to sell. Get a documented second opinion before you approve the expense.'
+
   return (
     <Section density={density} surface="brand" width="wide" labelledBy={id}>
-      <p className="text-caption font-semibold tracking-wide uppercase opacity-80">
-        Independent sewer inspection &amp; second opinions
-      </p>
+      <p className="text-caption font-semibold tracking-wide uppercase opacity-80">{eyebrow}</p>
       <h2
         id={id}
         className="mt-2 max-w-5xl text-h2 font-semibold tracking-tight text-balance"
       >
-        Before You Approve an Expensive Sewer Repair, Get an Opinion With
-        Nothing to Sell
+        {title}
       </h2>
       <div className="mt-4 max-w-4xl space-y-5 text-body-lg leading-8 opacity-90">
-        <p>
-          A sewer backup or major repair recommendation can make a costly
-          decision feel urgent. The Sewer Pros inspects and documents the
-          condition inside your sewer line so you can understand what is
-          actually happening before you approve cleaning, excavation, lining,
-          or replacement.
-        </p>
-        <p>
-          Because we do not perform sewer repairs or replacements, we do not
-          profit from selling you the work. Our role is to give you clear
-          video evidence, straightforward findings, and an honest opinion you
-          can use to make the next decision.
-        </p>
+        {intro.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
       </div>
       <div className="mt-6">
         <ButtonLink
@@ -131,7 +174,7 @@ export function IndependentProcess({
           variant="primary"
           className="ring-2 ring-white focus-visible:outline-white!"
         >
-          Get an Independent Second Opinion
+          {ctaLabel}
         </ButtonLink>
         {/*
           `PRIMARY_CTA.href` is `/contact/`, the only approved
@@ -142,18 +185,15 @@ export function IndependentProcess({
           existing inspection-scheduling destination rather than
           creating one.
         */}
-        <p className="mt-3 max-w-4xl text-sm leading-6 opacity-80">
-          Already received a repair recommendation? Bring us in for an
-          independent second opinion before you sign off on major work.
-        </p>
+        <p className="mt-3 max-w-4xl text-sm leading-6 opacity-80">{ctaNote}</p>
       </div>
 
       <ol className="mt-10 grid gap-4 md:grid-cols-3">
-        {STEPS.map(({ title, Icon, body }) => (
-          <li key={title} className="flex">
+        {steps.map(({ title: stepTitle, Icon, body }) => (
+          <li key={stepTitle} className="flex">
             <article className="w-full rounded-md border border-border bg-background p-6 text-foreground">
               <Icon aria-hidden="true" className="h-10 w-10 text-accent" />
-              <h3 className="mt-4 text-lg font-semibold">{title}</h3>
+              <h3 className="mt-4 text-lg font-semibold">{stepTitle}</h3>
               <p className="mt-2 text-lg leading-8 text-muted-foreground">
                 {body}
               </p>
@@ -168,19 +208,12 @@ export function IndependentProcess({
           className="mt-0.5 h-8 w-8 shrink-0 text-accent"
         />
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold">
-            Why an independent opinion matters
-          </h3>
-          <p className="max-w-4xl text-lg leading-8">
-            The Sewer Pros does not perform sewer repair or replacement, by
-            design. We are not trying to turn an inspection into a repair
-            sale, and we do not profit from recommending major work.
-          </p>
-          <p className="max-w-4xl text-lg leading-8">
-            Our role is to inspect the line, document the visible condition on
-            video, explain what we found in plain language, and give you an
-            honest opinion you can use to decide what happens next.
-          </p>
+          <h3 className="text-lg font-semibold">{calloutOneTitle}</h3>
+          {calloutOneBody.map((paragraph) => (
+            <p key={paragraph} className="max-w-4xl text-lg leading-8">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </aside>
 
@@ -191,11 +224,6 @@ export function IndependentProcess({
         approved semantic-state token, 18 §8) rather than a new colour,
         and the gap from the callout above keeps the two readable as
         separate asides instead of one long block.
-
-        ⚠ NO TRIANGLE. 18 §89 and CLAUDE.md §27 rule out urgency/alarm
-        visuals, and a warning triangle is exactly that. `ExplanationIcon`
-        (a speech bubble, already used elsewhere for plain-language
-        explanation) carries the "read this" role without it.
       */}
       <aside className="mt-6 flex items-start gap-4 rounded-md border-l-4 border-warning bg-[color-mix(in_srgb,var(--color-warning)_10%,white)] p-5 text-foreground">
         <ExplanationIcon
@@ -203,32 +231,16 @@ export function IndependentProcess({
           className="mt-0.5 h-8 w-8 shrink-0 text-warning"
         />
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold">
-            Do Not Let a Sales-Driven Recommendation Make the Decision for You
-          </h3>
-          <p className="max-w-4xl text-lg leading-8">
-            A repair recommendation should be based on documented conditions
-            inside the sewer line, not pressure to approve work before you
-            understand the problem. When the company diagnosing the problem
-            can also sell the repair, getting a second opinion can help you
-            separate the actual condition of the line from the proposed
-            solution.
-          </p>
-          <p className="max-w-4xl text-lg leading-8">
-            The Sewer Pros does not repair or replace sewer lines. We provide
-            video documentation and clear findings without a repair contract
-            to sell, so you can understand what was observed and make an
-            informed decision about what happens next.
-          </p>
+          <h3 className="text-lg font-semibold">{calloutTwoTitle}</h3>
+          {calloutTwoBody.map((paragraph) => (
+            <p key={paragraph} className="max-w-4xl text-lg leading-8">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </aside>
 
-      <p className="mt-10 max-w-5xl text-body-lg leading-8">
-        Do not approve a major sewer repair based only on a sales-driven
-        recommendation. The Sewer Pros does not repair or replace sewer
-        lines, by design, so we have no repair contract to sell. Get a
-        documented second opinion before you approve the expense.
-      </p>
+      <p className="mt-10 max-w-5xl text-body-lg leading-8">{closing}</p>
     </Section>
   )
 }

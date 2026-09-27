@@ -1247,7 +1247,11 @@ export interface BasePageContent {
   relatedFeaturedPageId?: PageId
   /** Small line above the related heading. `featured` only. */
   relatedEyebrow?: string
-  /** Intro paragraph under the related heading. `featured` only. */
+  /**
+   * Intro paragraph under the related heading. Read by the `featured`
+   * layout, and also by a service hub's `cards`-variant related-services
+   * section (`ServiceHubTemplate`), which otherwise renders no intro.
+   */
   relatedIntro?: string
   /** Category, mark and accent per related page. `featured` only. */
   relatedMeta?: RelatedMeta
@@ -1394,7 +1398,25 @@ export type HubSymptomIcon =
   | 'house-key'
 
 /** A material-table row mark on a service hub. */
-export type HubMaterialIcon = 'droplet' | 'scale' | 'debris' | 'roots' | 'organic'
+export type HubMaterialIcon =
+  | 'droplet'
+  | 'scale'
+  | 'debris'
+  | 'roots'
+  | 'organic'
+  | 'blockage'
+  | 'crack'
+  | 'offset'
+  | 'low-point'
+  | 'obstruction'
+  | 'camera'
+
+/**
+ * One condition tile in a hub's "what it may show" list. A bare string
+ * renders with no icon, so every existing hub's plain-string tiles are
+ * unchanged; the object form adds a decorative mark.
+ */
+export type HubMaterialTile = string | { label: string; icon?: HubMaterialIcon }
 
 /** A process-step mark on a service hub. */
 export type HubProcessIcon = 'explanation' | 'checklist' | 'access' | 'pipe' | 'camera' | 'document'
@@ -1505,8 +1527,42 @@ export interface ServiceHubContent {
     /** Scope statement below the cards, e.g. a repair-boundary note. */
     note?: string
   }
+  /**
+   * Per-hub override for the shared "Inspect / Document / Decide"
+   * independence section (`IndependentProcess`). Every field is
+   * optional; a field left out keeps that component's default,
+   * approved copy (DEC-099), so an existing hub that omits this is
+   * unchanged. Each `steps` entry only overrides that step's own
+   * `title`/`body` — the icon always comes from the component's fixed
+   * per-step icon list.
+   */
+  secondOpinion?: {
+    eyebrow?: string
+    title?: string
+    intro?: readonly string[]
+    steps?: readonly { title?: string; body?: string }[]
+    calloutOne?: { title?: string; body?: readonly string[] }
+    calloutTwo?: { title?: string; body?: readonly string[] }
+    ctaLabel?: string
+    ctaNote?: string
+    closing?: string
+  }
   /** Mounts the sticky mobile Call / Schedule / Choose City bar. */
   mobileBar?: boolean
+  /**
+   * Desktop column count for this hub's related-services cards.
+   * Defaults to 2 (a two-by-two grid), what every existing hub renders;
+   * `4` gives one row of four for a hub with exactly four related pages.
+   */
+  relatedColumns?: 2 | 3 | 4
+  /**
+   * Hero copy column width, passed straight through to `Hero`'s
+   * `copyWidth`. Defaults to `'narrow'` (38rem), the camera hub's
+   * measure, so every existing hub is unchanged. `'reading'` (42rem)
+   * is for a hub whose H1 is long enough that 38rem wraps it into a
+   * narrow, tall stack rather than a balanced block.
+   */
+  heroCopyWidth?: 'reading' | 'narrow'
   /** Preselects "Service needed" in this page's lead forms. */
   defaultServiceId?: ServiceId
   /**
@@ -1593,8 +1649,12 @@ export interface ServiceHubContent {
     id?: string
     title: string
     intro: string
+    /** Small heading above the tiles, e.g. "Conditions a Camera Inspection May Show". */
+    tilesHeading?: string
+    /** One line under `tilesHeading` introducing the list, e.g. "...may reveal:". */
+    tilesIntro?: string
     /** Omit when the table alone is the approved content. */
-    tiles?: readonly string[]
+    tiles?: readonly HubMaterialTile[]
     columns: readonly [string, string, string]
     rows: readonly {
       item: string
@@ -1624,6 +1684,8 @@ export interface ServiceHubContent {
     title: string
     intro: string
     caveat: string
+    /** Desktop column count. Defaults to 2, the original gallery's fixed layout. */
+    columns?: 2 | 3 | 4
     items: readonly {
       slot: HubImageKey
       title: string
