@@ -22,7 +22,6 @@ Rules for every image:
 | File | Aspect | Section | Shot |
 |---|---|---|---|
 | `hero/the-sewer-pros-sewer-cleaning-ridgid-seesnake-hero-16x9.webp` | 16:9 | Hero (in place) | Cleaning machine and RIDGID SeeSnake camera reel at an open cleanout, subject on the right; copy sits on the left. |
-| `sewer-cleaning-comparison-16x9.webp` | 16:9 | Comparison table | Equipment lineup that matches equipment actually used. |
 | `the-sewer-pros-sewer-cleaning-request-cta-background-ridgid-seesnake-16x9.webp` (in place) | 16:9 | Request form | Cleaning machine at a cleanout with a separate RIDGID SeeSnake camera reel; equipment on the left, open pavement right. |
 | `the-sewer-pros-sewer-cleaning-request-cta-background-cleanout-ridgid-seesnake-16x9.webp` (in place) | 16:9 | Closing form | Cleaning machine at a cleanout with a separate RIDGID SeeSnake camera reel; equipment left, quiet dark pavement right. |
 
