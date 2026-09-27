@@ -128,6 +128,10 @@ export type { HeroVideoBackdropProps } from './HeroVideoBackdrop'
 export { TrustBar } from './TrustBar'
 export type { TrustBarProps } from './TrustBar'
 
+/* Homepage only — sits directly below `Hero`, above `TrustBar`. */
+export { ExperienceCounterStrip } from './ExperienceCounterStrip'
+export type { ExperienceCounterStripProps } from './ExperienceCounterStrip'
+
 export { ConfidenceModule, confidenceModuleRenders } from './ConfidenceModule'
 export type { ConfidenceModuleProps } from './ConfidenceModule'
 

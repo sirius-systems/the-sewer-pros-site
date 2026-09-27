@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Section, type SectionDensity } from '@/components/ui'
 import {
   Hero,
+  ExperienceCounterStrip,
   ProcessSteps,
   FaqSection,
   CtaSection,
@@ -49,6 +50,9 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
 
   const densities: SectionDensity[] = [
     'sparse', // hero
+    // ExperienceCounterStrip — inserted below Hero, above the form
+    // section (owner, 2026-09-27). `dense` is the section's own default.
+    'dense',
     'standard', // form
     'standard', // local section
     'dense', // services
@@ -109,6 +113,14 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
           </div>
         }
       />
+
+      {/*
+        ⚠ INSERTED BELOW HERO, ABOVE THE REQUEST-SERVICE SECTION (owner,
+        2026-09-27). `surface="default"` (the component's own default):
+        the form section immediately below is explicitly `muted`, so
+        `default` does not match it.
+      */}
+      <ExperienceCounterStrip />
 
       <Section density="standard" surface="muted" labelledBy={`${marketId}-contact-heading`}>
         <div id="request-service" className="mx-auto max-w-[var(--container-reading)] scroll-mt-24">

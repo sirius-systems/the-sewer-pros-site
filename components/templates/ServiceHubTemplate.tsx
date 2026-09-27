@@ -3,6 +3,7 @@ import { type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
+  ExperienceCounterStrip,
   ScheduleGrid,
   IndependentProcess,
   AuthorityBand,
@@ -172,6 +173,14 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
       }
     />,
   )
+
+  /*
+    ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
+    `surface="default"` (the component's own default): this hero
+    carries a photographic backdrop and `TrustBar` below is `brand`, so
+    `default` matches neither neighbour.
+  */
+  add('dense', 'counters', <ExperienceCounterStrip />)
 
   add('dense', 'trust', <TrustBar />)
 

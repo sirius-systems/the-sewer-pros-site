@@ -218,6 +218,22 @@ export const MARKET_SCOPED_CLAIMS = {
 } as const
 
 /**
+ * Company-wide inspection volume, owner-confirmed accurate 2026-09-27,
+ * for the homepage experience counter strip.
+ *
+ * ⚠ COMPANY-WIDE, NOT THE SAME CLAIM AS `MARKET_SCOPED_CLAIMS.stLouisOnly`.
+ * "Over 100,000 camera inspections" (DEC-072) is a St. Louis-only figure
+ * and must stay off San Diego and Las Vegas pages. This is a separate,
+ * newer figure the owner approved as accurate across all three markets,
+ * so it may appear on the sitewide homepage. Do not merge the two or
+ * infer one from the other.
+ */
+export const inspectionVolume = {
+  total: 145_000,
+  perYear: 8_000,
+} as const
+
+/**
  * Approved business categories (01 §2.2).
  *
  * Conceptual positioning categories — NOT Google Business Profile

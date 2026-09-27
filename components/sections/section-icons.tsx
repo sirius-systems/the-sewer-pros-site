@@ -363,6 +363,50 @@ export function HomeIcon(props: IconProps) {
   )
 }
 
+/** Inspections performed — a sewer camera with a check where the lens was. */
+export function CameraCheckIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3 8.5h3.5L8 6.5h8l1.5 2H21v10H3Z" />
+      <path d="m9 13.6 2.1 2.1 3.9-4.4" />
+    </svg>
+  )
+}
+
+/** An annual rate — a calendar with a small circular-arrow badge. */
+export function CalendarRepeatIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M4.5 5.5h11v9h-11Z" />
+      <path d="M4.5 9h11M7.5 3.5v3M12 3.5v3" />
+      <path d="M19.5 15.3a3.3 3.3 0 1 1-1-2.3" />
+      <path d="M19.5 11v2.3h-2.3" />
+    </svg>
+  )
+}
+
+/** Multi-market coverage — a folded map. */
+export function FoldedMapIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3 6.5 9 4l6 2.5 6-2.5v14l-6 2.5-6-2.5-6 2.5Z" />
+      <path d="M9 4v14M15 6.5v14" />
+    </svg>
+  )
+}
+
+/** Years in service — a calendar with a small clock badge. */
+export function CalendarClockIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M4.5 5.5h11v9h-11Z" />
+      <path d="M4.5 9h11M7.5 3.5v3M12 3.5v3" />
+      <circle cx="17" cy="15" r="3.3" />
+      <path d="M17 13.3v1.9l1.3.9" />
+    </svg>
+  )
+}
+
 /**
  * ⚠ A CHECK IS THE FALLBACK, NOT THE DEFAULT CHOICE. An item that
  * names no icon gets this; an item that names one gets a mark that

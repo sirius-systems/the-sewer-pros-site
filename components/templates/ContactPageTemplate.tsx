@@ -3,6 +3,7 @@ import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
+  ExperienceCounterStrip,
   StatsBand,
   ProcessSteps,
   FaqSection,
@@ -53,6 +54,9 @@ export function ContactPageTemplate({ page, content }: ContactPageTemplateProps)
 
   const densities: SectionDensity[] = [
     'sparse', // hero
+    // ExperienceCounterStrip — inserted below Hero, above the trust
+    // strip (owner, 2026-09-27). `dense` is the section's own default.
+    'dense',
     'dense', // trust strip
     'standard', // proof stats
     'standard', // location cards
@@ -106,6 +110,14 @@ export function ContactPageTemplate({ page, content }: ContactPageTemplateProps)
           </div>
         }
       />
+
+      {/*
+        ⚠ INSERTED BELOW HERO, ABOVE THE TRUST STRIP (owner, 2026-09-27).
+        `surface="default"` (the component's own default): the hero
+        above carries a photographic backdrop and the trust strip below
+        is `brand`, so `default` matches neither neighbour.
+      */}
+      <ExperienceCounterStrip />
 
       {/* Verified positioning statements (data/business/positioning.ts). */}
       <TrustBar density="dense" surface="brand" />

@@ -9,6 +9,7 @@ import {
 import {
   Hero,
   TrustBar,
+  ExperienceCounterStrip,
   IndependentProcess,
   StatsBand,
   MarketCoverage,
@@ -62,6 +63,9 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'sparse', // hero
+    // ExperienceCounterStrip — inserted below Hero, above TrustBar
+    // (owner, 2026-09-27). `dense` is the section's own default.
+    'dense',
     'dense', // trust bar
     'standard', // stats
     'standard', // brand story + leadership (one merged section)
@@ -145,6 +149,15 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
           )
         }
       />
+
+      {/*
+        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
+        `surface="default"` (the component's own default): the hero above
+        carries a photographic backdrop (or the `bg-brand` fallback) and
+        `TrustBar` below is `brand`, so `default` matches neither
+        neighbour.
+      */}
+      <ExperienceCounterStrip />
 
       <TrustBar />
 
