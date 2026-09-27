@@ -35,6 +35,7 @@ import {
   deliverablesSectionRenders,
 } from '@/components/sections'
 import { homeServiceCards } from '@/content/pages/home-service-cards'
+import { comparisonCardImages } from '@/content/pages/comparisons'
 import { resolveHubImage } from '@/data/business/hub-images'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
@@ -214,7 +215,11 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
   }
 
   if (hub.materials !== undefined) {
-    add('standard', 'materials', <MaterialsSection content={hub.materials} />)
+    add(
+      'standard',
+      'materials',
+      <MaterialsSection content={hub.materials} imageSrc={images?.materials} />,
+    )
   }
 
   if (hub.escalation !== undefined) {
@@ -226,11 +231,18 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
   }
 
   if (content.process !== undefined) {
+    const processHeading = hub.headings?.process
+    const processTitle =
+      typeof processHeading === 'string'
+        ? processHeading
+        : processHeading?.title ?? 'What happens during a sewer camera inspection?'
+    const processIntro = typeof processHeading === 'string' ? undefined : processHeading?.intro
     add(
       'standard',
       'process',
       <InspectionProcess
-        title={hub.headings?.process ?? 'What happens during a sewer camera inspection?'}
+        title={processTitle}
+        intro={processIntro}
         steps={content.process}
         prep={hub.prep}
         imageSlot={images?.process}
@@ -307,6 +319,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         content={hub.request}
         imageSrc={images?.request ?? REQUEST_IMAGE}
         focus={images?.requestFocus === 'right' ? 'right' : 'default'}
+        scrim={images?.requestScrim}
       >
         <LeadFormSection
           bare
@@ -333,11 +346,13 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         items={content.relatedPageIds.map((pageId) => {
           // Same card artwork and copy the /services/ hub uses, where a
           // service has them; the two guides carry only their own text.
+          // A related page outside the nine core services (a comparison
+          // page, say) falls back to `comparisonCardImages`.
           const card = homeServiceCards.find((c) => c.pageId === pageId)
           return {
             pageId,
             description: card?.description ?? content.relatedDescriptions?.[pageId],
-            image: card?.image,
+            image: card?.image ?? comparisonCardImages[pageId],
           }
         })}
       />,

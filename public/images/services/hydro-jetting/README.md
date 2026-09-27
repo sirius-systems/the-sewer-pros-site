@@ -24,17 +24,27 @@ Rules for every image:
 
 | File | Aspect | Section | Shot |
 |---|---|---|---|
-| `hydro-jetting-hero-16x9.webp` | 16:9, 1600px+ wide | Hero | Technician setting up jetting hose and equipment at an exterior access point. Keep the subject left of center; copy sits on the left. |
-| `hydro-jetting-comparison-16x9.webp` | 16:9 | Comparison table | Service vehicle and equipment that match what is actually used. |
+| `hero/the-sewer-pros-hydro-jetting-sewer-cleanout-background-16x9.webp` | 16:9, 1600px+ wide | Hero | Technician setting up jetting hose and equipment at an exterior access point. Keep the subject left of center; copy sits on the left. **(in place)** |
+| `the-sewer-pros-hydro-jetting-service-comparison-background-16x9.webp` | 16:9 | Comparison table | Service vehicle and equipment that match what is actually used. **(in place — saved directly under `hydro-jetting/`, not under `hero/`; see the note below)** |
 | `hydro-jetting-request-16x9.webp` | 16:9 | Request form | Technician reviewing equipment or a monitor, subject on the left. |
 | `hydro-jetting-closing-16x9.webp` | 16:9 | Closing form | Equipment in use at a cleanout or job site. |
+| `the-sewer-pros-hydro-jetting-equipment-residential-cleanout-background-16x9.webp` | 16:9 | Materials table | Jetting equipment at a residential cleanout. **(in place — saved directly under `hydro-jetting/`, not under `hero/`; see the note below)** |
+
+⚠ **Folder mismatch.** Several build requests have asked for files under
+`hero/`. Only the original hero backdrop actually landed there; every file
+saved since (the comparison background, the materials background, and the
+process/visit photo below) was saved directly under `hydro-jetting/`
+instead. The content and slot files below point at wherever each file
+actually is — nothing was renamed or moved to force a match. Whoever is
+saving new exports should use `hero/` going forward, or say so if the flat
+layout is now the intended one, so this note can be retired.
 
 ## Figures (real alt text and captions)
 
 | File | Aspect | Slot key | Alt text | Shot |
 |---|---|---|---|---|
-| `hydro-jetting-equipment-setup-4x3.webp` | 4:3 (1448x1086) | `hydro-definition` | Hydro jetting hose staged at an exterior sewer cleanout | Jetter hose or equipment at a cleanout. No address visible. |
-| `hydro-jetting-process-4x3.webp` | 4:3 | `hydro-process` | Technician operating hydro jetting equipment at a job site | Technician operating the unit. |
+| `hero/the-sewer-pros-hydro-jetting-sewer-cleanout-background-16x9.webp` | 16:9 (4096x2286) | `hydro-definition` | Hydro jetting hose and equipment staged at an exterior sewer cleanout | Shares the hero file (real dimensions, not the usual 4:3 figure crop). **(in place)** |
+| `the-sewer-pros-hydro-jetting-visit-mongoose-184-lt-cleanout-4x3.webp` | 4:3-ish (2400x1792) | `hydro-process` | Hydro jetting equipment beside an accessible exterior cleanout | Jetter unit staged at an exterior cleanout. **(in place — saved directly under `hydro-jetting/`, not under `hero/`)** |
 | `hydro-jetting-equipment-4x3.webp` | 4:3 | `hydro-equipment` | Hydro jetting unit and hoses staged beside a service vehicle | Actual unit, hoses and branded vehicle, plates and addresses blurred. |
 | `hydro-jetting-monitor-still-4x3.webp` | 4:3 | `hydro-monitor` | Inspection monitor showing the interior of a sewer pipe | Real monitor still before or after cleaning, all customer data removed. Requires release. |
 

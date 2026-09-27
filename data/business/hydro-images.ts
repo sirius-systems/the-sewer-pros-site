@@ -24,44 +24,53 @@ import type { CameraImageSlotSpec } from './camera-inspection-images'
 const DIR = '/images/services/hydro-jetting/'
 
 export const hydroImageSlots = {
+  /*
+    Shares its file with the hero backdrop (`hub.images.hero`), which is
+    the one real photo on hand today. The backdrop use is decorative
+    (`alt=""`); this is the same file used as real content, so it carries
+    its own alt text and caption. Real dimensions (4096x2286), not the
+    4:3 figure convention, since `CameraImageSlot` sizes its frame from
+    the slot's own width and height.
+  */
   'hydro-definition': {
-    preferred: `${DIR}hydro-jetting-equipment-setup-4x3.webp`,
-    alt: 'Hydro jetting hose staged at an exterior sewer cleanout',
+    preferred: `${DIR}hero/the-sewer-pros-hydro-jetting-sewer-cleanout-background-16x9.webp`,
+    alt: 'Hydro jetting hose and equipment staged at an exterior sewer cleanout',
     caption: 'Jetting equipment is set up at an accessible exterior cleanout.',
-    width: 1448,
-    height: 1086,
+    width: 4096,
+    height: 2286,
     kind: 'photo',
     subject: 'Jetter hose or equipment at an exterior cleanout. No address or house number visible.',
     requiresRelease: false,
   },
   'hydro-process': {
-    preferred: `${DIR}hydro-jetting-process-4x3.webp`,
-    alt: 'Technician operating hydro jetting equipment at a job site',
+    preferred: `${DIR}the-sewer-pros-hydro-jetting-visit-mongoose-184-lt-cleanout-4x3.webp`,
+    alt: 'Hydro jetting equipment beside an accessible exterior cleanout',
     caption: 'The method depends on access, the suspected restriction, and line condition.',
-    width: 1448,
-    height: 1086,
+    width: 2400,
+    height: 1792,
     kind: 'photo',
-    subject: 'Technician operating the jetting unit. Faces, plates and addresses removed or blurred.',
+    subject: 'Jetter unit staged at an exterior cleanout. Faces, plates and addresses removed or blurred.',
     requiresRelease: false,
   },
   'hydro-equipment': {
-    preferred: `${DIR}hydro-jetting-equipment-4x3.webp`,
-    alt: 'Hydro jetting unit and hoses staged beside a service vehicle',
-    caption: 'Field equipment staged for a cleaning visit.',
-    width: 1448,
-    height: 1086,
+    preferred: `${DIR}the-sewer-pros-hydro-jetting-equipment-used-by-team-4x3.webp`,
+    alt: 'Mongoose 184-LT hydro jetter staged beside an accessible sewer cleanout',
+    caption: 'Equipment used by the team.',
+    width: 2400,
+    height: 1792,
     kind: 'photo',
-    subject: 'Actual jetter unit, hoses and branded vehicle. Plates and addresses blurred.',
+    subject: 'Mongoose 184-LT jetter at an exterior cleanout. Plates and addresses blurred.',
     requiresRelease: false,
   },
   'hydro-monitor': {
-    preferred: `${DIR}hydro-jetting-monitor-still-4x3.webp`,
-    alt: 'Inspection monitor showing the interior of a sewer pipe',
-    caption: 'A monitor still, with property details removed.',
-    width: 1448,
-    height: 1086,
+    preferred: `${DIR}the-sewer-pros-hydro-jetting-line-review-monitor-4x3.webp`,
+    alt: 'SeeSnake monitor displaying sewer-line camera footage during a review',
+    caption: 'Reviewing visible line conditions.',
+    width: 2400,
+    height: 1792,
     kind: 'footage-still',
-    subject: 'Real monitor still before or after cleaning. Customer data, address, timestamp and GPS overlay removed.',
+    subject:
+      'SeeSnake monitor during a footage review. Not presented as the full line or a specific customer job; customer data, address, timestamp and GPS overlay removed.',
     requiresRelease: true,
   },
 } as const satisfies Record<string, CameraImageSlotSpec>

@@ -1365,10 +1365,10 @@ export interface HubMarketCard {
 }
 
 /** An approach-card mark on a service hub. */
-export type HubApproachIcon = 'conversation' | 'camera' | 'document' | 'decision'
+export type HubApproachIcon = 'conversation' | 'camera' | 'document' | 'decision' | 'pipe'
 
 /** An audience-card mark on a service hub. */
-export type HubAudienceIcon = 'building' | 'checklist' | 'house-key' | 'home'
+export type HubAudienceIcon = 'building' | 'checklist' | 'house-key' | 'home' | 'community'
 
 /** An audience destination on a service hub. */
 export interface HubAudienceCard {
@@ -1381,7 +1381,20 @@ export interface HubAudienceCard {
 }
 
 /** A symptom-card mark on a service hub. */
-export type HubSymptomIcon = 'fixtures' | 'backup' | 'repeat' | 'restriction' | 'fixture' | 'home'
+export type HubSymptomIcon =
+  | 'fixtures'
+  | 'backup'
+  | 'repeat'
+  | 'restriction'
+  | 'fixture'
+  | 'home'
+  | 'camera'
+  | 'locate'
+  | 'pipe'
+  | 'house-key'
+
+/** A material-table row mark on a service hub. */
+export type HubMaterialIcon = 'droplet' | 'scale' | 'debris' | 'roots' | 'organic'
 
 /** A process-step mark on a service hub. */
 export type HubProcessIcon = 'explanation' | 'checklist' | 'access' | 'pipe' | 'camera' | 'document'
@@ -1449,11 +1462,18 @@ export interface ServiceHubContent {
     heroFocus?: 'left' | 'right'
     /** `right` when the request photograph's equipment sits left, under the copy. */
     requestFocus?: 'right'
+    /**
+     * Darkens the request section's scrim beyond the sitewide 55%
+     * default. Every other request/closing section is unaffected.
+     */
+    requestScrim?: 65
     /** Same as `requestFocus`, for the closing form section. */
     closingFocus?: 'right'
     schedule?: string
     /** Faded photograph behind the limitations panel. */
     limitations?: string
+    /** Subdued photograph behind the materials table. */
+    materials?: string
     comparison?: string
     request?: string
     closing?: string
@@ -1477,9 +1497,13 @@ export interface ServiceHubContent {
    */
   approach?: {
     id?: string
+    /** Small label above the title. Omitted by default. */
+    eyebrow?: string
     title: string
     intro: string
     items: readonly { title: string; description: string; icon: HubApproachIcon }[]
+    /** Scope statement below the cards, e.g. a repair-boundary note. */
+    note?: string
   }
   /** Mounts the sticky mobile Call / Schedule / Choose City bar. */
   mobileBar?: boolean
@@ -1493,7 +1517,8 @@ export interface ServiceHubContent {
   /** Section headings that default to the camera hub's. */
   headings?: {
     schedule?: { title: string; intro: string }
-    process?: string
+    /** A plain string keeps the title-only default; an object adds an intro. */
+    process?: string | { title: string; intro?: string }
     faq?: string
   }
   /**
@@ -1538,26 +1563,46 @@ export interface ServiceHubContent {
   }
   /** What the service can and cannot show, side by side. */
   limitations?: {
+    /**
+     * `brand` renders the section on the site's deep-navy surface
+     * (`Section`'s `surface="brand"`, a plain token, no photograph)
+     * rather than the default light-muted ground. Existing callers omit
+     * this and are unaffected.
+     */
+    variant?: 'brand'
     title: string
     intro: string
     canIdentifyTitle: string
     canIdentify: readonly string[]
     cannotTitle: string
-    cannot: readonly string[]
+    /**
+     * A plain sentence, or a `{ lead, text }` pair rendered as a bold
+     * lead-in followed by the explanation. Existing plain-string callers
+     * are unaffected.
+     */
+    cannot: readonly (string | { lead: string; text: string; icon?: HubSymptomIcon })[]
     /** Contextual link beneath the panels. */
     related?: { lead: string; pageId: PageId; label: string }
   }
   /**
-   * What the service may help with: short tiles plus a qualified table.
-   * Every row carries its own qualification, so nothing reads as a promise.
+   * What the service may help with: an optional row of short tiles plus
+   * a qualified table. Every row carries its own qualification, so
+   * nothing reads as a promise.
    */
   materials?: {
     id?: string
     title: string
     intro: string
-    tiles: readonly string[]
+    /** Omit when the table alone is the approved content. */
+    tiles?: readonly string[]
     columns: readonly [string, string, string]
-    rows: readonly { item: string; help: string; qualification: string }[]
+    rows: readonly {
+      item: string
+      help: string
+      qualification: string
+      /** Decorative mark beside the material label. */
+      icon?: HubMaterialIcon
+    }[]
     note?: string
   }
   /** "Before your appointment" panel, shown under the process steps. */
