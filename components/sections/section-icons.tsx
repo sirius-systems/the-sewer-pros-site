@@ -390,6 +390,60 @@ export function OrganicLeafIcon(props: IconProps) {
   )
 }
 
+/** A visible blockage - a pipe run with a rounded mass inside it. */
+export function PipeObstructionIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2 8h6M16 8h6M2 16h6M16 16h6" />
+      <path d="M8 8v8M16 8v8" />
+      <ellipse cx="12" cy="12" rx="2.6" ry="3.5" />
+    </svg>
+  )
+}
+
+/** A crack or deterioration - a pipe run split by a jagged fracture. */
+export function CrackedPipeIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2 8h20M2 16h20" />
+      <path d="M11 6.5 13 10 10.5 13 13 16.5" />
+    </svg>
+  )
+}
+
+/** A separated or offset joint - two pipe segments that no longer align. */
+export function OffsetPipeIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2 7h9M2 12h9" />
+      <path d="M13 12h9M13 17h9" />
+      <path d="M11 7v5M11 12v5" />
+    </svg>
+  )
+}
+
+/** A low area or belly - a pipe run that sags and holds standing water. */
+export function LowPointIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2 8h5c1 4 3.5 4 5 4s4 0 5-4h5" />
+      <path d="M2 16h20" />
+      <path d="M9.5 12h5" />
+    </svg>
+  )
+}
+
+/** An obstruction at a marked point - a pipe run flagged with a stoppage mark. */
+export function ObstructionMarkerIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2 8h20M2 16h20" />
+      <path d="M12 8v8" />
+      <path d="m9.5 9.5 5 5m0-5-5 5" />
+    </svg>
+  )
+}
+
 /**
  * ⚠ A CHECK IS THE FALLBACK, NOT THE DEFAULT CHOICE. An item that
  * names no icon gets this; an item that names one gets a mark that

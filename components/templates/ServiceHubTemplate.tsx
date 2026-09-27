@@ -145,7 +145,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
       intro={content.hero.intro}
       primaryAction={content.hero.primaryAction}
       secondaryAction={content.hero.secondaryAction}
-      copyWidth="narrow"
+      copyWidth={hub.heroCopyWidth ?? 'narrow'}
       backdrop={
         <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden bg-brand">
           <BackdropImage
@@ -270,7 +270,10 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
     )
   }
 
-  const independent = content.showDifferentiator === true ? <IndependentProcess density="standard" /> : null
+  const independent =
+    content.showDifferentiator === true ? (
+      <IndependentProcess density="standard" content={hub.secondOpinion} />
+    ) : null
   const audiences =
     hub.audiences !== undefined ? <AudiencePathways content={hub.audiences} /> : null
   const evidence =
@@ -339,19 +342,23 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
       'related',
       <ServiceIndex
         variant="cards"
-        columns={2}
+        columns={hub.relatedColumns ?? 2}
         density="dense"
         id="related-services"
         title={content.relatedTitle ?? 'Related services'}
+        intro={content.relatedIntro !== undefined ? <p>{content.relatedIntro}</p> : undefined}
         items={content.relatedPageIds.map((pageId) => {
           // Same card artwork and copy the /services/ hub uses, where a
           // service has them; the two guides carry only their own text.
           // A related page outside the nine core services (a comparison
-          // page, say) falls back to `comparisonCardImages`.
+          // page, say) falls back to `comparisonCardImages`. An explicit
+          // `relatedDescriptions` entry always wins over the shared
+          // homepage-card blurb, so a hub can give its own related cards
+          // page-specific copy without touching that shared dataset.
           const card = homeServiceCards.find((c) => c.pageId === pageId)
           return {
             pageId,
-            description: card?.description ?? content.relatedDescriptions?.[pageId],
+            description: content.relatedDescriptions?.[pageId] ?? card?.description,
             image: card?.image ?? comparisonCardImages[pageId],
           }
         })}

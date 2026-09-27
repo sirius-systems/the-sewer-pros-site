@@ -23,8 +23,8 @@ Rules for every image:
 
 | File | Aspect | Section | Shot |
 |---|---|---|---|
-| `combined-hero-16x9.webp` | 16:9, 1600px+ wide | Hero | Technician at an inspection monitor with cleaning equipment nearby, or camera and cleaning equipment together. Subject left of center; copy sits on the left. |
-| `combined-comparison-16x9.webp` | 16:9 | Comparison table | Equipment lineup matching equipment actually used. |
+| `hero/the-sewer-pros-sewer-camera-inspection-cleaning-cleanout-hero-background-16x9.webp` | 16:9, 1600px+ wide | Hero | Delivered: an exterior cleanout with inspection and cleaning equipment. Subject left of center; copy sits on the left. |
+| `the-sewer-pros-service-comparison-seesnake-cleanout-background-16x9.webp` | 16:9 | Comparison table | Delivered: SeeSnake camera equipment at a cleanout. |
 | `combined-request-16x9.webp` | 16:9 | Request form | Wide field-service scene, subject on the left. |
 | `combined-closing-16x9.webp` | 16:9 | Closing form | Cleanout or job-site scene. |
 
@@ -33,10 +33,10 @@ Rules for every image:
 | File | Aspect | Slot key | Alt text | Shot |
 |---|---|---|---|---|
 | `combined-cleanout-access-4x3.webp` | 4:3 (1448x1086) | `combined-definition` | Inspection camera cable and cleaning equipment at an exterior cleanout | Camera reel or cleaning line at a cleanout. No address visible. |
-| `combined-process-technician-review-4x3.webp` | 4:3 | `combined-process` | Technician reviewing sewer inspection footage on a monitor | Technician at a monitor, no customer identifiable. Requires release. |
-| `combined-equipment-staged-4x3.webp` | 4:3 | `combined-equipment` | Sewer camera reel and cleaning machine staged at a job site | Equipment and branded vehicle, plates and addresses blurred. |
-| `combined-monitor-buildup-still-4x3.webp` | 4:3 | `combined-monitor-buildup` | Inspection monitor showing buildup inside a sewer pipe | Real monitor still, all customer data removed. Requires release. |
-| `combined-monitor-post-cleaning-still-4x3.webp` | 4:3 | `combined-monitor-clear` | Inspection monitor showing the wall of a cleaned sewer pipe | Real monitor still, all customer data removed. Requires release. |
+| `the-sewer-pros-sewer-camera-inspection-visit-cleanout-equipment-4x3.webp` | 4:3 (1448x1086) | `combined-process` | Delivered: sewer camera reel and inspection monitor staged beside an open cleanout | Camera reel, monitor, and open cleanout at a sidewalk. No address visible. |
+| `the-sewer-pros-field-seesnake-camera-sewer-cleaning-equipment-4x3.webp` | 4:3 (1448x1086) | `combined-equipment` | Delivered: sewer camera reel and monitor staged in a yard near a cleanout | Camera reel and monitor at a residential cleanout. No address visible. |
+| `the-sewer-pros-seesnake-monitor-sewer-line-buildup-inspection-4x3.webp` | 4:3 (1448x1086) | `combined-monitor-buildup` | Delivered: inspection monitor showing buildup inside a sewer pipe | Monitor showing pipe buildup, at a cleanout. No address or person identifiable. |
+| `the-sewer-pros-seesnake-monitor-cleaned-sewer-line-section-4x3.webp` | 4:3 (1448x1086) | `combined-monitor-clear` | Delivered: inspection monitor showing the wall of a cleaned sewer pipe | Monitor showing a cleaner pipe section, at a cleanout. No address or person identifiable. |
 
 The field-evidence section (`combined-equipment`, `combined-monitor-buildup`,
 `combined-monitor-clear`) renders only when at least one of its files exists.

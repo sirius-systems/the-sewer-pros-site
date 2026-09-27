@@ -122,10 +122,11 @@ export interface ServiceIndexProps {
   /**
    * Desktop column count for the `cards` variant. Default 3, which is what
    * every existing caller renders. `2` gives a two-by-two grid for four
-   * items. Written out as literal classes because Tailwind scans source
-   * text and a template string would produce no class.
+   * items; `4` gives one row of four. Written out as literal classes
+   * because Tailwind scans source text and a template string would
+   * produce no class.
    */
-  columns?: 2 | 3
+  columns?: 2 | 3 | 4
   /**
    * Surface for the index band.
    *
@@ -353,6 +354,7 @@ export function ServiceIndex({
           className={cn(
             'mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2',
             columns === 3 && 'lg:grid-cols-3',
+            columns === 4 && 'lg:grid-cols-4',
           )}
         >
           {links.map((link) => {

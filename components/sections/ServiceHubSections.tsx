@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Section, Callout, Card, CardGrid, LinkCard, ButtonLink } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 import {
   AccessPointIcon,
@@ -10,6 +11,7 @@ import {
   BuildingIcon,
   ChecklistIcon,
   CommunityIcon,
+  CrackedPipeIcon,
   DebrisFlowIcon,
   DecisionIcon,
   DocumentIcon,
@@ -19,9 +21,13 @@ import {
   FixturesIcon,
   HomeIcon,
   HouseKeyIcon,
+  LowPointIcon,
   MapPinIcon,
+  ObstructionMarkerIcon,
+  OffsetPipeIcon,
   OrganicLeafIcon,
   PipeIcon,
+  PipeObstructionIcon,
   RepeatIcon,
   RootRestrictionIcon,
   ScaleLayerIcon,
@@ -610,6 +616,12 @@ const MATERIAL_ICON_BY_NAME: Record<HubMaterialIcon, (props: IconProps) => React
   debris: DebrisFlowIcon,
   roots: RootRestrictionIcon,
   organic: OrganicLeafIcon,
+  blockage: PipeObstructionIcon,
+  crack: CrackedPipeIcon,
+  offset: OffsetPipeIcon,
+  'low-point': LowPointIcon,
+  obstruction: ObstructionMarkerIcon,
+  camera: CameraIcon,
 }
 
 /**
@@ -717,16 +729,53 @@ export function MaterialsSection({
         <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
       )}
       {content.tiles !== undefined && (
-        <ul className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
-          {content.tiles.map((tile) => (
-            <li
-              key={tile}
-              className="flex min-h-11 items-center rounded-md border border-border bg-surface-muted px-4 py-3 text-body-sm font-semibold text-foreground"
+        <div className="mt-8">
+          {content.tilesHeading !== undefined && (
+            <h3
+              className={cn(
+                'text-h4 font-semibold',
+                dark ? 'text-white' : 'text-foreground',
+              )}
             >
-              {tile}
-            </li>
-          ))}
-        </ul>
+              {content.tilesHeading}
+            </h3>
+          )}
+          {content.tilesIntro !== undefined && (
+            <p
+              className={cn(
+                content.tilesHeading !== undefined ? 'mt-2' : undefined,
+                'text-body-sm',
+                dark ? 'text-white' : 'text-muted-foreground',
+              )}
+            >
+              {content.tilesIntro}
+            </p>
+          )}
+          <ul
+            className={cn(
+              (content.tilesHeading !== undefined || content.tilesIntro !== undefined) &&
+                'mt-4',
+              'grid grid-cols-2 gap-4 lg:grid-cols-3',
+            )}
+          >
+            {content.tiles.map((tile) => {
+              const label = typeof tile === 'string' ? tile : tile.label
+              const icon = typeof tile === 'string' ? undefined : tile.icon
+              const Icon = icon !== undefined ? MATERIAL_ICON_BY_NAME[icon] : undefined
+              return (
+                <li
+                  key={label}
+                  className="flex min-h-11 items-center gap-2 rounded-md border border-border bg-surface-muted px-4 py-3 text-body-sm font-semibold text-foreground"
+                >
+                  {Icon !== undefined && (
+                    <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-accent-secondary" />
+                  )}
+                  {label}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       )}
       {rows}
       {content.note !== undefined && (
@@ -1042,11 +1091,13 @@ export function AudiencePathways({ content }: { content: NonNullable<Hub['audien
  * ⚠ NO CASE STUDY IS PUBLISHED. `data/business/proof.ts` holds none, and
  * a case study is a factual claim about a real customer (CLAUDE.md §24).
  *
- * ⚠ 2x2 AT `sm` AND ABOVE, NOT FOUR ACROSS. The card copy is a full
- * paragraph; four columns would squeeze it into a narrow measure, and
+ * ⚠ 2x2 AT `sm` AND ABOVE BY DEFAULT, NOT FOUR ACROSS. The card copy is a
+ * full paragraph; four columns would squeeze it into a narrow measure, and
  * four items divide evenly into two columns so no fifth-cell gap can
- * appear. Every frame is 4:3 to match the files, and the cards stretch
- * to a common height.
+ * appear. `content.columns` (via the shared `CardGrid`) lets a hub with a
+ * different item count opt into 3 or 4 across at `lg`; omitting it keeps
+ * every existing hub's 2-column layout unchanged. Every frame is 4:3 to
+ * match the files, and the cards stretch to a common height.
  */
 export function evidenceRenders(content: Hub['evidence']): boolean {
   return content !== undefined && anyHubImage(content.items.map((item) => item.slot))
@@ -1057,13 +1108,17 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
   return (
     <Section density="standard" surface="muted" labelledBy={id}>
       <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <CardGrid columns={content.columns ?? 2} itemCount={content.items.length} className="mt-8">
         {content.items.map((item) => (
           <article key={item.slot} className="flex h-full flex-col overflow-hidden rounded-md border border-border bg-surface">
             <CameraImageSlot
               slot={item.slot}
               hideCaption
-              sizes="(min-width: 640px) 45vw, 100vw"
+              sizes={
+                content.columns === 3
+                  ? '(min-width: 1024px) 31vw, (min-width: 640px) 45vw, 100vw'
+                  : '(min-width: 640px) 45vw, 100vw'
+              }
               className="[&>div]:rounded-none [&>div]:border-0"
             />
             <div className="flex flex-1 flex-col p-5 sm:p-6">
@@ -1072,7 +1127,7 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
             </div>
           </article>
         ))}
-      </div>
+      </CardGrid>
       <p className="mt-6 max-w-[var(--container-reading)] text-body-sm text-muted-foreground">
         {content.caveat}
       </p>
