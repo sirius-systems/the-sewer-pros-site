@@ -339,6 +339,57 @@ export function CalendarClockIcon(props: IconProps) {
   )
 }
 
+/** Community or HOA — two overlapping roof lines. */
+export function CommunityIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2.5 12 7 8l4.5 4" />
+      <path d="M4 10.7V19h6v-6.3" />
+      <path d="M11.5 10.5 16.5 6.5l6 4" />
+      <path d="M13 9.2V19h8v-7" />
+    </svg>
+  )
+}
+
+/** Grease or liquid buildup — a droplet. */
+export function DropletIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M12 3.5c3 4 6 7.7 6 11a6 6 0 1 1-12 0c0-3.3 3-7 6-11Z" />
+    </svg>
+  )
+}
+
+/** Scale or mineral buildup — a pipe narrowed by an interior layer. */
+export function ScaleLayerIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2.5 12h19" />
+      <path d="M2.5 8.5c3 1 16 1 19 0M2.5 15.5c3-1 16-1 19 0" />
+    </svg>
+  )
+}
+
+/** Loose debris in the flow — a wavy line with drifting particles. */
+export function DebrisFlowIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M2 15.5c2-2.5 4-2.5 6 0s4 2.5 6 0 4-2.5 6 0" />
+      <path d="M6 9.5 7 8.5M11 7.5l1-1M16 9.5l1-1" />
+    </svg>
+  )
+}
+
+/** Organic buildup — a leaf. */
+export function OrganicLeafIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M12 3.5c4.5 0 7.5 3.3 7.5 7.7 0 5-4.2 9-7.5 11.3-3.3-2.3-7.5-6.3-7.5-11.3 0-4.4 3-7.7 7.5-7.7Z" />
+      <path d="M12 6v14" />
+    </svg>
+  )
+}
+
 /**
  * ⚠ A CHECK IS THE FALLBACK, NOT THE DEFAULT CHOICE. An item that
  * names no icon gets this; an item that names one gets a mark that

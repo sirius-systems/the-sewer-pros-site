@@ -25,9 +25,27 @@
  * anyone's motives.
  */
 
-import type { ComparisonPageContent, PageId } from '@/types'
+import type { CardImage, ComparisonPageContent, PageId } from '@/types'
 
 const id = (value: string): PageId => value as PageId
+
+/**
+ * Card artwork for a comparison page, used where one of these pages
+ * appears in another page's related-services list.
+ *
+ * ⚠ SEPARATE FROM `home-service-cards.ts`. That file is the nine
+ * approved core-service cards rendered unmodified across six templates;
+ * a comparison page is not one of the nine and does not belong in it.
+ * `ServiceHubTemplate`'s related-services block falls back to this map
+ * when a related page id has no `home-service-cards.ts` entry.
+ */
+export const comparisonCardImages: Partial<Record<PageId, CardImage>> = {
+  [id('cmp-hydro-vs-snaking')]: {
+    src: '/images/services/hydro-jetting/the-sewer-pros-hydro-jetting-vs-sewer-snaking-cleaning-methods-4x3.webp',
+    alt: 'Hydro jetting and mechanical sewer snaking equipment side by side',
+    source: 'The Sewer Pros field photography.',
+  },
+}
 
 export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> = {
   [id('cmp-hydro-vs-snaking')]: {

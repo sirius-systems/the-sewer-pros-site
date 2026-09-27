@@ -9,16 +9,22 @@ import {
   CheckIcon,
   BuildingIcon,
   ChecklistIcon,
+  CommunityIcon,
+  DebrisFlowIcon,
   DecisionIcon,
   DocumentIcon,
   DocumentCheckIcon,
+  DropletIcon,
   ExplanationIcon,
   FixturesIcon,
   HomeIcon,
   HouseKeyIcon,
+  MapPinIcon,
+  OrganicLeafIcon,
   PipeIcon,
   RepeatIcon,
   RootRestrictionIcon,
+  ScaleLayerIcon,
   SingleDrainIcon,
   WaterBackupIcon,
   type IconProps,
@@ -37,7 +43,15 @@ import {
 } from '@/data/business/hub-images'
 import { PRIMARY_CTA } from '@/components/layout/cta'
 import { homeServiceCards } from '@/content/pages/home-service-cards'
-import type { HubApproachIcon, HubAudienceIcon, HubProcessIcon, HubSymptomIcon, MarketId, ServiceHubContent } from '@/types'
+import type {
+  HubApproachIcon,
+  HubAudienceIcon,
+  HubMaterialIcon,
+  HubProcessIcon,
+  HubSymptomIcon,
+  MarketId,
+  ServiceHubContent,
+} from '@/types'
 
 /**
  * Extra sections for a service hub page (`ServiceHubContent`).
@@ -264,6 +278,10 @@ const SYMPTOM_ICON_BY_NAME: Record<HubSymptomIcon, (props: IconProps) => ReactNo
   restriction: RootRestrictionIcon,
   fixture: SingleDrainIcon,
   home: HomeIcon,
+  camera: CameraIcon,
+  locate: MapPinIcon,
+  pipe: PipeIcon,
+  'house-key': HouseKeyIcon,
 }
 
 export function SymptomRouter({ content }: { content: NonNullable<Hub['symptomRouter']> }) {
@@ -473,13 +491,16 @@ function LimitationsFrame({
 }
 
 /**
- * ⚠ THE OPTIONAL BACKDROP SITS UNDER A BLACK SCRIM AT 55%, the value the
- * hero and `Section`'s backgroundImage use (measured against pure white,
- * where opaque white text gives 4.76:1). Every overlay in this project is
- * black, never white or tinted. With a backdrop the heading, intro and
- * closing line are white; both cards stay opaque `bg-surface`, so their
- * contrast never depends on the photograph. The image is decorative
- * (`alt=""`). A missing file leaves the plain muted section.
+ * ⚠ TWO WAYS TO GO DARK, ONE RENDERED BODY. `variant: 'brand'` is a
+ * plain token (`Section`'s `surface="brand"`, no photograph) for a hub
+ * that wants a deep-navy panel outright; a photographic `imageSrc`
+ * still works for a hub that wants one, under the project's standard
+ * black scrim at 55% (measured against pure white, where opaque white
+ * text gives 4.76:1, see the hero and `Section`'s own note). Every
+ * overlay in this project is black, never white or tinted. Either way
+ * the heading, intro and closing line go white and both cards stay
+ * opaque `bg-surface`, so their contrast never depends on the ground.
+ * Existing callers (photo or plain-muted) are unaffected.
  */
 export function LimitationsPanel({
   content,
@@ -491,10 +512,12 @@ export function LimitationsPanel({
   const id = 'what-it-can-identify'
   const related =
     content.related !== undefined ? resolveApprovedLink(content.related.pageId) : undefined
-  const backdrop = imageSrc !== undefined && backdropExists(imageSrc) ? imageSrc : undefined
-  const dark = backdrop !== undefined
-  return (
-    <LimitationsFrame id={id} backdrop={backdrop}>
+  const brand = content.variant === 'brand'
+  const backdrop =
+    !brand && imageSrc !== undefined && backdropExists(imageSrc) ? imageSrc : undefined
+  const dark = brand || backdrop !== undefined
+  const body = (
+    <>
       {dark ? (
         <div className="max-w-[var(--container-reading)]">
           <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance text-white">
@@ -523,12 +546,30 @@ export function LimitationsPanel({
         <Card className="bg-surface">
           <h3 className="text-h4 font-semibold text-foreground">{content.cannotTitle}</h3>
           <ul className="mt-4 space-y-3">
-            {content.cannot.map((item) => (
-              <li key={item} className="flex gap-3 text-body-sm text-foreground">
-                <NeutralMark />
-                <span>{item}</span>
-              </li>
-            ))}
+            {content.cannot.map((item) => {
+              // Either a plain sentence (existing hubs) or a
+              // `{ lead, text, icon }` pair (bold lead-in + explanation).
+              const rich = typeof item !== 'string'
+              const Icon = rich && item.icon !== undefined ? SYMPTOM_ICON_BY_NAME[item.icon] : undefined
+              return (
+                <li key={rich ? item.lead : item} className="flex gap-3 text-body-sm text-foreground">
+                  {Icon !== undefined ? (
+                    <Icon aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-accent-secondary" />
+                  ) : (
+                    <NeutralMark />
+                  )}
+                  <span>
+                    {rich ? (
+                      <>
+                        <span className="font-semibold">{item.lead}</span> {item.text}
+                      </>
+                    ) : (
+                      item
+                    )}
+                  </span>
+                </li>
+              )
+            })}
           </ul>
         </Card>
       </div>
@@ -547,26 +588,135 @@ export function LimitationsPanel({
           </Link>
         </p>
       )}
-    </LimitationsFrame>
+    </>
   )
+  if (brand) {
+    return (
+      <Section density="dense" surface="brand" labelledBy={id}>
+        {body}
+      </Section>
+    )
+  }
+  return <LimitationsFrame id={id} backdrop={backdrop}>{body}</LimitationsFrame>
 }
 
 /* ==========================================================================
    What the service may help with: tiles + qualified table
    ========================================================================== */
 
+const MATERIAL_ICON_BY_NAME: Record<HubMaterialIcon, (props: IconProps) => ReactNode> = {
+  droplet: DropletIcon,
+  scale: ScaleLayerIcon,
+  debris: DebrisFlowIcon,
+  roots: RootRestrictionIcon,
+  organic: OrganicLeafIcon,
+}
+
 /**
- * Short tiles for scanning, then a table where every row states its own
- * limit. White ground with a top rule so it separates from the router
- * above and the muted limitations panel below.
+ * An optional row of tiles, then a table where every row states its own
+ * limit, plus, at `md` and below, the same rows as labelled cards, so
+ * three columns are never compressed into an unreadable scroll.
+ *
+ * White ground with a top rule so it separates from the router above
+ * and the muted limitations panel below, unless `imageSrc` resolves: the
+ * same photo-behind-navy-scrim treatment `ServiceComparison` uses, so
+ * the table's own opaque white panel keeps every row readable
+ * regardless of the photograph underneath. A missing file leaves the
+ * plain white section.
  */
-export function MaterialsSection({ content }: { content: NonNullable<Hub['materials']> }) {
+export function MaterialsSection({
+  content,
+  imageSrc,
+}: {
+  content: NonNullable<Hub['materials']>
+  imageSrc?: string
+}) {
   const id = content.id ?? 'what-it-may-help-with'
   const [colItem, colHelp, colQual] = content.columns
-  return (
-    <div className="border-t border-border">
-      <Section density="standard" surface="default" labelledBy={id}>
+  const backdrop = imageSrc !== undefined && backdropExists(imageSrc) ? imageSrc : undefined
+  const dark = backdrop !== undefined
+
+  const rows = (
+    <>
+      {/* Desktop and up: the full table. `md:hidden` below avoids the
+          three columns compressing into an illegible horizontal scroll. */}
+      <div className="mt-8 hidden overflow-x-auto rounded-md border border-border bg-surface px-4 sm:px-6 md:block">
+        <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
+          <caption className="sr-only">{content.title}</caption>
+          <thead>
+            <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
+              <th scope="col" className="py-3 pr-4 font-semibold">{colItem}</th>
+              <th scope="col" className="py-3 pr-4 font-semibold">{colHelp}</th>
+              <th scope="col" className="py-3 font-semibold">{colQual}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {content.rows.map((row) => {
+              const Icon = row.icon !== undefined ? MATERIAL_ICON_BY_NAME[row.icon] : undefined
+              return (
+                <tr key={row.item} className="border-b border-border align-top last:border-b-0">
+                  <th scope="row" className="py-4 pr-4 font-semibold text-foreground">
+                    <span className="flex items-center gap-2">
+                      {Icon !== undefined && (
+                        <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-accent-secondary" />
+                      )}
+                      {row.item}
+                    </span>
+                  </th>
+                  <td className="py-4 pr-4 text-muted-foreground">{row.help}</td>
+                  <td className="py-4 text-muted-foreground">{row.qualification}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+      {/* Below `md`: the same rows as labelled cards, one field per line. */}
+      <div className="mt-8 space-y-4 md:hidden">
+        {content.rows.map((row) => {
+          const Icon = row.icon !== undefined ? MATERIAL_ICON_BY_NAME[row.icon] : undefined
+          return (
+            <div key={row.item} className="rounded-md border border-border bg-surface p-5">
+              <div className="flex items-center gap-2">
+                {Icon !== undefined && (
+                  <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-accent-secondary" />
+                )}
+                <p className="font-semibold text-foreground">{row.item}</p>
+              </div>
+              <dl className="mt-3 space-y-3 text-body-sm">
+                <div>
+                  <dt className="text-caption font-semibold uppercase tracking-wide text-muted-foreground">
+                    {colHelp}
+                  </dt>
+                  <dd className="mt-0.5 text-muted-foreground">{row.help}</dd>
+                </div>
+                <div>
+                  <dt className="text-caption font-semibold uppercase tracking-wide text-muted-foreground">
+                    {colQual}
+                  </dt>
+                  <dd className="mt-0.5 text-muted-foreground">{row.qualification}</dd>
+                </div>
+              </dl>
+            </div>
+          )
+        })}
+      </div>
+    </>
+  )
+
+  const body = (
+    <>
+      {dark ? (
+        <div className="max-w-[var(--container-reading)]">
+          <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance text-white">
+            {content.title}
+          </h2>
+          <p className="mt-4 text-body-lg text-white">{content.intro}</p>
+        </div>
+      ) : (
         <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
+      )}
+      {content.tiles !== undefined && (
         <ul className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {content.tiles.map((tile) => (
             <li
@@ -577,32 +727,37 @@ export function MaterialsSection({ content }: { content: NonNullable<Hub['materi
             </li>
           ))}
         </ul>
-        <div className="mt-8 overflow-x-auto rounded-md border border-border bg-surface px-4 sm:px-6">
-          <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
-            <caption className="sr-only">{content.title}</caption>
-            <thead>
-              <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
-                <th scope="col" className="py-3 pr-4 font-semibold">{colItem}</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">{colHelp}</th>
-                <th scope="col" className="py-3 font-semibold">{colQual}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {content.rows.map((row) => (
-                <tr key={row.item} className="border-b border-border align-top last:border-b-0">
-                  <th scope="row" className="py-4 pr-4 font-semibold text-foreground">{row.item}</th>
-                  <td className="py-4 pr-4 text-muted-foreground">{row.help}</td>
-                  <td className="py-4 text-muted-foreground">{row.qualification}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {content.note !== undefined && (
-          <p className="mt-6 max-w-[var(--container-reading)] text-body text-muted-foreground">
-            {content.note}
-          </p>
-        )}
+      )}
+      {rows}
+      {content.note !== undefined && (
+        <p
+          className={
+            dark
+              ? 'mt-6 max-w-[var(--container-reading)] text-body text-white'
+              : 'mt-6 max-w-[var(--container-reading)] text-body text-muted-foreground'
+          }
+        >
+          {content.note}
+        </p>
+      )}
+    </>
+  )
+
+  if (backdrop === undefined) {
+    return (
+      <div className="border-t border-border">
+        <Section density="standard" surface="default" labelledBy={id}>
+          {body}
+        </Section>
+      </div>
+    )
+  }
+  return (
+    <div className="relative isolate overflow-hidden bg-brand">
+      <BackdropImage src={backdrop} />
+      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      <Section density="standard" surface="none" labelledBy={id}>
+        {body}
       </Section>
     </div>
   )
@@ -652,12 +807,15 @@ const DEFAULT_STEP_ICONS: readonly HubProcessIcon[] = [
 
 export function InspectionProcess({
   title,
+  intro,
   steps,
   prep,
   imageSlot = 'process',
   icons = DEFAULT_STEP_ICONS,
 }: {
   title: string
+  /** Optional standfirst under the H2, above the 2x2 cards. */
+  intro?: string
   steps: readonly { title: string; description?: string }[]
   prep?: Hub['prep']
   /** Figure beside the steps. Defaults to the camera hub's process image. */
@@ -689,9 +847,9 @@ export function InspectionProcess({
       */}
       <div className="grid gap-y-6 lg:grid-cols-[7fr_5fr] lg:gap-x-10">
         <div className="lg:col-start-1 lg:row-start-1">
-          <SectionHeading id={id} title={title} />
+          <SectionHeading id={id} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
         </div>
-        <ol className="mt-2 grid gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
+        <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
           {steps.map((step, index) => {
             const Icon = STEP_ICON_BY_NAME[icons[index] ?? 'explanation'] ?? CheckIcon
             return (
@@ -758,6 +916,7 @@ const APPROACH_ICON_BY_NAME: Record<HubApproachIcon, (props: IconProps) => React
   camera: CameraIcon,
   document: DocumentIcon,
   decision: DecisionIcon,
+  pipe: PipeIcon,
 }
 
 /**
@@ -778,7 +937,17 @@ export function ApproachBand({ content }: { content: NonNullable<Hub['approach']
   const id = content.id ?? 'why-the-sewer-pros'
   return (
     <Section density="standard" surface="brand" labelledBy={id}>
-      <h2 id={id} className="max-w-2xl text-h2 font-semibold tracking-tight text-balance">
+      {content.eyebrow !== undefined && (
+        <p className="text-caption font-semibold tracking-wide uppercase text-[color-mix(in_srgb,var(--color-accent)_40%,white)]">
+          {content.eyebrow}
+        </p>
+      )}
+      <h2
+        id={id}
+        className={`max-w-2xl text-h2 font-semibold tracking-tight text-balance${
+          content.eyebrow !== undefined ? ' mt-3' : ''
+        }`}
+      >
         {content.title}
       </h2>
       <p className="mt-4 max-w-[var(--container-reading)] text-body-lg opacity-90">
@@ -798,6 +967,11 @@ export function ApproachBand({ content }: { content: NonNullable<Hub['approach']
           )
         })}
       </ul>
+      {content.note !== undefined && (
+        <p className="mt-8 max-w-[var(--container-reading)] border-t border-white/15 pt-6 text-body-lg opacity-90">
+          {content.note}
+        </p>
+      )}
       <div className="mt-10">
         <ButtonLink href={PRIMARY_CTA.href} variant="primary">
           {PRIMARY_CTA.label}
@@ -812,6 +986,7 @@ const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => React
   checklist: ChecklistIcon,
   'house-key': HouseKeyIcon,
   home: HomeIcon,
+  community: CommunityIcon,
 }
 
 /**
@@ -1027,40 +1202,79 @@ export function ServiceComparison({
             })}
           </ul>
         ) : (
-        <div className="mt-8 overflow-x-auto rounded-md border border-border bg-surface px-4 sm:px-6">
-          <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
-            <caption className="sr-only">{content.title}</caption>
-            <thead>
-              <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
-                <th scope="col" className="py-3 pr-4 font-semibold">{colService}</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">{colPurpose}</th>
-                <th scope="col" className="py-3 font-semibold">{colFit}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {content.rows.map((row) => {
-                const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
-                return (
-                  <tr key={row.service} className="border-b border-border align-top last:border-b-0">
-                    <th scope="row" className="py-4 pr-4 font-semibold text-foreground">
-                      {link !== undefined ? (
-                        <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
-                          {row.service}
-                        </Link>
-                      ) : (
-                        <>
-                          {row.service} <span className="font-normal text-muted-foreground">(this page)</span>
-                        </>
-                      )}
-                    </th>
-                    <td className="py-4 pr-4 text-muted-foreground">{row.purpose}</td>
-                    <td className="py-4 text-muted-foreground">{row.fit}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
+        <>
+          {/* Desktop and up: the full table. `md:hidden` below avoids the
+              three columns compressing into an illegible horizontal scroll. */}
+          <div className="mt-8 hidden overflow-x-auto rounded-md border border-border bg-surface px-4 sm:px-6 md:block">
+            <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
+              <caption className="sr-only">{content.title}</caption>
+              <thead>
+                <tr className="border-b border-border text-caption uppercase tracking-wide text-muted-foreground">
+                  <th scope="col" className="py-3 pr-4 font-semibold">{colService}</th>
+                  <th scope="col" className="py-3 pr-4 font-semibold">{colPurpose}</th>
+                  <th scope="col" className="py-3 font-semibold">{colFit}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {content.rows.map((row) => {
+                  const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
+                  return (
+                    <tr key={row.service} className="border-b border-border align-top last:border-b-0">
+                      <th scope="row" className="py-4 pr-4 font-semibold text-foreground">
+                        {link !== undefined ? (
+                          <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
+                            {row.service}
+                          </Link>
+                        ) : (
+                          <>
+                            {row.service} <span className="font-normal text-muted-foreground">(this page)</span>
+                          </>
+                        )}
+                      </th>
+                      <td className="py-4 pr-4 text-muted-foreground">{row.purpose}</td>
+                      <td className="py-4 text-muted-foreground">{row.fit}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+          {/* Below `md`: the same rows as labelled cards, one field per line. */}
+          <div className="mt-8 space-y-4 md:hidden">
+            {content.rows.map((row) => {
+              const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
+              return (
+                <div key={row.service} className="rounded-md border border-border bg-surface p-5 text-body-sm">
+                  <p className="font-semibold text-foreground">
+                    {link !== undefined ? (
+                      <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
+                        {row.service}
+                      </Link>
+                    ) : (
+                      <>
+                        {row.service} <span className="font-normal text-muted-foreground">(this page)</span>
+                      </>
+                    )}
+                  </p>
+                  <dl className="mt-3 space-y-3">
+                    <div>
+                      <dt className="text-caption font-semibold uppercase tracking-wide text-muted-foreground">
+                        {colPurpose}
+                      </dt>
+                      <dd className="mt-0.5 text-muted-foreground">{row.purpose}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-caption font-semibold uppercase tracking-wide text-muted-foreground">
+                        {colFit}
+                      </dt>
+                      <dd className="mt-0.5 text-muted-foreground">{row.fit}</dd>
+                    </div>
+                  </dl>
+                </div>
+              )
+            })}
+          </div>
+        </>
         )}
         <p className="mt-6 max-w-[var(--container-reading)] text-body text-white">
           {content.note}
@@ -1082,12 +1296,14 @@ export function ServiceComparison({
  * component with its own state and analytics; this file stays a server
  * component and the form's fields, validation and handlers are untouched.
  *
- * ⚠ THE SCRIM IS BLACK AT 55%, the value the hero and `Section`'s
- * `backgroundImage` use. It was measured against pure white, where opaque
- * white text gives 4.76:1 against the 4.5:1 floor, so it must not be
- * lightened without re-measuring. It was navy at 80% until the owner asked
- * for black (2026-09-23). The reel in the photograph is on the left, under
- * the copy, so the scrim has to hold there. The form sits in an opaque white card with `text-foreground`,
+ * ⚠ THE SCRIM IS BLACK AT 55% BY DEFAULT, the value the hero and
+ * `Section`'s `backgroundImage` use. It was measured against pure white,
+ * where opaque white text gives 4.76:1 against the 4.5:1 floor, so it
+ * must not be lightened without re-measuring; darkening it further (the
+ * `scrim` prop) only widens that margin, never narrows it. It was navy
+ * at 80% until the owner asked for black (2026-09-23). The reel in the
+ * photograph is on the left, under the copy, so the scrim has to hold
+ * there. The form sits in an opaque white card with `text-foreground`,
  * because `bg-surface` sets a background and not a colour and white text
  * would otherwise flow into it (see `Section`'s note on this). Its labels,
  * inputs and button are therefore the same contrast as everywhere else.
@@ -1104,6 +1320,7 @@ export function RequestServiceSection({
   id = 'schedule-a-sewer-camera-inspection',
   density = 'standard',
   focus = 'default',
+  scrim,
 }: {
   content: { title: string; intro: string | readonly string[] }
   imageSrc: string
@@ -1118,6 +1335,8 @@ export function RequestServiceSection({
    * over it. The form card is opaque, so it never depends on the photo.
    */
   focus?: 'default' | 'right'
+  /** Darkens the scrim past the 55% default. Every other caller is unaffected. */
+  scrim?: 65
 }) {
   const paragraphs = typeof content.intro === 'string' ? [content.intro] : content.intro
   return (
@@ -1130,7 +1349,10 @@ export function RequestServiceSection({
             : 'object-cover object-center'
         }
       />
-      <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
+      <span
+        aria-hidden="true"
+        className={scrim === 65 ? 'absolute inset-0 -z-10 bg-black/65' : 'absolute inset-0 -z-10 bg-black/55'}
+      />
       {focus === 'right' && (
         <span
           aria-hidden="true"
