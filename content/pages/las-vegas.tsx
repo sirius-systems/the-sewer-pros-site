@@ -120,36 +120,16 @@ export const lasVegasMarketContent: MarketPageContent = {
     ),
   },
   /*
-    ⚠ NEUTRAL PLACEHOLDER IMAGERY, DELIBERATELY NOT THE ST. LOUIS
-    FRAME. That photograph is identifiably St. Louis by filename and
-    alt text, and putting it here would imply a local photograph that
-    does not exist. These are the equipment-and-cleanout frames the
-    home page hero rotates: no location markers, already owner-supplied
-    with provenance recorded.
-
-    ⚠ A VISITOR MOVING FROM THE HOME PAGE WILL RECOGNISE THEM. That is
-    the accepted cost of a placeholder; each market uses a different
-    frame so the two hubs do not read as clones. Swap these two srcs
-    first when real imagery arrives - nothing else changes.
+    The still is the hero video's poster: what reduced-motion,
+    data-saver, and pre-hydration visitors see, and the LCP element.
+    The clip layers over it and does not replace it.
   */
   heroBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-high-pressure-sewer-line-cleaning-hero.webp',
-    alt: 'Jetting trailer and hose run to a cleanout beside a house',
+    src: '/images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-residential-sewer-camera-inspection-hero.webp',
+    alt: 'Sewer camera monitor and reel beside an open cleanout in the front yard of a desert-landscaped home',
     source:
-      'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      'Supplied by the business owner, 2026-09-25. Rendered scene, not a photograph of a Sewer Pros job.',
   },
-  /*
-    ⚠ THE CLIP IS LAS VEGAS'S OWN; THE STILL ABOVE IS STILL THE SHARED
-    PLACEHOLDER, AND IT IS NOW ALSO THIS CLIP'S POSTER. It is what
-    reduced-motion, data-saver, and pre-hydration visitors see, so the
-    note above it still applies in full - the video does not retire the
-    still, it layers over it.
-
-    `describes` is written from the supplied filename and the market it
-    was delivered for. The frames themselves were not inspected -
-    nothing in the repository can decode video - so this says what the
-    clip is FOR rather than asserting shot detail nobody has checked.
-  */
   heroVideo: {
     src: '/images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-residential-sewer-camera-inspection-hero.mp4',
     describes: 'Residential sewer camera inspection clip supplied for the Las Vegas hub hero',
