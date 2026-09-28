@@ -1721,7 +1721,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         hero: '/images/services/sewer-cleaning-camera-inspection/hero/the-sewer-pros-sewer-camera-inspection-cleaning-cleanout-hero-background-16x9.webp',
         comparison:
           '/images/services/sewer-cleaning-camera-inspection/the-sewer-pros-service-comparison-seesnake-cleanout-background-16x9.webp',
-        request: '/images/services/sewer-cleaning-camera-inspection/combined-request-16x9.webp',
+        request:
+          '/images/services/sewer-cleaning-camera-inspection/the-sewer-pros-sewer-cleaning-camera-inspection-request-cta-background-16x9.webp',
         closing: '/images/services/sewer-cleaning-camera-inspection/combined-closing-16x9.webp',
         definition: ['combined-definition'],
         process: 'combined-process',
@@ -2089,9 +2090,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       },
       request: {
         id: 'request-inspection-and-cleaning',
-        title: 'Request inspection and cleaning',
-        intro:
-          'Tell us what you have noticed, which fixtures are affected, and where the property is. The Sewer Pros provides sewer inspection, cleaning, and diagnostic services across St. Louis, San Diego, and Las Vegas.',
+        title: 'Request Sewer Cleaning or Camera Inspection',
+        intro: [
+          'Tell us what you’ve noticed, which fixtures or areas are affected, and where the property is located. If the problem keeps returning, include when it started and whether you have requested service for it before.',
+          'Choose the service you’re interested in, or describe the issue if you’re unsure whether sewer cleaning, a camera inspection, or another service may be appropriate. The next step depends on the symptoms, access to the line, and conditions observed.',
+        ],
       },
       closing: {
         title: 'Get clear next steps for a recurring sewer or drainage problem',
