@@ -247,6 +247,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         prep={hub.prep}
         imageSlot={images?.process}
         icons={hub.processIcons}
+        imageLayout={hub.processImageLayout}
       />,
     )
   }
@@ -329,6 +330,8 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
           density="standard"
           idPrefix="request-lead"
           defaultServiceId={hub.defaultServiceId}
+          title={hub.request.formTitle}
+          submitLabel={hub.request.submitLabel}
         />
       </RequestServiceSection>
     ) : (

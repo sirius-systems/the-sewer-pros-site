@@ -166,6 +166,8 @@ export interface LeadFormSectionProps {
    * `defaultMarketId`: the page heading already names the service.
    */
   defaultServiceId?: LeadServiceValue
+  /** Submit-button text. Defaults to "Request Service", the wording every other instance keeps. */
+  submitLabel?: string
 }
 
 export function LeadFormSection({
@@ -178,6 +180,7 @@ export function LeadFormSection({
   idPrefix = 'lead',
   defaultMarketId,
   defaultServiceId,
+  submitLabel = 'Request Service',
 }: LeadFormSectionProps = {}) {
   const [started, setStarted] = useState(false)
 
@@ -329,7 +332,7 @@ export function LeadFormSection({
         it standalone — so they stay consistent with each other.
       */}
       <div className="flex justify-center sm:col-span-2">
-        <Button type="submit">Request Service</Button>
+        <Button type="submit">{submitLabel}</Button>
       </div>
     </form>
   )

@@ -18,6 +18,8 @@ import {
   DocumentCheckIcon,
   DropletIcon,
   ExplanationIcon,
+  EyeIcon,
+  FenceIcon,
   FixturesIcon,
   HomeIcon,
   HouseKeyIcon,
@@ -288,6 +290,10 @@ const SYMPTOM_ICON_BY_NAME: Record<HubSymptomIcon, (props: IconProps) => ReactNo
   locate: MapPinIcon,
   pipe: PipeIcon,
   'house-key': HouseKeyIcon,
+  plant: OrganicLeafIcon,
+  checklist: ChecklistIcon,
+  droplet: DropletIcon,
+  community: CommunityIcon,
 }
 
 export function SymptomRouter({ content }: { content: NonNullable<Hub['symptomRouter']> }) {
@@ -592,6 +598,7 @@ export function LimitationsPanel({
           >
             {content.related.label}
           </Link>
+          {content.related.trailing !== undefined && <> {content.related.trailing}</>}
         </p>
       )}
     </>
@@ -622,6 +629,11 @@ const MATERIAL_ICON_BY_NAME: Record<HubMaterialIcon, (props: IconProps) => React
   'low-point': LowPointIcon,
   obstruction: ObstructionMarkerIcon,
   camera: CameraIcon,
+  route: MapPinIcon,
+  fence: FenceIcon,
+  checklist: ChecklistIcon,
+  home: HomeIcon,
+  building: BuildingIcon,
 }
 
 /**
@@ -861,6 +873,7 @@ export function InspectionProcess({
   prep,
   imageSlot = 'process',
   icons = DEFAULT_STEP_ICONS,
+  imageLayout = 'fill-cards',
 }: {
   title: string
   /** Optional standfirst under the H2, above the 2x2 cards. */
@@ -871,9 +884,19 @@ export function InspectionProcess({
   imageSlot?: HubImageKey
   /** One mark per step. Defaults to the camera hub's set. */
   icons?: readonly HubProcessIcon[]
+  /**
+   * `fill-cards` (default, every existing caller): the figure fills the
+   * 2x2 cards' row only, cropped to that row's height.
+   *
+   * `center-full`: the figure spans the cards' row and the checklist
+   * row beneath it, keeps its own 4:3 frame (no crop-to-fill), and
+   * centers that frame vertically across the taller span.
+   */
+  imageLayout?: 'fill-cards' | 'center-full'
 }) {
   const id = 'how-it-works'
   const image = resolveHubImage(imageSlot)
+  const centerFull = imageLayout === 'center-full'
   return (
     <Section density="standard" surface="default" labelledBy={id} className="border-y border-border">
       {/*
@@ -927,9 +950,28 @@ export function InspectionProcess({
                 </li>
               ))}
             </ul>
+            {prep.note !== undefined && (
+              <p className="mt-4 text-body-sm text-muted-foreground">{prep.note}</p>
+            )}
           </Callout>
         )}
-        {image !== null && (
+        {image !== null && centerFull && (
+          <figure className="lg:col-start-2 lg:row-start-2 lg:row-span-2 lg:flex lg:h-full lg:flex-col lg:justify-center">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md border border-border bg-surface-muted">
+              {!image.placeholder && (
+                <Image
+                  src={image.preferred}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-center"
+                />
+              )}
+            </div>
+            <figcaption className="mt-2 text-caption text-muted-foreground">{image.caption}</figcaption>
+          </figure>
+        )}
+        {image !== null && !centerFull && (
           <figure className="lg:relative lg:col-start-2 lg:row-start-2">
             <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-surface-muted lg:absolute lg:inset-0 lg:aspect-auto">
               {!image.placeholder && (
@@ -999,9 +1041,11 @@ export function ApproachBand({ content }: { content: NonNullable<Hub['approach']
       >
         {content.title}
       </h2>
-      <p className="mt-4 max-w-[var(--container-reading)] text-body-lg opacity-90">
-        {content.intro}
-      </p>
+      {content.intro !== undefined && (
+        <p className="mt-4 max-w-[var(--container-reading)] text-body-lg opacity-90">
+          {content.intro}
+        </p>
+      )}
       <ul className="mt-10 grid gap-6 sm:grid-cols-2">
         {content.items.map((item) => {
           const Icon = APPROACH_ICON_BY_NAME[item.icon]
@@ -1022,8 +1066,8 @@ export function ApproachBand({ content }: { content: NonNullable<Hub['approach']
         </p>
       )}
       <div className="mt-10">
-        <ButtonLink href={PRIMARY_CTA.href} variant="primary">
-          {PRIMARY_CTA.label}
+        <ButtonLink href={content.cta?.href ?? PRIMARY_CTA.href} variant="primary">
+          {content.cta?.label ?? PRIMARY_CTA.label}
         </ButtonLink>
       </div>
     </Section>
@@ -1036,6 +1080,8 @@ const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => React
   'house-key': HouseKeyIcon,
   home: HomeIcon,
   community: CommunityIcon,
+  eye: EyeIcon,
+  document: DocumentIcon,
 }
 
 /**
@@ -1107,7 +1153,11 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
   const id = content.id ?? 'real-inspection-evidence'
   return (
     <Section density="standard" surface="muted" labelledBy={id}>
-      <SectionHeading id={id} title={content.title} intro={<p>{content.intro}</p>} />
+      <SectionHeading
+        id={id}
+        title={content.title}
+        intro={typeof content.intro === 'string' ? <p>{content.intro}</p> : content.intro}
+      />
       <CardGrid columns={content.columns ?? 2} itemCount={content.items.length} className="mt-8">
         {content.items.map((item) => (
           <article key={item.slot} className="flex h-full flex-col overflow-hidden rounded-md border border-border bg-surface">
