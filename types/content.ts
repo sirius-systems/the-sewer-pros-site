@@ -1393,6 +1393,31 @@ export interface ServicePageContent extends BasePageContent {
   /** Shows market coverage beneath the service explanation. */
   showMarkets?: boolean
   /**
+   * Page-specific replacement for the shared `AuthorityBand` "How we
+   * work" proof-points band.
+   *
+   * `AuthorityBand` deliberately refuses per-page card copy (see its
+   * own file header — "copy is not a prop"): its four proof points come
+   * from one sourced, verified dataset shared by every template that
+   * renders it, specifically so a page cannot introduce an
+   * unverifiable ad-hoc claim into that slot. This field does not
+   * change that. When set, `ServicePageTemplate` renders this page's
+   * own navy card band in `AuthorityBand`'s position INSTEAD of
+   * `AuthorityBand` — matching its light-card-on-navy visual
+   * treatment — rather than adding a "points" override to the shared
+   * component. Every other page, and `AuthorityBand` itself, is
+   * unaffected.
+   */
+  howWeWork?: {
+    title: string
+    intro?: string
+    items: readonly {
+      title: string
+      description: string
+      icon: 'camera' | 'monitor' | 'pipe' | 'checklist'
+    }[]
+  }
+  /**
    * Two-column explainer, rendered above `body`: the same shape of
    * prose `body` takes (heading, paragraphs, an optional sub-list) in
    * the left column, passed straight through `Prose` unchanged, with a

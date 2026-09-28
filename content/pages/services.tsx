@@ -3764,6 +3764,41 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         label: 'Explore sewer camera inspection',
       },
     },
+    /*
+      Replaces the shared `AuthorityBand` "How we work" band for this
+      page only. See `ServicePageContent.howWeWork`.
+    */
+    howWeWork: {
+      title: 'How Our Pre-Purchase Sewer Inspection Works',
+      intro:
+        'We inspect the accessible portion of the sewer line, document visible conditions, and review what the camera showed. The findings give you information to consider as part of your due diligence; they do not guarantee future performance or determine what work may be needed.',
+      items: [
+        {
+          title: 'The Inspection Is the Service',
+          icon: 'camera',
+          description:
+            'We focus on inspecting the line and explaining the visible findings. The Sewer Pros does not perform sewer repair or replacement.',
+        },
+        {
+          title: 'You Can Review the Evidence',
+          icon: 'monitor',
+          description:
+            'We document visible conditions so you can review what the camera showed, rather than relying only on a verbal description.',
+        },
+        {
+          title: 'Sewer and Drain Specialists',
+          icon: 'pipe',
+          description:
+            'Our services focus on sewer inspection, diagnostics, locating, and cleaning.',
+        },
+        {
+          title: 'The Next Step Is Your Decision',
+          icon: 'checklist',
+          description:
+            'Use the findings to decide what questions to ask and whether to consult another qualified professional. If additional work is considered, you choose who performs it.',
+        },
+      ],
+    },
     comparison: {
       title: 'Pre-purchase sewer inspection vs. related services',
       intro:

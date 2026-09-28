@@ -70,6 +70,16 @@ export function MapPinIcon(props: IconProps) {
   )
 }
 
+/** Reviewable video evidence — a monitor screen on a stand. */
+export function MonitorIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <rect x="3" y="5" width="18" height="12" rx="1.5" />
+      <path d="M8 20h8M12 17v3" />
+    </svg>
+  )
+}
+
 /** Camera inspection — a camera body over a lens. */
 export function CameraIcon(props: IconProps) {
   return (
