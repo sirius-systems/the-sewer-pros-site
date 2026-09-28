@@ -25,7 +25,7 @@ Rules for every image:
 |---|---|---|---|
 | `hero/the-sewer-pros-sewer-camera-inspection-cleaning-cleanout-hero-background-16x9.webp` | 16:9, 1600px+ wide | Hero | Delivered: an exterior cleanout with inspection and cleaning equipment. Subject left of center; copy sits on the left. |
 | `the-sewer-pros-service-comparison-seesnake-cleanout-background-16x9.webp` | 16:9 | Comparison table | Delivered: SeeSnake camera equipment at a cleanout. |
-| `combined-request-16x9.webp` | 16:9 | Request form | Wide field-service scene, subject on the left. |
+| `the-sewer-pros-sewer-cleaning-camera-inspection-request-cta-background-16x9.webp` | 16:9 | Request form | Delivered: field-service scene for the request CTA. |
 | `combined-closing-16x9.webp` | 16:9 | Closing form | Cleanout or job-site scene. |
 
 ## Figures (real alt text and captions)
