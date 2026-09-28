@@ -1354,6 +1354,31 @@ export interface ServicePageContent extends BasePageContent {
   /** Shows market coverage beneath the service explanation. */
   showMarkets?: boolean
   /**
+   * Optional photographic hero backdrop for a non-hub service page.
+   *
+   * Opt-in per page: 18 §28-34 require real inspection photography
+   * (no stock/AI imagery) before a hero carries one, which is why
+   * `Hero`'s own default stays `editorial` with no image. Mirrors the
+   * hub's `images.hero`/`heroFocus` treatment (`ServiceHubTemplate`) —
+   * same `BackdropImage` component, same `.hero-scrim` (flat black,
+   * never tinted) plus a left-to-right black gradient — without
+   * requiring the page to become a `ServiceHubContent` page.
+   */
+  heroImage?: {
+    /** Path under `public/`. A missing file degrades like any other
+     * `BackdropImage`: a labelled placeholder outside production, and
+     * nothing in production. */
+    src: string
+    /**
+     * Which side of the photograph carries the subject. `left`
+     * (default) crops and weights the gradient left, matching the
+     * copy column; `right` anchors the crop right so the copy sits
+     * over open space, with a heavier gradient since the copy side is
+     * plainer background there.
+     */
+    focus?: 'left' | 'right'
+  }
+  /**
    * Audience/role routing cards. Reuses the hub's `audiences` shape so a
    * non-hub service page (e.g. pre-purchase sewer inspection) can route
    * visitors by role without becoming a full `ServiceHubContent` page —

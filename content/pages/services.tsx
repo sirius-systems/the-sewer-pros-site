@@ -3472,12 +3472,33 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       eyebrow: 'Real estate',
       title: 'Pre-Purchase Sewer Inspection',
       intro: (
-        <p>
-          A camera inspection of the sewer line before you buy, so the
-          line&rsquo;s condition is part of what you know rather than what you
-          discover later.
-        </p>
+        <>
+          <p>
+            A sewer camera inspection before closing can help you understand
+            the visible condition of a home&rsquo;s sewer line before you buy.
+            The Sewer Pros guides a camera through the accessible line to
+            document what it can see, helping you make a more informed
+            decision based on inspection findings rather than assumptions
+            about the property&rsquo;s age or appearance.
+          </p>
+          <p>
+            Review the findings as part of your due diligence and discuss any
+            questions with the appropriate real estate or plumbing
+            professional.
+          </p>
+        </>
       ),
+    },
+    /*
+      Real photography: RIDGID SeeSnake CS12x on a residential job, right-
+      weighted so the copy column (left) sits over open background rather
+      than the equipment (18 §28-34 — approved, not stock/AI). See
+      `ServicePageContent.heroImage` for the shared backdrop/scrim/gradient
+      treatment this reuses from `ServiceHubTemplate`.
+    */
+    heroImage: {
+      src: '/images/services/pre-purchase-sewer-inspection/hero/the-sewer-pros-pre-purchase-sewer-inspection-hero-ridgid-seesnake-cs12x-16x9.webp',
+      focus: 'right',
     },
     body: (
       <>
