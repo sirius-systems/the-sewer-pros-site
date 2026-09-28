@@ -26,7 +26,7 @@ Rules for every image:
 
 | File | Aspect | Section | Shot |
 |---|---|---|---|
-| `drain-cleaning-hero-16x9.webp` | 16:9, 1600px+ wide | Hero | Technician preparing cable or drain-cleaning equipment at a sink, cleanout, or floor drain. Keep the subject left of center; copy sits on the left. |
+| `hero/the-sewer-pros-drain-cleaning-hero-residential-cleanout-ridgid-equipment-16x9.webp` | 16:9, 1600px+ wide | Hero | Cable-machine equipment staged at a residential exterior cleanout. In place. |
 | `drain-cleaning-comparison-16x9.webp` | 16:9 | Comparison table | Equipment staged cleanly in a residential or managed-property setting. |
 | `drain-cleaning-request-16x9.webp` | 16:9 | Request form | Technician reviewing a camera monitor after a recurring issue, subject on the left. |
 | `drain-cleaning-closing-16x9.webp` | 16:9 | Closing form | Technician at an exterior cleanout or floor drain. |
