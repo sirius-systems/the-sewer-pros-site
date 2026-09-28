@@ -1487,6 +1487,16 @@ export interface ServicePageContent extends BasePageContent {
     }[]
   }
   /**
+   * Removes the plain filler `LeadFormSection` normally rendered
+   * between `howWeWork`/`AuthorityBand` and `comparison` purely to keep
+   * those two brand surfaces apart (18 §11). Only meaningful paired
+   * with `comparison.surface: 'muted'` (or another non-brand section
+   * taking over that separating role) — see the adjacency note beside
+   * `LeadFormSection` in `ServicePageTemplate`. Every page omitting
+   * this keeps the filler form, unchanged.
+   */
+  hideMidPageForm?: boolean
+  /**
    * Two-column explainer, rendered above `body`: the same shape of
    * prose `body` takes (heading, paragraphs, an optional sub-list) in
    * the left column, passed straight through `Prose` unchanged, with a
@@ -2008,6 +2018,12 @@ export interface ServiceHubContent {
     note: string
     /** Contextual link below the note, same pattern as `LimitationsPanel`'s `related`. */
     related?: { lead: string; pageId: PageId; label: string }
+    /**
+     * `muted` renders this section on a light ground instead of the
+     * default navy — see `ServiceComparison`'s own doc. Every existing
+     * caller omits this and stays on `brand`, unchanged.
+     */
+    surface?: 'brand' | 'muted'
   }
 }
 

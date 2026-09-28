@@ -485,19 +485,24 @@ export function ServicePageTemplate({
       <TestimonialBand />
 
       {/*
-        ⚠ `ServiceComparison` is always a brand/navy surface, same as
-        `AuthorityBand` above. `ProofGallery` and `TestimonialBand` both
-        render null while their governing datasets stay empty (see their
-        own file headers), so they are not a reliable separator today —
-        `LeadFormSection` (always renders, `surface="muted"` by default)
-        is placed directly before `ServiceComparison` instead, so the two
-        brand surfaces never touch regardless of proof/testimonial data
-        state (18 §11).
+        ⚠ `ServiceComparison` is a brand/navy surface UNLESS its own
+        `surface: 'muted'` is set (see types/content.ts). `ProofGallery`
+        and `TestimonialBand` both render null while their governing
+        datasets stay empty (see their own file headers), so they are
+        not a reliable separator today — `LeadFormSection` (always
+        renders, `surface="muted"` by default) is placed directly
+        before `ServiceComparison` instead, so two brand surfaces never
+        touch regardless of proof/testimonial data state (18 §11).
+
+        `hideMidPageForm` removes this filler form for a page that
+        gives `ServiceComparison` (or the section after it) `muted`
+        instead — see `ServicePageContent.hideMidPageForm`. Omitting it
+        keeps every other page byte-identical.
       */}
-      <LeadFormSection />
+      {content.hideMidPageForm !== true && <LeadFormSection />}
 
       {content.comparison !== undefined && (
-        <ServiceComparison content={content.comparison} />
+        <ServiceComparison content={content.comparison} surface={content.comparison.surface} />
       )}
 
       {content.showMarkets === true && (

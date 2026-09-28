@@ -1321,6 +1321,7 @@ export function EvidenceGallery({ content }: { content: NonNullable<Hub['evidenc
 export function ServiceComparison({
   content,
   imageSrc,
+  surface = 'brand',
 }: {
   content: NonNullable<Hub['comparison']>
   /**
@@ -1328,8 +1329,19 @@ export function ServiceComparison({
    * placeholder: right for the `cards` variant, whose own card artwork
    * already carries the visual interest, unlike the `table` variant's
    * plain white panel.
+   *
+   * ⚠ IGNORED WHEN `surface="muted"`. A scrimmed photo is inherently a
+   * dark ground; combining the two would defeat the reason `muted`
+   * exists.
    */
   imageSrc?: string
+  /**
+   * `muted` renders this section on a light ground instead of navy, for
+   * a page whose surrounding rhythm cannot afford another dark section
+   * here (18 §11 — no two dark sections back to back). Every existing
+   * caller omits this and stays on `brand`, unchanged.
+   */
+  surface?: 'brand' | 'muted'
 }) {
   const id = content.id ?? 'sewer-camera-inspection-vs-related-services'
   const [colService, colPurpose, colFit] = content.columns ?? [
@@ -1337,9 +1349,10 @@ export function ServiceComparison({
     'Primary purpose',
     'May be the right fit when',
   ]
+  const dark = surface === 'brand'
   return (
-    <div className="relative isolate overflow-hidden bg-brand">
-      {imageSrc !== undefined && (
+    <div className={cn('relative isolate overflow-hidden', dark ? 'bg-brand' : 'bg-surface-muted')}>
+      {dark && imageSrc !== undefined && (
         <>
           <BackdropImage src={imageSrc} />
           <span aria-hidden="true" className="absolute inset-0 -z-10 bg-black/55" />
@@ -1347,10 +1360,18 @@ export function ServiceComparison({
       )}
       <Section density="dense" surface="none" labelledBy={id}>
         <div className="max-w-[var(--container-reading)]">
-          <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance text-white">
+          <h2
+            id={id}
+            className={cn(
+              'text-h2 font-semibold tracking-tight text-balance',
+              dark ? 'text-white' : 'text-foreground',
+            )}
+          >
             {content.title}
           </h2>
-          <p className="mt-4 text-body-lg text-white">{content.intro}</p>
+          <p className={cn('mt-4 text-body-lg', dark ? 'text-white' : 'text-muted-foreground')}>
+            {content.intro}
+          </p>
         </div>
         {content.variant === 'cards' ? (
           <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -1501,15 +1522,30 @@ export function ServiceComparison({
           </div>
         </>
         )}
-        <p className="mt-6 max-w-[var(--container-reading)] text-body text-white">
+        <p
+          className={cn(
+            'mt-6 max-w-[var(--container-reading)] text-body',
+            dark ? 'text-white' : 'text-muted-foreground',
+          )}
+        >
           {content.note}
         </p>
         {content.related !== undefined && (
-          <p className="mt-2 max-w-[var(--container-reading)] text-body text-white">
+          <p
+            className={cn(
+              'mt-2 max-w-[var(--container-reading)] text-body',
+              dark ? 'text-white' : 'text-muted-foreground',
+            )}
+          >
             {content.related.lead}{' '}
             <Link
               href={resolveApprovedLink(content.related.pageId).href}
-              className="font-semibold text-white underline underline-offset-4 hover:text-white/80"
+              className={cn(
+                'font-semibold underline underline-offset-4',
+                dark
+                  ? 'text-white hover:text-white/80'
+                  : 'text-accent-secondary hover:text-foreground',
+              )}
             >
               {content.related.label}
             </Link>
