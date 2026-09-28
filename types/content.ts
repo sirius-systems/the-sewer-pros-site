@@ -1251,12 +1251,24 @@ export interface BasePageContent {
    * photography for this module).
    *
    * Setting this opts `RelatedLinks` into its `image` variant instead
-   * of the default `horizontal` row — see `ServicePageTemplate`. A
-   * page whose map omits an id still gets a card, just text-only,
-   * exactly as `RelatedLinks` already handles a missing image (18
-   * §40-42: no placeholder crop where no approved photo exists).
+   * of the default `horizontal` row — see `ServicePageTemplate`, unless
+   * `relatedVariant` names `detailed` instead. A page whose map omits
+   * an id still gets a card, just text-only, exactly as `RelatedLinks`
+   * already handles a missing image (18 §40-42: no placeholder crop
+   * where no approved photo exists).
    */
   relatedImages?: Readonly<Partial<Record<PageId, CardImage>>>
+  /**
+   * Selects `RelatedLinks`' `detailed` card (image, title, full
+   * description, one explicit visible link) instead of the `image`
+   * variant `relatedImages` opts into by default. Every page omitting
+   * this is unaffected.
+   */
+  relatedVariant?: 'image' | 'detailed'
+  /** `relatedVariant: 'detailed'` only — see `RelatedLinks`' own `titles`. */
+  relatedTitles?: Readonly<Partial<Record<PageId, string>>>
+  /** `relatedVariant: 'detailed'` only — see `RelatedLinks`' own `linkLabels`. */
+  relatedLinkLabels?: Readonly<Partial<Record<PageId, string>>>
   /**
    * Opts this page's `RelatedLinks` into the asymmetric featured
    * layout instead of the default row list.

@@ -3762,7 +3762,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         'That no hidden defect exists outside the camera’s view',
         'Future pipe performance or maintenance needs',
         'The cost, scope, or timing of any future repair',
-        'Who is legally responsible for which portion of the line — that varies by jurisdiction and is a question for the appropriate professional',
+        'Who is legally responsible for which portion of the line, which varies by jurisdiction and is a question for the appropriate professional',
         'A pass/fail result for the property',
       ],
       related: {
@@ -3987,12 +3987,35 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('svc-sewer-camera-inspection'),
       id('cmp-independent-vs-repair'),
     ],
+    relatedTitle: 'Related Services',
     /*
-      Reuses the sewer camera inspection page's own approved card
-      artwork (the same frame `homeServiceCards` uses for it) rather
-      than new photography for this module. `cmp-independent-vs-repair`
-      has no approved image yet, so that card renders text-only —
-      `RelatedLinks`' own documented behavior for a missing entry.
+      `detailed`: image, title, full description, and one explicit
+      visible link per card — see `RelatedLinks`' own `detailed` variant
+      doc. Both destinations are already-approved, already-authored
+      pages (verified against data/pages/approved-pages.ts): no invented
+      routes.
+    */
+    relatedVariant: 'detailed',
+    relatedTitles: {
+      [id('cmp-independent-vs-repair')]:
+        'Independent Sewer Inspection vs. Repair Company Inspection',
+    },
+    relatedDescriptions: {
+      [id('svc-sewer-camera-inspection')]:
+        'A sewer camera inspection provides a direct view inside an accessible sewer line. The footage can help identify visible conditions such as roots, buildup, cracks, offsets, or standing water. Learn what the inspection can show and how it may help you understand the line’s condition.',
+      [id('cmp-independent-vs-repair')]:
+        'An independent sewer inspection focuses on observing and documenting visible conditions in the line. The Sewer Pros provides sewer inspection, diagnostics, and cleaning, not sewer line repair or replacement. Explore how inspection findings can help you ask informed questions and consider next steps.',
+    },
+    relatedLinkLabels: {
+      [id('svc-sewer-camera-inspection')]: 'Learn About Sewer Camera Inspections',
+      [id('cmp-independent-vs-repair')]: 'Compare Sewer Inspection Approaches',
+    },
+    /*
+      Both reuse already-approved photography rather than new imagery:
+      the sewer camera inspection card reuses the same frame
+      `homeServiceCards` uses for that page; the comparison card wires
+      in the RIDGID SeeSnake file already placed in this page's own
+      image directory.
     */
     relatedImages: {
       [id('svc-sewer-camera-inspection')]: {
@@ -4000,6 +4023,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
         source:
           'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+      [id('cmp-independent-vs-repair')]: {
+        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-independent-sewer-inspection-vs-repair-company-inspection-ridgid-seesnake-4x3.webp',
+        alt: 'RIDGID SeeSnake sewer camera monitor and equipment used during an independent sewer inspection',
+        source: 'The Sewer Pros field photography.',
       },
     },
     cta: {

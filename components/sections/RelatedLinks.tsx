@@ -201,8 +201,27 @@ export interface RelatedLinksProps {
    *
    * `image` is the larger card with a 7:4 artwork slot, opted into by
    * HomePageTemplate only (owner-directed, 2026-09-03).
+   *
+   * `detailed` is a 4:3 image, a title, a full description, and one
+   * explicit visible text link at the card's bottom — distinct from
+   * `image`, whose whole card is the single anchor and whose title IS
+   * the link text. Card here is a plain `<div>` (not `LinkCard`), and
+   * the link is the only anchor in it, so nothing nests an `<a>` inside
+   * an `<a>`. Opt-in per page; no existing caller uses it.
    */
-  variant?: 'horizontal' | 'image' | 'featured'
+  variant?: 'horizontal' | 'image' | 'featured' | 'detailed'
+  /**
+   * `detailed` only. Overrides the visible card title, which otherwise
+   * falls back to the page's registry name (`link.label`).
+   */
+  titles?: Readonly<Partial<Record<PageId, string>>>
+  /**
+   * `detailed` only. Text for the card's explicit link, which otherwise
+   * falls back to the page's registry name. 18 §47 wants a descriptive
+   * label distinct from "Learn more" repeated across a grid; this is
+   * also the anchor's accessible name.
+   */
+  linkLabels?: Readonly<Partial<Record<PageId, string>>>
   /** `featured` only. Small line above the heading. */
   eyebrow?: string
   /**
@@ -292,6 +311,8 @@ export function RelatedLinks({
   meta,
   featuredPoints,
   viewAllPageId,
+  titles,
+  linkLabels,
 }: RelatedLinksProps) {
   const links = resolveLinkableOnly(pageIds, { indexableContext })
 
@@ -527,6 +548,69 @@ export function RelatedLinks({
             })}
           </div>
         </div>
+      </Section>
+    )
+  }
+
+  if (variant === 'detailed') {
+    return (
+      <Section density={density} surface={surface} as="aside" labelledBy={id}>
+        <SectionHeading id={id} title={title} level="h2" intro={intro} />
+
+        <ul
+          className={`mt-8 grid grid-cols-1 gap-8 ${COLUMNS[links.length] ?? 'md:grid-cols-2'}`}
+        >
+          {links.map((link) => {
+            const description = descriptions?.[link.pageId]
+            const image = images?.[link.pageId]
+            const cardTitle = titles?.[link.pageId] ?? link.label
+            const linkLabel = linkLabels?.[link.pageId] ?? link.label
+
+            return (
+              <li key={link.pageId} className="flex">
+                {/*
+                  ⚠ A PLAIN `<div>`, NOT `LinkCard`. This card carries its
+                  own visible link at the bottom rather than making the
+                  whole surface the anchor, so wrapping it in a second
+                  anchor would nest an `<a>` inside an `<a>` — invalid
+                  HTML and two competing targets for one card.
+                */}
+                <div className="flex h-full w-full flex-col overflow-hidden rounded-md border border-border bg-surface">
+                  {image !== undefined && (
+                    <span className="relative block aspect-[4/3] w-full overflow-hidden bg-surface-muted">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(min-width: 768px) 45vw, 100vw"
+                        className="object-cover"
+                      />
+                    </span>
+                  )}
+                  <div className="flex flex-1 flex-col gap-2 p-6">
+                    <h3 className="text-h4 font-semibold tracking-tight text-balance text-foreground">
+                      {cardTitle}
+                    </h3>
+                    {description !== undefined && (
+                      <p className="text-sm leading-6 text-muted-foreground">
+                        {description}
+                      </p>
+                    )}
+                    <div className="mt-auto pt-4">
+                      <Link
+                        href={link.href}
+                        className="inline-flex items-center gap-1.5 rounded-sm text-sm font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-secondary"
+                      >
+                        {linkLabel}
+                        <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       </Section>
     )
   }
