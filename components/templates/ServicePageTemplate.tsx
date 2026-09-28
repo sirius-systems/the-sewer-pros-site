@@ -178,17 +178,18 @@ export function ServicePageTemplate({
     // carry no density entry, same pre-existing convention as elsewhere
     // in this list.
     ...(content.comparison !== undefined ? (['dense'] as const) : []),
+    // Mid-page request CTA — see types/content.ts `ServicePageContent.request`.
+    // Tracked here, matching its JSX position directly after `comparison`.
+    ...(content.request !== undefined ? (['standard'] as const) : []),
     // `MarketCoverage` is rendered at `standard` here, not the component's
     // own `dense` default (see the matching JSX prop below): with
-    // `comparison` also authored, `comparison → markets → related → faq`
-    // would otherwise run four consecutive `dense` sections (18 §108's
-    // rejected run). No page sets `showMarkets` today, so this is the
-    // first and carries no regression risk.
+    // `comparison` also authored, `comparison → request → markets →
+    // related → faq` would otherwise risk a run of consecutive `dense`
+    // sections (18 §108's rejected run at 4). No page sets `showMarkets`
+    // today, so this is the first and carries no regression risk.
     ...(content.showMarkets === true && marketCoverageRenders()
       ? (['standard'] as const)
       : []),
-    // Mid-page request CTA — see types/content.ts `ServicePageContent.request`.
-    ...(content.request !== undefined ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
@@ -505,17 +506,18 @@ export function ServicePageTemplate({
         <ServiceComparison content={content.comparison} surface={content.comparison.surface} />
       )}
 
-      {content.showMarkets === true && (
-        <MarketCoverage density="standard" title="Where this service is available" />
-      )}
-
       {content.request !== undefined && (
         /*
           ⚠ BRAND SURFACE (photo + scrim, same treatment as the hub's
-          own request section). `MarketCoverage` above and `RelatedLinks`
-          below are both non-brand and, for any page setting this field,
-          expected to be present (see the ⚠ on `ServicePageContent.request`),
-          so this never lands next to another brand section (18 §11).
+          own request section). Sits directly after `ServiceComparison`
+          — non-brand only when that section's own `surface: 'muted'`
+          is set — and before `MarketCoverage`/`RelatedLinks`, both
+          non-brand, so this never lands next to another brand section
+          (18 §11). A page setting `request` without also muting
+          `comparison` (or omitting `comparison` entirely) would put
+          this directly after `howWeWork`/`AuthorityBand` instead,
+          which IS a brand section — re-check adjacency before shipping
+          that combination.
         */
         <RequestServiceSection
           id={content.request.id}
@@ -532,6 +534,10 @@ export function ServicePageTemplate({
             submitLabel={content.request.submitLabel}
           />
         </RequestServiceSection>
+      )}
+
+      {content.showMarkets === true && (
+        <MarketCoverage density="standard" title="Where this service is available" />
       )}
 
       {content.relatedPageIds !== undefined && (
