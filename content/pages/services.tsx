@@ -3772,6 +3772,14 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       },
     },
     /*
+      Removes the plain filler `LeadFormSection` between this page's
+      `howWeWork` band and the comparison table. Safe only because
+      `comparison.surface` below is set to `muted`, which is what keeps
+      the two navy sections from touching instead (18 §11). See
+      `ServicePageContent.hideMidPageForm`.
+    */
+    hideMidPageForm: true,
+    /*
       Replaces the shared `AuthorityBand` "How we work" band for this
       page only. See `ServicePageContent.howWeWork`.
     */
@@ -3824,6 +3832,13 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       },
     },
     comparison: {
+      /*
+        `muted`, not the default navy: this page removes the plain
+        filler form (`hideMidPageForm`) that otherwise keeps this
+        section from touching "How Our Pre-Purchase Sewer Inspection
+        Works" (also a brand surface). See ServicePageContent.hideMidPageForm.
+      */
+      surface: 'muted',
       title: 'Pre-Purchase Sewer Inspection vs. Related Services',
       intro:
         'A pre-purchase sewer inspection is a sewer camera inspection arranged in connection with a real estate transaction. Comparing it with related services can help you choose an appropriate starting point based on what you need to understand or address.',
