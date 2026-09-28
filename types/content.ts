@@ -1354,6 +1354,24 @@ export interface ServicePageContent extends BasePageContent {
   /** Shows market coverage beneath the service explanation. */
   showMarkets?: boolean
   /**
+   * Two-column explainer, rendered above `body`: the same shape of
+   * prose `body` takes (heading, paragraphs, an optional sub-list) in
+   * the left column, passed straight through `Prose` unchanged, with a
+   * photography placeholder in the right column.
+   *
+   * Opt-in per page. The placeholder is a genuine
+   * `components/ui/ImagePlaceholder` — visible in every environment,
+   * not just outside production like `BackdropImage` — so a page using
+   * this is explicitly not photography-complete (18 §40-42) until the
+   * placeholder is swapped for a real `next/image`.
+   */
+  explainer?: {
+    /** Left column. Same shape as `body` — `<h2>`/`<p>`/`<h3>`/`<ul>`. */
+    content: ReactNode
+    /** Right column: what the eventual photograph should show. */
+    image: { label: string; filename?: string }
+  }
+  /**
    * Optional photographic hero backdrop for a non-hub service page.
    *
    * Opt-in per page: 18 §28-34 require real inspection photography

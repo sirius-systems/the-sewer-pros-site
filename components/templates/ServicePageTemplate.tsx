@@ -1,4 +1,4 @@
-import { Section, Prose, type SectionDensity } from '@/components/ui'
+import { Section, Prose, ImagePlaceholder, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
@@ -121,6 +121,8 @@ export function ServicePageTemplate({
     // (owner, 2026-09-27). `dense` is the section's own default.
     'dense',
     'dense',
+    // Two-column explainer — see types/content.ts `ServicePageContent.explainer`.
+    ...(content.explainer !== undefined ? (['standard'] as const) : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.showDifferentiator === true ? (['standard'] as const) : []),
     // Audience/role router — reuses the hub's `AudiencePathways`; see
@@ -232,6 +234,33 @@ export function ServicePageTemplate({
       />
 
       <TrustBar />
+
+      {content.explainer !== undefined && (
+        /*
+          Full section width (not `width="reading"`, unlike the plain
+          `body` block below): the right column needs room for the
+          placeholder. `lg:items-start` keeps a shorter placeholder from
+          stretching to match a taller copy column. DOM order is copy
+          then placeholder with no `lg:order-*` override, since that is
+          also the wanted desktop order (left column copy, right column
+          image) — unlike `PrePurchase`, which swaps them.
+        */
+        <Section density="standard">
+          <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-7">
+              <Prose>{content.explainer.content}</Prose>
+            </div>
+            <div className="lg:col-span-5">
+              <ImagePlaceholder
+                label={content.explainer.image.label}
+                filename={content.explainer.image.filename}
+                aspect="4/3"
+                className="w-full"
+              />
+            </div>
+          </div>
+        </Section>
+      )}
 
       {content.body !== undefined && (
         <Section density="standard" width="reading">
