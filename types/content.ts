@@ -1372,6 +1372,22 @@ export interface ServicePageContent extends BasePageContent {
     image: { label: string; filename?: string }
   }
   /**
+   * A second two-column block, lower on the page than `explainer`: more
+   * prose (limits, timing, positioning — the same shape `body` takes)
+   * beside another photography placeholder.
+   *
+   * Rendered on `surface="muted"` and `density="dense"`, unlike
+   * `explainer`'s `default`/`standard`, so the surface change itself
+   * signals a new topic (18 §11 — "a surface change carries meaning")
+   * without a wide gap doing that job instead.
+   */
+  considerations?: {
+    /** Left column. Same shape as `body`. */
+    content: ReactNode
+    /** Right column: what the eventual photograph should show. */
+    image: { label: string; filename?: string }
+  }
+  /**
    * Optional photographic hero backdrop for a non-hub service page.
    *
    * Opt-in per page: 18 §28-34 require real inspection photography
