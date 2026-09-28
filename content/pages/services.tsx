@@ -4077,24 +4077,42 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         </p>
       ),
     },
+    /*
+      Two-column explainer, matching the pattern built for the
+      pre-purchase sewer inspection and preventative maintenance pages.
+      No approved photography exists for this page yet, so the right
+      column is a pending-photography placeholder (18 §40-42) rather
+      than a fabricated image.
+    */
+    explainer: {
+      content: (
+        <>
+          <h2>Recurrence is information</h2>
+          <p>
+            A one-off blockage is often ordinary. A blockage that returns on a
+            pattern usually means something in the line is catching material,
+            and each clearing resets the clock without changing the cause.
+          </p>
+
+          <h3>What commonly causes recurrence</h3>
+          <ul>
+            <li>Roots entering at a specific joint or crack and regrowing</li>
+            <li>A section that has lost slope and holds water and solids</li>
+            <li>An offset joint or partial collapse creating a catch point</li>
+            <li>Scale or deterioration narrowing the effective diameter</li>
+            <li>A downstream restriction outside the property</li>
+          </ul>
+        </>
+      ),
+      image: {
+        label:
+          'A technician reviewing sewer camera footage during a recurring-backup diagnosis',
+        filename:
+          'the-sewer-pros-recurring-sewer-backup-diagnosis-explainer-monitor-4x3.webp',
+      },
+    },
     body: (
       <>
-        <h2>Recurrence is information</h2>
-        <p>
-          A one-off blockage is often ordinary. A blockage that returns on a
-          pattern usually means something in the line is catching material, and
-          each clearing resets the clock without changing the cause.
-        </p>
-
-        <h2>What commonly causes recurrence</h2>
-        <ul>
-          <li>Roots entering at a specific joint or crack and regrowing</li>
-          <li>A section that has lost slope and holds water and solids</li>
-          <li>An offset joint or partial collapse creating a catch point</li>
-          <li>Scale or deterioration narrowing the effective diameter</li>
-          <li>A downstream restriction outside the property</li>
-        </ul>
-
         <h2>How diagnosis differs from clearing</h2>
         <p>
           Clearing restores flow. Diagnosis establishes the mechanism: what is
@@ -4106,24 +4124,165 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           and locating any defect the footage identifies, so the position is
           known rather than approximate.
         </p>
-
-        <h2>What the answer might be</h2>
-        <p>
-          Sometimes the answer is that the line is sound and needs maintenance
-          on a sensible interval. Sometimes it is a defect that will keep
-          causing backups until it is addressed by a qualified repair
-          contractor. Both are useful answers, and neither is improved by
-          guessing.
-        </p>
       </>
     ),
+    /*
+      Second two-column block, muted surface, same pattern as the
+      pre-purchase and preventative maintenance pages' `considerations`.
+    */
+    considerations: {
+      content: (
+        <>
+          <h2>What the answer might be</h2>
+          <p>
+            Sometimes the answer is that the line is sound and needs
+            maintenance on a sensible interval. Sometimes it is a defect that
+            will keep causing backups until it is addressed by a qualified
+            repair contractor. Both are useful answers, and neither is
+            improved by guessing.
+          </p>
+        </>
+      ),
+      image: {
+        label:
+          'Sewer line locating equipment marking the approximate position of a found defect',
+        filename:
+          'the-sewer-pros-recurring-sewer-backup-diagnosis-considerations-locating-4x3.webp',
+      },
+    },
+    problems: [
+      {
+        title: 'Multiple drains are slow or backing up',
+        description:
+          'A pattern across more than one fixture can point to something in the shared line rather than a single local clog.',
+      },
+      {
+        title: 'Water backs up in a shower, tub, or floor drain',
+        description:
+          'A lower fixture can become the visible point of a restriction elsewhere in the line, especially when another fixture is running.',
+      },
+      {
+        title: 'A drain was cleared but the problem returned',
+        description:
+          'Clearing restores flow without necessarily showing what caused the blockage or where it sits in the line.',
+      },
+      {
+        title: 'Toilets gurgle or water levels change while another fixture drains',
+        description:
+          'This can be a sign that wastewater is not moving through the line the way it normally would.',
+      },
+    ],
     process: [
-      { title: 'Understand the history', description: 'What backs up, how often, and what has been done before.' },
-      { title: 'Clear enough to assess' },
-      { title: 'Inspect the line' },
-      { title: 'Locate any defect found' },
+      {
+        title: 'Understand the history',
+        description: 'What backs up, how often, which fixtures are involved, and what has been done before.',
+      },
+      {
+        title: 'Clear enough to assess',
+        description: 'Enough of the accessible line is cleared to allow a useful inspection.',
+      },
+      {
+        title: 'Inspect the line',
+        description: 'A camera is guided through the accessible line and visible conditions are reviewed.',
+      },
+      {
+        title: 'Locate any defect found',
+        description: 'If the footage identifies a defect, its approximate position is located so it is known rather than estimated.',
+      },
     ],
     showDifferentiator: true,
+    limitations: {
+      title: 'What a recurring-backup diagnosis can and cannot tell you',
+      intro:
+        'This page describes common possibilities. It cannot diagnose a specific property without an actual inspection, and a camera inspection can only assess the portions of the line it can reach.',
+      canIdentifyTitle: 'An inspection may help identify',
+      canIdentify: [
+        'Visible buildup, debris, or a recurring restriction in the accessible line',
+        'Root intrusion, and approximately where it appears',
+        'Visible cracks, offsets, or separated joints',
+        'A section that has lost slope and holds water or solids',
+      ],
+      cannotTitle: 'It may not determine by itself',
+      cannot: [
+        'The condition of portions of the line the camera cannot reach',
+        'Whether the same problem will return in the future',
+        'Whether replacement, rather than cleaning or monitoring, is the right next step',
+        'The exact position of a defect without a separate locating service',
+      ],
+      related: {
+        lead: 'Need to identify the approximate route of an underground line?',
+        pageId: id('svc-sewer-line-locating'),
+        label: 'Explore line locating services',
+      },
+    },
+    /*
+      Page-specific "How We Work" band, restating facts already stated
+      in `explainer`/`body`/`considerations` above rather than adding
+      anything new. See ServicePageContent.howWeWork.
+    */
+    howWeWork: {
+      title: 'How We Approach a Recurring Backup',
+      intro:
+        'We look for the mechanism behind a recurring backup, not just the fastest way to restore flow again.',
+      items: [
+        {
+          title: 'We Start With History',
+          icon: 'checklist',
+          description:
+            'What backs up, how often, which fixtures are involved, and what has already been tried inform the rest of the visit.',
+        },
+        {
+          title: 'We Clear Enough to See',
+          icon: 'pipe',
+          description:
+            'The line is cleared enough for a useful inspection, not just enough to restore flow.',
+        },
+        {
+          title: 'We Inspect the Accessible Line',
+          icon: 'camera',
+          description:
+            'A camera documents visible conditions, and any portions that cannot be assessed are noted.',
+        },
+        {
+          title: 'We Locate What We Find',
+          icon: 'monitor',
+          description:
+            'If the footage identifies a defect, its approximate position is located rather than estimated.',
+        },
+      ],
+    },
+    comparison: {
+      title: 'Which service may make sense for a recurring problem?',
+      intro:
+        'Recurring symptoms can call for different services depending on what is happening. Compare them to help decide where to start.',
+      rows: [
+        {
+          service: 'Sewer camera inspection',
+          purpose: 'See visible conditions in the accessible line and help identify a recurring cause',
+          fit: 'The problem keeps returning, or several fixtures are affected',
+          pageId: id('svc-sewer-camera-inspection'),
+        },
+        {
+          service: 'Sewer cleaning',
+          purpose: 'Remove or address certain blockages, buildup, or roots in the line',
+          fit: 'A restriction has been identified and may respond to cleaning',
+          pageId: id('svc-sewer-cleaning'),
+        },
+        {
+          service: 'Hydro jetting',
+          purpose: 'Higher-pressure cleaning for certain buildup or recurring restrictions',
+          fit: 'Cleaning is appropriate and the line condition and access support it',
+          pageId: id('svc-hydro-jetting'),
+        },
+        {
+          service: 'Sewer line locating',
+          purpose: 'Identify the approximate path and position of the line or a found defect',
+          fit: 'A property project, excavation, or route question is involved',
+          pageId: id('svc-sewer-line-locating'),
+        },
+      ],
+      note: 'A technician can help determine which of these fits a specific situation after reviewing what has been happening.',
+    },
     faq: [
       {
         question: 'It has been cleared three times. What is different this time?',
@@ -4135,7 +4294,76 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           </p>
         ),
       },
+      {
+        question: 'Does a recurring backup mean the sewer line needs to be replaced?',
+        answer: (
+          <p>
+            No. A recurring backup alone does not establish that replacement is
+            necessary. The appropriate next step depends on what an inspection
+            finds, including the cause, its position, and whether it is in an
+            accessible section of the line.
+          </p>
+        ),
+      },
+      {
+        question: 'Can sewer cleaning stop a recurring backup?',
+        answer: (
+          <p>
+            It may help remove certain blockages, buildup, roots, or debris in
+            the accessible line. Whether cleaning alone is enough, or whether
+            further inspection is useful, depends on the condition and
+            accessibility of the line.
+          </p>
+        ),
+      },
+      {
+        question: 'When should a sewer camera inspection be scheduled instead of another clearing?',
+        answer: (
+          <p>
+            When the problem keeps returning, several fixtures are affected, or
+            the previous clearing did not show what was causing it. Documented
+            footage can help identify a mechanism rather than just restoring
+            flow again.
+          </p>
+        ),
+      },
     ],
+    relatedTitle: 'Related Services',
+    relatedVariant: 'detailed',
+    relatedDescriptions: {
+      [id('svc-sewer-camera-inspection')]:
+        'A sewer camera inspection documents visible conditions in the accessible line. It is the evidence a recurring-backup diagnosis is based on.',
+      [id('svc-sewer-line-locating')]:
+        'Once a defect is identified, locating establishes its approximate position, useful for repair planning or excavation.',
+      [id('svc-preventative-sewer-maintenance')]:
+        'When the line is sound but has a known reason to need service, a scheduled interval can be less disruptive than responding to the next backup.',
+    },
+    relatedLinkLabels: {
+      [id('svc-sewer-camera-inspection')]: 'Learn About Sewer Camera Inspections',
+      [id('svc-sewer-line-locating')]: 'Learn About Sewer Line Locating',
+      [id('svc-preventative-sewer-maintenance')]:
+        'Learn About Preventative Maintenance',
+    },
+    relatedImages: {
+      [id('svc-sewer-camera-inspection')]: {
+        src: '/images/services/service-cards/the-sewer-pros-sewer-camera-inspection-ridgid-monitor.webp',
+        alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+      [id('svc-sewer-line-locating')]: {
+        src: '/images/services/service-cards/the-sewer-pros-sewer-line-locating-equipment.webp',
+        alt: 'Locating transmitter and receiver equipment beside an open access point',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+      [id('svc-preventative-sewer-maintenance')]: {
+        src: '/images/services/service-cards/the-sewer-pros-preventative-sewer-maintenance.webp',
+        alt: 'Camera, cleaning, and jetting equipment staged together at a property',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+    },
     relatedPageIds: [
       id('svc-sewer-camera-inspection'),
       id('svc-sewer-line-locating'),
