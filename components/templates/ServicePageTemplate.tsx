@@ -591,6 +591,7 @@ export function ServicePageTemplate({
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
         action={null}
+        backgroundImage={content.cta?.backgroundImage}
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
             <LeadFormSection bare density="standard" idPrefix="cta-lead" />

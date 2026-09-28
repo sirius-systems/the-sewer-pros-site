@@ -4048,6 +4048,16 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     cta: {
       title: 'Inspect the line before you commit',
       body: 'Know the condition of the sewer line while the decision is still yours to make.',
+      /*
+        The photo replaces the panel's plain navy surface; `CtaSection`
+        applies its own measured black scrim (never navy/tinted, per
+        project convention) so the form and copy stay legible.
+      */
+      backgroundImage: {
+        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-sewer-inspection-request-cta-ridgid-seesnake-background-16x9.webp',
+        alt: 'RIDGID SeeSnake sewer camera equipment set up for a pre-purchase sewer inspection',
+        source: 'The Sewer Pros field photography.',
+      },
     },
   },
 
