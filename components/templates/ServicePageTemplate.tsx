@@ -18,6 +18,7 @@ import {
   AudiencePathways,
   LimitationsPanel,
   ServiceComparison,
+  BackdropImage,
   authorityBandRenders,
   processStepsRenders,
   marketCoverageRenders,
@@ -77,9 +78,13 @@ import type { MasterPageRecord, ServicePageContent } from '@/types'
  * section must sit between them — in practice the related strip and the
  * FAQ. A service page with neither would place them adjacent.
  *
- * 18 §109: "Core Service — service-led and technical." The hero stays
- * editorial: no approved photography exists (18 §28-34), and 18 §37
- * says a hero must not depend on a decorative image to explain the page.
+ * 18 §109: "Core Service — service-led and technical." The hero is
+ * `variant="editorial"` (no `media`/`aside` split) either way, staying
+ * true to 18 §37 ("a hero must not depend on a decorative image to
+ * explain the page"). `content.heroImage` is a separate, opt-in
+ * photographic BACKDROP behind that same editorial copy — not a split
+ * — for a page whose photography has actually been approved (18 §28-34);
+ * every page that omits it renders exactly as before.
  *
  * The middle explanatory block arrives as `content.body`, so the
  * template fixes the ORDER and the RHYTHM while the writing stays free
@@ -171,17 +176,60 @@ export function ServicePageTemplate({
         eyebrow={content.hero.eyebrow}
         title={content.hero.title}
         intro={content.hero.intro}
+        copyWidth={content.heroImage !== undefined ? 'narrow' : 'reading'}
+        backdrop={
+          content.heroImage !== undefined ? (
+            /*
+              Same treatment as `ServiceHubTemplate`'s photographic hero:
+              `BackdropImage` (decorative, `alt=""`, degrades to a
+              labelled placeholder outside production), the shared flat
+              55% black `.hero-scrim`, and a left-to-right black
+              gradient. The copy column always sits on the left, so the
+              gradient always runs left→right; a right-focused photo
+              gets the heavier stops since the copy side is plainer
+              background there.
+            */
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 overflow-hidden bg-brand"
+            >
+              <BackdropImage
+                src={content.heroImage.src}
+                priority
+                className={
+                  content.heroImage.focus === 'right'
+                    ? 'object-cover object-[85%_50%]'
+                    : 'object-cover object-[15%_50%]'
+                }
+              />
+              <div className="hero-scrim absolute inset-0" />
+              <div
+                className={
+                  content.heroImage.focus === 'right'
+                    ? 'absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent'
+                    : 'absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent'
+                }
+              />
+            </div>
+          ) : undefined
+        }
       />
 
       {/*
         ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-        `surface="muted"`, NOT THE COMPONENT'S OWN `default`. This hero
-        carries no backdrop, so it renders on `default` too, and the
-        component's own default would stack two `default` bands back to
-        back. `TrustBar` below is `brand`, so `muted` keeps this section
-        distinct from both neighbours.
+        `surface="muted"`, NOT THE COMPONENT'S OWN `default` — UNLESS
+        `content.heroImage` is set. A hero with no backdrop renders on
+        `default` too, so the component's own default would stack two
+        `default` bands back to back; `muted` keeps this section distinct
+        from both neighbours. A photographic-backdrop hero renders on
+        `surface="none"` instead (see `Hero`), so `default` (this
+        component's own default, same as `ServiceHubTemplate`'s
+        photographic hero) already matches neither neighbour there.
+        `TrustBar` below is `brand` either way.
       */}
-      <ExperienceCounterStrip surface="muted" />
+      <ExperienceCounterStrip
+        surface={content.heroImage !== undefined ? 'default' : 'muted'}
+      />
 
       <TrustBar />
 
