@@ -2892,22 +2892,27 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     metaDescription:
       'Learn when drain cleaning fits a slow or clogged drain and when several affected fixtures point to the main sewer line. Serving St. Louis, San Diego, and Las Vegas.',
     hero: {
-      eyebrow: 'Sewer and Drain Service',
+      eyebrow: 'Drain Cleaning Service',
       title: 'Drain Cleaning for Slow, Clogged, and Recurring Drains',
       primaryAction: { href: '#choose-market', label: 'Choose Your Location' },
       secondaryAction: { href: '/contact/', label: 'Call About a Drain Problem' },
       intro: (
         <>
           <p>
-            Drain cleaning helps address certain clogs, buildup, and flow
+            Drain cleaning can help address certain clogs, buildup, and flow
             restrictions in sinks, tubs, showers, toilets, floor drains, and
-            connected drain lines. If more than one fixture is affected or the
-            problem keeps returning, a sewer-line evaluation or camera
-            inspection may be a better next step.
+            connected drain lines. The right approach depends on where the
+            blockage is and what may be causing it.
+          </p>
+          <p>
+            If several fixtures are affected or the problem keeps returning,
+            the cause may be farther along the drain or sewer line. An
+            evaluation, including a sewer camera inspection when appropriate,
+            can help identify the next step.
           </p>
           <p>
             <a href="#when-a-drain-is-a-sewer-problem" className="font-semibold underline underline-offset-4">
-              Multiple drains affected? Explore sewer-line service options.
+              Multiple drains affected? Explore sewer-line services.
             </a>
           </p>
         </>
@@ -2947,7 +2952,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         `public/images/services/drain-cleaning/README.md` for the shot list).
       */
       images: {
-        hero: '/images/services/drain-cleaning/drain-cleaning-hero-16x9.webp',
+        hero: '/images/services/drain-cleaning/hero/the-sewer-pros-drain-cleaning-hero-residential-cleanout-ridgid-equipment-16x9.webp',
         comparison: '/images/services/drain-cleaning/drain-cleaning-comparison-16x9.webp',
         request: '/images/services/drain-cleaning/drain-cleaning-request-16x9.webp',
         closing: '/images/services/drain-cleaning/drain-cleaning-closing-16x9.webp',
