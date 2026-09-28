@@ -64,6 +64,7 @@ import { homeServiceCards } from '@/content/pages/home-service-cards'
 import type {
   HubApproachIcon,
   HubAudienceIcon,
+  HubComparisonRow,
   HubMaterialIcon,
   HubProcessIcon,
   HubSymptomIcon,
@@ -1183,6 +1184,16 @@ const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => React
   'house-search': HouseSearchIcon,
 }
 
+const COMPARISON_ICON_BY_NAME: Record<
+  NonNullable<HubComparisonRow['icon']>,
+  (props: IconProps) => ReactNode
+> = {
+  'house-search': HouseSearchIcon,
+  camera: CameraIcon,
+  pipe: PipeIcon,
+  'map-pin': MapPinIcon,
+}
+
 /**
  * ⚠ `surface: 'muted'` (with a rule above and below) is how a hub keeps this
  * section visibly apart from the default-surface market router above it.
@@ -1422,18 +1433,24 @@ export function ServiceComparison({
               <tbody>
                 {content.rows.map((row) => {
                   const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
+                  const RowIcon = row.icon !== undefined ? COMPARISON_ICON_BY_NAME[row.icon] : undefined
                   return (
                     <tr key={row.service} className="border-b border-border align-top last:border-b-0">
                       <th scope="row" className="py-4 pr-4 font-semibold text-foreground">
-                        {link !== undefined ? (
-                          <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
-                            {row.service}
-                          </Link>
-                        ) : (
-                          <>
-                            {row.service} <span className="font-normal text-muted-foreground">(this page)</span>
-                          </>
-                        )}
+                        <span className="flex items-center gap-2">
+                          {RowIcon !== undefined && (
+                            <RowIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-accent-secondary" />
+                          )}
+                          {link !== undefined ? (
+                            <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
+                              {row.service}
+                            </Link>
+                          ) : (
+                            <>
+                              {row.service} <span className="font-normal text-muted-foreground">(this page)</span>
+                            </>
+                          )}
+                        </span>
                       </th>
                       <td className="py-4 pr-4 text-muted-foreground">{row.purpose}</td>
                       <td className="py-4 text-muted-foreground">{row.fit}</td>
@@ -1447,9 +1464,13 @@ export function ServiceComparison({
           <div className="mt-8 space-y-4 md:hidden">
             {content.rows.map((row) => {
               const link = row.pageId !== undefined ? resolveApprovedLink(row.pageId) : undefined
+              const RowIcon = row.icon !== undefined ? COMPARISON_ICON_BY_NAME[row.icon] : undefined
               return (
                 <div key={row.service} className="rounded-md border border-border bg-surface p-5 text-body-sm">
-                  <p className="font-semibold text-foreground">
+                  <p className="flex items-center gap-2 font-semibold text-foreground">
+                    {RowIcon !== undefined && (
+                      <RowIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-accent-secondary" />
+                    )}
                     {link !== undefined ? (
                       <Link href={link.href} className="text-accent-secondary underline underline-offset-4 hover:text-foreground">
                         {row.service}
@@ -1483,6 +1504,17 @@ export function ServiceComparison({
         <p className="mt-6 max-w-[var(--container-reading)] text-body text-white">
           {content.note}
         </p>
+        {content.related !== undefined && (
+          <p className="mt-2 max-w-[var(--container-reading)] text-body text-white">
+            {content.related.lead}{' '}
+            <Link
+              href={resolveApprovedLink(content.related.pageId).href}
+              className="font-semibold text-white underline underline-offset-4 hover:text-white/80"
+            >
+              {content.related.label}
+            </Link>
+          </p>
+        )}
       </Section>
     </div>
   )
