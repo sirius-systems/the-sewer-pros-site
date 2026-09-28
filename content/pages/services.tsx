@@ -2333,7 +2333,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       mobileBar: true,
       defaultServiceId: 'svc-sewer-line-locating',
       processIcons: ['explanation', 'access', 'pipe', 'document'],
-      processImageLayout: 'center-full',
+      processImageLayout: 'row-below',
       relatedColumns: 4,
       /*
         IMAGE SLOTS. Save the real files at these paths and they are used at
@@ -2347,7 +2347,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           '/images/services/sewer-line-locating/the-sewer-pros-sewer-line-locating-vs-811-comparison-background-16x9.webp',
         request:
           '/images/services/sewer-line-locating/the-sewer-pros-sewer-line-locating-request-cta-background-16x9.webp',
-        closing: '/images/services/sewer-line-locating/sewer-line-locating-closing-16x9.webp',
+        closing:
+          '/images/services/sewer-line-locating/the-sewer-pros-sewer-line-locating-request-cta-seektech-sr20-background-16x9.webp',
         definition: ['locating-definition'],
         process: 'locating-process',
       },
@@ -2721,9 +2722,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       closing: {
         title: 'Plan your project with clearer sewer line information',
         intro: [
-          'Select your market to request sewer line locating, discuss a property project, or determine whether a camera inspection should be part of the next step.',
-          'Use the form to request service or ask about availability for your property.',
+          'Request sewer line locating to help understand the likely route of a private sewer line before planning landscaping, fencing, or other property work. You can also contact The Sewer Pros to discuss your project and whether a sewer camera inspection may be a useful next step.',
+          'Use the form to request service or ask about availability in your market. Include the property location, the type of project you are planning, and any known sewer access point in the optional message field. This information can help the team understand what you need.',
         ],
+        formTitle: 'Request sewer line locating',
+        messagePlaceholder:
+          'Tell us about your project, property location, and any known sewer access points.',
       },
     },
     faq: [

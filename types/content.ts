@@ -1595,8 +1595,12 @@ export interface ServiceHubContent {
    * centering it vertically over that full height, rather than the
    * default `fill-cards` (unset), which crops the figure to the cards'
    * row only.
+   *
+   * `row-below` puts all four cards in one row at `lg`, then the figure
+   * and the checklist beneath them as a top-aligned two-column row,
+   * figure on the left.
    */
-  processImageLayout?: 'fill-cards' | 'center-full'
+  processImageLayout?: 'fill-cards' | 'center-full' | 'row-below'
   /** Section headings that default to the camera hub's. */
   headings?: {
     schedule?: { title: string; intro: string }
@@ -1730,7 +1734,16 @@ export interface ServiceHubContent {
     submitLabel?: string
   }
   /** Final call to action above the footer: copy beside the lead form. */
-  closing?: { title: string; intro: string | readonly string[] }
+  closing?: {
+    title: string
+    intro: string | readonly string[]
+    /** Form heading. Defaults to "Request service". */
+    formTitle?: string
+    /** Submit-button text. Defaults to "Request Service". */
+    submitLabel?: string
+    /** Placeholder for the optional message field. No placeholder by default. */
+    messagePlaceholder?: string
+  }
   /** Related-services comparison. */
   comparison?: {
     id?: string

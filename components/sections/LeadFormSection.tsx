@@ -168,6 +168,8 @@ export interface LeadFormSectionProps {
   defaultServiceId?: LeadServiceValue
   /** Submit-button text. Defaults to "Request Service", the wording every other instance keeps. */
   submitLabel?: string
+  /** Placeholder for the optional Message field. No placeholder by default, unchanged everywhere else. */
+  messagePlaceholder?: string
 }
 
 export function LeadFormSection({
@@ -181,6 +183,7 @@ export function LeadFormSection({
   defaultMarketId,
   defaultServiceId,
   submitLabel = 'Request Service',
+  messagePlaceholder,
 }: LeadFormSectionProps = {}) {
   const [started, setStarted] = useState(false)
 
@@ -318,7 +321,7 @@ export function LeadFormSection({
       </Field>
 
       <Field htmlFor={`${idPrefix}-message`} label="Message" className="sm:col-span-2">
-        <Textarea id={`${idPrefix}-message`} name="message" />
+        <Textarea id={`${idPrefix}-message`} name="message" placeholder={messagePlaceholder} />
       </Field>
 
       {/*
