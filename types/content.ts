@@ -1357,19 +1357,27 @@ export interface ServicePageContent extends BasePageContent {
    * Two-column explainer, rendered above `body`: the same shape of
    * prose `body` takes (heading, paragraphs, an optional sub-list) in
    * the left column, passed straight through `Prose` unchanged, with a
-   * photography placeholder in the right column.
+   * photograph or a pending-photography placeholder in the right
+   * column.
    *
-   * Opt-in per page. The placeholder is a genuine
-   * `components/ui/ImagePlaceholder` — visible in every environment,
-   * not just outside production like `BackdropImage` — so a page using
-   * this is explicitly not photography-complete (18 §40-42) until the
-   * placeholder is swapped for a real `next/image`.
+   * Opt-in per page. `image` takes either shape:
+   *
+   *   `{ src, alt }`            an approved `next/image` photograph
+   *                             (18 §28-34 — real inspection imagery
+   *                             only, never stock/AI).
+   *   `{ label, filename? }`    a genuine `components/ui/ImagePlaceholder`
+   *                             — visible in every environment, not
+   *                             just outside production like
+   *                             `BackdropImage` — so a page using this
+   *                             form is explicitly not
+   *                             photography-complete (18 §40-42) until
+   *                             it is swapped for the photo form above.
    */
   explainer?: {
     /** Left column. Same shape as `body` — `<h2>`/`<p>`/`<h3>`/`<ul>`. */
     content: ReactNode
-    /** Right column: what the eventual photograph should show. */
-    image: { label: string; filename?: string }
+    /** Right column: the approved photograph, or what one should show. */
+    image: { src: string; alt: string } | { label: string; filename?: string }
   }
   /**
    * A second two-column block, lower on the page than `explainer`: more

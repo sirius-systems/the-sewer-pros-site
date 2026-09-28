@@ -3501,39 +3501,48 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       focus: 'right',
     },
     /*
-      Two-column explainer: same approved copy the top of `body` used to
-      carry, moved here so it can sit beside an image placeholder rather
-      than run full-width in the reading-width `Prose` column below.
-      See `ServicePageContent.explainer`.
+      Two-column explainer, beside an approved photograph. See
+      `ServicePageContent.explainer`.
     */
     explainer: {
       content: (
         <>
           <h2>Why a Sewer Line Inspection Matters Before You Buy</h2>
           <p>
-            A general property inspection covers a great deal, but the sewer
-            line runs underground and is not visible without a camera. It is
-            one of the few property systems where a serious condition can
-            exist with no symptom at the fixtures on the day you view the
-            property.
+            A general home inspection covers many visible parts of a
+            property, but the sewer line runs underground and usually cannot
+            be assessed without a camera. A line may have a visible concern
+            even when the home&rsquo;s fixtures appear to work normally
+            during a showing.
           </p>
 
           <h3>What a Pre-Purchase Sewer Inspection Can Show</h3>
+          <p>
+            A camera inspection can document visible conditions in the
+            accessible portion of the sewer line, such as:
+          </p>
           <ul>
-            <li>The visible condition of the accessible line</li>
-            <li>Whether roots have entered, and where</li>
-            <li>Joint separation, offsets, and visible cracks</li>
-            <li>Standing water suggesting a low section or restriction</li>
-            <li>Pipe material and changes along the run</li>
-            <li>Evidence of previous work</li>
+            <li>The visible condition of the inspected line</li>
+            <li>Whether roots have entered the line and where they appear</li>
+            <li>Visible joint separation, offsets, or cracks</li>
+            <li>
+              Standing water that may indicate a low section or restriction
+            </li>
+            <li>Pipe material and visible changes along the inspected run</li>
+            <li>Evidence of previous work, where visible</li>
           </ul>
+          <p>
+            The inspection reflects what the camera can see on the day of the
+            appointment. It may not show inaccessible portions or predict how
+            the line will perform in the future. Review the findings as part
+            of your due diligence and discuss questions with the appropriate
+            real estate or plumbing professional.
+          </p>
         </>
       ),
       image: {
-        label:
-          'A technician reviewing sewer camera footage on a monitor during a pre-purchase inspection',
-        filename:
-          'the-sewer-pros-pre-purchase-sewer-inspection-explainer-monitor-4x3.webp',
+        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-sewer-inspection-visible-line-conditions-ridgid-seesnake-4x3.webp',
+        alt: 'RIDGID SeeSnake camera monitor showing visible conditions inside a sewer line during a pre-purchase inspection',
       },
     },
     /*

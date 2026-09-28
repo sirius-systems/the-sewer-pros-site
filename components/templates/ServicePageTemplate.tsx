@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Section, Prose, ImagePlaceholder, type SectionDensity } from '@/components/ui'
 import {
   Hero,
@@ -242,11 +243,13 @@ export function ServicePageTemplate({
         /*
           Full section width (not `width="reading"`, unlike the plain
           `body` block below): the right column needs room for the
-          placeholder. `lg:items-start` keeps a shorter placeholder from
-          stretching to match a taller copy column. DOM order is copy
-          then placeholder with no `lg:order-*` override, since that is
-          also the wanted desktop order (left column copy, right column
-          image) — unlike `PrePurchase`, which swaps them.
+          image. `lg:items-start` keeps a shorter image from stretching
+          to match a taller copy column. DOM order is copy then image
+          with no `lg:order-*` override, since that is also the wanted
+          desktop order (left column copy, right column image) — unlike
+          `PrePurchase`, which swaps them. Below `lg` the grid is one
+          column, so the image already follows the copy on mobile with
+          no extra rule needed.
         */
         <Section density="standard">
           <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-start">
@@ -254,12 +257,33 @@ export function ServicePageTemplate({
               <Prose>{content.explainer.content}</Prose>
             </div>
             <div className="lg:col-span-5">
-              <ImagePlaceholder
-                label={content.explainer.image.label}
-                filename={content.explainer.image.filename}
-                aspect="4/3"
-                className="w-full"
-              />
+              {'src' in content.explainer.image ? (
+                /*
+                  Same 4:3 frame `PrePurchase` uses for its approved
+                  photograph: the box is reserved before the file
+                  decodes (`bg-surface-muted` shows while it loads),
+                  `object-cover` keeps the ratio, and the `sizes` value
+                  matches this column's actual share of the viewport
+                  (`lg:col-span-5` of 12 ≈ 40vw at `lg`, full width
+                  below it).
+                */
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md border border-border bg-surface-muted">
+                  <Image
+                    src={content.explainer.image.src}
+                    alt={content.explainer.image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <ImagePlaceholder
+                  label={content.explainer.image.label}
+                  filename={content.explainer.image.filename}
+                  aspect="4/3"
+                  className="w-full"
+                />
+              )}
             </div>
           </div>
         </Section>
