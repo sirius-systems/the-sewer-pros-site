@@ -400,6 +400,9 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
           idPrefix="cta-lead"
           id="cta-request-service"
           defaultServiceId={hub.defaultServiceId}
+          title={hub.closing.formTitle}
+          submitLabel={hub.closing.submitLabel}
+          messagePlaceholder={hub.closing.messagePlaceholder}
         />
       </RequestServiceSection>,
     )

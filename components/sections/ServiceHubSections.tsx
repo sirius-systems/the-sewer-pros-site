@@ -891,12 +891,81 @@ export function InspectionProcess({
    * `center-full`: the figure spans the cards' row and the checklist
    * row beneath it, keeps its own 4:3 frame (no crop-to-fill), and
    * centers that frame vertically across the taller span.
+   *
+   * `row-below`: all four cards sit in one row at `lg`, and the figure
+   * and the checklist follow as a top-aligned two-column row beneath
+   * them, figure on the left. The figure keeps its own 4:3 frame; no
+   * row-matching or cropping-to-fill.
    */
-  imageLayout?: 'fill-cards' | 'center-full'
+  imageLayout?: 'fill-cards' | 'center-full' | 'row-below'
 }) {
   const id = 'how-it-works'
   const image = resolveHubImage(imageSlot)
   const centerFull = imageLayout === 'center-full'
+  const rowBelow = imageLayout === 'row-below'
+
+  if (rowBelow) {
+    return (
+      <Section density="standard" surface="default" labelledBy={id} className="border-y border-border">
+        <SectionHeading id={id} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
+        <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, index) => {
+            const Icon = STEP_ICON_BY_NAME[icons[index] ?? 'explanation'] ?? CheckIcon
+            return (
+              <li key={step.title} className="rounded-md border border-border bg-surface-muted p-5">
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 items-center justify-center rounded-sm bg-accent-secondary text-white"
+                >
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 text-body font-semibold text-foreground">{step.title}</h3>
+                {step.description !== undefined && (
+                  <p className="mt-2 text-body-sm text-muted-foreground">{step.description}</p>
+                )}
+              </li>
+            )
+          })}
+        </ol>
+        {(image !== null || prep !== undefined) && (
+          <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
+            {image !== null && (
+              <figure>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md border border-border bg-surface-muted">
+                  {!image.placeholder && (
+                    <Image
+                      src={image.preferred}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="object-cover object-center"
+                    />
+                  )}
+                </div>
+                <figcaption className="mt-2 text-caption text-muted-foreground">{image.caption}</figcaption>
+              </figure>
+            )}
+            {prep !== undefined && (
+              <Callout kind="good-to-know" label={prep.title}>
+                <ul className="space-y-2">
+                  {prep.items.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span aria-hidden="true" className="text-muted-foreground">-</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                {prep.note !== undefined && (
+                  <p className="mt-4 text-body-sm text-muted-foreground">{prep.note}</p>
+                )}
+              </Callout>
+            )}
+          </div>
+        )}
+      </Section>
+    )
+  }
+
   return (
     <Section density="standard" surface="default" labelledBy={id} className="border-y border-border">
       {/*
