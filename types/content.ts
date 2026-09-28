@@ -1354,6 +1354,23 @@ export interface ServicePageContent extends BasePageContent {
   /** Shows market coverage beneath the service explanation. */
   showMarkets?: boolean
   /**
+   * Audience/role routing cards. Reuses the hub's `audiences` shape so a
+   * non-hub service page (e.g. pre-purchase sewer inspection) can route
+   * visitors by role without becoming a full `ServiceHubContent` page —
+   * `record_type: derived_service` pages stay on `ServicePageTemplate`.
+   */
+  audiences?: ServiceHubContent['audiences']
+  /**
+   * "What this can/cannot identify" panel. Same reuse rationale as
+   * `audiences` above.
+   */
+  limitations?: ServiceHubContent['limitations']
+  /**
+   * Related-services comparison table. Same reuse rationale as
+   * `audiences` above.
+   */
+  comparison?: ServiceHubContent['comparison']
+  /**
    * Service hub sections. Authored only by the sewer camera inspection
    * page today; a page without it renders exactly as before.
    */
