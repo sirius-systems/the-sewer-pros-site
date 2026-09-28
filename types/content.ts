@@ -1342,6 +1342,25 @@ export interface HomePageContent extends BasePageContent {
    */
 }
 
+/**
+ * The right-column image of a two-column service-page block
+ * (`ServicePageContent.explainer`/`considerations`). Either shape:
+ *
+ *   `{ src, alt }`            an approved `next/image` photograph
+ *                             (18 §28-34 — real inspection imagery
+ *                             only, never stock/AI).
+ *   `{ label, filename? }`    a genuine `components/ui/ImagePlaceholder`
+ *                             — visible in every environment, not just
+ *                             outside production like `BackdropImage`
+ *                             — so a page using this form is
+ *                             explicitly not photography-complete
+ *                             (18 §40-42) until it is swapped for the
+ *                             photo form above.
+ */
+export type SplitSectionImage =
+  | { src: string; alt: string }
+  | { label: string; filename?: string }
+
 /** Canonical service page — 18 §111. */
 export interface ServicePageContent extends BasePageContent {
   process?: readonly ProcessContent[]
@@ -1357,32 +1376,18 @@ export interface ServicePageContent extends BasePageContent {
    * Two-column explainer, rendered above `body`: the same shape of
    * prose `body` takes (heading, paragraphs, an optional sub-list) in
    * the left column, passed straight through `Prose` unchanged, with a
-   * photograph or a pending-photography placeholder in the right
-   * column.
-   *
-   * Opt-in per page. `image` takes either shape:
-   *
-   *   `{ src, alt }`            an approved `next/image` photograph
-   *                             (18 §28-34 — real inspection imagery
-   *                             only, never stock/AI).
-   *   `{ label, filename? }`    a genuine `components/ui/ImagePlaceholder`
-   *                             — visible in every environment, not
-   *                             just outside production like
-   *                             `BackdropImage` — so a page using this
-   *                             form is explicitly not
-   *                             photography-complete (18 §40-42) until
-   *                             it is swapped for the photo form above.
+   * `SplitSectionImage` in the right column. Opt-in per page.
    */
   explainer?: {
     /** Left column. Same shape as `body` — `<h2>`/`<p>`/`<h3>`/`<ul>`. */
     content: ReactNode
     /** Right column: the approved photograph, or what one should show. */
-    image: { src: string; alt: string } | { label: string; filename?: string }
+    image: SplitSectionImage
   }
   /**
    * A second two-column block, lower on the page than `explainer`: more
    * prose (limits, timing, positioning — the same shape `body` takes)
-   * beside another photography placeholder.
+   * beside another photograph or placeholder.
    *
    * Rendered on `surface="muted"` and `density="dense"`, unlike
    * `explainer`'s `default`/`standard`, so the surface change itself
@@ -1392,8 +1397,8 @@ export interface ServicePageContent extends BasePageContent {
   considerations?: {
     /** Left column. Same shape as `body`. */
     content: ReactNode
-    /** Right column: what the eventual photograph should show. */
-    image: { label: string; filename?: string }
+    /** Right column: the approved photograph, or what one should show. */
+    image: SplitSectionImage
   }
   /**
    * Optional photographic hero backdrop for a non-hub service page.
