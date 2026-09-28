@@ -104,10 +104,12 @@ export interface IndependentProcessContent {
   intro?: readonly string[]
   steps?: readonly { title?: string; body?: string }[]
   calloutOne?: { title?: string; body?: readonly string[] }
-  calloutTwo?: { title?: string; body?: readonly string[] }
+  /** `null` omits the second callout entirely, rather than falling back to the default. */
+  calloutTwo?: { title?: string; body?: readonly string[] } | null
   ctaLabel?: string
   ctaNote?: string
-  closing?: string
+  /** `null` omits the closing paragraph entirely, rather than falling back to the default. */
+  closing?: string | null
 }
 
 export interface IndependentProcessProps {
@@ -144,12 +146,24 @@ export function IndependentProcess({
     'The Sewer Pros does not perform sewer repair or replacement, by design. We are not trying to turn an inspection into a repair sale, and we do not profit from recommending major work.',
     'Our role is to inspect the line, document the visible condition on video, explain what we found in plain language, and give you an honest opinion you can use to decide what happens next.',
   ]
+  /*
+    ⚠ `null` OMITS THE SECOND CALLOUT, `undefined` KEEPS THE DEFAULT.
+    Every existing caller either omits `content` entirely or omits
+    `calloutTwo` within it, so `content?.calloutTwo === null` is false
+    for all of them and this section is unchanged. A page passing
+    `calloutTwo: null` explicitly opts out (18 §106 — "one concise
+    callout" is a page-specific choice, not a change to the shared
+    default).
+  */
+  const showCalloutTwo = content?.calloutTwo !== null
   const calloutTwoTitle =
     content?.calloutTwo?.title ?? 'Do Not Let a Sales-Driven Recommendation Make the Decision for You'
   const calloutTwoBody = content?.calloutTwo?.body ?? [
     'A repair recommendation should be based on documented conditions inside the sewer line, not pressure to approve work before you understand the problem. When the company diagnosing the problem can also sell the repair, getting a second opinion can help you separate the actual condition of the line from the proposed solution.',
     'The Sewer Pros does not repair or replace sewer lines. We provide video documentation and clear findings without a repair contract to sell, so you can understand what was observed and make an informed decision about what happens next.',
   ]
+  /** Same `null`-omits, `undefined`-defaults convention as `calloutTwo` above. */
+  const showClosing = content?.closing !== null
   const closing =
     content?.closing ??
     'Do not approve a major sewer repair based only on a sales-driven recommendation. The Sewer Pros does not repair or replace sewer lines, by design, so we have no repair contract to sell. Get a documented second opinion before you approve the expense.'
@@ -224,23 +238,30 @@ export function IndependentProcess({
         approved semantic-state token, 18 §8) rather than a new colour,
         and the gap from the callout above keeps the two readable as
         separate asides instead of one long block.
-      */}
-      <aside className="mt-6 flex items-start gap-4 rounded-md border-l-4 border-warning bg-[color-mix(in_srgb,var(--color-warning)_10%,white)] p-5 text-foreground">
-        <ExplanationIcon
-          aria-hidden="true"
-          className="mt-0.5 h-8 w-8 shrink-0 text-warning"
-        />
-        <div className="space-y-3">
-          <h3 className="text-lg font-semibold">{calloutTwoTitle}</h3>
-          {calloutTwoBody.map((paragraph) => (
-            <p key={paragraph} className="max-w-4xl text-lg leading-8">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </aside>
 
-      <p className="mt-10 max-w-5xl text-body-lg leading-8">{closing}</p>
+        Omitted entirely, not hidden, when `content.calloutTwo` is
+        explicitly `null` — see the `showCalloutTwo` note above.
+      */}
+      {showCalloutTwo && (
+        <aside className="mt-6 flex items-start gap-4 rounded-md border-l-4 border-warning bg-[color-mix(in_srgb,var(--color-warning)_10%,white)] p-5 text-foreground">
+          <ExplanationIcon
+            aria-hidden="true"
+            className="mt-0.5 h-8 w-8 shrink-0 text-warning"
+          />
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold">{calloutTwoTitle}</h3>
+            {calloutTwoBody.map((paragraph) => (
+              <p key={paragraph} className="max-w-4xl text-lg leading-8">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </aside>
+      )}
+
+      {showClosing && (
+        <p className="mt-10 max-w-5xl text-body-lg leading-8">{closing}</p>
+      )}
     </Section>
   )
 }
