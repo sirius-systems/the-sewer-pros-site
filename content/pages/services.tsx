@@ -4419,7 +4419,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     },
     /*
       Second two-column block, muted surface, same pattern as the
-      pre-purchase page's `considerations`.
+      pre-purchase page's `considerations`. Also folds in the
+      spec's "decision factors" checklist and "how often" guidance
+      as plain prose rather than new bespoke components, since
+      neither needs its own photograph.
     */
     considerations: {
       content: (
@@ -4432,6 +4435,17 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             maintenance usually starts with inspection rather than a
             calendar.
           </p>
+          <p>Useful evidence to consider includes:</p>
+          <ul>
+            <li>Prior backups, recurring clogs, or slow drains</li>
+            <li>Whether more than one fixture has been affected</li>
+            <li>Existing camera footage, reports, or cleaning records</li>
+            <li>Access points and the accessible condition of the line</li>
+            <li>
+              An approaching home purchase, sale, renovation, or excavation
+              project
+            </li>
+          </ul>
 
           <h2>Where it fits for commercial properties</h2>
           <p>
@@ -4439,6 +4453,16 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             unplanned backup carries operational cost beyond the plumbing.
             That changes the arithmetic of scheduled service relative to a
             residential line.
+          </p>
+
+          <h2>How often should a line be inspected or cleaned?</h2>
+          <p>
+            There is no single interval that is appropriate for every sewer
+            line. A property with a recurring history may benefit from a
+            different approach than one with no known symptoms, and a line
+            with no known issues does not need a default cleaning schedule.
+            The useful frequency, if any, comes from the line&rsquo;s own
+            condition and history.
           </p>
 
           <h2>What we will not do</h2>
@@ -4456,6 +4480,186 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           'the-sewer-pros-preventative-sewer-maintenance-considerations-commercial-4x3.webp',
       },
     },
+    /*
+      Reframes the shared "Inspect / Document / Decide" independence
+      section for a maintenance-interval decision rather than a repair
+      recommendation (pre-purchase's own override at
+      `svc-pre-purchase-sewer-inspection` is the repair-second-opinion
+      version of the same mechanism). See
+      `ServicePageContent.secondOpinion`.
+    */
+    secondOpinion: {
+      title: 'A Maintenance Interval Set From Evidence, Not a Sales Schedule',
+      intro: [
+        'The Sewer Pros sets a maintenance interval from what an inspection actually shows, not from a default calendar. A camera inspection documents the line’s current, accessible condition, which is the starting point for deciding whether a schedule makes sense at all.',
+      ],
+      steps: [
+        {
+          body: 'We use RIDGID sewer camera equipment to document the accessible line’s current condition and any prior signs of accumulation or root entry.',
+        },
+        {
+          body: 'We compare that condition against the property’s history, including how quickly material has accumulated between prior visits.',
+        },
+        {
+          body: 'If the evidence supports a recurring interval, we recommend one. If it does not, we say so rather than proposing a schedule the line does not need.',
+        },
+      ],
+      calloutOne: {
+        title: 'Why Evidence Before a Schedule?',
+        body: [
+          'A default interval treats every line the same regardless of its actual condition. Basing the decision on inspection findings means the recommendation reflects this specific line, not a generic maintenance plan.',
+        ],
+      },
+      calloutTwo: null,
+      ctaNote:
+        'Not sure whether a schedule makes sense for a specific property? A camera inspection can help answer that before committing to one.',
+      closing: null,
+    },
+    showDifferentiator: true,
+    audiences: {
+      title: 'Preventative Sewer Planning by Property Role',
+      intro:
+        'A maintenance decision can look different depending on who is making it. Each role below may use the same evidence differently.',
+      items: [
+        {
+          pageId: id('aud-property-managers'),
+          audience: 'Property Managers',
+          icon: 'checklist',
+          description:
+            'Create an intake path for recurring drainage concerns, multiple units, or documented maintenance planning.',
+          actionLabel: 'Learn About Property-Manager Support',
+        },
+        {
+          pageId: id('aud-home-buyers'),
+          audience: 'Home Buyers',
+          icon: 'house-search',
+          description:
+            'Understand visible sewer-line conditions before closing, as part of a pre-purchase sewer inspection.',
+          actionLabel: 'Learn About Pre-Purchase Sewer Inspections',
+        },
+        {
+          pageId: id('aud-real-estate-agents'),
+          audience: 'Real Estate Agents',
+          icon: 'checklist',
+          description:
+            'Coordinate a sewer scope around a transaction and share documented findings for buyers and sellers to discuss.',
+          actionLabel: 'Learn About Transaction Support',
+        },
+        {
+          pageId: id('aud-home-inspectors'),
+          audience: 'Home Inspectors',
+          icon: 'eye',
+          description:
+            'Coordinate a specialist sewer inspection for portions of the line a general home inspection may not cover.',
+          actionLabel: 'Learn About Coordinating an Inspection',
+        },
+      ],
+    },
+    /*
+      "When you may need this" router — the spec's readiness router,
+      mapped onto the shared `ProblemGrid` (title fixed by
+      `ServicePageTemplate` to "When you may need this"; see
+      `ServicePageContent.problems`). No per-card links: `ProblemContent`
+      is title/description only, so routing to a specific next service
+      happens through `comparison`, `audiences`, and `relatedPageIds`
+      below instead.
+    */
+    problems: [
+      {
+        title: 'A Backup or Clog Has Happened Before',
+        description:
+          'Recurring clogs or a repeat backup may justify a clearer look at the accessible line rather than another clearing alone.',
+      },
+      {
+        title: 'A Home Purchase or Sale Is Approaching',
+        description:
+          'A pending property decision can create a need for documented, visible-condition evidence before closing.',
+      },
+      {
+        title: 'A Renovation or Excavation Project Is Planned',
+        description:
+          'Knowing the approximate line route may help with planning around landscaping, a pool, or other site work.',
+      },
+      {
+        title: 'The Property Is Managed or Rented',
+        description:
+          'Recurring issues or multiple units may call for a repeatable intake path rather than a one-off visit.',
+      },
+      {
+        title: 'There Is No Known Symptom, but History Is Unclear',
+        description:
+          'A condition-aware inspection can establish a baseline before committing to any cleaning method or schedule.',
+      },
+      {
+        title: 'A Backup Is Happening Right Now',
+        description:
+          'An active backup is not a routine maintenance situation. Recurring-backup diagnosis is the more direct next step.',
+      },
+    ],
+    limitations: {
+      title: 'What Preventative Sewer Maintenance Cannot Guarantee',
+      intro:
+        'An evidence-based maintenance approach can inform a decision. It is not a certification and does not guarantee future performance.',
+      canIdentifyTitle: 'A maintenance-focused inspection may help identify',
+      canIdentify: [
+        'Visible current condition of the accessible line',
+        'How quickly material has accumulated since a prior visit',
+        'Whether a known cause of prior blockages is still present',
+        'Whether the accessible line supports the cleaning method being considered',
+      ],
+      cannotTitle: 'It cannot guarantee',
+      cannot: [
+        'That a future sewer backup will never occur',
+        'That every section of the line is accessible or visible',
+        'A pass/fail certification for the property',
+        'That cleaning is appropriate for every pipe condition',
+      ],
+      related: {
+        lead: 'Planning a renovation, landscaping, or excavation project?',
+        pageId: id('svc-sewer-line-locating'),
+        label: 'Learn about sewer line locating.',
+      },
+    },
+    showMarkets: true,
+    comparison: {
+      title: 'What Preventative Maintenance May Include',
+      intro:
+        'The right approach depends on the line’s condition, access, and history. These are the building blocks, not a package to choose from all at once.',
+      rows: [
+        {
+          service: 'Sewer camera inspection',
+          purpose: 'Document the accessible line’s current visible condition',
+          fit: 'History is unclear, symptoms have recurred, or a baseline is needed before choosing a cleaning method',
+          pageId: id('svc-sewer-camera-inspection'),
+        },
+        {
+          service: 'Sewer cleaning',
+          purpose: 'Address certain accessible blockages, buildup, roots, or debris',
+          fit: 'An inspection or history points to a specific, accessible restriction',
+          pageId: id('svc-sewer-cleaning'),
+        },
+        {
+          service: 'Hydro-jetting',
+          purpose: 'High-pressure water cleaning for certain recurring buildup',
+          fit: 'Line condition and access support it, based on inspection findings',
+          pageId: id('svc-hydro-jetting'),
+        },
+        {
+          service: 'Sewer line locating',
+          purpose: 'Identify the approximate route and position of the line',
+          fit: 'A renovation, landscaping, or excavation project is planned',
+          pageId: id('svc-sewer-line-locating'),
+        },
+        {
+          service: 'Monitoring and recordkeeping',
+          purpose: 'Preserve inspection findings and service history for later reference',
+          fit: 'No current symptoms exist, but a documented baseline is still useful',
+        },
+      ],
+      note: 'A technician can help determine which of these fits a specific line after reviewing its condition and history.',
+      surface: 'muted',
+    },
+    hideMidPageForm: true,
     /*
       Page-specific "How We Work" band, restating facts already stated
       in `explainer`/`considerations` above rather than adding anything
@@ -4501,12 +4705,15 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         'When a backup keeps returning, diagnosis looks for the mechanism behind it rather than only restoring flow. The findings can help clarify whether maintenance or further work makes sense.',
       [id('svc-sewer-camera-inspection')]:
         'A sewer camera inspection documents the visible condition of the accessible line. It is the evidence a sensible maintenance interval is based on.',
+      [id('svc-sewer-line-locating')]:
+        'Before a renovation, landscaping, or excavation project, locating can help establish the approximate route and position of the line.',
     },
     relatedLinkLabels: {
       [id('svc-sewer-cleaning')]: 'Learn About Sewer Cleaning',
       [id('svc-recurring-sewer-backup-diagnosis')]:
         'Learn About Recurring Backup Diagnosis',
       [id('svc-sewer-camera-inspection')]: 'Learn About Sewer Camera Inspections',
+      [id('svc-sewer-line-locating')]: 'Learn About Sewer Line Locating',
     },
     relatedImages: {
       [id('svc-sewer-cleaning')]: {
@@ -4527,6 +4734,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         source:
           'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
       },
+      [id('svc-sewer-line-locating')]: {
+        src: '/images/services/service-cards/the-sewer-pros-sewer-line-locating-equipment.webp',
+        alt: 'Locating transmitter and receiver equipment beside an open access point',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
     },
     faq: [
       {
@@ -4540,11 +4753,67 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           </p>
         ),
       },
+      {
+        question: 'Do all homes need routine sewer cleaning?',
+        answer: (
+          <p>
+            No. The right approach depends on the property&rsquo;s history,
+            line condition, access, past symptoms, and any planned project. A
+            universal cleaning schedule is not appropriate for every property.
+          </p>
+        ),
+      },
+      {
+        question: 'Can a sewer camera inspection help with preventative maintenance?',
+        answer: (
+          <p>
+            A camera inspection can document visible conditions in the
+            accessible portion of the line. It is useful when history is
+            unclear, problems have recurred, or a cleaning method needs
+            better context before it is chosen.
+          </p>
+        ),
+      },
+      {
+        question: 'Will preventative sewer maintenance stop future backups?',
+        answer: (
+          <p>
+            No service can guarantee that a future backup will not occur.
+            Inspection and appropriate maintenance may help inform decisions
+            and address certain accessible issues, but they do not predict or
+            prevent every future problem.
+          </p>
+        ),
+      },
+      {
+        question: 'Can a property manager request maintenance for multiple properties?',
+        answer: (
+          <p>
+            A property manager may request support for recurring drainage
+            concerns or maintenance planning. The appropriate workflow
+            depends on the number of properties, issue history, and access at
+            each one.
+          </p>
+        ),
+      },
+      {
+        question: 'Is sewer maintenance the same as sewer line locating?',
+        answer: (
+          <p>
+            No. Sewer line locating helps identify the approximate route and
+            position of a private sewer line for planning or coordination. It
+            does not replace cleaning, camera inspection, 811 utility
+            marking, or excavation safety planning.
+          </p>
+        ),
+      },
     ],
+    faqColumns: 2,
     relatedPageIds: [
       id('svc-sewer-cleaning'),
       id('svc-recurring-sewer-backup-diagnosis'),
       id('svc-sewer-camera-inspection'),
+      id('svc-sewer-line-locating'),
     ],
   },
 }
