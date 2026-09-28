@@ -124,6 +124,9 @@ export function ServicePageTemplate({
     // Two-column explainer — see types/content.ts `ServicePageContent.explainer`.
     ...(content.explainer !== undefined ? (['standard'] as const) : []),
     ...(content.body !== undefined ? (['standard'] as const) : []),
+    // Second two-column block, on `muted` — see
+    // types/content.ts `ServicePageContent.considerations`.
+    ...(content.considerations !== undefined ? (['dense'] as const) : []),
     ...(content.showDifferentiator === true ? (['standard'] as const) : []),
     // Audience/role router — reuses the hub's `AudiencePathways`; see
     // types/content.ts `ServicePageContent.audiences`.
@@ -268,6 +271,33 @@ export function ServicePageTemplate({
         </Section>
       )}
 
+      {content.considerations !== undefined && (
+        /*
+          Same two-column shape as `explainer` above, deliberately
+          distinct from it in two ways: `surface="muted"` (18 §11 — a
+          surface change signals a new topic on its own, without relying
+          on a wide gap to do that job) and `density="dense"`, which
+          keeps this section's own top/bottom padding tighter than
+          `explainer`'s `standard` so the two bands sit close while the
+          colour change stays the thing that marks the transition.
+        */
+        <Section density="dense" surface="muted">
+          <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-7">
+              <Prose>{content.considerations.content}</Prose>
+            </div>
+            <div className="lg:col-span-5">
+              <ImagePlaceholder
+                label={content.considerations.image.label}
+                filename={content.considerations.image.filename}
+                aspect="4/3"
+                className="w-full"
+              />
+            </div>
+          </div>
+        </Section>
+      )}
+
       {/*
         ⚠ BRAND SURFACE, AND THE SECTION ABOVE IT MATTERS. `TrustBar`
         is also `brand`, so this must not follow it directly — 18 §11
@@ -275,11 +305,13 @@ export function ServicePageTemplate({
         at the top of this file relies on at least one non-brand
         section separating them.
 
-        The `body` block above is that separator. Every page reaching
-        this branch has one (audited 2026-09-04). A page WITHOUT `body`
-        would put two brand surfaces together, so if that state ever
-        becomes reachable, give this section `surface="muted"` there
-        rather than leaving the pair adjacent.
+        `body` and/or `considerations` above are that separator (both
+        `muted`/light, never brand). Every page reaching this branch has
+        at least one of the two (audited 2026-09-04, extended
+        2026-09-28). A page with NEITHER would put two brand surfaces
+        together, so if that state ever becomes reachable, give this
+        section `surface="muted"` there rather than leaving the pair
+        adjacent.
       */}
       {content.showDifferentiator === true && (
         <IndependentProcess density="standard" />

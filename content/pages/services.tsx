@@ -3536,31 +3536,48 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           'the-sewer-pros-pre-purchase-sewer-inspection-explainer-monitor-4x3.webp',
       },
     },
-    body: (
-      <>
-        <h2>What it cannot tell you</h2>
-        <p>
-          It documents visible conditions on the day of inspection. It does not
-          guarantee future performance, and it does not establish who is legally
-          responsible for which portion of the line: that varies by
-          jurisdiction and is a question for the appropriate professional.
-        </p>
+    /*
+      Second two-column block: the same approved "cannot tell you" /
+      timing / independence copy that used to be `body`, now its own
+      muted, dense section with a placeholder beside it. See
+      `ServicePageContent.considerations`.
+    */
+    considerations: {
+      content: (
+        <>
+          <h2>What it cannot tell you</h2>
+          <p>
+            It documents visible conditions on the day of inspection. It does
+            not guarantee future performance, and it does not establish who
+            is legally responsible for which portion of the line: that
+            varies by jurisdiction and is a question for the appropriate
+            professional.
+          </p>
 
-        <h2>Timing</h2>
-        <p>
-          The inspection is most useful while you still have decisions
-          available to you. Findings are information for your due diligence:
-          what you do with them is your decision, made with your own advisers.
-        </p>
+          <h2>Timing</h2>
+          <p>
+            The inspection is most useful while you still have decisions
+            available to you. Findings are information for your due
+            diligence: what you do with them is your decision, made with
+            your own advisers.
+          </p>
 
-        <h2>Why independence matters here</h2>
-        <p>
-          A pre-purchase inspection informs a significant financial decision.
-          The Sewer Pros does not perform sewer repair or replacement, so the
-          findings are not an opening step toward selling you the remedy.
-        </p>
-      </>
-    ),
+          <h2>Why independence matters here</h2>
+          <p>
+            A pre-purchase inspection informs a significant financial
+            decision. The Sewer Pros does not perform sewer repair or
+            replacement, so the findings are not an opening step toward
+            selling you the remedy.
+          </p>
+        </>
+      ),
+      image: {
+        label:
+          'A technician discussing pre-purchase sewer inspection findings with a customer',
+        filename:
+          'the-sewer-pros-pre-purchase-sewer-inspection-considerations-findings-review-4x3.webp',
+      },
+    },
     process: [
       { title: 'Locate access' },
       { title: 'Inspect the line' },
