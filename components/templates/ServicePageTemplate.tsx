@@ -298,25 +298,41 @@ export function ServicePageTemplate({
       {content.considerations !== undefined && (
         /*
           Same two-column shape as `explainer` above, deliberately
-          distinct from it in two ways: `surface="muted"` (18 §11 — a
+          distinct from it in three ways: `surface="muted"` (18 §11 — a
           surface change signals a new topic on its own, without relying
-          on a wide gap to do that job) and `density="dense"`, which
-          keeps this section's own top/bottom padding tighter than
+          on a wide gap to do that job); `density="dense"`, which keeps
+          this section's own top/bottom padding tighter than
           `explainer`'s `standard` so the two bands sit close while the
-          colour change stays the thing that marks the transition.
+          colour change stays the thing that marks the transition; and
+          `lg:items-center` rather than `lg:items-start`, since this
+          column holds three H2 blocks against a single image — centring
+          keeps the image aligned with the middle of that taller
+          cluster instead of pinned to its top edge.
         */
         <Section density="dense" surface="muted">
-          <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-start">
+          <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <Prose>{content.considerations.content}</Prose>
             </div>
             <div className="lg:col-span-5">
-              <ImagePlaceholder
-                label={content.considerations.image.label}
-                filename={content.considerations.image.filename}
-                aspect="4/3"
-                className="w-full"
-              />
+              {'src' in content.considerations.image ? (
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md border border-border bg-surface-muted">
+                  <Image
+                    src={content.considerations.image.src}
+                    alt={content.considerations.image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <ImagePlaceholder
+                  label={content.considerations.image.label}
+                  filename={content.considerations.image.filename}
+                  aspect="4/3"
+                  className="w-full"
+                />
+              )}
             </div>
           </div>
         </Section>

@@ -3546,45 +3546,58 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       },
     },
     /*
-      Second two-column block: the same approved "cannot tell you" /
-      timing / independence copy that used to be `body`, now its own
-      muted, dense section with a placeholder beside it. See
-      `ServicePageContent.considerations`.
+      Second two-column block: limits / timing / independence, beside an
+      approved photograph. See `ServicePageContent.considerations`.
     */
     considerations: {
       content: (
         <>
-          <h2>What it cannot tell you</h2>
+          <h2>What a Sewer Camera Inspection Cannot Determine</h2>
           <p>
-            It documents visible conditions on the day of inspection. It does
-            not guarantee future performance, and it does not establish who
-            is legally responsible for which portion of the line: that
-            varies by jurisdiction and is a question for the appropriate
-            professional.
+            A sewer camera inspection documents visible conditions in the
+            accessible portion of the line on the day of the inspection. It
+            does not guarantee how the sewer line will perform in the
+            future, and it may not show areas the camera cannot reach or
+            view clearly.
+          </p>
+          <p>
+            An inspection also does not determine who is legally responsible
+            for each portion of the sewer line. Responsibility varies by
+            jurisdiction, so confirm local requirements with the appropriate
+            real estate, legal, or plumbing professional.
           </p>
 
-          <h2>Timing</h2>
+          <h2>When to Schedule a Pre-Purchase Sewer Inspection</h2>
           <p>
-            The inspection is most useful while you still have decisions
-            available to you. Findings are information for your due
-            diligence: what you do with them is your decision, made with
-            your own advisers.
+            A pre-purchase sewer inspection is most useful while you still
+            have time to consider the findings as part of your due
+            diligence. Scheduling before closing can give you an opportunity
+            to review what was visible and discuss any questions with your
+            own advisors.
+          </p>
+          <p>
+            The inspection provides information for your decision; what you
+            do with the findings is up to you and your advisors.
           </p>
 
-          <h2>Why independence matters here</h2>
+          <h2>Why Independent Sewer Inspection Matters Before You Buy</h2>
           <p>
-            A pre-purchase inspection informs a significant financial
-            decision. The Sewer Pros does not perform sewer repair or
-            replacement, so the findings are not an opening step toward
-            selling you the remedy.
+            A sewer inspection can inform a significant financial decision.
+            The Sewer Pros provides sewer inspection and cleaning services,
+            but does not perform sewer repair or replacement. That means the
+            inspection findings are not an opening step toward selling you a
+            repair or replacement.
+          </p>
+          <p>
+            Use the findings to understand what was visible during the
+            inspection and decide what questions, if any, you want to raise
+            with your own advisors.
           </p>
         </>
       ),
       image: {
-        label:
-          'A technician discussing pre-purchase sewer inspection findings with a customer',
-        filename:
-          'the-sewer-pros-pre-purchase-sewer-inspection-considerations-findings-review-4x3.webp',
+        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-sewer-inspection-limitations-ridgid-seesnake-4x3.webp',
+        alt: 'RIDGID SeeSnake sewer camera equipment representing the limits and scope of a pre-purchase inspection',
       },
     },
     process: [
