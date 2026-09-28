@@ -3500,26 +3500,44 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       src: '/images/services/pre-purchase-sewer-inspection/hero/the-sewer-pros-pre-purchase-sewer-inspection-hero-ridgid-seesnake-cs12x-16x9.webp',
       focus: 'right',
     },
+    /*
+      Two-column explainer: same approved copy the top of `body` used to
+      carry, moved here so it can sit beside an image placeholder rather
+      than run full-width in the reading-width `Prose` column below.
+      See `ServicePageContent.explainer`.
+    */
+    explainer: {
+      content: (
+        <>
+          <h2>Why a Sewer Line Inspection Matters Before You Buy</h2>
+          <p>
+            A general property inspection covers a great deal, but the sewer
+            line runs underground and is not visible without a camera. It is
+            one of the few property systems where a serious condition can
+            exist with no symptom at the fixtures on the day you view the
+            property.
+          </p>
+
+          <h3>What a Pre-Purchase Sewer Inspection Can Show</h3>
+          <ul>
+            <li>The visible condition of the accessible line</li>
+            <li>Whether roots have entered, and where</li>
+            <li>Joint separation, offsets, and visible cracks</li>
+            <li>Standing water suggesting a low section or restriction</li>
+            <li>Pipe material and changes along the run</li>
+            <li>Evidence of previous work</li>
+          </ul>
+        </>
+      ),
+      image: {
+        label:
+          'A technician reviewing sewer camera footage on a monitor during a pre-purchase inspection',
+        filename:
+          'the-sewer-pros-pre-purchase-sewer-inspection-explainer-monitor-4x3.webp',
+      },
+    },
     body: (
       <>
-        <h2>Why the sewer line is worth inspecting separately</h2>
-        <p>
-          A general property inspection covers a great deal, but the sewer line
-          runs underground and is not visible without a camera. It is one of the
-          few property systems where a serious condition can exist with no
-          symptom at the fixtures on the day you view the property.
-        </p>
-
-        <h2>What the inspection can tell you</h2>
-        <ul>
-          <li>The visible condition of the accessible line</li>
-          <li>Whether roots have entered, and where</li>
-          <li>Joint separation, offsets, and visible cracks</li>
-          <li>Standing water suggesting a low section or restriction</li>
-          <li>Pipe material and changes along the run</li>
-          <li>Evidence of previous work</li>
-        </ul>
-
         <h2>What it cannot tell you</h2>
         <p>
           It documents visible conditions on the day of inspection. It does not
