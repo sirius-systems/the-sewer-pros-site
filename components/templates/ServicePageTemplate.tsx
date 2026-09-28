@@ -1,5 +1,18 @@
 import Image from 'next/image'
-import { Section, Prose, ImagePlaceholder, type SectionDensity } from '@/components/ui'
+import {
+  Section,
+  Prose,
+  ImagePlaceholder,
+  ButtonLink,
+  type SectionDensity,
+} from '@/components/ui'
+import { PRIMARY_CTA } from '@/components/layout/cta'
+import {
+  CameraIcon,
+  MonitorIcon,
+  PipeIcon,
+  ChecklistIcon,
+} from '@/components/sections/section-icons'
 import {
   Hero,
   TrustBar,
@@ -92,6 +105,14 @@ import type { MasterPageRecord, ServicePageContent } from '@/types'
  * (14 §21's substitution tests demand genuinely different copy per
  * service — a field-per-heading schema would work against that).
  */
+/** Icon lookup for `ServicePageContent.howWeWork` items. */
+const HOW_WE_WORK_ICONS = {
+  camera: CameraIcon,
+  monitor: MonitorIcon,
+  pipe: PipeIcon,
+  checklist: ChecklistIcon,
+} as const
+
 export interface ServicePageTemplateProps {
   page: MasterPageRecord
   content: ServicePageContent
@@ -143,7 +164,11 @@ export function ServicePageTemplate({
       : []),
     // Capabilities/limits panel — reuses the hub's `LimitationsPanel`.
     ...(content.limitations !== undefined ? (['dense'] as const) : []),
-    ...(authorityBandRenders() ? (['standard'] as const) : []),
+    // Either the page's own `howWeWork` band or the shared
+    // `AuthorityBand` — always exactly one of the two, both `standard`.
+    ...(content.howWeWork !== undefined || authorityBandRenders()
+      ? (['standard'] as const)
+      : []),
     // Related-services comparison — reuses the hub's `ServiceComparison`.
     // Always brand surface; JSX places `LeadFormSection` directly before
     // it so it never touches `AuthorityBand` (see the JSX comment there).
@@ -392,7 +417,65 @@ export function ServicePageTemplate({
         <LimitationsPanel content={content.limitations} />
       )}
 
-      <AuthorityBand title="How we work" />
+      {content.howWeWork !== undefined ? (
+        /*
+          Page-specific replacement for the shared `AuthorityBand`
+          proof-points band — see `ServicePageContent.howWeWork`.
+          Visual treatment matches `AuthorityBand`'s proof-points variant
+          exactly (same navy surface, card borders, icon/heading/intro
+          sizing, and default `PRIMARY_CTA` button) so the swap is
+          invisible in the page's rhythm; only the source of the cards'
+          copy differs.
+        */
+        <Section density="standard" surface="brand" labelledBy="how-we-work">
+          <h2
+            id="how-we-work"
+            className="max-w-2xl text-h2 font-semibold tracking-tight text-balance"
+          >
+            {content.howWeWork.title}
+          </h2>
+          {content.howWeWork.intro !== undefined && (
+            <p className="mt-4 max-w-[var(--container-reading)] text-body-lg opacity-90">
+              {content.howWeWork.intro}
+            </p>
+          )}
+          <ul
+            className={`mt-10 grid gap-6 ${
+              content.howWeWork.items.length % 2 === 0
+                ? 'sm:grid-cols-2'
+                : 'sm:grid-cols-3'
+            }`}
+          >
+            {content.howWeWork.items.map((item) => {
+              const Icon = HOW_WE_WORK_ICONS[item.icon]
+              return (
+                <li
+                  key={item.title}
+                  className="rounded-md border border-white/15 p-6"
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon
+                      aria-hidden="true"
+                      className="h-6 w-6 shrink-0 text-white/80"
+                    />
+                    <h3 className="text-base font-medium">{item.title}</h3>
+                  </div>
+                  <p className="mt-1 text-sm leading-6 opacity-80">
+                    {item.description}
+                  </p>
+                </li>
+              )
+            })}
+          </ul>
+          <div className="mt-10">
+            <ButtonLink href={PRIMARY_CTA.href} variant="secondary">
+              {PRIMARY_CTA.label}
+            </ButtonLink>
+          </div>
+        </Section>
+      ) : (
+        <AuthorityBand title="How we work" />
+      )}
 
       <ProofGallery title="Recent work" />
 
