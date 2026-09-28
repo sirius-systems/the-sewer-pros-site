@@ -1401,6 +1401,26 @@ export interface ServicePageContent extends BasePageContent {
     image: SplitSectionImage
   }
   /**
+   * Per-page override for the shared "Inspect / Document / Decide"
+   * independence section (`IndependentProcess`), rendered when
+   * `showDifferentiator` is set. Same shape and same DEC-099
+   * "every field optional, unnamed fields keep the approved default"
+   * rule as `ServiceHubContent.secondOpinion`. `calloutTwo: null` or
+   * `closing: null` omits that part of the section entirely rather
+   * than falling back to the shared default — see `IndependentProcess`.
+   */
+  secondOpinion?: {
+    eyebrow?: string
+    title?: string
+    intro?: readonly string[]
+    steps?: readonly { title?: string; body?: string }[]
+    calloutOne?: { title?: string; body?: readonly string[] }
+    calloutTwo?: { title?: string; body?: readonly string[] } | null
+    ctaLabel?: string
+    ctaNote?: string
+    closing?: string | null
+  }
+  /**
    * Optional photographic hero backdrop for a non-hub service page.
    *
    * Opt-in per page: 18 §28-34 require real inspection photography

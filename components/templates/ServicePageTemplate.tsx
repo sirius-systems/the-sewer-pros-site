@@ -354,7 +354,7 @@ export function ServicePageTemplate({
         adjacent.
       */}
       {content.showDifferentiator === true && (
-        <IndependentProcess density="standard" />
+        <IndependentProcess density="standard" content={content.secondOpinion} />
       )}
 
       {content.audiences !== undefined && (

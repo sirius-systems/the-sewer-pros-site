@@ -3607,6 +3607,42 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       { title: 'Walk through the findings' },
     ],
     showDifferentiator: true,
+    /*
+      Page-specific rewrite of the shared "Inspect / Document / Decide"
+      section for a pre-purchase transaction context. `eyebrow` and
+      `ctaLabel` are left unset because they already match the shared
+      default verbatim; `calloutTwo` and `closing` are explicitly
+      omitted (one concise callout, no duplicated closing statement).
+      See `ServicePageContent.secondOpinion`.
+    */
+    secondOpinion: {
+      title:
+        'Before You Approve Major Sewer Work, Get an Independent Second Opinion',
+      intro: [
+        'A sewer repair recommendation can involve a significant expense. The Sewer Pros provides sewer inspections and cleaning, but does not perform sewer repair or replacement. A camera inspection can document visible conditions inside the accessible portion of the sewer line, giving you information to review before deciding what to do next.',
+      ],
+      steps: [
+        {
+          body: 'We use RIDGID sewer camera equipment to inspect the accessible line for visible conditions such as root entry, offsets, cracks, standing water, and restrictions.',
+        },
+        {
+          body: 'We document what the camera can see so you can review the observed conditions, rather than relying only on a verbal description.',
+        },
+        {
+          body: 'Use the inspection findings to decide whether to ask questions, seek another qualified opinion, or discuss appropriate next steps with your own advisors.',
+        },
+      ],
+      calloutOne: {
+        title: 'Why Get an Independent Inspection?',
+        body: [
+          'Because The Sewer Pros does not sell sewer repair or replacement, the inspection is not a sales appointment for those services. Our role is to document visible conditions and explain the findings, so you can make your own informed decision.',
+        ],
+      },
+      calloutTwo: null,
+      ctaNote:
+        'Already received a sewer repair recommendation? Consider getting the line inspected and reviewing the documented findings before approving major work.',
+      closing: null,
+    },
     showMarkets: true,
     /*
       PENDING PHOTOGRAPHY: `LimitationsPanel` and `ServiceComparison`
