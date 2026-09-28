@@ -3529,14 +3529,157 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       { title: 'Walk through the findings' },
     ],
     showDifferentiator: true,
+    showMarkets: true,
+    /*
+      PENDING PHOTOGRAPHY: `LimitationsPanel` and `ServiceComparison`
+      both accept an optional `imageSrc` backdrop (see their signatures
+      in components/sections/ServiceHubSections.tsx), left unset here
+      because no approved photography exists yet for this page (only
+      `public/images/services/pre-purchase-sewer-inspection/.gitkeep`).
+      Once real photos are approved (18 §28-34 — no stock/AI imagery),
+      the natural slots are:
+        limitations backdrop — a faded technician/monitor photo, saved
+          under public/images/services/pre-purchase-sewer-inspection/
+          and passed as `imageSrc` to the `LimitationsPanel` call in
+          `ServicePageTemplate`.
+        comparison backdrop  — a full-bleed inspection/equipment photo,
+          same directory, passed as `imageSrc` to the `ServiceComparison`
+          call. Follow the naming convention other services use, e.g.
+          the-sewer-pros-pre-purchase-sewer-inspection-comparison-background-16x9.webp
+      Both components render without a photograph until then (a plain
+      light panel and a plain navy band, respectively) — no placeholder
+      box ships on this indexable page.
+    */
+    audiences: {
+      title: 'Who is a pre-purchase sewer inspection for?',
+      intro:
+        'A pre-purchase sewer inspection can be useful to different people involved in a property transaction. Each role uses the findings a little differently, and the linked pages go into more detail.',
+      items: [
+        {
+          pageId: id('aud-home-buyers'),
+          audience: 'Home buyers',
+          icon: 'house-key',
+          description:
+            'Understand visible conditions in accessible portions of the sewer line before closing, so the line’s condition is part of what you know rather than what you discover later.',
+          actionLabel: 'Learn about home-buyer sewer inspections',
+        },
+        {
+          pageId: id('aud-real-estate-agents'),
+          audience: 'Real estate agents',
+          icon: 'checklist',
+          description:
+            'Coordinate a sewer scope around a transaction’s timeline and give buyers and sellers documented, visible-condition information to discuss.',
+          actionLabel: 'Learn about transaction support',
+        },
+        {
+          pageId: id('aud-home-inspectors'),
+          audience: 'Home inspectors',
+          icon: 'eye',
+          description:
+            'Coordinate a specialist sewer scope alongside a general home inspection for the portions of the sewer line a standard inspection may not cover.',
+          actionLabel: 'Learn about coordinating an inspection',
+        },
+        {
+          pageId: id('aud-home-sellers'),
+          audience: 'Home sellers',
+          icon: 'home',
+          description:
+            'Understand visible sewer-line conditions before listing or responding to a buyer’s question, using the same documented, camera-based findings.',
+          actionLabel: 'Learn about seller sewer inspections',
+        },
+      ],
+    },
+    limitations: {
+      title: 'What a pre-purchase sewer inspection can and cannot tell you',
+      intro:
+        'A sewer scope documents visible conditions in the accessible portions of the line on the day of the inspection. It is diagnostic information for your due diligence, not a certification or a guarantee.',
+      canIdentifyTitle: 'A sewer scope may help identify',
+      canIdentify: [
+        'Visible blockages or buildup in the accessible line',
+        'Root intrusion, and approximately where it appears',
+        'Joint separation, offsets, or visible cracks',
+        'Standing water suggesting a low section or restriction',
+        'Pipe material and visible changes along the run',
+        'Visible evidence of previous repair work',
+      ],
+      cannotTitle: 'It cannot guarantee',
+      cannot: [
+        'That every portion of the line is visible or accessible',
+        'That no hidden defect exists outside the camera’s view',
+        'Future pipe performance or maintenance needs',
+        'The cost, scope, or timing of any future repair',
+        'Who is legally responsible for which portion of the line — that varies by jurisdiction and is a question for the appropriate professional',
+        'A pass/fail result for the property',
+      ],
+      related: {
+        lead: 'Want the full picture of what a camera inspection covers?',
+        pageId: id('svc-sewer-camera-inspection'),
+        label: 'Explore sewer camera inspection',
+      },
+    },
+    comparison: {
+      title: 'Pre-purchase sewer inspection vs. related services',
+      intro:
+        'A pre-purchase sewer inspection is a specific use of a sewer camera inspection, timed to a property transaction. Compare it with related services to help confirm it is the right starting point.',
+      rows: [
+        {
+          service: 'Pre-purchase sewer inspection',
+          purpose: 'Document visible sewer-line conditions ahead of a property decision',
+          fit: 'You are buying, selling, or otherwise involved in a real-estate transaction',
+        },
+        {
+          service: 'Sewer camera inspection',
+          purpose: 'See visible conditions inside an accessible sewer line for any reason',
+          fit: 'Recurring symptoms, a renovation, or a general evaluation outside a transaction',
+          pageId: id('svc-sewer-camera-inspection'),
+        },
+        {
+          service: 'Sewer cleaning',
+          purpose: 'Remove or address certain blockages and buildup in the sewer line',
+          fit: 'A blockage or flow issue needs cleaning',
+          pageId: id('svc-sewer-cleaning'),
+        },
+        {
+          service: 'Line locating',
+          purpose: 'Identify the approximate path of an underground line',
+          fit: 'A planned project, excavation, or route-verification question',
+          pageId: id('svc-sewer-line-locating'),
+        },
+      ],
+      note: 'A general home inspection may not include a camera review of the sewer line; ask the home inspector what their inspection covers.',
+    },
     faq: [
+      {
+        question: 'What is a pre-purchase sewer inspection?',
+        answer: (
+          <p>
+            A pre-purchase sewer inspection, sometimes called a sewer scope,
+            uses a specialized camera to view accessible portions of a
+            property&rsquo;s sewer line before a home purchase. It can help
+            identify visible conditions such as blockages, root intrusion,
+            offsets, cracks, or standing water that may affect drainage.
+          </p>
+        ),
+      },
       {
         question: 'Is a sewer inspection part of a standard home inspection?',
         answer: (
           <p>
             Typically not. A general inspection does not usually include putting
             a camera down the sewer line, which is why it is commonly arranged
-            separately.
+            separately. Ask the home inspector what their inspection covers.
+          </p>
+        ),
+      },
+      {
+        question:
+          'Can a sewer scope guarantee the sewer line is problem-free?',
+        answer: (
+          <p>
+            No. A sewer scope documents visible conditions in the accessible
+            portions of the line at the time of inspection. It cannot
+            guarantee that every issue is visible, accessible, or detectable,
+            or predict future performance.
           </p>
         ),
       },
@@ -3547,6 +3690,16 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             You have documented evidence of the line&rsquo;s condition. What you
             do with it, including obtaining repair quotes or discussing it with
             your agent and advisers, is your decision.
+          </p>
+        ),
+      },
+      {
+        question: 'Can my agent or home inspector coordinate the appointment?',
+        answer: (
+          <p>
+            Coordination may be possible depending on property access and
+            authorization. Share the property address, timeline, and contact
+            details when you request service.
           </p>
         ),
       },

@@ -15,6 +15,9 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
+  AudiencePathways,
+  LimitationsPanel,
+  ServiceComparison,
   authorityBandRenders,
   processStepsRenders,
   marketCoverageRenders,
@@ -115,6 +118,9 @@ export function ServicePageTemplate({
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(content.showDifferentiator === true ? (['standard'] as const) : []),
+    // Audience/role router — reuses the hub's `AudiencePathways`; see
+    // types/content.ts `ServicePageContent.audiences`.
+    ...(content.audiences !== undefined ? (['dense'] as const) : []),
     ...(problemGridRenders(content.problems)
       ? (['standard'] as const)
       : []),
@@ -124,9 +130,25 @@ export function ServicePageTemplate({
     ...(content.process !== undefined && processStepsRenders(content.process)
       ? (['dense'] as const)
       : []),
+    // Capabilities/limits panel — reuses the hub's `LimitationsPanel`.
+    ...(content.limitations !== undefined ? (['dense'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
+    // Related-services comparison — reuses the hub's `ServiceComparison`.
+    // Always brand surface; JSX places `LeadFormSection` directly before
+    // it so it never touches `AuthorityBand` (see the JSX comment there).
+    // Tracked here right before `showMarkets`, matching JSX order —
+    // `ProofGallery`/`TestimonialBand`/`LeadFormSection` between them
+    // carry no density entry, same pre-existing convention as elsewhere
+    // in this list.
+    ...(content.comparison !== undefined ? (['dense'] as const) : []),
+    // `MarketCoverage` is rendered at `standard` here, not the component's
+    // own `dense` default (see the matching JSX prop below): with
+    // `comparison` also authored, `comparison → markets → related → faq`
+    // would otherwise run four consecutive `dense` sections (18 §108's
+    // rejected run). No page sets `showMarkets` today, so this is the
+    // first and carries no regression risk.
     ...(content.showMarkets === true && marketCoverageRenders()
-      ? (['dense'] as const)
+      ? (['standard'] as const)
       : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
@@ -186,6 +208,10 @@ export function ServicePageTemplate({
         <IndependentProcess density="standard" />
       )}
 
+      {content.audiences !== undefined && (
+        <AudiencePathways content={content.audiences} />
+      )}
+
       {content.problems !== undefined && (
         <ProblemGrid
           id="when-you-may-need-this"
@@ -211,16 +237,34 @@ export function ServicePageTemplate({
         />
       )}
 
+      {content.limitations !== undefined && (
+        <LimitationsPanel content={content.limitations} />
+      )}
+
       <AuthorityBand title="How we work" />
 
       <ProofGallery title="Recent work" />
 
       <TestimonialBand />
 
+      {/*
+        ⚠ `ServiceComparison` is always a brand/navy surface, same as
+        `AuthorityBand` above. `ProofGallery` and `TestimonialBand` both
+        render null while their governing datasets stay empty (see their
+        own file headers), so they are not a reliable separator today —
+        `LeadFormSection` (always renders, `surface="muted"` by default)
+        is placed directly before `ServiceComparison` instead, so the two
+        brand surfaces never touch regardless of proof/testimonial data
+        state (18 §11).
+      */}
       <LeadFormSection />
 
+      {content.comparison !== undefined && (
+        <ServiceComparison content={content.comparison} />
+      )}
+
       {content.showMarkets === true && (
-        <MarketCoverage density="dense" title="Where this service is available" />
+        <MarketCoverage density="standard" title="Where this service is available" />
       )}
 
       {content.relatedPageIds !== undefined && (
