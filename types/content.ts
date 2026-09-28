@@ -1372,7 +1372,14 @@ export interface HubMarketCard {
 export type HubApproachIcon = 'conversation' | 'camera' | 'document' | 'decision' | 'pipe'
 
 /** An audience-card mark on a service hub. */
-export type HubAudienceIcon = 'building' | 'checklist' | 'house-key' | 'home' | 'community'
+export type HubAudienceIcon =
+  | 'building'
+  | 'checklist'
+  | 'house-key'
+  | 'home'
+  | 'community'
+  | 'eye'
+  | 'document'
 
 /** An audience destination on a service hub. */
 export interface HubAudienceCard {
@@ -1396,6 +1403,10 @@ export type HubSymptomIcon =
   | 'locate'
   | 'pipe'
   | 'house-key'
+  | 'plant'
+  | 'checklist'
+  | 'droplet'
+  | 'community'
 
 /** A material-table row mark on a service hub. */
 export type HubMaterialIcon =
@@ -1410,6 +1421,11 @@ export type HubMaterialIcon =
   | 'low-point'
   | 'obstruction'
   | 'camera'
+  | 'route'
+  | 'fence'
+  | 'checklist'
+  | 'home'
+  | 'building'
 
 /**
  * One condition tile in a hub's "what it may show" list. A bare string
@@ -1522,10 +1538,13 @@ export interface ServiceHubContent {
     /** Small label above the title. Omitted by default. */
     eyebrow?: string
     title: string
-    intro: string
+    /** Omitted by default, matching the shared band's own minimal form. */
+    intro?: string
     items: readonly { title: string; description: string; icon: HubApproachIcon }[]
     /** Scope statement below the cards, e.g. a repair-boundary note. */
     note?: string
+    /** Overrides the sitewide `PRIMARY_CTA` label/destination for this band. */
+    cta?: { label: string; href: string }
   }
   /**
    * Per-hub override for the shared "Inspect / Document / Decide"
@@ -1570,6 +1589,14 @@ export interface ServiceHubContent {
    * camera, document (the camera hub's set).
    */
   processIcons?: readonly HubProcessIcon[]
+  /**
+   * `center-full` spans the process figure across the 2x2 cards and the
+   * preparation checklist beneath them, keeping its own 4:3 frame and
+   * centering it vertically over that full height, rather than the
+   * default `fill-cards` (unset), which crops the figure to the cards'
+   * row only.
+   */
+  processImageLayout?: 'fill-cards' | 'center-full'
   /** Section headings that default to the camera hub's. */
   headings?: {
     schedule?: { title: string; intro: string }
@@ -1638,7 +1665,7 @@ export interface ServiceHubContent {
      */
     cannot: readonly (string | { lead: string; text: string; icon?: HubSymptomIcon })[]
     /** Contextual link beneath the panels. */
-    related?: { lead: string; pageId: PageId; label: string }
+    related?: { lead: string; pageId: PageId; label: string; trailing?: string }
   }
   /**
    * What the service may help with: an optional row of short tiles plus
@@ -1666,7 +1693,7 @@ export interface ServiceHubContent {
     note?: string
   }
   /** "Before your appointment" panel, shown under the process steps. */
-  prep?: { title: string; items: readonly string[] }
+  prep?: { title: string; items: readonly string[]; note?: string }
   /** "What you receive". */
   deliverables?: DeliverablesContent
   /** Audience pathways. Existing audience pages only. */
@@ -1682,7 +1709,8 @@ export interface ServiceHubContent {
   evidence?: {
     id?: string
     title: string
-    intro: string
+    /** A bare string renders as one paragraph; pass JSX for multiple paragraphs or an inline link. */
+    intro: ReactNode
     caveat: string
     /** Desktop column count. Defaults to 2, the original gallery's fixed layout. */
     columns?: 2 | 3 | 4
@@ -1693,7 +1721,14 @@ export interface ServiceHubContent {
     }[]
   }
   /** Request-service section: copy beside the lead form. */
-  request?: { id?: string; title: string; intro: string | readonly string[] }
+  request?: {
+    id?: string
+    title: string
+    intro: string | readonly string[]
+    /** Form heading and submit-button label. Defaults to "Request service". */
+    formTitle?: string
+    submitLabel?: string
+  }
   /** Final call to action above the footer: copy beside the lead form. */
   closing?: { title: string; intro: string | readonly string[] }
   /** Related-services comparison. */

@@ -444,6 +444,16 @@ export function ObstructionMarkerIcon(props: IconProps) {
   )
 }
 
+/** Fence, pool, or hardscape work - a fence line of posts and rails. */
+export function FenceIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M4 5v15M11 5v15M18 5v15" />
+      <path d="M2 9h20M2 15h20" />
+    </svg>
+  )
+}
+
 /**
  * ⚠ A CHECK IS THE FALLBACK, NOT THE DEFAULT CHOICE. An item that
  * names no icon gets this; an item that names one gets a mark that
