@@ -1369,7 +1369,7 @@ export interface HubMarketCard {
 }
 
 /** An approach-card mark on a service hub. */
-export type HubApproachIcon = 'conversation' | 'camera' | 'document' | 'decision' | 'pipe'
+export type HubApproachIcon = 'conversation' | 'camera' | 'document' | 'decision' | 'pipe' | 'eye'
 
 /** An audience-card mark on a service hub. */
 export type HubAudienceIcon =
@@ -1380,6 +1380,8 @@ export type HubAudienceIcon =
   | 'community'
   | 'eye'
   | 'document'
+  | 'commercial-building'
+  | 'house-document'
 
 /** An audience destination on a service hub. */
 export interface HubAudienceCard {
@@ -1407,6 +1409,11 @@ export type HubSymptomIcon =
   | 'checklist'
   | 'droplet'
   | 'community'
+  | 'sink-droplet'
+  | 'bath'
+  | 'toilet'
+  | 'kitchen-sink'
+  | 'floor-drain'
 
 /** A material-table row mark on a service hub. */
 export type HubMaterialIcon =
@@ -1426,6 +1433,12 @@ export type HubMaterialIcon =
   | 'checklist'
   | 'home'
   | 'building'
+  | 'kitchen-sink'
+  | 'bathroom-sink'
+  | 'bath'
+  | 'toilet'
+  | 'floor-drain-drop'
+  | 'washing-machine'
 
 /**
  * One condition tile in a hub's "what it may show" list. A bare string
@@ -1646,6 +1659,8 @@ export interface ServiceHubContent {
     answer: string
     signsTitle: string
     signs: readonly string[]
+    /** Sits under the checklist. Keeps the signs from reading as a diagnosis. */
+    closingNote?: string
     links: readonly { pageId: PageId; label: string }[]
   }
   /** What the service can and cannot show, side by side. */
