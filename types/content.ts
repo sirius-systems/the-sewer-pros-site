@@ -1511,6 +1511,7 @@ export type HubAudienceIcon =
   | 'document'
   | 'commercial-building'
   | 'house-document'
+  | 'house-search'
 
 /** An audience destination on a service hub. */
 export interface HubAudienceCard {

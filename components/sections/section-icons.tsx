@@ -284,6 +284,18 @@ export function HouseKeyIcon(props: IconProps) {
   )
 }
 
+/** Home buyers reviewing a property — a house with a magnifying glass. */
+export function HouseSearchIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3.5 11 12 4l8.5 7" />
+      <path d="M5.5 9.5V20h6.5" />
+      <circle cx="16.5" cy="15.5" r="3" />
+      <path d="m18.8 17.8 2 2" />
+    </svg>
+  )
+}
+
 /** A home - roofline and door. */
 export function HomeIcon(props: IconProps) {
   return (
