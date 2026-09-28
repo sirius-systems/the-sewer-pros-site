@@ -27,7 +27,7 @@ Rules for every image:
 | File | Aspect | Section | Shot |
 |---|---|---|---|
 | `hero/the-sewer-pros-drain-cleaning-hero-residential-cleanout-ridgid-equipment-16x9.webp` | 16:9, 1600px+ wide | Hero | Cable-machine equipment staged at a residential exterior cleanout. In place. |
-| `drain-cleaning-comparison-16x9.webp` | 16:9 | Comparison table | Equipment staged cleanly in a residential or managed-property setting. |
+| `the-sewer-pros-drain-cleaning-service-comparison-ridgid-k7500-16x9.webp` | 16:9 | Comparison table | RIDGID K-7500 cable machine staged at a residential exterior cleanout. In place. |
 | `drain-cleaning-request-16x9.webp` | 16:9 | Request form | Technician reviewing a camera monitor after a recurring issue, subject on the left. |
 | `drain-cleaning-closing-16x9.webp` | 16:9 | Closing form | Technician at an exterior cleanout or floor drain. |
 
@@ -35,11 +35,12 @@ Rules for every image:
 
 | File | Aspect | Slot key | Alt text | Shot |
 |---|---|---|---|---|
-| `drain-cleaning-fixture-access-4x3.webp` | 4:3 (1448x1086) | `drain-definition` | Technician preparing drain-cleaning equipment at a sink or cleanout | Technician at a sink, cleanout, or floor drain with cable equipment. No address visible. |
-| `drain-cleaning-process-4x3.webp` | 4:3 | `drain-process` | Drain-cleaning cable machine staged in a residential setting | Cable machine detail with technician. |
-| `drain-cleaning-equipment-4x3.webp` | 4:3 | `drain-equipment` | Drain-cleaning equipment staged at a job site | Actual equipment; branded vehicle only if current, plates and addresses blurred. |
-| `drain-cleaning-camera-monitor-still-4x3.webp` | 4:3 | `drain-monitor` | Inspection monitor showing the interior of a drain line after a recurring clog | Real monitor still from a recurring-clog visit, all customer data removed. Requires release. |
-| `drain-cleaning-explainer-video-poster-4x3.webp` | 4:3 | `drain-explainer-video-poster` | Technician explaining when a slow drain may be a main sewer-line problem | Poster frame for "When is a slow drain a main sewer-line problem?". Add the player and `VideoObject` markup only when the video is public. Requires release. |
+| `the-sewer-pros-drain-cleaning-common-drain-problems-ridgid-k7500-4x3.webp` | 4:3 (2400x1792) | `drain-definition` | A RIDGID K-7500 drain-cleaning machine feeding a cable into an open floor drain in a residential garage | Cable-drum machine feeding into a floor drain. No address visible. In place. |
+| `the-sewer-pros-drain-cleaning-residential-fixture-ridgid-seesnake-4x3.webp` | 4:3 (2400x1792) | `drain-process` | A drain-cleaning cable machine feeding a cable into a bathroom floor drain | Cable-drum machine feeding into a bathroom floor drain, near a tub, toilet, and sink. In place. |
+| `the-sewer-pros-drain-cleaning-equipment-field-ridgid-k7500-4x3.webp` | 4:3 (2400x1792) | `drain-equipment` | A RIDGID K-7500 drain-cleaning machine staged at a residential exterior cleanout | Cable-drum machine staged beside an open exterior cleanout. No address visible. In place. |
+| `the-sewer-pros-recurring-drain-issue-ridgid-seesnake-cs12x-monitor-4x3.webp` | 4:3 (2400x1792) | `drain-monitor` | A RIDGID SeeSnake camera monitor and reel staged beside an indoor cleanout | Camera monitor and reel staged near an indoor cleanout. No address or customer data visible. In place. |
+| `the-sewer-pros-slow-drain-sewer-line-camera-inspection-ridgid-seesnake-4x3.webp` | 4:3 (2400x1792) | `drain-camera-explainer` | A RIDGID SeeSnake camera monitor and reel staged beside an exterior cleanout | Camera monitor and reel staged near an exterior cleanout. No address visible. In place. |
+| `drain-cleaning-explainer-video-poster-4x3.webp` | 4:3 | `drain-explainer-video-poster` | Technician explaining when a slow drain may be a main sewer-line problem | Poster frame for a future technician-led explainer video, not currently used by any section. Add the player and `VideoObject` markup only when the video is public. Requires release. |
 
 ## Explainer video (not yet produced)
 

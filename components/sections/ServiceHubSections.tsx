@@ -6,10 +6,12 @@ import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
 import {
   AccessPointIcon,
+  BathIcon,
   CameraIcon,
   CheckIcon,
   BuildingIcon,
   ChecklistIcon,
+  CommercialBuildingIcon,
   CommunityIcon,
   CrackedPipeIcon,
   DebrisFlowIcon,
@@ -21,8 +23,12 @@ import {
   EyeIcon,
   FenceIcon,
   FixturesIcon,
+  FloorDrainIcon,
+  FloorDrainDropIcon,
   HomeIcon,
+  HouseDocumentIcon,
   HouseKeyIcon,
+  KitchenSinkIcon,
   LowPointIcon,
   MapPinIcon,
   ObstructionMarkerIcon,
@@ -34,6 +40,9 @@ import {
   RootRestrictionIcon,
   ScaleLayerIcon,
   SingleDrainIcon,
+  SinkDropletIcon,
+  ToiletIcon,
+  WashingMachineIcon,
   WaterBackupIcon,
   type IconProps,
 } from './section-icons'
@@ -294,6 +303,11 @@ const SYMPTOM_ICON_BY_NAME: Record<HubSymptomIcon, (props: IconProps) => ReactNo
   checklist: ChecklistIcon,
   droplet: DropletIcon,
   community: CommunityIcon,
+  'sink-droplet': SinkDropletIcon,
+  bath: BathIcon,
+  toilet: ToiletIcon,
+  'kitchen-sink': KitchenSinkIcon,
+  'floor-drain': FloorDrainIcon,
 }
 
 export function SymptomRouter({ content }: { content: NonNullable<Hub['symptomRouter']> }) {
@@ -469,6 +483,11 @@ export function EscalationPanel({ content }: { content: NonNullable<Hub['escalat
               </li>
             ))}
           </ul>
+          {content.closingNote !== undefined && (
+            <p className="mt-5 border-t border-white/30 pt-4 text-body-sm text-white/90">
+              {content.closingNote}
+            </p>
+          )}
         </div>
       </div>
     </Section>
@@ -634,6 +653,12 @@ const MATERIAL_ICON_BY_NAME: Record<HubMaterialIcon, (props: IconProps) => React
   checklist: ChecklistIcon,
   home: HomeIcon,
   building: BuildingIcon,
+  'kitchen-sink': KitchenSinkIcon,
+  'bathroom-sink': SinkDropletIcon,
+  bath: BathIcon,
+  toilet: ToiletIcon,
+  'floor-drain-drop': FloorDrainDropIcon,
+  'washing-machine': WashingMachineIcon,
 }
 
 /**
@@ -1077,6 +1102,7 @@ const APPROACH_ICON_BY_NAME: Record<HubApproachIcon, (props: IconProps) => React
   document: DocumentIcon,
   decision: DecisionIcon,
   pipe: PipeIcon,
+  eye: EyeIcon,
 }
 
 /**
@@ -1151,6 +1177,8 @@ const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => React
   community: CommunityIcon,
   eye: EyeIcon,
   document: DocumentIcon,
+  'commercial-building': CommercialBuildingIcon,
+  'house-document': HouseDocumentIcon,
 }
 
 /**

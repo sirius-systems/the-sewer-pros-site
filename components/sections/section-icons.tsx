@@ -454,6 +454,110 @@ export function FenceIcon(props: IconProps) {
   )
 }
 
+/** A sink drain - a basin with a faucet and a droplet. */
+export function SinkDropletIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3 12.5h13" />
+      <path d="M3.5 12.5c0 3.2 2.8 5.5 6.25 5.5s6.25-2.3 6.25-5.5" />
+      <path d="M8 12.5V9a2 2 0 0 1 2-2h1.5" />
+      <path d="M18.5 5.5c1.6 2.1 1.6 3.4 0 4.7-1.6-1.3-1.6-2.6 0-4.7Z" />
+    </svg>
+  )
+}
+
+/** A shower or tub drain - a tub basin under a shower head. */
+export function BathIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3 12.5h17" />
+      <path d="M4 12.5v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3" />
+      <path d="M6 12.5V9a2 2 0 0 1 2-2" />
+      <circle cx="17.5" cy="5.5" r="2" />
+      <path d="M16 8.5v1.5M18.5 8.5l.5 1.5M15 9.5l-.7 1.4" />
+    </svg>
+  )
+}
+
+/** A toilet - a tank over a bowl. */
+export function ToiletIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M7 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      <rect x="6.5" y="10" width="9" height="3" rx="1" />
+      <path d="M7 13c-1 0-1.5 1-1.5 2.5C5.5 19 8 21 11 21s5.5-2 5.5-5.5c0-1.5-.5-2.5-1.5-2.5" />
+    </svg>
+  )
+}
+
+/** A kitchen sink - a double basin with a gooseneck faucet. */
+export function KitchenSinkIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <rect x="2.5" y="10.5" width="19" height="9" rx="1.5" />
+      <path d="M8 10.5v9M16 10.5v9" />
+      <path d="M12 10.5V6a2 2 0 0 1 2-2h2" />
+      <circle cx="16.5" cy="4" r="1.3" />
+    </svg>
+  )
+}
+
+/** A floor drain - a square grate. */
+export function FloorDrainIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <rect x="4" y="4" width="16" height="16" rx="2" />
+      <path d="M4 9h16M4 14h16M9 4v16M14 4v16" />
+    </svg>
+  )
+}
+
+/** A floor drain with water present - a grate with a droplet above it. */
+export function FloorDrainDropIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <rect x="3" y="10" width="12" height="12" rx="1.5" />
+      <path d="M5.5 13h7M5.5 17h7M8 10v12M12.5 10v12" />
+      <path d="M17.5 3.5c1.7 2.2 1.7 3.6 0 5-1.7-1.4-1.7-2.8 0-5Z" />
+    </svg>
+  )
+}
+
+/** A washing machine - a cabinet with a round drum door. */
+export function WashingMachineIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <rect x="3.5" y="3" width="17" height="18" rx="2" />
+      <path d="M7 6.5h.01M10.5 6.5h.01" />
+      <circle cx="12" cy="14" r="5" />
+      <path d="M9.5 14a2.5 2.5 0 0 1 5 0" />
+    </svg>
+  )
+}
+
+/** A commercial or office building - a single tower with a window grid. */
+export function CommercialBuildingIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M6 21V3h12v18" />
+      <path d="M3 21h18" />
+      <path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15" />
+    </svg>
+  )
+}
+
+/** A house paired with a document - real estate paperwork. */
+export function HouseDocumentIcon(props: IconProps) {
+  return (
+    <svg {...baseIconProps(props)}>
+      <path d="M3 11 9.5 5.5 16 11" />
+      <path d="M5 9.5V19h9V9.5" />
+      <path d="M15 13.5h5.5v7H15Z" />
+      <path d="M16.5 16h2.5M16.5 18h2.5" />
+    </svg>
+  )
+}
+
 /**
  * ⚠ A CHECK IS THE FALLBACK, NOT THE DEFAULT CHOICE. An item that
  * names no icon gets this; an item that names one gets a mark that
