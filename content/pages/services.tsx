@@ -3799,6 +3799,23 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
       ],
     },
+    /*
+      Mid-page request CTA: reuses the hub's `RequestServiceSection`
+      treatment. `focus: 'right'` matches the photo's composition
+      (inspection setup on the left, under the copy column) — see
+      `ServicePageContent.request` and its `image.focus` doc.
+    */
+    request: {
+      title: 'Request a Pre-Purchase Sewer Inspection',
+      intro: [
+        'Request a sewer inspection as part of your home-buying due diligence. Share your contact information, select the service and location, and include any details that may help clarify your request.',
+        'The inspection documents visible conditions in the accessible portion of the sewer line on the day of the inspection. Findings can help inform your due diligence, but do not guarantee future performance.',
+      ],
+      image: {
+        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-inspection-request-cta-ridgid-seesnake-mid-page-cta-background-16x9.webp',
+        focus: 'right',
+      },
+    },
     comparison: {
       title: 'Pre-purchase sewer inspection vs. related services',
       intro:
