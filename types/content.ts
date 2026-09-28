@@ -1171,6 +1171,14 @@ export interface CtaContent {
    * accident.
    */
   greenPrimaryOnImage?: boolean
+  /**
+   * Full-bleed photograph behind the closing CTA, same prop `CtaSection`
+   * itself takes. Overrides the section's `brand`/navy surface — see
+   * `CtaSectionProps.backgroundImage`'s own doc for the scrim, button,
+   * and contrast implications. Opt-in per page; every page omitting
+   * this renders the plain navy panel unchanged.
+   */
+  backgroundImage?: CardImage
 }
 
 /* ==========================================================================
