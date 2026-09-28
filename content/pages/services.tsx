@@ -30,6 +30,13 @@ import {
   CameraIcon,
   DocumentIcon,
   ExplanationIcon,
+  ChecklistIcon,
+  EyeIcon,
+  DecisionIcon,
+  CalendarClockIcon,
+  GuidanceIcon,
+  AccessPointIcon,
+  IndependenceIcon,
 } from '@/components/sections/section-icons'
 import type { PageId, ServicePageContent } from '@/types'
 
@@ -3857,58 +3864,121 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         label: 'Explore sewer camera inspection',
       },
     },
+    faqTitle: 'Common Questions About Pre-Purchase Sewer Inspection',
+    faqColumns: 2,
     faq: [
       {
         question: 'What is a pre-purchase sewer inspection?',
+        icon: <CameraIcon />,
         answer: (
           <p>
-            A pre-purchase sewer inspection, sometimes called a sewer scope,
-            uses a specialized camera to view accessible portions of a
-            property&rsquo;s sewer line before a home purchase. It can help
-            identify visible conditions such as blockages, root intrusion,
-            offsets, cracks, or standing water that may affect drainage.
+            A pre-purchase sewer inspection uses a camera to view accessible
+            portions of a home&rsquo;s sewer line before a property
+            transaction. It documents visible conditions on the day of the
+            inspection to support your due diligence.
           </p>
         ),
       },
       {
         question: 'Is a sewer inspection part of a standard home inspection?',
+        icon: <ChecklistIcon />,
         answer: (
           <p>
-            Typically not. A general inspection does not usually include putting
-            a camera down the sewer line, which is why it is commonly arranged
-            separately. Ask the home inspector what their inspection covers.
+            Coverage varies. A general home inspection may not include a
+            camera review of the sewer line. Ask your home inspector what
+            their inspection covers.
+          </p>
+        ),
+      },
+      {
+        question: 'What can a sewer camera inspection show before closing?',
+        icon: <EyeIcon />,
+        answer: (
+          <p>
+            Depending on access and visibility, the camera may show
+            conditions such as root entry, visible cracks or offsets,
+            standing water, restrictions, and pipe-material changes in the
+            inspected portion of the line.
           </p>
         ),
       },
       {
         question:
           'Can a sewer scope guarantee the sewer line is problem-free?',
+        icon: <DecisionIcon />,
         answer: (
           <p>
-            No. A sewer scope documents visible conditions in the accessible
-            portions of the line at the time of inspection. It cannot
-            guarantee that every issue is visible, accessible, or detectable,
-            or predict future performance.
+            No. The inspection documents what the camera can see in
+            accessible portions of the line on the inspection day. It cannot
+            guarantee future performance or rule out conditions outside the
+            camera&rsquo;s view.
+          </p>
+        ),
+      },
+      {
+        question: 'When should I schedule a pre-purchase sewer inspection?',
+        icon: <CalendarClockIcon />,
+        answer: (
+          <p>
+            It is most useful while you still have time to review the
+            findings as part of your due diligence and discuss questions
+            with your own advisors.
           </p>
         ),
       },
       {
         question: 'What if the inspection finds a problem?',
+        icon: <ExplanationIcon />,
         answer: (
           <p>
-            You have documented evidence of the line&rsquo;s condition. What you
-            do with it, including obtaining repair quotes or discussing it with
-            your agent and advisers, is your decision.
+            The findings can help you understand what was visible during the
+            inspection. You can discuss questions or possible next steps
+            with your real estate, legal, or plumbing professional.
+          </p>
+        ),
+      },
+      {
+        question:
+          'Can the inspection determine who is responsible for a sewer-line repair?',
+        icon: <GuidanceIcon />,
+        answer: (
+          <p>
+            No. Responsibility varies by jurisdiction. Confirm local
+            requirements with the appropriate real estate, legal, or
+            plumbing professional.
+          </p>
+        ),
+      },
+      {
+        question:
+          'What happens if the camera cannot access part of the sewer line?',
+        icon: <AccessPointIcon />,
+        answer: (
+          <p>
+            The inspection is limited to the portions the camera can access
+            and view. Findings should be understood in that context; the
+            inspection may not show the entire line.
+          </p>
+        ),
+      },
+      {
+        question: 'Does The Sewer Pros perform sewer repairs or replacements?',
+        icon: <IndependenceIcon />,
+        answer: (
+          <p>
+            The Sewer Pros provides sewer inspection and cleaning services
+            but does not perform sewer repair or replacement.
           </p>
         ),
       },
       {
         question: 'Can my agent or home inspector coordinate the appointment?',
+        icon: <ChecklistIcon />,
         answer: (
           <p>
-            Coordination may be possible depending on property access and
-            authorization. Share the property address, timeline, and contact
-            details when you request service.
+            An agent or home inspector can help coordinate communication
+            around the transaction. Share the property location and relevant
+            timing details when requesting an inspection.
           </p>
         ),
       },

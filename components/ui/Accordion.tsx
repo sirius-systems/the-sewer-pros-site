@@ -35,6 +35,12 @@ export interface AccordionItemProps {
   /** Heading level, so the accordion fits the page's outline (18 §15). */
   headingLevel?: 'h2' | 'h3' | 'h4'
   defaultOpen?: boolean
+  /**
+   * A small decorative mark beside the question. Off by default — every
+   * existing caller renders unchanged. Must be `aria-hidden`; the
+   * question text carries the meaning, never the icon.
+   */
+  icon?: ReactNode
   children: ReactNode
 }
 
@@ -42,6 +48,7 @@ export function AccordionItem({
   question,
   headingLevel: Heading = 'h3',
   defaultOpen = false,
+  icon,
   children,
 }: AccordionItemProps) {
   return (
@@ -55,9 +62,16 @@ export function AccordionItem({
           'text-left [&::-webkit-details-marker]:hidden',
         )}
       >
-        <Heading className="text-base font-medium text-foreground">
-          {question}
-        </Heading>
+        <span className="flex items-center gap-3">
+          {icon !== undefined && (
+            <span aria-hidden="true" className="shrink-0 text-accent-secondary [&>svg]:h-5 [&>svg]:w-5">
+              {icon}
+            </span>
+          )}
+          <Heading className="text-base font-medium text-foreground">
+            {question}
+          </Heading>
+        </span>
         {/*
           Rotating chevron. aria-hidden because <details> already
           announces expanded/collapsed — a second cue would be noise.

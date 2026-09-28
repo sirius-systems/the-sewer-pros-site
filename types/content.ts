@@ -66,6 +66,8 @@ export interface HeroContent {
 export interface FaqContent {
   question: string
   answer: ReactNode
+  /** A small decorative mark beside the question. Off by default. */
+  icon?: ReactNode
 }
 
 /** A step in a documented process (18 §65). */
@@ -1396,6 +1398,18 @@ export interface ServicePageContent extends BasePageContent {
    * union, this is deliberately narrower until something needs more.
    */
   processSurface?: 'default' | 'muted'
+  /**
+   * Column count for the closing FAQ. Defaults to `FaqSection`'s own
+   * `1`; every page that omits this renders unchanged. `2` splits the
+   * questions into two columns at `sm` and up, one below it.
+   */
+  faqColumns?: 1 | 2
+  /**
+   * Overrides the FAQ heading. Defaults to the template's own
+   * `Common questions about ${service name}`; every page that omits
+   * this renders unchanged.
+   */
+  faqTitle?: string
   /** "When you may need this" — see `ProblemContent`. */
   problems?: readonly ProblemContent[]
   /** "What's included" — see `InclusionContent`. */
