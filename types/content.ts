@@ -1244,6 +1244,18 @@ export interface BasePageContent {
    */
   relatedDescriptions?: Readonly<Partial<Record<PageId, string>>>
   /**
+   * Optional artwork per related page, keyed by page id, reusing images
+   * already approved on the pages they represent (never new/invented
+   * photography for this module).
+   *
+   * Setting this opts `RelatedLinks` into its `image` variant instead
+   * of the default `horizontal` row — see `ServicePageTemplate`. A
+   * page whose map omits an id still gets a card, just text-only,
+   * exactly as `RelatedLinks` already handles a missing image (18
+   * §40-42: no placeholder crop where no approved photo exists).
+   */
+  relatedImages?: Readonly<Partial<Record<PageId, CardImage>>>
+  /**
    * Opts this page's `RelatedLinks` into the asymmetric featured
    * layout instead of the default row list.
    *
@@ -1669,6 +1681,14 @@ export interface HubComparisonRow {
    * has a matching `/services/` card image.
    */
   imageId?: PageId
+  /**
+   * A small decorative mark beside the row's service name, on the
+   * `table` variant only (both the desktop table's row header and the
+   * mobile stacked-card header). Off by default — existing hubs render
+   * unchanged. Not the `cards` variant, which already carries its own
+   * card artwork.
+   */
+  icon?: 'house-search' | 'camera' | 'pipe' | 'map-pin'
 }
 
 /**
@@ -1960,6 +1980,8 @@ export interface ServiceHubContent {
     intro: string
     rows: readonly HubComparisonRow[]
     note: string
+    /** Contextual link below the note, same pattern as `LimitationsPanel`'s `related`. */
+    related?: { lead: string; pageId: PageId; label: string }
   }
 }
 

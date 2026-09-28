@@ -3817,35 +3817,45 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       },
     },
     comparison: {
-      title: 'Pre-purchase sewer inspection vs. related services',
+      title: 'Pre-Purchase Sewer Inspection vs. Related Services',
       intro:
-        'A pre-purchase sewer inspection is a specific use of a sewer camera inspection, timed to a property transaction. Compare it with related services to help confirm it is the right starting point.',
+        'A pre-purchase sewer inspection is a sewer camera inspection arranged in connection with a real estate transaction. Comparing it with related services can help you choose an appropriate starting point based on what you need to understand or address.',
       rows: [
         {
-          service: 'Pre-purchase sewer inspection',
-          purpose: 'Document visible sewer-line conditions ahead of a property decision',
-          fit: 'You are buying, selling, or otherwise involved in a real-estate transaction',
+          service: 'Pre-Purchase Sewer Inspection',
+          icon: 'house-search',
+          purpose:
+            'Document visible sewer-line conditions in accessible portions of the line before a property decision.',
+          fit: 'You are buying, selling, or otherwise involved in a real estate transaction.',
         },
         {
-          service: 'Sewer camera inspection',
-          purpose: 'See visible conditions inside an accessible sewer line for any reason',
-          fit: 'Recurring symptoms, a renovation, or a general evaluation outside a transaction',
+          service: 'Sewer Camera Inspection',
+          icon: 'camera',
+          purpose: 'View and document visible conditions inside an accessible sewer line.',
+          fit: 'You want to investigate recurring symptoms, plan a project, or understand a sewer line outside a real estate transaction.',
           pageId: id('svc-sewer-camera-inspection'),
         },
         {
-          service: 'Sewer cleaning',
-          purpose: 'Remove or address certain blockages and buildup in the sewer line',
-          fit: 'A blockage or flow issue needs cleaning',
+          service: 'Sewer Cleaning',
+          icon: 'pipe',
+          purpose: 'Address certain blockages or buildup in the sewer line.',
+          fit: 'A blockage or flow issue may need cleaning.',
           pageId: id('svc-sewer-cleaning'),
         },
         {
-          service: 'Line locating',
-          purpose: 'Identify the approximate path of an underground line',
-          fit: 'A planned project, excavation, or route-verification question',
+          service: 'Line Locating',
+          icon: 'map-pin',
+          purpose: 'Identify the approximate path of an underground sewer line.',
+          fit: "You are planning work or need to verify the line's approximate route.",
           pageId: id('svc-sewer-line-locating'),
         },
       ],
-      note: 'A general home inspection may not include a camera review of the sewer line; ask the home inspector what their inspection covers.',
+      note: 'A general home inspection may not include a camera review of the sewer line. Ask the home inspector what their inspection covers.',
+      related: {
+        lead: 'Want more detail about the camera-inspection process?',
+        pageId: id('svc-sewer-camera-inspection'),
+        label: 'Explore sewer camera inspection',
+      },
     },
     faq: [
       {
@@ -3907,6 +3917,21 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('svc-sewer-camera-inspection'),
       id('cmp-independent-vs-repair'),
     ],
+    /*
+      Reuses the sewer camera inspection page's own approved card
+      artwork (the same frame `homeServiceCards` uses for it) rather
+      than new photography for this module. `cmp-independent-vs-repair`
+      has no approved image yet, so that card renders text-only —
+      `RelatedLinks`' own documented behavior for a missing entry.
+    */
+    relatedImages: {
+      [id('svc-sewer-camera-inspection')]: {
+        src: '/images/services/service-cards/the-sewer-pros-sewer-camera-inspection-ridgid-monitor.webp',
+        alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+    },
     cta: {
       title: 'Inspect the line before you commit',
       body: 'Know the condition of the sewer line while the decision is still yours to make.',

@@ -534,6 +534,8 @@ export function ServicePageTemplate({
           title={content.relatedTitle ?? 'Related services'}
           pageIds={content.relatedPageIds}
           descriptions={content.relatedDescriptions}
+          images={content.relatedImages}
+          variant={content.relatedImages !== undefined ? 'image' : 'horizontal'}
         />
       )}
 
