@@ -32,6 +32,7 @@ import {
   AudiencePathways,
   LimitationsPanel,
   ServiceComparison,
+  RequestServiceSection,
   BackdropImage,
   authorityBandRenders,
   processStepsRenders,
@@ -186,6 +187,8 @@ export function ServicePageTemplate({
     ...(content.showMarkets === true && marketCoverageRenders()
       ? (['standard'] as const)
       : []),
+    // Mid-page request CTA — see types/content.ts `ServicePageContent.request`.
+    ...(content.request !== undefined ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
@@ -499,6 +502,31 @@ export function ServicePageTemplate({
 
       {content.showMarkets === true && (
         <MarketCoverage density="standard" title="Where this service is available" />
+      )}
+
+      {content.request !== undefined && (
+        /*
+          ⚠ BRAND SURFACE (photo + scrim, same treatment as the hub's
+          own request section). `MarketCoverage` above and `RelatedLinks`
+          below are both non-brand and, for any page setting this field,
+          expected to be present (see the ⚠ on `ServicePageContent.request`),
+          so this never lands next to another brand section (18 §11).
+        */
+        <RequestServiceSection
+          id={content.request.id}
+          content={content.request}
+          imageSrc={content.request.image.src}
+          focus={content.request.image.focus ?? 'default'}
+          scrim={content.request.image.scrim}
+        >
+          <LeadFormSection
+            bare
+            density="standard"
+            idPrefix="request-lead"
+            title={content.request.formTitle}
+            submitLabel={content.request.submitLabel}
+          />
+        </RequestServiceSection>
       )}
 
       {content.relatedPageIds !== undefined && (

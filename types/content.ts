@@ -1393,6 +1393,37 @@ export interface ServicePageContent extends BasePageContent {
   /** Shows market coverage beneath the service explanation. */
   showMarkets?: boolean
   /**
+   * Mid-page request CTA: copy beside the lead form over a photographic
+   * backdrop, reusing the hub's own `RequestServiceSection` treatment.
+   * Opt-in per page — every page that omits this keeps the current
+   * bare `LeadFormSection` in that slot.
+   *
+   * ⚠ POSITION-DEPENDENT. `ServicePageTemplate` renders this between
+   * `MarketCoverage` and `RelatedLinks` (both non-brand), so this
+   * section's own brand/navy surface never touches another one (18
+   * §11). A page authoring this without also setting
+   * `showMarkets`/`relatedPageIds` should re-check that adjacency
+   * still holds before shipping.
+   */
+  request?: {
+    id?: string
+    title: string
+    intro: string | readonly string[]
+    /** Form heading and submit-button label. Defaults to "Request service". */
+    formTitle?: string
+    submitLabel?: string
+    image: {
+      src: string
+      /**
+       * `right` — see `RequestServiceSection`'s own `focus` doc: for a
+       * photo whose subject sits on the left, under the copy column.
+       */
+      focus?: 'default' | 'right'
+      /** Darkens the scrim past the 55% default. */
+      scrim?: 65
+    }
+  }
+  /**
    * Page-specific replacement for the shared `AuthorityBand` "How we
    * work" proof-points band.
    *
