@@ -4150,47 +4150,150 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         </p>
       ),
     },
-    body: (
-      <>
-        <h2>What preventative maintenance is for</h2>
-        <p>
-          Some lines have a reason to be maintained: a known root pressure, a
-          section that accumulates, high or continuous volume, or a history of
-          backups that cleaning manages successfully.
-        </p>
-        <p>
-          For those lines, servicing on a schedule is usually less disruptive
-          than responding to a backup. For a line with no such history, a
-          default schedule is harder to justify.
-        </p>
+    /*
+      Two-column explainer, matching the pattern built for the
+      pre-purchase sewer inspection page. No approved photography exists
+      for this page yet, so the right column is a pending-photography
+      placeholder (18 §40-42) rather than a fabricated image.
+    */
+    explainer: {
+      content: (
+        <>
+          <h2>What preventative maintenance is for</h2>
+          <p>
+            Some lines have a reason to be maintained: a known root pressure, a
+            section that accumulates, high or continuous volume, or a history of
+            backups that cleaning manages successfully.
+          </p>
+          <p>
+            For those lines, servicing on a schedule is usually less disruptive
+            than responding to a backup. For a line with no such history, a
+            default schedule is harder to justify.
+          </p>
+        </>
+      ),
+      image: {
+        label:
+          'A technician reviewing sewer camera footage to establish a maintenance interval',
+        filename:
+          'the-sewer-pros-preventative-sewer-maintenance-explainer-review-4x3.webp',
+      },
+    },
+    /*
+      Second two-column block, muted surface, same pattern as the
+      pre-purchase page's `considerations`.
+    */
+    considerations: {
+      content: (
+        <>
+          <h2>Establishing the right interval</h2>
+          <p>
+            A sensible interval comes from evidence: what the line looked like
+            at the last inspection, how quickly material accumulated between
+            visits, and what caused the previous blockages. That is why
+            maintenance usually starts with inspection rather than a
+            calendar.
+          </p>
 
-        <h2>Establishing the right interval</h2>
-        <p>
-          A sensible interval comes from evidence: what the line looked like at
-          the last inspection, how quickly material accumulated between visits,
-          and what caused the previous blockages. That is why maintenance
-          usually starts with inspection rather than a calendar.
-        </p>
+          <h2>Where it fits for commercial properties</h2>
+          <p>
+            High-volume and food-service lines accumulate faster, and an
+            unplanned backup carries operational cost beyond the plumbing.
+            That changes the arithmetic of scheduled service relative to a
+            residential line.
+          </p>
 
-        <h2>Where it fits for commercial properties</h2>
-        <p>
-          High-volume and food-service lines accumulate faster, and an
-          unplanned backup carries operational cost beyond the plumbing. That
-          changes the arithmetic of scheduled service relative to a residential
-          line.
-        </p>
-
-        <h2>What we will not do</h2>
-        <p>
-          We will not put a line on a schedule it does not need. If the evidence
-          does not support a recurring interval, saying so is more useful than
-          selling one.
-        </p>
-      </>
-    ),
+          <h2>What we will not do</h2>
+          <p>
+            We will not put a line on a schedule it does not need. If the
+            evidence does not support a recurring interval, saying so is more
+            useful than selling one.
+          </p>
+        </>
+      ),
+      image: {
+        label:
+          'Sewer cleaning equipment staged at a commercial property cleanout',
+        filename:
+          'the-sewer-pros-preventative-sewer-maintenance-considerations-commercial-4x3.webp',
+      },
+    },
+    /*
+      Page-specific "How We Work" band, restating facts already stated
+      in `explainer`/`considerations` above rather than adding anything
+      new. See ServicePageContent.howWeWork.
+    */
+    howWeWork: {
+      title: 'How We Approach Preventative Sewer Maintenance',
+      intro:
+        'We base a maintenance schedule on what an inspection actually shows, not on a default calendar interval.',
+      items: [
+        {
+          title: 'We Start With Inspection',
+          icon: 'camera',
+          description:
+            'A camera inspection documents the line’s current condition, which is the starting point for any interval.',
+        },
+        {
+          title: 'The Evidence Sets the Interval',
+          icon: 'checklist',
+          description:
+            'How quickly material accumulated between visits and what caused previous blockages inform how often service makes sense.',
+        },
+        {
+          title: 'Built for High-Volume Lines',
+          icon: 'pipe',
+          description:
+            'Commercial and food-service lines that accumulate faster can carry a different schedule than a residential line.',
+        },
+        {
+          title: 'No Schedule Without a Reason',
+          icon: 'monitor',
+          description:
+            'If the evidence does not support a recurring interval, we say so rather than proposing one.',
+        },
+      ],
+    },
+    relatedTitle: 'Related Services',
+    relatedVariant: 'detailed',
+    relatedDescriptions: {
+      [id('svc-sewer-cleaning')]:
+        'Sewer cleaning removes or addresses certain blockages and buildup in the line. A camera inspection can help document conditions before or after cleaning to confirm what changed.',
+      [id('svc-recurring-sewer-backup-diagnosis')]:
+        'When a backup keeps returning, diagnosis looks for the mechanism behind it rather than only restoring flow. The findings can help clarify whether maintenance or further work makes sense.',
+      [id('svc-sewer-camera-inspection')]:
+        'A sewer camera inspection documents the visible condition of the accessible line. It is the evidence a sensible maintenance interval is based on.',
+    },
+    relatedLinkLabels: {
+      [id('svc-sewer-cleaning')]: 'Learn About Sewer Cleaning',
+      [id('svc-recurring-sewer-backup-diagnosis')]:
+        'Learn About Recurring Backup Diagnosis',
+      [id('svc-sewer-camera-inspection')]: 'Learn About Sewer Camera Inspections',
+    },
+    relatedImages: {
+      [id('svc-sewer-cleaning')]: {
+        src: '/images/services/service-cards/the-sewer-pros-sewer-cleaning-ridgid-equipment.webp',
+        alt: 'Sewer cleaning equipment connected to an open cleanout at a driveway',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+      [id('svc-recurring-sewer-backup-diagnosis')]: {
+        src: '/images/services/service-cards/the-sewer-pros-recurring-sewer-backup-diagnosis.webp',
+        alt: 'Camera monitor showing root intrusion inside a line, beside inspection equipment',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+      [id('svc-sewer-camera-inspection')]: {
+        src: '/images/services/service-cards/the-sewer-pros-sewer-camera-inspection-ridgid-monitor.webp',
+        alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
+        source:
+          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      },
+    },
     faq: [
       {
         question: 'How do you decide the interval?',
+        icon: <ChecklistIcon />,
         answer: (
           <p>
             From the line itself: its condition at inspection, how quickly it
