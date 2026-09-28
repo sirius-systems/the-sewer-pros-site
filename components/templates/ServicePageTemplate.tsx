@@ -559,11 +559,13 @@ export function ServicePageTemplate({
       {content.faq !== undefined && (
         <FaqSection
           title={
-            page.serviceId !== undefined
+            content.faqTitle ??
+            (page.serviceId !== undefined
               ? `Common questions about ${getService(page.serviceId).name}`
-              : undefined
+              : undefined)
           }
           entries={content.faq}
+          columns={content.faqColumns}
         />
       )}
 

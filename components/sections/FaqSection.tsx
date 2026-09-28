@@ -37,6 +37,8 @@ import { SectionHeading } from './SectionHeading'
 export interface FaqEntry {
   question: string
   answer: ReactNode
+  /** A small decorative mark beside the question. Off by default. */
+  icon?: ReactNode
 }
 
 export interface FaqSectionProps {
@@ -136,6 +138,7 @@ export function FaqSection({
           question={entry.question}
           headingLevel={questionLevel}
           defaultOpen={openFirst && startIndex + i === 0}
+          icon={entry.icon}
         >
           {entry.answer}
         </AccordionItem>
