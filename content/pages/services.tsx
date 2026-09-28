@@ -3698,41 +3698,41 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       box ships on this indexable page.
     */
     audiences: {
-      title: 'Who is a pre-purchase sewer inspection for?',
+      title: 'Who Is a Pre-Purchase Sewer Inspection For?',
       intro:
-        'A pre-purchase sewer inspection can be useful to different people involved in a property transaction. Each role uses the findings a little differently, and the linked pages go into more detail.',
+        'A pre-purchase sewer inspection can help buyers and other real estate professionals understand visible conditions in the accessible portion of a home’s sewer line. Each person involved in the transaction may use the findings differently as part of due diligence.',
       items: [
         {
           pageId: id('aud-home-buyers'),
-          audience: 'Home buyers',
-          icon: 'house-key',
+          audience: 'Home Buyers',
+          icon: 'house-search',
           description:
-            'Understand visible conditions in accessible portions of the sewer line before closing, so the line’s condition is part of what you know rather than what you discover later.',
-          actionLabel: 'Learn about home-buyer sewer inspections',
+            'Review visible sewer-line conditions before closing and consider the findings as part of your due diligence.',
+          actionLabel: 'Learn About Home-Buyer Sewer Inspections',
         },
         {
           pageId: id('aud-real-estate-agents'),
-          audience: 'Real estate agents',
+          audience: 'Real Estate Agents',
           icon: 'checklist',
           description:
-            'Coordinate a sewer scope around a transaction’s timeline and give buyers and sellers documented, visible-condition information to discuss.',
-          actionLabel: 'Learn about transaction support',
+            'Coordinate a sewer scope around the transaction and share documented findings for buyers and sellers to discuss.',
+          actionLabel: 'Learn About Transaction Support',
         },
         {
           pageId: id('aud-home-inspectors'),
-          audience: 'Home inspectors',
+          audience: 'Home Inspectors',
           icon: 'eye',
           description:
-            'Coordinate a specialist sewer scope alongside a general home inspection for the portions of the sewer line a standard inspection may not cover.',
-          actionLabel: 'Learn about coordinating an inspection',
+            'Coordinate a specialist sewer inspection for portions of the line a general home inspection may not cover.',
+          actionLabel: 'Learn About Coordinating an Inspection',
         },
         {
           pageId: id('aud-home-sellers'),
-          audience: 'Home sellers',
+          audience: 'Home Sellers',
           icon: 'home',
           description:
-            'Understand visible sewer-line conditions before listing or responding to a buyer’s question, using the same documented, camera-based findings.',
-          actionLabel: 'Learn about seller sewer inspections',
+            'Understand visible sewer-line conditions before listing or responding to a buyer’s question.',
+          actionLabel: 'Learn About Seller Sewer Inspections',
         },
       ],
     },

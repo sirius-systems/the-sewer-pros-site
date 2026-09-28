@@ -28,6 +28,7 @@ import {
   HomeIcon,
   HouseDocumentIcon,
   HouseKeyIcon,
+  HouseSearchIcon,
   KitchenSinkIcon,
   LowPointIcon,
   MapPinIcon,
@@ -1179,6 +1180,7 @@ const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => React
   document: DocumentIcon,
   'commercial-building': CommercialBuildingIcon,
   'house-document': HouseDocumentIcon,
+  'house-search': HouseSearchIcon,
 }
 
 /**
