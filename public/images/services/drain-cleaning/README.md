@@ -28,8 +28,8 @@ Rules for every image:
 |---|---|---|---|
 | `hero/the-sewer-pros-drain-cleaning-hero-residential-cleanout-ridgid-equipment-16x9.webp` | 16:9, 1600px+ wide | Hero | Cable-machine equipment staged at a residential exterior cleanout. In place. |
 | `the-sewer-pros-drain-cleaning-service-comparison-ridgid-k7500-16x9.webp` | 16:9 | Comparison table | RIDGID K-7500 cable machine staged at a residential exterior cleanout. In place. |
-| `drain-cleaning-request-16x9.webp` | 16:9 | Request form | Technician reviewing a camera monitor after a recurring issue, subject on the left. |
-| `drain-cleaning-closing-16x9.webp` | 16:9 | Closing form | Technician at an exterior cleanout or floor drain. |
+| `the-sewer-pros-drain-cleaning-request-cta-ridgid-k7500-background-16x9.webp` | 16:9 | Request form (mid-page) | RIDGID K-7500 cable machine at a residential exterior cleanout, equipment left of frame (`requestFocus: 'right'` keeps it visible below `lg`). In place. |
+| `the-sewer-pros-drain-cleaning-closing-cta-ridgid-k7500-background-16x9.webp` | 16:9 | Closing form | RIDGID K-7500 cable machine at a residential exterior cleanout, equipment left of frame (`closingFocus: 'right'` keeps it visible below `lg`). In place. |
 
 ## Figures (real alt text and captions)
 

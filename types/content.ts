@@ -1756,8 +1756,12 @@ export interface ServiceHubContent {
     formTitle?: string
     /** Submit-button text. Defaults to "Request Service". */
     submitLabel?: string
+    /** Label for the optional message field. Defaults to "Message". */
+    messageLabel?: string
     /** Placeholder for the optional message field. No placeholder by default. */
     messagePlaceholder?: string
+    /** Small note below the submit button. Nothing by default. */
+    note?: string
   }
   /** Related-services comparison. */
   comparison?: {

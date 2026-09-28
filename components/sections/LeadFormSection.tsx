@@ -168,8 +168,12 @@ export interface LeadFormSectionProps {
   defaultServiceId?: LeadServiceValue
   /** Submit-button text. Defaults to "Request Service", the wording every other instance keeps. */
   submitLabel?: string
+  /** Label for the optional Message field. Defaults to "Message", unchanged everywhere else. */
+  messageLabel?: string
   /** Placeholder for the optional Message field. No placeholder by default, unchanged everywhere else. */
   messagePlaceholder?: string
+  /** Small note below the submit button. Nothing by default, unchanged everywhere else. */
+  note?: string
 }
 
 export function LeadFormSection({
@@ -183,7 +187,9 @@ export function LeadFormSection({
   defaultMarketId,
   defaultServiceId,
   submitLabel = 'Request Service',
+  messageLabel = 'Message',
   messagePlaceholder,
+  note,
 }: LeadFormSectionProps = {}) {
   const [started, setStarted] = useState(false)
 
@@ -320,7 +326,7 @@ export function LeadFormSection({
         />
       </Field>
 
-      <Field htmlFor={`${idPrefix}-message`} label="Message" className="sm:col-span-2">
+      <Field htmlFor={`${idPrefix}-message`} label={messageLabel} className="sm:col-span-2">
         <Textarea id={`${idPrefix}-message`} name="message" placeholder={messagePlaceholder} />
       </Field>
 
@@ -337,6 +343,12 @@ export function LeadFormSection({
       <div className="flex justify-center sm:col-span-2">
         <Button type="submit">{submitLabel}</Button>
       </div>
+
+      {note !== undefined && (
+        <p className="text-center text-caption text-muted-foreground sm:col-span-2">
+          {note}
+        </p>
+      )}
     </form>
   )
 

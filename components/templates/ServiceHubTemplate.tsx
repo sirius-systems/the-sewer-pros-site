@@ -402,7 +402,9 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
           defaultServiceId={hub.defaultServiceId}
           title={hub.closing.formTitle}
           submitLabel={hub.closing.submitLabel}
+          messageLabel={hub.closing.messageLabel}
           messagePlaceholder={hub.closing.messagePlaceholder}
+          note={hub.closing.note}
         />
       </RequestServiceSection>,
     )
