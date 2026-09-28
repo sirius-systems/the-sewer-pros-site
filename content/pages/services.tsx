@@ -25,6 +25,12 @@
  */
 
 import Link from 'next/link'
+import {
+  MapPinIcon,
+  CameraIcon,
+  DocumentIcon,
+  ExplanationIcon,
+} from '@/components/sections/section-icons'
 import type { PageId, ServicePageContent } from '@/types'
 
 const id = (value: string): PageId => value as PageId
@@ -3600,11 +3606,38 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         alt: 'RIDGID SeeSnake sewer camera equipment representing the limits and scope of a pre-purchase inspection',
       },
     },
+    processTitle: 'How It Works',
+    processIntro:
+      'A pre-purchase sewer inspection follows four steps to document visible conditions in the accessible portion of the sewer line. What the camera can show depends on access and visibility during the inspection.',
+    /*
+      `muted`, distinct from the `default` audience-card section above
+      it (18 §11 — a surface change signals the new topic on its own).
+    */
+    processSurface: 'muted',
     process: [
-      { title: 'Locate access' },
-      { title: 'Inspect the line' },
-      { title: 'Document conditions' },
-      { title: 'Walk through the findings' },
+      {
+        title: 'Locate Access',
+        description: 'Identify an accessible entry point for the camera inspection.',
+        icon: <MapPinIcon className="h-10 w-10 text-accent-secondary" />,
+      },
+      {
+        title: 'Inspect the Line',
+        description:
+          'Guide the sewer camera through the accessible line to view its visible interior condition.',
+        icon: <CameraIcon className="h-10 w-10 text-accent-secondary" />,
+      },
+      {
+        title: 'Document Conditions',
+        description:
+          'Record visible findings, such as root entry, offsets, cracks, standing water, or restrictions.',
+        icon: <DocumentIcon className="h-10 w-10 text-accent-secondary" />,
+      },
+      {
+        title: 'Walk Through the Findings',
+        description:
+          'Review what was visible during the inspection and discuss questions about the findings.',
+        icon: <ExplanationIcon className="h-10 w-10 text-accent-secondary" />,
+      },
     ],
     showDifferentiator: true,
     /*

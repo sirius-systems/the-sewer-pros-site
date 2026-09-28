@@ -82,6 +82,14 @@ export interface ProcessContent {
    * a slot that only looks open.
    */
   image?: CardImage
+  /**
+   * A caller-supplied decorative icon, shown in place of the numeral
+   * (`grid` variant) or the positional Inspect/Understand/Decide icon
+   * (`cards` variant). Same field on the component's own `ProcessStep`;
+   * present here too so a page's authored content can set it. Must be
+   * `aria-hidden` — the step heading carries the meaning, never the icon.
+   */
+  icon?: ReactNode
 }
 
 /**
@@ -1364,6 +1372,18 @@ export type SplitSectionImage =
 /** Canonical service page — 18 §111. */
 export interface ServicePageContent extends BasePageContent {
   process?: readonly ProcessContent[]
+  /** Overrides the "How it works" band's heading. Defaults to `'How it works'`. */
+  processTitle?: string
+  /** Optional intro paragraph below the "How it works" heading. None by default. */
+  processIntro?: string
+  /**
+   * Overrides the "How it works" band's surface, normally the
+   * component's own `default`. Opt-in per page — every page that omits
+   * this renders unchanged. Add values here only as an actual page
+   * needs them; `ProcessSteps` itself accepts the full `SectionSurface`
+   * union, this is deliberately narrower until something needs more.
+   */
+  processSurface?: 'default' | 'muted'
   /** "When you may need this" — see `ProblemContent`. */
   problems?: readonly ProblemContent[]
   /** "What's included" — see `InclusionContent`. */

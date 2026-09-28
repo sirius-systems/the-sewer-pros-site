@@ -380,8 +380,10 @@ export function ServicePageTemplate({
       {content.process !== undefined && (
         <ProcessSteps
           density="dense"
+          surface={content.processSurface}
           id="how-it-works"
-          title="How it works"
+          title={content.processTitle ?? 'How it works'}
+          intro={content.processIntro}
           steps={content.process}
         />
       )}
