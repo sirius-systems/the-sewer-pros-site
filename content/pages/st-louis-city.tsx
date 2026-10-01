@@ -241,7 +241,7 @@ export const stLouisCityContent: LocationPageContent = {
     primaryAction: { href: '#request', label: 'Schedule a Sewer Inspection' },
     secondaryActionLabel: `Call ${contact.phone}`,
     backdrop: existing(
-      '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-residential-sewer-camera-inspection-hero.webp',
+      '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-residential-sewer-camera-inspection-hero-1280.webp',
       'St. Louis residential sewer camera inspection',
     ),
     card: {
