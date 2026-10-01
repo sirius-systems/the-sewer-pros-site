@@ -15,7 +15,7 @@ import {
 } from '@/components/ui'
 import { SectionHeading } from './SectionHeading'
 import { marketList } from '@/data/markets/markets'
-import type { MarketId } from '@/types'
+import type { LeadFormConfig, MarketId } from '@/types'
 import type { ServiceId } from '@/types'
 
 /**
@@ -174,6 +174,18 @@ export interface LeadFormSectionProps {
   messagePlaceholder?: string
   /** Small note below the submit button. Nothing by default, unchanged everywhere else. */
   note?: string
+  /**
+   * Switches the form to its detailed variant: a page-supplied service
+   * list and location select, a visible "(required)" marker on required
+   * fields, an inline error line per required field, and a consent line
+   * under the button.
+   *
+   * ⚠ OPT-IN, AND ABSENCE IS THE UNCHANGED FORM. Every existing call
+   * site omits it and renders exactly what it did before. Nothing here
+   * submits anywhere: PENDING-018 (no endpoint) still stands, and this
+   * adds no hidden fields because no mechanism consumes them.
+   */
+  config?: LeadFormConfig
 }
 
 export function LeadFormSection({
@@ -190,6 +202,7 @@ export function LeadFormSection({
   messageLabel = 'Message',
   messagePlaceholder,
   note,
+  config,
 }: LeadFormSectionProps = {}) {
   const [started, setStarted] = useState(false)
 
@@ -217,6 +230,27 @@ export function LeadFormSection({
     // leads that were never received.
   }
 
+  /*
+    Detailed-variant helpers. `req` appends the visible marker; `errorLine`
+    is the CSS-only error: hidden until the browser marks the control
+    `:user-invalid`, so nothing shows before the visitor has interacted.
+    Each control points at its line with `aria-describedby`.
+  */
+  const req = (label: string) => (config !== undefined ? `${label} (required)` : label)
+  const errorId = (fieldId: string) => `${fieldId}-error`
+  const errorLine = (fieldId: string, text: string | undefined) =>
+    config !== undefined && text !== undefined ? (
+      <p
+        id={errorId(fieldId)}
+        className="mt-1.5 hidden text-caption font-medium text-error peer-user-invalid:block"
+      >
+        {text}
+      </p>
+    ) : null
+  const describe = (fieldId: string) =>
+    config !== undefined ? { 'aria-describedby': errorId(fieldId) } : {}
+  const peer = config !== undefined ? 'peer user-invalid:border-error' : undefined
+
   const form = (
     <form
       onSubmit={handleSubmit}
@@ -224,7 +258,7 @@ export function LeadFormSection({
       noValidate={false}
       className="grid gap-x-6 gap-y-5 sm:grid-cols-2"
     >
-      <Field htmlFor={`${idPrefix}-first-name`} label="First name" required>
+      <Field htmlFor={`${idPrefix}-first-name`} label={req('First name')} required>
         <TextInput
           id={`${idPrefix}-first-name`}
           name="firstName"
@@ -232,10 +266,13 @@ export function LeadFormSection({
           autoComplete="given-name"
           required
           aria-required
+          className={peer}
+          {...describe(`${idPrefix}-first-name`)}
         />
+        {errorLine(`${idPrefix}-first-name`, config?.errors.firstName)}
       </Field>
 
-      <Field htmlFor={`${idPrefix}-last-name`} label="Last name" required>
+      <Field htmlFor={`${idPrefix}-last-name`} label={req('Last name')} required>
         <TextInput
           id={`${idPrefix}-last-name`}
           name="lastName"
@@ -243,10 +280,13 @@ export function LeadFormSection({
           autoComplete="family-name"
           required
           aria-required
+          className={peer}
+          {...describe(`${idPrefix}-last-name`)}
         />
+        {errorLine(`${idPrefix}-last-name`, config?.errors.lastName)}
       </Field>
 
-      <Field htmlFor={`${idPrefix}-phone`} label="Phone" required>
+      <Field htmlFor={`${idPrefix}-phone`} label={req('Phone')} required>
         <TextInput
           id={`${idPrefix}-phone`}
           name="phone"
@@ -254,7 +294,10 @@ export function LeadFormSection({
           autoComplete="tel"
           required
           aria-required
+          className={peer}
+          {...describe(`${idPrefix}-phone`)}
         />
+        {errorLine(`${idPrefix}-phone`, config?.errors.phone)}
       </Field>
 
       {/*
@@ -283,24 +326,27 @@ export function LeadFormSection({
 
       <Field
         htmlFor={`${idPrefix}-service`}
-        label="Service needed"
+        label={req('Service needed')}
         required
         className="sm:col-span-2"
       >
         <Select
           id={`${idPrefix}-service`}
           name="service"
-          options={SERVICE_OPTIONS}
+          options={config?.serviceOptions ?? SERVICE_OPTIONS}
           placeholder="Select a service"
           defaultValue={defaultServiceId}
           required
           aria-required
+          className={peer}
+          {...describe(`${idPrefix}-service`)}
         />
+        {errorLine(`${idPrefix}-service`, config?.errors.service)}
       </Field>
 
       <Field
         htmlFor={`${idPrefix}-market`}
-        label="Location"
+        label={req(config?.locationLabel ?? 'Location')}
         required
         className="sm:col-span-2"
       >
@@ -317,10 +363,10 @@ export function LeadFormSection({
         */}
         <Select
           id={`${idPrefix}-market`}
-          name="market"
-          options={MARKET_OPTIONS}
+          name={config !== undefined ? 'propertyLocation' : 'market'}
+          options={config?.locationOptions ?? MARKET_OPTIONS}
           placeholder="Select your location"
-          defaultValue={defaultMarketId}
+          defaultValue={config?.defaultLocationValue ?? defaultMarketId}
           required
           aria-required
         />
@@ -343,6 +389,12 @@ export function LeadFormSection({
       <div className="flex justify-center sm:col-span-2">
         <Button type="submit">{submitLabel}</Button>
       </div>
+
+      {config?.consentLine !== undefined && (
+        <p className="text-center text-caption text-muted-foreground sm:col-span-2">
+          {config.consentLine}
+        </p>
+      )}
 
       {note !== undefined && (
         <p className="text-center text-caption text-muted-foreground sm:col-span-2">

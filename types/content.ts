@@ -2278,6 +2278,249 @@ export interface LocationPageContent extends BasePageContent {
   servicePageIds?: readonly PageId[]
   /** Served communities plus an availability statement. No map. */
   coverage?: CoverageContent
+
+  /*
+    ==========================================================================
+    RICH LOCATION COMPOSITION - ALL OPTIONAL, ALL CONTENT-GATED
+    ==========================================================================
+    Added for `/st-louis-mo/st-louis-city/`. A location page that sets none
+    of these renders exactly the sparse composition it always did. Every
+    field below turns on one section in `LocationPageTemplate`; no field
+    is required by another except where noted.
+
+    ⚠ IMAGES ARE `CardImage`, AND ABSENCE MEANS NO SLOT. There is no
+    placeholder path on a live page: an omitted image renders a
+    text-only layout, never an `ImagePlaceholder`.
+  */
+
+  /** Hero with the request form in its aside. Turns the rich hero on. */
+  heroForm?: LocationHeroForm
+  /** Heading above the visible FAQ. Overrides the template default. */
+  faqHeading?: string
+  /**
+   * Opt-in for `FAQPage` JSON-LD on this page. Unset means no `FAQPage`.
+   *
+   * ⚠ DEC-089 approves the home page only (15 §57-58). Setting this to
+   * `true` makes the template hand the SAME `faq` array it renders to
+   * `pageSchema()`, so markup cannot diverge from the visible answers - but
+   * turning it on is a new approval decision, not an implementation detail.
+   */
+  faqSchemaApproved?: boolean
+  /** Key takeaways list with an in-page jump nav. */
+  keyTakeaways?: LocationKeyTakeaways
+  /** Service card grid. Also feeds the page's `Service` JSON-LD nodes. */
+  serviceCards?: LocationServiceCards
+  /** Who is responsible for the public main versus the private lateral. */
+  responsibility?: LocationResponsibility
+  /** How the city's combined sewer system works. */
+  systemExplainer?: LocationSystemExplainer
+  /** Housing age, with a general pipe-material timeline table. */
+  housingAge?: LocationHousingAge
+  /** Public agency versus private line: who to call. */
+  whoToCall?: LocationWhoToCall
+  /** Municipal repair program, framed around what an inspection documents. */
+  municipalProgram?: LocationMunicipalProgram
+  /** Independent second-opinion section. */
+  secondOpinion?: LocationSecondOpinion
+  /** Buying-guide section with an agents block. */
+  buyingGuide?: LocationBuyingGuide
+  /** Hand-authored nearby areas. Never generated from the location registry. */
+  nearbyAreas?: LocationNearbyAreas
+  /** Closing CTA with a background photograph and a second request form. */
+  finalCta?: LocationFinalCta
+  /** Source list and the date it was last reviewed. */
+  sources?: LocationSources
+}
+
+/** A link to an approved internal page (by id) or to an external URL. */
+export interface LocationLink {
+  label: string
+  /** Internal: resolved through the approved-page registry at render. */
+  pageId?: PageId
+  /** External: rendered with `rel="noopener"`. */
+  href?: string
+}
+
+/**
+ * Optional configuration that turns `LeadFormSection` into the detailed
+ * request form. Pages that do not pass it keep the standard form.
+ */
+export interface LeadFormConfig {
+  /** Service select options; `value` is a canonical service id or `other`. */
+  serviceOptions: readonly { value: string; label: string }[]
+  /** Property-location select options. */
+  locationOptions: readonly { value: string; label: string }[]
+  defaultLocationValue?: string
+  locationLabel: string
+  errors: {
+    firstName: string
+    lastName: string
+    phone: string
+    service: string
+  }
+  /** Rendered verbatim under the submit button. Omit to render nothing. */
+  consentLine?: string
+}
+
+export interface LocationHeroForm {
+  bullets: readonly string[]
+  primaryAction: { label: string; href: string }
+  /** The phone is added from the business constants, not authored here. */
+  secondaryActionLabel: string
+  backdrop?: CardImage
+  card: {
+    title: string
+    intro: string
+    /** Text after the phone number, e.g. the hours. */
+    phoneLineSuffix: string
+    nextStepsTitle: string
+    nextSteps: readonly string[]
+    note: ReactNode
+    form: LeadFormConfig
+  }
+}
+
+export interface LocationKeyTakeaways {
+  title: string
+  items: readonly ReactNode[]
+  jumpNavLabel: string
+  jumpNav: readonly { label: string; href: string }[]
+}
+
+export interface LocationServiceCard {
+  serviceId: ServiceId
+  title: string
+  description: string
+  bestWhen: string
+  bookingLabel: string
+  secondaryLink: LocationLink
+  image?: CardImage
+}
+
+export interface LocationServiceCards {
+  eyebrow: string
+  title: string
+  cards: readonly LocationServiceCard[]
+  helpBar: {
+    title: string
+    body: string
+    primaryLabel: string
+    phoneLabel: string
+  }
+}
+
+export interface LocationResponsibility {
+  eyebrow: string
+  title: string
+  answer: ReactNode
+  cards: readonly { tag: string; title: string; body: string }[]
+  table: {
+    caption: string
+    columns: readonly [string, string, string]
+    rows: readonly { label: string; publicMain: ReactNode; privateLateral: ReactNode }[]
+  }
+  note: string
+}
+
+export interface LocationSystemExplainer {
+  eyebrow: string
+  title: string
+  paragraphs: readonly ReactNode[]
+  card: {
+    title: string
+    bullets: readonly string[]
+    closing: string
+    image?: CardImage
+  }
+}
+
+export interface LocationHousingAge {
+  eyebrow: string
+  title: string
+  paragraphs: readonly ReactNode[]
+  table: {
+    caption: string
+    columns: readonly [string, string, string]
+    rows: readonly (readonly [string, string, string])[]
+  }
+}
+
+export interface LocationWhoToCall {
+  eyebrow: string
+  title: string
+  paragraphs: readonly string[]
+  image?: CardImage
+  agency: {
+    label: string
+    phone: { label: string; href: string }
+    text: string
+    links: readonly LocationLink[]
+  }
+  company: { label: string; text: string }
+}
+
+export interface LocationMunicipalProgram {
+  eyebrow: string
+  title: string
+  lede: string
+  paragraphs: readonly ReactNode[]
+  image?: CardImage
+  covers: { title: string; items: readonly string[] }
+  doesNotCover: { title: string; items: readonly string[] }
+  closing: ReactNode
+}
+
+export interface LocationSecondOpinion {
+  eyebrow: string
+  title: string
+  ledes: readonly string[]
+  cta: { label: string; supportLine: string }
+  steps: readonly { title: string; body: string; image?: CardImage }[]
+  callout: { title: string; body: string }
+}
+
+export interface LocationBuyingGuide {
+  eyebrow: string
+  title: string
+  lede: string
+  body: string
+  image?: CardImage
+  links: readonly LocationLink[]
+  cta: { label: string }
+  agents: {
+    eyebrow: string
+    title: string
+    body: string
+    link: LocationLink
+    image?: CardImage
+  }
+}
+
+export interface LocationNearbyAreas {
+  eyebrow: string
+  title: string
+  body: string
+  items: readonly { title: string; description: string; pageId: PageId }[]
+}
+
+export interface LocationFinalCta {
+  eyebrow: string
+  title: string
+  paragraphs: readonly string[]
+  bullets: readonly string[]
+  background?: CardImage
+  formTitle: string
+  submitLabel: string
+  messageLabel: string
+  form: LeadFormConfig
+}
+
+export interface LocationSources {
+  title: string
+  links: readonly { label: string; href: string }[]
+  /** ISO date, `YYYY-MM-DD`. Drives the visible "Last reviewed" line. */
+  lastReviewed: string
+  closingNote: string
 }
 
 /** Service + location page — 05 §119, 14 §21. */
