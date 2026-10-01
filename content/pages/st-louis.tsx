@@ -51,6 +51,7 @@
  * promises approval, reimbursement, or eligibility.
  */
 
+import { stLouisCityContent } from './st-louis-city'
 import type {
   LocationPageContent,
   MarketPageContent,
@@ -1326,97 +1327,7 @@ export const lateralReportingContent: ServicePageContent = {
 
 export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>> = {
   /* -------------------------------------------------------------- City -- */
-  [id('loc-stl-st-louis-city')]: {
-    metaDescription:
-      'Explore sewer inspections, diagnostics, cleaning, hydro jetting, and drain services available for properties in St. Louis, Missouri.',
-    hero: {
-      eyebrow: 'St. Louis City',
-      title: 'Sewer inspection and cleaning in St. Louis City',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for city properties,
-          where the housing stock is among the oldest in the region and the
-          City runs its own lateral repair programme.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>The City&rsquo;s lateral repair programme</h2>
-        <p>
-          St. Louis City operates a sewer lateral repair programme funded by a
-          $28 annual charge on the real estate tax bill. What it covers is
-          narrower than people often assume.
-        </p>
-        <p>
-          The programme addresses breaks beneath the public right-of-way that
-          cause a cave-in or backup. It does <strong>not</strong> cover breaks
-          under private property, and it does not cover clearing clogs or tree
-          roots along any portion of the lateral.
-        </p>
-        <p>
-          A licensed plumber must inspect the line and submit a written
-          statement together with video. A city street inspector performs the
-          initial cave-in assessment at no charge.
-        </p>
-
-        <h2>What the right-of-way boundary means in practice</h2>
-        <p>
-          Because coverage turns on where the defect sits, establishing its
-          position matters as much as establishing that it exists. A failure a
-          few feet either side of that boundary is a different financial
-          situation for the homeowner.
-        </p>
-        <p>
-          That is why inspection and locating are often done together here:
-          the footage shows the condition and the distance, and locating
-          translates that distance into a position on the ground.
-        </p>
-
-        <h2>The oldest housing stock in the region</h2>
-        <p>
-          58.4% of the city&rsquo;s housing was built before 1940, and the
-          median year built falls at 1939 or earlier (American Community
-          Survey, 2019&ndash;2023 five-year estimates). No other municipality
-          we work across in the St. Louis area is close to that.
-        </p>
-        <p>
-          Laterals from those decades were commonly laid in vitrified clay or
-          cast iron. Clay separates at joints and admits roots; cast iron
-          corrodes and scales internally, narrowing the line over decades.
-        </p>
-        <p>
-          Both are era characteristics rather than a claim about any specific
-          address: what a given line is made of, and how it is holding up, is
-          what the camera establishes.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-stl-city-camera'), id('svc-stl-sewer-lateral-inspection-reporting')],
-    faq: [
-      {
-        question: 'Does the City programme cover a break under my yard?',
-        answer: (
-          <p>
-            No. The City&rsquo;s programme addresses breaks beneath the public
-            right-of-way causing a cave-in or backup. Breaks under private
-            property are excluded, as is clearing clogs and roots anywhere along
-            the lateral.
-          </p>
-        ),
-      },
-      {
-        question: 'Who pays for the video the programme requires?',
-        answer: (
-          <p>
-            The licensed plumber&rsquo;s inspection and written statement are
-            the homeowner&rsquo;s to arrange. The city street inspector&rsquo;s
-            initial cave-in assessment is free.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-stl-st-louis-city')]: stLouisCityContent,
 
   /* ----------------------------------------------------------- Ballwin -- */
   [id('loc-stl-ballwin')]: {

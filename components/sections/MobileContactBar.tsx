@@ -28,7 +28,29 @@ function isMarketId(value: string | null): value is MarketId {
 const BAR_BUTTON =
   'inline-flex min-h-11 flex-1 items-center justify-center rounded-md px-3 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary'
 
-export function MobileContactBar({ marketId }: { marketId?: MarketId }) {
+export interface MobileContactBarProps {
+  marketId?: MarketId
+  /**
+   * Where the second button points. Defaults to `#request-service`, which
+   * is what every existing caller gets.
+   */
+  scheduleHref?: string
+  /** Label for the second button. Defaults to `Schedule`. */
+  scheduleLabel?: string
+  /**
+   * Whether the third, city-picker button renders. Defaults to true. A page
+   * that already names its market (a location page) passes false and gets a
+   * two-button Call / Request bar.
+   */
+  showCityPicker?: boolean
+}
+
+export function MobileContactBar({
+  marketId,
+  scheduleHref = '#request-service',
+  scheduleLabel = 'Schedule',
+  showCityPicker = true,
+}: MobileContactBarProps) {
   const [chosen, setChosen] = useState<MarketId | undefined>(marketId)
   const [open, setOpen] = useState(false)
   const sheetRef = useRef<HTMLDivElement>(null)
@@ -84,23 +106,25 @@ export function MobileContactBar({ marketId }: { marketId?: MarketId }) {
           </button>
         )}
         <a
-          href="#request-service"
+          href={scheduleHref}
           onClick={() => trackCtaClick('mobile_bar', chosen === undefined ? {} : { market_id: chosen })}
           className={`${BAR_BUTTON} border border-border bg-surface text-foreground`}
         >
-          Schedule
+          {scheduleLabel}
         </a>
-        <button
-          type="button"
-          aria-haspopup="dialog"
-          aria-expanded={open}
-          onClick={() => setOpen(true)}
-          className={`${BAR_BUTTON} border border-border bg-surface text-foreground`}
-        >
-          {chosen === undefined
-            ? 'Choose City'
-            : (marketList.find((m) => m.id === chosen)?.city ?? 'Choose City')}
-        </button>
+        {showCityPicker && (
+          <button
+            type="button"
+            aria-haspopup="dialog"
+            aria-expanded={open}
+            onClick={() => setOpen(true)}
+            className={`${BAR_BUTTON} border border-border bg-surface text-foreground`}
+          >
+            {chosen === undefined
+              ? 'Choose City'
+              : (marketList.find((m) => m.id === chosen)?.city ?? 'Choose City')}
+          </button>
+        )}
       </div>
 
       {open && (

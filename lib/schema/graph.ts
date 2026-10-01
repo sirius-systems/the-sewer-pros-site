@@ -51,6 +51,7 @@ import type {
   SchemaGraph,
   SchemaNode,
   SchemaRef,
+  ServiceId,
   ServiceNode,
   WebPageNode,
   WebPageType,
@@ -58,7 +59,7 @@ import type {
 import { SCHEMA_FRAGMENT, isIndexable } from '@/types'
 import { absoluteUrl, siteOrigin, SITE_NAME } from '@/data/business'
 import { breadcrumbTrail } from '@/data/pages'
-import { getServiceByCanonicalUrl } from '@/data/services'
+import { getService, getServiceByCanonicalUrl } from '@/data/services'
 import {
   founders,
   marketPlace,
@@ -274,6 +275,21 @@ export interface PageSchemaInput {
    * in the order rendered, each with a real destination.
    */
   itemList?: readonly { name: string; pathname: string }[]
+  /**
+   * A location page's VISIBLE service cards, one `Service` node each.
+   *
+   * ⚠ DERIVED FROM THE SAME CARDS THE PAGE RENDERS, so the markup cannot
+   * name a service the reader does not see (15 §67). Each node is
+   * provided by the single Organization, scoped to the page's market
+   * `Place`, and points at the service's canonical page. Never a repair
+   * or replacement service: the cards come from the service registry,
+   * which has none (15 §65).
+   */
+  serviceCards?: readonly {
+    serviceId: ServiceId
+    name: string
+    description: string
+  }[]
 }
 
 /**
@@ -292,6 +308,7 @@ export function pageSchema({
   dateModified,
   faq,
   itemList,
+  serviceCards,
 }: PageSchemaInput): SchemaGraph | undefined {
   if (!isIndexable(page)) return undefined
 
@@ -343,6 +360,25 @@ export function pageSchema({
     const place: PlaceNode = marketPlace(page.marketId)
     nodes.push(place)
     webPage.about = ref(place['@id'])
+  }
+
+  // A location page's visible service cards. The market Place pushed
+  // above is what `areaServed` references, so no new place entity exists.
+  if (serviceCards !== undefined && serviceCards.length > 0 && page.marketId !== undefined) {
+    const placeRef = ref(marketPlace(page.marketId)['@id'])
+    for (const card of serviceCards) {
+      const record = getService(card.serviceId)
+      nodes.push({
+        '@type': 'Service',
+        '@id': `${absoluteUrl(page.pathname)}#service-${record.slug}`,
+        name: card.name,
+        serviceType: card.name,
+        description: card.description,
+        provider: ref(organizationId()),
+        areaServed: [placeRef],
+        url: absoluteUrl(record.canonicalUrl),
+      })
+    }
   }
 
   const breadcrumb = breadcrumbNode(page)

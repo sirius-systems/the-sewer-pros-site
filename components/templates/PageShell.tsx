@@ -7,7 +7,7 @@ import {
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { PageViewTracker } from '@/components/tracking'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { pageSchema } from '@/lib/schema'
+import { pageSchema, type PageSchemaInput } from '@/lib/schema'
 import { pageContext } from '@/lib/analytics'
 import type { FaqContent, MasterPageRecord } from '@/types'
 
@@ -60,6 +60,8 @@ export interface PageShellProps {
     faq?: readonly FaqContent[]
     /** A hub's visible member list; see `PageSchemaInput.itemList`. */
     itemList?: readonly { name: string; pathname: string }[]
+    /** A location page's visible service cards; see `PageSchemaInput.serviceCards`. */
+    serviceCards?: PageSchemaInput['serviceCards']
   }
   /**
    * Densities of the sections this template renders, in order.
@@ -96,6 +98,7 @@ export function PageShell({ page, densities, schema, children }: PageShellProps)
             dateModified: schema.dateModified,
             faq: schema.faq,
             itemList: schema.itemList,
+            serviceCards: schema.serviceCards,
           })}
         />
       )}
