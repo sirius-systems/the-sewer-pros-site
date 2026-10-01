@@ -456,9 +456,54 @@ export function SecondOpinionSection({ content }: { content: LocationSecondOpini
    ========================================================================== */
 
 export function BuyingGuideSection({ content }: { content: LocationBuyingGuide }) {
+  /*
+    With no photograph for either block, the agents card sits BESIDE the
+    buying copy rather than below it, so the right half of the section is
+    never empty. With a photograph, the original stacked layout applies.
+  */
+  const sideBySide = content.image === undefined && content.agents.image === undefined
+
+  const agentsCard = (
+    <div
+      className={cn(
+        'rounded-md border border-border bg-surface p-6',
+        !sideBySide && 'mt-10',
+      )}
+    >
+      <div
+        className={cn(
+          'grid gap-6',
+          content.agents.image !== undefined && 'md:grid-cols-12 md:items-center',
+        )}
+      >
+        <div className={cn(content.agents.image !== undefined && 'md:col-span-7')}>
+          <p className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
+            {content.agents.eyebrow}
+          </p>
+          <h3 className="mt-2 text-h3 font-semibold tracking-tight">{content.agents.title}</h3>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">{content.agents.body}</p>
+          <div className="mt-3">
+            <LocationLinkAnchor link={content.agents.link} className={TEXT_LINK} />
+          </div>
+        </div>
+        {content.agents.image !== undefined && (
+          <div className="md:col-span-5">
+            <Photo image={content.agents.image} sizes="(min-width: 768px) 35vw, 100vw" />
+          </div>
+        )}
+      </div>
+    </div>
+  )
+
   return (
     <Section density="standard" surface="muted" labelledBy="buying">
-      <div className={cn('grid gap-10', content.image !== undefined && 'lg:grid-cols-12')}>
+      <div
+        className={cn(
+          'grid gap-10',
+          content.image !== undefined && 'lg:grid-cols-12',
+          sideBySide && 'lg:grid-cols-2 lg:items-start',
+        )}
+      >
         {content.image !== undefined && (
           <div className="lg:col-span-5">
             <Photo image={content.image} sizes="(min-width: 1024px) 40vw, 100vw" />
@@ -490,32 +535,9 @@ export function BuyingGuideSection({ content }: { content: LocationBuyingGuide }
             </a>
           </div>
         </div>
+        {sideBySide && agentsCard}
       </div>
-
-      <div className="mt-10 rounded-md border border-border bg-surface p-6">
-        <div
-          className={cn(
-            'grid gap-6',
-            content.agents.image !== undefined && 'md:grid-cols-12 md:items-center',
-          )}
-        >
-          <div className={cn(content.agents.image !== undefined && 'md:col-span-7')}>
-            <p className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
-              {content.agents.eyebrow}
-            </p>
-            <h3 className="mt-2 text-h3 font-semibold tracking-tight">{content.agents.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">{content.agents.body}</p>
-            <div className="mt-3">
-              <LocationLinkAnchor link={content.agents.link} className={TEXT_LINK} />
-            </div>
-          </div>
-          {content.agents.image !== undefined && (
-            <div className="md:col-span-5">
-              <Photo image={content.agents.image} sizes="(min-width: 768px) 35vw, 100vw" />
-            </div>
-          )}
-        </div>
-      </div>
+      {!sideBySide && agentsCard}
     </Section>
   )
 }
