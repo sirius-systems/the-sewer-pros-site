@@ -4798,6 +4798,32 @@ An external SEO proposal was reconciled into 9 candidate location hubs and 49 ca
 
 This does **not** approve new service claims, physical offices, Google Business Profiles, production routes, sitemap inclusion, or mass indexation. Operational coverage must be confirmed per market and service before selection.
 
+## DEC-108 - FAQPage Markup Approved Beyond the Home Page (Chesterfield first)
+
+**Date:** 2026-10-01
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `15-schema-entity-strategy.md` (57-58)
+* `content/pages/st-louis-chesterfield.tsx`
+
+The owner approved `FAQPage` markup for all pages in principle. DEC-089 (home page only) is extended, not reversed. Implemented now for `/st-louis-mo/chesterfield/` only (`faqSchemaApproved: true`). Each other page is enabled in its own change after confirming its FAQ is visible, matches the markup and is worth marking up (15 section 58). Follow-up: the St. Louis City page already has the opt-in switch and is the natural first one.
+
+## DEC-109 - Chesterfield Lateral Program Terms Sourced; PENDING-014 Closed
+
+**Date:** 2026-10-01
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Implementation under DEC-072
+**Affected Documents:**
+
+* `content/pages/st-louis-chesterfield.tsx`
+* `04-master-page-build-list.md`
+
+The City of Chesterfield's own policy PDF (header 03/2026) and application (Rev. 05/31/2024) were read directly. The $28 annual assessment, the 100 percent up to $15,000 cap, the $200 non-refundable fee, eligibility (six or fewer dwelling units; owner applies; seller applies in a sale), exclusions and process are now stated on the page with citations, replacing the cite-and-link wording. Current funding status is NOT FOUND and the page tells readers to confirm with Public Works. PENDING-015 (housing-age figures) stays open: the page keeps the owner-approved ACS 2019-2023 figures with citation until the primary Census tables are checked.
+
 ---
 
 # 26. Decision Quality Standard

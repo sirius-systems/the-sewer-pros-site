@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils/cn'
 import type {
   CardImage,
   LocationBuyingGuide,
+  LocationAgencyPanel,
   LocationHousingAge,
   LocationKeyTakeaways,
   LocationMunicipalProgram,
@@ -292,6 +293,30 @@ export function HousingAgeSection({ content }: { content: LocationHousingAge }) 
    Who to call (dark)
    ========================================================================== */
 
+function AgencyPanel({ agency }: { agency: LocationAgencyPanel }) {
+  return (
+    <div className="rounded-md bg-surface p-6 text-foreground">
+      <p className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
+        {agency.label}
+      </p>
+      <a
+        href={agency.phone.href}
+        className="mt-2 inline-flex min-h-11 items-center text-h3 font-semibold text-accent-secondary underline underline-offset-4"
+      >
+        {agency.phone.label}
+      </a>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">{agency.text}</p>
+      <ul className="mt-3 space-y-1">
+        {agency.links.map((link) => (
+          <li key={link.label}>
+            <LocationLinkAnchor link={link} className={TEXT_LINK} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export function WhoToCallSection({ content }: { content: LocationWhoToCall }) {
   return (
     <Section density="standard" surface="brand" labelledBy="who-to-call">
@@ -309,26 +334,16 @@ export function WhoToCallSection({ content }: { content: LocationWhoToCall }) {
             ))}
           </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            <div className="rounded-md bg-surface p-6 text-foreground">
-              <p className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
-                {content.agency.label}
-              </p>
-              <a
-                href={content.agency.phone.href}
-                className="mt-2 inline-flex min-h-11 items-center text-h3 font-semibold text-accent-secondary underline underline-offset-4"
-              >
-                {content.agency.phone.label}
-              </a>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{content.agency.text}</p>
-              <ul className="mt-3 space-y-1">
-                {content.agency.links.map((link) => (
-                  <li key={link.label}>
-                    <LocationLinkAnchor link={link} className={TEXT_LINK} />
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div
+            className={cn(
+              'mt-8 grid gap-5 md:grid-cols-2',
+              content.secondaryAgency !== undefined && 'lg:grid-cols-3',
+            )}
+          >
+            <AgencyPanel agency={content.agency} />
+            {content.secondaryAgency !== undefined && (
+              <AgencyPanel agency={content.secondaryAgency} />
+            )}
             <div className="rounded-md bg-surface p-6 text-foreground">
               <p className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
                 {content.company.label}
@@ -383,6 +398,32 @@ export function MunicipalProgramSection({ content }: { content: LocationMunicipa
           </div>
         ))}
       </div>
+
+      {content.steps !== undefined && (
+        <div className="mt-8">
+          <h3 className="text-h4 font-semibold">{content.steps.title}</h3>
+          <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {content.steps.steps.map((step, i) => (
+              <li key={step.title} className="rounded-md border border-border bg-surface p-5">
+                <p className="text-caption font-semibold text-muted-foreground">Step {i + 1}</p>
+                <h4 className="mt-1 text-base font-semibold">{step.title}</h4>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {content.callout !== undefined && (
+        <Callout kind="independent" label="Independent inspection note" className="mt-8">
+          <h3 className="text-h4 font-semibold">{content.callout.title}</h3>
+          <div className={cn('mt-2 space-y-3 text-sm leading-6', LINK_ON_LIGHT)}>
+            {content.callout.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </Callout>
+      )}
 
       <div className={cn('mt-8 max-w-[var(--container-reading)] text-base leading-7', LINK_ON_LIGHT)}>
         <p>{content.closing}</p>
