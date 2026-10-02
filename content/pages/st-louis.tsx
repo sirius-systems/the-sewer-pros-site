@@ -34,13 +34,14 @@
  * localisation.
  *
  * ---------------------------------------------------------------------------
- * ⚠ CHESTERFIELD STATES LESS THAN ITS SIBLINGS
+ * ⚠ CHESTERFIELD LIVES IN ITS OWN MODULE
  * ---------------------------------------------------------------------------
- * Its three pages ship on housing-era differentiation, with the lateral
- * section limited to the published fee and start date. The cap and
- * exclusions remain unverified after an exhausted search, so per
- * DEC-072 the copy cite-and-links to Chesterfield Public Works rather
- * than restating figures we have not confirmed.
+ * `content/pages/st-louis-chesterfield.tsx` carries the full rich
+ * composition. Its lateral program terms (the $28 fee, the 100 percent up
+ * to $15,000 cap, the $200 fee, eligibility and exclusions) are
+ * primary-sourced from the City's own policy and application (DEC-109).
+ * Only the housing-age figures still rest on owner-approved ACS estimates
+ * (PENDING-015).
  *
  * ---------------------------------------------------------------------------
  * ⚠ NO CLAIM OF PROGRAMME OUTCOMES
@@ -52,6 +53,7 @@
  */
 
 import { stLouisCityContent } from './st-louis-city'
+import { chesterfieldContent } from './st-louis-chesterfield'
 import type {
   LocationPageContent,
   MarketPageContent,
@@ -1527,138 +1529,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
   },
 
   /* ------------------------------------------------------ Chesterfield -- */
-  [id('loc-stl-chesterfield')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, and drain services available for properties in Chesterfield, Missouri.',
-    hero: {
-      eyebrow: 'Chesterfield',
-      title: 'Sewer inspection and cleaning in Chesterfield',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Chesterfield
-          properties, a comparatively young city where a newer lateral is not
-          the same thing as a problem-free one.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>A young city by St. Louis standards</h2>
-        <p>
-          Chesterfield incorporated in 1988, and 85.6% of its housing was built
-          from 1970 onward, with a median year built of 1982 (American Community
-          Survey, 2019&ndash;2023 five-year estimates). Only 1.4% predates 1940.
-        </p>
-        <p>
-          Set against St. Louis City, where 58.4% of housing predates 1940, that
-          is close to the opposite end of the region&rsquo;s range, and it
-          changes what tends to be found underground.
-        </p>
-        <p>
-          That changes what tends to be found underground. Development from the
-          1970s onward increasingly used PVC rather than clay, cast iron, or
-          bituminized fibre pipe, which removes the material failure modes that
-          dominate older areas: clay joints separating, cast iron scaling,
-          Orangeburg deforming under load.
-        </p>
-
-        <h2>What newer pipe does not protect against</h2>
-        <p>
-          PVC rarely fails as a material. It still sits in ground that moves.
-          The recurring findings on newer laterals are not corrosion or
-          collapse but:
-        </p>
-        <ul>
-          <li>
-            Bellies: sections that have lost slope and hold water, so solids
-            settle where flow has slowed
-          </li>
-          <li>
-            Joint separation caused by soil movement or settlement rather than
-            material decay
-          </li>
-          <li>
-            Damage from later work: landscaping, an addition, utility trenching
-            crossing the line
-          </li>
-          <li>
-            Roots finding any opening that movement or damage has created
-          </li>
-        </ul>
-        <p>
-          A belly produces exactly the pattern people associate with an old,
-          failing line: repeated slow drainage that clears and returns. The
-          cause is different, and so is the remedy.
-        </p>
-
-        <h2>Why the age of a house is a poor proxy</h2>
-        <p>
-          &ldquo;It is a newer home, the sewer will be fine&rdquo; is a
-          reasonable assumption and a frequently wrong one. Ground movement does
-          not wait for a pipe to reach a particular age, and the line may have
-          been disturbed by work done since.
-        </p>
-        <p>
-          What is actually in the ground, and what condition it is in, is what a
-          camera establishes. Era tells you what to expect, not what is there.
-        </p>
-
-        <h2>The lateral repair programme</h2>
-        <p>
-          Chesterfield, like most St. Louis-area municipalities, funds a
-          residential sewer lateral repair programme through an annual charge on
-          the real estate tax bill. The charge is $28 and has applied since
-          1 January 2001, following voter approval. The programme covers repairs
-          of defective sewer laterals for residential buildings of six units or
-          fewer.
-        </p>
-        <p>
-          Programme terms (including any reimbursement cap and the specific
-          exclusions) differ between municipalities and change over time. We
-          have not been able to confirm Chesterfield&rsquo;s cap or exclusions
-          from a published source, so rather than restate figures we cannot
-          verify, see{' '}
-          <a href="https://www.chesterfield.mo.us/263/Residential-Sanitary-Sewer-Lateral-Repai">
-            Chesterfield&rsquo;s own programme page
-          </a>{' '}
-          for current terms.
-        </p>
-      </>
-    ),
-    servicePageIds: [
-      id('sl-chesterfield-camera'),
-      id('sl-chesterfield-hydro'),
-      id('svc-stl-sewer-lateral-inspection-reporting'),
-    ],
-    faq: [
-      {
-        question: 'My house is newer. Do I still need an inspection?',
-        answer: (
-          <p>
-            Newer pipe removes the material failure modes common in older areas,
-            but not the ones caused by ground movement or later disturbance:
-            bellies, joint separation, and damage from subsequent work. Those
-            produce the same recurring symptoms.
-          </p>
-        ),
-      },
-      {
-        question: 'What does Chesterfield’s lateral programme cover?',
-        answer: (
-          <p>
-            It covers repairs of defective sewer laterals for residential
-            buildings of six units or fewer, funded by a $28 annual charge in
-            place since 2001. The current cap and exclusions are on{' '}
-            <a href="https://www.chesterfield.mo.us/263/Residential-Sanitary-Sewer-Lateral-Repai">
-              Chesterfield&rsquo;s programme page
-            </a>{' '};
-            we would rather point you there than restate figures we have not
-            confirmed against the city&rsquo;s own source.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-stl-chesterfield')]: chesterfieldContent,
 
   /* ------------------------------------------------------- St. Charles -- */
   [id('loc-stl-st-charles')]: {

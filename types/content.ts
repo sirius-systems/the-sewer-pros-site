@@ -2450,13 +2450,17 @@ export interface LocationWhoToCall {
   title: string
   paragraphs: readonly string[]
   image?: CardImage
-  agency: {
-    label: string
-    phone: { label: string; href: string }
-    text: string
-    links: readonly LocationLink[]
-  }
+  agency: LocationAgencyPanel
+  /** Optional second public agency, rendered after `agency`. */
+  secondaryAgency?: LocationAgencyPanel
   company: { label: string; text: string }
+}
+
+export interface LocationAgencyPanel {
+  label: string
+  phone: { label: string; href: string }
+  text: string
+  links: readonly LocationLink[]
 }
 
 export interface LocationMunicipalProgram {
@@ -2467,6 +2471,13 @@ export interface LocationMunicipalProgram {
   image?: CardImage
   covers: { title: string; items: readonly string[] }
   doesNotCover: { title: string; items: readonly string[] }
+  /** Optional numbered process, rendered as an ordered list. */
+  steps?: {
+    title: string
+    steps: readonly { title: string; body: string }[]
+  }
+  /** Optional callout shown after the steps and before `closing`. */
+  callout?: { title: string; paragraphs: readonly ReactNode[] }
   closing: ReactNode
 }
 
