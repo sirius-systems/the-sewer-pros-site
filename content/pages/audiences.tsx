@@ -110,7 +110,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <p>
           Some municipalities run programmes that contribute toward lateral
           repair, and terms vary sharply: Carlsbad offers up to $3,000, Ballwin
-          caps at $4,500, Florissant states no maximum but stops five feet from
+          pays up to $4,500 per repair with up to $7,500 where the City approves
+          special circumstances, Florissant states no maximum but stops five feet from
           the house, and the City of San Diego offers nothing at all.
         </p>
         <p>

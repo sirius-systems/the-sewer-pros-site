@@ -1753,17 +1753,22 @@ export const stLouisServiceLocationContent: Partial<
       <>
         <h2>Why the programme terms belong in a buying decision</h2>
         <p>
-          Ballwin&rsquo;s lateral repair programme caps reimbursement at $4,500,
-          rising to as much as $7,500 where deep excavation or street cutting is
-          required. It also treats root clearing of once a year or less as
-          normal maintenance rather than a covered failure.
+          Ballwin&rsquo;s lateral repair program pays up to $4,500 per repair,
+          and the City may reimburse up to $7,500 where it approves special
+          circumstances such as deep excavation or street cutting. It also
+          treats clearing roots once a year or less as normal maintenance
+          rather than a covered repair.
         </p>
         <p>
           For a buyer, that turns an inspection finding into something more
-          specific than &ldquo;there is a problem&rdquo;. A structural failure
-          may fall within a capped programme; a line that needs annual root
-          attention likely falls outside it entirely and becomes a recurring
-          cost you inherit.
+          specific than &ldquo;there is a problem&rdquo;. The City says the
+          program is not intended to satisfy a home sale contingency: when a
+          buyer&rsquo;s lateral inspection notes defects but the line has no
+          history of the repeated blockage or failure the program looks for, the
+          repair is not covered. A new owner who later has a qualifying problem
+          can apply under the normal criteria. A line that needs root clearing
+          once a year or less is treated as normal maintenance, which is a
+          recurring cost the owner carries.
         </p>
 
         <h2>What the inspection establishes before you commit</h2>
@@ -1776,11 +1781,13 @@ export const stLouisServiceLocationContent: Partial<
 
         <h2>Construction era in Ballwin</h2>
         <p>
-          Much of Ballwin&rsquo;s housing dates from the subdivision development
-          of the 1960s through the 1980s, a period spanning the transition from
-          clay and cast iron, through the years bituminized fibre pipe was still
-          being laid, into the PVC era. That range is wide enough that the age of
-          a house is a poor proxy for the condition of its lateral.
+          Ballwin says most older sewer laterals in the city are clay pipe,
+          which tends to crack, break, separate at joints and let roots in, and
+          those defects can exist while the line still works normally. The
+          median year built for homes in the City of Ballwin is 1976 (American
+          Community Survey, 2019-2023 five-year estimates). The age of a house
+          is a poor proxy for the condition of its lateral; which situation
+          applies to a particular property is a question for the camera.
         </p>
 
         <h2>Timing</h2>
@@ -1788,6 +1795,11 @@ export const stLouisServiceLocationContent: Partial<
           The inspection is most useful while decisions remain available to you.
           What you do with the findings is yours to decide with your own
           advisers; we document the line, not the transaction.
+        </p>
+        <p>
+          Program terms are from the City of Ballwin&rsquo;s Sewer Lateral
+          Repair Program page, which is undated. Confirm current terms and
+          funding with the Ballwin Inspections Department.
         </p>
       </>
     ),
