@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getService } from '@/data/services'
 import { contact } from '@/data/business/organization'
+import { resolveSlotImage, type ImageSlotLike } from '@/lib/image-slots'
 import { homeServiceCards } from './home-service-cards'
 import type {
   CardImage,
@@ -40,6 +41,29 @@ const existing = (src: string, alt: string): CardImage => ({
   alt,
   source: 'Existing site image, reused on this page.',
 })
+
+/* ==========================================================================
+   Image slots (unfilled)
+   ========================================================================== */
+
+/**
+ * Slots this page has no photo for yet. With no `src` a slot renders nothing
+ * in production. In review builds (`NEXT_PUBLIC_SHOW_IMAGE_SLOTS`) each one
+ * draws a labelled placeholder. Add `src` and `source` to show a real photo.
+ */
+const IMAGE_SLOTS: readonly ImageSlotLike[] = [
+  { id: 'system-street', ratio: '4:3', alt: 'Residential street with a manhole cover near the curb', shot: 'Ordinary residential street, manhole and curb, no identifiable homes' },
+  { id: 'call-cleanout', ratio: '4:3', alt: 'Capped sewer cleanout beside a house foundation', shot: 'Exterior cleanout cap at the base of a house' },
+  { id: 'so-inspect', ratio: '4:3', alt: 'Sewer camera entering a cleanout', shot: 'Camera head entering a cleanout, close up' },
+  { id: 'so-document', ratio: '4:3', alt: 'Monitor showing recorded footage of a pipe interior', shot: 'Monitor or tablet with the report open beside it, address redacted' },
+  { id: 'so-decide', ratio: '4:3', alt: 'Property owner reviewing a printed inspection findings report', shot: 'Technician and homeowner reviewing findings, faces not identifiable' },
+  { id: 'buy-buyer', ratio: '4:3', alt: 'Inspector walking a home buyer through sewer inspection findings outside a house', shot: 'Technician at a for-sale property starting a pre-purchase scope' },
+  { id: 'buy-agent', ratio: '4:3', alt: 'Real estate agent viewing an inspection report and video on a tablet', shot: 'Report handed to an agent, hands only, redacted' },
+]
+
+function slotImage(slotId: string): CardImage | undefined {
+  return resolveSlotImage(IMAGE_SLOTS.find((s) => s.id === slotId))
+}
 
 /** The card artwork already approved for the nine core services. */
 function cardImage(serviceId: ServiceId): CardImage | undefined {
@@ -379,7 +403,7 @@ export const stLouisCityContent: LocationPageContent = {
       'These are system-level facts. They do not tell you the condition of any individual property’s lateral. Only an inspection of your line can show that.',
     ],
     card: {
-      // No fitting photograph exists: image omitted on purpose.
+      image: slotImage('system-street'),
       title: 'What a camera inspection can show on your lateral',
       bullets: [
         'Blockages and grease build-up',
@@ -431,7 +455,7 @@ export const stLouisCityContent: LocationPageContent = {
       'If sewage is backing up through a floor drain, you smell sewage outside, you see an overflow or a missing manhole cover, MSD asks you to report it right away. MSD investigates whether the cause is the public sewer or your private lateral.',
       'If MSD or a plumber points to your lateral, or you want proof of its condition, that is where an independent camera inspection helps.',
     ],
-    // No fitting photograph exists (capped cleanout): image omitted on purpose.
+    image: slotImage('call-cleanout'),
     agency: {
       label: 'MSD Sewer Repair Services and emergency line',
       phone: { label: '(314) 768-6260', href: 'tel:+13147686260' },
@@ -514,14 +538,17 @@ export const stLouisCityContent: LocationPageContent = {
       {
         title: 'Inspect',
         body: 'We use a sewer camera to examine the line for blockages, roots, damage, offsets, standing water, and other visible conditions.',
+        image: slotImage('so-inspect'),
       },
       {
         title: 'Document',
         body: 'Receive video evidence and clear findings that show what was observed inside the line, so you are not forced to rely only on a verbal repair recommendation.',
+        image: slotImage('so-document'),
       },
       {
         title: 'Decide',
         body: 'Use the findings to determine whether the issue calls for cleaning, monitoring, a repair estimate, or another qualified opinion, without pressure to buy a repair from us.',
+        image: slotImage('so-decide'),
       },
     ],
     callout: {
@@ -534,7 +561,7 @@ export const stLouisCityContent: LocationPageContent = {
     title: 'Sewer inspection before buying a St. Louis City home',
     lede: 'A sewer camera inspection shows the visible condition of the lateral before you close, which a standard home inspection does not cover.',
     body: 'Older City properties are served by older infrastructure, and the lateral is the buyer’s responsibility after closing. Recorded findings give you and your agent something concrete to review during your due diligence period.',
-    // Image omitted: the only fitting asset is a rendered scene, not a job photo.
+    image: slotImage('buy-buyer'),
     links: [
       {
         label: 'How a pre-purchase sewer inspection works',
@@ -551,7 +578,7 @@ export const stLouisCityContent: LocationPageContent = {
         label: 'Sewer inspection for real estate agents',
         pageId: id('aud-real-estate-agents'),
       },
-      // Image omitted: the only fitting asset is a rendered scene, not a job photo.
+      image: slotImage('buy-agent'),
     },
   },
   nearbyAreas: {

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getService } from '@/data/services'
 import { contact } from '@/data/business/organization'
+import { resolveSlotImage } from '@/lib/image-slots'
 import { homeServiceCards } from './home-service-cards'
 import type {
   CardImage,
@@ -206,10 +207,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
 ]
 
 function slotImage(slotId: string): CardImage | undefined {
-  const slot = IMAGE_SLOTS.find((s) => s.id === slotId)
-  return slot?.src && slot.source
-    ? { src: slot.src, alt: slot.alt, source: slot.source }
-    : undefined
+  return resolveSlotImage(IMAGE_SLOTS.find((s) => s.id === slotId))
 }
 
 /* ==========================================================================
