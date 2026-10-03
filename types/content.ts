@@ -2476,6 +2476,8 @@ export interface LocationMunicipalProgram {
     title: string
     steps: readonly { title: string; body: string }[]
   }
+  /** Optional paragraphs shown after the steps and before `callout`. */
+  afterSteps?: readonly ReactNode[]
   /** Optional callout shown after the steps and before `closing`. */
   callout?: { title: string; paragraphs: readonly ReactNode[] }
   closing: ReactNode
