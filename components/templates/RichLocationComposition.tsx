@@ -67,6 +67,12 @@ export function RichLocationComposition({
       : undefined
 
   const showsFaq = faqSectionRenders(content.faq)
+  // The final CTA background feeds `CtaSection` (not `Photo`), which cannot
+  // draw a placeholder, so a review-build placeholder is dropped here.
+  const finalCtaBackground =
+    content.finalCta?.background?.placeholder === undefined
+      ? content.finalCta?.background
+      : undefined
 
   const densities: SectionDensity[] = [
     'sparse', // hero
@@ -83,7 +89,7 @@ export function RichLocationComposition({
     ...(content.nearbyAreas ? (['standard'] as const) : []),
     ...(showsFaq ? (['dense'] as const) : []),
     // `split` (photo) renders dense; `panel` (no photo) renders sparse.
-    content.finalCta?.background !== undefined ? 'dense' : 'sparse',
+    finalCtaBackground !== undefined ? 'dense' : 'sparse',
     ...(content.sources ? (['dense'] as const) : []),
   ]
 
@@ -184,7 +190,7 @@ export function RichLocationComposition({
 
       {content.finalCta !== undefined && (
         <CtaSection
-          variant={content.finalCta.background !== undefined ? 'split' : 'panel'}
+          variant={finalCtaBackground !== undefined ? 'split' : 'panel'}
           eyebrow={content.finalCta.eyebrow}
           title={content.finalCta.title}
           body={
@@ -202,7 +208,7 @@ export function RichLocationComposition({
           action={null}
           phone={phone}
           phoneVariant="button"
-          backgroundImage={content.finalCta.background}
+          backgroundImage={finalCtaBackground}
           proof={
             <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
               <LeadFormSection

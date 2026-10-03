@@ -32,6 +32,12 @@ export interface CardImage {
   alt: string
   /** Provenance of the asset. Required — see above. */
   source: string
+  /**
+   * Set only by `resolveSlotImage` in review builds
+   * (`NEXT_PUBLIC_SHOW_IMAGE_SLOTS`). Marks an unfilled image slot to be drawn
+   * as a labelled placeholder; `src` is empty. Never set in production.
+   */
+  placeholder?: { slotId: string; ratio: string; shot: string }
 }
 
 /**
