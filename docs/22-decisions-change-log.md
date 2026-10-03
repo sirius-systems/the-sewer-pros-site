@@ -4824,6 +4824,18 @@ The owner approved `FAQPage` markup for all pages in principle. DEC-089 (home pa
 
 The City of Chesterfield's own policy PDF (header 03/2026) and application (Rev. 05/31/2024) were read directly. The $28 annual assessment, the 100 percent up to $15,000 cap, the $200 non-refundable fee, eligibility (six or fewer dwelling units; owner applies; seller applies in a sale), exclusions and process are now stated on the page with citations, replacing the cite-and-link wording. Current funding status is NOT FOUND and the page tells readers to confirm with Public Works. PENDING-015 (housing-age figures) stays open: the page keeps the owner-approved ACS 2019-2023 figures with citation until the primary Census tables are checked.
 
+## DEC-110 - FAQPage Markup Enabled for Ballwin
+
+**Date:** 2026-10-02
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/st-louis-ballwin.tsx`
+
+FAQPage markup is enabled for `/st-louis-mo/ballwin/` (`faqSchemaApproved: true`) under the principle approved in DEC-108. The ten FAQ entries are visible on the page and the markup is generated from them. The review snapshot is intentionally not part of this change; it will be added in a separate change after this page is built, and no review or rating markup is emitted. Other program terms on the page (the $28 fee, the $4,500 and $7,500 figures, the $150 application fee) were read directly from the City of Ballwin's Sewer Lateral Repair Program page on 2026-10-01 under DEC-072; the median-year-built figure remains owner-approved with the primary Census check pending.
+
 ---
 
 # 26. Decision Quality Standard

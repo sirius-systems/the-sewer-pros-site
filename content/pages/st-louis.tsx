@@ -54,6 +54,7 @@
 
 import { stLouisCityContent } from './st-louis-city'
 import { chesterfieldContent } from './st-louis-chesterfield'
+import { ballwinContent } from './st-louis-ballwin'
 import type {
   LocationPageContent,
   MarketPageContent,
@@ -1332,103 +1333,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
   [id('loc-stl-st-louis-city')]: stLouisCityContent,
 
   /* ----------------------------------------------------------- Ballwin -- */
-  [id('loc-stl-ballwin')]: {
-    metaDescription:
-      'Get information about sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available in Ballwin, Missouri.',
-    hero: {
-      eyebrow: 'Ballwin',
-      title: 'Sewer inspection and cleaning in Ballwin',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Ballwin properties,
-          where the lateral repair programme carries specific caps and a
-          particular rule about root clearing.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Ballwin&rsquo;s lateral repair programme</h2>
-        <p>
-          Ballwin has run a sewer lateral repair programme since 1999, funded by
-          a $28 annual charge on the real estate tax bill. It differs from
-          several neighbouring programmes in two ways worth knowing before a
-          failure happens.
-        </p>
-
-        <h3>There is a cap</h3>
-        <p>
-          Reimbursement is capped at $4,500, rising to as much as $7,500 where
-          the work requires deep excavation or street cutting. Costs above the
-          cap remain the homeowner&rsquo;s.
-        </p>
-        <p>
-          The programme covers structural failures preventing sewer service, and
-          includes excavation, repair, backfill, grading, seeding, and patching
-          of driveway, sidewalk, or street.
-        </p>
-
-        <h3>Root clearing is treated as maintenance</h3>
-        <p>
-          Clearing roots once a year or less is defined as normal maintenance
-          and is not covered. This is a meaningful distinction: a line that
-          needs annual attention for roots sits outside the programme, while a
-          structural failure sits inside it.
-        </p>
-        <p>
-          Cabling and video documentation costs are also the homeowner&rsquo;s,
-          though the invoice is required as documentation where available.
-        </p>
-
-        <h2>Why the distinction is worth establishing early</h2>
-        <p>
-          Whether a recurring problem is roots arriving through an otherwise
-          sound joint, or a structural failure that happens to be admitting
-          roots, determines which side of that rule it falls on, and it is a
-          question a camera inspection answers rather than one anybody should
-          guess at.
-        </p>
-
-        <h2>Construction era</h2>
-        <p>
-          Ballwin&rsquo;s median year built is 1976 (American Community Survey,
-          2019&ndash;2023 five-year estimates), reflecting subdivision
-          development through the 1960s, 1970s, and 1980s.
-        </p>
-        <p>
-          That span straddles a genuine transition in lateral materials: from
-          clay and cast iron, through the period when bituminized fibre pipe
-          was still being installed, into the era when PVC became standard. A
-          house built at one end of Ballwin&rsquo;s range and one built at the
-          other may have quite different pipe underneath. Which applies to a
-          particular property is a question for the camera.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-ballwin-prepurchase'), id('svc-stl-sewer-lateral-inspection-reporting')],
-    faq: [
-      {
-        question: 'Does Ballwin cover root clearing?',
-        answer: (
-          <p>
-            Clearing roots once a year or less is defined as normal maintenance
-            and is not covered. The programme addresses structural failures
-            preventing sewer service.
-          </p>
-        ),
-      },
-      {
-        question: 'What happens if the repair costs more than the cap?',
-        answer: (
-          <p>
-            Reimbursement is capped at $4,500, or up to $7,500 where deep
-            excavation or street cutting is required. Anything beyond the
-            applicable cap remains the homeowner&rsquo;s cost.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-stl-ballwin')]: ballwinContent,
 
   /* -------------------------------------------------------- Florissant -- */
   [id('loc-stl-florissant')]: {
