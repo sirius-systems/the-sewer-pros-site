@@ -16,7 +16,7 @@
  * fee, cap, coverage boundary, and exclusions, and those terms are not
  * transferable between cities. Ballwin's $4,500 cap and its
  * once-a-year root-clearing rule cannot be restated for Florissant,
- * whose program has no cap and stops five feet from the house.
+ * whose City program stops five feet from the house.
  * St. Charles is not even in MSD's territory.
  *
  * ---------------------------------------------------------------------------
@@ -55,6 +55,7 @@
 import { stLouisCityContent } from './st-louis-city'
 import { chesterfieldContent } from './st-louis-chesterfield'
 import { ballwinContent } from './st-louis-ballwin'
+import { florissantContent } from './st-louis-florissant'
 import type {
   LocationPageContent,
   MarketPageContent,
@@ -1336,102 +1337,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
   [id('loc-stl-ballwin')]: ballwinContent,
 
   /* -------------------------------------------------------- Florissant -- */
-  [id('loc-stl-florissant')]: {
-    metaDescription:
-      'Explore sewer inspection, cleaning, diagnostics, and related drain services available for properties in Florissant, Missouri.',
-    hero: {
-      eyebrow: 'Florissant',
-      title: 'Sewer inspection and cleaning in Florissant',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Florissant
-          properties, where the lateral program has no stated maximum but
-          stops five feet short of the house.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Florissant&rsquo;s lateral repair program</h2>
-        <p>
-          Florissant funds its lateral program through a $28 annual charge on
-          the real estate tax bill, reduced from $50 in January 2012, when the
-          council cited a fund reserve of around $1.6 million.
-        </p>
-        <p>
-          Unlike several neighbouring programs, no maximum reimbursement is
-          stated. The coverage boundary, however, is specific.
-        </p>
-
-        <h3>The five-foot boundary</h3>
-        <p>
-          Coverage runs from the main sewer to within five feet of the
-          residence. Damage inside that five-foot band is the homeowner&rsquo;s
-          responsibility.
-        </p>
-        <p>
-          That makes the position of a defect decisive in a way a description of
-          symptoms never is. A failure at eight feet from the house and a
-          failure at three feet are the same plumbing problem and a completely
-          different financial one.
-        </p>
-
-        <h3>What is excluded</h3>
-        <p>
-          Septic systems and private treatment systems are outside the
-          program. So is restoration of trees, shrubs, flowers, sod, decks,
-          concrete other than sidewalk and street, retaining walls, and
-          outbuildings. The city does provide fill and seeding after a covered
-          repair.
-        </p>
-        <p>
-          Video inspection is required for claim approval. The homeowner pays
-          for the initial evaluation; where a claim is approved, the
-          city&rsquo;s contractor performs the repair at no additional cost.
-        </p>
-
-        <h2>A concentrated construction era</h2>
-        <p>
-          Florissant grew overwhelmingly during the post-war boom: 70.8% of its
-          housing was built between 1950 and 1969, with a median year built of
-          1963 (American Community Survey, 2019&ndash;2023 five-year
-          estimates). That is an unusually concentrated era for a city of its
-          size: most of the housing stock reached the same age at the same
-          time.
-        </p>
-        <p>
-          It also sits squarely in the window when bituminized fibre pipe
-          (Orangeburg) was still being installed, alongside clay and cast iron.
-          Orangeburg deforms under soil load rather than cracking, and every
-          remaining length of it is now beyond its intended service life. Which
-          material is actually in a given lateral is what an inspection
-          determines; era only tells you what to look for.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-florissant-cleaning'), id('svc-stl-sewer-lateral-inspection-reporting')],
-    faq: [
-      {
-        question: 'How close to the house does Florissant cover?',
-        answer: (
-          <p>
-            To within five feet of the residence. Damage within that five-foot
-            band is the homeowner&rsquo;s responsibility.
-          </p>
-        ),
-      },
-      {
-        question: 'Is there a maximum reimbursement?',
-        answer: (
-          <p>
-            No maximum is stated for Florissant&rsquo;s program, which
-            differs from several neighbouring municipalities that cap
-            reimbursement.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-stl-florissant')]: florissantContent,
 
   /* ------------------------------------------------------ Chesterfield -- */
   [id('loc-stl-chesterfield')]: chesterfieldContent,
