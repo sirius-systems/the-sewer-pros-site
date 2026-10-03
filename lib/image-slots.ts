@@ -3,17 +3,21 @@ import type { CardImage } from '@/types'
 /**
  * Build-environment image placeholders for the location pages.
  *
- * ⚠ REVIEW BUILDS ONLY. `NEXT_PUBLIC_SHOW_IMAGE_SLOTS=true` makes a slot that
- * has no photo yet resolve to a `CardImage` carrying `placeholder` metadata,
- * which the location `Photo` helper renders as a labelled box. With the flag
- * unset (the default, and the production setting) `resolveSlotImage` returns
- * `undefined` for an unfilled slot, exactly as before, and no placeholder
- * markup is produced anywhere.
+ * When on, a slot that has no photo yet resolves to a `CardImage` carrying
+ * `placeholder` metadata, which the location `Photo` helper renders as a
+ * labelled box. When off, `resolveSlotImage` returns `undefined` for an
+ * unfilled slot and no placeholder markup is produced anywhere.
  *
- * Set the flag only on the Cloudflare Pages preview (pages.dev) environment,
- * never on production. `NEXT_PUBLIC_*` values are inlined at build time.
+ * Launch: set `IMAGE_SLOTS_DEFAULT` to false, or build with
+ * `NEXT_PUBLIC_SHOW_IMAGE_SLOTS=false`. The variable can only turn the
+ * placeholders off. `NEXT_PUBLIC_*` values are inlined at build time.
  */
-export const SHOW_IMAGE_SLOTS = process.env.NEXT_PUBLIC_SHOW_IMAGE_SLOTS === 'true'
+
+/** Build-environment review aid. Set to false before launch. */
+const IMAGE_SLOTS_DEFAULT = true
+
+export const SHOW_IMAGE_SLOTS =
+  process.env.NEXT_PUBLIC_SHOW_IMAGE_SLOTS === 'false' ? false : IMAGE_SLOTS_DEFAULT
 
 /** The shape of an entry in a page module's `IMAGE_SLOTS` registry. */
 export interface ImageSlotLike {

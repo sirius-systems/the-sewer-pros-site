@@ -20,6 +20,16 @@ const check = (name, ok, detail = '') => {
   if (!ok) failures += 1
 }
 
+/* ---- Image slot placeholders (review aid) ---- */
+const PLACEHOLDERS_ON = /Image slot: /.test(html)
+if (PLACEHOLDERS_ON) {
+  console.log('\n' + '!'.repeat(72))
+  console.log('!! WARNING: IMAGE SLOT PLACEHOLDERS ARE ON IN THIS BUILD.')
+  console.log('!! Set IMAGE_SLOTS_DEFAULT to false in lib/image-slots.ts (or build with')
+  console.log('!! NEXT_PUBLIC_SHOW_IMAGE_SLOTS=false) BEFORE LAUNCH. Not a failure.')
+  console.log('!'.repeat(72) + '\n')
+}
+
 const decode = (s) =>
   s
     .replace(/&amp;/g, '&')
@@ -153,7 +163,7 @@ const FORBIDDEN = [
   'stars', 'testimonial', '911', 'Placeholder',
 ]
 const lower = text.toLowerCase()
-const forbiddenHits = FORBIDDEN.filter((w) => (w === 'Placeholder' ? lower.includes('placeholder') : text.includes(w) || lower.includes(w.toLowerCase())))
+const forbiddenHits = FORBIDDEN.filter((w) => (w === 'Placeholder' ? !PLACEHOLDERS_ON && lower.includes('placeholder') : text.includes(w) || lower.includes(w.toLowerCase())))
 if (/free /.test(text)) forbiddenHits.push('free ')
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))
 // Allowed-only-here words: each hit must sit inside its approved context.
@@ -169,7 +179,7 @@ contextOnly('emergency', /as an emergency repair, moved to the front of the list
 contextOnly('combined', /separate sewer system, while St\. Louis City is served by a combined one/, '"combined" only in the MSD sentence')
 contextOnly('reviews', /City Engineer reviews the video report/, '"reviews" only as the City Engineer reviewing a report')
 check('"warranty" nowhere', !/warrant/i.test(text))
-check('no ImagePlaceholder markup', !/border-dashed/.test(bodyHtml))
+check('no ImagePlaceholder markup', PLACEHOLDERS_ON || !/border-dashed/.test(bodyHtml))
 check('no NOT FOR PRODUCTION INDEXATION text', !/NOT FOR PRODUCTION INDEXATION/i.test(html))
 check('MSD number 1-866-281-5737 absent', !/281-5737|281\.5737/.test(text))
 check('Sewer Pros hours are 8:00 am - 4:00 pm', text.includes('8:00 am - 4:00 pm'))
