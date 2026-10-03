@@ -132,8 +132,9 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <p>
           Requirements vary. St. Louis City asks for video alongside the written
           statement. Florissant requires video inspection for claim approval.
-          Ballwin asks for the video or cabling invoice as documentation where
-          available. St. Charles&rsquo;s ordinance route instead requires
+          Ballwin does not pay for video and does not say video is required: it
+          asks for documentation of a structural problem, or a history of
+          clearing roots more than once a year. St. Charles&rsquo;s ordinance route instead requires
           certification that cabling was attempted and did not resolve the
           issue.
         </p>
@@ -148,9 +149,8 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h2>Who pays for the documentation</h2>
         <p>
-          Frequently the homeowner. Ballwin explicitly places cabling and
-          video-documentation costs on the owner and excludes them from
-          reimbursement. Florissant has the homeowner pay for the initial
+          Frequently the homeowner. Ballwin excludes the cost of cabling and of
+          video from payment, so the owner bears them. Florissant has the homeowner pay for the initial
           evaluation, with the city&rsquo;s contractor performing an approved
           repair at no additional cost.
         </p>
@@ -298,8 +298,8 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
             public right-of-way
           </li>
           <li>
-            <strong>Ballwin</strong>: capped at $4,500, or up to $7,500 for
-            deep excavation or street cutting
+            <strong>Ballwin</strong>: pays up to $4,500 per repair, with up to
+            $7,500 where the City approves special circumstances
           </li>
           <li>
             <strong>Florissant</strong>: no stated maximum, covering to within
@@ -384,7 +384,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
       <p>
         In St. Louis County there is no single answer: which lateral programme
         applies depends on your municipality, and terms differ substantially
-        between them. Ballwin caps reimbursement at $4,500; Florissant states no
+        between them. Ballwin pays up to $4,500 per repair; Florissant states no
         maximum but stops five feet from the house. The practical first step is
         identifying which jurisdiction governs your address.
       </p>
@@ -435,11 +435,22 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h3>Ballwin</h3>
         <p>
-          Capped at $4,500, rising to as much as $7,500 where deep excavation or
-          street cutting is required. Covers structural failures preventing
-          sewer service. Clearing roots once a year or less is defined as normal
-          maintenance and is excluded. Cabling and video-documentation costs are
-          the owner&rsquo;s.
+          Pays up to $4,500 per repair, and the City may reimburse up to $7,500
+          where it approves special circumstances such as deep excavation or
+          street cutting. Intended for failures serious enough that residents
+          could not live in the home, not normal wear. Roots that need clearing
+          more than once a year are a covered repair; clearing once a year or
+          less is normal maintenance and is not funded. The owner applies on the
+          City&rsquo;s MyGov portal with a $150 application fee and
+          documentation of a structural problem. The program does not pay for
+          cabling or for video of the lateral. When funds are available the
+          program contractor bills the City and the owner pays anything above
+          $4,500; when funds are exhausted for the year the owner pays first and
+          is reimbursed up to $4,500 when funds become available. See{' '}
+          <a href="https://www.ballwin.mo.us/Sewer-Lateral-Repair-Program/">
+            Ballwin&rsquo;s own program page
+          </a>{' '}
+          for current terms.
         </p>
 
         <h3>Florissant</h3>
@@ -463,13 +474,16 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h3>Chesterfield</h3>
         <p>
           Charges $28 annually, in place since January 2001 following voter
-          approval, covering repairs of defective laterals for residential
-          buildings of six units or fewer. We have not been able to confirm the
-          cap or the specific exclusions from a published source; see{' '}
+          approval. The City&rsquo;s policy allows 100% of authorized costs, up
+          to $15,000, for a qualifying defective lateral at an owner-owned
+          building of up to six dwelling units. The owner, not a tenant, applies
+          with a non-refundable fee, and the line must be cabled first, which
+          the City does not reimburse. See{' '}
           <a href="https://www.chesterfield.mo.us/263/Residential-Sanitary-Sewer-Lateral-Repai">
-            Chesterfield&rsquo;s own programme page
+            Chesterfield&rsquo;s own program page
           </a>{' '}
-          for current terms.
+          for current terms, and confirm current terms and funding with
+          Chesterfield Public Works.
         </p>
 
         <h2>Who owns the lateral regardless of programme</h2>
@@ -510,10 +524,12 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         question: 'Why do the caps differ so much?',
         answer: (
           <p>
-            Each municipality sets its own. Ballwin caps at $4,500; Florissant
-            states no maximum but stops five feet from the house; St. Charles
-            pays 90% up to $7,500. The same $28 fee buys quite different
-            coverage.
+            Each municipality sets its own. Ballwin pays up to $4,500 per repair,
+            with up to $7,500 where the City approves special circumstances;
+            Chesterfield&rsquo;s policy allows up to $15,000 for a qualifying
+            defective lateral; Florissant states no maximum but stops five feet
+            from the house; St. Charles pays 90% up to $7,500. The same $28 fee
+            buys quite different coverage.
           </p>
         ),
       },
