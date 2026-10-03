@@ -27,8 +27,9 @@
 import fs from 'node:fs'
 
 // Sections whose list, table and link counts are data (program terms, panel
-// links, FAQ length, source list), so a different count is not a layout change.
-const COUNT_TOLERANT_SECTIONS = new Set(['age', 'who-to-call', 'city-program', 'faq', 'sources'])
+// links, FAQ length, source list, MSD project links in the sewer explainer), so a
+// different count is not a layout change.
+const COUNT_TOLERANT_SECTIONS = new Set(['age', 'how-system', 'who-to-call', 'city-program', 'faq', 'sources'])
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr', 'path', 'circle', 'rect'])
 
 const [refPath, candPath] = process.argv.slice(2)

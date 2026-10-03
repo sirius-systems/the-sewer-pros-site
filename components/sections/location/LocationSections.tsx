@@ -414,6 +414,19 @@ export function MunicipalProgramSection({ content }: { content: LocationMunicipa
         </div>
       )}
 
+      {content.afterSteps !== undefined && (
+        <div
+          className={cn(
+            'mt-8 max-w-[var(--container-reading)] space-y-4 text-base leading-7',
+            LINK_ON_LIGHT,
+          )}
+        >
+          {content.afterSteps.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+      )}
+
       {content.callout !== undefined && (
         <Callout kind="independent" label="Independent inspection note" className="mt-8">
           <h3 className="text-h4 font-semibold">{content.callout.title}</h3>
