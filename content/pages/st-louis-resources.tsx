@@ -1,5 +1,5 @@
 /**
- * St. Louis municipal lateral programme resource guides — 3 pages.
+ * St. Louis municipal lateral program resource guides — 3 pages.
  *
  * Authority: docs/14-content-specification.md §35 (answer-first)
  *            docs/12-content-aeo-ai-strategy.md
@@ -11,7 +11,7 @@
  * THREE PAGES, THREE DIFFERENT EVIDENCE POSITIONS
  * ===========================================================================
  * `res-stl-lateral-report` — what a report must contain to be usable.
- *   General across programmes; grounded in the documented requirements
+ *   General across programs; grounded in the documented requirements
  *   of the four verified jurisdictions.
  *
  * `res-stl-city-program` — St. Louis City. Fully verified from the
@@ -19,27 +19,27 @@
  *   requirement.
  *
  * `res-stl-county-program` — St. Louis County. Deliberately NOT written
- *   as a guide to a county programme, because whether a countywide
- *   programme applies to a given address is unresolved: every county
+ *   as a guide to a county program, because whether a countywide
+ *   program applies to a given address is unresolved: every county
  *   SLRP page returned 403 across repeated attempts.
  *
  *   Instead it answers the question a county resident actually has —
- *   "which programme applies to me?" — which is genuinely useful given
+ *   "which program applies to me?" — which is genuinely useful given
  *   that St. Louis County contains many municipalities each running
  *   their own. That reframing is honest rather than evasive: the page
- *   is about locating your own programme, and links to the county
+ *   is about locating your own program, and links to the county
  *   (DEC-072 cite-and-link) rather than asserting terms.
  *
  * ---------------------------------------------------------------------------
- * ⚠ A THIRD-PARTY SOURCE WAS FOUND MISSTATING THE CITY PROGRAMME
+ * ⚠ A THIRD-PARTY SOURCE WAS FOUND MISSTATING THE CITY PROGRAM
  * ---------------------------------------------------------------------------
  * The research found a plumbing-company page describing the St. Louis
- * City programme as reimbursing "up to 50%", contradicting the city's
+ * City program as reimbursing "up to 50%", contradicting the city's
  * own statement of full cost for eligible right-of-way repairs.
  *
  * That is why these pages cite the municipality and tell readers to
  * verify against it. It is also a genuine, non-generic reason for these
- * guides to exist: the information circulating about these programmes
+ * guides to exist: the information circulating about these programs
  * is demonstrably unreliable.
  *
  * ⚠ NO PAGE PROMISES AN OUTCOME. The business documents conditions;
@@ -61,10 +61,10 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
     },
     directAnswer: (
       <p>
-        A sewer lateral report submitted to a St. Louis-area municipal programme
+        A sewer lateral report submitted to a St. Louis-area municipal program
         generally needs to establish four things: that a licensed plumber
         inspected the line, what the defect is, where along the line it sits,
-        and video showing it. Programmes differ on caps and coverage, but they
+        and video showing it. Programs differ on caps and coverage, but they
         broadly agree that a description of symptoms is not enough.
       </p>
     ),
@@ -73,16 +73,16 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h2>Why the report is the bottleneck</h2>
         <p>
           Many municipalities across the St. Louis area fund sewer lateral
-          repair programmes through a small annual charge on the real estate tax
-          bill. Where a programme applies, it can cover a substantial part of an
+          repair programs through a small annual charge on the real estate tax
+          bill. Where a program applies, it can cover a substantial part of an
           eligible repair.
         </p>
         <p>
           What it will not do is act on a phone call describing a backup.
-          Programmes generally require documentation from a licensed plumber
+          Programs generally require documentation from a licensed plumber
           before a claim is considered, and in several cases video of the line
           specifically. A homeowner with a genuine failure and no documentation
-          may have no route into a programme they have been paying into for
+          may have no route into a program they have been paying into for
           years.
         </p>
 
@@ -90,7 +90,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h3>Who inspected the line, and their standing</h3>
         <p>
-          Programmes are specific about this. St. Louis City requires a licensed
+          Programs are specific about this. St. Louis City requires a licensed
           plumber to inspect and submit a written statement. St. Charles
           requires written certification from a licensed master plumber or
           drainlayer. The credential is part of what makes the document
@@ -101,7 +101,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <p>
           Not &ldquo;the line is blocked&rdquo; but what is causing it: a
           separated joint, a collapsed section, root intrusion at a specific
-          point, a section that has lost slope. Programmes distinguish between
+          point, a section that has lost slope. Programs distinguish between
           structural failure and ordinary maintenance, and that distinction
           usually decides eligibility.
         </p>
@@ -172,9 +172,9 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h2>Verify the terms against your own municipality</h2>
         <p>
-          Programme details change, and third-party summaries of them are
+          Program details change, and third-party summaries of them are
           demonstrably unreliable: we found a plumbing-company page describing
-          the St. Louis City programme as reimbursing up to 50%, when the
+          the St. Louis City program as reimbursing up to 50%, when the
           city&rsquo;s own page states full cost for eligible right-of-way
           repairs. Check the municipality&rsquo;s own source.
         </p>
@@ -182,7 +182,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
     ),
     faq: [
       {
-        question: 'Does every St. Louis-area municipality have a programme?',
+        question: 'Does every St. Louis-area municipality have a program?',
         answer: (
           <p>
             No. Many do, funded by an annual charge on the tax bill, but
@@ -220,7 +220,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
     },
     directAnswer: (
       <p>
-        St. Louis City funds a sewer lateral repair programme through a $28
+        St. Louis City funds a sewer lateral repair program through a $28
         annual charge on the real estate tax bill. It covers breaks beneath the
         public right-of-way that cause a cave-in or backup. It does not cover
         breaks under private property, and it does not cover clearing clogs or
@@ -229,9 +229,9 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
     ),
     body: (
       <>
-        <h2>What the programme covers</h2>
+        <h2>What the program covers</h2>
         <p>
-          The programme addresses breaks in the sewer lateral beneath the public
+          The program addresses breaks in the sewer lateral beneath the public
           right-of-way where they cause a cave-in or a backup. For an eligible
           repair, the city&rsquo;s own material states the full cost of the
           repair is covered, with no cap stated.
@@ -245,14 +245,14 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           </li>
           <li>
             <strong>Clearing clogs and tree roots</strong> along any portion of
-            the lateral, including the portion the programme would otherwise
+            the lateral, including the portion the program would otherwise
             cover. Blockage removal is treated as maintenance rather than
             structural failure.
           </li>
         </ul>
         <p>
           Those two exclusions together account for most of the surprise
-          homeowners encounter. The programme is narrower than &ldquo;the city
+          homeowners encounter. The program is narrower than &ldquo;the city
           covers sewer laterals&rdquo; suggests.
         </p>
 
@@ -320,23 +320,23 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           The Metropolitan St. Louis Sewer District maintains the public mains
           and collection system, and states that homeowners are responsible for
           maintaining the sewer lateral. MSD does not inspect or repair private
-          laterals. The city programme is assistance with a specific category of
+          laterals. The city program is assistance with a specific category of
           failure, not a transfer of ownership.
         </p>
 
         <h2>Verify before relying on it</h2>
         <p>
-          Programme terms change, and third-party descriptions of this
-          programme are demonstrably unreliable: we found a plumbing-company
+          Program terms change, and third-party descriptions of this
+          program are demonstrably unreliable: we found a plumbing-company
           page stating it reimburses up to 50%, which contradicts the
           city&rsquo;s own material. Check the City of St. Louis&rsquo;s own
-          sewer lateral repair programme page for current terms.
+          sewer lateral repair program page for current terms.
         </p>
       </>
     ),
     faq: [
       {
-        question: 'Does the programme cover a break under my yard?',
+        question: 'Does the program cover a break under my yard?',
         answer: (
           <p>
             No. Coverage is limited to breaks beneath the public right-of-way
@@ -350,7 +350,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         answer: (
           <p>
             No. Clearing clogs and tree roots is excluded along any portion of
-            the lateral. The programme addresses structural breaks.
+            the lateral. The program addresses structural breaks.
           </p>
         ),
       },
@@ -382,7 +382,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
     },
     directAnswer: (
       <p>
-        In St. Louis County there is no single answer: which lateral programme
+        In St. Louis County there is no single answer: which lateral program
         applies depends on your municipality, and terms differ substantially
         between them. Ballwin pays up to $4,500 per repair; Florissant states no
         maximum but stops five feet from the house. The practical first step is
@@ -394,9 +394,9 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h2>Why this question has no single answer</h2>
         <p>
           St. Louis County contains many incorporated municipalities, and sewer
-          lateral repair programmes are run at the municipal level rather than
+          lateral repair programs are run at the municipal level rather than
           uniformly across the county. Two houses a few miles apart can sit
-          under programmes with different caps, different coverage boundaries,
+          under programs with different caps, different coverage boundaries,
           and different exclusions.
         </p>
         <p>
@@ -412,18 +412,18 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <ul>
           <li>
             If you are in an incorporated municipality, that municipality&rsquo;s
-            programme is the one to check.
+            program is the one to check.
           </li>
           <li>
             If you are in unincorporated county, county-level arrangements may
             apply instead. We have not been able to confirm the current status
-            of a countywide programme from a reachable source, so check{' '}
+            of a countywide program from a reachable source, so check{' '}
             <a href="https://stlouiscountymo.gov">St. Louis County</a> directly
             rather than assuming one exists or does not.
           </li>
           <li>
             If you are in the City of St. Louis, that is a separate jurisdiction
-            from St. Louis County with its own programme.
+            from St. Louis County with its own program.
           </li>
         </ul>
 
@@ -486,12 +486,12 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           Chesterfield Public Works.
         </p>
 
-        <h2>Who owns the lateral regardless of programme</h2>
+        <h2>Who owns the lateral regardless of program</h2>
         <p>
           The Metropolitan St. Louis Sewer District maintains the public mains
           and states that homeowners are responsible for maintaining the sewer
           lateral. MSD does not inspect or repair private laterals. A municipal
-          programme is assistance with certain failures, not a transfer of that
+          program is assistance with certain failures, not a transfer of that
           responsibility.
         </p>
 
@@ -499,23 +499,23 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <p>
           Including, reasonably, this one: check your municipality&rsquo;s own
           page before acting on anything here. We found a plumbing-company page
-          describing the St. Louis City programme as reimbursing up to 50%,
+          describing the St. Louis City program as reimbursing up to 50%,
           directly contradicting the city&rsquo;s own material.
         </p>
         <p>
-          Programme terms also change: Florissant&rsquo;s fee halved in 2012.
-          Anything written about these programmes has a shelf life.
+          Program terms also change: Florissant&rsquo;s fee halved in 2012.
+          Anything written about these programs has a shelf life.
         </p>
       </>
     ),
     faq: [
       {
-        question: 'Is there one St. Louis County programme?',
+        question: 'Is there one St. Louis County program?',
         answer: (
           <p>
-            Programmes are generally run at the municipal level, so terms differ
+            Programs are generally run at the municipal level, so terms differ
             between jurisdictions. We have not been able to confirm the current
-            status of a countywide programme from a reachable source; check
+            status of a countywide program from a reachable source; check
             with St. Louis County directly.
           </p>
         ),

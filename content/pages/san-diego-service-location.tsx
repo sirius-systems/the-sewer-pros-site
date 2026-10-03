@@ -73,7 +73,7 @@ export const sanDiegoServiceLocationContent: Partial<
           expenses.
         </p>
         <p>
-          Set against places that operate assistance programmes, that changes
+          Set against places that operate assistance programs, that changes
           the calculation. Every dollar of a lateral repair here is the
           owner&rsquo;s, so the difference between a line that needs cleaning
           and a line that needs replacing is not a technicality: it is the
@@ -140,7 +140,7 @@ export const sanDiegoServiceLocationContent: Partial<
           responsibility and require periodic maintenance.
         </p>
         <p>
-          We found no lateral repair assistance programme covering San Marcos,
+          We found no lateral repair assistance program covering San Marcos,
           so the cost of a problem appears to fall entirely on the owner.
         </p>
 
@@ -189,14 +189,14 @@ export const sanDiegoServiceLocationContent: Partial<
       intro: (
         <p>
           Video inspection for Carlsbad properties, in one of the few places in
-          San Diego County where a grant programme may contribute toward
+          San Diego County where a grant program may contribute toward
           lateral work.
         </p>
       ),
     },
     body: (
       <>
-        <h2>Documentation and the grant programme</h2>
+        <h2>Documentation and the grant program</h2>
         <p>
           Carlsbad operates a Sewer Lateral Grant Program offering up to $3,000
           toward replacement or rehabilitation of a private lateral, awarded
@@ -204,7 +204,7 @@ export const sanDiegoServiceLocationContent: Partial<
           history of overflows.
         </p>
         <p>
-          Overflow history and demonstrated condition are what the programme
+          Overflow history and demonstrated condition are what the program
           responds to, and both are things an inspection documents. A recorded
           defect at a known distance along the line is a stronger basis for any
           application than a description of symptoms.
@@ -275,12 +275,12 @@ export const sanDiegoServiceLocationContent: Partial<
         <p>
           For a buyer that is genuinely useful information, and it is unusual:
           across most of San Diego County, including the City of San Diego, no
-          such programme exists and a failed lateral is funded entirely by the
+          such program exists and a failed lateral is funded entirely by the
           owner.
         </p>
         <p>
           It does not make a defect costless. A $3,000 contribution against a
-          full replacement still leaves a balance, and the programme is
+          full replacement still leaves a balance, and the program is
           first-come, first-served rather than guaranteed. But it changes the
           arithmetic enough to be worth knowing before you commit.
         </p>
@@ -351,7 +351,7 @@ export const sanDiegoServiceLocationContent: Partial<
           Sewer service in Chula Vista comes from CVSan (the Chula Vista
           Sanitation District), a separate special district rather than a
           department of city government. Questions about laterals, permits, and
-          the grant programme go there, not to City Hall.
+          the grant program go there, not to City Hall.
         </p>
 
         <h2>What the grant process actually requires</h2>
@@ -373,11 +373,11 @@ export const sanDiegoServiceLocationContent: Partial<
           what is wrong.
         </p>
         <p>
-          We have not confirmed the programme&rsquo;s exact reimbursement cap,
+          We have not confirmed the program&rsquo;s exact reimbursement cap,
           and it differs from Carlsbad&rsquo;s stated $3,000. Check the current
           figure on{' '}
           <a href="https://cvsan.org/wastewater/lateral_replacement_grant_program.php">
-            CVSan&rsquo;s grant programme page
+            CVSan&rsquo;s grant program page
           </a>{' '}
           rather than relying on a number from anywhere else.
         </p>
@@ -429,9 +429,9 @@ export const sanDiegoServiceLocationContent: Partial<
           some jurisdictions.
         </p>
 
-        <h2>No programme to offset it</h2>
+        <h2>No program to offset it</h2>
         <p>
-          We found no lateral repair assistance programme in Escondido. Unlike
+          We found no lateral repair assistance program in Escondido. Unlike
           Carlsbad and Chula Vista, there appears to be nothing to reduce the
           cost of a structural failure.
         </p>
@@ -506,7 +506,7 @@ export const sanDiegoServiceLocationContent: Partial<
           .
         </p>
         <p>
-          We also found no lateral repair assistance programme here, unlike
+          We also found no lateral repair assistance program here, unlike
           Carlsbad and Chula Vista; worth confirming for yourself either way.
         </p>
 

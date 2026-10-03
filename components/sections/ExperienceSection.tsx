@@ -593,7 +593,7 @@ export function ExperienceSection({
 
       ⚠ DOM ORDER IS THE MOBILE READING ORDER, AND NOTHING REORDERS
       VISUALLY AGAINST IT. Eyebrow, heading, intro, image, proof cards,
-      inspection panel, lateral-programme panel, coverage. No `order-*`
+      inspection panel, lateral-program panel, coverage. No `order-*`
       class appears below, so keyboard focus follows the eye at every
       width and the single-column stack needs no separate rule.
 
@@ -653,7 +653,7 @@ export function ExperienceSection({
             The grid default is `stretch`, and with `h-full` on the
             panels it gave two equal-height cards - which measured 187px
             of dead space inside the shorter one, because the
-            lateral-programme block is two paragraphs where the
+            lateral-program block is two paragraphs where the
             inspection block is a paragraph plus a five-item list. The
             owner ruled out excessive empty space (2026-09-07) and asked
             for panels that are "equal OR visually balanced"; two
@@ -760,7 +760,7 @@ export function ExperienceSection({
                 primary action per view and this panel now has two -
                 the trade the owner accepted, on the reading that a
                 caller and a scheduler are the same intent arriving by
-                different routes. The blue programme link beside them is
+                different routes. The blue program link beside them is
                 still clearly the one that is not an ask.
 
                 ⚠ `editorial` ONLY. The shared closing row further up

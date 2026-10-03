@@ -109,7 +109,7 @@ export interface ProblemGridProps {
    * A highlighted note under the grid.
    *
    * ⚠ FOR CLAIMS THAT CAN GO STALE. It exists so a section describing
-   * someone else's programme, policy or eligibility rules can tell the
+   * someone else's program, policy or eligibility rules can tell the
    * reader to verify before relying on it, in a panel that does not
    * read as one more card. Every existing caller omits it.
    */

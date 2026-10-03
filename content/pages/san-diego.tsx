@@ -324,10 +324,10 @@ export const sanDiegoMarketContent: MarketPageContent = {
   /*
     ⚠ RETITLED, NOT REWRITTEN. "Financial assistance is the exception"
     described the county; this says what varies and what to do about
-    it. The finding underneath is identical: programmes exist, they are
+    it. The finding underneath is identical: programs exist, they are
     uncommon, and they are not uniform.
 
-    ⚠ THE TWO PROGRAMME CARDS CARRY THEIR OWN SOURCE LINKS, which are
+    ⚠ THE TWO PROGRAM CARDS CARRY THEIR OWN SOURCE LINKS, which are
     the URLs this file already used on the Carlsbad and Chula Vista
     location pages. Both hedges travel with them: the Carlsbad grant is
     described for the Carlsbad Wastewater service area and the CVSan
@@ -336,12 +336,12 @@ export const sanDiegoMarketContent: MarketPageContent = {
     ⚠ NO "INFORMATION CHECKED" DATE IS SHOWN, and that is deliberate.
     The brief asked for one only where the project's research data
     already holds it; nothing in `data/` records a verification date
-    for either programme. Inventing one would make an unverified claim
+    for either program. Inventing one would make an unverified claim
     look audited.
   */
   repairCoverage: {
     /*
-      ⚠ DECORATIVE SUPPORT ONLY. Every programme fact, both grant
+      ⚠ DECORATIVE SUPPORT ONLY. Every program fact, both grant
       qualifiers and both source links are searchable HTML text in the
       cards below; nothing a reader needs is inside this frame.
     */
@@ -354,13 +354,13 @@ export const sanDiegoMarketContent: MarketPageContent = {
     eyebrow: 'Possible assistance',
     title: 'Sewer lateral assistance programs vary by community',
     intro: [
-      'Lateral assistance programmes exist in San Diego County, but they are uncommon and they are not uniform. Funding, eligibility, covered work, service boundaries, and application requirements may differ by agency. Of the areas we work across we have confirmed two, and elsewhere, including the City of San Diego, Escondido, and San Marcos, no such programme was found.',
+      'Lateral assistance programs exist in San Diego County, but they are uncommon and they are not uniform. Funding, eligibility, covered work, service boundaries, and application requirements may differ by agency. Of the areas we work across we have confirmed two, and elsewhere, including the City of San Diego, Escondido, and San Marcos, no such program was found.',
     ],
     items: [
       {
         title: 'Carlsbad',
         description:
-          'Carlsbad offers a grant of up to $3,000 toward lateral replacement or rehabilitation. The programme is described as covering the Carlsbad Wastewater service area; whether it extends to properties served by Leucadia Wastewater District or Vallecitos is not something we have been able to confirm.',
+          'Carlsbad offers a grant of up to $3,000 toward lateral replacement or rehabilitation. The program is described as covering the Carlsbad Wastewater service area; whether it extends to properties served by Leucadia Wastewater District or Vallecitos is not something we have been able to confirm.',
         icon: 'document',
         accent: 'blue',
         source: {
@@ -371,18 +371,18 @@ export const sanDiegoMarketContent: MarketPageContent = {
       {
         title: 'Chula Vista, through CVSan',
         description:
-          'CVSan runs a lateral replacement grant programme. Eligibility depends on the applicable service authority and the property location, so a Chula Vista address does not by itself qualify, and we have not been able to confirm the programme\u2019s exact reimbursement cap.',
+          'CVSan runs a lateral replacement grant program. Eligibility depends on the applicable service authority and the property location, so a Chula Vista address does not by itself qualify, and we have not been able to confirm the program\u2019s exact reimbursement cap.',
         icon: 'guidance',
         accent: 'green',
         source: {
-          label: 'CVSan lateral replacement grant programme',
+          label: 'CVSan lateral replacement grant program',
           href: 'https://cvsan.org/wastewater/lateral_replacement_grant_program.php',
         },
       },
     ],
     note: {
       title: 'Confirm eligibility with the agency before you rely on it',
-      body: 'Assistance is not available uniformly across San Diego County. Program funding, property eligibility, covered work, and application requirements can change. Contact the appropriate local agency before relying on assistance when planning sewer work. Where no programme softens the cost, the difference between a line that needs cleaning and a line that needs replacing is the whole decision.',
+      body: 'Assistance is not available uniformly across San Diego County. Program funding, property eligibility, covered work, and application requirements can change. Contact the appropriate local agency before relying on assistance when planning sewer work. Where no program softens the cost, the difference between a line that needs cleaning and a line that needs replacing is the whole decision.',
     },
   },
   experienceVariant: 'strip',
@@ -460,7 +460,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       the-sewer-pros-san-diego-property-sewer-inspection.webp
 
     ⚠ NO NEW LOCAL CLAIM ENTERS HERE. No soil, climate, pipe-material,
-    licensing or municipal-programme statement that the body copy does
+    licensing or municipal-program statement that the body copy does
     not already source. The jurisdictional detail stays in `body`,
     where it is cited.
 
@@ -1231,13 +1231,13 @@ export const sanDiegoMarketContent: MarketPageContent = {
       ),
     },
     {
-      question: 'Are there any grant programmes in San Diego County?',
+      question: 'Are there any grant programs in San Diego County?',
       answer: (
         <p>
           They exist but are uncommon. We have confirmed a Carlsbad grant of up
-          to $3,000 and a CVSan lateral replacement grant programme in Chula
+          to $3,000 and a CVSan lateral replacement grant program in Chula
           Vista. In most of the county, including the City of San Diego, no
-          programme was found.
+          program was found.
         </p>
       ),
     },
@@ -1564,7 +1564,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <p>
           Because the lateral is the owner&rsquo;s across its entire run, a
           defect anywhere along it is the owner&rsquo;s to resolve. There is no
-          boundary partway along where responsibility shifts, and no programme
+          boundary partway along where responsibility shifts, and no program
           to absorb part of the cost.
         </p>
         <p>
@@ -1620,14 +1620,14 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for Carlsbad properties,
-          one of the few places in San Diego County with a grant programme
+          one of the few places in San Diego County with a grant program
           toward lateral work.
         </p>
       ),
     },
     body: (
       <>
-        <h2>Carlsbad has a sewer lateral grant programme</h2>
+        <h2>Carlsbad has a sewer lateral grant program</h2>
         <p>
           Carlsbad operates a Sewer Lateral Grant Program offering reimbursement
           of up to $3,000 toward the replacement or rehabilitation of a private
@@ -1647,7 +1647,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           falls under Leucadia Wastewater District or Vallecitos Water District.
         </p>
         <p>
-          The grant programme is described as covering the Carlsbad Wastewater
+          The grant program is described as covering the Carlsbad Wastewater
           service area. Whether that extends to properties served by Leucadia or
           Vallecitos is not something we have been able to confirm, so if your
           property sits in the southern part of the city, confirm your own
@@ -1726,11 +1726,11 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         </p>
         <p>
           This trips people up regularly. Questions about laterals, permits, and
-          the grant programme go to CVSan, not to City Hall, and searching for
+          the grant program go to CVSan, not to City Hall, and searching for
           city sewer policy will not necessarily surface the rules that apply.
         </p>
 
-        <h2>CVSan runs a lateral replacement grant programme</h2>
+        <h2>CVSan runs a lateral replacement grant program</h2>
         <p>
           CVSan operates a Lateral Replacement Grant Program that reimburses
           documented repair or replacement cost. The process is specific, and
@@ -1749,11 +1749,11 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           documented evidence rather than forming an independent opinion.
         </p>
         <p>
-          We have not been able to confirm the programme&rsquo;s exact
+          We have not been able to confirm the program&rsquo;s exact
           reimbursement cap, and it differs from Carlsbad&rsquo;s stated $3,000.
           Check the current figure on{' '}
           <a href="https://cvsan.org/wastewater/lateral_replacement_grant_program.php">
-            CVSan&rsquo;s grant programme page
+            CVSan&rsquo;s grant program page
           </a>{' '}
           rather than relying on a number from anywhere else.
         </p>
@@ -1780,7 +1780,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         answer: (
           <p>
             CVSan (the Chula Vista Sanitation District) provides sewer service
-            and administers the lateral grant programme. It is a separate
+            and administers the lateral grant program. It is a separate
             district from the city government.
           </p>
         ),
@@ -1829,14 +1829,14 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           clog is the owner&rsquo;s, not the city&rsquo;s.
         </p>
 
-        <h2>No assistance programme</h2>
+        <h2>No assistance program</h2>
         <p>
-          We found no lateral repair assistance programme in Escondido. Unlike
+          We found no lateral repair assistance program in Escondido. Unlike
           Carlsbad and Chula Vista, there appears to be no grant to offset the
           cost, which puts the full expense on the property owner.
         </p>
         <p>
-          Where no programme exists, the value of knowing what is actually wrong
+          Where no program exists, the value of knowing what is actually wrong
           before committing to a remedy goes up rather than down. The difference
           between a line that will respond to cleaning and one that needs
           replacing is the difference between two very different invoices.
@@ -1902,7 +1902,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           .
         </p>
         <p>
-          We also found no lateral repair assistance programme here, unlike
+          We also found no lateral repair assistance program here, unlike
           Carlsbad and Chula Vista, which do have one. Worth confirming for
           yourself before assuming either way.
         </p>
@@ -1976,9 +1976,9 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           homeowner.
         </p>
 
-        <h2>No assistance programme found</h2>
+        <h2>No assistance program found</h2>
         <p>
-          We found no lateral repair assistance programme covering San Marcos.
+          We found no lateral repair assistance program covering San Marcos.
           The cost of a lateral problem here appears to fall entirely on the
           property owner.
         </p>
