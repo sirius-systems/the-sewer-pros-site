@@ -925,7 +925,7 @@ export function MarketPageTemplate({
         carry 4:3 frames and a third would make the run a gallery.
 
         ⚠ THE NOTE CARRIES THE VERIFY-BEFORE-RELYING WARNING. Every
-        claim in this section is about someone else's programme or
+        claim in this section is about someone else's program or
         policy and those change.
       */}
       {showsRepairCoverage && content.repairCoverage !== undefined && (

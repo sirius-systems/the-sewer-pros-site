@@ -106,9 +106,9 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
           are yours.
         </p>
 
-        <h2>Where a lateral programme changes the arithmetic</h2>
+        <h2>Where a lateral program changes the arithmetic</h2>
         <p>
-          Some municipalities run programmes that contribute toward lateral
+          Some municipalities run programs that contribute toward lateral
           repair, and terms vary sharply: Carlsbad offers up to $3,000, Ballwin
           pays up to $4,500 per repair with up to $7,500 where the City approves
           special circumstances, Florissant states no maximum but stops five feet from
@@ -117,7 +117,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <p>
           Whether one applies to the address you are buying is worth
           establishing alongside the condition of the line. A defect in a city
-          with a programme and the same defect in a city without one are
+          with a program and the same defect in a city without one are
           different financial situations.
         </p>
 
@@ -326,7 +326,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <h2>Timing within a transaction</h2>
         <p>
           The inspection is most useful while options remain open. Where a
-          municipal lateral programme exists, its terms are also worth
+          municipal lateral program exists, its terms are also worth
           establishing early: they vary considerably between jurisdictions and
           can materially change what a finding costs whoever ends up owning it.
         </p>

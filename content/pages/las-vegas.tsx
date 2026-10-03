@@ -1104,7 +1104,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       ),
     },
     {
-      question: 'Is there a programme that helps with lateral repair costs?',
+      question: 'Is there a program that helps with lateral repair costs?',
       answer: (
         <p>
           Not a reimbursement fund of the kind some other regions run. The City
@@ -1411,7 +1411,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
     },
     body: (
       <>
-        <h2>An optional warranty, not a reimbursement programme</h2>
+        <h2>An optional warranty, not a reimbursement program</h2>
         <p>
           The City of Las Vegas partners with Service Line Warranties of America
           on an optional paid warranty covering sewer lateral repair: $6.00 per
@@ -1422,7 +1422,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           The distinction from other regions matters. This is insurance the
           homeowner elects to buy in advance. It is not a municipal fund that
           contributes toward an eligible repair after a failure, and there is no
-          equivalent free programme.
+          equivalent free program.
         </p>
         <p>
           Whether the product is worth it depends on the line you actually have.
@@ -1510,7 +1510,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           owner must maintain and repair, bearing the cost.
         </p>
         <p>
-          There is no ambiguity to work around here, and no assistance programme
+          There is no ambiguity to work around here, and no assistance program
           was found to offset it. The full run from the street connection
           inward is yours.
         </p>

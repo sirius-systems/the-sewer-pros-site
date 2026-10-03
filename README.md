@@ -145,7 +145,7 @@ See `docs/22-decisions-change-log.md` §13 for the register. Resolved since the 
 | PENDING-017 | Market-scoped header contact | Header |
 | PENDING-018 | Lead form submission endpoint | Lead capture |
 | PENDING-019 | TCPA consent copy | Lead form compliance |
-| PENDING-014, -015, -016 | Chesterfield programme details, Census housing-age check, three withheld claims | Content accuracy |
+| PENDING-014, -015, -016 | Chesterfield program details, Census housing-age check, three withheld claims | Content accuracy |
 
 Brand colour and typography were approved by DEC-096.
 

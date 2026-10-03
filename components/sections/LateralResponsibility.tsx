@@ -25,7 +25,7 @@ import type { ResponsibilityContent, ResponsibilityIcon } from '@/types'
  * component renders what the content file says and adds nothing, and
  * the three things it must never be edited into saying are:
  *
- *   - that one programme's terms apply anywhere else. Fees, caps,
+ *   - that one program's terms apply anywhere else. Fees, caps,
  *     coverage boundaries and exclusions differ by municipality, and
  *     the City of St. Charles is outside MSD's territory entirely.
  *   - that a property is eligible, or that a claim will be reimbursed.
@@ -116,7 +116,7 @@ function UtilityIcon(props: IconProps) {
   )
 }
 
-/** What a programme asks for — a page with lines. */
+/** What a program asks for — a page with lines. */
 function DocumentIcon(props: IconProps) {
   return (
     <svg {...baseIconProps(props)}>
