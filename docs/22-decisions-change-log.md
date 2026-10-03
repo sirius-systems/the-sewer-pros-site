@@ -4838,6 +4838,20 @@ FAQPage markup is enabled for `/st-louis-mo/ballwin/` (`faqSchemaApproved: true`
 
 ---
 
+## DEC-111 - FAQPage Markup Enabled for Florissant
+
+**Date:** 2026-10-02
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/st-louis-florissant.tsx`
+
+FAQPage markup is enabled for `/st-louis-mo/florissant/` (`faqSchemaApproved: true`) under the principle approved in DEC-108. The ten FAQ entries are visible on the page and the markup is generated from them. No review or rating markup is emitted. Program terms on the page (the $50 annual fee, the $300 deposit, the five-foot boundary) were read directly from the City of Florissant's Sewer Lateral Insurance Program page on 2026-10-02 under DEC-072. The housing-age statement is attributed to the City's 2026-2030 Consolidated Plan citing ACS 2024 5-year estimates; the primary Census table check is pending.
+
+---
+
 # 26. Decision Quality Standard
 
 A decision entry should be useful months later.
