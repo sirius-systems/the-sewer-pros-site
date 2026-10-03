@@ -279,7 +279,7 @@ export interface RoutingContent {
 
    ⚠ EVERY FIELD IS OPTIONAL AND ONLY SAN DIEGO SETS THEM TODAY. The
    shapes are market-agnostic on purpose - nothing here names a city, a
-   municipality, or a lateral programme - so St. Louis or Las Vegas can
+   municipality, or a lateral program - so St. Louis or Las Vegas can
    adopt any one of them without inheriting the others.
 
    ⚠ THESE ARE NOT THE ST. LOUIS LATERAL SLOTS. `lateralCards` and
@@ -327,7 +327,7 @@ export interface ConditionCard {
   /**
    * The official page a claim on this card came from.
    *
-   * ⚠ FOR CLAIMS ABOUT SOMEONE ELSE'S PROGRAMME. A grant amount, an
+   * ⚠ FOR CLAIMS ABOUT SOMEONE ELSE'S PROGRAM. A grant amount, an
    * eligibility rule or a service boundary must be checkable at its
    * source, because those change and this site cannot promise they
    * have not. It renders as an external link with a descriptive name,
@@ -507,7 +507,7 @@ export interface IndependenceContent {
  * show that the text does not say better.
  *
  * ⚠ THE NOTE IS NOT DECORATION. Everything in this section is a
- * statement about someone else's programme or policy, and those change.
+ * statement about someone else's program or policy, and those change.
  * The note is where the reader is told to verify before relying on it.
  */
 export interface RepairCoverageContent {
@@ -519,7 +519,7 @@ export interface RepairCoverageContent {
    * A highlighted note under the cards.
    *
    * ⚠ OPTIONAL SINCE THE `authorities` SLOT REUSED THIS SHAPE. A
-   * section describing someone else's programme needs the
+   * section describing someone else's program needs the
    * verify-before-relying warning; a section of plain guidance cards
    * does not, and an empty panel would be worse than none.
    */
@@ -528,7 +528,7 @@ export interface RepairCoverageContent {
    * A graphic beside the introduction.
    *
    * ⚠ ILLUSTRATIVE, NEVER AUTHORITATIVE. These sections describe which
-   * public agency serves which property and which programmes exist. A
+   * public agency serves which property and which programs exist. A
    * graphic here must not draw a service boundary or imply one: the
    * whole point of the copy is that the boundary is a question of
    * address, and a map would contradict the sentence it sits beside.
@@ -770,7 +770,7 @@ export type ResponsibilityIcon = 'utility' | 'document' | 'variation'
  * TEXT ON THE ST. LOUIS HUB. Fees, caps, coverage boundaries,
  * documentation requirements and exclusions differ by municipality, and
  * the City of St. Charles sits outside MSD's territory entirely. A card
- * may describe how programmes work in general; it must NOT state that a
+ * may describe how programs work in general; it must NOT state that a
  * property is eligible, that a claim will be reimbursed, or that one
  * municipality's terms apply anywhere else (01 §20, §35; CLAUDE.md §24,
  * §26).
@@ -816,7 +816,7 @@ export interface ResponsibilityContent {
    * PRIORITY, AND THAT IS DELIBERATE. They shipped as `primary` and
    * `secondary` on 2026-09-07 and the colours came out inverted: the
    * GREEN conversion treatment landed on `primary`, which links to a
-   * programme GUIDE, while the actual conversion - contacting the
+   * program GUIDE, while the actual conversion - contacting the
    * business - wore the light secondary fill beside it.
    *
    * DEC-096 reserves green for conversion actions. Reading a guide is
@@ -832,7 +832,7 @@ export interface ResponsibilityContent {
   action: {
     title: string
     body: string
-    /** Programme information. Renders blue: navigation, not conversion. */
+    /** Program information. Renders blue: navigation, not conversion. */
     guide: { label: string; pageId: PageId }
     /** The conversion. Renders green. */
     contact: { label: string; pageId: PageId }

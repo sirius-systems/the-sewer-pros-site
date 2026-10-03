@@ -12,7 +12,7 @@
  * changing anything else?"
  *
  * The differentiator here is not description — it is jurisdiction. Each
- * municipality runs its own sewer lateral repair programme with its own
+ * municipality runs its own sewer lateral repair program with its own
  * fee, cap, coverage boundary, and exclusions, and those terms are not
  * transferable between cities. Ballwin's $4,500 cap and its
  * once-a-year root-clearing rule cannot be restated for Florissant,
@@ -25,7 +25,7 @@
  * DEC-072 approved the median-year figures for use with ACS citation.
  * These pages nonetheless describe era qualitatively, because the
  * jurisdictional facts already carry the differentiation and a median
- * year adds little to an argument about municipal programme terms. The
+ * year adds little to an argument about municipal program terms. The
  * San Diego and Las Vegas pages cite figures where they DO carry an
  * argument about what fails on newer lines.
  *
@@ -44,7 +44,7 @@
  * (PENDING-015).
  *
  * ---------------------------------------------------------------------------
- * ⚠ NO CLAIM OF PROGRAMME OUTCOMES
+ * ⚠ NO CLAIM OF PROGRAM OUTCOMES
  * ---------------------------------------------------------------------------
  * The business is "licensed through most of the municipal sewer lateral
  * programs for submitting reports" — a verified business fact. It
@@ -188,8 +188,8 @@ export const stLouisMarketContent: MarketPageContent = {
       icon: 'map-pinned',
       accent: 'navy',
       description:
-        'Many St. Louis area municipalities run lateral repair programmes that ask for documentation before a claim is considered.',
-      linksHeading: 'Programme guides',
+        'Many St. Louis area municipalities run lateral repair programs that ask for documentation before a claim is considered.',
+      linksHeading: 'Program guides',
       links: [
         {
           pageId: id('res-stl-lateral-report'),
@@ -226,12 +226,12 @@ export const stLouisMarketContent: MarketPageContent = {
     },
   ],
   /*
-    ⚠ THREE CARDS CARRYING WHAT THE LONG "why lateral programmes make
+    ⚠ THREE CARDS CARRYING WHAT THE LONG "why lateral programs make
     documentation matter" SECTION USED TO SAY. The substance is
-    unchanged and nothing was sharpened: the programmes "can"
+    unchanged and nothing was sharpened: the programs "can"
     meaningfully change a cost, terms "vary", and whether one applies
     is "a question about your specific municipality". The
-    programme-by-programme detail now lives in the three resource
+    program-by-program detail now lives in the three resource
     guides, which the routing card above links.
   */
   /*
@@ -261,7 +261,7 @@ export const stLouisMarketContent: MarketPageContent = {
   responsibility: {
     title: 'Who is responsible for the lateral',
     intro:
-      'The sewer lateral runs from the building to the public sewer. Understanding whose problem it is, and what documentation a municipal programme asks for, is most of what people come to this page to find out.',
+      'The sewer lateral runs from the building to the public sewer. Understanding whose problem it is, and what documentation a municipal program asks for, is most of what people come to this page to find out.',
     /*
       ⚠ THE FILE IS NAMED FOR WHAT IT DEPICTS, NOT FOR THIS SECTION.
       `st-louis-residential-sewer-lateral-public-main.svg` is the asset
@@ -289,22 +289,22 @@ export const stLouisMarketContent: MarketPageContent = {
         accent: 'blue',
       },
       {
-        title: 'Lateral programmes ask for documentation',
+        title: 'Lateral programs ask for documentation',
         description:
-          'Many municipalities in the area operate sewer lateral repair programmes funded by a small annual charge on the real estate tax bill. They generally require documentation from a licensed plumber before a claim is considered, commonly including video of the line.',
+          'Many municipalities in the area operate sewer lateral repair programs funded by a small annual charge on the real estate tax bill. They generally require documentation from a licensed plumber before a claim is considered, commonly including video of the line.',
         icon: 'document',
         accent: 'blue',
       },
       {
         title: 'The terms are not uniform',
         description:
-          'Fees, caps, coverage boundaries, and exclusions differ between municipalities, and the City of St. Charles is not in MSD\u2019s service territory at all: it runs its own sewer system. Whether a programme applies to your address, and what it covers, is a question about your specific municipality.',
+          'Fees, caps, coverage boundaries, and exclusions differ between municipalities, and the City of St. Charles is not in MSD\u2019s service territory at all: it runs its own sewer system. Whether a program applies to your address, and what it covers, is a question about your specific municipality.',
         icon: 'variation',
         accent: 'amber',
       },
     ],
     /*
-      ⚠ NO PROGRAMME-SELECTION ROUTE EXISTS, AND NONE WAS INVENTED
+      ⚠ NO PROGRAM-SELECTION ROUTE EXISTS, AND NONE WAS INVENTED
       (05 §51). The primary action points at the general St. Louis
       lateral guide, which is the closest verified destination; the
       city-specific and county-specific guides are linked by name from
@@ -447,7 +447,7 @@ export const stLouisMarketContent: MarketPageContent = {
       ⚠ THE SAME THREE GUIDES, THE SAME THREE LABELS, THE SAME THREE
       DESTINATIONS. They were an `<ul>` of `ApprovedInlineLink`s in
       the old prose block and are resource cards now; the wording is
-      carried verbatim, including "programme", because it is what
+      carried verbatim, including "program", because it is what
       readers see today. All three are `launch` and indexable, and
       resolving by page id means a gated one fails at the resolver
       rather than shipping a dead link.
@@ -459,12 +459,12 @@ export const stLouisMarketContent: MarketPageContent = {
       },
       {
         pageId: id('res-stl-city-program'),
-        label: 'Understanding the St. Louis City sewer lateral programme',
+        label: 'Understanding the St. Louis City sewer lateral program',
       },
       {
         pageId: id('res-stl-county-program'),
         label:
-          'Which sewer lateral programme applies to me? (St. Louis County)',
+          'Which sewer lateral program applies to me? (St. Louis County)',
       },
     ],
   },
@@ -797,7 +797,7 @@ export const stLouisMarketContent: MarketPageContent = {
       ),
     },
     {
-      question: 'Does my municipality have a lateral repair programme?',
+      question: 'Does my municipality have a lateral repair program?',
       answer: (
         <p>
           Many in the area do, funded by an annual charge on the real estate tax
@@ -813,7 +813,7 @@ export const stLouisMarketContent: MarketPageContent = {
       answer: (
         <p>
           No, and neither can anyone else. We are licensed through most of the
-          area&rsquo;s municipal lateral programmes to submit reports, and we
+          area&rsquo;s municipal lateral programs to submit reports, and we
           document what the inspection shows. The municipality decides claims.
         </p>
       ),
@@ -951,11 +951,11 @@ export const stLouisMarketContent: MarketPageContent = {
         <p>
           Coverage for sewer lateral issues varies by policy and by insurer,
           and some municipalities also offer a separate lateral repair
-          programme that is not the same thing as an insurance policy. We are
+          program that is not the same thing as an insurance policy. We are
           not able to tell you what your specific policy covers. Your insurance
           provider is the right source for that answer, and a documented camera
           inspection is often useful to have on hand either way, since insurers
-          and municipal programmes alike frequently want to see video evidence
+          and municipal programs alike frequently want to see video evidence
           before considering a claim.
         </p>
       ),
@@ -993,7 +993,7 @@ export const stLouisMarketContent: MarketPageContent = {
   relatedTitle: 'St. Louis sewer lateral guides',
   relatedEyebrow: 'Before you file a claim',
   relatedIntro:
-    'What a lateral report should contain, and which municipal programme applies to your address.',
+    'What a lateral report should contain, and which municipal program applies to your address.',
   relatedPageIds: [
     id('res-stl-lateral-report'),
     id('res-stl-city-program'),
@@ -1001,17 +1001,17 @@ export const stLouisMarketContent: MarketPageContent = {
   ],
   relatedFeaturedPageId: id('res-stl-lateral-report'),
   relatedFeaturedPoints: [
-    'What the programme asks for',
+    'What the program asks for',
     'What the video has to show',
     'How the report is submitted',
   ],
   relatedDescriptions: {
     [id('res-stl-lateral-report')]:
-      'What a lateral report should contain before it goes to a municipal programme.',
+      'What a lateral report should contain before it goes to a municipal program.',
     [id('res-stl-city-program')]:
-      'How the City of St. Louis programme works and what it asks of a property owner.',
+      'How the City of St. Louis program works and what it asks of a property owner.',
     [id('res-stl-county-program')]:
-      'Which county programme applies to your address, and where the boundaries fall.',
+      'Which county program applies to your address, and where the boundaries fall.',
   },
   relatedMeta: {
     [id('res-stl-lateral-report')]: {
@@ -1020,12 +1020,12 @@ export const stLouisMarketContent: MarketPageContent = {
       accent: 'navy',
     },
     [id('res-stl-city-program')]: {
-      category: 'City programme',
+      category: 'City program',
       icon: 'file-video',
       accent: 'blue',
     },
     [id('res-stl-county-program')]: {
-      category: 'County programme',
+      category: 'County program',
       icon: 'scale',
       accent: 'green',
     },
@@ -1206,7 +1206,7 @@ export const lateralReportingContent: ServicePageContent = {
   /*
     ⚠ NOT THE PROPOSED COPY VERBATIM. The draft description's closing
     clause was "documented findings for property and transaction
-    decisions" — this page is about municipal lateral repair-programme
+    decisions" — this page is about municipal lateral repair-program
     reimbursement documentation (see body below), not a pre-purchase
     or real-estate-transaction page (that's
     svc-pre-purchase-sewer-inspection). Reworded the closing clause to
@@ -1220,31 +1220,31 @@ export const lateralReportingContent: ServicePageContent = {
     intro: (
       <p>
         Camera inspection of the lateral with documentation prepared for
-        submission to a municipal sewer lateral repair programme.
+        submission to a municipal sewer lateral repair program.
       </p>
     ),
   },
   body: (
     <>
-      <h2>What these programmes are</h2>
+      <h2>What these programs are</h2>
       <p>
         Numerous municipalities across the St. Louis area operate sewer lateral
-        repair programmes, funded by a modest annual charge collected on the
-        real estate tax bill. Where a programme applies and a claim is
+        repair programs, funded by a modest annual charge collected on the
+        real estate tax bill. Where a program applies and a claim is
         approved, it can cover a substantial share of an eligible lateral
         repair.
       </p>
 
       <h2>Why documentation is the sticking point</h2>
       <p>
-        Programmes do not generally reimburse on the basis of a description of
+        Programs do not generally reimburse on the basis of a description of
         the problem. They typically require documentation from a licensed
         plumber establishing the defect, commonly including video of the line
         showing the condition and where along the line it sits.
       </p>
       <p>
         That documentation is the work. Without it, a homeowner with a genuine
-        lateral failure may have no route into a programme they have been
+        lateral failure may have no route into a program they have been
         paying into for years.
       </p>
 
@@ -1252,8 +1252,8 @@ export const lateralReportingContent: ServicePageContent = {
       <p>
         We inspect the lateral, record the footage, identify the visible
         condition and its distance along the line, and prepare the
-        documentation the programme requires. The Sewer Pros is licensed
-        through most of the area&rsquo;s municipal sewer lateral programmes for
+        documentation the program requires. The Sewer Pros is licensed
+        through most of the area&rsquo;s municipal sewer lateral programs for
         submitting reports.
       </p>
 
@@ -1272,14 +1272,14 @@ export const lateralReportingContent: ServicePageContent = {
 
       <h2>Why an independent inspection fits this particularly well</h2>
       <p>
-        A lateral programme claim turns on documented condition. We do not
+        A lateral program claim turns on documented condition. We do not
         perform sewer repair or replacement, so what our footage shows is not
         the opening move in a quote from us for the remedy.
       </p>
     </>
   ),
   process: [
-    { title: 'Confirm the programme', description: 'Establish which municipality applies and what it requires.' },
+    { title: 'Confirm the program', description: 'Establish which municipality applies and what it requires.' },
     { title: 'Inspect the lateral', description: 'Record the line and locate any defect along it.' },
     { title: 'Prepare documentation', description: 'Compile the footage and written report in the required form.' },
     { title: 'Submit the report' },
@@ -1287,10 +1287,10 @@ export const lateralReportingContent: ServicePageContent = {
   showDifferentiator: true,
   faq: [
     {
-      question: 'Will the programme pay for my repair?',
+      question: 'Will the program pay for my repair?',
       answer: (
         <p>
-          That is the municipality&rsquo;s decision, not ours. Programmes differ
+          That is the municipality&rsquo;s decision, not ours. Programs differ
           on what they cover, where coverage begins and ends, what they exclude,
           and whether a cap applies. We document the condition; they apply their
           rules.
@@ -1301,7 +1301,7 @@ export const lateralReportingContent: ServicePageContent = {
       question: 'Is root clearing covered?',
       answer: (
         <p>
-          Frequently not. Several programmes classify routine root clearing as
+          Frequently not. Several programs classify routine root clearing as
           ordinary maintenance rather than a structural failure, and exclude it.
           The specifics vary by municipality.
         </p>
@@ -1311,8 +1311,8 @@ export const lateralReportingContent: ServicePageContent = {
       question: 'Do I pay for the inspection even if the claim succeeds?',
       answer: (
         <p>
-          In several programmes the homeowner bears the cost of the inspection
-          and documentation, with the programme contributing to the repair
+          In several programs the homeowner bears the cost of the inspection
+          and documentation, with the program contributing to the repair
           itself. Check the terms your municipality publishes.
         </p>
       ),
@@ -1321,7 +1321,7 @@ export const lateralReportingContent: ServicePageContent = {
   relatedPageIds: [id('svc-sewer-camera-inspection'), id('market-st-louis-mo')],
   cta: {
     title: 'Get the lateral documented',
-    body: 'Camera inspection and reporting prepared for municipal programme submission.',
+    body: 'Camera inspection and reporting prepared for municipal program submission.',
   },
 }
 
@@ -1375,7 +1375,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         </p>
         <p>
           For a property owner, the practical consequence is that the authority,
-          the rules, and the programme are the city&rsquo;s, not MSD&rsquo;s.
+          the rules, and the program are the city&rsquo;s, not MSD&rsquo;s.
           Guidance written for St. Louis County does not necessarily apply here.
         </p>
 
@@ -1387,7 +1387,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         </p>
         <p>
           Rather than covering the full cost of an eligible repair, the
-          St. Charles programme reimburses 90% of the authorised cost, capped at
+          St. Charles program reimburses 90% of the authorised cost, capped at
           $7,500.
         </p>
         <p>
@@ -1398,7 +1398,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         <p>
           The ordinance requires written certification from a licensed master
           plumber or drainlayer that cabling was attempted and did not resolve
-          the issue, a different evidentiary route from programmes that require
+          the issue, a different evidentiary route from programs that require
           video as a matter of course.
         </p>
 
@@ -1439,11 +1439,11 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
         ),
       },
       {
-        question: 'How much does the St. Charles programme reimburse?',
+        question: 'How much does the St. Charles program reimburse?',
         answer: (
           <p>
             90% of the authorised cost, capped at $7,500, a different
-            structure from neighbouring programmes that cover the full cost of
+            structure from neighbouring programs that cover the full cost of
             an eligible repair up to their own limits.
           </p>
         ),
@@ -1468,7 +1468,7 @@ export const stLouisServiceLocationContent: Partial<
       intro: (
         <p>
           Video inspection of the lateral, often the document the City&rsquo;s
-          lateral repair programme requires, as well as the diagnosis.
+          lateral repair program requires, as well as the diagnosis.
         </p>
       ),
     },
@@ -1476,16 +1476,16 @@ export const stLouisServiceLocationContent: Partial<
       <>
         <h2>Inspection as documentation</h2>
         <p>
-          St. Louis City&rsquo;s lateral repair programme requires a licensed
+          St. Louis City&rsquo;s lateral repair program requires a licensed
           plumber to inspect the line and submit a written statement together
           with video. The camera inspection is therefore not only how the
-          problem is identified: it is frequently the evidence the programme
+          problem is identified: it is frequently the evidence the program
           asks for.
         </p>
 
         <h2>Position decides coverage</h2>
         <p>
-          The City&rsquo;s programme covers breaks beneath the public
+          The City&rsquo;s program covers breaks beneath the public
           right-of-way that cause a cave-in or backup, and excludes breaks under
           private property. Because coverage turns on where a defect sits,
           recording the distance along the line to each condition matters as
@@ -1558,15 +1558,15 @@ export const stLouisServiceLocationContent: Partial<
           identical at the fixtures and call for different responses.
         </p>
 
-        <h2>Documentation for a lateral programme</h2>
+        <h2>Documentation for a lateral program</h2>
         <p>
-          Chesterfield funds a residential lateral repair programme through a
+          Chesterfield funds a residential lateral repair program through a
           $28 annual charge on the tax bill, in place since 2001. Municipal
-          programmes generally want documentation from a licensed plumber before
+          programs generally want documentation from a licensed plumber before
           considering a claim, which is often the video itself.
         </p>
         <p>
-          Confirm current programme terms with Chesterfield Public Works; caps
+          Confirm current program terms with Chesterfield Public Works; caps
           and exclusions vary between municipalities, and we will not restate
           figures we have not verified against the city&rsquo;s own source.
         </p>
@@ -1650,14 +1650,14 @@ export const stLouisServiceLocationContent: Partial<
       intro: (
         <p>
           Inspect the lateral before closing, and understand what
-          Ballwin&rsquo;s lateral programme will and will not cover once the
+          Ballwin&rsquo;s lateral program will and will not cover once the
           property is yours.
         </p>
       ),
     },
     body: (
       <>
-        <h2>Why the programme terms belong in a buying decision</h2>
+        <h2>Why the program terms belong in a buying decision</h2>
         <p>
           Ballwin&rsquo;s lateral repair program pays up to $4,500 per repair,
           and the City may reimburse up to $7,500 where it approves special
@@ -1741,7 +1741,7 @@ export const stLouisServiceLocationContent: Partial<
 
         <h2>What the 90% structure means for a buyer</h2>
         <p>
-          St. Charles&rsquo;s programme reimburses 90% of the authorised cost of
+          St. Charles&rsquo;s program reimburses 90% of the authorised cost of
           an eligible lateral repair, capped at $7,500. Landscaping and
           ornamental structures are excluded.
         </p>
@@ -1798,9 +1798,9 @@ export const stLouisServiceLocationContent: Partial<
           temporarily relieves without addressing.
         </p>
 
-        <h2>Where Florissant&rsquo;s programme fits</h2>
+        <h2>Where Florissant&rsquo;s program fits</h2>
         <p>
-          Florissant&rsquo;s lateral programme covers from the main sewer to
+          Florissant&rsquo;s lateral program covers from the main sewer to
           within five feet of the residence, with no stated maximum, and
           requires video inspection for claim approval. The homeowner pays for
           the initial evaluation; where a claim is approved, the city&rsquo;s
@@ -1810,7 +1810,7 @@ export const stLouisServiceLocationContent: Partial<
           So if a line blocks repeatedly, the useful sequence is usually to
           clean it enough to see it, then inspect, because the footage is both
           the diagnosis and, if a structural failure is present, the
-          documentation the programme requires.
+          documentation the program requires.
         </p>
 
         <h2>When cleaning is the right answer</h2>
