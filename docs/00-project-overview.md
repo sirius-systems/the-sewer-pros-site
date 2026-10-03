@@ -32,7 +32,7 @@
 * ~~Market-scoped header contact (PENDING-017)~~ resolved; see the decision log entry that closed it
 * Phase 2 page `svc-independent-sewer-second-opinion`: a registry-confirmed `phase_2_candidate` (`data/services/master-service-registry.json`), approved as a strategic concept, not built as a standalone `/services/` page (see §9A below)
 * Build-time cross-registry validation (`validateCrossRegistry()` exists but is not wired into `npm run check`)
-* Content follow-ups: PENDING-014 (Chesterfield programme details), PENDING-015 (Census housing-age figures), PENDING-016 (three withheld claims)
+* Content follow-ups: PENDING-014 (Chesterfield program details), PENDING-015 (Census housing-age figures), PENDING-016 (three withheld claims)
 * **Existing page-inventory quality review.** All 70 built pages were approved and indexed under the prior strategic framing. The revised direction in §9A below applies the evidence-led quality model to that inventory; it does not automatically re-approve every page. See §0A, priority 4.
 
 ## Documentation Work Still Required

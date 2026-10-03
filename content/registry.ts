@@ -161,7 +161,7 @@ markPending(
 
 // RESOLVED by the St. Louis market research (2026-08-16). Written
 // against MSD's own lateral-responsibility statement and the verified
-// per-municipality programme terms. See content/pages/st-louis.tsx.
+// per-municipality program terms. See content/pages/st-louis.tsx.
 
 /* ---------------------------------------------------------------------------
    St. Louis municipal resource guides — 3 records

@@ -29,7 +29,7 @@
  * as an established offering.
  *
  * So none of this content promises contracts, service-level agreements,
- * response windows, account management, or scheduled programmes as
+ * response windows, account management, or scheduled programs as
  * existing products. It describes the work and the operational reasons
  * for it, and routes enquiries to a conversation.
  *
