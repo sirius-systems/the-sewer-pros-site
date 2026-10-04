@@ -58,6 +58,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
+import { carlsbadContent } from './san-diego-carlsbad'
 import { sanDiegoCityContent } from './san-diego-city'
 import {
   homeServiceCards,
@@ -324,13 +325,13 @@ export const sanDiegoMarketContent: MarketPageContent = {
     eyebrow: 'Possible assistance',
     title: 'Sewer lateral assistance programs vary by community',
     intro: [
-      'Lateral assistance programs exist in San Diego County, but they are uncommon and they are not uniform. Funding, eligibility, covered work, service boundaries, and application requirements may differ by agency. Of the areas we work across we have confirmed two, and elsewhere, including the City of San Diego, Escondido, and San Marcos, no such program was found.',
+      'Lateral assistance programs exist in San Diego County, but they are not uniform. Funding, eligibility, covered work, service boundaries, and application requirements may differ by agency. Of the areas we work across we have confirmed two, and elsewhere, including the City of San Diego, Escondido, and San Marcos, no such program was found.',
     ],
     items: [
       {
         title: 'Carlsbad',
         description:
-          'Carlsbad offers a grant of up to $3,000 toward lateral replacement or rehabilitation. The program is described as covering the Carlsbad Wastewater service area; whether it extends to properties served by Leucadia Wastewater District or Vallecitos is not something we have been able to confirm.',
+          'The City of Carlsbad publishes a grant of up to $3,000 toward lateral replacement or rehabilitation for the Carlsbad Wastewater service area. Leucadia Wastewater District publishes a separate lateral grant, and we did not find one from Vallecitos Water District.',
         icon: 'document',
         accent: 'blue',
         source: {
@@ -1207,7 +1208,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       question: 'Are there any grant programs in San Diego County?',
       answer: (
         <p>
-          They exist but are uncommon. We have confirmed a Carlsbad grant of up
+          They exist but differ by agency. We have confirmed a Carlsbad grant of up
           to $3,000 and a CVSan lateral replacement grant program in Chula
           Vista. In most of the county, including the City of San Diego, no
           program was found.
@@ -1519,95 +1520,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
   [id('loc-sd-san-diego')]: sanDiegoCityContent,
 
   /* ---------------------------------------------------------- Carlsbad -- */
-  [id('loc-sd-carlsbad')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in Carlsbad, California.',
-    hero: {
-      eyebrow: 'Carlsbad',
-      title: 'Sewer inspection and cleaning in Carlsbad',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Carlsbad properties,
-          one of the few places in San Diego County with a grant program
-          toward lateral work.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Carlsbad has a sewer lateral grant program</h2>
-        <p>
-          Carlsbad operates a Sewer Lateral Grant Program offering reimbursement
-          of up to $3,000 toward the replacement or rehabilitation of a private
-          lateral. It is awarded first-come, first-served, with priority given
-          to properties that have a history of overflows.
-        </p>
-        <p>
-          That is unusual here. Across most of San Diego County, including the
-          City of San Diego, no equivalent assistance exists and a failed
-          lateral is funded entirely by the owner.
-        </p>
-
-        <h2>Which provider serves your property matters</h2>
-        <p>
-          Carlsbad is not served by a single sewer provider. The city&rsquo;s
-          own Utilities Department serves most of it, while the southern portion
-          falls under Leucadia Wastewater District or Vallecitos Water District.
-        </p>
-        <p>
-          The grant program is described as covering the Carlsbad Wastewater
-          service area. Whether that extends to properties served by Leucadia or
-          Vallecitos is not something we have been able to confirm, so if your
-          property sits in the southern part of the city, confirm your own
-          eligibility on the{' '}
-          <a href="https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners">
-            City of Carlsbad&rsquo;s property-owner page
-          </a>{' '}
-          before assuming it applies.
-        </p>
-
-        <h2>Owner responsibility either way</h2>
-        <p>
-          Regardless of provider, the property owner is responsible for the
-          lateral from the building to the main. The city maintains the mainline
-          only.
-        </p>
-
-        <h2>Coastal buildout</h2>
-        <p>
-          Carlsbad&rsquo;s housing is largely late-1970s through 2000s
-          construction, peaking in the 1980s, meaningfully newer than the older
-          urban stock elsewhere in the region. On lines of that era the
-          recurring findings tend to be bellies and joint separation from ground
-          movement rather than the material decay that dominates older areas.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-carlsbad-camera'), id('sl-carlsbad-prepurchase')],
-    faq: [
-      {
-        question: 'How much is the Carlsbad grant?',
-        answer: (
-          <p>
-            Up to $3,000 toward lateral replacement or rehabilitation, awarded
-            first-come, first-served with priority for properties with an
-            overflow history.
-          </p>
-        ),
-      },
-      {
-        question: 'Does the grant apply everywhere in Carlsbad?',
-        answer: (
-          <p>
-            It covers the Carlsbad Wastewater service area. The southern portion
-            of the city is served by Leucadia Wastewater District or Vallecitos
-            instead, and whether the grant reaches those properties is not
-            something we can confirm; check with the City directly.
-          </p>
-        ),
-      },
-    ],
-  },
+  // Full rich composition lives in its own module (same pattern as San Diego city).
+  [id('loc-sd-carlsbad')]: carlsbadContent,
 
   /* ------------------------------------------------------- Chula Vista -- */
   [id('loc-sd-chula-vista')]: {

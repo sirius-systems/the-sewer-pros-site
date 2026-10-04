@@ -41,6 +41,7 @@
  * contradict each other. None is published and they are not averaged.
  */
 
+import Link from 'next/link'
 import type { PageId, ServiceLocationPageContent } from '@/types'
 
 const id = (value: string): PageId => value as PageId
@@ -190,26 +191,27 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in Carlsbad',
       intro: (
         <p>
-          Video inspection for Carlsbad properties, in one of the few places in
-          San Diego County where a grant program may contribute toward
-          lateral work.
+          Video inspection for Carlsbad properties, where the City, Leucadia
+          Wastewater District and Vallecitos Water District each serve part of
+          the city.
         </p>
       ),
     },
     body: (
       <>
-        <h2>Documentation and the grant program</h2>
+        <h2>Documentation and the City grant program</h2>
         <p>
-          Carlsbad operates a Sewer Lateral Grant Program offering up to $3,000
+          Carlsbad publishes a Sewer Lateral Grant Program offering up to $3,000
           toward replacement or rehabilitation of a private lateral, awarded
           first-come, first-served with priority for properties that have a
           history of overflows.
         </p>
         <p>
-          Overflow history and demonstrated condition are what the program
-          responds to, and both are things an inspection documents. A recorded
-          defect at a known distance along the line is a stronger basis for any
-          application than a description of symptoms.
+          The City gives its highest priority to locations that have had
+          overflows or spills. A camera inspection records the condition of the
+          line and where along it a problem sits. It does not by itself
+          establish an overflow history, and the City page we reviewed does not
+          list an inspection among its requirements.
         </p>
 
         <h2>Check which provider serves your address</h2>
@@ -219,28 +221,24 @@ export const sanDiegoServiceLocationContent: Partial<
           falls to Leucadia Wastewater District or Vallecitos Water District.
         </p>
         <p>
-          The grant is described as covering the Carlsbad Wastewater service
-          area, and we have not been able to confirm whether that extends to
-          properties served by Leucadia or Vallecitos. If your property is in
-          the southern part of the city, confirm your own eligibility with the{' '}
+          The City says its grant is for customers in the Carlsbad Wastewater
+          service area. Leucadia Wastewater District publishes a separate
+          lateral grant of its own, and we did not find one from Vallecitos
+          Water District. <Link href="/san-diego-ca/carlsbad/">The Carlsbad page</Link>{' '}
+          sets out each agency&rsquo;s terms. To check your own address, start
+          with the{' '}
           <a href="https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners">
             City of Carlsbad&rsquo;s property-owner page
-          </a>{' '}
-          before assuming it applies.
+          </a>
+          .
         </p>
 
-        <h2>What tends to show up on Carlsbad lines</h2>
+        <h2>What the camera records</h2>
         <p>
-          Carlsbad&rsquo;s housing has a median year built of around 1989
-          (American Community Survey, 2019&ndash;2023 five-year estimates),
-          reflecting coastal buildout from the late 1970s through the 2000s.
-        </p>
-        <p>
-          On lines of that period the recurring findings are usually ground
-          movement rather than material decay: bellies holding water, joints
-          pulled apart by settlement, damage from later work on the property.
-          Those are visible on camera and effectively invisible from the
-          fixtures.
+          A camera inspection can reveal blockages, root intrusion, separated
+          joints, offsets, cracks, standing water and other observable
+          conditions in accessible sewer piping, with a distance count showing
+          where along the line each one sits.
         </p>
       </>
     ),
@@ -260,39 +258,39 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Pre-Purchase Sewer Inspection in Carlsbad',
       intro: (
         <p>
-          Inspect the lateral before closing, and know that Carlsbad is one of
-          the few places in the county where a grant may contribute toward a
-          repair you inherit.
+          Inspect the lateral before closing, and find out which of
+          Carlsbad&rsquo;s three sewer agencies serves the property and what its
+          published lateral grant, if any, covers.
         </p>
       ),
     },
     body: (
       <>
-        <h2>Why the grant belongs in a buying decision</h2>
+        <h2>Why the grants belong in a buying decision</h2>
         <p>
-          Carlsbad&rsquo;s Sewer Lateral Grant Program offers up to $3,000
-          toward lateral replacement or rehabilitation, first-come,
-          first-served, with priority for properties with an overflow history.
-        </p>
-        <p>
-          For a buyer that is genuinely useful information, and it is unusual:
-          across most of San Diego County, including the City of San Diego, no
-          such program exists and a failed lateral is funded entirely by the
-          owner.
+          The City of Carlsbad publishes a Sewer Lateral Grant Program offering
+          up to $3,000 toward lateral replacement or rehabilitation,
+          first-come, first-served, with priority for properties with an
+          overflow history. Leucadia Wastewater District publishes a separate
+          lateral grant that reimburses 50% of repair cost, up to $3,000. We did
+          not find one from Vallecitos Water District.
         </p>
         <p>
           It does not make a defect costless. A $3,000 contribution against a
-          full replacement still leaves a balance, and the program is
-          first-come, first-served rather than guaranteed. But it changes the
-          arithmetic enough to be worth knowing before you commit.
+          full replacement still leaves a balance, and each program is
+          first-come, first-served rather than guaranteed. Leucadia says it pays
+          only if funds are available. Confirm with the agency before you plan
+          around a grant.
         </p>
 
         <h2>Confirm which provider serves the property</h2>
         <p>
           Most of Carlsbad is served by the city&rsquo;s own utilities
           department, but the southern portion falls to Leucadia Wastewater
-          District or Vallecitos. Whether the grant reaches those properties is
-          not something we can confirm; check the{' '}
+          District or Vallecitos Water District. The City says its grant is for
+          customers in the Carlsbad Wastewater service area.{' '}
+          <Link href="/san-diego-ca/carlsbad/">The Carlsbad page</Link> sets out
+          each agency&rsquo;s terms; check the{' '}
           <a href="https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners">
             City of Carlsbad&rsquo;s property-owner page
           </a>{' '}
@@ -306,14 +304,6 @@ export const sanDiegoServiceLocationContent: Partial<
           <li>Whether roots are entering, and at what point</li>
           <li>Which sections could not be assessed, and why</li>
         </ul>
-        <p>
-          Carlsbad&rsquo;s stock is predominantly late-1970s through 2000s
-          construction, with a median year built of around 1989 (American
-          Community Survey, 2019&ndash;2023 five-year estimates). Newer pipe
-          removes material decay as a concern but not settlement, bellies, or
-          damage from work done since, none of which the age of a house
-          predicts.
-        </p>
 
         <h2>Timing and what it is for</h2>
         <p>
