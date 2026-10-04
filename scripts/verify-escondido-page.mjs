@@ -210,7 +210,7 @@ const REQUIRED = [
   'Vallecitos Water District', '52,239', '1981', 'Last reviewed: October 4, 2026',
   'does not perform repairs or replacements', 'does not arrange reimbursement',
   'We did not find a City of Escondido lateral repair, replacement, grant or reimbursement program',
-  'three combination jet-rodding and vacuum trucks',
+  'three combination jet-rodding and vacuum trucks', 'Sewer System Management Plan',
 ]
 const missingReq = REQUIRED.filter((t) => !text.includes(norm(t)))
 check('required strings present', missingReq.length === 0, missingReq.join(' | '))
@@ -238,7 +238,7 @@ const FORBIDDEN = [
   'PVC', 'clay', 'suburban', 'more explicit', 'unusually', 'Unlike Carlsbad', 'CVSan', 'Castro Valley', 'programme',
   'Since 2011', 'still open', 'now open', 'currently open', 'accepting applications', 'funds remain', 'fully funded',
   'you will be reimbursed', 'same-day', '24/7', 'guarantee', 'insured', 'Qualified Contractor', '18 inches',
-  '380 miles', '370 miles', 'Placeholder', 'NOT FOR PRODUCTION', 'testimonial', 'directly caused',
+  '380 miles', '370 miles', '2025-103', 'Resolution No. 2023-131', '2023-131', 'Aug 28', 'August 28', 'Placeholder', 'NOT FOR PRODUCTION', 'testimonial', 'directly caused',
 ]
 const forbiddenHits = FORBIDDEN.filter((w) => text.toLowerCase().includes(norm(w).toLowerCase()))
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))
@@ -255,6 +255,14 @@ contextOnly('emergenc', /(call 911 for emergencies|non-emergency sewer reports)/
 contextOnly('reimburs', /(did not find|does not arrange|not a statement|grant or reimbursement)/i, '"reimburse" only in none-found sentences or the do-not-arrange sentence', 'gi')
 contextOnly('grant', /(did not find|found no|no Escondido lateral grant|grant or reimbursement|none found|Apart from that case|no City lateral grant)/i, '"grant" only in none-found sentences or the heading', 'gi')
 contextOnly('lining', /excavation, lining, or replacement/, '"lining" only in the approved second-opinion sentence', 'gi')
+{
+  const ssmp = [...text.matchAll(/Sewer System Management Plan/g)].length
+  check('"Sewer System Management Plan" appears three times (M7 bullet, 22-165 lede, FAQ 3)', ssmp === 3, String(ssmp))
+  const ssmpBad = [...text.matchAll(/Sewer System Management Plan/g)].map((m) => text.slice(Math.max(0, m.index - 120), m.index + 60)).filter((c) => !/(Before cleaning a lateral|did not find a City of Escondido lateral|Does the City of Escondido ever pay|the City’s Sewer System|wastewater page or the City’s|wastewater page or Sewer System)/.test(c))
+  check('"Sewer System Management Plan" only in the M7 bullet, the 22-165 lede, FAQ 3 and the sources block', ssmpBad.length === 0, ssmpBad.join(' | '))
+  check('"call the City before cleaning" appears exactly once (the M7 bullet)', (text.match(/call the City before cleaning/g) ?? []).length === 1)
+  check('SSMP link appears once, in the sources block', (mainHtml.match(/escondido\.gov\/774\/Sewer-System-Management-Sewer-Overflow-R/g) ?? []).length === 1)
+}
 contextOnly('septic', /(Vallecitos|septic systems at that time|on septic)/, '"septic" only in the Vallecitos caveat lines', 'gi')
 contextOnly('1981|median year', /(Census|median year built|housing units|About half|1981\.)/, '"1981" and "median year" only in age context', 'gi')
 contextOnly('2012|1980', /(Wastewater Master Plan|2012 figure|master plan|June 2012|before 1980|1980 to 1989|1980s|2012 Wastewater)/i, '"2012" and "1980" only in dated City-mains context or the age table', 'gi')
@@ -316,7 +324,7 @@ check('no agency street address published', !/\d{3,5}\s+[A-Z][a-z]+\s+(Street|St
 /* ---- Links ---- */
 const anchors = [...mainHtml.matchAll(/<a\s[^>]*href="([^"]+)"[^>]*>/g)]
 const external = anchors.filter((m) => /^https?:/.test(m[1]))
-check('eight distinct external source links', new Set(external.map((m) => m[1])).size === 8, String(new Set(external.map((m) => m[1])).size))
+check('nine distinct external source links', new Set(external.map((m) => m[1])).size === 9, String(new Set(external.map((m) => m[1])).size))
 check('every external link has rel="noopener"', external.every((m) => /rel="[^"]*noopener/.test(m[0])), external.filter((m) => !/rel="[^"]*noopener/.test(m[0])).map((m) => m[1]).join(', '))
 const internal = anchors.map((m) => m[1]).filter((h) => h.startsWith('/') && !h.startsWith('//'))
 const missing = [...new Set(internal)].filter((h) => {
