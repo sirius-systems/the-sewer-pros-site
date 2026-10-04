@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { resolveFooterNav } from '@/data/navigation'
-import { TrackedPhoneLink } from '@/components/tracking'
+import { FooterContacts } from './FooterContacts'
 import { SITE_NAME, organization } from '@/data/business'
-import { marketList, marketOperatingDetail } from '@/data/markets/markets'
 
 /**
  * Site footer.
@@ -119,34 +118,7 @@ export function SiteFooter() {
               market listed in navigation is not automatically a market
               with published contact facts.
             */}
-            <div className="mt-6 flex flex-col gap-1 text-sm">
-              {marketList.map((market, i) => {
-                const detail = marketOperatingDetail[market.id]
-                if (detail === undefined) return null
-
-                return (
-                  <div key={market.id} className="flex flex-col gap-1">
-                    <p className={i === 0 ? 'opacity-70' : 'mt-3 opacity-70'}>
-                      {market.city}
-                    </p>
-                    <TrackedPhoneLink
-                      phoneE164={detail.phoneE164}
-                      ctaLocation="footer"
-                      context={{ market_id: market.id }}
-                      className="hover:underline"
-                    >
-                      {detail.phone}
-                    </TrackedPhoneLink>
-                    <a
-                      href={`mailto:${detail.email}`}
-                      className="hover:underline"
-                    >
-                      {detail.email}
-                    </a>
-                  </div>
-                )
-              })}
-            </div>
+            <FooterContacts />
           </div>
 
           {/*
