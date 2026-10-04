@@ -91,10 +91,10 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <h3>Who inspected the line, and their standing</h3>
         <p>
           Programs are specific about this. St. Louis City requires a licensed
-          plumber to inspect and submit a written statement. St. Charles
-          requires written certification from a licensed master plumber or
-          drainlayer. The credential is part of what makes the document
-          acceptable.
+          plumber to inspect and submit a written statement. St. Charles asks
+          for a written statement from a master plumber or master drainlayer
+          that the lateral has been cabled. The credential is part of what
+          makes the document acceptable.
         </p>
 
         <h3>What the defect is</h3>
