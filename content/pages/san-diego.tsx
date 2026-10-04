@@ -62,6 +62,7 @@ import { carlsbadContent } from './san-diego-carlsbad'
 import { chulaVistaContent } from './san-diego-chula-vista'
 import { escondidoContent } from './san-diego-escondido'
 import { sanDiegoCityContent } from './san-diego-city'
+import { sanMarcosContent } from './san-diego-san-marcos'
 import { sanDiegoMissionValleyContent } from './san-diego-mission-valley'
 import {
   homeServiceCards,
@@ -269,7 +270,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     title: 'There is no single sewer authority for every San Diego property',
     intro: [
       'San Diego County has no regional sewer district covering the area the way a single authority does in some metropolitan regions. Wastewater service may come from a city utility department, a water district, a sanitation district, or another local public agency, and which one governs a property is a question of address rather than of city name.',
-      'San Marcos is served by the Vallecitos Water District, an independent special district that also serves parts of Carlsbad, Escondido, and Vista. Chula Vista\u2019s public sewer is run by the City of Chula Vista. Carlsbad is split: most of the city is served by its own utilities department, while the southern portion falls to Leucadia Wastewater District or Vallecitos.',
+      'The City of San Marcos does not provide sewer service; the City names three agencies by location, and Vallecitos Water District serves part of the city and parts of Carlsbad, Escondido and Vista. Chula Vista\u2019s public sewer is run by the City of Chula Vista. Carlsbad is split: most of the city is served by its own utilities department, while the southern portion falls to Leucadia Wastewater District or Vallecitos.',
     ],
     items: [
       {
@@ -1607,94 +1608,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
   },
 
   /* -------------------------------------------------------- San Marcos -- */
-  [id('loc-sd-san-marcos')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in San Marcos, California.',
-    hero: {
-      eyebrow: 'San Marcos',
-      title: 'Sewer inspection and cleaning in San Marcos',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for San Marcos
-          properties, where sewer service comes from a water district rather
-          than the city.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Vallecitos Water District, not the City</h2>
-        <p>
-          Sewer service in San Marcos is provided by the Vallecitos Water
-          District, an independent special district that also serves parts of
-          Carlsbad, Escondido, and Vista.
-        </p>
-        <p>
-          It is a genuine distinction rather than an administrative footnote.
-          Questions about your sewer service go to the district, and city-level
-          searching will not necessarily surface the rules that govern your
-          line.
-        </p>
-        <p>
-          The district&rsquo;s position on responsibility is straightforward:
-          lines installed to service private properties are the property
-          owner&rsquo;s responsibility, and require periodic maintenance by the
-          homeowner.
-        </p>
-
-        <h2>No assistance program found</h2>
-        <p>
-          We found no lateral repair assistance program covering San Marcos.
-          The cost of a lateral problem here appears to fall entirely on the
-          property owner.
-        </p>
-
-        <h2>New housing, different failure modes</h2>
-        <p>
-          San Marcos has among the newest housing in the region: a median year
-          built of 1996, with only 7.7% predating 1970 (American Community
-          Survey, 2019&ndash;2023 five-year estimates). Most laterals here will be PVC rather
-          than clay, cast iron, or bituminized fibre.
-        </p>
-        <p>
-          That removes the material failure modes that dominate older
-          areas, but not the ones caused by ground movement. On newer lines the
-          recurring findings are bellies that hold water, joints opened by
-          settlement, and damage from landscaping or later construction. A belly
-          produces exactly the repeating slow-drainage pattern people associate
-          with an old pipe, from an entirely different cause.
-        </p>
-        <p>
-          &ldquo;It is a newer house, the sewer will be fine&rdquo; is a
-          reasonable assumption and frequently a wrong one.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-san-marcos-camera')],
-    faq: [
-      {
-        question: 'Who provides sewer service in San Marcos?',
-        answer: (
-          <p>
-            The Vallecitos Water District, an independent special district that
-            also serves parts of Carlsbad, Escondido, and Vista, not the city
-            itself.
-          </p>
-        ),
-      },
-      {
-        question: 'My house is new. Do I need an inspection?',
-        answer: (
-          <p>
-            Newer PVC pipe removes material decay as a failure mode but not
-            ground movement. Bellies, settlement-opened joints, and damage from
-            later work produce the same recurring symptoms and are common on
-            newer lines.
-          </p>
-        ),
-      },
-    ],
-  },
+  // Full rich composition lives in its own module (same pattern as Escondido).
+  [id('loc-sd-san-marcos')]: sanMarcosContent,
 
   /* ----------------------------------------------------- Mission Valley -- */
   // Full rich composition lives in its own module (same pattern as San Diego city).

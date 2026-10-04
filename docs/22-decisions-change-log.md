@@ -4946,6 +4946,22 @@ CVSan is the Castro Valley Sanitary District in Alameda County. Chula Vista's se
 
 The statement in the San Diego differentiation entry (around DEC-071 and the Chula Vista and Carlsbad notes) that Escondido's code section 22-165 is "unusually explicit" is superseded; that entry is not edited. The comparison is unsourced. The Escondido page now states what section 22-165 says, read in full from eCode360 on 2026-10-04, and quotes at most nine words of it. Removed from the Escondido pages: "more explicit than most jurisdictions" and "unusually direct", the comparison with Carlsbad and Chula Vista grants, the "suburban expansion" narrative, the PVC statement, "directly caused" (the code does not say "directly"), and the "clearing a clog is the owner's, not the city's" overstatement. The 1981 median year built is kept and is now sourced to ACS 2020-2024 (tables B25034 and B25035), replacing the 2019-2023 label. No City lateral repair, grant or reimbursement program was found, which is "none found", not a statement that none exists. The page also fixes a rendering defect that showed the St. Louis founding year on this San Diego page; DEC-071 sets San Diego at 2015.
 
+
+## DEC-119 - San Marcos Page Claims Corrected
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/san-diego-san-marcos.tsx` (new; replaces the inline San Marcos entry in `content/pages/san-diego.tsx`)
+* `content/pages/san-diego-service-location.tsx` (`sl-san-marcos-camera`)
+* `content/pages/san-diego.tsx` (market overview sentence)
+* `docs/04-master-page-build-list.md` (`loc-sd-san-marcos` row)
+
+The statement in the San Diego differentiation entry (around DEC-071) that "San Marcos is served by Vallecitos Water District rather than the city" is superseded by the City of San Marcos's own statement that it does not provide water or sewer service and that one of three agencies does, depending on location: Vallecitos Water District, Vista Irrigation District or Rincon del Diablo Municipal Water District (the City's page spells the last one "Rincon Diablo Water District"). That entry is not edited. The housing-age figures (1996 median year built, 7.7 percent, labelled 2019-2023), "among the newest housing in the region", the PVC statement, the bellies and settlement narrative, "periodic maintenance by the homeowner", "appears to fall entirely on the property owner" and "independent special district" are removed as unsourced. The San Marcos pages now state only Vallecitos Water District's published connection-point wording for the owner's lateral, for addresses on its sewer system, and say none was found for a lateral repair or reimbursement program. No claim is made about Vista Irrigation District or Rincon del Diablo sewer service. The page also fixes a rendering defect that showed the St. Louis founding year on this San Diego page; DEC-071 sets San Diego at 2015.
+
 ---
 
 # 26. Decision Quality Standard

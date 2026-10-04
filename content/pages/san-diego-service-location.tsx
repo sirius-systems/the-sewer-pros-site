@@ -126,56 +126,51 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in San Marcos',
       intro: (
         <p>
-          Video inspection for San Marcos properties, served by a water
-          district rather than the city, and built recently enough that the
-          usual assumptions about old pipe do not apply.
+          Video inspection for San Marcos properties, where the City does not
+          provide sewer service and the agency that does depends on the
+          address.
         </p>
       ),
     },
     body: (
       <>
-        <h2>Vallecitos, not the City of San Marcos</h2>
+        <h2>Which agency serves your San Marcos address</h2>
         <p>
-          Sewer service in San Marcos comes from the Vallecitos Water District,
-          an independent special district that also serves parts of Carlsbad,
-          Escondido, and Vista. The district&rsquo;s position is that lines
-          serving private property are the property owner&rsquo;s
-          responsibility and require periodic maintenance.
+          The City of San Marcos does not provide sewer service; confirm which
+          agency serves your address. For a property on Vallecitos Water
+          District&rsquo;s sewer system, the district says the owner is
+          responsible for the sewer lateral through its connection to the
+          district&rsquo;s main.
         </p>
         <p>
-          We found no lateral repair assistance program covering San Marcos,
-          so the cost of a problem appears to fall entirely on the owner.
+          We found no Vallecitos lateral repair assistance program on the
+          district pages we reviewed. That is &ldquo;none found&rdquo;, not a
+          statement that none exists. The{' '}
+          <Link href="/san-diego-ca/san-marcos/">San Marcos page</Link> sets out who
+          serves the city and what the district publishes.
         </p>
 
-        <h2>New housing changes what the camera looks for</h2>
+        <h2>What a camera inspection records</h2>
         <p>
-          San Marcos has a median year built of around 1996 (American Community
-          Survey, 2019&ndash;2023 five-year estimates), among the newest
-          housing in the region. Most laterals here will be PVC rather than
-          clay, cast iron, or bituminized fibre.
-        </p>
-        <p>
-          That eliminates the material failures which dominate older areas, and
-          shifts what appears on camera:
+          A camera inspection shows the visible condition of the accessible
+          line on video. The findings can include:
         </p>
         <ul>
-          <li>Bellies: sections that lost slope and hold standing water</li>
-          <li>Joints opened by settlement rather than material decay</li>
-          <li>Damage from landscaping, an addition, or utility trenching</li>
-          <li>Roots exploiting an opening that movement or damage created</li>
+          <li>Blockages and grease build-up</li>
+          <li>Root intrusion</li>
+          <li>Separated or offset joints</li>
+          <li>Cracks and visible pipe damage</li>
+          <li>Standing water or low spots (bellies)</li>
         </ul>
 
-        <h2>Why a newer line still warrants looking</h2>
+        <h2>Why look before you decide</h2>
         <p>
-          A belly produces exactly the pattern people associate with an old,
-          failing pipe: slow drainage that clears and returns, because solids
-          settle wherever flow has slowed. The cause is entirely different, and
-          so is the remedy.
-        </p>
-        <p>
-          &ldquo;It is a newer house, the sewer will be fine&rdquo; is a
-          reasonable assumption and frequently a wrong one. Ground movement does
-          not wait for a pipe to reach a particular age.
+          The footage records where along the line a condition sits, measured
+          from where the camera entered. It does not tell you the condition of
+          any line you have not inspected, and it does not establish where the
+          connection to the district&rsquo;s main or the district&rsquo;s
+          responsibility begins. Use the recorded evidence to decide whether the
+          line needs cleaning, monitoring or a further opinion.
         </p>
       </>
     ),
