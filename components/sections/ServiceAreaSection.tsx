@@ -245,6 +245,7 @@ export function ServiceAreaSection({
   const flagship: PageId | undefined =
     content.cities.flagshipPageId ?? cityLinks[0]?.pageId
   const rows = content.cities.rows ?? 2
+  const isGrid = content.cities.layout === 'grid'
 
   const counties = content.counties?.items ?? []
 
@@ -457,28 +458,46 @@ export function ServiceAreaSection({
           */}
           <ul
             className={cn(
-              'mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-12 lg:gap-6',
+              'mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6',
+              isGrid ? 'lg:grid-cols-6' : 'lg:grid-cols-12',
               /*
                 ⚠ THE ROW COUNT IS EXPLICIT BECAUSE THE FLAGSHIP SPANS
                 IT. `auto-rows` would let the right-hand tiles decide
                 the height and the flagship would stop lining up with
                 the bottom of the column. See `cities.rows`.
               */
-              rows === 3 ? 'lg:grid-rows-3' : 'lg:grid-rows-2',
+              !isGrid && (rows === 3 ? 'lg:grid-rows-3' : 'lg:grid-rows-2'),
             )}
           >
-            {cityLinks.map((link) => {
+            {cityLinks.map((link, index) => {
               const card = cityCards.get(link.pageId)
               if (card === undefined) return null
 
-              const isFlagship = link.pageId === flagship
+              const isFlagship = !isGrid && link.pageId === flagship
               const image = card.image
+
+              /*
+                Uniform grid: three across on desktop on a six-column
+                track, every card two columns wide. When the last row
+                is short by one (five cards -> 3 + 2) it is centred
+                rather than left-aligned, and on two-column tablets an
+                odd final card spans the row so nothing orphans.
+              */
+              const total = cityLinks.length
+              const gridClass = cn(
+                'lg:col-span-2',
+                total % 2 === 1 && index === total - 1 && 'sm:col-span-2',
+                total % 3 === 2 && index === total - 2 && 'lg:col-start-2',
+                total % 3 === 2 && index === total - 1 && 'lg:col-start-4',
+              )
 
               return (
                 <li
                   key={link.pageId}
                   className={cn(
-                    isFlagship
+                    isGrid
+                      ? gridClass
+                      : isFlagship
                       ? cn(
                           'sm:col-span-2 lg:col-span-6',
                           rows === 3 ? 'lg:row-span-3' : 'lg:row-span-2',
@@ -520,7 +539,9 @@ export function ServiceAreaSection({
                           alt=""
                           fill
                           sizes={
-                            isFlagship || card.wide === true
+                            isGrid
+                              ? '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
+                              : isFlagship || card.wide === true
                               ? '(min-width: 1024px) 50vw, 100vw'
                               : '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
                           }

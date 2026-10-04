@@ -734,6 +734,13 @@ export interface ServiceAreaContent {
      */
     flagshipPageId?: PageId
     /**
+     * `'mosaic'` (default) is the uneven flagship layout. `'grid'` is
+     * uniform cards of equal size with no flagship; a short last row is
+     * centred. St. Louis uses `'grid'` (owner, 2026-10-03) so five
+     * communities read as equals and a long ZIP list fits any card.
+     */
+    layout?: 'mosaic' | 'grid'
+    /**
      * Desktop rows the flagship spans, which sets the whole mosaic's
      * shape.
      *

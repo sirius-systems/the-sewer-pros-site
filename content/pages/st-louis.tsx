@@ -716,7 +716,7 @@ export const stLouisMarketContent: MarketPageContent = {
       title: 'Featured St. Louis-area service locations',
       intro:
         'Explore dedicated sewer inspection and cleaning information for featured communities across the St. Louis area. Each local page includes services, coverage details, and guidance for property owners and professionals in that community.',
-      flagshipPageId: id('loc-stl-st-louis-city'),
+      layout: 'grid',
       items: [
         {
           pageId: id('loc-stl-st-louis-city'),
