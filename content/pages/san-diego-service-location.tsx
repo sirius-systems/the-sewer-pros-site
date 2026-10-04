@@ -13,7 +13,7 @@
  * the service name could be. These pages have to survive both.
  *
  * The jurisdictional facts carry the first: Vallecitos rather than the
- * city in San Marcos, CVSan rather than city government in Chula Vista,
+ * city in San Marcos, the City itself in Chula Vista,
  * a $3,000 grant in Carlsbad, no homeowner assistance program found
  * in the City of San Diego. The second is carried by tying each fact to what that
  * specific service actually produces — camera work generates the
@@ -24,7 +24,7 @@
  * ---------------------------------------------------------------------------
  * Rather than assert an unconfirmed figure, these pages link to the
  * authority's own page and let the reader confirm what applies to their
- * address. Applied to CVSan's grant cap, Oceanside's responsibility
+ * address. Applied to Oceanside's responsibility
  * statement, and Carlsbad's southern-boundary eligibility.
  *
  * This is stronger than omission: it gives the reader the answer's
@@ -330,62 +330,43 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in Chula Vista',
       intro: (
         <p>
-          Video inspection for Chula Vista properties, where the grant process
-          runs through CVSan and asks for exactly the kind of documentation an
-          inspection produces.
+          Video inspection for Chula Vista properties, where the City of Chula
+          Vista runs the public sewer and its written policy puts the lateral
+          on the owner.
         </p>
       ),
     },
     body: (
       <>
-        <h2>CVSan, not the City of Chula Vista</h2>
+        <h2>The City of Chula Vista runs the sewer</h2>
         <p>
-          Sewer service in Chula Vista comes from CVSan (the Chula Vista
-          Sanitation District), a separate special district rather than a
-          department of city government. Questions about laterals, permits, and
-          the grant program go there, not to City Hall.
+          Sewer service in Chula Vista comes from the City of Chula Vista, not
+          from a separate sanitation district. Questions about laterals and
+          permits go to City Public Works. <Link href="/san-diego-ca/chula-vista/">The
+          Chula Vista page</Link> sets out the City&rsquo;s lateral policy.
         </p>
 
-        <h2>What the grant process actually requires</h2>
+        <h2>What the City&rsquo;s policy says about stoppages</h2>
         <p>
-          CVSan runs a Lateral Replacement Grant Program reimbursing documented
-          repair or replacement cost. The process is specific:
-        </p>
-        <ul>
-          <li>Three contractor quotes from CVSan&rsquo;s Qualified Contractor List</li>
-          <li>A CVSan repair permit</li>
-          <li>Work completed within 90 days</li>
-          <li>Reimbursement on a paid-in-full invoice</li>
-        </ul>
-        <p>
-          The three-quote requirement is where inspection earns its place.
-          Comparable quotes are far easier to obtain when every contractor is
-          pricing against the same recorded evidence (a defect of a known type
-          at a known distance) rather than each forming an independent view of
-          what is wrong.
-        </p>
-        <p>
-          We have not confirmed the program&rsquo;s exact reimbursement cap,
-          and it differs from Carlsbad&rsquo;s stated $3,000. Check the current
-          figure on{' '}
-          <a href="https://cvsan.org/wastewater/lateral_replacement_grant_program.php">
-            CVSan&rsquo;s grant program page
+          The City&rsquo;s sewer maintenance policy puts the lateral on the
+          owner from its connection with the public sewer to the building. It
+          says a licensed plumber determines the location of a stoppage with a
+          camera, and that a stoppage found in the public sewer, in the first
+          foot of the lateral at the connection, or caused by a City street tree
+          is reported to the City within 48 hours and reimbursed at reasonable
+          cost if City staff agree. A camera inspection records the condition of
+          the line and where along it a problem sits. It does not by itself
+          decide where a stoppage is for the City&rsquo;s purposes, and the
+          City&rsquo;s pages do not say what documentation it accepts, so ask
+          Public Works first. Read the{' '}
+          <a
+            href="https://www.chulavistaca.gov/departments/public-works/services/sewer/sewer-lateral-policy"
+            rel="noopener"
+          >
+            City&rsquo;s sewer lateral policy page
           </a>{' '}
-          rather than relying on a number from anywhere else.
-        </p>
-
-        <h2>Two cities in one</h2>
-        <p>
-          Chula Vista&rsquo;s median year built is around 1987 (American
-          Community Survey, 2019&ndash;2023 five-year estimates), but that
-          single figure hides a genuinely mixed picture: a meaningful postwar
-          and 1960s base alongside a strong wave of master-planned development
-          in the east through the 2000s.
-        </p>
-        <p>
-          What is typical for one half of the city is a poor guide to the other,
-          which is a reason to look at the specific line rather than reason from
-          the city&rsquo;s overall profile.
+          and see the <Link href="/san-diego-ca/chula-vista/">Chula Vista
+          page</Link> for the full summary.
         </p>
       </>
     ),
@@ -424,7 +405,7 @@ export const sanDiegoServiceLocationContent: Partial<
         <h2>No program to offset it</h2>
         <p>
           We found no lateral repair assistance program in Escondido. Unlike
-          Carlsbad and Chula Vista, there appears to be nothing to reduce the
+          Carlsbad, there appears to be nothing to reduce the
           cost of a structural failure.
         </p>
         <p>
@@ -499,7 +480,7 @@ export const sanDiegoServiceLocationContent: Partial<
         </p>
         <p>
           We also found no lateral repair assistance program here, unlike
-          Carlsbad and Chula Vista; worth confirming for yourself either way.
+          Carlsbad; worth confirming for yourself either way.
         </p>
 
         <h2>What cleaning addresses, and what it does not</h2>

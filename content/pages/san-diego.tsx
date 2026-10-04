@@ -59,6 +59,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
 import { carlsbadContent } from './san-diego-carlsbad'
+import { chulaVistaContent } from './san-diego-chula-vista'
 import { sanDiegoCityContent } from './san-diego-city'
 import {
   homeServiceCards,
@@ -174,8 +175,8 @@ export const sanDiegoMarketContent: MarketPageContent = {
     ⚠ NOT ONE HEDGE WAS STRENGTHENED. The City of San Diego wording
     follows the city page (DEC-115): no homeowner assistance program
     found, crew lateral-installation program currently suspended; the
-    Carlsbad grant keeps its service-area qualifier and the CVSan cap
-    stays explicitly unconfirmed.
+    Carlsbad grant keeps its service-area qualifier. (Chula Vista was
+    corrected 2026-10-04: its sewer is the City's, and no grant was found.)
 
     ⚠ FIVE IMAGES WERE ASKED FOR AND NONE EXISTS. The lateral diagram,
     the authorities graphic, the assistance photograph, the evidence
@@ -241,7 +242,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
   /*
     ⚠ EVERY AGENCY NAMED HERE WAS ALREADY ON THIS PAGE. Vallecitos
     serving San Marcos and parts of Carlsbad, Escondido and Vista;
-    CVSan in Chula Vista; Carlsbad split between its own utilities
+    the City of Chula Vista in Chula Vista; Carlsbad split between its own utilities
     department and Leucadia or Vallecitos in the south. No assignment
     was added, changed, or inferred from a city name.
 
@@ -266,7 +267,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     title: 'There is no single sewer authority for every San Diego property',
     intro: [
       'San Diego County has no regional sewer district covering the area the way a single authority does in some metropolitan regions. Wastewater service may come from a city utility department, a water district, a sanitation district, or another local public agency, and which one governs a property is a question of address rather than of city name.',
-      'San Marcos is served by the Vallecitos Water District, an independent special district that also serves parts of Carlsbad, Escondido, and Vista. Chula Vista\u2019s sewer service comes from CVSan, a sanitation district distinct from the city government. Carlsbad is split: most of the city is served by its own utilities department, while the southern portion falls to Leucadia Wastewater District or Vallecitos.',
+      'San Marcos is served by the Vallecitos Water District, an independent special district that also serves parts of Carlsbad, Escondido, and Vista. Chula Vista\u2019s public sewer is run by the City of Chula Vista. Carlsbad is split: most of the city is served by its own utilities department, while the southern portion falls to Leucadia Wastewater District or Vallecitos.',
     ],
     items: [
       {
@@ -298,11 +299,10 @@ export const sanDiegoMarketContent: MarketPageContent = {
     it. The finding underneath is identical: programs exist, they are
     uncommon, and they are not uniform.
 
-    ⚠ THE TWO PROGRAM CARDS CARRY THEIR OWN SOURCE LINKS, which are
-    the URLs this file already used on the Carlsbad and Chula Vista
-    location pages. Both hedges travel with them: the Carlsbad grant is
-    described for the Carlsbad Wastewater service area and the CVSan
-    cap is explicitly unconfirmed.
+    ⚠ THE PROGRAM CARDS CARRY THEIR OWN SOURCE LINKS, which are the
+    URLs the Carlsbad and Chula Vista location pages use. The Carlsbad
+    grant is described for the Carlsbad Wastewater service area. The
+    Chula Vista card says no grant was found; the City runs its own sewer.
 
     ⚠ NO "INFORMATION CHECKED" DATE IS SHOWN, and that is deliberate.
     The brief asked for one only where the project's research data
@@ -325,7 +325,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     eyebrow: 'Possible assistance',
     title: 'Sewer lateral assistance programs vary by community',
     intro: [
-      'Lateral assistance programs exist in San Diego County, but they are not uniform. Funding, eligibility, covered work, service boundaries, and application requirements may differ by agency. Of the areas we work across we have confirmed two, and elsewhere, including the City of San Diego, Escondido, and San Marcos, no such program was found.',
+      'Lateral assistance programs exist in San Diego County, but they are not uniform. Funding, eligibility, covered work, service boundaries, and application requirements may differ by agency. Of the areas we work across we have confirmed one, in Carlsbad, and elsewhere, including the City of San Diego, Chula Vista, Escondido, and San Marcos, no such program was found.',
     ],
     items: [
       {
@@ -340,14 +340,14 @@ export const sanDiegoMarketContent: MarketPageContent = {
         },
       },
       {
-        title: 'Chula Vista, through CVSan',
+        title: 'Chula Vista',
         description:
-          'CVSan runs a lateral replacement grant program. Eligibility depends on the applicable service authority and the property location, so a Chula Vista address does not by itself qualify, and we have not been able to confirm the program\u2019s exact reimbursement cap.',
+          'We did not find a City lateral repair or grant program. The City’s sewer maintenance policy reimburses reasonable costs for qualifying stoppages only. See the Chula Vista page for what the policy says.',
         icon: 'guidance',
         accent: 'green',
         source: {
-          label: 'CVSan lateral replacement grant program',
-          href: 'https://cvsan.org/wastewater/lateral_replacement_grant_program.php',
+          label: 'City of Chula Vista sewer lateral policy',
+          href: 'https://www.chulavistaca.gov/departments/public-works/services/sewer/sewer-lateral-policy',
         },
       },
     ],
@@ -1199,7 +1199,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
         <p>
           It depends on your address rather than only your city. Some areas are
           served by a city utilities department and others by an independent
-          special district: Vallecitos, Leucadia, or CVSan among them. Parts of
+          special district: Vallecitos or Leucadia among them. Parts of
           Carlsbad fall under different providers than the rest of it.
         </p>
       ),
@@ -1209,9 +1209,9 @@ export const sanDiegoMarketContent: MarketPageContent = {
       answer: (
         <p>
           They exist but differ by agency. We have confirmed a Carlsbad grant of up
-          to $3,000 and a CVSan lateral replacement grant program in Chula
-          Vista. In most of the county, including the City of San Diego, no
-          program was found.
+          to $3,000. In most of the county, including the City of San Diego
+          and Chula Vista, no grant was found. Chula Vista&rsquo;s sewer policy
+          reimburses reasonable costs for some stoppages only.
         </p>
       ),
     },
@@ -1524,101 +1524,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
   [id('loc-sd-carlsbad')]: carlsbadContent,
 
   /* ------------------------------------------------------- Chula Vista -- */
-  [id('loc-sd-chula-vista')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Chula Vista, California.',
-    hero: {
-      eyebrow: 'Chula Vista',
-      title: 'Sewer inspection and cleaning in Chula Vista',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Chula Vista
-          properties, where sewer service comes from a district separate from
-          the city government.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>CVSan is not the City of Chula Vista</h2>
-        <p>
-          Sewer service in Chula Vista is provided by CVSan (the Chula Vista
-          Sanitation District), which is a separate special district rather than
-          a department of the city government.
-        </p>
-        <p>
-          This trips people up regularly. Questions about laterals, permits, and
-          the grant program go to CVSan, not to City Hall, and searching for
-          city sewer policy will not necessarily surface the rules that apply.
-        </p>
-
-        <h2>CVSan runs a lateral replacement grant program</h2>
-        <p>
-          CVSan operates a Lateral Replacement Grant Program that reimburses
-          documented repair or replacement cost. The process is specific, and
-          worth knowing before work starts rather than after:
-        </p>
-        <ul>
-          <li>Three contractor quotes from CVSan&rsquo;s Qualified Contractor List</li>
-          <li>A CVSan repair permit</li>
-          <li>Work completed within 90 days</li>
-          <li>Reimbursement on submission of a paid-in-full invoice</li>
-        </ul>
-        <p>
-          Every one of those steps assumes you can establish what is wrong with
-          the line and where. Three comparable quotes in particular are far
-          easier to obtain when each contractor is pricing against the same
-          documented evidence rather than forming an independent opinion.
-        </p>
-        <p>
-          We have not been able to confirm the program&rsquo;s exact
-          reimbursement cap, and it differs from Carlsbad&rsquo;s stated $3,000.
-          Check the current figure on{' '}
-          <a href="https://cvsan.org/wastewater/lateral_replacement_grant_program.php">
-            CVSan&rsquo;s grant program page
-          </a>{' '}
-          rather than relying on a number from anywhere else.
-        </p>
-
-        <h2>Two eras in one city</h2>
-        <p>
-          Chula Vista&rsquo;s median year built is 1987, with 27.3% of housing
-          predating 1970 (American Community Survey, 2019&ndash;2023 five-year
-          estimates). That single figure hides a genuinely mixed picture.
-        </p>
-        <p>
-          The stock is genuinely mixed: a meaningful postwar
-          and 1960s base alongside a strong wave of master-planned development
-          in the eastern part of the city through the 2000s. Those two halves
-          of the city can present quite different lateral conditions, so what is
-          typical for one is a poor guide to the other.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-chula-vista-camera')],
-    faq: [
-      {
-        question: 'Do I contact the City of Chula Vista about my sewer lateral?',
-        answer: (
-          <p>
-            CVSan (the Chula Vista Sanitation District) provides sewer service
-            and administers the lateral grant program. It is a separate
-            district from the city government.
-          </p>
-        ),
-      },
-      {
-        question: 'What does CVSan’s grant require?',
-        answer: (
-          <p>
-            Three quotes from its Qualified Contractor List, a CVSan repair
-            permit, work completed within 90 days, and a paid-in-full invoice
-            for reimbursement. Confirm the current cap with CVSan directly.
-          </p>
-        ),
-      },
-    ],
-  },
+  // Full rich composition lives in its own module (same pattern as Carlsbad).
+  [id('loc-sd-chula-vista')]: chulaVistaContent,
 
   /* --------------------------------------------------------- Escondido -- */
   [id('loc-sd-escondido')]: {
@@ -1654,7 +1561,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <h2>No assistance program</h2>
         <p>
           We found no lateral repair assistance program in Escondido. Unlike
-          Carlsbad and Chula Vista, there appears to be no grant to offset the
+          Carlsbad, there appears to be no grant to offset the
           cost, which puts the full expense on the property owner.
         </p>
         <p>
@@ -1725,7 +1632,7 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         </p>
         <p>
           We also found no lateral repair assistance program here, unlike
-          Carlsbad and Chula Vista, which do have one. Worth confirming for
+          Carlsbad, which does have one. Worth confirming for
           yourself before assuming either way.
         </p>
 

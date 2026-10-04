@@ -4917,6 +4917,21 @@ The page is rewritten from City of San Diego sources read on 2026-10-03 under DE
 
 DEC-071's statement that the City of San Diego's own guidance says there is no reimbursement is superseded. Current City of San Diego pages, read 2026-10-03 for DEC-115, do not support it: the City describes a Plumber's Report process and an investigation for a break beyond the property line, and says its program for City crews to install sewer laterals is currently suspended. No active homeowner assistance program was found, which is "none found in the pages reviewed", not a statement that none exists. The hub, the Mission Valley location entry and `sl-sd-city-camera` now use the wording of the City location page (DEC-115). Removed from those pages: "no reimbursement for plumbing expenses", the "neglect" distinction and "the City repairs right-of-way breaks", and the median-year-built figure (about 1979, ACS 2019-2023). The Mission Valley hydro-jetting entry in `san-diego-service-location.tsx` and the hub's lateral-ownership panel were aligned in the same way. The DEC-071 text itself is not changed.
 
+## DEC-117 - Chula Vista Sewer Authority Correction
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/san-diego-chula-vista.tsx` (new; replaces the inline Chula Vista entry in `content/pages/san-diego.tsx`)
+* `content/pages/san-diego.tsx` (market hub: authority paragraph, assistance cards, two FAQ answers, Escondido and Oceanside comparison lines)
+* `content/pages/san-diego-service-location.tsx` (`sl-chula-vista-camera`, and the Oceanside and Escondido cleaning comparison lines)
+* `docs/04-master-page-build-list.md` (`loc-sd-chula-vista` row)
+
+CVSan is the Castro Valley Sanitary District in Alameda County. Chula Vista's sewer is run by the City of Chula Vista. Earlier text repeated in this register (the San Diego market entries around DEC-071 and the cite-and-link notes) that named CVSan as Chula Vista's authority and described a CVSan lateral grant is superseded; those entries are not edited. The Chula Vista page now leads with the City's written sewer maintenance policy (Council Policy 570-01), which reimburses reasonable costs for some qualifying stoppages and is not a grant. No City lateral grant or assistance program was found, which is "none found", not a statement that none exists. Removed everywhere: the CVSan authority claim, the grant terms (three quotes, Qualified Contractor List, 90 days, paid-in-full invoice), the cvsan.org grant link, the Carlsbad cap comparison, and the median-year-built figures from a secondary source.
+
 ---
 
 # 26. Decision Quality Standard
