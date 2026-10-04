@@ -61,6 +61,7 @@ import { CtaBenefit } from '@/components/sections'
 import { carlsbadContent } from './san-diego-carlsbad'
 import { chulaVistaContent } from './san-diego-chula-vista'
 import { escondidoContent } from './san-diego-escondido'
+import { oceansideContent } from './san-diego-oceanside'
 import { sanDiegoCityContent } from './san-diego-city'
 import { sanMarcosContent } from './san-diego-san-marcos'
 import { sanDiegoMissionValleyContent } from './san-diego-mission-valley'
@@ -1535,77 +1536,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
   [id('loc-sd-escondido')]: escondidoContent,
 
   /* --------------------------------------------------------- Oceanside -- */
-  [id('loc-sd-oceanside')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Oceanside, California.',
-    hero: {
-      eyebrow: 'Oceanside',
-      title: 'Sewer inspection and cleaning in Oceanside',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Oceanside
-          properties, coastal and suburban housing across a wide span of
-          construction eras.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Sewer service in Oceanside</h2>
-        <p>
-          Sewer service in Oceanside is provided by the City of Oceanside Water
-          Utilities Department.
-        </p>
-        <p>
-          As in most San Diego County jurisdictions, sewer laterals are
-          generally the property owner&rsquo;s responsibility. We have not
-          located a specific published Oceanside statement setting out the exact
-          boundary, so rather than restate a neighbouring city&rsquo;s rule as
-          though it were Oceanside&rsquo;s, confirm what applies to your
-          property with{' '}
-          <a href="https://www.ci.oceanside.ca.us/residents/water-utilities">
-            Oceanside Water Utilities
-          </a>
-          .
-        </p>
-        <p>
-          We also found no lateral repair assistance program here, unlike
-          Carlsbad, which does have one. Worth confirming for
-          yourself before assuming either way.
-        </p>
-
-        <h2>Coastal conditions</h2>
-        <p>
-          Oceanside&rsquo;s median year built is 1984, with 16.9% of housing
-          predating 1970 (American Community Survey, 2019&ndash;2023 five-year
-          estimates), reflecting growth through the 1970s and 1980s continuing
-          into the 1990s. On lines of
-          that period, ground movement and settlement are more often behind
-          recurring problems than material decay: bellies holding water,
-          joints pulled apart, damage from later work on the property.
-        </p>
-        <p>
-          Those produce the same symptom as an old failing line, and they are
-          not distinguishable from the fixtures. The camera is what separates
-          them.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-oceanside-cleaning')],
-    faq: [
-      {
-        question: 'Is my lateral my responsibility in Oceanside?',
-        answer: (
-          <p>
-            Sewer laterals are generally the property owner&rsquo;s
-            responsibility across San Diego County. We would rather send you to
-            Oceanside Water Utilities for the specific boundary than restate
-            another city&rsquo;s rule as though it were Oceanside&rsquo;s.
-          </p>
-        ),
-      },
-    ],
-  },
+  // Full rich composition lives in its own module (same pattern as San Marcos).
+  [id('loc-sd-oceanside')]: oceansideContent,
 
   /* -------------------------------------------------------- San Marcos -- */
   // Full rich composition lives in its own module (same pattern as Escondido).
