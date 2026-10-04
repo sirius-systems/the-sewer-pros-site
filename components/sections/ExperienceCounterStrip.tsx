@@ -42,8 +42,9 @@ export interface ExperienceCounterStripProps {
   /**
    * A market's own founding year (DEC-071), from `marketOperatingDetail`.
    * Defaults to the company constant, so every caller that omits it renders
-   * exactly as before. Pass it only when it is greater than 0: a market with
-   * no verified year must never fall back to another market's.
+   * exactly as before. Pass `0` for a market whose year is unknown: the
+   * founding-year cell is dropped, so a market with no verified year never
+   * falls back to another market's.
    */
   foundingYear?: number
 }
@@ -85,12 +86,13 @@ export function ExperienceCounterStrip({
   foundingYear: marketFoundingYear,
 }: ExperienceCounterStripProps) {
   const sinceYear = marketFoundingYear ?? foundingYear
+  const showSince = sinceYear > 0
   return (
     <Section density={density} surface={surface} as="aside" labelledBy={id}>
       <h2 id={id} className="sr-only">
         Experience behind The Sewer Pros
       </h2>
-      <dl className="grid grid-cols-2 gap-x-6 gap-y-10 text-center lg:grid-cols-4">
+      <dl className={`grid grid-cols-2 gap-x-6 gap-y-10 text-center ${showSince ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
         {COUNTERS.map((counter) => {
           const Icon = counter.icon
           return (
@@ -105,6 +107,7 @@ export function ExperienceCounterStrip({
             </div>
           )
         })}
+        {showSince && (
         <div className="flex flex-col items-center">
           <CalendarClockIcon className="h-8 w-8 text-accent" />
           {/*
@@ -118,6 +121,7 @@ export function ExperienceCounterStrip({
             Serving property owners
           </dt>
         </div>
+        )}
       </dl>
     </Section>
   )

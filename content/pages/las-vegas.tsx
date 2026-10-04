@@ -1,5 +1,6 @@
 /**
- * Las Vegas market content — 5 live pages.
+ * Las Vegas market content — 5 live pages. The City of Las Vegas location page
+ * lives in `las-vegas-las-vegas.tsx` and is registered below.
  *
  * Authority: docs/04-master-page-build-list.md §10.3, §14
  *            docs/22-decisions-change-log.md DEC-080, DEC-063, DEC-073
@@ -63,6 +64,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
+import { lasVegasCityContent } from './las-vegas-las-vegas'
 import {
   homeServiceCards,
   approvedServicesTitle,
@@ -74,14 +76,14 @@ const id = (value: string): PageId => value as PageId
 /** Owner-confirmed contact (DEC-073). Repeated per page deliberately. */
 
 /*
-  ⚠ STILL USED BY FOUR LOCATION PAGES IN THIS FILE, WHICH IS WHY IT
+  ⚠ STILL USED BY THREE LOCATION PAGES IN THIS FILE, WHICH IS WHY IT
   SURVIVED THE 2026-09-08 HUB RESTRUCTURE. The market hub's own copy of
   it was folded into `regionalCoverage` (email, hours, and the
-  newer-market sentence); the Henderson, North Las Vegas, Summerlin and
-  Las Vegas location bodies still render it and are unchanged.
+  newer-market sentence); the Henderson, North Las Vegas and Summerlin
+  location bodies still render it and are unchanged.
 
   ⚠ DELETING THIS WOULD SILENTLY STRIP THE PHONE, EMAIL AND HOURS FROM
-  FOUR PAGES. It looked unused after the hub stopped referencing it,
+  THREE PAGES. It looked unused after the hub stopped referencing it,
   and it is not.
 */
 const LAS_VEGAS_CONTACT = (
@@ -725,11 +727,10 @@ export const lasVegasMarketContent: MarketPageContent = {
     sells, administers, endorses nor guarantees any coverage, and
     nothing here may be edited into an implication that it does.
 
-    ⚠ THE PRICES AND TERMS ARE THE ONES ALREADY PUBLISHED ON THIS PAGE
-    and are stated as the partnership's, not as a recommendation:
-    $6.00 per month or $67.00 per year, no coverage cap, no deductible
-    or service fee. Do not round them, drop the qualifier, or present
-    them as current without the verify-first note below.
+    ⚠ NO PRICE OR TERMS APPEAR HERE. The City's warranty page lists none
+    (checked 2026-10-04), and an earlier version of this block quoted a
+    price and "no cap, no deductible" that are not on the City page. They
+    were removed; do not restore them without a primary source.
   */
   repairCoverage: {
     eyebrow: 'Coverage and assistance',
@@ -748,7 +749,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       {
         title: 'Optional service-line coverage',
         description:
-          'The City of Las Vegas partners with Service Line Warranties of America on an optional paid warranty, published at $6.00 per month or $67.00 per year with no coverage cap and no deductible or service fee. It is a product a homeowner buys, subject to that provider\u2019s own eligibility rules, limits, exclusions, and policy terms.',
+          'The City promotes an optional warranty program offered with a private company. It is a product you buy, not a City program.',
         icon: 'independence',
         accent: 'green',
       },
@@ -766,7 +767,7 @@ export const lasVegasMarketContent: MarketPageContent = {
   materials: {
     title: 'Newer homes can still develop sewer-line problems',
     intro:
-      'The Las Vegas Valley has among the newest housing of anywhere we work, and most laterals here will be PVC rather than clay, cast iron, or bituminized fibre. That removes the material decay that dominates older regions. It does not remove ground movement, and depending on the property the recurring findings are bellies holding standing water, joints opened by settlement, and damage from later construction or landscaping, all producing the same repeating slow-drainage pattern people associate with old pipe from an entirely different cause.',
+      'A newer home does not rule out sewer-line problems. Recurring backups, changes made to a property after it was built, and routine maintenance planning are all reasons to look at the line, and a camera inspection shows what is actually there.',
     items: [
       /*
         ⚠ ONE FRAME PER CARD SINCE 2026-09-08, WHERE ONLY THE FIRST HAD
@@ -1107,10 +1108,9 @@ export const lasVegasMarketContent: MarketPageContent = {
       question: 'Is there a program that helps with lateral repair costs?',
       answer: (
         <p>
-          Not a reimbursement fund of the kind some other regions run. The City
-          of Las Vegas partners with a private provider on an optional paid
-          warranty, $6.00 a month or $67.00 a year, which is insurance a
-          homeowner buys rather than municipal assistance.
+          We did not find a City lateral repair or reimbursement program. The
+          City promotes an optional warranty program offered with a private
+          company. It is a product you buy, not a City program.
         </p>
       ),
     },
@@ -1395,94 +1395,7 @@ export const lasVegasMarketContent: MarketPageContent = {
 
 export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent>> = {
   /* ------------------------------------------------- Las Vegas (city) -- */
-  [id('loc-lv-las-vegas')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in the Las Vegas service market.',
-    hero: {
-      eyebrow: 'Las Vegas',
-      title: 'Sewer inspection and cleaning in Las Vegas',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for properties in the
-          City of Las Vegas, where the city&rsquo;s answer to lateral costs is
-          an optional warranty rather than a repair fund.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>An optional warranty, not a reimbursement program</h2>
-        <p>
-          The City of Las Vegas partners with Service Line Warranties of America
-          on an optional paid warranty covering sewer lateral repair: $6.00 per
-          month or $67.00 per year, with no coverage cap and no deductible or
-          service fee.
-        </p>
-        <p>
-          The distinction from other regions matters. This is insurance the
-          homeowner elects to buy in advance. It is not a municipal fund that
-          contributes toward an eligible repair after a failure, and there is no
-          equivalent free program.
-        </p>
-        <p>
-          Whether the product is worth it depends on the line you actually have.
-          A recently laid PVC lateral in sound condition and a line with a known
-          defect are different propositions, and the difference is establishable.
-        </p>
-
-        <h2>Confirm the responsibility boundary with the city</h2>
-        <p>
-          Sewer service in the city is handled by City of Las Vegas Public Works,
-          through its Water Pollution Control division. We have not located an
-          explicit published statement from the city setting out exactly where
-          homeowner responsibility for the lateral begins and ends.
-        </p>
-        <p>
-          The existence of the warranty product strongly implies the standard
-          model (the homeowner owns the lateral), which is what every other
-          authority in the valley states. But rather than assert the
-          city&rsquo;s policy from an inference, confirm it with{' '}
-          <a href="https://www.lasvegasnevada.gov/Government/Departments/Public-Works">
-            City of Las Vegas Public Works
-          </a>
-          .
-        </p>
-
-        <h2>What actually fails on Las Vegas lines</h2>
-        <p>
-          The city&rsquo;s housing has a median year built of around 1994
-          (American Community Survey, 2019&ndash;2023 five-year estimates), with
-          close to 28% of all housing built during the 1990s alone.
-        </p>
-        <p>
-          That means most laterals here are PVC. Material decay, the clay joints
-          and corroded cast iron that dominate older regions, is largely not
-          the issue. What is:
-        </p>
-        <ul>
-          <li>Bellies where a section lost slope and holds standing water</li>
-          <li>Joints opened by ground movement rather than age</li>
-          <li>Damage from later landscaping, pools, or construction</li>
-          <li>Roots entering wherever movement created an opening</li>
-        </ul>
-
-        {LAS_VEGAS_CONTACT}
-      </>
-    ),
-    faq: [
-      {
-        question: 'Should I buy the city’s warranty?',
-        answer: (
-          <p>
-            That depends on the condition of your line, which is worth
-            establishing either way. The warranty is $6.00 a month or $67.00 a
-            year with no cap and no deductible, but it is a product you buy,
-            not assistance you claim after a failure.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-lv-las-vegas')]: lasVegasCityContent,
 
   /* ---------------------------------------------------------- Henderson -- */
   [id('loc-lv-henderson')]: {
