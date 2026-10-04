@@ -409,6 +409,7 @@ const formConfig: LeadFormConfig = {
 const ES_CODE_URL = 'https://ecode360.com/43261005'
 const ES_FAQ_URL = 'https://escondido.gov/Faq.aspx?QID=345'
 const ES_WW_URL = 'https://www.escondido.gov/701/Wastewater-Collections'
+const ES_SSMP_URL = 'https://www.escondido.gov/774/Sewer-System-Management-Sewer-Overflow-R'
 const ES_PLANS_URL = 'https://www.escondido.gov/606/Programs-Plans-Studies'
 const ES_WWMP_URL = 'https://library.escondido.org/DocumentCenter/View/4446/Wastewater-Master-Plan-PDF'
 const VWD_URL = 'https://vwd.org/departments/engineering/water-and-sewer-services'
@@ -596,6 +597,13 @@ export const escondidoContent: LocationPageContent = {
         condition of sewer lines, and that staff routinely clean and inspect sewer mains.
       </>,
       <>
+        <strong>Before cleaning a lateral.</strong> The City’s Sewer System Management Plan says
+        its public education literature stresses the need to call the City before cleaning a
+        private lateral, so the City can remove any debris that cleaning pushes into the public
+        sewer line. That is the City’s guidance, and it does not describe a City program or
+        require our services.
+      </>,
+      <>
         <strong>Businesses.</strong> The City’s Environmental Programs oversees inspections of
         businesses and wastewater discharges and a fats, oil and grease program.
       </>,
@@ -711,7 +719,7 @@ export const escondidoContent: LocationPageContent = {
     eyebrow: 'Section 22-165',
     title:
       'We found no Escondido lateral grant, but section 22-165 spells out who pays for what',
-    lede: 'We did not find a City of Escondido lateral repair, replacement, grant or reimbursement program on the City’s code article, lateral FAQ or wastewater page. That is “none found”, not a statement that none exists. What the City does publish is a code section, 22-165 of the Escondido Municipal Code, “Maintenance of sewer connection lateral”. It sets out the owner’s duties subsection by subsection, and it makes one exception for damage the City caused.',
+    lede: 'We did not find a City of Escondido lateral repair, replacement, grant or reimbursement program on the City’s code article, lateral FAQ, wastewater page or Sewer System Management Plan. That is “none found”, not a statement that none exists. What the City does publish is a code section, 22-165 of the Escondido Municipal Code, “Maintenance of sewer connection lateral”. It sets out the owner’s duties subsection by subsection, and it makes one exception for damage the City caused.',
     paragraphs: [],
     image: slotImage('program-footage'),
     covers: {
@@ -903,8 +911,8 @@ export const escondidoContent: LocationPageContent = {
           cleanout or a breakout opening in the building lateral, in the presence of that employee,
           and says the City decides when and where video inspections are done. Apart from that
           case, we did not find a City lateral repair, replacement, grant or reimbursement program
-          on the code article, the lateral FAQ or the wastewater page. That is “none found”, not a
-          statement that none exists. Sources: Escondido Municipal Code section 22-165; City of
+          on the code article, the lateral FAQ, the wastewater page or the City’s Sewer System
+          Management Plan. That is “none found”, not a statement that none exists. Sources: Escondido Municipal Code section 22-165; City of
           Escondido sewer repair FAQ; City of Escondido Wastewater Collections page.
         </p>
       ),
@@ -1051,6 +1059,11 @@ export const escondidoContent: LocationPageContent = {
         label:
           'City of Escondido: Wastewater Collections (page date not shown; text confirmed Oct 4, 2026)',
         href: ES_WW_URL,
+      },
+      {
+        label:
+          'City of Escondido: Sewer System Management and Sewer Overflow Response Plan (plan marked “Revised July 2025”; accessed Oct 4, 2026)',
+        href: ES_SSMP_URL,
       },
       {
         label:
