@@ -43,8 +43,8 @@ import type {
  * and pre-1970 housing figures, the east/west narrative, and "programme".
  *
  * ⚠ IMAGES: no existing or rendered art is reused on this page. Every slot is
- * defined in `IMAGE_SLOTS`. While `SHOW_IMAGE_SLOTS` is on, a slot whose
- * component can draw a box shows a labelled placeholder (see `inlineSlotImage`).
+ * defined in `IMAGE_SLOTS`. While `SHOW_IMAGE_SLOTS` is on, every slot shows a
+ * labelled placeholder (the hero, cards and final CTA through `placeholderSlot`).
  * Setting `src` and `source` on a slot replaces its placeholder automatically.
  * Nothing on this page renders an `ImagePlaceholder`.
  *
@@ -216,13 +216,24 @@ function slotImage(slotId: string): CardImage | undefined {
 
 /**
  * For the hero backdrop and the service cards, whose components render an
- * image through `next/image` and cannot draw a placeholder box. An unfilled
- * slot resolves to nothing there (a text-only layout); a filled slot shows its
- * photo. The final CTA background has the same limit.
+ * image through `next/image` and cannot draw a placeholder box themselves. An
+ * unfilled slot resolves to nothing here; the box comes from `placeholderSlot`
+ * through each component's opt-in `slotPlaceholder` field. A filled slot shows
+ * its photo.
  */
 function inlineSlotImage(slotId: string): CardImage | undefined {
   const image = slotImage(slotId)
   return image?.placeholder === undefined ? image : undefined
+}
+
+/**
+ * The labelled box for an unfilled slot, for the opt-in `slotPlaceholder`
+ * fields (hero, service cards, final CTA). Undefined once the slot has a photo
+ * or when `SHOW_IMAGE_SLOTS` is off.
+ */
+function placeholderSlot(slotId: string): CardImage | undefined {
+  const image = slotImage(slotId)
+  return image?.placeholder === undefined ? undefined : image
 }
 
 /* ==========================================================================
@@ -233,7 +244,12 @@ const card = (
   serviceId: ServiceId,
   slotId: string,
   fields: Omit<LocationServiceCard, 'serviceId' | 'image'>,
-): LocationServiceCard => ({ serviceId, image: inlineSlotImage(slotId), ...fields })
+): LocationServiceCard => ({
+  serviceId,
+  image: inlineSlotImage(slotId),
+  slotPlaceholder: placeholderSlot(slotId),
+  ...fields,
+})
 
 const serviceCards: readonly LocationServiceCard[] = [
   card('svc-sewer-camera-inspection', 'svc-camera', {
@@ -422,9 +438,10 @@ export const chulaVistaContent: LocationPageContent = {
     ],
     primaryAction: { href: '#request', label: 'Schedule a Sewer Inspection' },
     secondaryActionLabel: `Call ${sd.phone}`,
-    // The hero cannot draw a placeholder box, so an unfilled slot leaves the
-    // plain brand background. A photo in the `chula-vista-hero` slot replaces it.
+    // A photo in the `chula-vista-hero` slot replaces the labelled box and
+    // becomes the backdrop.
     backdrop: inlineSlotImage('chula-vista-hero'),
+    slotPlaceholder: placeholderSlot('chula-vista-hero'),
     card: {
       title: 'Request a Sewer Inspection',
       intro: 'Tell us what is going on. We will follow up during business hours.',
@@ -918,9 +935,10 @@ export const chulaVistaContent: LocationPageContent = {
       'Receive documented findings you can review',
       'Choose your next step without a repair sale',
     ],
-    // `RichLocationComposition` drops a placeholder background, so an unfilled
-    // `final-bg` slot draws nothing; a photo replaces it automatically.
-    background: slotImage('final-bg'),
+    // The composition drops a placeholder background, so the labelled box comes
+    // from `slotPlaceholder`; a photo replaces both automatically.
+    background: inlineSlotImage('final-bg'),
+    slotPlaceholder: placeholderSlot('final-bg'),
     formTitle: 'Request service',
     submitLabel: 'Request Service',
     messageLabel: 'Message (optional)',

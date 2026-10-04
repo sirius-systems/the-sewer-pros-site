@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
 import { LocationLinkAnchor } from './LocationLinkAnchor'
+import { SlotPlaceholderBox } from './SlotPlaceholderBox'
 import { cn } from '@/lib/utils/cn'
 import type { LocationServiceCards, MarketId } from '@/types'
 
@@ -41,7 +42,7 @@ export function ServiceCardGrid({
             key={card.serviceId}
             className="flex flex-col overflow-hidden rounded-md border border-border bg-surface"
           >
-            {card.image !== undefined && (
+            {card.image !== undefined ? (
               <div className="relative aspect-[4/3] w-full bg-surface-muted">
                 <Image
                   src={card.image.src}
@@ -51,6 +52,13 @@ export function ServiceCardGrid({
                   className="object-cover"
                 />
               </div>
+            ) : card.slotPlaceholder?.placeholder !== undefined ? (
+              // Opt-in review-build box. Other pages pass no `slotPlaceholder`.
+              <div className="p-3 pb-0">
+                <SlotPlaceholderBox image={card.slotPlaceholder} />
+              </div>
+            ) : (
+              false
             )}
             <div className="flex flex-1 flex-col p-5">
               <h3 className="text-h4 font-semibold tracking-tight">{card.title}</h3>

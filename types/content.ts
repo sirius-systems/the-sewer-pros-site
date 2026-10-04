@@ -2393,6 +2393,11 @@ export interface LocationHeroForm {
   /** The phone is added from the business constants, not authored here. */
   secondaryActionLabel: string
   backdrop?: CardImage
+  /**
+   * Opt-in review-build box for an unfilled hero slot. Drawn under the hero copy
+   * only when it carries `placeholder` metadata (see `resolveSlotImage`).
+   */
+  slotPlaceholder?: CardImage
   card: {
     title: string
     intro: string
@@ -2420,6 +2425,8 @@ export interface LocationServiceCard {
   bookingLabel: string
   secondaryLink: LocationLink
   image?: CardImage
+  /** Opt-in review-build box when `image` is unset. Drawn only with `placeholder` metadata. */
+  slotPlaceholder?: CardImage
 }
 
 export interface LocationServiceCards {
@@ -2568,6 +2575,8 @@ export interface LocationFinalCta {
   paragraphs: readonly string[]
   bullets: readonly string[]
   background?: CardImage
+  /** Opt-in review-build box above the form. Drawn only with `placeholder` metadata. */
+  slotPlaceholder?: CardImage
   formTitle: string
   submitLabel: string
   messageLabel: string

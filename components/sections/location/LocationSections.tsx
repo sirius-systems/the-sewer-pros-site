@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { Section, Callout } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
 import { LocationLinkAnchor } from './LocationLinkAnchor'
+import { SlotPlaceholderBox } from './SlotPlaceholderBox'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
 import { cn } from '@/lib/utils/cn'
 import type {
@@ -56,19 +57,7 @@ function Photo({
   // Review builds only: an unfilled slot resolves to an image carrying
   // `placeholder` metadata (see lib/image-slots.ts). Never present in production.
   if (image.placeholder !== undefined) {
-    return (
-      <div
-        className={cn(
-          'flex w-full flex-col items-center justify-center gap-1 rounded-md border-2 border-dashed border-border bg-surface-muted p-4 text-center text-sm text-muted-foreground',
-          image.placeholder.ratio === '16:9' ? 'aspect-video' : 'aspect-[4/3]',
-          className,
-        )}
-      >
-        <p className="font-semibold text-foreground">Image slot: {image.placeholder.slotId}</p>
-        <p>{image.placeholder.ratio}</p>
-        <p>{image.placeholder.shot}</p>
-      </div>
-    )
+    return <SlotPlaceholderBox image={image} className={className} />
   }
   return (
     <div
