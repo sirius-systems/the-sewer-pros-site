@@ -8,6 +8,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { otherMarketPhoneHits } from './lib/market-phones.mjs'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'st-louis-mo', 'st-charles', 'index.html')
@@ -266,6 +267,13 @@ const sitemapPath = path.join(ROOT, 'sitemap.xml')
 if (fs.existsSync(sitemapPath)) {
   check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/st-louis-mo/st-charles/`))
 }
+
+/* ---- Market phones (whole document, header and footer included) ---- */
+check(
+  'no other market phone number anywhere in the document (JSON-LD excluded)',
+  otherMarketPhoneHits(html, 'st-louis-mo').length === 0,
+  otherMarketPhoneHits(html, 'st-louis-mo').join(', '),
+)
 
 console.log(failures === 0 ? '\nAll checks passed.' : `\n${failures} check(s) FAILED.`)
 process.exit(failures === 0 ? 0 : 1)
