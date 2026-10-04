@@ -551,9 +551,9 @@ export const sanDiegoServiceLocationContent: Partial<
         <h2>A commercial district, and the lines reflect it</h2>
         <p>
           Mission Valley is a commercial and mixed-use district within the City
-          of San Diego rather than a residential neighbourhood. Its sewer lines
-          predominantly serve hotels, restaurants, retail, offices, and
-          multifamily buildings.
+          of San Diego rather than a residential neighbourhood. The City
+          describes it as a regional center of offices, hotels, retail and a
+          growing residential community.
         </p>
         <p>
           That changes what accumulates. Food-service and high-volume lines
@@ -573,13 +573,11 @@ export const sanDiegoServiceLocationContent: Partial<
 
         <h2>The cost of a failure here is not the plumbing</h2>
         <p>
-          In the City of San Diego the City&rsquo;s guidance says the property
-          owner is responsible for maintaining the lateral all the way to the
-          City sewer main, and we did not find a City program that helps
-          homeowners pay for lateral work. On a commercial
-          property that sits alongside the operational cost (a closed kitchen,
-          displaced tenants, an interrupted trading day), which usually exceeds
-          the repair.
+          In the City of San Diego, the City&rsquo;s guidance says the property
+          owner maintains the lateral to the City main, and we did not find a
+          City program that helps owners pay for lateral work. On a commercial
+          property that cost sits alongside the operational cost: a closed
+          kitchen, displaced tenants, an interrupted trading day.
         </p>
         <p>
           That arithmetic is what makes planned service on grease-bearing lines

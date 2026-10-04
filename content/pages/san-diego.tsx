@@ -62,6 +62,7 @@ import { carlsbadContent } from './san-diego-carlsbad'
 import { chulaVistaContent } from './san-diego-chula-vista'
 import { escondidoContent } from './san-diego-escondido'
 import { sanDiegoCityContent } from './san-diego-city'
+import { sanDiegoMissionValleyContent } from './san-diego-mission-valley'
 import {
   homeServiceCards,
   approvedServicesTitle,
@@ -1696,94 +1697,6 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
   },
 
   /* ----------------------------------------------------- Mission Valley -- */
-  [id('loc-sd-mission-valley')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Mission Valley.',
-    hero: {
-      eyebrow: 'Mission Valley',
-      title: 'Sewer and drain service in Mission Valley',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and high-pressure cleaning for
-          Mission Valley&rsquo;s commercial, hospitality, and mixed-use
-          properties.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>A commercial district, not a residential neighbourhood</h2>
-        <p>
-          Mission Valley is a commercial and mixed-use district within the City
-          of San Diego rather than a separate municipality or a residential
-          suburb. Its sewer lines mostly serve hotels, restaurants, retail,
-          offices, and multifamily buildings rather than single-family homes.
-        </p>
-        <p>
-          That changes what tends to go wrong. Food-service and high-volume
-          lines accumulate grease and solids on the pipe wall at a rate
-          residential lines do not, and a failure interrupts trading or
-          displaces occupants rather than inconveniencing a household.
-        </p>
-
-        <h2>City of San Diego rules apply</h2>
-        <p>
-          Because Mission Valley sits within the City of San Diego, the
-          City&rsquo;s guidance governs: the property owner is responsible for
-          maintaining the lateral all the way to the City sewer main, and we
-          did not find a City program that helps homeowners pay for lateral
-          work.
-        </p>
-        <p>
-          For a commercial property that carries a sharper edge. The full cost
-          of a lateral failure sits with the owner, alongside whatever the
-          disruption costs the operation on top of it.
-        </p>
-
-        <h2>Planned rather than reactive</h2>
-        <p>
-          Where lines carry grease or continuous volume, the useful pattern is
-          usually to establish condition, clean on an interval the evidence
-          supports, and re-inspect, rather than to respond to backups as they
-          happen.
-        </p>
-        <p>
-          Not every line needs that. Which ones do is a question inspection
-          answers, and putting a line on a schedule its condition does not
-          justify is the sort of recommendation we exist to avoid making.
-        </p>
-
-        <h2>Working around operations</h2>
-        <p>
-          Access on an occupied commercial site involves trading hours, tenants,
-          service corridors, and other contractors. That is a planning
-          constraint to work around rather than an afterthought.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-mission-valley-hydro')],
-    faq: [
-      {
-        question: 'Is Mission Valley a separate city?',
-        answer: (
-          <p>
-            No. It is a commercial and mixed-use district within the City of San
-            Diego, so the City&rsquo;s sewer policy applies, including full
-            owner responsibility for the lateral, with no City assistance
-            program found.
-          </p>
-        ),
-      },
-      {
-        question: 'How often should a restaurant line be cleaned?',
-        answer: (
-          <p>
-            It depends on volume, what enters the line, and its condition rather
-            than a standard interval. Establishing the rate of accumulation for
-            a specific line is more useful than applying a default to it.
-          </p>
-        ),
-      },
-    ],
-  },
+  // Full rich composition lives in its own module (same pattern as San Diego city).
+  [id('loc-sd-mission-valley')]: sanDiegoMissionValleyContent,
 }
