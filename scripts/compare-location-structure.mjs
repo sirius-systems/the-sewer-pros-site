@@ -127,8 +127,10 @@ function sectionsOf(file, skip = new Set()) {
       if (x.tag === 'tr') counts.tr += 1
       if (['input', 'select', 'textarea'].includes(x.tag)) counts.field += 1
       if (/^h[1-4]$/.test(x.tag)) headings.push(x.tag)
+      // Images are left out of the marker check: whether a slot has a photo is
+      // already reported (and allowed) through the image counts below.
       const data = Object.keys(x.attrs).filter((k) => k.startsWith('data-'))
-      if (data.length > 0) markers.push(`${x.tag}[${data.sort().join(',')}] .${classes(x).sort().join('.')}`)
+      if (data.length > 0 && x.tag !== 'img') markers.push(`${x.tag}[${data.sort().join(',')}] .${classes(x).sort().join('.')}`)
     })
     const cls = classes(n)
     // The anchor id is often on a child, so fall back to the first descendant id.

@@ -52,7 +52,7 @@ check('exactly one JSON-LD block', ldBlocks.length === 1, `found ${ldBlocks.leng
 const graph = JSON.parse(ldBlocks[0][1])['@graph']
 const ids = new Set(graph.map((n) => n['@id']).filter(Boolean))
 
-for (const bad of ['LocalBusiness', 'AggregateRating', 'Review', 'PostalAddress', 'GeoCoordinates', 'HowTo', 'FAQPage']) {
+for (const bad of ['LocalBusiness', 'AggregateRating', 'Review', 'PostalAddress', 'GeoCoordinates', 'HowTo']) {
   check(`no ${bad} node`, !JSON.stringify(graph).includes(`"${bad}"`))
 }
 check('no placeholder strings in JSON-LD', !/REPLACE-|TODO/.test(JSON.stringify(graph)))
@@ -99,6 +99,21 @@ check(
 /* ---- FAQ ---- */
 const faqQs = [...bodyHtml.matchAll(/<summary[^>]*><span[^>]*><h3[^>]*>([\s\S]*?)<\/h3>/g)].map((m) => norm(m[1].replace(/<[^>]+>/g, ' ')))
 check('ten FAQ questions in the DOM', faqQs.length === 10, `found ${faqQs.length}`)
+const faqLd = graph.find((n) => n['@type'] === 'FAQPage')
+check('FAQPage node present (DEC-108, DEC-113)', faqLd !== undefined)
+const ldQs = (faqLd?.mainEntity ?? []).map((q) => norm(q.name))
+check('FAQPage questions equal the visible questions, in order', JSON.stringify(ldQs) === JSON.stringify(faqQs), `${ldQs.length} vs ${faqQs.length}`)
+check(
+  'FAQPage answers appear verbatim in the visible text',
+  (faqLd?.mainEntity ?? []).every((q) => text.includes(norm(q.acceptedAnswer.text))),
+  (faqLd?.mainEntity ?? []).filter((q) => !text.includes(norm(q.acceptedAnswer.text))).map((q) => q.name).join(' | '),
+)
+check('FAQPage has no unexpected parent refs', faqLd?.isPartOf?.['@id'] === `${ORIGIN}/#website`)
+check('15 JSON-LD objects including the Organization', graph.length === 15, `found ${graph.length}`)
+
+/* ---- WebPage ---- */
+const webPage = graph.find((n) => n['@type'] === 'WebPage')
+check('WebPage name equals the seoTitle', webPage?.name === 'Sewer Inspection & Cleaning in St. Louis City, MO', webPage?.name)
 
 /* ---- Head ---- */
 check('title', /<title>Sewer Inspection &amp; Cleaning in St\. Louis City, MO \| The Sewer Pros<\/title>/.test(html))
@@ -118,13 +133,22 @@ for (const anchor of ['request', 'services', 'responsible', 'how-system', 'age',
 check('no em dashes in visible text', !text.includes('—'))
 check('no 58.4% figure', !text.includes('58.4'))
 check('no "licensed plumber" or $28 line', !/licensed plumber|\$28/i.test(text))
+check('program steps present (street problem request, statement and video)', ['street problem service request', 'plumber’s statement and video'].every((t) => text.includes(t)))
+check('program callout present', text.includes('Where an independent inspection fits'))
+check('Chesterfield, Ballwin, Florissant and St. Charles program terms absent', !/\$15,000|\$4,500|\$7,500|\$150|\$300|\$50 annual|\$200/.test(text))
 check('no ImagePlaceholder markup', PLACEHOLDERS_ON || !/border-dashed/.test(bodyHtml))
 const forbidden = ['free ', 'guarantee', 'warranty', '24/7', 'same-day', 'same day', 'lowest', 'best price', 'stars', ' rating', ' reviews', 'testimonial']
 const hits = forbidden.filter((w) => text.toLowerCase().includes(w))
 check('no forbidden claims', hits.length === 0, hits.join(', '))
-const hitsRegex = /\b(licensed|insured)\b/i.exec(text.replace(/City-certified licensed plumbing contractors/gi, ''))
-check('no "licensed"/"insured" claim (outside the City permit sentence)', hitsRegex === null, hitsRegex?.[0])
+const hitsRegex = /\b(licensed|insured)\b/i.exec(
+  text.replace(/City-certified licensed plumbing contractors/gi, '').replace(/hire a licensed City plumber/gi, '').replace(/licensed City plumber/gi, ''),
+)
+check('no "licensed"/"insured" claim (outside the City permit and program sentences)', hitsRegex === null, hitsRegex?.[0])
 check('MSD phone is labelled as MSD’s', text.includes('This is MSD’s number, not ours'))
+check('Sewer Pros hours are 8:00 am - 4:00 pm', text.includes('8:00 am - 4:00 pm'))
+check('no 7:30 hours', !text.includes('7:30'))
+const repairClaims = /(we|our crews?)\s+(repair|replace|install|excavate|line)/i.exec(text)
+check('no claim that The Sewer Pros repairs or replaces', repairClaims === null, repairClaims?.[0])
 
 /* ---- Links ---- */
 const anchors = [...bodyHtml.matchAll(/<a\s[^>]*href="([^"]+)"[^>]*>/g)]

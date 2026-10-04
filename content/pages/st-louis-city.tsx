@@ -15,19 +15,30 @@ import type {
 /**
  * St. Louis City location page (`loc-stl-st-louis-city`).
  *
- * Full rich composition. Replaces the earlier prose-only entry, which
- * carried a "58.4%" housing figure, "licensed plumber" language and a
- * "$28 annual charge" line; none of those is reintroduced here.
+ * Full rich composition, laid out the same way as the Chesterfield, Ballwin,
+ * Florissant and St. Charles pages (same section order, same optional
+ * blocks, same slot registry, FAQPage markup on). It replaces the earlier
+ * prose-only entry, which carried a "58.4%" housing figure, "licensed
+ * plumber" language and a "$28 annual charge" line; none of those is
+ * reintroduced here.
  *
  * ⚠ BUSINESS FACTS HERE: phone, hours and the founding year come from the
  * business constants or are owner-confirmed (family-operated since 2011,
  * the four association affiliations). The hours text follows DEC-083
  * (8:00 am open), not the stale 7:30 on the old site. The MSD number is
- * MSD's, labelled as MSD's, never styled as ours.
+ * MSD's, labelled as MSD's, never styled as ours. The program steps come
+ * from the City Street Division's own program page (read 2026-10-03). The
+ * dollar fee shown on that page is deliberately not repeated here.
  *
- * ⚠ IMAGES: only real, existing site assets are used. Where none fits, the
- * field is omitted and the layout is text-only; nothing renders an
- * `ImagePlaceholder`. Omitted slots are listed in the build report.
+ * ⚠ LOCAL FACTS ARE ST. LOUIS CITY'S ONLY. Nothing from the Chesterfield,
+ * Ballwin, Florissant or St. Charles pages (their fees, caps, boundaries
+ * or application steps) is carried over.
+ *
+ * ⚠ IMAGES: only existing approved assets render (the market hero as the
+ * backdrop, the nine service-card artworks, and the pipe-offset footage
+ * photo in the `program-footage` slot). Every other slot is defined in
+ * `IMAGE_SLOTS` and renders nothing in a launch build until a real photo
+ * exists. Nothing on this page renders an `ImagePlaceholder`.
  *
  * TODO(primary-source): replace "More than half" with a verified Census
  * table figure if a primary source is pulled. It rests on ACS 2019-2023
@@ -47,18 +58,50 @@ const existing = (src: string, alt: string): CardImage => ({
    ========================================================================== */
 
 /**
- * Slots this page has no photo for yet. With no `src` a slot renders nothing
- * in production. In review builds (`NEXT_PUBLIC_SHOW_IMAGE_SLOTS`) each one
- * draws a labelled placeholder. Add `src` and `source` to show a real photo.
+ * Registry of the photo slots this page is designed for, the same set the
+ * Chesterfield, Ballwin and Florissant pages define.
+ *
+ * ⚠ A SLOT WITH NO `src` RENDERS NOTHING in a launch build. The rich sections
+ * show a text-only layout when an `image` field is undefined. In review
+ * builds (`NEXT_PUBLIC_SHOW_IMAGE_SLOTS`) each unfilled slot draws a labelled
+ * placeholder. To add a photo later, set `src` and `source` on its slot: one
+ * edit, no component change. Photos that show crew, equipment, footage,
+ * customers or reports must be real job photos.
+ *
+ * The hero and the nine service-card slots keep no `src` because those
+ * slots currently use existing approved art (the market hero backdrop and
+ * `cardImage()`), whose alt text describes a different image than the
+ * future photo this registry's `alt` describes.
  */
 const IMAGE_SLOTS: readonly ImageSlotLike[] = [
+  { id: 'city-hero', ratio: '16:9', alt: 'Technician with a sewer camera at a St. Louis City home', shot: 'Technician feeding a camera into a residential cleanout, truck and monitor in frame' },
+  { id: 'svc-camera', ratio: '4:3', alt: 'Sewer camera being fed into a cleanout', shot: 'Camera head and push cable at a cleanout' },
+  { id: 'svc-cleaning', ratio: '4:3', alt: 'Sewer cleaning equipment at work at a home', shot: 'Cleaning machine and cable or hose at a cleanout' },
+  { id: 'svc-jetting', ratio: '4:3', alt: 'Hydro jetting nozzle ready for use', shot: 'Jetting nozzle and hose at the line' },
+  { id: 'svc-cleaning-camera', ratio: '4:3', alt: 'Technician reviewing camera footage after a cleaning', shot: 'Monitor showing a cleaned pipe with crew behind' },
+  { id: 'svc-locating', ratio: '4:3', alt: 'Technician using a sewer line locator in a yard', shot: 'Technician with a locator receiver, paint marks on pavement' },
+  { id: 'svc-drain', ratio: '4:3', alt: 'Drain cleaning equipment at a fixture', shot: 'Drain machine at a floor or tub drain' },
+  { id: 'svc-prepurchase', ratio: '4:3', alt: 'Inspector explaining findings to a home buyer', shot: 'Technician scoping a for-sale property, clipboard visible' },
+  { id: 'svc-backup', ratio: '4:3', alt: 'Camera monitor showing the condition of a sewer line', shot: 'Basement floor drain with cleanout access, nothing graphic' },
+  { id: 'svc-maintenance', ratio: '4:3', alt: 'Technician on a scheduled sewer maintenance visit', shot: 'Crew member recording a post-cleaning camera pass' },
   { id: 'system-street', ratio: '4:3', alt: 'Residential street with a manhole cover near the curb', shot: 'Ordinary residential street, manhole and curb, no identifiable homes' },
   { id: 'call-cleanout', ratio: '4:3', alt: 'Capped sewer cleanout beside a house foundation', shot: 'Exterior cleanout cap at the base of a house' },
+  {
+    id: 'program-footage',
+    ratio: '4:3',
+    alt: 'Sewer camera footage showing a visible offset joint inside a pipe',
+    shot: 'Real camera still with distance counter visible, owner consent on file',
+    // Filled today with an existing approved site photo (a pipe-offset
+    // footage example). A real City job still can replace it.
+    src: '/images/services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-visible-pipe-offset-example-4x3.webp',
+    source: 'Existing site image, reused on this page.',
+  },
   { id: 'so-inspect', ratio: '4:3', alt: 'Sewer camera entering a cleanout', shot: 'Camera head entering a cleanout, close up' },
   { id: 'so-document', ratio: '4:3', alt: 'Monitor showing recorded footage of a pipe interior', shot: 'Monitor or tablet with the report open beside it, address redacted' },
   { id: 'so-decide', ratio: '4:3', alt: 'Property owner reviewing a printed inspection findings report', shot: 'Technician and homeowner reviewing findings, faces not identifiable' },
   { id: 'buy-buyer', ratio: '4:3', alt: 'Inspector walking a home buyer through sewer inspection findings outside a house', shot: 'Technician at a for-sale property starting a pre-purchase scope' },
   { id: 'buy-agent', ratio: '4:3', alt: 'Real estate agent viewing an inspection report and video on a tablet', shot: 'Report handed to an agent, hands only, redacted' },
+  { id: 'final-bg', ratio: '16:9', alt: 'St. Louis City home exterior (background)', shot: 'Crew truck at a residential curb, reel visible, no plate' },
 ]
 
 function slotImage(slotId: string): CardImage | undefined {
@@ -240,6 +283,7 @@ const STL_PROGRAM_URL =
   'https://www.stlouis-mo.gov/government/departments/street/street-division/sewer-lateral-repair-program.cfm'
 const STL_PERMIT_URL =
   'https://www.stlouis-mo.gov/government/departments/public-safety/building/permits/plumbing-permit.cfm'
+const CENSUS_URL = 'https://data.census.gov/'
 
 export const stLouisCityContent: LocationPageContent = {
   // Non-breaking spaces keep "St. Louis City" on one line in the H1.
@@ -264,6 +308,8 @@ export const stLouisCityContent: LocationPageContent = {
     ],
     primaryAction: { href: '#request', label: 'Schedule a Sewer Inspection' },
     secondaryActionLabel: `Call ${contact.phone}`,
+    // Existing market hero. Its alt describes the file, not a City job.
+    // A City photo in the `city-hero` slot replaces it.
     backdrop: existing(
       '/images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-residential-sewer-camera-inspection-hero-1280.webp',
       'St. Louis residential sewer camera inspection',
@@ -289,6 +335,10 @@ export const stLouisCityContent: LocationPageContent = {
     },
   },
   faqHeading: 'St. Louis City sewer questions, answered',
+  // DEC-108 approved FAQPage markup for all pages in principle; DEC-113
+  // enables it for this page. The ten FAQ entries are visible on the page
+  // and the markup is generated from them.
+  faqSchemaApproved: true,
   keyTakeaways: {
     title: 'Key takeaways',
     items: [
@@ -475,26 +525,17 @@ export const stLouisCityContent: LocationPageContent = {
     title: 'Using an inspection with the Sewer Lateral Repair Program',
     lede: 'The City program is aimed at severe damage under the public right-of-way, not routine clogs or roots.',
     paragraphs: [
+      'Eligibility is limited to residential properties with six or fewer units and fully paid real-estate taxes. The City says back taxes must be paid before a property is eligible.',
       <>
-        Eligibility is limited to residential properties with six or fewer units and fully
-        paid real-estate taxes. Replacement of a sewer lateral in the City also requires a{' '}
+        Replacement of a sewer lateral in the City also requires a{' '}
         <a href={STL_PERMIT_URL} rel="noopener">
           plumbing permit and inspection
         </a>
         , issued to City-certified licensed plumbing contractors.
       </>,
-      <>
-        See our{' '}
-        <Link href="/st-louis-mo/sewer-lateral-inspection-reporting/">
-          sewer lateral inspection &amp; reporting service
-        </Link>{' '}
-        for the St. Louis area.
-      </>,
+      'Terms shown are from the Street Division’s program page, which is dated 2014. The program is funded by fees on City real-estate tax bills and covers repairs under the public right-of-way. Confirm current terms and funding with the Street Division before you apply.',
     ],
-    image: existing(
-      '/images/services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-visible-pipe-offset-example-4x3.webp',
-      'Sewer camera footage showing a visible offset joint inside a pipe',
-    ),
+    image: slotImage('program-footage'),
     covers: {
       title: 'What the City program covers',
       items: [
@@ -506,17 +547,49 @@ export const stLouisCityContent: LocationPageContent = {
       title: 'What it does not cover',
       items: [
         'Clearing clogs or tree roots on any part of the lateral',
-        'Problems outside the public right-of-way',
+        'Problems outside the public right-of-way, including breaks under private property',
       ],
     },
-    closing: (
+    steps: {
+      title: 'How the City program works, in three steps',
+      steps: [
+        {
+          title: 'Report the problem',
+          body: 'The City asks residents to report a cave-in in the right-of-way through its street problem service request page.',
+        },
+        {
+          title: 'Have the line inspected',
+          body: 'The City’s page says to hire a licensed City plumber to inspect the line. An independent inspection from The Sewer Pros is separate from this step.',
+        },
+        {
+          title: 'Send the statement and video',
+          body: 'Submit the plumber’s statement and video to the Street Department by mail, email or fax. The City’s page lists its mailing address, email address and fax number.',
+        },
+      ],
+    },
+    afterSteps: [
       <>
-        An inspection records where a lateral is damaged and what it looks like. Contact
-        the{' '}
+        Contact the{' '}
         <a href={STL_PROGRAM_URL} rel="noopener">
           City of St. Louis Street Division
         </a>{' '}
         to confirm eligibility and what documentation it requires.
+      </>,
+    ],
+    callout: {
+      title: 'Where an independent inspection fits',
+      paragraphs: [
+        'The City’s process asks for a plumber’s statement and video, and the City decides eligibility, so an independent inspection does not replace that step. What it gives you is your own recorded evidence of the line’s condition, which can help you tell a clog or root problem the program does not cover from damage worth raising with the Street Division. Ask the Street Division what documentation it accepts.',
+        'If you collect repair bids, the plumbing permit rule above applies to whoever does the work. The Sewer Pros does not perform repairs or replacements.',
+      ],
+    },
+    closing: (
+      <>
+        See our{' '}
+        <Link href="/st-louis-mo/sewer-lateral-inspection-reporting/">
+          sewer lateral inspection &amp; reporting
+        </Link>{' '}
+        service for the St. Louis area.
       </>
     ),
   },
@@ -532,8 +605,6 @@ export const stLouisCityContent: LocationPageContent = {
       supportLine:
         'Already received a repair recommendation? Bring us in for an independent second opinion before you sign off on major work.',
     },
-    // Step images omitted: the available frames are rendered scenes with no
-    // recorded provenance, so the steps render text-only.
     steps: [
       {
         title: 'Inspect',
@@ -699,13 +770,14 @@ export const stLouisCityContent: LocationPageContent = {
       ),
     },
     {
-      question: 'Can tree roots cause a sewer blockage?',
+      question: 'How does a St. Louis City owner apply for the Sewer Lateral Repair Program?',
       answer: (
         <p>
-          Yes. MSD states roots can obstruct private lateral lines, and notes that a
-          plumber can inspect the pipe with a camera and may rod or snake it to clear a
-          blockage. This is general guidance and does not establish root intrusion at a
-          specific property.
+          The City&rsquo;s program page says to report a cave-in in the right-of-way
+          through its street problem service request page, hire a licensed City plumber
+          to inspect the line, and send the plumber&rsquo;s statement and video to the
+          Street Department by mail, email or fax. The program covers only qualifying
+          damage under the public right-of-way, and the City decides eligibility.
         </p>
       ),
     },
@@ -731,8 +803,7 @@ export const stLouisCityContent: LocationPageContent = {
       'Receive documented findings you can review',
       'Choose your next step without a repair sale',
     ],
-    // Background omitted: the only fitting asset is a rendered scene. Without
-    // one the closing CTA renders as the dark `panel` variant.
+    background: slotImage('final-bg'),
     formTitle: 'Request service',
     submitLabel: 'Request Service',
     messageLabel: 'Message',
@@ -741,22 +812,48 @@ export const stLouisCityContent: LocationPageContent = {
   sources: {
     title: 'Sources',
     links: [
-      { label: 'MSD Project Clear: Lateral line', href: LATERAL_URL },
-      { label: 'MSD Project Clear: Report an issue', href: REPORT_URL },
-      { label: 'MSD Project Clear: Building backup', href: BACKUP_URL },
-      { label: 'MSD Project Clear: How our sewer system works', href: SYSTEM_URL },
-      { label: 'MSD Project Clear: Service area', href: SERVICE_AREA_URL },
       {
-        label: 'City of St. Louis Street Division: Sewer Lateral Repair Program',
+        label: 'MSD Project Clear: Lateral line (last modified August 19, 2025)',
+        href: LATERAL_URL,
+      },
+      {
+        label: 'MSD Project Clear: Report an issue (last modified August 19, 2025)',
+        href: REPORT_URL,
+      },
+      {
+        label: 'MSD Project Clear: Building backup (last modified August 19, 2025)',
+        href: BACKUP_URL,
+      },
+      {
+        label: 'MSD Project Clear: How our sewer system works (last modified August 19, 2025)',
+        href: SYSTEM_URL,
+      },
+      {
+        label: 'MSD Project Clear: Service area (last modified February 10, 2020)',
+        href: SERVICE_AREA_URL,
+      },
+      {
+        label:
+          'U.S. Census Bureau: American Community Survey 2019-2023 5-year estimates (City housing age; primary table check pending)',
+        href: CENSUS_URL,
+      },
+      {
+        label:
+          'City of St. Louis Street Division: Sewer Lateral Repair Program (page created April 3, 2014)',
         href: STL_PROGRAM_URL,
       },
       {
-        label: 'City of St. Louis Building Division: Plumbing permits',
+        label:
+          'City of St. Louis Building Division: Plumbing permits (created March 3, 2026; updated March 20, 2026)',
         href: STL_PERMIT_URL,
       },
     ],
-    lastReviewed: '2026-09-30',
+    lastReviewed: '2026-10-03',
     closingNote:
       'Official guidance can change, so confirm details with MSD or the City for your address.',
   },
+  servicePageIds: [
+    id('sl-stl-city-camera'),
+    id('svc-stl-sewer-lateral-inspection-reporting'),
+  ],
 }
