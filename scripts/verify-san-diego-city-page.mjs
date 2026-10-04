@@ -17,7 +17,9 @@ import path from 'node:path'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'san-diego-ca', 'san-diego', 'index.html')
-const ORIGIN = 'https://www.thesewerpros.com'
+// Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
+const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
+const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
 const html = fs.readFileSync(PAGE, 'utf8')
 
 let failures = 0
@@ -168,6 +170,14 @@ check('WebPage description equals the meta description', webPage?.description ==
 console.log(`INFO  meta description length ${META.length}`)
 check('WebPage about is the San Diego market Place', webPage?.about?.['@id'] === `${ORIGIN}/san-diego-ca/#place`)
 check('meta description tag matches', html.includes(`<meta name="description" content="${META}"/>`))
+
+/* ---- Origin ---- */
+console.log(`INFO  origin under test: ${ORIGIN}`)
+if (ORIGIN !== PRODUCTION_ORIGIN) {
+  check('no production-origin strings in the built HTML or JSON-LD', !html.includes(PRODUCTION_ORIGIN) && !html.includes('www.thesewerpros.com'))
+}
+const ldHosts = [...new Set([...ldRaw.matchAll(/https?:\/\/[^/"\s]+/g)].map((m) => m[0]))]
+check('JSON-LD uses only the build origin plus schema.org', ldHosts.every((h) => h === ORIGIN || h === 'https://schema.org'), ldHosts.join(', '))
 
 /* ---- Head ---- */
 check('title (brand suffix once)', /<title>Sewer Inspection &amp; Cleaning in San Diego, CA \| The Sewer Pros<\/title>/.test(html))
