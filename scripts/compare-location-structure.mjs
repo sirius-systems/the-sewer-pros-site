@@ -8,6 +8,7 @@
  *
  *   node scripts/compare-location-structure.mjs <reference.html> <candidate.html>
  *   node scripts/compare-location-structure.mjs <reference.html> <candidate.html>  *     --allow-extra-section reviews
+ *   node scripts/compare-location-structure.mjs <reference.html> <candidate.html>  *     --allow-missing-section reviews --allow-missing-section age
  *   node scripts/compare-location-structure.mjs \
  *     /path/to/reference-out/st-louis-mo/chesterfield/index.html \
  *     out/st-louis-mo/ballwin/index.html
@@ -38,9 +39,24 @@ const rawArgs = process.argv.slice(2)
 // reference lacks (St. Charles adds `reviews`). Its position, classes and tokens
 // are left out of the comparison; every other section is still compared exactly.
 const allowExtra = new Set()
+// `--allow-missing-section <id>`: the reference may carry a top-level section the
+// candidate lacks. Only `reviews` and `age` are accepted (the San Diego city page has
+// neither review figures nor housing-age data). The section is left out of the
+// reference's order and per-section checks; the reference's class tokens still count,
+// so the candidate must remain a subset of them.
+const ALLOWED_MISSING = new Set(['reviews', 'age'])
+const allowMissing = new Set()
 const positional = []
 for (let i = 0; i < rawArgs.length; i += 1) {
   if (rawArgs[i] === '--allow-extra-section') allowExtra.add(rawArgs[(i += 1)])
+  else if (rawArgs[i] === '--allow-missing-section') {
+    const value = rawArgs[(i += 1)]
+    if (!ALLOWED_MISSING.has(value)) {
+      console.error('--allow-missing-section accepts only: ' + [...ALLOWED_MISSING].join(', '))
+      process.exit(2)
+    }
+    allowMissing.add(value)
+  }
   else positional.push(rawArgs[i])
 }
 const [refPath, candPath] = positional
@@ -95,7 +111,7 @@ const classes = (n) => (n.attrs.class ?? '').split(/\s+/).filter(Boolean)
 const isSurface = (c) => /^(bg|text)-/.test(c) && !/^text-(xs|sm|base|lg|xl|[2-9]xl|h\d|body|left|center|right|balance|pretty|wrap|nowrap|ellipsis|clip)/.test(c)
 
 /* ---- Section extraction ---- */
-function sectionsOf(file, skip = new Set()) {
+function sectionsOf(file, skip = new Set(), omit = new Set()) {
   const main = find(parse(fs.readFileSync(file, 'utf8')), 'main')
   if (!main) throw new Error(`no <main> in ${file}`)
   // Descend through single-child wrappers so the sections are the top level.
@@ -116,7 +132,8 @@ function sectionsOf(file, skip = new Set()) {
     n.children.forEach(collect)
   }
   collect(main)
-  const sections = host.children.filter((n) => !skipped.has(n)).map((n, i) => {
+  const omitted = new Set(host.children.filter((n, i) => omit.has(keyOf(n, i))))
+  const sections = host.children.filter((n) => !skipped.has(n) && !omitted.has(n)).map((n, i) => {
     const counts = { img: 0, a: 0, li: 0, tr: 0, field: 0 }
     const headings = []
     const markers = []
@@ -151,9 +168,11 @@ function sectionsOf(file, skip = new Set()) {
   return { sections, tokens }
 }
 
-const ref = sectionsOf(refPath)
+const ref = sectionsOf(refPath, new Set(), allowMissing)
 const cand = sectionsOf(candPath, allowExtra)
 if (allowExtra.size > 0) console.log(`NOTE  candidate section(s) left out of the comparison by --allow-extra-section: ${[...allowExtra].join(', ')}`)
+
+if (allowMissing.size > 0) console.log(`NOTE  reference section(s) left out of the comparison by --allow-missing-section: ${[...allowMissing].join(', ')}`)
 
 let failures = 0
 const allowed = []

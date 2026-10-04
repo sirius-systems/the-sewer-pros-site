@@ -4890,6 +4890,19 @@ FAQPage markup is enabled for `/st-louis-mo/st-louis-city/` (`faqSchemaApproved:
 
 The owner approved `FAQPage` markup for all pages with FAQ content. This reverses the opt-in default set by DEC-089 and carried through DEC-108 to DEC-113: instead of enabling each page in its own change, every template now hands the same `faq` array it renders to `pageSchema()`, and a page with no FAQ emits nothing. On the rich location composition, `faqSchemaApproved: false` is the opt-out; unset or `true` emits the node. The five St. Louis location pages that set `true` are unchanged. The visible-text rule (15 §67) still holds because the markup is generated from the rendered answers. `AudienceHubTemplate` renders no FAQ and is unchanged.
 
+## DEC-115 - San Diego City Location Page Rewrite and FAQPage
+
+**Date:** 2026-10-03
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/san-diego-city.tsx` (new; replaces the inline city entry in `content/pages/san-diego.tsx`)
+* `components/sections/ExperienceCounterStrip.tsx`, `components/templates/RichLocationComposition.tsx` (optional market founding-year prop)
+
+The page is rewritten from City of San Diego sources read on 2026-10-03 under DEC-072. FAQPage markup is generated from the ten visible FAQ entries per DEC-114. No review or rating markup (DEC-028, DEC-085). Not carried over from the previous page: the "no reimbursement" statement and the "neglect" distinction, because current City pages do not support them (the City's current guidance is a Plumber's Report and an investigation, and its crew lateral-installation program is currently suspended). San Diego market constants (phone, hours, 2015) follow DEC-071, and the trust strip now shows the market founding year through an optional prop that other pages do not pass. Follow-up: the market hub, `sl-sd-city-camera` and the DEC-071 wording repeat the unsupported claims and are aligned in a separate PR.
+
 ---
 
 # 26. Decision Quality Standard
