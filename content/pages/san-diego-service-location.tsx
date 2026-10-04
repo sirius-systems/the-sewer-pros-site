@@ -596,8 +596,10 @@ export const sanDiegoServiceLocationContent: Partial<
 
         <h2>The cost of a failure here is not the plumbing</h2>
         <p>
-          In the City of San Diego the property owner owns the entire lateral
-          and there is no reimbursement for plumbing expenses. On a commercial
+          In the City of San Diego the City&rsquo;s guidance says the property
+          owner is responsible for maintaining the lateral all the way to the
+          City sewer main, and we did not find a City program that helps
+          homeowners pay for lateral work. On a commercial
           property that sits alongside the operational cost (a closed kitchen,
           displaced tenants, an interrupted trading day), which usually exceeds
           the repair.
