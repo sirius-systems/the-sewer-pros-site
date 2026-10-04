@@ -4903,6 +4903,20 @@ The owner approved `FAQPage` markup for all pages with FAQ content. This reverse
 
 The page is rewritten from City of San Diego sources read on 2026-10-03 under DEC-072. FAQPage markup is generated from the ten visible FAQ entries per DEC-114. No review or rating markup (DEC-028, DEC-085). Not carried over from the previous page: the "no reimbursement" statement and the "neglect" distinction, because current City pages do not support them (the City's current guidance is a Plumber's Report and an investigation, and its crew lateral-installation program is currently suspended). San Diego market constants (phone, hours, 2015) follow DEC-071, and the trust strip now shows the market founding year through an optional prop that other pages do not pass. Follow-up: the market hub, `sl-sd-city-camera` and the DEC-071 wording repeat the unsupported claims and are aligned in a separate PR.
 
+## DEC-116 - DEC-071 Reimbursement Sentence Superseded; San Diego Hub and Camera Page Aligned
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `docs/22-decisions-change-log.md` (DEC-071, supersession only; DEC-071 is not edited)
+* `content/pages/san-diego.tsx` (market hub and Mission Valley entries)
+* `content/pages/san-diego-service-location.tsx` (`sl-sd-city-camera`)
+
+DEC-071's statement that the City of San Diego's own guidance says there is no reimbursement is superseded. Current City of San Diego pages, read 2026-10-03 for DEC-115, do not support it: the City describes a Plumber's Report process and an investigation for a break beyond the property line, and says its program for City crews to install sewer laterals is currently suspended. No active homeowner assistance program was found, which is "none found in the pages reviewed", not a statement that none exists. The hub, the Mission Valley location entry and `sl-sd-city-camera` now use the wording of the City location page (DEC-115). Removed from those pages: "no reimbursement for plumbing expenses", the "neglect" distinction and "the City repairs right-of-way breaks", and the median-year-built figure (about 1979, ACS 2019-2023). Not changed in this decision: a remaining "no reimbursement" sentence in a commercial San Diego service-location entry in `san-diego-service-location.tsx` (listed for the owner), and the DEC-071 text itself.
+
 ---
 
 # 26. Decision Quality Standard

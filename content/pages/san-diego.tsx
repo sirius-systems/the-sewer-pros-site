@@ -16,8 +16,9 @@
  * Sewer service here comes from a mix of city departments and
  * independent special districts, and financial assistance is the
  * exception rather than the norm — confirmed in only two of the seven
- * approved jurisdictions, by different mechanisms. The City of
- * San Diego's own document states there is no reimbursement at all.
+ * approved jurisdictions, by different mechanisms. For the City of
+ * San Diego no active homeowner assistance program was found (City
+ * pages read 2026-10-03; see content/pages/san-diego-city.tsx).
  *
  * These pages say so rather than assuming the St. Louis pattern
  * transfers. That structural contrast is itself the strongest
@@ -169,12 +170,11 @@ export const sanDiegoMarketContent: MarketPageContent = {
              phone and both buttons. A second contact panel would have
              been the same thing twice.
 
-    ⚠ NOT ONE HEDGE WAS STRENGTHENED. "The City repairs breaks within
-    the public right-of-way where they were not caused by neglect" is
-    conditional and stays conditional; "no reimbursement for plumbing
-    expenses" is the City's own stated position and is attributed as
-    such; the Carlsbad grant keeps its service-area qualifier and the
-    CVSan cap stays explicitly unconfirmed.
+    ⚠ NOT ONE HEDGE WAS STRENGTHENED. The City of San Diego wording
+    follows the city page (DEC-115): no homeowner assistance program
+    found, crew lateral-installation program currently suspended; the
+    Carlsbad grant keeps its service-area qualifier and the CVSan cap
+    stays explicitly unconfirmed.
 
     ⚠ FIVE IMAGES WERE ASKED FOR AND NONE EXISTS. The lateral diagram,
     the authorities graphic, the assistance photograph, the evidence
@@ -212,16 +212,14 @@ export const sanDiegoMarketContent: MarketPageContent = {
       },
       {
         /*
-          ⚠ TWO CONDITIONS, BOTH LOAD-BEARING. The City repairs breaks
-          in the right-of-way ONLY where they were not caused by
-          neglect, and bills the owner where they were. Dropping either
-          clause turns a qualified practice into a guarantee of free
-          City repair, which is the single most damaging thing this
-          section could get wrong.
+          ⚠ "NONE FOUND" IS NOT "NONE EXISTS". Wording follows the city
+          page (DEC-115). The Plumber's Report process is the City's own
+          description; no statement is made about who pays for repairs
+          beyond the property line.
         */
-        title: 'Limited City involvement, and no reimbursement',
+        title: 'No City assistance program found',
         description:
-          'The City repairs breaks within the public right-of-way where they were not caused by neglect, and bills the owner where they were. On cost, the City\u2019s own guidance is unambiguous: there is no reimbursement for plumbing expenses.',
+          'We did not find an active City program that helps homeowners pay for lateral work, and the City says its crew lateral-installation program is currently suspended. For a break beyond the property line, the City\u2019s process runs through a plumber\u2019s call and a Plumber\u2019s Report.',
         icon: 'document',
         accent: 'amber',
       },
@@ -1185,9 +1183,12 @@ export const sanDiegoMarketContent: MarketPageContent = {
       question: 'Does the City of San Diego help with lateral repair costs?',
       answer: (
         <p>
-          No. The City&rsquo;s own guidance states there is no reimbursement for
-          plumbing expenses. The property owner owns the entire lateral from the
-          building to the main.
+          We did not find an active City program that gives homeowners a grant,
+          reimbursement or other help with lateral costs, and the City says its
+          program for City crews to install sewer laterals is currently
+          suspended. The City says the property owner is responsible for
+          maintaining the lateral all the way to its connection with the City
+          sewer main. Confirm current terms with City Public Utilities.
         </p>
       ),
     },
@@ -1971,9 +1972,10 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
         <h2>City of San Diego rules apply</h2>
         <p>
           Because Mission Valley sits within the City of San Diego, the
-          City&rsquo;s policy governs: the property owner owns the entire
-          lateral from building to main, and there is no reimbursement for
-          plumbing expenses.
+          City&rsquo;s guidance governs: the property owner is responsible for
+          maintaining the lateral all the way to the City sewer main, and we
+          did not find a City program that helps homeowners pay for lateral
+          work.
         </p>
         <p>
           For a commercial property that carries a sharper edge. The full cost
@@ -2010,7 +2012,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
           <p>
             No. It is a commercial and mixed-use district within the City of San
             Diego, so the City&rsquo;s sewer policy applies, including full
-            owner responsibility for the lateral and no reimbursement.
+            owner responsibility for the lateral, with no City assistance
+            program found.
           </p>
         ),
       },
