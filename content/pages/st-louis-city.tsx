@@ -18,9 +18,9 @@ import type {
  * Full rich composition, laid out the same way as the Chesterfield, Ballwin,
  * Florissant and St. Charles pages (same section order, same optional
  * blocks, same slot registry, FAQPage markup on). It replaces the earlier
- * prose-only entry, which carried a "58.4%" housing figure, "licensed
- * plumber" language and a "$28 annual charge" line; none of those is
- * reintroduced here.
+ * prose-only entry, which carried a "58.4%" housing figure and "licensed
+ * plumber" language; neither is reintroduced. The $28 fee is back, now
+ * attributed to the City's own program page.
  *
  * ⚠ BUSINESS FACTS HERE: phone, hours and the founding year come from the
  * business constants or are owner-confirmed (family-operated since 2011,
@@ -40,9 +40,10 @@ import type {
  * `IMAGE_SLOTS` and renders nothing in a launch build until a real photo
  * exists. Nothing on this page renders an `ImagePlaceholder`.
  *
- * TODO(primary-source): replace "More than half" with a verified Census
- * table figure if a primary source is pulled. It rests on ACS 2019-2023
- * 5-year estimates cited in the copy; the exact percentage is not used.
+ * TODO(primary-source): the "about 58%" built-before-1940 figure (57.9% of
+ * 174,111 units) is ACS 2019-2023 5-year data as republished by Point2Homes;
+ * the Census API and data.census.gov were unreachable. Swap in the B25034
+ * table (and a censusTable like St. Charles) when it can be pulled.
  */
 
 const id = (value: string): PageId => value as PageId
@@ -471,9 +472,9 @@ export const stLouisCityContent: LocationPageContent = {
     eyebrow: 'Home age and your lateral',
     title: 'How the age of a St. Louis City home can affect its sewer lateral',
     paragraphs: [
-      'More than half of St. Louis City’s homes were built before 1940, so some City laterals may be very old. Older laterals were commonly made of materials with known long-term wear patterns.',
+      'About 58% of St. Louis City’s housing units were built in 1939 or earlier, so some City laterals may be very old. Older laterals were commonly made of materials with known long-term wear patterns.',
       'Lateral pipe materials changed over the decades. The ranges in the table are general industry timelines, not a statement about any specific home, and many laterals have been repaired or replaced since they were first installed.',
-      'Only an inspection shows what your line is made of and how it is holding up. Housing-age figure: U.S. Census Bureau, American Community Survey 2019-2023 5-year estimates.',
+      'Only an inspection shows what your line is made of and how it is holding up. Housing-age figure: U.S. Census Bureau, American Community Survey 2019-2023 5-year estimates, as reported by Point2Homes.',
     ],
     table: {
       caption: 'Common lateral pipe materials by era',
@@ -533,7 +534,7 @@ export const stLouisCityContent: LocationPageContent = {
         </a>
         , issued to City-certified licensed plumbing contractors.
       </>,
-      'Terms shown are from the Street Division’s program page, which is dated 2014. The program is funded by fees on City real-estate tax bills and covers repairs under the public right-of-way. Confirm current terms and funding with the Street Division before you apply.',
+      'Terms shown are from the Street Division’s program page, which is dated 2014. The City says owners of residential property with six or fewer units pay a $28 fee on their real-estate property taxes, which funds repairs under the public right-of-way. Confirm current terms and funding with the Street Division before you apply.',
     ],
     image: slotImage('program-footage'),
     covers: {
@@ -834,7 +835,7 @@ export const stLouisCityContent: LocationPageContent = {
       },
       {
         label:
-          'U.S. Census Bureau: American Community Survey 2019-2023 5-year estimates (City housing age; primary table check pending)',
+          'U.S. Census Bureau: American Community Survey 2019-2023 5-year estimates (City housing age, as republished by Point2Homes; primary table check pending)',
         href: CENSUS_URL,
       },
       {
