@@ -665,6 +665,18 @@ export interface ServiceAreaCityCard {
   wide?: boolean
   description: string
   /**
+   * Standard (street-delivery) ZIP codes the community covers, shown on
+   * the card so a visitor can match their address at a glance.
+   *
+   * ⚠ DISPLAY COPY, NOT A COVERAGE PROMISE. A ZIP code is a postal
+   * boundary, not a municipal one: several ZIPs straddle neighbouring
+   * cities, so listing one here says the community overlaps it, not
+   * that every address inside it is served. The service-area closing
+   * block still asks the visitor to confirm before booking. PO Box-only
+   * ZIPs are left out because no property sits at one.
+   */
+  zipCodes?: readonly string[]
+  /**
    * The card's accessible name and its visible action label.
    *
    * 18 §47: descriptive, and naming the place — "Explore Ballwin", not

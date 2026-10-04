@@ -723,6 +723,7 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'St. Louis City, MO',
           description:
             'Explore sewer camera inspection, sewer cleaning, and diagnostic services for homes, buyers, property managers, and commercial properties across St. Louis City.',
+          zipCodes: ['63101', '63102', '63103', '63104', '63105', '63106', '63107', '63108', '63109', '63110', '63111', '63112', '63113', '63115', '63116', '63118', '63120', '63130', '63136', '63137', '63138', '63139', '63143', '63147'],
           ctaLabel: 'Explore St. Louis City',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-city-mo-sewer-service-area.webp',
@@ -735,6 +736,7 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'Ballwin, MO',
           description:
             'Find sewer inspection, cleaning, and diagnostic services for residential and commercial properties in Ballwin.',
+          zipCodes: ['63011', '63021'],
           ctaLabel: 'Explore Ballwin',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-ballwin-mo-sewer-service-area.webp',
@@ -747,6 +749,7 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'Florissant, MO',
           description:
             'Review sewer camera inspection, sewer cleaning, and line-diagnostic services available for properties in Florissant.',
+          zipCodes: ['63031', '63033', '63034'],
           ctaLabel: 'Explore Florissant',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-florissant-mo-sewer-service-area.webp',
@@ -759,6 +762,7 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'Chesterfield, MO',
           description:
             'Explore evidence-first sewer inspection, cleaning, and locating services for Chesterfield properties.',
+          zipCodes: ['63005', '63017'],
           ctaLabel: 'Explore Chesterfield',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-chesterfield-mo-sewer-service-area.webp',
@@ -771,6 +775,7 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'St. Charles, MO',
           description:
             'Find sewer camera inspection, sewer cleaning, and diagnostic services for homes and properties in St. Charles.',
+          zipCodes: ['63301', '63303', '63304'],
           ctaLabel: 'Explore St. Charles',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-mo-sewer-service-area.webp',
