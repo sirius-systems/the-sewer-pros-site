@@ -50,10 +50,8 @@ export interface PageShellProps {
     description?: string
     dateModified?: string
     /**
-     * The page's visible FAQ, where `FAQPage` markup is approved for it.
-     *
-     * OPT-IN PER PAGE (15 §57-58). DEC-089 approves the home page only;
-     * every other template omits this and emits no `FAQPage`. Pass the
+     * The page's visible FAQ. `FAQPage` markup is on wherever a template
+     * renders one (DEC-114); a template with no FAQ omits this. Pass the
      * SAME array the template renders — the node's answer text is read
      * out of that JSX (15 §67, lib/schema/faq.ts).
      */

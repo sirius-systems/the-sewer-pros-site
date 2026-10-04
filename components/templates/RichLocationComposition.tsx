@@ -104,8 +104,9 @@ export function RichLocationComposition({
       schema={{
         title: content.seoTitle ?? content.hero.title,
         description: content.metaDescription,
-        // Opt-in only. Unset means no FAQPage (DEC-089 covers the home page).
-        faq: content.faqSchemaApproved === true ? content.faq : undefined,
+        // DEC-114: on by default wherever an FAQ renders. `faqSchemaApproved:
+        // false` is the opt-out; unset and `true` both emit FAQPage.
+        faq: content.faqSchemaApproved === false ? undefined : content.faq,
         serviceCards: content.serviceCards?.cards.map((card) => ({
           serviceId: card.serviceId,
           name: card.title,

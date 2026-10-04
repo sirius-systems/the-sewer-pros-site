@@ -4874,6 +4874,22 @@ FAQPage markup is enabled for `/st-louis-mo/st-charles/` (`faqSchemaApproved: tr
 
 FAQPage markup is enabled for `/st-louis-mo/st-louis-city/` (`faqSchemaApproved: true`) under the principle approved in DEC-108, which named this page as the natural first candidate. The ten FAQ entries are visible on the page and the markup is generated from them. No review or rating markup is emitted. The page was brought to the same layout and data model as the Chesterfield, Ballwin and Florissant pages: the full image-slot registry, the program steps and "where an independent inspection fits" callout, dated sources, and `servicePageIds`. The program steps were read from the City Street Division's Sewer Lateral Repair Program page and the plumbing-permit page on 2026-10-03 under DEC-072; the $28 fee that page shows is stated on this page, attributed to the City and confirmed on the sibling pages (owner confirmation 2026-10-03). The pre-1940 housing statement now reads "about 58%" (57.9% of 174,111 units, ACS 2019-2023 5-year estimates as republished by Point2Homes); the primary Census table check remains pending because api.census.gov needs a key.
 
+
+## DEC-114 - FAQPage Markup Default-On Sitewide
+
+**Date:** 2026-10-03
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `15-schema-entity-strategy.md` (58)
+* `lib/schema/graph.ts`, `lib/schema/index.ts`, `components/templates/PageShell.tsx`
+* every page template that renders `FaqSection` (`faq: content.faq` added to its schema input)
+* `components/templates/RichLocationComposition.tsx`, `types/content.ts` (`faqSchemaApproved` is now an opt-out)
+
+The owner approved `FAQPage` markup for all pages with FAQ content. This reverses the opt-in default set by DEC-089 and carried through DEC-108 to DEC-113: instead of enabling each page in its own change, every template now hands the same `faq` array it renders to `pageSchema()`, and a page with no FAQ emits nothing. On the rich location composition, `faqSchemaApproved: false` is the opt-out; unset or `true` emits the node. The five St. Louis location pages that set `true` are unchanged. The visible-text rule (15 §67) still holds because the markup is generated from the rendered answers. `AudienceHubTemplate` renders no FAQ and is unchanged.
+
 ---
 
 # 26. Decision Quality Standard

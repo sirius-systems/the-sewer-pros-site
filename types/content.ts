@@ -2317,12 +2317,12 @@ export interface LocationPageContent extends BasePageContent {
   /** Heading above the visible FAQ. Overrides the template default. */
   faqHeading?: string
   /**
-   * Opt-in for `FAQPage` JSON-LD on this page. Unset means no `FAQPage`.
+   * Opt-OUT for `FAQPage` JSON-LD on this page (DEC-114). Unset or `true`
+   * emits it; `false` suppresses it.
    *
-   * ⚠ DEC-089 approves the home page only (15 §57-58). Setting this to
-   * `true` makes the template hand the SAME `faq` array it renders to
-   * `pageSchema()`, so markup cannot diverge from the visible answers - but
-   * turning it on is a new approval decision, not an implementation detail.
+   * The template hands the SAME `faq` array it renders to `pageSchema()`,
+   * so markup cannot diverge from the visible answers (15 §67). Older
+   * pages set `true` under DEC-108; that is now the default and harmless.
    */
   faqSchemaApproved?: boolean
   /** Key takeaways list with an in-page jump nav. */
