@@ -197,10 +197,10 @@ const FORBIDDEN = [
   'Orangeburg', '1976', '1963', '21,229', '58.4', 'More than half', 'Master Drainlayer', 'MyGov',
   'Valley Drive', '(314) 768-6260', '(314) 839-76', '1-866-281-5737', '22 lift', '9.63', '7.54', 'MGD',
   'Utilities Division', 'PVC-era', "outside MSD's territory", 'MSD confirms', 'combined sewer', '7:30',
-  'licensed', 'certified', 'certification', 'insured', 'insurance', 'free ', 'guarantee', 'warranty',
+  'certified', 'insured', 'insurance', 'free ', 'guarantee', 'warranty',
   '24/7', 'same-day', 'best price', 'testimonial', '911', 'Placeholder', 'NOT FOR PRODUCTION',
 ]
-const caseInsensitive = new Set(['licensed', 'certified', 'certification', 'insured', 'insurance', 'guarantee', 'warranty', 'same-day', 'best price', 'testimonial', 'placeholder'])
+const caseInsensitive = new Set(['certified', 'insured', 'insurance', 'guarantee', 'warranty', 'same-day', 'best price', 'testimonial', 'placeholder'])
 const forbiddenHits = FORBIDDEN.filter((w) => {
   const n = norm(w)
   return caseInsensitive.has(w.toLowerCase()) ? textNoReviews.toLowerCase().includes(n.toLowerCase()) : textNoReviews.includes(n)
@@ -208,10 +208,15 @@ const forbiddenHits = FORBIDDEN.filter((w) => {
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))
 const contextOnly = (pattern, allowed, label) => {
   const bad = [...text.matchAll(new RegExp(pattern, 'g'))]
-    .map((m) => text.slice(Math.max(0, m.index - 80), m.index + 100))
+    .map((m) => text.slice(Math.max(0, m.index - 80), m.index + 140))
     .filter((c) => !allowed.test(c))
   check(label, bad.length === 0, bad.join(' | '))
 }
+// Owner decision (2026-10-03): the City Code's cabling requirement is described as
+// written certification from a properly licensed master plumber or master
+// drainlayer. These words describe the CITY'S requirement and nothing else.
+contextOnly('licen[cs]ed', /certification from a properly licensed master plumber or master drainlayer that the lateral has been cabled/, '"licensed" only inside the City cabling-certification wording')
+contextOnly('certification', /certification from a properly licensed master plumber or master drainlayer that the lateral has been cabled/, '"certification" only inside the City cabling-certification wording')
 contextOnly('lowest', /90 percent of the lowest of three bids|reimburses the lowest responsible bid/, '"lowest" only in the City bid wording')
 contextOnly('\\$20(?![\\d,])', /(older \$20 figure|still show \$20|shows an older \$20 fee)/, '"$20" only where the City page conflict is stated')
 contextOnly('\\$50', /\$50 fee for each required inspection/, '"$50" only in the permit-inspection-fee sentence')

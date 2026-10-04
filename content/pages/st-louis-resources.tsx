@@ -92,9 +92,10 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         <p>
           Programs are specific about this. St. Louis City requires a licensed
           plumber to inspect and submit a written statement. St. Charles asks
-          for a written statement from a master plumber or master drainlayer
-          that the lateral has been cabled. The credential is part of what
-          makes the document acceptable.
+          for written certification from a properly licensed master plumber or
+          master drainlayer that the lateral has been cabled and that cabling
+          did not resolve the problem. The credential is part of what makes the
+          document acceptable.
         </p>
 
         <h3>What the defect is</h3>
@@ -134,10 +135,11 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           statement. Florissant requires video inspection for claim approval.
           Ballwin does not pay for video and does not say video is required: it
           asks for documentation of a structural problem, or a history of
-          clearing roots more than once a year. St. Charles&rsquo;s program instead asks for a written
-          statement from a master plumber or master drainlayer that the lateral
-          has been cabled, and the City uses its own camera investigation to
-          set the repair scope.
+          clearing roots more than once a year. St. Charles&rsquo;s program instead asks for written
+          certification from a properly licensed master plumber or master
+          drainlayer that the lateral has been cabled and that cabling did not
+          resolve the problem, and the City uses its own camera investigation
+          to set the repair scope.
         </p>
 
         <h3>What could not be assessed</h3>
