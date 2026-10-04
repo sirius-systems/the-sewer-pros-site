@@ -207,6 +207,20 @@ const CARD_SCRIM =
   'absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/20'
 
 /**
+ * The scrim for the uniform `grid` layout.
+ *
+ * ⚠ DARKER THAN `CARD_SCRIM` UP THE CARD, ON PURPOSE. The grid cards carry
+ * a description and a ZIP line as well as the title, so the copy climbs
+ * about 90 percent of the card height instead of sitting at the foot.
+ * `CARD_SCRIM` is down to 20-30% black there, and measured against the
+ * brightest pixels of the five St. Louis frames it gave 2.35:1 to 4.21:1,
+ * below the 4.5:1 floor. Do not lighten the top stop without remeasuring
+ * against the frames at every card height.
+ */
+const GRID_CARD_SCRIM =
+  'absolute inset-0 bg-gradient-to-t from-black/90 via-black/80 to-black/65'
+
+/**
  * Card height floor.
  *
  * ⚠ IT IS NOT DECORATION, IT IS WHAT KEEPS THE COPY INSIDE THE BOX. A
@@ -547,7 +561,10 @@ export function ServiceAreaSection({
                           }
                           className="absolute inset-0 object-cover"
                         />
-                        <span aria-hidden="true" className={CARD_SCRIM} />
+                        <span
+                          aria-hidden="true"
+                          className={isGrid ? GRID_CARD_SCRIM : CARD_SCRIM}
+                        />
                       </>
                     )}
 

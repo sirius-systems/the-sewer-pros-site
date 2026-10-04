@@ -104,8 +104,9 @@ export const stLouisMarketContent: MarketPageContent = {
     are the second. Before 2026-09-07 the same point was made in one
     paragraph above a plain list.
   */
+  seoTitle: 'Sewer Camera Inspection & Cleaning in St. Louis, MO',
   metaDescription:
-    'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services in St. Louis, Missouri, with documented findings and informed next steps.',
+    'Independent sewer camera inspection, diagnostics, and cleaning across the St. Louis area. Evidence before major sewer decisions, with no repair upselling.',
   hero: {
     eyebrow: 'St. Louis sewer and drain specialists',
     title: 'Sewer camera inspection and cleaning in St. Louis, MO',
@@ -723,9 +724,12 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'St. Louis City, MO',
           description:
             'MSD runs the public sewer for the whole city, and the lateral from your building to that main is the owner’s to maintain.',
-          // Some City ZIPs (e.g. 63105, 63130, 63143) straddle neighboring
-          // municipalities; listing one says overlap, not full coverage.
-          zipCodes: ['63101', '63102', '63103', '63104', '63105', '63106', '63107', '63108', '63109', '63110', '63111', '63112', '63113', '63115', '63116', '63118', '63120', '63130', '63136', '63137', '63138', '63139', '63143', '63147'],
+          // Source: Census 2020 ZCTA-to-place relationship file (tab20_zcta520_place20_natl), read 2026-10-03. Kept: ZIPs at least 90 percent
+          // inside the City. Dropped as minor overlaps (26 percent or less
+          // of the ZIP): 63105, 63130, 63136, 63137, 63138, 63143. The
+          // listed ZIPs can still reach a few addresses just across the
+          // line, so a ZIP says overlap, not full coverage.
+          zipCodes: ['63101', '63102', '63103', '63104', '63106', '63107', '63108', '63109', '63110', '63111', '63112', '63113', '63115', '63116', '63118', '63120', '63139', '63147'],
           ctaLabel: 'Explore St. Louis City',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-city-mo-sewer-service-area.webp',
@@ -737,7 +741,8 @@ export const stLouisMarketContent: MarketPageContent = {
           pageId: id('loc-stl-ballwin'),
           title: 'Ballwin, MO',
           description:
-            'Ballwin runs its own lateral repair program and treats root clearing once a year or less as normal maintenance. A camera shows which side your line falls on.',
+            'Ballwin runs its own lateral repair program, which starts at the outside wall of the house. A camera inspection shows where along the line a defect sits.',
+          // Source: Census 2020 ZCTA-to-place relationship file (tab20_zcta520_place20_natl), read 2026-10-03.
           zipCodes: ['63011', '63021'],
           ctaLabel: 'Explore Ballwin',
           image: {
@@ -751,7 +756,9 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'Florissant, MO',
           description:
             'Florissant’s City lateral program stops five feet from the foundation, so where along the line a defect sits matters.',
-          zipCodes: ['63031', '63033', '63034'],
+          // Source: Census 2020 ZCTA-to-place relationship file (tab20_zcta520_place20_natl), read 2026-10-03. 63034 dropped: it maps
+          // to Old Jamestown CDP, not the City of Florissant.
+          zipCodes: ['63031', '63033'],
           ctaLabel: 'Explore Florissant',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-florissant-mo-sewer-service-area.webp',
@@ -764,6 +771,7 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'Chesterfield, MO',
           description:
             'Chesterfield’s City lateral program starts the eligible lateral three to five feet outside the foundation and treats routine root removal as maintenance.',
+          // Source: Census 2020 ZCTA-to-place relationship file (tab20_zcta520_place20_natl), read 2026-10-03.
           zipCodes: ['63005', '63017'],
           ctaLabel: 'Explore Chesterfield',
           image: {
@@ -777,9 +785,10 @@ export const stLouisMarketContent: MarketPageContent = {
           title: 'St. Charles, MO',
           description:
             'St. Charles runs its own sewer system through City Public Works, outside the area MSD defines as its service area.',
-          // 63302 is PO Box-only and left out. Checked against zip-codes.com
-          // (USPS-derived); not yet against USPS or Census ZCTA directly.
-          zipCodes: ['63301', '63303', '63304'],
+          // Source: Census 2020 ZCTA-to-place relationship file (tab20_zcta520_place20_natl), read 2026-10-03. 63304 dropped: no
+          // overlap with the City. 63302 is PO Box-only (zip-codes.com) and
+          // has no ZCTA.
+          zipCodes: ['63301', '63303'],
           ctaLabel: 'Explore St. Charles',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-mo-sewer-service-area.webp',
@@ -822,9 +831,8 @@ export const stLouisMarketContent: MarketPageContent = {
       question: 'Can you get my lateral repair approved?',
       answer: (
         <p>
-          No, and neither can anyone else. We are licensed through most of the
-          area&rsquo;s municipal lateral programs to submit reports, and we
-          document what the inspection shows. The municipality decides claims.
+          No, and neither can anyone else. We document what the inspection
+          shows. The municipality decides claims.
         </p>
       ),
     },
