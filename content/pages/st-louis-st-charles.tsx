@@ -567,7 +567,7 @@ export const stCharlesContent: LocationPageContent = {
         St. Charles runs its own sewer system. The City says it has two sanitary sewer treatment
         plants and 30 lift stations, operated and maintained under contract. MSD describes its
         own service area as St. Louis City and about 90 percent of St. Louis County, and St.
-        Charles is in St. Charles County, so it sits outside the area MSD defines as its own.{' '}
+        Charles is in St. Charles County, so it sits outside the area MSD defines as its service area.{' '}
         <a href={MSD_SERVICE_AREA_URL} rel="noopener">
           MSD&rsquo;s page
         </a>{' '}
@@ -859,7 +859,7 @@ export const stCharlesContent: LocationPageContent = {
           of Public Works. The City says it has two sanitary sewer treatment plants and 30 lift
           stations, operated and maintained under contract. MSD describes its service area as
           St. Louis City and about 90 percent of St. Louis County, and St. Charles is in St.
-          Charles County, so it sits outside the area MSD defines as its own. MSD&rsquo;s page
+          Charles County, so it sits outside the area MSD defines as its service area. MSD&rsquo;s page
           does not name St. Charles, so confirm for a specific address. Sources: City of St.
           Charles Sewer Division and Wastewater Treatment pages; MSD service area page.
         </p>
