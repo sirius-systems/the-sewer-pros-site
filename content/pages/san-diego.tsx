@@ -201,12 +201,12 @@ export const sanDiegoMarketContent: MarketPageContent = {
     },
     title: 'Who owns the sewer lateral in the City of San Diego?',
     intro:
-      'In the City of San Diego, the property owner owns the entire sewer lateral: the full run from the building to the public main, not merely the portion under private land. That is worth stating plainly, because it is the opposite of how sewer laterals work in some other parts of the country, and it means a lateral problem here is entirely the owner\u2019s to fund.',
+      'In the City of San Diego, the City\u2019s guidance says the property owner is responsible for maintaining the sewer lateral from the building all the way to its connection with the City sewer main, even where that connection is in the street, an easement or a canyon. We did not find a City program that helps homeowners pay for lateral work.',
     items: [
       {
-        title: 'The lateral is the property owner\u2019s, end to end',
+        title: 'The owner maintains the lateral to the City main',
         description:
-          'Ownership runs the whole length from the building to the public main, including the portion under the street. There is no point along it where responsibility transfers to the City by default.',
+          'The City says the owner maintains the lateral all the way to its connection with the City sewer main, which can be in the street, an easement or a canyon.',
         icon: 'utility',
         accent: 'blue',
       },
@@ -1240,7 +1240,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       ⚠ NO COMPETITOR IS NAMED OR ALLUDED TO. Eleven were surfaced by
       the competitive pass and none appears here, in the copy or in
       these comments. The differentiation is the sourced City of San
-      Diego reimbursement position and the business model, nothing else.
+      Diego guidance (DEC-115) and the business model, nothing else.
 
       ⚠ THE LINKS BELOW ADD NO WORDS. Each wraps a phrase the drafted
       copy already contained, so the approved wording is verbatim. The
