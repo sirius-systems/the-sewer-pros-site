@@ -14,8 +14,8 @@
  *
  * The jurisdictional facts carry the first: Vallecitos rather than the
  * city in San Marcos, CVSan rather than city government in Chula Vista,
- * a $3,000 grant in Carlsbad, no reimbursement at all in the City of
- * San Diego. The second is carried by tying each fact to what that
+ * a $3,000 grant in Carlsbad, no homeowner assistance program found
+ * in the City of San Diego. The second is carried by tying each fact to what that
  * specific service actually produces — camera work generates the
  * documentation a grant process consumes; cleaning does not.
  *
@@ -57,9 +57,10 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Sewer Camera Inspection in San Diego',
       intro: (
         <p>
-          Video inspection of the lateral in a city where you own the entire
-          line and no reimbursement exists, which makes knowing its condition
-          before you spend money the whole point.
+          Video inspection of the lateral in a city where the owner maintains
+          the line all the way to the City sewer main and we did not find a
+          City program that helps with lateral costs, which makes knowing its
+          condition before you spend money the whole point.
         </p>
       ),
     },
@@ -67,17 +68,18 @@ export const sanDiegoServiceLocationContent: Partial<
       <>
         <h2>Why inspection carries more weight here</h2>
         <p>
-          In the City of San Diego the property owner owns the full lateral,
-          from the building all the way to the public main. The City&rsquo;s own
-          guidance is explicit that there is no reimbursement for plumbing
-          expenses.
+          In the City of San Diego the City&rsquo;s guidance says the property
+          owner is responsible for maintaining the lateral from the building
+          all the way to its connection with the City sewer main. We did not
+          find an active City program that helps homeowners pay for lateral
+          work.
         </p>
         <p>
           Set against places that operate assistance programs, that changes
-          the calculation. Every dollar of a lateral repair here is the
-          owner&rsquo;s, so the difference between a line that needs cleaning
-          and a line that needs replacing is not a technicality: it is the
-          entire cost.
+          the calculation. Where no assistance program is found, the
+          difference between a line that needs cleaning and a line that needs
+          replacing is not a technicality: it is a cost the owner has to plan
+          for.
         </p>
 
         <h2>What the camera settles before money is committed</h2>
@@ -93,21 +95,21 @@ export const sanDiegoServiceLocationContent: Partial<
           inspection gets over-read.
         </p>
 
-        <h2>Neglect is a distinction the City draws</h2>
+        <h2>The City&rsquo;s process for a break beyond the property line</h2>
         <p>
-          The City repairs right-of-way breaks not caused by neglect, and bills
-          the owner where neglect caused them. A dated record of the
-          line&rsquo;s condition is therefore evidence about how a failure came
-          about, not merely a diagnosis of it.
+          The City directs a licensed plumber who finds a break or collapse
+          beyond the property line to call its Sewer Emergency Line and file a
+          Plumber&rsquo;s Report, and says it will investigate within 24 hours.
+          A dated record of the line&rsquo;s condition shows what the camera
+          found before that process starts. It does not establish where a
+          property line is.
         </p>
 
-        <h2>A wide span of construction</h2>
+        <h2>What the camera shows, not the era</h2>
         <p>
-          San Diego&rsquo;s housing has a median year built of around 1979
-          (American Community Survey, 2019&ndash;2023 five-year estimates),
-          spanning postwar construction through the 1980s and beyond. Laterals
-          across that range may be clay, cast iron, or PVC depending on when a
-          property was built and whether the line has been replaced since.
+          The City&rsquo;s pages we reviewed do not publish a pipe material or
+          an installation era, so the only way to know what a lateral is made
+          of and how it is holding up is to look at it.
         </p>
       </>
     ),
