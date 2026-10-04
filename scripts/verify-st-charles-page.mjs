@@ -188,7 +188,7 @@ const REQUIRED = [
   '$28', '$7,500', '90 percent', '30 lift stations', 'Public Works Sewer Division', '1986', '32,300',
   '(636) 949-3363', '(636) 949-3222', '2871 Elm Point Industrial Drive', 'Sewer Lateral Repair Program',
   "This is the City's number and address, not ours", "This is the City's number, not ours",
-  'outside the area MSD defines as its own', 'Newtown', 'Hackmann Road', 'Last reviewed: October 3, 2026',
+  'outside the area MSD defines as its service area', 'Newtown', 'Hackmann Road', 'Last reviewed: October 3, 2026',
 ]
 const missingReq = REQUIRED.filter((t) => !text.includes(norm(t)))
 check('required strings present', missingReq.length === 0, missingReq.join(' | '))
