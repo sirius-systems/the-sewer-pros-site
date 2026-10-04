@@ -132,7 +132,8 @@ for (const anchor of ['request', 'services', 'responsible', 'how-system', 'age',
 /* ---- Copy checks ---- */
 check('no em dashes in visible text', !text.includes('—'))
 check('no 58.4% figure', !text.includes('58.4'))
-check('no "licensed plumber" or $28 line', !/licensed plumber|\$28/i.test(text))
+check('no "licensed plumber" line', !/licensed plumber/i.test(text.replace(/City-certified licensed plumbing contractors/gi,'')))
+check('$28 fee present and attributed to the City', /City says owners[^.]*\$28 fee/.test(text))
 check('program steps present (street problem request, statement and video)', ['street problem service request', 'plumber’s statement and video'].every((t) => text.includes(t)))
 check('program callout present', text.includes('Where an independent inspection fits'))
 check('Chesterfield, Ballwin, Florissant and St. Charles program terms absent', !/\$15,000|\$4,500|\$7,500|\$150|\$300|\$50 annual|\$200/.test(text))

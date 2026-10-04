@@ -33,7 +33,7 @@ The City page already uses the rich composition, but it was built before the fou
 ## 3. Edits to `content/pages/st-louis-city.tsx`
 
 ### 3.1 Header comment
-State that the page follows the Chesterfield, Ballwin and Florissant layout, that local facts are St. Louis City's only, that program steps come from the Street Division page read 2026-10-03, that the dollar fee on that page is deliberately not repeated, and that images are existing approved assets only. Keep the existing `TODO(primary-source)` for the "More than half" pre-1940 statement.
+State that the page follows the Chesterfield, Ballwin and Florissant layout, that local facts are St. Louis City's only, that program steps come from the Street Division page read 2026-10-03, that the $28 fee on that page is stated and attributed to the City, and that images are existing approved assets only. Keep a `TODO(primary-source)` for the "about 58%" pre-1940 statement (57.9%, ACS 2019-2023 via Point2Homes) until the B25034 table is pulled.
 
 ### 3.2 Image slot registry
 Replace `IMAGE_SLOTS` with the full 19-slot set, in this order, using the same ids, ratios, alts and shots as `st-louis-chesterfield.tsx`, with the hero id renamed:
@@ -79,7 +79,7 @@ Keep `eyebrow`, `title`, `lede`, `covers` and the "six or fewer units" eligibili
 
 `closing`: the existing internal link to `/st-louis-mo/sewer-lateral-inspection-reporting/` ("See our sewer lateral inspection & reporting service for the St. Louis area.").
 
-Do NOT state the dollar fee shown on the City page. The City sources registry excluded it, and the owner has not reapproved it.
+State the $28 fee, attributed to the City ("The City says owners of residential property with six or fewer units pay a $28 fee on their real-estate property taxes"). The owner confirmed it on 2026-10-03. Do not carry over any other municipality's fee or cap.
 
 ### 3.5 FAQ
 Keep ten questions. Replace "Can tree roots cause a sewer blockage?" with:
@@ -113,7 +113,7 @@ In the marker collection, skip `img` elements: `if (data.length > 0 && x.tag !==
 - Add a WebPage name check equal to "Sewer Inspection & Cleaning in St. Louis City, MO".
 - Add checks that the program steps text ("street problem service request", "plumber's statement and video") and the callout title are present.
 - Add a check that no other municipality's program terms appear: `$15,000`, `$4,500`, `$7,500`, `$150`, `$300`, `$50 annual`, `$200`.
-- Keep the "no `licensed plumber` or `$28`" check. Broaden the `licensed`/`insured` check to allow only "City-certified licensed plumbing contractors" and "licensed City plumber".
+- Keep the "no `licensed plumber`" check and add a check that the $28 fee is present and attributed to the City. Broaden the `licensed`/`insured` check to allow only "City-certified licensed plumbing contractors" and "licensed City plumber".
 - Add the hours (8:00 am - 4:00 pm), no 7:30, and no repair-claim checks used by the Chesterfield script.
 
 ### 4.3 Docs
@@ -145,7 +145,7 @@ Notes:
 
 Stage only: `content/pages/st-louis-city.tsx`, `docs/04-master-page-build-list.md`, `docs/22-decisions-change-log.md`, `scripts/compare-location-structure.mjs`, `scripts/verify-city-page.mjs`. Run `git fetch origin main` first, then push to `main`.
 
-Commit message: "Bring St. Louis City location page to the shared municipality layout", with a short body listing the program steps and callout, the FAQPage markup (DEC-113), the full slot registry, dated sources and `servicePageIds`, and a note that the $28 fee is intentionally not repeated.
+Commit message: "Bring St. Louis City location page to the shared municipality layout", with a short body listing the program steps and callout, the FAQPage markup (DEC-113), the full slot registry, dated sources and `servicePageIds`, and a note that the $28 fee is attributed to the City page.
 
 ## 7. Report back
 
@@ -154,8 +154,8 @@ Two or three sentences: what changed, that validation passed, and the open items
 ## 8. Open items (do not do in this change)
 
 1. Real City job photos for the unfilled slots; the three second-opinion steps are the highest value.
-2. Whether to add the $28 fee the City page shows, with the program terms. Owner decision.
-3. Primary Census table for the pre-1940 housing share (the Census API needs a key).
+2. (Resolved) $28 fee added, sourced to the City program page.
+3. Primary Census table for the pre-1940 housing share (the Census API needs a key); the page uses about 58% from a secondary republication meanwhile.
 4. Review band (St. Louis snapshot, text only) as on St. Charles. Ballwin's decision note treated this as a separate change.
 5. A sourced point-of-sale answer for the buying section, as Chesterfield has. Research the City's occupancy inspection materials before writing anything.
 6. TCPA consent copy and the lead-form endpoint (PENDING-018) remain site-wide items.
