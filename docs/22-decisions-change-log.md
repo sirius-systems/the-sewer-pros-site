@@ -4850,6 +4850,18 @@ FAQPage markup is enabled for `/st-louis-mo/ballwin/` (`faqSchemaApproved: true`
 
 FAQPage markup is enabled for `/st-louis-mo/florissant/` (`faqSchemaApproved: true`) under the principle approved in DEC-108. The ten FAQ entries are visible on the page and the markup is generated from them. No review or rating markup is emitted. Program terms on the page (the $50 annual fee, the $300 deposit, the five-foot boundary) were read directly from the City of Florissant's Sewer Lateral Insurance Program page on 2026-10-02 under DEC-072. The housing-age statement is attributed to the City's 2026-2030 Consolidated Plan citing ACS 2024 5-year estimates; the primary Census table check is pending.
 
+## DEC-112 - FAQPage Markup Enabled for St. Charles
+
+**Date:** 2026-10-03
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/st-louis-st-charles.tsx`
+
+FAQPage markup is enabled for `/st-louis-mo/st-charles/` (`faqSchemaApproved: true`) under the principle approved in DEC-108. The ten FAQ entries are visible on the page and the markup is generated from them. The St. Louis review snapshot (4.9 from 595 Google reviews, as of September 1, 2026) is shown as visible text only, with no review or rating markup, per DEC-028 and DEC-085. Program terms (the $28 annual fee per City Code section 150.030, the 90 percent and $7,500 reimbursement, the exclusions) were read from the City of St. Charles Code and program pages on 2026-10-03 under DEC-072. The housing-age figures are from the Census ACS 2024 5-year tables B25034 and B25035, read directly. The outside-MSD statement is worded as "outside the area MSD defines as its service area" because MSD's page does not name St. Charles.
+
 ---
 
 # 26. Decision Quality Standard

@@ -2310,6 +2310,12 @@ export interface LocationPageContent extends BasePageContent {
   keyTakeaways?: LocationKeyTakeaways
   /** Service card grid. Also feeds the page's `Service` JSON-LD nodes. */
   serviceCards?: LocationServiceCards
+  /**
+   * Google review band, shown after the services section. Visible text only:
+   * the figures come from `ratingSnapshot` and no review or rating markup is
+   * emitted (DEC-028, DEC-085).
+   */
+  reviewBand?: LocationReviewBand
   /** Who is responsible for the public main versus the private lateral. */
   responsibility?: LocationResponsibility
   /** How the city's combined sewer system works. */
@@ -2409,6 +2415,12 @@ export interface LocationServiceCards {
   }
 }
 
+export interface LocationReviewBand {
+  title: string
+  /** One line under the aggregate rating, e.g. what the reviews do and do not cover. */
+  caption: string
+}
+
 export interface LocationResponsibility {
   eyebrow: string
   title: string
@@ -2438,6 +2450,19 @@ export interface LocationHousingAge {
   eyebrow: string
   title: string
   paragraphs: readonly ReactNode[]
+  /**
+   * Optional second table, rendered after `paragraphs` and before `afterCensus`
+   * (for example a Census count by period built, with margins of error).
+   */
+  censusTable?: {
+    caption: string
+    columns: readonly [string, string, string]
+    rows: readonly (readonly [string, string, string])[]
+  }
+  /** Optional paragraphs between `censusTable` and `table`. */
+  afterCensus?: readonly ReactNode[]
+  /** Optional source note rendered after `table`. */
+  sourceNote?: ReactNode
   table: {
     caption: string
     columns: readonly [string, string, string]
@@ -2471,6 +2496,8 @@ export interface LocationMunicipalProgram {
   image?: CardImage
   covers: { title: string; items: readonly string[] }
   doesNotCover: { title: string; items: readonly string[] }
+  /** Optional headed block between the covers / does-not-cover lists and `steps`. */
+  whoCanApply?: { title: string; paragraphs: readonly ReactNode[] }
   /** Optional numbered process, rendered as an ordered list. */
   steps?: {
     title: string

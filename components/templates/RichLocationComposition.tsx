@@ -5,6 +5,7 @@ import {
   ExperienceCounterStrip,
   FaqSection,
   CtaSection,
+  ReviewMarquee,
   LeadFormSection,
   MobileContactBar,
   faqSectionRenders,
@@ -41,7 +42,7 @@ import type { LocationHeroForm, LocationPageContent, MasterPageRecord } from '@/
  * rhythm check in `PageShell` reads it. Surface runs:
  *
  *   hero (dark photo) / counters (muted) / takeaways (default) /
- *   services (muted) / responsibility (default) / system (muted) /
+ *   services (muted) / reviews (default, St. Charles only) / responsibility (default) / system (muted) /
  *   age (default) / who-to-call (brand) / program (default) /
  *   second opinion (brand) / buying (muted) / areas (default) /
  *   faq (muted) / final CTA (photo, or brand panel without one) / sources (muted)
@@ -79,6 +80,9 @@ export function RichLocationComposition({
     'dense', // counters
     ...(content.keyTakeaways ? (['dense'] as const) : []),
     ...(content.serviceCards ? (['standard'] as const) : []),
+    // Dense, so services / reviews / responsibility / system never read as a
+    // run of four `standard` sections.
+    ...(content.reviewBand ? (['dense'] as const) : []),
     ...(content.responsibility ? (['standard'] as const) : []),
     ...(content.systemExplainer ? (['standard'] as const) : []),
     ...(content.housingAge ? (['dense'] as const) : []),
@@ -167,7 +171,24 @@ export function RichLocationComposition({
         />
       )}
 
-      {content.responsibility && <ResponsibilitySection content={content.responsibility} />}
+      {/*
+        The review band shares the responsibility slot instead of adding a child
+        of its own, so a page without `reviewBand` keeps the exact element
+        sequence (and static output) it had before the band existed.
+      */}
+      {content.reviewBand ? (
+        <>
+          <ReviewMarquee
+            density="dense"
+            surface="default"
+            title={content.reviewBand.title}
+            caption={content.reviewBand.caption}
+          />
+          {content.responsibility && <ResponsibilitySection content={content.responsibility} />}
+        </>
+      ) : (
+        content.responsibility && <ResponsibilitySection content={content.responsibility} />
+      )}
       {content.systemExplainer && <SystemExplainer content={content.systemExplainer} />}
       {content.housingAge && <HousingAgeSection content={content.housingAge} />}
       {content.whoToCall && <WhoToCallSection content={content.whoToCall} />}

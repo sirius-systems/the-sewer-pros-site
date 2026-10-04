@@ -17,7 +17,7 @@
  * transferable between cities. Ballwin's $4,500 cap and its
  * once-a-year root-clearing rule cannot be restated for Florissant,
  * whose City program stops five feet from the house.
- * St. Charles is not even in MSD's territory.
+ * St. Charles runs its own sewer system, outside the area MSD defines as its own.
  *
  * ---------------------------------------------------------------------------
  * HOUSING ERA IS QUALITATIVE HERE
@@ -54,6 +54,7 @@
 
 import { stLouisCityContent } from './st-louis-city'
 import { chesterfieldContent } from './st-louis-chesterfield'
+import { stCharlesContent } from './st-louis-st-charles'
 import { ballwinContent } from './st-louis-ballwin'
 import { florissantContent } from './st-louis-florissant'
 import type {
@@ -1343,113 +1344,7 @@ export const stLouisLocationContent: Partial<Record<PageId, LocationPageContent>
   [id('loc-stl-chesterfield')]: chesterfieldContent,
 
   /* ------------------------------------------------------- St. Charles -- */
-  [id('loc-stl-st-charles')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in St. Charles, Missouri.',
-    hero: {
-      eyebrow: 'St. Charles',
-      title: 'Sewer inspection and cleaning in St. Charles',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for St. Charles
-          properties, a city that operates entirely outside MSD&rsquo;s
-          territory, on its own sewer system.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>St. Charles runs its own sewer system</h2>
-        <p>
-          This is the structural difference that sets St. Charles apart from
-          most of the St. Louis area. The City of St. Charles is not in the
-          Metropolitan St. Louis Sewer District&rsquo;s service territory. It
-          operates its own sanitary sewer system independently.
-        </p>
-        <p>
-          That system comprises two treatment facilities (one on the
-          Mississippi River rated at 9.63 million gallons per day, one on the
-          Missouri River rated at 7.54) together with 22 lift stations.
-          Day-to-day operations are contracted out, while the city&rsquo;s own
-          Utilities Division retains regulatory oversight.
-        </p>
-        <p>
-          For a property owner, the practical consequence is that the authority,
-          the rules, and the program are the city&rsquo;s, not MSD&rsquo;s.
-          Guidance written for St. Louis County does not necessarily apply here.
-        </p>
-
-        <h2>A different reimbursement structure</h2>
-        <p>
-          The annual charge is $28 on residential property, the same figure
-          most neighbouring municipalities collect. What differs is what that
-          charge buys.
-        </p>
-        <p>
-          Rather than covering the full cost of an eligible repair, the
-          St. Charles program reimburses 90% of the authorised cost, capped at
-          $7,500.
-        </p>
-        <p>
-          Covered work includes patching or replacement of the defective
-          lateral, digging, dirt replacement, and seeding. Landscaping and
-          ornamental structures are excluded.
-        </p>
-        <p>
-          The ordinance requires written certification from a licensed master
-          plumber or drainlayer that cabling was attempted and did not resolve
-          the issue, a different evidentiary route from programs that require
-          video as a matter of course.
-        </p>
-
-        <h2>What that means for a homeowner</h2>
-        <p>
-          A 90% structure means a share of the cost remains yours regardless of
-          approval, which makes the size of the repair, and therefore the
-          precise nature and position of the defect, worth establishing
-          properly before work is authorised.
-        </p>
-
-        <h2>Construction era</h2>
-        <p>
-          St. Charles&rsquo;s housing dates predominantly from the mid-1980s
-          onward, with growth continuing through the 2000s and a small
-          pre-1940 river-town core of roughly 4% (American Community Survey,
-          2019&ndash;2023 five-year estimates).
-        </p>
-        <p>
-          Sources differ on the precise median year for St. Charles, so we
-          describe the era rather than quote a single figure we cannot pin
-          down. The practical point holds either way: most laterals here are
-          PVC-era, where ground movement rather than material decay is the
-          usual cause of trouble.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-st-charles-prepurchase'), id('svc-stl-sewer-lateral-inspection-reporting')],
-    faq: [
-      {
-        question: 'Is St. Charles served by MSD?',
-        answer: (
-          <p>
-            No. The City of St. Charles operates its own sanitary sewer system,
-            with its own treatment facilities and its own oversight. It is
-            outside MSD&rsquo;s service territory.
-          </p>
-        ),
-      },
-      {
-        question: 'How much does the St. Charles program reimburse?',
-        answer: (
-          <p>
-            90% of the authorised cost, capped at $7,500, a different
-            structure from neighbouring programs that cover the full cost of
-            an eligible repair up to their own limits.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-stl-st-charles')]: stCharlesContent,
 }
 
 /* ==========================================================================
