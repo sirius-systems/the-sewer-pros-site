@@ -389,24 +389,31 @@ export const sanDiegoServiceLocationContent: Partial<
     },
     body: (
       <>
-        <h2>The code is unusually direct about this</h2>
+        <h2>What the code says about cleaning</h2>
         <p>
-          Escondido&rsquo;s municipal code at §22-165 places responsibility on
-          the property owner for all maintenance, repair, replacement, cleaning,
-          and removal of blockages in the lateral. The city is responsible only
-          for damage it or its contractors directly caused.
+          Under section 22-165 of the Escondido Municipal Code, clearing a
+          blockage in the lateral is the owner&rsquo;s responsibility. The
+          section also puts maintenance, repair, replacement and cleaning of the
+          lateral on the owner, up to and including the connection to the
+          City&rsquo;s main. The City may be responsible only for damage the
+          owner proves came from work by the City or a contractor working for
+          the City.
         </p>
         <p>
           Cleaning a blocked lateral is therefore the owner&rsquo;s to arrange
-          and to fund, without the ambiguity that surrounds this question in
-          some jurisdictions.
+          and to fund. For what the code covers, who to call, and the
+          City&rsquo;s own numbers, see our{' '}
+          <Link href="/san-diego-ca/escondido/">
+            Escondido sewer inspection and cleaning
+          </Link>{' '}
+          page.
         </p>
 
         <h2>No program to offset it</h2>
         <p>
-          We found no lateral repair assistance program in Escondido. Unlike
-          Carlsbad, there appears to be nothing to reduce the
-          cost of a structural failure.
+          We did not find a City of Escondido lateral repair, replacement, grant
+          or reimbursement program. That is &ldquo;none found&rdquo;, not a
+          statement that none exists.
         </p>
         <p>
           That raises rather than lowers the value of knowing whether a
@@ -423,11 +430,10 @@ export const sanDiegoServiceLocationContent: Partial<
           addressing.
         </p>
         <p>
-          Escondido&rsquo;s housing has a median year built of around 1981
-          (American Community Survey, 2019&ndash;2023 five-year estimates),
-          spanning the transition toward PVC. That range is wide enough that the
-          age of a house is a weak predictor of what its lateral is made of or
-          how it is holding up.
+          The Census median year built for Escondido homes is 1981 (American
+          Community Survey, 2020-2024 five-year estimates). House age does not
+          show what a lateral is made of or how it is holding up. Only an
+          inspection of your line can show that.
         </p>
 
         <h2>When cleaning is the right answer</h2>
