@@ -4932,6 +4932,20 @@ DEC-071's statement that the City of San Diego's own guidance says there is no r
 
 CVSan is the Castro Valley Sanitary District in Alameda County. Chula Vista's sewer is run by the City of Chula Vista. Earlier text repeated in this register (the San Diego market entries around DEC-071 and the cite-and-link notes) that named CVSan as Chula Vista's authority and described a CVSan lateral grant is superseded; those entries are not edited. The Chula Vista page now leads with the City's written sewer maintenance policy (Council Policy 570-01), which reimburses reasonable costs for some qualifying stoppages and is not a grant. No City lateral grant or assistance program was found, which is "none found", not a statement that none exists. Removed everywhere: the CVSan authority claim, the grant terms (three quotes, Qualified Contractor List, 90 days, paid-in-full invoice), the cvsan.org grant link, the Carlsbad cap comparison, and the median-year-built figures from a secondary source.
 
+## DEC-118 - Escondido Page Claims Corrected
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/san-diego-escondido.tsx` (new; replaces the inline Escondido entry in `content/pages/san-diego.tsx`)
+* `content/pages/san-diego-service-location.tsx` (`sl-escondido-cleaning`)
+* `docs/04-master-page-build-list.md` (`loc-sd-escondido` row)
+
+The statement in the San Diego differentiation entry (around DEC-071 and the Chula Vista and Carlsbad notes) that Escondido's code section 22-165 is "unusually explicit" is superseded; that entry is not edited. The comparison is unsourced. The Escondido page now states what section 22-165 says, read in full from eCode360 on 2026-10-04, and quotes at most nine words of it. Removed from the Escondido pages: "more explicit than most jurisdictions" and "unusually direct", the comparison with Carlsbad and Chula Vista grants, the "suburban expansion" narrative, the PVC statement, "directly caused" (the code does not say "directly"), and the "clearing a clog is the owner's, not the city's" overstatement. The 1981 median year built is kept and is now sourced to ACS 2020-2024 (tables B25034 and B25035), replacing the 2019-2023 label. No City lateral repair, grant or reimbursement program was found, which is "none found", not a statement that none exists. The page also fixes a rendering defect that showed the St. Louis founding year on this San Diego page; DEC-071 sets San Diego at 2015.
+
 ---
 
 # 26. Decision Quality Standard

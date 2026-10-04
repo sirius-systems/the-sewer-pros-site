@@ -60,6 +60,7 @@ import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
 import { carlsbadContent } from './san-diego-carlsbad'
 import { chulaVistaContent } from './san-diego-chula-vista'
+import { escondidoContent } from './san-diego-escondido'
 import { sanDiegoCityContent } from './san-diego-city'
 import {
   homeServiceCards,
@@ -1528,73 +1529,8 @@ export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent
   [id('loc-sd-chula-vista')]: chulaVistaContent,
 
   /* --------------------------------------------------------- Escondido -- */
-  [id('loc-sd-escondido')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in Escondido, California.',
-    hero: {
-      eyebrow: 'Escondido',
-      title: 'Sewer inspection and cleaning in Escondido',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Escondido properties,
-          where the municipal code is unusually explicit about what the owner is
-          responsible for.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>The code states it directly</h2>
-        <p>
-          Escondido&rsquo;s municipal code, at §22-165, places responsibility on
-          the property owner for all maintenance, repair, replacement, cleaning,
-          and removal of blockages in the sewer lateral. The city&rsquo;s
-          responsibility is limited to damage that it or its contractors
-          directly caused.
-        </p>
-        <p>
-          That is more explicit than most jurisdictions manage, and it removes
-          the ambiguity that often surrounds who handles a blockage. Clearing a
-          clog is the owner&rsquo;s, not the city&rsquo;s.
-        </p>
-
-        <h2>No assistance program</h2>
-        <p>
-          We found no lateral repair assistance program in Escondido. Unlike
-          Carlsbad, there appears to be no grant to offset the
-          cost, which puts the full expense on the property owner.
-        </p>
-        <p>
-          Where no program exists, the value of knowing what is actually wrong
-          before committing to a remedy goes up rather than down. The difference
-          between a line that will respond to cleaning and one that needs
-          replacing is the difference between two very different invoices.
-        </p>
-
-        <h2>Suburban expansion stock</h2>
-        <p>
-          Escondido&rsquo;s median year built is 1981 (American Community
-          Survey, 2019&ndash;2023 five-year estimates), reflecting 1970s and
-          1980s suburban expansion with a modest older share. That span crosses the transition
-          toward PVC, so the age of a house is a weak predictor of what its
-          lateral is made of or what condition it is in.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-escondido-cleaning')],
-    faq: [
-      {
-        question: 'Does Escondido clear blockages in my lateral?',
-        answer: (
-          <p>
-            No. Municipal code §22-165 places maintenance, repair, replacement,
-            cleaning, and blockage removal on the property owner. The city is
-            responsible only for damage it or its contractors caused.
-          </p>
-        ),
-      },
-    ],
-  },
+  // Full rich composition lives in its own module (same pattern as Chula Vista).
+  [id('loc-sd-escondido')]: escondidoContent,
 
   /* --------------------------------------------------------- Oceanside -- */
   [id('loc-sd-oceanside')]: {
