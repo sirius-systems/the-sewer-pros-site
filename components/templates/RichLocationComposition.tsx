@@ -25,6 +25,7 @@ import {
   NearbyAreasSection,
   SourcesBlock,
 } from '@/components/sections/location'
+import { SlotPlaceholderBox } from '@/components/sections/location/SlotPlaceholderBox'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { PageShell } from './PageShell'
 import type { LocationHeroForm, LocationPageContent, MasterPageRecord } from '@/types'
@@ -74,6 +75,21 @@ export function RichLocationComposition({
     content.finalCta?.background?.placeholder === undefined
       ? content.finalCta?.background
       : undefined
+
+  const finalCtaForm =
+    content.finalCta !== undefined ? (
+      <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+        <LeadFormSection
+          bare
+          id="final-request-heading"
+          idPrefix="final-lead"
+          title={content.finalCta.formTitle}
+          submitLabel={content.finalCta.submitLabel}
+          messageLabel={content.finalCta.messageLabel}
+          config={content.finalCta.form}
+        />
+      </div>
+    ) : null
 
   const densities: SectionDensity[] = [
     'sparse', // hero
@@ -154,7 +170,19 @@ export function RichLocationComposition({
           backdrop={null}
           aside={
             phone !== undefined ? (
-              <HeroRequestCard card={heroForm.card} phone={phone} />
+              heroForm.slotPlaceholder?.placeholder !== undefined ? (
+                // Opt-in review-build box above the request card, never behind
+                // the hero copy, so contrast and the form are unaffected.
+                <div className="space-y-4">
+                  <SlotPlaceholderBox
+                    image={heroForm.slotPlaceholder}
+                    className="aspect-auto py-3"
+                  />
+                  <HeroRequestCard card={heroForm.card} phone={phone} />
+                </div>
+              ) : (
+                <HeroRequestCard card={heroForm.card} phone={phone} />
+              )
             ) : undefined
           }
         />
@@ -235,17 +263,14 @@ export function RichLocationComposition({
           phoneVariant="button"
           backgroundImage={finalCtaBackground}
           proof={
-            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-              <LeadFormSection
-                bare
-                id="final-request-heading"
-                idPrefix="final-lead"
-                title={content.finalCta.formTitle}
-                submitLabel={content.finalCta.submitLabel}
-                messageLabel={content.finalCta.messageLabel}
-                config={content.finalCta.form}
-              />
-            </div>
+            content.finalCta.slotPlaceholder?.placeholder !== undefined ? (
+              <div className="space-y-6">
+                <SlotPlaceholderBox image={content.finalCta.slotPlaceholder} />
+                {finalCtaForm}
+              </div>
+            ) : (
+              finalCtaForm
+            )
           }
         />
       )}

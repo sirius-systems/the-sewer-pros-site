@@ -278,16 +278,14 @@ const slotBoxes = mainHtml.match(/Image slot: [a-z-]+/g) ?? []
 check('border-dashed appears only on labelled slot boxes', dashed === slotBoxes.length, `${dashed} vs ${slotBoxes.length}`)
 const got = slotBoxes.map((s) => s.replace('Image slot: ', ''))
 console.log(`INFO  slot placeholders drawn (${got.length}): ${got.join(', ')}`)
-// All 19 slots are defined in the module. The hero, nine service cards and final-bg cannot draw a box.
+// All 19 slots are defined in the module and each draws a box while the flag is on.
 const moduleSrc = fs.readFileSync(path.resolve('content/pages/san-diego-chula-vista.tsx'), 'utf8')
 const DEFINED = ['chula-vista-hero', 'svc-camera', 'svc-cleaning', 'svc-jetting', 'svc-cleaning-camera', 'svc-locating', 'svc-drain', 'svc-prepurchase', 'svc-backup', 'svc-maintenance', 'system-street', 'call-cleanout', 'program-footage', 'so-inspect', 'so-document', 'so-decide', 'buy-buyer', 'buy-agent', 'final-bg']
 const definedIds = [...moduleSrc.matchAll(/^\s+id: '([a-z-]+)',$/gm)].map((m) => m[1])
 check('exactly the 19 expected slot ids are defined in the module', JSON.stringify(definedIds) === JSON.stringify(DEFINED), definedIds.join(','))
 check('no defined slot has a src yet', !/^\s+src: '/m.test(moduleSrc.slice(moduleSrc.indexOf('const IMAGE_SLOTS'), moduleSrc.indexOf('function slotImage'))))
 if (PLACEHOLDERS_ON) {
-  const EXPECT = ['system-street', 'call-cleanout', 'program-footage', 'so-inspect', 'so-document', 'so-decide', 'buy-buyer', 'buy-agent']
-  check('the eight slots whose components can draw a box draw one', EXPECT.every((e) => got.includes(e)) && got.length === EXPECT.length, got.join(', '))
-  check('no box for the hero, a service card slot or final-bg (their components cannot draw one)', !got.some((g) => g === 'final-bg' || g === 'chula-vista-hero' || g.startsWith('svc-')), got.join(', '))
+  check('all 19 defined slots draw a labelled box, one per id', DEFINED.every((e) => got.includes(e)) && got.length === DEFINED.length && new Set(got).size === got.length, got.join(', '))
   check('no existing or rendered art on the page', !/<img[^>]+\/images\//.test(mainHtml) && !/\/_next\/image\?url=%2Fimages/.test(mainHtml))
   const boxes = [...mainHtml.matchAll(/Image slot: ([a-z-]+)<\/p><p>(16:9|4:3)<\/p><p>([^<]+)<\/p>/g)]
   check('each slot box is well-formed (id, ratio, shot text)', boxes.length === got.length, `${boxes.length} well-formed of ${got.length}`)
