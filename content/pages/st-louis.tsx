@@ -669,7 +669,7 @@ export const stLouisMarketContent: MarketPageContent = {
   serviceArea: {
     title: 'Where we serve in the St. Louis area',
     intro:
-      'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services throughout the greater St. Louis region. The communities highlighted below have dedicated service pages, but they do not define the limits of our coverage. If your city or neighborhood is not listed, contact us to confirm service availability for your property.',
+      'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, and diagnostic services throughout the greater St. Louis region. Start with the counties below, or go straight to a featured community if yours is listed.',
     counties: {
       title: 'Sewer service across the greater St. Louis region',
       intro:
@@ -715,14 +715,16 @@ export const stLouisMarketContent: MarketPageContent = {
     cities: {
       title: 'Featured St. Louis-area service locations',
       intro:
-        'Explore dedicated sewer inspection and cleaning information for featured communities across the St. Louis area. Each local page includes services, coverage details, and guidance for property owners and professionals in that community.',
+        'These five communities have their own pages covering who maintains the sewer and how the local lateral program works. They are featured communities, not the limit of where we work.',
       layout: 'grid',
       items: [
         {
           pageId: id('loc-stl-st-louis-city'),
           title: 'St. Louis City, MO',
           description:
-            'Explore sewer camera inspection, sewer cleaning, and diagnostic services for homes, buyers, property managers, and commercial properties across St. Louis City.',
+            'MSD runs the public sewer for the whole city, and the lateral from your building to that main is the owner’s to maintain.',
+          // Some City ZIPs (e.g. 63105, 63130, 63143) straddle neighboring
+          // municipalities; listing one says overlap, not full coverage.
           zipCodes: ['63101', '63102', '63103', '63104', '63105', '63106', '63107', '63108', '63109', '63110', '63111', '63112', '63113', '63115', '63116', '63118', '63120', '63130', '63136', '63137', '63138', '63139', '63143', '63147'],
           ctaLabel: 'Explore St. Louis City',
           image: {
@@ -735,7 +737,7 @@ export const stLouisMarketContent: MarketPageContent = {
           pageId: id('loc-stl-ballwin'),
           title: 'Ballwin, MO',
           description:
-            'Find sewer inspection, cleaning, and diagnostic services for residential and commercial properties in Ballwin.',
+            'Ballwin runs its own lateral repair program and treats root clearing once a year or less as normal maintenance. A camera shows which side your line falls on.',
           zipCodes: ['63011', '63021'],
           ctaLabel: 'Explore Ballwin',
           image: {
@@ -748,7 +750,7 @@ export const stLouisMarketContent: MarketPageContent = {
           pageId: id('loc-stl-florissant'),
           title: 'Florissant, MO',
           description:
-            'Review sewer camera inspection, sewer cleaning, and line-diagnostic services available for properties in Florissant.',
+            'Florissant’s City lateral program stops five feet from the foundation, so where along the line a defect sits matters.',
           zipCodes: ['63031', '63033', '63034'],
           ctaLabel: 'Explore Florissant',
           image: {
@@ -761,7 +763,7 @@ export const stLouisMarketContent: MarketPageContent = {
           pageId: id('loc-stl-chesterfield'),
           title: 'Chesterfield, MO',
           description:
-            'Explore evidence-first sewer inspection, cleaning, and locating services for Chesterfield properties.',
+            'Chesterfield’s City lateral program starts the eligible lateral three to five feet outside the foundation and treats routine root removal as maintenance.',
           zipCodes: ['63005', '63017'],
           ctaLabel: 'Explore Chesterfield',
           image: {
@@ -774,7 +776,9 @@ export const stLouisMarketContent: MarketPageContent = {
           pageId: id('loc-stl-st-charles'),
           title: 'St. Charles, MO',
           description:
-            'Find sewer camera inspection, sewer cleaning, and diagnostic services for homes and properties in St. Charles.',
+            'St. Charles runs its own sewer system through City Public Works, outside the area MSD defines as its service area.',
+          // 63302 is PO Box-only and left out. Checked against zip-codes.com
+          // (USPS-derived); not yet against USPS or Census ZCTA directly.
           zipCodes: ['63301', '63303', '63304'],
           ctaLabel: 'Explore St. Charles',
           image: {
