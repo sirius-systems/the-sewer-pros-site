@@ -1643,9 +1643,10 @@ export const stLouisServiceLocationContent: Partial<
         <p>
           Two consequences follow for someone deciding whether to buy. A share
           of any repair remains the owner&rsquo;s regardless of approval, so the
-          scale of the defect matters. And the City Code asks for a written
-          statement from a master plumber or master drainlayer that the lateral
-          has been cabled, which gives a recurring blockage a documentation
+          scale of the defect matters. And the City Code asks for written
+          certification from a properly licensed master plumber or master
+          drainlayer that the lateral has been cabled and that cabling did not
+          resolve the problem, which gives a recurring blockage a documentation
           path.
         </p>
 

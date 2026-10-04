@@ -619,7 +619,7 @@ export const stCharlesContent: LocationPageContent = {
     },
     afterCensus: [
       'Housing age does not tell you what pipe is in your lateral. The City does not publish a pipe material or installation era for St. Charles, so the only way to know the condition of your line is to look at it.',
-      'A drain that still works is not proof of a sound pipe, and a blockage is not proof of a broken one. The City’s program starts from that difference: it asks for a written statement from a master plumber or master drainlayer that the lateral has been cabled before an application, and it sends its own camera to determine the repair scope. A camera shows which situation your line is in.',
+      'A drain that still works is not proof of a sound pipe, and a blockage is not proof of a broken one. The City’s program starts from that difference: it asks, before an application, for written certification from a properly licensed master plumber or master drainlayer that the lateral has been cabled and that cabling did not resolve the problem, and it sends its own camera to determine the repair scope. A camera shows which situation your line is in.',
     ],
     table: {
       caption: 'What a camera can find on a St. Charles lateral',
@@ -716,7 +716,7 @@ export const stCharlesContent: LocationPageContent = {
       steps: [
         {
           title: 'Cable the line first.',
-          body: 'The City tells residents to have a plumber or drainlayer cable the lateral and then contact Public Works. The Code asks for a written statement from a master plumber or master drainlayer that the lateral has been cabled, dated within six months of the application, plus a written problem statement.',
+          body: 'The City tells residents to have a plumber or drainlayer cable the lateral and then contact Public Works. The Code asks for written certification from a properly licensed master plumber or master drainlayer that the lateral has been cabled and that cabling did not resolve the problem, dated within six months of the application, plus a written problem statement.',
         },
         {
           title: 'Apply.',
@@ -923,9 +923,10 @@ export const stCharlesContent: LocationPageContent = {
       question: 'What do I have to do before I apply?',
       answer: (
         <p>
-          Have the lateral cabled by a plumber or drainlayer first. The Code asks for a written
-          statement from a master plumber or master drainlayer that the lateral has been
-          cabled, within six months of the application, plus a written problem statement. After
+          Have the lateral cabled by a plumber or drainlayer first. The Code asks for written
+          certification from a properly licensed master plumber or master drainlayer that the
+          lateral has been cabled and that cabling did not resolve the problem, within six
+          months of the application, plus a written problem statement. After
           you apply, the City&rsquo;s program administrator schedules a camera investigation
           and you collect at least three bids. Sources: City Code section 705.300 and 705.310;
           City sewer lateral FAQ.
