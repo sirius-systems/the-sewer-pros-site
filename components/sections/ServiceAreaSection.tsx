@@ -556,6 +556,21 @@ export function ServiceAreaSection({
                         {card.description}
                       </p>
 
+                      {card.zipCodes !== undefined &&
+                        card.zipCodes.length > 0 && (
+                          <p
+                            className={cn(
+                              'mt-3 max-w-prose text-caption leading-5',
+                              image !== undefined
+                                ? 'text-white'
+                                : 'text-muted-foreground',
+                            )}
+                          >
+                            <span className="font-semibold">ZIP codes: </span>
+                            {card.zipCodes.join(', ')}
+                          </p>
+                        )}
+
                       {/*
                         The action, as text rather than an arrow alone.
                         18 §47: a link whose name is a glyph tells a
