@@ -4962,6 +4962,23 @@ The statement in the San Diego differentiation entry (around DEC-071 and the Chu
 
 The statement in the San Diego differentiation entry (around DEC-071) that "San Marcos is served by Vallecitos Water District rather than the city" is superseded by the City of San Marcos's own statement that it does not provide water or sewer service and that one of three agencies does, depending on location: Vallecitos Water District, Vista Irrigation District or Rincon del Diablo Municipal Water District (the City's page spells the last one "Rincon Diablo Water District"). That entry is not edited. The housing-age figures (1996 median year built, 7.7 percent, labelled 2019-2023), "among the newest housing in the region", the PVC statement, the bellies and settlement narrative, "periodic maintenance by the homeowner", "appears to fall entirely on the property owner" and "independent special district" are removed as unsourced. The San Marcos pages now state only Vallecitos Water District's published connection-point wording for the owner's lateral, for addresses on its sewer system, and say none was found for a lateral repair or reimbursement program. No claim is made about Vista Irrigation District or Rincon del Diablo sewer service. The page also fixes a rendering defect that showed the St. Louis founding year on this San Diego page; DEC-071 sets San Diego at 2015.
 
+
+## DEC-120 - Oceanside Page Claims Corrected
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/san-diego-oceanside.tsx` (new; replaces the inline Oceanside entry in `content/pages/san-diego.tsx`)
+* `content/pages/san-diego-service-location.tsx` (`sl-oceanside-cleaning`, and the header comment)
+* `docs/04-master-page-build-list.md` (`loc-sd-oceanside` row)
+
+The statement in the San Diego differentiation entry (around DEC-071 and DEC-072) that no published Oceanside lateral-responsibility statement was located, so the page gives the county-wide pattern and directs readers to Water Utilities, is superseded; that entry is not edited. The City of Oceanside Water Utilities contact page says private sewer lines "from the street to your house" are the property owner's responsibility and tells a customer with a sewer leak on their property to call a plumber (read 2026-10-04, page date not shown). The page quotes that short phrase and cites it, and says the City does not publish the exact connection point. The cite-and-link handling for Oceanside is replaced by that sentence.
+
+The Oceanside housing figures now cite ACS 2020-2024 5-year estimates (tables B25034 and B25035, Oceanside city, read 2026-10-04) instead of the 2019-2023 label. Removed as unsourced: the "as in most San Diego County jurisdictions" rule, the comparison with Carlsbad and Chula Vista, the ground-movement and settlement narrative, "coastal conditions" and "coastal and suburban housing" characterizations, the redirecting `/residents/water-utilities` link, and the St. Louis "Since 2011" in the trust strip. "none found" statements are scoped to the City pages reviewed. No business capability, price, license or guarantee changed.
+
 ---
 
 # 26. Decision Quality Standard

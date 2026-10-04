@@ -24,8 +24,10 @@
  * ---------------------------------------------------------------------------
  * Rather than assert an unconfirmed figure, these pages link to the
  * authority's own page and let the reader confirm what applies to their
- * address. Applied to Oceanside's responsibility
- * statement, and Carlsbad's southern-boundary eligibility.
+ * address. Carlsbad's southern-boundary eligibility
+ * is cited and linked this way. For Oceanside, cite-and-link was replaced on
+ * Oct 4, 2026 by the City's own published sentence (private sewer lines "from
+ * the street to your house" are the owner's).
  *
  * This is stronger than omission: it gives the reader the answer's
  * location rather than pretending the question does not exist.
@@ -465,23 +467,21 @@ export const sanDiegoServiceLocationContent: Partial<
         <h2>Sewer service in Oceanside</h2>
         <p>
           Sewer service here is provided by the City of Oceanside Water
-          Utilities Department. As in most San Diego County jurisdictions,
-          sewer laterals are generally the property owner&rsquo;s
-          responsibility.
-        </p>
-        <p>
-          We have not located a published Oceanside statement setting out the
-          exact boundary of that responsibility, and we would rather point you
-          to the source than restate a neighbouring city&rsquo;s rule as though
-          it were Oceanside&rsquo;s. Confirm what applies to your property with{' '}
-          <a href="https://www.ci.oceanside.ca.us/residents/water-utilities">
+          Utilities Department. The City says private sewer lines, &ldquo;from
+          the street to your house,&rdquo; are the property owner&rsquo;s
+          responsibility. We did not find the exact point where the City&rsquo;s
+          part ends, so confirm that with{' '}
+          <a
+            href="https://www.ci.oceanside.ca.us/government/water-utilities/contact-us"
+            rel="noopener"
+          >
             Oceanside Water Utilities
           </a>
           .
         </p>
         <p>
-          We also found no lateral repair assistance program here, unlike
-          Carlsbad; worth confirming for yourself either way.
+          We did not find a City lateral repair, grant or reimbursement program
+          on the City pages we reviewed.
         </p>
 
         <h2>What cleaning addresses, and what it does not</h2>
@@ -497,18 +497,12 @@ export const sanDiegoServiceLocationContent: Partial<
           again on the same cycle.
         </p>
 
-        <h2>Coastal and suburban stock</h2>
+        <h2>Home age and the line</h2>
         <p>
-          Oceanside&rsquo;s housing has a median year built of around 1984
-          (American Community Survey, 2019&ndash;2023 five-year estimates),
-          reflecting 1970s and 1980s growth continuing into the 1990s.
-        </p>
-        <p>
-          On lines of that period, recurring problems are more often caused by
-          ground movement than by material decay: a section that lost slope, a
-          joint opened by settlement, damage from later work on the property.
-          Those produce the same symptom as an old failing line and are not
-          distinguishable from the fixtures.
+          Oceanside&rsquo;s median year built is 1984 (ACS 2020&ndash;2024
+          5-year estimates, Oceanside city). The year a house was built does
+          not tell you the condition or material of its lateral. Only an
+          inspection of the line can.
         </p>
 
         <h2>When to look further</h2>
