@@ -4862,6 +4862,18 @@ FAQPage markup is enabled for `/st-louis-mo/florissant/` (`faqSchemaApproved: tr
 
 FAQPage markup is enabled for `/st-louis-mo/st-charles/` (`faqSchemaApproved: true`) under the principle approved in DEC-108. The ten FAQ entries are visible on the page and the markup is generated from them. The St. Louis review snapshot (4.9 from 595 Google reviews, as of September 1, 2026) is shown as visible text only, with no review or rating markup, per DEC-028 and DEC-085. Program terms (the $28 annual fee per City Code section 150.030, the 90 percent and $7,500 reimbursement, the exclusions) were read from the City of St. Charles Code and program pages on 2026-10-03 under DEC-072. The housing-age figures are from the Census ACS 2024 5-year tables B25034 and B25035, read directly. The outside-MSD statement is worded as "outside the area MSD defines as its service area" because MSD's page does not name St. Charles.
 
+## DEC-113 - FAQPage Markup Enabled for St. Louis City
+
+**Date:** 2026-10-03
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/st-louis-city.tsx`
+
+FAQPage markup is enabled for `/st-louis-mo/st-louis-city/` (`faqSchemaApproved: true`) under the principle approved in DEC-108, which named this page as the natural first candidate. The ten FAQ entries are visible on the page and the markup is generated from them. No review or rating markup is emitted. The page was brought to the same layout and data model as the Chesterfield, Ballwin and Florissant pages: the full image-slot registry, the program steps and "where an independent inspection fits" callout, dated sources, and `servicePageIds`. The program steps were read from the City Street Division's Sewer Lateral Repair Program page and the plumbing-permit page on 2026-10-03 under DEC-072; the dollar fee that page shows is deliberately not repeated on this page. The pre-1940 housing statement still rests on ACS 2019-2023 5-year estimates with the primary Census table check pending.
+
 ---
 
 # 26. Decision Quality Standard
