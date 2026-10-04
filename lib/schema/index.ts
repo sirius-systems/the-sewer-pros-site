@@ -54,8 +54,8 @@ export { pageSchema } from './graph'
 export type { PageSchemaInput } from './graph'
 
 /**
- * `FAQPage` — OPT-IN PER PAGE (15 §57-58). DEC-089 approves the home
- * page and nothing else. The opt-in is passing `faq` to `pageSchema()`,
- * which must be the same array the page renders.
+ * `FAQPage` — DEFAULT-ON WHERE AN FAQ RENDERS (15 §58, DEC-114). Each
+ * template passes `faq` to `pageSchema()`, which must be the same array
+ * the page renders. A page with no FAQ emits nothing.
  */
 export { faqPageNode, faqAnswerText } from './faq'

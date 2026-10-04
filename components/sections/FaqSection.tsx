@@ -22,11 +22,11 @@ import { SectionHeading } from './SectionHeading'
  * ---------------------------------------------------------------------------
  * ⚠ NO FAQPage SCHEMA IS EMITTED HERE
  * ---------------------------------------------------------------------------
- * 15 §57-58 set a deliberate policy: do not mark up every FAQ block
- * automatically. Schema is step 15 and belongs to the schema layer,
- * where the decision to emit `FAQPage` is made per page against 15 §56.
- * Rendering FAQ markup from a presentational component would apply that
- * policy by accident.
+ * FAQPage is on by default wherever a template renders an FAQ
+ * (DEC-114, 15 §58), but it is emitted by the schema layer: each
+ * template passes the same `entries` array to `pageSchema()`. This
+ * presentational component stays free of markup so the two cannot
+ * drift in separate places.
  *
  * 18 §67 notes that important direct-answer content should not be
  * hidden when visibility improves the experience — hence `defaultOpen`

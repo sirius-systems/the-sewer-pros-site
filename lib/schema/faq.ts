@@ -35,11 +35,13 @@
  * because their text IS their children.
  *
  * If an FAQ answer on a schema-emitting page needs a component, extend
- * this extractor deliberately; do not widen the guard.
+ * this extractor deliberately; do not widen the guard. `ApprovedInlineLink`
+ * is the one deliberate extension (DEC-114): its text is its children.
  */
 
 import { Fragment, isValidElement, type ReactNode } from 'react'
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type { AnswerNode, FaqContent, FaqPageNode, QuestionNode } from '@/types'
 
 interface WithChildren {
@@ -69,6 +71,17 @@ function inlineText(node: ReactNode, context: string): string {
 
   if (isValidElement(node)) {
     const { type } = node
+    /*
+      ⚠ ONE COMPONENT IS TRANSPARENT, DELIBERATELY (DEC-114). It renders
+      `<Link>{children}</Link>` and nothing else, so its visible text IS
+      its children; only the href comes from the registry. FAQ answers
+      across the site link to service pages through it, and without this
+      the default-on policy would throw on every one of them. Any other
+      component still throws, for the reason above.
+    */
+    if (type === ApprovedInlineLink) {
+      return inlineText(childrenOf(node), context)
+    }
     if (typeof type !== 'string' && type !== Fragment) {
       throw new Error(
         `FAQ answer for "${context}" contains a React component. ` +

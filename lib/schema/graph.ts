@@ -26,18 +26,14 @@
  * at step 19 — whichever hierarchy is right, markup and page agree.
  *
  * ---------------------------------------------------------------------------
- * ⚠ FAQPage IS OPT-IN, NEVER AUTOMATIC (15 §57-58, DEC-089)
+ * ⚠ FAQPage IS DEFAULT-ON WHERE AN FAQ RENDERS (15 §58, DEC-114)
  * ---------------------------------------------------------------------------
- * "Do not schema every FAQ automatically." Most pages carry an FAQ
- * section; emitting `FAQPage` from all of them would apply a policy by
- * accident across 70 pages.
+ * DEC-089 started with the home page only; DEC-108 approved the
+ * principle for all pages and DEC-114 made it the default.
  *
- * The opt-in is the `faq` input below. A caller that wants the node
- * hands over the SAME array the page renders — there is no boolean to
- * set, so the node cannot be switched on for a page whose visible
- * content is not also supplied. DEC-089 approves exactly one caller:
- * the home page. Adding a second is a new decision under 15 §58, not
- * an implementation detail.
+ * The input is still the `faq` array below, not a boolean. A template
+ * hands over the SAME array the page renders, so the node cannot be
+ * emitted for content the reader cannot see. No FAQ means no node.
  */
 
 import type {
@@ -260,9 +256,8 @@ export interface PageSchemaInput {
   /**
    * The page's visible FAQ, where `FAQPage` has been approved for it.
    *
-   * Supplying this IS the opt-in — 15 §57-58 require a per-page
-   * decision rather than a side effect of having an FAQ, and DEC-089
-   * approves the home page only. Omit it and no `FAQPage` is emitted.
+   * Templates supply it wherever they render an FAQ (DEC-114). Omit it
+   * and no `FAQPage` is emitted.
    *
    * ⚠ Must be the same array the page RENDERS. `faqPageNode()` reads
    * the answer text out of the JSX, so passing a different array would

@@ -124,6 +124,9 @@ export function AudiencePageTemplate({
       schema={{
         title: content.seoTitle ?? content.hero.title,
         description: content.metaDescription,
+        // DEC-114: FAQPage is on wherever the page renders an FAQ. Same array
+        // the FaqSection renders, so markup and visible text cannot diverge.
+        faq: content.faq,
       }}
     >
       <Hero

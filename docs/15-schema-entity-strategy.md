@@ -1602,19 +1602,16 @@ The project should not measure success based on obtaining FAQ rich-result expans
 
 ---
 
-# 58. Do Not Schema Every FAQ Automatically
+# 58. FAQPage Schema Default (superseded by DEC-114, 2026-10-03)
 
-Do not automatically generate `FAQPage` schema merely because a page contains an FAQ component.
+`FAQPage` markup is now on by default for every page that renders an FAQ section (DEC-108 approved the principle; DEC-114 made it the default). Templates pass the same `faq` array the page renders to `pageSchema()`, so markup and visible text cannot diverge (§67).
 
-Schema decisions should account for:
+The earlier rule here ("do not schema every FAQ automatically", opt-in per page) is retired. What remains of it:
 
-* page purpose
-* content quality
-* maintenance cost
-* search-engine support
-* duplication
-
-A reusable FAQ component does not require universal schema output.
+* a page with no FAQ section, or an empty one, emits no `FAQPage`
+* the questions and answers in schema must match the visible content exactly
+* `faqSchemaApproved: false` on a location page opts that page out
+* an FAQ added to a page for markup alone, with no visible value to a reader, is still not acceptable
 
 ---
 
