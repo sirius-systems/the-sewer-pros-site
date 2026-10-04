@@ -299,7 +299,7 @@ export const stLouisMarketContent: MarketPageContent = {
       {
         title: 'The terms are not uniform',
         description:
-          'Fees, caps, coverage boundaries, and exclusions differ between municipalities, and the City of St. Charles is not in MSD\u2019s service territory at all: it runs its own sewer system. Whether a program applies to your address, and what it covers, is a question about your specific municipality.',
+          'Fees, caps, coverage boundaries, and exclusions differ between municipalities, and the City of St. Charles runs its own sewer system, outside the area MSD defines as its service area. Whether a program applies to your address, and what it covers, is a question about your specific municipality.',
         icon: 'variation',
         accent: 'amber',
       },
@@ -803,9 +803,9 @@ export const stLouisMarketContent: MarketPageContent = {
         <p>
           Many in the area do, funded by an annual charge on the real estate tax
           bill, but terms vary considerably and not every jurisdiction
-          participates. The City of St. Charles operates outside MSD&rsquo;s
-          territory entirely. Check with your own municipality for what applies
-          to your address.
+          participates. The City of St. Charles runs its own sewer system and
+          sits outside the area MSD defines as its service area. Check with your
+          own municipality for what applies to your address.
         </p>
       ),
     },
@@ -1628,9 +1628,9 @@ export const stLouisServiceLocationContent: Partial<
       <>
         <h2>Different authority, different rules</h2>
         <p>
-          The City of St. Charles is not within MSD&rsquo;s service territory:
-          it operates its own sanitary sewer system, with its own treatment
-          facilities and its own oversight. Guidance a buyer has read about
+          The City of St. Charles runs its own sanitary sewer system, with its
+          own treatment facilities and its own oversight, and sits outside the
+          area MSD defines as its service area. Guidance a buyer has read about
           St. Louis County does not necessarily transfer.
         </p>
 
@@ -1643,10 +1643,10 @@ export const stLouisServiceLocationContent: Partial<
         <p>
           Two consequences follow for someone deciding whether to buy. A share
           of any repair remains the owner&rsquo;s regardless of approval, so the
-          scale of the defect matters. And the ordinance route requires written
-          certification from a licensed master plumber or drainlayer that
-          cabling was attempted and did not resolve the issue, meaning a
-          recurring blockage has a documentation path attached to it.
+          scale of the defect matters. And the City Code asks for a written
+          statement from a master plumber or master drainlayer that the lateral
+          has been cabled, which gives a recurring blockage a documentation
+          path.
         </p>
 
         <h2>What we establish</h2>

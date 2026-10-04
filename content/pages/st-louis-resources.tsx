@@ -134,9 +134,10 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           statement. Florissant requires video inspection for claim approval.
           Ballwin does not pay for video and does not say video is required: it
           asks for documentation of a structural problem, or a history of
-          clearing roots more than once a year. St. Charles&rsquo;s ordinance route instead requires
-          certification that cabling was attempted and did not resolve the
-          issue.
+          clearing roots more than once a year. St. Charles&rsquo;s program instead asks for a written
+          statement from a master plumber or master drainlayer that the lateral
+          has been cabled, and the City uses its own camera investigation to
+          set the repair scope.
         </p>
 
         <h3>What could not be assessed</h3>
@@ -186,9 +187,9 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
         answer: (
           <p>
             No. Many do, funded by an annual charge on the tax bill, but
-            participation and terms vary and the City of St. Charles operates
-            outside MSD&rsquo;s territory entirely. Check with your own
-            municipality.
+            participation and terms vary and the City of St. Charles runs its own
+            sewer system, outside the area MSD defines as its service area.
+            Check with your own municipality.
           </p>
         ),
       },
@@ -307,7 +308,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           </li>
           <li>
             <strong>St. Charles</strong>: 90% of authorised cost capped at
-            $7,500, and outside MSD&rsquo;s territory entirely
+            $7,500, and outside the area MSD defines as its service area
           </li>
         </ul>
         <p>
@@ -465,8 +466,8 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
 
         <h3>St. Charles</h3>
         <p>
-          Not in St. Louis County, and not in MSD&rsquo;s territory: the City
-          of St. Charles operates its own sewer system. Reimburses 90% of the
+          Not in St. Louis County, and outside the area MSD defines as its
+          service area: the City of St. Charles operates its own sewer system. Reimburses 90% of the
           authorised cost capped at $7,500, so a share remains the owner&rsquo;s
           regardless. Excludes landscaping and ornamental structures.
         </p>
