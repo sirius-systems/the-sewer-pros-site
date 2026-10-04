@@ -268,40 +268,81 @@ export function SystemExplainer({ content }: { content: LocationSystemExplainer 
    Home age
    ========================================================================== */
 
+/** Called as a function, not mounted, so it adds no element of its own to the tree. */
+function ageTable(table: {
+  caption: string
+  columns: readonly [string, string, string]
+  rows: readonly (readonly [string, string, string])[]
+}) {
+  return (
+    <ScrollableTable label={table.caption}>
+      <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
+        <caption className="py-2 text-left text-sm font-semibold">{table.caption}</caption>
+        <thead>
+          <tr className="bg-surface">
+            {table.columns.map((col) => (
+              <th key={col} scope="col" className="border border-border p-3 font-semibold">
+                {col}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row) => (
+            <tr key={row[0]} className="bg-surface align-top">
+              <th scope="row" className="border border-border p-3 font-semibold">
+                {row[0]}
+              </th>
+              <td className="border border-border p-3">{row[1]}</td>
+              <td className="border border-border p-3">{row[2]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </ScrollableTable>
+  )
+}
+
 export function HousingAgeSection({ content }: { content: LocationHousingAge }) {
+  const extended =
+    content.censusTable !== undefined ||
+    content.afterCensus !== undefined ||
+    content.sourceNote !== undefined
+
+  // Pages that set none of the optional fields keep the original element
+  // sequence, so their static output is unchanged.
+  if (!extended) {
+    return (
+      <Section density="dense" surface="default" labelledBy="age">
+        <SectionHeading eyebrow={content.eyebrow} title={content.title} id="age" />
+        <Paragraphs
+          items={content.paragraphs}
+          className="mt-6 max-w-[var(--container-reading)]"
+        />
+        <div className="mt-8">{ageTable(content.table)}</div>
+      </Section>
+    )
+  }
+
   return (
     <Section density="dense" surface="default" labelledBy="age">
       <SectionHeading eyebrow={content.eyebrow} title={content.title} id="age" />
       <Paragraphs items={content.paragraphs} className="mt-6 max-w-[var(--container-reading)]" />
-      <div className="mt-8">
-        <ScrollableTable label={content.table.caption}>
-          <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
-            <caption className="py-2 text-left text-sm font-semibold">
-              {content.table.caption}
-            </caption>
-            <thead>
-              <tr className="bg-surface">
-                {content.table.columns.map((col) => (
-                  <th key={col} scope="col" className="border border-border p-3 font-semibold">
-                    {col}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {content.table.rows.map((row) => (
-                <tr key={row[0]} className="bg-surface align-top">
-                  <th scope="row" className="border border-border p-3 font-semibold">
-                    {row[0]}
-                  </th>
-                  <td className="border border-border p-3">{row[1]}</td>
-                  <td className="border border-border p-3">{row[2]}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </ScrollableTable>
-      </div>
+      {content.censusTable !== undefined && (
+        <div className="mt-8">{ageTable(content.censusTable)}</div>
+      )}
+      {content.afterCensus !== undefined && (
+        <Paragraphs
+          items={content.afterCensus}
+          className="mt-8 max-w-[var(--container-reading)]"
+        />
+      )}
+      <div className="mt-8">{ageTable(content.table)}</div>
+      {content.sourceNote !== undefined && (
+        <p className="mt-6 max-w-[var(--container-reading)] text-sm leading-6 text-muted-foreground">
+          {content.sourceNote}
+        </p>
+      )}
     </Section>
   )
 }
@@ -384,6 +425,21 @@ export function WhoToCallSection({ content }: { content: LocationWhoToCall }) {
    ========================================================================== */
 
 export function MunicipalProgramSection({ content }: { content: LocationMunicipalProgram }) {
+  const stepsBlock = content.steps !== undefined && (
+    <div className="mt-8">
+      <h3 className="text-h4 font-semibold">{content.steps.title}</h3>
+      <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {content.steps.steps.map((step, i) => (
+          <li key={step.title} className="rounded-md border border-border bg-surface p-5">
+            <p className="text-caption font-semibold text-muted-foreground">Step {i + 1}</p>
+            <h4 className="mt-1 text-base font-semibold">{step.title}</h4>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+
   return (
     <Section density="standard" surface="default" labelledBy="city-program">
       <div className={cn('grid gap-10', content.image !== undefined && 'lg:grid-cols-12')}>
@@ -394,7 +450,9 @@ export function MunicipalProgramSection({ content }: { content: LocationMunicipa
             id="city-program"
             intro={<p>{content.lede}</p>}
           />
-          <Paragraphs items={content.paragraphs} className={cn('mt-6', LINK_ON_LIGHT)} />
+          {content.paragraphs.length > 0 && (
+            <Paragraphs items={content.paragraphs} className={cn('mt-6', LINK_ON_LIGHT)} />
+          )}
         </div>
         {content.image !== undefined && (
           <div className="lg:col-span-5">
@@ -416,19 +474,19 @@ export function MunicipalProgramSection({ content }: { content: LocationMunicipa
         ))}
       </div>
 
-      {content.steps !== undefined && (
-        <div className="mt-8">
-          <h3 className="text-h4 font-semibold">{content.steps.title}</h3>
-          <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {content.steps.steps.map((step, i) => (
-              <li key={step.title} className="rounded-md border border-border bg-surface p-5">
-                <p className="text-caption font-semibold text-muted-foreground">Step {i + 1}</p>
-                <h4 className="mt-1 text-base font-semibold">{step.title}</h4>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.body}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
+      {content.whoCanApply !== undefined ? (
+        <>
+          <div className="mt-8 max-w-[var(--container-reading)]">
+            <h3 className="text-h4 font-semibold">{content.whoCanApply.title}</h3>
+            <Paragraphs
+              items={content.whoCanApply.paragraphs}
+              className={cn('mt-3', LINK_ON_LIGHT)}
+            />
+          </div>
+          {stepsBlock}
+        </>
+      ) : (
+        stepsBlock
       )}
 
       {content.afterSteps !== undefined && (

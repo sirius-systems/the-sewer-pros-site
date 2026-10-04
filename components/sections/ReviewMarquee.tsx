@@ -108,6 +108,11 @@ export interface ReviewMarqueeProps {
    * behaviour, same pause control; nothing is duplicated or restated.
    */
   embedded?: boolean
+  /**
+   * One line rendered under the aggregate rating. Omitted by every existing
+   * caller, which keeps their output unchanged.
+   */
+  caption?: string
 }
 
 /**
@@ -272,6 +277,7 @@ export function ReviewMarquee({
   title = 'What our customers say',
   surface = 'default',
   embedded = false,
+  caption,
 }: ReviewMarqueeProps = {}) {
   const [paused, setPaused] = useState(false)
 
@@ -380,6 +386,11 @@ export function ReviewMarquee({
         <div>
           <SectionHeading id={id} title={title} />
           <AggregateStat />
+          {caption !== undefined && (
+            <p className="mt-2 max-w-[var(--container-reading)] text-sm text-muted-foreground">
+              {caption}
+            </p>
+          )}
         </div>
 
         {toggle}

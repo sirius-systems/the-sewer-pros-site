@@ -7,6 +7,7 @@
  * reference only in copy, data, links and which image slots have a photo.
  *
  *   node scripts/compare-location-structure.mjs <reference.html> <candidate.html>
+ *   node scripts/compare-location-structure.mjs <reference.html> <candidate.html>  *     --allow-extra-section reviews
  *   node scripts/compare-location-structure.mjs \
  *     /path/to/reference-out/st-louis-mo/chesterfield/index.html \
  *     out/st-louis-mo/ballwin/index.html
@@ -29,10 +30,20 @@ import fs from 'node:fs'
 // Sections whose list, table and link counts are data (program terms, panel
 // links, FAQ length, source list, MSD project links in the sewer explainer), so a
 // different count is not a layout change.
-const COUNT_TOLERANT_SECTIONS = new Set(['age', 'how-system', 'who-to-call', 'city-program', 'faq', 'sources'])
+const COUNT_TOLERANT_SECTIONS = new Set(['key-takeaways', 'age', 'how-system', 'who-to-call', 'city-program', 'faq', 'sources'])
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr', 'path', 'circle', 'rect'])
 
-const [refPath, candPath] = process.argv.slice(2)
+const rawArgs = process.argv.slice(2)
+// `--allow-extra-section <id>`: the candidate may carry one top-level section the
+// reference lacks (St. Charles adds `reviews`). Its position, classes and tokens
+// are left out of the comparison; every other section is still compared exactly.
+const allowExtra = new Set()
+const positional = []
+for (let i = 0; i < rawArgs.length; i += 1) {
+  if (rawArgs[i] === '--allow-extra-section') allowExtra.add(rawArgs[(i += 1)])
+  else positional.push(rawArgs[i])
+}
+const [refPath, candPath] = positional
 if (!refPath || !candPath) {
   console.error('usage: node scripts/compare-location-structure.mjs <reference.html> <candidate.html>')
   process.exit(2)
@@ -84,15 +95,28 @@ const classes = (n) => (n.attrs.class ?? '').split(/\s+/).filter(Boolean)
 const isSurface = (c) => /^(bg|text)-/.test(c) && !/^text-(xs|sm|base|lg|xl|[2-9]xl|h\d|body|left|center|right|balance|pretty|wrap|nowrap|ellipsis|clip)/.test(c)
 
 /* ---- Section extraction ---- */
-function sectionsOf(file) {
+function sectionsOf(file, skip = new Set()) {
   const main = find(parse(fs.readFileSync(file, 'utf8')), 'main')
   if (!main) throw new Error(`no <main> in ${file}`)
   // Descend through single-child wrappers so the sections are the top level.
   let host = main
   while (host.children.length === 1 && host.children[0].tag !== 'section') host = host.children[0]
+  const keyOf = (n, i) => {
+    let firstId
+    walk(n, (x) => {
+      if (!firstId && x.attrs.id) firstId = x.attrs.id
+    })
+    return n.attrs.id ?? firstId ?? `#${i}`
+  }
+  const skipped = new Set(host.children.filter((n, i) => skip.has(keyOf(n, i))))
   const tokens = new Set()
-  walk(main, (n) => classes(n).forEach((c) => tokens.add(c)))
-  const sections = host.children.map((n, i) => {
+  const collect = (n) => {
+    if (skipped.has(n)) return
+    classes(n).forEach((c) => tokens.add(c))
+    n.children.forEach(collect)
+  }
+  collect(main)
+  const sections = host.children.filter((n) => !skipped.has(n)).map((n, i) => {
     const counts = { img: 0, a: 0, li: 0, tr: 0, field: 0 }
     const headings = []
     const markers = []
@@ -126,7 +150,8 @@ function sectionsOf(file) {
 }
 
 const ref = sectionsOf(refPath)
-const cand = sectionsOf(candPath)
+const cand = sectionsOf(candPath, allowExtra)
+if (allowExtra.size > 0) console.log(`NOTE  candidate section(s) left out of the comparison by --allow-extra-section: ${[...allowExtra].join(', ')}`)
 
 let failures = 0
 const allowed = []
@@ -149,7 +174,15 @@ const byKey = new Map(ref.sections.map((s) => [s.key, s]))
 for (const c of cand.sections) {
   const r = byKey.get(c.key)
   if (!r) continue
+  // In a count-tolerant section a different NUMBER of same-level headings (a fifth
+  // step, one more panel) is data, so headings compare with consecutive repeats
+  // collapsed there. The level sequence itself must still match.
+  const collapse = (h) => h.split(',').filter((v, i, a) => v !== a[i - 1]).join(',')
   for (const field of ['classes', 'surface', 'headings', 'markers']) {
+    if (field === 'headings' && COUNT_TOLERANT_SECTIONS.has(c.key) && r.headings !== c.headings && collapse(r.headings) === collapse(c.headings)) {
+      allowed.push(`section ${c.key}: heading count ${r.headings.split(',').length} (reference) vs ${c.headings.split(',').length} (candidate), same level sequence`)
+      continue
+    }
     if (r[field] !== c[field]) {
       fail(`section ${c.key}: ${field} differ`)
       console.log(`  reference: ${r[field]}`)
