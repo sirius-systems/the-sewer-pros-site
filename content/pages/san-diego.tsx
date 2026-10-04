@@ -57,6 +57,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
+import { sanDiegoCityContent } from './san-diego-city'
 import {
   homeServiceCards,
   approvedServicesTitle,
@@ -64,29 +65,6 @@ import {
 } from './home-service-cards'
 
 const id = (value: string): PageId => value as PageId
-
-/** Shared, sourced: the owner owns the whole lateral, and no city money follows. */
-const CITY_OF_SAN_DIEGO_POLICY = (
-  <>
-    <h2>Who owns the lateral, and what the City will not do</h2>
-    <p>
-      In the City of San Diego, the property owner owns the entire sewer
-      lateral: the full run from the building to the public main, not merely
-      the portion under private land.
-    </p>
-    <p>
-      The City repairs breaks within the public right-of-way where they were
-      not caused by neglect, and bills the owner where they were. On the
-      question of cost, the City&rsquo;s own guidance is unambiguous: there is
-      no reimbursement for plumbing expenses.
-    </p>
-    <p>
-      That is worth stating plainly, because it is the opposite of how sewer
-      laterals work in some other parts of the country, and it means a lateral
-      problem here is entirely the owner&rsquo;s to fund.
-    </p>
-  </>
-)
 
 /* ==========================================================================
    Market hub — /san-diego-ca/
@@ -190,12 +168,6 @@ export const sanDiegoMarketContent: MarketPageContent = {
           -> folded into `regionalCoverage`, which already carried the
              phone and both buttons. A second contact panel would have
              been the same thing twice.
-
-    ⚠ `CITY_OF_SAN_DIEGO_POLICY` STILL EXISTS AND IS STILL USED. The
-    hub no longer renders it; a location body further down this file
-    does. Deleting it would have stripped the ownership explanation
-    from that page, which is the same trap the Las Vegas restructure
-    hit with `LAS_VEGAS_CONTACT`.
 
     ⚠ NOT ONE HEDGE WAS STRENGTHENED. "The City repairs breaks within
     the public right-of-way where they were not caused by neglect" is
@@ -1542,73 +1514,8 @@ export const sanDiegoMarketContent: MarketPageContent = {
 
 export const sanDiegoLocationContent: Partial<Record<PageId, LocationPageContent>> = {
   /* ------------------------------------------------- San Diego (city) -- */
-  [id('loc-sd-san-diego')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in San Diego, California.',
-    hero: {
-      eyebrow: 'San Diego',
-      title: 'Sewer inspection and cleaning in San Diego',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for properties in the
-          City of San Diego, where you own the whole lateral and no
-          reimbursement exists.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        {CITY_OF_SAN_DIEGO_POLICY}
-
-        <h2>What full ownership means in practice</h2>
-        <p>
-          Because the lateral is the owner&rsquo;s across its entire run, a
-          defect anywhere along it is the owner&rsquo;s to resolve. There is no
-          boundary partway along where responsibility shifts, and no program
-          to absorb part of the cost.
-        </p>
-        <p>
-          The practical consequence is that the scale and position of a problem
-          matter financially in a direct way. A localised defect near the
-          building and a failure out under the street are the same
-          responsibility and very different jobs.
-        </p>
-
-        <h2>Neglect is a distinction the City draws</h2>
-        <p>
-          The City repairs right-of-way breaks not caused by neglect, and bills
-          the owner where neglect caused them. That makes documented condition
-          worth having in its own right: a record of the line&rsquo;s state
-          is evidence about how it came to fail, not merely a diagnosis.
-        </p>
-
-        <h2>A broad span of construction</h2>
-        <p>
-          San Diego&rsquo;s housing spans postwar through the 1980s and beyond,
-          which is a wider range than most of the surrounding cities. Lines laid
-          across that span may be clay, cast iron, or PVC depending on when a
-          property was built and whether the lateral has been replaced since.
-        </p>
-        <p>
-          That is era context, not a claim about any address. What a specific
-          line is made of, and how it is holding up, is what the camera shows.
-        </p>
-      </>
-    ),
-    servicePageIds: [id('sl-sd-city-camera')],
-    faq: [
-      {
-        question: 'How much of the lateral do I own in San Diego?',
-        answer: (
-          <p>
-            All of it: the full run from the building to the public main. The
-            City repairs right-of-way breaks not caused by neglect, but the
-            lateral itself is the owner&rsquo;s.
-          </p>
-        ),
-      },
-    ],
-  },
+  // Full rich composition lives in its own module (same pattern as St. Louis).
+  [id('loc-sd-san-diego')]: sanDiegoCityContent,
 
   /* ---------------------------------------------------------- Carlsbad -- */
   [id('loc-sd-carlsbad')]: {

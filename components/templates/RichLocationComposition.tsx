@@ -160,7 +160,10 @@ export function RichLocationComposition({
         />
       </div>
 
-      <ExperienceCounterStrip surface="muted" />
+      <ExperienceCounterStrip
+        surface="muted"
+        foundingYear={detail !== undefined && detail.foundingYear > 0 ? detail.foundingYear : undefined}
+      />
 
       {content.keyTakeaways && <KeyTakeaways content={content.keyTakeaways} />}
 
