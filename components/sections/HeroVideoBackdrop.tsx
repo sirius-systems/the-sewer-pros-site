@@ -280,7 +280,7 @@ function VideoLayer({
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           poster={poster.src}
           onPlaying={() => setStarted(true)}
           className="hero-video-frame absolute inset-0 h-full w-full object-cover"

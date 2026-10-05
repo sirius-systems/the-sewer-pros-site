@@ -93,6 +93,7 @@ export function ProofGallery({
               alt={image.alt}
               width={640}
               height={480}
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
               className="aspect-[4/3] w-full rounded-md border border-border object-cover"
             />
             <p className="mt-2 text-caption leading-5 text-muted-foreground">
