@@ -550,7 +550,8 @@ export function MarketPageTemplate({
         and `TrustBar` below is `muted`, so `default` matches neither
         neighbour.
       */}
-      <ExperienceCounterStrip />
+      {/* A market whose founding year is unknown (0) drops the cell; every other market keeps the company year. */}
+      <ExperienceCounterStrip foundingYear={detail?.foundingYear === 0 ? 0 : undefined} />
 
       {/*
         ⚠ `muted`, NOT THE COMPONENT'S OWN `brand` DEFAULT, ON OWNER
