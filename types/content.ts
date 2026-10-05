@@ -1670,6 +1670,11 @@ export interface ServicePageContentV2 {
     serviceLabel?: string
     /** Boxed scope statement under the scope bullets, inside the hero. */
     scopeStatement?: string
+    /**
+     * A pending-photography slot shown in the hero copy column while the
+     * review-build flag is on and no approved photograph exists. Absent: none.
+     */
+    slot?: HubImageKey
   }
   definition?: {
     eyebrow?: string
@@ -1679,6 +1684,8 @@ export interface ServicePageContentV2 {
     supporting: readonly ReactNode[]
     /** Boxed scope statement under the supporting paragraphs. */
     scope?: string
+    /** A photo beside the definition. Absent, or no file and no review slot: none. */
+    image?: HubImageKey
   }
   signals?: {
     eyebrow?: string
@@ -1691,6 +1698,12 @@ export interface ServicePageContentV2 {
     items: readonly { title: string; description?: string }[]
     image?: HubImageKey
   }
+  /**
+   * A second list after the signals, on the white surface, as plain bullets
+   * (same shape as `signals`; the titles are the bullets). Setting it shifts
+   * the surfaces after it exactly as `triage` does. Absent changes nothing.
+   */
+  causes?: NonNullable<ServicePageContentV2['signals']>
   limits?: {
     eyebrow?: string
     title: string
@@ -1705,6 +1718,8 @@ export interface ServicePageContentV2 {
     cannot: readonly string[]
     callout?: string
     related?: { lead: string; pageId: PageId; label: string }
+    /** A photo beside the heading. Absent, or no file and no review slot: none. */
+    image?: HubImageKey
   }
   /**
    * Places the limits panel after the process and methods sections
@@ -1748,6 +1763,8 @@ export interface ServicePageContentV2 {
       title: string
       items: readonly string[]
       image?: HubImageKey
+      /** A second photo stacked under `image`. Renders only when `image` does. */
+      secondImage?: HubImageKey
       /**
        * A titled paragraph beside the preparation list, for a page with
        * no photograph there. Ignored when `image` resolves.
@@ -1782,6 +1799,15 @@ export interface ServicePageContentV2 {
     links: readonly ServiceV2Link[]
     /** A short titled paragraph under the note. */
     aside?: { title: string; body: string }
+    /**
+     * A labelled, scrollable three-column table directly under the heading
+     * and note. Absent: the panel is unchanged.
+     */
+    table?: {
+      caption: string
+      columns: readonly [string, string, string]
+      rows: readonly { service: string; purpose: string; fit: string }[]
+    }
   }
   /**
    * Replaces the shared independent band on this page (the shared band
@@ -1882,6 +1908,7 @@ export interface ServicePageContentV2 {
   navLabels?: Partial<
     Record<
       | 'signals'
+      | 'causes'
       | 'triage'
       | 'terms'
       | 'process'

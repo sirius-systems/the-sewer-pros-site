@@ -31,6 +31,13 @@ import {
 } from './hydro-images'
 
 import {
+  recurringImageSlots,
+  resolveRecurringImage,
+  type RecurringImageKey,
+  type ResolvedRecurringImage,
+} from './recurring-images'
+
+import {
   locatingImageSlots,
   resolveLocatingImage,
   type LocatingImageKey,
@@ -48,6 +55,7 @@ export type HubImageKey =
   | DrainImageKey
   | HydroImageKey
   | LocatingImageKey
+  | RecurringImageKey
 export type ResolvedHubImage =
   | ResolvedCameraImage
   | ResolvedCleaningImage
@@ -55,6 +63,7 @@ export type ResolvedHubImage =
   | ResolvedDrainImage
   | ResolvedHydroImage
   | ResolvedLocatingImage
+  | ResolvedRecurringImage
 
 export function resolveHubImage(key: HubImageKey): ResolvedHubImage | null {
   if (key in cameraImageSlots) return resolveCameraImage(key as CameraImageKey)
@@ -62,6 +71,7 @@ export function resolveHubImage(key: HubImageKey): ResolvedHubImage | null {
   if (key in combinedImageSlots) return resolveCombinedImage(key as CombinedImageKey)
   if (key in drainImageSlots) return resolveDrainImage(key as DrainImageKey)
   if (key in locatingImageSlots) return resolveLocatingImage(key as LocatingImageKey)
+  if (key in recurringImageSlots) return resolveRecurringImage(key as RecurringImageKey)
   return resolveHydroImage(key as HydroImageKey)
 }
 
