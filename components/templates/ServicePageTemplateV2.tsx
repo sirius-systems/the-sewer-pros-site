@@ -243,6 +243,10 @@ export function ServicePageTemplateV2({
           intro={v2.hero.cardIntro}
           serviceLabel={v2.hero.serviceLabel ?? content.hero.title}
           defaultServiceId={v2.defaultServiceId}
+          {...(v2.messageLabel !== undefined ? { messageLabel: v2.messageLabel } : {})}
+          {...(v2.extraServiceOptions !== undefined
+            ? { extraServiceOptions: v2.extraServiceOptions }
+            : {})}
         />
       }
     />,
@@ -557,6 +561,10 @@ export function ServicePageTemplateV2({
             idPrefix="request-lead"
             defaultServiceId={v2.defaultServiceId}
             submitLabel={v2.request.submitLabel}
+            {...(v2.messageLabel !== undefined ? { messageLabel: v2.messageLabel } : {})}
+            {...(v2.extraServiceOptions !== undefined
+              ? { extraServiceOptions: v2.extraServiceOptions }
+              : {})}
           />
         )
         // Two branches so an entry without `secondaryAction` renders the same tree as before.

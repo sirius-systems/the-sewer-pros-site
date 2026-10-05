@@ -23,11 +23,15 @@ export function ServiceHeroRequestCard({
   intro,
   serviceLabel,
   defaultServiceId,
+  messageLabel,
+  extraServiceOptions,
 }: {
   title: string
   intro?: string
   serviceLabel: string
   defaultServiceId?: ServiceId
+  messageLabel?: string
+  extraServiceOptions?: readonly { value: ServiceId; label: string }[]
 }) {
   return (
     <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
@@ -45,6 +49,8 @@ export function ServiceHeroRequestCard({
           title={title}
           {...(intro !== undefined ? { intro } : {})}
           defaultServiceId={defaultServiceId}
+          {...(messageLabel !== undefined ? { messageLabel } : {})}
+          {...(extraServiceOptions !== undefined ? { extraServiceOptions } : {})}
         />
       </div>
     </div>

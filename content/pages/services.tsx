@@ -24,19 +24,7 @@
  * evidence-first positioning working (01 §14, 18 §137), not hedging.
  */
 
-import {
-  MapPinIcon,
-  CameraIcon,
-  DocumentIcon,
-  ExplanationIcon,
-  ChecklistIcon,
-  EyeIcon,
-  DecisionIcon,
-  CalendarClockIcon,
-  GuidanceIcon,
-  AccessPointIcon,
-  IndependenceIcon,
-} from '@/components/sections/section-icons'
+import { ChecklistIcon } from '@/components/sections/section-icons'
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type { PageId, ServicePageContent } from '@/types'
 
@@ -3654,585 +3642,659 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      Pre-Purchase Sewer Inspection — 14 §35
      ====================================================================== */
   [id('svc-pre-purchase-sewer-inspection')]: {
+    /*
+      ⚠ THIS ENTRY RENDERS ON `ServicePageTemplateV2` (the `v2` key), NOT
+      ON `ServiceHubTemplate`. The H1, the meta title and description and
+      the primary and secondary hero actions stay on the base fields,
+      because the route's metadata reads them there. Everything else the
+      page shows is in `v2`. The old `explainer`, `considerations`,
+      `process`, `secondOpinion`, `audiences`, `limitations`, `howWeWork`,
+      `comparison`, `request` and flat `faq` fields were replaced by their
+      v2 equivalents for this entry only; every other service page is
+      untouched. Copy source: pre-purchase-sewer-inspection-page-content.md.
+
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      guarantee, warranty, licence (DEC-072, DEC-090), insurance wording,
+      response time, same-day or emergency claim, equipment brand, model
+      or spec, duration or turnaround. The time and cost questions state
+      no standard time or price. Owner-confirmed 2026-10-05: when a camera
+      is used (a pre-purchase visit always uses one) the inspection video
+      and written findings are included, and the page says exactly that.
+      It does NOT claim photos, narration, a footage counter, PACP/LACP
+      coding, a "report" as the deliverable name, a delivery method or
+      retention period, surface marks, depth readings, a map, roof-vent or
+      toilet-pull access, or locating as always included. Timing uses the
+      approved sentence only. A pre-purchase visit does not include
+      cleaning or hydro jetting. No legal advice, no named city
+      requirement, no local inspection interval, and no claim that a sewer
+      scope is required.
+
+      ⚠ MARKET-NEUTRAL, NO PHONE NUMBER (DEC-071). Numbers reach this page
+      only through the labelled footer and the mobile bar's market sheet.
+
+      ⚠ "independent sewer inspection" IS PLAIN TEXT. The second-opinion
+      page is not built, so it is not linked (and neither is any
+      /compare/ page). The market cards link the three hubs only.
+
+      ⚠ EVIDENCE MOSAIC reuses the four approved, labelled "Example:"
+      camera slots already published on the camera page; no new image was
+      added. The scope statement appears verbatim in the hero (last two
+      sentences) and in the final request (full statement).
+    */
+    seoTitle: 'Pre-Purchase Sewer Inspection (Sewer Scope)',
     metaDescription:
-      "Schedule a pre-purchase sewer inspection with documented camera findings to better understand a property's sewer line before closing.",
+      'A pre-purchase sewer inspection documents the visible condition of an accessible sewer line before closing. Learn the limits. St. Louis, San Diego, Las Vegas.',
+    serviceDescription:
+      "A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase. A technician guides a camera through the accessible part of the sewer line and records what it can see, so a buyer can review the line's visible condition before closing.",
     hero: {
-      eyebrow: 'Real estate',
+      eyebrow: 'Home buyers and real estate',
       title: 'Pre-Purchase Sewer Inspection',
+      primaryAction: { href: '#request', label: 'Schedule a Pre-Purchase Sewer Inspection' },
+      secondaryAction: { href: '#markets', label: 'Find Service in Your Area' },
       intro: (
         <>
           <p>
-            A sewer camera inspection before closing can help you understand
-            the visible condition of a home&rsquo;s sewer line before you buy.
-            The Sewer Pros guides a camera through the accessible line to
-            document what it can see, helping you make a more informed
-            decision based on inspection findings rather than assumptions
-            about the property&rsquo;s age or appearance.
+            A pre-purchase sewer inspection is a sewer camera inspection
+            arranged during a home purchase. A technician guides a camera
+            through the accessible part of the sewer line and records what it
+            can see, so you can review the line&rsquo;s visible condition
+            before you close.
           </p>
           <p>
-            Review the findings as part of your due diligence and discuss any
-            questions with the appropriate real estate or plumbing
-            professional.
+            We provide cleaning, camera diagnostics, and line locating only.
+            We do not provide sewer repair, replacement, lining, excavation,
+            or pipe installation.
           </p>
         </>
       ),
     },
-    /*
-      Real photography: RIDGID SeeSnake CS12x on a residential job, right-
-      weighted so the copy column (left) sits over open background rather
-      than the equipment (18 §28-34 — approved, not stock/AI). See
-      `ServicePageContent.heroImage` for the shared backdrop/scrim/gradient
-      treatment this reuses from `ServiceHubTemplate`.
-    */
-    heroImage: {
-      src: '/images/services/pre-purchase-sewer-inspection/hero/the-sewer-pros-pre-purchase-sewer-inspection-hero-ridgid-seesnake-cs12x-16x9.webp',
-      focus: 'right',
-    },
-    /*
-      Two-column explainer, beside an approved photograph. See
-      `ServicePageContent.explainer`.
-    */
-    explainer: {
-      content: (
-        <>
-          <h2>Why a Sewer Line Inspection Matters Before You Buy</h2>
-          <p>
-            A general home inspection covers many visible parts of a
-            property, but the sewer line runs underground and usually cannot
-            be assessed without a camera. A line may have a visible concern
-            even when the home&rsquo;s fixtures appear to work normally
-            during a showing.
-          </p>
-
-          <h3>What a Pre-Purchase Sewer Inspection Can Show</h3>
-          <p>
-            A camera inspection can document visible conditions in the
-            accessible portion of the sewer line, such as:
-          </p>
-          <ul>
-            <li>The visible condition of the inspected line</li>
-            <li>Whether roots have entered the line and where they appear</li>
-            <li>Visible joint separation, offsets, or cracks</li>
-            <li>
-              Standing water that may indicate a low section or restriction
-            </li>
-            <li>Pipe material and visible changes along the inspected run</li>
-            <li>Evidence of previous work, where visible</li>
-          </ul>
-          <p>
-            The inspection reflects what the camera can see on the day of the
-            appointment. It may not show inaccessible portions or predict how
-            the line will perform in the future. Review the findings as part
-            of your due diligence and discuss questions with the appropriate
-            real estate or plumbing professional.
-          </p>
-        </>
-      ),
-      image: {
-        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-sewer-inspection-visible-line-conditions-ridgid-seesnake-4x3.webp',
-        alt: 'RIDGID SeeSnake camera monitor showing visible conditions inside a sewer line during a pre-purchase inspection',
-      },
-    },
-    /*
-      Second two-column block: limits / timing / independence, beside an
-      approved photograph. See `ServicePageContent.considerations`.
-    */
-    considerations: {
-      content: (
-        <>
-          <h2>What a Sewer Camera Inspection Cannot Determine</h2>
-          <p>
-            A sewer camera inspection documents visible conditions in the
-            accessible portion of the line on the day of the inspection. It
-            does not guarantee how the sewer line will perform in the
-            future, and it may not show areas the camera cannot reach or
-            view clearly.
-          </p>
-          <p>
-            An inspection also does not determine who is legally responsible
-            for each portion of the sewer line. Responsibility varies by
-            jurisdiction, so confirm local requirements with the appropriate
-            real estate, legal, or plumbing professional.
-          </p>
-
-          <h2>When to Schedule a Pre-Purchase Sewer Inspection</h2>
-          <p>
-            A pre-purchase sewer inspection is most useful while you still
-            have time to consider the findings as part of your due
-            diligence. Scheduling before closing can give you an opportunity
-            to review what was visible and discuss any questions with your
-            own advisors.
-          </p>
-          <p>
-            The inspection provides information for your decision; what you
-            do with the findings is up to you and your advisors.
-          </p>
-
-          <h2>Why Independent Sewer Inspection Matters Before You Buy</h2>
-          <p>
-            A sewer inspection can inform a significant financial decision.
-            The Sewer Pros provides sewer inspection and cleaning services,
-            but does not perform sewer repair or replacement. That means the
-            inspection findings are not an opening step toward selling you a
-            repair or replacement.
-          </p>
-          <p>
-            Use the findings to understand what was visible during the
-            inspection and decide what questions, if any, you want to raise
-            with your own advisors.
-          </p>
-        </>
-      ),
-      image: {
-        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-sewer-inspection-limitations-ridgid-seesnake-4x3.webp',
-        alt: 'RIDGID SeeSnake sewer camera equipment representing the limits and scope of a pre-purchase inspection',
-      },
-    },
-    processTitle: 'How It Works',
-    processIntro:
-      'A pre-purchase sewer inspection follows four steps to document visible conditions in the accessible portion of the sewer line. What the camera can show depends on access and visibility during the inspection.',
-    /*
-      `muted`, distinct from the `default` audience-card section above
-      it (18 §11 — a surface change signals the new topic on its own).
-    */
-    processSurface: 'muted',
-    process: [
-      {
-        title: 'Locate Access',
-        description: 'Identify an accessible entry point for the camera inspection.',
-        icon: <MapPinIcon className="h-10 w-10 text-accent-secondary" />,
-      },
-      {
-        title: 'Inspect the Line',
-        description:
-          'Guide the sewer camera through the accessible line to view its visible interior condition.',
-        icon: <CameraIcon className="h-10 w-10 text-accent-secondary" />,
-      },
-      {
-        title: 'Document Conditions',
-        description:
-          'Record visible findings, such as root entry, offsets, cracks, standing water, or restrictions.',
-        icon: <DocumentIcon className="h-10 w-10 text-accent-secondary" />,
-      },
-      {
-        title: 'Walk Through the Findings',
-        description:
-          'Review what was visible during the inspection and discuss questions about the findings.',
-        icon: <ExplanationIcon className="h-10 w-10 text-accent-secondary" />,
-      },
-    ],
+    // No-op on v2 (the independent band always renders); kept so the entry
+    // still reads as it did before the migration.
     showDifferentiator: true,
-    /*
-      Page-specific rewrite of the shared "Inspect / Document / Decide"
-      section for a pre-purchase transaction context. `eyebrow` and
-      `ctaLabel` are left unset because they already match the shared
-      default verbatim; `calloutTwo` and `closing` are explicitly
-      omitted (one concise callout, no duplicated closing statement).
-      See `ServicePageContent.secondOpinion`.
-    */
-    secondOpinion: {
-      title:
-        'Before You Approve Major Sewer Work, Get an Independent Second Opinion',
-      intro: [
-        'A sewer repair recommendation can involve a significant expense. The Sewer Pros provides sewer inspections and cleaning, but does not perform sewer repair or replacement. A camera inspection can document visible conditions inside the accessible portion of the sewer line, giving you information to review before deciding what to do next.',
+    v2: {
+      defaultServiceId: 'svc-pre-purchase-sewer-inspection',
+      messageLabel: 'What should we know? Include your inspection deadline if you have one.',
+      extraServiceOptions: [
+        { value: 'svc-pre-purchase-sewer-inspection', label: 'Pre-Purchase Sewer Inspection' },
       ],
-      steps: [
-        {
-          body: 'We use RIDGID sewer camera equipment to inspect the accessible line for visible conditions such as root entry, offsets, cracks, standing water, and restrictions.',
-        },
-        {
-          body: 'We document what the camera can see so you can review the observed conditions, rather than relying only on a verbal description.',
-        },
-        {
-          body: 'Use the inspection findings to decide whether to ask questions, seek another qualified opinion, or discuss appropriate next steps with your own advisors.',
-        },
-      ],
-      calloutOne: {
-        title: 'Why Get an Independent Inspection?',
-        body: [
-          'Because The Sewer Pros does not sell sewer repair or replacement, the inspection is not a sales appointment for those services. Our role is to document visible conditions and explain the findings, so you can make your own informed decision.',
+      images: {
+        hero: '/images/services/pre-purchase-sewer-inspection/hero/the-sewer-pros-pre-purchase-sewer-inspection-hero-ridgid-seesnake-cs12x-16x9.webp',
+        request:
+          '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-sewer-inspection-request-cta-ridgid-seesnake-background-16x9.webp',
+      },
+      hero: {
+        scope: [
+          'Accessible residential sewer lines',
+          'Inspection video and written findings included',
+          'No repair or replacement work offered',
+        ],
+        cardTitle: 'Request an inspection',
+        cardIntro:
+          'Tell us about the property and your inspection deadline. We will help you choose the right service.',
+        serviceLabel: 'Service: Pre-purchase sewer inspection',
+      },
+      navLabels: {
+        signals: 'When buyers add one',
+        limits: 'What it shows and cannot confirm',
+        process: 'How it works',
+        decision: 'Cleaning and the camera',
+        ask: 'What to ask for',
+        faq: 'Questions',
+      },
+      definition: {
+        eyebrow: 'The short answer',
+        title: 'What is a pre-purchase sewer inspection?',
+        answer:
+          'A pre-purchase sewer inspection, often called a sewer scope, is a camera inspection of the accessible sewer line serving a home you are buying. A technician advances a camera on a flexible cable through an entry point, watches the live view, and records what it sees.',
+        supporting: [
+          "The line being inspected is the private sewer lateral, the pipe that connects the building's plumbing to the public sewer main. The inspection documents visible conditions in the section the camera reaches, on the day of the visit. It is an inspection and documentation service. It does not repair anything.",
+          'A sewer scope is a focused inspection of the sewer line. Ask your home inspector whether their inspection includes one.',
         ],
       },
-      calloutTwo: null,
-      ctaNote:
-        'Already received a sewer repair recommendation? Consider getting the line inspected and reviewing the documented findings before approving major work.',
-      closing: null,
-    },
-    showMarkets: true,
-    /*
-      PENDING PHOTOGRAPHY: `LimitationsPanel` and `ServiceComparison`
-      both accept an optional `imageSrc` backdrop (see their signatures
-      in components/sections/ServiceHubSections.tsx), left unset here
-      because no approved photography exists yet for this page (only
-      `public/images/services/pre-purchase-sewer-inspection/.gitkeep`).
-      Once real photos are approved (18 §28-34 — no stock/AI imagery),
-      the natural slots are:
-        limitations backdrop — a faded technician/monitor photo, saved
-          under public/images/services/pre-purchase-sewer-inspection/
-          and passed as `imageSrc` to the `LimitationsPanel` call in
-          `ServicePageTemplate`.
-        comparison backdrop  — a full-bleed inspection/equipment photo,
-          same directory, passed as `imageSrc` to the `ServiceComparison`
-          call. Follow the naming convention other services use, e.g.
-          the-sewer-pros-pre-purchase-sewer-inspection-comparison-background-16x9.webp
-      Both components render without a photograph until then (a plain
-      light panel and a plain navy band, respectively) — no placeholder
-      box ships on this indexable page.
-    */
-    audiences: {
-      title: 'Who Is a Pre-Purchase Sewer Inspection For?',
-      intro:
-        'A pre-purchase sewer inspection can help buyers and other real estate professionals understand visible conditions in the accessible portion of a home’s sewer line. Each person involved in the transaction may use the findings differently as part of due diligence.',
-      items: [
-        {
-          pageId: id('aud-home-buyers'),
-          audience: 'Home Buyers',
-          icon: 'house-search',
-          description:
-            'Review visible sewer-line conditions before closing and consider the findings as part of your due diligence.',
-          actionLabel: 'Learn About Home-Buyer Sewer Inspections',
-        },
-        {
-          pageId: id('aud-real-estate-agents'),
-          audience: 'Real Estate Agents',
-          icon: 'checklist',
-          description:
-            'Coordinate a sewer scope around the transaction and share documented findings for buyers and sellers to discuss.',
-          actionLabel: 'Learn About Transaction Support',
-        },
-        {
-          pageId: id('aud-home-inspectors'),
-          audience: 'Home Inspectors',
-          icon: 'eye',
-          description:
-            'Coordinate a specialist sewer inspection for portions of the line a general home inspection may not cover.',
-          actionLabel: 'Learn About Coordinating an Inspection',
-        },
-        {
-          pageId: id('aud-home-sellers'),
-          audience: 'Home Sellers',
-          icon: 'home',
-          description:
-            'Understand visible sewer-line conditions before listing or responding to a buyer’s question.',
-          actionLabel: 'Learn About Seller Sewer Inspections',
-        },
-      ],
-    },
-    limitations: {
-      title: 'What a pre-purchase sewer inspection can and cannot tell you',
-      intro:
-        'A sewer scope documents visible conditions in the accessible portions of the line on the day of the inspection. It is diagnostic information for your due diligence, not a certification or a guarantee.',
-      canIdentifyTitle: 'A sewer scope may help identify',
-      canIdentify: [
-        'Visible blockages or buildup in the accessible line',
-        'Root intrusion, and approximately where it appears',
-        'Joint separation, offsets, or visible cracks',
-        'Standing water suggesting a low section or restriction',
-        'Pipe material and visible changes along the run',
-        'Visible evidence of previous repair work',
-      ],
-      cannotTitle: 'It cannot guarantee',
-      cannot: [
-        'That every portion of the line is visible or accessible',
-        'That no hidden defect exists outside the camera’s view',
-        'Future pipe performance or maintenance needs',
-        'The cost, scope, or timing of any future repair',
-        'Who is legally responsible for which portion of the line, which varies by jurisdiction and is a question for the appropriate professional',
-        'A pass/fail result for the property',
-      ],
-      related: {
-        lead: 'Want the full picture of what a camera inspection covers?',
-        pageId: id('svc-sewer-camera-inspection'),
-        label: 'Explore sewer camera inspection',
+      signals: {
+        eyebrow: 'Why buyers ask',
+        title: 'When buyers add a sewer inspection',
+        after:
+          'These are reasons buyers ask for a sewer scope. They do not mean every purchase needs one, and no national rule requires one.',
+        image: 'equipment',
+        items: [
+          {
+            title: 'An older home',
+            description:
+              "Pipe age is one factor municipal sources list among possible causes of lateral problems. No rule sets an age at which a scope is required, so this is a buyer's judgment.",
+          },
+          {
+            title: "No record of the line's condition",
+            description:
+              'If nobody can show you what the line looked like, a camera inspection gives you a record of what was visible on the day of the visit.',
+          },
+          {
+            title: 'Drain trouble mentioned during the sale',
+            description:
+              'Slow drains, gurgling, odors, or a past backup may point to a restriction. They do not prove a cause. A camera documents what is visible in the accessible line.',
+          },
+          {
+            title: 'A local sale requirement',
+            description:
+              'Some local programs require a lateral inspection when a property is sold or transferred, and many do not. Ask your agent or the local sewer utility. We do not give legal advice.',
+          },
+          {
+            title: 'A short inspection period',
+            description:
+              'Your purchase agreement sets the window, and it can be short. Request service early and note your deadline.',
+          },
+          {
+            title: 'Plans to dig after you buy',
+            description:
+              'If you plan landscaping, a pool, or other digging, ask whether line locating is part of your visit. Locating shows where a line runs, not what condition it is in.',
+          },
+        ],
       },
-    },
-    /*
-      Removes the plain filler `LeadFormSection` between this page's
-      `howWeWork` band and the comparison table. Safe only because
-      `comparison.surface` below is set to `muted`, which is what keeps
-      the two navy sections from touching instead (18 §11). See
-      `ServicePageContent.hideMidPageForm`.
-    */
-    hideMidPageForm: true,
-    /*
-      Replaces the shared `AuthorityBand` "How we work" band for this
-      page only. See `ServicePageContent.howWeWork`.
-    */
-    howWeWork: {
-      title: 'How Our Pre-Purchase Sewer Inspection Works',
-      intro:
-        'We inspect the accessible portion of the sewer line, document visible conditions, and review what the camera showed. The findings give you information to consider as part of your due diligence; they do not guarantee future performance or determine what work may be needed.',
-      items: [
-        {
-          title: 'The Inspection Is the Service',
-          icon: 'camera',
-          description:
-            'We focus on inspecting the line and explaining the visible findings. The Sewer Pros does not perform sewer repair or replacement.',
-        },
-        {
-          title: 'You Can Review the Evidence',
-          icon: 'monitor',
-          description:
-            'We document visible conditions so you can review what the camera showed, rather than relying only on a verbal description.',
-        },
-        {
-          title: 'Sewer and Drain Specialists',
-          icon: 'pipe',
-          description:
-            'Our services focus on sewer inspection, diagnostics, locating, and cleaning.',
-        },
-        {
-          title: 'The Next Step Is Your Decision',
-          icon: 'checklist',
-          description:
-            'Use the findings to decide what questions to ask and whether to consult another qualified professional. If additional work is considered, you choose who performs it.',
-        },
-      ],
-    },
-    /*
-      Mid-page request CTA: reuses the hub's `RequestServiceSection`
-      treatment. `focus: 'right'` matches the photo's composition
-      (inspection setup on the left, under the copy column) — see
-      `ServicePageContent.request` and its `image.focus` doc.
-    */
-    request: {
-      title: 'Request a Pre-Purchase Sewer Inspection',
-      intro: [
-        'Request a sewer inspection as part of your home-buying due diligence. Share your contact information, select the service and location, and include any details that may help clarify your request.',
-        'The inspection documents visible conditions in the accessible portion of the sewer line on the day of the inspection. Findings can help inform your due diligence, but do not guarantee future performance.',
-      ],
-      image: {
-        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-inspection-request-cta-ridgid-seesnake-mid-page-cta-background-16x9.webp',
-        focus: 'right',
+      limits: {
+        eyebrow: 'Evidence and its limits',
+        title: 'What a pre-purchase sewer inspection may show, and what it cannot confirm',
+        intro:
+          "A camera documents visible conditions in the section it reaches, on the day of the visit. Image quality, lighting, flow, and the technician's interpretation all affect what can be seen and how it is described.",
+        canTitle: 'A camera inspection may document',
+        canLead: 'Visible conditions in the section the camera reaches',
+        can: [
+          'Roots visible inside the pipe',
+          'Grease, scale, sediment, or other deposits',
+          'Obstructions such as wipes or debris',
+          'Cracks and fractures',
+          'Offset or separated joints',
+          'Standing water',
+          'Collapse or broken pipe, when the camera can reach it. A complete collapse can stop the camera from going further.',
+          'Visible pipe material, when it can be identified',
+        ],
+        cannotTitle: 'It does not by itself show',
+        cannotLead: 'Where a camera view stops',
+        cannot: [
+          'Anything below the waterline. A camera generally cannot see under water.',
+          'Pipe in sections the camera did not reach or could not view',
+          'The condition of the soil around the pipe, or voids outside the pipe wall',
+          'Pipe wall thickness or structural capacity',
+          'Exact slope or depth. Standing water may suggest a low spot, but a camera does not measure it.',
+          'Whether every leak has been found',
+          'How the line will perform in the future',
+          'Whether any repair is needed, or what kind. A camera result documents what is visible and does not by itself prescribe a repair method.',
+        ],
+        callout:
+          'A visibly clear line is not proof that the whole line, or the ground around it, is in good condition.',
       },
-    },
-    comparison: {
+      process: {
+        eyebrow: 'What happens on the day',
+        title: 'How a pre-purchase sewer inspection works',
+        intro:
+          'How long a visit takes depends on line length, access, debris, standing water, and what needs to be documented. We do not quote a standard time.',
+        steps: [
+          {
+            title: 'Request',
+            description:
+              'Choose your service area, tell us about the property, and note your inspection deadline if you have one.',
+          },
+          {
+            title: 'Access',
+            description:
+              'The technician identifies an accessible entry point, commonly an exterior cleanout.',
+          },
+          {
+            title: 'Camera run',
+            description:
+              'A camera on a flexible push cable is advanced through the accessible line while the technician watches the live view.',
+          },
+          {
+            title: 'Video',
+            description: 'When a camera is used, you receive the inspection video.',
+          },
+          {
+            title: 'Written findings',
+            description:
+              'Written findings are included. Ask whether they note any part of the line that could not be viewed, and why.',
+          },
+        ],
+        prep: {
+          title: 'Access points and preparing for the visit',
+          image: 'process',
+          items: [
+            'The most common entry point is an exterior cleanout. Whether the property has one, and where, depends on its plumbing layout. Ask what applies to the home you are buying.',
+            'Make sure the technician can safely reach the agreed entry point. Tell us who to coordinate with for property access, such as your agent.',
+            'Note your inspection deadline when you request service, and we will work toward it. Confirm timing with your agent, since inspection periods are short.',
+          ],
+        },
+      },
+      decision: {
+        eyebrow: 'Two services, one decision',
+        title: 'Inspection and cleaning are separate services',
+        answer:
+          'A pre-purchase sewer inspection is a camera inspection. Cleaning is a separate service. If the camera cannot pass, ask what options apply.',
+        note: 'Cleaning can improve camera visibility or travel in some lines. It does not repair pipe defects, and it is not an inspection. If what the camera shows goes beyond cleaning, we will say so plainly. Further evaluation may be appropriate outside our cleaning and diagnostic scope.',
+        listTitle: 'When the camera may not get through',
+        list: [
+          'A line that is blocked or not draining. A camera generally cannot see under water.',
+          'Roots, debris, or a collapsed or damaged section that stops the camera from traveling.',
+          'Limited access to the line. Ask what part of the line could not be viewed, and why.',
+        ],
+        links: [
+          { pageId: id('svc-sewer-cleaning'), label: 'Sewer cleaning' },
+          { pageId: id('svc-hydro-jetting'), label: 'Hydro jetting' },
+          {
+            pageId: id('svc-sewer-cleaning-camera-inspection'),
+            label: 'Sewer cleaning and camera inspection',
+          },
+        ],
+      },
+      independent: {
+        eyebrow: 'Independent by design',
+        title: 'Major sewer decisions deserve clear evidence.',
+        steps: [
+          {
+            title: 'Inspect',
+            body: 'We look inside the accessible line and document what is visible.',
+          },
+          {
+            title: 'Document',
+            body: 'You receive the inspection video and written findings.',
+          },
+          {
+            title: 'Decide',
+            body: 'You decide next steps with evidence in hand. The Sewer Pros does not sell repair or replacement.',
+          },
+        ],
+        note: 'An independent sewer inspection is not tied to a repair job, because we do not repair or replace sewer lines. If a sewer concern comes up during your purchase, a clear record of the line gives you something to compare written estimates against.',
+        link: { href: '#request', label: 'Schedule an inspection' },
+      },
+      comparison: {
+        eyebrow: 'Which service fits',
+        title: 'Pre-purchase sewer inspection vs. related services',
+        columns: ['Service', 'What it does', 'May fit when'],
+        caption: 'Pre-purchase sewer inspection compared with related services',
+        rows: [
+          {
+            service: 'Pre-purchase sewer inspection',
+            current: true,
+            purpose:
+              'Documents visible conditions in the accessible sewer line during a home purchase',
+            fit: 'You are buying a home and want a record of the line before you close',
+          },
+          {
+            service: 'Sewer camera inspection',
+            pageId: id('svc-sewer-camera-inspection'),
+            purpose: 'Shows visible conditions inside an accessible sewer line',
+            fit: 'You own the property and want to investigate symptoms, plan a project, or keep a record',
+          },
+          {
+            service: 'Sewer cleaning and camera inspection',
+            pageId: id('svc-sewer-cleaning-camera-inspection'),
+            purpose:
+              'Reviews visible line conditions and addresses an appropriate restriction when warranted',
+            fit: 'A problem keeps returning, the cause is unclear, or several fixtures are affected',
+          },
+          {
+            service: 'Sewer cleaning',
+            pageId: id('svc-sewer-cleaning'),
+            purpose: 'Removes certain blockages and buildup from an accessible line',
+            fit: 'A blockage or flow issue needs cleaning',
+          },
+          {
+            service: 'Sewer line locating',
+            pageId: id('svc-sewer-line-locating'),
+            purpose:
+              'Estimates the route of an accessible underground line. It is not a survey or an exact depth.',
+            fit: 'You are planning digging or need to know where the line runs',
+          },
+        ],
+      },
+      ask: {
+        eyebrow: 'Before you book',
+        title: 'What to ask for, and what to keep',
+        intro: 'Before you book, ask what you will receive. Keep it with your purchase records.',
+        items: [
+          {
+            title: 'Inspection video',
+            description:
+              'When a camera is used, you receive the inspection video. Ask how it is delivered and how long you can access it.',
+          },
+          {
+            title: 'Written findings',
+            description:
+              'Written findings are included. Ask whether they note any part of the line that could not be viewed, and why.',
+          },
+          {
+            title: 'Access point and location',
+            description:
+              'Ask which access point was used and where along the line conditions were seen.',
+          },
+          {
+            title: 'Line locating',
+            description:
+              'Ask whether locating is part of your visit and what you will receive.',
+          },
+          {
+            title: 'What to share with your agent',
+            description:
+              'Share the video and written findings with your agent and your home inspector, and ask how the findings fit your purchase agreement. We do not give legal advice.',
+          },
+        ],
+        keep: {
+          title: 'Keep the original video and written findings',
+          image: 'findings-review',
+          body: [
+            'They are a record of what was visible on the day. If someone recommends costly work, you can compare written estimates and ask another company to review the video before you decide.',
+            'A camera finding is a visible observation. It is not a repair recommendation, and it does not by itself set a scope of work. Where a finding is unclear or may call for further evaluation, that evaluation is outside our cleaning and diagnostic scope.',
+          ],
+        },
+      },
+      evidence: {
+        title: 'See what a sewer camera inspection can reveal',
+        intro: null,
+        caveat:
+          "These are examples of visible conditions from individual properties, with identifying details removed. Findings vary by line, access, and inspection. A camera cannot show portions of the system it cannot reach or determine every next step on its own.",
+        items: [
+          {
+            slot: 'root-intrusion',
+            title: 'Visible root intrusion',
+            description:
+              "Footage may show where roots are visible and how much of the pipe they appear to affect. It documents what the camera can reach, not the full extent outside the camera's view.",
+          },
+          {
+            slot: 'offset',
+            title: 'A visible pipe offset',
+            description:
+              'Shows a change in alignment at a joint. It does not determine the cause.',
+          },
+          {
+            slot: 'standing-water',
+            title: 'Standing water',
+            description:
+              'The footage can show where it appears. It does not confirm why it is there.',
+          },
+          {
+            slot: 'report',
+            title: 'Footage and findings summary',
+            description:
+              'You receive the inspection video and written findings, so you can review what was seen.',
+          },
+        ],
+      },
+      audiences: {
+        eyebrow: 'Who it helps',
+        title: 'Who uses a pre-purchase sewer inspection',
+        intro:
+          'Buyers are the main reader of this page. Agents and home inspectors can contact the market serving the property to coordinate an appointment.',
+        items: [
+          {
+            pageId: id('aud-real-estate-agents'),
+            audience: 'Real estate agents',
+            description:
+              "Coordinate a sewer inspection around your client's inspection period and share the video and written findings for buyers and sellers to discuss. Findings record visible conditions. They do not guarantee future performance or decide repairs.",
+            actionLabel: 'For real estate agents',
+          },
+          {
+            pageId: id('aud-home-inspectors'),
+            audience: 'Home inspectors',
+            description:
+              'Refer a sewer camera inspection when your client wants a closer look at the line, and coordinate access for the appointment. Your own inspection keeps its scope.',
+            actionLabel: 'For home inspectors',
+          },
+          {
+            pageId: id('aud-home-buyers'),
+            audience: 'Home buyers',
+            description:
+              'Understand the visible condition of the sewer line before you close, with the inspection video and written findings in hand.',
+            actionLabel: 'For home buyers',
+          },
+          {
+            pageId: id('aud-home-sellers'),
+            audience: 'Home sellers',
+            description:
+              "Find out what a buyer's inspection may see in the sewer line, and have documented findings ready before you list.",
+            actionLabel: 'For home sellers',
+          },
+        ],
+      },
+      markets: {
+        id: 'markets',
+        eyebrow: 'Service areas',
+        title: 'Pre-purchase sewer inspection service areas',
+        intro:
+          'Choose your market for local service details and scheduling options. These are service areas, not office locations.',
+        items: [
+          {
+            pageId: id('market-st-louis-mo'),
+            description: 'Home buyers, agents, and home inspectors across the St. Louis area.',
+            actionLabel: 'View St. Louis inspection services',
+          },
+          {
+            pageId: id('market-san-diego-ca'),
+            description: 'Home buyers, agents, and home inspectors in the San Diego area.',
+            actionLabel: 'View San Diego inspection services',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            description:
+              'Home buyers, agents, and home inspectors across the Las Vegas Valley.',
+            actionLabel: 'View Las Vegas inspection services',
+          },
+        ],
+      },
       /*
-        `muted`, not the default navy: this page removes the plain
-        filler form (`hideMidPageForm`) that otherwise keeps this
-        section from touching "How Our Pre-Purchase Sewer Inspection
-        Works" (also a brand surface). See ServicePageContent.hideMidPageForm.
+        ⚠ FAQ: 29 QUESTIONS IN FIVE GROUPS (5 + 10 + 3 + 7 + 4), ANSWERS
+        VERBATIM FROM THE CONTENT DOC. Answers are plain strings, except
+        two that carry `ApprovedInlineLink`, which the FAQPage extractor
+        treats as transparent text (DEC-114), so the JSON-LD still equals
+        the visible text. The group label is navigation only and is not
+        part of any answer.
       */
-      surface: 'muted',
-      title: 'Pre-Purchase Sewer Inspection vs. Related Services',
-      intro:
-        'A pre-purchase sewer inspection is a sewer camera inspection arranged in connection with a real estate transaction. Comparing it with related services can help you choose an appropriate starting point based on what you need to understand or address.',
-      rows: [
+      faqTitle: 'Pre-purchase sewer inspection questions',
+      eyebrows: { request: 'Request service' },
+      faq: [
         {
-          service: 'Pre-Purchase Sewer Inspection',
-          icon: 'house-search',
-          purpose:
-            'Document visible sewer-line conditions in accessible portions of the line before a property decision.',
-          fit: 'You are buying, selling, or otherwise involved in a real estate transaction.',
+          group: 'The basics',
+          question: 'What is a pre-purchase sewer inspection?',
+          answer: `A pre-purchase sewer inspection is a camera inspection of the accessible sewer line serving a home you are buying. A technician advances a camera through an entry point, views it live, and records what it sees. People often call it a sewer scope.`,
         },
         {
-          service: 'Sewer Camera Inspection',
-          icon: 'camera',
-          purpose: 'View and document visible conditions inside an accessible sewer line.',
-          fit: 'You want to investigate recurring symptoms, plan a project, or understand a sewer line outside a real estate transaction.',
-          pageId: id('svc-sewer-camera-inspection'),
+          group: 'The basics',
+          question: 'What is a sewer lateral?',
+          answer: `The sewer lateral is the private pipe that connects a building's plumbing to the public sewer main. Owners commonly maintain it, but where the owner's responsibility ends varies by location. Ask your agent or the local sewer utility.`,
         },
         {
-          service: 'Sewer Cleaning',
-          icon: 'pipe',
-          purpose: 'Address certain blockages or buildup in the sewer line.',
-          fit: 'A blockage or flow issue may need cleaning.',
-          pageId: id('svc-sewer-cleaning'),
+          group: 'The basics',
+          question: 'Is a sewer scope included in a regular home inspection?',
+          answer: `Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line, and a general inspection is not assumed to include one.`,
         },
         {
-          service: 'Line Locating',
-          icon: 'map-pin',
-          purpose: 'Identify the approximate path of an underground sewer line.',
-          fit: "You are planning work or need to verify the line's approximate route.",
-          pageId: id('svc-sewer-line-locating'),
+          group: 'The basics',
+          question: 'Where does the camera go in?',
+          answer: `Most often through an exterior cleanout. The right entry point depends on the property's plumbing layout and the line. Ask what applies to the home you are buying.`,
+        },
+        {
+          group: 'The basics',
+          question: 'What if there is no cleanout, and do you have to pull a toilet?',
+          answer: `Ask before you book. Most often the camera goes in through a cleanout where one is accessible. Whether other entry points are possible depends on the property and the equipment.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'What does a sewer scope look for?',
+          answer: `It documents visible conditions in the accessible line: roots, grease or scale deposits, obstructions, cracks and fractures, offset or separated joints, standing water, and collapse when the camera can reach it.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'What does a sewer inspection not show?',
+          answer: `It does not show anything below the waterline, sections the camera did not reach, soil or voids outside the pipe, wall thickness or structural capacity, exact slope or depth, or whether every leak has been found. It also does not predict how the line will perform.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'What does a clear sewer scope mean?',
+          answer: `It means the camera did not record a visible problem in the section it reached on that day. It does not prove that the whole line, or the ground around it, is in good condition, and it does not predict future performance.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'What happens if the camera cannot get through the line?',
+          answer: `The part the camera did not reach is not documented. Roots, debris, standing water, a collapsed or damaged section, or limited access can stop the camera. Ask what part of the line could not be viewed and why, and ask what options apply.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'Can a sewer camera see through standing water?',
+          answer: `No. A camera generally cannot see under water. A line that is blocked and not draining may not be viewable until flow is restored.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'Can a sewer camera find a belly or sag?',
+          answer: `A camera can record standing water or an apparent low area. It does not measure slope, so footage alone does not establish exact grade or the cause of the low spot.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'Can a sewer camera find a leak?',
+          answer: `It may record visible infiltration or a visibly open defect. It cannot confirm that no leaks exist, because it does not see outside the pipe wall or below the waterline.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'Can a sewer scope tell what kind of pipe I have?',
+          answer: `Sometimes the camera shows the visible pipe material, but a camera view is not always enough to identify it with certainty. Ask whether pipe material is noted in the written findings.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'Does a sewer scope tell me if the pipe needs to be replaced?',
+          answer: `No. A camera result documents visible conditions. It does not by itself decide whether any repair or replacement is needed, because it cannot show wall thickness, structural capacity, or the soil around the pipe. The Sewer Pros does not repair or replace sewer lines.`,
+        },
+        {
+          group: 'What it can and cannot see',
+          question: 'What happens if the scope finds roots?',
+          answer: `Roots are a maintenance-type condition. The footage records where they appear and how much of the pipe they seem to affect. It does not decide a fix. Cleaning can remove roots that are accessible. It does not repair the opening they entered through.`,
+        },
+        {
+          group: 'Cleaning and locating',
+          question: 'Do I need to clean the sewer before a camera inspection?',
+          answer: `Not always. If standing water or debris keeps the camera from traveling or seeing, cleaning may be needed first. There is no universal order. It depends on the line.`,
+        },
+        {
+          group: 'Cleaning and locating',
+          question: 'Does a sewer scope include cleaning or hydro jetting?',
+          answer: (
+            <p>
+              No. A pre-purchase sewer inspection is a camera inspection.
+              Cleaning is a separate service. If the camera cannot pass, ask
+              what options apply. See{' '}
+              <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
+                sewer cleaning
+              </ApprovedInlineLink>
+              ,{' '}
+              <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
+                hydro jetting
+              </ApprovedInlineLink>
+              , and{' '}
+              <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>
+                sewer cleaning and camera inspection
+              </ApprovedInlineLink>
+              .
+            </p>
+          ),
+        },
+        {
+          group: 'Cleaning and locating',
+          question: 'Can a sewer scope tell where a problem is in the yard?',
+          answer: (
+            <p>
+              A camera shows what is inside the pipe, not where the pipe sits
+              in your yard.{' '}
+              <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
+                Sewer line locating
+              </ApprovedInlineLink>{' '}
+              can estimate a position from the surface, and a locate is an
+              estimate, not a survey. Ask whether locating is part of your
+              visit.
+            </p>
+          ),
+        },
+        {
+          group: 'Buying and timing',
+          question: 'Should I get a sewer scope before buying a house?',
+          answer: `It is your decision. Inspections happen during the contingency period set by your purchase agreement, and no national rule requires a sewer scope. A scope gives you a record of the accessible line's visible condition before you close. It does not decide whether you should buy.`,
+        },
+        {
+          group: 'Buying and timing',
+          question: 'Is a sewer scope required when buying or selling a house?',
+          answer: `No national rule requires one. Some local programs require a lateral inspection when a property is sold or transferred, and many do not. Check with your agent or the local sewer utility. We do not give legal advice.`,
+        },
+        {
+          group: 'Buying and timing',
+          question: 'Is a sewer scope worth it for an older house, or one with no plumbing problems?',
+          answer: `No rule sets a home age at which a scope is required. Pipe age is one factor municipal sources list among possible causes of lateral problems, and drains that work during a showing do not show what is inside the line. Some local utilities recommend periodic inspection even when there are no symptoms.`,
+        },
+        {
+          group: 'Buying and timing',
+          question: 'When should I schedule a sewer scope during the inspection period?',
+          answer: `Your purchase agreement sets your inspection window, and it can be short. Note your inspection deadline when you request service, and we will work toward it. Confirm timing with your agent, since inspection periods are short.`,
+        },
+        {
+          group: 'Buying and timing',
+          question: 'How long does a sewer scope take?',
+          answer: `It depends on the entry point, the length and condition of the line, and what needs to be documented. We do not quote a standard time. Ask when you request service.`,
+        },
+        {
+          group: 'Buying and timing',
+          question: 'How much does a sewer scope cost?',
+          answer: `Pricing depends on the scope of work, so we do not publish a standard price. Ask when you request service.`,
+        },
+        {
+          group: 'Buying and timing',
+          question: 'Do I need to be there for the appointment?',
+          answer: `Ask when you request service. Whether someone needs to be present can depend on the property and the service requested.`,
+        },
+        {
+          group: 'Records and next steps',
+          question: 'Do I get a video of the sewer inspection?',
+          answer: `Yes. When a camera is used, you receive the inspection video. Ask how it is delivered and how long you can access it.`,
+        },
+        {
+          group: 'Records and next steps',
+          question: 'Do I get written findings from a sewer inspection?',
+          answer: `Written findings are included. Ask whether they note any part of the line that could not be viewed, and why.`,
+        },
+        {
+          group: 'Records and next steps',
+          question: 'What should a sewer inspection record include?',
+          answer: `Ask for the inspection video and written findings, which access point was used, where along the line conditions were seen, what part of the line could not be viewed and why, and whether locating was performed. Local programs set their own requirements. These are questions to ask any provider.`,
+        },
+        {
+          group: 'Records and next steps',
+          question: 'What should I ask before approving major sewer work?',
+          answer: `Ask for the proposal in writing, including the work, materials, schedule, and price. Ask which inspection evidence it relies on, such as video and findings, and whether the camera reached all sections. Compare written estimates when the work is significant, and ask why they differ. The Sewer Pros does not perform repair or replacement.`,
         },
       ],
-      note: 'A general home inspection may not include a camera review of the sewer line. Ask the home inspector what their inspection covers.',
-      related: {
-        lead: 'Want more detail about the camera-inspection process?',
-        pageId: id('svc-sewer-camera-inspection'),
-        label: 'Explore sewer camera inspection',
+      relatedTitle: 'Keep reading',
+      relatedColumns: 4,
+      request: {
+        title: 'Request a pre-purchase sewer inspection',
+        intro: [
+          'Choose your service area, tell us about the property, and note your inspection deadline if you have one. We will tell you what we can do and what is included.',
+          'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
+        ],
+        submitLabel: 'Schedule a Pre-Purchase Sewer Inspection',
       },
     },
-    faqTitle: 'Common Questions About Pre-Purchase Sewer Inspection',
-    faqColumns: 2,
-    faq: [
-      {
-        question: 'What is a pre-purchase sewer inspection?',
-        icon: <CameraIcon />,
-        answer: (
-          <p>
-            A pre-purchase sewer inspection uses a camera to view accessible
-            portions of a home&rsquo;s sewer line before a property
-            transaction. It documents visible conditions on the day of the
-            inspection to support your due diligence.
-          </p>
-        ),
-      },
-      {
-        question: 'Is a sewer inspection part of a standard home inspection?',
-        icon: <ChecklistIcon />,
-        answer: (
-          <p>
-            Coverage varies. A general home inspection may not include a
-            camera review of the sewer line. Ask your home inspector what
-            their inspection covers.
-          </p>
-        ),
-      },
-      {
-        question: 'What can a sewer camera inspection show before closing?',
-        icon: <EyeIcon />,
-        answer: (
-          <p>
-            Depending on access and visibility, the camera may show
-            conditions such as root entry, visible cracks or offsets,
-            standing water, restrictions, and pipe-material changes in the
-            inspected portion of the line.
-          </p>
-        ),
-      },
-      {
-        question:
-          'Can a sewer scope guarantee the sewer line is problem-free?',
-        icon: <DecisionIcon />,
-        answer: (
-          <p>
-            No. The inspection documents what the camera can see in
-            accessible portions of the line on the inspection day. It cannot
-            guarantee future performance or rule out conditions outside the
-            camera&rsquo;s view.
-          </p>
-        ),
-      },
-      {
-        question: 'When should I schedule a pre-purchase sewer inspection?',
-        icon: <CalendarClockIcon />,
-        answer: (
-          <p>
-            It is most useful while you still have time to review the
-            findings as part of your due diligence and discuss questions
-            with your own advisors.
-          </p>
-        ),
-      },
-      {
-        question: 'What if the inspection finds a problem?',
-        icon: <ExplanationIcon />,
-        answer: (
-          <p>
-            The findings can help you understand what was visible during the
-            inspection. You can discuss questions or possible next steps
-            with your real estate, legal, or plumbing professional.
-          </p>
-        ),
-      },
-      {
-        question:
-          'Can the inspection determine who is responsible for a sewer-line repair?',
-        icon: <GuidanceIcon />,
-        answer: (
-          <p>
-            No. Responsibility varies by jurisdiction. Confirm local
-            requirements with the appropriate real estate, legal, or
-            plumbing professional.
-          </p>
-        ),
-      },
-      {
-        question:
-          'What happens if the camera cannot access part of the sewer line?',
-        icon: <AccessPointIcon />,
-        answer: (
-          <p>
-            The inspection is limited to the portions the camera can access
-            and view. Findings should be understood in that context; the
-            inspection may not show the entire line.
-          </p>
-        ),
-      },
-      {
-        question: 'Does The Sewer Pros perform sewer repairs or replacements?',
-        icon: <IndependenceIcon />,
-        answer: (
-          <p>
-            The Sewer Pros provides sewer inspection and cleaning services
-            but does not perform sewer repair or replacement.
-          </p>
-        ),
-      },
-      {
-        question: 'Can my agent or home inspector coordinate the appointment?',
-        icon: <ChecklistIcon />,
-        answer: (
-          <p>
-            An agent or home inspector can help coordinate communication
-            around the transaction. Share the property location and relevant
-            timing details when requesting an inspection.
-          </p>
-        ),
-      },
-    ],
     relatedPageIds: [
       id('svc-sewer-camera-inspection'),
-      id('cmp-independent-vs-repair'),
+      id('svc-sewer-cleaning-camera-inspection'),
+      id('svc-sewer-line-locating'),
+      id('svc-sewer-cleaning'),
     ],
-    relatedTitle: 'Related Services',
-    /*
-      `detailed`: image, title, full description, and one explicit
-      visible link per card — see `RelatedLinks`' own `detailed` variant
-      doc. Both destinations are already-approved, already-authored
-      pages (verified against data/pages/approved-pages.ts): no invented
-      routes.
-    */
-    relatedVariant: 'detailed',
-    relatedTitles: {
-      [id('cmp-independent-vs-repair')]:
-        'Independent Sewer Inspection vs. Repair Company Inspection',
-    },
     relatedDescriptions: {
       [id('svc-sewer-camera-inspection')]:
-        'A sewer camera inspection provides a direct view inside an accessible sewer line. The footage can help identify visible conditions such as roots, buildup, cracks, offsets, or standing water. Learn what the inspection can show and how it may help you understand the line’s condition.',
-      [id('cmp-independent-vs-repair')]:
-        'An independent sewer inspection focuses on observing and documenting visible conditions in the line. The Sewer Pros provides sewer inspection, diagnostics, and cleaning, not sewer line repair or replacement. Explore how inspection findings can help you ask informed questions and consider next steps.',
+        'What a camera may show, and what it cannot confirm.',
+      [id('svc-sewer-cleaning-camera-inspection')]:
+        'Review visible line conditions and address an appropriate restriction when warranted.',
+      [id('svc-sewer-line-locating')]: 'Estimate where an accessible line runs.',
+      [id('svc-sewer-cleaning')]:
+        'Remove certain blockages and buildup from an accessible line.',
     },
-    relatedLinkLabels: {
-      [id('svc-sewer-camera-inspection')]: 'Learn About Sewer Camera Inspections',
-      [id('cmp-independent-vs-repair')]: 'Compare Sewer Inspection Approaches',
-    },
-    /*
-      Both reuse already-approved photography rather than new imagery:
-      the sewer camera inspection card reuses the same frame
-      `homeServiceCards` uses for that page; the comparison card wires
-      in the RIDGID SeeSnake file already placed in this page's own
-      image directory.
-    */
-    relatedImages: {
-      [id('svc-sewer-camera-inspection')]: {
-        src: '/images/services/service-cards/the-sewer-pros-sewer-camera-inspection-ridgid-monitor.webp',
-        alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
-        source:
-          'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
-      },
-      [id('cmp-independent-vs-repair')]: {
-        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-independent-sewer-inspection-vs-repair-company-inspection-ridgid-seesnake-4x3.webp',
-        alt: 'RIDGID SeeSnake sewer camera monitor and equipment used during an independent sewer inspection',
-        source: 'The Sewer Pros field photography.',
-      },
-    },
+    // Not rendered by v2: the final request section replaces the separate
+    // closing form and call-to-action band.
     cta: {
       title: 'Inspect the line before you commit',
       body: 'Know the condition of the sewer line while the decision is still yours to make.',
-      /*
-        The photo replaces the panel's plain navy surface; `CtaSection`
-        applies its own measured black scrim (never navy/tinted, per
-        project convention) so the form and copy stay legible.
-      */
-      backgroundImage: {
-        src: '/images/services/pre-purchase-sewer-inspection/the-sewer-pros-pre-purchase-sewer-inspection-request-cta-ridgid-seesnake-background-16x9.webp',
-        alt: 'RIDGID SeeSnake sewer camera equipment set up for a pre-purchase sewer inspection',
-        source: 'The Sewer Pros field photography.',
-      },
     },
   },
 
