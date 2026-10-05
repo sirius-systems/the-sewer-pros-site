@@ -30,7 +30,12 @@ export function ProcessTimeline({
   title: string
   intro?: string
   steps: readonly { title: string; description: string }[]
-  prep?: { title: string; items: readonly string[]; image?: HubImageKey }
+  prep?: {
+    title: string
+    items: readonly string[]
+    image?: HubImageKey
+    access?: { title: string; body: string }
+  }
   surface?: 'default' | 'muted'
 }) {
   const prepImage =
@@ -87,7 +92,7 @@ export function ProcessTimeline({
       </ol>
       {prep !== undefined && (
         <div className="mt-14 grid gap-x-12 gap-y-8 border-t border-border pt-10 lg:grid-cols-12 lg:items-center">
-          {prepImage !== undefined && (
+          {prepImage !== undefined ? (
             <div className="lg:col-span-5">
               <CameraImageSlot
                 slot={prepImage}
@@ -95,8 +100,25 @@ export function ProcessTimeline({
                 sizes="(min-width: 1024px) 40vw, 100vw"
               />
             </div>
+          ) : (
+            prep.access !== undefined && (
+              <div className="lg:col-span-5">
+                <h3 className="text-h3 font-semibold tracking-tight text-foreground">
+                  {prep.access.title}
+                </h3>
+                <p className="mt-4 text-body-sm text-muted-foreground">{prep.access.body}</p>
+              </div>
+            )
           )}
-          <div className={prepImage !== undefined ? 'lg:col-span-7' : 'lg:col-span-12'}>
+          <div
+            className={
+              prepImage !== undefined
+                ? 'lg:col-span-7'
+                : prep.access !== undefined
+                  ? 'lg:col-span-7'
+                  : 'lg:col-span-12'
+            }
+          >
             <h3 className="text-h3 font-semibold tracking-tight text-foreground">
               {prep.title}
             </h3>

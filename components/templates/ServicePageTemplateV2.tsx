@@ -113,6 +113,8 @@ export function ServicePageTemplateV2({
     definition: v2.definition !== undefined ? slug(v2.definition.title) : '',
     signals: v2.signals !== undefined ? slug(v2.signals.title) : '',
     limits: v2.limits !== undefined ? slug(v2.limits.title) : '',
+    secondaryLimits:
+      v2.secondaryLimits !== undefined ? slug(v2.secondaryLimits.title) : '',
     process: v2.process !== undefined ? slug(v2.process.title) : '',
     decision: v2.decision !== undefined ? slug(v2.decision.title) : '',
     methods: v2.methods !== undefined ? slug(v2.methods.title) : '',
@@ -131,23 +133,38 @@ export function ServicePageTemplateV2({
   // Register the navigable sections first, in render order, so the list
   // can be built before the definition section that hosts it.
   const limitsLate = v2.limitsAfterProcess === true
+  const methodsLate = v2.methodsAfterIndependent === true
+  const trackSecondary = () => {
+    if (v2.secondaryLimits !== undefined) {
+      track('secondaryLimits', ids.secondaryLimits, v2.secondaryLimits.title)
+    }
+  }
   if (v2.definition !== undefined) track('definition', ids.definition, v2.definition.title, false)
   if (v2.signals !== undefined) track('signals', ids.signals, v2.signals.title)
   if (v2.limits !== undefined && !limitsLate) track('limits', ids.limits, v2.limits.title)
   if (v2.process !== undefined) track('process', ids.process, v2.process.title)
-  if (v2.methods !== undefined) track('methods', ids.methods, v2.methods.title)
+  if (v2.methods !== undefined && !methodsLate) track('methods', ids.methods, v2.methods.title)
   if (v2.limits !== undefined && limitsLate) track('limits', ids.limits, v2.limits.title)
+  if (!methodsLate) trackSecondary()
   if (v2.decision !== undefined) track('decision', ids.decision, v2.decision.title)
   track('independent', 'independent', 'Why an independent opinion matters')
+  if (v2.methods !== undefined && methodsLate) track('methods', ids.methods, v2.methods.title)
+  if (methodsLate) trackSecondary()
   if (v2.comparison !== undefined) track('comparison', ids.comparison, v2.comparison.title)
   if (v2.ask !== undefined) track('ask', ids.ask, v2.ask.title)
   if (v2.factors !== undefined) track('factors', ids.factors, v2.factors.title)
   if (showEvidence && v2.evidence !== undefined) track('evidence', ids.evidence, v2.evidence.title)
   if (v2.audiences !== undefined) track('audiences', ids.audiences, v2.audiences.title)
   if (v2.myths !== undefined) track('myths', ids.myths, v2.myths.title)
-  if (v2.situations !== undefined) track('situations', ids.situations, v2.situations.title)
+  const situationsLate = v2.situationsAfterFaq === true
+  if (v2.situations !== undefined && !situationsLate) {
+    track('situations', ids.situations, v2.situations.title)
+  }
   if (v2.markets !== undefined) track('markets', v2.markets.id, v2.markets.title)
   track('faq', 'faq', v2.faqTitle ?? 'Common questions')
+  if (v2.situations !== undefined && situationsLate) {
+    track('situations', ids.situations, v2.situations.title)
+  }
   track('related', 'related', v2.relatedTitle ?? 'Related services')
 
   const navLabels = v2.navLabels
@@ -303,11 +320,37 @@ export function ServicePageTemplateV2({
     )
   }
 
-  if (v2.methods !== undefined) {
-    add('dense', 'methods', <MethodsTable id={ids.methods} {...v2.methods} />)
+  const addMethods = () => {
+    if (v2.methods !== undefined) {
+      add(
+        'dense',
+        'methods',
+        methodsLate ? (
+          <MethodsTable id={ids.methods} surface="default" {...v2.methods} />
+        ) : (
+          <MethodsTable id={ids.methods} {...v2.methods} />
+        ),
+      )
+    }
   }
+  // Two branches so an entry without a second panel renders the same tree as before.
+  const addSecondaryLimits = () => {
+    if (v2.secondaryLimits !== undefined) {
+      add(
+        'dense',
+        'secondaryLimits',
+        <LimitsPanel
+          id={ids.secondaryLimits}
+          surface={methodsLate ? 'muted' : 'default'}
+          {...v2.secondaryLimits}
+        />,
+      )
+    }
+  }
+  if (!methodsLate) addMethods()
 
   if (limitsLate) addLimits()
+  if (!methodsLate) addSecondaryLimits()
 
   if (v2.decision !== undefined) {
     add(
@@ -331,6 +374,11 @@ export function ServicePageTemplateV2({
     ),
   )
 
+  if (methodsLate) {
+    addMethods()
+    addSecondaryLimits()
+  }
+
   if (v2.comparison !== undefined && v2.comparison.rows.length >= 3) {
     add(
       'dense',
@@ -340,7 +388,15 @@ export function ServicePageTemplateV2({
   }
 
   if (v2.ask !== undefined) {
-    add('standard', 'ask', <AskList id={ids.ask} {...v2.ask} />)
+    add(
+      'standard',
+      'ask',
+      methodsLate ? (
+        <AskList id={ids.ask} surface="default" {...v2.ask} />
+      ) : (
+        <AskList id={ids.ask} {...v2.ask} />
+      ),
+    )
   }
 
   if (v2.factors !== undefined) {
@@ -373,9 +429,12 @@ export function ServicePageTemplateV2({
     add('dense', 'myths', <MythList id={ids.myths} {...v2.myths} />)
   }
 
-  if (v2.situations !== undefined) {
-    add('dense', 'situations', <SituationList id={ids.situations} {...v2.situations} />)
+  const addSituations = () => {
+    if (v2.situations !== undefined) {
+      add('dense', 'situations', <SituationList id={ids.situations} {...v2.situations} />)
+    }
   }
+  if (!situationsLate) addSituations()
 
   // Data-gated: both render nothing until their governed datasets are
   // populated, so they carry no entry in the rhythm list.
@@ -397,16 +456,28 @@ export function ServicePageTemplateV2({
     />,
   )
 
+  if (situationsLate) addSituations()
+
   if (content.relatedPageIds !== undefined) {
     add(
       'dense',
       'related',
-      <RelatedServiceCards
-        id="related"
-        title={v2.relatedTitle ?? 'Related services'}
-        pageIds={content.relatedPageIds}
-        descriptions={content.relatedDescriptions}
-      />,
+      v2.relatedColumns === undefined ? (
+        <RelatedServiceCards
+          id="related"
+          title={v2.relatedTitle ?? 'Related services'}
+          pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
+        />
+      ) : (
+        <RelatedServiceCards
+          id="related"
+          title={v2.relatedTitle ?? 'Related services'}
+          pageIds={content.relatedPageIds}
+          descriptions={content.relatedDescriptions}
+          columns={v2.relatedColumns}
+        />
+      ),
     )
   }
 

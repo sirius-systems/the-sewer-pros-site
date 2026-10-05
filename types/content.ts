@@ -1711,18 +1711,44 @@ export interface ServicePageContentV2 {
    * instead of before the process. Absent keeps the camera-page order.
    */
   limitsAfterProcess?: boolean
+  /**
+   * A second can / cannot panel, placed directly after the methods table
+   * (muted surface) when `methodsAfterIndependent` is set, otherwise
+   * directly after the limits panel. Absent renders nothing.
+   */
+  secondaryLimits?: NonNullable<ServicePageContentV2['limits']>
+  /**
+   * Moves the methods table from after the process to after the
+   * independent band (white surface), and the ask list that follows
+   * onto the white surface so the sections keep alternating. Absent
+   * keeps the order every other v2 page uses.
+   */
+  methodsAfterIndependent?: boolean
+  /** Moves the situations rows from before the markets to after the FAQ. */
+  situationsAfterFaq?: boolean
+  /** Desktop column count for the related-services cards. Absent: 3. */
+  relatedColumns?: 2 | 3 | 4
   process?: {
     eyebrow?: string
     title: string
     intro?: string
     steps: readonly { title: string; description: string }[]
-    prep?: { title: string; items: readonly string[]; image?: HubImageKey }
+    prep?: {
+      title: string
+      items: readonly string[]
+      image?: HubImageKey
+      /**
+       * A titled paragraph beside the preparation list, for a page with
+       * no photograph there. Ignored when `image` resolves.
+       */
+      access?: { title: string; body: string }
+    }
   }
-  /** Two methods, side by side in a labelled, scrollable table. */
+  /** Methods side by side in a labelled, scrollable table. */
   methods?: {
     eyebrow?: string
     title: string
-    intro: string
+    intro?: string
     caption: string
     columns: readonly [string, string, string, string]
     rows: readonly {
@@ -1756,7 +1782,8 @@ export interface ServicePageContentV2 {
     /** Absent: the band is the heading, the note and the link only. */
     steps?: readonly { title: string; body: string }[]
     note: string
-    link?: { pageId: PageId; label: string }
+    /** A page link, or an in-page `href` such as `#request`. */
+    link?: { pageId?: PageId; href?: string; label: string }
   }
   comparison?: {
     eyebrow?: string
@@ -1814,6 +1841,7 @@ export interface ServicePageContentV2 {
     items: readonly { title: string; body: ReactNode }[]
   }
   audiences?: {
+    eyebrow?: string
     title: string
     intro?: string
     items: readonly {
@@ -1842,6 +1870,7 @@ export interface ServicePageContentV2 {
       | 'process'
       | 'methods'
       | 'limits'
+      | 'secondaryLimits'
       | 'decision'
       | 'comparison'
       | 'ask'

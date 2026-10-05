@@ -62,6 +62,7 @@ export function LimitsPanel({
   cannot,
   callout,
   related,
+  surface = 'default',
 }: {
   id: string
   eyebrow?: string
@@ -75,9 +76,10 @@ export function LimitsPanel({
   cannot: readonly string[]
   callout?: string
   related?: { lead: string; pageId: PageId; label: string }
+  surface?: 'default' | 'muted'
 }) {
   return (
-    <Section density="dense" surface="default" labelledBy={id}>
+    <Section density="dense" surface={surface} labelledBy={id}>
       <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
       <div className="mt-8 grid overflow-hidden rounded-md border border-border md:grid-cols-2">
         <div className="bg-surface p-6 sm:p-8">
