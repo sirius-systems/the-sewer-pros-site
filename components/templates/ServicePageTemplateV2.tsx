@@ -13,6 +13,7 @@ import {
   RequestServiceSection,
   MobileContactBar,
   BackdropImage,
+  RelatedServiceCards,
 } from '@/components/sections'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '@/components/sections/SectionHeading'
@@ -29,7 +30,6 @@ import {
   evidenceMosaicRenders,
   AudienceRows,
   FaqGrouped,
-  RelatedList,
   ServiceHeroRequestCard,
   MethodsTable,
   MythList,
@@ -401,9 +401,8 @@ export function ServicePageTemplateV2({
     add(
       'dense',
       'related',
-      <RelatedList
+      <RelatedServiceCards
         id="related"
-        eyebrow={v2.eyebrows?.related}
         title={v2.relatedTitle ?? 'Related services'}
         pageIds={content.relatedPageIds}
         descriptions={content.relatedDescriptions}

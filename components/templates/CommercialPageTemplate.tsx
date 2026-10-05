@@ -9,7 +9,7 @@ import {
   AuthorityBand,
   LeadFormSection,
   FaqSection,
-  RelatedLinks,
+  RelatedServiceCards,
   CtaSection,
   authorityBandRenders,
   processStepsRenders,
@@ -187,7 +187,7 @@ export function CommercialPageTemplate({
       <LeadFormSection />
 
       {content.relatedPageIds !== undefined && (
-        <RelatedLinks
+        <RelatedServiceCards
           title={content.relatedTitle ?? 'Related commercial services'}
           pageIds={content.relatedPageIds}
           descriptions={content.relatedDescriptions}
