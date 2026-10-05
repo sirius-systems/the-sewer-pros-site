@@ -907,6 +907,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           },
         ],
         note: 'If someone has recommended costly work, ask for the inspection video and written findings, get multiple written estimates, and ask for an explanation when they differ.',
+        // Once the independent second-opinion page is in the registry, add
+        // link: { pageId: <its id>, label: 'About independent inspection' }.
+        // It is Phase 2 and unbuilt, so the band carries no link today.
       },
       comparison: {
         eyebrow: 'Which service fits',
@@ -1212,6 +1215,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('svc-hydro-jetting'),
       id('svc-sewer-cleaning-camera-inspection'),
       id('svc-sewer-camera-inspection'),
+      // Once the independent second-opinion page is in the registry, add its
+      // id here as the fourth card, with the description 'Clear evidence
+      // before a major sewer decision.' (it is Phase 2 and unbuilt today).
     ],
     relatedDescriptions: {
       [id('svc-hydro-jetting')]:
