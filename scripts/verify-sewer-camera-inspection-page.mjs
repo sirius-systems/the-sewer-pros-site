@@ -209,12 +209,16 @@ check('no duration in minutes', !/\b\d+\s*(?:-|to)?\s*\d*\s*minutes?\b/i.test(vi
 // dataset and is not authored on this page; it is reported, not scanned.
 const bandHtml = (main.match(/<section[^>]*aria-labelledby="independent"[\s\S]*?<\/section>/) || [''])[0]
 const bandText = strip(bandHtml)
+const relatedHtml = strip((main.match(/<section[^>]*aria-labelledby="related"[\s\S]*?<\/section>/) || [''])[0])
+// The related cards link a resource article whose approved title names a "report"; a link title, not a deliverable claim.
 const outsideBand = strip(main.replace(bandHtml, ''))
 check(
-  'no claim outside the shared band that video, findings or coding are included',
-  !/(video|report|findings) (is|are) included(?! for)/i.test(outsideBand.replace(/whether the video is included/gi, '')) &&
+  'outside the shared band, only the owner-confirmed video and written-findings wording (2026-10-05); no coding claim',
+  !/(video|report|findings) (is|are) included(?! for)/i.test(outsideBand.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/whether the video is included/gi, '')) &&
     !/we (provide|deliver|include) (a |the )?(video|written)/i.test(outsideBand),
 )
+check('"report" is not named as a deliverable, and no photos, narration, coding or same-day claim', !/written report|inspection report|camera report|photos? (are|is) included|narrat|PACP|LACP/i.test(outsideBand.replace(relatedHtml, '')))
+
 const bandClaim = bandText.match(/We provide video documentation[^.]*\./)
 if (bandClaim) console.log(`NOTE  shared band says: "${bandClaim[0]}" (sitewide copy, unchanged; owner decision pending)`)
 check(

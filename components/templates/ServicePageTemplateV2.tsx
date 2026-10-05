@@ -512,6 +512,7 @@ export function ServicePageTemplateV2({
       schema={{
         title: content.seoTitle ?? content.hero.title,
         description: content.metaDescription,
+        serviceDescription: content.serviceDescription,
         // DEC-114: FAQPage mirrors the visible FAQ. Same entries the
         // grouped list renders; the group labels are not part of it.
         faq: flatFaq,

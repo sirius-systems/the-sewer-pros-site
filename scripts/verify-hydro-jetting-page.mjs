@@ -285,10 +285,12 @@ check('no dollar price', !/\$\s?\d/.test(visible))
 check('no duration in minutes', !/\b\d+\s*(?:-|to)?\s*\d*\s*minutes?\b/i.test(visible))
 check('no interval in years', !/\b\d+\s*(?:-|to)?\s*\d*\s*years?\b/i.test(visible))
 check(
-  'no claim that video, findings or coding are included',
-  !/(video|report|findings) (is|are) included(?! before)/i.test(visible.replace(/whether video and written findings are included/gi, '').replace(/what is included/gi, '')) &&
+  'only the owner-confirmed video and written-findings wording (2026-10-05); no coding claim',
+  !/(video|report|findings) (is|are) included(?! before)/i.test(visible.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/whether video and written findings are included/gi, '').replace(/what is included/gi, '')) &&
     !/we (provide|deliver|include) (a |the )?(video|written)/i.test(visible),
 )
+
+check('"report" is not named as a deliverable, and no photos, narration, coding or same-day claim', !/written report|inspection report|camera report|photos? (are|is) included|narrat|PACP|LACP/i.test(visible))
 
 const SCOPE =
   'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.'

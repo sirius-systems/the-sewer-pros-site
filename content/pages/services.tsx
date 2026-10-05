@@ -80,6 +80,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     seoTitle: 'Sewer Camera Inspection for Homes',
     metaDescription:
       'A sewer camera inspection records the visible inside of accessible residential sewer and drain lines. See what it shows, what it can’t, and what to ask for.',
+    serviceDescription:
+      'A sewer camera inspection, sometimes called a sewer scope, is a visual inspection of the accessible inside of a drain or sewer line. A technician advances a camera on a flexible cable through an entry point and watches the live view on a monitor.',
     hero: {
       eyebrow: 'Residential sewer and drain diagnostics',
       title: 'Sewer Camera Inspection',
@@ -523,8 +525,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
         {
           group: 'Records, locating, and next steps',
-          question: 'Will I get the video and a written report?',
-          answer: `Ask what is included before you book. A useful record has the video, written observations, and a note on any part of the line that could not be viewed.`,
+          question: 'Will I get the video and written findings?',
+          answer: `Video is included when a camera is used, and written findings are included. Ask whether the findings note any part of the line that could not be viewed.`,
         },
         {
           group: 'Records, locating, and next steps',
@@ -640,6 +642,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     seoTitle: 'Sewer Cleaning: Methods, Process and Limits',
     metaDescription:
       'What sewer cleaning is, how jetting and cable cleaning work, what a camera can show, and what cleaning does not fix. St. Louis, San Diego and Las Vegas.',
+    serviceDescription:
+      'Sewer cleaning is the removal of grease, roots, deposits, debris, and other material that restricts flow in a sewer line. It uses hydraulic methods, such as high-pressure water jetting, or mechanical methods, such as a cable machine, chosen to suit the line.',
     hero: {
       eyebrow: 'Residential sewer and drain cleaning',
       title: 'Sewer Cleaning',
@@ -1184,8 +1188,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
         {
           group: 'Access, time, and records',
-          question: 'Will I get a video and written report?',
-          answer: `It depends on the appointment. Ask whether video and written findings are included, whether you keep a copy, and whether the findings note any part of the line that could not be viewed.`,
+          question: 'Will I get a video and written findings?',
+          answer: `Video is included when a camera is used, and written findings are included. Ask whether you keep a copy, and whether the findings note any part of the line that could not be viewed.`,
         },
         {
           group: 'Symptoms and upkeep',
@@ -1286,6 +1290,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     seoTitle: 'Hydro Jetting: How It Works and Its Limits',
     metaDescription:
       'Hydro jetting uses pressurized water to clean accessible residential sewer and drain lines. Learn the process and limits. St. Louis, San Diego, Las Vegas.',
+    serviceDescription:
+      'Hydro jetting is a way to clean a sewer or drain line using a pump, a hose, and a nozzle that sends pressurized water through the pipe. The hose moves forward through buildup, then scours the pipe wall and flushes debris out as it is pulled back.',
     hero: {
       eyebrow: 'Residential service',
       title: 'Hydro Jetting',
@@ -1674,8 +1680,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
         {
           group: 'Planning',
-          question: 'Will I get video or a written report?',
-          answer: 'Ask what is included before you book.',
+          question: 'Will I get video or written findings?',
+          answer: 'Video is included when a camera is used, and written findings are included.',
         },
         {
           group: 'Related questions',
@@ -1777,6 +1783,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     seoTitle: 'Sewer Cleaning & Camera Inspection',
     metaDescription:
       "How a combined sewer cleaning and camera inspection visit works, which comes first, what a camera can and can't confirm, and what to ask for.",
+    serviceDescription:
+      'Sewer cleaning removes grease, roots, deposits, debris, and other material that restricts flow in an accessible sewer line. A sewer camera inspection, sometimes called a sewer scope, shows the visible inside of that line. They are separate services that can be combined.',
     hero: {
       eyebrow: 'Residential sewer and drain service',
       title: 'Sewer Camera Inspection and Cleaning for Recurring Drainage Problems',
