@@ -9,7 +9,6 @@ import {
   TestimonialBand,
   LeadFormSection,
   MarketRouter,
-  RelatedLinks,
   RequestServiceSection,
   MobileContactBar,
   BackdropImage,
@@ -29,6 +28,7 @@ import {
   evidenceMosaicRenders,
   AudienceRows,
   FaqGrouped,
+  RelatedList,
   ServiceHeroRequestCard,
   type SectionNavItem,
 } from '@/components/sections/service-v2'
@@ -189,31 +189,19 @@ export function ServicePageTemplateV2({
   add('dense', 'counters', <ExperienceCounterStrip surface="muted" />)
 
   if (v2.definition !== undefined) {
-    const showNav = contentSections >= SECTION_NAV_MIN
     add(
       'standard',
       'definition',
       <Section density="standard" surface="default" labelledBy={ids.definition}>
-        <div
-          className={
-            showNav
-              ? 'grid gap-x-12 gap-y-10 min-[1000px]:grid-cols-[1fr_17rem]'
-              : undefined
-          }
-        >
-          <div>
-            <SectionHeading
-              id={ids.definition}
-              title={v2.definition.title}
-              intro={<p className="text-foreground">{v2.definition.answer}</p>}
-            />
-            <div className="mt-6 max-w-[var(--container-reading)] space-y-4 text-body text-muted-foreground">
-              {v2.definition.supporting.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-          {showNav && <SectionNav items={nav} />}
+        <SectionHeading
+          id={ids.definition}
+          title={v2.definition.title}
+          intro={<p className="text-foreground">{v2.definition.answer}</p>}
+        />
+        <div className="mt-6 max-w-[var(--container-reading)] space-y-4 text-body text-muted-foreground">
+          {v2.definition.supporting.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
       </Section>,
     )
@@ -310,12 +298,11 @@ export function ServicePageTemplateV2({
     add(
       'dense',
       'related',
-      <RelatedLinks
+      <RelatedList
         id="related"
         title={v2.relatedTitle ?? 'Related services'}
         pageIds={content.relatedPageIds}
         descriptions={content.relatedDescriptions}
-        surface="default"
       />,
     )
   }
@@ -349,6 +336,44 @@ export function ServicePageTemplateV2({
     density === null ? [] : [density],
   )
 
+  /*
+    The sections from the definition to the related list share one
+    wrapper, so the sticky "On this page" bar (placed right after the
+    definition) stays on screen across all of them. The wrapper adds no
+    padding, background or width; the anchors inside it clear both the
+    site header and the bar.
+  */
+  const OUTSIDE = new Set(['hero', 'trust', 'counters', 'request'])
+  const showNav = contentSections >= SECTION_NAV_MIN
+  const renderBlocks = () => {
+    const before: ReactNode[] = []
+    const inside: ReactNode[] = []
+    const after: ReactNode[] = []
+    let seenWrapped = false
+    // Without a definition the bar leads the wrapped sections instead.
+    if (showNav && v2.definition === undefined) {
+      inside.push(<SectionNav key="section-nav" items={nav} />)
+    }
+    for (const [, key, node] of blocks) {
+      if (OUTSIDE.has(key)) {
+        ;(seenWrapped ? after : before).push(<Fragment key={key}>{node}</Fragment>)
+        continue
+      }
+      seenWrapped = true
+      inside.push(<Fragment key={key}>{node}</Fragment>)
+      if (key === 'definition' && showNav) {
+        inside.push(<SectionNav key="section-nav" items={nav} />)
+      }
+    }
+    return (
+      <>
+        {before}
+        <div className="min-[1000px]:[&_[id]]:scroll-mt-40">{inside}</div>
+        {after}
+      </>
+    )
+  }
+
   return (
     <PageShell
       page={page}
@@ -361,9 +386,7 @@ export function ServicePageTemplateV2({
         faq: flatFaq,
       }}
     >
-      {blocks.map(([, key, node]) => (
-        <Fragment key={key}>{node}</Fragment>
-      ))}
+      {renderBlocks()}
       <MobileContactBar scheduleHref={`#${REQUEST_ID}`} />
     </PageShell>
   )

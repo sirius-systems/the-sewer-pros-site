@@ -141,6 +141,14 @@ const navBlock = (main.match(/<nav[^>]*aria-labelledby="on-this-page"[\s\S]*?<\/
 const navHrefs = [...navBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('"On this page" list present (8 or more sections)', navHrefs.length >= 8, String(navHrefs.length))
 check('every "On this page" anchor resolves', navHrefs.every((h) => ids.includes(h)), navHrefs.filter((h) => !ids.includes(h)).join(', '))
+check('"On this page" nav renders exactly once in the DOM', (main.match(/aria-labelledby="on-this-page"/g) || []).length === 1)
+check('nav is not hidden from assistive technology', !/aria-hidden="true"[^>]*aria-labelledby="on-this-page"|aria-labelledby="on-this-page"[^>]*aria-hidden="true"/.test(navBlock) && !/<nav[^>]*\shidden/.test(navBlock))
+// The nav lists only sections that rendered: each target is a heading inside main.
+const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
+check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
+const relatedBlock = (main.match(/<aside[^>]*aria-labelledby="related"[\s\S]*?<\/aside>/) || [''])[0]
+check('related list contains all 8 links', (relatedBlock.match(/<li[\s>]/g) || []).length === 8 && (relatedBlock.match(/<a /g) || []).length === 8, String((relatedBlock.match(/<a /g) || []).length))
+check('related list carries the two-column class', /sm:columns-2/.test(relatedBlock))
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
 const topicHrefs = [...topicBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('FAQ topic list has five anchors that resolve', topicHrefs.length === 5 && topicHrefs.every((h) => ids.includes(h)))
