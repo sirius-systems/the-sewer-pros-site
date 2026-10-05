@@ -1,7 +1,8 @@
 /**
- * Las Vegas market content — 5 live pages. The City of Las Vegas and City of
- * Henderson location pages live in `las-vegas-las-vegas.tsx` and
- * `las-vegas-henderson.tsx` and are registered below.
+ * Las Vegas market content — 5 live pages. The City of Las Vegas, City of
+ * Henderson and City of North Las Vegas location pages live in
+ * `las-vegas-las-vegas.tsx`, `las-vegas-henderson.tsx` and
+ * `las-vegas-north-las-vegas.tsx` and are registered below.
  *
  * Authority: docs/04-master-page-build-list.md §10.3, §14
  *            docs/22-decisions-change-log.md DEC-080, DEC-063, DEC-073
@@ -67,6 +68,7 @@ import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
 import { lasVegasCityContent } from './las-vegas-las-vegas'
 import { hendersonContent } from './las-vegas-henderson'
+import { northLasVegasContent } from './las-vegas-north-las-vegas'
 import {
   homeServiceCards,
   approvedServicesTitle,
@@ -78,14 +80,14 @@ const id = (value: string): PageId => value as PageId
 /** Owner-confirmed contact (DEC-073). Repeated per page deliberately. */
 
 /*
-  ⚠ STILL USED BY TWO LOCATION PAGES IN THIS FILE, WHICH IS WHY IT
+  ⚠ STILL USED BY THE SUMMERLIN LOCATION PAGE IN THIS FILE, WHICH IS WHY IT
   SURVIVED THE 2026-09-08 HUB RESTRUCTURE. The market hub's own copy of
   it was folded into `regionalCoverage` (email, hours, and the
-  newer-market sentence); the North Las Vegas and Summerlin
-  location bodies still render it and are unchanged.
+  newer-market sentence); the Summerlin location body still
+  renders it and is unchanged.
 
   ⚠ DELETING THIS WOULD SILENTLY STRIP THE PHONE, EMAIL AND HOURS FROM
-  TWO PAGES. It looked unused after the hub stopped referencing it,
+  THE SUMMERLIN PAGE. It looked unused after the hub stopped referencing it,
   and it is not.
 */
 const LAS_VEGAS_CONTACT = (
@@ -1403,56 +1405,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
   [id('loc-lv-henderson')]: hendersonContent,
 
   /* -------------------------------------------------- North Las Vegas -- */
-  [id('loc-lv-north-las-vegas')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, hydro jetting, and drain services available for properties in North Las Vegas, Nevada.',
-    hero: {
-      eyebrow: 'North Las Vegas',
-      title: 'Sewer inspection and cleaning in North Las Vegas',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for North Las Vegas
-          properties.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Confirm the responsibility boundary</h2>
-        <p>
-          Sewer service is handled by City of North Las Vegas Public Works and
-          Utilities. We were not able to locate a published North Las Vegas
-          statement setting out exactly where homeowner responsibility for the
-          lateral begins.
-        </p>
-        <p>
-          Every other authority in the valley (Henderson and the Clark County
-          Water Reclamation District both) places the lateral with the property
-          owner, so the pattern is consistent. But we would rather send you to{' '}
-          <a href="https://www.cityofnorthlasvegas.com">
-            the City of North Las Vegas
-          </a>{' '}
-          than restate a neighboring jurisdiction&rsquo;s rule as though it
-          were North Las Vegas&rsquo;s own.
-        </p>
-
-        {LAS_VEGAS_CONTACT}
-      </>
-    ),
-    faq: [
-      {
-        question: 'Who is responsible for the sewer lateral in North Las Vegas?',
-        answer: (
-          <p>
-            We were not able to locate a published North Las Vegas statement
-            setting out exactly where homeowner responsibility for the lateral
-            begins, so confirm it with the City of North Las Vegas before you
-            plan work or assign cost.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-lv-north-las-vegas')]: northLasVegasContent,
 
   /* --------------------------------------------------------- Summerlin -- */
   [id('loc-lv-summerlin')]: {

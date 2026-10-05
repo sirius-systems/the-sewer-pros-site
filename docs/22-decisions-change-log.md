@@ -4979,6 +4979,21 @@ The statement in the San Diego differentiation entry (around DEC-071 and DEC-072
 
 The Oceanside housing figures now cite ACS 2020-2024 5-year estimates (tables B25034 and B25035, Oceanside city, read 2026-10-04) instead of the 2019-2023 label. Removed as unsourced: the "as in most San Diego County jurisdictions" rule, the comparison with Carlsbad and Chula Vista, the ground-movement and settlement narrative, "coastal conditions" and "coastal and suburban housing" characterizations, the redirecting `/residents/water-utilities` link, and the St. Louis "Since 2011" in the trust strip. "none found" statements are scoped to the City pages reviewed. No business capability, price, license or guarantee changed.
 
+## DEC-121 - North Las Vegas Page Claims Corrected
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/las-vegas-north-las-vegas.tsx` (new; replaces the inline North Las Vegas entry in `content/pages/las-vegas.tsx`)
+* `docs/04-master-page-build-list.md` (`loc-lv-north-las-vegas` row)
+
+The handling that recorded North Las Vegas as a "cite-and-link" target (applied 2026-08-17) is superseded for this page; that entry is not edited. The City of North Las Vegas Water Leaks page publishes its own wording, and the page now states it: the homeowner's responsibility for the sewer service lateral ends at the connection to the main in the street. The page shows the City's blockage and breakage statements side by side, in the City's words, without reconciling them into one rule, and shows the City's statement that a plumber's video of a City-side problem may be submitted to the Utilities Department for review.
+
+Removed as unsourced or false: "We were not able to locate a published North Las Vegas statement"; the comparative sentence that every other authority in the valley (Henderson and the Clark County Water Reclamation District) places the lateral with the owner; and the naming of "City of North Las Vegas Public Works and Utilities" (the City's pages name the Utilities Department, Operations division). The City's Ordinance No. 2770 excerpt was not used because it was not read from a primary live source, and the page cites no Chapter 13.24 text. The housing-age section is skipped until primary Census tables B25034 and B25035 for North Las Vegas city are supplied, so no housing figure appears. The optional third-party service-line plan the City describes appears once, as a labeled callout in the City's words with no price, coverage or recommendation.
+
 ---
 
 # 26. Decision Quality Standard
