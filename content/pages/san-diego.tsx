@@ -90,30 +90,24 @@ export const sanDiegoMarketContent: MarketPageContent = {
     ),
   },
   /*
-    ⚠ NEUTRAL PLACEHOLDER IMAGERY, DELIBERATELY NOT THE ST. LOUIS
-    FRAME. That photograph is identifiably St. Louis by filename and
-    alt text, and putting it here would imply a local photograph that
-    does not exist. These are the equipment-and-cleanout frames the
-    home page hero rotates: no location markers, already owner-supplied
-    with provenance recorded.
+    ⚠ THE STILL IS SAN DIEGO'S OWN, AND IT IS THE CLIP'S POSTER. It is
+    what reduced-motion, data-saver, slow-connection, and pre-hydration
+    visitors see, and it is the LCP element; the video fades in over it.
+    Same arrangement as St. Louis and Las Vegas. It replaces the shared
+    home-page placeholder this market used before.
 
-    ⚠ A VISITOR MOVING FROM THE HOME PAGE WILL RECOGNISE THEM. That is
-    the accepted cost of a placeholder; each market uses a different
-    frame so the two hubs do not read as clones. Swap these two srcs
-    first when real imagery arrives - nothing else changes.
+    It is a rendered scene, not a photograph of a Sewer Pros job, and
+    nothing here claims it is a frame of the clip. Swap it for a real
+    San Diego frame when one exists - nothing else changes.
   */
   heroBackground: {
-    src: '/images/homepage/hero/the-sewer-pros-residential-sewer-camera-inspection-hero.webp',
-    alt: 'Camera reel and monitor at an open cleanout on a residential driveway',
+    src: '/images/markets/san-diego-ca/hero/the-sewer-pros-san-diego-residential-sewer-camera-inspection-hero.webp',
+    alt: 'Camera monitor and cable reel beside an open cleanout in front of a Southern California home',
     source:
-      'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.',
+      'San Diego market hero still from the repository asset folder. Rendered scene, not a photograph of a Sewer Pros job.',
   },
   /*
-    ⚠ THE CLIP IS SAN DIEGO'S OWN; THE STILL ABOVE IS STILL THE SHARED
-    PLACEHOLDER, AND IT IS NOW ALSO THIS CLIP'S POSTER. It is what
-    reduced-motion, data-saver, and pre-hydration visitors see, so the
-    note above it still applies in full - the video does not retire the
-    still, it layers over it.
+    ⚠ THE CLIP IS SAN DIEGO'S OWN, LAYERED OVER THE STILL ABOVE.
 
     `describes` is written from the supplied filename and the market it
     was delivered for. The frames themselves were not inspected -
