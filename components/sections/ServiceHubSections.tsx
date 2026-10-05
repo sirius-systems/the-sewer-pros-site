@@ -138,10 +138,21 @@ export function BackdropImage({
    Market router
    ========================================================================== */
 
-export function MarketRouter({ content }: { content: NonNullable<Hub['marketRouter']> }) {
+export function MarketRouter({
+  content,
+  surface = 'default',
+}: {
+  content: NonNullable<Hub['marketRouter']>
+  surface?: 'default' | 'muted'
+}) {
   return (
-    <Section density="standard" surface="default" labelledBy={content.id}>
-      <SectionHeading id={content.id} title={content.title} intro={<p>{content.intro}</p>} />
+    <Section density="standard" surface={surface} labelledBy={content.id}>
+      <SectionHeading
+        id={content.id}
+        eyebrow={content.eyebrow}
+        title={content.title}
+        intro={<p>{content.intro}</p>}
+      />
       <CardGrid columns={3} itemCount={content.items.length} className="mt-8">
         {content.items.map((item) => {
           const link = resolveApprovedLink(item.pageId)
@@ -1594,7 +1605,7 @@ export function RequestServiceSection({
   focus = 'default',
   scrim,
 }: {
-  content: { title: string; intro: string | readonly string[] }
+  content: { eyebrow?: string; title: string; intro: string | readonly string[] }
   imageSrc: string
   children: ReactNode
   id?: string
@@ -1634,7 +1645,15 @@ export function RequestServiceSection({
       <Section density={density} surface="none" labelledBy={id}>
         <div className="grid gap-10 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-14">
           <div>
-            <h2 id={id} className="text-h2 font-semibold tracking-tight text-balance">
+            {content.eyebrow !== undefined && (
+              <p className="text-caption font-semibold tracking-wide uppercase opacity-80">
+                {content.eyebrow}
+              </p>
+            )}
+            <h2
+              id={id}
+              className={`text-h2 font-semibold tracking-tight text-balance${content.eyebrow !== undefined ? ' mt-3' : ''}`}
+            >
               {content.title}
             </h2>
             <div className="mt-4 max-w-[var(--container-reading)] space-y-4 text-body-lg">

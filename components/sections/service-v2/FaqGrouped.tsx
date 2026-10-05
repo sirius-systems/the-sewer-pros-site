@@ -26,10 +26,12 @@ function slug(label: string): string {
  */
 export function FaqGrouped({
   id = 'faq',
+  eyebrow,
   title,
   entries,
 }: {
   id?: string
+  eyebrow?: string
   title: string
   entries: readonly GroupedFaqEntry[]
 }) {
@@ -46,7 +48,7 @@ export function FaqGrouped({
   }
   return (
     <Section density="dense" surface="muted" labelledBy={id}>
-      <SectionHeading id={id} title={title} />
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} />
       <div className="mt-8 grid gap-x-12 gap-y-8 min-[1000px]:grid-cols-[15rem_1fr]">
         <nav
           aria-labelledby="faq-topics"

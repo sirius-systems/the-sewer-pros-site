@@ -1651,31 +1651,70 @@ export interface ServicePageContentV2 {
   hero: {
     scope: readonly string[]
     cardTitle: string
+    /** One line under the hero card heading. */
+    cardIntro?: string
   }
-  definition?: { title: string; answer: string; supporting: readonly string[] }
-  signals?: {
+  definition?: {
+    eyebrow?: string
     title: string
-    note?: string
+    answer: string
+    supporting: readonly string[]
+    /** Boxed scope statement under the supporting paragraphs. */
+    scope?: string
+  }
+  signals?: {
+    eyebrow?: string
+    title: string
+    /** Plain text, or text with inline approved links. */
+    note?: ReactNode
     items: readonly { title: string; description: string }[]
     image?: HubImageKey
   }
   limits?: {
+    eyebrow?: string
     title: string
     intro: string
     canTitle: string
+    /** One line under the "may show" column heading. */
+    canLead?: string
     can: readonly string[]
     cannotTitle: string
+    /** One line under the "cannot confirm" column heading. */
+    cannotLead?: string
     cannot: readonly string[]
     callout?: string
     related?: { lead: string; pageId: PageId; label: string }
   }
+  /**
+   * Places the limits panel after the process and methods sections
+   * instead of before the process. Absent keeps the camera-page order.
+   */
+  limitsAfterProcess?: boolean
   process?: {
+    eyebrow?: string
     title: string
     intro?: string
     steps: readonly { title: string; description: string }[]
     prep?: { title: string; items: readonly string[]; image?: HubImageKey }
   }
+  /** Two methods, side by side in a labelled, scrollable table. */
+  methods?: {
+    eyebrow?: string
+    title: string
+    intro: string
+    caption: string
+    columns: readonly [string, string, string, string]
+    rows: readonly {
+      method: string
+      how: string
+      considered: string
+      limits: string
+      pageId?: PageId
+    }[]
+    note?: ReactNode
+  }
   decision?: {
+    eyebrow?: string
     title: string
     answer: string
     note?: string
@@ -1683,9 +1722,25 @@ export interface ServicePageContentV2 {
     list: readonly string[]
     links: readonly ServiceV2Link[]
   }
-  comparison?: {
+  /**
+   * Replaces the shared independent band on this page (the shared band
+   * renders when absent). Steps are numbered; the link is optional.
+   */
+  independent?: {
+    eyebrow: string
     title: string
-    intro: string
+    steps: readonly { title: string; body: string }[]
+    note: string
+    link?: { pageId: PageId; label: string }
+  }
+  comparison?: {
+    eyebrow?: string
+    title: string
+    intro?: string
+    /** Header labels; the default is Service / Primary purpose / May be the right fit when. */
+    columns?: readonly [string, string, string]
+    /** Accessible table caption; defaults to the title. */
+    caption?: string
     rows: readonly {
       service: string
       purpose: string
@@ -1696,6 +1751,15 @@ export interface ServicePageContentV2 {
     note?: string
   }
   ask?: {
+    eyebrow?: string
+    title: string
+    intro: string
+    items: readonly { title: string; description: string }[]
+    keep: { title: string; body: readonly string[]; image?: HubImageKey }
+  }
+  /** What changes the scope: the same layout as `ask`, on the white surface. */
+  factors?: {
+    eyebrow?: string
     title: string
     intro: string
     items: readonly { title: string; description: string }[]
@@ -1703,6 +1767,18 @@ export interface ServicePageContentV2 {
   }
   /** Reuses `ServiceHubContent['evidence']` unchanged. */
   evidence?: NonNullable<ServiceHubContent['evidence']>
+  /** Common misconceptions, each a quoted claim with its answer. */
+  myths?: {
+    eyebrow?: string
+    title: string
+    items: readonly { myth: string; answer: string }[]
+  }
+  /** Neighbouring situations, as ruled rows. Bodies may carry inline links. */
+  situations?: {
+    eyebrow?: string
+    title: string
+    items: readonly { title: string; body: ReactNode }[]
+  }
   audiences?: {
     title: string
     intro: string
@@ -1717,8 +1793,31 @@ export interface ServicePageContentV2 {
   markets?: NonNullable<ServiceHubContent['marketRouter']>
   /** Grouped FAQ. Group labels are navigation only, never part of an answer. */
   faq: readonly { group: string; question: string; answer: ReactNode }[]
+  eyebrows?: { faq?: string; related?: string; request?: string }
   faqTitle?: string
   relatedTitle?: string
+  /**
+   * Overrides the "On this page" list: only the named sections, in page
+   * order, with these labels. Absent lists every section by its heading.
+   */
+  navLabels?: Partial<
+    Record<
+      | 'signals'
+      | 'process'
+      | 'methods'
+      | 'limits'
+      | 'decision'
+      | 'comparison'
+      | 'ask'
+      | 'factors'
+      | 'myths'
+      | 'situations'
+      | 'markets'
+      | 'faq'
+      | 'related',
+      string
+    >
+  >
   request: {
     title: string
     intro: readonly string[]
@@ -2014,6 +2113,7 @@ export interface ServiceHubContent {
   /** Three-market router, directly under the hero. */
   marketRouter?: {
     id: string
+    eyebrow?: string
     title: string
     intro: string
     items: readonly HubMarketCard[]

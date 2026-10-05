@@ -18,25 +18,30 @@ const COLUMNS: Record<number, string> = {
 
 export function ProcessTimeline({
   id,
+  eyebrow,
   title,
   intro,
   steps,
   prep,
+  surface = 'muted',
 }: {
   id: string
+  eyebrow?: string
   title: string
   intro?: string
   steps: readonly { title: string; description: string }[]
   prep?: { title: string; items: readonly string[]; image?: HubImageKey }
+  surface?: 'default' | 'muted'
 }) {
   const prepImage =
     prep?.image !== undefined && resolveHubImage(prep.image) !== null
       ? prep.image
       : undefined
   return (
-    <Section density="standard" surface="muted" labelledBy={id}>
+    <Section density="standard" surface={surface} labelledBy={id}>
       <SectionHeading
         id={id}
+        eyebrow={eyebrow}
         title={title}
         intro={intro !== undefined ? <p>{intro}</p> : undefined}
       />

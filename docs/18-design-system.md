@@ -725,6 +725,8 @@ Section order, with surface and density: hero (image, request card; sparse) → 
 
 Rhythm rules: exactly two brand surfaces (the independent band and the final request), never adjacent; the hero and the final request are the only image-backed sections; no run of four `standard` sections; no equal three-up card grid except the market cells; ruled lists and numerals carry hierarchy; no video on service pages. The "On this page" list renders only at 8 or more content sections.
 
+Optional sections added with DEC-124, each rendered only when a page supplies its field: a methods table (muted; dense), a page-specific independent band (brand; standard) that replaces the shared one, a scope-factors list (white; standard, the ask-list layout), a myth list (muted; dense) and a situation list (white; dense). A page may set `limitsAfterProcess` to place the limits panel after the process and methods sections, and `navLabels` to narrow and relabel the "On this page" list.
+
 # 18. Market / Location Page Template
 
 Primary reference:

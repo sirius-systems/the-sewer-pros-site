@@ -13,11 +13,13 @@ import type { PageId } from '@/types'
  */
 export function RelatedList({
   id = 'related',
+  eyebrow,
   title,
   pageIds,
   descriptions,
 }: {
   id?: string
+  eyebrow?: string
   title: string
   pageIds: readonly PageId[]
   descriptions?: Readonly<Partial<Record<PageId, string>>>
@@ -27,7 +29,7 @@ export function RelatedList({
   const twoColumns = links.length > 4
   return (
     <Section density="dense" surface="default" as="aside" labelledBy={id}>
-      <SectionHeading id={id} title={title} />
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} />
       <ul
         className={`mt-6 border-t border-border ${twoColumns ? 'sm:columns-2 sm:gap-x-12' : ''}`}
       >

@@ -10,26 +10,35 @@ import { resolveHubImage, type HubImageKey } from '@/data/business/hub-images'
  */
 export function AskList({
   id,
+  eyebrow,
   title,
   intro,
   items,
   keep,
+  surface = 'muted',
 }: {
   id: string
+  eyebrow?: string
   title: string
   intro: string
   items: readonly { title: string; description: string }[]
   keep: { title: string; body: readonly string[]; image?: HubImageKey }
+  surface?: 'default' | 'muted'
 }) {
   const keepImage =
     keep.image !== undefined && resolveHubImage(keep.image) !== null
       ? keep.image
       : undefined
   return (
-    <Section density="standard" surface="muted" labelledBy={id}>
+    <Section density="standard" surface={surface} labelledBy={id}>
       <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-7">
-          <SectionHeading id={id} title={title} intro={<p>{intro}</p>} />
+          <SectionHeading
+            id={id}
+            eyebrow={eyebrow}
+            title={title}
+            intro={<p>{intro}</p>}
+          />
           <ol className="mt-8 border-t border-border">
             {items.map((item, index) => (
               <li

@@ -30,6 +30,10 @@ import {
   FaqGrouped,
   RelatedList,
   ServiceHeroRequestCard,
+  MethodsTable,
+  MythList,
+  SituationList,
+  IndependentBand,
   type SectionNavItem,
 } from '@/components/sections/service-v2'
 import { PageShell } from './PageShell'
@@ -96,11 +100,12 @@ export function ServicePageTemplateV2({
   }
 
   // Sections after the definition, in order, for the "On this page" list.
-  const nav: SectionNavItem[] = []
+  // `v2.navLabels` narrows the list to the named sections and relabels them.
+  const tracked: { key: string; id: string; label: string; listed: boolean }[] = []
   let contentSections = 0
-  const track = (id: string, label: string, listed = true) => {
+  const track = (key: string, id: string, label: string, listed = true) => {
     contentSections += 1
-    if (listed) nav.push({ id, label })
+    tracked.push({ key, id, label, listed })
   }
 
   const ids = {
@@ -109,8 +114,12 @@ export function ServicePageTemplateV2({
     limits: v2.limits !== undefined ? slug(v2.limits.title) : '',
     process: v2.process !== undefined ? slug(v2.process.title) : '',
     decision: v2.decision !== undefined ? slug(v2.decision.title) : '',
+    methods: v2.methods !== undefined ? slug(v2.methods.title) : '',
     comparison: v2.comparison !== undefined ? slug(v2.comparison.title) : '',
     ask: v2.ask !== undefined ? slug(v2.ask.title) : '',
+    factors: v2.factors !== undefined ? slug(v2.factors.title) : '',
+    myths: v2.myths !== undefined ? slug(v2.myths.title) : '',
+    situations: v2.situations !== undefined ? slug(v2.situations.title) : '',
     evidence: v2.evidence !== undefined ? slug(v2.evidence.title) : '',
     audiences: v2.audiences !== undefined ? slug(v2.audiences.title) : '',
   }
@@ -120,19 +129,34 @@ export function ServicePageTemplateV2({
 
   // Register the navigable sections first, in render order, so the list
   // can be built before the definition section that hosts it.
-  if (v2.definition !== undefined) track(ids.definition, v2.definition.title, false)
-  if (v2.signals !== undefined) track(ids.signals, v2.signals.title)
-  if (v2.limits !== undefined) track(ids.limits, v2.limits.title)
-  if (v2.process !== undefined) track(ids.process, v2.process.title)
-  if (v2.decision !== undefined) track(ids.decision, v2.decision.title)
-  track('independent', 'Why an independent opinion matters')
-  if (v2.comparison !== undefined) track(ids.comparison, v2.comparison.title)
-  if (v2.ask !== undefined) track(ids.ask, v2.ask.title)
-  if (showEvidence && v2.evidence !== undefined) track(ids.evidence, v2.evidence.title)
-  if (v2.audiences !== undefined) track(ids.audiences, v2.audiences.title)
-  if (v2.markets !== undefined) track(v2.markets.id, v2.markets.title)
-  track('faq', v2.faqTitle ?? 'Common questions')
-  track('related', v2.relatedTitle ?? 'Related services')
+  const limitsLate = v2.limitsAfterProcess === true
+  if (v2.definition !== undefined) track('definition', ids.definition, v2.definition.title, false)
+  if (v2.signals !== undefined) track('signals', ids.signals, v2.signals.title)
+  if (v2.limits !== undefined && !limitsLate) track('limits', ids.limits, v2.limits.title)
+  if (v2.process !== undefined) track('process', ids.process, v2.process.title)
+  if (v2.methods !== undefined) track('methods', ids.methods, v2.methods.title)
+  if (v2.limits !== undefined && limitsLate) track('limits', ids.limits, v2.limits.title)
+  if (v2.decision !== undefined) track('decision', ids.decision, v2.decision.title)
+  track('independent', 'independent', 'Why an independent opinion matters')
+  if (v2.comparison !== undefined) track('comparison', ids.comparison, v2.comparison.title)
+  if (v2.ask !== undefined) track('ask', ids.ask, v2.ask.title)
+  if (v2.factors !== undefined) track('factors', ids.factors, v2.factors.title)
+  if (showEvidence && v2.evidence !== undefined) track('evidence', ids.evidence, v2.evidence.title)
+  if (v2.audiences !== undefined) track('audiences', ids.audiences, v2.audiences.title)
+  if (v2.myths !== undefined) track('myths', ids.myths, v2.myths.title)
+  if (v2.situations !== undefined) track('situations', ids.situations, v2.situations.title)
+  if (v2.markets !== undefined) track('markets', v2.markets.id, v2.markets.title)
+  track('faq', 'faq', v2.faqTitle ?? 'Common questions')
+  track('related', 'related', v2.relatedTitle ?? 'Related services')
+
+  const navLabels = v2.navLabels
+  const nav: SectionNavItem[] =
+    navLabels === undefined
+      ? tracked.filter((t) => t.listed).map((t) => ({ id: t.id, label: t.label }))
+      : tracked.flatMap((t) => {
+          const label = (navLabels as Record<string, string | undefined>)[t.key]
+          return label === undefined ? [] : [{ id: t.id, label }]
+        })
 
   const heroImage = v2.images?.hero ?? HERO_IMAGE
   const requestImage = v2.images?.request ?? REQUEST_IMAGE
@@ -178,6 +202,7 @@ export function ServicePageTemplateV2({
       aside={
         <ServiceHeroRequestCard
           title={v2.hero.cardTitle}
+          intro={v2.hero.cardIntro}
           serviceLabel={content.hero.title}
           defaultServiceId={v2.defaultServiceId}
         />
@@ -195,6 +220,7 @@ export function ServicePageTemplateV2({
       <Section density="standard" surface="default" labelledBy={ids.definition}>
         <SectionHeading
           id={ids.definition}
+          eyebrow={v2.definition.eyebrow}
           title={v2.definition.title}
           intro={<p className="text-foreground">{v2.definition.answer}</p>}
         />
@@ -203,6 +229,11 @@ export function ServicePageTemplateV2({
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
+        {v2.definition.scope !== undefined && (
+          <p className="mt-6 max-w-[var(--container-reading)] rounded-md border border-border bg-surface-muted p-5 text-body-sm font-semibold text-foreground">
+            {v2.definition.scope}
+          </p>
+        )}
       </Section>,
     )
   }
@@ -213,6 +244,7 @@ export function ServicePageTemplateV2({
       'signals',
       <SignalList
         id={ids.signals}
+        eyebrow={v2.signals.eyebrow}
         title={v2.signals.title}
         note={v2.signals.note}
         items={v2.signals.items}
@@ -221,9 +253,12 @@ export function ServicePageTemplateV2({
     )
   }
 
-  if (v2.limits !== undefined) {
-    add('dense', 'limits', <LimitsPanel id={ids.limits} {...v2.limits} />)
+  const addLimits = () => {
+    if (v2.limits !== undefined) {
+      add('dense', 'limits', <LimitsPanel id={ids.limits} {...v2.limits} />)
+    }
   }
+  if (!limitsLate) addLimits()
 
   if (v2.process !== undefined) {
     add(
@@ -231,19 +266,43 @@ export function ServicePageTemplateV2({
       'process',
       <ProcessTimeline
         id={ids.process}
+        eyebrow={v2.process.eyebrow}
         title={v2.process.title}
         intro={v2.process.intro}
         steps={v2.process.steps}
         prep={v2.process.prep}
+        surface={limitsLate ? 'default' : 'muted'}
       />,
     )
   }
 
-  if (v2.decision !== undefined) {
-    add('standard', 'decision', <DecisionPanel id={ids.decision} {...v2.decision} />)
+  if (v2.methods !== undefined) {
+    add('dense', 'methods', <MethodsTable id={ids.methods} {...v2.methods} />)
   }
 
-  add('standard', 'independent', <IndependentProcess density="standard" />)
+  if (limitsLate) addLimits()
+
+  if (v2.decision !== undefined) {
+    add(
+      'standard',
+      'decision',
+      <DecisionPanel
+        id={ids.decision}
+        surface={limitsLate ? 'muted' : 'default'}
+        {...v2.decision}
+      />,
+    )
+  }
+
+  add(
+    'standard',
+    'independent',
+    v2.independent !== undefined ? (
+      <IndependentBand {...v2.independent} />
+    ) : (
+      <IndependentProcess density="standard" />
+    ),
+  )
 
   if (v2.comparison !== undefined && v2.comparison.rows.length >= 3) {
     add(
@@ -255,6 +314,14 @@ export function ServicePageTemplateV2({
 
   if (v2.ask !== undefined) {
     add('standard', 'ask', <AskList id={ids.ask} {...v2.ask} />)
+  }
+
+  if (v2.factors !== undefined) {
+    add(
+      'standard',
+      'factors',
+      <AskList id={ids.factors} surface="default" {...v2.factors} />,
+    )
   }
 
   if (showEvidence && v2.evidence !== undefined) {
@@ -275,6 +342,14 @@ export function ServicePageTemplateV2({
     add('dense', 'audiences', <AudienceRows id={ids.audiences} {...v2.audiences} />)
   }
 
+  if (v2.myths !== undefined) {
+    add('dense', 'myths', <MythList id={ids.myths} {...v2.myths} />)
+  }
+
+  if (v2.situations !== undefined) {
+    add('dense', 'situations', <SituationList id={ids.situations} {...v2.situations} />)
+  }
+
   // Data-gated: both render nothing until their governed datasets are
   // populated, so they carry no entry in the rhythm list.
   add(null, 'proof', <ProofGallery title="Recent work" />)
@@ -289,6 +364,7 @@ export function ServicePageTemplateV2({
     'faq',
     <FaqGrouped
       id="faq"
+      eyebrow={v2.eyebrows?.faq}
       title={v2.faqTitle ?? 'Common questions'}
       entries={v2.faq}
     />,
@@ -300,6 +376,7 @@ export function ServicePageTemplateV2({
       'related',
       <RelatedList
         id="related"
+        eyebrow={v2.eyebrows?.related}
         title={v2.relatedTitle ?? 'Related services'}
         pageIds={content.relatedPageIds}
         descriptions={content.relatedDescriptions}
@@ -314,6 +391,7 @@ export function ServicePageTemplateV2({
       id={REQUEST_ID}
       density="sparse"
       content={{
+        eyebrow: v2.eyebrows?.request,
         title: v2.request.title,
         intro:
           v2.request.scopeNote !== undefined
