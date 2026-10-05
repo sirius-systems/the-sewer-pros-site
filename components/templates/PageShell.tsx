@@ -40,6 +40,11 @@ import type { FaqContent, MasterPageRecord } from '@/types'
 export interface PageShellProps {
   page: MasterPageRecord
   /**
+   * Display name for this page's own breadcrumb entry and Service node,
+   * where it differs from the shared registry name. Absent: the registry name.
+   */
+  displayName?: string
+  /**
    * Title and description for structured data.
    *
    * The SAME values the metadata layer uses, so markup and the
@@ -69,7 +74,7 @@ export interface PageShellProps {
   children: ReactNode
 }
 
-export function PageShell({ page, densities, schema, children }: PageShellProps) {
+export function PageShell({ page, displayName, densities, schema, children }: PageShellProps) {
   const issues = sectionRhythmIssues(densities)
 
   if (issues.length > 0) {
@@ -93,6 +98,7 @@ export function PageShell({ page, densities, schema, children }: PageShellProps)
             page,
             title: schema.title,
             description: schema.description,
+            displayName,
             dateModified: schema.dateModified,
             faq: schema.faq,
             itemList: schema.itemList,
@@ -113,7 +119,7 @@ export function PageShell({ page, densities, schema, children }: PageShellProps)
         align with page content rather than the hero's own width.
       */}
       <Container className="pt-6">
-        <Breadcrumbs pageId={page.id} />
+        <Breadcrumbs pageId={page.id} currentLabel={displayName} />
       </Container>
 
       {children}

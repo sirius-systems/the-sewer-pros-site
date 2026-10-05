@@ -126,14 +126,18 @@ function webPageNode(page: MasterPageRecord, title: string, description?: string
  * itself carries no information, and 15 §102 prefers omission to an
  * empty structure.
  */
-function breadcrumbNode(page: MasterPageRecord): BreadcrumbListNode | undefined {
+function breadcrumbNode(
+  page: MasterPageRecord,
+  displayName?: string,
+): BreadcrumbListNode | undefined {
   const trail = breadcrumbTrail(page.id)
   if (trail.length < 2) return undefined
 
   const itemListElement: ListItemNode[] = trail.map((entry, index) => ({
     '@type': 'ListItem',
     position: index + 1,
-    name: entry.name,
+    // `displayName` replaces only the current page's own (last) entry.
+    name: displayName !== undefined && index === trail.length - 1 ? displayName : entry.name,
     item: absoluteUrl(entry.pathname),
   }))
 
@@ -151,15 +155,15 @@ function breadcrumbNode(page: MasterPageRecord): BreadcrumbListNode | undefined 
  * carries the markets rather than an address, which is the SAB model
  * 15 §13 and §22 describe.
  */
-function serviceNode(page: MasterPageRecord): ServiceNode | undefined {
+function serviceNode(page: MasterPageRecord, displayName?: string): ServiceNode | undefined {
   const service = getServiceByCanonicalUrl(page.pathname)
   if (service === undefined) return undefined
 
   return {
     '@type': 'Service',
     '@id': serviceId(service.canonicalUrl),
-    name: service.name,
-    serviceType: service.name,
+    name: displayName ?? service.name,
+    serviceType: displayName ?? service.name,
     provider: ref(organizationId()),
     areaServed: servedMarkets(),
     url: absoluteUrl(page.pathname),
@@ -251,6 +255,12 @@ export interface PageSchemaInput {
   page: MasterPageRecord
   title: string
   description?: string
+  /**
+   * Overrides the current page's name in the Service node and the last
+   * BreadcrumbList entry, for a page whose approved display name differs
+   * from the shared registry name. Must equal the visible breadcrumb.
+   */
+  displayName?: string
   /** ISO date, only where 18 §78 justifies one. */
   dateModified?: string
   /**
@@ -300,6 +310,7 @@ export function pageSchema({
   page,
   title,
   description,
+  displayName,
   dateModified,
   faq,
   itemList,
@@ -344,7 +355,7 @@ export function pageSchema({
     nodes.push(articleNode(page, title, description, dateModified))
   }
 
-  const service = serviceNode(page)
+  const service = serviceNode(page, displayName)
   if (service !== undefined) {
     nodes.push(service)
     webPage.about = ref(service['@id'])
@@ -376,7 +387,7 @@ export function pageSchema({
     }
   }
 
-  const breadcrumb = breadcrumbNode(page)
+  const breadcrumb = breadcrumbNode(page, displayName)
   if (breadcrumb !== undefined) {
     nodes.push(breadcrumb)
     webPage.breadcrumb = ref(breadcrumb['@id'])

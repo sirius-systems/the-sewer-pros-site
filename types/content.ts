@@ -1647,6 +1647,13 @@ export interface ServiceV2Link {
  * offer, guarantee, licence, response time or availability claim.
  */
 export interface ServicePageContentV2 {
+  /**
+   * The page's approved display name for its own breadcrumb entry and
+   * Service schema node, where it differs from the shared registry name
+   * (for example the plus sign in "Sewer Cleaning + Camera Inspection").
+   * Absent: the registry name. Never changes any other page.
+   */
+  displayName?: string
   /** The scope bullets under the hero intro and the hero card heading. */
   hero: {
     scope: readonly string[]
