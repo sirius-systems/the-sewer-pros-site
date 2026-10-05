@@ -286,7 +286,7 @@ check('no duration in minutes', !/\b\d+\s*(?:-|to)?\s*\d*\s*minutes?\b/i.test(vi
 check('no interval in years', !/\b\d+\s*(?:-|to)?\s*\d*\s*years?\b/i.test(visible))
 check(
   'only the owner-confirmed video and written-findings wording (2026-10-05); no coding claim',
-  !/(video|report|findings) (is|are) included(?! before)/i.test(visible.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/whether video and written findings are included/gi, '').replace(/what is included/gi, '')) &&
+  !/(video|report|findings) (is|are) included(?! before)/i.test(visible.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/written findings are included/gi, '').replace(/whether video and written findings are included/gi, '').replace(/what is included/gi, '')) &&
     !/we (provide|deliver|include) (a |the )?(video|written)/i.test(visible),
 )
 

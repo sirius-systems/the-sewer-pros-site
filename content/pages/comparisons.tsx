@@ -229,7 +229,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           more useful:
         </p>
         <ul>
-          <li>Ask for the footage, and keep a copy</li>
+          <li>Ask for the footage and written findings, and how long you can access them</li>
           <li>
             Ask what specifically was observed, and at what distance along the
             line

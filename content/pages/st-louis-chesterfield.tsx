@@ -743,7 +743,7 @@ export const chesterfieldContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in Chesterfield',
     title: 'Sewer inspection before buying a Chesterfield home',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close, which a standard home inspection does not cover.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line.',
     // `body` is a single string in the shared type, so the two source
     // paragraphs are joined into one.
     body: 'In the City’s published materials we reviewed, we found no sewer-lateral inspection requirement for an ordinary residential sale. Chesterfield’s occupancy and re-occupancy materials address businesses, so a buyer who wants evidence has to ask for it. If a problem turns up, note that the City’s lateral program policy says the seller must be the one to apply when a home is in a real estate transaction. Ask your agent and Public Works how that fits your timeline. Findings are informational and not legal advice.',

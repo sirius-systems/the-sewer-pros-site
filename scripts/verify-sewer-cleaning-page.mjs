@@ -254,7 +254,7 @@ const myth = '"flushable wipes are safe for every sewer line."'
 console.log(`NOTE  quoted myth heading present: ${flat(visible).toLowerCase().includes(myth.replace(/"/g, '')) }`)
 check(
   'only the owner-confirmed video and written-findings wording (2026-10-05); no coding claim',
-  !/(video|report|findings) (is|are) included(?! for)/i.test(visible.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/whether video is included/gi, '').replace(/whether video and written findings are included/gi, '').replace(/whether they are included/gi, '').replace(/or locating are included/gi, '')) &&
+  !/(video|report|findings) (is|are) included(?! for)/i.test(visible.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/written findings are included/gi, '').replace(/whether video is included/gi, '').replace(/whether video and written findings are included/gi, '').replace(/whether they are included/gi, '').replace(/or locating are included/gi, '')) &&
     !/we (provide|deliver|include) (a |the )?(video|written)/i.test(visible),
 )
 

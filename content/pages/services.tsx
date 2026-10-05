@@ -206,7 +206,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Recording',
             description:
-              'Inspections are typically recorded. Ask what is included for your appointment.',
+              'When a camera is used, you receive the inspection video.',
           },
           {
             title: 'Documentation',
@@ -295,12 +295,13 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         items: [
           {
             title: 'Recorded video',
-            description: 'Ask whether the video is included and whether you keep a copy.',
+            description:
+              'When a camera is used, you receive the inspection video. Ask how it is delivered and how long you can access it.',
           },
           {
             title: 'Written observations',
             description:
-              'Ask for observations that include any part of the line that could not be viewed, and why.',
+              'Written findings are included. Ask whether they note any part of the line that could not be viewed, and why.',
           },
           {
             title: 'Access point and location',
@@ -315,7 +316,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Coding system',
             description:
-              'Ask whether any report uses a standardized coding system, and what it means.',
+              'Ask whether the findings use a standardized coding system, and what it means.',
           },
         ],
         keep: {
@@ -355,7 +356,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             slot: 'report',
             title: 'Inspection footage and findings summary',
             description:
-              'When included with the service, footage or a findings summary can help you review the visible conditions discussed during the inspection. Documentation and deliverables can vary by appointment, so confirm what is included when scheduling.',
+              'You receive the inspection video and written findings, so you can review what was seen.',
           },
         ],
       },
@@ -463,7 +464,15 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'What it can and can’t show',
           question: 'Can a sewer camera tell how deep the pipe is?',
-          answer: `No. The footage counter shows how far the camera has traveled from the entry point. It is not depth and not a surveyed location. A camera also does not measure pipe slope.`,
+          answer: (
+            <p>
+              No. A camera shows what is inside the pipe, not how deep it sits or where it runs in your yard. It also does not measure pipe slope.{' '}
+              <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
+                Sewer line locating
+              </ApprovedInlineLink>{' '}
+              can estimate a position from the surface, and a locate is an estimate, not a survey.
+            </p>
+          ),
         },
         {
           group: 'What it can and can’t show',
@@ -513,7 +522,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Records, locating, and next steps',
           question: 'Will I get the video and written findings?',
-          answer: `Video is included when a camera is used, and written findings are included. Ask whether the findings note any part of the line that could not be viewed.`,
+          answer: `When a camera is used, you receive the inspection video. Written findings are included. Ask how the video is delivered and how long you can access it, and whether the findings note any part of the line that could not be viewed.`,
         },
         {
           group: 'Records, locating, and next steps',
@@ -533,7 +542,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Scope and service areas',
           question: 'How much does it cost, and how long does it take?',
-          answer: `The scope of a camera inspection varies with access, line length and size, bends, flow or debris, whether cleaning is needed for visibility, and the video, report, or locating you request. Ask what is included before you book.`,
+          answer: `The scope of a camera inspection varies with access, line length and size, bends, flow or debris, whether cleaning is needed for visibility, and whether you request locating. Ask what is included before you book.`,
         },
         {
           group: 'Scope and service areas',
@@ -959,12 +968,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Video of the line',
             description:
-              'If a camera is used, ask whether video is included and whether you keep a copy.',
+              'When a camera is used, you receive the inspection video. Ask how it is delivered and how long you can access it.',
           },
           {
             title: 'Written findings',
             description:
-              'Ask for observations that include any part of the line the camera could not reach, and why.',
+              'Written findings are included. Ask whether they note any part of the line the camera could not reach, and why.',
           },
           {
             title: 'Access point and location',
@@ -979,7 +988,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Coding and locating',
             description:
-              'Ask whether a report uses a standardized coding system, and whether locating is part of the visit.',
+              'Ask whether the findings use a standardized coding system, and whether locating is part of the visit.',
           },
         ],
         keep: {
@@ -1020,7 +1029,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Recording, reporting, and locating',
             description:
-              'Video, written findings, and locating are separate from the cleaning itself. Ask whether they are included.',
+              'Video and written findings come with a camera inspection, which is separate from the cleaning itself. Ask whether locating is included.',
           },
         ],
         keep: {
@@ -1073,8 +1082,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
                 <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>
                   pre-purchase sewer inspection
                 </ApprovedInlineLink>{' '}
-                is a focused look at the line, and a sewer scope is often
-                separate from a general home inspection.
+                is a focused look at the line. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line.
               </>
             ),
           },
@@ -1171,12 +1179,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Access, time, and records',
           question: 'How long does sewer cleaning take, and how much does it cost?',
-          answer: `Time and cost depend on the accessible entry point, line length and pipe size, the amount and type of buildup, whether a camera is needed for visibility, and whether video, written findings, or locating are included. We do not publish a standard time or price on this page. Ask when you request service.`,
+          answer: `Time and cost depend on the accessible entry point, line length and pipe size, the amount and type of buildup, whether a camera is needed for visibility, and whether locating is included. We do not publish a standard time or price on this page. Ask when you request service.`,
         },
         {
           group: 'Access, time, and records',
           question: 'Will I get a video and written findings?',
-          answer: `Video is included when a camera is used, and written findings are included. Ask whether you keep a copy, and whether the findings note any part of the line that could not be viewed.`,
+          answer: `When a camera is used, you receive the inspection video. Written findings are included. Ask how the video is delivered and how long you can access it, and whether the findings note any part of the line that could not be viewed.`,
         },
         {
           group: 'Symptoms and upkeep',
@@ -1498,8 +1506,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         intro:
           'Ask what is included before you book, and keep a record of it:',
         items: [
-          { title: 'Is camera video included before or after cleaning?' },
-          { title: 'Will you receive written findings?' },
+          { title: 'When a camera is used, you receive the inspection video. Is it before or after cleaning?' },
+          { title: 'Written findings are included. Do they note any part of the line that could not be viewed?' },
           { title: 'What was removed, and what remained?' },
           { title: 'What was seen that cleaning cannot address?' },
         ],
@@ -1633,7 +1641,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'Planning',
           question: 'What should I ask for and keep?',
           answer:
-            'Ask whether video and written findings are included, what was removed, and what remains. Keep that record.',
+            'When a camera is used, you receive the inspection video, and written findings are included. Ask what was removed and what remains. Keep that record.',
         },
         {
           group: 'Planning',
@@ -1668,7 +1676,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Planning',
           question: 'Will I get video or written findings?',
-          answer: 'Video is included when a camera is used, and written findings are included.',
+          answer: 'When a camera is used, you receive the inspection video. Written findings are included.',
         },
         {
           group: 'Related questions',
@@ -2066,7 +2074,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Coding and locating',
             description:
-              'Ask whether a report uses a standardized coding system, and whether locating is part of the visit.',
+              'Ask whether the findings use a standardized coding system, and whether locating is part of the visit.',
           },
         ],
         keep: {
@@ -2223,7 +2231,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Signs, buying, and upkeep',
           question: 'Is a sewer scope part of a standard home inspection?',
-          answer: `A sewer scope is often a separate specialty service rather than part of a standard home inspection. Ask your home inspector what their inspection covers.`,
+          answer: `Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line, and a general inspection is not assumed to include one.`,
         },
         {
           group: 'Signs, buying, and upkeep',
@@ -4787,7 +4795,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           audience: 'Home Inspectors',
           icon: 'eye',
           description:
-            'Coordinate a specialist sewer inspection for portions of the line a general home inspection may not cover.',
+            'Coordinate a specialist sewer inspection when your client wants a closer look at the line. Your own inspection keeps its scope.',
           actionLabel: 'Learn About Coordinating an Inspection',
         },
       ],

@@ -172,7 +172,7 @@ export const stLouisMarketContent: MarketPageContent = {
       icon: 'search-check',
       accent: 'green',
       description:
-        'Know the condition of the line before closing. A sewer scope documents what a standard home inspection does not cover.',
+        'Know the condition of the line before closing. A sewer scope is a separate, focused inspection of the sewer line.',
       linksHeading: 'For the transaction',
       links: [
         { pageId: id('aud-home-buyers'), label: 'Home Buyers' },
@@ -881,10 +881,7 @@ export const stLouisMarketContent: MarketPageContent = {
       question: 'Should I get a sewer inspection before buying a house in St. Louis?',
       answer: (
         <p>
-          Yes. A pre-purchase sewer camera inspection can reveal conditions
-          that a standard home inspection typically does not cover, giving you
-          documented evidence of the sewer line&rsquo;s condition before you
-          close. This matters especially in St. Louis, where much of the
+          Yes. A pre-purchase sewer camera inspection can reveal visible conditions in the accessible line, giving you documented evidence of the sewer line&rsquo;s condition before you close. A sewer scope is a separate, focused inspection of the sewer line, so ask your home inspector what their inspection covers. This matters especially in St. Louis, where much of the
           housing stock is older and sewer materials and conditions vary widely
           by property and municipality.
         </p>
@@ -1465,8 +1462,7 @@ export const stLouisServiceLocationContent: Partial<
         </p>
         <p>
           The camera shows it directly (water sitting in a section that should
-          drain), and the distance counter establishes where along the run it
-          sits. That distinction matters, because a belly and a blockage feel
+          drain), and noting where along the run it appears shows where it sits. That distinction matters, because a belly and a blockage feel
           identical at the fixtures and call for different responses.
         </p>
 

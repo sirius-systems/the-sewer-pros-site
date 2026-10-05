@@ -744,7 +744,7 @@ export const ballwinContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in Ballwin',
     title: 'Sewer inspection before buying a Ballwin home',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close, which a standard home inspection does not cover.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line.',
     // `body` is a single string in the shared type, so the two source
     // paragraphs are joined into one.
     body: 'Ballwin requires an inspection and an Occupancy Permit before a new resident, tenant or business occupies a house, condominium, apartment or commercial building. In the City materials we reviewed, we found no sewer lateral inspection or certification requirement tied to that process, so a buyer who wants evidence has to ask for it. Ballwin also says its Sewer Lateral Repair Program is not intended to satisfy a home sale contingency. When a buyer’s lateral inspection notes defects but the line has no history of the repeated blockage or failure the program looks for, the City says the repair is not covered. A new owner who later has a qualifying problem can apply under the normal criteria. Ask your agent and the Inspections Department how that fits your timeline. Findings are informational and not legal advice.',
