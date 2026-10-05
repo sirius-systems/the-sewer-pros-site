@@ -1779,7 +1779,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       "How a combined sewer cleaning and camera inspection visit works, which comes first, what a camera can and can't confirm, and what to ask for.",
     hero: {
       eyebrow: 'Residential sewer and drain service',
-      title: 'Sewer Cleaning & Camera Inspection',
+      title: 'Sewer Camera Inspection and Cleaning for Recurring Drainage Problems',
       primaryAction: { href: '#request', label: 'Request Cleaning and Camera Inspection' },
       secondaryAction: { href: '#choose-market', label: 'Find Service in Your Area' },
       intro: (
@@ -1815,6 +1815,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           'No repair or replacement work offered',
         ],
         cardTitle: 'Request cleaning and camera inspection',
+        // The H1 is the long original phrase (owner directed 2026-10-05), so the
+        // request card's service chip carries the service name instead.
+        serviceLabel: 'Sewer Cleaning & Camera Inspection',
       },
       navLabels: {
         signals: 'Signs to look into',
