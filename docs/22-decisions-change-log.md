@@ -5029,6 +5029,23 @@ The shared `LAS_VEGAS_CONTACT` block (including its email address) had no remain
 
 One shared service template was added alongside the two existing ones. The camera inspection page was migrated first; `ServicePageTemplate`, `ServiceHubTemplate` and their section components are unchanged and still serve every other service page, and a byte comparison of the static export showed no other page changed. The new template adds a hero request card, the mobile contact bar on every v2 page, and a section list that renders only at 8 or more sections. The route, page id, parent, indexability and H1 are unchanged. The FAQ grew from 10 to 23 questions in five groups, and two old questions were removed on purpose (the exact repair cost question and the locating comparison). No business fact was added: the page tells the reader to ask what is included and claims no video, written findings, coding, surface marks, re-inspection, price, response time or availability.
 
+## DEC-124 - Sewer Cleaning Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-sewer-cleaning` entry only)
+* `types/content.ts` (additive: new optional fields on `ServicePageContentV2`)
+* `components/templates/ServicePageTemplateV2.tsx` and `components/sections/service-v2/` (new `MethodsTable`, `MythList`, `SituationList`, `IndependentBand`; optional `eyebrow`, `surface`, `columns` and lead props on existing components)
+* `components/sections/ServiceHubSections.tsx` (optional `eyebrow` and `surface` on `MarketRouter` and the request section)
+* `scripts/verify-sewer-cleaning-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-sewer-cleaning` row), `docs/18-design-system.md` (Service Page Template v2 subsection)
+
+The sewer cleaning page was moved from the service hub template to Service Page Template v2, the second page on it. The route, page id, parent and indexability are unchanged; the H1 is now `Sewer Cleaning`. The page gained a methods table (hydro jetting and cable cleaning), a camera "may show / cannot confirm" panel, a "what cleaning does not do" panel, a page-specific independent band, a scope-factors section, four myths and three related situations. The FAQ is 14 questions in four groups. Every addition is an optional field or component that renders only when a page supplies it, and a comparison of the static export showed the camera page's rendered HTML unchanged. The independent second-opinion page is not built, so the two links the copy placed on it were left out. No business fact was added: the page states no price, time, offer, warranty, licence or availability, does not say video, written findings, coding, locating or a re-inspection are included, and carries no phone number or placeholder text.
+
 ---
 
 # 26. Decision Quality Standard

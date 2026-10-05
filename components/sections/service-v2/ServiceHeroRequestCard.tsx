@@ -20,10 +20,12 @@ export const HERO_FORM_IDPREFIX = 'hero-lead'
 
 export function ServiceHeroRequestCard({
   title,
+  intro,
   serviceLabel,
   defaultServiceId,
 }: {
   title: string
+  intro?: string
   serviceLabel: string
   defaultServiceId?: ServiceId
 }) {
@@ -41,6 +43,7 @@ export function ServiceHeroRequestCard({
           id="hero-request-heading"
           idPrefix={HERO_FORM_IDPREFIX}
           title={title}
+          {...(intro !== undefined ? { intro } : {})}
           defaultServiceId={defaultServiceId}
         />
       </div>

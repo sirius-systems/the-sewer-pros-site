@@ -151,7 +151,7 @@ export const coreServiceCards: readonly ServiceCard[] = [
   {
     pageId: id('svc-sewer-cleaning'),
     description:
-      'Clears grease, scale, and buildup so the line drains as intended - the direct fix for slow or recurring backups.',
+      'Clears grease, scale, and buildup so the line drains as intended.',
     image: {
       src: '/images/homepage/services/the-sewer-pros-professional-sewer-line-cleaning.webp',
       alt: 'Cleaning equipment at work on a sewer line',

@@ -12,14 +12,20 @@ import type { PageId } from '@/types'
  */
 export function ServiceComparisonTable({
   id,
+  eyebrow,
   title,
   intro,
+  columns = ['Service', 'Primary purpose', 'May be the right fit when'],
+  caption,
   rows,
   note,
 }: {
   id: string
+  eyebrow?: string
   title: string
-  intro: string
+  intro?: string
+  columns?: readonly [string, string, string]
+  caption?: string
   rows: readonly {
     service: string
     purpose: string
@@ -31,25 +37,30 @@ export function ServiceComparisonTable({
 }) {
   return (
     <Section density="dense" surface="default" labelledBy={id}>
-      <SectionHeading id={id} title={title} intro={<p>{intro}</p>} />
+      <SectionHeading
+        id={id}
+        eyebrow={eyebrow}
+        title={title}
+        intro={intro !== undefined ? <p>{intro}</p> : undefined}
+      />
       <div
         role="region"
-        aria-label={`${title} (scrollable table)`}
+        aria-label={`${caption ?? title} (scrollable table)`}
         tabIndex={0}
         className="mt-8 overflow-x-auto rounded-md border border-border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
       >
         <table className="w-full min-w-[40rem] border-collapse text-left text-body-sm">
-          <caption className="sr-only">{title}</caption>
+          <caption className="sr-only">{caption ?? title}</caption>
           <thead>
             <tr className="border-b border-border bg-surface-muted text-caption tracking-wide text-muted-foreground uppercase">
               <th scope="col" className="px-4 py-3 font-semibold">
-                Service
+                {columns[0]}
               </th>
               <th scope="col" className="px-4 py-3 font-semibold">
-                Primary purpose
+                {columns[1]}
               </th>
               <th scope="col" className="px-4 py-3 font-semibold">
-                May be the right fit when
+                {columns[2]}
               </th>
             </tr>
           </thead>

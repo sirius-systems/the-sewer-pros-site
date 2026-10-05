@@ -11,26 +11,35 @@ import type { ServiceV2Link } from '@/types'
  */
 export function DecisionPanel({
   id,
+  eyebrow,
   title,
   answer,
   note,
   listTitle,
   list,
   links,
+  surface = 'default',
 }: {
   id: string
+  eyebrow?: string
   title: string
   answer: string
   note?: string
   listTitle: string
   list: readonly string[]
   links: readonly ServiceV2Link[]
+  surface?: 'default' | 'muted'
 }) {
   return (
-    <Section density="standard" surface="default" labelledBy={id}>
+    <Section density="standard" surface={surface} labelledBy={id}>
       <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-6">
-          <SectionHeading id={id} title={title} intro={<p>{answer}</p>} />
+          <SectionHeading
+            id={id}
+            eyebrow={eyebrow}
+            title={title}
+            intro={<p>{answer}</p>}
+          />
           {note !== undefined && (
             <p className="mt-4 max-w-[var(--container-reading)] text-body text-muted-foreground">
               {note}

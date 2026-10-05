@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
 import { CameraImageSlot } from '../CameraImageSlot'
@@ -10,14 +11,16 @@ import { resolveHubImage, type HubImageKey } from '@/data/business/hub-images'
  */
 export function SignalList({
   id,
+  eyebrow,
   title,
   note,
   items,
   image,
 }: {
   id: string
+  eyebrow?: string
   title: string
-  note?: string
+  note?: ReactNode
   items: readonly { title: string; description: string }[]
   image?: HubImageKey
 }) {
@@ -37,8 +40,17 @@ export function SignalList({
         <div className={showImage ? 'lg:col-span-7' : 'lg:col-span-12'}>
           <SectionHeading
             id={id}
+            eyebrow={eyebrow}
             title={title}
-            intro={note !== undefined ? <p>{note}</p> : undefined}
+            intro={
+              note === undefined ? undefined : typeof note === 'string' ? (
+                <p>{note}</p>
+              ) : (
+                <p className="[&_a]:font-semibold [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground">
+                  {note}
+                </p>
+              )
+            }
           />
           <ol className="mt-8 border-t border-border">
             {items.map((item, index) => (

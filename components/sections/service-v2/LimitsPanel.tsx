@@ -51,31 +51,40 @@ function Dash() {
 
 export function LimitsPanel({
   id,
+  eyebrow,
   title,
   intro,
   canTitle,
+  canLead,
   can,
   cannotTitle,
+  cannotLead,
   cannot,
   callout,
   related,
 }: {
   id: string
+  eyebrow?: string
   title: string
   intro: string
   canTitle: string
+  canLead?: string
   can: readonly string[]
   cannotTitle: string
+  cannotLead?: string
   cannot: readonly string[]
   callout?: string
   related?: { lead: string; pageId: PageId; label: string }
 }) {
   return (
     <Section density="dense" surface="default" labelledBy={id}>
-      <SectionHeading id={id} title={title} intro={<p>{intro}</p>} />
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={<p>{intro}</p>} />
       <div className="mt-8 grid overflow-hidden rounded-md border border-border md:grid-cols-2">
         <div className="bg-surface p-6 sm:p-8">
           <h3 className="text-h4 font-semibold text-foreground">{canTitle}</h3>
+          {canLead !== undefined && (
+            <p className="mt-1 text-body-sm text-muted-foreground">{canLead}</p>
+          )}
           <ul className="mt-4 space-y-3">
             {can.map((item) => (
               <li key={item} className="flex gap-3 text-body-sm text-foreground">
@@ -87,6 +96,9 @@ export function LimitsPanel({
         </div>
         <div className="border-t border-border bg-surface-muted p-6 sm:p-8 md:border-t-0 md:border-l">
           <h3 className="text-h4 font-semibold text-foreground">{cannotTitle}</h3>
+          {cannotLead !== undefined && (
+            <p className="mt-1 text-body-sm text-muted-foreground">{cannotLead}</p>
+          )}
           <ul className="mt-4 space-y-3">
             {cannot.map((item) => (
               <li key={item} className="flex gap-3 text-body-sm text-foreground">
