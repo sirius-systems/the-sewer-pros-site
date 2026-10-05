@@ -161,7 +161,7 @@ export const coreServiceCards: readonly ServiceCard[] = [
   {
     pageId: id('svc-hydro-jetting'),
     description:
-      'High-pressure water strips grease, scale, sludge, and roots from the pipe wall for a deeper clean than snaking.',
+      'Pressurized-water cleaning for accessible sewer and drain lines, matched to what a camera shows.',
     image: {
       src: '/images/homepage/services/the-sewer-pros-hydro-jetting-pipe-wall-cleaning.webp',
       alt: 'High-pressure jetting stripping the pipe wall',

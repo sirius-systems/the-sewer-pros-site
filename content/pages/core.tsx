@@ -348,11 +348,12 @@ export const homeContent: HomePageContent = {
       question: 'Is hydro jetting different from regular drain cleaning?',
       answer: (
         <p>
-          Hydro jetting uses high-pressure water to clear grease, roots, and
-          buildup from the full diameter of a pipe, while standard drain
-          cleaning typically uses a cable to break through a single blockage.
-          Hydro jetting reaches further and cleans more thoroughly for
-          recurring or severe buildup.
+          Yes, they use different tools. Hydro jetting sends pressurized water
+          through a hose and nozzle to loosen buildup and flush it out of an
+          accessible line. Cable cleaning uses a rotating cable to break
+          through a blockage. Neither is better in every case. The right
+          choice depends on the line and what is in it, and a camera
+          inspection can show what is in the line first.
         </p>
       ),
     },
