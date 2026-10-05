@@ -143,15 +143,15 @@ check('cleaning panel lists 4 "may help" and 4 "does not correct" items', (limit
 const decisionSection = sectionById('camera-first-or-cleaning-first')
 check('decision panel has three starting points and the camera-limits paragraph', (decisionSection.match(/<li[\s>]/g) || []).length === 3 && /What a camera cannot show/.test(decisionSection))
 
+// The trust strip is the shared one used on every service page (hard rule).
 const trust = [
-  'Cleaning, camera diagnostics, and line locating',
-  'Serving St. Louis, San Diego, and Las Vegas',
-  'No repair or replacement work, so no repair upsell',
-  'Ask about a free estimate before scheduling.',
-  'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends.',
+  'Independent inspection and diagnostics',
+  'Sewer and drain specialists, not general plumbing',
+  'No repair-driven upselling',
+  'Serving St. Louis • San Diego • Las Vegas',
 ]
-const trustBlock = (main.match(/<aside[^>]*aria-labelledby="trust-strip"[\s\S]*?<\/aside>/) || [''])[0]
-check('trust strip has the five items as written', (trustBlock.match(/<li[\s>]/g) || []).length === 5 && trust.every((t) => flat(strip(trustBlock)).includes(flat(t))))
+const trustAside = (main.match(/<aside[\s\S]*?<\/aside>/) || [''])[0]
+check('trust strip is the shared four statements with their icons', trust.every((t) => visible.includes(t)) && (trustAside.match(/<svg/g) || []).length === 4, String((trustAside.match(/<svg/g) || []).length))
 
 check('hero request card has a market select', /id="hero-lead-market"/.test(html))
 check(
@@ -231,8 +231,8 @@ const SAME =
   'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends.'
 const NOT247 = 'We do not offer 24/7 or emergency service.'
 const v = flat(visible)
-check('free-estimate sentence appears 4 times (trust strip, same-day FAQ, cost FAQ, final request)', count(v, flat(FREE)) === 4, String(count(v, flat(FREE))))
-check('same-day sentence appears 3 times (trust strip, same-day FAQ, final request)', count(v, flat(SAME)) === 3, String(count(v, flat(SAME))))
+check('free-estimate sentence appears 3 times (same-day FAQ, cost FAQ, final request)', count(v, flat(FREE)) === 3, String(count(v, flat(FREE))))
+check('same-day sentence appears 2 times (same-day FAQ, final request)', count(v, flat(SAME)) === 2, String(count(v, flat(SAME))))
 check('"We do not offer 24/7 or emergency service." appears once', count(v, flat(NOT247)) === 1, String(count(v, flat(NOT247))))
 
 const scrubbed = (s) =>
