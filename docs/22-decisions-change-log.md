@@ -4994,6 +4994,24 @@ The handling that recorded North Las Vegas as a "cite-and-link" target (applied 
 
 Removed as unsourced or false: "We were not able to locate a published North Las Vegas statement"; the comparative sentence that every other authority in the valley (Henderson and the Clark County Water Reclamation District) places the lateral with the owner; and the naming of "City of North Las Vegas Public Works and Utilities" (the City's pages name the Utilities Department, Operations division). The City's Ordinance No. 2770 excerpt was not used because it was not read from a primary live source, and the page cites no Chapter 13.24 text. The housing-age section is skipped until primary Census tables B25034 and B25035 for North Las Vegas city are supplied, so no housing figure appears. The optional third-party service-line plan the City describes appears once, as a labeled callout in the City's words with no price, coverage or recommendation.
 
+## DEC-122 - Summerlin Page Claims Corrected
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/las-vegas-summerlin.tsx` (new; replaces the inline Summerlin entry in `content/pages/las-vegas.tsx`)
+* `content/pages/las-vegas.tsx` (Las Vegas hub: responsibility intro and the Summerlin jurisdiction FAQ; the shared `LAS_VEGAS_CONTACT` block is retired)
+* `docs/04-master-page-build-list.md` (`loc-lv-summerlin` row)
+
+Clark County's 2024 jurisdictional boundary map (dated 1/10/2024, "for display purposes only") shows Summerlin partly in the City of Las Vegas and partly in unincorporated Clark County. That wording replaces the unsourced claims that "Summerlin South is unincorporated and falls under the Clark County Water Reclamation District" and that Summerlin is "roughly 22,500 acres"; no primary source read states either. Earlier entries that describe Summerlin as straddling an incorporation line are superseded for this page and are not edited.
+
+The page now shows the City of Las Vegas's wording (owners maintain private sewer laterals up to the connection to the City main; the sewer standards addenda, revised 11/9/2021, say private sewer stays private through the public right-of-way until its connection to the public sewer main) and CCWRD's wording (a damaged lateral that connects a house to the sewer main in the street is the owner's responsibility, including cleaning, repair and replacement) in separate rows, without merging them and without saying which agency serves any address. The inference that the City's optional warranty "applies only to the incorporated portion" was removed; the warranty appears once as a labelled bullet in the City's words with no price, coverage, applicability claim or recommendation. No City or CCWRD lateral repair, grant or reimbursement program was found on the pages reviewed.
+
+The shared `LAS_VEGAS_CONTACT` block (including its email address) had no remaining user after this build and was deleted. The housing-age section is skipped until the owner chooses a Census geography for branded Summerlin and supplies primary tables B25034 and B25035, so no housing figure appears. No business capability, price, license or guarantee changed.
+
 ---
 
 # 26. Decision Quality Standard
