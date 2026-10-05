@@ -102,7 +102,7 @@ export function checkRelatedCards({ main, check, expectedHrefs }) {
 
 /**
  * Equipment names (DEC-132). The owner confirmed five company products by
- * name only. Visible text may carry exactly these spellings, and the brand
+ * name only (the owner's "RIDGID 7500" is the RIDGID K-7500, DEC-133). Visible text may carry exactly these spellings, and the brand
  * "RIDGID" on its own; any other equipment brand, model or misspelling
  * fails. No equipment text may appear in a page's own JSON-LD nodes.
  */
@@ -111,7 +111,7 @@ export const CONFIRMED_EQUIPMENT_NAMES = [
   'Mongoose 184LT trailer-mounted sewer jetter',
   'SeeSnake CS12x',
   'SeekTech SR-20',
-  'RIDGID 7500',
+  'RIDGID K-7500',
 ]
 const EQUIPMENT_TOKEN = /ridgid|see ?snake|seek ?tech|sr-?20|cs ?-?12|trusense|mongoose|184 ?-?lt|k-?7500|7500/i
 
