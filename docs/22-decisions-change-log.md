@@ -5064,6 +5064,21 @@ The sewer cleaning page was moved from the service hub template to Service Page 
 
 The hydro jetting page was moved from the service hub template to Service Page Template v2, the third page on it. The route, page id, parent and indexability are unchanged; the H1 is now `Hydro Jetting`. It is the universal, market-neutral page; the per-market service + location pages are built separately. The page gained a "what cleaning can and cannot address" panel, a "camera first or cleaning first" decision panel, a neutral hydro jetting vs. cable cleaning comparison and a 21-question FAQ in five groups. The old comparative claims ("cleans more thoroughly", "deeper clean") are not repeated. This page reuses the DEC-088 owner-approved free-estimate and same-day wording verbatim in the same-day FAQ answer and the final request (the trust strip is the shared one used on every service page); no new business fact was added. The page states no price, time, warranty, licence or emergency service, does not say video, written findings, coding, locating or a re-inspection are included, and carries no phone number or placeholder text. The independent second-opinion page is not built, so the one link the copy placed on it was left out. Every template addition is an optional field that renders only when a page supplies it, and a comparison of the static export showed the camera and cleaning pages' rendered HTML unchanged.
 
+## DEC-126 - Sewer Cleaning + Camera Inspection Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-sewer-cleaning-camera-inspection` entry only)
+* `types/content.ts`, `components/templates/ServicePageTemplateV2.tsx`, `components/templates/PageShell.tsx`, `components/layout/Breadcrumbs.tsx`, `lib/schema/graph.ts` (additive: optional `displayName`, which replaces the page's own breadcrumb entry and Service schema name only when a page sets it)
+* `scripts/verify-sewer-cleaning-camera-inspection-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-sewer-cleaning-camera-inspection` row)
+
+The combined sewer cleaning and camera inspection page was moved from the service hub template to Service Page Template v2, the fourth page on it. The route, page id, parent and indexability are unchanged; the H1 is now `Sewer Cleaning + Camera Inspection`, with the plus sign carried into the SEO title, breadcrumb and Service schema name through the new optional `displayName`. The page gained a signals list, a "what a camera may show and cannot confirm" panel with a locating row, a five-step process with preparation, a "camera or cleaning first" decision panel, a seven-row comparison, a "what you receive and what to ask about" section and a 21-question FAQ in five groups. The owner-confirmed deliverables (recorded in chat on 2026-10-05) are stated as included when a camera is used: the inspection video and written findings, and nothing beyond those two. The page states no price, time, offer, warranty, licence or emergency service, carries no phone number or placeholder text, and links nothing to the unbuilt independent second-opinion page. Every template addition is an optional field that renders only when a page supplies it, and a comparison of the static export showed every other page's rendered HTML unchanged.
+
 ---
 
 # 26. Decision Quality Standard

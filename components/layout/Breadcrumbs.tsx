@@ -49,10 +49,12 @@ import type { PageId } from '@/types'
  */
 export interface BreadcrumbsProps {
   pageId: PageId
+  /** Replaces the current page's own label only; every ancestor keeps its registry name. */
+  currentLabel?: string
   className?: string
 }
 
-export function Breadcrumbs({ pageId, className }: BreadcrumbsProps) {
+export function Breadcrumbs({ pageId, currentLabel, className }: BreadcrumbsProps) {
   const trail = breadcrumbTrail(pageId)
 
   // A single entry means this is the home page; a trail to itself adds
@@ -74,7 +76,7 @@ export function Breadcrumbs({ pageId, className }: BreadcrumbsProps) {
 
               {isCurrent ? (
                 <span aria-current="page" className="text-foreground">
-                  {page.name}
+                  {currentLabel ?? page.name}
                 </span>
               ) : (
                 <Link

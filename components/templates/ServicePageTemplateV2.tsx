@@ -507,6 +507,7 @@ export function ServicePageTemplateV2({
   return (
     <PageShell
       page={page}
+      displayName={v2.displayName}
       densities={densities}
       schema={{
         title: content.seoTitle ?? content.hero.title,
