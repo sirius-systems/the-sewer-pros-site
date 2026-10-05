@@ -2888,592 +2888,608 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      ====================================================================== */
   [id('svc-drain-cleaning')]: {
     /*
-      ⚠ THIS PAGE IS THE SERVICE HUB, NOT A CITY PAGE. The three markets are
-      routed to, never listed city by city. `hub` switches the page to
-      `ServiceHubTemplate`; `decisionFirst` puts the comparison ahead of the
-      market router so the service is understood first.
+      ⚠ THIS ENTRY RENDERS ON `ServicePageTemplateV2` (the `v2` key), NOT
+      ON `ServiceHubTemplate`. The H1, the meta title and description and
+      the primary and secondary hero actions stay on the base fields,
+      because the route's metadata reads them there. Everything else the
+      page shows is in `v2`. The old `hub`, `problems`, `process` and flat
+      `faq` fields were replaced by their v2 equivalents for this entry
+      only; every other service page is untouched. Copy source:
+      drain-cleaning-page-content.md.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No pricing, timeframe, guarantee,
-      certification, availability window, emergency, 24/7 or same-day
-      service, equipment specification or review metric. No deliverable is
-      promised (video, written report) because none is documented for every
-      visit, so the deliverables panel is deliberately absent. Active
-      backups say "contact the team" and promise no response. Repair stays
-      educational (CLAUDE.md §9, §24).
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      guarantee, warranty, licence (DEC-072), insurance wording, response
+      time, same-day or emergency claim, equipment brand, model or spec,
+      PSI or GPM, duration or interval. The page deliberately states no
+      standard time or price, and the four held questions (duration,
+      cost, roof-vent access, toilet removal) are not on the page or in
+      the FAQ. Owner-confirmed 2026-10-05: when a camera is used, the
+      video and written findings are included, and the page says exactly
+      that. It does NOT claim surface marks, PACP/LACP coding, a cleaning
+      report or any non-cleanout access method; "what record of the
+      cleaning is provided" stays as "ask" wording. A camera is a separate
+      service with no fixed order relative to cleaning. Repair stays
+      educational and the scope statement appears verbatim in the
+      definition and the final request.
 
-      ⚠ ROUTES THAT DO NOT EXIST ARE NOT LINKED. `/problems/*` and
-      `/who-we-help/*` are not built; symptom cards route to existing
-      service pages or to the in-page form, and audiences live under
-      `/for/`.
+      ⚠ MARKET-NEUTRAL, NO PHONE NUMBER (DEC-071). Numbers reach this page
+      only through the labelled footer and the mobile bar's market sheet.
+
+      ⚠ NO EVIDENCE MOSAIC. No verified drain cleaning imagery exists for
+      an evidence section, so `v2.evidence` is deliberately absent.
+
+      ⚠ "DRAIN CLEARING" is everyday usage, not a code term: it carries no
+      source and no code section number.
+
+      ⚠ ROUTES. The hydro jetting vs. snaking comparison and the home
+      buyer and home seller audience rows are linked through their
+      approved page ids. There is no homeowner audience page, so that row
+      is text. The market cards link the three hubs only.
     */
-    seoTitle: 'Drain Cleaning for Slow, Clogged, and Recurring Drains',
+    seoTitle: 'Drain Cleaning for Slow and Clogged Drains',
     metaDescription:
-      'Learn when drain cleaning fits a slow or clogged drain and when several affected fixtures point to the main sewer line. Serving St. Louis, San Diego, and Las Vegas.',
+      'What drain cleaning is, how cable and jetting methods differ, what a camera can show, and what cleaning does not fix. St. Louis, San Diego and Las Vegas.',
+    serviceDescription:
+      'Drain cleaning removes grease, roots, deposits, debris and other restricting material from a drain line using a rotating cable, water jetting, or both. It restores flow and does not repair the pipe.',
     hero: {
-      eyebrow: 'Drain Cleaning Service',
-      title: 'Drain Cleaning for Slow, Clogged, and Recurring Drains',
-      primaryAction: { href: '#choose-market', label: 'Choose Your Location' },
-      secondaryAction: { href: '/contact/', label: 'Call About a Drain Problem' },
+      eyebrow: 'Residential drain cleaning',
+      title: 'Drain Cleaning',
+      primaryAction: { href: '#request', label: 'Request Drain Cleaning' },
+      secondaryAction: { href: '#choose-market', label: 'Find Service in Your Area' },
       intro: (
         <>
           <p>
-            Drain cleaning can help address certain clogs, buildup, and flow
-            restrictions in sinks, tubs, showers, toilets, floor drains, and
-            connected drain lines. The right approach depends on where the
-            blockage is and what may be causing it.
+            Drain cleaning restores flow by removing the grease, roots,
+            debris, and buildup that slow or block a drain, using cable
+            tools, water jetting, or both, chosen for the line.
           </p>
           <p>
-            If several fixtures are affected or the problem keeps returning,
-            the cause may be farther along the drain or sewer line. An
-            evaluation, including a sewer camera inspection when appropriate,
-            can help identify the next step.
-          </p>
-          <p>
-            <a href="#when-a-drain-is-a-sewer-problem" className="font-semibold underline underline-offset-4">
-              Multiple drains affected? Explore sewer-line services.
-            </a>
+            We provide cleaning, camera diagnostics, and line locating only.
+            We do not provide sewer repair, replacement, lining, excavation,
+            or pipe installation.
           </p>
         </>
       ),
     },
-    process: [
-      {
-        title: 'Discuss the fixture and symptoms',
-        description:
-          'The team gathers details about which fixture is affected, whether the problem is active or recurring, what other drains are doing, and when the issue began.',
-      },
-      {
-        title: 'Assess the likely location of the restriction',
-        description:
-          'The technician considers whether the problem appears limited to the fixture or may involve a branch line, the main sewer line, or another condition. Further evaluation may be needed to determine the cause.',
-      },
-      {
-        title: 'Perform the recommended cleaning method',
-        description:
-          'The method depends on the fixture, available access, suspected restriction, and condition of the accessible drain line. The approach may vary from one situation to another.',
-      },
-      {
-        title: 'Review findings and next steps',
-        description:
-          'The technician explains the service performed and any observed conditions, where available. If the symptoms suggest that cleaning alone may not address the problem, they can discuss whether further evaluation or another service may be appropriate.',
-      },
-    ],
-    hub: {
-      decisionFirst: true,
-      mobileBar: true,
-      relatedColumns: 4,
+    // No-op on v2 (the independent band always renders); kept so the entry
+    // still reads as it did before the migration.
+    showDifferentiator: true,
+    v2: {
       defaultServiceId: 'svc-drain-cleaning',
-      processIcons: ['explanation', 'checklist', 'pipe', 'document'],
-      /*
-        IMAGE SLOTS. Save the real files at these paths and they are used at
-        the next build; until then development shows a labelled placeholder
-        and production shows nothing (see
-        `public/images/services/drain-cleaning/README.md` for the shot list).
-      */
       images: {
         hero: '/images/services/drain-cleaning/hero/the-sewer-pros-drain-cleaning-hero-residential-cleanout-ridgid-equipment-16x9.webp',
-        comparison: '/images/services/drain-cleaning/the-sewer-pros-drain-cleaning-service-comparison-ridgid-k7500-16x9.webp',
-        request: '/images/services/drain-cleaning/the-sewer-pros-drain-cleaning-request-cta-ridgid-k7500-background-16x9.webp',
-        requestFocus: 'right',
-        closing: '/images/services/drain-cleaning/the-sewer-pros-drain-cleaning-closing-cta-ridgid-k7500-background-16x9.webp',
-        closingFocus: 'right',
-        definition: ['drain-definition'],
-        process: 'drain-process',
+        request:
+          '/images/services/drain-cleaning/the-sewer-pros-drain-cleaning-closing-cta-ridgid-k7500-background-16x9.webp',
       },
-      headings: {
-        process: 'What Happens During a Drain-Cleaning Visit?',
-        faq: 'Drain Cleaning Questions',
-      },
-      definition: {
-        id: 'what-is-drain-cleaning',
-        label: 'Quick Answer',
-        title: 'What Is Drain Cleaning?',
-        answer:
-          'Drain cleaning is the process of clearing certain clogs, buildup, and flow restrictions from a sink, tub, shower, toilet, floor drain, or connected drain line. The right approach depends on the affected fixture, where the restriction is located, access to the line, and the line’s condition.',
-        supporting: [
-          'A slow or clogged drain may have an issue limited to one fixture. When several drains are affected, or the same problem keeps returning, the cause may be farther along the main sewer line. An evaluation can help determine whether the next step should address a single drain or involve sewer-line inspection.',
+      hero: {
+        scope: [
+          'Residential drain and sewer lines',
+          'Cleaning method chosen for the condition of the line',
+          'No repair or replacement work offered',
         ],
+        cardTitle: 'Request drain cleaning',
+        cardIntro:
+          'Tell us what your drains are doing. We will help you choose between cleaning, a camera inspection, or both.',
+        serviceLabel: 'Service: Drain cleaning',
       },
-      symptomRouter: {
-        id: 'what-drain-problem',
-        title: 'What drain problem are you experiencing?',
-        intro:
-          'Start with the symptom you’re noticing. A problem affecting one fixture may be limited to that drain, while recurring clogs or slow drains across several fixtures can point to a restriction farther along the connected drain or sewer line. The right next step depends on what is affected and where the restriction is located.',
+      navLabels: {
+        signals: 'When to look into it',
+        limits: 'What cleaning can and cannot fix',
+        process: 'How it works',
+        methods: 'Methods',
+        secondaryLimits: 'The camera',
+        ask: 'What to ask for',
+        faq: 'Questions',
+      },
+      methodsAfterIndependent: true,
+      situationsAfterFaq: true,
+      relatedColumns: 4,
+      definition: {
+        eyebrow: 'The short answer',
+        title: 'What is drain cleaning?',
+        answer:
+          'Drain cleaning is the removal of grease, roots, deposits, debris, and other restricting material from a drain line, using a rotating cable, water jetting, or both. It restores flow. It does not repair the pipe.',
+        supporting: [
+          <>
+            Drain cleaning usually refers to fixture and branch lines.{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
+              Sewer cleaning
+            </ApprovedInlineLink>{' '}
+            refers to the larger line that carries wastewater away from the
+            building.{' '}
+            {'People also say "drain clearing." That is everyday usage, not a code term, so ask a provider what they mean by either.'}
+          </>,
+          'Cleaning and a camera inspection are separate services.',
+        ],
+        scope:
+          'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
+      },
+      signals: {
+        eyebrow: 'Signs to look into',
+        title: 'When drain cleaning may be useful',
+        after:
+          'These signs may point to a drain or sewer-line issue. They do not prove a specific cause.',
+        image: 'drain-equipment',
         items: [
           {
-            status: 'Single fixture',
-            icon: 'sink-droplet',
-            title: 'One sink drains slowly or is clogged',
+            title: 'One slow drain',
             description:
-              'A slow or clogged sink may be caused by a restriction in the fixture drain or its branch line. Drain cleaning may be an appropriate starting point when the issue is limited to one sink.',
-            actionLabel: 'Get help with a sink drain',
-            href: '#request-drain-cleaning',
+              "A single slow sink, tub, or shower often points to a restriction in that fixture's own drain line, such as hair, soap, or grease buildup.",
           },
           {
-            status: 'Single fixture',
-            icon: 'bath',
-            title: 'A shower, tub, or bathroom drain is slow',
+            title: 'Several fixtures slow at once',
             description:
-              'Hair, soap residue, and buildup can restrict flow through a shower, tub, or bathroom drain. If other fixtures are also slow, the restriction may extend beyond that drain.',
-            actionLabel: 'Explore bathroom drain cleaning',
-            href: '#request-drain-cleaning',
+              'When more than one fixture is slow, the restriction may be farther down the line. This does not prove a specific cause.',
           },
           {
-            status: 'Recurring issue',
-            urgency: 'recurring',
-            icon: 'toilet',
-            title: 'A toilet clogs repeatedly',
+            title: 'Gurgling from drains or toilets',
             description:
-              'Recurring toilet clogs can be related to the fixture, a branch-line restriction, or a larger sewer-line issue. The pattern of the clogs and whether other drains are affected can help determine what should be evaluated.',
-            actionLabel: 'Discuss a recurring toilet clog',
-            href: '#request-drain-cleaning',
+              'Gurgling can come from a drainage restriction or a venting issue, so it does not point to one cause on its own.',
           },
           {
-            status: 'Single fixture',
-            icon: 'kitchen-sink',
-            title: 'The kitchen sink is slow or backing up',
+            title: 'Clogs that keep returning',
             description:
-              'Grease, food residue, and soap can restrict a kitchen drain. The appropriate approach depends on where the restriction is located and whether other fixtures are affected.',
-            actionLabel: 'Explore kitchen drain cleaning',
-            href: '#request-drain-cleaning',
+              'A clog that returns after each clearing may mean the restriction was not fully removed or is being rebuilt by something in the line. A camera look may help.',
           },
           {
-            status: 'Active issue',
-            urgency: 'active',
-            icon: 'floor-drain',
-            title: 'A floor drain backs up or smells',
+            title: 'Sewage-like odors',
             description:
-              'A floor drain that backs up or has an odor may have a local restriction or indicate a broader drainage issue. Share what you’re noticing, including whether other drains are affected, so the situation can be discussed.',
-            actionLabel: 'Discuss a floor drain problem',
-            pageId: id('core-contact'),
+              'An odor may point to a drain or sewer-line issue. It does not prove a specific cause.',
           },
           {
-            status: 'Multiple fixtures',
-            urgency: 'active',
-            icon: 'fixtures',
-            title: 'Multiple drains are slow, gurgling, or backing up',
+            title: 'Water or sewage coming up',
             description:
-              'When several fixtures are affected at the same time, the issue may involve a shared drain or the main sewer line rather than a single fixture drain. Further evaluation can help identify an appropriate next step.',
-            actionLabel: 'Explore sewer cleaning options',
-            pageId: id('svc-sewer-cleaning'),
+              'Avoid contact with the water, keep children and pets away, and limit water use while you arrange help. Contact us to discuss the situation.',
           },
         ],
       },
-      materials: {
-        id: 'common-drain-cleaning-needs',
-        title: 'Common Drain-Cleaning Needs',
+      limits: {
+        eyebrow: 'Suitability',
+        title: 'What drain cleaning can and cannot fix',
         intro:
-          'These are common questions about household sinks, showers, toilets, and other drains. The right cleaning approach depends on the fixture, access, and where the restriction is located. The guidance below describes possible factors to consider; it does not guarantee a particular result.',
-        tiles: [
-          { label: 'Kitchen sink', icon: 'kitchen-sink' },
-          { label: 'Bathroom sink', icon: 'bathroom-sink' },
-          { label: 'Shower or tub', icon: 'bath' },
-          { label: 'Toilet', icon: 'toilet' },
-          { label: 'Floor drain', icon: 'floor-drain-drop' },
-          { label: 'Laundry drain', icon: 'washing-machine' },
+          'Cleaning removes material from inside a pipe. Whether it helps depends on what is causing the problem.',
+        canTitle: 'Cleaning is often a fit when',
+        canLead: 'The restriction is material inside the pipe',
+        can: [
+          'Grease, soap, or sludge buildup inside the pipe',
+          'Roots that can be cut back from inside the line. They may regrow',
+          'Wipes, hair, or other debris causing a restriction',
+          'A restriction that keeps returning, where a camera look may help show why',
         ],
-        columns: ['Fixture or area', 'Common question', 'Guidance'],
-        rows: [
-          {
-            item: 'Kitchen sink',
-            icon: 'kitchen-sink',
-            help: 'Why is my kitchen sink draining slowly?',
-            qualification:
-              'Grease, food residue, soap, and other debris can restrict flow. The appropriate cleaning approach depends on where the restriction is located and whether the issue is limited to the sink or involves a connected line.',
-          },
-          {
-            item: 'Bathroom sink',
-            icon: 'bathroom-sink',
-            help: 'Why does my bathroom sink clog repeatedly?',
-            qualification:
-              'Hair, soap residue, and debris can build up in a bathroom drain. If the clog keeps returning after cleaning, the branch line or downstream conditions may need a closer evaluation.',
-          },
-          {
-            item: 'Shower or tub',
-            icon: 'bath',
-            help: 'Why is my shower or tub draining slowly?',
-            qualification:
-              'Hair, soap residue, and buildup can reduce flow through a shower or tub drain. If other fixtures are also affected, the restriction may extend beyond that individual drain.',
-          },
-          {
-            item: 'Toilet',
-            icon: 'toilet',
-            help: 'Why does my toilet keep clogging?',
-            qualification:
-              'Repeated toilet clogs can relate to the fixture, a branch-line restriction, or a larger sewer-line issue. An evaluation can help determine an appropriate starting point.',
-          },
-          {
-            item: 'Floor drain',
-            icon: 'floor-drain-drop',
-            help: 'Why is water backing up through a floor drain?',
-            qualification:
-              'Water at a floor drain may indicate a localized restriction or a broader sewer-line problem. Whether other drains are affected can help guide the evaluation.',
-          },
-          {
-            item: 'Laundry drain',
-            icon: 'washing-machine',
-            help: 'Why does my washing-machine drain back up?',
-            qualification:
-              'A washing machine releases water quickly, which can reveal a restriction in the branch line or a downstream path. Repeated backups may warrant further evaluation.',
-          },
-        ],
-        note: 'No single method resolves every fixture problem. The right starting point depends on the affected drain, access, and what else is happening in the property.',
-      },
-      escalation: {
-        id: 'when-a-drain-is-a-sewer-problem',
-        title: 'When Do Clogged Drains Point to a Sewer-Line Problem?',
-        answer:
-          'A slow sink or shower may have a localized drain issue. When several fixtures become slow or back up around the same time, the cause may be farther along a connected drain or sewer line. Sewer cleaning or a camera inspection can help identify an appropriate next step.',
-        signsTitle: 'Signs the problem may extend beyond one drain',
-        signs: [
-          'Several drains become slow at the same time.',
-          'Toilets, tubs, showers, or lower-level drains back up together.',
-          'Drains gurgle when another fixture is used.',
-          'A clog returns after repeated cleaning.',
-          'Wastewater appears in a tub, shower, or floor drain.',
-          'Sewer odor occurs along with widespread drainage problems.',
-        ],
-        closingNote:
-          'These signs do not confirm a sewer-line problem on their own. An evaluation can help determine whether the issue is limited to one drain or involves a broader section of the system.',
-        links: [
-          { pageId: id('svc-sewer-cleaning'), label: 'Explore sewer cleaning for multiple affected fixtures' },
-          { pageId: id('svc-sewer-camera-inspection'), label: 'Schedule a sewer camera inspection for recurring problems' },
-          { pageId: id('svc-recurring-sewer-backup-diagnosis'), label: 'Learn about recurring sewer backup diagnosis' },
-        ],
-      },
-      limitations: {
-        /*
-          ⚠ H2 SUBSTITUTES A COMMA FOR THE REQUESTED EM DASH. The brief's
-          heading read "...Help Address—and When It May Not Be Enough";
-          this site's copy rule bans em dashes in visible text, and the
-          comma form is what the section already used before this pass.
-        */
-        title: 'What Drain Cleaning May Help Address, and When It May Not Be Enough',
-        intro:
-          'Cleaning may restore flow when a localized restriction contributes to the problem. It does not necessarily identify structural damage, restrictions that cannot be reached, or why a clog keeps returning.',
-        canIdentifyTitle: 'Drain cleaning may help address',
-        canIdentify: [
-          'Hair, soap residue, and organic material, depending on where the restriction is located.',
-          'Grease and food-related buildup in accessible kitchen drain lines.',
-          'Paper, debris, or soft obstructions in accessible branch lines.',
-          'Localized clogs, depending on access, pipe condition, and fixture type.',
-          'Some recurring restrictions, though a repeat problem may call for inspection.',
-          'Slow drainage associated with buildup; other causes, such as venting or main-line issues, may also be involved.',
-        ],
-        cannotTitle: 'Drain cleaning may not resolve by itself',
+        cannotTitle: 'Cleaning does not fix',
+        cannotLead: 'Problems that need more than cleaning',
         cannot: [
-          'Multiple affected fixtures, which may involve the main sewer line.',
-          'A drain that clogs repeatedly after cleaning.',
-          'Suspected pipe damage, such as cracks, collapse, offsets, or separated sections.',
-          'A restriction that cannot be reached from an accessible point.',
-          'A route or project-planning question where sewer-line locating may be more appropriate.',
-          'An active sewage backup, which needs prompt contact with the team and appropriate evaluation.',
+          'Cracked, broken, or collapsed pipe',
+          'An offset or separated joint',
+          'Roots entering at a joint. Cleaning does not seal the entry point',
+          'The public sewer main or the connection to it. Ask your local utility',
+          'A line the equipment cannot pass',
         ],
-        related: {
-          lead: 'Not sure whether the problem is a drain clog or a sewer-line issue?',
-          pageId: id('svc-sewer-camera-inspection'),
-          label: 'A sewer camera inspection',
-          trailing: 'can help identify visible conditions and inform the next decision.',
+        callout:
+          'Water jetting is not appropriate for every pipe. Damaged or fragile pipe may not be a candidate. A line that flows again is not proof that the pipe is sound.',
+      },
+      process: {
+        eyebrow: 'What happens on the day',
+        title: 'How drain cleaning works',
+        intro:
+          'The method and the visit depend on the entry point, pipe size, line condition, and scope of work. We do not publish a standard time or price because they vary with these factors.',
+        steps: [
+          {
+            title: 'Symptoms',
+            description:
+              'You tell us which fixtures are affected, how long, and what you have already tried.',
+          },
+          {
+            title: 'Access',
+            description:
+              'The technician identifies an entry point, commonly a cleanout. Other entry points depend on the property.',
+          },
+          {
+            title: 'Camera, when included',
+            description:
+              'When a camera is part of the visit and the line allows, it is used to look at the restriction.',
+          },
+          {
+            title: 'Cleaning',
+            description:
+              'The line is cleaned with cable tools, water jetting, or both, chosen for the condition of the line.',
+          },
+          {
+            title: 'Flow check',
+            description:
+              'Flow is checked after cleaning. A camera may be used again where appropriate.',
+          },
+        ],
+        prep: {
+          title: 'Preparing for your visit',
+          access: {
+            title: 'Access points',
+            body: 'A cleanout is a capped opening in the drain or sewer line that gives access for cleaning tools or a camera. Other entry points depend on the property and the plumbing layout.',
+          },
+          items: [
+            'Make sure the technician has safe access to the agreed entry point.',
+            'Tell us which fixtures are affected and what you have already tried.',
+            'Tell us if a recent clog, backup, or home purchase is part of the reason for the visit.',
+          ],
         },
       },
-      comparison: {
-        /*
-          ⚠ "DRAIN CLEANING (THIS PAGE)" IS RENDERED, NOT AUTHORED. The
-          component appends "(this page)" to any row with no `pageId`, so
-          `service` stays plain "Drain cleaning" here; adding the literal
-          suffix would double it up in the rendered table.
-        */
-        id: 'drain-vs-related-services',
-        columns: ['Service', 'Main purpose', 'Often appropriate when'],
-        title: 'Drain Cleaning vs. Sewer Cleaning, Hydro Jetting, and Sewer Camera Inspection',
-        intro:
-          'These services address different kinds of drain and sewer concerns. Compare their purposes and limitations to understand which may be a useful starting point.',
+      decision: {
+        eyebrow: 'Two services, one decision',
+        title: 'Cleaning and the camera are separate services',
+        answer:
+          'Cleaning and camera inspection can be combined, but neither requires the other. Cleaning can improve camera visibility. It does not repair pipe defects.',
+        note: 'There is no single required order. It depends on the line.',
+        listTitle: 'When cleaning may need to come first',
+        list: [
+          'A line that is blocked and not draining. A camera generally cannot see under the water.',
+          'Grease, roots, or other debris covering the lens or blocking the camera, so the view is too limited to document much.',
+          'Standing water or debris that keeps the camera from traveling.',
+        ],
+        links: [
+          { pageId: id('svc-sewer-cleaning'), label: 'Sewer cleaning' },
+          { pageId: id('svc-hydro-jetting'), label: 'Hydro jetting' },
+          { pageId: id('svc-sewer-camera-inspection'), label: 'Sewer camera inspection' },
+        ],
+      },
+      independent: {
+        eyebrow: 'Independent by design',
+        title: 'Major sewer decisions deserve clear evidence.',
+        steps: [
+          {
+            title: 'Clear',
+            body: 'We clean the line and, when a camera is part of the visit, look at what is visible.',
+          },
+          {
+            title: 'Document',
+            body: 'When a camera is used, you receive the video and written findings.',
+          },
+          {
+            title: 'Decide',
+            body: 'You decide next steps with evidence in hand. The Sewer Pros does not sell repair or replacement.',
+          },
+        ],
+        note: 'If someone has recommended costly work, a clear record of the line gives you something to compare estimates against.',
+        link: { href: '#request', label: 'Request drain cleaning' },
+      },
+      methods: {
+        eyebrow: 'Which method fits',
+        title: 'Cable cleaning, water jetting, and the camera',
+        caption: 'Cable cleaning, water jetting, and camera inspection compared',
+        columns: ['Method', 'How it works', 'Often considered for', 'Limits'],
         rows: [
           {
-            service: 'Drain cleaning',
-            purpose: 'Clears certain localized clogs and restrictions in fixtures or accessible branch lines.',
-            fit: 'One sink, shower, tub, toilet, floor drain, or branch line is affected. It may not address a main sewer-line issue.',
+            method: 'Cable cleaning',
+            how: 'A rotating cable with cutting tools works through the line',
+            considered: 'Blockages, roots inside the line, and localized restrictions',
+            limits: 'Does not repair pipe. Roots may regrow',
           },
           {
-            service: 'Sewer cleaning',
-            purpose: 'Clears certain restrictions in an accessible main sewer line.',
-            fit: 'Multiple fixtures are affected or a main-line blockage is suspected. Cleaning may not explain a recurring line condition.',
-            pageId: id('svc-sewer-cleaning'),
-          },
-          {
-            service: 'Hydro jetting',
-            purpose: 'Uses controlled high-pressure water to clean certain buildup.',
-            fit: 'The line and its condition are suitable for this method. It is not appropriate for every line or unknown pipe condition.',
+            method: 'Water jetting',
+            how: 'Pressurized water cleans the pipe wall',
+            considered:
+              'Grease and buildup along the pipe, when the line is a suitable candidate',
+            limits:
+              'Not appropriate for every pipe or blockage, including damaged or fragile pipe',
             pageId: id('svc-hydro-jetting'),
           },
           {
-            service: 'Sewer camera inspection',
-            purpose: 'Shows accessible interior line conditions.',
-            fit: 'The cause, location, or pipe condition is uncertain. Inspection does not itself remove a clog.',
+            method: 'Camera inspection (separate service)',
+            how: 'A camera on a flexible cable shows visible conditions inside the line',
+            considered: 'Recurring clogs, an unclear cause, or documenting the line',
+            limits: 'Cannot see below the waterline or outside the pipe wall',
             pageId: id('svc-sewer-camera-inspection'),
           },
+        ],
+        note: (
+          <>
+            Comparing cable and jetting? See{' '}
+            <ApprovedInlineLink pageId={id('cmp-hydro-vs-snaking')}>
+              hydro jetting vs. snaking
+            </ApprovedInlineLink>
+            .
+          </>
+        ),
+      },
+      secondaryLimits: {
+        eyebrow: 'Evidence and its limits',
+        title: 'What a camera can and cannot show',
+        intro:
+          "When a camera is part of the visit, it may document the conditions below. Image quality, lighting, flow, and the technician's interpretation all affect what can be seen.",
+        canTitle: 'A camera may document',
+        canLead: 'Visible conditions in the section the camera reaches',
+        can: [
+          'Grease, soap scum, and other deposits',
+          'Roots visible inside the pipe',
+          'Obstructions such as wipes or debris',
+          'Cracks and fractures',
+          'Offset or separated joints',
+          'Visible surface damage on the inside of the pipe',
+          'Standing water',
+          'Connections where other lines join the pipe',
+        ],
+        cannotTitle: 'It does not by itself show',
+        cannotLead: 'Where a camera view stops',
+        cannot: [
+          'Anything below the waterline. A camera generally cannot see under water',
+          'Pipe in sections the camera did not reach or could not view',
+          'The condition of the soil around the pipe, or voids outside the pipe wall',
+          'Pipe wall thickness or structural capacity',
+          'Pipe slope or depth',
+          'Whether every leak has been found',
+          'How much service life the pipe has left',
+        ],
+        callout:
+          'A visibly clear line is not proof that the whole line, or the ground around it, is in good condition.',
+      },
+      ask: {
+        eyebrow: 'Before you book',
+        title: 'What to ask for, and what to keep',
+        intro:
+          'Before you book, ask what you will receive. What is provided can vary by appointment.',
+        items: [
           {
-            service: 'Sewer line locating',
-            purpose: 'Identifies the approximate underground route of a sewer line.',
-            fit: 'Excavation, construction, or property work is being planned. Locating does not clean or inspect inside the pipe.',
-            pageId: id('svc-sewer-line-locating'),
+            title: 'Video',
+            description: 'When a camera is used, you receive the video.',
+          },
+          {
+            title: 'Written findings',
+            description:
+              'When a camera is used, you receive written findings, including any part of the line that could not be viewed.',
+          },
+          {
+            title: 'Limits',
+            description: 'Ask what the cleaning and the camera could and could not reach.',
+          },
+          {
+            title: 'Access point and location',
+            description:
+              'Ask which access point was used and where along the line conditions were seen.',
+          },
+          {
+            title: 'Cleaning record',
+            description:
+              'Ask what record of the cleaning is provided for your appointment.',
+          },
+          {
+            title: 'Line locating',
+            description:
+              'If locating was performed, ask how it was documented. A locate is approximate, not a survey.',
           },
         ],
-        note: 'If wastewater is actively backing up, contact the team to discuss the immediate issue and whether cleaning or assessment should come first.',
+        keep: {
+          title: 'Keep the video and written findings',
+          image: 'drain-monitor',
+          body: [
+            'When a camera is used, they are useful as a later reference. If someone recommends costly work, you can compare written estimates and ask the estimate to point to the footage.',
+            'A camera finding is a visible observation. It is not a repair recommendation, and it does not by itself set a scope of work.',
+          ],
+        },
       },
-      marketRouter: {
+      audiences: {
+        eyebrow: 'Who it helps',
+        title: 'Who drain cleaning helps',
+        items: [
+          {
+            audience: 'Homeowners',
+            description:
+              'Slow drains, recurring clogs, or a backup. Cleaning addresses the restriction, and a camera can help show what is visible in the line when the clog keeps coming back.',
+          },
+          {
+            pageId: id('aud-home-buyers'),
+            audience: 'Home buyers',
+            description:
+              'A buyer who learns of drain or sewer concerns can ask for a camera look at the accessible line before deciding. This is general information, not legal advice. Disclosure rules vary by state.',
+            actionLabel: 'For home buyers',
+          },
+          {
+            pageId: id('aud-home-sellers'),
+            audience: 'Home sellers',
+            description:
+              'A seller with a history of slow or recurring drains can document the condition of the accessible line. This is general information, not legal advice. Disclosure rules vary by state.',
+            actionLabel: 'For home sellers',
+          },
+        ],
+      },
+      markets: {
         id: 'choose-market',
-        /*
-          ⚠ LINKS GO TO THE MARKET HUBS, NOT A DRAIN-CLEANING SUB-ROUTE.
-          No `/st-louis-mo/drain-cleaning/`-style page exists in the page
-          registry for any of the three markets, so each card routes to
-          that market's hub (`market-st-louis-mo` etc.), same as every
-          other hub's market router on this site.
-        */
-        title: 'Find Drain-Cleaning Service in Your Market',
-        intro:
-          'Choose a market to view local drain-cleaning service details and request options.',
+        eyebrow: 'Service areas',
+        title: 'Drain cleaning service areas',
+        intro: 'Choose your market for local service details and scheduling options.',
         items: [
           {
             pageId: id('market-st-louis-mo'),
-            description: 'Explore drain-cleaning service information for the St. Louis region.',
-            actionLabel: 'Drain Cleaning in St. Louis',
+            description: 'Homeowners and home buyers across the St. Louis area.',
+            actionLabel: 'View St. Louis drain cleaning',
           },
           {
             pageId: id('market-san-diego-ca'),
-            description: 'Explore drain-cleaning service information for the San Diego region.',
-            actionLabel: 'Drain Cleaning in San Diego',
+            description: 'Homeowners and home buyers in the San Diego area.',
+            actionLabel: 'View San Diego drain cleaning',
           },
           {
             pageId: id('market-las-vegas-nv'),
-            description: 'Explore drain-cleaning service information for the Las Vegas Valley.',
-            actionLabel: 'Drain Cleaning in Las Vegas',
-          },
-        ],
-      },
-      audiences: {
-        id: 'drain-cleaning-for-your-situation',
-        surface: 'muted',
-        title: 'Drain-Cleaning Information for Different Property Needs',
-        intro:
-          'Drain-cleaning needs can vary across multi-unit buildings, commercial properties, inspections, and real estate transactions. Choose the page that best matches your property or role.',
-        items: [
-          {
-            pageId: id('aud-property-managers'),
-            audience: 'Property Managers',
-            icon: 'building',
-            description:
-              'Coordinate service for tenant-reported drainage problems at occupied or multi-unit properties. Find information about documenting the issue and arranging an appropriate next step.',
-            actionLabel: 'Property Manager Support',
-          },
-          {
-            pageId: id('com-drain-cleaning'),
-            audience: 'Commercial Properties',
-            icon: 'commercial-building',
-            description:
-              'Recurring drain problems can disrupt building operations. Learn how commercial drain cleaning differs and what information may help when requesting service.',
-            actionLabel: 'Commercial Drain Cleaning',
-          },
-          {
-            pageId: id('aud-home-inspectors'),
-            audience: 'Home Inspectors',
-            icon: 'checklist',
-            description:
-              'Learn how to coordinate appropriate specialist follow-up when an inspection identifies a drainage concern.',
-            actionLabel: 'Working with Home Inspectors',
-          },
-          {
-            pageId: id('aud-real-estate-agents'),
-            audience: 'Real Estate Agents',
-            icon: 'house-document',
-            description:
-              'Help clients understand when a drain concern may call for further evaluation during a property transaction.',
-            actionLabel: 'Transaction Support',
-          },
-        ],
-      },
-      evidence: {
-        id: 'drain-cleaning-field-experience',
-        columns: 3,
-        title: 'Clear Service Decisions Start with the Right Information',
-        intro:
-          'A slow drain can have different causes. Cleaning may be appropriate in some cases, while a camera inspection may help when the problem keeps returning or its location is unclear.',
-        caveat:
-          'These examples are from individual properties, with identifying details removed. Findings and methods vary by fixture, access, and situation.',
-        items: [
-          {
-            slot: 'drain-equipment',
-            title: 'Drain-cleaning equipment in the field',
-            description:
-              'The equipment and method depend on the fixture, available access, and what is known about the drain line.',
-          },
-          {
-            slot: 'drain-monitor',
-            title: 'Reviewing a recurring drain issue on a monitor',
-            description:
-              'When a camera inspection is appropriate, the technician reviews visible conditions on the monitor. The camera can show only the portions of the line it can reach.',
-          },
-          {
-            slot: 'drain-camera-explainer',
-            title: 'When Is a Slow Drain a Main Sewer-Line Problem?',
-            description:
-              'A technician can explain what may point to a fixture-level issue or a broader sewer-line concern, and when a camera inspection may help.',
+            description: 'Homeowners and home buyers across the Las Vegas Valley.',
+            actionLabel: 'View Las Vegas drain cleaning',
           },
         ],
       },
       /*
-        ⚠ `approach`, NOT AN EDIT TO THE SHARED "HOW WE WORK" BAND. This
-        renders instead of `AuthorityBand` (see `ServiceHubTemplate`), so
-        the sourced, cited `authorityProofPoints` dataset that eight
-        other hubs render unmodified stays untouched. Card 1 and 3 below
-        substitute a comma for the brief's em dash (no em dashes in
-        visible copy). The CTA is left unset so it keeps the verified
-        sitewide default (`PRIMARY_CTA`: "Schedule a Sewer Inspection" →
-        `/contact/`), which already matches the requested label exactly.
+        ⚠ FAQ: 24 QUESTIONS IN SIX GROUPS, ANSWERS VERBATIM FROM THE
+        CONTENT DOC. Plain strings only: `lib/schema/faq.ts` throws on
+        custom components, and FAQPage JSON-LD must equal the visible
+        text (DEC-114). The group label is navigation only and is not
+        part of any answer.
       */
-      approach: {
-        title: 'How Our Independent Sewer Inspection and Cleaning Process Works',
+      faqTitle: 'Drain cleaning questions',
+      eyebrows: { faq: 'Questions', related: 'Related', request: 'Request service' },
+      faq: [
+        {
+          group: 'Understanding drain cleaning',
+          question: 'What is drain cleaning?',
+          answer: `Drain cleaning is the removal of grease, roots, deposits, debris, and other restricting material from a drain line, using a rotating cable, water jetting, or both. It restores flow. It does not repair the pipe.`,
+        },
+        {
+          group: 'Understanding drain cleaning',
+          question: 'What is the difference between drain cleaning and sewer cleaning?',
+          answer: `Drain cleaning usually refers to fixture and branch lines, such as sinks, tubs, showers, and laundry drains. Sewer cleaning refers to the larger line that carries wastewater away from the building. Some jobs involve both.`,
+        },
+        {
+          group: 'Understanding drain cleaning',
+          question: 'What is the difference between drain cleaning and drain clearing?',
+          answer: `In everyday usage, the two terms are often used interchangeably. Some people use clearing for opening a single blocked drain and cleaning for removing buildup along the pipe wall. These are everyday terms, not code terms, so ask what a provider means by either.`,
+        },
+        {
+          group: 'Understanding drain cleaning',
+          question: 'What methods are used to clean a drain?',
+          answer: `Common methods are a rotating cable with cutting tools and water jetting. The method is chosen for the pipe, the entry point, and the kind of restriction. Some jobs use both.`,
+        },
+        {
+          group: 'Understanding drain cleaning',
+          question: 'Does drain cleaning repair a damaged pipe?',
+          answer: `No. Cleaning removes material from inside the pipe. It does not repair cracks, offsets, or collapse. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.`,
+        },
+        {
+          group: 'Symptoms and causes',
+          question: 'What causes a drain to clog or run slowly?',
+          answer: `Common causes include grease, soap, hair, wipes, debris, and roots. A slow drain can have several causes, and a symptom alone does not prove which one.`,
+        },
+        {
+          group: 'Symptoms and causes',
+          question: 'Why do my drains keep clogging after they were cleared?',
+          answer: `The restriction may not have been fully removed, or something in the line may be rebuilding it. A camera look at the accessible line may help show what is going on.`,
+        },
+        {
+          group: 'Symptoms and causes',
+          question: 'Why are several fixtures draining slowly at once?',
+          answer: `It may point to a restriction in a shared branch or the larger line. It does not prove a specific cause.`,
+        },
+        {
+          group: 'Symptoms and causes',
+          question: 'Why are my drains gurgling?',
+          answer: `Gurgling can come from a drainage restriction or a venting issue. It does not point to one cause on its own.`,
+        },
+        {
+          group: 'Symptoms and causes',
+          question: 'What causes sewage-like odors?',
+          answer: `An odor may point to a drain or sewer-line issue. It does not prove a specific cause.`,
+        },
+        {
+          group: 'Symptoms and causes',
+          question: 'What should I do if water or sewage is coming up from a drain?',
+          answer: `Avoid contact with the water, keep children and pets away, and limit water use while you arrange help. Contact us to discuss the situation.`,
+        },
+        {
+          group: 'Limits and cameras',
+          question: 'Can drain cleaning fix a broken or collapsed pipe?',
+          answer: `No. Cleaning can remove material from inside a pipe, but it does not repair structural damage.`,
+        },
+        {
+          group: 'Limits and cameras',
+          question: 'Can cleaning remove tree roots?',
+          answer: `Cleaning can cut back roots that are inside the line. Roots may regrow, and cleaning does not seal the joint or crack where they entered.`,
+        },
+        {
+          group: 'Limits and cameras',
+          question: 'Is hydro jetting safe for every pipe?',
+          answer: `No. Water jetting is condition-dependent and is not appropriate for every pipe or blockage, including damaged or fragile pipe.`,
+        },
+        {
+          group: 'Limits and cameras',
+          question: 'Does a camera inspection come with drain cleaning?',
+          answer: `They are separate services. A camera can be added when it is feasible for the line. Neither one requires the other.`,
+        },
+        {
+          group: 'Limits and cameras',
+          question: 'Can a camera see through standing water?',
+          answer: `A camera generally cannot see below the waterline. If a line is blocked and not draining, cleaning may need to come first.`,
+        },
+        {
+          group: 'Limits and cameras',
+          question: 'Does a line that flows again mean the pipe is fine?',
+          answer: `No. A line that flows again is not proof that the pipe is sound. A camera shows visible conditions in the section it reaches.`,
+        },
+        {
+          group: 'Documentation and locating',
+          question: 'What do I receive when a camera is used?',
+          answer: `When a camera is used, you receive the video and written findings. The findings note any part of the line that could not be viewed.`,
+        },
+        {
+          group: 'Documentation and locating',
+          question: 'Will I get a record of the cleaning?',
+          answer: `What is provided can vary by appointment. Ask what record of the cleaning you will receive before you book.`,
+        },
+        {
+          group: 'Documentation and locating',
+          question: 'What does line locating do?',
+          answer: `Line locating identifies the approximate path of an underground line. A locate is not a survey and does not give exact depth.`,
+        },
+        {
+          group: 'Maintenance and prevention',
+          question: 'Are chemical drain cleaners a good idea?',
+          answer: `Chemical drain cleaners do not remove every kind of restriction and can be hazardous to handle. Follow the product label, and tell the technician if one was used.`,
+        },
+        {
+          group: 'Maintenance and prevention',
+          question: 'Is it safe to flush wipes labeled flushable?',
+          answer: `Wipes can collect in the line and contribute to blockages. A safer habit is to flush only toilet paper and human waste.`,
+        },
+        {
+          group: 'Maintenance and prevention',
+          question: 'How should I dispose of cooking grease?',
+          answer: `Let it cool and put it in a container in the trash instead of pouring it down the drain. Grease can build up on the pipe wall.`,
+        },
+        {
+          group: 'Real estate',
+          question: 'Should I have the sewer line checked before buying a house?',
+          answer: `A sewer camera inspection is a focused inspection that is separate from a general home inspection. Timing and conditions are set by your purchase agreement. This is general information, not legal advice.`,
+        },
+      ],
+      situations: {
+        eyebrow: 'Keeping drains clear',
+        title: 'Habits that cause clogs',
         items: [
           {
-            title: 'The inspection is the product',
-            description:
-              'Finding out what is happening in the line is the job, not a step toward selling a repair.',
-            icon: 'camera',
+            title: 'Flushable wipes',
+            body: 'Wipes labeled flushable can collect in the line and contribute to blockages. Flush toilet paper and human waste only.',
           },
           {
-            title: 'You see the evidence',
-            description:
-              'Visible conditions found during an inspection are documented so you can review the findings.',
-            icon: 'eye',
+            title: 'Liquid grease',
+            body: 'Grease poured down a drain can cool and build up on the pipe wall. Let it cool and put it in the trash.',
           },
           {
-            title: 'Sewer and drain specialists',
-            description:
-              'Our work focuses on sewer inspection, diagnostics, locating, and cleaning, not general plumbing.',
-            icon: 'pipe',
-          },
-          {
-            title: 'The next step stays your decision',
-            description:
-              'If findings suggest work beyond cleaning may be needed, you decide what to do next and whom to contact.',
-            icon: 'decision',
+            title: 'Chemical drain cleaners',
+            body: 'They do not remove every kind of restriction and can be hazardous to handle. Follow the label, and tell the technician if one was used.',
           },
         ],
       },
+      relatedTitle: 'Keep reading',
       request: {
-        id: 'request-drain-cleaning',
         title: 'Request drain cleaning',
-        intro:
-          'Tell us which fixture is affected, whether other drains are slow, and where the property is. The Sewer Pros provides sewer inspection, cleaning, and diagnostic services across St. Louis, San Diego, and Las Vegas.',
-      },
-      closing: {
-        title: 'Request Drain Cleaning for a Clogged or Slow Drain',
-        intro:
-          'Tell us what’s happening, where service is needed, and how you prefer to be contacted. You can request drain cleaning, ask about a recurring clog, or describe symptoms you’re seeing. We’ll review your request and help determine whether drain cleaning, sewer cleaning, or a camera inspection may be appropriate.',
-        formTitle: 'Request Drain Cleaning',
-        messageLabel: 'What’s happening with the drain? (Optional)',
-        messagePlaceholder:
-          'Describe the affected fixture or drain, how long the issue has been occurring, and whether it keeps coming back.',
+        intro: [
+          'Choose your service area, tell us what you have noticed, and let us know which fixtures are affected.',
+        ],
+        scopeNote:
+          'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
         submitLabel: 'Request Drain Cleaning',
-        note: 'Please include your service location so we can review availability for your area.',
       },
     },
-    faq: [
-      {
-        question: 'What is the difference between drain cleaning and sewer cleaning?',
-        answer: (
-          <p>
-            Drain cleaning generally addresses a clog or restriction in one
-            fixture or an accessible branch line. Sewer cleaning focuses on
-            certain restrictions in an accessible main sewer line. The
-            appropriate service depends on which fixtures are affected and
-            where the restriction may be.
-          </p>
-        ),
-      },
-      {
-        question: 'Why does my drain keep clogging after it has been cleaned?',
-        answer: (
-          <p>
-            A recurring clog can have several possible causes, including a
-            restriction farther along the line or a condition the cleaning
-            did not address. If the problem keeps returning, an evaluation may
-            help determine an appropriate next step.
-          </p>
-        ),
-      },
-      {
-        question: 'Can drain cleaning help a slow shower or tub drain?',
-        answer: (
-          <p>
-            Drain cleaning may help with certain localized restrictions in a
-            shower or tub drain. If other fixtures are also affected, or the
-            problem keeps returning, the cause may extend beyond that
-            individual fixture.
-          </p>
-        ),
-      },
-      {
-        question: 'Does drain cleaning fix a sewer-line backup?',
-        answer: (
-          <p>
-            Cleaning one fixture may not resolve a backup involving the main
-            sewer line. An evaluation can help determine whether sewer
-            cleaning, a camera inspection, or another next step may be
-            appropriate.
-          </p>
-        ),
-      },
-      {
-        question: 'Can drain cleaning remove grease buildup?',
-        answer: (
-          <p>
-            Drain cleaning may address certain grease-related buildup in
-            accessible kitchen drain lines. The appropriate approach depends
-            on where the buildup is located and the condition of the line;
-            results can vary.
-          </p>
-        ),
-      },
-      {
-        question: 'Do I need a camera inspection for a clogged drain?',
-        answer: (
-          <p>
-            Not every clogged drain requires a camera inspection. One may be
-            useful when a clog keeps returning, multiple fixtures are
-            affected, or the cause and location are unclear. A camera can show
-            only the accessible portions of the line it can reach.
-          </p>
-        ),
-      },
-      {
-        question: 'Can I schedule drain cleaning for a rental or multi-unit property?',
-        answer: (
-          <p>
-            Contact the team to discuss the affected fixtures, the property,
-            and who can authorize service. The next step may depend on the
-            issue and the property’s access arrangements.
-          </p>
-        ),
-      },
-      {
-        question: 'What should I do if wastewater is backing up into a tub or floor drain?',
-        answer: (
-          <p>
-            Contact the team promptly to discuss the active backup and whether
-            cleaning or assessment should come first. The right next step
-            depends on which fixtures are affected and the conditions at the
-            property.
-          </p>
-        ),
-      },
-    ],
     relatedPageIds: [
       id('svc-sewer-cleaning'),
       id('svc-hydro-jetting'),
       id('svc-sewer-camera-inspection'),
-      id('svc-recurring-sewer-backup-diagnosis'),
+      id('svc-sewer-line-locating'),
     ],
+    relatedDescriptions: {
+      [id('svc-sewer-cleaning')]:
+        'Cleaning the larger line that carries wastewater from the building.',
+      [id('svc-hydro-jetting')]: 'Water jetting for suitable lines and buildup.',
+      [id('svc-sewer-camera-inspection')]:
+        'See visible conditions inside an accessible line.',
+      [id('svc-sewer-line-locating')]:
+        'Identify the approximate path of an underground line.',
+    },
+    // Not rendered by v2: the final request section replaces the separate
+    // closing form and call-to-action band.
     cta: {
       title: 'Get clear next steps for a clogged or slow drain',
       body: 'Choose your market to request drain cleaning, discuss a recurring clog, or ask whether sewer cleaning or a camera inspection may be a better starting point.',

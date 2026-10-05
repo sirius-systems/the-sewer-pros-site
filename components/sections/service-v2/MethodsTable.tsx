@@ -22,11 +22,12 @@ export function MethodsTable({
   columns,
   rows,
   note,
+  surface = 'muted',
 }: {
   id: string
   eyebrow?: string
   title: string
-  intro: string
+  intro?: string
   caption: string
   columns: readonly [string, string, string, string]
   rows: readonly {
@@ -37,10 +38,11 @@ export function MethodsTable({
     pageId?: PageId
   }[]
   note?: ReactNode
+  surface?: 'default' | 'muted'
 }) {
   return (
-    <Section density="dense" surface="muted" labelledBy={id}>
-      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={<p>{intro}</p>} />
+    <Section density="dense" surface={surface} labelledBy={id}>
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
       <div
         role="region"
         aria-label={`${caption} (scrollable table)`}

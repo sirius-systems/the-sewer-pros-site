@@ -26,7 +26,7 @@ export function IndependentBand({
   title: string
   steps?: readonly { title: string; body: string }[]
   note: string
-  link?: { pageId: PageId; label: string }
+  link?: { pageId?: PageId; href?: string; label: string }
 }) {
   return (
     <Section density="standard" surface="brand" width="wide" labelledBy={id}>
@@ -63,7 +63,11 @@ export function IndependentBand({
       {link !== undefined && (
         <p className="mt-4">
           <Link
-            href={resolveApprovedLink(link.pageId).href}
+            href={
+              link.pageId !== undefined
+                ? resolveApprovedLink(link.pageId).href
+                : (link.href ?? '#')
+            }
             className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {link.label}

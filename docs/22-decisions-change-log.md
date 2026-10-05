@@ -5109,6 +5109,21 @@ The owner confirmed that video is included when a camera is used, and that writt
 
 The sewer line locating page was moved from the service hub template to Service Page Template v2, the fifth page on it. The route, page id, parent and indexability are unchanged; the H1 is now `Sewer Line Locating` and the SEO title is `Private Sewer Line Locating: How It Works`. The page gained a five-item signals list, a "what a locate may give you, and what it is not" panel, a five-step process with an access and preparation list, a "locating or camera inspection" decision panel, a five-row comparison that includes the one-call utility process as a non-service row, a "what to ask for, and what to keep" section, four audience rows and a 23-question FAQ in four groups. Every depth statement is worded as an estimate, no maximum depth is stated, and no equipment brand, model or frequency is attributed to the business. The owner-confirmed deliverables (video when a camera is used, and written findings) are stated as included; surface marks, depth readings, access beyond the cleanout and locating as part of a camera visit stay worded as "ask". The 811 and one-call wording is deliberately qualified ("your state one-call program, often reached at 811, or your local utility") because the research packets do not cover private sewer lines and 811; it needs verification against the Missouri, California and Nevada programs before launch. The page states no price, time, offer, warranty, licence or emergency service, carries no phone number or placeholder text, and links nothing to the unbuilt independent second-opinion page. No business fact was added. Every template addition is an optional field that renders only when a page supplies it, and a comparison of the static export showed every other page's rendered HTML unchanged.
 
+## DEC-129 - Drain Cleaning Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-drain-cleaning` entry only)
+* `types/content.ts`, `components/templates/ServicePageTemplateV2.tsx`, `components/sections/service-v2/` (additive: optional `secondaryLimits`, `methodsAfterIndependent`, `situationsAfterFaq`, `relatedColumns`, `process.prep.access`, `audiences.eyebrow`, optional `methods.intro`, an `href` form of the independent band link, and optional `surface` props on the limits panel and methods table; each renders only when a page supplies it)
+* `scripts/verify-drain-cleaning-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-drain-cleaning` row)
+
+The drain cleaning page was moved from the service hub template to Service Page Template v2. The route, page id, parent and indexability are unchanged; the H1 is now `Drain Cleaning` and the SEO title is `Drain Cleaning for Slow and Clogged Drains`. The page gained a six-item signals list, a "what cleaning can and cannot fix" panel, a five-step process with an access and preparation block, a "cleaning and the camera are separate services" decision panel, a three-row methods table (cable cleaning, water jetting, camera inspection) with a limits column, a "what a camera can and cannot show" panel, a "what to ask for, and what to keep" section, three audience rows, a 24-question FAQ in six groups and a habits-that-cause-clogs list. The page states no price, time, offer, warranty, licence or emergency service, carries no phone number or placeholder text, and shows no evidence mosaic because no verified drain cleaning imagery exists. The owner-confirmed deliverables (video and written findings when a camera is used) are stated as included; the cleaning record stays worded as "ask". No business fact was added. A comparison of the static export showed every other page's rendered output unchanged.
+
 ---
 
 # 26. Decision Quality Standard

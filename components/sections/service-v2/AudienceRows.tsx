@@ -11,11 +11,13 @@ import type { PageId } from '@/types'
  */
 export function AudienceRows({
   id,
+  eyebrow,
   title,
   intro,
   items,
 }: {
   id: string
+  eyebrow?: string
   title: string
   intro?: string
   items: readonly {
@@ -27,7 +29,7 @@ export function AudienceRows({
 }) {
   return (
     <Section density="dense" surface="muted" labelledBy={id}>
-      <SectionHeading id={id} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
       <ul className="mt-8 border-t border-border">
         {items.map((item, index) =>
           item.pageId !== undefined ? (
