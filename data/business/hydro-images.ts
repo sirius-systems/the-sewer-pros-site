@@ -54,12 +54,12 @@ export const hydroImageSlots = {
   },
   'hydro-equipment': {
     preferred: `${DIR}the-sewer-pros-hydro-jetting-equipment-used-by-team-4x3.webp`,
-    alt: 'Mongoose 184-LT hydro jetter staged beside an accessible sewer cleanout',
+    alt: 'Mongoose 184LT trailer-mounted sewer jetter staged beside an accessible sewer cleanout',
     caption: 'Equipment used by the team.',
     width: 2400,
     height: 1792,
     kind: 'photo',
-    subject: 'Mongoose 184-LT jetter at an exterior cleanout. Plates and addresses blurred.',
+    subject: 'Mongoose 184LT trailer-mounted sewer jetter at an exterior cleanout. Plates and addresses blurred.',
     requiresRelease: false,
   },
   'hydro-monitor': {

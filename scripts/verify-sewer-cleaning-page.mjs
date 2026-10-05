@@ -13,7 +13,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
-import { checkRelatedCards, checkServiceSchema } from './lib/service-page-checks.mjs'
+import { checkEquipmentNames, checkRelatedCards, checkServiceSchema } from './lib/service-page-checks.mjs'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'sewer-cleaning', 'index.html')
@@ -76,6 +76,7 @@ const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*
 check('one JSON-LD block', ld.length === 1, String(ld.length))
 const graph = ld[0]?.['@graph'] ?? []
 checkServiceSchema({ html, check, origin: ORIGIN, serviceName: 'Sewer Cleaning' })
+checkEquipmentNames({ html, check })
 const types = graph.map((n) => n['@type'])
 check('Organization first', types[0] === 'Organization', JSON.stringify(types))
 check('one Service node', types.filter((t) => t === 'Service').length === 1, JSON.stringify(types))

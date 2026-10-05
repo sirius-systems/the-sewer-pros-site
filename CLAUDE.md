@@ -795,6 +795,8 @@ Do not fabricate:
 * business addresses
 * operating hours
 
+Equipment brand and model names are allowed only as confirmed by the owner (list in DEC-132). No specs, capability figures, or claims about results.
+
 If a fact is unknown, omit it or use a clearly identified placeholder where appropriate during development.
 
 Do not publish unverified placeholders as business facts.
