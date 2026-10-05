@@ -236,7 +236,24 @@ export function TrustBar({
         would do nothing, and without it, it would reintroduce exactly
         the clipping described above.
       */}
-      <div className="overflow-x-auto">
+      {/*
+        ⚠ THE SCROLLER IS A NAMED, FOCUSABLE REGION. It overflows on phones
+        (about 1224px of row in a 374px box), and a scrollable area that a
+        keyboard cannot reach fails `scrollable-region-focusable`. The
+        wrapper takes focus (`tabIndex=0`) and is named with `role="region"`
+        and `aria-label`, so the arrow keys scroll it; the items stay
+        non-focusable. The inset outline stays inside the scroll box so it
+        is never clipped; white on the navy surface, where the green accent
+        would not contrast, and the site's accent-secondary elsewhere.
+      */}
+      <div
+        role="region"
+        aria-label="Why choose The Sewer Pros"
+        tabIndex={0}
+        className={`overflow-x-auto focus-visible:outline-2 focus-visible:-outline-offset-2 ${
+          surface === 'brand' ? 'focus-visible:outline-white' : 'focus-visible:outline-accent-secondary'
+        }`}
+      >
         <ul className="mx-auto flex w-max flex-nowrap items-center gap-x-5">
           {trustStatements.map((statement) => {
             const Icon = TRUST_ICONS[statement.label]

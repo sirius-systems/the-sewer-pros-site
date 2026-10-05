@@ -5155,6 +5155,22 @@ The pre-purchase sewer inspection page was moved from the service hub template t
 
 Owner confirmations recorded 2026-10-05, applied on this page: a pre-purchase visit always uses a camera, so the inspection video and written findings are stated as included (DEC-127 covers the company-wide rule); the St. Louis contact-page timing sentence ("Note your inspection deadline when you request service, and we will work toward it. Confirm timing with your agent, since inspection periods are short.") is used company-wide, with no duration or delivery time; a pre-purchase inspection is a camera inspection and cleaning is a separate service ("If the camera cannot pass, ask what options apply."); "independent sewer inspection" stays unlinked until that page exists. A comparison of the static export showed every other page's rendered output unchanged.
 
+## DEC-132 - Owner Confirms Company Equipment Names
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (one sentence each in the camera inspection, line locating and hydro jetting process steps)
+* `data/business/hydro-images.ts` (alt text and dev-only subject spelling)
+* `scripts/lib/service-page-checks.mjs` and the seven service-page verify scripts (equipment allow-list)
+* `CLAUDE.md`, `docs/01-business-brand-foundation.md` (equipment rule wording)
+* `components/sections/TrustBar.tsx` (accessibility fix: the scrolling wrapper is now a named, focusable region)
+
+The owner confirmed five company products, by brand and model name only: RIDGID 7500; SeeSnake CS12x; SeekTech SR-20; SeeSnake Standard Camera Reel with TruSense; Mongoose 184LT trailer-mounted sewer jetter. Mongoose is a different brand from RIDGID, and the jetter is never described as a RIDGID product. The names may appear as plain mentions ("Our equipment includes ..."). No spec, capability figure, depth or frequency, claim about what a machine can find, claim about which machine is used on which visit, or "state-of-the-art" or "best" wording is confirmed or published. What the RIDGID 7500 is has not been confirmed; the repository's photo file names and alt text call a "K-7500" a drum or drain-cleaning machine, which is left as written and is not repeated in page copy. The verify scripts now allow exactly these spellings and the brand RIDGID on its own, and fail any other equipment brand, model or misspelling, and any equipment text in page JSON-LD. The shared trust strip's horizontal scroller was given a name, a region role and keyboard focus (axe `scrollable-region-focusable`); its content and layout are unchanged.
+
 ---
 
 # 26. Decision Quality Standard

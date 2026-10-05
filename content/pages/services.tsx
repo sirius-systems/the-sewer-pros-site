@@ -53,8 +53,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
 
       ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
       guarantee, warranty, licence (DEC-072), insurance wording, response
-      time, same-day or emergency claim, equipment model or spec, duration
-      or inspection interval in years. It does not say that video, written
+      time, same-day or emergency claim, equipment spec, duration
+      or inspection interval in years. Only the owner-confirmed equipment
+      names (DEC-132) are named, in the camera entry step. It does not say
+      that video, written
       findings, PACP or LACP coding, footage counters, surface marks or
       re-inspection are included; it tells the reader to ask what is
       included. The scope statement (no repair, replacement, lining,
@@ -196,7 +198,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Camera entry',
             description:
-              'A camera on a flexible push cable is inserted and advanced through the accessible line.',
+              'A camera on a flexible push cable is inserted and advanced through the accessible line. Our equipment includes the SeeSnake CS12x and the SeeSnake Standard Camera Reel with TruSense.',
           },
           {
             title: 'Live viewing',
@@ -1260,8 +1262,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       the only place those words appear.
 
       ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, guarantee, warranty,
-      licence (DEC-072), insurance wording, response time, equipment model
-      or spec, duration, water pressure or flow figure, nozzle type or
+      licence (DEC-072), insurance wording, response time, equipment spec
+      (only the owner-confirmed jetter name, DEC-132, is named), duration,
+      water pressure or flow figure, nozzle type or
       interval in years. It does not say that video, written findings,
       coding, locating, surface marks or a post-cleaning re-inspection are
       included; it tells the reader to ask what is included. It does not
@@ -1412,7 +1415,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Choose nozzle and settings',
             description:
-              'These depend on what the line looks like and what is in it.',
+              'These depend on what the line looks like and what is in it. Our equipment includes the Mongoose 184LT trailer-mounted sewer jetter.',
           },
           {
             title: 'Jet the line',
@@ -2313,8 +2316,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
 
       ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
       guarantee, warranty, licence (DEC-072), insurance wording, response
-      time, same-day or emergency claim, equipment brand, model, frequency
-      or spec, maximum locating depth, duration or interval in years. The
+      time, same-day or emergency claim, equipment frequency or spec (only
+      the owner-confirmed locator name, DEC-132, is named), maximum locating depth, duration or interval in years. The
       page deliberately states no standard time or price. Every depth
       statement says "approximate" or "estimate". Owner-confirmed
       2026-10-05: when a camera is used, the inspection video and written
@@ -2507,7 +2510,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Equipment',
             description:
-              'Compatible locating equipment is matched to the line, the entry point, and the pipe. What can be used depends on the line.',
+              'Compatible locating equipment is matched to the line, the entry point, and the pipe. What can be used depends on the line. Our equipment includes the SeekTech SR-20.',
           },
           {
             title: 'Travel',

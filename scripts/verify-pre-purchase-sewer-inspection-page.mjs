@@ -16,7 +16,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
-import { checkServiceSchema, checkRelatedCards } from './lib/service-page-checks.mjs'
+import { checkEquipmentNames, checkServiceSchema, checkRelatedCards } from './lib/service-page-checks.mjs'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'pre-purchase-sewer-inspection', 'index.html')
@@ -89,6 +89,7 @@ const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*
 check('one JSON-LD block', ld.length === 1, String(ld.length))
 const graph = ld[0]?.['@graph'] ?? []
 checkServiceSchema({ html, check, origin: ORIGIN, serviceName: NAME })
+checkEquipmentNames({ html, check })
 const svcNodes = graph.filter((n) => n['@type'] === 'Service')
 check('exactly one Service node', svcNodes.length === 1, String(svcNodes.length))
 const svcDesc = svcNodes[0]?.description ?? ''
@@ -401,7 +402,6 @@ const forbidden = [
   'safe for every pipe',
   'exact location',
   'pinpoint',
-  'ridgid',
   'psi',
   'gpm',
   'we repair',

@@ -99,3 +99,34 @@ export function checkRelatedCards({ main, check, expectedHrefs }) {
   check('related cards: every anchor has a descriptive accessible name', [...section.matchAll(/<a [^>]*>([\s\S]*?)<\/a>/g)].every((m) => /sr-only/.test(m[1])))
   check('related cards: grid layout, not the old two-column list', /grid-cols-1/.test(section) && !/sm:columns-2/.test(section))
 }
+
+/**
+ * Equipment names (DEC-132). The owner confirmed five company products by
+ * name only. Visible text may carry exactly these spellings, and the brand
+ * "RIDGID" on its own; any other equipment brand, model or misspelling
+ * fails. No equipment text may appear in a page's own JSON-LD nodes.
+ */
+export const CONFIRMED_EQUIPMENT_NAMES = [
+  'SeeSnake Standard Camera Reel with TruSense',
+  'Mongoose 184LT trailer-mounted sewer jetter',
+  'SeeSnake CS12x',
+  'SeekTech SR-20',
+  'RIDGID 7500',
+]
+const EQUIPMENT_TOKEN = /ridgid|see ?snake|seek ?tech|sr-?20|cs ?-?12|trusense|mongoose|184 ?-?lt|k-?7500|7500/i
+
+export function checkEquipmentNames({ html, check }) {
+  const body = html
+    .replace(/<!-- -->/g, '')
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/<style[\s\S]*?<\/style>/g, '')
+  const mainHtml = (body.match(/<main[\s\S]*?<\/main>/) || [body])[0]
+  let text = mainHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
+  for (const name of [...CONFIRMED_EQUIPMENT_NAMES, 'RIDGID']) text = text.split(name).join(' ')
+  const hits = text.match(new RegExp(EQUIPMENT_TOKEN.source, 'gi')) || []
+  check('equipment: only the owner-confirmed names (exact spelling) or RIDGID alone', hits.length === 0, [...new Set(hits)].join(', '))
+  check('equipment: no "RIDGID Mongoose"', !/ridgid\s+mongoose/i.test(mainHtml))
+  const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
+  const nodes = ld.flatMap((b) => b['@graph'] ?? [b]).filter((n) => n['@type'] !== 'Organization')
+  check('equipment: none in the page JSON-LD nodes', !EQUIPMENT_TOKEN.test(JSON.stringify(nodes)))
+}

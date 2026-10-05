@@ -635,7 +635,7 @@ Do not fabricate:
 * municipal approvals
 * inspection certifications
 * manufacturer certifications
-* equipment brands
+* equipment brands and models (other than the owner-confirmed names in DEC-132, used as names only)
 * warranties
 
 These facts must come from verified business records or approved project documentation.
