@@ -751,7 +751,7 @@ export const florissantContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in Florissant',
     title: 'Sewer inspection before buying a Florissant home',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close, which a standard home inspection does not cover.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line.',
     // `body` is a single string in the shared type, so the two source
     // paragraphs are joined into one.
     body: 'The City of Florissant says a property can be sold “as is” without a City inspection. The buyer is then responsible for obtaining and paying for the inspection and an occupancy permit before anyone moves in or occupies the property. The occupancy page we reviewed does not mention sewers, so a buyer who wants evidence of the lateral has to ask for it. The City also says its Sewer Lateral Insurance Program is not intended to satisfy a home sale contingency and that a pending sale does not move a repair up the list. A new owner can be eligible if the real estate taxes are paid in full. If a repair is approved but may be done after closing, the City requires the new owner to confirm in writing that they know of and support the planned repair. Ask your agent and the Engineering Division how that fits your timeline. Findings are informational and not legal advice.',

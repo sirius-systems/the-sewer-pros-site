@@ -61,9 +61,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       title: 'Know the condition of the sewer line before you buy',
       intro: (
         <p>
-          The sewer lateral is underground, not visible without a camera, and
-          usually not part of a general property inspection. It is one of the
-          few systems where a serious problem can exist with no symptom on the
+          The sewer lateral is underground and not visible without a camera. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. It is one of the few systems where a serious problem can exist with no symptom on the
           day you view the house.
         </p>
       ),
@@ -72,9 +70,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       <>
         <h2>Why this one system gets its own inspection</h2>
         <p>
-          A general inspection covers a great deal of the property, but it does
-          not typically include putting a camera down the sewer line. The line
-          runs underground from the building to the main, and its condition
+          Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. The line runs underground from the building to the main, and its condition
           cannot be assessed from the fixtures.
         </p>
         <p>
@@ -146,9 +142,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         question: 'Is a sewer inspection part of a standard home inspection?',
         answer: (
           <p>
-            Typically not. A general inspection does not usually include putting
-            a camera down the sewer line, which is why it is commonly arranged
-            separately.
+            Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line, and a general inspection is not assumed to include one.
           </p>
         ),
       },
@@ -374,12 +368,10 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       'Coordinate sewer camera inspections with documented video findings and clear information to support home-inspection clients.',
     hero: {
       eyebrow: 'For home inspectors',
-      title: 'The part of the property your scope does not cover',
+      title: 'A focused sewer line inspection for your clients',
       intro: (
         <p>
-          The sewer lateral sits outside a general inspection&rsquo;s scope, and
-          referring it out is cleaner than being asked to opine on something you
-          cannot see.
+          A sewer scope is a separate, focused inspection of the sewer line. When a client wants a closer look at the lateral, you can refer it out and your own inspection keeps its scope.
         </p>
       ),
     },
@@ -387,9 +379,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       <>
         <h2>A boundary worth keeping clear</h2>
         <p>
-          General inspection scope does not extend to a camera survey of the
-          underground sewer lateral. That is a specialised assessment requiring
-          different equipment, and it produces a different kind of evidence.
+          A sewer scope is a separate, focused inspection of the underground sewer lateral. It uses different equipment, and it produces a different kind of evidence.
         </p>
         <p>
           Referring it out keeps the boundary of your own report intact. You
@@ -428,18 +418,16 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       </>
     ),
     services: [
-      { pageId: id('svc-sewer-camera-inspection'), description: 'The specialised survey outside general scope.' },
+      { pageId: id('svc-sewer-camera-inspection'), description: 'A separate, focused inspection of the sewer line.' },
       { pageId: id('svc-pre-purchase-sewer-inspection'), description: 'Timed to a transaction.' },
       { pageId: id('svc-sewer-cleaning-camera-inspection'), description: 'Where the line must be cleared to be assessed.' },
     ],
     faq: [
       {
-        question: 'Why is the sewer lateral outside general inspection scope?',
+        question: 'How does a sewer scope relate to my own inspection?',
         answer: (
           <p>
-            It is underground and cannot be assessed without a camera survey:
-            different equipment and a different specialisation from a general
-            property inspection.
+            A sewer scope is a separate, focused inspection of the sewer line, done with a camera and different equipment. Your own inspection keeps its scope.
           </p>
         ),
       },

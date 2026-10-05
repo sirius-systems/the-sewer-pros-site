@@ -808,7 +808,7 @@ export const lasVegasMarketContent: MarketPageContent = {
   */
   prePurchase: {
     title: 'Know what is in the sewer line before closing',
-    body: 'A pre-purchase sewer camera inspection gives buyers, sellers, and real estate professionals documented information about the accessible sewer line before a property transaction is complete. The footage can reveal visible conditions that may not appear during a standard home inspection. This content is informational, not legal advice.',
+    body: 'A pre-purchase sewer camera inspection gives buyers, sellers, and real estate professionals documented information about the accessible sewer line before a property transaction is complete. The footage can reveal visible conditions in the accessible line. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. This content is informational, not legal advice.',
     image: {
       src: '/images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-pre-purchase-sewer-inspection.webp',
       alt: 'Las Vegas home receiving a pre-purchase sewer camera inspection',

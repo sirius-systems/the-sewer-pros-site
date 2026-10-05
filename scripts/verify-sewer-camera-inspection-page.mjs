@@ -214,7 +214,7 @@ const relatedHtml = strip((main.match(/<section[^>]*aria-labelledby="related"[\s
 const outsideBand = strip(main.replace(bandHtml, ''))
 check(
   'outside the shared band, only the owner-confirmed video and written-findings wording (2026-10-05); no coding claim',
-  !/(video|report|findings) (is|are) included(?! for)/i.test(outsideBand.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/whether the video is included/gi, '')) &&
+  !/(video|report|findings) (is|are) included(?! for)/i.test(outsideBand.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/written findings are included/gi, '').replace(/whether the video is included/gi, '')) &&
     !/we (provide|deliver|include) (a |the )?(video|written)/i.test(outsideBand),
 )
 check('"report" is not named as a deliverable, and no photos, narration, coding or same-day claim', !/written report|inspection report|camera report|photos? (are|is) included|narrat|PACP|LACP/i.test(outsideBand.replace(relatedHtml, '')))

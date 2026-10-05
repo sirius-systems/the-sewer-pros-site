@@ -631,7 +631,7 @@ export const stLouisCityContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in the City',
     title: 'Sewer inspection before buying a St. Louis City home',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close, which a standard home inspection does not cover.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line.',
     body: 'Older City properties are served by older infrastructure, and the lateral is the buyer’s responsibility after closing. Recorded findings give you and your agent something concrete to review during your due diligence period.',
     image: slotImage('buy-buyer'),
     links: [

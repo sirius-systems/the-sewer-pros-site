@@ -1287,9 +1287,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
       answer: (
         <p>
           A sewer camera inspection gives you documented evidence of the sewer
-          line&rsquo;s condition before you close, which a standard home
-          inspection typically does not cover in the same depth. This is
-          especially useful given that San Diego&rsquo;s own lateral-ownership
+          line&rsquo;s condition before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. This is especially useful given that San Diego&rsquo;s own lateral-ownership
           rules mean the buyer takes on full responsibility for that line at
           closing. This is informational, not legal advice.
         </p>

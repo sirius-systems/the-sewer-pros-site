@@ -768,7 +768,7 @@ export const oceansideContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in Oceanside',
     title: 'Sewer inspection before buying an Oceanside home',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close, which a standard home inspection does not cover. The City says private sewer lines, “from the street to your house,” are the property owner’s responsibility, so after closing that responsibility belongs to the owner of the property, which is you.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. The City says private sewer lines, “from the street to your house,” are the property owner’s responsibility, so after closing that responsibility belongs to the owner of the property, which is you.',
     // `body` is a single string in the shared type, so the source paragraphs
     // are joined into one.
     body: 'We did not find a rule on the City of Oceanside pages we reviewed that requires a sewer lateral inspection, certification or seller disclosure when a home is sold. That reads as none found, not a confirmed absence, and it does not address state-level disclosure rules, which are outside this page. In practice an inspection is something a buyer chooses to ask for. Two practical points. Confirm with City Water Utilities, at (760) 435-5800, that the City serves the address. And ask it where the City’s part of the system ends and the private line begins, because we did not find that published. Findings are informational and not legal advice.',

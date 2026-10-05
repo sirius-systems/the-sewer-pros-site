@@ -794,7 +794,7 @@ export const stCharlesContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in St. Charles',
     title: 'Sewer inspection before buying a St. Charles home',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close, which a standard home inspection does not cover.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line.',
     // `body` is a single string in the shared type, so the two source
     // paragraphs are joined into one.
     body: 'We did not find a City of St. Charles rule that requires a sewer lateral inspection when a home is sold, and we did not find a sewer-lateral disclosure rule in the City materials we reviewed. That reads as none found, not as a confirmed absence, so a buyer who wants evidence of the lateral has to ask for it. The City does require an occupancy inspection for long-term rentals before the first tenant moves in and between tenants; the page we reviewed does not describe it as a sewer inspection. Two details matter to a buyer. The City’s lateral program applies only inside City limits, so confirm the address is inside the City, not just billed by it. And the program asks for proof of ownership or owner consent and proof that property taxes and City bills are paid, so ask your agent and Public Works how that fits your timeline. Findings are informational and not legal advice.',

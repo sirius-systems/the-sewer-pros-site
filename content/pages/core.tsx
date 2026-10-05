@@ -291,9 +291,7 @@ export const homeContent: HomePageContent = {
       question: 'Should I get a sewer inspection before buying a house?',
       answer: (
         <p>
-          A sewer camera inspection before closing can reveal blockages, root
-          intrusion, or pipe damage that a standard home inspection does not
-          check. The Sewer Pros provides independent camera inspections for
+          A sewer camera inspection before closing can reveal blockages, root intrusion, or pipe damage in the accessible line. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. The Sewer Pros provides independent camera inspections for
           home buyers, with recorded video to support your decision.
         </p>
       ),
@@ -1968,9 +1966,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         question: 'Should I get a sewer inspection before buying a property?',
         answer: (
           <p>
-            It is worth considering. The sewer line is underground and not
-            visible without a camera, and a general property inspection does not
-            usually include one.
+            It is worth considering. The sewer line is underground and not visible without a camera. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line.
           </p>
         ),
       },
@@ -2052,7 +2048,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
 
         <h3>The footage</h3>
         <p>
-          You should be able to keep a copy. It is evidence about your property.
+          Ask how the footage is delivered and how long you can access it. It is evidence about your property.
         </p>
 
         <h2>What a report should not do</h2>
@@ -2101,9 +2097,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       <p>
         Watch for four things: standing water where the line should drain,
         joints that are separated or misaligned, roots or material entering the
-        pipe, and any change in the pipe&rsquo;s shape or surface. Note the
-        distance counter when you see them: position is what makes an
-        observation useful.
+        pipe, and any change in the pipe&rsquo;s shape or surface. Note where along the line you see them: position is what makes an observation useful.
       </p>
     ),
     body: (
@@ -2147,11 +2141,9 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
           information about how the line was built or previously worked on.
         </p>
 
-        <h2>The distance counter</h2>
+        <h2>Where along the line</h2>
         <p>
-          Most footage displays distance. It is the single most useful thing on
-          screen: an observation with a distance can be located on the property,
-          quoted against precisely, and compared to a later inspection.
+          Where along the line a condition was seen is the single most useful thing to ask about: an observation tied to a location can be located on the property, quoted against precisely, and compared to a later inspection.
         </p>
 
         <h2>What footage cannot tell you</h2>
@@ -2164,8 +2156,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
 
         <h2>If you are unsure</h2>
         <p>
-          Ask whoever inspected the line to talk you through the footage against
-          the distances. If the reading matters to a significant decision,
+          Ask whoever inspected the line to talk you through the footage and where along the line each condition was seen. If the reading matters to a significant decision,
           getting a second view of the same footage is reasonable.
         </p>
       </>
