@@ -27,7 +27,7 @@ import {
   LeadFormSection,
   MarketCoverage,
   FaqSection,
-  RelatedLinks,
+  RelatedServiceCards,
   CtaSection,
   AudiencePathways,
   LimitationsPanel,
@@ -544,17 +544,10 @@ export function ServicePageTemplate({
       )}
 
       {content.relatedPageIds !== undefined && (
-        <RelatedLinks
+        <RelatedServiceCards
           title={content.relatedTitle ?? 'Related services'}
           pageIds={content.relatedPageIds}
           descriptions={content.relatedDescriptions}
-          images={content.relatedImages}
-          titles={content.relatedTitles}
-          linkLabels={content.relatedLinkLabels}
-          variant={
-            content.relatedVariant ??
-            (content.relatedImages !== undefined ? 'image' : 'horizontal')
-          }
         />
       )}
 

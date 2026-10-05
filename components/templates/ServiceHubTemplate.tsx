@@ -11,7 +11,7 @@ import {
   TestimonialBand,
   LeadFormSection,
   FaqSection,
-  ServiceIndex,
+  RelatedServiceCards,
   DeliverablesSection,
   CameraImageSlot,
   BackdropImage,
@@ -34,8 +34,6 @@ import {
   problemGridRenders,
   deliverablesSectionRenders,
 } from '@/components/sections'
-import { homeServiceCards } from '@/content/pages/home-service-cards'
-import { comparisonCardImages } from '@/content/pages/comparisons'
 import { resolveHubImage } from '@/data/business/hub-images'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
@@ -343,28 +341,12 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
     add(
       'dense',
       'related',
-      <ServiceIndex
-        variant="cards"
+      <RelatedServiceCards
         columns={hub.relatedColumns ?? 2}
-        density="dense"
-        id="related-services"
         title={content.relatedTitle ?? 'Related services'}
-        intro={content.relatedIntro !== undefined ? <p>{content.relatedIntro}</p> : undefined}
-        items={content.relatedPageIds.map((pageId) => {
-          // Same card artwork and copy the /services/ hub uses, where a
-          // service has them; the two guides carry only their own text.
-          // A related page outside the nine core services (a comparison
-          // page, say) falls back to `comparisonCardImages`. An explicit
-          // `relatedDescriptions` entry always wins over the shared
-          // homepage-card blurb, so a hub can give its own related cards
-          // page-specific copy without touching that shared dataset.
-          const card = homeServiceCards.find((c) => c.pageId === pageId)
-          return {
-            pageId,
-            description: content.relatedDescriptions?.[pageId] ?? card?.description,
-            image: card?.image ?? comparisonCardImages[pageId],
-          }
-        })}
+        intro={content.relatedIntro}
+        pageIds={content.relatedPageIds}
+        descriptions={content.relatedDescriptions}
       />,
     )
   }

@@ -219,6 +219,8 @@ export type { FaqSectionProps, FaqEntry } from './FaqSection'
 export { RelatedLinks, relatedLinksRenders } from './RelatedLinks'
 export type { RelatedLinksProps } from './RelatedLinks'
 
+export { RelatedServiceCards } from './RelatedServiceCards'
+
 export { MarketCoverage, marketCoverageRenders } from './MarketCoverage'
 export type { MarketCoverageProps } from './MarketCoverage'
 
