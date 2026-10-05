@@ -232,8 +232,27 @@ h4 {
 
    Change this together with the header's height.
 */
-:target {
+:target,
+[id] {
   scroll-margin-top: 6rem;
+}
+
+/*
+  Mobile quick-contact bar (MobileContactBar, fixed to the bottom below
+  `md`). Its in-flow spacer sits inside <main>, so it does not reach the
+  footer: reserve the bar's height at the end of the page, and keep
+  focused controls from scrolling in underneath it.
+
+  `[id]` above also covers anchors reached through Next's client-side
+  hash scroll, which runs before the browser applies `:target`.
+*/
+@media (max-width: 47.99rem) {
+  body:has([aria-label='Quick contact']) > footer {
+    padding-bottom: 4.5rem;
+  }
+  html:has([aria-label='Quick contact']) {
+    scroll-padding-bottom: 5rem;
+  }
 }
 
 /* 18 §90, §146 — honour reduced-motion preferences. */

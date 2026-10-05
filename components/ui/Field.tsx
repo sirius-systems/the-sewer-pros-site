@@ -39,7 +39,7 @@ import { cn } from '@/lib/utils/cn'
 
 const CONTROL = cn(
   'block w-full rounded-md border border-border bg-background px-3 py-2',
-  'text-sm text-foreground placeholder:text-muted-foreground',
+  'text-base text-foreground placeholder:text-muted-foreground sm:text-sm',
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary',
 )
 
