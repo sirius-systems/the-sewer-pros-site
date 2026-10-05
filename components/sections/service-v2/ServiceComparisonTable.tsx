@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
@@ -33,7 +34,7 @@ export function ServiceComparisonTable({
     pageId?: PageId
     current?: boolean
   }[]
-  note?: string
+  note?: ReactNode
 }) {
   return (
     <Section density="dense" surface="default" labelledBy={id}>
@@ -102,7 +103,13 @@ export function ServiceComparisonTable({
         </table>
       </div>
       {note !== undefined && (
-        <p className="mt-6 max-w-[var(--container-reading)] text-body text-muted-foreground">
+        <p
+          className={`mt-6 max-w-[var(--container-reading)] text-body text-muted-foreground${
+            typeof note === 'string'
+              ? ''
+              : ' [&_a]:font-semibold [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground'
+          }`}
+        >
           {note}
         </p>
       )}

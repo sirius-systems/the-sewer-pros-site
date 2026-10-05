@@ -22,23 +22,26 @@ export function IndependentBand({
   link,
 }: {
   id?: string
-  eyebrow: string
+  eyebrow?: string
   title: string
-  steps: readonly { title: string; body: string }[]
+  steps?: readonly { title: string; body: string }[]
   note: string
   link?: { pageId: PageId; label: string }
 }) {
   return (
     <Section density="standard" surface="brand" width="wide" labelledBy={id}>
-      <p className="text-caption font-semibold tracking-wide uppercase opacity-80">
-        {eyebrow}
-      </p>
+      {eyebrow !== undefined && (
+        <p className="text-caption font-semibold tracking-wide uppercase opacity-80">
+          {eyebrow}
+        </p>
+      )}
       <h2
         id={id}
-        className="mt-2 max-w-5xl text-h2 font-semibold tracking-tight text-balance"
+        className={`${eyebrow !== undefined ? 'mt-2 ' : ''}max-w-5xl text-h2 font-semibold tracking-tight text-balance`}
       >
         {title}
       </h2>
+      {steps !== undefined && (
       <ol className="mt-8 grid gap-4 md:grid-cols-3">
         {steps.map((step, index) => (
           <li key={step.title} className="flex">
@@ -55,6 +58,7 @@ export function IndependentBand({
           </li>
         ))}
       </ol>
+      )}
       <p className="mt-8 max-w-4xl text-body-lg leading-8">{note}</p>
       {link !== undefined && (
         <p className="mt-4">
