@@ -83,7 +83,7 @@ const STEPS = [
   {
     title: 'Document',
     Icon: DocumentIcon,
-    body: 'Receive video evidence and clear findings that show what was observed inside the line, so you are not forced to rely only on a verbal repair recommendation.',
+    body: 'We inspect and document visible conditions inside the line, so you are not forced to rely only on a verbal repair recommendation.',
   },
   {
     title: 'Decide',
@@ -130,7 +130,7 @@ export function IndependentProcess({
     'Before You Approve an Expensive Sewer Repair, Get an Opinion With Nothing to Sell'
   const intro = content?.intro ?? [
     'A sewer backup or major repair recommendation can make a costly decision feel urgent. The Sewer Pros inspects and documents the condition inside your sewer line so you can understand what is actually happening before you approve cleaning, excavation, lining, or replacement.',
-    'Because we do not perform sewer repairs or replacements, we do not profit from selling you the work. Our role is to give you clear video evidence, straightforward findings, and an honest opinion you can use to make the next decision.',
+    'Because we do not perform sewer repairs or replacements, we do not profit from selling you the work. Our role is to inspect and document visible conditions, explain what we found in plain language, and give you an honest opinion you can use to make the next decision.',
   ]
   const ctaLabel = content?.ctaLabel ?? 'Get an Independent Second Opinion'
   const ctaNote =
@@ -144,7 +144,7 @@ export function IndependentProcess({
   const calloutOneTitle = content?.calloutOne?.title ?? 'Why an independent opinion matters'
   const calloutOneBody = content?.calloutOne?.body ?? [
     'The Sewer Pros does not perform sewer repair or replacement, by design. We are not trying to turn an inspection into a repair sale, and we do not profit from recommending major work.',
-    'Our role is to inspect the line, document the visible condition on video, explain what we found in plain language, and give you an honest opinion you can use to decide what happens next.',
+    'Our role is to inspect the line, document the visible condition, explain what we found in plain language, and give you an honest opinion you can use to decide what happens next.',
   ]
   /*
     ⚠ `null` OMITS THE SECOND CALLOUT, `undefined` KEEPS THE DEFAULT.
@@ -160,7 +160,7 @@ export function IndependentProcess({
     content?.calloutTwo?.title ?? 'Do Not Let a Sales-Driven Recommendation Make the Decision for You'
   const calloutTwoBody = content?.calloutTwo?.body ?? [
     'A repair recommendation should be based on documented conditions inside the sewer line, not pressure to approve work before you understand the problem. When the company diagnosing the problem can also sell the repair, getting a second opinion can help you separate the actual condition of the line from the proposed solution.',
-    'The Sewer Pros does not repair or replace sewer lines. We provide video documentation and clear findings without a repair contract to sell, so you can understand what was observed and make an informed decision about what happens next.',
+    'The Sewer Pros does not repair or replace sewer lines. We inspect and document visible conditions without a repair contract to sell, so you can understand what was observed and make an informed decision about what happens next.',
   ]
   /** Same `null`-omits, `undefined`-defaults convention as `calloutTwo` above. */
   const showClosing = content?.closing !== null

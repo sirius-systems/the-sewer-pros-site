@@ -73,7 +73,7 @@ export const homeServiceCards: readonly ServiceCard[] = [
   {
     pageId: id('svc-sewer-camera-inspection'),
     description:
-      'See documented video of the accessible sewer line. An inspection can help identify observed conditions and support an informed next-step decision.',
+      'A camera inspection of the accessible sewer line, documenting what is visible. It can help identify observed conditions and support an informed next-step decision.',
     image: image(
       'the-sewer-pros-sewer-camera-inspection-ridgid-monitor.webp',
       'Camera monitor showing the inside of a line, beside an open cleanout',
