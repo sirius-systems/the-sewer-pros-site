@@ -1,6 +1,7 @@
 /**
- * Las Vegas market content — 5 live pages. The City of Las Vegas location page
- * lives in `las-vegas-las-vegas.tsx` and is registered below.
+ * Las Vegas market content — 5 live pages. The City of Las Vegas and City of
+ * Henderson location pages live in `las-vegas-las-vegas.tsx` and
+ * `las-vegas-henderson.tsx` and are registered below.
  *
  * Authority: docs/04-master-page-build-list.md §10.3, §14
  *            docs/22-decisions-change-log.md DEC-080, DEC-063, DEC-073
@@ -65,6 +66,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
 import { lasVegasCityContent } from './las-vegas-las-vegas'
+import { hendersonContent } from './las-vegas-henderson'
 import {
   homeServiceCards,
   approvedServicesTitle,
@@ -76,14 +78,14 @@ const id = (value: string): PageId => value as PageId
 /** Owner-confirmed contact (DEC-073). Repeated per page deliberately. */
 
 /*
-  ⚠ STILL USED BY THREE LOCATION PAGES IN THIS FILE, WHICH IS WHY IT
+  ⚠ STILL USED BY TWO LOCATION PAGES IN THIS FILE, WHICH IS WHY IT
   SURVIVED THE 2026-09-08 HUB RESTRUCTURE. The market hub's own copy of
   it was folded into `regionalCoverage` (email, hours, and the
-  newer-market sentence); the Henderson, North Las Vegas and Summerlin
+  newer-market sentence); the North Las Vegas and Summerlin
   location bodies still render it and are unchanged.
 
   ⚠ DELETING THIS WOULD SILENTLY STRIP THE PHONE, EMAIL AND HOURS FROM
-  THREE PAGES. It looked unused after the hub stopped referencing it,
+  TWO PAGES. It looked unused after the hub stopped referencing it,
   and it is not.
 */
 const LAS_VEGAS_CONTACT = (
@@ -703,7 +705,7 @@ export const lasVegasMarketContent: MarketPageContent = {
         */
         title: 'The lateral is the property owner\u2019s',
         description:
-          'The Clark County Water Reclamation District states that a damaged lateral connecting a house to the sewer main is the property owner\u2019s responsibility for cleaning, repair, and replacement alike. Henderson is equally explicit that responsibility begins where the lateral meets the city sewer main.',
+          'The Clark County Water Reclamation District states that a damaged lateral connecting a house to the sewer main is the property owner\u2019s responsibility for cleaning, repair, and replacement alike. Henderson says responsibility for the sewer service lateral begins where it connects to the City’s sewer main in the street.',
         icon: 'utility',
         accent: 'amber',
       },
@@ -1398,63 +1400,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
   [id('loc-lv-las-vegas')]: lasVegasCityContent,
 
   /* ---------------------------------------------------------- Henderson -- */
-  [id('loc-lv-henderson')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Henderson, Nevada.',
-    hero: {
-      eyebrow: 'Henderson',
-      title: 'Sewer inspection and cleaning in Henderson',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning for Henderson properties,
-          where the city is unusually clear about exactly where your
-          responsibility starts.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Henderson states the boundary precisely</h2>
-        <p>
-          The City of Henderson&rsquo;s Department of Utility Services is more
-          explicit than most authorities manage: homeowner responsibility begins
-          at the point where the lateral connects to the city&rsquo;s sewer main
-          in the street. From that point through the home&rsquo;s plumbing, the
-          owner must maintain and repair, bearing the cost.
-        </p>
-        <p>
-          There is no ambiguity to work around here, and no assistance program
-          was found to offset it. The full run from the street connection
-          inward is yours.
-        </p>
-        <p>
-          The city&rsquo;s page describes billing and customer service rather
-          than the treatment relationship, so if you need to know how
-          Henderson&rsquo;s wastewater treatment relates to the county district,
-          check{' '}
-          <a href="https://www.cityofhenderson.com/government/departments/utility-services/customer-care-center/water-and-sewer-laterals">
-            Henderson Utility Services
-          </a>{' '}
-          directly.
-        </p>
-
-        {LAS_VEGAS_CONTACT}
-      </>
-    ),
-    faq: [
-      {
-        question: 'Where does my responsibility start in Henderson?',
-        answer: (
-          <p>
-            At the point where the lateral connects to the city&rsquo;s sewer
-            main in the street. From there through the home&rsquo;s plumbing,
-            the city states the owner must maintain and repair and bears the
-            cost.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-lv-henderson')]: hendersonContent,
 
   /* -------------------------------------------------- North Las Vegas -- */
   [id('loc-lv-north-las-vegas')]: {
