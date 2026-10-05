@@ -5079,6 +5079,21 @@ The hydro jetting page was moved from the service hub template to Service Page T
 
 The combined sewer cleaning and camera inspection page was moved from the service hub template to Service Page Template v2, the fourth page on it. The route, page id, parent and indexability are unchanged; the H1 stays `Sewer Camera Inspection and Cleaning for Recurring Drainage Problems` (restored by owner direction), and the SEO title, hero chip and comparison row use `Sewer Cleaning & Camera Inspection`. The page gained a signals list, a "what a camera may show and cannot confirm" panel with a locating row, a five-step process with preparation, a "camera or cleaning first" decision panel, a seven-row comparison, a "what you receive and what to ask about" section and a 21-question FAQ in five groups. The owner-confirmed deliverables (recorded in chat on 2026-10-05) are stated as included when a camera is used: the inspection video and written findings, and nothing beyond those two. The page states no price, time, offer, warranty, licence or emergency service, carries no phone number or placeholder text, and links nothing to the unbuilt independent second-opinion page. Every template addition is an optional field that renders only when a page supplies it, and a comparison of the static export showed every other page's rendered HTML unchanged.
 
+## DEC-127 - Video and Written Findings Confirmed as Company-Wide Deliverables
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (camera inspection, sewer cleaning and hydro jetting FAQs; `serviceDescription` on the four core service pages)
+* sixteen market and location pages under `content/pages/` (St. Louis, San Diego and Las Vegas)
+* `lib/schema/graph.ts`, `components/templates/PageShell.tsx`, `types/content.ts` (additive: optional `serviceDescription` on the Service node)
+* `scripts/lib/service-page-checks.mjs` and the camera, cleaning, hydro jetting and cleaning + camera verify scripts
+
+The owner confirmed that video is included when a camera is used, and that written findings are included, across all markets. The deliverable is not called a "report". Photos, narration, PACP/LACP coding, same-day delivery and "keep a copy" are not claimed. Surface marks, access beyond the cleanout, locating on every visit and hydro jetting on every visit remain unconfirmed and keep "ask" wording. Applied in commit `c013268` to 16 market and location pages and the camera, cleaning and hydro FAQs. Service JSON-LD descriptions were added to the four core service pages from each page's definition copy. Follow-up wording pass (process copy, hero alt text, shared band, core and audience copy) tracked separately.
+
 ---
 
 # 26. Decision Quality Standard
