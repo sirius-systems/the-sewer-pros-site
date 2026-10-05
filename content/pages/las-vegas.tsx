@@ -90,7 +90,7 @@ const LAS_VEGAS_CONTACT = (
   <>
     <h2>Reaching us in Las Vegas</h2>
     <p>
-      Las Vegas enquiries go to <a href="tel:+17252924030">(725) 292-4030</a> or{' '}
+      Las Vegas inquiries go to <a href="tel:+17252924030">(725) 292-4030</a> or{' '}
       <a href="mailto:bookaninspection@thesewerpros.com">
         bookaninspection@thesewerpros.com
       </a>
@@ -1438,31 +1438,6 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           directly.
         </p>
 
-        <h2>Very new housing, and what that changes</h2>
-        <p>
-          Henderson&rsquo;s median year built is around 2001 (American Community
-          Survey, 2019&ndash;2023 five-year estimates), with more than 60% of
-          all housing built between 1990 and 2009. Roughly 3% predates 1970.
-        </p>
-        <p>
-          Almost every lateral here will be PVC. That is genuinely good news
-          about material failure, and it is why the &ldquo;old pipe&rdquo;
-          framing common in sewer marketing does not describe Henderson.
-        </p>
-
-        <h2>What still goes wrong</h2>
-        <p>
-          Newer pipe does not float above the ground it sits in. On lines of
-          this era the recurring findings are bellies holding water, joints
-          opened by settlement, and damage from work done after the line was
-          laid: pools, additions, landscaping, utility trenching.
-        </p>
-        <p>
-          A belly produces exactly the symptom people read as an ageing sewer:
-          drainage that slows, gets cleared, and slows again on a cycle. The
-          cause is different, and clearing it repeatedly does not address it.
-        </p>
-
         {LAS_VEGAS_CONTACT}
       </>
     ),
@@ -1475,17 +1450,6 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
             main in the street. From there through the home&rsquo;s plumbing,
             the city states the owner must maintain and repair and bears the
             cost.
-          </p>
-        ),
-      },
-      {
-        question: 'My house is only twenty years old. Is an inspection worth it?',
-        answer: (
-          <p>
-            Material failure is unlikely at that age, but ground movement does
-            not follow the pipe&rsquo;s age. Bellies and settlement-opened
-            joints are the common findings on newer lines and produce the same
-            recurring symptoms.
           </p>
         ),
       },
@@ -1502,52 +1466,12 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
       intro: (
         <p>
           Camera inspection, diagnostics, and cleaning for North Las Vegas
-          properties, the newest housing stock in the valley, where sewer
-          problems rarely look like age.
+          properties.
         </p>
       ),
     },
     body: (
       <>
-        <h2>The newest housing of the four</h2>
-        <p>
-          North Las Vegas has a median year built of around 2003 (American
-          Community Survey, 2019&ndash;2023 five-year estimates), with 41.8% of
-          all housing built during the 2000s alone. Under 8% predates 1970.
-        </p>
-        <p>
-          Practically every lateral here will be PVC, laid within the last
-          twenty-five years. Material decay is not the story in North Las Vegas,
-          and any pitch built on deteriorating old pipe does not describe this
-          city.
-        </p>
-
-        <h2>What a rapid-growth era leaves behind</h2>
-        <p>
-          Housing built quickly and recently has its own characteristic issues,
-          and they are about the ground rather than the pipe:
-        </p>
-        <ul>
-          <li>
-            <strong>Bellies.</strong> A section that settled and lost slope
-            holds standing water, and solids drop out wherever flow slows.
-          </li>
-          <li>
-            <strong>Joint separation from movement.</strong> PVC joints are
-            sound until the ground shifts around them.
-          </li>
-          <li>
-            <strong>Damage from later work.</strong> Pools, additions,
-            landscaping, and utility trenching all cross laterals, and the
-            damage often does not surface immediately.
-          </li>
-        </ul>
-        <p>
-          All three produce recurring slow drainage that clears and returns:
-          the symptom people attribute to an old sewer, on a line that is
-          nothing of the sort.
-        </p>
-
         <h2>Confirm the responsibility boundary</h2>
         <p>
           Sewer service is handled by City of North Las Vegas Public Works and
@@ -1562,7 +1486,7 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           <a href="https://www.cityofnorthlasvegas.com">
             the City of North Las Vegas
           </a>{' '}
-          than restate a neighbouring jurisdiction&rsquo;s rule as though it
+          than restate a neighboring jurisdiction&rsquo;s rule as though it
           were North Las Vegas&rsquo;s own.
         </p>
 
@@ -1571,13 +1495,13 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
     ),
     faq: [
       {
-        question: 'The house is barely twenty years old. Why would the sewer be a problem?',
+        question: 'Who is responsible for the sewer lateral in North Las Vegas?',
         answer: (
           <p>
-            Because the failure modes on newer lines are about ground movement,
-            not pipe age: bellies, settlement-opened joints, and damage from
-            work done after the line was laid. Those produce the same recurring
-            symptoms as an old failing line.
+            We were not able to locate a published North Las Vegas statement
+            setting out exactly where homeowner responsibility for the lateral
+            begins, so confirm it with the City of North Las Vegas before you
+            plan work or assign cost.
           </p>
         ),
       },
@@ -1641,25 +1565,6 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
           responsibility. The Clark County Water Reclamation District states
           that a damaged lateral connecting a house to the main in the street is
           the property owner&rsquo;s: cleaning, repair, and replacement.
-        </p>
-
-        <h2>A tightly concentrated construction era</h2>
-        <p>
-          Summerlin&rsquo;s housing is unusually concentrated: a median year
-          built of around 1992, with 51.4% of all housing built during the 1990s
-          alone (American Community Survey, 2019&ndash;2023 five-year
-          estimates, covering ZIP codes 89128 and 89145).
-        </p>
-        <p>
-          A community built largely within one decade tends to reach the same
-          stage of ground settlement at broadly the same time. That makes
-          bellies and settlement-opened joints the findings to expect here,
-          rather than the material decay of an older region.
-        </p>
-        <p>
-          Note that figure describes incorporated Summerlin rather than
-          Summerlin South, which is a separate geography, another reason the
-          boundary is worth confirming.
         </p>
 
         {LAS_VEGAS_CONTACT}

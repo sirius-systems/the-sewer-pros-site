@@ -14,6 +14,7 @@ import {
   coverageSectionRenders,
   faqSectionRenders,
 } from '@/components/sections'
+import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
 import { RichLocationComposition } from './RichLocationComposition'
 import type { LocationPageContent, MasterPageRecord } from '@/types'
@@ -139,7 +140,15 @@ export function LocationPageTemplate({
         back. `TrustBar` below is `brand`, so `muted` keeps this section
         distinct from both neighbours.
       */}
-      <ExperienceCounterStrip surface="muted" />
+      {/* A market whose founding year is unknown (0) drops the cell; every other market keeps the company year. */}
+      <ExperienceCounterStrip
+        surface="muted"
+        foundingYear={
+          page.marketId !== undefined && marketOperatingDetail[page.marketId]?.foundingYear === 0
+            ? 0
+            : undefined
+        }
+      />
 
       <TrustBar />
 
