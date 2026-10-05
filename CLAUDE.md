@@ -795,7 +795,7 @@ Do not fabricate:
 * business addresses
 * operating hours
 
-Equipment brand and model names are allowed only as confirmed by the owner (list in DEC-132). No specs, capability figures, or claims about results.
+**Equipment.** Equipment brand and model names may appear on service pages only as confirmed by the owner, as plain mentions in a step about that activity (for example, "Our equipment includes the SeeSnake CS12x."). Confirmed names, exact spelling: `RIDGID K-7500` (drain-cleaning machine), `SeeSnake CS12x`, `SeeSnake Standard Camera Reel with TruSense`, `SeekTech SR-20`, `Mongoose 184LT trailer-mounted sewer jetter`; "RIDGID" alone is also allowed. Never publish specs or capability figures (depth, accuracy, frequency, pressure, flow, reach, pipe-size limits, resolution), what a machine can find, which machine is used on a given visit, "professional-grade", "state-of-the-art" or "best" wording, or "RIDGID Mongoose" (Mongoose is a different brand). No equipment text in JSON-LD. The guard is `checkEquipmentNames` in `scripts/lib/service-page-checks.mjs`; update the list there and the owner's DEC together when a new product is confirmed (DEC-132, amended by DEC-133).
 
 If a fact is unknown, omit it or use a clearly identified placeholder where appropriate during development.
 
