@@ -5012,6 +5012,23 @@ The page now shows the City of Las Vegas's wording (owners maintain private sewe
 
 The shared `LAS_VEGAS_CONTACT` block (including its email address) had no remaining user after this build and was deleted. The housing-age section is skipped until the owner chooses a Census geography for branded Summerlin and supplies primary tables B25034 and B25035, so no housing figure appears. No business capability, price, license or guarantee changed.
 
+## DEC-123 - Service Page Template v2 Introduced; Sewer Camera Inspection Page Rewritten
+
+**Date:** 2026-10-04
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `components/templates/ServicePageTemplateV2.tsx` and `components/sections/service-v2/` (new)
+* `types/content.ts` (additive: `ServicePageContentV2`, `ServicePageContent.v2`)
+* `app/services/[service]/page.tsx` (dispatch on `content.v2`)
+* `content/pages/services.tsx` (the `svc-sewer-camera-inspection` entry only)
+* `scripts/verify-sewer-camera-inspection-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-sewer-camera-inspection` row), `docs/18-design-system.md` (Service Page Template v2 subsection)
+
+One shared service template was added alongside the two existing ones. The camera inspection page was migrated first; `ServicePageTemplate`, `ServiceHubTemplate` and their section components are unchanged and still serve every other service page, and a byte comparison of the static export showed no other page changed. The new template adds a hero request card, the mobile contact bar on every v2 page, and a section list that renders only at 8 or more sections. The route, page id, parent, indexability and H1 are unchanged. The FAQ grew from 10 to 23 questions in five groups, and two old questions were removed on purpose (the exact repair cost question and the locating comparison). No business fact was added: the page tells the reader to ask what is included and claims no video, written findings, coding, surface marks, re-inspection, price, response time or availability.
+
 ---
 
 # 26. Decision Quality Standard

@@ -717,6 +717,14 @@ End with a service-specific conversion opportunity.
 
 ---
 
+## Service Page Template v2 (additive; DEC-123)
+
+`ServicePageTemplateV2` is a second, data-driven service template. A service entry opts in with a `v2` content key; every entry without it renders on the templates above, unchanged. The sewer camera inspection page is the first migrated page.
+
+Section order, with surface and density: hero (image, request card; sparse) → trust strip (white; dense) → counters (muted; dense) → definition and "On this page" list (white; standard) → signals (muted; standard) → limits (white; dense) → process and prep (muted; standard) → decision, optional (white; standard) → independent band (brand; standard) → comparison (white; dense) → what to ask for, optional (muted; standard) → evidence, with 3 or more approved images (white; standard) → audiences (muted; dense) → markets (white; standard) → grouped FAQ (muted; dense) → related (white; dense) → final request (image, brand; sparse).
+
+Rhythm rules: exactly two brand surfaces (the independent band and the final request), never adjacent; the hero and the final request are the only image-backed sections; no run of four `standard` sections; no equal three-up card grid except the market cells; ruled lists and numerals carry hierarchy; no video on service pages. The "On this page" list renders only at 8 or more content sections.
+
 # 18. Market / Location Page Template
 
 Primary reference:

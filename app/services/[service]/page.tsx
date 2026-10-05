@@ -4,7 +4,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { pageMetadata } from '@/lib/seo'
-import { ServicePageTemplate } from '@/components/templates'
+import { ServicePageTemplate, ServicePageTemplateV2 } from '@/components/templates'
 import { getServiceContent } from '@/content'
 import { serviceParams } from '@/lib/routing'
 import { getPageByPathname } from '@/data/pages'
@@ -41,6 +41,12 @@ export default async function Page({
 
   const content = getServiceContent(page.id)
   if (content === undefined) notFound()
+
+  // Entries that opt in (`content.v2`) render on Service Page Template v2;
+  // every other service page is unchanged.
+  if (content.v2 !== undefined) {
+    return <ServicePageTemplateV2 page={page} content={content} />
+  }
 
   return <ServicePageTemplate page={page} content={content} />
 }

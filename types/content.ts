@@ -1618,6 +1618,117 @@ export interface ServicePageContent extends BasePageContent {
    * page today; a page without it renders exactly as before.
    */
   hub?: ServiceHubContent
+  /**
+   * Opts this service page into Service Page Template v2
+   * (`ServicePageTemplateV2`). Absent on every other entry, which keeps
+   * rendering exactly as before.
+   *
+   * ⚠ THE H1, META TITLE AND DESCRIPTION STAY ON THE BASE FIELDS
+   * (`hero`, `seoTitle`, `metaDescription`) because the route's
+   * metadata and the page registry read them there. `v2` carries only
+   * what the new template adds; its FAQ is grouped, so a v2 entry
+   * omits the flat `faq`.
+   */
+  v2?: ServicePageContentV2
+}
+
+/** An action pointing at a request section or another page. */
+export interface ServiceV2Link {
+  pageId: PageId
+  label: string
+}
+
+/**
+ * Content for Service Page Template v2.
+ *
+ * Every section is optional and renders only when its data exists, so a
+ * lighter service is the same template with fewer sections. Copy is
+ * data, never a default in the template: nothing here may carry a price,
+ * offer, guarantee, licence, response time or availability claim.
+ */
+export interface ServicePageContentV2 {
+  /** The scope bullets under the hero intro and the hero card heading. */
+  hero: {
+    scope: readonly string[]
+    cardTitle: string
+  }
+  definition?: { title: string; answer: string; supporting: readonly string[] }
+  signals?: {
+    title: string
+    note?: string
+    items: readonly { title: string; description: string }[]
+    image?: HubImageKey
+  }
+  limits?: {
+    title: string
+    intro: string
+    canTitle: string
+    can: readonly string[]
+    cannotTitle: string
+    cannot: readonly string[]
+    callout?: string
+    related?: { lead: string; pageId: PageId; label: string }
+  }
+  process?: {
+    title: string
+    intro?: string
+    steps: readonly { title: string; description: string }[]
+    prep?: { title: string; items: readonly string[]; image?: HubImageKey }
+  }
+  decision?: {
+    title: string
+    answer: string
+    note?: string
+    listTitle: string
+    list: readonly string[]
+    links: readonly ServiceV2Link[]
+  }
+  comparison?: {
+    title: string
+    intro: string
+    rows: readonly {
+      service: string
+      purpose: string
+      fit: string
+      pageId?: PageId
+      current?: boolean
+    }[]
+    note?: string
+  }
+  ask?: {
+    title: string
+    intro: string
+    items: readonly { title: string; description: string }[]
+    keep: { title: string; body: readonly string[]; image?: HubImageKey }
+  }
+  /** Reuses `ServiceHubContent['evidence']` unchanged. */
+  evidence?: NonNullable<ServiceHubContent['evidence']>
+  audiences?: {
+    title: string
+    intro: string
+    items: readonly {
+      pageId: PageId
+      audience: string
+      description: string
+      actionLabel: string
+    }[]
+  }
+  /** Reuses `ServiceHubContent['marketRouter']` unchanged. */
+  markets?: NonNullable<ServiceHubContent['marketRouter']>
+  /** Grouped FAQ. Group labels are navigation only, never part of an answer. */
+  faq: readonly { group: string; question: string; answer: ReactNode }[]
+  faqTitle?: string
+  relatedTitle?: string
+  request: {
+    title: string
+    intro: readonly string[]
+    scopeNote?: string
+    submitLabel?: string
+  }
+  /** Preselects "Service needed" in the hero card and the request form. */
+  defaultServiceId?: ServiceId
+  /** Images are existing `HubImageKey`s; the hero and request backdrops are paths. */
+  images?: { hero?: string; request?: string }
 }
 
 /** A market destination on a service hub. */
