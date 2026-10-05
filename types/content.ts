@@ -1772,6 +1772,12 @@ export interface ServicePageContentV2 {
       fit: string
       pageId?: PageId
       current?: boolean
+      /**
+       * A process or party that is not a service of this business. The row
+       * header carries a "Not our service" marker instead of "(this page)".
+       * Never combined with `pageId` or `current`.
+       */
+      external?: boolean
     }[]
     /** Plain text, or text with inline approved links. */
     note?: ReactNode

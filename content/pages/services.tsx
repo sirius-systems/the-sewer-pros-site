@@ -24,7 +24,6 @@
  * evidence-first positioning working (01 §14, 18 §137), not hedging.
  */
 
-import Link from 'next/link'
 import {
   MapPinIcon,
   CameraIcon,
@@ -2307,614 +2306,577 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      ====================================================================== */
   [id('svc-sewer-line-locating')]: {
     /*
-      ⚠ THIS PAGE IS THE SERVICE HUB, NOT A CITY PAGE. `hub` switches the
-      page to `ServiceHubTemplate`. Markets are routed to, never listed.
+      ⚠ THIS ENTRY RENDERS ON `ServicePageTemplateV2` (the `v2` key), NOT
+      ON `ServiceHubTemplate`. The H1, the meta title and description and
+      the primary and secondary hero actions stay on the base fields,
+      because the route's metadata reads them there. Everything else the
+      page shows is in `v2`. The old `hub`, `problems`, `process` and flat
+      `faq` fields were replaced by their v2 equivalents for this entry
+      only; every other service page is untouched. Copy source:
+      sewer-line-locating-page-content.md.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. Locating is described as the
-      approximate route and position of a private sewer line. Never
-      "exact", "guaranteed", depth precision, utility clearance, permit
-      handling, or any equivalence with 811 or public utility marking. No
-      pricing, timeframe, emergency or same-day service, equipment
-      specification or deliverable is promised. No case study or video
-      exists, so none is rendered. Repair stays educational (CLAUDE.md §9,
-      §24). Confirm the actual equipment and method with the business
-      before adding any method detail.
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      guarantee, warranty, licence (DEC-072), insurance wording, response
+      time, same-day or emergency claim, equipment brand, model, frequency
+      or spec, maximum locating depth, duration or interval in years. The
+      page deliberately states no standard time or price. Every depth
+      statement says "approximate" or "estimate". Owner-confirmed
+      2026-10-05: when a camera is used, the inspection video and written
+      findings are included, and the page says exactly that. It does NOT
+      claim surface marks, depth readings as always provided, access
+      beyond the cleanout, PACP/LACP coding, photos of marks, a map or
+      diagram, narration, a footage counter, "report" as the deliverable
+      name, same-day delivery, or locating as always included with camera
+      work. Those stay worded as "ask" or "may".
+
+      ⚠ 811 / ONE-CALL WORDING IS UNVERIFIED. The research packets do not
+      cover private sewer lines and 811. The copy points to "your state
+      one-call program (often reached at 811) or your local utility" and
+      never states that 811 does or does not cover private sewer lines.
+      Verify against the Missouri, California and Nevada one-call programs
+      before launch. Mentions: limits callout, prep list, comparison row,
+      and the FAQs on 811, survey, landscaping and the exact-location
+      answer.
+
+      ⚠ MARKET-NEUTRAL, NO PHONE NUMBER (DEC-071). Numbers reach this page
+      only through the labelled footer and the mobile bar's market sheet.
+      The content doc's "Prefer to call?" line and its appointment
+      preparation bullet are unconfirmed placeholders and are deliberately
+      NOT built.
+
+      ⚠ NO EVIDENCE MOSAIC. No approved, labelled imagery is verified for
+      this page, so `v2.evidence` is deliberately absent.
+
+      ⚠ INDEPENDENT BAND uses `v2.independent` (the content doc's own
+      Locate / Document / Decide steps) and carries no link to the
+      independent second-opinion page, which is Phase 2 and not built. The
+      same page is left out of the related cards for the same reason.
     */
-    seoTitle: 'Sewer Line Locating for Property Projects',
+    seoTitle: 'Private Sewer Line Locating: How It Works',
     metaDescription:
-      'Sewer line locating helps identify the approximate route of a private sewer line before excavation, landscaping, or repair planning. Serving St. Louis, San Diego, and Las Vegas.',
+      'Sewer line locating helps estimate where an accessible private sewer line runs. Learn how it works and its limits. St. Louis, San Diego, Las Vegas.',
+    serviceDescription:
+      'Sewer line locating estimates where an accessible underground sewer line runs, using a transmitter inside the line and a receiver at the surface. Results are estimates, not a survey.',
     hero: {
-      eyebrow: 'Sewer Diagnostics and Project Planning',
-      title: 'Sewer Line Locating for Property Projects and Planning',
-      primaryAction: { href: '#request-service', label: 'Request Sewer Line Locating' },
-      secondaryAction: { href: '#choose-market', label: 'Choose Your Location' },
+      eyebrow: 'Residential sewer line locating',
+      title: 'Sewer Line Locating',
+      primaryAction: { href: '#request', label: 'Request Sewer Line Locating' },
+      secondaryAction: { href: '#choose-market', label: 'Find Service in Your Area' },
       intro: (
         <>
           <p>
-            Sewer line locating helps identify the approximate route and
-            position of an underground sewer line. This information can help
-            property owners, contractors, and project teams plan work near
-            the line and make more informed decisions before landscaping,
-            construction, or other site work.
+            Sewer line locating estimates where an accessible underground
+            sewer line runs, so you can plan work around it. A technician
+            uses compatible locating equipment to trace the line from the
+            surface and estimate its path.
           </p>
           <p>
-            When the line&rsquo;s route is uncertain, locating may help
-            narrow down where it runs across a property. The findings can
-            support planning and help determine whether a sewer camera
-            inspection would provide useful information about the
-            line&rsquo;s interior condition.
-          </p>
-          <p>
-            Sewer line locating provides an estimate based on accessible
-            conditions and the equipment used. Results can vary, and
-            locating does not identify every buried utility or replace
-            required utility marking before excavation.
-          </p>
-          <p>
-            Need to inspect the inside of the sewer line?{' '}
-            <Link
-              href="/services/sewer-camera-inspection/"
-              className="font-semibold underline underline-offset-4"
-            >
-              Learn about our sewer camera inspection service.
-            </Link>
+            We provide cleaning, camera diagnostics, and line locating only.
+            We do not provide sewer repair, replacement, lining, excavation,
+            or pipe installation.
           </p>
         </>
       ),
     },
-    process: [
-      {
-        title: 'Review the project and property need',
-        description:
-          'The team reviews the planned work, approximate work area, timeline, and reason you need sewer line location information.',
-      },
-      {
-        title: 'Confirm access and the likely approach',
-        description:
-          'The technician reviews available access points and discusses an appropriate approach based on the site and request. Depending on access and the project, locating, a camera inspection, or a separately arranged combination may be considered.',
-      },
-      {
-        title: 'Locate accessible line sections',
-        description:
-          'Locating equipment may be used at accessible points to estimate the route or position of accessible sewer line sections. Results depend on access and site conditions and may not cover the entire line.',
-      },
-      {
-        title: 'Review available findings and planning considerations',
-        description:
-          'The technician explains the available location information and relevant planning considerations. Locating provides approximate route information; it does not confirm exact depth, identify every underground utility, or establish pipe condition.',
-      },
-    ],
-    hub: {
-      decisionFirst: true,
-      mobileBar: true,
+    // No-op on v2 (the independent band always renders); kept so the entry
+    // still reads as it did before the migration.
+    showDifferentiator: true,
+    v2: {
       defaultServiceId: 'svc-sewer-line-locating',
-      processIcons: ['explanation', 'access', 'pipe', 'document'],
-      processImageLayout: 'row-below',
-      relatedColumns: 4,
-      /*
-        IMAGE SLOTS. Save the real files at these paths and they are used at
-        the next build; until then development shows a labelled placeholder
-        and production shows nothing (see
-        `public/images/services/sewer-line-locating/README.md`).
-      */
       images: {
         hero: '/images/services/sewer-line-locating/hero/the-sewer-pros-sewer-line-locating-residential-property-hero-background-16x9.webp',
-        comparison:
-          '/images/services/sewer-line-locating/the-sewer-pros-sewer-line-locating-vs-811-comparison-background-16x9.webp',
         request:
           '/images/services/sewer-line-locating/the-sewer-pros-sewer-line-locating-request-cta-background-16x9.webp',
-        closing:
-          '/images/services/sewer-line-locating/the-sewer-pros-sewer-line-locating-request-cta-seektech-sr20-background-16x9.webp',
-        definition: ['locating-definition'],
-        process: 'locating-process',
       },
-      headings: {
-        process: 'What happens during a sewer line locating visit?',
-        faq: 'Sewer line locating questions',
+      hero: {
+        scope: [
+          'Accessible residential sewer and drain lines',
+          'An estimate of the route, not a survey',
+          'No repair, excavation, or replacement work offered',
+        ],
+        cardTitle: 'Request sewer line locating',
+        cardIntro:
+          'Tell us what you are planning near the line. We will help you choose between locating, a camera inspection, or both.',
+      },
+      navLabels: {
+        signals: 'When it may be worth asking about',
+        limits: 'What a locate is, and is not',
+        process: 'What happens during a visit',
+        decision: 'Locating or camera inspection',
+        ask: 'What to ask for',
+        faq: 'Questions',
       },
       definition: {
-        id: 'what-is-sewer-line-locating',
-        label: 'Quick answer',
+        eyebrow: 'The short answer',
         title: 'What is sewer line locating?',
         answer:
-          'Sewer line locating is a service used to estimate the route and position of an underground sewer line on a property. A technician may use locating equipment at an accessible point, along with available access and inspection information, to help identify where the line runs.',
+          'Sewer line locating uses a transmitter inside the line and a receiver at the surface to estimate where an underground sewer line runs. A common setup is a camera with a built-in sonde, a transmitter near the camera head that a compatible receiver can detect from above ground. Depth readings are approximate.',
         supporting: [
-          'Knowing the approximate route can help property owners and project teams plan landscaping, construction, or other work near the sewer line. It can also help clarify whether a sewer camera inspection may be useful for learning more about the line’s interior condition. A camera inspection looks inside the pipe; locating estimates its path below ground.',
-          'Results depend on access and site conditions. Sewer line locating provides approximate route information for planning. It does not identify every buried utility or replace required utility marking, permits, or professional excavation planning.',
+          <>
+            Knowing the approximate route can help you plan landscaping,
+            fencing, or other property work near the line. Locating shows
+            where a line runs. A{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+              sewer camera inspection
+            </ApprovedInlineLink>{' '}
+            shows what is inside it. They answer different questions and can
+            be useful together. This page covers accessible private-property
+            sewer lines, not public sewer mains.
+          </>,
         ],
+        scope:
+          'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
       },
-      symptomRouter: {
-        id: 'why-locate-a-sewer-line',
-        title: 'Why do you need to locate a sewer line?',
-        intro:
-          'A sewer line location can help you plan property work, evaluate a home, or coordinate a project.',
+      signals: {
+        eyebrow: 'Why people ask',
+        title: 'When sewer line locating may be worth asking about',
+        after: (
+          <>
+            These are reasons people ask about locating. They do not mean
+            locating is always needed. If you also need to know what
+            condition the line is in, a{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+              sewer camera inspection
+            </ApprovedInlineLink>{' '}
+            is the better starting point.
+          </>
+        ),
+        image: 'locating-definition',
         items: [
           {
-            status: 'Project planning',
-            urgency: 'planning',
-            icon: 'locate',
-            title: 'Planning excavation, trenching, or construction',
+            title: 'Planning digging, trenching, or construction',
             description:
-              'Knowing the approximate path of a private sewer line can help you coordinate site planning before work begins nearby. Locating information does not replace required utility marking, permits, or professional excavation planning.',
-            actionLabel: 'Request line locating',
-            href: '#request-service',
+              'The approximate path of a private sewer line can help you coordinate site planning before anyone digs nearby. It does not replace required utility marking, permits, or planning by the people doing the work.',
           },
           {
-            status: 'Project planning',
-            urgency: 'planning',
-            icon: 'plant',
-            title: 'Landscaping, tree planting, fence, or hardscape work',
+            title: 'Landscaping, trees, fences, or hardscape',
             description:
-              'An approximate sewer line route can help you plan landscaping or other property work that involves digging. Results depend on access and site conditions.',
-            actionLabel: 'Plan a property project',
-            href: '#request-service',
+              'An approximate route can help you plan where to put work that involves digging. Results depend on access and site conditions.',
           },
           {
-            status: 'Project planning',
-            urgency: 'planning',
-            icon: 'checklist',
-            title: 'Coordinating with a sewer repair provider',
+            title: 'Sharing the route with another contractor',
             description:
-              'Approximate route information may help you coordinate planning with the provider responsible for any repair work.',
-            actionLabel: 'Discuss project coordination',
-            href: '#request-service',
+              'Approximate route information may help you describe where the line runs to whoever is doing work on your property.',
           },
           {
-            status: 'Property evaluation',
-            urgency: 'planning',
-            icon: 'home',
             title: 'Buying or evaluating a property',
             description:
-              'Sewer line location information can help clarify where the line runs. A camera inspection may provide additional information about the pipe’s visible interior condition.',
-            actionLabel: 'Schedule a sewer inspection',
-            pageId: id('svc-pre-purchase-sewer-inspection'),
+              'Knowing where the line runs can help when you are weighing what could be built or changed on a property. It does not show the condition of the line.',
           },
           {
-            status: 'Active issue',
-            urgency: 'active',
-            icon: 'droplet',
-            title: 'A drainage problem and an unknown line path',
+            title: 'A camera finding you need to place',
             description:
-              'When a sewer line’s route is unclear, locating may help estimate where it runs. A camera inspection can provide separate information about visible conditions inside the pipe.',
-            actionLabel: 'Discuss a sewer issue',
-            pageId: id('core-contact'),
-          },
-          {
-            status: 'Contractor request',
-            icon: 'community',
-            title: 'Contractor or project-team coordination',
-            description:
-              'Project teams can discuss the site, access points, and planning need to determine whether sewer line locating may be appropriate.',
-            actionLabel: 'Request contractor support',
-            href: '#request-service',
+              'When a camera inspection shows a visible condition, locating may help estimate where that point sits at the surface, when the equipment supports it.',
           },
         ],
       },
-      materials: {
-        id: 'when-line-locating-is-useful',
-        title: 'When is sewer line locating useful?',
+      limits: {
+        eyebrow: 'Evidence and its limits',
+        title: 'What a locate may give you, and what it is not',
         intro:
-          'Sewer line locating may be useful when planned work could take place near a private sewer line or when the line’s route is uncertain. It can provide approximate route information to support project planning, property evaluation, and coordination with contractors. Results depend on access and site conditions.',
-        tiles: [
-          { label: 'Excavation or trenching', icon: 'route' },
-          { label: 'Landscaping or tree planting', icon: 'organic' },
-          { label: 'Fence, pool, or patio work', icon: 'fence' },
-          { label: 'Repair planning', icon: 'checklist' },
-          { label: 'Home inspection follow-up', icon: 'home' },
-          { label: 'Property management planning', icon: 'building' },
+          'A locate is an estimate for planning. Accuracy varies with the pipe, the signal, the surrounding materials, and the site, and manufacturer specifications vary by model.',
+        canTitle: 'A locate may give you',
+        canLead: 'An estimate, within what the equipment can trace',
+        can: [
+          'The approximate surface position of a point in an accessible line',
+          "An estimate of the line's path between points the equipment could trace",
+          'An estimate of depth at a point, in suitable conditions',
+          'The approximate surface position of the camera head where it was stopped, when a camera with a compatible sonde is used',
+          'A planning estimate you can share with whoever does the work',
         ],
-        columns: ['Scenario', 'Why locating may help', 'Keep in mind'],
-        rows: [
-          {
-            item: 'Excavation or trenching',
-            help: 'Approximate route information can help inform planning around a private sewer line.',
-            qualification: 'Follow required utility-location and permit processes before digging.',
-          },
-          {
-            item: 'Landscaping or tree planting',
-            help: 'Knowing the estimated route may help you plan landscaping or planting that involves digging.',
-            qualification: 'The route is approximate; locating does not confirm depth or every point along the line.',
-          },
-          {
-            item: 'Fence, pool, patio, or hardscape work',
-            help: 'Location information may help project teams consider the sewer line when planning property work.',
-            qualification: 'Locating does not identify property boundaries or easements.',
-          },
-          {
-            item: 'Repair or replacement planning',
-            help: 'Approximate route information may support coordination before a suspected line area is accessed.',
-            qualification: 'The Sewer Pros provides locating information for planning and does not perform sewer repair or replacement.',
-          },
-          {
-            item: 'Home inspection follow-up',
-            help: 'Locating may help clarify the line’s approximate route when property questions arise.',
-            qualification: 'A camera inspection is used to view the pipe’s interior condition.',
-          },
-          {
-            item: 'Property management planning',
-            help: 'Location information may support maintenance, access, and vendor coordination.',
-            qualification: 'Results depend on access and site conditions.',
-          },
-        ],
-        note: 'Sewer line locating does not replace required utility-location processes, public utility marking, permits, site plans, or professional excavation planning. Confirm the appropriate steps for your project before digging.',
-      },
-      limitations: {
-        variant: 'brand',
-        title: 'What sewer line locating can help identify, and its limits',
-        intro:
-          'Sewer line locating provides approximate route information for planning. It can help estimate where an accessible section of a private sewer line may run across a property, including its possible route in relation to a planned work area. Results depend on access and site conditions.',
-        canIdentifyTitle: 'Sewer line locating may help identify',
-        canIdentify: [
-          'The approximate route of an accessible private sewer line',
-          'Potential route information to support property planning',
-          'A starting point for coordinating with the contractor or provider responsible for planned work',
-          'Where the line may run in relation to a proposed work area',
-        ],
-        cannotTitle: 'Sewer line locating may not confirm',
+        cannotTitle: 'It is not',
+        cannotLead: 'Where a locate stops',
         cannot: [
-          'Every underground utility on a property',
-          'Exact depth or every point along the sewer line',
-          'Property boundaries or easements',
-          'Permit requirements or excavation approval',
-          'The condition inside the pipe without an inspection',
-          'Public utility clearance or official utility marks',
+          'A survey, or a property or boundary line',
+          'Utility clearance, or permission to dig',
+          'An exact depth. Depth readings are estimates and can vary.',
+          'A map of every buried utility. Locating traces the sewer line, not other lines.',
+          'A trace of any section the equipment could not reach',
+          "A look at the pipe's condition. A camera inspection is a separate service.",
         ],
-        related: {
-          lead: 'If you plan to dig, follow the required utility-notification and project-planning processes in addition to private sewer line locating. A',
-          pageId: id('svc-sewer-camera-inspection'),
-          label: 'sewer camera inspection',
-          trailing: 'can help show visible conditions inside the line.',
+        callout:
+          'A mark or measurement is an estimate. Before anyone digs, contact your state one-call program (often reached at 811) or your local utility and follow applicable requirements.',
+      },
+      process: {
+        eyebrow: 'What happens on the day',
+        title: 'What happens during a sewer line locating visit',
+        intro:
+          'The steps below describe a typical visit. What yours includes depends on the line, the entry point, and the scope of work.',
+        steps: [
+          {
+            title: 'Access',
+            description:
+              'The technician identifies an accessible entry point, commonly a cleanout.',
+          },
+          {
+            title: 'Equipment',
+            description:
+              'Compatible locating equipment is matched to the line, the entry point, and the pipe. What can be used depends on the line.',
+          },
+          {
+            title: 'Travel',
+            description:
+              'The camera and sonde are advanced through the line in stages, as far as the line allows. Where the camera cannot pass, that part of the line is not traced.',
+          },
+          {
+            title: 'Trace',
+            description:
+              "At each stop, a receiver at the surface picks up the sonde's signal to estimate the position of that point and its approximate depth. Repeated points show the observed route of the part of the line that could be traced.",
+          },
+          {
+            title: 'Record',
+            description:
+              'Ask what is recorded, including any marks or notes, and ask what could not be traced and why.',
+          },
+        ],
+        // The content doc's sixth prep bullet ("Appointment preparation:
+        // [CONFIRM: any specific instructions before arrival]") is an
+        // unconfirmed placeholder and is deliberately not built.
+        prep: {
+          title: 'Access points and preparing for your visit',
+          image: 'locating-process',
+          items: [
+            "The most common entry point is a cleanout. Whether one exists, and where, depends on your property's plumbing layout.",
+            'Other entry points may be possible, depending on the property and the equipment. Ask what applies to yours.',
+            'Make sure the technician can safely reach the agreed entry point and the area you want traced.',
+            'Tell us what you are planning, where, and whether the visit relates to a home purchase or an inspection period.',
+            'Before any digging, contact your state one-call program (often 811) or local utility. A private locate does not replace it.',
+          ],
         },
       },
-      comparison: {
-        id: 'line-locating-vs-related-services',
-        columns: ['Service or process', 'Primary purpose', 'Best used when'],
-        title: 'Sewer line locating vs. 811, camera inspection, and sewer cleaning',
-        intro:
-          'These services answer different questions. None of them stands in for the others.',
-        rows: [
+      decision: {
+        eyebrow: 'Which service fits',
+        title: 'Locating or camera inspection: which do you need?',
+        answer:
+          'Locating answers where the line runs. A camera inspection answers what is inside it. Some questions need one, and some need both.',
+        note: 'A locate does not show the condition of the pipe, and a camera view alone does not tell you where the line sits on your property.',
+        listTitle: 'Where to start',
+        list: [
+          'If you need to know where the line runs before planning work, locating may be the question.',
+          'If you need to know why drains are slow or backing up, a camera inspection may come first.',
+          'If a camera shows a visible condition and you need to know where it sits on your property, locating may be added, when the equipment supports it.',
+          'If a blockage stops the camera, the part it could not reach cannot be traced. Cleaning may need to come first.',
+        ],
+        links: [
+          { pageId: id('svc-sewer-camera-inspection'), label: 'Sewer camera inspection' },
           {
-            service: 'Private sewer line locating',
-            purpose: 'Estimate the route of an accessible private sewer line.',
-            fit: 'Work is planned near the line, or its route needs to be considered for property planning. Results depend on access and site conditions.',
+            pageId: id('svc-sewer-cleaning-camera-inspection'),
+            label: 'Sewer cleaning and camera inspection',
+          },
+          { pageId: id('svc-sewer-cleaning'), label: 'Sewer cleaning' },
+        ],
+      },
+      independent: {
+        eyebrow: 'Independent by design',
+        title: 'Major sewer decisions deserve clear evidence.',
+        steps: [
+          {
+            title: 'Locate',
+            body: 'We estimate where an accessible line runs, within what the equipment can trace.',
           },
           {
-            service: '811 / public utility notification',
-            purpose: 'Request marking of eligible public utilities before digging.',
-            fit: 'Before excavation when required or advisable for the project. This is separate from private sewer line locating. Requirements vary by location and project.',
+            title: 'Document',
+            body: 'You can ask for the marks or notes, and for what could not be traced.',
+          },
+          {
+            title: 'Decide',
+            body: 'You plan next steps with that information in hand. The Sewer Pros does not sell repair or replacement.',
+          },
+        ],
+        note: 'If someone has recommended costly work near your line, ask for the evidence, get multiple written estimates, and ask for an explanation when they differ.',
+      },
+      comparison: {
+        eyebrow: 'Which service fits',
+        title: 'Sewer line locating vs. related services',
+        caption: 'Sewer line locating compared with related services',
+        columns: ['Service', 'What it does', 'May fit when'],
+        rows: [
+          {
+            service: 'Sewer line locating',
+            purpose:
+              'Estimates the route and position of an accessible underground sewer line. It is an estimate, not a survey.',
+            fit: 'You need to know where the line runs',
+            current: true,
           },
           {
             service: 'Sewer camera inspection',
-            purpose: 'View accessible interior conditions in a sewer line.',
-            fit: 'Pipe condition, a possible blockage cause, or visible damage is uncertain. A camera inspection does not map every part of the line’s underground route.',
+            purpose: 'Shows visible conditions inside an accessible line',
+            fit: 'The cause or condition of the line is unclear',
             pageId: id('svc-sewer-camera-inspection'),
           },
           {
             service: 'Sewer cleaning',
-            purpose: 'Clear certain accessible restrictions in a sewer line.',
-            fit: 'A main-line blockage or buildup is suspected. Cleaning does not establish pipe condition or map the line’s route.',
+            purpose:
+              'Removes buildup and obstructions that restrict flow in an accessible line',
+            fit: 'Flow is restricted by grease, roots, debris, or similar material',
             pageId: id('svc-sewer-cleaning'),
           },
           {
-            service: 'Hydro jetting',
-            purpose: 'Use controlled high-pressure water to clean certain suitable lines.',
-            fit: 'Recurring buildup or material restricting flow is suspected and the line is appropriate for the method.',
-            pageId: id('svc-hydro-jetting'),
+            service: 'Pre-purchase sewer inspection',
+            purpose:
+              'A focused look at the visible condition of the line before a purchase',
+            fit: 'You are buying a home',
+            pageId: id('svc-pre-purchase-sewer-inspection'),
           },
           {
-            service: 'Drain cleaning',
-            purpose: 'Address a clog affecting a fixture or branch line.',
-            fit: 'A sink, tub, or other individual fixture is affected. This is different from locating a sewer line.',
-            pageId: id('svc-drain-cleaning'),
+            service: 'One-call utility notification (811)',
+            purpose:
+              'A public process for requesting utility marking before digging. Whether private sewer lines are covered depends on your program and utility, so ask.',
+            fit: 'Before any digging. Private locating does not replace it.',
+            external: true,
           },
         ],
-        note: 'If you are planning to dig, follow the appropriate local utility-notification and project-planning process in addition to arranging private sewer line locating. The Sewer Pros does not replace 811 or public utility marking.',
       },
-      prep: {
-        title: 'What to prepare before scheduling',
-        items: [
-          'Property address and ZIP code',
-          'A brief description of the planned work',
-          'Project timeline',
-          'Approximate work area',
-          'Known sewer cleanout or access point information',
-          'Recent sewer reports, plans, or inspection video, if available',
-          'Contractor contact information, if someone else is coordinating the work',
-        ],
-        note: 'The approach depends on access and the purpose of the project. Follow required utility-location and project-planning processes before digging.',
-      },
-      marketRouter: {
-        id: 'choose-market',
-        title: 'Find sewer line locating in your market',
+      ask: {
+        eyebrow: 'Before you book',
+        title: 'What to ask for, and what to keep',
         intro:
-          'Choose a market to review sewer line locating information and request options for that service area. Service availability depends on the property location and project details.',
+          'What is included can vary by appointment. Ask before you book, and keep what you receive.',
         items: [
           {
-            pageId: id('market-st-louis-mo'),
+            title: 'Surface marks',
             description:
-              'Explore sewer line locating information and request options for properties in the St. Louis region.',
-            actionLabel: 'Sewer Line Locating in St. Louis',
+              'Ask whether marks are provided for your appointment, and what they show.',
           },
           {
-            pageId: id('market-san-diego-ca'),
+            title: 'Depth readings',
             description:
-              'Explore sewer line locating information and request options for properties in the San Diego region.',
-            actionLabel: 'Sewer Line Locating in San Diego',
+              'Ask whether a depth reading is given. Treat any depth as an estimate.',
           },
           {
-            pageId: id('market-las-vegas-nv'),
+            title: 'Entry point and trace',
             description:
-              'Explore sewer line locating information and request options for properties in the Las Vegas region.',
-            actionLabel: 'Sewer Line Locating in Las Vegas',
+              'Ask which entry point was used, how much of the line was traced, and whether the camera reached the intended endpoint.',
+          },
+          {
+            title: 'What could not be traced',
+            description:
+              'Ask for any part of the line that could not be reached or traced, and why.',
+          },
+          {
+            title: 'Video and written findings',
+            description:
+              'When a camera is used, you receive the inspection video. Written findings are included.',
           },
         ],
+        keep: {
+          title: 'Keep the video, findings, and notes',
+          image: 'locating-equipment',
+          body: [
+            'Before authorizing major sewer work, keep the video and written findings, request written scopes and estimates, and consider an independent second opinion. Depending on local program rules or transaction requirements, these records may also help support a property-sale disclosure, a municipal lateral-program review, an estimate comparison, or an insurance inquiry.',
+            'A locate is an estimate for planning. It is not a survey, utility clearance, or permission to dig.',
+          ],
+        },
       },
       audiences: {
-        id: 'line-locating-for-your-situation',
-        surface: 'muted',
-        title: 'Sewer line locating for property owners and project teams',
-        intro:
-          'Choose the perspective that best matches your role to find information about sewer line locating for property decisions, inspections, or project coordination.',
+        title: 'If your situation is a little different',
         items: [
           {
-            pageId: id('aud-property-managers'),
-            audience: 'Property Managers',
-            icon: 'building',
+            pageId: id('aud-home-buyers'),
+            audience: 'Home buyers',
             description:
-              'Explore how approximate sewer line route information may support maintenance planning, access coordination, and vendor communication.',
-            actionLabel: 'Property Manager Support',
-          },
-          {
-            pageId: id('aud-home-inspectors'),
-            audience: 'Home Inspectors',
-            icon: 'eye',
-            description:
-              'Learn how sewer line locating may help clarify an approximate route when a property inspection raises questions about where the line runs.',
-            actionLabel: 'Working With Home Inspectors',
+              "Locating shows where a line runs. A camera inspection shows the visible condition inside it. A pre-purchase sewer inspection focuses on condition. Timing follows your purchase contract's inspection period.",
+            actionLabel: 'Home buyer sewer inspections',
           },
           {
             pageId: id('aud-real-estate-agents'),
-            audience: 'Real Estate Agents',
-            icon: 'document',
+            audience: 'Real estate agents',
             description:
-              'Review how sewer line location information may support property due diligence and project planning. A camera inspection can help show visible conditions inside an accessible section of the line.',
-            actionLabel: 'Transaction Support',
+              'Route information can support due diligence and project planning on a property. It is separate from the condition of the line.',
+            actionLabel: 'Transaction support',
           },
           {
-            pageId: id('aud-home-buyers'),
-            audience: 'Home Buyers',
-            icon: 'house-key',
+            pageId: id('aud-home-inspectors'),
+            audience: 'Home inspectors',
             description:
-              'Learn how route information and sewer camera inspection address different questions before closing: locating estimates where the line runs, while a camera inspection can show visible interior conditions.',
-            actionLabel: 'Home Buyer Sewer Inspections',
+              'Locating may help clarify an approximate route when an inspection raises questions about where the line runs.',
+            actionLabel: 'Working with home inspectors',
+          },
+          {
+            pageId: id('aud-property-managers'),
+            audience: 'Property managers',
+            description:
+              'Approximate route information may support maintenance planning, access coordination, and vendor communication on residential properties. Tenant notice depends on your lease and local law.',
+            actionLabel: 'Property manager support',
           },
         ],
       },
-      evidence: {
-        id: 'line-locating-field-experience',
-        title: 'Clearer information for property planning',
-        intro: (
-          <>
-            <p>
-              Sewer line locating begins with the available access points and
-              the project&rsquo;s needs. The route information that can be
-              identified depends on the property, accessible line sections,
-              equipment signals, and site conditions.
-            </p>
-            <p>
-              Locating can help estimate where an accessible section of a
-              private sewer line may run in relation to a planned work area.
-              If you also need information about the pipe&rsquo;s interior, a{' '}
-              <Link
-                href="/services/sewer-camera-inspection/"
-                className="font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground"
-              >
-                sewer camera inspection
-              </Link>{' '}
-              can show visible conditions in accessible sections. These
-              services answer different questions, and a camera inspection
-              may be useful when both the route and visible interior
-              condition matter.
-            </p>
-          </>
-        ),
-        caveat:
-          'These are examples from individual properties, with identifying details removed. Findings and methods vary by line, access, and situation.',
+      markets: {
+        id: 'choose-market',
+        eyebrow: 'Service areas',
+        title: 'Sewer line locating service areas',
+        intro: 'Choose your market for local service details and scheduling options.',
         items: [
           {
-            slot: 'locating-equipment',
-            title: 'Locating equipment in the field',
-            description:
-              'The locating approach depends on the access available and what the project needs to learn about the line.',
+            pageId: id('market-st-louis-mo'),
+            description: 'Residential sewer line locating across the St. Louis area.',
+            actionLabel: 'View St. Louis sewer line locating',
           },
           {
-            slot: 'locating-field',
-            title: 'An example from one property',
-            description:
-              'Route information is approximate and can vary with access, equipment signals, and site conditions.',
+            pageId: id('market-san-diego-ca'),
+            description: 'Residential sewer line locating in the San Diego area.',
+            actionLabel: 'View San Diego sewer line locating',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            description: 'Residential sewer line locating across the Las Vegas Valley.',
+            actionLabel: 'View Las Vegas sewer line locating',
           },
         ],
       },
-      approach: {
-        title: 'How We Work',
-        items: [
-          {
-            icon: 'conversation',
-            title: 'Independent assessment',
-            description:
-              'Our focus is sewer inspection, diagnostics, locating, and cleaning. We provide locating information for planning; The Sewer Pros does not perform sewer repair or replacement.',
-          },
-          {
-            icon: 'document',
-            title: 'Understand the findings',
-            description:
-              'We explain the available route information and its limitations. Results are approximate and may vary with access, equipment signals, and site conditions.',
-          },
-          {
-            icon: 'pipe',
-            title: 'Sewer and drain specialists',
-            description:
-              'Our work focuses on sewer and drain services rather than general plumbing. A camera inspection can provide separate information about visible conditions inside an accessible section of the line.',
-          },
-          {
-            icon: 'decision',
-            title: 'Your next step stays your decision',
-            description:
-              'Use the locating information to support your planning and decide what to do next. If a project involves repair or other work beyond our services, you choose the provider who performs it.',
-          },
-        ],
-        cta: { label: 'Request Sewer Line Locating', href: '#request-service' },
-      },
+      /*
+        ⚠ FAQ: 23 QUESTIONS IN FOUR GROUPS, ANSWERS VERBATIM FROM THE
+        CONTENT DOC. Plain strings only: `lib/schema/faq.ts` throws on
+        custom components, and FAQPage JSON-LD must equal the visible
+        text (DEC-114). The group label is navigation only and is not
+        part of any answer.
+      */
+      faqTitle: 'Sewer line locating questions',
+      eyebrows: { faq: 'Questions', related: 'Related', request: 'Request service' },
+      faq: [
+        {
+          group: 'The basics',
+          question: 'What is sewer line locating?',
+          answer: `Sewer line locating estimates the route and position of an existing underground sewer line. A technician uses compatible locating equipment, often with a sewer camera, to help identify where an accessible line runs. The results can help with property planning or with deciding where further inspection may be useful.`,
+        },
+        {
+          group: 'The basics',
+          question: 'How does sewer line locating work?',
+          answer: `When a camera with a compatible sonde can travel the line, the sonde sends a signal that a receiver at the surface can detect. That helps estimate the position of the camera head at each stop and its approximate depth. What can be used depends on the entry point, the pipe, the line condition, and the scope of work.`,
+        },
+        {
+          group: 'The basics',
+          question: 'What are a sonde, a receiver, and a cleanout?',
+          answer: `A sonde is a small transmitter that sends a detectable signal from inside a pipe. It may be built into a camera. A receiver is the handheld instrument that detects that signal above ground. A cleanout is a capped access opening in a sewer line, commonly used as the entry point for a camera.`,
+        },
+        {
+          group: 'The basics',
+          question: 'Is sewer line locating the same as calling 811?',
+          answer: `No. 811 is the number commonly used to reach a state one-call program, which coordinates utility marking requests before digging. Private sewer line locating focuses on tracing a property's sewer line. Whether a private line is covered by public markings varies, so ask your one-call program or local utility which lines are covered at your property.`,
+        },
+        {
+          group: 'The basics',
+          question: 'Do I need a camera inspection before locating?',
+          answer: `Not always. It depends on whether the line is accessible and what you need to learn. A camera inspection shows visible conditions inside the pipe and may support locating when a compatible camera and sonde can travel through the line. If the camera cannot pass, the technician can explain the options and limitations.`,
+        },
+        {
+          group: 'Limits and digging',
+          question: 'Can you tell me exactly where my sewer line is?',
+          answer: `Locating can give a practical estimate of the route. Accuracy depends on access to the line, the pipe, depth, and site conditions. Treat any mark or measurement as a guide for planning, not a guarantee of the pipe's position and not a substitute for required utility clearance.`,
+        },
+        {
+          group: 'Limits and digging',
+          question: `Can sewer line locating determine the pipe's depth?`,
+          answer: `Some locating equipment can estimate depth under suitable conditions. The result is not guaranteed and can vary with the pipe, the signal, the surrounding materials, and the site. Treat a depth reading as an estimate for planning, not a precise measurement or permission to dig.`,
+        },
+        {
+          group: 'Limits and digging',
+          question: 'Can you locate every utility on my property?',
+          answer: `No. Locating traces the private sewer line within the scope of the service. It does not identify every buried utility or replace the one-call utility marking process. Arrange separate locating for other privately owned lines when needed.`,
+        },
+        {
+          group: 'Limits and digging',
+          question: 'Is a locate a survey, and does it mean I can dig?',
+          answer: `No. A locate is an estimate for planning. It is not a survey, utility clearance, or permission to excavate. Before anyone digs, contact your state one-call program or local utility and follow applicable requirements.`,
+        },
+        {
+          group: 'Limits and digging',
+          question: 'Can a sewer camera see through water?',
+          answer: `No. A camera cannot see under water, so a line that is blocked and not draining may not be viewable until flow is restored. Water, debris, an obstruction, or a collapsed section can limit what the camera documents. Cleaning may need to come first.`,
+        },
+        {
+          group: 'Limits and digging',
+          question: 'Can a sewer line be located under concrete or a driveway?',
+          answer: `Sometimes. The receiver detects the sonde's signal rather than the pipe itself, so many pipe materials can be located. Concrete, rebar, other buried metal, and interference can weaken the signal and reduce accuracy, so results under slabs and driveways are less certain.`,
+        },
+        {
+          group: 'Limits and digging',
+          question: 'What if the camera cannot get through the line?',
+          answer: `The part of the line the equipment did not reach is not traced. Depending on the cause, additional cleaning, a repeat visit, or approaching the line from another access point, where one is available, may help. The findings should say what was not traced.`,
+        },
+        {
+          group: 'Access, marks, and records',
+          question: 'What access point do you use? Do you have to pull a toilet?',
+          answer: `Most often a cleanout, where one is accessible. Whether one exists, and where it is, depends on the property's plumbing layout. Other entry points may be possible depending on the property and the equipment. Ask what applies to your property before you book.`,
+        },
+        {
+          group: 'Access, marks, and records',
+          question: 'Will I get surface marks?',
+          answer: `Ask before you book. Whether surface marks are provided is part of the scope to confirm for your appointment, along with what the marks show and how much of the line they cover.`,
+        },
+        {
+          group: 'Access, marks, and records',
+          question: 'Will I get video and written findings?',
+          answer: `When a camera is used, you receive the inspection video. Written findings are included. Ask what else is included for your visit, including any marks or notes.`,
+        },
+        {
+          group: 'Access, marks, and records',
+          question: 'How long does locating take, and how much does it cost?',
+          answer: `Time and cost depend on the accessible entry point, the line length and pipe size, the line condition, and whether a camera, video, or marks are included. We do not publish a standard time or price on this page. Ask when you request service.`,
+        },
+        {
+          group: 'Planning and property',
+          question: 'Can line locating help before landscaping or fence installation?',
+          answer: `Yes. Locating can help you understand the likely route of a private sewer line before you plan landscaping, fencing, or other digging. Share your project plans when you request service so the technician knows which area to evaluate. Contact your state one-call program or local utility first and follow applicable requirements. Private locating does not replace public utility marking.`,
+        },
+        {
+          group: 'Planning and property',
+          question: 'If the line drains after cleaning, is the pipe healthy?',
+          answer: `Not necessarily. Clearing a clog may restore flow, but a camera inspection can still be needed to document the condition of the accessible pipe and look for visible sources of recurring problems.`,
+        },
+        {
+          group: 'Planning and property',
+          question: 'Should I use chemical drain cleaner on a sewer line clog?',
+          answer: `Public utilities advise against it. Chemical products can create safety hazards, can damage pipe, and may not resolve the underlying cause. They are not a substitute for diagnosing recurring drainage trouble.`,
+        },
+        {
+          group: 'Planning and property',
+          question: 'Can line locating help with sewer repair work?',
+          answer: `It can help you tell whoever does the work where the line runs. The Sewer Pros does not provide sewer repair, replacement, lining, excavation, or pipe installation.`,
+        },
+        {
+          group: 'Planning and property',
+          question: 'How often should a sewer line be located or inspected?',
+          answer: `There is no single schedule that fits every property. Consider locating and camera diagnostics when drains are slow, fixtures gurgle, wastewater backs up, or clogs keep returning. Some local programs set their own inspection requirements, so check your local sewer utility or municipality.`,
+        },
+        {
+          group: 'Planning and property',
+          question: 'Does my city require a sewer inspection for a sale, remodel, or permit?',
+          answer: `It depends on where the property is. Some local programs require a camera inspection when a property is sold or when certain permits are issued, and many do not. Check with your local sewer utility or building department. We do not give legal advice.`,
+        },
+        {
+          group: 'Planning and property',
+          question: 'Should I have the line located before buying a house?',
+          answer: `Locating shows where a line runs, not what condition it is in. If you are buying, a pre-purchase sewer inspection shows visible conditions in the accessible line. Ask whether locating is part of your appointment.`,
+        },
+      ],
+      relatedTitle: 'Keep reading',
       request: {
-        id: 'request-sewer-line-locating',
-        title: 'Request Sewer Line Locating',
+        title: 'Request sewer line locating',
         intro: [
-          'Tell us about the property, the planned work, and your timeline. Sharing the approximate work area and any known sewer access points can help us understand what you need.',
-          'Choose the property’s service area and the service you’re requesting in the form. Results depend on access and site conditions; sewer line locating provides approximate route information for planning.',
+          'Choose your service area, tell us what you are planning near the line, and let us know if you know where a cleanout or other access point is.',
         ],
-        formTitle: 'Request Sewer Line Locating',
+        scopeNote:
+          'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
         submitLabel: 'Request Sewer Line Locating',
       },
-      closing: {
-        title: 'Plan your project with clearer sewer line information',
-        intro: [
-          'Request sewer line locating to help understand the likely route of a private sewer line before planning landscaping, fencing, or other property work. You can also contact The Sewer Pros to discuss your project and whether a sewer camera inspection may be a useful next step.',
-          'Use the form to request service or ask about availability in your market. Include the property location, the type of project you are planning, and any known sewer access point in the optional message field. This information can help the team understand what you need.',
-        ],
-        formTitle: 'Request sewer line locating',
-        messagePlaceholder:
-          'Tell us about your project, property location, and any known sewer access points.',
-      },
     },
-    faq: [
-      {
-        question: 'What is sewer line locating?',
-        answer: (
-          <p>
-            Sewer line locating is a way to trace the path of an existing
-            sewer pipe and mark its route at the surface. A technician uses a
-            compatible locating method, often with a sewer camera and
-            locating equipment, to help identify where the pipe runs. The
-            results can help with property planning, landscaping, or
-            deciding where further inspection may be useful.
-          </p>
-        ),
-      },
-      {
-        question: 'Can you tell me exactly where my sewer line is?',
-        answer: (
-          <p>
-            Locating can provide a practical estimate of the sewer
-            line&rsquo;s route and mark its position on the surface. Accuracy
-            depends on access to the line, pipe material and condition,
-            depth, and site conditions. The marks are intended to guide
-            planning; they should not be treated as a guarantee of the
-            pipe&rsquo;s exact position or as a substitute for required
-            utility clearance.
-          </p>
-        ),
-      },
-      {
-        question: 'Is sewer line locating the same as calling 811?',
-        answer: (
-          <p>
-            No. 811 is a public utility notification service that
-            coordinates marking of participating underground utilities
-            before digging. Private sewer line locating focuses on tracing a
-            property&rsquo;s sewer line, which may not be included in public
-            utility markings. Contact 811 before digging and ask which
-            utilities are covered at your property; arrange private locating
-            when you need help identifying a private sewer line.
-          </p>
-        ),
-      },
-      {
-        question: 'Do I need a sewer camera inspection before locating?',
-        answer: (
-          <p>
-            Not always. The right approach depends on whether the sewer line
-            is accessible and what you need to learn. A camera inspection
-            can help assess the pipe&rsquo;s interior and may support
-            locating when a compatible camera and sonde can travel through
-            the line. If the line is inaccessible or the camera cannot pass
-            through it, the technician can explain the available options and
-            limitations.
-          </p>
-        ),
-      },
-      {
-        question: 'Can line locating help before landscaping or fence installation?',
-        answer: (
-          <p>
-            Yes. Locating can help you understand the likely route of a
-            private sewer line before planning landscaping, fencing, or
-            other property work. Share your project plans when scheduling so
-            the technician understands what area you need evaluated. Always
-            contact 811 and follow applicable digging requirements before
-            excavation; private locating does not replace public utility
-            marking.
-          </p>
-        ),
-      },
-      {
-        question: 'Can sewer line locating determine the pipe’s depth?',
-        answer: (
-          <p>
-            Some locating equipment can estimate depth under suitable
-            conditions, but the result is not guaranteed and may vary with
-            the pipe, signal, surrounding materials, and site conditions. A
-            depth reading should be treated as an estimate for planning, not
-            a precise measurement or authorization to dig.
-          </p>
-        ),
-      },
-      {
-        question: 'Can you locate every utility on my property?',
-        answer: (
-          <p>
-            No. Sewer line locating is intended to help trace the private
-            sewer line within the scope of the service. It does not identify
-            every buried utility or replace 811&rsquo;s public utility
-            marking process. Contact 811 before digging and arrange separate
-            private utility locating for other privately owned lines when
-            needed.
-          </p>
-        ),
-      },
-      {
-        question: 'Can line locating help with a sewer repair?',
-        answer: (
-          <p>
-            Locating can help show where the sewer line runs and may help
-            narrow down an area for further evaluation. It does not by
-            itself diagnose a pipe defect, confirm the full extent of
-            damage, or determine a repair plan. A sewer camera inspection
-            may be needed to assess the pipe&rsquo;s interior; repair
-            recommendations depend on the findings and are outside the scope
-            of locating alone.
-          </p>
-        ),
-      },
-    ],
+    // The independent second-opinion page is not built, so it is left out.
     relatedPageIds: [
       id('svc-sewer-camera-inspection'),
-      id('svc-sewer-cleaning'),
-      id('svc-hydro-jetting'),
-      id('svc-drain-cleaning'),
+      id('svc-sewer-cleaning-camera-inspection'),
+      id('svc-pre-purchase-sewer-inspection'),
     ],
-    relatedTitle: 'Related Sewer and Drain Services',
-    relatedIntro:
-      'Sewer line locating estimates where an accessible private sewer line may run. If your project also involves viewing the inside of the pipe or addressing a clog, these related services may help with different needs.',
     relatedDescriptions: {
       [id('svc-sewer-camera-inspection')]:
-        'View accessible interior sections of a sewer line. A camera inspection can help identify visible conditions and inform a next-step decision.',
-      [id('svc-sewer-cleaning')]:
-        'Clear certain accessible restrictions in a sewer line when cleaning is appropriate. A camera inspection may help document the line’s condition before or after cleaning.',
-      [id('svc-hydro-jetting')]:
-        'Use controlled high-pressure water to clean certain suitable sewer lines. Whether jetting is appropriate depends on the line and the conditions observed.',
-      [id('svc-drain-cleaning')]:
-        'Address a clog affecting a sink, tub, or other fixture. This service focuses on the affected drain and reported symptoms.',
+        'What a camera may show, and what it cannot confirm.',
+      [id('svc-sewer-cleaning-camera-inspection')]:
+        'Review visible line conditions and address an appropriate restriction when warranted.',
+      [id('svc-pre-purchase-sewer-inspection')]:
+        'A focused look at the line before you buy.',
     },
+    // Not rendered by v2: the final request section replaces the separate
+    // closing form and call-to-action band.
     cta: {
       title: 'Plan your project with clearer sewer line information',
       body: 'Select your market to request sewer line locating, discuss a property project, or ask whether a camera inspection should be part of the next step.',
