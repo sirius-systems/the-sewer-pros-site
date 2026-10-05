@@ -61,6 +61,11 @@ export function ProofGallery({
   // 18 §120 — omit the section entirely rather than render an empty shell.
   if (proofImages.length === 0) return null
 
+  // Same rule as the grid below, so \`sizes\` always matches the layout.
+  const lgColumns =
+    proofImages.length % 4 === 0 ? 4 : proofImages.length % 3 === 0 ? 3 : 2
+  const imageSizes = `(min-width: 1024px) ${Math.round(100 / lgColumns)}vw, (min-width: 640px) 50vw, 100vw`
+
   return (
     <Section density={density} labelledBy={id}>
       <SectionHeading id={id} title={title} intro={intro} />
@@ -91,9 +96,9 @@ export function ProofGallery({
             <Image
               src={image.src}
               alt={image.alt}
-              width={640}
-              height={480}
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              width={800}
+              height={600}
+              sizes={imageSizes}
               className="aspect-[4/3] w-full rounded-md border border-border object-cover"
             />
             <p className="mt-2 text-caption leading-5 text-muted-foreground">
