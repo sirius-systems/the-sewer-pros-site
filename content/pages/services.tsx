@@ -1743,8 +1743,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       only; every other service page is untouched. Copy source:
       sewer-cleaning-camera-inspection-page-content.md.
 
-      ⚠ SERVICE NAME. The exact name is "Sewer Cleaning + Camera Inspection"
-      with the plus sign (owner standing rule). Sentence copy may say
+      ⚠ SERVICE NAME. The exact name is "Sewer Cleaning & Camera Inspection"
+      with an ampersand (matches the shared registries). Sentence copy may say
       "cleaning and camera inspection" generically.
 
       ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
@@ -1774,12 +1774,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       carries no link to the independent second-opinion page, which is
       Phase 2 and not built.
     */
-    seoTitle: 'Sewer Cleaning + Camera Inspection',
+    seoTitle: 'Sewer Cleaning & Camera Inspection',
     metaDescription:
       "How a combined sewer cleaning and camera inspection visit works, which comes first, what a camera can and can't confirm, and what to ask for.",
     hero: {
       eyebrow: 'Residential sewer and drain service',
-      title: 'Sewer Cleaning + Camera Inspection',
+      title: 'Sewer Cleaning & Camera Inspection',
       primaryAction: { href: '#request', label: 'Request Cleaning and Camera Inspection' },
       secondaryAction: { href: '#choose-market', label: 'Find Service in Your Area' },
       intro: (
@@ -1802,8 +1802,6 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     // still reads as it did before the migration.
     showDifferentiator: true,
     v2: {
-      // Owner standing rule: the plus sign. The shared registries still say "&".
-      displayName: 'Sewer Cleaning + Camera Inspection',
       defaultServiceId: 'svc-sewer-cleaning-camera-inspection',
       images: {
         hero: '/images/services/sewer-cleaning-camera-inspection/hero/the-sewer-pros-sewer-camera-inspection-cleaning-cleanout-hero-background-16x9.webp',
@@ -1995,7 +1993,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         columns: ['Service', 'Purpose', 'May fit when'],
         rows: [
           {
-            service: 'Sewer Cleaning + Camera Inspection',
+            service: 'Sewer Cleaning & Camera Inspection',
             purpose: 'Addresses an appropriate restriction and reviews visible line conditions',
             fit: 'A problem keeps returning, or several fixtures are affected',
             current: true,
