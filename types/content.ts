@@ -1656,11 +1656,6 @@ export interface ServicePageContentV2 {
     /** Boxed scope statement under the scope bullets, inside the hero. */
     scopeStatement?: string
   }
-  /**
-   * Replaces the shared trust strip on this page. Plain statements, each
-   * of which must already be a verified fact or owner-approved wording.
-   */
-  trust?: readonly string[]
   definition?: {
     eyebrow?: string
     title: string

@@ -1252,8 +1252,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       only; every other service page is untouched.
 
       ⚠ OWNER-APPROVED WORDING (DEC-088), USED VERBATIM AND ONLY HERE. The
-      free-estimate sentence and the same-day sentence appear in the trust
-      strip, the same-day FAQ answer and the final request, exactly as the
+      free-estimate sentence and the same-day sentence appear in the
+      same-day FAQ answer and the final request (the trust strip is the
+      shared one every service page uses), exactly as the
       content doc shows them. They are not paraphrased, extended or moved,
       and no emergency, 24/7, weekend or guaranteed same-day claim is made.
       The one FAQ sentence "We do not offer 24/7 or emergency service." is
@@ -1323,13 +1324,6 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
         cardTitle: 'Request hydro jetting',
       },
-      trust: [
-        'Cleaning, camera diagnostics, and line locating',
-        'Serving St. Louis, San Diego, and Las Vegas',
-        'No repair or replacement work, so no repair upsell',
-        'Ask about a free estimate before scheduling.',
-        'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends.',
-      ],
       navLabels: {
         signals: 'When a line may need cleaning',
         limits: 'What cleaning can and cannot do',

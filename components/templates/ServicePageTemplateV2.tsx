@@ -35,7 +35,6 @@ import {
   MythList,
   SituationList,
   IndependentBand,
-  TrustStrip,
   type SectionNavItem,
 } from '@/components/sections/service-v2'
 import { PageShell } from './PageShell'
@@ -227,15 +226,7 @@ export function ServicePageTemplateV2({
     />,
   )
 
-  add(
-    'dense',
-    'trust',
-    v2.trust !== undefined ? (
-      <TrustStrip items={v2.trust} />
-    ) : (
-      <TrustBar surface="default" />
-    ),
-  )
+  add('dense', 'trust', <TrustBar surface="default" />)
   add('dense', 'counters', <ExperienceCounterStrip surface="muted" />)
 
   if (v2.definition !== undefined) {
