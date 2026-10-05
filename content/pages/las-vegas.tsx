@@ -2,7 +2,8 @@
  * Las Vegas market content — 5 live pages. The City of Las Vegas, City of
  * Henderson and City of North Las Vegas location pages live in
  * `las-vegas-las-vegas.tsx`, `las-vegas-henderson.tsx` and
- * `las-vegas-north-las-vegas.tsx` and are registered below.
+ * `las-vegas-north-las-vegas.tsx` and the Summerlin location page in
+ * `las-vegas-summerlin.tsx` are registered below.
  *
  * Authority: docs/04-master-page-build-list.md §10.3, §14
  *            docs/22-decisions-change-log.md DEC-080, DEC-063, DEC-073
@@ -69,6 +70,7 @@ import { CtaBenefit } from '@/components/sections'
 import { lasVegasCityContent } from './las-vegas-las-vegas'
 import { hendersonContent } from './las-vegas-henderson'
 import { northLasVegasContent } from './las-vegas-north-las-vegas'
+import { summerlinContent } from './las-vegas-summerlin'
 import {
   homeServiceCards,
   approvedServicesTitle,
@@ -76,38 +78,6 @@ import {
 } from './home-service-cards'
 
 const id = (value: string): PageId => value as PageId
-
-/** Owner-confirmed contact (DEC-073). Repeated per page deliberately. */
-
-/*
-  ⚠ STILL USED BY THE SUMMERLIN LOCATION PAGE IN THIS FILE, WHICH IS WHY IT
-  SURVIVED THE 2026-09-08 HUB RESTRUCTURE. The market hub's own copy of
-  it was folded into `regionalCoverage` (email, hours, and the
-  newer-market sentence); the Summerlin location body still
-  renders it and is unchanged.
-
-  ⚠ DELETING THIS WOULD SILENTLY STRIP THE PHONE, EMAIL AND HOURS FROM
-  THE SUMMERLIN PAGE. It looked unused after the hub stopped referencing it,
-  and it is not.
-*/
-const LAS_VEGAS_CONTACT = (
-  <>
-    <h2>Reaching us in Las Vegas</h2>
-    <p>
-      Las Vegas inquiries go to <a href="tel:+17252924030">(725) 292-4030</a> or{' '}
-      <a href="mailto:bookaninspection@thesewerpros.com">
-        bookaninspection@thesewerpros.com
-      </a>
-      , Monday to Friday, 8:00am to 4:00pm.
-    </p>
-    <p>
-      We are operating in the Las Vegas Valley. This is a newer market for us
-      (our longest-running work is in St. Louis and San Diego), and we would
-      rather say that plainly than imply a local track record we have not built
-      here yet.
-    </p>
-  </>
-)
 
 /* ==========================================================================
    Market hub — /las-vegas-nv/
@@ -555,7 +525,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, drain cleaning, and diagnostic services for homeowners, home buyers, property managers, multifamily properties, and commercial properties across the Las Vegas Valley.',
       'These featured community pages do not define the full limit of the service area. Tell us where the property is located and what is happening with the line so we can confirm current coverage before scheduling.',
       /*
-        ⚠ KEPT VERBATIM FROM `LAS_VEGAS_CONTACT`, AND IT IS A
+        ⚠ KEPT VERBATIM FROM THE FORMER SHARED CONTACT BLOCK, AND IT IS A
         BUSINESS-TRUTH STATEMENT RATHER THAN COPY. It is the sentence
         that stops this page implying a Las Vegas track record the
         project has no evidence for, which is the same reason the
@@ -581,7 +551,7 @@ export const lasVegasMarketContent: MarketPageContent = {
     },
     phone: { label: 'Call (725) 292-4030', phoneE164: '+17252924030' },
     /*
-      ⚠ EMAIL AND HOURS MOVED HERE FROM `LAS_VEGAS_CONTACT` rather than
+      ⚠ EMAIL AND HOURS MOVED HERE FROM THE FORMER SHARED CONTACT BLOCK rather than
       getting a second contact panel. That block already duplicated
       this one's phone; a whole section for two more lines would have
       been the same information a third time.
@@ -672,7 +642,7 @@ export const lasVegasMarketContent: MarketPageContent = {
   responsibility: {
     title: 'Who manages the sewer system depends on where you live',
     intro:
-      'The Las Vegas Valley has no single sewer authority. Each incorporated city runs its own utility relationship, while the Clark County Water Reclamation District, publicly branded the Clean Water Team, serves the unincorporated areas of the valley. Which authority governs your address determines who to contact and what rules apply. Summerlin is the clearest illustration: it genuinely straddles two authorities depending on which side of an incorporation line a property sits on.',
+      'The Las Vegas Valley has no single sewer authority. Each incorporated city runs its own utility relationship, while the Clark County Water Reclamation District, publicly branded the Clean Water Team, serves the unincorporated areas of the valley. Which authority governs your address determines who to contact and what rules apply. Summerlin is the clearest illustration. Clark County’s 2024 jurisdictional boundary map shows Summerlin partly in the City of Las Vegas and partly in unincorporated Clark County, so the agency that applies depends on the address.',
     /*
       ⚠ THE DIAGRAM RENDERS THROUGH THE IMAGE COMPONENT AS AN <img>,
       NOT INLINED. It carries `role="img"`, `aria-labelledby="diagram-title
@@ -1158,22 +1128,15 @@ export const lasVegasMarketContent: MarketPageContent = {
       ),
     },
     {
-      /*
-        TODO: Confirm the exact Summerlin / Summerlin South incorporation
-        boundary against Clark County's official jurisdictional boundary
-        map before stating a precise line. NOT a launch blocker as
-        written - the copy says which jurisdiction each part falls under
-        and stops there, without drawing the boundary itself.
-      */
       question:
         'Why does Summerlin have two different sewer service jurisdictions?',
       answer: (
         <p>
-          Most of Summerlin falls within Las Vegas city limits, while Summerlin
-          South is unincorporated Clark County and falls under a separate water
-          reclamation district. Which jurisdiction applies depends on where a
-          property sits, and The Sewer Pros accounts for that difference during
-          an inspection.
+          Clark County&rsquo;s 2024 jurisdictional boundary map shows Summerlin
+          partly in the City of Las Vegas and partly in unincorporated Clark
+          County, so the agency that applies depends on the address. The map is
+          marked for display purposes only. See the Summerlin page for what each
+          agency says about the property owner&rsquo;s sewer lateral.
         </p>
       ),
     },
@@ -1413,89 +1376,5 @@ export const lasVegasLocationContent: Partial<Record<PageId, LocationPageContent
   [id('loc-lv-north-las-vegas')]: northLasVegasContent,
 
   /* --------------------------------------------------------- Summerlin -- */
-  [id('loc-lv-summerlin')]: {
-    metaDescription:
-      'Explore sewer inspection, diagnostics, cleaning, and related drain services available for properties in Summerlin, Nevada.',
-    hero: {
-      eyebrow: 'Summerlin',
-      title: 'Sewer inspection and cleaning in Summerlin',
-      intro: (
-        <p>
-          Camera inspection, diagnostics, and cleaning across Summerlin, a
-          community that genuinely straddles two different sewer authorities.
-        </p>
-      ),
-    },
-    body: (
-      <>
-        <h2>Summerlin sits across a jurisdictional line</h2>
-        <p>
-          This is the fact worth knowing before you contact anyone about a sewer
-          problem in Summerlin, and it surprises people who have lived here for
-          years.
-        </p>
-        <p>
-          Most of Summerlin lies within the incorporated City of Las Vegas,
-          roughly 22,500 acres along the city&rsquo;s western edge. But
-          Summerlin South is a separate unincorporated Clark County
-          census-designated place, not part of the city at all, and falls under
-          the Clark County Water Reclamation District instead.
-        </p>
-        <p>
-          Two properties a short distance apart can therefore sit under
-          different authorities, with different points of contact and different
-          rules. The City of Las Vegas&rsquo;s optional warranty product, for
-          instance, applies only to the incorporated portion.
-        </p>
-
-        <h2>Find out which side you are on</h2>
-        <p>
-          Because the boundary is not visible from the street and not obvious
-          from an address, confirm it rather than assume. Clark County publishes
-          a{' '}
-          <a href="https://www.clarkcountynv.gov/assets/documents/residents/about_clark_county/map-jurisdictional-boundaries-0124.pdf">
-            jurisdictional boundary map
-          </a>{' '}
-          showing where incorporated city limits end.
-        </p>
-        <p>
-          It is worth five minutes. Contacting the wrong authority about a sewer
-          problem wastes time you may not have.
-        </p>
-
-        <h2>Either way, the lateral is yours</h2>
-        <p>
-          The one thing that does not change across the boundary is
-          responsibility. The Clark County Water Reclamation District states
-          that a damaged lateral connecting a house to the main in the street is
-          the property owner&rsquo;s: cleaning, repair, and replacement.
-        </p>
-
-        {LAS_VEGAS_CONTACT}
-      </>
-    ),
-    faq: [
-      {
-        question: 'Is Summerlin part of the City of Las Vegas?',
-        answer: (
-          <p>
-            Mostly, but not entirely. Most of Summerlin is within incorporated
-            city limits, while Summerlin South is unincorporated Clark County
-            and falls under the county water reclamation district. Check Clark
-            County&rsquo;s jurisdictional boundary map for your address.
-          </p>
-        ),
-      },
-      {
-        question: 'Does the city’s warranty cover my Summerlin property?',
-        answer: (
-          <p>
-            Only if your property is in the incorporated portion. The City of
-            Las Vegas&rsquo;s optional warranty does not extend to unincorporated
-            Summerlin South.
-          </p>
-        ),
-      },
-    ],
-  },
+  [id('loc-lv-summerlin')]: summerlinContent,
 }
