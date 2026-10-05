@@ -141,7 +141,7 @@ export const coreServiceCards: readonly ServiceCard[] = [
   {
     pageId: id('svc-sewer-camera-inspection'),
     description:
-      'A sewer camera inspection - often called a sewer scope - shows the line’s actual condition on video, so you get documented evidence before deciding on repairs.',
+      'A sewer camera inspection - often called a sewer scope - documents what is visible inside the accessible line, so you have evidence before deciding on repairs.',
     image: {
       src: '/images/homepage/services/the-sewer-pros-sewer-camera-inspection-video-evidence.webp',
       alt: 'Camera monitor showing the inside of a line, beside an open cleanout',
