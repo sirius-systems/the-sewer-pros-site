@@ -322,13 +322,21 @@ export function ServicePageTemplateV2({
       }}
       imageSrc={requestImage}
     >
-      <LeadFormSection
-        bare
-        density="standard"
-        idPrefix="request-lead"
-        defaultServiceId={v2.defaultServiceId}
-        submitLabel={v2.request.submitLabel}
-      />
+      {/*
+        The shared form carries its own default "Request service" h2, which
+        would repeat the section heading directly above it. It is hidden
+        visually (still a labelled heading for assistive technology) rather
+        than edited out of the shared form.
+      */}
+      <div className="[&_h2]:sr-only">
+        <LeadFormSection
+          bare
+          density="standard"
+          idPrefix="request-lead"
+          defaultServiceId={v2.defaultServiceId}
+          submitLabel={v2.request.submitLabel}
+        />
+      </div>
     </RequestServiceSection>,
   )
 

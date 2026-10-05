@@ -54,6 +54,13 @@ export function MobileContactBar({
   const [chosen, setChosen] = useState<MarketId | undefined>(marketId)
   const [open, setOpen] = useState(false)
   const sheetRef = useRef<HTMLDivElement>(null)
+  // The control that opened the sheet, so focus can go back to it on close.
+  const triggerRef = useRef<HTMLElement | null>(null)
+
+  const openSheet = () => {
+    triggerRef.current = document.activeElement as HTMLElement | null
+    setOpen(true)
+  }
 
   useEffect(() => {
     if (marketId !== undefined) return
@@ -70,10 +77,32 @@ export function MobileContactBar({
     if (!open) return
     sheetRef.current?.querySelector<HTMLElement>('a, button')?.focus()
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
+      if (event.key === 'Escape') {
+        setOpen(false)
+        return
+      }
+      // Keep Tab inside the dialog: wrap at either end.
+      if (event.key !== 'Tab') return
+      const focusable = sheetRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+      if (focusable === undefined || focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      const active = document.activeElement
+      const outside = !sheetRef.current?.contains(active)
+      if (event.shiftKey && (active === first || outside)) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && (active === last || outside)) {
+        event.preventDefault()
+        first.focus()
+      }
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      // Closing returns focus to the control that opened the sheet.
+      triggerRef.current?.focus()
+    }
   }, [open])
 
   const callDetail = chosen === undefined ? undefined : marketOperatingDetail[chosen]
@@ -99,7 +128,7 @@ export function MobileContactBar({
         ) : (
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={openSheet}
             className={`${BAR_BUTTON} bg-accent text-accent-foreground`}
           >
             Call
@@ -117,7 +146,7 @@ export function MobileContactBar({
             type="button"
             aria-haspopup="dialog"
             aria-expanded={open}
-            onClick={() => setOpen(true)}
+            onClick={openSheet}
             className={`${BAR_BUTTON} border border-border bg-surface text-foreground`}
           >
             {chosen === undefined
