@@ -5124,6 +5124,20 @@ The sewer line locating page was moved from the service hub template to Service 
 
 The drain cleaning page was moved from the service hub template to Service Page Template v2. The route, page id, parent and indexability are unchanged; the H1 is now `Drain Cleaning` and the SEO title is `Drain Cleaning for Slow and Clogged Drains`. The page gained a six-item signals list, a "what cleaning can and cannot fix" panel, a five-step process with an access and preparation block, a "cleaning and the camera are separate services" decision panel, a three-row methods table (cable cleaning, water jetting, camera inspection) with a limits column, a "what a camera can and cannot show" panel, a "what to ask for, and what to keep" section, three audience rows, a 24-question FAQ in six groups and a habits-that-cause-clogs list. The page states no price, time, offer, warranty, licence or emergency service, carries no phone number or placeholder text, and shows no evidence mosaic because no verified drain cleaning imagery exists. The owner-confirmed deliverables (video and written findings when a camera is used) are stated as included; the cleaning record stays worded as "ask". No business fact was added. A comparison of the static export showed every other page's rendered output unchanged.
 
+## DEC-130 - Drain Cleaning Page Expanded and H1 Restored
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-drain-cleaning` entry only)
+* `types/content.ts`, `components/templates/ServicePageTemplateV2.tsx`, `components/sections/service-v2/`, `components/sections/ServiceHubSections.tsx` (additive optional fields: `triage`, `terms`, `faqSurface`, `request.tellUs`, a plain comparison-row header, and surface options on the situations rows and FAQ)
+* `scripts/verify-drain-cleaning-page.mjs`
+
+Corrects DEC-129 for the drain cleaning page: the H1 is restored to the original `Drain Cleaning for Slow, Clogged, and Recurring Drains` (the SEO title stays `Drain Cleaning for Slow and Clogged Drains`). The page gained a "one drain or several" symptom table, a six-row terms list, a "what to tell us" list in the request block, and a 37-question FAQ in seven groups, including cost and duration answers that state no figure. No business fact was added; roof-vent access and toilet removal stay off the page. A comparison of the static export showed every other page's rendered output unchanged.
+
 ---
 
 # 26. Decision Quality Standard

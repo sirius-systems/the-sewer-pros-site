@@ -15,18 +15,20 @@ export function SituationList({
   eyebrow,
   title,
   items,
+  surface = 'default',
 }: {
   id: string
   eyebrow?: string
   title: string
   items: readonly { title: string; body: ReactNode }[]
+  surface?: 'default' | 'muted'
 }) {
   return (
     <Section
       density="dense"
-      surface="default"
+      surface={surface}
       labelledBy={id}
-      className="border-b border-border"
+      className={surface === 'default' ? 'border-b border-border' : undefined}
     >
       <SectionHeading id={id} eyebrow={eyebrow} title={title} />
       <ul className="mt-8 border-t border-border">

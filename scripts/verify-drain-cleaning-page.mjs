@@ -24,7 +24,7 @@ const PAGE = path.join(ROOT, 'services', 'drain-cleaning', 'index.html')
 const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
 const NAME = 'Drain Cleaning'
-const H1 = 'Drain Cleaning'
+const H1 = 'Drain Cleaning for Slow, Clogged, and Recurring Drains'
 const html = fs.readFileSync(PAGE, 'utf8')
 
 let failures = 0
@@ -89,7 +89,6 @@ const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*
 check('one JSON-LD block', ld.length === 1, String(ld.length))
 const graph = ld[0]?.['@graph'] ?? []
 checkServiceSchema({ html, check, origin: ORIGIN, serviceName: NAME })
-const types = graph.map((n) => n['@type'])
 const svcDesc = graph.find((n) => n['@type'] === 'Service')?.description ?? ''
 check(
   'Service description present and free of repair-as-offered, price, response time and models',
@@ -122,8 +121,8 @@ const faqVisible = details.map((d) => ({
   q: strip((d.match(/<h4[^>]*>([\s\S]*?)<\/h4>/) || [])[1] || ''),
   a: strip(d.slice(d.indexOf('</summary>') + '</summary>'.length)),
 }))
-check('FAQPage has 24 questions', faqLd.length === 24, String(faqLd.length))
-check('24 visible questions', faqVisible.length === 24, String(faqVisible.length))
+check('FAQPage has 37 questions', faqLd.length === 37, String(faqLd.length))
+check('37 visible questions', faqVisible.length === 37, String(faqVisible.length))
 check(
   'FAQPage text equals the visible FAQ',
   faqLd.length === faqVisible.length &&
@@ -131,7 +130,7 @@ check(
 )
 const groupLabels = [...faqSection.matchAll(/<h3[^>]*id="faq-[^"]*"[^>]*>([\s\S]*?)<\/h3>/g)].map((m) => strip(m[1]))
 check(
-  'six FAQ groups with the expected labels',
+  'seven FAQ groups with the expected labels',
   JSON.stringify(groupLabels) ===
     JSON.stringify([
       'Understanding drain cleaning',
@@ -139,6 +138,7 @@ check(
       'Limits and cameras',
       'Documentation and locating',
       'Maintenance and prevention',
+      'Requesting service',
       'Real estate',
     ]),
   JSON.stringify(groupLabels),
@@ -151,6 +151,8 @@ const sectionById = (id) =>
 const ID = {
   definition: slug('What is drain cleaning?'),
   signals: slug('When drain cleaning may be useful'),
+  triage: slug('One drain or several: what the pattern may mean'),
+  terms: slug('Drain cleaning terms'),
   limits: slug('What drain cleaning can and cannot fix'),
   process: slug('How drain cleaning works'),
   decision: slug('Cleaning and the camera are separate services'),
@@ -187,15 +189,17 @@ const navBlock = (main.match(/<nav[^>]*aria-labelledby="on-this-page"[\s\S]*?<\/
 const navHrefs = [...navBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 const navLabels = [...navBlock.matchAll(/<a [^>]*>([\s\S]*?)<\/a>/g)].map((m) => strip(m[1]))
 check(
-  '"On this page" list has the seven entries',
+  '"On this page" list has the nine entries',
   JSON.stringify(navLabels) ===
     JSON.stringify([
       'When to look into it',
+      'One drain or several',
       'What cleaning can and cannot fix',
       'How it works',
       'Methods',
       'The camera',
       'What to ask for',
+      'Terms',
       'Questions',
     ]),
   JSON.stringify(navLabels),
@@ -206,7 +210,7 @@ const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1]
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
 const topicHrefs = [...topicBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
-check('FAQ topic list has six anchors that resolve', topicHrefs.length === 6 && topicHrefs.every((h) => ids.includes(h)), String(topicHrefs.length))
+check('FAQ topic list has seven anchors that resolve', topicHrefs.length === 7 && topicHrefs.every((h) => ids.includes(h)), String(topicHrefs.length))
 const inPage = [...main.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('every in-page anchor resolves (including #request, #choose-market)', inPage.every((h) => ids.includes(h)), inPage.filter((h) => !ids.includes(h)).join(', '))
 
@@ -221,6 +225,20 @@ check('full scope statement present in the request section', flat(strip(requestS
 check('full scope statement appears exactly twice on the page', count(flat(visible), flat(SCOPE_FULL)) === 2, String(count(flat(visible), flat(SCOPE_FULL))))
 check('short scope form present in the hero', flat(strip((main.match(/<section[\s\S]*?<\/section>/) || [''])[0])).includes(flat(SHORT)))
 check('"drain clearing" explained as everyday usage in the definition', /drain clearing\.?" That is everyday usage, not a code term/.test(flat(strip(sectionById(ID.definition)))))
+
+const triageSection = sectionById(ID.triage)
+const triageBody = (triageSection.match(/<tbody>[\s\S]*?<\/tbody>/) || [''])[0]
+check(
+  'triage table has five body rows, three headers and a labelled scroll region',
+  triageBody.split('<tr').length - 1 === 5 &&
+    ['What you notice', 'What it may point to', 'Often the next step'].every((h) => new RegExp(`<th[^>]*scope="col"[^>]*>\s*${h}\s*</th>`).test(triageSection)) &&
+    /role="region"[^>]*aria-label="[^"]*\(scrollable table\)"[^>]*tabindex="0"/.test(triageSection),
+)
+check('triage rows carry no "(this page)" marker', !/\(this page\)|Not our service/.test(triageSection))
+const termsSection = sectionById(ID.terms)
+check('terms section has six rows', (termsSection.match(/<li[\s>]/g) || []).length === 6)
+check('"What to tell us" list of five in the request section', /What to tell us/.test(requestSection) && ((requestSection.match(/<ul[\s\S]*?<\/ul>/) || [''])[0].match(/<li[\s>]/g) || []).length === 5)
+check('"What to tell us" appears above the scope statement', requestSection.indexOf('What to tell us') < requestSection.indexOf('This service is designed'))
 
 const limitsSection = sectionById(ID.limits)
 check(
@@ -283,14 +301,21 @@ checkRelatedCards({
 })
 
 /* ---- Rhythm: two brand surfaces, the independent band and the final request ---- */
+// (the request section's surface is a wrapper, not a <section> class)
 const brandSections = (main.match(/<section[^>]*class="[^"]*\bbg-brand\b/g) || []).length
 check('exactly one brand-surface section in the body (the independent band)', brandSections === 1, String(brandSections))
-const order = ['independent', ID.methods, ID.camera, ID.ask, ID.audiences, 'choose-market', 'faq', ID.habits, 'related', 'request']
+const order = [ID.signals, ID.triage, ID.limits, ID.process, ID.decision, 'independent', ID.methods, ID.camera, ID.ask, ID.audiences, 'choose-market', ID.terms, 'faq', ID.habits, 'related', 'request']
 const positions = order.map((o) => main.search(new RegExp(`(?:aria-labelledby|id)="${o}"`)))
 check('sections appear in the design order', positions.every((p, i) => p >= 0 && (i === 0 || p > positions[i - 1])), JSON.stringify(positions))
 const surfaceOf = (id) => ((main.match(new RegExp(`<section[^>]*aria-labelledby="${id}"[^>]*>`)) || [''])[0].match(/bg-(background|surface-muted|brand)/) || [])[1]
-const seq = [ID.definition, ID.signals, ID.limits, ID.process, ID.decision, 'independent', ID.methods, ID.camera, ID.ask, ID.audiences, 'choose-market', 'faq'].map(surfaceOf)
-check('surfaces alternate from the definition to the FAQ', seq.every((s, i) => i === 0 || s !== seq[i - 1]), seq.join(','))
+const seq = [ID.definition, ID.signals, ID.triage, ID.limits, ID.process, ID.decision, 'independent', ID.methods, ID.camera, ID.ask, ID.audiences, 'choose-market', ID.terms, 'faq', ID.habits, 'related'].map(surfaceOf)
+check('surfaces alternate from the definition to the related cards', seq.every((s, i) => i === 0 || s !== seq[i - 1]), seq.join(','))
+check(
+  'surfaces match the design canvas',
+  seq.join(',') ===
+    'background,surface-muted,background,surface-muted,background,surface-muted,brand,background,surface-muted,background,surface-muted,background,surface-muted,background,surface-muted,background',
+  seq.join(','),
+)
 
 /* ---- Links ---- */
 const hrefs = [...main.matchAll(/<a [^>]*href="([^"]+)"[^>]*>/g)]

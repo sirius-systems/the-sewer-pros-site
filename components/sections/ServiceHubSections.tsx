@@ -1604,6 +1604,7 @@ export function RequestServiceSection({
   density = 'standard',
   focus = 'default',
   scrim,
+  introAfter,
 }: {
   content: { eyebrow?: string; title: string; intro: string | readonly string[] }
   imageSrc: string
@@ -1620,6 +1621,8 @@ export function RequestServiceSection({
   focus?: 'default' | 'right'
   /** Darkens the scrim past the 55% default. Every other caller is unaffected. */
   scrim?: 65
+  /** Content under the intro paragraphs, inside the copy column. */
+  introAfter?: ReactNode
 }) {
   const paragraphs = typeof content.intro === 'string' ? [content.intro] : content.intro
   return (
@@ -1644,6 +1647,7 @@ export function RequestServiceSection({
       )}
       <Section density={density} surface="none" labelledBy={id}>
         <div className="grid gap-10 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-14">
+          {introAfter === undefined ? (
           <div>
             {content.eyebrow !== undefined && (
               <p className="text-caption font-semibold tracking-wide uppercase opacity-80">
@@ -1662,6 +1666,27 @@ export function RequestServiceSection({
               ))}
             </div>
           </div>
+          ) : (
+          <div>
+            {content.eyebrow !== undefined && (
+              <p className="text-caption font-semibold tracking-wide uppercase opacity-80">
+                {content.eyebrow}
+              </p>
+            )}
+            <h2
+              id={id}
+              className={`text-h2 font-semibold tracking-tight text-balance${content.eyebrow !== undefined ? ' mt-3' : ''}`}
+            >
+              {content.title}
+            </h2>
+            <div className="mt-4 max-w-[var(--container-reading)] space-y-4 text-body-lg">
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            {introAfter}
+          </div>
+          )}
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
             {children}
           </div>
