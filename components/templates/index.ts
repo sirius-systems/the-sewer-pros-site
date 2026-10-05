@@ -64,6 +64,8 @@ export type { HubPageTemplateProps } from './HubPageTemplate'
 
 export { ServicePageTemplate } from './ServicePageTemplate'
 export type { ServicePageTemplateProps } from './ServicePageTemplate'
+export { ServicePageTemplateV2 } from './ServicePageTemplateV2'
+export type { ServicePageTemplateV2Props } from './ServicePageTemplateV2'
 
 export { MarketPageTemplate } from './MarketPageTemplate'
 export type { MarketPageTemplateProps } from './MarketPageTemplate'
