@@ -5186,6 +5186,20 @@ The owner confirmed five company products, by brand and model name only: RIDGID 
 
 The owner confirmed that the "RIDGID 7500" named in DEC-132 is the RIDGID K-7500 drum or drain-cleaning machine already named in the repository's photo file names and alt text. The site spelling is `RIDGID K-7500`; the plain descriptor "drain-cleaning machine" is allowed. The names-only usage rules in DEC-132 are unchanged: no specs, capability figures, claims about what a machine can find, claims about which machine is used on a visit, or "state-of-the-art" or "best" wording. The word "professional-grade" was removed from the shared independent band, which now reads "RIDGID sewer camera equipment", matching the preventative maintenance page. Confirmed names were added to the four pages named above, one sentence per activity, only inside a process step that describes that activity. No other business fact was added.
 
+## DEC-134 - Correction to DEC-132: Equipment Rule Recorded in CLAUDE.md
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-132, DEC-133
+**Affected Documents:**
+
+* `CLAUDE.md` (section 24)
+* `docs/01-business-brand-foundation.md` (section 13.4 pointer line)
+
+A review of DEC-132 found its statements accurate: `58176d1` did change `CLAUDE.md` and `docs/01`, but only as one-line pointers to DEC-132, and neither file listed the products. That left the full rule in the check script and the DEC text only, and the pointer named "RIDGID 7500", which DEC-133 later corrected to RIDGID K-7500. As of this commit, `CLAUDE.md` section 24 carries the full equipment rule (confirmed names in exact spelling, the plain-mention format, the never-published list, the no-JSON-LD rule and the `checkEquipmentNames` guard), and `docs/01` keeps one pointer line, updated to cite DEC-132 as amended by DEC-133 and the `CLAUDE.md` rule. No other mismatch was found in DEC-132 or DEC-133. No business fact was added or changed; the confirmed products and usage rules are exactly those in DEC-132 as amended by DEC-133.
+
 ---
 
 # 26. Decision Quality Standard
