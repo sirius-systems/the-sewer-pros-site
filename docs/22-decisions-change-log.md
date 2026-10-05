@@ -5171,6 +5171,21 @@ Owner confirmations recorded 2026-10-05, applied on this page: a pre-purchase vi
 
 The owner confirmed five company products, by brand and model name only: RIDGID 7500; SeeSnake CS12x; SeekTech SR-20; SeeSnake Standard Camera Reel with TruSense; Mongoose 184LT trailer-mounted sewer jetter. Mongoose is a different brand from RIDGID, and the jetter is never described as a RIDGID product. The names may appear as plain mentions ("Our equipment includes ..."). No spec, capability figure, depth or frequency, claim about what a machine can find, claim about which machine is used on which visit, or "state-of-the-art" or "best" wording is confirmed or published. What the RIDGID 7500 is has not been confirmed; the repository's photo file names and alt text call a "K-7500" a drum or drain-cleaning machine, which is left as written and is not repeated in page copy. The verify scripts now allow exactly these spellings and the brand RIDGID on its own, and fail any other equipment brand, model or misspelling, and any equipment text in page JSON-LD. The shared trust strip's horizontal scroller was given a name, a region role and keyboard focus (axe `scrollable-region-focusable`); its content and layout are unchanged.
 
+## DEC-133 - Equipment Names Phase 2: RIDGID K-7500 Confirmed, Shared Band Softened
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-132
+**Affected Documents:**
+
+* `content/pages/services.tsx` (one equipment sentence each in the sewer cleaning, cleaning and camera inspection, drain cleaning and pre-purchase process steps)
+* `components/sections/IndependentProcess.tsx` (shared independent band wording)
+* `scripts/lib/service-page-checks.mjs` (equipment allow-list spelling)
+
+The owner confirmed that the "RIDGID 7500" named in DEC-132 is the RIDGID K-7500 drum or drain-cleaning machine already named in the repository's photo file names and alt text. The site spelling is `RIDGID K-7500`; the plain descriptor "drain-cleaning machine" is allowed. The names-only usage rules in DEC-132 are unchanged: no specs, capability figures, claims about what a machine can find, claims about which machine is used on a visit, or "state-of-the-art" or "best" wording. The word "professional-grade" was removed from the shared independent band, which now reads "RIDGID sewer camera equipment", matching the preventative maintenance page. Confirmed names were added to the four pages named above, one sentence per activity, only inside a process step that describes that activity. No other business fact was added.
+
 ---
 
 # 26. Decision Quality Standard

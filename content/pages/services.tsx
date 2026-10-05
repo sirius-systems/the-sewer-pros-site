@@ -773,7 +773,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Camera, when included',
             description:
-              'A camera may be used to see the line first, when it can be viewed. If the line is blocked and full of water, cleaning may have to come first.',
+              'A camera may be used to see the line first, when it can be viewed. If the line is blocked and full of water, cleaning may have to come first. Our equipment includes the SeeSnake CS12x and the SeeSnake Standard Camera Reel with TruSense.',
           },
           {
             title: 'Cleaning',
@@ -1949,7 +1949,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'View the line, when it can be viewed',
             description:
-              'A camera may show what is in the line before cleaning and help choose the method. If the line is blocked and full of water, the camera cannot see under the water, and cleaning may have to come first.',
+              'A camera may show what is in the line before cleaning and help choose the method. If the line is blocked and full of water, the camera cannot see under the water, and cleaning may have to come first. Our equipment includes the SeeSnake CS12x and the SeeSnake Standard Camera Reel with TruSense.',
           },
           {
             title: 'Clean',
@@ -3133,12 +3133,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Camera, when included',
             description:
-              'When a camera is part of the visit and the line allows, it is used to look at the restriction.',
+              'When a camera is part of the visit and the line allows, it is used to look at the restriction. Our equipment includes the SeeSnake CS12x and the SeeSnake Standard Camera Reel with TruSense.',
           },
           {
             title: 'Cleaning',
             description:
-              'The line is cleaned with cable tools, water jetting, or both, chosen for the condition of the line.',
+              'The line is cleaned with cable tools, water jetting, or both, chosen for the condition of the line. Our equipment includes the RIDGID K-7500.',
           },
           {
             title: 'Flow check',
@@ -3852,7 +3852,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Camera run',
             description:
-              'A camera on a flexible push cable is advanced through the accessible line while the technician watches the live view.',
+              'A camera on a flexible push cable is advanced through the accessible line while the technician watches the live view. Our equipment includes the SeeSnake CS12x and the SeeSnake Standard Camera Reel with TruSense.',
           },
           {
             title: 'Video',

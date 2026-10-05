@@ -78,7 +78,7 @@ const STEPS = [
   {
     title: 'Inspect',
     Icon: CameraIcon,
-    body: 'We use professional-grade RIDGID sewer camera equipment to examine the line for blockages, roots, damage, offsets, standing water, and other visible conditions.',
+    body: 'We use RIDGID sewer camera equipment to examine the line for blockages, roots, damage, offsets, standing water, and other visible conditions.',
   },
   {
     title: 'Document',
