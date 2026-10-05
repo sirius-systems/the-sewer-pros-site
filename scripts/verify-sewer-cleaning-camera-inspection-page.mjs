@@ -22,7 +22,7 @@ const PAGE = path.join(ROOT, 'services', 'sewer-cleaning-camera-inspection', 'in
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
 const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
-const NAME = 'Sewer Cleaning + Camera Inspection'
+const NAME = 'Sewer Cleaning & Camera Inspection'
 const html = fs.readFileSync(PAGE, 'utf8')
 
 let failures = 0
@@ -88,7 +88,7 @@ const graph = ld[0]?.['@graph'] ?? []
 const types = graph.map((n) => n['@type'])
 check('Organization first', types[0] === 'Organization', JSON.stringify(types))
 const serviceNodes = graph.filter((n) => n['@type'] === 'Service')
-check('one Service node named with the plus sign', serviceNodes.length === 1 && serviceNodes[0].name === NAME, JSON.stringify(serviceNodes.map((n) => n.name)))
+check('one Service node named as the registry', serviceNodes.length === 1 && serviceNodes[0].name === NAME, JSON.stringify(serviceNodes.map((n) => n.name)))
 const allowed = new Set(['Organization', 'WebSite', 'WebPage', 'Service', 'BreadcrumbList', 'FAQPage'])
 check('only the expected node types', types.every((t) => allowed.has(t)), JSON.stringify(types))
 console.log(`NOTE  schema nodes: ${JSON.stringify(types)}`)
@@ -160,7 +160,7 @@ check('hero request card has a market select', /id="hero-lead-market"/.test(html
 check(
   'hero request card shows the service chip and preselects the service',
   /id="hero-lead-service"[\s\S]*?<option value="svc-sewer-cleaning-camera-inspection" selected/.test(html) &&
-    /text-caption[^>]*>Service<\/p><p[^>]*>Sewer Cleaning \+ Camera Inspection</.test(html),
+    /text-caption[^>]*>Service<\/p><p[^>]*>Sewer Cleaning &amp; Camera Inspection</.test(html),
 )
 check('request form preselects the service', /id="request-lead-service"[\s\S]*?<option value="svc-sewer-cleaning-camera-inspection" selected/.test(html))
 
@@ -230,7 +230,7 @@ check(
   'comparison headers are Service / Purpose / May fit when',
   ['Service', 'Purpose', 'May fit when'].every((h) => new RegExp(`<th[^>]*scope="col"[^>]*>\\s*${h}\\s*</th>`).test(comparisonSection)),
 )
-check('comparison current row uses the plus-sign name', /Sewer Cleaning \+ Camera Inspection/.test(compBody))
+check('comparison current row uses the registry name', /Sewer Cleaning &amp; Camera Inspection/.test(compBody))
 const askSection = sectionById(ID.ask)
 check('five ask items', ((askSection.match(/<ol[\s\S]*?<\/ol>/) || [''])[0].match(/<li[\s>]/g) || []).length === 5)
 check('"Keep what you receive" panel present', /Keep what you receive/.test(askSection))
