@@ -61,7 +61,7 @@ export function ProofGallery({
   // 18 §120 — omit the section entirely rather than render an empty shell.
   if (proofImages.length === 0) return null
 
-  // Same rule as the grid below, so \`sizes\` always matches the layout.
+  // Same rule as the grid below, so `sizes` always matches the layout.
   const lgColumns =
     proofImages.length % 4 === 0 ? 4 : proofImages.length % 3 === 0 ? 3 : 2
   const imageSizes = `(min-width: 1024px) ${Math.round(100 / lgColumns)}vw, (min-width: 640px) 50vw, 100vw`
