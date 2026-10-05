@@ -219,7 +219,7 @@ export function ServicePageTemplateV2({
         <ServiceHeroRequestCard
           title={v2.hero.cardTitle}
           intro={v2.hero.cardIntro}
-          serviceLabel={content.hero.title}
+          serviceLabel={v2.hero.serviceLabel ?? content.hero.title}
           defaultServiceId={v2.defaultServiceId}
         />
       }

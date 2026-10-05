@@ -1660,6 +1660,8 @@ export interface ServicePageContentV2 {
     cardTitle: string
     /** One line under the hero card heading. */
     cardIntro?: string
+    /** The card's service chip. Absent: the page H1. */
+    serviceLabel?: string
     /** Boxed scope statement under the scope bullets, inside the hero. */
     scopeStatement?: string
   }

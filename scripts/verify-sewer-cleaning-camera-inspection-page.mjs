@@ -23,6 +23,8 @@ const PAGE = path.join(ROOT, 'services', 'sewer-cleaning-camera-inspection', 'in
 const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
 const NAME = 'Sewer Cleaning & Camera Inspection'
+// Owner directed 2026-10-05: the original H1 stays; the service name is the chip, breadcrumb and schema name.
+const H1 = 'Sewer Camera Inspection and Cleaning for Recurring Drainage Problems'
 const html = fs.readFileSync(PAGE, 'utf8')
 
 let failures = 0
@@ -75,7 +77,7 @@ check(
 
 /* ---- Headings ---- */
 const h1s = [...main.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => strip(m[1]))
-check(`exactly one H1 equal to "${NAME}"`, h1s.length === 1 && h1s[0] === NAME, JSON.stringify(h1s))
+check(`exactly one H1 equal to "${H1}"`, h1s.length === 1 && h1s[0] === H1, JSON.stringify(h1s))
 const levels = [...main.matchAll(/<h([1-6])[\s>]/g)].map((m) => Number(m[1]))
 let skip = false
 for (let i = 1; i < levels.length; i += 1) if (levels[i] - levels[i - 1] > 1) skip = true
