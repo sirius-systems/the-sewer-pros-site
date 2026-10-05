@@ -759,7 +759,7 @@ export const chesterfieldContent: LocationPageContent = {
     agents: {
       eyebrow: 'For agents and inspectors',
       title: 'Working with real estate professionals',
-      body: 'We are affiliated with the St. Louis Association of Realtors, ASHI, the Women’s Council of Realtors and St. Charles Realtors, and provide documented reports and video your clients can keep. Findings are informational and not legal advice.',
+      body: 'We are affiliated with the St. Louis Association of Realtors, ASHI, the Women’s Council of Realtors and St. Charles Realtors. We provide video when a camera is used, and written findings. Findings are informational and not legal advice.',
       link: {
         label: 'Sewer inspection for real estate agents',
         pageId: id('aud-real-estate-agents'),

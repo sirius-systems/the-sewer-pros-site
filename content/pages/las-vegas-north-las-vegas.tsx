@@ -726,7 +726,7 @@ export const northLasVegasContent: LocationPageContent = {
     agents: {
       eyebrow: 'For agents and inspectors',
       title: 'Working with real estate professionals',
-      body: 'We provide documented reports and video your clients can keep. Findings are informational and not legal advice.',
+      body: 'We provide video when a camera is used, and written findings. Findings are informational and not legal advice.',
       link: {
         label: 'Sewer inspection for real estate agents',
         pageId: id('aud-real-estate-agents'),

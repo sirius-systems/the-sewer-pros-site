@@ -1243,6 +1243,12 @@ export interface BasePageContent {
    * preference for omission over placeholder applies here too.
    */
   metaDescription?: string
+  /**
+   * Description for the page's JSON-LD `Service` node. One or two plain
+   * sentences drawn from the page's own definition copy; claims nothing
+   * the visible page does not.
+   */
+  serviceDescription?: string
   /** Explanatory sections. Rendered inside a reading-width container. */
   body?: ReactNode
   faq?: readonly FaqContent[]

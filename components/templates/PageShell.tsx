@@ -53,6 +53,8 @@ export interface PageShellProps {
   schema?: {
     title: string
     description?: string
+    /** Description for the Service node; see `PageSchemaInput.serviceDescription`. */
+    serviceDescription?: string
     dateModified?: string
     /**
      * The page's visible FAQ. `FAQPage` markup is on wherever a template
@@ -98,6 +100,7 @@ export function PageShell({ page, displayName, densities, schema, children }: Pa
             page,
             title: schema.title,
             description: schema.description,
+            serviceDescription: schema.serviceDescription,
             displayName,
             dateModified: schema.dateModified,
             faq: schema.faq,

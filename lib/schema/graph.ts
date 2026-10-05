@@ -155,7 +155,11 @@ function breadcrumbNode(
  * carries the markets rather than an address, which is the SAB model
  * 15 §13 and §22 describe.
  */
-function serviceNode(page: MasterPageRecord, displayName?: string): ServiceNode | undefined {
+function serviceNode(
+  page: MasterPageRecord,
+  displayName?: string,
+  description?: string,
+): ServiceNode | undefined {
   const service = getServiceByCanonicalUrl(page.pathname)
   if (service === undefined) return undefined
 
@@ -164,6 +168,7 @@ function serviceNode(page: MasterPageRecord, displayName?: string): ServiceNode 
     '@id': serviceId(service.canonicalUrl),
     name: displayName ?? service.name,
     serviceType: displayName ?? service.name,
+    ...(description !== undefined && { description }),
     provider: ref(organizationId()),
     areaServed: servedMarkets(),
     url: absoluteUrl(page.pathname),
@@ -261,6 +266,8 @@ export interface PageSchemaInput {
    * from the shared registry name. Must equal the visible breadcrumb.
    */
   displayName?: string
+  /** Description for the Service node on a service page; plain text from the page's own copy. */
+  serviceDescription?: string
   /** ISO date, only where 18 §78 justifies one. */
   dateModified?: string
   /**
@@ -311,6 +318,7 @@ export function pageSchema({
   title,
   description,
   displayName,
+  serviceDescription,
   dateModified,
   faq,
   itemList,
@@ -355,7 +363,7 @@ export function pageSchema({
     nodes.push(articleNode(page, title, description, dateModified))
   }
 
-  const service = serviceNode(page, displayName)
+  const service = serviceNode(page, displayName, serviceDescription)
   if (service !== undefined) {
     nodes.push(service)
     webPage.about = ref(service['@id'])
