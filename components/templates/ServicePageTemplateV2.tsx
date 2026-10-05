@@ -17,6 +17,8 @@ import {
 } from '@/components/sections'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '@/components/sections/SectionHeading'
+import { CameraImageSlot } from '@/components/sections/CameraImageSlot'
+import { resolveHubImage } from '@/data/business/hub-images'
 import {
   SectionNav,
   SECTION_NAV_MIN,
@@ -113,6 +115,7 @@ export function ServicePageTemplateV2({
   const ids = {
     definition: v2.definition !== undefined ? slug(v2.definition.title) : '',
     signals: v2.signals !== undefined ? slug(v2.signals.title) : '',
+    causes: v2.causes !== undefined ? slug(v2.causes.title) : '',
     triage: v2.triage !== undefined ? slug(v2.triage.title) : '',
     terms: v2.terms !== undefined ? slug(v2.terms.title) : '',
     limits: v2.limits !== undefined ? slug(v2.limits.title) : '',
@@ -144,6 +147,7 @@ export function ServicePageTemplateV2({
   }
   if (v2.definition !== undefined) track('definition', ids.definition, v2.definition.title, false)
   if (v2.signals !== undefined) track('signals', ids.signals, v2.signals.title)
+  if (v2.causes !== undefined) track('causes', ids.causes, v2.causes.title)
   if (v2.triage !== undefined) track('triage', ids.triage, v2.triage.title)
   if (v2.limits !== undefined && !limitsLate) track('limits', ids.limits, v2.limits.title)
   if (v2.process !== undefined) track('process', ids.process, v2.process.title)
@@ -212,6 +216,12 @@ export function ServicePageTemplateV2({
       </>
     )
 
+  // A pending-photography slot, shown only while no approved photograph exists.
+  const heroSlot =
+    v2.hero.slot !== undefined && resolveHubImage(v2.hero.slot)?.placeholder === true
+      ? v2.hero.slot
+      : undefined
+
   add(
     'sparse',
     'hero',
@@ -219,7 +229,16 @@ export function ServicePageTemplateV2({
       variant="editorial"
       eyebrow={content.hero.eyebrow}
       title={content.hero.title}
-      intro={heroIntro}
+      intro={
+        heroSlot === undefined ? (
+          heroIntro
+        ) : (
+          <>
+            {heroIntro}
+            <CameraImageSlot slot={heroSlot} hideCaption className="max-w-sm" />
+          </>
+        )
+      }
       primaryAction={content.hero.primaryAction}
       secondaryAction={content.hero.secondaryAction}
       copyWidth="reading"
@@ -256,37 +275,68 @@ export function ServicePageTemplateV2({
   add('dense', 'counters', <ExperienceCounterStrip surface="muted" />)
 
   if (v2.definition !== undefined) {
+    const definitionImage =
+      v2.definition.image !== undefined && resolveHubImage(v2.definition.image) !== null
+        ? v2.definition.image
+        : undefined
+    const definitionHeading = (
+      <SectionHeading
+        id={ids.definition}
+        eyebrow={v2.definition.eyebrow}
+        title={v2.definition.title}
+        intro={<p className="text-foreground">{v2.definition.answer}</p>}
+      />
+    )
+    const definitionText = (
+      <div className="mt-6 max-w-[var(--container-reading)] space-y-4 text-body text-muted-foreground">
+        {v2.definition.supporting.map((paragraph, index) => (
+          <p
+            key={typeof paragraph === 'string' ? paragraph : index}
+            {...(typeof paragraph === 'string'
+              ? {}
+              : {
+                  className:
+                    '[&_a]:font-semibold [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground',
+                })}
+          >
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    )
+    const definitionScope = v2.definition.scope !== undefined && (
+      <p className="mt-6 max-w-[var(--container-reading)] rounded-md border border-border bg-surface-muted p-5 text-body-sm font-semibold text-foreground">
+        {v2.definition.scope}
+      </p>
+    )
+    // Two branches so an entry without a definition photo renders the same tree as before.
     add(
       'standard',
       'definition',
-      <Section density="standard" surface="default" labelledBy={ids.definition}>
-        <SectionHeading
-          id={ids.definition}
-          eyebrow={v2.definition.eyebrow}
-          title={v2.definition.title}
-          intro={<p className="text-foreground">{v2.definition.answer}</p>}
-        />
-        <div className="mt-6 max-w-[var(--container-reading)] space-y-4 text-body text-muted-foreground">
-          {v2.definition.supporting.map((paragraph, index) => (
-            <p
-              key={typeof paragraph === 'string' ? paragraph : index}
-              {...(typeof paragraph === 'string'
-                ? {}
-                : {
-                    className:
-                      '[&_a]:font-semibold [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground',
-                  })}
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
-        {v2.definition.scope !== undefined && (
-          <p className="mt-6 max-w-[var(--container-reading)] rounded-md border border-border bg-surface-muted p-5 text-body-sm font-semibold text-foreground">
-            {v2.definition.scope}
-          </p>
-        )}
-      </Section>,
+      definitionImage === undefined ? (
+        <Section density="standard" surface="default" labelledBy={ids.definition}>
+          {definitionHeading}
+          {definitionText}
+          {definitionScope}
+        </Section>
+      ) : (
+        <Section density="standard" surface="default" labelledBy={ids.definition}>
+          <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-7">
+              {definitionHeading}
+              {definitionText}
+              {definitionScope}
+            </div>
+            <div className="lg:col-span-5">
+              <CameraImageSlot
+                slot={definitionImage}
+                hideCaption
+                sizes="(min-width: 1024px) 40vw, 100vw"
+              />
+            </div>
+          </div>
+        </Section>
+      ),
     )
   }
 
@@ -306,8 +356,27 @@ export function ServicePageTemplateV2({
     )
   }
 
-  // A triage table shifts the next sections one surface so they keep alternating.
-  const triaged = v2.triage !== undefined
+  if (v2.causes !== undefined && v2.causes.items.length >= 3) {
+    add(
+      'dense',
+      'causes',
+      <SignalList
+        id={ids.causes}
+        eyebrow={v2.causes.eyebrow}
+        title={v2.causes.title}
+        note={v2.causes.note}
+        after={v2.causes.after}
+        items={v2.causes.items}
+        image={v2.causes.image}
+        surface="default"
+        numbered={false}
+        density="dense"
+      />,
+    )
+  }
+
+  // A triage table, or a causes list, shifts the next sections one surface so they keep alternating.
+  const triaged = v2.triage !== undefined || v2.causes !== undefined
   if (v2.triage !== undefined && v2.triage.rows.length >= 3) {
     add('dense', 'triage', <ServiceComparisonTable id={ids.triage} {...v2.triage} />)
   }
@@ -376,12 +445,15 @@ export function ServicePageTemplateV2({
   if (!methodsLate) addSecondaryLimits()
 
   if (v2.decision !== undefined) {
+    // A decision panel carrying its own table is the long section of the run: dense.
+    const decisionDense = v2.decision.table !== undefined
     add(
-      'standard',
+      decisionDense ? 'dense' : 'standard',
       'decision',
       <DecisionPanel
         id={ids.decision}
         surface={limitsLate || triaged ? 'muted' : 'default'}
+        {...(decisionDense ? { density: 'dense' as const } : {})}
         {...v2.decision}
       />,
     )

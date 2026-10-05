@@ -34,6 +34,8 @@ export function ProcessTimeline({
     title: string
     items: readonly string[]
     image?: HubImageKey
+    /** A second photo stacked under `image`. Renders only when `image` does. */
+    secondImage?: HubImageKey
     access?: { title: string; body: string }
   }
   surface?: 'default' | 'muted'
@@ -41,6 +43,12 @@ export function ProcessTimeline({
   const prepImage =
     prep?.image !== undefined && resolveHubImage(prep.image) !== null
       ? prep.image
+      : undefined
+  const prepSecond =
+    prepImage !== undefined &&
+    prep?.secondImage !== undefined &&
+    resolveHubImage(prep.secondImage) !== null
+      ? prep.secondImage
       : undefined
   return (
     <Section density="standard" surface={surface} labelledBy={id}>
@@ -94,11 +102,27 @@ export function ProcessTimeline({
         <div className="mt-14 grid gap-x-12 gap-y-8 border-t border-border pt-10 lg:grid-cols-12 lg:items-center">
           {prepImage !== undefined ? (
             <div className="lg:col-span-5">
-              <CameraImageSlot
-                slot={prepImage}
-                hideCaption
-                sizes="(min-width: 1024px) 40vw, 100vw"
-              />
+              {prepSecond === undefined ? (
+                <CameraImageSlot
+                  slot={prepImage}
+                  hideCaption
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                />
+              ) : (
+                <>
+                  <CameraImageSlot
+                    slot={prepImage}
+                    hideCaption
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                  />
+                  <CameraImageSlot
+                    slot={prepSecond}
+                    hideCaption
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="mt-6"
+                  />
+                </>
+              )}
             </div>
           ) : (
             prep.access !== undefined && (

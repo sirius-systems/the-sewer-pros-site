@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
+import { CameraImageSlot } from '../CameraImageSlot'
+import { resolveHubImage, type HubImageKey } from '@/data/business/hub-images'
 import type { PageId } from '@/types'
 
 /**
@@ -62,6 +64,7 @@ export function LimitsPanel({
   cannot,
   callout,
   related,
+  image,
   surface = 'default',
 }: {
   id: string
@@ -76,11 +79,30 @@ export function LimitsPanel({
   cannot: readonly string[]
   callout?: string
   related?: { lead: string; pageId: PageId; label: string }
+  /** A photo beside the heading. Absent, or no file and no review slot: heading only. */
+  image?: HubImageKey
   surface?: 'default' | 'muted'
 }) {
+  const heading = (
+    <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
+  )
+  const showImage = image !== undefined && resolveHubImage(image) !== null
   return (
     <Section density="dense" surface={surface} labelledBy={id}>
-      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
+      {showImage && image !== undefined ? (
+        <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-7">{heading}</div>
+          <div className="lg:col-span-5">
+            <CameraImageSlot
+              slot={image}
+              hideCaption
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </div>
+        </div>
+      ) : (
+        heading
+      )}
       <div className="mt-8 grid overflow-hidden rounded-md border border-border md:grid-cols-2">
         <div className="bg-surface p-6 sm:p-8">
           <h3 className="text-h4 font-semibold text-foreground">{canTitle}</h3>

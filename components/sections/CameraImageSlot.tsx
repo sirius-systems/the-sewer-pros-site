@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { cn } from '@/lib/utils/cn'
+import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { resolveHubImage, type HubImageKey } from '@/data/business/hub-images'
 
 /**
@@ -32,6 +33,22 @@ export function CameraImageSlot({
 }: CameraImageSlotProps) {
   const image = resolveHubImage(slot)
   if (image === null) return null
+
+  // A slot with a `pending` label shows the shared pending-photography box
+  // (flag-gated upstream) and never a caption. Every other slot is unchanged.
+  if (image.placeholder && 'pending' in image) {
+    return (
+      <figure className={className}>
+        <div data-image-placeholder={slot} className="[&_.font-mono]:text-muted-foreground">
+          <ImagePlaceholder
+            label={image.pending.label}
+            filename={image.preferred.split('/').pop()}
+            aspect={image.pending.aspect}
+          />
+        </div>
+      </figure>
+    )
+  }
 
   return (
     <figure className={className}>

@@ -5200,6 +5200,36 @@ The owner confirmed that the "RIDGID 7500" named in DEC-132 is the RIDGID K-7500
 
 A review of DEC-132 found its statements accurate: `58176d1` did change `CLAUDE.md` and `docs/01`, but only as one-line pointers to DEC-132, and neither file listed the products. That left the full rule in the check script and the DEC text only, and the pointer named "RIDGID 7500", which DEC-133 later corrected to RIDGID K-7500. As of this commit, `CLAUDE.md` section 24 carries the full equipment rule (confirmed names in exact spelling, the plain-mention format, the never-published list, the no-JSON-LD rule and the `checkEquipmentNames` guard), and `docs/01` keeps one pointer line, updated to cite DEC-132 as amended by DEC-133 and the `CLAUDE.md` rule. No other mismatch was found in DEC-132 or DEC-133. No business fact was added or changed; the confirmed products and usage rules are exactly those in DEC-132 as amended by DEC-133.
 
+## DEC-135 - Recurring Sewer Backup Diagnosis Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-recurring-sewer-backup-diagnosis` entry only)
+* `types/content.ts`, `components/templates/ServicePageTemplateV2.tsx`, `components/sections/CameraImageSlot.tsx`, `components/sections/service-v2/` (`SignalList`, `LimitsPanel`, `ProcessTimeline`, `DecisionPanel`): additive optional fields only (`causes`, `hero.slot`, `definition.image`, `limits.image`, `process.prep.secondImage`, `decision.table`, and `surface`, `numbered` and `density` options). Every other page's static export is unchanged.
+* `data/business/recurring-images.ts` (new), `data/business/hub-images.ts`: seven pending-photography slots, shown only while the slot flag is on
+* `scripts/verify-recurring-sewer-backup-diagnosis-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-recurring-sewer-backup-diagnosis` row)
+
+The recurring sewer backup diagnosis page was moved from the service template to Service Page Template v2. The route, page id, parent, H1 (`Recurring Sewer Backup Diagnosis`) and indexability are unchanged; the SEO title is `Recurring Sewer Backup Diagnosis`. The page gained a definition with the residential scope box, seven symptoms, a causes list, a "may document / cannot confirm" panel, a six-step process with an access and preparation block, a cleaning, camera and locating comparison with a "where to start" list and a hydro jetting note, an independent band, a seven-item ask list with a "why keep them" panel, three related situations, three market cards and a 29-question FAQ in five groups. The old copy claims that diagnosis "establishes the mechanism", that locating makes a defect position "known rather than approximate", and that diagnosis shows "whether cleaning can manage it or whether it will need addressing structurally" were removed. The page names no equipment, states no price, duration, interval, offer (apart from the DEC-088 wording, see DEC-136), guarantee, warranty, licence or emergency service, carries no phone number or placeholder text, and links no unbuilt page. The independent second-opinion page is not built, so it is neither linked nor listed in the related cards. No business fact was added. The owner confirmation of 2026-10-05 applies: when a camera is used, the inspection video and written findings are included.
+
+## DEC-136 - DEC-088 Free-Estimate and Same-Day Wording Extended to the Recurring Sewer Backup Diagnosis Page
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-088
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-recurring-sewer-backup-diagnosis` entry only)
+* `scripts/verify-recurring-sewer-backup-diagnosis-page.mjs`
+
+On 2026-10-05 the owner agreed that the DEC-088 free-estimate and same-day wording may appear on the recurring sewer backup diagnosis page, in exactly three places and nowhere else on it. The cost FAQ ("How long does it take, and how much does it cost?") and the final request intro each carry "Ask about a free estimate before scheduling." The same-day FAQ ("Can you come the same day, and is this emergency service?") carries "Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends. We do not offer 24/7 or emergency service." The verify script fails if either string appears anywhere else on the page or is reworded. No financing, warranty, price, response-time or emergency claim is added; DEC-088 is not extended to any other page by this entry.
+
 ---
 
 # 26. Decision Quality Standard

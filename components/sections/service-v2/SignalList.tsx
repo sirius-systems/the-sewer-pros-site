@@ -17,6 +17,9 @@ export function SignalList({
   after,
   items,
   image,
+  surface = 'muted',
+  numbered = true,
+  density = 'standard',
 }: {
   id: string
   eyebrow?: string
@@ -25,10 +28,16 @@ export function SignalList({
   after?: ReactNode
   items: readonly { title: string; description?: string }[]
   image?: HubImageKey
+  /** Absent: muted. */
+  surface?: 'default' | 'muted'
+  /** `false` renders plain bullets (no numerals, no headings). Absent: numbered. */
+  numbered?: boolean
+  /** Spacing; the template declares the same value to the rhythm check. Absent: standard. */
+  density?: 'standard' | 'dense'
 }) {
   const showImage = image !== undefined && resolveHubImage(image) !== null
   return (
-    <Section density="standard" surface="muted" labelledBy={id}>
+    <Section density={density} surface={surface} labelledBy={id}>
       <div className="grid gap-x-12 gap-y-8 lg:grid-cols-12 lg:items-start">
         {showImage && (
           <div className="lg:col-span-5">
@@ -56,7 +65,22 @@ export function SignalList({
             }
           />
           )
-          const list = (
+          const list = numbered === false ? (
+          <ul className="mt-8 border-t border-border">
+            {items.map((item) => (
+              <li
+                key={item.title}
+                className="flex gap-3 border-b border-border py-3 text-body-sm text-foreground"
+              >
+                <span
+                  aria-hidden="true"
+                  className="mt-2 size-1.5 shrink-0 rounded-full bg-accent-secondary"
+                />
+                <span>{item.title}</span>
+              </li>
+            ))}
+          </ul>
+          ) : (
           <ol className="mt-8 border-t border-border">
             {items.map((item, index) => (
               <li
