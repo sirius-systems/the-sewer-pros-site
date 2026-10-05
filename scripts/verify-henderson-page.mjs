@@ -384,14 +384,20 @@ const slotBoxes = mainHtml.match(/Image slot: [a-z-]+/g) ?? []
 check('border-dashed appears only on labelled slot boxes', dashed === slotBoxes.length, `${dashed} vs ${slotBoxes.length}`)
 const got = slotBoxes.map((s) => s.replace('Image slot: ', ''))
 console.log(`INFO  slot placeholders drawn (${got.length}): ${got.join(', ')}`)
-const DEFINED = ['henderson-hero', 'svc-camera', 'svc-cleaning', 'svc-jetting', 'svc-cleaning-camera', 'svc-locating', 'svc-drain', 'svc-prepurchase', 'svc-backup', 'svc-maintenance', 'system-street', 'call-cleanout', 'program-footage', 'so-inspect', 'so-document', 'so-decide', 'buy-buyer', 'buy-agent', 'final-bg']
-const definedIds = [...contentSrc.matchAll(/^\s+id: '([a-z-]+)',$/gm)].map((m) => m[1])
-check('exactly the 19 expected slot ids are defined in the module', JSON.stringify(definedIds) === JSON.stringify(DEFINED), definedIds.join(','))
-check('no defined slot has a src yet', !/^\s+src: '/m.test(contentSrc.slice(contentSrc.indexOf('const IMAGE_SLOTS'), contentSrc.indexOf('function slotImage'))))
+// Slot ids come from the module's own IMAGE_SLOTS list, not a hard-coded list or count.
+// A slot with no `src` must draw exactly one labelled box while the flag is on. That
+// includes `final-bg`: the composition drops a placeholder final-CTA *background*, but
+// the module's opt-in `finalCta.slotPlaceholder` field makes RichLocationComposition
+// render the labelled box above the final form, so `final-bg` draws like every other slot.
+const slotBlock = contentSrc.slice(contentSrc.indexOf('const IMAGE_SLOTS'), contentSrc.indexOf('function slotImage')).replace(/\r\n/g, '\n')
+const slotObjs = [...slotBlock.matchAll(/^  \{\n([\s\S]*?)^  \},?$/gm)].map((m) => m[1])
+const definedIds = slotObjs.map((o) => o.match(/id: '([a-z-]+)'/)?.[1])
+const DEFINED = slotObjs.filter((o) => !/^\s+src: '/m.test(o)).map((o) => o.match(/id: '([a-z-]+)'/)?.[1])
+check('IMAGE_SLOTS defines unique slot ids', definedIds.length > 0 && new Set(definedIds).size === definedIds.length, definedIds.join(','))
+console.log(`INFO  slots defined: ${definedIds.length}; without src (expected boxes): ${DEFINED.length}`)
 if (PLACEHOLDERS_ON) {
-  check('every defined slot except final-bg draws a labelled box, once', DEFINED.filter((e) => e !== 'final-bg').every((e) => got.includes(e)) && new Set(got).size === got.length && got.every((g) => DEFINED.includes(g)), got.join(', '))
+  check(`exactly one labelled box per slot without a src (${DEFINED.length}), none extra`, DEFINED.every((e) => got.filter((g) => g === e).length === 1) && got.length === DEFINED.length && got.every((g) => DEFINED.includes(g)), got.join(', '))
   console.log(`INFO  final-bg box drawn: ${got.includes('final-bg')}`)
-  check('18 or 19 visible placeholder boxes (final-bg may or may not draw in this repo)', got.length === 18 || got.length === 19, String(got.length))
   check('no existing or rendered art on the page', !/<img[^>]+\/images\//.test(mainHtml) && !/\/_next\/image\?url=%2Fimages/.test(mainHtml))
   const boxes = [...mainHtml.matchAll(/Image slot: ([a-z-]+)<\/p><p>(16:9|4:3)<\/p><p>([^<]+)<\/p>/g)]
   check('each slot box is well-formed (id, ratio, shot text)', boxes.length === got.length, `${boxes.length} well-formed of ${got.length}`)
