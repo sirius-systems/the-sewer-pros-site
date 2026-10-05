@@ -16,6 +16,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { checkServiceSchema } from './lib/service-page-checks.mjs'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'sewer-cleaning-camera-inspection', 'index.html')
@@ -87,6 +88,7 @@ check('heading order has no skipped level', !skip, levels.join(''))
 const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
 check('one JSON-LD block', ld.length === 1, String(ld.length))
 const graph = ld[0]?.['@graph'] ?? []
+checkServiceSchema({ html, check, origin: ORIGIN, serviceName: NAME })
 const types = graph.map((n) => n['@type'])
 check('Organization first', types[0] === 'Organization', JSON.stringify(types))
 const serviceNodes = graph.filter((n) => n['@type'] === 'Service')

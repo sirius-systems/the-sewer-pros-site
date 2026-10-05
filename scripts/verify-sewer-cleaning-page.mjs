@@ -13,6 +13,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { checkRelatedCards, checkServiceSchema } from './lib/service-page-checks.mjs'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'sewer-cleaning', 'index.html')
@@ -74,6 +75,7 @@ check('heading order has no skipped level', !skip, levels.join(''))
 const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
 check('one JSON-LD block', ld.length === 1, String(ld.length))
 const graph = ld[0]?.['@graph'] ?? []
+checkServiceSchema({ html, check, origin: ORIGIN, serviceName: 'Sewer Cleaning' })
 const types = graph.map((n) => n['@type'])
 check('Organization first', types[0] === 'Organization', JSON.stringify(types))
 check('one Service node', types.filter((t) => t === 'Service').length === 1, JSON.stringify(types))
@@ -171,8 +173,7 @@ check('"On this page" nav renders exactly once in the DOM', (main.match(/aria-la
 check('nav is not hidden from assistive technology', !/aria-hidden="true"[^>]*aria-labelledby="on-this-page"|aria-labelledby="on-this-page"[^>]*aria-hidden="true"/.test(navBlock) && !/<nav[^>]*\shidden/.test(navBlock))
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
-const relatedBlock = (main.match(/<aside[^>]*aria-labelledby="related"[\s\S]*?<\/aside>/) || [''])[0]
-check('related list contains 3 links', (relatedBlock.match(/<li[\s>]/g) || []).length === 3 && (relatedBlock.match(/<a /g) || []).length === 3, String((relatedBlock.match(/<a /g) || []).length))
+checkRelatedCards({ main, check, expectedHrefs: ['/services/hydro-jetting/', '/services/sewer-cleaning-camera-inspection/', '/services/sewer-camera-inspection/'] })
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
 const topicHrefs = [...topicBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('FAQ topic list has four anchors that resolve', topicHrefs.length === 4 && topicHrefs.every((h) => ids.includes(h)))

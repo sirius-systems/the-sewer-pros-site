@@ -14,6 +14,7 @@
  * FAQPage JSON-LD must equal the visible FAQ (DEC-114).
  */
 import fs from 'node:fs'
+import { checkRelatedCards, checkServiceSchema } from './lib/service-page-checks.mjs'
 import path from 'node:path'
 
 const ROOT = path.resolve('out')
@@ -80,6 +81,7 @@ check('heading order has no skipped level', !skip, levels.join(''))
 const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
 check('one JSON-LD block', ld.length === 1, String(ld.length))
 const graph = ld[0]?.['@graph'] ?? []
+checkServiceSchema({ html, check, origin: ORIGIN, serviceName: 'Hydro Jetting' })
 const types = graph.map((n) => n['@type'])
 check('Organization first', types[0] === 'Organization', JSON.stringify(types))
 check('one Service node', types.filter((t) => t === 'Service').length === 1, JSON.stringify(types))
@@ -187,8 +189,7 @@ check('every "On this page" anchor resolves', navHrefs.every((h) => ids.includes
 check('"On this page" nav renders exactly once in the DOM', (main.match(/aria-labelledby="on-this-page"/g) || []).length === 1)
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
-const relatedBlock = (main.match(/<aside[^>]*aria-labelledby="related"[\s\S]*?<\/aside>/) || [''])[0]
-check('related list contains 4 links', (relatedBlock.match(/<li[\s>]/g) || []).length === 4 && (relatedBlock.match(/<a /g) || []).length === 4, String((relatedBlock.match(/<a /g) || []).length))
+checkRelatedCards({ main, check, expectedHrefs: ['/services/sewer-cleaning/', '/services/sewer-camera-inspection/', '/services/drain-cleaning/', '/services/sewer-line-locating/'] })
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
 const topicHrefs = [...topicBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('FAQ topic list has five anchors that resolve', topicHrefs.length === 5 && topicHrefs.every((h) => ids.includes(h)), String(topicHrefs.length))

@@ -14,6 +14,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { checkRelatedCards, checkServiceSchema } from './lib/service-page-checks.mjs'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'sewer-camera-inspection', 'index.html')
@@ -72,6 +73,7 @@ check('heading order has no skipped level', !skip, levels.join(''))
 const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]))
 check('one JSON-LD block', ld.length === 1, String(ld.length))
 const graph = ld[0]?.['@graph'] ?? []
+checkServiceSchema({ html, check, origin: ORIGIN, serviceName: 'Sewer Camera Inspection' })
 const types = graph.map((n) => n['@type'])
 check('Organization first', types[0] === 'Organization', JSON.stringify(types))
 check('one Service node', types.filter((t) => t === 'Service').length === 1, JSON.stringify(types))
@@ -146,9 +148,7 @@ check('nav is not hidden from assistive technology', !/aria-hidden="true"[^>]*ar
 // The nav lists only sections that rendered: each target is a heading inside main.
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
-const relatedBlock = (main.match(/<aside[^>]*aria-labelledby="related"[\s\S]*?<\/aside>/) || [''])[0]
-check('related list contains all 8 links', (relatedBlock.match(/<li[\s>]/g) || []).length === 8 && (relatedBlock.match(/<a /g) || []).length === 8, String((relatedBlock.match(/<a /g) || []).length))
-check('related list carries the two-column class', /sm:columns-2/.test(relatedBlock))
+checkRelatedCards({ main, check, expectedHrefs: ['/services/sewer-cleaning-camera-inspection/', '/services/pre-purchase-sewer-inspection/', '/services/sewer-cleaning/', '/services/hydro-jetting/', '/services/sewer-line-locating/', '/services/recurring-sewer-backup-diagnosis/', '/resources/what-is-in-a-sewer-camera-inspection-report/', '/resources/how-to-read-a-sewer-camera-inspection-video/'] })
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
 const topicHrefs = [...topicBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('FAQ topic list has five anchors that resolve', topicHrefs.length === 5 && topicHrefs.every((h) => ids.includes(h)))
