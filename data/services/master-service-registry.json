@@ -306,7 +306,7 @@
         "san-diego-ca": "supported_by_existing_combined_service",
         "las-vegas-nv": "supported_by_existing_combined_service"
       },
-      "notes": "Derived directly from the existing cleaning + camera workflow for customers experiencing multiple backups."
+      "notes": "Derived directly from the existing cleaning & camera workflow for customers experiencing multiple backups."
     },
     {
       "service_id": "svc-preventative-sewer-maintenance",
@@ -763,9 +763,9 @@
     }
   },
   "source_notes": [
-    "Both existing public sites list the same six core specialties: sewer camera inspection, sewer cleaning, hydro jetting, sewer cleaning + camera inspection, line locating, and drain cleaning.",
+    "Both existing public sites list the same six core specialties: sewer camera inspection, sewer cleaning, hydro jetting, sewer cleaning & camera inspection, line locating, and drain cleaning.",
     "Current camera-inspection content explicitly supports pre-purchase/home-buyer intent and photo/video reporting.",
-    "Current combined cleaning + camera content explicitly supports recurring-backup diagnosis and independent third-party evaluation because the company states it does not perform broken-line repairs.",
+    "Current combined cleaning & camera content explicitly supports recurring-backup diagnosis and independent third-party evaluation because the company states it does not perform broken-line repairs.",
     "Current hydro-jetting content explicitly supports grease/sludge removal, commercial property use cases, food establishments, and scheduled preventative maintenance.",
     "The St. Louis site states it is licensed through most municipal sewer lateral programs for submitting reports; exact program coverage must be validated before localized claims.",
     "Las Vegas service availability is part of the project scope supplied by the user, but each service remains operational-confirmation-required until the company confirms the Las Vegas service menu."

@@ -50,7 +50,7 @@ This registry is the normalized service source of truth for global service pages
 | Sewer Camera Inspection | `/services/sewer-camera-inspection/` | inspection_diagnostics | full | Confirmed | Confirmed | Confirm |
 | Sewer Cleaning | `/services/sewer-cleaning/` | cleaning | full | Confirmed | Confirmed | Confirm |
 | Hydro Jetting | `/services/hydro-jetting/` | cleaning | full | Confirmed | Confirmed | Confirmed: DEC-076, DEC-080. |
-| Sewer Cleaning + Camera Inspection | `/services/sewer-cleaning-camera-inspection/` | inspection_diagnostics | full | Confirmed | Confirmed | Confirm |
+| Sewer Cleaning & Camera Inspection | `/services/sewer-cleaning-camera-inspection/` | inspection_diagnostics | full | Confirmed | Confirmed | Confirm |
 | Sewer Line Locating | `/services/sewer-line-locating/` | locating | full | Confirmed | Confirmed | Confirm |
 | Drain Cleaning | `/services/drain-cleaning/` | cleaning | full | Confirmed | Confirmed | Confirm |
 
@@ -136,7 +136,7 @@ These pages are supported by current service behavior or brand positioning but a
 - **Market status:** St. Louis = Confirmed; San Diego = Confirmed; Las Vegas = Confirmed
 - **Notes:** Current sites explicitly position hydro jetting for grease/sludge removal and recurring preventative maintenance, including commercial properties and food establishments. Confirmed: DEC-076, DEC-080.
 
-### Sewer Cleaning + Camera Inspection
+### Sewer Cleaning & Camera Inspection
 
 - **ID:** `svc-sewer-cleaning-camera-inspection`
 - **Type:** `core_service`
@@ -214,7 +214,7 @@ These pages are supported by current service behavior or brand positioning but a
 - **Primary audiences:** homeowners, landlords, property-managers, commercial-property-owners
 - **Aliases:** repeated sewer backup diagnosis, multiple sewer backups, recurring sewer clog diagnosis
 - **Market status:** St. Louis = Supported; San Diego = Supported; Las Vegas = Confirm
-- **Notes:** Derived directly from the existing cleaning + camera workflow for customers experiencing multiple backups.
+- **Notes:** Derived directly from the existing cleaning & camera workflow for customers experiencing multiple backups.
 
 ### Preventative Sewer Maintenance
 
@@ -410,9 +410,9 @@ These pages are supported by current service behavior or brand positioning but a
 
 ## Source support used to normalize the registry
 
-- Current St. Louis and San Diego sites both list the same six core specialties: sewer camera inspection, sewer cleaning, hydro jetting, sewer cleaning + camera inspection, line locating, and drain cleaning.
+- Current St. Louis and San Diego sites both list the same six core specialties: sewer camera inspection, sewer cleaning, hydro jetting, sewer cleaning & camera inspection, line locating, and drain cleaning.
 - Current sewer-camera content promotes pre-purchase inspection, condition reporting, and buyer/agent use cases.
-- Current cleaning + camera content explicitly supports recurring-backup diagnosis and independent third-party evaluation.
+- Current cleaning & camera content explicitly supports recurring-backup diagnosis and independent third-party evaluation.
 - Current hydro-jetting content explicitly supports grease/sludge removal, commercial properties/food establishments, and scheduled preventative maintenance.
 - Current St. Louis homepage states the company is licensed through most municipal sewer lateral programs for submitting reports.
 

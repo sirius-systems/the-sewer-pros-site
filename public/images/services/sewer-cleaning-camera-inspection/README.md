@@ -1,4 +1,4 @@
-# Sewer cleaning + camera inspection hub images
+# Sewer cleaning & camera inspection hub images
 
 Slots for `/services/sewer-cleaning-camera-inspection/`. Save a real file at the
 exact name below and it is used at the next build. Until then development shows

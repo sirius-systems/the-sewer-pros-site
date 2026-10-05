@@ -1650,7 +1650,7 @@ export interface ServicePageContentV2 {
   /**
    * The page's approved display name for its own breadcrumb entry and
    * Service schema node, where it differs from the shared registry name
-   * (for example the plus sign in "Sewer Cleaning + Camera Inspection").
+   * (for example a punctuation variant of the registry name).
    * Absent: the registry name. Never changes any other page.
    */
   displayName?: string
