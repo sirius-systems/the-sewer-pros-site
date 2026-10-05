@@ -227,20 +227,17 @@ check('no literal [CONFIRM placeholder', !/\[CONFIRM/i.test(html))
 // The owner-approved DEC-088 sentences and the one 24/7 sentence are the only
 // permitted hits for their words. Count each, then remove them before scanning.
 const FREE = 'Ask about a free estimate before scheduling.'
-const FREE_FAQ = 'Ask about a free estimate when you schedule.'
 const SAME =
   'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends.'
 const NOT247 = 'We do not offer 24/7 or emergency service.'
 const v = flat(visible)
-check('free-estimate sentence appears 3 times (trust strip, cost FAQ, final request)', count(v, flat(FREE)) === 3, String(count(v, flat(FREE))))
-check('free-estimate FAQ variant appears once (same-day FAQ)', count(v, flat(FREE_FAQ)) === 1, String(count(v, flat(FREE_FAQ))))
+check('free-estimate sentence appears 4 times (trust strip, same-day FAQ, cost FAQ, final request)', count(v, flat(FREE)) === 4, String(count(v, flat(FREE))))
 check('same-day sentence appears 3 times (trust strip, same-day FAQ, final request)', count(v, flat(SAME)) === 3, String(count(v, flat(SAME))))
 check('"We do not offer 24/7 or emergency service." appears once', count(v, flat(NOT247)) === 1, String(count(v, flat(NOT247))))
 
 const scrubbed = (s) =>
   flat(s)
     .split(flat(FREE)).join(' ')
-    .split(flat(FREE_FAQ)).join(' ')
     .split(flat(SAME)).join(' ')
     .split(flat(NOT247)).join(' ')
     .split('Is hydro jetting better than snaking?').join(' ')

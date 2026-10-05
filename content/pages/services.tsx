@@ -1652,7 +1652,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'Planning',
           question: 'Do you offer same-day hydro jetting?',
           answer:
-            'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends. We do not offer 24/7 or emergency service. Ask about a free estimate when you schedule.',
+            'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends. We do not offer 24/7 or emergency service. Ask about a free estimate before scheduling.',
         },
         {
           group: 'Planning',
