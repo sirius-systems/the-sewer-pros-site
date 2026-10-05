@@ -1653,12 +1653,20 @@ export interface ServicePageContentV2 {
     cardTitle: string
     /** One line under the hero card heading. */
     cardIntro?: string
+    /** Boxed scope statement under the scope bullets, inside the hero. */
+    scopeStatement?: string
   }
+  /**
+   * Replaces the shared trust strip on this page. Plain statements, each
+   * of which must already be a verified fact or owner-approved wording.
+   */
+  trust?: readonly string[]
   definition?: {
     eyebrow?: string
     title: string
     answer: string
-    supporting: readonly string[]
+    /** Plain text, or text with inline approved links. */
+    supporting: readonly ReactNode[]
     /** Boxed scope statement under the supporting paragraphs. */
     scope?: string
   }
@@ -1667,13 +1675,16 @@ export interface ServicePageContentV2 {
     title: string
     /** Plain text, or text with inline approved links. */
     note?: ReactNode
-    items: readonly { title: string; description: string }[]
+    /** Text after the list, with the same inline-link styling as `note`. */
+    after?: ReactNode
+    /** `description` is optional: a bare sign renders as a title only. */
+    items: readonly { title: string; description?: string }[]
     image?: HubImageKey
   }
   limits?: {
     eyebrow?: string
     title: string
-    intro: string
+    intro?: string
     canTitle: string
     /** One line under the "may show" column heading. */
     canLead?: string
@@ -1719,17 +1730,21 @@ export interface ServicePageContentV2 {
     answer: string
     note?: string
     listTitle: string
-    list: readonly string[]
+    /** Plain text, or text with inline approved links. */
+    list: readonly ReactNode[]
     links: readonly ServiceV2Link[]
+    /** A short titled paragraph under the note. */
+    aside?: { title: string; body: string }
   }
   /**
    * Replaces the shared independent band on this page (the shared band
    * renders when absent). Steps are numbered; the link is optional.
    */
   independent?: {
-    eyebrow: string
+    eyebrow?: string
     title: string
-    steps: readonly { title: string; body: string }[]
+    /** Absent: the band is the heading, the note and the link only. */
+    steps?: readonly { title: string; body: string }[]
     note: string
     link?: { pageId: PageId; label: string }
   }
@@ -1748,14 +1763,17 @@ export interface ServicePageContentV2 {
       pageId?: PageId
       current?: boolean
     }[]
-    note?: string
+    /** Plain text, or text with inline approved links. */
+    note?: ReactNode
   }
   ask?: {
     eyebrow?: string
     title: string
     intro: string
-    items: readonly { title: string; description: string }[]
-    keep: { title: string; body: readonly string[]; image?: HubImageKey }
+    /** `description` is optional: a bare question renders as a title only. */
+    items: readonly { title: string; description?: string }[]
+    /** Absent: the list takes the full width. */
+    keep?: { title: string; body: readonly string[]; image?: HubImageKey }
   }
   /** What changes the scope: the same layout as `ask`, on the white surface. */
   factors?: {
@@ -1781,12 +1799,14 @@ export interface ServicePageContentV2 {
   }
   audiences?: {
     title: string
-    intro: string
+    intro?: string
     items: readonly {
-      pageId: PageId
+      /** Absent (with `actionLabel`): the row is text, not a link. */
+      pageId?: PageId
       audience: string
-      description: string
-      actionLabel: string
+      /** Plain text, or text with inline approved links. */
+      description: ReactNode
+      actionLabel?: string
     }[]
   }
   /** Reuses `ServiceHubContent['marketRouter']` unchanged. */
@@ -1823,6 +1843,8 @@ export interface ServicePageContentV2 {
     intro: readonly string[]
     scopeNote?: string
     submitLabel?: string
+    /** A plain link under the intro, for example to the contact page. */
+    secondaryAction?: { href: string; label: string }
   }
   /** Preselects "Service needed" in the hero card and the request form. */
   defaultServiceId?: ServiceId

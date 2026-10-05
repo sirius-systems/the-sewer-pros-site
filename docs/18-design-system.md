@@ -727,6 +727,8 @@ Rhythm rules: exactly two brand surfaces (the independent band and the final req
 
 Optional sections added with DEC-124, each rendered only when a page supplies its field: a methods table (muted; dense), a page-specific independent band (brand; standard) that replaces the shared one, a scope-factors list (white; standard, the ask-list layout), a myth list (muted; dense) and a situation list (white; dense). A page may set `limitsAfterProcess` to place the limits panel after the process and methods sections, and `navLabels` to narrow and relabel the "On this page" list.
 
+Added with DEC-125, each optional: a page-owned trust strip (`TrustStrip`, white; dense) that replaces the shared one-line trust bar when a page's verified statements are longer than it can hold, and optional fields on existing sections (a boxed hero scope statement; bare signals and ask questions with no description; link-carrying definition, decision and audience rows; an eyebrow-less independent band without steps; a decision-panel aside; a request-section secondary link). A page that supplies none of them renders exactly as before.
+
 # 18. Market / Location Page Template
 
 Primary reference:

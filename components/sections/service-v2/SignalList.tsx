@@ -14,6 +14,7 @@ export function SignalList({
   eyebrow,
   title,
   note,
+  after,
   items,
   image,
 }: {
@@ -21,7 +22,8 @@ export function SignalList({
   eyebrow?: string
   title: string
   note?: ReactNode
-  items: readonly { title: string; description: string }[]
+  after?: ReactNode
+  items: readonly { title: string; description?: string }[]
   image?: HubImageKey
 }) {
   const showImage = image !== undefined && resolveHubImage(image) !== null
@@ -37,8 +39,9 @@ export function SignalList({
             />
           </div>
         )}
-        <div className={showImage ? 'lg:col-span-7' : 'lg:col-span-12'}>
-          <SectionHeading
+        {(() => {
+          const heading = (
+            <SectionHeading
             id={id}
             eyebrow={eyebrow}
             title={title}
@@ -52,6 +55,8 @@ export function SignalList({
               )
             }
           />
+          )
+          const list = (
           <ol className="mt-8 border-t border-border">
             {items.map((item, index) => (
               <li
@@ -68,14 +73,33 @@ export function SignalList({
                   <h3 className="text-h4 font-semibold text-foreground">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-body-sm text-muted-foreground">
-                    {item.description}
-                  </p>
+                  {item.description !== undefined && (
+                    <p className="mt-1 text-body-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  )}
                 </div>
               </li>
             ))}
           </ol>
-        </div>
+          )
+          const columnClass = showImage ? 'lg:col-span-7' : 'lg:col-span-12'
+          // Two branches so an entry without `after` renders the same tree as before.
+          return after === undefined ? (
+            <div className={columnClass}>
+              {heading}
+              {list}
+            </div>
+          ) : (
+            <div className={columnClass}>
+              {heading}
+              {list}
+              <p className="mt-6 max-w-[var(--container-reading)] text-body text-muted-foreground [&_a]:font-semibold [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground">
+                {after}
+              </p>
+            </div>
+          )
+        })()}
       </div>
     </Section>
   )

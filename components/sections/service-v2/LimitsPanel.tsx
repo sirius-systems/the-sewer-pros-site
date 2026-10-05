@@ -66,7 +66,7 @@ export function LimitsPanel({
   id: string
   eyebrow?: string
   title: string
-  intro: string
+  intro?: string
   canTitle: string
   canLead?: string
   can: readonly string[]
@@ -78,7 +78,7 @@ export function LimitsPanel({
 }) {
   return (
     <Section density="dense" surface="default" labelledBy={id}>
-      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={<p>{intro}</p>} />
+      <SectionHeading id={id} eyebrow={eyebrow} title={title} intro={intro !== undefined ? <p>{intro}</p> : undefined} />
       <div className="mt-8 grid overflow-hidden rounded-md border border-border md:grid-cols-2">
         <div className="bg-surface p-6 sm:p-8">
           <h3 className="text-h4 font-semibold text-foreground">{canTitle}</h3>

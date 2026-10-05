@@ -21,18 +21,18 @@ export function AskList({
   eyebrow?: string
   title: string
   intro: string
-  items: readonly { title: string; description: string }[]
-  keep: { title: string; body: readonly string[]; image?: HubImageKey }
+  items: readonly { title: string; description?: string }[]
+  keep?: { title: string; body: readonly string[]; image?: HubImageKey }
   surface?: 'default' | 'muted'
 }) {
   const keepImage =
-    keep.image !== undefined && resolveHubImage(keep.image) !== null
+    keep?.image !== undefined && resolveHubImage(keep.image) !== null
       ? keep.image
       : undefined
   return (
     <Section density="standard" surface={surface} labelledBy={id}>
       <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12 lg:items-start">
-        <div className="lg:col-span-7">
+        <div className={keep !== undefined ? 'lg:col-span-7' : 'lg:col-span-12'}>
           <SectionHeading
             id={id}
             eyebrow={eyebrow}
@@ -55,14 +55,17 @@ export function AskList({
                   <h3 className="text-h4 font-semibold text-foreground">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-body-sm text-muted-foreground">
-                    {item.description}
-                  </p>
+                  {item.description !== undefined && (
+                    <p className="mt-1 text-body-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  )}
                 </div>
               </li>
             ))}
           </ol>
         </div>
+        {keep !== undefined && (
         <div className="lg:col-span-5">
           <div className="overflow-hidden rounded-md border border-border bg-surface">
             {keepImage !== undefined && (
@@ -86,6 +89,7 @@ export function AskList({
             </div>
           </div>
         </div>
+        )}
       </div>
     </Section>
   )

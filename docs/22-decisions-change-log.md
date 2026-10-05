@@ -5048,6 +5048,24 @@ The sewer cleaning page was moved from the service hub template to Service Page 
 
 ---
 
+## DEC-125 - Hydro Jetting Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-hydro-jetting` entry only)
+* `types/content.ts` (additive: new optional fields on `ServicePageContentV2`)
+* `components/templates/ServicePageTemplateV2.tsx` and `components/sections/service-v2/` (new `TrustStrip`; optional fields and props on existing components)
+* `scripts/verify-hydro-jetting-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-hydro-jetting` row), `docs/18-design-system.md` (Service Page Template v2 subsection)
+
+The hydro jetting page was moved from the service hub template to Service Page Template v2, the third page on it. The route, page id, parent and indexability are unchanged; the H1 is now `Hydro Jetting`. It is the universal, market-neutral page; the per-market service + location pages are built separately. The page gained a "what cleaning can and cannot address" panel, a "camera first or cleaning first" decision panel, a neutral hydro jetting vs. cable cleaning comparison and a 21-question FAQ in five groups. The old comparative claims ("cleans more thoroughly", "deeper clean") are not repeated. This page reuses the DEC-088 owner-approved free-estimate and same-day wording verbatim in the trust strip, the same-day FAQ answer and the final request; no new business fact was added. The page states no price, time, warranty, licence or emergency service, does not say video, written findings, coding, locating or a re-inspection are included, and carries no phone number or placeholder text. The independent second-opinion page is not built, so the one link the copy placed on it was left out. Every template addition is an optional field that renders only when a page supplies it, and a comparison of the static export showed the camera and cleaning pages' rendered HTML unchanged.
+
+---
+
 # 26. Decision Quality Standard
 
 A decision entry should be useful months later.

@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from 'react'
+import Link from 'next/link'
 import { type SectionDensity } from '@/components/ui'
 import {
   Hero,
@@ -34,6 +35,7 @@ import {
   MythList,
   SituationList,
   IndependentBand,
+  TrustStrip,
   type SectionNavItem,
 } from '@/components/sections/service-v2'
 import { PageShell } from './PageShell'
@@ -162,6 +164,33 @@ export function ServicePageTemplateV2({
   const requestImage = v2.images?.request ?? REQUEST_IMAGE
   const flatFaq = v2.faq.map(({ question, answer }) => ({ question, answer }))
 
+  const scopeList = (
+    <ul className="flex flex-col gap-2">
+      {v2.hero.scope.map((point) => (
+        <li key={point} className="flex gap-2">
+          <span aria-hidden="true">-</span>
+          <span className="font-semibold">{point}</span>
+        </li>
+      ))}
+    </ul>
+  )
+  // Two branches so an entry without `scopeStatement` renders the same tree as before.
+  const heroIntro =
+    v2.hero.scopeStatement === undefined ? (
+      <>
+        {content.hero.intro}
+        {scopeList}
+      </>
+    ) : (
+      <>
+        {content.hero.intro}
+        {scopeList}
+        <p className="rounded-md border border-white/40 bg-black/40 p-4 text-body-sm font-semibold">
+          {v2.hero.scopeStatement}
+        </p>
+      </>
+    )
+
   add(
     'sparse',
     'hero',
@@ -169,19 +198,7 @@ export function ServicePageTemplateV2({
       variant="editorial"
       eyebrow={content.hero.eyebrow}
       title={content.hero.title}
-      intro={
-        <>
-          {content.hero.intro}
-          <ul className="flex flex-col gap-2">
-            {v2.hero.scope.map((point) => (
-              <li key={point} className="flex gap-2">
-                <span aria-hidden="true">-</span>
-                <span className="font-semibold">{point}</span>
-              </li>
-            ))}
-          </ul>
-        </>
-      }
+      intro={heroIntro}
       primaryAction={content.hero.primaryAction}
       secondaryAction={content.hero.secondaryAction}
       copyWidth="reading"
@@ -210,7 +227,15 @@ export function ServicePageTemplateV2({
     />,
   )
 
-  add('dense', 'trust', <TrustBar surface="default" />)
+  add(
+    'dense',
+    'trust',
+    v2.trust !== undefined ? (
+      <TrustStrip items={v2.trust} />
+    ) : (
+      <TrustBar surface="default" />
+    ),
+  )
   add('dense', 'counters', <ExperienceCounterStrip surface="muted" />)
 
   if (v2.definition !== undefined) {
@@ -225,8 +250,18 @@ export function ServicePageTemplateV2({
           intro={<p className="text-foreground">{v2.definition.answer}</p>}
         />
         <div className="mt-6 max-w-[var(--container-reading)] space-y-4 text-body text-muted-foreground">
-          {v2.definition.supporting.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+          {v2.definition.supporting.map((paragraph, index) => (
+            <p
+              key={typeof paragraph === 'string' ? paragraph : index}
+              {...(typeof paragraph === 'string'
+                ? {}
+                : {
+                    className:
+                      '[&_a]:font-semibold [&_a]:text-accent-secondary [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground',
+                  })}
+            >
+              {paragraph}
+            </p>
           ))}
         </div>
         {v2.definition.scope !== undefined && (
@@ -247,6 +282,7 @@ export function ServicePageTemplateV2({
         eyebrow={v2.signals.eyebrow}
         title={v2.signals.title}
         note={v2.signals.note}
+        after={v2.signals.after}
         items={v2.signals.items}
         image={v2.signals.image}
       />,
@@ -406,15 +442,33 @@ export function ServicePageTemplateV2({
         visually (still a labelled heading for assistive technology) rather
         than edited out of the shared form.
       */}
-      <div className="[&_h2]:sr-only">
-        <LeadFormSection
-          bare
-          density="standard"
-          idPrefix="request-lead"
-          defaultServiceId={v2.defaultServiceId}
-          submitLabel={v2.request.submitLabel}
-        />
-      </div>
+      {(() => {
+        const leadForm = (
+          <LeadFormSection
+            bare
+            density="standard"
+            idPrefix="request-lead"
+            defaultServiceId={v2.defaultServiceId}
+            submitLabel={v2.request.submitLabel}
+          />
+        )
+        // Two branches so an entry without `secondaryAction` renders the same tree as before.
+        return v2.request.secondaryAction === undefined ? (
+          <div className="[&_h2]:sr-only">{leadForm}</div>
+        ) : (
+          <div className="[&_h2]:sr-only">
+            <p className="mb-4 text-body-sm">
+              <Link
+                href={v2.request.secondaryAction.href}
+                className="font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground"
+              >
+                {v2.request.secondaryAction.label}
+              </Link>
+            </p>
+            {leadForm}
+          </div>
+        )
+      })()}
     </RequestServiceSection>,
   )
 
