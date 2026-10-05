@@ -49,7 +49,7 @@ This registry is the normalized service source of truth for global service pages
 |---|---|---|---|---|---|---|
 | Sewer Camera Inspection | `/services/sewer-camera-inspection/` | inspection_diagnostics | full | Confirmed | Confirmed | Confirm |
 | Sewer Cleaning | `/services/sewer-cleaning/` | cleaning | full | Confirmed | Confirmed | Confirm |
-| Hydro Jetting | `/services/hydro-jetting/` | cleaning | full | Confirmed | Confirmed | Confirm |
+| Hydro Jetting | `/services/hydro-jetting/` | cleaning | full | Confirmed | Confirmed | Confirmed: DEC-076, DEC-080. |
 | Sewer Cleaning + Camera Inspection | `/services/sewer-cleaning-camera-inspection/` | inspection_diagnostics | full | Confirmed | Confirmed | Confirm |
 | Sewer Line Locating | `/services/sewer-line-locating/` | locating | full | Confirmed | Confirmed | Confirm |
 | Drain Cleaning | `/services/drain-cleaning/` | cleaning | full | Confirmed | Confirmed | Confirm |
@@ -133,8 +133,8 @@ These pages are supported by current service behavior or brand positioning but a
 - **Primary intents:** remove grease and sludge; remove stubborn buildup; prevent recurring backups
 - **Primary audiences:** homeowners, property-managers, commercial-property-owners, restaurants, facility-managers
 - **Aliases:** hydro-jetting, sewer jetting, water jetting, high-pressure sewer cleaning
-- **Market status:** St. Louis = Confirmed; San Diego = Confirmed; Las Vegas = Confirm
-- **Notes:** Current sites explicitly position hydro jetting for grease/sludge removal and recurring preventative maintenance, including commercial properties and food establishments.
+- **Market status:** St. Louis = Confirmed; San Diego = Confirmed; Las Vegas = Confirmed
+- **Notes:** Current sites explicitly position hydro jetting for grease/sludge removal and recurring preventative maintenance, including commercial properties and food establishments. Confirmed: DEC-076, DEC-080.
 
 ### Sewer Cleaning + Camera Inspection
 
