@@ -1912,6 +1912,16 @@ export interface ServicePageContentV2 {
   }
   /** Preselects "Service needed" in the hero card and the request form. */
   defaultServiceId?: ServiceId
+  /**
+   * Label for the optional message field in the hero card and the request
+   * form ("(optional)" is added by the field). Absent: "Message".
+   */
+  messageLabel?: string
+  /**
+   * Adds "Service needed" options the shared form list does not carry, so
+   * `defaultServiceId` can preselect one. Absent: the shared list.
+   */
+  extraServiceOptions?: readonly { value: ServiceId; label: string }[]
   /** Images are existing `HubImageKey`s; the hero and request backdrops are paths. */
   images?: { hero?: string; request?: string }
 }

@@ -5138,6 +5138,23 @@ The drain cleaning page was moved from the service hub template to Service Page 
 
 Corrects DEC-129 for the drain cleaning page: the H1 is restored to the original `Drain Cleaning for Slow, Clogged, and Recurring Drains` (the SEO title stays `Drain Cleaning for Slow and Clogged Drains`). The page gained a "one drain or several" symptom table, a six-row terms list, a "what to tell us" list in the request block, and a 37-question FAQ in seven groups, including cost and duration answers that state no figure. No business fact was added; roof-vent access and toilet removal stay off the page. A comparison of the static export showed every other page's rendered output unchanged.
 
+## DEC-131 - Pre-Purchase Sewer Inspection Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-pre-purchase-sewer-inspection` entry only)
+* `types/content.ts`, `components/templates/ServicePageTemplateV2.tsx`, `components/sections/service-v2/ServiceHeroRequestCard.tsx`, `components/sections/LeadFormSection.tsx` (additive optional fields: `messageLabel` and `extraServiceOptions`; each renders only when a page supplies it)
+* `scripts/verify-pre-purchase-sewer-inspection-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-pre-purchase-sewer-inspection` row)
+
+The pre-purchase sewer inspection page was moved from the service hub template to Service Page Template v2. The route, page id, parent, H1 (`Pre-Purchase Sewer Inspection`) and indexability are unchanged; the SEO title is `Pre-Purchase Sewer Inspection (Sewer Scope)`. The page gained a definition, six buyer signals, a "what it may show and what it cannot confirm" panel, a five-step process with an access and preparation block, an inspection-and-cleaning decision panel, the independent band, a five-row comparison, a "what to ask for, and what to keep" section, four evidence examples (the four approved camera-page slots), four audience rows, three market cards and a 29-question FAQ in five groups. The page states no price, duration, turnaround, offer, warranty, licence or emergency service, carries no phone number or placeholder text, and links no unbuilt page. No business fact was added.
+
+Owner confirmations recorded 2026-10-05, applied on this page: a pre-purchase visit always uses a camera, so the inspection video and written findings are stated as included (DEC-127 covers the company-wide rule); the St. Louis contact-page timing sentence ("Note your inspection deadline when you request service, and we will work toward it. Confirm timing with your agent, since inspection periods are short.") is used company-wide, with no duration or delivery time; a pre-purchase inspection is a camera inspection and cleaning is a separate service ("If the camera cannot pass, ask what options apply."); "independent sewer inspection" stays unlinked until that page exists. A comparison of the static export showed every other page's rendered output unchanged.
+
 ---
 
 # 26. Decision Quality Standard

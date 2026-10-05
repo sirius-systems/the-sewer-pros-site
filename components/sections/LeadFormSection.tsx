@@ -107,6 +107,15 @@ const SERVICE_OPTIONS: readonly { value: LeadServiceValue; label: string }[] = [
   { value: 'other', label: 'Other' },
 ]
 
+/** The shared service list, with a page's extra options placed before "Other". */
+function withExtraServiceOptions(
+  extra: readonly { value: LeadServiceValue; label: string }[] | undefined,
+): readonly { value: LeadServiceValue; label: string }[] {
+  if (extra === undefined || extra.length === 0) return SERVICE_OPTIONS
+  const other = SERVICE_OPTIONS.filter((option) => option.value === 'other')
+  return [...SERVICE_OPTIONS.filter((option) => option.value !== 'other'), ...extra, ...other]
+}
+
 /** The three approved markets, using their registry display names. */
 const MARKET_OPTIONS: readonly SelectOption[] = marketList.map((market) => ({
   value: market.id,
@@ -166,6 +175,12 @@ export interface LeadFormSectionProps {
    * `defaultMarketId`: the page heading already names the service.
    */
   defaultServiceId?: LeadServiceValue
+  /**
+   * Extra "Service needed" options, listed before "Other". Absent: the
+   * list every other instance shows. A page passes one only for a
+   * service the shared list does not carry, so it can preselect it.
+   */
+  extraServiceOptions?: readonly { value: LeadServiceValue; label: string }[]
   /** Submit-button text. Defaults to "Request Service", the wording every other instance keeps. */
   submitLabel?: string
   /** Label for the optional Message field. Defaults to "Message", unchanged everywhere else. */
@@ -198,6 +213,7 @@ export function LeadFormSection({
   idPrefix = 'lead',
   defaultMarketId,
   defaultServiceId,
+  extraServiceOptions,
   submitLabel = 'Request Service',
   messageLabel = 'Message',
   messagePlaceholder,
@@ -333,7 +349,7 @@ export function LeadFormSection({
         <Select
           id={`${idPrefix}-service`}
           name="service"
-          options={config?.serviceOptions ?? SERVICE_OPTIONS}
+          options={config?.serviceOptions ?? withExtraServiceOptions(extraServiceOptions)}
           placeholder="Select a service"
           defaultValue={defaultServiceId}
           required
