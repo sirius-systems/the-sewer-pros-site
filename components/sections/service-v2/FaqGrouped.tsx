@@ -29,11 +29,13 @@ export function FaqGrouped({
   eyebrow,
   title,
   entries,
+  surface = 'muted',
 }: {
   id?: string
   eyebrow?: string
   title: string
   entries: readonly GroupedFaqEntry[]
+  surface?: 'default' | 'muted'
 }) {
   const groups: { label: string; id: string; items: GroupedFaqEntry[] }[] = []
   for (const entry of entries) {
@@ -47,7 +49,7 @@ export function FaqGrouped({
       })
   }
   return (
-    <Section density="dense" surface="muted" labelledBy={id}>
+    <Section density="dense" surface={surface} labelledBy={id}>
       <SectionHeading id={id} eyebrow={eyebrow} title={title} />
       <div className="mt-8 grid gap-x-12 gap-y-8 min-[1000px]:grid-cols-[15rem_1fr]">
         <nav

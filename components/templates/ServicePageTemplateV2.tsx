@@ -35,6 +35,7 @@ import {
   MythList,
   SituationList,
   IndependentBand,
+  TellUsList,
   type SectionNavItem,
 } from '@/components/sections/service-v2'
 import { PageShell } from './PageShell'
@@ -112,6 +113,8 @@ export function ServicePageTemplateV2({
   const ids = {
     definition: v2.definition !== undefined ? slug(v2.definition.title) : '',
     signals: v2.signals !== undefined ? slug(v2.signals.title) : '',
+    triage: v2.triage !== undefined ? slug(v2.triage.title) : '',
+    terms: v2.terms !== undefined ? slug(v2.terms.title) : '',
     limits: v2.limits !== undefined ? slug(v2.limits.title) : '',
     secondaryLimits:
       v2.secondaryLimits !== undefined ? slug(v2.secondaryLimits.title) : '',
@@ -141,6 +144,7 @@ export function ServicePageTemplateV2({
   }
   if (v2.definition !== undefined) track('definition', ids.definition, v2.definition.title, false)
   if (v2.signals !== undefined) track('signals', ids.signals, v2.signals.title)
+  if (v2.triage !== undefined) track('triage', ids.triage, v2.triage.title)
   if (v2.limits !== undefined && !limitsLate) track('limits', ids.limits, v2.limits.title)
   if (v2.process !== undefined) track('process', ids.process, v2.process.title)
   if (v2.methods !== undefined && !methodsLate) track('methods', ids.methods, v2.methods.title)
@@ -161,6 +165,7 @@ export function ServicePageTemplateV2({
     track('situations', ids.situations, v2.situations.title)
   }
   if (v2.markets !== undefined) track('markets', v2.markets.id, v2.markets.title)
+  if (v2.terms !== undefined) track('terms', ids.terms, v2.terms.title)
   track('faq', 'faq', v2.faqTitle ?? 'Common questions')
   if (v2.situations !== undefined && situationsLate) {
     track('situations', ids.situations, v2.situations.title)
@@ -297,9 +302,23 @@ export function ServicePageTemplateV2({
     )
   }
 
+  // A triage table shifts the next sections one surface so they keep alternating.
+  const triaged = v2.triage !== undefined
+  if (v2.triage !== undefined && v2.triage.rows.length >= 3) {
+    add('dense', 'triage', <ServiceComparisonTable id={ids.triage} {...v2.triage} />)
+  }
+
   const addLimits = () => {
     if (v2.limits !== undefined) {
-      add('dense', 'limits', <LimitsPanel id={ids.limits} {...v2.limits} />)
+      add(
+        'dense',
+        'limits',
+        triaged ? (
+          <LimitsPanel id={ids.limits} surface="muted" {...v2.limits} />
+        ) : (
+          <LimitsPanel id={ids.limits} {...v2.limits} />
+        ),
+      )
     }
   }
   if (!limitsLate) addLimits()
@@ -315,7 +334,7 @@ export function ServicePageTemplateV2({
         intro={v2.process.intro}
         steps={v2.process.steps}
         prep={v2.process.prep}
-        surface={limitsLate ? 'default' : 'muted'}
+        surface={limitsLate || triaged ? 'default' : 'muted'}
       />,
     )
   }
@@ -358,7 +377,7 @@ export function ServicePageTemplateV2({
       'decision',
       <DecisionPanel
         id={ids.decision}
-        surface={limitsLate ? 'muted' : 'default'}
+        surface={limitsLate || triaged ? 'muted' : 'default'}
         {...v2.decision}
       />,
     )
@@ -445,22 +464,36 @@ export function ServicePageTemplateV2({
     add('standard', 'markets', <MarketRouter content={v2.markets} />)
   }
 
+  if (v2.terms !== undefined) {
+    add('dense', 'terms', <SituationList id={ids.terms} {...v2.terms} />)
+  }
+
   add(
     'dense',
     'faq',
-    <FaqGrouped
-      id="faq"
-      eyebrow={v2.eyebrows?.faq}
-      title={v2.faqTitle ?? 'Common questions'}
-      entries={v2.faq}
-    />,
+    v2.faqSurface === undefined ? (
+      <FaqGrouped
+        id="faq"
+        eyebrow={v2.eyebrows?.faq}
+        title={v2.faqTitle ?? 'Common questions'}
+        entries={v2.faq}
+      />
+    ) : (
+      <FaqGrouped
+        id="faq"
+        eyebrow={v2.eyebrows?.faq}
+        title={v2.faqTitle ?? 'Common questions'}
+        entries={v2.faq}
+        surface={v2.faqSurface}
+      />
+    ),
   )
 
   if (situationsLate) addSituations()
 
   if (content.relatedPageIds !== undefined) {
     add(
-      'dense',
+      v2.relatedColumns === undefined ? 'dense' : 'standard',
       'related',
       v2.relatedColumns === undefined ? (
         <RelatedServiceCards
@@ -476,6 +509,7 @@ export function ServicePageTemplateV2({
           pageIds={content.relatedPageIds}
           descriptions={content.relatedDescriptions}
           columns={v2.relatedColumns}
+          density="standard"
         />
       ),
     )
@@ -491,11 +525,23 @@ export function ServicePageTemplateV2({
         eyebrow: v2.eyebrows?.request,
         title: v2.request.title,
         intro:
-          v2.request.scopeNote !== undefined
+          v2.request.scopeNote !== undefined && v2.request.tellUs === undefined
             ? [...v2.request.intro, v2.request.scopeNote]
             : v2.request.intro,
       }}
       imageSrc={requestImage}
+      introAfter={
+        v2.request.tellUs === undefined ? undefined : (
+          <>
+            <TellUsList title={v2.request.tellUs.title} items={v2.request.tellUs.items} />
+            {v2.request.scopeNote !== undefined && (
+              <p className="mt-6 max-w-[var(--container-reading)] text-body-lg">
+                {v2.request.scopeNote}
+              </p>
+            )}
+          </>
+        )
+      }
     >
       {/*
         The shared form carries its own default "Request service" h2, which

@@ -34,6 +34,7 @@ export function ServiceComparisonTable({
     pageId?: PageId
     current?: boolean
     external?: boolean
+    plain?: boolean
   }[]
   note?: ReactNode
 }) {
@@ -86,6 +87,8 @@ export function ServiceComparisonTable({
                       >
                         {row.service}
                       </Link>
+                    ) : row.plain === true ? (
+                      row.service
                     ) : (
                       <>
                         {row.service}{' '}

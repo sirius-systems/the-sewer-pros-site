@@ -1726,6 +1726,17 @@ export interface ServicePageContentV2 {
   methodsAfterIndependent?: boolean
   /** Moves the situations rows from before the markets to after the FAQ. */
   situationsAfterFaq?: boolean
+  /**
+   * A three-column "what you notice" table directly after the signals.
+   * Setting it moves the limits panel to the muted surface, the process
+   * to white and the decision panel to muted, so the sections keep
+   * alternating. Absent changes nothing.
+   */
+  triage?: NonNullable<ServicePageContentV2['comparison']>
+  /** Term and definition rows, placed after the markets and before the FAQ. */
+  terms?: NonNullable<ServicePageContentV2['situations']>
+  /** Surface of the FAQ section. Absent: muted. */
+  faqSurface?: 'default' | 'muted'
   /** Desktop column count for the related-services cards. Absent: 3. */
   relatedColumns?: 2 | 3 | 4
   process?: {
@@ -1805,6 +1816,8 @@ export interface ServicePageContentV2 {
        * Never combined with `pageId` or `current`.
        */
       external?: boolean
+      /** A plain row header: no "(this page)" or "(Not our service)" marker. */
+      plain?: boolean
     }[]
     /** Plain text, or text with inline approved links. */
     note?: ReactNode
@@ -1838,6 +1851,8 @@ export interface ServicePageContentV2 {
   situations?: {
     eyebrow?: string
     title: string
+    /** Absent: white with a closing hairline. */
+    surface?: 'default' | 'muted'
     items: readonly { title: string; body: ReactNode }[]
   }
   audiences?: {
@@ -1867,6 +1882,8 @@ export interface ServicePageContentV2 {
   navLabels?: Partial<
     Record<
       | 'signals'
+      | 'triage'
+      | 'terms'
       | 'process'
       | 'methods'
       | 'limits'
@@ -1888,6 +1905,8 @@ export interface ServicePageContentV2 {
     intro: readonly string[]
     scopeNote?: string
     submitLabel?: string
+    /** A titled tick list under the intro, above the scope note. */
+    tellUs?: { title: string; items: readonly string[] }
     /** A plain link under the intro, for example to the contact page. */
     secondaryAction?: { href: string; label: string }
   }
