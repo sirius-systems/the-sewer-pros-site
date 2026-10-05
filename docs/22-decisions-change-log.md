@@ -5094,6 +5094,21 @@ The combined sewer cleaning and camera inspection page was moved from the servic
 
 The owner confirmed that video is included when a camera is used, and that written findings are included, across all markets. The deliverable is not called a "report". Photos, narration, PACP/LACP coding, same-day delivery and "keep a copy" are not claimed. Surface marks, access beyond the cleanout, locating on every visit and hydro jetting on every visit remain unconfirmed and keep "ask" wording. Applied in commit `c013268` to 16 market and location pages and the camera, cleaning and hydro FAQs. Service JSON-LD descriptions were added to the four core service pages from each page's definition copy. Follow-up wording pass (process copy, hero alt text, shared band, core and audience copy) tracked separately.
 
+## DEC-128 - Sewer Line Locating Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Medium
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-sewer-line-locating` entry only)
+* `types/content.ts`, `components/sections/service-v2/ServiceComparisonTable.tsx` (additive: optional `external` comparison-row flag, which renders a "Not our service" marker instead of "(this page)" only when a row sets it)
+* `scripts/verify-sewer-line-locating-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-sewer-line-locating` row)
+
+The sewer line locating page was moved from the service hub template to Service Page Template v2, the fifth page on it. The route, page id, parent and indexability are unchanged; the H1 is now `Sewer Line Locating` and the SEO title is `Private Sewer Line Locating: How It Works`. The page gained a five-item signals list, a "what a locate may give you, and what it is not" panel, a five-step process with an access and preparation list, a "locating or camera inspection" decision panel, a five-row comparison that includes the one-call utility process as a non-service row, a "what to ask for, and what to keep" section, four audience rows and a 23-question FAQ in four groups. Every depth statement is worded as an estimate, no maximum depth is stated, and no equipment brand, model or frequency is attributed to the business. The owner-confirmed deliverables (video when a camera is used, and written findings) are stated as included; surface marks, depth readings, access beyond the cleanout and locating as part of a camera visit stay worded as "ask". The 811 and one-call wording is deliberately qualified ("your state one-call program, often reached at 811, or your local utility") because the research packets do not cover private sewer lines and 811; it needs verification against the Missouri, California and Nevada programs before launch. The page states no price, time, offer, warranty, licence or emergency service, carries no phone number or placeholder text, and links nothing to the unbuilt independent second-opinion page. No business fact was added. Every template addition is an optional field that renders only when a page supplies it, and a comparison of the static export showed every other page's rendered HTML unchanged.
+
 ---
 
 # 26. Decision Quality Standard

@@ -33,6 +33,7 @@ export function ServiceComparisonTable({
     fit: string
     pageId?: PageId
     current?: boolean
+    external?: boolean
   }[]
   note?: ReactNode
 }) {
@@ -89,7 +90,7 @@ export function ServiceComparisonTable({
                       <>
                         {row.service}{' '}
                         <span className="font-normal text-muted-foreground">
-                          (this page)
+                          {row.external === true ? '(Not our service)' : '(this page)'}
                         </span>
                       </>
                     )}
