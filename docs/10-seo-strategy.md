@@ -190,7 +190,7 @@ This positioning should be reinforced throughout:
 
 * homepage
 * sewer camera inspection
-* sewer cleaning + camera inspection
+* sewer cleaning & camera inspection
 * pre-purchase sewer inspection
 * second-opinion content
 * homebuyer content

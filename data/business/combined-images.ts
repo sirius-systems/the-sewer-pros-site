@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import type { CameraImageSlotSpec } from './camera-inspection-images'
 
 /**
- * Sewer cleaning + camera inspection hub
+ * Sewer cleaning & camera inspection hub
  * (`/services/sewer-cleaning-camera-inspection/`) image slots.
  *
  * ⚠ SLOTS, NOT ASSETS. Same contract as the camera and cleaning hubs:
