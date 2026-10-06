@@ -4,6 +4,7 @@ import {
   type SectionDensity,
   type SectionSurface,
 } from '@/components/ui'
+import { heroContactAction } from '@/lib/links/hero-contact-action'
 import Image from 'next/image'
 import {
   Hero,
@@ -513,6 +514,7 @@ export function MarketPageTemplate({
             intro={content.hero.intro}
             backdrop={null}
             hideAsideBelowLg
+            mobileContactAction={heroContactAction(page)}
             aside={
               content.showHeroForm === true ? (
                 /*

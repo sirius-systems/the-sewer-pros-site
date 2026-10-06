@@ -1,4 +1,5 @@
 import { Section, Prose, type SectionDensity } from '@/components/ui'
+import { heroContactAction } from '@/lib/links/hero-contact-action'
 import {
   Hero,
   HeroBackdrop,
@@ -225,6 +226,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         secondaryAction={{ href: '/services/', label: 'View services' }}
         backdrop={<HeroBackdrop set={homeHeroBackdrop} />}
         hideAsideBelowLg
+        mobileContactAction={heroContactAction(page)}
         aside={
           /*
             A solid card, not a translucent panel. The form's inputs,

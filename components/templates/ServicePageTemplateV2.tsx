@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from 'react'
+import { heroContactAction } from '@/lib/links/hero-contact-action'
 import Link from 'next/link'
 import { type SectionDensity } from '@/components/ui'
 import {
@@ -257,6 +258,7 @@ export function ServicePageTemplateV2({
         </div>
       }
       hideAsideBelowLg
+      mobileContactAction={heroContactAction(page)}
       aside={
         <ServiceHeroRequestCard
           title={v2.hero.cardTitle}
