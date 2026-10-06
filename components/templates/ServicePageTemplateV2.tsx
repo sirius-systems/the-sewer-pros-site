@@ -16,6 +16,7 @@ import {
   BackdropImage,
   RelatedServiceCards,
 } from '@/components/sections'
+import { SurveyLeadForm } from '@/components/sections/SurveyLeadForm'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '@/components/sections/SectionHeading'
 import { CameraImageSlot } from '@/components/sections/CameraImageSlot'
@@ -92,12 +93,20 @@ export interface ServicePageTemplateV2Props {
   content: ServicePageContent
 }
 
+/**
+ * Core service pages that use the pill-survey form (pilot, 2026-10-06). The
+ * survey asks for the area first because these pages are market-neutral.
+ * Every other page keeps `LeadFormSection` until the pilot is approved.
+ */
+const SURVEY_SERVICE_PAGE_IDS: ReadonlySet<string> = new Set(['svc-sewer-cleaning'])
+
 export function ServicePageTemplateV2({
   page,
   content,
 }: ServicePageTemplateV2Props) {
   const v2 = content.v2
   if (v2 === undefined) return null
+  const useSurvey = SURVEY_SERVICE_PAGE_IDS.has(page.id)
 
   const blocks: [SectionDensity | null, string, ReactNode][] = []
   const add = (density: SectionDensity | null, key: string, node: ReactNode) => {
@@ -265,6 +274,7 @@ export function ServicePageTemplateV2({
           intro={v2.hero.cardIntro}
           serviceLabel={v2.hero.serviceLabel ?? content.hero.title}
           defaultServiceId={v2.defaultServiceId}
+          survey={useSurvey}
           {...(v2.messageLabel !== undefined ? { messageLabel: v2.messageLabel } : {})}
           {...(v2.extraServiceOptions !== undefined
             ? { extraServiceOptions: v2.extraServiceOptions }
@@ -629,7 +639,12 @@ export function ServicePageTemplateV2({
         than edited out of the shared form.
       */}
       {(() => {
-        const leadForm = (
+        const leadForm = useSurvey ? (
+          <SurveyLeadForm
+            idPrefix="request-survey"
+            {...(v2.defaultServiceId !== undefined ? { defaultServiceId: v2.defaultServiceId } : {})}
+          />
+        ) : (
           <LeadFormSection
             bare
             density="standard"

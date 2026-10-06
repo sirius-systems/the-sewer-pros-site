@@ -1,4 +1,5 @@
 import { LeadFormSection } from '../LeadFormSection'
+import { SurveyLeadForm } from '../SurveyLeadForm'
 import type { ServiceId } from '@/types'
 
 /**
@@ -25,6 +26,7 @@ export function ServiceHeroRequestCard({
   defaultServiceId,
   messageLabel,
   extraServiceOptions,
+  survey = false,
 }: {
   title: string
   intro?: string
@@ -32,6 +34,8 @@ export function ServiceHeroRequestCard({
   defaultServiceId?: ServiceId
   messageLabel?: string
   extraServiceOptions?: readonly { value: ServiceId; label: string }[]
+  /** Use the pill-survey form (it asks for the area, since the page has none). */
+  survey?: boolean
 }) {
   return (
     <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
@@ -42,16 +46,26 @@ export function ServiceHeroRequestCard({
         {serviceLabel}
       </p>
       <div className="mt-4">
-        <LeadFormSection
-          bare
-          id="hero-request-heading"
-          idPrefix={HERO_FORM_IDPREFIX}
-          title={title}
-          {...(intro !== undefined ? { intro } : {})}
-          defaultServiceId={defaultServiceId}
-          {...(messageLabel !== undefined ? { messageLabel } : {})}
-          {...(extraServiceOptions !== undefined ? { extraServiceOptions } : {})}
-        />
+        {survey ? (
+          <SurveyLeadForm
+            idPrefix={HERO_FORM_IDPREFIX}
+            headingId="hero-request-heading"
+            title={title}
+            {...(intro !== undefined ? { intro } : {})}
+            {...(defaultServiceId !== undefined ? { defaultServiceId } : {})}
+          />
+        ) : (
+          <LeadFormSection
+            bare
+            id="hero-request-heading"
+            idPrefix={HERO_FORM_IDPREFIX}
+            title={title}
+            {...(intro !== undefined ? { intro } : {})}
+            defaultServiceId={defaultServiceId}
+            {...(messageLabel !== undefined ? { messageLabel } : {})}
+            {...(extraServiceOptions !== undefined ? { extraServiceOptions } : {})}
+          />
+        )}
       </div>
     </div>
   )
