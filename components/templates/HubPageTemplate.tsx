@@ -508,6 +508,7 @@ export function HubPageTemplate({
         copyWidth={
           backdrop !== undefined && heroAside === 'none' ? 'narrow' : 'reading'
         }
+        hideAsideBelowLg={showsHeroForm && heroAside === 'form'}
         aside={
           showsHeroForm && heroAside === 'form' ? (
             /*

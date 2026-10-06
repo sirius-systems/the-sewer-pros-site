@@ -168,6 +168,7 @@ export function RichLocationComposition({
               : undefined
           }
           backdrop={null}
+          hideAsideBelowLg
           aside={
             phone !== undefined ? (
               heroForm.slotPlaceholder?.placeholder !== undefined ? (

@@ -224,6 +224,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         intro={content.hero.intro}
         secondaryAction={{ href: '/services/', label: 'View services' }}
         backdrop={<HeroBackdrop set={homeHeroBackdrop} />}
+        hideAsideBelowLg
         aside={
           /*
             A solid card, not a translucent panel. The form's inputs,
