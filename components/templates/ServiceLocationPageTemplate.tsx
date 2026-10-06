@@ -1,5 +1,12 @@
 import Image from 'next/image'
-import { Section, Prose, ButtonLink, type SectionDensity } from '@/components/ui'
+import {
+  Children,
+  Fragment,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+} from 'react'
+import { Section, Prose, Card, ButtonLink, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
@@ -11,6 +18,7 @@ import {
   ProofGallery,
   TestimonialBand,
   LeadFormSection,
+  ServiceIndex,
   CoverageSection,
   FaqSection,
   RelatedLinks,
@@ -24,16 +32,16 @@ import {
   inclusionsGridRenders,
 } from '@/components/sections'
 import {
-  ServiceCardGrid,
-  PreselectServiceListener,
-} from '@/components/sections/location'
+  approvedServicesIntro,
+  approvedServicesTitle,
+  homeServiceCards,
+} from '@/content/pages/home-service-cards'
 import { FaqGrouped } from '@/components/sections/service-v2'
-import { SlotPlaceholderBox } from '@/components/sections/location/SlotPlaceholderBox'
 import { getService } from '@/data/services'
 import { requireLocation } from '@/data/locations'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { PageShell } from './PageShell'
-import type { MasterPageRecord, ServiceLocationPageContent } from '@/types'
+import type { MasterPageRecord, ServiceId, ServiceLocationPageContent } from '@/types'
 
 /**
  * Service + location page.
@@ -92,8 +100,41 @@ export interface ServiceLocationPageTemplateProps {
   content: ServiceLocationPageContent
 }
 
-/** The mid-page form's field-id prefix; the card CTAs preselect `${prefix}-service`. */
-const LEAD_ID_PREFIX = 'lead'
+
+/**
+ * Splits a body written as `<h2>` + content runs into cards.
+ *
+ * Returns undefined with fewer than two `<h2>` sections, so a body that is not
+ * sectioned keeps rendering as reading-width prose. Content before the first
+ * `<h2>` is returned as `lead`.
+ */
+function splitBodySections(body: ReactNode):
+  | { lead: ReactNode[]; sections: { title: string; content: ReactNode[] }[] }
+  | undefined {
+  const nodes =
+    isValidElement(body) && body.type === Fragment
+      ? Children.toArray((body as ReactElement<{ children?: ReactNode }>).props.children)
+      : Children.toArray(body)
+
+  const lead: ReactNode[] = []
+  const sections: { title: string; content: ReactNode[] }[] = []
+  for (const node of nodes) {
+    if (isValidElement(node) && node.type === 'h2') {
+      const title = Children.toArray(
+        (node as ReactElement<{ children?: ReactNode }>).props.children,
+      )
+        .filter((child): child is string => typeof child === 'string')
+        .join('')
+      sections.push({ title, content: [] })
+    } else if (sections.length > 0) {
+      sections[sections.length - 1].content.push(node)
+    } else {
+      lead.push(node)
+    }
+  }
+  return sections.length >= 2 ? { lead, sections } : undefined
+}
+
 
 export function ServiceLocationPageTemplate({
   page,
@@ -107,6 +148,8 @@ export function ServiceLocationPageTemplate({
     detail !== undefined
       ? { label: detail.phone, href: `tel:${detail.phoneE164}` }
       : undefined
+  const bodySections =
+    content.body !== undefined ? splitBodySections(content.body) : undefined
   const faqTitle =
     page.serviceId !== undefined && page.locationId !== undefined
       ? `Common questions about ${getService(page.serviceId).name}` +
@@ -116,10 +159,8 @@ export function ServiceLocationPageTemplate({
     content.faq !== undefined &&
     content.faq.length > 0 &&
     content.faq.every((entry) => entry.group !== undefined)
-  const showsServiceCards =
-    content.serviceCards !== undefined &&
-    page.marketId !== undefined &&
-    phone !== undefined
+  // The homepage's nine service cards, unmodified (owner, 2026-10-05).
+  const showsServiceCards = page.marketId !== undefined
 
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   // The gated sections contribute no entry - they render nothing.
@@ -161,51 +202,62 @@ export function ServiceLocationPageTemplate({
         // the FaqSection renders, so markup and visible text cannot diverge.
         faq: content.faq,
         // One Service node per visible card (15 §67), as on the location pages.
-        serviceCards: content.serviceCards?.cards.map((card) => ({
-          serviceId: card.serviceId,
-          name: card.title,
-          description: card.description,
+        serviceCards: homeServiceCards.map((card) => ({
+          serviceId: card.pageId as unknown as ServiceId,
+          name: getService(card.pageId as unknown as ServiceId).name,
+          description: card.description ?? '',
         })),
       }}
     >
-      {showsServiceCards && (
-        <PreselectServiceListener selectId={`${LEAD_ID_PREFIX}-service`} />
-      )}
-
       {/*
-        Split hero with the picture beside the copy. The picture is the real
-        photo once the slot has a `src`, and the labelled review-build box
-        while image slots are on; with no `heroImage` the hero is copy only.
+        Full-width background picture behind the hero copy (owner, 2026-10-05).
+        A real photo gets the dark scrim so the white copy holds contrast. An
+        unfilled slot draws a labelled review-build box on the brand surface,
+        away from the copy. `backdrop={null}` switches the Hero to its white-
+        copy treatment; the layer here is the background.
       */}
-      <Hero
-        variant={content.heroImage !== undefined ? 'split' : 'editorial'}
-        eyebrow={content.hero.eyebrow}
-        title={content.hero.title}
-        intro={content.hero.intro}
-        // The market's own number, owner-confirmed per market (DEC-083).
-        secondaryAction={
-          phone !== undefined
-            ? { href: phone.href, label: `Call ${phone.label}` }
-            : undefined
-        }
-        media={
-          content.heroImage === undefined ? undefined : content.heroImage
-              .placeholder !== undefined ? (
-            <SlotPlaceholderBox image={content.heroImage} />
-          ) : (
-            <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-surface-muted">
-              <Image
-                src={content.heroImage.src}
-                alt={content.heroImage.alt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          )
-        }
-      />
+      <div className="relative isolate overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-brand">
+          {content.heroImage !== undefined &&
+            (content.heroImage.placeholder === undefined ? (
+              <>
+                <Image
+                  src={content.heroImage.src}
+                  alt=""
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover"
+                />
+                <div className="hero-scrim absolute inset-0" />
+              </>
+            ) : (
+              <div className="absolute right-4 bottom-4 left-4 rounded-md border-2 border-dashed border-white/40 p-3 text-center text-xs text-white/80 sm:left-auto sm:w-80 lg:top-1/2 lg:right-8 lg:bottom-auto lg:-translate-y-1/2">
+                <p className="font-semibold text-white">
+                  Image slot: {content.heroImage.placeholder.slotId}
+                </p>
+                <p>
+                  Background, {content.heroImage.placeholder.ratio}
+                  {' - '}
+                  {content.heroImage.placeholder.shot}
+                </p>
+              </div>
+            ))}
+        </div>
+        <Hero
+          variant="editorial"
+          eyebrow={content.hero.eyebrow}
+          title={content.hero.title}
+          intro={content.hero.intro}
+          backdrop={null}
+          // The market's own number, owner-confirmed per market (DEC-083).
+          secondaryAction={
+            phone !== undefined
+              ? { href: phone.href, label: `Call ${phone.label}` }
+              : undefined
+          }
+        />
+      </div>
 
       {/*
         ⚠ ORDER, OWNER 2026-10-05: trust strip directly below the hero, the
@@ -217,11 +269,43 @@ export function ServiceLocationPageTemplate({
 
       <ExperienceCounterStrip surface="muted" />
 
-      {content.body !== undefined && (
-        <Section density="standard" width="reading">
-          <Prose>{content.body}</Prose>
-        </Section>
-      )}
+      {content.body !== undefined &&
+        (bodySections !== undefined ? (
+          <>
+            {bodySections.lead.length > 0 && (
+              <Section density="standard" width="reading">
+                <Prose>{bodySections.lead}</Prose>
+              </Section>
+            )}
+            {/* The local-fact sections as cards: four render 2x2 (owner, 2026-10-05). */}
+            <Section density="standard">
+              <div className="grid gap-6 sm:grid-cols-2">
+                {bodySections.sections.map((section, index) => (
+                  <Card
+                    key={section.title}
+                    className={
+                      bodySections.sections.length % 2 !== 0 &&
+                      index === bodySections.sections.length - 1
+                        ? 'sm:col-span-2'
+                        : undefined
+                    }
+                  >
+                    <h2 className="text-h3 font-semibold tracking-tight text-foreground">
+                      {section.title}
+                    </h2>
+                    <Prose className="mt-4 max-w-none [&_p]:text-sm [&_p]:leading-6 [&_li]:text-sm [&_li]:leading-6 [&>*+*]:mt-4">
+                      {section.content}
+                    </Prose>
+                  </Card>
+                ))}
+              </div>
+            </Section>
+          </>
+        ) : (
+          <Section density="standard" width="reading">
+            <Prose>{content.body}</Prose>
+          </Section>
+        ))}
 
       {content.problems !== undefined && (
         // Four cards render 2x2; six render two rows of three.
@@ -250,28 +334,22 @@ export function ServiceLocationPageTemplate({
         />
       )}
 
-      {showsServiceCards && content.serviceCards !== undefined &&
-        page.marketId !== undefined && phone !== undefined && (
-          <ServiceCardGrid
-            content={content.serviceCards}
-            marketId={page.marketId}
-            phone={phone}
-            pageType="service-location"
-            requestHref="#request-service"
-          />
-        )}
+      {showsServiceCards && (
+        <ServiceIndex
+          density="standard"
+          id="services"
+          title={approvedServicesTitle}
+          intro={<p>{approvedServicesIntro}</p>}
+          items={homeServiceCards}
+          variant="cards"
+        />
+      )}
 
       <AuthorityBand title="How we work" />
 
       <ProofGallery title="Recent work" />
 
       <TestimonialBand />
-
-      <LeadFormSection
-        idPrefix={LEAD_ID_PREFIX}
-        defaultMarketId={page.marketId}
-        defaultServiceId={page.serviceId}
-      />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -315,6 +393,7 @@ export function ServiceLocationPageTemplate({
           // pages. Labels are navigation only; FAQPage markup is unchanged.
           <FaqGrouped
             id="faq"
+            layout="tabs"
             title={faqTitle}
             entries={content.faq.map((entry) => ({
               group: entry.group ?? '',
@@ -339,11 +418,18 @@ export function ServiceLocationPageTemplate({
         already names its market, so the form starts with that answer
         filled in rather than asking the visitor to repeat it.
       */}
+      <div className="relative">
       <CtaSection
+        id="request-service"
         variant="panel"
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
         action={null}
+        backgroundImage={
+          content.ctaImage !== undefined && content.ctaImage.placeholder === undefined
+            ? content.ctaImage
+            : undefined
+        }
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
             {detail !== undefined && phone !== undefined && (
@@ -379,12 +465,29 @@ export function ServiceLocationPageTemplate({
             <LeadFormSection
               bare
               density="standard"
+              id="cta-request-form"
               idPrefix="cta-lead"
               defaultMarketId={page.marketId}
             />
           </div>
         }
       />
+      {content.ctaImage?.placeholder !== undefined && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-4 left-4 z-10 max-w-xs rounded-md border-2 border-dashed border-white/40 bg-brand/60 p-3 text-center text-xs text-white/80"
+        >
+          <p className="font-semibold text-white">
+            Image slot: {content.ctaImage.placeholder.slotId}
+          </p>
+          <p>
+            Background, {content.ctaImage.placeholder.ratio}
+            {' - '}
+            {content.ctaImage.placeholder.shot}
+          </p>
+        </div>
+      )}
+      </div>
     </PageShell>
   )
 }

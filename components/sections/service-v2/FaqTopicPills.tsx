@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useSyncExternalStore, type MouseEvent } from 'react'
+import { useLayoutEffect, useState, useSyncExternalStore, type MouseEvent } from 'react'
 
 const noopSubscribe = () => () => {}
 
@@ -20,11 +20,27 @@ const noopSubscribe = () => () => {}
 export function FaqTopicPills({
   topics,
   allLabel = 'All topics',
+  tabs = false,
 }: {
   topics: readonly { id: string; label: string }[]
   allLabel?: string
+  /**
+   * Tab behaviour: no "All" pill, the first topic is open and a pill shows
+   * only its own group. The server HTML still carries every group (so
+   * crawlers and no-script visitors see all of them); the first is selected
+   * before first paint after hydration.
+   */
+  tabs?: boolean
 }) {
-  const [active, setActive] = useState('all')
+  const [active, setActive] = useState(tabs ? (topics[0]?.id ?? 'all') : 'all')
+  useLayoutEffect(() => {
+    if (!tabs) return
+    const first = topics[0]?.id
+    for (const topic of topics) {
+      const wrapper = document.getElementById(topic.id)?.parentElement
+      if (wrapper) wrapper.hidden = topic.id !== first
+    }
+  }, [tabs, topics])
   const hydrated = useSyncExternalStore(
     noopSubscribe,
     () => true,
@@ -48,8 +64,8 @@ export function FaqTopicPills({
     }`
 
   return (
-    <ul className="mt-3 flex flex-wrap gap-2">
-      {hydrated && (
+    <ul className={`${tabs ? '' : 'mt-3 '}flex flex-wrap gap-2`}>
+      {hydrated && !tabs && (
         <li>
           <a
             href="#faq"

@@ -2947,6 +2947,8 @@ export interface ServiceLocationPageContent extends BasePageContent {
   coverage?: CoverageContent
   /** Hero picture: a real photo, or the labelled review-build box while image slots are on. */
   heroImage?: CardImage
+  /** Final CTA background: a real photo, or the labelled review-build box. */
+  ctaImage?: CardImage
   /**
    * The nine residential service cards, as on the location pages. Rendered
    * by `ServiceCardGrid` and mirrored into the page's JSON-LD (one `Service`

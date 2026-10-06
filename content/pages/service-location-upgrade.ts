@@ -45,10 +45,8 @@ import {
   SERVICE_INCLUSIONS,
   SERVICE_PROBLEMS,
   SERVICE_PROBLEM_SHOTS,
-  assertCardsMatchRegistry,
   mergeRelevantFaqs,
   pageImageSlots,
-  serviceLocationServiceCards,
 } from './service-location-shared'
 
 const id = (value: string): PageId => value as PageId
@@ -209,12 +207,6 @@ function upgrade(
     problems: [shots[0], shots[1], shots[2], shots[3]] as const,
   })
 
-  const cards = serviceLocationServiceCards({
-    locationName: location.name,
-    phone: detail.phone,
-  })
-  assertCardsMatchRegistry(cards)
-
   const locationFaq = spec.location.faq
   if (locationFaq === undefined) throw new Error(`${pageId}: location FAQ missing`)
 
@@ -239,13 +231,13 @@ function upgrade(
     // Page-specific meta title; the shell appends the site name.
     seoTitle: existing.seoTitle ?? `${service.name} in ${location.name}`,
     heroImage: slots.hero,
+    ctaImage: slots.cta,
     problems: [
       ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
       { ...spec.local, image: slots.problems[3] },
     ],
     inclusions,
     process: existing.process ?? steps,
-    serviceCards: cards,
     faq,
   }
 }
