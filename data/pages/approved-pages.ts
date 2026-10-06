@@ -784,9 +784,11 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/sewer-camera-inspection/'),
     status: 'launch',
-    // PILOT / TEMPLATE page. Built, deliberately NOT indexable: promotion
-    // into a cohort is a separate decision (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // PILOT / TEMPLATE page. Indexable so the template carries its full
+    // JSON-LD (noindex pages emit none). One page, not a cohort: set false to
+    // pull it from the sitemap again. Further pages are promoted by cohort
+    // (CLAUDE.md §16-17, §21).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-sewer-camera-inspection',
     locationId: 'loc-lv-henderson' as LocationId,

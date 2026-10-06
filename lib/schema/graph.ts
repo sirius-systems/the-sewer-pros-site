@@ -393,6 +393,16 @@ export function pageSchema({
         url: absoluteUrl(record.canonicalUrl),
       })
     }
+
+    // A service + location page is ABOUT its own service in this market, so
+    // `about` points at that card's Service node rather than the bare Place
+    // (which stays in the graph as the `areaServed` target). Location pages
+    // carry no `serviceId`, so their output is unchanged.
+    if (page.serviceId !== undefined && serviceCards.some((c) => c.serviceId === page.serviceId)) {
+      webPage.about = ref(
+        `${absoluteUrl(page.pathname)}#service-${getService(page.serviceId).slug}`,
+      )
+    }
   }
 
   const breadcrumb = breadcrumbNode(page, displayName)

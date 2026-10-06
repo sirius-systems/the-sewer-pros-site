@@ -103,6 +103,11 @@ export interface ProcessContent {
 export interface ProblemContent {
   title: string
   description: string
+  /**
+   * Optional 4:3 frame at the head of the card: a real photo, or the
+   * labelled review-build box from `resolveSlotImage` while image slots are on.
+   */
+  image?: CardImage
 }
 
 /**
@@ -2929,9 +2934,19 @@ export interface LocationSources {
 /** Service + location page — 05 §119, 14 §21. */
 export interface ServiceLocationPageContent extends BasePageContent {
   process?: readonly ProcessContent[]
+  /** Four items render 2x2; six render two rows of three. */
   problems?: readonly ProblemContent[]
+  /** Six items render two rows of three; four render 2x2. */
   inclusions?: readonly InclusionContent[]
   coverage?: CoverageContent
+  /** Hero picture: a real photo, or the labelled review-build box while image slots are on. */
+  heroImage?: CardImage
+  /**
+   * The nine residential service cards, as on the location pages. Rendered
+   * by `ServiceCardGrid` and mirrored into the page's JSON-LD (one `Service`
+   * node per visible card).
+   */
+  serviceCards?: LocationServiceCards
 }
 
 /** Audience page — 18 §113. */
