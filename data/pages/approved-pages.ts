@@ -795,6 +795,118 @@ export const approvedPages: readonly MasterPageRecord[] = [
     parentId: 'loc-lv-henderson' as PageId,
   },
   {
+    id: 'sl-henderson-cleaning' as PageId,
+    name: 'Sewer Cleaning in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/sewer-cleaning/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-sewer-cleaning',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
+    id: 'sl-henderson-hydro' as PageId,
+    name: 'Hydro Jetting in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/hydro-jetting/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-hydro-jetting',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
+    id: 'sl-henderson-cleaning-camera' as PageId,
+    name: 'Sewer Cleaning & Camera Inspection in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/sewer-cleaning-camera-inspection/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-sewer-cleaning-camera-inspection',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
+    id: 'sl-henderson-locating' as PageId,
+    name: 'Sewer Line Locating in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/sewer-line-locating/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-sewer-line-locating',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
+    id: 'sl-henderson-drain' as PageId,
+    name: 'Drain Cleaning in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/drain-cleaning/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-drain-cleaning',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
+    id: 'sl-henderson-prepurchase' as PageId,
+    name: 'Pre-Purchase Sewer Inspection in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/pre-purchase-sewer-inspection/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-pre-purchase-sewer-inspection',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
+    id: 'sl-henderson-backup' as PageId,
+    name: 'Recurring Sewer Backup Diagnosis in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/recurring-sewer-backup-diagnosis/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-recurring-sewer-backup-diagnosis',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
+    id: 'sl-henderson-maintenance' as PageId,
+    name: 'Preventative Sewer Maintenance in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/preventative-sewer-maintenance/'),
+    status: 'launch',
+    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
+    // cohort (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-preventative-sewer-maintenance',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
     id: 'com-drain-cleaning' as PageId,
     name: 'Commercial Drain Cleaning',
     pageType: 'commercial',
