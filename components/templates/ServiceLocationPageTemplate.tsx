@@ -328,11 +328,14 @@ export function ServiceLocationPageTemplate({
       )}
 
       {/*
-        ⚠ `action={null}`, NOT OMITTED. The form in `proof` carries its
-        own submit button, so a second one pointing at `/contact/` is a
-        competing ask beside a form already on screen rather than a
-        stronger one (18 §62) — the same rule the home page's and
-        `/about/`'s closing CTA already follow.
+        ⚠ `action={null}`: the CTA's own button is omitted because the form in
+        `proof` carries its submit button.
+
+        ⚠ THE CONTACT-PAGE BUTTON INSIDE `proof` IS DELIBERATE (owner,
+        2026-10-05). 18 §62 treats a second ask beside a form as a competing
+        one, and the home page and `/about/` follow that. The owner's explicit
+        direction for this page family takes precedence (CLAUDE.md §14, item
+        1), so the contact button stays beside the form.
 
         ⚠ `defaultMarketId={page.marketId}`. A service+location page
         already names its market, so the form starts with that answer
