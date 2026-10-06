@@ -44,6 +44,22 @@ import { sanMarcosDrainContent } from './sl-sd-san-marcos-drain'
 import { sanMarcosPrePurchaseContent } from './sl-sd-san-marcos-prepurchase'
 import { sanMarcosBackupContent } from './sl-sd-san-marcos-backup'
 import { sanMarcosMaintenanceContent } from './sl-sd-san-marcos-maintenance'
+import { escondidoCameraContent } from './sl-sd-escondido-camera'
+import { escondidoHydroContent } from './sl-sd-escondido-hydro'
+import { escondidoCleaningCameraContent } from './sl-sd-escondido-cleaning-camera'
+import { escondidoLocatingContent } from './sl-sd-escondido-locating'
+import { escondidoDrainContent } from './sl-sd-escondido-drain'
+import { escondidoPrePurchaseContent } from './sl-sd-escondido-prepurchase'
+import { escondidoBackupContent } from './sl-sd-escondido-backup'
+import { escondidoMaintenanceContent } from './sl-sd-escondido-maintenance'
+import { oceansideCameraContent } from './sl-sd-oceanside-camera'
+import { oceansideHydroContent } from './sl-sd-oceanside-hydro'
+import { oceansideCleaningCameraContent } from './sl-sd-oceanside-cleaning-camera'
+import { oceansideLocatingContent } from './sl-sd-oceanside-locating'
+import { oceansideDrainContent } from './sl-sd-oceanside-drain'
+import { oceansidePrePurchaseContent } from './sl-sd-oceanside-prepurchase'
+import { oceansideBackupContent } from './sl-sd-oceanside-backup'
+import { oceansideMaintenanceContent } from './sl-sd-oceanside-maintenance'
 
 const id = (value: string): PageId => value as PageId
 
@@ -89,4 +105,20 @@ export const sanDiegoNewServiceLocationContent: Partial<
   [id('sl-san-marcos-prepurchase')]: sanMarcosPrePurchaseContent,
   [id('sl-san-marcos-backup')]: sanMarcosBackupContent,
   [id('sl-san-marcos-maintenance')]: sanMarcosMaintenanceContent,
+  [id('sl-escondido-camera')]: escondidoCameraContent,
+  [id('sl-escondido-hydro')]: escondidoHydroContent,
+  [id('sl-escondido-cleaning-camera')]: escondidoCleaningCameraContent,
+  [id('sl-escondido-locating')]: escondidoLocatingContent,
+  [id('sl-escondido-drain')]: escondidoDrainContent,
+  [id('sl-escondido-prepurchase')]: escondidoPrePurchaseContent,
+  [id('sl-escondido-backup')]: escondidoBackupContent,
+  [id('sl-escondido-maintenance')]: escondidoMaintenanceContent,
+  [id('sl-oceanside-camera')]: oceansideCameraContent,
+  [id('sl-oceanside-hydro')]: oceansideHydroContent,
+  [id('sl-oceanside-cleaning-camera')]: oceansideCleaningCameraContent,
+  [id('sl-oceanside-locating')]: oceansideLocatingContent,
+  [id('sl-oceanside-drain')]: oceansideDrainContent,
+  [id('sl-oceanside-prepurchase')]: oceansidePrePurchaseContent,
+  [id('sl-oceanside-backup')]: oceansideBackupContent,
+  [id('sl-oceanside-maintenance')]: oceansideMaintenanceContent,
 }
