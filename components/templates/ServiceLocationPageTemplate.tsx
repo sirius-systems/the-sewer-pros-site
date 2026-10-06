@@ -172,6 +172,12 @@ export function ServiceLocationPageTemplate({
         eyebrow={content.hero.eyebrow}
         title={content.hero.title}
         intro={content.hero.intro}
+        // The market's own number, owner-confirmed per market (DEC-083).
+        secondaryAction={
+          phone !== undefined
+            ? { href: phone.href, label: `Call ${phone.label}` }
+            : undefined
+        }
         media={
           content.heroImage === undefined ? undefined : content.heroImage
               .placeholder !== undefined ? (
@@ -323,6 +329,29 @@ export function ServiceLocationPageTemplate({
         action={null}
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            {detail !== undefined && phone !== undefined && (
+              // Per-market contact details (DEC-083): this page's market only,
+              // never another market's.
+              <dl className="mb-6 grid gap-x-8 gap-y-2 border-b border-border pb-6 text-sm sm:grid-cols-[auto_1fr]">
+                <dt className="font-semibold">Phone</dt>
+                <dd>
+                  <a className="underline underline-offset-4" href={phone.href}>
+                    {phone.label}
+                  </a>
+                </dd>
+                <dt className="font-semibold">Email</dt>
+                <dd>
+                  <a
+                    className="underline underline-offset-4"
+                    href={`mailto:${detail.email}`}
+                  >
+                    {detail.email}
+                  </a>
+                </dd>
+                <dt className="font-semibold">Hours</dt>
+                <dd>{detail.hours}</dd>
+              </dl>
+            )}
             <LeadFormSection
               bare
               density="standard"
