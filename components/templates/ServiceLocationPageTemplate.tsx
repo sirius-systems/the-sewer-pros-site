@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   Hero,
@@ -22,8 +23,14 @@ import {
   problemGridRenders,
   inclusionsGridRenders,
 } from '@/components/sections'
+import {
+  ServiceCardGrid,
+  PreselectServiceListener,
+} from '@/components/sections/location'
+import { SlotPlaceholderBox } from '@/components/sections/location/SlotPlaceholderBox'
 import { getService } from '@/data/services'
 import { requireLocation } from '@/data/locations'
+import { marketOperatingDetail } from '@/data/markets/markets'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServiceLocationPageContent } from '@/types'
 
@@ -84,16 +91,31 @@ export interface ServiceLocationPageTemplateProps {
   content: ServiceLocationPageContent
 }
 
+/** The mid-page form's field-id prefix; the card CTAs preselect `${prefix}-service`. */
+const LEAD_ID_PREFIX = 'lead'
+
 export function ServiceLocationPageTemplate({
   page,
   content,
 }: ServiceLocationPageTemplateProps) {
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   // The three gated sections contribute no entry - they render nothing.
+  const detail =
+    page.marketId !== undefined ? marketOperatingDetail[page.marketId] : undefined
+  const phone =
+    detail !== undefined
+      ? { label: detail.phone, href: `tel:${detail.phoneE164}` }
+      : undefined
+  const showsServiceCards =
+    content.serviceCards !== undefined &&
+    page.marketId !== undefined &&
+    phone !== undefined
+
+  // Explicit sequence, checked against `sectionRhythmIssues()` at build.
+  // The gated sections contribute no entry - they render nothing.
   const densities: SectionDensity[] = [
-    'sparse',
-    // ExperienceCounterStrip — inserted below Hero, above `TrustBar`
-    // (owner, 2026-09-27). `dense` is the section's own default.
+    'sparse', // hero
+    // Trust strip, then the business stats below it (owner, 2026-10-05).
     'dense',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
@@ -106,6 +128,7 @@ export function ServiceLocationPageTemplate({
     ...(content.process !== undefined && processStepsRenders(content.process)
       ? (['standard'] as const)
       : []),
+    ...(showsServiceCards ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
@@ -127,26 +150,56 @@ export function ServiceLocationPageTemplate({
         // DEC-114: FAQPage is on wherever the page renders an FAQ. Same array
         // the FaqSection renders, so markup and visible text cannot diverge.
         faq: content.faq,
+        // One Service node per visible card (15 §67), as on the location pages.
+        serviceCards: content.serviceCards?.cards.map((card) => ({
+          serviceId: card.serviceId,
+          name: card.title,
+          description: card.description,
+        })),
       }}
     >
+      {showsServiceCards && (
+        <PreselectServiceListener selectId={`${LEAD_ID_PREFIX}-service`} />
+      )}
+
+      {/*
+        Split hero with the picture beside the copy. The picture is the real
+        photo once the slot has a `src`, and the labelled review-build box
+        while image slots are on; with no `heroImage` the hero is copy only.
+      */}
       <Hero
-        variant="editorial"
+        variant={content.heroImage !== undefined ? 'split' : 'editorial'}
         eyebrow={content.hero.eyebrow}
         title={content.hero.title}
         intro={content.hero.intro}
+        media={
+          content.heroImage === undefined ? undefined : content.heroImage
+              .placeholder !== undefined ? (
+            <SlotPlaceholderBox image={content.heroImage} />
+          ) : (
+            <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-surface-muted">
+              <Image
+                src={content.heroImage.src}
+                alt={content.heroImage.alt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )
+        }
       />
 
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-        `surface="muted"`, NOT THE COMPONENT'S OWN `default`. This hero
-        carries no backdrop, so it renders on `default` too, and the
-        component's own default would stack two `default` bands back to
-        back. `TrustBar` below is `brand`, so `muted` keeps this section
-        distinct from both neighbours.
+        ⚠ ORDER, OWNER 2026-10-05: trust strip directly below the hero, the
+        business stats directly below the trust strip. `TrustBar` is the
+        `brand` band, so the stats take `muted` to stay distinct from it and
+        from the `default` prose that follows.
       */}
-      <ExperienceCounterStrip surface="muted" />
-
       <TrustBar />
+
+      <ExperienceCounterStrip surface="muted" />
 
       {content.body !== undefined && (
         <Section density="standard" width="reading">
@@ -155,6 +208,7 @@ export function ServiceLocationPageTemplate({
       )}
 
       {content.problems !== undefined && (
+        // Four cards render 2x2; six render two rows of three.
         <ProblemGrid
           id="when-to-call"
           title="When to call"
@@ -167,6 +221,8 @@ export function ServiceLocationPageTemplate({
           id="whats-included"
           title="What's included"
           items={content.inclusions}
+          // Six cards render two rows of three; four render 2x2.
+          columns={content.inclusions.length % 3 === 0 ? 3 : 2}
         />
       )}
 
@@ -178,13 +234,28 @@ export function ServiceLocationPageTemplate({
         />
       )}
 
+      {showsServiceCards && content.serviceCards !== undefined &&
+        page.marketId !== undefined && phone !== undefined && (
+          <ServiceCardGrid
+            content={content.serviceCards}
+            marketId={page.marketId}
+            phone={phone}
+            pageType="service-location"
+            requestHref="#request-service"
+          />
+        )}
+
       <AuthorityBand title="How we work" />
 
       <ProofGallery title="Recent work" />
 
       <TestimonialBand />
 
-      <LeadFormSection />
+      <LeadFormSection
+        idPrefix={LEAD_ID_PREFIX}
+        defaultMarketId={page.marketId}
+        defaultServiceId={page.serviceId}
+      />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks

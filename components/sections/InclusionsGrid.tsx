@@ -55,6 +55,11 @@ export interface InclusionsGridProps {
   title: string
   intro?: string
   items: readonly InclusionsGridItem[]
+  /**
+   * `3` lays the grid out three across from `lg` (six items: two rows of
+   * three). Default `2`, which every existing caller keeps.
+   */
+  columns?: 2 | 3
 }
 
 /**
@@ -85,6 +90,7 @@ export function InclusionsGrid({
   title,
   intro,
   items,
+  columns = 2,
 }: InclusionsGridProps) {
   // 18 §120 — omit the section entirely rather than render an empty shell.
   if (items.length === 0) return null
@@ -107,7 +113,12 @@ export function InclusionsGrid({
         Deliberately not `CardGrid`: its even-division warning would be
         a false positive once the span makes the orphan impossible.
       */}
-      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div
+        className={cn(
+          'mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2',
+          columns === 3 && 'lg:grid-cols-3',
+        )}
+      >
         {items.map((item, index) => (
           // Top rule rather than the full-border `Card`, and tighter
           // spacing — the spec-sheet treatment described above. 18 §25
@@ -117,7 +128,8 @@ export function InclusionsGrid({
             key={item.title}
             className={cn(
               'border-t border-foreground/20 pt-4',
-              items.length % 2 !== 0 &&
+              columns === 2 &&
+                items.length % 2 !== 0 &&
                 index === items.length - 1 &&
                 'sm:col-span-2',
             )}

@@ -26,16 +26,78 @@
  * Rollout: the same recipe, with each location's facts read from its own
  * location module, for the other eight services and fifteen locations.
  *
- * ⚠ NOINDEX. The record in `approved-pages.ts` is `indexable: false`. Built is
- * not indexed (CLAUDE.md §16-17); promotion is a separate cohort decision.
+ * ⚠ INDEXABLE AS A SINGLE PILOT so the template's JSON-LD can be reviewed
+ * (noindex pages emit none). Flip `indexable` in `approved-pages.ts` to pull it
+ * from the sitemap. Remaining pages are promoted by cohort (CLAUDE.md §16-17).
  *
  * ⚠ CITY NUMBERS ARE THE CITY'S, not ours (as on the Henderson location page).
  * No company phone, office, price, offer, response time or guarantee appears.
  */
 
+import { marketOperatingDetail } from '@/data/markets/markets'
 import type { PageId, ServiceLocationPageContent } from '@/types'
+import { hendersonContent } from './las-vegas-henderson'
+import { serviceContent } from './services'
+import {
+  assertCardsMatchRegistry,
+  mergeRelevantFaqs,
+  pageImageSlots,
+  serviceLocationServiceCards,
+} from './service-location-shared'
 
 const id = (value: string): PageId => value as PageId
+
+const lv = marketOperatingDetail['las-vegas-nv']
+if (lv === undefined) throw new Error('marketOperatingDetail is missing las-vegas-nv')
+
+/* ---------- Henderson / camera: shared inputs ------------------------------- */
+
+const hendersonCameraSlots = pageImageSlots('sl-henderson-camera', {
+  hero: {
+    alt: 'Technician feeding a sewer camera into a cleanout at a Henderson home',
+    shot: 'Technician feeding a camera into a residential cleanout, monitor in frame',
+  },
+  problems: [
+    {
+      alt: 'Capped sewer cleanout beside a house foundation',
+      shot: 'Exterior cleanout cap at the base of a house',
+    },
+    {
+      alt: 'Property owner reviewing printed inspection findings',
+      shot: 'Technician and owner reviewing findings, faces not identifiable',
+    },
+    {
+      alt: 'Inspector walking a home buyer through sewer inspection findings outside a house',
+      shot: 'Technician at a for-sale property starting a pre-purchase scope',
+    },
+    {
+      alt: 'Residential street with a manhole cover near the curb',
+      shot: 'Ordinary residential street, manhole and curb, no identifiable homes',
+    },
+  ],
+})
+
+const hendersonCameraServiceCards = serviceLocationServiceCards({
+  locationName: 'Henderson',
+  phone: lv.phone,
+})
+assertCardsMatchRegistry(hendersonCameraServiceCards)
+
+const cameraServiceFaq = serviceContent[id('svc-sewer-camera-inspection')]?.v2?.faq
+if (cameraServiceFaq === undefined || hendersonContent.faq === undefined) {
+  throw new Error('sl-henderson-camera: source FAQ arrays are missing')
+}
+
+/**
+ * Every question from the Henderson location page and the camera service page,
+ * minus two: the location page's "What does a sewer camera inspection show?"
+ * (the service page answers it in full) and the service page's "Which areas
+ * does The Sewer Pros serve?" (this page IS an area page).
+ */
+const hendersonCameraFaq = mergeRelevantFaqs(hendersonContent.faq, cameraServiceFaq, [
+  'What does a sewer camera inspection show?',
+  'Which areas does The Sewer Pros serve?',
+])
 
 export const lasVegasServiceLocationContent: Partial<
   Record<PageId, ServiceLocationPageContent>
@@ -47,6 +109,8 @@ export const lasVegasServiceLocationContent: Partial<
       'Sewer camera inspection for Henderson, NV properties. The City says the lateral is yours from the main connection. See what a camera records on it.',
     serviceDescription:
       'A sewer camera inspection is a visual inspection of the accessible inside of a sewer line, recorded on video, for properties in the City of Henderson, Nevada.',
+    heroImage: hendersonCameraSlots.hero,
+    serviceCards: hendersonCameraServiceCards,
     hero: {
       eyebrow: 'Henderson, NV',
       title: 'Sewer Camera Inspection in Henderson',
@@ -120,23 +184,28 @@ export const lasVegasServiceLocationContent: Partial<
         title: 'Recurring clogs or slow drains',
         description:
           'A line that is yours from the connection to the house is worth looking at when clogs keep returning, instead of clearing each one as a separate event.',
+        image: hendersonCameraSlots.problems[0],
       },
       {
         title: 'A repair recommendation you want checked',
         description:
           'Because we do not perform repairs, the video gives you the condition of the line to compare against any estimate.',
+        image: hendersonCameraSlots.problems[1],
       },
       {
         title: 'Buying a Henderson home',
         description:
           'We found no City rule requiring a lateral inspection or seller disclosure on sale. A buyer who wants evidence of the lateral has to ask for it.',
+        image: hendersonCameraSlots.problems[2],
       },
       {
         title: 'The City or a contractor points to your lateral',
         description:
           'The City places the lateral on the owner from the connection. A recorded inspection shows what is in it.',
+        image: hendersonCameraSlots.problems[3],
       },
     ],
+    // Six items: renders as two rows of three.
     inclusions: [
       {
         title: 'Inspection video',
@@ -144,8 +213,27 @@ export const lasVegasServiceLocationContent: Partial<
       },
       {
         title: 'Written findings',
+        description: 'Written findings are included.',
+      },
+      {
+        title: 'Visible conditions noted',
         description:
-          'Visible conditions are noted, along with any part of the line that could not be viewed.',
+          'The findings note the conditions that are visible inside the line.',
+      },
+      {
+        title: 'Parts not viewed, stated',
+        description:
+          'Any part of the line that could not be viewed is noted, so the record says what it does not cover.',
+      },
+      {
+        title: 'Live view at the monitor',
+        description:
+          'The technician watches the monitor and pauses at visible features or conditions.',
+      },
+      {
+        title: 'An identified entry point',
+        description:
+          'The technician identifies an accessible entry point, commonly an exterior cleanout.',
       },
     ],
     process: [
@@ -182,63 +270,9 @@ export const lasVegasServiceLocationContent: Partial<
       availabilityStatement:
         'Henderson is a service area, not an office location.',
     },
-    faq: [
-      {
-        question: 'Who maintains the sewer line at my Henderson home?',
-        answer: (
-          <p>
-            The City says your responsibility for the sewer service lateral
-            begins where it connects to the City&rsquo;s sewer main in the
-            street, and that the City maintains its main up to that connection.
-            Confirm with the City how this applies to your address. Source: City
-            of Henderson Water and Sewer Laterals page, which carries no update
-            date.
-          </p>
-        ),
-      },
-      {
-        question: 'Does the City of Henderson pay for lateral repairs?',
-        answer: (
-          <p>
-            We did not find a City lateral repair, grant or reimbursement
-            program on the pages we reviewed. That is none found, not a
-            statement that none exists. The City says you pay for repairs and
-            cleanup on your side of the connection.
-          </p>
-        ),
-      },
-      {
-        question: 'What does a sewer camera inspection show?',
-        answer: (
-          <p>
-            It can reveal blockages, root intrusion, separated joints, offsets,
-            cracks, standing water and other observable conditions in accessible
-            sewer piping, recorded on video. It does not show what is under
-            water or in sections the camera could not reach.
-          </p>
-        ),
-      },
-      {
-        question: 'Does a camera inspection need a City permit?',
-        answer: (
-          <p>
-            We did not find a City statement requiring a permit for a camera
-            inspection. The City says work in the public right-of-way requires a
-            permit from Public Works, which you can ask at 702-267-3600 (the
-            City&rsquo;s number).
-          </p>
-        ),
-      },
-      {
-        question: 'Do you repair or replace sewer lines?',
-        answer: (
-          <p>
-            No. We inspect, locate, diagnose and clean. That independence is the
-            point: our findings are not built around selling a repair.
-          </p>
-        ),
-      },
-    ],
+    // All relevant questions from the Henderson location page and the camera
+    // service page (see `hendersonCameraFaq` above).
+    faq: hendersonCameraFaq,
     relatedPageIds: [
       id('loc-lv-henderson'),
       id('svc-sewer-camera-inspection'),

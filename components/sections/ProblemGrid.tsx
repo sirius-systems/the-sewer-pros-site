@@ -7,6 +7,7 @@ import {
 } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { SectionHeading } from './SectionHeading'
+import { SlotPlaceholderBox } from './location/SlotPlaceholderBox'
 import { SECTION_ICONS } from './section-icons'
 import type { CardImage, ExperienceIconName } from '@/types'
 
@@ -269,6 +270,14 @@ export function ProblemGrid({
                     </span>
                   )
                 })()
+              ) : item.image?.placeholder !== undefined ? (
+                // Review-build box for an unfilled image slot; never in production.
+                <div className="-mx-6 -mt-6 mb-5 overflow-hidden rounded-t-md">
+                  <SlotPlaceholderBox
+                    image={item.image}
+                    className="rounded-none border-0 border-b-2"
+                  />
+                </div>
               ) : item.image !== undefined ? (
                 <div className="relative -mx-6 -mt-6 mb-5 aspect-[4/3] overflow-hidden rounded-t-md bg-surface-muted">
                   <Image

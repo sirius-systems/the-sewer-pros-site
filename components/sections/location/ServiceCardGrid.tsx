@@ -26,11 +26,17 @@ export function ServiceCardGrid({
   content,
   marketId,
   phone,
+  pageType = 'location',
+  requestHref = '#request',
 }: {
   id?: string
   content: LocationServiceCards
   marketId: MarketId
   phone: { label: string; href: string }
+  /** Analytics page type. Location pages keep the default. */
+  pageType?: string
+  /** Where the booking CTAs land. Location pages keep `#request`. */
+  requestHref?: string
 }) {
   return (
     <Section density="standard" surface="muted" labelledBy={id}>
@@ -68,12 +74,12 @@ export function ServiceCardGrid({
               <p className="mt-3 text-sm font-semibold text-foreground">{card.bestWhen}</p>
               <div className="mt-auto flex flex-col items-start gap-3 pt-5">
                 <a
-                  href="#request"
+                  href={requestHref}
                   className={cn(OUTLINE_CTA)}
                   data-event="service_cta_click"
                   data-service-id={card.serviceId}
                   data-market-id={marketId}
-                  data-page-type="location"
+                  data-page-type={pageType}
                   data-preselect-service={card.serviceId}
                 >
                   {card.bookingLabel}
@@ -95,7 +101,7 @@ export function ServiceCardGrid({
         </div>
         <div className="flex flex-wrap gap-3">
           <a
-            href="#request"
+            href={requestHref}
             className={OUTLINE_CTA}
             data-preselect-service="other"
           >
