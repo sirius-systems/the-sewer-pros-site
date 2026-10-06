@@ -146,6 +146,12 @@ export interface ServiceIndexProps {
    * passes nothing renders exactly as before.
    */
   className?: string
+  /**
+   * `cards` only. When set, the heading and intro sit in a left column and
+   * this node (an image or labelled image slot) in a right column above the
+   * cards; below `lg` they stack, heading first. Omitted: unchanged.
+   */
+  aside?: ReactNode
 }
 
 /**
@@ -184,6 +190,7 @@ export function ServiceIndex({
   equalColumns = false,
   columns = 3,
   className,
+  aside,
 }: ServiceIndexProps) {
   // Gated pages drop out rather than failing the build — a service
   // whose page is pending validation simply is not listed yet (04 §4).
@@ -348,7 +355,14 @@ export function ServiceIndex({
         labelledBy={id}
         className={className}
       >
-        <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+        {aside !== undefined ? (
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+            <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+            {aside}
+          </div>
+        ) : (
+          <SectionHeading id={id} title={title} eyebrow={eyebrow} intro={intro} />
+        )}
 
         <ul
           className={cn(
