@@ -2,7 +2,7 @@
 
 import { useRef, useState, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button, Field, TextInput, Textarea } from '@/components/ui'
+import { Button, Field, RadioGroup, TextInput, Textarea } from '@/components/ui'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { submitLead } from '@/lib/forms/submit-lead'
 import type { MarketId, ServiceId } from '@/types'
@@ -12,8 +12,8 @@ import type { MarketId, ServiceId } from '@/types'
  *
  *   1. What do you need?   The nine residential services as pills (3x3).
  *                          "Not sure? Tell us what's happening" skips to step 3.
- *   2. Type of property?   Optional pills. Can be skipped.
- *   3. How do we reach you? Name, phone, optional note. Submit.
+ *   2. Type of property?   Optional pills (home, rental or multifamily). Can be skipped.
+ *   3. How do we reach you? Full name, phone, preferred method, optional note. Submit.
  *
  * Market, location and the page path are never asked: the page supplies them.
  *
@@ -26,8 +26,7 @@ import type { MarketId, ServiceId } from '@/types'
  * ⚠ ANALYTICS SEND IDS ONLY: market, service and location ids. Never a
  * name, phone, message or property type (19 §17).
  *
- * ⚠ No TCPA copy is needed here because no text option is offered. If one
- * is added, PENDING-019 applies.
+ * ⚠ TODO(legal): the "Text" option needs TCPA consent copy (PENDING-019).
  *
  * Pills are real radio inputs: arrow keys move between them, Space selects,
  * and the focus ring is visible.
@@ -51,7 +50,11 @@ const SERVICE_PILLS: readonly { value: ServiceId; label: string }[] = [
 const PROPERTY_PILLS = [
   { value: 'home', label: 'Home' },
   { value: 'rental-multifamily', label: 'Rental or multifamily' },
-  { value: 'commercial', label: 'Commercial' },
+] as const
+
+const CONTACT_METHOD_OPTIONS = [
+  { value: 'call', label: 'Call' },
+  { value: 'text', label: 'Text' },
 ] as const
 
 const PILL =
@@ -128,13 +131,15 @@ export function SurveyLeadForm({
     if (value('website') !== '') return
 
     const next: typeof errors = {}
-    if (value('name') === '') next.name = 'Enter your name.'
+    if (value('name') === '') next.name = 'Enter your full name.'
     if (value('phone').replace(/\D/g, '').length < 10) {
       next.phone = 'Enter a phone number with area code.'
     }
     setErrors(next)
     if (Object.keys(next).length > 0) {
-      void import('@/lib/analytics').then((m) => m.trackFormError(FORM_TYPE, { market_id: marketId }))
+      void import('@/lib/analytics').then((m) =>
+        m.trackFormError(FORM_TYPE, { market_id: marketId }),
+      )
       document.getElementById(id(Object.keys(next)[0]!))?.focus()
       return
     }
@@ -148,7 +153,7 @@ export function SurveyLeadForm({
       phone: value('phone'),
       email: '',
       zip: '',
-      contactMethod: '',
+      contactMethod: value('contactMethod'),
       appointmentWindow: '',
       message: value('message'),
       sourcePath: window.location.pathname,
@@ -199,11 +204,7 @@ export function SurveyLeadForm({
       </div>
 
       <form onSubmit={handleSubmit} onInput={start} className="mt-5">
-        <h3
-          ref={headingRef}
-          tabIndex={-1}
-          className="text-lg font-semibold outline-none"
-        >
+        <h3 ref={headingRef} tabIndex={-1} className="text-lg font-semibold outline-none">
           {question}
         </h3>
 
@@ -260,7 +261,7 @@ export function SurveyLeadForm({
           <div className="mt-4">
             <fieldset>
               <legend className="sr-only">Type of property</legend>
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {PROPERTY_PILLS.map((pill) => (
                   <div key={pill.value}>
                     <input
@@ -306,7 +307,7 @@ export function SurveyLeadForm({
 
         {/* Step 3 stays mounted once reached so typed values survive a Back. */}
         <div hidden={step !== 3} className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Field htmlFor={id('name')} label="Name (required)" required>
+          <Field htmlFor={id('name')} label="Full name (required)" required>
             <TextInput
               id={id('name')}
               name="name"
@@ -340,9 +341,21 @@ export function SurveyLeadForm({
               </p>
             )}
           </Field>
+          {/*
+            TODO(legal): the "Text" option needs TCPA consent copy from the
+            business (PENDING-019). It is deliberately not drafted here.
+          */}
+          <RadioGroup
+            name="contactMethod"
+            idPrefix={id('contact-method')}
+            legend="Preferred method of contact (required)"
+            options={CONTACT_METHOD_OPTIONS}
+            required
+            className="sm:col-span-2"
+          />
           <Field
             htmlFor={id('message')}
-            label={unsure ? 'What is happening? (optional)' : 'Anything we should know? (optional)'}
+            label={unsure ? 'What is happening?' : 'Anything we should know?'}
             className="sm:col-span-2"
           >
             <Textarea id={id('message')} name="message" rows={3} />
