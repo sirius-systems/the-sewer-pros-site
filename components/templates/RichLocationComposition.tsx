@@ -185,14 +185,10 @@ export function RichLocationComposition({
                     image={heroForm.slotPlaceholder}
                     className="aspect-auto py-3"
                   />
-                  <div className="max-lg:hidden">
-                    <HeroRequestCard card={heroForm.card} phone={phone} />
-                  </div>
-                </div>
-              ) : (
-                <div className="max-lg:hidden">
                   <HeroRequestCard card={heroForm.card} phone={phone} />
                 </div>
+              ) : (
+                <HeroRequestCard card={heroForm.card} phone={phone} />
               )
             ) : undefined
           }
