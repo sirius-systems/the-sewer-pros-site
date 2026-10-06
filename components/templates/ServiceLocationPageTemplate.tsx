@@ -281,18 +281,7 @@ export function ServiceLocationPageTemplate({
                 />
                 <div className="hero-scrim absolute inset-0" />
               </>
-            ) : (
-              <div className="absolute right-4 bottom-4 left-4 rounded-md border-2 border-dashed border-white/40 p-3 text-center text-xs text-white/80 sm:left-auto sm:w-80 lg:top-1/2 lg:right-8 lg:bottom-auto lg:-translate-y-1/2">
-                <p className="font-semibold text-white">
-                  Image slot: {content.heroImage.placeholder.slotId}
-                </p>
-                <p>
-                  Background, {content.heroImage.placeholder.ratio}
-                  {' - '}
-                  {content.heroImage.placeholder.shot}
-                </p>
-              </div>
-            ))}
+            ) : null)}
         </div>
         <Hero
           variant="editorial"

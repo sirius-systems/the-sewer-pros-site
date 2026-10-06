@@ -177,19 +177,7 @@ export function RichLocationComposition({
           mobileContactAction={heroContactAction(page)}
           aside={
             phone !== undefined ? (
-              heroForm.slotPlaceholder?.placeholder !== undefined ? (
-                // Opt-in review-build box above the request card, never behind
-                // the hero copy, so contrast and the form are unaffected.
-                <div className="space-y-4">
-                  <SlotPlaceholderBox
-                    image={heroForm.slotPlaceholder}
-                    className="aspect-auto py-3"
-                  />
-                  <HeroRequestCard card={heroForm.card} phone={phone} />
-                </div>
-              ) : (
-                <HeroRequestCard card={heroForm.card} phone={phone} />
-              )
+              <HeroRequestCard card={heroForm.card} phone={phone} />
             ) : undefined
           }
         />
