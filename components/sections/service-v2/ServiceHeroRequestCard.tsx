@@ -34,7 +34,7 @@ export function ServiceHeroRequestCard({
   defaultServiceId?: ServiceId
   messageLabel?: string
   extraServiceOptions?: readonly { value: ServiceId; label: string }[]
-  /** Use the pill-survey form (it asks for the area, since the page has none). */
+  /** Use the pill-survey form (it asks for the service location, since the page has none). */
   survey?: boolean
 }) {
   return (
