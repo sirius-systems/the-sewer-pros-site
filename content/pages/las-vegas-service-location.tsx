@@ -45,6 +45,15 @@ import { hendersonDrainContent } from './sl-henderson-drain'
 import { hendersonPrePurchaseContent } from './sl-henderson-prepurchase'
 import { hendersonBackupContent } from './sl-henderson-backup'
 import { hendersonMaintenanceContent } from './sl-henderson-maintenance'
+import { lasVegasCityCameraContent } from './sl-lv-city-camera'
+import { lasVegasCityCleaningContent } from './sl-lv-city-cleaning'
+import { lasVegasCityHydroContent } from './sl-lv-city-hydro'
+import { lasVegasCityCleaningCameraContent } from './sl-lv-city-cleaning-camera'
+import { lasVegasCityLocatingContent } from './sl-lv-city-locating'
+import { lasVegasCityDrainContent } from './sl-lv-city-drain'
+import { lasVegasCityPrePurchaseContent } from './sl-lv-city-prepurchase'
+import { lasVegasCityBackupContent } from './sl-lv-city-backup'
+import { lasVegasCityMaintenanceContent } from './sl-lv-city-maintenance'
 import { serviceContent } from './services'
 import {
   mergeRelevantFaqs,
@@ -294,4 +303,13 @@ export const lasVegasServiceLocationContent: Partial<
   [id('sl-henderson-prepurchase')]: hendersonPrePurchaseContent,
   [id('sl-henderson-backup')]: hendersonBackupContent,
   [id('sl-henderson-maintenance')]: hendersonMaintenanceContent,
+  [id('sl-lv-city-camera')]: lasVegasCityCameraContent,
+  [id('sl-lv-city-cleaning')]: lasVegasCityCleaningContent,
+  [id('sl-lv-city-hydro')]: lasVegasCityHydroContent,
+  [id('sl-lv-city-cleaning-camera')]: lasVegasCityCleaningCameraContent,
+  [id('sl-lv-city-locating')]: lasVegasCityLocatingContent,
+  [id('sl-lv-city-drain')]: lasVegasCityDrainContent,
+  [id('sl-lv-city-prepurchase')]: lasVegasCityPrePurchaseContent,
+  [id('sl-lv-city-backup')]: lasVegasCityBackupContent,
+  [id('sl-lv-city-maintenance')]: lasVegasCityMaintenanceContent,
 }
