@@ -40,6 +40,21 @@ import { chulaVistaContent } from './san-diego-chula-vista'
 import { escondidoContent } from './san-diego-escondido'
 import { oceansideContent } from './san-diego-oceanside'
 import { sanDiegoMissionValleyContent } from './san-diego-mission-valley'
+import { rebuild as rbSlStlCityCamera } from './sl-rebuild/sl-stl-city-camera'
+import { rebuild as rbSlChesterfieldCamera } from './sl-rebuild/sl-chesterfield-camera'
+import { rebuild as rbSlChesterfieldHydro } from './sl-rebuild/sl-chesterfield-hydro'
+import { rebuild as rbSlBallwinPrepurchase } from './sl-rebuild/sl-ballwin-prepurchase'
+import { rebuild as rbSlStCharlesPrepurchase } from './sl-rebuild/sl-st-charles-prepurchase'
+import { rebuild as rbSlFlorissantCleaning } from './sl-rebuild/sl-florissant-cleaning'
+import { rebuild as rbSlSdCityCamera } from './sl-rebuild/sl-sd-city-camera'
+import { rebuild as rbSlSanMarcosCamera } from './sl-rebuild/sl-san-marcos-camera'
+import { rebuild as rbSlCarlsbadCamera } from './sl-rebuild/sl-carlsbad-camera'
+import { rebuild as rbSlCarlsbadPrepurchase } from './sl-rebuild/sl-carlsbad-prepurchase'
+import { rebuild as rbSlChulaVistaCamera } from './sl-rebuild/sl-chula-vista-camera'
+import { rebuild as rbSlEscondidoCleaning } from './sl-rebuild/sl-escondido-cleaning'
+import { rebuild as rbSlOceansideCleaning } from './sl-rebuild/sl-oceanside-cleaning'
+import { rebuild as rbSlMissionValleyHydro } from './sl-rebuild/sl-mission-valley-hydro'
+import type { PageRebuild } from './sl-rebuild/types'
 import { serviceContent } from './services'
 import {
   SERVICE_INCLUSIONS,
@@ -172,6 +187,23 @@ const SPECS: Record<string, Spec> = {
   },
 }
 
+const REBUILDS: Record<string, PageRebuild> = {
+  'sl-stl-city-camera': rbSlStlCityCamera,
+  'sl-chesterfield-camera': rbSlChesterfieldCamera,
+  'sl-chesterfield-hydro': rbSlChesterfieldHydro,
+  'sl-ballwin-prepurchase': rbSlBallwinPrepurchase,
+  'sl-st-charles-prepurchase': rbSlStCharlesPrepurchase,
+  'sl-florissant-cleaning': rbSlFlorissantCleaning,
+  'sl-sd-city-camera': rbSlSdCityCamera,
+  'sl-san-marcos-camera': rbSlSanMarcosCamera,
+  'sl-carlsbad-camera': rbSlCarlsbadCamera,
+  'sl-carlsbad-prepurchase': rbSlCarlsbadPrepurchase,
+  'sl-chula-vista-camera': rbSlChulaVistaCamera,
+  'sl-escondido-cleaning': rbSlEscondidoCleaning,
+  'sl-oceanside-cleaning': rbSlOceansideCleaning,
+  'sl-mission-valley-hydro': rbSlMissionValleyHydro,
+}
+
 const SHARED_SKIP = [/^Which areas does The Sewer Pros serve\?$/]
 /** Camera-type services already answer "what does it show" in full. */
 const CAMERA_DUPLICATE = /^What does a sewer camera inspection show\?$/
@@ -226,8 +258,19 @@ function upgrade(
     description: typeof step.description === 'string' ? step.description : undefined,
   }))
 
+  const rebuild = REBUILDS[pageId]
+  if (rebuild === undefined) throw new Error(`${pageId}: no rebuild module`)
+  const localCard = rebuild.local ?? spec.local
+
   return {
     ...existing,
+    body: rebuild.body,
+    hero: { ...existing.hero, ...rebuild.hero },
+    ...(rebuild.metaDescription !== undefined && { metaDescription: rebuild.metaDescription }),
+    ...(rebuild.serviceDescription !== undefined && {
+      serviceDescription: rebuild.serviceDescription,
+    }),
+    ...(rebuild.cta !== undefined && { cta: rebuild.cta }),
     // Page-specific meta title; the shell appends the site name.
     seoTitle: existing.seoTitle ?? `${service.name} in ${location.name}`,
     heroImage: slots.hero,
@@ -235,7 +278,7 @@ function upgrade(
     sources: spec.location.sources,
     problems: [
       ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
-      { ...spec.local, image: slots.problems[3] },
+      { ...localCard, image: slots.problems[3] },
     ],
     inclusions,
     process: existing.process ?? steps,
