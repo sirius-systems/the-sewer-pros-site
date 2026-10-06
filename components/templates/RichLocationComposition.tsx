@@ -131,7 +131,11 @@ export function RichLocationComposition({
         })),
       }}
     >
-      <PreselectServiceListener selectId={HERO_SERVICE_SELECT_ID} />
+      <PreselectServiceListener
+        selectId={HERO_SERVICE_SELECT_ID}
+        fallbackSelectId="final-lead-service"
+        fallbackTargetId="final-request-heading"
+      />
 
       <div className="relative isolate overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-brand">
@@ -181,10 +185,14 @@ export function RichLocationComposition({
                     image={heroForm.slotPlaceholder}
                     className="aspect-auto py-3"
                   />
-                  <HeroRequestCard card={heroForm.card} phone={phone} />
+                  <div className="max-lg:hidden">
+                    <HeroRequestCard card={heroForm.card} phone={phone} />
+                  </div>
                 </div>
               ) : (
-                <HeroRequestCard card={heroForm.card} phone={phone} />
+                <div className="max-lg:hidden">
+                  <HeroRequestCard card={heroForm.card} phone={phone} />
+                </div>
               )
             ) : undefined
           }

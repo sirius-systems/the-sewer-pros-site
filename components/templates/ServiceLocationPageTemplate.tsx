@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Section, Prose, type SectionDensity } from '@/components/ui'
+import { Section, Prose, ButtonLink, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   TrustBar,
@@ -367,6 +367,16 @@ export function ServiceLocationPageTemplate({
                 <dt className="font-semibold">Hours</dt>
                 <dd>{detail.hours}</dd>
               </dl>
+            )}
+            {phone !== undefined && (
+              <div className="mb-6 flex flex-wrap gap-3">
+                <ButtonLink href={phone.href} variant="accent">
+                  Call {phone.label}
+                </ButtonLink>
+                <ButtonLink href="/contact/" variant="secondary">
+                  Contact The Sewer Pros
+                </ButtonLink>
+              </div>
             )}
             <LeadFormSection
               bare
