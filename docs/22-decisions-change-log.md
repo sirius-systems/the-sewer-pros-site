@@ -5261,6 +5261,23 @@ The following were removed from the live copy and are owner-pending content chan
 
 The owner confirmed two points, recorded here so they are not re-raised in later page reviews. First, the sentence "We use RIDGID sewer camera equipment to examine the line..." in the shared independent band (`IndependentProcess`) is owner-approved under DEC-132 as amended by DEC-133; page verify scripts may allow-list that exact sentence. Second, the three markets are St. Louis, San Diego and Las Vegas. The company-wide inspection counter (145,000+ inspections performed, 8,000+ per year) was checked on 2026-10-05: the source constants in `data/business/organization.ts` were already correct and no value was changed. No business fact was added or changed. The owner also confirmed that the company-wide experience counter strip (145,000+ inspections performed, 8,000+ per year, 3 markets served, Since 2011) intentionally appears on every page that renders it, including the Las Vegas pages, because it is one company offering the same services in multiple locations; it is separate from the St. Louis-only "100,000+" claim (DEC-072), which does not change.
 
+
+## DEC-139 - DEC-088 Free-Estimate and Same-Day Answers Carried on Service + Location Pages in All Three Markets
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-088, DEC-136
+**Affected Documents:**
+
+* `content/pages/sl-henderson-hydro.tsx`, `content/pages/sl-henderson-backup.tsx` (cost and same-day FAQ entries no longer skipped)
+* `content/pages/service-location-shared.ts`, `content/pages/service-location-upgrade.ts` (the merge carries the service page's FAQ answers as published)
+
+On 2026-10-05 the owner directed that the cost and same-day FAQ answers carrying the DEC-088 wording appear, as published on each service page, on the service + location pages in St. Louis, San Diego and Las Vegas. The wording is carried verbatim from the service page, with its weekday hours and weekend exclusion intact. No new claim is authorised: the body copy of these pages makes no free-estimate, same-day, emergency or response-time claim, and `CLAIMS_REQUIRING_VERIFICATION` continues to govern every other appearance.
+
+The owner also directed that every service + location page show the source location page's "Sources" list with its last-reviewed date, and that the company phone number may appear in the body text of the cleaning and drain cleaning pages.
+
 ---
 
 # 26. Decision Quality Standard

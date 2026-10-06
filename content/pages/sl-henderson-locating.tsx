@@ -81,6 +81,7 @@ export const hendersonLocatingContent: ServiceLocationPageContent = {
     'Sewer line locating estimates where an accessible underground sewer line runs, using a transmitter inside the line and a receiver at the surface, for properties in the City of Henderson, Nevada. Results are estimates, not a survey.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Sewer Line Locating in Henderson',

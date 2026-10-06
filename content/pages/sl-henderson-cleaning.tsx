@@ -80,6 +80,7 @@ export const hendersonCleaningContent: ServiceLocationPageContent = {
     'Sewer cleaning is the removal of grease, roots, deposits, debris, and other material that restricts flow in an accessible private sewer line, for properties in the City of Henderson, Nevada.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Sewer Cleaning in Henderson',

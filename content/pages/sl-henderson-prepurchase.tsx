@@ -88,6 +88,7 @@ export const hendersonPrePurchaseContent: ServiceLocationPageContent = {
     'A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase, recording the visible condition of the accessible sewer line serving a home in the City of Henderson, Nevada, before closing.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Pre-Purchase Sewer Inspection in Henderson',

@@ -17,9 +17,9 @@
  *   4. No City program - none found, vs. "does not repair" and the second-opinion path
  *
  * ⚠ CITY NUMBERS ARE THE CITY'S. No company phone, office, price, offer,
- * same-day or emergency claim, response time or guarantee appears. The service
- * page's cost and same-day answers (DEC-088 wording) are deliberately NOT
- * carried here; see the source report.
+ * same-day or emergency claim, response time or guarantee appears in the body
+ * copy. The service page's cost and same-day FAQ answers (DEC-088 wording) are
+ * carried as published, per the owner's 2026-10-05 direction (DEC-139).
  */
 
 import type { PageId, ProcessContent, ServiceLocationPageContent } from '@/types'
@@ -56,11 +56,6 @@ const hendersonBackupFaq = mergeRelevantFaqs(
     'What does a sewer camera inspection show?',
     // Location page: utility account transfer, unrelated to a backup.
     'How do I transfer water and sewer service when I buy a home in Henderson?',
-    // Service page: carries the DEC-088 free-estimate wording, scoped to the
-    // service page and the Las Vegas market has no owner-confirmed equivalent.
-    'How long does it take, and how much does it cost?',
-    // Service page: DEC-088 same-day wording, scoped the same way.
-    'Can you come the same day, and is this emergency service?',
   ],
   'In Henderson',
 )
@@ -78,6 +73,7 @@ export const hendersonBackupContent: ServiceLocationPageContent = {
     'Recurring sewer backup diagnosis is the process of inspecting the accessible sewer line to identify visible conditions that may cause repeated wastewater backups, for properties in the City of Henderson, Nevada. It generally combines a camera inspection, cleaning when needed, and written findings.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Recurring Sewer Backup Diagnosis in Henderson',

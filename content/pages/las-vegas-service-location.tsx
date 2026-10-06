@@ -111,6 +111,7 @@ export const lasVegasServiceLocationContent: Partial<
       'A sewer camera inspection is a visual inspection of the accessible inside of a sewer line, recorded on video, for properties in the City of Henderson, Nevada.',
     heroImage: hendersonCameraSlots.hero,
     ctaImage: hendersonCameraSlots.cta,
+    sources: hendersonContent.sources,
     hero: {
       eyebrow: 'Henderson, NV',
       title: 'Sewer Camera Inspection in Henderson',

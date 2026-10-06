@@ -78,6 +78,7 @@ export const hendersonCleaningCameraContent: ServiceLocationPageContent = {
     'Sewer cleaning removes material that restricts flow in an accessible sewer line, and a camera inspection records its visible inside on video. The two can be combined in one visit, for properties in the City of Henderson, Nevada.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Sewer Cleaning and Camera Inspection in Henderson',

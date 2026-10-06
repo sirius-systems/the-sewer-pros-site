@@ -82,6 +82,7 @@ export const hendersonDrainContent: ServiceLocationPageContent = {
     'Drain cleaning removes grease, roots, deposits, debris and other restricting material from a drain line using a rotating cable, water jetting, or both, for homes in the City of Henderson, Nevada. It restores flow and does not repair the pipe.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Drain Cleaning in Henderson',
