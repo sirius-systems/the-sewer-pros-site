@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Field, RadioGroup, TextInput, Textarea } from '@/components/ui'
-import { marketOperatingDetail } from '@/data/markets/markets'
+import { marketList, marketOperatingDetail } from '@/data/markets/markets'
 import { submitLead } from '@/lib/forms/submit-lead'
 import type { MarketId, ServiceId } from '@/types'
 
@@ -65,7 +65,11 @@ const PILL =
   'peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent-secondary'
 
 export interface SurveyLeadFormProps {
-  marketId: MarketId
+  /**
+   * The page's market. Omit it on a market-neutral page (a core service page):
+   * the form then opens with a "Which area?" step and asks the visitor.
+   */
+  marketId?: MarketId
   /** Derived location id, e.g. `loc-sd-escondido`. Analytics and payload only. */
   locationId?: string
   /** The page's own service, shown pre-selected on step 1. */
@@ -77,10 +81,11 @@ export interface SurveyLeadFormProps {
   headingId?: string
 }
 
-type Step = 1 | 2 | 3
+/** 0 is the "Which area?" step, present only when the page has no market. */
+type Step = 0 | 1 | 2 | 3
 
 export function SurveyLeadForm({
-  marketId,
+  marketId: pageMarketId,
   locationId,
   defaultServiceId,
   idPrefix = 'survey',
@@ -89,7 +94,12 @@ export function SurveyLeadForm({
   headingId,
 }: SurveyLeadFormProps) {
   const router = useRouter()
-  const [step, setStep] = useState<Step>(1)
+  const needsMarket = pageMarketId === undefined
+  const [chosenMarket, setChosenMarket] = useState<MarketId | ''>('')
+  const [step, setStep] = useState<Step>(needsMarket ? 0 : 1)
+  const marketId = pageMarketId ?? (chosenMarket === '' ? undefined : chosenMarket)
+  const totalSteps = needsMarket ? 4 : 3
+  const shownStep = needsMarket ? step + 1 : step
   const [service, setService] = useState<ServiceId | ''>(defaultServiceId ?? '')
   const [unsure, setUnsure] = useState(false)
   const [property, setProperty] = useState('')
@@ -99,7 +109,8 @@ export function SurveyLeadForm({
   const started = useRef(false)
   const headingRef = useRef<HTMLHeadingElement>(null)
 
-  const phoneLabel = marketOperatingDetail[marketId]?.phone ?? 'us'
+  const phoneLabel =
+    marketId === undefined ? 'us' : (marketOperatingDetail[marketId]?.phone ?? 'us')
   const id = (name: string) => `${idPrefix}-${name}`
 
   // A service card's booking link (`data-preselect-service`, see
@@ -115,18 +126,18 @@ export function SurveyLeadForm({
         setUnsure(false)
         setService(value as ServiceId)
       } else return
-      setStep(2)
+      setStep(needsMarket && chosenMarket === '' ? 0 : 2)
     }
     document.addEventListener('sp:preselect-service', onPreselect)
     return () => document.removeEventListener('sp:preselect-service', onPreselect)
-  }, [])
+  }, [needsMarket, chosenMarket])
 
   function start() {
     if (started.current) return
     started.current = true
     void import('@/lib/analytics').then((m) =>
       m.trackFormStart(FORM_TYPE, {
-        market_id: marketId,
+        ...(marketId !== undefined && { market_id: marketId }),
         ...(locationId !== undefined && { location_id: locationId }),
       }),
     )
@@ -149,6 +160,10 @@ export function SurveyLeadForm({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setNotice(undefined)
+    if (marketId === undefined) {
+      go(0)
+      return
+    }
     const data = new FormData(event.currentTarget)
     const value = (key: string) => String(data.get(key) ?? '').trim()
 
@@ -212,11 +227,13 @@ export function SurveyLeadForm({
   }
 
   const question =
-    step === 1
-      ? 'What do you need?'
-      : step === 2
-        ? 'What type of property is it?'
-        : 'How can we reach you?'
+    step === 0
+      ? 'Which area are you in?'
+      : step === 1
+        ? 'What do you need?'
+        : step === 2
+          ? 'What type of property is it?'
+          : 'How can we reach you?'
 
   return (
     <div>
@@ -225,13 +242,13 @@ export function SurveyLeadForm({
       </h2>
       {intro !== undefined && <p className="mt-2 text-body text-muted-foreground">{intro}</p>}
       <p className="mt-2 text-sm text-muted-foreground" aria-live="polite">
-        Step {step} of 3
+        Step {shownStep} of {totalSteps}
       </p>
       <div className="mt-2 flex gap-1.5" aria-hidden="true">
-        {[1, 2, 3].map((n) => (
+        {Array.from({ length: totalSteps }, (_, i) => i + 1).map((n) => (
           <span
             key={n}
-            className={`h-1 flex-1 rounded-full ${n <= step ? 'bg-accent-secondary' : 'bg-border'}`}
+            className={`h-1 flex-1 rounded-full ${n <= shownStep ? 'bg-accent-secondary' : 'bg-border'}`}
           />
         ))}
       </div>
@@ -240,6 +257,39 @@ export function SurveyLeadForm({
         <h3 ref={headingRef} tabIndex={-1} className="text-lg font-semibold outline-none">
           {question}
         </h3>
+
+        {step === 0 && (
+          <div className="mt-4">
+            <fieldset>
+              <legend className="sr-only">Area</legend>
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                {marketList.map((market) => (
+                  <div key={market.id}>
+                    <input
+                      type="radio"
+                      name="market"
+                      id={id(`market-${market.id}`)}
+                      value={market.id}
+                      checked={chosenMarket === market.id}
+                      onChange={() => {
+                        start()
+                        setChosenMarket(market.id as MarketId)
+                        go(1)
+                      }}
+                      onClick={() => {
+                        if (chosenMarket === market.id) go(1)
+                      }}
+                      className="peer sr-only"
+                    />
+                    <label htmlFor={id(`market-${market.id}`)} className={`${PILL} h-full`}>
+                      {market.name}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </fieldset>
+          </div>
+        )}
 
         {step === 1 && (
           <div className="mt-4">
@@ -287,6 +337,15 @@ export function SurveyLeadForm({
                 </Button>
               )}
             </div>
+            {needsMarket && (
+              <button
+                type="button"
+                className="mt-3 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                onClick={() => go(0)}
+              >
+                Back
+              </button>
+            )}
           </div>
         )}
 
