@@ -46,8 +46,9 @@ import { approvedPages } from './approved-pages'
    ========================================================================== */
 
 // 70 launch pages + the three market contact endpoints + the noindex
-// contact confirmation page.
-const EXPECTED_PAGE_COUNT = 74
+// contact confirmation page, + 1 noindex service+location pilot
+// (`sl-henderson-camera`, the template for the remaining matrix pages).
+const EXPECTED_PAGE_COUNT = 75
 // Was 65 while DEC-063 gated the five Las Vegas pages. DEC-080 released
 // that gate. The 73 indexable pages are the original 70 plus the three
 // market contact pages; the contact confirmation page is deliberately
