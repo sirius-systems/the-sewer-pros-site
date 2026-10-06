@@ -26,7 +26,6 @@ import {
   NearbyAreasSection,
   SourcesBlock,
 } from '@/components/sections/location'
-import { SlotPlaceholderBox } from '@/components/sections/location/SlotPlaceholderBox'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { PageShell } from './PageShell'
 import type { LocationHeroForm, LocationPageContent, MasterPageRecord } from '@/types'
@@ -257,16 +256,7 @@ export function RichLocationComposition({
           phone={phone}
           phoneVariant="button"
           backgroundImage={finalCtaBackground}
-          proof={
-            content.finalCta.slotPlaceholder?.placeholder !== undefined ? (
-              <div className="space-y-6">
-                <SlotPlaceholderBox image={content.finalCta.slotPlaceholder} />
-                {finalCtaForm}
-              </div>
-            ) : (
-              finalCtaForm
-            )
-          }
+          proof={finalCtaForm}
         />
       )}
 
