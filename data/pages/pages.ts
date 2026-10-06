@@ -55,7 +55,7 @@ const EXPECTED_PAGE_COUNT = 83
 // market contact pages; the contact confirmation page is deliberately
 // noindex. Keep this pinned: it is the guard that catches a page becoming
 // indexable without a decision behind it (CLAUDE.md §45).
-const EXPECTED_INDEXABLE_COUNT = 74 // 73 + sl-henderson-camera (pilot)
+const EXPECTED_INDEXABLE_COUNT = 82 // 73 + 9 Henderson service+location pages
 
 function fail(message: string): never {
   throw new Error(`Approved page registry invalid: ${message}`)
