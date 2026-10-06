@@ -63,6 +63,15 @@ import { northLasVegasDrainContent } from './sl-nlv-drain'
 import { northLasVegasPrePurchaseContent } from './sl-nlv-prepurchase'
 import { northLasVegasBackupContent } from './sl-nlv-backup'
 import { northLasVegasMaintenanceContent } from './sl-nlv-maintenance'
+import { summerlinCameraContent } from './sl-summerlin-camera'
+import { summerlinCleaningContent } from './sl-summerlin-cleaning'
+import { summerlinHydroContent } from './sl-summerlin-hydro'
+import { summerlinCleaningCameraContent } from './sl-summerlin-cleaning-camera'
+import { summerlinLocatingContent } from './sl-summerlin-locating'
+import { summerlinDrainContent } from './sl-summerlin-drain'
+import { summerlinPrePurchaseContent } from './sl-summerlin-prepurchase'
+import { summerlinBackupContent } from './sl-summerlin-backup'
+import { summerlinMaintenanceContent } from './sl-summerlin-maintenance'
 import { serviceContent } from './services'
 import {
   mergeRelevantFaqs,
@@ -330,4 +339,13 @@ export const lasVegasServiceLocationContent: Partial<
   [id('sl-nlv-prepurchase')]: northLasVegasPrePurchaseContent,
   [id('sl-nlv-backup')]: northLasVegasBackupContent,
   [id('sl-nlv-maintenance')]: northLasVegasMaintenanceContent,
+  [id('sl-summerlin-camera')]: summerlinCameraContent,
+  [id('sl-summerlin-cleaning')]: summerlinCleaningContent,
+  [id('sl-summerlin-hydro')]: summerlinHydroContent,
+  [id('sl-summerlin-cleaning-camera')]: summerlinCleaningCameraContent,
+  [id('sl-summerlin-locating')]: summerlinLocatingContent,
+  [id('sl-summerlin-drain')]: summerlinDrainContent,
+  [id('sl-summerlin-prepurchase')]: summerlinPrePurchaseContent,
+  [id('sl-summerlin-backup')]: summerlinBackupContent,
+  [id('sl-summerlin-maintenance')]: summerlinMaintenanceContent,
 }
