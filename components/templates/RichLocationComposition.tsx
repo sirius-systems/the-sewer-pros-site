@@ -7,14 +7,12 @@ import {
   FaqSection,
   CtaSection,
   ReviewMarquee,
-  LeadFormSection,
   MobileContactBar,
   faqSectionRenders,
 } from '@/components/sections'
 import {
   ServiceCardGrid,
   PreselectServiceListener,
-  HeroRequestCard,
   KeyTakeaways,
   ResponsibilitySection,
   SystemExplainer,
@@ -26,6 +24,8 @@ import {
   NearbyAreasSection,
   SourcesBlock,
 } from '@/components/sections/location'
+import { SurveyLeadForm } from '@/components/sections/SurveyLeadForm'
+import { HERO_REQUEST_ID } from '@/components/sections/location/HeroRequestCard'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { PageShell } from './PageShell'
 import type { LocationHeroForm, LocationPageContent, MasterPageRecord } from '@/types'
@@ -77,16 +77,14 @@ export function RichLocationComposition({
       : undefined
 
   const finalCtaForm =
-    content.finalCta !== undefined ? (
+    content.finalCta !== undefined && page.marketId !== undefined ? (
       <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-        <LeadFormSection
-          bare
-          id="final-request-heading"
-          idPrefix="final-lead"
+        <SurveyLeadForm
+          idPrefix="final-survey"
+          headingId="final-request-heading"
           title={content.finalCta.formTitle}
-          submitLabel={content.finalCta.submitLabel}
-          messageLabel={content.finalCta.messageLabel}
-          config={content.finalCta.form}
+          marketId={page.marketId}
+          locationId={page.locationId}
         />
       </div>
     ) : null
@@ -175,8 +173,29 @@ export function RichLocationComposition({
           hideAsideBelowLg
           mobileContactAction={heroContactAction(page)}
           aside={
-            phone !== undefined ? (
-              <HeroRequestCard card={heroForm.card} phone={phone} />
+            phone !== undefined && page.marketId !== undefined ? (
+              <div
+                id={HERO_REQUEST_ID}
+                className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8"
+              >
+                <SurveyLeadForm
+                  idPrefix="hero-survey"
+                  headingId="hero-request-heading"
+                  title={heroForm.card.title}
+                  intro={heroForm.card.intro}
+                  marketId={page.marketId}
+                  locationId={page.locationId}
+                />
+                <div className="mt-5 border-t border-border pt-5">
+                  <h3 className="text-h4 font-semibold">{heroForm.card.nextStepsTitle}</h3>
+                  <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm leading-6">
+                    {heroForm.card.nextSteps.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                </div>
+                <p className="mt-5 text-sm leading-6 text-muted-foreground">{heroForm.card.note}</p>
+              </div>
             ) : undefined
           }
         />

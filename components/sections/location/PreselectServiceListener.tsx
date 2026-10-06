@@ -52,6 +52,10 @@ export function PreselectServiceListener({
       const link = target.closest<HTMLElement>('[data-preselect-service]')
       if (link === null) return
       const value = link.dataset.preselectService
+      // The pill-survey form listens for this; the select below serves older forms.
+      if (value !== undefined) {
+        document.dispatchEvent(new CustomEvent('sp:preselect-service', { detail: value }))
+      }
       const select = useFallback
         ? document.getElementById(fallbackSelectId)
         : heroSelect

@@ -156,13 +156,6 @@ const SERVICES_IMAGE = resolveSlotImage({
   shot: 'Technician with inspection equipment at a residential property, no identifiable address or people',
 })
 
-/**
- * Pages that use the pill-survey form in the final CTA (pilot, 2026-10-06).
- * Every other service + location page keeps `LeadFormSection` until the
- * owner approves the pilot; then this set is replaced by the whole template.
- */
-const SURVEY_FORM_PAGE_IDS: ReadonlySet<string> = new Set(['sl-escondido-cleaning'])
-
 export function ServiceLocationPageTemplate({
   page,
   content,
@@ -518,7 +511,7 @@ export function ServiceLocationPageTemplate({
         }
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-            {!SURVEY_FORM_PAGE_IDS.has(page.id) && (
+            {page.marketId === undefined && (
               <>
             {detail !== undefined && phone !== undefined && (
               // Per-market contact details (DEC-083): this page's market only,
@@ -552,7 +545,7 @@ export function ServiceLocationPageTemplate({
             )}
               </>
             )}
-            {SURVEY_FORM_PAGE_IDS.has(page.id) && page.marketId !== undefined ? (
+            {page.marketId !== undefined ? (
               <SurveyLeadForm
                 idPrefix="cta-survey"
                 marketId={page.marketId}

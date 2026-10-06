@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Field, RadioGroup, TextInput, Textarea } from '@/components/ui'
 import { marketOperatingDetail } from '@/data/markets/markets'
@@ -72,6 +72,9 @@ export interface SurveyLeadFormProps {
   defaultServiceId?: ServiceId
   idPrefix?: string
   title?: string
+  intro?: string
+  /** Id of the form's `<h2>`, for pages that scroll to it. */
+  headingId?: string
 }
 
 type Step = 1 | 2 | 3
@@ -82,6 +85,8 @@ export function SurveyLeadForm({
   defaultServiceId,
   idPrefix = 'survey',
   title = 'Request service',
+  intro,
+  headingId,
 }: SurveyLeadFormProps) {
   const router = useRouter()
   const [step, setStep] = useState<Step>(1)
@@ -96,6 +101,25 @@ export function SurveyLeadForm({
 
   const phoneLabel = marketOperatingDetail[marketId]?.phone ?? 'us'
   const id = (name: string) => `${idPrefix}-${name}`
+
+  // A service card's booking link (`data-preselect-service`, see
+  // `PreselectServiceListener`) chooses the service and moves to step 2.
+  // "other" is the card for "Not sure".
+  useEffect(() => {
+    function onPreselect(event: Event) {
+      const value = (event as CustomEvent<string>).detail
+      if (value === 'other') {
+        setUnsure(true)
+        setService('')
+      } else if (SERVICE_PILLS.some((pill) => pill.value === value)) {
+        setUnsure(false)
+        setService(value as ServiceId)
+      } else return
+      setStep(2)
+    }
+    document.addEventListener('sp:preselect-service', onPreselect)
+    return () => document.removeEventListener('sp:preselect-service', onPreselect)
+  }, [])
 
   function start() {
     if (started.current) return
@@ -196,7 +220,10 @@ export function SurveyLeadForm({
 
   return (
     <div>
-      <h2 className="text-h3 font-semibold tracking-tight">{title}</h2>
+      <h2 id={headingId} className="text-h3 font-semibold tracking-tight">
+        {title}
+      </h2>
+      {intro !== undefined && <p className="mt-2 text-body text-muted-foreground">{intro}</p>}
       <p className="mt-2 text-sm text-muted-foreground" aria-live="polite">
         Step {step} of 3
       </p>
