@@ -2947,6 +2947,8 @@ export interface ServiceLocationPageContent extends BasePageContent {
   coverage?: CoverageContent
   /** Hero picture: a real photo, or the labelled review-build box while image slots are on. */
   heroImage?: CardImage
+  /** The source location page's sources list, shown above the final CTA. */
+  sources?: LocationSources
   /** Final CTA background: a real photo, or the labelled review-build box. */
   ctaImage?: CardImage
   /**

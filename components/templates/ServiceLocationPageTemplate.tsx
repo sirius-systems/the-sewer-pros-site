@@ -33,6 +33,7 @@ import {
   problemGridRenders,
   inclusionsGridRenders,
 } from '@/components/sections'
+import { SourcesBlock } from '@/components/sections/location'
 import {
   approvedServicesIntro,
   approvedServicesTitle,
@@ -225,11 +226,12 @@ export function ServiceLocationPageTemplate({
       ? (['dense'] as const)
       : []),
     ...(showsOtherAreas
-      ? (['dense'] as const)
+      ? (['standard'] as const)
       : coverageSectionRenders(content.coverage)
         ? (['standard'] as const)
         : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
+    ...(content.sources !== undefined ? (['dense'] as const) : []),
     'sparse',
   ]
 
@@ -429,7 +431,7 @@ export function ServiceLocationPageTemplate({
 
       {showsOtherAreas && otherAreas !== undefined ? (
         <ServiceAreaSection
-          density="dense"
+          density="standard"
           id="service-area"
           content={otherAreas}
           phone={
@@ -484,6 +486,8 @@ export function ServiceLocationPageTemplate({
           <FaqSection title={faqTitle} entries={content.faq} />
         )
       )}
+
+      {content.sources !== undefined && <SourcesBlock content={content.sources} />}
 
       {/*
         ⚠ `action={null}`: the CTA's own button is omitted because the form in

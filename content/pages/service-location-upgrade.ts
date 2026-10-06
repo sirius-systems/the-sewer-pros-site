@@ -232,6 +232,7 @@ function upgrade(
     seoTitle: existing.seoTitle ?? `${service.name} in ${location.name}`,
     heroImage: slots.hero,
     ctaImage: slots.cta,
+    sources: spec.location.sources,
     problems: [
       ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
       { ...spec.local, image: slots.problems[3] },

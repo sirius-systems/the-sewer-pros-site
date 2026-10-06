@@ -79,6 +79,7 @@ export const hendersonMaintenanceContent: ServiceLocationPageContent = {
     "Preventative sewer maintenance is planned inspection and cleaning of a home's drain and sewer line before buildup or an obstruction causes a backup, for properties in the City of Henderson, Nevada. It is diagnostic and cleaning work, not repair.",
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Preventative Sewer Maintenance in Henderson',

@@ -17,8 +17,8 @@
  *
  * ⚠ CITY NUMBERS ARE THE CITY'S. The company phone is not repeated here. No
  * price, offer, response time, emergency or same-day claim, guarantee, pressure
- * or flow figure appears. The owner-approved free-estimate and same-day wording
- * (DEC-088) lives on the service page only and is not repeated on this page.
+ * or flow figure appears in the body copy. The service page's cost and same-day
+ * FAQ answers (DEC-088 wording) are carried as published (DEC-139).
  * Equipment names appear only inside the process steps lifted from the service
  * page.
  */
@@ -58,20 +58,16 @@ const slots = pageImageSlots('sl-henderson-hydro', {
 
 /**
  * Every question from the Henderson location page and the hydro jetting
- * service page, minus three:
- *  - the location page's water and sewer service transfer question (utility
- *    accounts, no bearing on jetting a line);
- *  - the service page's same-day question and its cost question, whose answers
- *    carry the owner-approved free-estimate and same-day wording (DEC-088),
- *    which is used on the service page only.
+ * service page, minus the location page's water and sewer service transfer
+ * question (utility accounts, no bearing on jetting a line). The service
+ * page's cost and same-day answers (DEC-088 wording) are included, as the
+ * owner directed on 2026-10-05 (DEC-139).
  */
 const faq = mergeRelevantFaqs(
   hendersonContent.faq,
   v2.faq,
   [
     'How do I transfer water and sewer service when I buy a home in Henderson?',
-    'Do you offer same-day hydro jetting?',
-    'How much does it cost?',
   ],
   'In Henderson',
 )
@@ -84,6 +80,7 @@ export const hendersonHydroContent: ServiceLocationPageContent = {
     'Hydro jetting cleans an accessible sewer or drain line with pressurized water sent through a hose and nozzle, for properties in the City of Henderson, Nevada.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
+  sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
     title: 'Hydro Jetting in Henderson',
