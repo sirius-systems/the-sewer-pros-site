@@ -13,7 +13,7 @@ import type { MarketId, ServiceId } from '@/types'
  *   1. What do you need?   The nine residential services as pills (3x3).
  *                          "Not sure? Tell us what's happening" skips to step 3.
  *   2. Type of property?   Optional pills (home, rental or multifamily). Can be skipped.
- *   3. How do we reach you? Full name, phone, preferred method, optional note. Submit.
+ *   3. How do we reach you? Full name, phone, optional email, preferred method, optional note. Submit.
  *
  * Market, location and the page path are never asked: the page supplies them.
  *
@@ -55,6 +55,7 @@ const PROPERTY_PILLS = [
 const CONTACT_METHOD_OPTIONS = [
   { value: 'call', label: 'Call' },
   { value: 'text', label: 'Text' },
+  { value: 'email', label: 'Email' },
 ] as const
 
 const PILL =
@@ -89,7 +90,7 @@ export function SurveyLeadForm({
   const [property, setProperty] = useState('')
   const [pending, setPending] = useState(false)
   const [notice, setNotice] = useState<string | undefined>()
-  const [errors, setErrors] = useState<{ name?: string; phone?: string }>({})
+  const [errors, setErrors] = useState<{ name?: string; phone?: string; email?: string }>({})
   const started = useRef(false)
   const headingRef = useRef<HTMLHeadingElement>(null)
 
@@ -135,6 +136,11 @@ export function SurveyLeadForm({
     if (value('phone').replace(/\D/g, '').length < 10) {
       next.phone = 'Enter a phone number with area code.'
     }
+    if (value('email') !== '' && !/^\S+@\S+\.\S+$/.test(value('email'))) {
+      next.email = 'Enter a valid email address or leave it blank.'
+    } else if (value('contactMethod') === 'email' && value('email') === '') {
+      next.email = 'Enter your email address, or choose another contact method.'
+    }
     setErrors(next)
     if (Object.keys(next).length > 0) {
       void import('@/lib/analytics').then((m) =>
@@ -151,7 +157,7 @@ export function SurveyLeadForm({
       followUp: '',
       firstName: value('name'),
       phone: value('phone'),
-      email: '',
+      email: value('email'),
       zip: '',
       contactMethod: value('contactMethod'),
       appointmentWindow: '',
@@ -341,6 +347,21 @@ export function SurveyLeadForm({
               </p>
             )}
           </Field>
+          <Field htmlFor={id('email')} label="Email">
+            <TextInput
+              id={id('email')}
+              name="email"
+              type="email"
+              autoComplete="email"
+              aria-invalid={errors.email !== undefined}
+              aria-describedby={errors.email !== undefined ? id('email-error') : undefined}
+            />
+            {errors.email !== undefined && (
+              <p id={id('email-error')} className="mt-1.5 text-caption font-medium text-error">
+                {errors.email}
+              </p>
+            )}
+          </Field>
           {/*
             TODO(legal): the "Text" option needs TCPA consent copy from the
             business (PENDING-019). It is deliberately not drafted here.
@@ -351,7 +372,6 @@ export function SurveyLeadForm({
             legend="Preferred method of contact (required)"
             options={CONTACT_METHOD_OPTIONS}
             required
-            className="sm:col-span-2"
           />
           <Field
             htmlFor={id('message')}
