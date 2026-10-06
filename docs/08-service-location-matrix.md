@@ -1663,3 +1663,11 @@ Each relationship carries separate fields. Defaults for all 49:
 | D | San Diego (San Diego, Chula Vista, Oceanside, Escondido, Vista, El Cajon, Encinitas, La Mesa) | 12 | Service market, no office or GBP |
 
 Update 2026-10-05: the owner has confirmed Las Vegas operations repeatedly in the project, so the matrix no longer holds Las Vegas rows for operational confirmation. The 1,388 rows that carried `operational_confirmation_required` now take the status the same location and service combination takes in St. Louis and San Diego (launch, phase 2, phase 3 or selective). Indexation is still decided by cohort, not by this status alone.
+
+---
+
+# 18. Built Residential Grid (October 6, 2026)
+
+The 9 residential services x 16 built locations (144 pairs) are built, published and indexable (DEC-139, DEC-140), so those 144 relationships move from `candidate` to `launch` and `indexable`. Page IDs are `sl-<location>-<service>`; URLs are `/locations/{market}/{location}/{service-slug}/` (DEC-141). The inventory and counts are in `04-master-page-build-list.md` section 56D (204 built, 203 indexable).
+
+Cohort A (Las Vegas, Henderson, North Las Vegas x 5 services) and the St. Louis and San Diego entries on existing hubs in section 17 are now covered by this grid. The Enterprise, Spring Valley, Paradise, O'Fallon, Wildwood, Vista, El Cajon, Encinitas and La Mesa relationships stay `candidate` because their hubs are not built. The remaining relationships in the 10,422-row dataset stay research data and are not indexed. Titles and descriptions are checked for uniqueness with `npm run verify:metadata`.
