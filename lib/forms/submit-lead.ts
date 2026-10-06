@@ -29,6 +29,10 @@ export interface LeadPayload {
   message: string
   /** Page the request came from, canonical pathname only. */
   sourcePath: string
+  /** Survey form only: derived location id, e.g. `loc-sd-escondido`. */
+  locationId?: string
+  /** Survey form only: `home`, `rental-multifamily` or `commercial`. */
+  propertyType?: string
 }
 
 export type SubmitLeadResult =

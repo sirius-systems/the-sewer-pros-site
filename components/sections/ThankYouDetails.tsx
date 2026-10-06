@@ -24,7 +24,7 @@ function Details() {
       <>
         <p className="text-body-lg text-muted-foreground">
           Your request for {market.name} was received. A team member will follow up about your
-          requested service and appointment options, using the contact method you chose.
+          requested service and appointment options.
         </p>
         <p className="mt-4 text-body text-foreground">
           If you have an active sewer backup, call{' '}
@@ -49,7 +49,7 @@ function Generic() {
     <>
       <p className="text-body-lg text-muted-foreground">
         Your request was received. A team member will follow up about your requested service and
-        appointment options, using the contact method you chose.
+        appointment options.
       </p>
       <p className="mt-4 text-body text-foreground">
         If you have an active sewer backup, call the number for your market:

@@ -34,6 +34,7 @@ import {
   inclusionsGridRenders,
 } from '@/components/sections'
 import { SourcesBlock } from '@/components/sections/location'
+import { SurveyLeadForm } from '@/components/sections/SurveyLeadForm'
 import {
   approvedServicesIntro,
   approvedServicesTitle,
@@ -154,6 +155,13 @@ const SERVICES_IMAGE = resolveSlotImage({
   alt: 'Technician and inspection equipment at a residential property',
   shot: 'Technician with inspection equipment at a residential property, no identifiable address or people',
 })
+
+/**
+ * Pages that use the pill-survey form in the final CTA (pilot, 2026-10-06).
+ * Every other service + location page keeps `LeadFormSection` until the
+ * owner approves the pilot; then this set is replaced by the whole template.
+ */
+const SURVEY_FORM_PAGE_IDS: ReadonlySet<string> = new Set(['sl-escondido-cleaning'])
 
 export function ServiceLocationPageTemplate({
   page,
@@ -540,13 +548,22 @@ export function ServiceLocationPageTemplate({
                 </ButtonLink>
               </div>
             )}
-            <LeadFormSection
-              bare
-              density="standard"
-              id="cta-request-form"
-              idPrefix="cta-lead"
-              defaultMarketId={page.marketId}
-            />
+            {SURVEY_FORM_PAGE_IDS.has(page.id) && page.marketId !== undefined ? (
+              <SurveyLeadForm
+                idPrefix="cta-survey"
+                marketId={page.marketId}
+                locationId={page.locationId}
+                defaultServiceId={page.serviceId}
+              />
+            ) : (
+              <LeadFormSection
+                bare
+                density="standard"
+                id="cta-request-form"
+                idPrefix="cta-lead"
+                defaultMarketId={page.marketId}
+              />
+            )}
           </div>
         }
       />
