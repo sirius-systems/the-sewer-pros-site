@@ -550,21 +550,6 @@ export function ServiceLocationPageTemplate({
           </div>
         }
       />
-      {content.ctaImage?.placeholder !== undefined && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-4 left-4 z-10 max-w-xs rounded-md border-2 border-dashed border-white/40 bg-brand/60 p-3 text-center text-xs text-white/80"
-        >
-          <p className="font-semibold text-white">
-            Image slot: {content.ctaImage.placeholder.slotId}
-          </p>
-          <p>
-            Background, {content.ctaImage.placeholder.ratio}
-            {' - '}
-            {content.ctaImage.placeholder.shot}
-          </p>
-        </div>
-      )}
       </div>
     </PageShell>
   )
