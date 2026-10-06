@@ -29,6 +29,21 @@ import { missionValleyDrainContent } from './sl-sd-mission-valley-drain'
 import { missionValleyPrePurchaseContent } from './sl-sd-mission-valley-prepurchase'
 import { missionValleyBackupContent } from './sl-sd-mission-valley-backup'
 import { missionValleyMaintenanceContent } from './sl-sd-mission-valley-maintenance'
+import { carlsbadCleaningContent } from './sl-sd-carlsbad-cleaning'
+import { carlsbadHydroContent } from './sl-sd-carlsbad-hydro'
+import { carlsbadCleaningCameraContent } from './sl-sd-carlsbad-cleaning-camera'
+import { carlsbadLocatingContent } from './sl-sd-carlsbad-locating'
+import { carlsbadDrainContent } from './sl-sd-carlsbad-drain'
+import { carlsbadBackupContent } from './sl-sd-carlsbad-backup'
+import { carlsbadMaintenanceContent } from './sl-sd-carlsbad-maintenance'
+import { sanMarcosCleaningContent } from './sl-sd-san-marcos-cleaning'
+import { sanMarcosHydroContent } from './sl-sd-san-marcos-hydro'
+import { sanMarcosCleaningCameraContent } from './sl-sd-san-marcos-cleaning-camera'
+import { sanMarcosLocatingContent } from './sl-sd-san-marcos-locating'
+import { sanMarcosDrainContent } from './sl-sd-san-marcos-drain'
+import { sanMarcosPrePurchaseContent } from './sl-sd-san-marcos-prepurchase'
+import { sanMarcosBackupContent } from './sl-sd-san-marcos-backup'
+import { sanMarcosMaintenanceContent } from './sl-sd-san-marcos-maintenance'
 
 const id = (value: string): PageId => value as PageId
 
@@ -59,4 +74,19 @@ export const sanDiegoNewServiceLocationContent: Partial<
   [id('sl-mission-valley-prepurchase')]: missionValleyPrePurchaseContent,
   [id('sl-mission-valley-backup')]: missionValleyBackupContent,
   [id('sl-mission-valley-maintenance')]: missionValleyMaintenanceContent,
+  [id('sl-carlsbad-cleaning')]: carlsbadCleaningContent,
+  [id('sl-carlsbad-hydro')]: carlsbadHydroContent,
+  [id('sl-carlsbad-cleaning-camera')]: carlsbadCleaningCameraContent,
+  [id('sl-carlsbad-locating')]: carlsbadLocatingContent,
+  [id('sl-carlsbad-drain')]: carlsbadDrainContent,
+  [id('sl-carlsbad-backup')]: carlsbadBackupContent,
+  [id('sl-carlsbad-maintenance')]: carlsbadMaintenanceContent,
+  [id('sl-san-marcos-cleaning')]: sanMarcosCleaningContent,
+  [id('sl-san-marcos-hydro')]: sanMarcosHydroContent,
+  [id('sl-san-marcos-cleaning-camera')]: sanMarcosCleaningCameraContent,
+  [id('sl-san-marcos-locating')]: sanMarcosLocatingContent,
+  [id('sl-san-marcos-drain')]: sanMarcosDrainContent,
+  [id('sl-san-marcos-prepurchase')]: sanMarcosPrePurchaseContent,
+  [id('sl-san-marcos-backup')]: sanMarcosBackupContent,
+  [id('sl-san-marcos-maintenance')]: sanMarcosMaintenanceContent,
 }
