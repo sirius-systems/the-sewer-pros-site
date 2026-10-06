@@ -72,15 +72,14 @@ export interface FaqSectionProps {
   /**
    * Column count for the question list.
    *
-   * `1` is the default and stays byte-identical to today's output for
-   * every other caller — most pages carry three to six entries, where a
-   * split would leave a column of one or two beside a column of two.
+   * `2` is the default (owner-directed): entries split across two accordion
+   * columns, extra entry on the left for odd counts. The two-column branch
+   * drops `width="reading"`: a single reading measure cannot hold two
+   * accordion columns without each becoming unreadably narrow, so it uses
+   * the container's `standard` width instead.
    *
-   * `2` is opted into by HomePageTemplate, whose 14 entries split 7/7
-   * (owner-directed, 2026-09-03). The two-column branch drops
-   * `width="reading"`: a single reading measure cannot hold two
-   * accordion columns without each becoming unreadably narrow, so it
-   * uses the container's `standard` width instead.
+   * `1` keeps the single reading column. A list with fewer than two entries
+   * always renders as one column.
    */
   columns?: 1 | 2
   /**
@@ -121,7 +120,7 @@ export function FaqSection({
   openFirst = false,
   questionLevel = 'h3',
   surface = 'default',
-  columns = 1,
+  columns = 2,
   density = 'dense',
 }: FaqSectionProps) {
   // 18 §120 — render nothing rather than an empty shell.
@@ -146,7 +145,8 @@ export function FaqSection({
     </Accordion>
   )
 
-  if (columns === 2) {
+  // A single entry stays in the reading column: a split would leave an empty one.
+  if (columns === 2 && entries.length >= 2) {
     // `ceil` puts the extra entry in the left column on odd counts, so
     // the columns never differ by more than one.
     const mid = Math.ceil(entries.length / 2)

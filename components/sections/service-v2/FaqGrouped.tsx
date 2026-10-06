@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Section, Accordion, AccordionItem } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
+import { FaqTopicPills } from './FaqTopicPills'
 
 export interface GroupedFaqEntry {
   group: string
@@ -18,8 +19,9 @@ function slug(label: string): string {
 /**
  * Grouped FAQ with a topic list.
  *
- * The topic list is server-rendered anchors, sticky from 1000px and a
- * static list below. Group labels are navigation only: the answers, and
+ * The topics are server-rendered anchors shown as pills above the list; a
+ * small client enhancement adds an "All" pill and filters by group (see
+ * `FaqTopicPills`). Group labels are navigation only: the answers, and
  * the FAQPage markup the template derives from the same entries, never
  * include them. Native `<details>` keeps the accordion keyboard operable
  * with no script.
@@ -51,31 +53,19 @@ export function FaqGrouped({
   return (
     <Section density="dense" surface={surface} labelledBy={id}>
       <SectionHeading id={id} eyebrow={eyebrow} title={title} />
-      <div className="mt-8 grid gap-x-12 gap-y-8 min-[1000px]:grid-cols-[15rem_1fr]">
-        <nav
-          aria-labelledby="faq-topics"
-          className="min-[1000px]:sticky min-[1000px]:top-24 min-[1000px]:self-start"
-        >
+      <div className="mt-8">
+        <nav aria-labelledby="faq-topics">
           <p
             id="faq-topics"
             className="text-caption font-semibold tracking-wide text-muted-foreground uppercase"
           >
             Topics
           </p>
-          <ul className="mt-3 border-t border-border">
-            {groups.map((group) => (
-              <li key={group.id} className="border-b border-border">
-                <a
-                  href={`#${group.id}`}
-                  className="flex min-h-11 items-center py-2 text-body-sm font-medium text-accent-secondary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
-                >
-                  {group.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <FaqTopicPills
+            topics={groups.map((group) => ({ id: group.id, label: group.label }))}
+          />
         </nav>
-        <div className="space-y-10">
+        <div className="mt-10 grid items-start gap-x-12 gap-y-10 min-[1000px]:grid-cols-2">
           {groups.map((group) => (
             <div key={group.id}>
               <h3
