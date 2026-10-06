@@ -8,10 +8,11 @@ import { submitLead } from '@/lib/forms/submit-lead'
 import type { MarketId, ServiceId } from '@/types'
 
 /**
- * Pill-survey lead form: three short steps, one question each.
+ * Pill-survey lead form: three short steps, one question each (four on a
+ * market-neutral page, which adds "Service location?" after the service).
  *
  *   1. What do you need?   The nine residential services as pills (3x3).
- *                          "Not sure? Tell us what's happening" moves on to step 2.
+ *                          "Not sure? Tell us what's happening" moves on to the next step.
  *   2. Type of property?   Optional pills (home, rental or multifamily). Can be skipped.
  *   3. How do we reach you? Full name, phone, optional email, preferred method, optional note. Submit.
  *
@@ -67,7 +68,7 @@ const PILL =
 export interface SurveyLeadFormProps {
   /**
    * The page's market. Omit it on a market-neutral page (a core service page):
-   * the form then opens with a "Which area?" step and asks the visitor.
+   * the form asks "Service location?" as its second step.
    */
   marketId?: MarketId
   /** Derived location id, e.g. `loc-sd-escondido`. Analytics and payload only. */
@@ -81,7 +82,7 @@ export interface SurveyLeadFormProps {
   headingId?: string
 }
 
-/** 0 is the "Which area?" step, present only when the page has no market. */
+/** 0 is the "Service location?" step, present only when the page has no market. */
 type Step = 0 | 1 | 2 | 3
 
 export function SurveyLeadForm({
@@ -96,10 +97,13 @@ export function SurveyLeadForm({
   const router = useRouter()
   const needsMarket = pageMarketId === undefined
   const [chosenMarket, setChosenMarket] = useState<MarketId | ''>('')
-  const [step, setStep] = useState<Step>(needsMarket ? 0 : 1)
+  const [step, setStep] = useState<Step>(1)
   const marketId = pageMarketId ?? (chosenMarket === '' ? undefined : chosenMarket)
-  const totalSteps = needsMarket ? 4 : 3
-  const shownStep = needsMarket ? step + 1 : step
+  // Order: service, then (market-neutral pages only) service location, property, contact.
+  const order: readonly Step[] = needsMarket ? [1, 0, 2, 3] : [1, 2, 3]
+  const totalSteps = order.length
+  const shownStep = order.indexOf(step) + 1
+  const afterService: Step = needsMarket ? 0 : 2
   const [service, setService] = useState<ServiceId | ''>(defaultServiceId ?? '')
   const [unsure, setUnsure] = useState(false)
   const [property, setProperty] = useState('')
@@ -154,7 +158,7 @@ export function SurveyLeadForm({
     setService(value)
     setUnsure(false)
     // A page that pre-selects its own service waits for "Next"; otherwise a tap advances.
-    if (defaultServiceId === undefined) go(2)
+    if (defaultServiceId === undefined) go(afterService)
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -228,7 +232,7 @@ export function SurveyLeadForm({
 
   const question =
     step === 0
-      ? 'Which area are you in?'
+      ? 'Service location?'
       : step === 1
         ? 'What do you need?'
         : step === 2
@@ -261,7 +265,7 @@ export function SurveyLeadForm({
         {step === 0 && (
           <div className="mt-4">
             <fieldset>
-              <legend className="sr-only">Area</legend>
+              <legend className="sr-only">Service location</legend>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 {marketList.map((market) => (
                   <div key={market.id}>
@@ -274,10 +278,10 @@ export function SurveyLeadForm({
                       onChange={() => {
                         start()
                         setChosenMarket(market.id as MarketId)
-                        go(1)
+                        go(2)
                       }}
                       onClick={() => {
-                        if (chosenMarket === market.id) go(1)
+                        if (chosenMarket === market.id) go(2)
                       }}
                       className="peer sr-only"
                     />
@@ -288,6 +292,13 @@ export function SurveyLeadForm({
                 ))}
               </div>
             </fieldset>
+            <button
+              type="button"
+              className="mt-3 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+              onClick={() => go(1)}
+            >
+              Back
+            </button>
           </div>
         )}
 
@@ -307,7 +318,8 @@ export function SurveyLeadForm({
                       onChange={() => chooseService(pill.value)}
                       // A pre-selected pill does not fire onChange when tapped, so advance on click too.
                       onClick={() => {
-                        if (service === pill.value && defaultServiceId === undefined) go(2)
+                        if (service === pill.value && defaultServiceId === undefined)
+                          go(afterService)
                       }}
                       className="peer sr-only"
                     />
@@ -326,26 +338,17 @@ export function SurveyLeadForm({
                   start()
                   setUnsure(true)
                   setService('')
-                  go(2)
+                  go(afterService)
                 }}
               >
                 Not sure? Tell us what&apos;s happening
               </button>
               {defaultServiceId !== undefined && service !== '' && (
-                <Button type="button" onClick={() => go(2)}>
+                <Button type="button" onClick={() => go(afterService)}>
                   Next
                 </Button>
               )}
             </div>
-            {needsMarket && (
-              <button
-                type="button"
-                className="mt-3 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                onClick={() => go(0)}
-              >
-                Back
-              </button>
-            )}
           </div>
         )}
 
@@ -382,7 +385,7 @@ export function SurveyLeadForm({
               <button
                 type="button"
                 className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                onClick={() => go(1)}
+                onClick={() => go(needsMarket ? 0 : 1)}
               >
                 Back
               </button>
