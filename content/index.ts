@@ -41,6 +41,7 @@ import {
   upgradedStLouisServiceLocationContent,
   upgradedSanDiegoServiceLocationContent,
 } from './pages/service-location-upgrade'
+import { stLouisNewServiceLocationContent } from './pages/st-louis-service-location-new'
 import { lasVegasServiceLocationContent } from './pages/las-vegas-service-location'
 import { stLouisResourceContent } from './pages/st-louis-resources'
 import { lasVegasMarketContent, lasVegasLocationContent } from './pages/las-vegas'
@@ -69,6 +70,7 @@ const locationContent: Partial<Record<PageId, LocationPageContent>> = {
 const serviceLocationContent: Partial<Record<PageId, ServiceLocationPageContent>> = {
   ...upgradedStLouisServiceLocationContent,
   ...upgradedSanDiegoServiceLocationContent,
+  ...stLouisNewServiceLocationContent,
   ...lasVegasServiceLocationContent,
 }
 

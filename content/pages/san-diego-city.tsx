@@ -634,7 +634,7 @@ export const sanDiegoCityContent: LocationPageContent = {
     closing: (
       <>
         See our{' '}
-        <Link href="/san-diego-ca/san-diego/sewer-camera-inspection/">
+        <Link href="/locations/san-diego-ca/san-diego/sewer-camera-inspection/">
           sewer camera inspection in San Diego
         </Link>{' '}
         page.

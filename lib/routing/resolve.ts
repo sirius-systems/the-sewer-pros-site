@@ -52,6 +52,14 @@ export function resolveMarketRoute(
   return resolvePathname(pathnameFromSegments([market, ...segments]))
 }
 
+/** Resolves a location or service + location page, e.g. `/locations/las-vegas-nv/henderson/`. */
+export function resolveLocationRoute(
+  market: string,
+  segments: readonly string[],
+): MasterPageRecord | undefined {
+  return resolvePathname(pathnameFromSegments(['locations', market, ...segments]))
+}
+
 /** Resolves a market hub, e.g. `/st-louis-mo/`. */
 export function resolveMarketHub(market: string): MasterPageRecord | undefined {
   return resolvePathname(pathnameFromSegments([market]))

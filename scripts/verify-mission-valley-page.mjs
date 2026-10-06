@@ -285,9 +285,9 @@ const missing = [...new Set(internal)].filter((h) => {
 })
 check('every internal link resolves to a built route', missing.length === 0, missing.join(', '))
 check('Camera card links to the core camera service page', internal.includes('/services/sewer-camera-inspection/'))
-check('Hydro card and program closing link to the Mission Valley hydro page', internal.filter((h) => h === '/san-diego-ca/mission-valley/hydro-jetting/').length >= 2)
+check('Hydro card and program closing link to the Mission Valley hydro page', internal.filter((h) => h === '/locations/san-diego-ca/mission-valley/hydro-jetting/').length >= 2)
 check('commercial links resolve (hub, camera, hydro)', ['/commercial/', '/commercial/sewer-camera-inspection/', '/commercial/hydro-jetting/'].every((h) => internal.includes(h)))
-check('nearby areas link the citywide page', internal.includes('/san-diego-ca/san-diego/'))
+check('nearby areas link the citywide page', internal.includes('/locations/san-diego-ca/san-diego/'))
 for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)
 
 /* ---- Sitemap ---- */

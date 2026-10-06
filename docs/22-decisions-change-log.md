@@ -5295,6 +5295,30 @@ On 2026-10-05, after reviewing Henderson batch 1, the owner directed that every 
 
 ---
 
+## DEC-141 - Location Pages and Service + Location Pages Move Under /locations/
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Major (URL restructuring)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** `05-url-routing-strategy.md` §22-24 (service + location pattern), DEC-061 trailing-slash convention unchanged
+**Affected Documents:**
+
+* `data/pages/approved-pages.ts` (location and service + location pathnames)
+* `lib/routing/*`, `app/locations/[market]/[...segments]/page.tsx` (new catch-all)
+* hard-coded internal links in `content/`, `components/`, `scripts/`
+
+The owner directed that location pages and service + location pages sit under `/locations/`:
+
+```text
+/locations/{market}/{location}/                  e.g. /locations/las-vegas-nv/north-las-vegas/
+/locations/{market}/{location}/{service}/        e.g. /locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/
+```
+
+Unchanged: market hubs (`/{market}/`), market contact pages (`/{market}/contact/`) and the St. Louis market-specific service (`/st-louis-mo/sewer-lateral-inspection-reporting/`). The owner asked for the published URLs to be rewritten in place. No redirects from the old paths were added (see CLAUDE.md §46, §52: location hubs were live and may carry search equity or GBP links; confirm whether 301s from the old paths are wanted).
+
+---
+
 # 26. Decision Quality Standard
 
 A decision entry should be useful months later.

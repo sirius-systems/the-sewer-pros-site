@@ -2648,7 +2648,7 @@ export interface LocationPageContent extends BasePageContent {
     ==========================================================================
     RICH LOCATION COMPOSITION - ALL OPTIONAL, ALL CONTENT-GATED
     ==========================================================================
-    Added for `/st-louis-mo/st-louis-city/`. A location page that sets none
+    Added for `/locations/st-louis-mo/st-louis-city/`. A location page that sets none
     of these renders exactly the sparse composition it always did. Every
     field below turns on one section in `LocationPageTemplate`; no field
     is required by another except where noted.

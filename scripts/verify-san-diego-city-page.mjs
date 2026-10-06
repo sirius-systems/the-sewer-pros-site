@@ -283,7 +283,7 @@ const missing = [...new Set(internal)].filter((h) => {
   return !fs.existsSync(path.join(ROOT, p, 'index.html'))
 })
 check('every internal link resolves to a built route', missing.length === 0, missing.join(', '))
-check('Camera card links to the San Diego city camera page', internal.includes('/san-diego-ca/san-diego/sewer-camera-inspection/'))
+check('Camera card links to the San Diego city camera page', internal.includes('/locations/san-diego-ca/san-diego/sewer-camera-inspection/'))
 for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)
 
 /* ---- Sitemap ---- */

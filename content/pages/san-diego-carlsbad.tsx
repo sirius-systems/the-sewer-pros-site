@@ -667,7 +667,7 @@ export const carlsbadContent: LocationPageContent = {
         Neither program pays for our services, and LWD says inspection and cleaning do not
         qualify. The contractors you hire perform repairs. The Sewer Pros does not perform
         repairs or replacements. See our{' '}
-        <Link href="/san-diego-ca/carlsbad/sewer-camera-inspection/">
+        <Link href="/locations/san-diego-ca/carlsbad/sewer-camera-inspection/">
           sewer camera inspection in Carlsbad
         </Link>{' '}
         page.

@@ -432,7 +432,7 @@ const missing = [...new Set(internal)].filter((h) => {
   return !fs.existsSync(path.join(ROOT, p, 'index.html'))
 })
 check('every internal link resolves to a built route', missing.length === 0, missing.join(', '))
-for (const want of ['/services/sewer-camera-inspection/', '/services/sewer-cleaning/', '/services/hydro-jetting/', '/services/pre-purchase-sewer-inspection/', '/for/home-buyers/', '/for/real-estate-agents/', '/services/drain-cleaning/', '/las-vegas-nv/las-vegas/', '/las-vegas-nv/summerlin/', '/las-vegas-nv/north-las-vegas/', '/las-vegas-nv/']) {
+for (const want of ['/services/sewer-camera-inspection/', '/services/sewer-cleaning/', '/services/hydro-jetting/', '/services/pre-purchase-sewer-inspection/', '/for/home-buyers/', '/for/real-estate-agents/', '/services/drain-cleaning/', '/locations/las-vegas-nv/las-vegas/', '/locations/las-vegas-nv/summerlin/', '/locations/las-vegas-nv/north-las-vegas/', '/las-vegas-nv/']) {
   check(`links to ${want}`, internal.includes(want))
 }
 for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)

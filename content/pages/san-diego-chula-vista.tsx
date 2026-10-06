@@ -694,7 +694,7 @@ export const chulaVistaContent: LocationPageContent = {
       <>
         Neither the City’s policy nor its pages say they pay for our services. The Sewer Pros does
         not perform repairs or replacements and does not arrange reimbursement. See our{' '}
-        <Link href="/san-diego-ca/chula-vista/sewer-camera-inspection/">
+        <Link href="/locations/san-diego-ca/chula-vista/sewer-camera-inspection/">
           sewer camera inspection in Chula Vista
         </Link>{' '}
         page.
