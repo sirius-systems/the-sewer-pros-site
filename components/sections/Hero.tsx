@@ -87,6 +87,13 @@ export interface HeroProps {
    */
   asideBalance?: 'copy' | 'media'
   /**
+   * Hides the aside below `lg`, where the hero is a single stacked column,
+   * so a hero lead form does not sit under the copy on a phone (owner
+   * direction). The mobile contact bar and the page's request section stay
+   * the way in. Absent: the aside shows at every width, as before.
+   */
+  hideAsideBelowLg?: boolean
+  /**
    * How wide the copy column runs.
    *
    * `reading` (default) `--container-reading`, 42rem. Every hero
@@ -113,6 +120,7 @@ export function Hero({
   backdrop,
   aside,
   asideBalance = 'copy',
+  hideAsideBelowLg = false,
   copyWidth = 'reading',
   className,
 }: HeroProps) {
@@ -255,7 +263,7 @@ export function Hero({
       }
     >
       <div>{copy}</div>
-      <div>{aside}</div>
+      <div className={hideAsideBelowLg ? 'hidden lg:block' : undefined}>{aside}</div>
     </div>
   ) : hasMedia ? (
     // Appendix A: prefer an uneven split (7/5) over a balanced 6/6

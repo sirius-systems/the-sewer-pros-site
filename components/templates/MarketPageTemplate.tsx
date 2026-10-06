@@ -512,6 +512,7 @@ export function MarketPageTemplate({
             title={content.hero.title}
             intro={content.hero.intro}
             backdrop={null}
+            hideAsideBelowLg
             aside={
               content.showHeroForm === true ? (
                 /*

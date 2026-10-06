@@ -256,6 +256,7 @@ export function ServicePageTemplateV2({
           <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
         </div>
       }
+      hideAsideBelowLg
       aside={
         <ServiceHeroRequestCard
           title={v2.hero.cardTitle}
