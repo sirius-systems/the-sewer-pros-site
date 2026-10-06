@@ -37,6 +37,14 @@
 import { marketOperatingDetail } from '@/data/markets/markets'
 import type { PageId, ServiceLocationPageContent } from '@/types'
 import { hendersonContent } from './las-vegas-henderson'
+import { hendersonCleaningContent } from './sl-henderson-cleaning'
+import { hendersonHydroContent } from './sl-henderson-hydro'
+import { hendersonCleaningCameraContent } from './sl-henderson-cleaning-camera'
+import { hendersonLocatingContent } from './sl-henderson-locating'
+import { hendersonDrainContent } from './sl-henderson-drain'
+import { hendersonPrePurchaseContent } from './sl-henderson-prepurchase'
+import { hendersonBackupContent } from './sl-henderson-backup'
+import { hendersonMaintenanceContent } from './sl-henderson-maintenance'
 import { serviceContent } from './services'
 import {
   mergeRelevantFaqs,
@@ -277,4 +285,12 @@ export const lasVegasServiceLocationContent: Partial<
       body: 'Get the condition of your lateral on video, with written findings.',
     },
   },
+  [id('sl-henderson-cleaning')]: hendersonCleaningContent,
+  [id('sl-henderson-hydro')]: hendersonHydroContent,
+  [id('sl-henderson-cleaning-camera')]: hendersonCleaningCameraContent,
+  [id('sl-henderson-locating')]: hendersonLocatingContent,
+  [id('sl-henderson-drain')]: hendersonDrainContent,
+  [id('sl-henderson-prepurchase')]: hendersonPrePurchaseContent,
+  [id('sl-henderson-backup')]: hendersonBackupContent,
+  [id('sl-henderson-maintenance')]: hendersonMaintenanceContent,
 }
