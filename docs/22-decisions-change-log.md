@@ -5249,6 +5249,18 @@ The preventative sewer maintenance page was moved from the service template to S
 
 The following were removed from the live copy and are owner-pending content changes: the "Where it fits for commercial properties" block, the property-manager and commercial audience rows, the equipment-naming override of the independent band, and the "we recommend an interval" wording (replaced by "if an inspection does not support a recurring schedule, we will say so").
 
+
+## DEC-138 - Recorded: Independent Band Equipment Wording and the Three Markets Confirmed
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** none (records existing decisions)
+**Affected Documents:** none (no code change)
+
+The owner confirmed two points, recorded here so they are not re-raised in later page reviews. First, the sentence "We use RIDGID sewer camera equipment to examine the line..." in the shared independent band (`IndependentProcess`) is owner-approved under DEC-132 as amended by DEC-133; page verify scripts may allow-list that exact sentence. Second, the three markets are St. Louis, San Diego and Las Vegas. The company-wide inspection counter (145,000+ inspections performed, 8,000+ per year) was checked on 2026-10-05: the source constants in `data/business/organization.ts` were already correct and no value was changed. No business fact was added or changed.
+
 ---
 
 # 26. Decision Quality Standard
