@@ -5230,6 +5230,25 @@ The recurring sewer backup diagnosis page was moved from the service template to
 
 On 2026-10-05 the owner agreed that the DEC-088 free-estimate and same-day wording may appear on the recurring sewer backup diagnosis page, in exactly three places and nowhere else on it. The cost FAQ ("How long does it take, and how much does it cost?") and the final request intro each carry "Ask about a free estimate before scheduling." The same-day FAQ ("Can you come the same day, and is this emergency service?") carries "Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends. We do not offer 24/7 or emergency service." The verify script fails if either string appears anywhere else on the page or is reworded. No financing, warranty, price, response-time or emergency claim is added; DEC-088 is not extended to any other page by this entry.
 
+
+## DEC-137 - Preventative Sewer Maintenance Page Migrated to Service Template v2
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Low
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (the `svc-preventative-sewer-maintenance` entry only)
+* `types/content.ts` (one optional `navLabels` key, `audiences`)
+* `data/business/preventative-images.ts` (new), `data/business/hub-images.ts`: three pending-photography slots, shown only while the slot flag is on
+* `scripts/verify-preventative-sewer-maintenance-page.mjs` (new)
+* `docs/04-master-page-build-list.md` (`svc-preventative-sewer-maintenance` row)
+
+The preventative sewer maintenance page was moved from the service template to Service Page Template v2. The route, page id, parent, H1 (`Preventative Sewer Maintenance`) and indexability are unchanged; the SEO title is `Preventative Sewer Maintenance and Cleaning`. The page gained a definition with the residential scope box, six signs, a "may document / cannot confirm" panel, a six-step process with a preparation list, a camera-first or cleaning-first panel, a five-row comparison, a five-item ask list with a "keep your records" panel, four audience rows, three market cards and a 16-question FAQ in six groups. The page names no equipment of its own, states no price, duration, interval, offer, guarantee, warranty, licence or emergency service, carries no phone number or placeholder text, and links no unbuilt page. The shared independent band renders with no page override. The owner confirmation of 2026-10-05 applies: the inspection video and written findings are included. No business fact was added.
+
+The following were removed from the live copy and are owner-pending content changes: the "Where it fits for commercial properties" block, the property-manager and commercial audience rows, the equipment-naming override of the independent band, and the "we recommend an interval" wording (replaced by "if an inspection does not support a recurring schedule, we will say so").
+
 ---
 
 # 26. Decision Quality Standard

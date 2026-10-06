@@ -1921,6 +1921,7 @@ export interface ServicePageContentV2 {
       | 'factors'
       | 'myths'
       | 'situations'
+      | 'audiences'
       | 'markets'
       | 'faq'
       | 'related',
