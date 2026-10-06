@@ -37,7 +37,10 @@ import {
   sanDiegoMarketContent,
   sanDiegoLocationContent,
 } from './pages/san-diego'
-import { sanDiegoServiceLocationContent } from './pages/san-diego-service-location'
+import {
+  upgradedStLouisServiceLocationContent,
+  upgradedSanDiegoServiceLocationContent,
+} from './pages/service-location-upgrade'
 import { lasVegasServiceLocationContent } from './pages/las-vegas-service-location'
 import { stLouisResourceContent } from './pages/st-louis-resources'
 import { lasVegasMarketContent, lasVegasLocationContent } from './pages/las-vegas'
@@ -46,7 +49,6 @@ import {
   stLouisMarketContent,
   lateralReportingContent,
   stLouisLocationContent,
-  stLouisServiceLocationContent,
 } from './pages/st-louis'
 
 /** Market hub content, keyed by page id. */
@@ -65,8 +67,8 @@ const locationContent: Partial<Record<PageId, LocationPageContent>> = {
 
 /** Service + location content across all markets. */
 const serviceLocationContent: Partial<Record<PageId, ServiceLocationPageContent>> = {
-  ...stLouisServiceLocationContent,
-  ...sanDiegoServiceLocationContent,
+  ...upgradedStLouisServiceLocationContent,
+  ...upgradedSanDiegoServiceLocationContent,
   ...lasVegasServiceLocationContent,
 }
 

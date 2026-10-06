@@ -68,6 +68,12 @@ export interface FaqContent {
   answer: ReactNode
   /** A small decorative mark beside the question. Off by default. */
   icon?: ReactNode
+  /**
+   * Topic label. A page whose entries ALL carry one renders the pill-and-
+   * category FAQ (as the service pages do); the label is navigation only and
+   * never enters the FAQPage markup. Entries of one topic must be adjacent.
+   */
+  group?: string
 }
 
 /** A step in a documented process (18 §65). */

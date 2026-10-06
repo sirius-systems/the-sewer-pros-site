@@ -97,7 +97,7 @@ if (cameraServiceFaq === undefined || hendersonContent.faq === undefined) {
 const hendersonCameraFaq = mergeRelevantFaqs(hendersonContent.faq, cameraServiceFaq, [
   'What does a sewer camera inspection show?',
   'Which areas does The Sewer Pros serve?',
-])
+], 'In Henderson')
 
 export const lasVegasServiceLocationContent: Partial<
   Record<PageId, ServiceLocationPageContent>

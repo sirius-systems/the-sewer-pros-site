@@ -27,6 +27,7 @@ import {
   ServiceCardGrid,
   PreselectServiceListener,
 } from '@/components/sections/location'
+import { FaqGrouped } from '@/components/sections/service-v2'
 import { SlotPlaceholderBox } from '@/components/sections/location/SlotPlaceholderBox'
 import { getService } from '@/data/services'
 import { requireLocation } from '@/data/locations'
@@ -106,6 +107,15 @@ export function ServiceLocationPageTemplate({
     detail !== undefined
       ? { label: detail.phone, href: `tel:${detail.phoneE164}` }
       : undefined
+  const faqTitle =
+    page.serviceId !== undefined && page.locationId !== undefined
+      ? `Common questions about ${getService(page.serviceId).name}` +
+        ` in ${requireLocation(page.locationId).name}`
+      : undefined
+  const faqIsGrouped =
+    content.faq !== undefined &&
+    content.faq.length > 0 &&
+    content.faq.every((entry) => entry.group !== undefined)
   const showsServiceCards =
     content.serviceCards !== undefined &&
     page.marketId !== undefined &&
@@ -299,16 +309,22 @@ export function ServiceLocationPageTemplate({
         the id (audited across all 14 service+location pages), so the branch is a guard, not
         an expected state.
       */}
-      {content.faq !== undefined && (
-        <FaqSection
-          title={
-            page.serviceId !== undefined && page.locationId !== undefined
-              ? `Common questions about ${getService(page.serviceId).name}` +
-                ` in ${requireLocation(page.locationId).name}`
-              : undefined
-          }
-          entries={content.faq}
-        />
+      {content.faq !== undefined && faqTitle !== undefined && (
+        faqIsGrouped ? (
+          // Every entry has a topic: pill-and-category FAQ, as on the service
+          // pages. Labels are navigation only; FAQPage markup is unchanged.
+          <FaqGrouped
+            id="faq"
+            title={faqTitle}
+            entries={content.faq.map((entry) => ({
+              group: entry.group ?? '',
+              question: entry.question,
+              answer: entry.answer,
+            }))}
+          />
+        ) : (
+          <FaqSection title={faqTitle} entries={content.faq} />
+        )
       )}
 
       {/*
