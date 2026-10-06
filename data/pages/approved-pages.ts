@@ -779,6 +779,20 @@ export const approvedPages: readonly MasterPageRecord[] = [
     parentId: 'hub-commercial' as PageId,
   },
   {
+    id: 'sl-henderson-camera' as PageId,
+    name: 'Sewer Camera Inspection in Henderson',
+    pageType: 'service-location',
+    pathname: toPathname('/las-vegas-nv/henderson/sewer-camera-inspection/'),
+    status: 'launch',
+    // PILOT / TEMPLATE page. Built, deliberately NOT indexable: promotion
+    // into a cohort is a separate decision (CLAUDE.md §16-17, §21).
+    indexable: false,
+    marketId: 'las-vegas-nv',
+    serviceId: 'svc-sewer-camera-inspection',
+    locationId: 'loc-lv-henderson' as LocationId,
+    parentId: 'loc-lv-henderson' as PageId,
+  },
+  {
     id: 'com-drain-cleaning' as PageId,
     name: 'Commercial Drain Cleaning',
     pageType: 'commercial',
