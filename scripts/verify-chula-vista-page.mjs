@@ -314,7 +314,7 @@ const missing = [...new Set(internal)].filter((h) => {
   return !fs.existsSync(path.join(ROOT, p, 'index.html'))
 })
 check('every internal link resolves to a built route', missing.length === 0, missing.join(', '))
-for (const want of ['/san-diego-ca/chula-vista/sewer-camera-inspection/', '/services/pre-purchase-sewer-inspection/', '/for/home-buyers/', '/for/real-estate-agents/', '/san-diego-ca/san-marcos/', '/san-diego-ca/oceanside/', '/san-diego-ca/escondido/', '/san-diego-ca/san-diego/', '/san-diego-ca/carlsbad/', '/san-diego-ca/mission-valley/', '/san-diego-ca/']) {
+for (const want of ['/locations/san-diego-ca/chula-vista/sewer-camera-inspection/', '/services/pre-purchase-sewer-inspection/', '/for/home-buyers/', '/for/real-estate-agents/', '/locations/san-diego-ca/san-marcos/', '/locations/san-diego-ca/oceanside/', '/locations/san-diego-ca/escondido/', '/locations/san-diego-ca/san-diego/', '/locations/san-diego-ca/carlsbad/', '/locations/san-diego-ca/mission-valley/', '/san-diego-ca/']) {
   check(`links to ${want}`, internal.includes(want))
 }
 for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)

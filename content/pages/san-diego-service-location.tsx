@@ -148,7 +148,7 @@ export const sanDiegoServiceLocationContent: Partial<
           We found no Vallecitos lateral repair assistance program on the
           district pages we reviewed. That is &ldquo;none found&rdquo;, not a
           statement that none exists. The{' '}
-          <Link href="/san-diego-ca/san-marcos/">San Marcos page</Link> sets out who
+          <Link href="/locations/san-diego-ca/san-marcos/">San Marcos page</Link> sets out who
           serves the city and what the district publishes.
         </p>
 
@@ -221,7 +221,7 @@ export const sanDiegoServiceLocationContent: Partial<
           The City says its grant is for customers in the Carlsbad Wastewater
           service area. Leucadia Wastewater District publishes a separate
           lateral grant of its own, and we did not find one from Vallecitos
-          Water District. <Link href="/san-diego-ca/carlsbad/">The Carlsbad page</Link>{' '}
+          Water District. <Link href="/locations/san-diego-ca/carlsbad/">The Carlsbad page</Link>{' '}
           sets out each agency&rsquo;s terms. To check your own address, start
           with the{' '}
           <a href="https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners">
@@ -286,7 +286,7 @@ export const sanDiegoServiceLocationContent: Partial<
           department, but the southern portion falls to Leucadia Wastewater
           District or Vallecitos Water District. The City says its grant is for
           customers in the Carlsbad Wastewater service area.{' '}
-          <Link href="/san-diego-ca/carlsbad/">The Carlsbad page</Link> sets out
+          <Link href="/locations/san-diego-ca/carlsbad/">The Carlsbad page</Link> sets out
           each agency&rsquo;s terms; check the{' '}
           <a href="https://www.carlsbadca.gov/departments/utilities/sewer/for-property-owners">
             City of Carlsbad&rsquo;s property-owner page
@@ -339,7 +339,7 @@ export const sanDiegoServiceLocationContent: Partial<
         <p>
           Sewer service in Chula Vista comes from the City of Chula Vista, not
           from a separate sanitation district. Questions about laterals and
-          permits go to City Public Works. <Link href="/san-diego-ca/chula-vista/">The
+          permits go to City Public Works. <Link href="/locations/san-diego-ca/chula-vista/">The
           Chula Vista page</Link> sets out the City&rsquo;s lateral policy.
         </p>
 
@@ -362,7 +362,7 @@ export const sanDiegoServiceLocationContent: Partial<
           >
             City&rsquo;s sewer lateral policy page
           </a>{' '}
-          and see the <Link href="/san-diego-ca/chula-vista/">Chula Vista
+          and see the <Link href="/locations/san-diego-ca/chula-vista/">Chula Vista
           page</Link> for the full summary.
         </p>
       </>
@@ -400,7 +400,7 @@ export const sanDiegoServiceLocationContent: Partial<
           Cleaning a blocked lateral is therefore the owner&rsquo;s to arrange
           and to fund. For what the code covers, who to call, and the
           City&rsquo;s own numbers, see our{' '}
-          <Link href="/san-diego-ca/escondido/">
+          <Link href="/locations/san-diego-ca/escondido/">
             Escondido sewer inspection and cleaning
           </Link>{' '}
           page.

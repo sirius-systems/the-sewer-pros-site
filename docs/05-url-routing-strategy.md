@@ -702,20 +702,22 @@ Do not create duplicate service URLs for vocabulary variants.
 The canonical service + location pattern is:
 
 ```text
-/{canonical-location-path}/{service}/
+/locations/{canonical-location-path}/{service}/
 ```
 
-For standard one-segment locations:
+For standard one-segment locations (DEC-141, 2026-10-05):
 
 ```text
-/{market}/{location}/{service}/
+/locations/{market}/{location}/{service}/
 ```
 
 Example:
 
 ```text
-/san-diego-ca/carlsbad/sewer-camera-inspection/
+/locations/san-diego-ca/carlsbad/sewer-camera-inspection/
 ```
+
+Location pages follow the same prefix: `/locations/{market}/{location}/`. Market hubs and market contact pages stay at `/{market}/` and `/{market}/contact/`.
 
 ---
 

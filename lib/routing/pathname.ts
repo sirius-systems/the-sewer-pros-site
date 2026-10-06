@@ -124,7 +124,7 @@ export function pathnameFromSegments(segments: readonly string[]): string {
 /**
  * Route parameters for the market catch-all.
  *
- * `/san-diego-ca/carlsbad/sewer-camera-inspection/` becomes
+ * `/locations/san-diego-ca/carlsbad/sewer-camera-inspection/` becomes
  * `{ market: 'san-diego-ca', segments: ['carlsbad', 'sewer-camera-inspection'] }`
  * exactly as 05 §129 specifies.
  */

@@ -32,12 +32,14 @@ export {
   marketHubParams,
   marketContactParams,
   marketCatchAllParams,
+  locationCatchAllParams,
   unroutedPages,
 } from './static-params'
 
 export {
   resolvePathname,
   resolveMarketRoute,
+  resolveLocationRoute,
   resolveMarketHub,
   resolveUnderPrefix,
 } from './resolve'

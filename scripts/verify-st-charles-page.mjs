@@ -259,7 +259,7 @@ const missing = [...new Set(internal)].filter((h) => {
   return !fs.existsSync(path.join(ROOT, p, 'index.html'))
 })
 check('every internal link resolves to a built route', missing.length === 0, missing.join(', '))
-check('Pre-Purchase card links to the St. Charles pre-purchase page', internal.includes('/st-louis-mo/st-charles/pre-purchase-sewer-inspection/'))
+check('Pre-Purchase card links to the St. Charles pre-purchase page', internal.includes('/locations/st-louis-mo/st-charles/pre-purchase-sewer-inspection/'))
 for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)
 
 /* ---- Sitemap ---- */

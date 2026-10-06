@@ -75,7 +75,7 @@ export function LocationPageTemplate({
     ⚠ THE RICH COMPOSITION IS OPT-IN PER PAGE, AND THE EARLY RETURN IS WHAT
     KEEPS THE REST UNCHANGED. A location page that does not set `heroForm`
     falls straight through to the sparse composition below, which this
-    change did not touch. `/st-louis-mo/st-louis-city/` is the only page
+    change did not touch. `/locations/st-louis-mo/st-louis-city/` is the only page
     that sets it today; see `RichLocationComposition`.
   */
   if (content.heroForm !== undefined) {

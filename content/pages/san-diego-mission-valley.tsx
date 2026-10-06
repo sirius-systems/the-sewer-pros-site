@@ -657,7 +657,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
     closing: (
       <>
         See our{' '}
-        <Link href="/san-diego-ca/mission-valley/hydro-jetting/">
+        <Link href="/locations/san-diego-ca/mission-valley/hydro-jetting/">
           hydro jetting in Mission Valley
         </Link>{' '}
         page. For businesses and property managers:{' '}

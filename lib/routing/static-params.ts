@@ -122,12 +122,33 @@ export function marketContactParams(): { market: string }[] {
  */
 export function marketCatchAllParams(): { market: string; segments: string[] }[] {
   return contentReadyPages.flatMap((page) => {
+    // Location pages and service + location pages live under /locations/.
+    if (page.pathname.startsWith(LOCATIONS_PREFIX)) return []
     // Market contact pages have their own static `contact` route, which
     // outranks this catch-all (see `marketContactParams`).
     if (page.pageType === 'market-contact') return []
     const params = toMarketRouteParams(page.pathname)
     if (params === undefined || params.segments.length === 0) return []
     return [{ market: String(params.market), segments: params.segments }]
+  })
+}
+
+/** Location hubs and service + location pages sit beneath this prefix. */
+const LOCATIONS_PREFIX = '/locations/'
+
+/**
+ * `app/locations/[market]/[...segments]/page.tsx`
+ *
+ * Location pages (`/locations/{market}/{location}/`) and service + location
+ * pages (`/locations/{market}/{location}/{service}/`). Parameters still come
+ * only from approved pathnames. The `/locations/` hub has its own static route.
+ */
+export function locationCatchAllParams(): { market: string; segments: string[] }[] {
+  return contentReadyPages.flatMap((page) => {
+    if (!page.pathname.startsWith(LOCATIONS_PREFIX)) return []
+    const [market, ...segments] = pathnameSegments(page.pathname.slice(LOCATIONS_PREFIX.length - 1))
+    if (market === undefined || segments.length === 0) return []
+    return [{ market, segments }]
   })
 }
 
@@ -162,6 +183,10 @@ export function unroutedPages(staticRoutes: readonly string[]): string[] {
   for (const { market } of marketContactParams()) claimed.add(`/${market}/contact/`)
   for (const { market, segments } of marketCatchAllParams()) {
     claimed.add(`/${market}/${segments.join('/')}/`)
+  }
+
+  for (const { market, segments } of locationCatchAllParams()) {
+    claimed.add(`${LOCATIONS_PREFIX}${market}/${segments.join('/')}/`)
   }
 
   return contentReadyPages
