@@ -8,7 +8,7 @@ import { marketList, marketOperatingDetail, marketPathname } from '@/data/market
  * The footer's per-market contact blocks.
  *
  * ⚠ ON A MARKET-SCOPED PAGE THIS SHOWS THAT MARKET ONLY. Every page under
- * `/st-louis-mo/`, `/san-diego-ca/` or `/las-vegas-nv/` renders its own
+ * `/st-louis-mo/`, `/san-diego-ca/` or `/las-vegas-nv/` (or `/locations/` plus one of them) renders its own
  * market's phone and email and no other market's (DEC-071, 01 §20). Every
  * other page (home, About, Services, resources, the locations hub, ...) is
  * market-neutral and keeps all three blocks, each labelled by market.
@@ -39,8 +39,14 @@ const contacts = marketList.flatMap((market) => {
 
 export function FooterContacts() {
   const pathname = usePathname() ?? ''
+  // Location and service + location pages live at `/locations/{market}/...`
+  // (DEC-141); they are scoped to that market exactly like `/{market}/...`.
   const scoped = contacts.find(
-    (c) => pathname.startsWith(c.pathPrefix) || pathname === c.pathPrefix.slice(0, -1),
+    (c) =>
+      pathname.startsWith(c.pathPrefix) ||
+      pathname === c.pathPrefix.slice(0, -1) ||
+      pathname.startsWith(`/locations${c.pathPrefix}`) ||
+      pathname === `/locations${c.pathPrefix.slice(0, -1)}`,
   )
   const shown = scoped !== undefined ? [scoped] : contacts
 
