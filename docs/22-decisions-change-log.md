@@ -5278,6 +5278,21 @@ On 2026-10-05 the owner directed that the cost and same-day FAQ answers carrying
 
 The owner also directed that every service + location page show the source location page's "Sources" list with its last-reviewed date, and that the company phone number may appear in the body text of the cleaning and drain cleaning pages.
 
+
+## DEC-140 - All Service + Location Pages Indexable and in the Sitemap
+
+**Date:** 2026-10-05
+**Status:** APPROVED
+**Impact:** Moderate
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** none (CLAUDE.md §17, §21 still apply to future cohorts)
+**Affected Documents:**
+
+* `data/pages/approved-pages.ts` (the eight Henderson batch 1 records set `indexable: true`)
+* `data/pages/pages.ts` (`EXPECTED_INDEXABLE_COUNT` 74 to 82)
+
+On 2026-10-05, after reviewing Henderson batch 1, the owner directed that every service + location page be indexable and included in the sitemap. This covers the 15 pages already live and the eight Henderson pages added in batch 1, and every service + location page built in later batches. It overrides the earlier plan to promote pages by cohort.
+
 ---
 
 # 26. Decision Quality Standard

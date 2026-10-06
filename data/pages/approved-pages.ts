@@ -800,9 +800,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/sewer-cleaning/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-sewer-cleaning',
     locationId: 'loc-lv-henderson' as LocationId,
@@ -814,9 +815,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/hydro-jetting/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-hydro-jetting',
     locationId: 'loc-lv-henderson' as LocationId,
@@ -828,9 +830,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/sewer-cleaning-camera-inspection/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-sewer-cleaning-camera-inspection',
     locationId: 'loc-lv-henderson' as LocationId,
@@ -842,9 +845,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/sewer-line-locating/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-sewer-line-locating',
     locationId: 'loc-lv-henderson' as LocationId,
@@ -856,9 +860,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/drain-cleaning/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-drain-cleaning',
     locationId: 'loc-lv-henderson' as LocationId,
@@ -870,9 +875,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/pre-purchase-sewer-inspection/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-pre-purchase-sewer-inspection',
     locationId: 'loc-lv-henderson' as LocationId,
@@ -884,9 +890,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/recurring-sewer-backup-diagnosis/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-recurring-sewer-backup-diagnosis',
     locationId: 'loc-lv-henderson' as LocationId,
@@ -898,9 +905,10 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'service-location',
     pathname: toPathname('/las-vegas-nv/henderson/preventative-sewer-maintenance/'),
     status: 'launch',
-    // Batch 1 (Henderson). noindex until the batch is reviewed; promote by
-    // cohort (CLAUDE.md §16-17, §21).
-    indexable: false,
+    // Batch 1 (Henderson), reviewed and approved by the owner 2026-10-05, who
+    // directed that all service + location pages be indexable and in the
+    // sitemap (DEC-140).
+    indexable: true,
     marketId: 'las-vegas-nv',
     serviceId: 'svc-preventative-sewer-maintenance',
     locationId: 'loc-lv-henderson' as LocationId,
