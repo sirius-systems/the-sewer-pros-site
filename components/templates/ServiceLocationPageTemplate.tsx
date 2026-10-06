@@ -44,7 +44,7 @@ import { getService } from '@/data/services'
 import { resolveSlotImage } from '@/lib/image-slots'
 import { requireLocation } from '@/data/locations'
 import { getMarketContent } from '@/content'
-import { marketOperatingDetail } from '@/data/markets/markets'
+import { getMarket, marketOperatingDetail } from '@/data/markets/markets'
 import { PageShell } from './PageShell'
 import type {
   MasterPageRecord,
@@ -186,10 +186,16 @@ export function ServiceLocationPageTemplate({
       ? getMarketContent(`market-${page.marketId}` as PageId)?.serviceArea
       : undefined
   const otherAreas: ServiceAreaContent | undefined =
-    hubArea !== undefined && content.coverage !== undefined
+    hubArea !== undefined && page.marketId !== undefined && page.locationId !== undefined
       ? {
-          title: content.coverage.title,
-          intro: content.coverage.intro ?? '',
+          // A page without its own `coverage` copy gets a market-level title and
+          // a neutral sentence; the cards themselves come from the hub.
+          title:
+            content.coverage?.title ??
+            `Other ${getMarket(page.marketId).city} area locations`,
+          intro:
+            content.coverage?.intro ??
+            `This page covers ${requireLocation(page.locationId).name}. Sewer agencies and lateral rules differ from place to place, so use the page for your address.`,
           cities: {
             title: 'Featured service locations',
             items: hubArea.cities.items.filter((item) => (item.pageId as string) !== (page.locationId as string | undefined)),
