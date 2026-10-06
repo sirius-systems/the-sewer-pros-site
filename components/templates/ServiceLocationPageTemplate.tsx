@@ -518,6 +518,8 @@ export function ServiceLocationPageTemplate({
         }
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+            {!SURVEY_FORM_PAGE_IDS.has(page.id) && (
+              <>
             {detail !== undefined && phone !== undefined && (
               // Per-market contact details (DEC-083): this page's market only,
               // never another market's.
@@ -547,6 +549,8 @@ export function ServiceLocationPageTemplate({
                   Call {phone.label}
                 </ButtonLink>
               </div>
+            )}
+              </>
             )}
             {SURVEY_FORM_PAGE_IDS.has(page.id) && page.marketId !== undefined ? (
               <SurveyLeadForm
