@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { heroContactAction } from '@/lib/links/hero-contact-action'
 import type { SectionDensity } from '@/components/ui'
 import {
   Hero,
@@ -169,6 +170,7 @@ export function RichLocationComposition({
           }
           backdrop={null}
           hideAsideBelowLg
+          mobileContactAction={heroContactAction(page)}
           aside={
             phone !== undefined ? (
               heroForm.slotPlaceholder?.placeholder !== undefined ? (

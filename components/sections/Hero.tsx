@@ -94,6 +94,11 @@ export interface HeroProps {
    */
   hideAsideBelowLg?: boolean
   /**
+   * A second button, shown only below `lg` and only with `hideAsideBelowLg`,
+   * standing in for the hidden form (a link to the contact page).
+   */
+  mobileContactAction?: { href: string; label: string }
+  /**
    * How wide the copy column runs.
    *
    * `reading` (default) `--container-reading`, 42rem. Every hero
@@ -121,6 +126,7 @@ export function Hero({
   aside,
   asideBalance = 'copy',
   hideAsideBelowLg = false,
+  mobileContactAction,
   copyWidth = 'reading',
   className,
 }: HeroProps) {
@@ -184,7 +190,9 @@ export function Hero({
         </div>
       )}
 
-      {(primaryAction !== null || secondaryAction !== undefined) && (
+      {(primaryAction !== null ||
+        secondaryAction !== undefined ||
+        (hideAsideBelowLg && mobileContactAction !== undefined)) && (
         <div className="mt-8 flex flex-wrap items-center gap-3">
           {primaryAction !== null && (
             <ButtonLink href={primaryAction.href}>{primaryAction.label}</ButtonLink>
@@ -220,6 +228,15 @@ export function Hero({
             */
             <ButtonLink href={secondaryAction.href} variant="accent">
               {secondaryAction.label}
+            </ButtonLink>
+          )}
+          {hideAsideBelowLg && mobileContactAction !== undefined && (
+            <ButtonLink
+              href={mobileContactAction.href}
+              variant="accent"
+              className="lg:hidden"
+            >
+              {mobileContactAction.label}
             </ButtonLink>
           )}
         </div>

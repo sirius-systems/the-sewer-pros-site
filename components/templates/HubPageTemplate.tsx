@@ -1,4 +1,5 @@
 import { Section, Prose, type SectionDensity, type SectionSurface } from '@/components/ui'
+import { heroContactAction } from '@/lib/links/hero-contact-action'
 import {
   Hero,
   TrustBar,
@@ -509,6 +510,7 @@ export function HubPageTemplate({
           backdrop !== undefined && heroAside === 'none' ? 'narrow' : 'reading'
         }
         hideAsideBelowLg={showsHeroForm && heroAside === 'form'}
+        mobileContactAction={heroContactAction(page)}
         aside={
           showsHeroForm && heroAside === 'form' ? (
             /*
