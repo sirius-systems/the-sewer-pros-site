@@ -11,7 +11,7 @@ import type { MarketId, ServiceId } from '@/types'
  * Pill-survey lead form: three short steps, one question each.
  *
  *   1. What do you need?   The nine residential services as pills (3x3).
- *                          "Not sure? Tell us what's happening" skips to step 3.
+ *                          "Not sure? Tell us what's happening" moves on to step 2.
  *   2. Type of property?   Optional pills (home, rental or multifamily). Can be skipped.
  *   3. How do we reach you? Full name, phone, optional email, preferred method, optional note. Submit.
  *
@@ -249,7 +249,7 @@ export function SurveyLeadForm({
                   start()
                   setUnsure(true)
                   setService('')
-                  go(3)
+                  go(2)
                 }}
               >
                 Not sure? Tell us what&apos;s happening
@@ -388,7 +388,7 @@ export function SurveyLeadForm({
             <button
               type="button"
               className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-              onClick={() => go(unsure ? 1 : 2)}
+              onClick={() => go(2)}
             >
               Back
             </button>
