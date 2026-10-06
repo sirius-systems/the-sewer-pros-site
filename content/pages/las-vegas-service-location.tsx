@@ -54,6 +54,15 @@ import { lasVegasCityDrainContent } from './sl-lv-city-drain'
 import { lasVegasCityPrePurchaseContent } from './sl-lv-city-prepurchase'
 import { lasVegasCityBackupContent } from './sl-lv-city-backup'
 import { lasVegasCityMaintenanceContent } from './sl-lv-city-maintenance'
+import { northLasVegasCameraContent } from './sl-nlv-camera'
+import { northLasVegasCleaningContent } from './sl-nlv-cleaning'
+import { northLasVegasHydroContent } from './sl-nlv-hydro'
+import { northLasVegasCleaningCameraContent } from './sl-nlv-cleaning-camera'
+import { northLasVegasLocatingContent } from './sl-nlv-locating'
+import { northLasVegasDrainContent } from './sl-nlv-drain'
+import { northLasVegasPrePurchaseContent } from './sl-nlv-prepurchase'
+import { northLasVegasBackupContent } from './sl-nlv-backup'
+import { northLasVegasMaintenanceContent } from './sl-nlv-maintenance'
 import { serviceContent } from './services'
 import {
   mergeRelevantFaqs,
@@ -312,4 +321,13 @@ export const lasVegasServiceLocationContent: Partial<
   [id('sl-lv-city-prepurchase')]: lasVegasCityPrePurchaseContent,
   [id('sl-lv-city-backup')]: lasVegasCityBackupContent,
   [id('sl-lv-city-maintenance')]: lasVegasCityMaintenanceContent,
+  [id('sl-nlv-camera')]: northLasVegasCameraContent,
+  [id('sl-nlv-cleaning')]: northLasVegasCleaningContent,
+  [id('sl-nlv-hydro')]: northLasVegasHydroContent,
+  [id('sl-nlv-cleaning-camera')]: northLasVegasCleaningCameraContent,
+  [id('sl-nlv-locating')]: northLasVegasLocatingContent,
+  [id('sl-nlv-drain')]: northLasVegasDrainContent,
+  [id('sl-nlv-prepurchase')]: northLasVegasPrePurchaseContent,
+  [id('sl-nlv-backup')]: northLasVegasBackupContent,
+  [id('sl-nlv-maintenance')]: northLasVegasMaintenanceContent,
 }
