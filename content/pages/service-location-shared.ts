@@ -66,10 +66,17 @@ export function pageImageSlots(
   },
 ): {
   hero: CardImage | undefined
+  cta: CardImage | undefined
   problems: readonly (CardImage | undefined)[]
 } {
   return {
-    hero: slotImage({ id: `${pageKey}-hero`, ratio: '4:3', ...spec.hero }),
+    hero: slotImage({ id: `${pageKey}-hero`, ratio: '16:9', ...spec.hero }),
+    cta: slotImage({
+      id: `${pageKey}-cta`,
+      ratio: '16:9',
+      alt: '',
+      shot: 'Wide, quiet exterior of a residential street and property, no identifiable address or people',
+    }),
     problems: spec.problems.map((p, i) =>
       slotImage({ id: `${pageKey}-problem-${i + 1}`, ratio: '4:3', ...p }),
     ),

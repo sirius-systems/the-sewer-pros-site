@@ -39,10 +39,8 @@ import type { PageId, ServiceLocationPageContent } from '@/types'
 import { hendersonContent } from './las-vegas-henderson'
 import { serviceContent } from './services'
 import {
-  assertCardsMatchRegistry,
   mergeRelevantFaqs,
   pageImageSlots,
-  serviceLocationServiceCards,
 } from './service-location-shared'
 
 const id = (value: string): PageId => value as PageId
@@ -77,12 +75,6 @@ const hendersonCameraSlots = pageImageSlots('sl-henderson-camera', {
   ],
 })
 
-const hendersonCameraServiceCards = serviceLocationServiceCards({
-  locationName: 'Henderson',
-  phone: lv.phone,
-})
-assertCardsMatchRegistry(hendersonCameraServiceCards)
-
 const cameraServiceFaq = serviceContent[id('svc-sewer-camera-inspection')]?.v2?.faq
 if (cameraServiceFaq === undefined || hendersonContent.faq === undefined) {
   throw new Error('sl-henderson-camera: source FAQ arrays are missing')
@@ -110,7 +102,7 @@ export const lasVegasServiceLocationContent: Partial<
     serviceDescription:
       'A sewer camera inspection is a visual inspection of the accessible inside of a sewer line, recorded on video, for properties in the City of Henderson, Nevada.',
     heroImage: hendersonCameraSlots.hero,
-    serviceCards: hendersonCameraServiceCards,
+    ctaImage: hendersonCameraSlots.cta,
     hero: {
       eyebrow: 'Henderson, NV',
       title: 'Sewer Camera Inspection in Henderson',
