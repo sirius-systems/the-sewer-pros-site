@@ -27,6 +27,8 @@ import {
   processStepsRenders,
   relatedLinksRenders,
   coverageSectionRenders,
+  ServiceAreaSection,
+  serviceAreaRenders,
   faqSectionRenders,
   problemGridRenders,
   inclusionsGridRenders,
@@ -38,10 +40,18 @@ import {
 } from '@/content/pages/home-service-cards'
 import { FaqGrouped } from '@/components/sections/service-v2'
 import { getService } from '@/data/services'
+import { resolveSlotImage } from '@/lib/image-slots'
 import { requireLocation } from '@/data/locations'
+import { getMarketContent } from '@/content'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { PageShell } from './PageShell'
-import type { MasterPageRecord, ServiceId, ServiceLocationPageContent } from '@/types'
+import type {
+  MasterPageRecord,
+  PageId,
+  ServiceAreaContent,
+  ServiceId,
+  ServiceLocationPageContent,
+} from '@/types'
 
 /**
  * Service + location page.
@@ -136,6 +146,14 @@ function splitBodySections(body: ReactNode):
 }
 
 
+/** One shared slot for the services section's right column. */
+const SERVICES_IMAGE = resolveSlotImage({
+  id: 'slc-services-section',
+  ratio: '4:3',
+  alt: 'Technician and inspection equipment at a residential property',
+  shot: 'Technician with inspection equipment at a residential property, no identifiable address or people',
+})
+
 export function ServiceLocationPageTemplate({
   page,
   content,
@@ -159,6 +177,28 @@ export function ServiceLocationPageTemplate({
     content.faq !== undefined &&
     content.faq.length > 0 &&
     content.faq.every((entry) => entry.group !== undefined)
+  // "Other areas": the market hub's own location cards (image, ZIPs, action
+  // label) minus this page's location, so the visitor sees the same cards as
+  // on the hub rather than a text list (owner, 2026-10-05).
+  const hubArea =
+    page.marketId !== undefined
+      ? getMarketContent(`market-${page.marketId}` as PageId)?.serviceArea
+      : undefined
+  const otherAreas: ServiceAreaContent | undefined =
+    hubArea !== undefined && content.coverage !== undefined
+      ? {
+          title: content.coverage.title,
+          intro: content.coverage.intro ?? '',
+          cities: {
+            title: 'Featured service locations',
+            items: hubArea.cities.items.filter((item) => (item.pageId as string) !== (page.locationId as string | undefined)),
+            layout: 'grid',
+          },
+          closing: hubArea.closing,
+        }
+      : undefined
+  const showsOtherAreas = serviceAreaRenders(otherAreas)
+
   // The homepage's nine service cards, unmodified (owner, 2026-10-05).
   const showsServiceCards = page.marketId !== undefined
 
@@ -184,9 +224,11 @@ export function ServiceLocationPageTemplate({
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
-    ...(coverageSectionRenders(content.coverage)
-      ? (['standard'] as const)
-      : []),
+    ...(showsOtherAreas
+      ? (['dense'] as const)
+      : coverageSectionRenders(content.coverage)
+        ? (['standard'] as const)
+        : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
@@ -342,6 +384,32 @@ export function ServiceLocationPageTemplate({
           intro={<p>{approvedServicesIntro}</p>}
           items={homeServiceCards}
           variant="cards"
+          // Two columns: heading and intro left, image slot right (owner, 2026-10-05).
+          aside={
+            SERVICES_IMAGE === undefined ? undefined : SERVICES_IMAGE.placeholder !== undefined ? (
+              <div
+                data-image-placeholder={SERVICES_IMAGE.placeholder.slotId}
+                className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-1 rounded-md border-2 border-dashed border-border bg-surface-muted p-4 text-center text-caption text-muted-foreground"
+              >
+                <p className="font-semibold text-foreground">
+                  Image slot: {SERVICES_IMAGE.placeholder.slotId}
+                </p>
+                <p>
+                  {SERVICES_IMAGE.placeholder.ratio} - {SERVICES_IMAGE.placeholder.shot}
+                </p>
+              </div>
+            ) : (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md">
+                <Image
+                  src={SERVICES_IMAGE.src}
+                  alt={SERVICES_IMAGE.alt}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            )
+          }
         />
       )}
 
@@ -359,7 +427,18 @@ export function ServiceLocationPageTemplate({
         />
       )}
 
-      {content.coverage !== undefined && (
+      {showsOtherAreas && otherAreas !== undefined ? (
+        <ServiceAreaSection
+          density="dense"
+          id="service-area"
+          content={otherAreas}
+          phone={
+            detail !== undefined
+              ? { label: detail.phone, phoneE164: detail.phoneE164 }
+              : undefined
+          }
+        />
+      ) : content.coverage !== undefined && (
         <CoverageSection
           id="service-area"
           title={content.coverage.title}
