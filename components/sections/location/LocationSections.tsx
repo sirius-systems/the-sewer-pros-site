@@ -122,7 +122,7 @@ export function KeyTakeaways({ content }: { content: LocationKeyTakeaways }) {
   return (
     <Section density="dense" surface="default" labelledBy="key-takeaways">
       <div className="grid gap-8 lg:grid-cols-12">
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-12">
           <h2 id="key-takeaways" className="text-h3 font-semibold tracking-tight">
             {content.title}
           </h2>
@@ -132,23 +132,6 @@ export function KeyTakeaways({ content }: { content: LocationKeyTakeaways }) {
             ))}
           </ul>
         </div>
-        <nav aria-label="On this page" className="lg:col-span-5">
-          <p className="text-caption font-semibold tracking-wide text-muted-foreground uppercase">
-            {content.jumpNavLabel}
-          </p>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {content.jumpNav.map((entry) => (
-              <li key={entry.href}>
-                <a
-                  href={entry.href}
-                  className="inline-flex min-h-11 items-center rounded-md border border-border bg-surface px-3 text-sm font-medium text-accent-secondary hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
-                >
-                  {entry.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
       </div>
     </Section>
   )

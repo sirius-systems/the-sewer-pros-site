@@ -473,7 +473,11 @@ export function SurveyLeadForm({
           <div className="hidden" aria-hidden="true">
             <input type="text" name="website" tabIndex={-1} autoComplete="off" />
           </div>
-          <div className="flex items-center justify-between gap-3 sm:col-span-2">
+          {/* Submit centred; Back sits below it. */}
+          <div className="flex flex-col items-center gap-3 sm:col-span-2">
+            <Button type="submit" disabled={pending}>
+              {pending ? 'Sending...' : 'Request Service'}
+            </Button>
             <button
               type="button"
               className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
@@ -481,9 +485,6 @@ export function SurveyLeadForm({
             >
               Back
             </button>
-            <Button type="submit" disabled={pending}>
-              {pending ? 'Sending...' : 'Request Service'}
-            </Button>
           </div>
         </div>
 
