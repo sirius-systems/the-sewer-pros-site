@@ -14,7 +14,9 @@ import {
   contactStepIcons,
   MarketBusinessDetails,
   faqSectionRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { TrackedPhoneLink } from '@/components/tracking/TrackedPhoneLink'
 import { resolveMarketContactImage } from '@/data/business/contact-backdrop'
 import { getMarket, marketOperatingDetail } from '@/data/markets/markets'
@@ -59,6 +61,7 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
     'dense', // process
     'standard', // business details
     'dense', // proof stats
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(showsFaq ? (['dense'] as const) : []),
     'sparse', // closing CTA
   ]
@@ -182,6 +185,8 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
       />
 
       <StatsBand density="dense" surface="default" marketId={marketId} />
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {showsFaq && content.faq !== undefined && (
         <FaqSection

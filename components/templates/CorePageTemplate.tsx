@@ -7,7 +7,9 @@ import {
   LeadFormSection,
   relatedLinksRenders,
   faqSectionRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { PageShell } from './PageShell'
 import type { CorePageContent, MasterPageRecord } from '@/types'
 
@@ -82,6 +84,7 @@ export function CorePageTemplate({
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     ...(hideCta ? [] : (['sparse'] as const)),
   ]
@@ -126,6 +129,8 @@ export function CorePageTemplate({
           descriptions={content.relatedDescriptions}
         />
       )}
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {content.faq !== undefined && (
         <FaqSection entries={content.faq} openFirst />

@@ -33,7 +33,9 @@ import {
   faqSectionRenders,
   problemGridRenders,
   deliverablesSectionRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { resolveHubImage } from '@/data/business/hub-images'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
@@ -348,6 +350,10 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
         descriptions={content.relatedDescriptions}
       />,
     )
+  }
+
+  if (reviewMarqueeRenders()) {
+    add('standard', 'reviews', <ReviewMarquee density="standard" surface="default" />)
   }
 
   if (content.faq !== undefined) {

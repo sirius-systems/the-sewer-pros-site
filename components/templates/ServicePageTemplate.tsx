@@ -41,7 +41,9 @@ import {
   faqSectionRenders,
   problemGridRenders,
   inclusionsGridRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { getService } from '@/data/services'
 import { PageShell } from './PageShell'
 import { ServiceHubTemplate } from './ServiceHubTemplate'
@@ -193,6 +195,7 @@ export function ServicePageTemplate({
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
@@ -542,6 +545,8 @@ export function ServicePageTemplate({
           descriptions={content.relatedDescriptions}
         />
       )}
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {/*
         The FAQ heading names the page's entity rather than using

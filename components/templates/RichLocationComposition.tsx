@@ -7,10 +7,11 @@ import {
   TrustBar,
   FaqSection,
   CtaSection,
-  ReviewMarquee,
   MobileContactBar,
   faqSectionRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import {
   ServiceCardGrid,
   PreselectServiceListener,
@@ -106,6 +107,7 @@ export function RichLocationComposition({
     ...(content.secondOpinion ? (['sparse'] as const) : []),
     ...(content.buyingGuide ? (['standard'] as const) : []),
     ...(content.nearbyAreas ? (['standard'] as const) : []),
+    ...(reviewMarqueeRenders() && !content.reviewBand ? (['dense'] as const) : []),
     ...(showsFaq ? (['dense'] as const) : []),
     // `split` (photo) renders dense; `panel` (no photo) renders sparse.
     finalCtaBackground !== undefined ? 'dense' : 'sparse',
@@ -245,6 +247,8 @@ export function RichLocationComposition({
       {content.secondOpinion && <SecondOpinionSection content={content.secondOpinion} />}
       {content.buyingGuide && <BuyingGuideSection content={content.buyingGuide} />}
       {content.nearbyAreas && <NearbyAreasSection content={content.nearbyAreas} />}
+
+      {reviewMarqueeRenders() && !content.reviewBand && <ReviewMarquee density="dense" surface="muted" />}
 
       {showsFaq && content.faq !== undefined && (
         <FaqSection

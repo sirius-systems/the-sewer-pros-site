@@ -1301,6 +1301,9 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
   },
 
   [id('hub-commercial')]: {
+    // Reviews carousel (and the confidence band) on the commercial hub, as on
+    // the services and locations hubs. Company-wide figures, DEC-100.
+    showTrustSections: true,
     hero: {
       title: 'Commercial Sewer & Drain Services',
       intro: (
