@@ -14,7 +14,9 @@ import {
   MobileContactBar,
   BackdropImage,
   RelatedServiceCards,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { SurveyLeadForm } from '@/components/sections/SurveyLeadForm'
 import { Section } from '@/components/ui'
 import { SectionHeading } from '@/components/sections/SectionHeading'
@@ -531,6 +533,10 @@ export function ServicePageTemplateV2({
 
   if (v2.terms !== undefined) {
     add('dense', 'terms', <SituationList id={ids.terms} {...v2.terms} />)
+  }
+
+  if (reviewMarqueeRenders()) {
+    add('standard', 'reviews', <ReviewMarquee density="standard" surface="muted" />)
   }
 
   add(

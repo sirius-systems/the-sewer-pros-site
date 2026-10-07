@@ -22,7 +22,9 @@ import {
   faqSectionRenders,
   problemGridRenders,
   inclusionsGridRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { PageShell } from './PageShell'
 import type { AudiencePageContent, MasterPageRecord } from '@/types'
 
@@ -113,6 +115,7 @@ export function AudiencePageTemplate({
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
@@ -220,6 +223,8 @@ export function AudiencePageTemplate({
           descriptions={content.relatedDescriptions}
         />
       )}
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {/*
         ⚠ THE AUDIENCE NAME COMES FROM `page.name`, NOT FROM A REGISTRY.

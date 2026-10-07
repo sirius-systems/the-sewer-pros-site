@@ -213,6 +213,10 @@ export function HubPageTemplate({
   const showsHeroForm = content.showHeroForm === true
   const showsReviews =
     content.showTrustSections === true && reviewMarqueeRenders()
+  // `dense` on the commercial hub only: `standard` there makes a four-section
+  // run with its neighbours (Appendix A).
+  const reviewsDensity: SectionDensity =
+    page.id === 'hub-commercial' ? 'dense' : 'standard'
   const showsConfidence =
     content.showTrustSections === true && confidenceModuleRenders()
 
@@ -420,7 +424,7 @@ export function HubPageTemplate({
       `IndependentProcess` takes a `density` prop at all.
     */
     ...(showsDifferentiator ? (['dense'] as const) : []),
-    ...(showsReviews ? (['standard'] as const) : []),
+    ...(showsReviews ? ([reviewsDensity] as const) : []),
     ...(showsRouting ? (['dense'] as const) : []),
     /*
       ⚠ THE CARDS ARE `dense` WHERE THE INDEX IS `standard`, AND THAT
@@ -627,7 +631,7 @@ export function HubPageTemplate({
         See `ReviewMarqueeProps.surface`.
       */}
       {showsReviews && (
-        <ReviewMarquee density="standard" surface={reviewsSurface} />
+        <ReviewMarquee density={reviewsDensity} surface={reviewsSurface} />
       )}
 
       {/*

@@ -21,7 +21,9 @@ import {
   serviceIndexRenders,
   marketCoverageRenders,
   faqSectionRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { homeServiceCards } from '@/content/pages/home-service-cards'
 import { PageShell } from './PageShell'
 import type { AboutPageContent, MasterPageRecord } from '@/types'
@@ -73,6 +75,7 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
     ...(showsServices ? (['dense'] as const) : []),
     ...(showsMarketCoverage ? (['dense'] as const) : []),
     'standard', // process motif
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(showsFaq ? (['dense'] as const) : []),
     'sparse', // closing CTA panel
   ]
@@ -344,6 +347,8 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
         image={content.process.image}
         variant="cards"
       />
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {/*
         ⚠ `columns={2}`, THE ESTABLISHED PATTERN FOR A LONG FAQ LIST.

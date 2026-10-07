@@ -9,7 +9,9 @@ import {
   CtaSection,
   LocationSelectorCards,
   MobileContactBar,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { TrackedLink } from '@/components/tracking'
 import { resolveAudienceHubImage } from '@/data/business/audience-hub-images'
 import { getPage } from '@/data/pages'
@@ -61,6 +63,7 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
     'standard', // audience cards
     'dense', // need router
     'standard', // location chooser
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []), // reviews
     'sparse', // closing CTA
   ]
 
@@ -224,6 +227,8 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
         title={content.locations.title}
         intro={content.locations.intro}
       />
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       <CtaSection
         variant="panel"

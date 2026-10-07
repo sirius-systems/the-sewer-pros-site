@@ -13,7 +13,9 @@ import {
   relatedLinksRenders,
   coverageSectionRenders,
   faqSectionRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
 import { RichLocationComposition } from './RichLocationComposition'
@@ -109,6 +111,7 @@ export function LocationPageTemplate({
     ...(coverageSectionRenders(content.coverage)
       ? (['standard'] as const)
       : []),
+    ...(reviewMarqueeRenders() ? (['dense'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
   ]
@@ -179,6 +182,8 @@ export function LocationPageTemplate({
           availabilityStatement={content.coverage.availabilityStatement}
         />
       )}
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="dense" surface="muted" />}
 
       {content.faq !== undefined && <FaqSection entries={content.faq} />}
 

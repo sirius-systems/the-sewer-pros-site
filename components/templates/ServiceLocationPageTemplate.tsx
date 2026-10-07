@@ -32,7 +32,9 @@ import {
   faqSectionRenders,
   problemGridRenders,
   inclusionsGridRenders,
+  ReviewMarquee,
 } from '@/components/sections'
+import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { SourcesBlock } from '@/components/sections/location'
 import { SurveyLeadForm } from '@/components/sections/SurveyLeadForm'
 import {
@@ -237,6 +239,7 @@ export function ServiceLocationPageTemplate({
       : coverageSectionRenders(content.coverage)
         ? (['standard'] as const)
         : []),
+    ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     ...(content.sources !== undefined ? (['dense'] as const) : []),
     'sparse',
@@ -446,6 +449,8 @@ export function ServiceLocationPageTemplate({
           availabilityStatement={content.coverage.availabilityStatement}
         />
       )}
+
+      {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {/*
         The FAQ heading names the page's entity rather than using
