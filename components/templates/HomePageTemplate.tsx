@@ -14,7 +14,7 @@ import {
   ProofGallery,
   TestimonialBand,
   ReviewMarquee,
-  LeadFormSection,
+  SurveyLeadForm,
   MarketCoverage,
   FaqSection,
   RelatedLinks,
@@ -237,11 +237,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
             word with five rotating frames.
           */
           <div className="rounded-md border border-border bg-surface p-6 shadow-sm sm:p-8">
-            <LeadFormSection
-              bare
-              id="hero-request-service"
-              idPrefix="hero-lead"
-            />
+            <SurveyLeadForm idPrefix="hero-survey" headingId="hero-request-service" />
           </div>
         }
       />
@@ -566,7 +562,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
             dropped into an image section needs the same reset.
           */
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-            <LeadFormSection bare density="standard" />
+            <SurveyLeadForm idPrefix="cta-survey" />
           </div>
         }
       />

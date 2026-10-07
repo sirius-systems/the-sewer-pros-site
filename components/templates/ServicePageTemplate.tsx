@@ -24,7 +24,8 @@ import {
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
-  LeadFormSection,
+  SurveyLeadForm,
+  SurveyLeadFormSection,
   MarketCoverage,
   FaqSection,
   RelatedServiceCards,
@@ -498,7 +499,7 @@ export function ServicePageTemplate({
         instead — see `ServicePageContent.hideMidPageForm`. Omitting it
         keeps every other page byte-identical.
       */}
-      {content.hideMidPageForm !== true && <LeadFormSection />}
+      {content.hideMidPageForm !== true && <SurveyLeadFormSection idPrefix="mid-survey" />}
 
       {content.comparison !== undefined && (
         <ServiceComparison content={content.comparison} surface={content.comparison.surface} />
@@ -524,13 +525,7 @@ export function ServicePageTemplate({
           focus={content.request.image.focus ?? 'default'}
           scrim={content.request.image.scrim}
         >
-          <LeadFormSection
-            bare
-            density="standard"
-            idPrefix="request-lead"
-            title={content.request.formTitle}
-            submitLabel={content.request.submitLabel}
-          />
+          <SurveyLeadForm idPrefix="request-survey" title={content.request.formTitle} />
         </RequestServiceSection>
       )}
 
@@ -593,7 +588,7 @@ export function ServicePageTemplate({
         backgroundImage={content.cta?.backgroundImage}
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-            <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+            <SurveyLeadForm idPrefix="cta-survey" />
           </div>
         }
       />
