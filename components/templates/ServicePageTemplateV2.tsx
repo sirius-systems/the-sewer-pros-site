@@ -9,7 +9,6 @@ import {
   IndependentProcess,
   ProofGallery,
   TestimonialBand,
-  LeadFormSection,
   MarketRouter,
   RequestServiceSection,
   MobileContactBar,
@@ -22,8 +21,6 @@ import { SectionHeading } from '@/components/sections/SectionHeading'
 import { CameraImageSlot } from '@/components/sections/CameraImageSlot'
 import { resolveHubImage } from '@/data/business/hub-images'
 import {
-  SectionNav,
-  SECTION_NAV_MIN,
   SignalList,
   LimitsPanel,
   ProcessTimeline,
@@ -40,7 +37,6 @@ import {
   SituationList,
   IndependentBand,
   TellUsList,
-  type SectionNavItem,
 } from '@/components/sections/service-v2'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
@@ -93,32 +89,21 @@ export interface ServicePageTemplateV2Props {
   content: ServicePageContent
 }
 
-/**
- * Core service pages that use the pill-survey form (pilot, 2026-10-06). The
- * survey asks for the area first because these pages are market-neutral.
- * Every other page keeps `LeadFormSection` until the pilot is approved.
- */
-const SURVEY_SERVICE_PAGE_IDS: ReadonlySet<string> = new Set(['svc-sewer-cleaning'])
-
 export function ServicePageTemplateV2({
   page,
   content,
 }: ServicePageTemplateV2Props) {
   const v2 = content.v2
   if (v2 === undefined) return null
-  const useSurvey = SURVEY_SERVICE_PAGE_IDS.has(page.id)
 
   const blocks: [SectionDensity | null, string, ReactNode][] = []
   const add = (density: SectionDensity | null, key: string, node: ReactNode) => {
     blocks.push([density, key, node])
   }
 
-  // Sections after the definition, in order, for the "On this page" list.
-  // `v2.navLabels` narrows the list to the named sections and relabels them.
+  // Section ids and labels, kept for anchors. The "On this page" bar is removed.
   const tracked: { key: string; id: string; label: string; listed: boolean }[] = []
-  let contentSections = 0
   const track = (key: string, id: string, label: string, listed = true) => {
-    contentSections += 1
     tracked.push({ key, id, label, listed })
   }
 
@@ -185,15 +170,6 @@ export function ServicePageTemplateV2({
     track('situations', ids.situations, v2.situations.title)
   }
   track('related', 'related', v2.relatedTitle ?? 'Related services')
-
-  const navLabels = v2.navLabels
-  const nav: SectionNavItem[] =
-    navLabels === undefined
-      ? tracked.filter((t) => t.listed).map((t) => ({ id: t.id, label: t.label }))
-      : tracked.flatMap((t) => {
-          const label = (navLabels as Record<string, string | undefined>)[t.key]
-          return label === undefined ? [] : [{ id: t.id, label }]
-        })
 
   const heroImage = v2.images?.hero ?? HERO_IMAGE
   const requestImage = v2.images?.request ?? REQUEST_IMAGE
@@ -274,7 +250,7 @@ export function ServicePageTemplateV2({
           intro={v2.hero.cardIntro}
           serviceLabel={v2.hero.serviceLabel ?? content.hero.title}
           defaultServiceId={v2.defaultServiceId}
-          survey={useSurvey}
+          survey
           {...(v2.messageLabel !== undefined ? { messageLabel: v2.messageLabel } : {})}
           {...(v2.extraServiceOptions !== undefined
             ? { extraServiceOptions: v2.extraServiceOptions }
@@ -639,22 +615,10 @@ export function ServicePageTemplateV2({
         than edited out of the shared form.
       */}
       {(() => {
-        const leadForm = useSurvey ? (
+        const leadForm = (
           <SurveyLeadForm
             idPrefix="request-survey"
             {...(v2.defaultServiceId !== undefined ? { defaultServiceId: v2.defaultServiceId } : {})}
-          />
-        ) : (
-          <LeadFormSection
-            bare
-            density="standard"
-            idPrefix="request-lead"
-            defaultServiceId={v2.defaultServiceId}
-            submitLabel={v2.request.submitLabel}
-            {...(v2.messageLabel !== undefined ? { messageLabel: v2.messageLabel } : {})}
-            {...(v2.extraServiceOptions !== undefined
-              ? { extraServiceOptions: v2.extraServiceOptions }
-              : {})}
           />
         )
         // Two branches so an entry without `secondaryAction` renders the same tree as before.
@@ -683,22 +647,15 @@ export function ServicePageTemplateV2({
 
   /*
     The sections from the definition to the related list share one
-    wrapper, so the sticky "On this page" bar (placed right after the
-    definition) stays on screen across all of them. The wrapper adds no
-    padding, background or width; the anchors inside it clear both the
-    site header and the bar.
+    wrapper. It adds no padding, background or width. (The sticky "On this
+    page" bar that once sat inside it was removed, 2026-10-06.)
   */
   const OUTSIDE = new Set(['hero', 'trust', 'counters', 'request'])
-  const showNav = contentSections >= SECTION_NAV_MIN
   const renderBlocks = () => {
     const before: ReactNode[] = []
     const inside: ReactNode[] = []
     const after: ReactNode[] = []
     let seenWrapped = false
-    // Without a definition the bar leads the wrapped sections instead.
-    if (showNav && v2.definition === undefined) {
-      inside.push(<SectionNav key="section-nav" items={nav} />)
-    }
     for (const [, key, node] of blocks) {
       if (OUTSIDE.has(key)) {
         ;(seenWrapped ? after : before).push(<Fragment key={key}>{node}</Fragment>)
@@ -706,9 +663,6 @@ export function ServicePageTemplateV2({
       }
       seenWrapped = true
       inside.push(<Fragment key={key}>{node}</Fragment>)
-      if (key === 'definition' && showNav) {
-        inside.push(<SectionNav key="section-nav" items={nav} />)
-      }
     }
     return (
       <>
