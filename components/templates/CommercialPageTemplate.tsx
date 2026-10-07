@@ -137,17 +137,14 @@ export function CommercialPageTemplate({
       />
 
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-        `surface="muted"`, NOT THE COMPONENT'S OWN `default`. This hero
-        carries no backdrop, so it renders on `default` too, and the
-        component's own default would stack two `default` bands back to
-        back — reading as one unbroken band. `TrustBar` below is
-        `brand`, so `muted` keeps this section distinct from both
-        neighbours.
+        `TrustBar` sits directly below the hero on every page (owner,
+        2026-10-06); the counter strip follows it. `surface="muted"`
+        keeps the counter strip distinct from the `brand` strip above
+        and from the `default` body below.
       */}
-      <ExperienceCounterStrip surface="muted" />
-
       <TrustBar />
+
+      <ExperienceCounterStrip surface="muted" />
 
       {content.body !== undefined && (
         <Section density="standard" width="reading">

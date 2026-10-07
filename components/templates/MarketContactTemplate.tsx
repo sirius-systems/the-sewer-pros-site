@@ -3,6 +3,7 @@ import { Section, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   ExperienceCounterStrip,
+  TrustBar,
   ProcessSteps,
   FaqSection,
   CtaSection,
@@ -50,9 +51,8 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
 
   const densities: SectionDensity[] = [
     'sparse', // hero
-    // ExperienceCounterStrip — inserted below Hero, above the form
-    // section (owner, 2026-09-27). `dense` is the section's own default.
-    'dense',
+    'dense', // trust strip
+    'dense', // ExperienceCounterStrip
     'standard', // form
     'standard', // local section
     'dense', // services
@@ -117,11 +117,13 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
         }
       />
 
+      <TrustBar />
+
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE THE REQUEST-SERVICE SECTION (owner,
-        2026-09-27). `surface="default"` (the component's own default):
-        the form section immediately below is explicitly `muted`, so
-        `default` does not match it.
+        Counter strip follows the trust strip, which sits directly below
+        the hero on every page (owner, 2026-10-06). `surface="default"`
+        matches neither the `brand` strip above nor the `muted` form
+        section below.
       */}
       <ExperienceCounterStrip />
 

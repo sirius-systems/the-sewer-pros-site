@@ -255,22 +255,13 @@ export function ServicePageTemplate({
       />
 
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-        `surface="muted"`, NOT THE COMPONENT'S OWN `default` — UNLESS
-        `content.heroImage` is set. A hero with no backdrop renders on
-        `default` too, so the component's own default would stack two
-        `default` bands back to back; `muted` keeps this section distinct
-        from both neighbours. A photographic-backdrop hero renders on
-        `surface="none"` instead (see `Hero`), so `default` (this
-        component's own default, same as `ServiceHubTemplate`'s
-        photographic hero) already matches neither neighbour there.
-        `TrustBar` below is `brand` either way.
+        `TrustBar` sits directly below the hero on every page (owner,
+        2026-10-06); the counter strip follows it. `muted` keeps the
+        counter strip distinct from the `brand` strip above.
       */}
-      <ExperienceCounterStrip
-        surface={content.heroImage !== undefined ? 'default' : 'muted'}
-      />
-
       <TrustBar />
+
+      <ExperienceCounterStrip surface="muted" />
 
       {content.explainer !== undefined && (
         /*

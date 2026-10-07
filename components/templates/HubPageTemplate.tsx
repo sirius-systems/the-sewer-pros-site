@@ -538,18 +538,13 @@ export function HubPageTemplate({
       />
 
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-        `surface="muted"`, NOT THE COMPONENT'S OWN `default`. This
-        template is shared by five hubs and only `/locations/` passes a
-        photographic `backdrop`; the other four render an editorial hero
-        with no backdrop, which puts them on `default` too. `muted`
-        keeps this section distinct from a `default` hero on every hub
-        and from `TrustBar`'s `brand` below, regardless of which hero
-        composition the route uses.
+        `TrustBar` sits directly below the hero on every page (owner,
+        2026-10-06); the counter strip follows it. `surface="muted"`
+        keeps the counter strip distinct from the `brand` strip above.
       */}
-      <ExperienceCounterStrip surface="muted" />
-
       <TrustBar />
+
+      <ExperienceCounterStrip surface="muted" />
 
       {/*
         ⚠ ONE INTRO BAND, IN ONE OF TWO PRESENTATIONS. `/locations/`

@@ -114,16 +114,15 @@ export function ContactPageTemplate({ page, content }: ContactPageTemplateProps)
         }
       />
 
-      {/*
-        ⚠ INSERTED BELOW HERO, ABOVE THE TRUST STRIP (owner, 2026-09-27).
-        `surface="default"` (the component's own default): the hero
-        above carries a photographic backdrop and the trust strip below
-        is `brand`, so `default` matches neither neighbour.
-      */}
-      <ExperienceCounterStrip />
-
       {/* Verified positioning statements (data/business/positioning.ts). */}
       <TrustBar density="dense" surface="brand" />
+
+      {/*
+        Counter strip follows the trust strip, which sits directly below
+        the hero on every page (owner, 2026-10-06). `default` matches
+        neither the `brand` strip above nor the `muted` stats band below.
+      */}
+      <ExperienceCounterStrip />
 
       {/*
         Owner-confirmed figures only, scoped in organization.ts. The

@@ -154,15 +154,14 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
       />
 
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-        `surface="default"` (the component's own default): the hero above
-        carries a photographic backdrop (or the `bg-brand` fallback) and
-        `TrustBar` below is `brand`, so `default` matches neither
-        neighbour.
+        `TrustBar` sits directly below the hero on every page (owner,
+        2026-10-06); the counter strip follows it. `surface="default"`
+        on the counter strip matches neither `brand` above nor the
+        `muted` stats band below.
       */}
-      <ExperienceCounterStrip />
-
       <TrustBar />
+
+      <ExperienceCounterStrip />
 
       <StatsBand density="standard" surface="muted" />
 
