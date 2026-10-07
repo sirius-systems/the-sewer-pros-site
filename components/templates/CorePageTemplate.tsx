@@ -4,7 +4,7 @@ import {
   FaqSection,
   RelatedLinks,
   CtaSection,
-  LeadFormSection,
+  SurveyLeadForm,
   relatedLinksRenders,
   faqSectionRenders,
   ReviewMarquee,
@@ -152,7 +152,7 @@ export function CorePageTemplate({
           action={null}
           proof={
             <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-              <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+              <SurveyLeadForm idPrefix="cta-survey" />
             </div>
           }
         />

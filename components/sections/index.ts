@@ -204,6 +204,9 @@ export type { ReviewMarqueeProps } from './ReviewMarquee'
 export { LeadFormSection } from './LeadFormSection'
 export type { LeadFormSectionProps } from './LeadFormSection'
 
+export { SurveyLeadForm } from './SurveyLeadForm'
+export { SurveyLeadFormSection } from './SurveyLeadFormSection'
+
 export { ServiceIndex, serviceIndexRenders } from './ServiceIndex'
 export type { ServiceIndexProps, ServiceIndexItem } from './ServiceIndex'
 

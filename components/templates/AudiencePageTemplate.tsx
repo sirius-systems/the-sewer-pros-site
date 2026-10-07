@@ -11,7 +11,8 @@ import {
   AuthorityBand,
   ProofGallery,
   TestimonialBand,
-  LeadFormSection,
+  SurveyLeadForm,
+  SurveyLeadFormSection,
   FaqSection,
   RelatedLinks,
   CtaSection,
@@ -214,7 +215,7 @@ export function AudiencePageTemplate({
 
       <TestimonialBand />
 
-      <LeadFormSection />
+      <SurveyLeadFormSection />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks
@@ -274,7 +275,7 @@ export function AudiencePageTemplate({
         action={null}
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-            <LeadFormSection bare density="standard" idPrefix="cta-lead" />
+            <SurveyLeadForm idPrefix="cta-survey" />
           </div>
         }
       />

@@ -17,7 +17,7 @@ import {
   ServiceIndex,
   FaqSection,
   CtaSection,
-  LeadFormSection,
+  SurveyLeadForm,
   serviceIndexRenders,
   marketCoverageRenders,
   faqSectionRenders,
@@ -392,7 +392,7 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
         }}
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-            <LeadFormSection bare density="standard" idPrefix="about-cta-lead" />
+            <SurveyLeadForm idPrefix="about-cta-survey" />
           </div>
         }
       />

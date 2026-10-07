@@ -33,7 +33,7 @@ import {
   ProofGallery,
   TestimonialBand,
   ReviewMarquee,
-  LeadFormSection,
+  SurveyLeadForm,
   CoverageSection,
   ServiceAreaSection,
   RelatedLinks,
@@ -525,12 +525,7 @@ export function MarketPageTemplate({
                   Same wrapper, same reason, as the home page hero.
                 */
                 <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-                  <LeadFormSection
-                    bare
-                    id="hero-request-service"
-                    idPrefix="hero-lead"
-                    defaultMarketId={content.heroFormMarketId}
-                  />
+                  <SurveyLeadForm idPrefix="hero-survey" headingId="hero-request-service" />
                 </div>
               ) : undefined
             }
@@ -1189,13 +1184,7 @@ export function MarketPageTemplate({
                 its closing form falls back to unanswered, which is the
                 old behaviour and safe.
               */}
-              <LeadFormSection
-                bare
-                density="standard"
-                idPrefix="cta-lead"
-                defaultMarketId={content.heroFormMarketId}
-                intro={content.ctaFormIntro}
-              />
+              <SurveyLeadForm idPrefix="cta-survey" intro={content.ctaFormIntro} />
             </div>
           ) : undefined
         }

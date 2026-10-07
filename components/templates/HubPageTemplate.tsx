@@ -11,7 +11,7 @@ import {
   FaqSection,
   CtaSection,
   ConfidenceModule,
-  LeadFormSection,
+  SurveyLeadForm,
   ReviewMarquee,
   RoutingCards,
   MarketGuidance,
@@ -530,10 +530,9 @@ export function HubPageTemplate({
               unanswered, which is correct rather than unfinished.
             */
             <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
-              <LeadFormSection
-                bare
-                id="hero-request-service"
-                idPrefix="hero-lead"
+              <SurveyLeadForm
+                idPrefix="hero-survey"
+                headingId="hero-request-service"
                 intro={content.heroFormIntro}
               />
             </div>
@@ -962,12 +961,7 @@ export function HubPageTemplate({
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
             {/* No `defaultMarketId`, for the reason the hero form gives. */}
-            <LeadFormSection
-              bare
-              density="standard"
-              idPrefix="cta-lead"
-              intro={content.ctaFormIntro}
-            />
+            <SurveyLeadForm idPrefix="cta-survey" intro={content.ctaFormIntro} />
           </div>
         }
       />
