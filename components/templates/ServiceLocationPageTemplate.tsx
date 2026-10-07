@@ -548,7 +548,6 @@ export function ServiceLocationPageTemplate({
             {page.marketId !== undefined ? (
               <SurveyLeadForm
                 idPrefix="cta-survey"
-                marketId={page.marketId}
                 locationId={page.locationId}
                 defaultServiceId={page.serviceId}
               />

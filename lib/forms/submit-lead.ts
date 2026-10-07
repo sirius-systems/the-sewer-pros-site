@@ -29,8 +29,13 @@ export interface LeadPayload {
   message: string
   /** Page the request came from, canonical pathname only. */
   sourcePath: string
-  /** Survey form only: derived location id, e.g. `loc-sd-escondido`. */
+  /**
+   * Survey form only: the visitor's service location for the CRM. `locationId` is a
+   * derived registry id (`loc-sd-escondido`) or `other-<market>`; `serviceLocation` is
+   * its display label. `marketId` above is that location's market.
+   */
   locationId?: string
+  serviceLocation?: string
   /** Survey form only: `home`, `rental-multifamily` or `commercial`. */
   propertyType?: string
 }

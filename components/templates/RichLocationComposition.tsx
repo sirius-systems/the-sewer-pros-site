@@ -83,7 +83,6 @@ export function RichLocationComposition({
           idPrefix="final-survey"
           headingId="final-request-heading"
           title={content.finalCta.formTitle}
-          marketId={page.marketId}
           locationId={page.locationId}
         />
       </div>
@@ -183,7 +182,6 @@ export function RichLocationComposition({
                   headingId="hero-request-heading"
                   title={heroForm.card.title}
                   intro={heroForm.card.intro}
-                  marketId={page.marketId}
                   locationId={page.locationId}
                 />
                 <div className="mt-5 border-t border-border pt-5">
