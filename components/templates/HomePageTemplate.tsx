@@ -247,17 +247,6 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       />
 
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-        `TrustBar` itself is unchanged — this is a second, animated
-        strip, not a replacement.
-
-        `surface="default"` (the component's own default): Hero carries
-        a photographic backdrop and `TrustBar` below is `muted`, so
-        `default` keeps this section from matching either neighbour.
-      */}
-      <ExperienceCounterStrip />
-
-      {/*
         ⚠ `muted`, NOT THE COMPONENT'S OWN `brand` DEFAULT, ON OWNER
         DIRECTION (2026-09-05). It is what separates this strip from
         the section beneath it.
@@ -289,6 +278,13 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         surfaces alike.
       */}
       <TrustBar surface="muted" />
+
+      {/*
+        Counter strip follows the trust strip, which sits directly below
+        the hero on every page (owner, 2026-10-06). `default` matches
+        neither the `muted` strip above nor the `brand` band below.
+      */}
+      <ExperienceCounterStrip />
 
       {/*
         =====================================================================

@@ -174,14 +174,13 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
   )
 
   /*
-    ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27).
-    `surface="default"` (the component's own default): this hero
-    carries a photographic backdrop and `TrustBar` below is `brand`, so
-    `default` matches neither neighbour.
+    `TrustBar` sits directly below the hero on every page (owner,
+    2026-10-06); the counter strip follows it. `muted` keeps the counter
+    strip distinct from the `brand` strip above.
   */
-  add('dense', 'counters', <ExperienceCounterStrip />)
-
   add('dense', 'trust', <TrustBar />)
+
+  add('dense', 'counters', <ExperienceCounterStrip surface="muted" />)
 
   const router =
     hub.marketRouter !== undefined ? <MarketRouter content={hub.marketRouter} /> : null

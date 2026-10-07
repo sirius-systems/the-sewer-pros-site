@@ -546,17 +546,6 @@ export function MarketPageTemplate({
       )}
 
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `TrustBar` (owner, 2026-09-27), the
-        same insertion made on `HomePageTemplate`. `surface="default"`
-        (the component's own default): the hero above carries either a
-        photograph/video backdrop or renders editorial with no backdrop,
-        and `TrustBar` below is `muted`, so `default` matches neither
-        neighbour.
-      */}
-      {/* A market whose founding year is unknown (0) drops the cell; every other market keeps the company year. */}
-      <ExperienceCounterStrip foundingYear={detail?.foundingYear === 0 ? 0 : undefined} />
-
-      {/*
         ⚠ `muted`, NOT THE COMPONENT'S OWN `brand` DEFAULT, ON OWNER
         DIRECTION (2026-09-05). It is what separates this strip from
         the section beneath it.
@@ -588,6 +577,14 @@ export function MarketPageTemplate({
         surfaces alike.
       */}
       <TrustBar surface="muted" />
+
+      {/*
+        Counter strip follows the trust strip, which sits directly below
+        the hero on every page (owner, 2026-10-06). `default` matches
+        neither the `muted` strip above nor the `brand` band below.
+      */}
+      {/* A market whose founding year is unknown (0) drops the cell; every other market keeps the company year. */}
+      <ExperienceCounterStrip foundingYear={detail?.foundingYear === 0 ? 0 : undefined} />
 
       {/*
         ==================================================================

@@ -4,6 +4,7 @@ import type { SectionDensity } from '@/components/ui'
 import {
   Hero,
   ExperienceCounterStrip,
+  TrustBar,
   FaqSection,
   CtaSection,
   ReviewMarquee,
@@ -90,6 +91,7 @@ export function RichLocationComposition({
 
   const densities: SectionDensity[] = [
     'sparse', // hero
+    'dense', // trust strip
     'dense', // counters
     ...(content.keyTakeaways ? (['dense'] as const) : []),
     ...(content.serviceCards ? (['standard'] as const) : []),
@@ -198,6 +200,8 @@ export function RichLocationComposition({
           }
         />
       </div>
+
+      <TrustBar />
 
       <ExperienceCounterStrip
         surface="muted"

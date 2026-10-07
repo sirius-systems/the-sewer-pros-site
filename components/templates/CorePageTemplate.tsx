@@ -77,8 +77,8 @@ export function CorePageTemplate({
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'standard',
-    ...(content.body !== undefined ? (['standard'] as const) : []),
     'dense',
+    ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
@@ -111,13 +111,13 @@ export function CorePageTemplate({
         </header>
       </Section>
 
+      <TrustBar />
+
       {content.body !== undefined && (
         <Section density="standard" width="reading">
           <Prose>{content.body}</Prose>
         </Section>
       )}
-
-      <TrustBar />
 
       {content.relatedPageIds !== undefined && (
         <RelatedLinks

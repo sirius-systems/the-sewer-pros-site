@@ -4,6 +4,7 @@ import { Section, ButtonLink, type SectionDensity } from '@/components/ui'
 import {
   Hero,
   ExperienceCounterStrip,
+  TrustBar,
   StatsBand,
   CtaSection,
   LocationSelectorCards,
@@ -54,9 +55,8 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
 
   const densities: SectionDensity[] = [
     'sparse', // hero
-    // ExperienceCounterStrip — inserted below Hero, above `StatsBand`
-    // (owner, 2026-09-27). `dense` is the section's own default.
-    'dense',
+    'dense', // trust strip
+    'dense', // ExperienceCounterStrip
     'standard', // proof stats
     'standard', // audience cards
     'dense', // need router
@@ -128,13 +128,13 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
         />
       </div>
 
+      <TrustBar />
+
       {/*
-        ⚠ INSERTED BELOW HERO, ABOVE `StatsBand` (owner, 2026-09-27).
-        `surface="muted"`, NOT THE COMPONENT'S OWN `default`. The hero
-        above sits on its own photographic background and `StatsBand`
-        below is explicitly `surface="default"`; the component's own
-        default would put this strip on the same surface as that
-        neighbour, so `muted` is used instead to keep the two distinct.
+        Counter strip follows the trust strip, which sits directly below
+        the hero on every page (owner, 2026-10-06). `surface="muted"`
+        keeps it distinct from the `brand` strip above and from
+        `StatsBand`, which is explicitly `default`.
       */}
       <ExperienceCounterStrip surface="muted" />
 
