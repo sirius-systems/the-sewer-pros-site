@@ -3,20 +3,26 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Field, RadioGroup, TextInput, Textarea } from '@/components/ui'
-import { marketList, marketOperatingDetail } from '@/data/markets/markets'
+import { marketOperatingDetail } from '@/data/markets/markets'
+import { SURVEY_LOCATION_GROUPS, findSurveyLocation } from '@/lib/forms/survey-locations'
 import { submitLead } from '@/lib/forms/submit-lead'
-import type { MarketId, ServiceId } from '@/types'
+import type { ServiceId } from '@/types'
 
 /**
- * Pill-survey lead form: three short steps, one question each (four on a
- * market-neutral page, which adds "Service location?" after the service).
+ * Pill-survey lead form: four short steps, one question each. The same form
+ * runs on every location, service + location and service page.
  *
- *   1. What do you need?   The nine residential services as pills (3x3).
- *                          "Not sure? Tell us what's happening" moves on to the next step.
- *   2. Type of property?   Optional pills (home, rental or multifamily). Can be skipped.
- *   3. How do we reach you? Full name, phone, optional email, preferred method, optional note. Submit.
+ *   1. What do you need?    The nine residential services as pills (3x3).
+ *                           "Not sure? Tell us what's happening" moves on.
+ *   2. Service location?    The built locations by market, plus an "other area"
+ *                           pill per market. A location page pre-selects its own.
+ *   3. Type of property?    Optional pills (home, rental or multifamily).
+ *   4. How do we reach you? Full name, phone, optional email, preferred method,
+ *                           optional note. Submit.
  *
- * Market, location and the page path are never asked: the page supplies them.
+ * The market comes from the chosen service location. The service location is
+ * sent to the CRM as `locationId` (a registry id or `other-<market>`) and
+ * `serviceLocation` (its label), with `marketId` and the page path.
  *
  * ⚠ SUBMISSION IS HONEST (CLAUDE.md §24). `submitLead()` reports
  * `not-configured` until PENDING-018 is closed, and this then shows the
@@ -67,11 +73,10 @@ const PILL =
 
 export interface SurveyLeadFormProps {
   /**
-   * The page's market. Omit it on a market-neutral page (a core service page):
-   * the form asks "Service location?" as its second step.
+   * The page's own location (`loc-...`), shown pre-selected on the "Service
+   * location?" step. A page with no location of its own (a core service page)
+   * omits it and the visitor chooses.
    */
-  marketId?: MarketId
-  /** Derived location id, e.g. `loc-sd-escondido`. Analytics and payload only. */
   locationId?: string
   /** The page's own service, shown pre-selected on step 1. */
   defaultServiceId?: ServiceId
@@ -86,8 +91,7 @@ export interface SurveyLeadFormProps {
 type Step = 0 | 1 | 2 | 3
 
 export function SurveyLeadForm({
-  marketId: pageMarketId,
-  locationId,
+  locationId: pageLocationId,
   defaultServiceId,
   idPrefix = 'survey',
   title = 'Request service',
@@ -95,15 +99,15 @@ export function SurveyLeadForm({
   headingId,
 }: SurveyLeadFormProps) {
   const router = useRouter()
-  const needsMarket = pageMarketId === undefined
-  const [chosenMarket, setChosenMarket] = useState<MarketId | ''>('')
   const [step, setStep] = useState<Step>(1)
-  const marketId = pageMarketId ?? (chosenMarket === '' ? undefined : chosenMarket)
-  // Order: service, then (market-neutral pages only) service location, property, contact.
-  const order: readonly Step[] = needsMarket ? [1, 0, 2, 3] : [1, 2, 3]
+  const [location, setLocation] = useState(pageLocationId ?? '')
+  const selectedLocation = findSurveyLocation(location)
+  const marketId = selectedLocation?.marketId
+  // Fixed order: service, service location, property, contact.
+  const order: readonly Step[] = [1, 0, 2, 3]
   const totalSteps = order.length
   const shownStep = order.indexOf(step) + 1
-  const afterService: Step = needsMarket ? 0 : 2
+  const afterService: Step = 0
   const [service, setService] = useState<ServiceId | ''>(defaultServiceId ?? '')
   const [unsure, setUnsure] = useState(false)
   const [property, setProperty] = useState('')
@@ -113,6 +117,8 @@ export function SurveyLeadForm({
   const started = useRef(false)
   const headingRef = useRef<HTMLHeadingElement>(null)
 
+  // Registry locations only; the "other area" pills have no registry id.
+  const analyticsLocationId = location.startsWith('loc-') ? location : undefined
   const phoneLabel =
     marketId === undefined ? 'us' : (marketOperatingDetail[marketId]?.phone ?? 'us')
   const id = (name: string) => `${idPrefix}-${name}`
@@ -130,11 +136,11 @@ export function SurveyLeadForm({
         setUnsure(false)
         setService(value as ServiceId)
       } else return
-      setStep(needsMarket && chosenMarket === '' ? 0 : 2)
+      setStep(location === '' ? 0 : 2)
     }
     document.addEventListener('sp:preselect-service', onPreselect)
     return () => document.removeEventListener('sp:preselect-service', onPreselect)
-  }, [needsMarket, chosenMarket])
+  }, [location])
 
   function start() {
     if (started.current) return
@@ -142,7 +148,7 @@ export function SurveyLeadForm({
     void import('@/lib/analytics').then((m) =>
       m.trackFormStart(FORM_TYPE, {
         ...(marketId !== undefined && { market_id: marketId }),
-        ...(locationId !== undefined && { location_id: locationId }),
+        ...(analyticsLocationId !== undefined && { location_id: analyticsLocationId }),
       }),
     )
   }
@@ -206,7 +212,8 @@ export function SurveyLeadForm({
       appointmentWindow: '',
       message: value('message'),
       sourcePath: window.location.pathname,
-      ...(locationId !== undefined && { locationId }),
+      locationId: location,
+      serviceLocation: selectedLocation?.label ?? '',
       ...(property !== '' && { propertyType: property }),
     })
     setPending(false)
@@ -216,7 +223,7 @@ export function SurveyLeadForm({
         m.trackFormSubmitted(FORM_TYPE, {
           market_id: marketId,
           ...(service !== '' && !unsure && { service_id: service }),
-          ...(locationId !== undefined && { location_id: locationId }),
+          ...(analyticsLocationId !== undefined && { location_id: analyticsLocationId }),
         }),
       )
       router.push(`/contact/thank-you/?market=${marketId}`)
@@ -266,39 +273,63 @@ export function SurveyLeadForm({
           <div className="mt-4">
             <fieldset>
               <legend className="sr-only">Service location</legend>
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-                {marketList.map((market) => (
-                  <div key={market.id}>
-                    <input
-                      type="radio"
-                      name="market"
-                      id={id(`market-${market.id}`)}
-                      value={market.id}
-                      checked={chosenMarket === market.id}
-                      onChange={() => {
-                        start()
-                        setChosenMarket(market.id as MarketId)
-                        go(2)
-                      }}
-                      onClick={() => {
-                        if (chosenMarket === market.id) go(2)
-                      }}
-                      className="peer sr-only"
-                    />
-                    <label htmlFor={id(`market-${market.id}`)} className={`${PILL} h-full`}>
-                      {market.name}
-                    </label>
+              <div className="space-y-4">
+                {SURVEY_LOCATION_GROUPS.map((group) => (
+                  <div
+                    key={group.marketId}
+                    role="group"
+                    aria-labelledby={id(`group-${group.marketId}`)}
+                  >
+                    <p
+                      id={id(`group-${group.marketId}`)}
+                      className="text-caption font-semibold tracking-wide text-muted-foreground uppercase"
+                    >
+                      {group.label}
+                    </p>
+                    <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                      {group.locations.map((option) => (
+                        <div key={option.id}>
+                          <input
+                            type="radio"
+                            name="serviceLocation"
+                            id={id(`location-${option.id}`)}
+                            value={option.id}
+                            checked={location === option.id}
+                            onChange={() => {
+                              start()
+                              setLocation(option.id)
+                              // A page that pre-selects its own location waits for "Next".
+                              if (pageLocationId === undefined) go(2)
+                            }}
+                            onClick={() => {
+                              if (location === option.id && pageLocationId === undefined) go(2)
+                            }}
+                            className="peer sr-only"
+                          />
+                          <label htmlFor={id(`location-${option.id}`)} className={`${PILL} h-full`}>
+                            {option.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
             </fieldset>
-            <button
-              type="button"
-              className="mt-3 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-              onClick={() => go(1)}
-            >
-              Back
-            </button>
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                onClick={() => go(1)}
+              >
+                Back
+              </button>
+              {pageLocationId !== undefined && location !== '' && (
+                <Button type="button" onClick={() => go(2)}>
+                  Next
+                </Button>
+              )}
+            </div>
           </div>
         )}
 
@@ -385,7 +416,7 @@ export function SurveyLeadForm({
               <button
                 type="button"
                 className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                onClick={() => go(needsMarket ? 0 : 1)}
+                onClick={() => go(0)}
               >
                 Back
               </button>

@@ -9,6 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "verify:metadata": "node scripts/verify-unique-metadata.mjs",
+    "verify:survey-locations": "node scripts/verify-survey-locations.mjs",
     "validate": "npm run typecheck && npm run lint",
     "check": "npm run validate && npm run build"
   },
