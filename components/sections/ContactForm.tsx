@@ -48,7 +48,7 @@ type IssueValue =
   | 'svc-hydro-jetting'
   | 'svc-sewer-cleaning'
   | 'svc-sewer-line-locating'
-  | 'commercial'
+  | 'multi-unit'
   | 'agent-inspector'
   | 'other'
 
@@ -117,9 +117,9 @@ const ISSUES: readonly Issue[] = [
     serviceId: 'svc-sewer-line-locating',
   },
   {
-    value: 'commercial',
-    label: 'Commercial or multi-unit property',
-    learn: { href: '/commercial/', label: 'Commercial sewer and drain services' },
+    value: 'multi-unit',
+    label: 'Rental or multifamily property',
+    learn: { href: '/for/property-managers/', label: 'Sewer service for property managers' },
   },
   {
     value: 'agent-inspector',
@@ -198,8 +198,8 @@ const FOLLOW_UPS: Partial<Record<IssueValue, FollowUp>> = {
       { value: 'other', label: 'Another project' },
     ],
   },
-  commercial: {
-    label: 'How many units or properties, and who is the best operational contact?',
+  'multi-unit': {
+    label: 'How many units or properties, and who is the best contact?',
     kind: 'text',
   },
   'agent-inspector': {

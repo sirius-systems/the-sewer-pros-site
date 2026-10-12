@@ -21,7 +21,6 @@
 
 import type { MarketId } from './common'
 import type {
-  LocationCommercialMatrix,
   LocationIndexStatus,
   LocationLaunchTier,
   LocationServiceMatrix,
@@ -73,7 +72,6 @@ export type RelationshipScope =
   | 'core'
   | 'derived_high_intent'
   | 'market_specific'
-  | 'commercial'
 
 /** Computed disposition of the relationship (08 §16). */
 export type MatrixStatus =
@@ -81,7 +79,6 @@ export type MatrixStatus =
   | 'phase_2_candidate'
   | 'selective_candidate'
   | 'selective_low_intent_fit'
-  | 'selective_low_commercial_fit'
   | 'conditional_location'
   | 'operational_confirmation_required'
   | 'research_only_location'
@@ -146,7 +143,6 @@ export interface RawMatrixRecord {
   /** ⚠ Delimited string, NOT an array. Registry has `string[]`. */
   location_priority_tags: string
   location_service_matrix: LocationServiceMatrix
-  location_commercial_matrix: LocationCommercialMatrix
   location_validation_status: LocationValidationStatus
 
   // --- Service attributes (denormalised) ---

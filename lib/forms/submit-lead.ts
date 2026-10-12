@@ -36,7 +36,7 @@ export interface LeadPayload {
    */
   locationId?: string
   serviceLocation?: string
-  /** Survey form only: `home`, `rental-multifamily` or `commercial`. */
+  /** Survey form only: `home` or `rental-multifamily`. */
   propertyType?: string
 }
 

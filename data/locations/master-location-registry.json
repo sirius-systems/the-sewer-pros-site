@@ -6,8 +6,7 @@
     "location": "/{market}/{location}/",
     "st_louis_city_neighborhood": "/st-louis-mo/st-louis-city/{neighborhood}/",
     "service_location": "/{market}/{location}/{service}/",
-    "audience_location": "/{market}/{location}/for/{audience}/",
-    "commercial_service_location": "/{market}/{location}/commercial/{service}/"
+    "audience_location": "/{market}/{location}/for/{audience}/"
   },
   "status_definitions": {
     "launch": "market hub; canonical launch page",
@@ -65,7 +64,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "market_confirmed_by_project_scope",
       "aliases": [],
       "source_sections": [
@@ -93,7 +91,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -123,7 +120,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -149,12 +145,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -184,7 +178,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -210,12 +203,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [
         "bridgton"
@@ -248,7 +239,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -278,7 +268,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -308,7 +297,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -338,7 +326,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -368,7 +355,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -396,7 +382,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -426,7 +411,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -456,7 +440,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -488,7 +471,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -520,7 +502,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -546,12 +527,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -581,7 +560,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -607,12 +585,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -642,7 +618,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -672,7 +647,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -702,7 +676,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -732,7 +705,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -762,7 +734,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -792,7 +763,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -822,7 +792,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -848,12 +817,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -883,7 +850,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -913,7 +879,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -943,7 +908,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -973,7 +937,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1003,7 +966,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1033,7 +995,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1063,7 +1024,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1093,7 +1053,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1123,7 +1082,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1153,7 +1111,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1185,7 +1142,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1215,7 +1171,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1245,7 +1200,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1275,7 +1229,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1305,7 +1258,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1335,7 +1287,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1364,7 +1315,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1391,7 +1341,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1418,7 +1367,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1447,7 +1395,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1472,12 +1419,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1504,7 +1449,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1527,12 +1471,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1559,7 +1501,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1586,7 +1527,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1609,12 +1549,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1641,7 +1579,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1659,19 +1596,17 @@
       "name": "Chesterfield Valley",
       "slug": "chesterfield-valley",
       "canonical_url": "/st-louis-mo/chesterfield-valley/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "West County",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1698,7 +1633,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1725,7 +1659,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1752,7 +1685,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1777,12 +1709,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1809,7 +1739,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1836,7 +1765,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1863,7 +1791,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1890,7 +1817,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1908,19 +1834,17 @@
       "name": "Earth City",
       "slug": "earth-city",
       "canonical_url": "/st-louis-mo/earth-city/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "North County",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1947,7 +1871,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1974,7 +1897,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -1997,12 +1919,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2025,12 +1945,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2057,7 +1975,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2084,7 +2001,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2111,7 +2027,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2136,12 +2051,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2168,7 +2081,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2195,7 +2107,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2222,7 +2133,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2245,12 +2155,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2266,19 +2174,17 @@
       "name": "Historic St. Charles",
       "slug": "historic-st-charles",
       "canonical_url": "/st-louis-mo/historic-st-charles/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "St. Charles County",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2305,7 +2211,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2332,7 +2237,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2355,12 +2259,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2387,7 +2289,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2414,7 +2315,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2441,7 +2341,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2468,7 +2367,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2495,7 +2393,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2522,7 +2419,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2549,7 +2445,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2572,12 +2467,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2604,7 +2497,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2627,12 +2519,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2655,12 +2545,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2687,7 +2575,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2714,7 +2601,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2737,12 +2623,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2769,7 +2653,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2796,7 +2679,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2823,7 +2705,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2850,7 +2731,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2877,7 +2757,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2900,12 +2779,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2928,12 +2805,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [
         "river-view"
@@ -2963,7 +2838,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -2992,7 +2866,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3015,12 +2888,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3048,7 +2919,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [
         "saint-charles-county"
@@ -3078,7 +2948,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3105,7 +2974,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3132,7 +3000,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3159,7 +3026,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3186,7 +3052,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3213,7 +3078,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3240,7 +3104,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3267,7 +3130,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3294,7 +3156,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3321,7 +3182,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3348,7 +3208,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3375,7 +3234,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3402,7 +3260,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3429,7 +3286,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3445,19 +3301,17 @@
       "name": "Cortex",
       "slug": "st-louis-city/cortex",
       "canonical_url": "/st-louis-mo/st-louis-city/cortex/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "st-louis-city",
       "source_cluster": "St. Louis City",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3484,7 +3338,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3511,7 +3364,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3527,19 +3379,17 @@
       "name": "Downtown St. Louis",
       "slug": "st-louis-city/downtown-st-louis",
       "canonical_url": "/st-louis-mo/st-louis-city/downtown-st-louis/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "st-louis-city",
       "source_cluster": "St. Louis City",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3555,19 +3405,17 @@
       "name": "Downtown West",
       "slug": "st-louis-city/downtown-west",
       "canonical_url": "/st-louis-mo/st-louis-city/downtown-west/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "st-louis-city",
       "source_cluster": "St. Louis City",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3594,7 +3442,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3621,7 +3468,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3648,7 +3494,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3675,7 +3520,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3702,7 +3546,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3729,7 +3572,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3757,7 +3599,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3784,7 +3625,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3811,7 +3651,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3838,7 +3677,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3865,7 +3703,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3892,7 +3729,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3919,7 +3755,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3946,7 +3781,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3973,7 +3807,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -3989,19 +3822,17 @@
       "name": "Mark Twain / I-70 Industrial",
       "slug": "st-louis-city/mark-twain-i-70-industrial",
       "canonical_url": "/st-louis-mo/st-louis-city/mark-twain-i-70-industrial/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "st-louis-city",
       "source_cluster": "St. Louis City",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4017,19 +3848,17 @@
       "name": "Midtown",
       "slug": "st-louis-city/midtown",
       "canonical_url": "/st-louis-mo/st-louis-city/midtown/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "st-louis-city",
       "source_cluster": "St. Louis City",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4056,7 +3885,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4083,7 +3911,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4110,7 +3937,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4137,7 +3963,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4164,7 +3989,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4191,7 +4015,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4219,7 +4042,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4246,7 +4068,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4273,7 +4094,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4300,7 +4120,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4327,7 +4146,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4354,7 +4172,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4381,7 +4198,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4408,7 +4224,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4435,7 +4250,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4462,7 +4276,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4478,19 +4291,17 @@
       "name": "The Grove",
       "slug": "st-louis-city/the-grove",
       "canonical_url": "/st-louis-mo/st-louis-city/the-grove/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "st-louis-city",
       "source_cluster": "St. Louis City",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4517,7 +4328,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4544,7 +4354,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4571,7 +4380,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4598,7 +4406,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4625,7 +4432,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4652,7 +4458,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4679,7 +4484,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4706,7 +4510,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4733,7 +4536,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4760,7 +4562,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4784,7 +4585,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4809,7 +4609,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4836,7 +4635,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4863,7 +4661,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [
         "untincorporated-west-county"
@@ -4881,19 +4678,17 @@
       "name": "University City Loop",
       "slug": "university-city-loop",
       "canonical_url": "/st-louis-mo/university-city-loop/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Central County",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4920,7 +4715,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4947,7 +4741,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -4974,7 +4767,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5001,7 +4793,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5028,7 +4819,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5057,7 +4847,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5084,7 +4873,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5111,7 +4899,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5134,12 +4921,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5166,7 +4951,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5193,7 +4977,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5220,7 +5003,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -5248,7 +5030,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5276,7 +5057,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5304,7 +5084,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5332,7 +5111,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5360,7 +5138,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5388,7 +5165,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5416,7 +5192,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5444,7 +5219,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5472,7 +5246,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5500,7 +5273,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5528,7 +5300,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5556,7 +5327,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5584,7 +5354,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5612,7 +5381,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5640,7 +5408,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5668,7 +5435,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5696,7 +5462,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5724,7 +5489,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -5751,7 +5515,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -5774,12 +5537,10 @@
       "index_status": "research_only",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -5806,7 +5567,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -5833,7 +5593,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -5856,12 +5615,10 @@
       "index_status": "manual_review",
       "priority_tags": [
         "residential",
-        "property_management",
-        "commercial"
+        "property_management"
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -5888,7 +5645,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -5915,7 +5671,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -5942,7 +5697,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -5970,7 +5724,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -5997,7 +5750,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -6024,7 +5776,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -6051,7 +5802,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -6078,7 +5828,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -6105,7 +5854,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -6132,7 +5880,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -6158,7 +5905,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "market_confirmed_by_project_scope",
       "aliases": [],
       "source_sections": [
@@ -6182,12 +5928,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6217,7 +5961,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6247,7 +5990,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6273,12 +6015,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6304,12 +6044,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6339,7 +6077,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6367,7 +6104,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6397,7 +6133,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6427,7 +6162,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6457,7 +6191,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6487,7 +6220,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6513,12 +6245,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6548,7 +6278,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6576,7 +6305,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6604,7 +6332,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6632,7 +6359,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6662,7 +6388,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6680,7 +6405,7 @@
       "name": "Mission Valley",
       "slug": "mission-valley",
       "canonical_url": "/san-diego-ca/mission-valley/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "1",
@@ -6688,12 +6413,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "full",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6719,12 +6442,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6754,7 +6475,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6784,7 +6504,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6814,7 +6533,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6844,7 +6562,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6874,7 +6591,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6904,7 +6620,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6934,7 +6649,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [
         "ranch-santa-fe"
@@ -6965,7 +6679,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -6993,7 +6706,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7021,7 +6733,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7051,7 +6762,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7081,7 +6791,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7109,7 +6818,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7139,7 +6847,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7168,7 +6875,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7195,7 +6901,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7222,7 +6927,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7249,7 +6953,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7276,7 +6979,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7303,7 +7005,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7330,7 +7031,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7357,7 +7057,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7384,7 +7083,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7411,7 +7109,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7434,12 +7131,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7466,7 +7161,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7493,7 +7187,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7520,7 +7213,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7547,7 +7239,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7563,19 +7254,17 @@
       "name": "Carlsbad Village",
       "slug": "carlsbad-village",
       "canonical_url": "/san-diego-ca/carlsbad-village/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "North County / North County coastal",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7602,7 +7291,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7626,7 +7314,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7653,7 +7340,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7680,7 +7366,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7707,7 +7392,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7734,7 +7418,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7761,7 +7444,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7788,7 +7470,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7804,19 +7485,17 @@
       "name": "Columbia District",
       "slug": "columbia-district",
       "canonical_url": "/san-diego-ca/columbia-district/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Urban core and Uptown",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7839,12 +7518,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7871,7 +7548,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7898,7 +7574,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7925,7 +7600,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7952,7 +7626,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -7979,7 +7652,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8006,7 +7678,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8022,19 +7693,17 @@
       "name": "Downtown Chula Vista",
       "slug": "downtown-chula-vista",
       "canonical_url": "/san-diego-ca/downtown-chula-vista/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "South Bay",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8050,19 +7719,17 @@
       "name": "Downtown Escondido",
       "slug": "downtown-escondido",
       "canonical_url": "/san-diego-ca/downtown-escondido/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "North County / North County inland",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8078,19 +7745,17 @@
       "name": "Downtown San Diego",
       "slug": "downtown-san-diego",
       "canonical_url": "/san-diego-ca/downtown-san-diego/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Urban core and Uptown",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8114,7 +7779,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8128,19 +7792,17 @@
       "name": "East Otay Mesa",
       "slug": "east-otay-mesa",
       "canonical_url": "/san-diego-ca/east-otay-mesa/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "South Bay",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8156,19 +7818,17 @@
       "name": "East Village",
       "slug": "east-village",
       "canonical_url": "/san-diego-ca/east-village/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Urban core and Uptown",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8191,12 +7851,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8219,12 +7877,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8247,12 +7903,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8279,7 +7933,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8306,7 +7959,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8333,7 +7985,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8360,7 +8011,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8384,7 +8034,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8411,7 +8060,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8427,19 +8075,17 @@
       "name": "Fashion Valley",
       "slug": "fashion-valley",
       "canonical_url": "/san-diego-ca/fashion-valley/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8466,7 +8112,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8490,7 +8135,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8506,19 +8150,17 @@
       "name": "Gaslamp Quarter",
       "slug": "gaslamp-quarter",
       "canonical_url": "/san-diego-ca/gaslamp-quarter/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Urban core and Uptown",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8545,7 +8187,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8561,19 +8202,17 @@
       "name": "Golden Triangle",
       "slug": "golden-triangle",
       "canonical_url": "/san-diego-ca/golden-triangle/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8597,7 +8236,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8624,7 +8262,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8651,7 +8288,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8678,7 +8314,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8694,19 +8329,17 @@
       "name": "Horton Plaza",
       "slug": "horton-plaza",
       "canonical_url": "/san-diego-ca/horton-plaza/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Urban core and Uptown",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8733,7 +8366,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8749,19 +8381,17 @@
       "name": "Kearny Mesa",
       "slug": "kearny-mesa",
       "canonical_url": "/san-diego-ca/kearny-mesa/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8788,7 +8418,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8815,7 +8444,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8842,7 +8470,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8869,7 +8496,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8896,7 +8522,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8920,7 +8545,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8947,7 +8571,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8974,7 +8597,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -8990,19 +8612,17 @@
       "name": "Liberty Station",
       "slug": "liberty-station",
       "canonical_url": "/san-diego-ca/liberty-station/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Coastal and peninsula communities",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9029,7 +8649,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9056,7 +8675,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9083,7 +8701,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9110,7 +8727,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9126,19 +8742,17 @@
       "name": "Marina District",
       "slug": "marina-district",
       "canonical_url": "/san-diego-ca/marina-district/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Urban core and Uptown",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9165,7 +8779,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9181,19 +8794,17 @@
       "name": "Midway District",
       "slug": "midway-district",
       "canonical_url": "/san-diego-ca/midway-district/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Coastal and peninsula communities",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9216,12 +8827,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9248,7 +8857,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9264,19 +8872,17 @@
       "name": "Miramar",
       "slug": "miramar",
       "canonical_url": "/san-diego-ca/miramar/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9303,7 +8909,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9330,7 +8935,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9358,7 +8962,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9386,7 +8989,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9413,7 +9015,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9437,7 +9038,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9464,7 +9064,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9491,7 +9090,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9518,7 +9116,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9545,7 +9142,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9572,7 +9168,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9599,7 +9194,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9626,7 +9220,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9653,7 +9246,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9677,7 +9269,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9702,7 +9293,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9729,7 +9319,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9756,7 +9345,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9772,19 +9360,17 @@
       "name": "Oceanside Harbor",
       "slug": "oceanside-harbor",
       "canonical_url": "/san-diego-ca/oceanside-harbor/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "North County / North County coastal",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9811,7 +9397,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9838,7 +9423,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9865,7 +9449,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9892,7 +9475,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9919,7 +9501,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9935,19 +9516,17 @@
       "name": "Otay Mesa Industrial",
       "slug": "otay-mesa-industrial",
       "canonical_url": "/san-diego-ca/otay-mesa-industrial/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "South Bay",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9974,7 +9553,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -9990,19 +9568,17 @@
       "name": "Otay Mesa West",
       "slug": "otay-mesa-west",
       "canonical_url": "/san-diego-ca/otay-mesa-west/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "South Bay",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10018,19 +9594,17 @@
       "name": "Otay Mesa",
       "slug": "otay-mesa",
       "canonical_url": "/san-diego-ca/otay-mesa/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / South San Diego communities",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10055,12 +9629,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10087,7 +9659,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10103,19 +9674,17 @@
       "name": "Pacific Highway",
       "slug": "pacific-highway",
       "canonical_url": "/san-diego-ca/pacific-highway/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Coastal and peninsula communities",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10142,7 +9711,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10169,7 +9737,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10196,7 +9763,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10223,7 +9789,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [
         "ranch-bernardo-business-park"
@@ -10248,12 +9813,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10277,7 +9840,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10301,7 +9863,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10328,7 +9889,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10355,7 +9915,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10382,7 +9941,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10409,7 +9967,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10436,7 +9993,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10465,7 +10021,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10492,7 +10047,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10519,7 +10073,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10546,7 +10099,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10573,7 +10125,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10596,12 +10147,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10628,7 +10177,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10644,19 +10192,17 @@
       "name": "Sorrento Mesa",
       "slug": "sorrento-mesa",
       "canonical_url": "/san-diego-ca/sorrento-mesa/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10672,19 +10218,17 @@
       "name": "Sorrento Valley",
       "slug": "sorrento-valley",
       "canonical_url": "/san-diego-ca/sorrento-valley/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10708,7 +10252,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10733,7 +10276,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10760,7 +10302,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10787,7 +10328,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10814,7 +10354,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10841,7 +10380,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10864,12 +10402,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10896,7 +10432,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10923,7 +10458,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10946,12 +10480,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -10978,7 +10510,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11005,7 +10536,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11032,7 +10562,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11059,7 +10588,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11086,7 +10614,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11102,19 +10629,17 @@
       "name": "University City",
       "slug": "university-city",
       "canonical_url": "/san-diego-ca/university-city/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11141,7 +10666,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11168,7 +10692,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11184,19 +10707,17 @@
       "name": "UTC",
       "slug": "utc",
       "canonical_url": "/san-diego-ca/utc/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of San Diego / Central, north inland, and I-15 corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11223,7 +10744,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11246,12 +10766,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11275,7 +10793,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11302,7 +10819,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -11328,7 +10844,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11356,7 +10871,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11382,7 +10896,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11408,7 +10921,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11434,7 +10946,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11460,7 +10971,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11488,7 +10998,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11514,7 +11023,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11540,7 +11048,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11566,7 +11073,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11594,7 +11100,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11620,7 +11125,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11646,7 +11150,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11672,7 +11175,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11700,7 +11202,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11728,7 +11229,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11754,7 +11254,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11780,7 +11279,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11808,7 +11306,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11836,7 +11333,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11864,7 +11360,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11892,7 +11387,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11920,7 +11414,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -11947,7 +11440,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -11974,7 +11466,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -11997,12 +11488,10 @@
       "index_status": "manual_review",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12026,7 +11515,6 @@
       "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12053,7 +11541,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12076,12 +11563,10 @@
       "index_status": "manual_review",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12108,7 +11593,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12135,7 +11619,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12162,7 +11645,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12189,7 +11671,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12216,7 +11697,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
@@ -12242,7 +11722,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "market_confirmed_by_project_scope",
       "aliases": [],
       "source_sections": [
@@ -12266,12 +11745,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12299,7 +11776,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12329,7 +11805,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12349,7 +11824,7 @@
       "name": "Downtown Las Vegas",
       "slug": "downtown-las-vegas",
       "canonical_url": "/las-vegas-nv/downtown-las-vegas/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "1",
@@ -12357,12 +11832,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "full",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12390,7 +11863,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12422,7 +11894,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12452,7 +11923,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12470,20 +11940,16 @@
       "name": "Las Vegas Strip",
       "slug": "las-vegas-strip",
       "canonical_url": "/las-vegas-nv/las-vegas-strip/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "1",
       "index_status": "launch_candidate",
       "priority_tags": [
-        "launch_priority",
-        "commercial",
-        "hospitality",
-        "restaurants"
+        "launch_priority"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "full",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12511,7 +11977,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12539,7 +12004,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12565,12 +12029,10 @@
       "priority_tags": [
         "launch_priority",
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12598,7 +12060,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12630,7 +12091,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12660,7 +12120,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12692,7 +12151,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12724,7 +12182,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12752,7 +12209,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12784,7 +12240,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12818,7 +12273,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12850,7 +12304,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12878,7 +12331,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12908,7 +12360,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12936,7 +12387,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12964,7 +12414,6 @@
       ],
       "service_matrix": "full",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -12995,7 +12444,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13024,7 +12472,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13051,7 +12498,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13067,19 +12513,17 @@
       "name": "Apex Industrial Park",
       "slug": "apex-industrial-park",
       "canonical_url": "/las-vegas-nv/apex-industrial-park/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "North Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13095,19 +12539,17 @@
       "name": "Arts District",
       "slug": "arts-district",
       "canonical_url": "/las-vegas-nv/arts-district/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13134,7 +12576,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13161,7 +12602,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13188,7 +12628,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13219,7 +12658,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13242,12 +12680,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13263,19 +12699,17 @@
       "name": "Chinatown",
       "slug": "chinatown",
       "canonical_url": "/las-vegas-nv/chinatown/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13293,19 +12727,17 @@
       "name": "Civic Center",
       "slug": "civic-center",
       "canonical_url": "/las-vegas-nv/civic-center/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "North Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13328,12 +12760,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13360,7 +12790,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13376,19 +12805,17 @@
       "name": "Desert Inn",
       "slug": "desert-inn",
       "canonical_url": "/las-vegas-nv/desert-inn/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13415,7 +12842,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13433,19 +12859,17 @@
       "name": "Downtown Summerlin",
       "slug": "downtown-summerlin",
       "canonical_url": "/las-vegas-nv/downtown-summerlin/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13463,19 +12887,14 @@
       "name": "East Tropicana",
       "slug": "east-tropicana",
       "canonical_url": "/las-vegas-nv/east-tropicana/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13498,12 +12917,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13530,7 +12947,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13548,19 +12964,14 @@
       "name": "Flamingo Corridor",
       "slug": "flamingo-corridor",
       "canonical_url": "/las-vegas-nv/flamingo-corridor/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13587,7 +12998,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13614,7 +13024,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13641,7 +13050,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13657,19 +13065,17 @@
       "name": "Fremont East",
       "slug": "fremont-east",
       "canonical_url": "/las-vegas-nv/fremont-east/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13696,7 +13102,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13725,7 +13130,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13752,7 +13156,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13768,19 +13171,17 @@
       "name": "Henderson Industrial",
       "slug": "henderson-industrial",
       "canonical_url": "/las-vegas-nv/henderson-industrial/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Henderson",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13807,7 +13208,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13834,7 +13234,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13861,7 +13260,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13890,7 +13288,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13913,14 +13310,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13944,7 +13336,6 @@
       "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13969,7 +13360,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -13998,7 +13388,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14027,7 +13416,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14054,7 +13442,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14070,19 +13457,17 @@
       "name": "Medical District",
       "slug": "medical-district",
       "canonical_url": "/las-vegas-nv/medical-district/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14109,7 +13494,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14136,7 +13520,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14152,19 +13535,17 @@
       "name": "North Las Vegas Industrial",
       "slug": "north-las-vegas-industrial",
       "canonical_url": "/las-vegas-nv/north-las-vegas-industrial/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "North Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14187,12 +13568,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14219,7 +13598,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14237,19 +13615,14 @@
       "name": "Paradise Road",
       "slug": "paradise-road",
       "canonical_url": "/las-vegas-nv/paradise-road/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14276,7 +13649,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14305,7 +13677,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14332,7 +13703,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14359,7 +13729,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14388,7 +13757,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14415,7 +13783,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14442,7 +13809,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14458,19 +13824,14 @@
       "name": "Sands Avenue",
       "slug": "sands-avenue",
       "canonical_url": "/las-vegas-nv/sands-avenue/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14497,7 +13858,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14520,12 +13880,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14546,14 +13904,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14580,7 +13933,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14607,7 +13959,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14623,19 +13974,14 @@
       "name": "South Las Vegas Boulevard",
       "slug": "south-las-vegas-boulevard",
       "canonical_url": "/las-vegas-nv/south-las-vegas-boulevard/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14651,19 +13997,14 @@
       "name": "Southeast Las Vegas",
       "slug": "southeast-las-vegas",
       "canonical_url": "/las-vegas-nv/southeast-las-vegas/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14690,7 +14031,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14706,19 +14046,17 @@
       "name": "Southwest Industrial",
       "slug": "southwest-industrial",
       "canonical_url": "/las-vegas-nv/southwest-industrial/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Enterprise / Southwest",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14734,19 +14072,17 @@
       "name": "Southwest Las Vegas",
       "slug": "southwest-las-vegas",
       "canonical_url": "/las-vegas-nv/southwest-las-vegas/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Enterprise / Southwest",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14773,7 +14109,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14800,7 +14135,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14827,7 +14161,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14854,7 +14187,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14879,12 +14211,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14911,7 +14241,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14939,7 +14268,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14966,7 +14294,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -14993,7 +14320,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15020,7 +14346,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15047,7 +14372,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15074,7 +14398,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15101,7 +14424,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15128,7 +14450,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15155,7 +14476,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15171,19 +14491,14 @@
       "name": "Tropicana Corridor",
       "slug": "tropicana-corridor",
       "canonical_url": "/las-vegas-nv/tropicana-corridor/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15210,7 +14525,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15239,7 +14553,6 @@
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15262,12 +14575,10 @@
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15283,19 +14594,17 @@
       "name": "Water Street District",
       "slug": "water-street-district",
       "canonical_url": "/las-vegas-nv/water-street-district/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "Henderson",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15311,19 +14620,17 @@
       "name": "West Sahara",
       "slug": "west-sahara",
       "canonical_url": "/las-vegas-nv/west-sahara/",
-      "location_type": "commercial_or_mixed_use_district",
+      "location_type": "mixed_use_district",
       "parent_location": "",
       "source_cluster": "City of Las Vegas",
       "launch_tier": "2",
       "index_status": "phase_2_candidate",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "selective",
       "audience_matrix": "selective",
-      "commercial_matrix": "selective",
       "validation_status": "candidate_from_source_research",
       "aliases": [],
       "source_sections": [
@@ -15349,7 +14656,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15375,7 +14681,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15401,7 +14706,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15427,7 +14731,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15453,7 +14756,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15479,7 +14781,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15505,7 +14806,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15531,7 +14831,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15557,7 +14856,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15583,7 +14881,6 @@
       ],
       "service_matrix": "conditional",
       "audience_matrix": "conditional",
-      "commercial_matrix": "conditional",
       "validation_status": "operational_coverage_required",
       "aliases": [],
       "source_sections": [
@@ -15604,14 +14901,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "hold",
       "index_status": "research_only",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15632,14 +14924,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "hold",
       "index_status": "research_only",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15666,7 +14953,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15693,7 +14979,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15714,14 +14999,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "hold",
       "index_status": "research_only",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15745,7 +15025,6 @@
       "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15769,7 +15048,6 @@
       "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15790,14 +15068,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "hold",
       "index_status": "research_only",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15820,12 +15093,10 @@
       "index_status": "research_only",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15852,7 +15123,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15875,12 +15145,10 @@
       "index_status": "research_only",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15903,12 +15171,10 @@
       "index_status": "research_only",
       "priority_tags": [
         "residential",
-        "real_estate",
-        "commercial"
+        "real_estate"
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15935,7 +15201,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15962,7 +15227,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -15989,7 +15253,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -16010,14 +15273,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "hold",
       "index_status": "research_only",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -16038,14 +15296,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "hold",
       "index_status": "research_only",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -16072,7 +15325,6 @@
       ],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "selective",
       "validation_status": "intent_and_page_value_review_required",
       "aliases": [],
       "source_sections": [
@@ -16093,14 +15345,9 @@
       "source_cluster": "Paradise / Resort Corridor",
       "launch_tier": "review",
       "index_status": "manual_review",
-      "priority_tags": [
-        "commercial",
-        "hospitality",
-        "restaurants"
-      ],
+      "priority_tags": [],
       "service_matrix": "hold",
       "audience_matrix": "hold",
-      "commercial_matrix": "hold",
       "validation_status": "geography_or_naming_review_required",
       "aliases": [],
       "source_sections": [
