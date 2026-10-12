@@ -14,12 +14,11 @@ business facts).
 | Directory | Holds |
 | --------- | ----- |
 | `brand/` | Company identity. `logos/` full lockups, `marks/` standalone symbols, `social/` share and profile images. |
-| `shared/` | Reusable subject photography with no page or market tie: `equipment/`, `pipe-interiors/`, `cleanouts/`, `residential/`, `commercial/`. Anything used by more than one page belongs here. |
+| `shared/` | Reusable subject photography with no page or market tie: `equipment/`, `pipe-interiors/`, `cleanouts/`, `residential/`, plus one mixed-use street folder. Anything used by more than one page belongs here. |
 | `homepage/` | Homepage-only imagery, split by section: `hero/`, `services/`, `differentiator/`, `markets/`, `conversion/`. |
-| `services/` | One folder per non-commercial service in the canonical registry, named with that record's exact `slug`. |
-| `markets/` | Per-market imagery for the three approved markets. Each has `hero/`, `locations/`, `service-locations/`, `commercial/`. |
+| `services/` | One folder per service in the canonical registry, named with that record's exact `slug`. |
+| `markets/` | Per-market imagery for the three approved markets. Each has `hero/`, `locations/`, `service-locations/`. |
 | `audiences/` | One folder per audience with an approved launch page (`LAUNCH_AUDIENCE_IDS`, 09 §7), named with the audience id minus its `aud-` prefix. |
-| `commercial/` | Commercial cluster imagery: `hero/`, `services/`, `preventative-maintenance/`, `property-types/`. |
 | `resources/` | Editorial and article imagery grouped by topic cluster. |
 | `proof/` | **Verified Sewer Pros project photography only**, filed under the market it was shot in. |
 
@@ -46,18 +45,15 @@ business facts).
 
 ## Canonical taxonomy
 
-Folder names under `services/`, `commercial/services/`, `markets/`, and
+Folder names under `services/`, `markets/`, and
 `audiences/` are derived from the project registries, not chosen by hand:
 
 - **Services** — `data/services/master-service-registry.json`. The registry
-  holds 18 records whose slugs are unique only *within* their namespace: the
-  11 non-commercial records live under `services/`, and the 7
-  `commercial_service` records under `commercial/services/`, matching each
-  record's own `canonical_url` (`/services/…` vs `/commercial/…`). Five slugs
-  — `sewer-camera-inspection`, `sewer-cleaning`, `hydro-jetting`,
-  `drain-cleaning`, `sewer-line-locating` — exist in both namespaces and are
-  different records. Keep them apart.
-- **Audiences** — `LAUNCH_AUDIENCE_IDS` in `types/audience.ts`. Six of the 13
+  holds 11 records, each filed under `services/` by its slug and matching the
+  record's own `canonical_url`. The Sewer Pros does not offer commercial
+  services (owner decision, Oct 12, 2026), so there is no commercial folder
+  to add.
+- **Audiences** — `LAUNCH_AUDIENCE_IDS` in `types/audience.ts`. Six of the 10
   canonical audiences have approved pages; the remaining Phase 2 audiences
   (09 §8) get folders when their pages are approved.
 - **Markets** — the three approved market ids.

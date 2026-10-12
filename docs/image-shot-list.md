@@ -7,7 +7,7 @@ Source: [docs/image-placeholder-inventory.md](image-placeholder-inventory.md) (7
 1. **Launch cohort is my assumption.** `docs/04-master-page-build-list.md` lists all 162 affected pages as built and indexable and defines no launch cohort. I prioritized by the market order in CLAUDE.md (St. Louis has the established business profile): **P1** = any image used on a St. Louis page or a core service page, **P2** = used on San Diego pages but no St. Louis page, **P3** = Las Vegas only. Universal images are P1 because they also unlock the other markets.
 2. **Photo versus render.** The repo rule (`public/images/services/sewer-camera-inspection/README.md`, `lib/image-slots.ts`) is that anything showing crew, equipment, footage, customers or reports must be a real job photo. I marked those "Real photo needed". Fixtures and scenery with none of those (street, cleanout cap, sinks, floor drain, older home, fence line) are marked "Photorealistic render", matching the owner-approved rendered scenes already on the site. If you want real photos for those too, the real-photo count rises.
 3. **Market-specific shots.** `public/images/README.md` says not to reuse one market's photo as another's, so the street and older-home shots are split into three per-market images. Everything else is framed tight (equipment, fixtures, monitors) so it can be universal.
-4. **Filenames** follow `the-sewer-pros-<subject>-<ratio>.webp`, under the existing `public/images/shared/<subfolder>/` layout (equipment, pipe-interiors, cleanouts, residential, commercial) from `public/images/README.md`. Each slot's registry entry must then be pointed at the new file (set `src` and `source`); the two core service pages already reference specific paths.
+4. **Filenames** follow `the-sewer-pros-<subject>-<ratio>.webp`, under the existing `public/images/shared/<subfolder>/` layout (equipment, pipe-interiors, cleanouts, residential, and one mixed-use folder) from `public/images/README.md`. Each slot's registry entry must then be pointed at the new file (set `src` and `source`); the two core service pages already reference specific paths.
 
 ## Shot list
 
@@ -40,7 +40,7 @@ Source: [docs/image-placeholder-inventory.md](image-placeholder-inventory.md) (7
 | IMG-25 | services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp | 7:4 | Real frame showing standing water in a line, where the waterline limits the view. *Existing 4:3 asset: `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp`. The slot wants 7:4, so crop or change the slot ratio.* | page-unique | 1 | 1 on core service pages (data/business/*-images.ts). Ids: recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp | Existing asset | P1 |
 | IMG-26 | shared/residential/the-sewer-pros-san-diego-residential-street-manhole-curb-4x3.webp | 4:3 | Ordinary residential street with a manhole cover and curb. No identifiable homes, addresses or plates. *Environment only. Shoot or render it so the street looks like that market.* | per market (San Diego) | 65 | 6 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 59 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P2 |
 | IMG-27 | shared/residential/the-sewer-pros-san-diego-older-home-visible-cleanout-4x3.webp | 4:3 | Older home with the cleanout visible. No identifiable address. *Environment only. Match the market's housing look.* | per market (San Diego) | 7 | 7 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-1 | Photorealistic render | P2 |
-| IMG-28 | shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp | 4:3 | Ordinary commercial or mixed-use street, manhole and curb. No business names or identifiable buildings. *Used only by Mission Valley.* | page-unique (Mission Valley) | 5 | 1 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P2 |
+| IMG-28 | shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp | 4:3 | Ordinary mixed-use street, manhole and curb. No business names or identifiable buildings. *Used only by Mission Valley.* | page-unique (Mission Valley) | 5 | 1 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P2 |
 | IMG-29 | shared/residential/the-sewer-pros-las-vegas-residential-street-manhole-curb-4x3.webp | 4:3 | Ordinary residential street with a manhole cover and curb. No identifiable homes, addresses or plates. *Environment only. Shoot or render it so the street looks like that market.* | per market (Las Vegas) | 40 | 4 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 36 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P3 |
 | IMG-30 | shared/residential/the-sewer-pros-las-vegas-older-home-visible-cleanout-4x3.webp | 4:3 | Older home with the cleanout visible. No identifiable address. *Environment only. Match the market's housing look.* | per market (Las Vegas) | 4 | 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-1 | Photorealistic render | P3 |
 
@@ -131,7 +131,7 @@ No box is counted twice. These files absorb more than one wording of the same sh
 | 8 | Technician with a locator receiver, paint marks on pavement | IMG-11 |
 | 8 | Technician scoping a for-sale property, clipboard visible | IMG-04 |
 | 8 | Crew member recording a post-cleaning camera pass | IMG-05 |
-| 5 | Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings | IMG-28 |
+| 5 | Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings | IMG-28 |
 | 2 | Technician and owner reviewing findings, faces not identifiable | IMG-07 |
 | 2 | A technician reviewing sewer camera footage on a monitor | IMG-05 |
 | 2 | A monitor or tablet showing inspection video beside written findings, with customer details removed | IMG-06 |
@@ -192,7 +192,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Subject and composition:** Low three-quarter view of a threaded cleanout cap at the base of a house wall, a few inches above soil or mulch. House siding or brick fills the background out of focus.
 - **Must NOT appear:** No house number, mailbox, window detail that identifies the property, tools, crew or equipment. No cracked or damaged pipe. Plus the common rules above.
 - **Alt text:** Capped sewer cleanout at the base of a house
-- **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic capped sewer cleanout pipe at the foundation of a home, exterior wall out of focus, mulch bed, soft daylight, no people, no text, 4:3." The one commercial "building" wording (Mission Valley) can use this same image.
+- **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic capped sewer cleanout pipe at the foundation of a home, exterior wall out of focus, mulch bed, soft daylight, no people, no text, 4:3." The one "building" wording (Mission Valley) can use this same image.
 - **Reuse scope:** universal. Fills 65 boxes: 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 48 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 1 on core service pages (data/business/*-images.ts).
 - **Slot ids:** call-cleanout; preventative-sewer-maintenance: prep-cleanout; preventative-sewer-maintenance: problem-2; recurring-sewer-backup-diagnosis: problem-3; sewer-camera-inspection: problem-1
 
@@ -496,15 +496,15 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Reuse scope:** per market (San Diego). Fills 7 boxes: 7 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** pre-purchase-sewer-inspection: problem-1
 
-### IMG-28  Commercial or mixed-use street, manhole and curb
+### IMG-28  Mixed-use street, manhole and curb
 
 - **Filename:** `public/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P2.
-- **Subject and composition:** Commercial or mixed-use street at curb height with a manhole cover and curb in the foreground, storefront shapes blurred beyond.
+- **Subject and composition:** Mixed-use street at curb height with a manhole cover and curb in the foreground, storefront shapes blurred beyond.
 - **Must NOT appear:** No readable business names, signage, logos, identifiable buildings, plates or people. Plus the common rules above.
-- **Alt text:** Commercial street with a manhole cover near the curb
-- **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic mixed-use commercial street, manhole cover and curb in foreground, buildings out of focus with no readable signs, empty street, San Diego style stucco and glass storefronts, soft daylight, 4:3." Used only by the Mission Valley page.
+- **Alt text:** Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk
+- **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic mixed-use street, manhole cover and curb in foreground, buildings out of focus with no readable signs, empty street, San Diego style stucco and glass storefronts, soft daylight, 4:3." Used only by the Mission Valley page.
 - **Reuse scope:** page-unique (Mission Valley). Fills 5 boxes: 1 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** drain-cleaning: problem-4; pre-purchase-sewer-inspection: problem-4; preventative-sewer-maintenance: problem-4; recurring-sewer-backup-diagnosis: problem-4; system-street
 

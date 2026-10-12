@@ -24,7 +24,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
 | 7 | IMG-22 | Older home with a visible cleanout | St. Louis |
 | 8 | IMG-26 | Residential street, manhole and curb | San Diego |
 | 9 | IMG-27 | Older home with a visible cleanout | San Diego |
-| 10 | IMG-28 | Commercial or mixed-use street, manhole and curb | all |
+| 10 | IMG-28 | Mixed-use street, manhole and curb | all |
 | 11 | IMG-29 | Residential street, manhole and curb | Las Vegas |
 | 12 | IMG-30 | Older home with a visible cleanout | Las Vegas |
 | | | **Total** | **12** |
@@ -204,7 +204,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
 
 - **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 
-## 10. IMG-28  Commercial or mixed-use street, manhole and curb
+## 10. IMG-28  Mixed-use street, manhole and curb
 
 - **Filename:** `public/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`
 - **Ratio:** 4:3 (1448 x 1086 px)
@@ -212,7 +212,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
 - **Prompt (paste as is):**
 
   ```text
-  Photorealistic render of an empty commercial or mixed-use street at curb level, a round manhole cover and curb in the foreground, low storefront blocks softly out of focus beyond with blank unlettered facades. Market look: stucco and glass storefronts in a San Diego style, kept generic. photorealistic render, natural daylight, realistic materials and textures, neutral documentary look, muted natural color, uncluttered composition, matches the existing owner-approved renders on the site. 4:3 landscape.
+  Photorealistic render of an empty mixed-use street at curb level, a round manhole cover and curb in the foreground, low storefront blocks softly out of focus beyond with blank unlettered facades. Market look: stucco and glass storefronts in a San Diego style, kept generic. photorealistic render, natural daylight, realistic materials and textures, neutral documentary look, muted natural color, uncluttered composition, matches the existing owner-approved renders on the site. 4:3 landscape.
   ```
 
 - **Negative prompt:**
@@ -221,7 +221,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, readable storefront, awning text, parked car, pedestrians, traffic light, street sign
   ```
 
-- **Alt text:** Street with a manhole cover in the pavement, low commercial buildings with glass windows beyond, and a yellow locator receiver on the sidewalk
+- **Alt text:** Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk
 
 ## 11. IMG-29  Residential street, manhole and curb (Las Vegas)
 
