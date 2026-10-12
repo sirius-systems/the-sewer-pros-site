@@ -1,5 +1,5 @@
 /**
- * Post-build checks for /san-diego-ca/mission-valley/.
+ * Post-build checks for /locations/san-diego-ca/mission-valley/.
  *
  * Reads the static export in `out/` (run `npm run build` first). No
  * dependencies. Exits 1 on any failure.
@@ -17,7 +17,7 @@ import path from 'node:path'
 import { otherMarketPhoneHits } from './lib/market-phones.mjs'
 
 const ROOT = path.resolve('out')
-const PAGE = path.join(ROOT, 'san-diego-ca', 'mission-valley', 'index.html')
+const PAGE = path.join(ROOT, 'locations', 'san-diego-ca', 'mission-valley', 'index.html')
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
 const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
@@ -85,7 +85,13 @@ for (const bad of [
   check(`JSON-LD has no ${bad}`, !ldRaw.includes(bad))
 }
 check('page HTML has no itemprop rating microdata', !/itemprop="(ratingValue|reviewCount|aggregateRating|review)"/i.test(html))
-check('no review marquee on the page', !/marquee-track/.test(mainHtml))
+check('the company-wide review carousel renders once, above the FAQ', (mainHtml.match(/marquee-track/g) ?? []).length >= 1)
+// The carousel carries verbatim customer review text and company-wide figures, so the copy checks below run on the page's own content.
+const reviewIdx = mainHtml.indexOf('What our customers say')
+const reviewStart = reviewIdx > -1 ? mainHtml.lastIndexOf('<section', reviewIdx) : -1
+const reviewEnd = reviewIdx > -1 ? mainHtml.indexOf('</section>', reviewIdx) + '</section>'.length : -1
+const ownHtml = reviewStart > -1 && reviewEnd > reviewStart ? mainHtml.slice(0, reviewStart) + mainHtml.slice(reviewEnd) : mainHtml
+const ownText = strip(ownHtml)
 check('no placeholder strings in JSON-LD', !/REPLACE-|TODO|Placeholder/i.test(ldRaw))
 const places = graph.filter((n) => ['Place', 'City'].includes(n['@type']))
 check(
@@ -182,7 +188,7 @@ check('JSON-LD uses only the build origin plus schema.org', ldHosts.every((h) =>
 
 /* ---- Head ---- */
 check('title (brand suffix once)', /<title>Mission Valley Sewer Inspection &amp; Cleaning \| The Sewer Pros<\/title>/.test(html))
-check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/san-diego-ca/mission-valley/"/>`))
+check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/locations/san-diego-ca/mission-valley/"/>`))
 check('robots index, follow (unchanged)', html.includes('<meta name="robots" content="index, follow"/>'))
 const h1s = [...mainHtml.matchAll(/<h1[\s>][\s\S]*?<\/h1>/g)]
 check('one H1', h1s.length === 1)
@@ -194,12 +200,10 @@ const dupes = idAttrs.filter((v, i) => idAttrs.indexOf(v) !== i)
 check('no duplicate ids (hero and final form ids differ)', dupes.length === 0, dupes.join(', '))
 const ORDER = ['request', 'services', 'responsible', 'how-system', 'who-to-call', 'city-program', 'second-opinion', 'buying', 'areas', 'faq']
 for (const anchor of [...ORDER, 'sources']) check(`anchor #${anchor} exists`, idAttrs.includes(anchor))
-for (const absent of ['reviews', 'age']) check(`no #${absent} section (intentionally absent)`, !idAttrs.includes(absent))
+for (const absent of ['age']) check(`no #${absent} section (intentionally absent)`, !idAttrs.includes(absent))
 const pos = ORDER.map((a) => mainHtml.indexOf(`id="${a}"`))
 check('anchors appear in the required order', pos.every((p, i) => p > -1 && (i === 0 || p > pos[i - 1])), pos.join(','))
-const jump = ['#services', '#responsible', '#how-system', '#who-to-call', '#city-program', '#second-opinion', '#buying', '#faq']
-const jumpPos = jump.map((h) => mainHtml.indexOf(`href="${h}"`))
-check('jump nav lists the eight links in order', jumpPos.every((p, i) => p > -1 && (i === 0 || p > jumpPos[i - 1])), jumpPos.join(','))
+// The "On this page" jump nav was removed from every template (commit 05dcf85), so there is no jump nav check any more.
 
 /* ---- Copy checks ---- */
 check('no em dashes in visible text (U+2014)', !text.includes(String.fromCharCode(8212)))
@@ -216,8 +220,9 @@ check(`tel: links use the San Diego E.164 value (${SD_E164})`, html.includes(`hr
 check('phone is not also shown with any other market number in <main>', !/\(\d{3}\) \d{3}-\d{4}/.test(text.replace(norm(SD_PHONE ?? ''), '').replace(new RegExp(norm(SD_PHONE ?? '').replace(/[()]/g, '\\$&'), 'g'), '')))
 
 // Cross-market scan, scoped to <main> (hero card, forms, mobile contact bar).
-const CROSS = ['(314)', '314-', '821-1600', 'Since 2011', '2011', 'MSD', 'Metropolitan St. Louis', 'St. Louis', 'Missouri', '4.9', '595', 'Google reviews', 'Realtors', 'Lateral Repair Program']
-const crossHits = CROSS.filter((w) => text.includes(norm(w)) || mainHtml.includes(w))
+// 'St. Louis', the company-wide rating (4.9, 595, Google reviews) and the company-wide trust strip are shared bands, so they are not St. Louis values on this page.
+const CROSS = ['(314)', '314-', '821-1600', 'MSD', 'Metropolitan St. Louis', 'Missouri', 'Realtors', 'Lateral Repair Program']
+const crossHits = CROSS.filter((w) => ownText.includes(norm(w)) || ownHtml.includes(w))
 check('cross-market scan of <main> finds no St. Louis value', crossHits.length === 0, crossHits.join(', '))
 check('<main> links contain no St. Louis or Las Vegas tel: number', !/href="tel:\+1-(314|725)/.test(mainHtml))
 
@@ -230,7 +235,7 @@ const FORBIDDEN = [
 const caseInsensitive = new Set(['predominantly', 'year built', 'combined sewer', 'separate sewer', 'neglect', 'certified', 'certification', 'insured', 'insurance', 'guarantee', 'warranty', 'same-day', 'weekend', 'best price', 'testimonial', 'placeholder', 'no reimbursement', 'median'])
 const forbiddenHits = FORBIDDEN.filter((w) => {
   const n = norm(w)
-  return caseInsensitive.has(w.toLowerCase()) ? text.toLowerCase().includes(n.toLowerCase()) : text.includes(n)
+  return caseInsensitive.has(w.toLowerCase()) ? ownText.toLowerCase().includes(n.toLowerCase()) : ownText.includes(n)
 })
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))
 const contextOnly = (pattern, allowed, label, flags = 'g') => {
@@ -255,8 +260,9 @@ check('border-dashed appears only on labelled slot boxes', dashed === slotBoxes.
 const got = slotBoxes.map((s) => s.replace('Image slot: ', ''))
 console.log(`INFO  slot placeholders drawn (${got.length}): ${got.join(', ')}`)
 if (PLACEHOLDERS_ON) {
-  const EXPECT = ['system-street', 'call-cleanout', 'program-footage', 'so-inspect', 'so-document', 'so-decide', 'buy-buyer', 'buy-agent']
-  check('the eight drawable unfilled slots draw a placeholder (final-bg is dropped)', EXPECT.every((e) => got.includes(e)) && got.length === EXPECT.length, got.join(', '))
+  // system-street and call-cleanout now carry the owner-supplied renders, so they no longer draw a box.
+  const EXPECT = ['program-footage', 'so-inspect', 'so-document', 'so-decide', 'buy-buyer', 'buy-agent']
+  check('the six drawable unfilled slots draw a placeholder (final-bg is dropped)', EXPECT.every((e) => got.includes(e)) && got.length === EXPECT.length, got.join(', '))
   check('no box for a slot that launches with a real image or for final-bg', !got.some((g) => g === 'final-bg' || g === 'mission-valley-hero' || g === 'com-site' || g.startsWith('svc-')), got.join(', '))
   const boxes = [...mainHtml.matchAll(/Image slot: ([a-z-]+)<\/p><p>(16:9|4:3)<\/p><p>([^<]+)<\/p>/g)]
   check('each slot box is well-formed (id, ratio, shot text)', boxes.length === got.length, `${boxes.length} well-formed of ${got.length}`)
@@ -275,7 +281,9 @@ check('no office, address, map or "visit us" language', !/(\bour (san diego )?(o
 /* ---- Links ---- */
 const anchors = [...mainHtml.matchAll(/<a\s[^>]*href="([^"]+)"[^>]*>/g)]
 const external = anchors.filter((m) => /^https?:/.test(m[1]))
-check('eight external source links', new Set(external.map((m) => m[1])).size === 8, String(new Set(external.map((m) => m[1])).size))
+// The review carousel adds Google review links; the source links are the City of San Diego pages.
+const sourceLinks = new Set(external.filter((m) => /sandiego\.gov/.test(m[1])).map((m) => m[1]))
+check('seven external source links (City of San Diego; the FEWD link left with the food-service program)', sourceLinks.size === 7, String(sourceLinks.size))
 check('every external link has rel="noopener"', external.every((m) => /rel="[^"]*noopener/.test(m[0])), external.filter((m) => !/rel="[^"]*noopener/.test(m[0])).map((m) => m[1]).join(', '))
 const internal = anchors.map((m) => m[1]).filter((h) => h.startsWith('/') && !h.startsWith('//'))
 const missing = [...new Set(internal)].filter((h) => {
@@ -293,7 +301,7 @@ for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)
 /* ---- Sitemap ---- */
 const sitemapPath = path.join(ROOT, 'sitemap.xml')
 if (fs.existsSync(sitemapPath)) {
-  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/san-diego-ca/mission-valley/`))
+  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/locations/san-diego-ca/mission-valley/`))
 }
 
 /* ---- Market phones (whole document, header and footer included) ---- */

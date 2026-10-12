@@ -31,7 +31,7 @@ export const servicesHubHeroVideo: BackgroundVideo = {
 }
 
 export const servicesHubHeroPoster: CardImage = {
-  src: '/images/markets/services-hub/hero/the-sewer-pros-services-hub-sewer-inspection-cleaning-hero.jpg',
+  src: '/images/markets/services-hub/hero/the-sewer-pros-services-hub-sewer-inspection-cleaning-hero.webp',
   alt: 'Sewer inspection and cleaning equipment set up for a service visit',
   source: SOURCE,
 }

@@ -10,16 +10,16 @@
 
 # 0. Current Implementation Status
 
-**Verified:** September 21, 2026, against commit `5b9586a` on `main`.
+**Verified:** October 12, 2026, against the static build of `main` after DEC-142.
 
-**Phase:** Active implementation, pre-launch. This project is no longer a scaffold. All 65 approved launch pages are built, and the repository passes `npm run typecheck`, `npm run lint`, and `npm run build`. It is not yet launch-ready.
+**Phase:** Active implementation, pre-launch. This project is no longer a scaffold. All 198 approved pages are built (200 static pages including the two framework 404 documents), and the repository passes `npm run typecheck`, `npm run lint`, and `npm run build`. It is not yet launch-ready.
 
 ## Completed Implementation
 
-* 65 approved pages built and rendering as static HTML (Next.js 16, `output: 'export'`): 9 core and hub, 10 service, 3 market, 16 location, 14 service + location, 6 audience, 2 comparison, 5 resource
-* 65 of 65 pages `launch` and indexable; none gated, noindex, or deferred. The five Las Vegas pages were released from DEC-063 by DEC-080
-* Sitemap of 65 URLs, matching the approved set; `robots.txt` allows all crawlers plus `OAI-SearchBot` and declares the sitemap
-* JSON-LD on all 65 pages (single Organization entity, WebSite, breadcrumbs, and page-type schema); no per-location `LocalBusiness`
+* 198 approved pages built and rendering as static HTML (Next.js 16, `output: 'export'`): 8 core and hub, 10 service, 3 market, 3 market contact, 16 location, 144 service + location, 6 audience, 2 comparison, 5 resource, and the contact confirmation page
+* 197 of 198 approved pages `launch` and indexable; the contact confirmation page is deliberately noindex; none gated or deferred. The five Las Vegas pages were released from DEC-063 by DEC-080
+* Sitemap of 197 URLs, matching the indexable approved set; `robots.txt` allows all crawlers plus `OAI-SearchBot` and declares the sitemap
+* JSON-LD on all 197 indexable pages (single Organization entity, WebSite, breadcrumbs, and page-type schema); no per-location `LocalBusiness`
 * Production canonical host `https://www.thesewerpros.com` (DEC-078)
 * Brand colour and typography (DEC-096), six page-family design references, and a reusable template and section component library
 * Verified business facts for all three markets (DEC-070 to DEC-077, DEC-083, DEC-088)
@@ -27,7 +27,7 @@
 
 ## Remaining Implementation
 
-* **Lead form submission endpoint** (PENDING-018). The form renders on seven templates but submission is a stub and sends nothing
+* **Lead form submission endpoint** (PENDING-018). The form renders on six templates but submission is a stub and sends nothing
 * **TCPA consent copy** for the "text" contact option (PENDING-019)
 * ~~Market-scoped header contact (PENDING-017)~~ resolved; see the decision log entry that closed it
 * Phase 2 page `svc-independent-sewer-second-opinion`: a registry-confirmed `phase_2_candidate` (`data/services/master-service-registry.json`), approved as a strategic concept, not built as a standalone `/services/` page (see §9A below)
@@ -290,6 +290,8 @@ Strategic opportunities include:
 * pre-purchase inspection
 * home buyers
 * real-estate professionals
+* property management (residential)
+* multifamily (residential)
 * local sewer-lateral resources
 * approved nearby communities
 
@@ -310,12 +312,13 @@ Strategic opportunities include:
 * sewer camera inspection
 * pre-purchase sewer inspection
 * home buyers
-* real-estate agents
+* real estate agents
 * independent second opinions
 * hydro jetting
 * sewer cleaning
-* property management
-* selected San Diego-area communities
+* property management (residential)
+* multifamily (residential)
+* selected communities
 
 Do not fabricate:
 
@@ -343,9 +346,9 @@ Strategic opportunities include:
 * drain cleaning
 * sewer cleaning
 * sewer line locating
-* property management
-* multifamily
-* approved Las Vegas Valley locations
+* property management (residential)
+* multifamily (residential)
+* selected Las Vegas Valley communities
 
 Do not fabricate:
 

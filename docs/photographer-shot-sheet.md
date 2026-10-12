@@ -3,6 +3,8 @@
 Real-photo files only. 16 shots, in four groups by where you shoot. Source: [image-shot-list.md](image-shot-list.md). Each shot fills the boxes listed on its line; one good frame per shot is enough, but the framing variants give choices.
 
 
+Note: the 12 render images are not on this sheet. The equipment shown in those renders is owner-approved (Oct 12, 2026); their briefs and alt text are in [image-shot-list.md](image-shot-list.md).
+
 ## Rules for every shot
 
 - No faces. Keep people out of frame, shoot from behind, or crop at the chin.

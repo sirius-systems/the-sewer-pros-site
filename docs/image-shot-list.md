@@ -2,6 +2,10 @@
 
 Source: [docs/image-placeholder-inventory.md](image-placeholder-inventory.md) (785 placeholder boxes on 162 pages). Every box was mapped from its shot brief to one reusable image. 26 distinct shots (30 files once the street and older-home shots are split by market) fill all 785 boxes.
 
+## Equipment in the 12 renders
+
+The equipment shown in the 12 render images is owner-approved (Oct 12, 2026). The briefs below no longer say "must not show equipment" for those files. The alt text in each render brief matches the alt text in the code (the location hub registries, `content/pages/service-location-shared.ts` and `data/business/preventative-images.ts`).
+
 ## Decisions to confirm
 
 1. **Launch cohort is my assumption.** `docs/04-master-page-build-list.md` lists all 162 affected pages as built and indexable and defines no launch cohort. I prioritized by the market order in CLAUDE.md (St. Louis has the established business profile): **P1** = any image used on a St. Louis page or a core service page, **P2** = used on San Diego pages but no St. Louis page, **P3** = Las Vegas only. Universal images are P1 because they also unlock the other markets.
@@ -13,7 +17,7 @@ Source: [docs/image-placeholder-inventory.md](image-placeholder-inventory.md) (7
 
 | ID | Filename (under public/images/) | Ratio | Subject | Reuse scope | Slots filled | Where (registries and slot ids) | Type | Priority |
 |---|---|---|---|---|---|---|---|---|
-| IMG-01 | shared/cleanouts/the-sewer-pros-floor-drain-cleanout-access-4x3.webp | 4:3 | Floor drain with cleanout access nearby. Nothing graphic. *Fixture only, no crew or equipment.* | universal | 87 | 8 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 79 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-1, sl-*-problem-3, svc-backup | Photorealistic render | P1 |
+| IMG-01 | shared/cleanouts/the-sewer-pros-floor-drain-cleanout-access-4x3.webp | 4:3 | Floor drain with cleanout access nearby. Nothing graphic. *Fixture scene; the equipment shown is owner-approved (Oct 12, 2026).* | universal | 87 | 8 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 79 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-1, sl-*-problem-3, svc-backup | Photorealistic render | P1 |
 | IMG-02 | shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp | 4:3 | Capped exterior cleanout at the base of a house. No identifiers. *The one "building" variant (Mission Valley) can use the same image.* | universal | 65 | 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 48 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 1 on core service pages (data/business/*-images.ts). Ids: call-cleanout, preventative-sewer-maintenance-prep-cleanout-4x3.webp, sl-*-problem-1, sl-*-problem-2, sl-*-problem-3 | Photorealistic render | P1 |
 | IMG-03 | shared/residential/the-sewer-pros-st-louis-residential-street-manhole-curb-4x3.webp | 4:3 | Ordinary residential street with a manhole cover and curb. No identifiable homes, addresses or plates. *Environment only. Shoot or render it so the street looks like that market.* | per market (St. Louis) | 50 | 5 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 45 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P1 |
 | IMG-04 | shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp | 4:3 | Technician at a for-sale property starting a pre-purchase sewer scope, clipboard visible. Covers three near-identical shot wordings. *Crew in frame, so real job photo. Frame tight so no region is identifiable.* | universal | 41 | 24 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 17 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: buy-buyer, sl-*-problem-2, sl-*-problem-3, svc-prepurchase | Real photo needed | P1 |
@@ -178,9 +182,9 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Straight-on, slightly high view of a floor drain in a utility room or basement floor, with a cleanout fitting visible a short distance away. Clean concrete floor, even light, plenty of empty space around the drain.
-- **Must NOT appear:** No equipment, hoses, crew, water overflow, sewage or staining. No brand marks on the drain cover. Plus the common rules above.
-- **Alt text:** Floor drain in a utility area with a cleanout fitting nearby
-- **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic floor drain with a nearby sewer cleanout fitting in a clean residential utility room, concrete floor, neutral soft light, no people, no equipment, no text, 4:3." Real photo also fine: any clean home, tight crop on the drain.
+- **Must NOT appear:** No crew, water overflow, sewage or staining presented as a finding. No readable brand marks on the drain cover. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Concrete floor with a round drain grate and a threaded fitting, with a sewer camera reel and open monitor beside them
+- **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic floor drain with a nearby sewer cleanout fitting in a clean residential utility room, concrete floor, neutral soft light, no people, no text, 4:3." Real photo also fine: any clean home, tight crop on the drain.
 - **Reuse scope:** universal. Fills 87 boxes: 8 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 79 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** hydro-jetting: problem-3; recurring-sewer-backup-diagnosis: problem-1; sewer-camera-inspection: problem-3; sewer-cleaning-camera-inspection: problem-3; sewer-cleaning: problem-3; svc-backup
 
@@ -190,8 +194,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Low three-quarter view of a threaded cleanout cap at the base of a house wall, a few inches above soil or mulch. House siding or brick fills the background out of focus.
-- **Must NOT appear:** No house number, mailbox, window detail that identifies the property, tools, crew or equipment. No cracked or damaged pipe. Plus the common rules above.
-- **Alt text:** Capped sewer cleanout at the base of a house
+- **Must NOT appear:** No house number, mailbox, crew, or cracked or damaged pipe. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it
 - **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic capped sewer cleanout pipe at the foundation of a home, exterior wall out of focus, mulch bed, soft daylight, no people, no text, 4:3." The one "building" wording (Mission Valley) can use this same image.
 - **Reuse scope:** universal. Fills 65 boxes: 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 48 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 1 on core service pages (data/business/*-images.ts).
 - **Slot ids:** call-cleanout; preventative-sewer-maintenance: prep-cleanout; preventative-sewer-maintenance: problem-2; recurring-sewer-backup-diagnosis: problem-3; sewer-camera-inspection: problem-1
@@ -202,8 +206,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Residential street at curb height, a manhole cover in the pavement a few feet from the curb, an empty sidewalk beyond. Homes only as soft background shapes.
-- **Must NOT appear:** No identifiable houses, house numbers, vehicles with readable plates, street signs, people or crew. No work vehicles. Plus the common rules above.
-- **Alt text:** Residential street with a manhole cover near the curb
+- **Must NOT appear:** No identifiable houses, house numbers, vehicles with readable plates, street signs, people or crew. No work vehicles. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk
 - **Photorealistic render prompt or shoot:** Shoot, or generate a photorealistic render, in a neighborhood that reads as the target market. Shoot: stand at the curb, camera low, 35 mm equivalent, overcast light, empty street. Blur or crop any numbers, plates and signs. Market look (St. Louis): brick and older masonry homes, mature deciduous trees, concrete sidewalks and curbs, overcast or soft daylight. Do not show a landmark or anything that says the image is of a specific street.
 - **Reuse scope:** per market (St. Louis). Fills 50 boxes: 5 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 45 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** drain-cleaning: problem-4; hydro-jetting: problem-4; pre-purchase-sewer-inspection: problem-4; preventative-sewer-maintenance: problem-4; recurring-sewer-backup-diagnosis: problem-4; sewer-camera-inspection: problem-4; sewer-cleaning-camera-inspection: problem-4; sewer-cleaning: problem-4; sewer-line-locating: problem-4; system-street
@@ -274,8 +278,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Bathroom vanity sink and bathtub in the same frame, both clean, a small amount of water in the sink to suggest slow drainage.
-- **Must NOT appear:** No people, toiletries with brand labels, or mess. No sewage. Plus the common rules above.
-- **Alt text:** Bathroom sink and bathtub side by side
+- **Must NOT appear:** No people, toiletries with brand labels, or mess. No sewage. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Bathroom with a white vanity sink and a bathtub, and a red drain machine standing on the tile floor
 - **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic residential bathroom, vanity sink and bathtub side by side, a little water standing in the sink, neutral tones, soft light, no people, no text, 4:3."
 - **Reuse scope:** universal. Fills 32 boxes: 32 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** drain-cleaning: problem-2; sewer-cleaning-camera-inspection: problem-1
@@ -358,8 +362,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Kitchen sink at counter height, basin holding a small amount of water that has not drained, faucet and backsplash softly lit.
-- **Must NOT appear:** No people, hands, dishes with food waste, brand-name fixtures, or anything unsanitary. No sewage. Plus the common rules above.
-- **Alt text:** Kitchen sink with water slow to drain
+- **Must NOT appear:** No people, hands, dishes with food waste, brand-name fixtures, or anything unsanitary. No sewage. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Kitchen sink with an empty basin and a red drain machine in the background
 - **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic clean kitchen sink with a little water standing in the basin, neutral kitchen, soft window light, no people, no text, 4:3."
 - **Reuse scope:** universal. Fills 16 boxes: 16 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** drain-cleaning: problem-1
@@ -394,8 +398,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Backyard fence line with a planting bed along it and open lawn or gravel, as a place someone might plan to dig. Flat, even light.
-- **Must NOT appear:** No houses with identifiers, people, shovels or excavation, utility marking paint, or equipment. Plus the common rules above.
-- **Alt text:** Backyard fence line and planting beds
+- **Must NOT appear:** No houses with identifiers, people, excavation or utility marking paint. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Backyard wooden fence with shrubs and a mulch bed beside a lawn, with a yellow locator receiver lying on the grass
 - **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic residential backyard fence line with planting beds and open ground, no people, no tools, no text, 4:3." Keep it plain; this image carries the idea of "before you dig".
 - **Reuse scope:** universal. Fills 16 boxes: 16 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** sewer-line-locating: problem-2
@@ -430,8 +434,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Front or side view of an older single-family home, camera at eye level from the yard, a sewer cleanout cap visible near the foundation in the lower third.
-- **Must NOT appear:** No house numbers, mailbox, vehicles, people, "for sale" signs or real-estate branding. No visible damage presented as a defect. Plus the common rules above.
-- **Alt text:** Older single-family home with a sewer cleanout cap near the foundation
+- **Must NOT appear:** No house numbers, mailbox, vehicles, people, "for sale" signs or real-estate branding. No visible damage presented as a defect. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 - **Photorealistic render prompt or shoot:** Render prompt or location photo. Keep the home generic so it cannot be identified; the cleanout must be clearly visible. Market look (St. Louis): brick and older masonry homes, mature deciduous trees, concrete sidewalks and curbs, overcast or soft daylight. Do not show a landmark or anything that says the image is of a specific street.
 - **Reuse scope:** per market (St. Louis). Fills 5 boxes: 5 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** pre-purchase-sewer-inspection: problem-1
@@ -478,8 +482,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P2.
 - **Subject and composition:** Residential street at curb height, a manhole cover in the pavement a few feet from the curb, an empty sidewalk beyond. Homes only as soft background shapes.
-- **Must NOT appear:** No identifiable houses, house numbers, vehicles with readable plates, street signs, people or crew. No work vehicles. Plus the common rules above.
-- **Alt text:** Residential street with a manhole cover near the curb
+- **Must NOT appear:** No identifiable houses, house numbers, vehicles with readable plates, street signs, people or crew. No work vehicles. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk
 - **Photorealistic render prompt or shoot:** Shoot, or generate a photorealistic render, in a neighborhood that reads as the target market. Shoot: stand at the curb, camera low, 35 mm equivalent, overcast light, empty street. Blur or crop any numbers, plates and signs. Market look (San Diego): single-story stucco homes, low-water landscaping, concrete curbs, bright but soft daylight. Do not show a landmark or anything that says the image is of a specific street.
 - **Reuse scope:** per market (San Diego). Fills 65 boxes: 6 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 59 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** drain-cleaning: problem-4; hydro-jetting: problem-4; pre-purchase-sewer-inspection: problem-4; preventative-sewer-maintenance: problem-4; recurring-sewer-backup-diagnosis: problem-4; sewer-camera-inspection: problem-4; sewer-cleaning-camera-inspection: problem-4; sewer-cleaning: problem-4; sewer-line-locating: problem-4; system-street
@@ -490,8 +494,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P2.
 - **Subject and composition:** Front or side view of an older single-family home, camera at eye level from the yard, a sewer cleanout cap visible near the foundation in the lower third.
-- **Must NOT appear:** No house numbers, mailbox, vehicles, people, "for sale" signs or real-estate branding. No visible damage presented as a defect. Plus the common rules above.
-- **Alt text:** Older single-family home with a sewer cleanout cap near the foundation
+- **Must NOT appear:** No house numbers, mailbox, vehicles, people, "for sale" signs or real-estate branding. No visible damage presented as a defect. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 - **Photorealistic render prompt or shoot:** Render prompt or location photo. Keep the home generic so it cannot be identified; the cleanout must be clearly visible. Market look (San Diego): single-story stucco homes, low-water landscaping, concrete curbs, bright but soft daylight. Do not show a landmark or anything that says the image is of a specific street.
 - **Reuse scope:** per market (San Diego). Fills 7 boxes: 7 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** pre-purchase-sewer-inspection: problem-1
@@ -502,7 +506,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P2.
 - **Subject and composition:** Mixed-use street at curb height with a manhole cover and curb in the foreground, storefront shapes blurred beyond.
-- **Must NOT appear:** No readable business names, signage, logos, identifiable buildings, plates or people. Plus the common rules above.
+- **Must NOT appear:** No readable business names, signage, logos, identifiable buildings, plates or people. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
 - **Alt text:** Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk
 - **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic mixed-use street, manhole cover and curb in foreground, buildings out of focus with no readable signs, empty street, San Diego style stucco and glass storefronts, soft daylight, 4:3." Used only by the Mission Valley page.
 - **Reuse scope:** page-unique (Mission Valley). Fills 5 boxes: 1 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
@@ -514,8 +518,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P3.
 - **Subject and composition:** Residential street at curb height, a manhole cover in the pavement a few feet from the curb, an empty sidewalk beyond. Homes only as soft background shapes.
-- **Must NOT appear:** No identifiable houses, house numbers, vehicles with readable plates, street signs, people or crew. No work vehicles. Plus the common rules above.
-- **Alt text:** Residential street with a manhole cover near the curb
+- **Must NOT appear:** No identifiable houses, house numbers, vehicles with readable plates, street signs, people or crew. No work vehicles. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk
 - **Photorealistic render prompt or shoot:** Shoot, or generate a photorealistic render, in a neighborhood that reads as the target market. Shoot: stand at the curb, camera low, 35 mm equivalent, overcast light, empty street. Blur or crop any numbers, plates and signs. Market look (Las Vegas): stucco homes with tile roofs, gravel or desert landscaping, block-wall fences, bright dry daylight. Do not show a landmark or anything that says the image is of a specific street.
 - **Reuse scope:** per market (Las Vegas). Fills 40 boxes: 4 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 36 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** drain-cleaning: problem-4; hydro-jetting: problem-4; pre-purchase-sewer-inspection: problem-4; preventative-sewer-maintenance: problem-4; recurring-sewer-backup-diagnosis: problem-4; sewer-camera-inspection: problem-4; sewer-cleaning-camera-inspection: problem-4; sewer-cleaning: problem-4; sewer-line-locating: problem-4; system-street
@@ -526,8 +530,8 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Photorealistic render. Priority P3.
 - **Subject and composition:** Front or side view of an older single-family home, camera at eye level from the yard, a sewer cleanout cap visible near the foundation in the lower third.
-- **Must NOT appear:** No house numbers, mailbox, vehicles, people, "for sale" signs or real-estate branding. No visible damage presented as a defect. Plus the common rules above.
-- **Alt text:** Older single-family home with a sewer cleanout cap near the foundation
+- **Must NOT appear:** No house numbers, mailbox, vehicles, people, "for sale" signs or real-estate branding. No visible damage presented as a defect. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
+- **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 - **Photorealistic render prompt or shoot:** Render prompt or location photo. Keep the home generic so it cannot be identified; the cleanout must be clearly visible. Market look (Las Vegas): stucco homes with tile roofs, gravel or desert landscaping, block-wall fences, bright dry daylight. Do not show a landmark or anything that says the image is of a specific street.
 - **Reuse scope:** per market (Las Vegas). Fills 4 boxes: 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** pre-purchase-sewer-inspection: problem-1

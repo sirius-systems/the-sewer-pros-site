@@ -1645,6 +1645,6 @@ Update 2026-10-05: the owner has confirmed Las Vegas operations repeatedly in th
 
 # 18. Built Residential Grid (October 6, 2026)
 
-The 9 residential services x 16 built locations (144 pairs) are built, published and indexable (DEC-139, DEC-140), so those 144 relationships move from `candidate` to `launch` and `indexable`. Page IDs are `sl-<location>-<service>`; URLs are `/locations/{market}/{location}/{service-slug}/` (DEC-141). The inventory and counts are in `04-master-page-build-list.md` section 56D (204 built, 203 indexable).
+The 9 residential services x 16 built locations (144 pairs) are built, published and indexable (DEC-139, DEC-140), so those 144 relationships move from `candidate` to `launch` and `indexable`. Page IDs are `sl-<location>-<service>`; URLs are `/locations/{market}/{location}/{service-slug}/` (DEC-141). The inventory and counts are in `04-master-page-build-list.md` section 56D (198 approved pages built, 197 indexable, after the commercial removal).
 
 Cohort A (Las Vegas, Henderson, North Las Vegas x 5 services) and the St. Louis and San Diego entries on existing hubs in section 17 are now covered by this grid. The Enterprise, Spring Valley, Paradise, O'Fallon, Wildwood, Vista, El Cajon, Encinitas and La Mesa relationships stay `candidate` because their hubs are not built. The remaining relationships in the 6,369-row dataset stay research data and are not indexed. Titles and descriptions are checked for uniqueness with `npm run verify:metadata`.

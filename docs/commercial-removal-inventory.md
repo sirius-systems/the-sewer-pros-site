@@ -157,7 +157,7 @@ Files that exist only for commercial pages (deleted in Phase 1):
 
 | File | Hits |
 |---|---|
-| docs/09-audience-commercial-matrix.md | 463 |
+| docs/09-audience-matrix.md | 463 |
 | docs/archive/07-master-location-registry.research-output.md | 142 |
 | docs/03-information-architecture.md | 119 |
 | docs/22-decisions-change-log.md | 116 |
