@@ -49,7 +49,7 @@ export const preventativeImageSlots = {
   'preventative-prep': {
     // Filled by the shared owner-supplied render of a capped cleanout (not a job photo).
     preferred: '/images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp',
-    alt: 'Capped sewer cleanout at the base of a house',
+    alt: 'White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it',
     caption: '',
     width: 1448,
     height: 1086,

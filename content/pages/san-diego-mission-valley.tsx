@@ -172,7 +172,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'system-street',
     ratio: '4:3',
-    alt: 'Commercial street with a manhole cover near the curb',
+    alt: 'Street with a manhole cover in the pavement, low commercial buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
     shot: 'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings',
     src: '/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
@@ -180,7 +180,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'call-cleanout',
     ratio: '4:3',
-    alt: 'Capped sewer cleanout at the base of a house',
+    alt: 'White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it',
     shot: 'Exterior cleanout cap at the base of a building',
     src: '/images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp',
     source: RENDER_IMAGE_SOURCE,

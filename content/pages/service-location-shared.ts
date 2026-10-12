@@ -69,43 +69,43 @@ const RENDER_DIR = '/images/shared/'
  */
 const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) => string }> = {
   'Ordinary residential street, manhole and curb, no identifiable homes': {
-    alt: 'Residential street with a manhole cover near the curb',
+    alt: 'Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk',
     src: (m) => `${RENDER_DIR}residential/the-sewer-pros-${m}-residential-street-manhole-curb-4x3.webp`,
   },
   'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings': {
-    alt: 'Commercial street with a manhole cover near the curb',
+    alt: 'Street with a manhole cover in the pavement, low commercial buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
     src: () => `${RENDER_DIR}commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`,
   },
   'Older home, cleanout visible, no identifiable address': {
-    alt: 'Older single-family home with a sewer cleanout cap near the foundation',
+    alt: 'Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it',
     src: (m) => `${RENDER_DIR}residential/the-sewer-pros-${m}-older-home-visible-cleanout-4x3.webp`,
   },
   'Floor drain with cleanout access, nothing graphic': {
-    alt: 'Floor drain in a utility area with a cleanout fitting nearby',
+    alt: 'Concrete floor with a round drain grate and a threaded fitting, with a sewer camera reel and open monitor beside them',
     src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-floor-drain-cleanout-access-4x3.webp`,
   },
   'Exterior cleanout cap at the base of a house': {
-    alt: 'Capped sewer cleanout at the base of a house',
+    alt: 'White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it',
     src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp`,
   },
   'Capped exterior cleanout at a residential property, no identifiers': {
-    alt: 'Capped sewer cleanout at the base of a house',
+    alt: 'White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it',
     src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp`,
   },
   'Kitchen sink with a slow drain, no people': {
-    alt: 'Kitchen sink with a small amount of water in the basin',
+    alt: 'Kitchen sink with an empty basin and a red drain machine in the background',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-kitchen-sink-slow-drain-4x3.webp`,
   },
   'Bathroom sink and tub side by side, no people': {
-    alt: 'Bathroom sink and bathtub side by side with a small amount of water in the sink',
+    alt: 'Bathroom with a white vanity sink and a bathtub, and a red drain machine standing on the tile floor',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-bathroom-sink-and-tub-4x3.webp`,
   },
   'Bathroom sink and tub, one draining slowly, no people': {
-    alt: 'Bathroom sink and bathtub side by side with a small amount of water in the sink',
+    alt: 'Bathroom with a white vanity sink and a bathtub, and a red drain machine standing on the tile floor',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-bathroom-sink-and-tub-4x3.webp`,
   },
   'Fence line and planting beds where digging might be planned, nothing identifiable': {
-    alt: 'Backyard fence line and planting beds',
+    alt: 'Backyard wooden fence with shrubs and a mulch bed beside a lawn, with a yellow locator receiver lying on the grass',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp`,
   },
 }
