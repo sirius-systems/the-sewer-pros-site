@@ -56,22 +56,22 @@ The files were generated renders, not job photographs: same 2400 x 1792 size, na
 
 | Image | Subject | Boxes | Status | Notes |
 |---|---|---|---|---|
-| IMG-05 | Technician reviewing footage at a monitor | 178 | **Wired** | Exact name. Fills the shared `slc-services-section` slot on 144 pages, plus 34 card and core-page boxes. No technician in frame (equipment only). |
-| IMG-10 | Monitor showing a pipe interior | 31 | **Wired** | Exact name. Distance counter "14.5 ft" is visible on the monitor. |
-| IMG-17 | Jetter trailer at a curb | 16 | **Wired** | Exact name. Trailer decal blurred in the image; no plate. |
-| IMG-20 | Monitor beside a handheld locator receiver | 16 | **Wired** | Exact name. |
-| IMG-08 | Cable or hose entering a cleanout | 33 | **Wired** | Exact name; the file arrived in `public/images/clean-outs/` and was saved at the shot-list path `shared/cleanouts/`. |
-| IMG-12 | Drain machine at a floor or tub drain | 24 | **Wired, owner-approved** | Exact name. A readable label ("PF1500") shows on the machine leg. The owner approved the image as generated, with the label, on Oct 12, 2026 (DEC-144). The approval covers this file only. Not edited, blurred or regenerated. The label is not named in alt text or page copy and is not a confirmed equipment name. 8 hub cards and 16 service + location problem cards. |
-| IMG-13 | Jetting nozzle and hose at the line | 24 | **Wired** | Exact name. House number plaque in the background is blurred. |
-| IMG-14 | Camera head entering a cleanout | 24 | **Wired** | Exact name. |
-| IMG-15 | Cleaning machine and cable at a cleanout | 24 | **Wired** | Exact name. |
-| IMG-23 | Recurring backup hero | 1 | **Wired** | Exact name. 16:9 file is 1360 x 765 (the source was 1376 x 768; no upscaling). No technician in frame. |
-| IMG-04 | Technician at a for-sale property starting a scope | 41 | **Wired** | Exact name. No technician in frame; clipboard text is illegible. |
-| IMG-07 | Technician reviewing findings with the owner or buyer | 33 | **Wired (inferred match)** | No file had this name. Matched to `sewer-inspection-findings-tablet-outside-home` by scene (report findings on a tablet at a home) and by generation order. No people in frame. Owner to confirm. |
-| IMG-11 | Technician with a locator receiver in a yard | 25 | **Wired (inferred match)** | No file had this name. Matched to `seektech-sr20-locator-yard-paint-marks` by scene. Owner to confirm. |
-| IMG-06 | Monitor or tablet with report and video | 34 | **Wired** | Exact name. Report text is blurred. |
-| IMG-18 | Report handed to an agent | 16 | **Wired (inferred match)** | No file had this name. Matched to `inspection-report-prepared-for-agent`; a second candidate (`sewer-inspection-report-ready-for-real-estate-agent`) was set aside. No hands in frame. Owner to confirm. |
-| IMG-21 | Camera still with distance counter | 15 | **Wired** | Exact name. |
+| IMG-05 | Technician reviewing footage at a monitor | 178 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. Fills the shared `slc-services-section` slot on 144 pages, plus 34 card and core-page boxes. No technician in frame (equipment only). |
+| IMG-10 | Monitor showing a pipe interior | 31 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. Distance counter "14.5 ft" is visible on the monitor. |
+| IMG-17 | Jetter trailer at a curb | 16 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. Trailer decal blurred in the image; no plate. |
+| IMG-20 | Monitor beside a handheld locator receiver | 16 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. |
+| IMG-08 | Cable or hose entering a cleanout | 33 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name; the file arrived in `public/images/clean-outs/` and was saved at the shot-list path `shared/cleanouts/`. |
+| IMG-12 | Drain machine at a floor or tub drain | 24 | **generated, wired, optional real-photo upgrade** (**Wired, owner-approved**) | Exact name. A readable label ("PF1500") shows on the machine leg. The owner approved the image as generated, with the label, on Oct 12, 2026 (DEC-144). The approval covers this file only. Not edited, blurred or regenerated. The label is not named in alt text or page copy and is not a confirmed equipment name. 8 hub cards and 16 service + location problem cards. |
+| IMG-13 | Jetting nozzle and hose at the line | 24 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. House number plaque in the background is blurred. |
+| IMG-14 | Camera head entering a cleanout | 24 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. |
+| IMG-15 | Cleaning machine and cable at a cleanout | 24 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. |
+| IMG-23 | Recurring backup hero | 1 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. 16:9 file is 1360 x 765 (the source was 1376 x 768; no upscaling). No technician in frame. |
+| IMG-04 | Technician at a for-sale property starting a scope | 41 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. No technician in frame; clipboard text is illegible. |
+| IMG-07 | Technician reviewing findings with the owner or buyer | 33 | **generated, wired, optional real-photo upgrade** (**Wired (inferred match)**) | No file had this name. Matched to `sewer-inspection-findings-tablet-outside-home` by scene (report findings on a tablet at a home) and by generation order. No people in frame. Owner to confirm. |
+| IMG-11 | Technician with a locator receiver in a yard | 25 | **generated, wired, optional real-photo upgrade** (**Wired (inferred match)**) | No file had this name. Matched to `seektech-sr20-locator-yard-paint-marks` by scene. Owner to confirm. |
+| IMG-06 | Monitor or tablet with report and video | 34 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. Report text is blurred. |
+| IMG-18 | Report handed to an agent | 16 | **generated, wired, optional real-photo upgrade** (**Wired (inferred match)**) | No file had this name. Matched to `inspection-report-prepared-for-agent`; a second candidate (`sewer-inspection-report-ready-for-real-estate-agent`) was set aside. No hands in frame. Owner to confirm. |
+| IMG-21 | Camera still with distance counter | 15 | **generated, wired, optional real-photo upgrade** (**Wired**) | Exact name. |
 | IMG-24 | Camera frame showing root intrusion | 1 | **Wired (existing asset)** | Copied from `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-root-intrusion-pipe-joint-4x3.webp`. |
 | IMG-25 | Camera frame showing standing water | 1 | **Wired (existing asset)** | Copied from `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp`. Slot changed from 7:4 to 4:3; the file is now `...-limits-waterline-footage-4x3.webp`. |
 
@@ -247,6 +247,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Technician at the side of a house setting up a camera reel at a cleanout, clipboard or tablet nearby, shot from a medium distance so the home is generic. Covers pre-purchase scope on cards and problem tiles.
 - **Must NOT appear:** No "for sale" sign, real-estate branding, house number, face, vehicle or uniform lettering. No visible finding. Plus the common rules above.
 - **Alt text:** Technician setting up a sewer camera at a property for sale
@@ -259,6 +260,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Technician seen from behind or in profile reviewing footage on a monitor, shoulder and monitor in frame, blurred truck-free background. Serves the cleaned-pipe and post-cleaning-pass card shots too. Also serves the services-section image on service + location pages: the same frame works with a residential home exterior or yard softly blurred behind the technician and monitor, with no identifiable address or house number.
 - **Must NOT appear:** No identifiable face, no vehicle, no uniform text or logo, no address or customer details on screen, no claim of a finding. Plus the common rules above.
 - **Alt text:** Technician reviewing sewer camera footage on a monitor. Where the file is used for the services-section slot, the template alt text applies: "Technician and inspection equipment at a residential property".
@@ -271,6 +273,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Tablet showing a paused inspection video frame beside a printed summary page on a flat surface, shot slightly from above.
 - **Must NOT appear:** No readable names, addresses, dates or findings text on either page, no brand marks, no faces. No claim about what the footage shows. Plus the common rules above.
 - **Alt text:** Tablet showing inspection video beside a printed summary page
@@ -283,6 +286,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Technician and property owner standing side by side outside a home, both looking at a tablet held between them, shot from behind or at an angle so faces are not identifiable. Covers buyer, homeowner and owner wordings.
 - **Must NOT appear:** No faces, no readable tablet content, no house number, no real-estate or company branding, no vehicle. Nothing implying a result. Plus the common rules above.
 - **Alt text:** Technician and property owner looking at a tablet together outside a home
@@ -295,6 +299,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Close-up of a cleaning cable or hose entering an open cleanout, shot from slightly above. Hands out of frame.
 - **Must NOT appear:** No faces, uniform lettering, truck or machine branding, or house numbers. Brand marks on the cable reel blurred. No sewage on the ground. Plus the common rules above.
 - **Alt text:** Cleaning cable entering an open sewer cleanout
@@ -319,6 +324,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/pipe-interiors/the-sewer-pros-monitor-showing-pipe-interior-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Inspection monitor filling most of the frame, screen showing the inside of a clean pipe run, a counter overlay partly visible. Slight angle to avoid glare.
 - **Must NOT appear:** No identifying overlay text (address, name, date, GPS), no crew, no truck, no brand text readable on the monitor. No visible defect framed as a finding. Plus the common rules above.
 - **Alt text:** Inspection monitor showing the inside of a sewer pipe
@@ -331,6 +337,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-technician-locator-receiver-yard-paint-marks-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Technician sweeping a yard with a handheld locator receiver, painted marks visible on a nearby driveway or sidewalk, medium shot from a low angle.
 - **Must NOT appear:** No face, house number, vehicle, utility company marking text, uniform lettering, or claim about depth or accuracy. Plus the common rules above.
 - **Alt text:** Technician sweeping a yard with a handheld locator receiver, with paint marks on the pavement
@@ -343,6 +350,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Drain cleaning machine set up at a floor drain or tub drain, cable going into the drain, shot at a 3/4 angle from the side.
 - **Must NOT appear:** No faces, uniform lettering, brand text readable on the machine, house numbers or customer items. Nothing implying a capability or specification. Plus the common rules above.
 - **Alt text:** Drain cleaning machine set up at a floor drain
@@ -355,6 +363,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-jetting-nozzle-hose-at-sewer-line-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Jetting nozzle and hose at the end of the line near a cleanout, hose coiled or laid out cleanly, shallow depth of field on the nozzle.
 - **Must NOT appear:** No spray in action implied as a result, no sewage, no truck lettering, no faces, no pressure or flow figures, no brand text readable. Plus the common rules above.
 - **Alt text:** Jetting nozzle and hose at a sewer cleanout
@@ -367,6 +376,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-camera-head-push-cable-entering-cleanout-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Close-up of a camera head and push cable entering an open cleanout, shot from slightly above. A short length of cable visible leading out of frame.
 - **Must NOT appear:** No faces, uniform or equipment lettering readable, house numbers, or monitor content showing a property. No sewage on the ground. Plus the common rules above.
 - **Alt text:** Sewer camera head and push cable entering a cleanout
@@ -379,6 +389,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-cleaning-machine-cable-at-cleanout-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Sewer cleaning machine with cable or hose run to a cleanout, 3/4 view, machine in the middle distance and the cleanout in the foreground.
 - **Must NOT appear:** No faces, branded lettering readable on the machine, house numbers or customer property, truck. No specifications implied. Plus the common rules above.
 - **Alt text:** Sewer cleaning machine with cable at a cleanout
@@ -403,6 +414,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-jetter-trailer-at-curb-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Trailer-mounted jetter parked at a curb, rear three-quarter view, residential street softly blurred behind it.
 - **Must NOT appear:** Trailer and tow vehicle plates removed, no company or equipment branding legible, no house numbers, no crew. This is the one image where a trailer is the subject; no truck cab or lettered vehicle. Plus the common rules above.
 - **Alt text:** Trailer-mounted jetter parked at a curb
@@ -415,6 +427,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/residential/the-sewer-pros-inspection-report-handed-to-agent-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Two hands passing a printed inspection report across a table, a pen and a closed laptop nearby, report text blurred or redacted.
 - **Must NOT appear:** No faces, readable report text, names, addresses, real-estate branding or logos. No findings visible. Plus the common rules above.
 - **Alt text:** Printed inspection report being handed to a real estate agent
@@ -439,6 +452,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Inspection monitor showing pipe footage and a handheld locator receiver resting beside it on a tailgate-free surface such as a case or table.
 - **Must NOT appear:** No truck, branded case, readable receiver screen or monitor overlay text, no crew, no addresses. Plus the common rules above.
 - **Alt text:** Inspection monitor beside a handheld locator receiver
@@ -451,6 +465,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/pipe-interiors/the-sewer-pros-camera-footage-still-distance-counter-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Single frame of camera footage showing the inside of a pipe with a distance counter visible in a corner of the frame. The pipe is ordinary; the counter is the point.
 - **Must NOT appear:** No address, date, GPS, customer or company text on the frame, no visible defect, no claim about what the line condition means. Plus the common rules above.
 - **Alt text:** Sewer camera still of a pipe interior with a distance counter in the corner
@@ -475,6 +490,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp`
 - **Slot ratio:** 16:9 (1600 x 900)
 - **Type:** Real photo needed. Priority P1.
+- **Status:** generated, wired, optional real-photo upgrade (owner decision DEC-145, Oct 12, 2026).
 - **Subject and composition:** Wide 16:9 shot of a technician at an exterior cleanout of a residential property with the camera reel and monitor set up on the ground beside it. Natural light, the home soft in the background.
 - **Must NOT appear:** No faces, truck, uniform or equipment lettering, house number, customer items or findings on the monitor. Plus the common rules above.
 - **Alt text:** Technician setting up a sewer camera at a residential cleanout

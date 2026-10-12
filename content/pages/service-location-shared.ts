@@ -129,11 +129,11 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp`,
   },
   'Technician and buyer reviewing findings, faces not identifiable': {
-    alt: 'A tablet in a case showing a blurred inspection report and a pipe video, standing on a bin in front of a house',
+    alt: 'A tablet in a case showing a blurred document and a pipe image, standing on a bin in front of a house',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp`,
   },
   'Technician and owner reviewing findings, faces not identifiable': {
-    alt: 'A tablet in a case showing a blurred inspection report and a pipe video, standing on a bin in front of a house',
+    alt: 'A tablet in a case showing a blurred document and a pipe image, standing on a bin in front of a house',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp`,
   },
   'Technician reviewing sewer camera footage on a monitor': {
@@ -141,7 +141,7 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     src: () => `${RENDER_DIR}equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp`,
   },
   'Monitor or tablet showing inspection video beside written findings, customer details removed': {
-    alt: 'A tablet showing a blurred inspection report with a pipe video, beside a printed report on a clipboard on a table',
+    alt: 'A tablet showing a blurred document and a pipe image, beside a printed form on a clipboard on a table',
     src: () => `${RENDER_DIR}pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp`,
   },
   'Cleaning machine and cable at a cleanout': {

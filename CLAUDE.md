@@ -977,6 +977,8 @@ They are not pixel-perfect requirements.
 
 **Image files.** Image placement, naming and slot rules are in `docs/images-readme/README.md` (with a README per service folder in `docs/images-readme/services/`). Do not reuse one market's photo as another market's context: market-specific imagery stays in its market folder. Do not place README, notes or other non-image files in `public/`, because everything there is published. Placeholder counts come from `scripts/count-placeholders.mjs` run on a production build. Unfilled image slots draw placeholders in the preview by default. **Set LAUNCH_MODE to true at launch** (`LAUNCH_MODE` in `lib/launch.ts`, currently false): it forces `SHOW_IMAGE_SLOTS` off and makes every unfilled slot and `ImagePlaceholder` render nothing, with no environment variable or hosting setting. Do not set it to true before the owner says to. Every build logs the list of pages with unfilled slots (`scripts/report-unfilled-slots.mjs`): a warning while the flag is false, an error message (exit code still 0) when it is true.
 
+**Generated images (owner decision, Oct 12, 2026, DEC-145).** Generated images are approved for all image slots. Alt text, captions and nearby copy must describe the scene only. They must not say or imply that the image shows a real customer job, a real finding, a real report, a real customer, "our technician", "recent job", "before and after" or similar. Equipment in the images is owner-approved. Real photos are an optional upgrade, IMG-05 first. The launch steps, including the order for `LAUNCH_MODE`, are in `docs/launch-checklist.md`.
+
 ---
 
 # 33. Primary Design Reference Files

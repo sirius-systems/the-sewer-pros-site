@@ -5388,6 +5388,22 @@ The properties remain residential-focused (DEC-142). No page copy changed with t
 
 Recorded: the image was not edited, blurred or regenerated. The label is not named in alt text or in any page copy, and it is not treated as a confirmed equipment name anywhere. The approval covers this file only; any other file with legible non-approved lettering is still subject to the privacy check. The 8 hub cards and 16 drain-cleaning service + location problem cards that use it were wired the same day, which cleared the last 24 placeholder boxes.
 
+## DEC-145 - Generated Images Approved for All Image Slots; Real Photos Are an Optional Upgrade
+
+**Date:** 2026-10-12
+**Status:** APPROVED
+**Impact:** Minor (image provenance policy; no page copy changed by the decision)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** extends DEC-144, which approved one generated file (IMG-12) with a visible machine label
+**Affected Documents:**
+
+* `CLAUDE.md` (image rules), `docs/launch-checklist.md` (new)
+* `docs/image-shot-list.md`, `docs/shoot-day-schedule.md`, `docs/wiring-review.md`
+
+**Reason:** the owner decided that generated images are acceptable for every image slot on the site, including the slots that depict a technician, report, tablet, agent or monitor footage. Real photographs are an optional upgrade, starting with IMG-05 (178 boxes on 144 pages).
+
+Recorded: equipment shown in the images is owner-approved. Generated images may be used as illustrations. They must not be presented as a real customer job, a real inspection finding, a real report, a real customer or a real technician, so alt text, captions and nearby copy describe the scene only. The rule and the optional upgrade are on the launch checklist (`docs/launch-checklist.md`) and in `CLAUDE.md`.
+
 ---
 
 ---
