@@ -10,7 +10,7 @@ Delivering a file does not by itself remove a placeholder. After a photo is save
 
 ## Status after wiring (Oct 12, 2026)
 
-The new files were wired the same day: **24 boxes remain on 24 pages**. Wired: every file in all four sessions except IMG-12, plus both existing assets. Held: IMG-12 (drain machine at a floor or tub drain), because a readable non-approved label ("PF1500") shows on the machine leg. To clear the last 24 boxes, supply a replacement frame for IMG-12 without that label and wire it. Three files were inferred matches and need owner confirmation: IMG-07, IMG-11 and IMG-18. Full list in [image-shot-list.md](image-shot-list.md), section "Wiring status".
+The new files were wired the same day: **0 boxes remain**. Every file in all four sessions and both existing assets is wired. IMG-12 (drain machine at a floor or tub drain) was held first for a readable "PF1500" label on the machine leg and was then wired, owner-approved as generated with the label, for this file only (DEC-144). Three files were inferred matches and need owner confirmation: IMG-07, IMG-11 and IMG-18. Full list in [image-shot-list.md](image-shot-list.md), section "Wiring status".
 
 ## Rules that apply to every frame
 
