@@ -2972,7 +2972,7 @@ This approach gives The Sewer Pros a scalable organic-search platform capable of
 
 # 142. Implementation Snapshot (October 12, 2026)
 
-Re-derived on October 12, 2026 from the static build of `main` (200 documents, 198 approved route pages). Records repository state only. No rankings, impressions, traffic, indexation, or Search Console data exists in this repository and none is claimed.
+Re-derived on October 12, 2026 from the static build of `main` (201 HTML files, 198 approved route pages). Records repository state only. No rankings, impressions, traffic, indexation, or Search Console data exists in this repository and none is claimed.
 
 * **Sitemap:** 197 URLs, exactly the approved indexable set. Generated from `indexablePages` filtered by content-ready pages (`app/sitemap.ts`). No `lastmod`
 * **Indexable:** 197 of 198 approved pages (`launch`, `indexable: true`). Trailing-slash canonicals on `https://www.thesewerpros.com` (DEC-061, DEC-078)

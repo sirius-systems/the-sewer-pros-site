@@ -112,7 +112,7 @@ const homeFrames: readonly HeroBackdropImage[] = [
     source: SOURCE,
   },
   {
-    src: '/images/homepage/hero/the-sewer-pros-commercial-drain-diagnostics-hero.webp',
+    src: '/images/homepage/hero/the-sewer-pros-drain-diagnostics-hero.webp',
     describes: 'Camera reel at a floor cleanout in a service corridor',
     source: SOURCE,
   },

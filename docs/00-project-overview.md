@@ -12,7 +12,7 @@
 
 **Verified:** October 12, 2026, against the static build of `main` after DEC-142.
 
-**Phase:** Active implementation, pre-launch. This project is no longer a scaffold. All 198 approved pages are built (200 static pages including the two framework 404 documents), and the repository passes `npm run typecheck`, `npm run lint`, and `npm run build`. It is not yet launch-ready.
+**Phase:** Active implementation, pre-launch. This project is no longer a scaffold. All 198 approved pages are built (the build emits 201 HTML files: the 198 pages, the framework error pages `/404/` and `/_not-found/`, and `404.html`), and the repository passes `npm run typecheck`, `npm run lint`, and `npm run build`. It is not yet launch-ready.
 
 ## Completed Implementation
 
@@ -27,7 +27,7 @@
 
 ## Remaining Implementation
 
-* **Lead form submission endpoint** (PENDING-018). The form renders on six templates but submission is a stub and sends nothing
+* **Lead form submission endpoint** (PENDING-018). The forms render across the page templates, but nothing is sent: `NEXT_PUBLIC_LEAD_ENDPOINT` is unset, so a submit shows a "call to schedule" notice (see `lib/forms/submit-lead.ts`)
 * **TCPA consent copy** for the "text" contact option (PENDING-019)
 * ~~Market-scoped header contact (PENDING-017)~~ resolved; see the decision log entry that closed it
 * Phase 2 page `svc-independent-sewer-second-opinion`: a registry-confirmed `phase_2_candidate` (`data/services/master-service-registry.json`), approved as a strategic concept, not built as a standalone `/services/` page (see §9A below)
