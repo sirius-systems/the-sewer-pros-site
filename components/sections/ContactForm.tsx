@@ -365,7 +365,7 @@ export function ContactForm({
     const value = (key: string) => String(data.get(key) ?? '').trim()
 
     // Honeypot: a real visitor never sees or fills this field.
-    if (value('website') !== '') return
+    if (value('sp_ref') !== '') return
 
     const next: Errors = {}
     if (market === '') next.market = 'Choose your location.'
@@ -408,7 +408,7 @@ export function ContactForm({
       smsMarketingConsent: data.get('smsMarketingConsent') === 'on',
       smsConsentVersion: SMS_CONSENT_VERSION,
       formType: FORM_TYPE,
-      website: value('website'),
+      spRef: value('sp_ref'),
       formOpenedAt: openedAt.current,
     })
     setPending(false)
@@ -483,10 +483,19 @@ export function ContactForm({
         aria-labelledby={hideHeading ? labelledBy : id('heading')}
         className={(hideHeading && !shortcuts ? '' : 'mt-6 ') + 'grid gap-x-6 gap-y-5 sm:grid-cols-2'}
       >
-        {/* Honeypot. Hidden from sighted users and assistive tech. */}
+        {/* Honeypot. Off-screen (not display:none, which some bots skip), hidden from assistive tech, and
+            given a neutral name so browsers and password managers do not autofill it. */}
         <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-          <label htmlFor={id('website')}>Website</label>
-          <input id={id('website')} name="website" type="text" tabIndex={-1} autoComplete="off" />
+          <label htmlFor={id('sp-ref')}>Reference code</label>
+          <input
+            id={id('sp-ref')}
+            name="sp_ref"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            data-lpignore="true"
+            data-1p-ignore="true"
+          />
         </div>
 
         <fieldset className="sm:col-span-2">

@@ -100,7 +100,7 @@ const lead = (over = {}) => ({
   smsMarketingConsent: false,
   smsConsentVersion: 'sms-consent-v1',
   formType: 'contact_request',
-  website: '',
+  spRef: '',
   formOpenedAt: Date.now() - 60000,
   ...over,
 })
@@ -129,8 +129,9 @@ check('upsert uses the location id from the environment', up?.body.locationId ==
 check('standard fields: first name, last name, E.164 phone', up?.body.firstName === FIRST && up?.body.lastName === LAST && up?.body.phone === `+1${PHONE_DIGITS}`)
 check('upsert sends no tags (tags are added separately) and no dnd settings', up && !('tags' in up.body) && !('dnd' in up.body) && !('dndSettings' in up.body))
 check('custom field preferred_contact_method = Text', cf(up.body, 'preferred_contact_method') === 'Text')
-check('consent fields are "false" when unchecked, no timestamp', cf(up.body, 'sms_nonmarketing_consent') === 'false' && cf(up.body, 'sms_marketing_consent') === 'false' && cf(up.body, 'sms_consent_timestamp') === undefined)
-check('sms_consent_version = sms-consent-v1', cf(up.body, 'sms_consent_version') === 'sms-consent-v1')
+check('no box checked: no consent field, version or timestamp is sent (cannot overwrite an earlier true)', ['sms_nonmarketing_consent', 'sms_marketing_consent', 'sms_consent_version', 'sms_consent_timestamp'].every((k) => cf(up.body, k) === undefined))
+const nb0 = received.find((x) => x.url.endsWith('/notes'))?.body.body ?? ''
+check('no box checked: the note still records both choices as false, the version and the UTC time', nb0.includes('SMS non-marketing consent: false') && nb0.includes('SMS marketing consent: false') && nb0.includes('SMS consent version: sms-consent-v1') && /Received \(UTC\): \d{4}-\d\d-\d\dT/.test(nb0))
 check('market = St. Louis and source_page = /contact/', cf(up.body, 'market') === 'St. Louis' && cf(up.body, 'source_page') === '/contact/')
 const tags = received.find((x) => x.url === '/contacts/contact_abc123/tags')
 check('tags: website-lead, form-contact, market-st-louis; no marketing tag', JSON.stringify(tags?.body.tags) === JSON.stringify(['website-lead', 'form-contact', 'market-st-louis']))
@@ -151,7 +152,7 @@ const tg = received.find((x) => x.url.endsWith('/tags'))
 check('no market: market field "none" and no market tag; survey tag', cf(upsert().body, 'market') === 'none' && !tg.body.tags.some((t) => t.startsWith('market-')) && tg.body.tags.includes('form-survey'))
 
 reset()
-r = await post(lead({ website: 'http://spam.example' }))
+r = await post(lead({ spRef: 'filled by a bot' }))
 check('honeypot filled: success-looking reply, nothing sent to GHL', r.status === 200 && r.text === '{"ok":true}' && received.length === 0)
 reset()
 r = await post(lead({ formOpenedAt: Date.now() - 500 }))

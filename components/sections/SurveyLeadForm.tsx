@@ -185,7 +185,7 @@ export function SurveyLeadForm({
     const value = (key: string) => String(data.get(key) ?? '').trim()
 
     // Honeypot: a real visitor never sees or fills this field.
-    if (value('website') !== '') return
+    if (value('sp_ref') !== '') return
 
     const next: typeof errors = {}
     if (value('name') === '') next.name = 'Enter your full name.'
@@ -227,7 +227,7 @@ export function SurveyLeadForm({
       smsMarketingConsent: data.get('smsMarketingConsent') === 'on',
       smsConsentVersion: SMS_CONSENT_VERSION,
       formType: FORM_TYPE,
-      website: value('website'),
+      spRef: value('sp_ref'),
       formOpenedAt: openedAt.current,
     })
     setPending(false)
@@ -511,9 +511,19 @@ export function SurveyLeadForm({
           >
             <Textarea id={id('message')} name="message" rows={3} />
           </Field>
-          {/* Honeypot, hidden from people and assistive technology. */}
-          <div className="hidden" aria-hidden="true">
-            <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          {/* Honeypot. Off-screen (not display:none, which some bots skip), hidden from assistive technology,
+              and given a neutral name so browsers and password managers do not autofill it. */}
+          <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+            <label htmlFor={id('sp-ref')}>Reference code</label>
+            <input
+              id={id('sp-ref')}
+              type="text"
+              name="sp_ref"
+              tabIndex={-1}
+              autoComplete="off"
+              data-lpignore="true"
+              data-1p-ignore="true"
+            />
           </div>
           {/* Submit centred; Back sits below it. */}
           <div className="flex flex-col items-center gap-3 sm:col-span-2">
