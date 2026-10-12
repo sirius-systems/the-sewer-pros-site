@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils/cn'
+import { SHOW_IMAGE_SLOTS } from '@/lib/image-slots'
 import type { CardImage } from '@/types'
 
 /**
@@ -7,7 +8,8 @@ import type { CardImage } from '@/types'
  * Renders nothing unless the image carries `placeholder` metadata, which only
  * `resolveSlotImage` produces, and only while `SHOW_IMAGE_SLOTS` is on. Shared
  * by `Photo` and by the opt-in `slotPlaceholder` fields (hero, service cards,
- * final CTA). Never present in production.
+ * final CTA). Renders nothing when `SHOW_IMAGE_SLOTS` is off, which
+ * `LAUNCH_MODE` (`lib/launch.ts`) forces.
  */
 export function SlotPlaceholderBox({
   image,
@@ -17,7 +19,7 @@ export function SlotPlaceholderBox({
   className?: string
 }) {
   const placeholder = image?.placeholder
-  if (placeholder === undefined) return null
+  if (!SHOW_IMAGE_SLOTS || placeholder === undefined) return null
   return (
     <div
       className={cn(

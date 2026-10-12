@@ -1,4 +1,5 @@
 import type { CardImage } from '@/types'
+import { LAUNCH_MODE, SLOT_AUDIT_BUILD } from '@/lib/launch'
 
 /**
  * Build-environment image placeholders for the location pages.
@@ -8,16 +9,42 @@ import type { CardImage } from '@/types'
  * labelled box. When off, `resolveSlotImage` returns `undefined` for an
  * unfilled slot and no placeholder markup is produced anywhere.
  *
- * Launch: set `IMAGE_SLOTS_DEFAULT` to false, or build with
- * `NEXT_PUBLIC_SHOW_IMAGE_SLOTS=false`. The variable can only turn the
- * placeholders off. `NEXT_PUBLIC_*` values are inlined at build time.
+ * Launch: set `LAUNCH_MODE` to true in `lib/launch.ts`. That forces
+ * `SHOW_IMAGE_SLOTS` off whatever `NEXT_PUBLIC_SHOW_IMAGE_SLOTS` says, so every
+ * unfilled slot, every `ImagePlaceholder` and every other placeholder box
+ * renders nothing. Before launch, `NEXT_PUBLIC_SHOW_IMAGE_SLOTS=false` can still
+ * turn the placeholders off for one build; it can never turn them on.
+ * `NEXT_PUBLIC_*` values are inlined at build time.
+ *
+ * Every placeholder component reads `SHOW_IMAGE_SLOTS` (directly, or through
+ * `resolveSlotImage` / `onlyWhenSlotsShown`). The rule lives here and nowhere else.
  */
 
-/** Build-environment review aid. Set to false before launch. */
+/** Preview default. Not a launch control; `LAUNCH_MODE` is. */
 const IMAGE_SLOTS_DEFAULT = true
 
-export const SHOW_IMAGE_SLOTS =
-  process.env.NEXT_PUBLIC_SHOW_IMAGE_SLOTS === 'false' ? false : IMAGE_SLOTS_DEFAULT
+/** True when the build is a launch build (and not the throwaway audit render). */
+const LAUNCH_ACTIVE = LAUNCH_MODE && !SLOT_AUDIT_BUILD
+
+export const SHOW_IMAGE_SLOTS = LAUNCH_ACTIVE
+  ? false
+  : process.env.NEXT_PUBLIC_SHOW_IMAGE_SLOTS === 'false'
+    ? false
+    : IMAGE_SLOTS_DEFAULT
+
+/**
+ * Wrap any placeholder markup in this. Returns the node while placeholders are
+ * shown and `null` otherwise, so launch mode removes it everywhere.
+ */
+export function onlyWhenSlotsShown<T>(node: T): T | null {
+  return SHOW_IMAGE_SLOTS ? node : null
+}
+
+/**
+ * Small "development only" labels (for example the missing-backdrop hint).
+ * Shown only while placeholders are shown and never in a production build.
+ */
+export const SHOW_DEV_SLOT_LABELS = SHOW_IMAGE_SLOTS && process.env.NODE_ENV !== 'production'
 
 /**
  * Provenance for the owner-supplied photorealistic renders wired into slots.

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Section, Callout, Card, CardGrid, LinkCard, ButtonLink } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
+import { SHOW_DEV_SLOT_LABELS, SHOW_IMAGE_SLOTS } from '@/lib/image-slots'
 import { SectionHeading } from './SectionHeading'
 import {
   AccessPointIcon,
@@ -99,7 +100,8 @@ type Hub = NonNullable<ServiceHubContent>
  * ⚠ A MISSING FILE IS A PLACEHOLDER, NOT A BROKEN IMAGE. The parent
  * supplies the brand surface and the black scrim, so the copy stays
  * readable. Development also shows a small label naming the file to
- * add; production shows nothing (docs/18 §120).
+ * add (only while placeholders are shown and never in a production build,
+ * see `SHOW_DEV_SLOT_LABELS`); a launch build shows nothing (docs/18 §120).
  */
 export function BackdropImage({
   src,
@@ -122,7 +124,7 @@ export function BackdropImage({
       />
     )
   }
-  if (process.env.NODE_ENV === 'production') return null
+  if (!SHOW_DEV_SLOT_LABELS) return null
   return (
     <span
       data-image-placeholder={src}
@@ -1406,7 +1408,7 @@ export function ServiceComparison({
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                           className="object-cover"
                         />
-                      ) : (
+                      ) : SHOW_IMAGE_SLOTS ? (
                         <div
                           data-image-placeholder={row.service}
                           className="flex h-full w-full flex-col items-center justify-center gap-1 border-2 border-dashed border-border p-4 text-center text-caption text-muted-foreground"
@@ -1414,7 +1416,7 @@ export function ServiceComparison({
                           <p className="font-semibold text-foreground">Image placeholder</p>
                           <p>{row.service}</p>
                         </div>
-                      )}
+                      ) : null}
                     </div>
                     <div className="flex flex-1 flex-col p-6 text-foreground">
                     <h3 className="text-h4 font-semibold text-foreground">

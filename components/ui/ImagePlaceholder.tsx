@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils/cn'
+import { SHOW_IMAGE_SLOTS } from '@/lib/image-slots'
 
 /**
  * A pending-photography slot.
@@ -10,9 +11,10 @@ import { cn } from '@/lib/utils/cn'
  * so the layout is real and reviewable, and swapping in the photograph
  * later is a one-line change with no layout shift.
  *
- * ⚠ NOT FOR PRODUCTION INDEXATION. A page carrying this component is
- * not photography-complete and should stay held or `noindex` until
- * every instance is replaced with `next/image` (18 §40-42).
+ * ⚠ A PREVIEW AID, NOT CONTENT. A page carrying this component is not
+ * photography-complete until every instance is replaced with `next/image`
+ * (18 §40-42). The box is drawn only while `SHOW_IMAGE_SLOTS` is on; with
+ * `LAUNCH_MODE` true (`lib/launch.ts`) it renders nothing.
  */
 export interface ImagePlaceholderProps {
   /** What the real photograph should show, e.g. "Tracy Coffman, founder portrait". */
@@ -36,6 +38,7 @@ export function ImagePlaceholder({
   aspect = '4/3',
   className,
 }: ImagePlaceholderProps) {
+  if (!SHOW_IMAGE_SLOTS) return null
   return (
     <div
       className={cn(
