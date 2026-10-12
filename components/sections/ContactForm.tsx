@@ -646,8 +646,6 @@ export function ContactForm({
           <FieldError id={id('contactMethod-error')} message={errors.contactMethod} />
         </div>
 
-        <SmsConsent idPrefix={id('sms')} className="sm:col-span-2" />
-
         <Field htmlFor={id('appointmentWindow')} label="Preferred appointment window">
           <Select
             id={id('appointmentWindow')}
@@ -660,6 +658,8 @@ export function ContactForm({
         <Field htmlFor={id('message')} label="What is happening?" className="sm:col-span-2">
           <Textarea id={id('message')} name="message" />
         </Field>
+
+        <SmsConsent idPrefix={id('sms')} className="sm:col-span-2" />
 
         <div className="flex flex-col items-center gap-3 sm:col-span-2">
           <Button type="submit" pending={pending} pendingLabel="Sending…">
