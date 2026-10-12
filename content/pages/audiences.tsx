@@ -511,8 +511,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
         <h2>Scheduling around occupancy</h2>
         <p>
-          Access on occupied property means notice, tenant availability, and
-          working around trading hours on mixed-use sites. That is a planning
+          Access on occupied property means notice and tenant availability.
+          That is a planning
           constraint rather than an afterthought.
         </p>
       </>
