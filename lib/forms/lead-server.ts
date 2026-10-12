@@ -15,7 +15,13 @@
  * - base URL https://services.leadconnectorhq.com, headers
  *   `Authorization: Bearer <Private Integration token>` and `Version: 2021-07-28`
  * - POST /contacts/upsert (create or update by phone or email, follows the
- *   location's "Allow Duplicate Contact" setting), scope contacts.write
+ *   location's "Allow Duplicate Contact" setting), scope contacts.write. Custom
+ *   fields are sent as `{ key: "<unique_key>", fieldValue }` with NO `contact.`
+ *   prefix: tested against the live API on 2026-10-12, a key with the prefix is
+ *   accepted (HTTP 201) but silently ignored, while the bare key, the field id
+ *   and id plus key all store the value. GHL also ignores a key that names a
+ *   field that does not exist, with no error, so the consent record is always
+ *   repeated in the note as well.
  * - POST /contacts/{id}/tags (adds tags; the upsert `tags` field would overwrite
  *   every existing tag, so tags are added with this call instead)
  * - POST /contacts/{id}/notes (the free-text details)
@@ -252,7 +258,7 @@ export function customFieldValues(lead: Lead, receivedAtIso: string): { key: str
     source_page: lead.sourcePage,
   }
   return GHL_CUSTOM_FIELD_KEYS.filter((k) => values[k] !== '').map((k) => ({
-    key: `contact.${k}`,
+    key: k,
     fieldValue: values[k],
   }))
 }
@@ -264,18 +270,17 @@ export function leadTags(lead: Lead): string[] {
   return tags
 }
 
-function noteBody(lead: Lead, customFieldsFailed: boolean, receivedAtIso: string): string {
+function noteBody(lead: Lead, receivedAtIso: string): string {
   const lines = lead.details.map((d) => `${d.label}: ${d.value}`)
   lines.push(`Preferred contact: ${lead.contactMethod}`, `Source page: ${lead.sourcePage}`, `Market: ${lead.marketLabel}`)
-  if (customFieldsFailed) {
-    // The custom fields could not be saved, so keep the consent record in the note.
-    lines.push(
-      `SMS non-marketing consent: ${lead.smsNonMarketingConsent}`,
-      `SMS marketing consent: ${lead.smsMarketingConsent}`,
-      `SMS consent version: ${lead.smsConsentVersion}`,
-      `Received (UTC): ${receivedAtIso}`,
-    )
-  }
+  // The consent record is always repeated here, because GHL silently ignores a custom
+  // field that does not exist, so the field alone is not proof it was saved.
+  lines.push(
+    `SMS non-marketing consent: ${lead.smsNonMarketingConsent}`,
+    `SMS marketing consent: ${lead.smsMarketingConsent}`,
+    `SMS consent version: ${lead.smsConsentVersion}`,
+    `Received (UTC): ${receivedAtIso}`,
+  )
   return `Website request\n${lines.join('\n')}`
 }
 
@@ -411,13 +416,11 @@ export async function handleLead(request: Request, env: LeadEnv, deps: HandlerDe
   if (lead.lastName !== '') contact.lastName = lead.lastName
   if (lead.email !== '') contact.email = lead.email
 
-  let customFieldsFailed = false
   let upsert = await call('/contacts/upsert', { ...contact, customFields: customFieldValues(lead, receivedAtIso) })
   log(JSON.stringify({ requestId: id, step: 'ghl-upsert', status: upsert.status }))
   if (upsert.status >= 400 && upsert.status < 500 && ![401, 403, 429].includes(upsert.status)) {
     // Most likely a custom field that does not exist yet in GHL. Save the contact without
     // the custom fields and keep the consent record in the note instead.
-    customFieldsFailed = true
     upsert = await call('/contacts/upsert', contact)
     log(JSON.stringify({ requestId: id, step: 'ghl-upsert-retry', status: upsert.status }))
   }
@@ -432,7 +435,7 @@ export async function handleLead(request: Request, env: LeadEnv, deps: HandlerDe
   const tags = await call(`/contacts/${encodeURIComponent(contactId)}/tags`, { tags: leadTags(lead) })
   log(JSON.stringify({ requestId: id, step: 'ghl-tags', status: tags.status }))
   const note = await call(`/contacts/${encodeURIComponent(contactId)}/notes`, {
-    body: noteBody(lead, customFieldsFailed, receivedAtIso),
+    body: noteBody(lead, receivedAtIso),
   })
   log(JSON.stringify({ requestId: id, step: 'ghl-note', status: note.status }))
 
