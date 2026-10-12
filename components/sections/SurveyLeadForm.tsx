@@ -118,6 +118,11 @@ export function SurveyLeadForm({
   const [errors, setErrors] = useState<{ name?: string; phone?: string; email?: string }>({})
   const started = useRef(false)
   const headingRef = useRef<HTMLHeadingElement>(null)
+  // When the form was opened; the server drops a submit that comes faster than a person can type.
+  const openedAt = useRef(0)
+  useEffect(() => {
+    openedAt.current = Date.now()
+  }, [])
 
   // Registry locations only; the "other area" pills have no registry id.
   const analyticsLocationId = location.startsWith('loc-') ? location : undefined
@@ -206,7 +211,8 @@ export function SurveyLeadForm({
       marketId,
       issue: unsure || service === '' ? 'not-sure' : service,
       followUp: '',
-      firstName: value('name'),
+      firstName: value('name').split(/\s+/)[0] ?? '',
+      lastName: value('name').split(/\s+/).slice(1).join(' '),
       phone: value('phone'),
       email: value('email'),
       zip: '',
@@ -220,6 +226,9 @@ export function SurveyLeadForm({
       smsNonMarketingConsent: data.get('smsNonMarketingConsent') === 'on',
       smsMarketingConsent: data.get('smsMarketingConsent') === 'on',
       smsConsentVersion: SMS_CONSENT_VERSION,
+      formType: FORM_TYPE,
+      website: value('website'),
+      formOpenedAt: openedAt.current,
     })
     setPending(false)
 
@@ -235,11 +244,7 @@ export function SurveyLeadForm({
       return
     }
 
-    setNotice(
-      result.reason === 'not-configured'
-        ? `Online requests are not available yet. Please call ${phoneLabel} to schedule.`
-        : `We could not send your request. Please try again, or call ${phoneLabel}.`,
-    )
+    setNotice(`We could not send your request. Please try again, or call ${phoneLabel}.`)
   }
 
   const question =
