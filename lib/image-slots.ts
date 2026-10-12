@@ -19,6 +19,13 @@ const IMAGE_SLOTS_DEFAULT = true
 export const SHOW_IMAGE_SLOTS =
   process.env.NEXT_PUBLIC_SHOW_IMAGE_SLOTS === 'false' ? false : IMAGE_SLOTS_DEFAULT
 
+/**
+ * Provenance for the owner-supplied photorealistic renders wired into slots.
+ * They are rendered scenes, not photos of a Sewer Pros job.
+ */
+export const RENDER_IMAGE_SOURCE =
+  'Photorealistic render supplied by the business owner, 2026-10-12. Rendered scene, not a Sewer Pros job photo.'
+
 /** The shape of an entry in a page module's `IMAGE_SLOTS` registry. */
 export interface ImageSlotLike {
   id: string
