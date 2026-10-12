@@ -1,7 +1,7 @@
 {
   "project": "The Sewer Pros multi-market website rebuild",
   "version": "1.0",
-  "purpose": "Normalized service source of truth for canonical service pages and downstream service + location and commercial + location matrices.",
+  "purpose": "Normalized service source of truth for canonical service pages and downstream service + location matrices.",
   "markets": [
     "st-louis-mo",
     "san-diego-ca",
@@ -10,10 +10,7 @@
   "canonical_url_rules": {
     "service_hub": "/services/",
     "core_or_derived_service": "/services/{service}/",
-    "commercial_hub": "/commercial/",
-    "commercial_service": "/commercial/{service}/",
     "service_location": "/{market}/{location}/{service}/",
-    "commercial_service_location": "/{market}/{location}/commercial/{service}/",
     "st_louis_market_specific_service": "/st-louis-mo/{service}/"
   },
   "services": [
@@ -28,7 +25,6 @@
       "source_status": "established_existing_service",
       "launch_tier": "launch",
       "matrix_eligibility": "full",
-      "commercial_applicability": "yes",
       "primary_intents": [
         "diagnose sewer condition",
         "identify damage or obstructions",
@@ -68,7 +64,6 @@
       "source_status": "established_existing_service",
       "launch_tier": "launch",
       "matrix_eligibility": "full",
-      "commercial_applicability": "yes",
       "primary_intents": [
         "clear main sewer line",
         "remove roots and obstructions",
@@ -77,8 +72,7 @@
       "primary_audiences": [
         "homeowners",
         "landlords",
-        "property-managers",
-        "commercial-property-owners"
+        "property-managers"
       ],
       "aliases": [
         "rooter service",
@@ -104,7 +98,6 @@
       "source_status": "established_existing_service",
       "launch_tier": "launch",
       "matrix_eligibility": "full",
-      "commercial_applicability": "strong",
       "primary_intents": [
         "remove grease and sludge",
         "remove stubborn buildup",
@@ -112,10 +105,7 @@
       ],
       "primary_audiences": [
         "homeowners",
-        "property-managers",
-        "commercial-property-owners",
-        "restaurants",
-        "facility-managers"
+        "property-managers"
       ],
       "aliases": [
         "hydro-jetting",
@@ -128,7 +118,7 @@
         "san-diego-ca": "confirmed",
         "las-vegas-nv": "confirmed"
       },
-      "notes": "Current sites explicitly position hydro jetting for grease/sludge removal and recurring preventative maintenance, including commercial properties and food establishments."
+      "notes": "Current sites explicitly position hydro jetting for grease/sludge removal and recurring preventative maintenance."
     },
     {
       "service_id": "svc-sewer-cleaning-camera-inspection",
@@ -141,7 +131,6 @@
       "source_status": "established_existing_service",
       "launch_tier": "launch",
       "matrix_eligibility": "full",
-      "commercial_applicability": "yes",
       "primary_intents": [
         "clean then inspect sewer",
         "diagnose recurring backups",
@@ -150,8 +139,7 @@
       "primary_audiences": [
         "homeowners",
         "home-buyers",
-        "property-managers",
-        "commercial-property-owners"
+        "property-managers"
       ],
       "aliases": [
         "sewer cleaning and camera inspection",
@@ -176,7 +164,6 @@
       "source_status": "established_existing_service",
       "launch_tier": "launch",
       "matrix_eligibility": "full",
-      "commercial_applicability": "yes",
       "primary_intents": [
         "locate sewer direction",
         "determine sewer depth",
@@ -186,8 +173,7 @@
         "homeowners",
         "contractors",
         "remodelers",
-        "property-managers",
-        "commercial-property-owners"
+        "property-managers"
       ],
       "aliases": [
         "line locating",
@@ -213,7 +199,6 @@
       "source_status": "established_existing_service",
       "launch_tier": "launch",
       "matrix_eligibility": "full",
-      "commercial_applicability": "yes",
       "primary_intents": [
         "clear clogged drains",
         "restore drain flow",
@@ -222,9 +207,7 @@
       "primary_audiences": [
         "homeowners",
         "landlords",
-        "property-managers",
-        "commercial-property-owners",
-        "restaurants"
+        "property-managers"
       ],
       "aliases": [
         "clogged drain cleaning",
@@ -249,7 +232,6 @@
       "source_status": "existing_use_case_promoted_to_standalone_page",
       "launch_tier": "launch",
       "matrix_eligibility": "full_on_residential_real_estate_locations",
-      "commercial_applicability": "no",
       "primary_intents": [
         "inspect sewer before buying a home",
         "document sewer condition for a real-estate transaction"
@@ -285,7 +267,6 @@
       "source_status": "existing_use_case_promoted_to_standalone_page",
       "launch_tier": "launch_candidate",
       "matrix_eligibility": "full_on_residential_property_management_locations",
-      "commercial_applicability": "yes",
       "primary_intents": [
         "diagnose repeated sewer backups",
         "determine blockage versus damaged line"
@@ -293,8 +274,7 @@
       "primary_audiences": [
         "homeowners",
         "landlords",
-        "property-managers",
-        "commercial-property-owners"
+        "property-managers"
       ],
       "aliases": [
         "repeated sewer backup diagnosis",
@@ -319,7 +299,6 @@
       "source_status": "existing_maintenance_use_case_promoted_to_standalone_page",
       "launch_tier": "launch_candidate",
       "matrix_eligibility": "selective",
-      "commercial_applicability": "strong",
       "primary_intents": [
         "prevent sewer backups",
         "schedule recurring sewer cleaning",
@@ -328,10 +307,7 @@
       "primary_audiences": [
         "homeowners",
         "landlords",
-        "property-managers",
-        "commercial-property-owners",
-        "facility-managers",
-        "restaurants"
+        "property-managers"
       ],
       "aliases": [
         "preventive sewer maintenance",
@@ -357,7 +333,6 @@
       "source_status": "existing_brand_differentiator_promoted_to_standalone_page",
       "launch_tier": "phase_2_candidate",
       "matrix_eligibility": "selective",
-      "commercial_applicability": "yes",
       "primary_intents": [
         "verify a sewer repair recommendation",
         "obtain an inspection without repair upsell"
@@ -366,8 +341,7 @@
         "homeowners",
         "home-buyers",
         "real-estate-agents",
-        "property-managers",
-        "commercial-property-owners"
+        "property-managers"
       ],
       "aliases": [
         "sewer repair second opinion",
@@ -392,7 +366,6 @@
       "source_status": "market_specific_existing_capability",
       "launch_tier": "launch",
       "matrix_eligibility": "selective_st_louis_only",
-      "commercial_applicability": "conditional",
       "primary_intents": [
         "sewer lateral inspection",
         "municipal sewer lateral report",
@@ -416,251 +389,6 @@
         "las-vegas-nv": "not_applicable"
       },
       "notes": "St. Louis-specific. Current St. Louis site states the company is licensed through most municipal sewer lateral programs for submitting reports. Program-by-program coverage must be documented before localized claims."
-    },
-    {
-      "service_id": "svc-commercial-sewer-camera-inspection",
-      "name": "Commercial Sewer Camera Inspection",
-      "slug": "sewer-camera-inspection",
-      "canonical_url": "/commercial/sewer-camera-inspection/",
-      "record_type": "commercial_service",
-      "service_family": "inspection_diagnostics",
-      "parent_service_id": "svc-sewer-camera-inspection",
-      "source_status": "commercial_expansion_from_confirmed_core_capability",
-      "launch_tier": "launch",
-      "matrix_eligibility": "full_on_commercial_eligible_locations",
-      "commercial_applicability": "yes",
-      "primary_intents": [
-        "document commercial sewer condition",
-        "diagnose commercial sewer problems"
-      ],
-      "primary_audiences": [
-        "commercial-property-owners",
-        "property-managers",
-        "facility-managers",
-        "restaurants",
-        "multifamily-properties",
-        "hoas"
-      ],
-      "aliases": [
-        "commercial sewer scope",
-        "commercial sewer inspection"
-      ],
-      "markets": {
-        "st-louis-mo": "confirmed",
-        "san-diego-ca": "confirmed",
-        "las-vegas-nv": "confirmed"
-      },
-      "notes": "Technique is established; standalone commercial packaging is part of the rebuild and should use commercial-first proof, reporting, scheduling, and maintenance language."
-    },
-    {
-      "service_id": "svc-commercial-sewer-cleaning",
-      "name": "Commercial Sewer Cleaning",
-      "slug": "sewer-cleaning",
-      "canonical_url": "/commercial/sewer-cleaning/",
-      "record_type": "commercial_service",
-      "service_family": "cleaning",
-      "parent_service_id": "svc-sewer-cleaning",
-      "source_status": "commercial_expansion_from_confirmed_core_capability",
-      "launch_tier": "launch",
-      "matrix_eligibility": "full_on_commercial_eligible_locations",
-      "commercial_applicability": "yes",
-      "primary_intents": [
-        "clear commercial sewer lines",
-        "remove commercial sewer blockages"
-      ],
-      "primary_audiences": [
-        "commercial-property-owners",
-        "property-managers",
-        "facility-managers",
-        "restaurants",
-        "multifamily-properties",
-        "hoas"
-      ],
-      "aliases": [
-        "commercial main line cleaning",
-        "commercial sewer rooter"
-      ],
-      "markets": {
-        "st-louis-mo": "confirmed",
-        "san-diego-ca": "confirmed",
-        "las-vegas-nv": "confirmed"
-      },
-      "notes": "Commercial page is an expansion of a confirmed cleaning capability. Service hours, emergency response, large-line limits, and equipment constraints must be validated."
-    },
-    {
-      "service_id": "svc-commercial-hydro-jetting",
-      "name": "Commercial Hydro Jetting",
-      "slug": "hydro-jetting",
-      "canonical_url": "/commercial/hydro-jetting/",
-      "record_type": "commercial_service",
-      "service_family": "cleaning",
-      "parent_service_id": "svc-hydro-jetting",
-      "source_status": "explicit_existing_commercial_use_case",
-      "launch_tier": "launch",
-      "matrix_eligibility": "full_on_commercial_eligible_locations",
-      "commercial_applicability": "yes",
-      "primary_intents": [
-        "remove commercial grease and sludge",
-        "prevent commercial sewer backups",
-        "scheduled hydro jet maintenance"
-      ],
-      "primary_audiences": [
-        "restaurants",
-        "commercial-property-owners",
-        "property-managers",
-        "facility-managers",
-        "multifamily-properties"
-      ],
-      "aliases": [
-        "commercial sewer jetting",
-        "restaurant hydro jetting",
-        "high-pressure commercial drain cleaning"
-      ],
-      "markets": {
-        "st-louis-mo": "supported_by_current_hydro_jetting_page",
-        "san-diego-ca": "supported_by_current_hydro_jetting_page",
-        "las-vegas-nv": "supported_by_current_hydro_jetting_page"
-      },
-      "notes": "Highest-confidence commercial service. Current hydro-jetting pages explicitly reference commercial sewer lines, food establishments, grease/sludge, and maintenance."
-    },
-    {
-      "service_id": "svc-commercial-drain-cleaning",
-      "name": "Commercial Drain Cleaning",
-      "slug": "drain-cleaning",
-      "canonical_url": "/commercial/drain-cleaning/",
-      "record_type": "commercial_service",
-      "service_family": "cleaning",
-      "parent_service_id": "svc-drain-cleaning",
-      "source_status": "commercial_expansion_from_confirmed_core_capability",
-      "launch_tier": "launch",
-      "matrix_eligibility": "full_on_commercial_eligible_locations",
-      "commercial_applicability": "yes",
-      "primary_intents": [
-        "clear commercial drains",
-        "restore business drain flow",
-        "reduce recurring clogs"
-      ],
-      "primary_audiences": [
-        "restaurants",
-        "commercial-property-owners",
-        "property-managers",
-        "facility-managers",
-        "multifamily-properties"
-      ],
-      "aliases": [
-        "business drain cleaning",
-        "restaurant drain cleaning"
-      ],
-      "markets": {
-        "st-louis-mo": "confirmed",
-        "san-diego-ca": "confirmed",
-        "las-vegas-nv": "confirmed"
-      },
-      "notes": "Commercial positioning is recommended for the rebuild, but current public service pages do not establish every commercial scope detail."
-    },
-    {
-      "service_id": "svc-commercial-sewer-line-locating",
-      "name": "Commercial Sewer Line Locating",
-      "slug": "sewer-line-locating",
-      "canonical_url": "/commercial/sewer-line-locating/",
-      "record_type": "commercial_service",
-      "service_family": "locating",
-      "parent_service_id": "svc-sewer-line-locating",
-      "source_status": "commercial_expansion_from_confirmed_core_capability",
-      "launch_tier": "phase_2_candidate",
-      "matrix_eligibility": "selective",
-      "commercial_applicability": "yes",
-      "primary_intents": [
-        "locate commercial sewer lines",
-        "support excavation, repair, development, or remodeling planning"
-      ],
-      "primary_audiences": [
-        "contractors",
-        "commercial-property-owners",
-        "property-managers",
-        "facility-managers"
-      ],
-      "aliases": [
-        "commercial sewer locating",
-        "commercial line locating"
-      ],
-      "markets": {
-        "st-louis-mo": "confirmed",
-        "san-diego-ca": "confirmed",
-        "las-vegas-nv": "confirmed"
-      },
-      "notes": "Keep selective because intent is narrower than camera inspection, cleaning, and hydro jetting."
-    },
-    {
-      "service_id": "svc-commercial-preventative-maintenance",
-      "name": "Commercial Preventative Sewer & Drain Maintenance",
-      "slug": "preventative-maintenance",
-      "canonical_url": "/commercial/preventative-maintenance/",
-      "record_type": "commercial_service",
-      "service_family": "maintenance",
-      "parent_service_id": "svc-preventative-sewer-maintenance",
-      "source_status": "explicit_existing_commercial_maintenance_use_case",
-      "launch_tier": "launch",
-      "matrix_eligibility": "full_on_commercial_eligible_locations",
-      "commercial_applicability": "yes",
-      "primary_intents": [
-        "schedule recurring sewer and drain maintenance",
-        "prevent business backups",
-        "coordinate multi-property maintenance"
-      ],
-      "primary_audiences": [
-        "restaurants",
-        "property-managers",
-        "facility-managers",
-        "commercial-property-owners",
-        "multifamily-properties",
-        "hoas"
-      ],
-      "aliases": [
-        "commercial sewer maintenance plan",
-        "scheduled drain maintenance",
-        "preventive commercial sewer maintenance"
-      ],
-      "markets": {
-        "st-louis-mo": "supported_by_current_hydro_jetting_positioning",
-        "san-diego-ca": "supported_by_current_hydro_jetting_positioning",
-        "las-vegas-nv": "supported_by_current_hydro_jetting_positioning"
-      },
-      "notes": "Current hydro-jetting pages explicitly recommend scheduled preventative maintenance for commercial properties. Actual program terms must be confirmed."
-    },
-    {
-      "service_id": "svc-commercial-grease-sludge-removal",
-      "name": "Commercial Grease & Sludge Removal",
-      "slug": "grease-sludge-removal",
-      "canonical_url": "/commercial/grease-sludge-removal/",
-      "record_type": "commercial_service",
-      "service_family": "cleaning",
-      "parent_service_id": "svc-commercial-hydro-jetting",
-      "source_status": "existing_hydro_jetting_use_case_promoted_to_specialization",
-      "launch_tier": "phase_2_candidate",
-      "matrix_eligibility": "selective",
-      "commercial_applicability": "yes",
-      "primary_intents": [
-        "remove grease buildup from sewer lines",
-        "remove sludge buildup from commercial sewer lines"
-      ],
-      "primary_audiences": [
-        "restaurants",
-        "food-service-businesses",
-        "commercial-property-owners",
-        "facility-managers"
-      ],
-      "aliases": [
-        "grease buildup removal",
-        "sludge removal",
-        "restaurant sewer line cleaning"
-      ],
-      "markets": {
-        "st-louis-mo": "supported_by_current_hydro_jetting_capability",
-        "san-diego-ca": "supported_by_current_hydro_jetting_capability",
-        "las-vegas-nv": "supported_by_current_hydro_jetting_capability"
-      },
-      "notes": "Do not describe this as grease-trap cleaning unless the company separately confirms that service. Current support is for hydro-jetting grease/sludge from sewer lines."
     }
   ],
   "hubs": [
@@ -672,17 +400,7 @@
       "record_type": "service_hub",
       "launch_tier": "launch",
       "matrix_eligibility": "none",
-      "notes": "Routes users to all canonical non-commercial services."
-    },
-    {
-      "service_id": "hub-commercial",
-      "name": "Commercial Sewer & Drain Services Hub",
-      "slug": "commercial",
-      "canonical_url": "/commercial/",
-      "record_type": "service_hub",
-      "launch_tier": "launch",
-      "matrix_eligibility": "none",
-      "notes": "Dedicated commercial conversion path. Commercial services should not be buried as subsections of residential pages."
+      "notes": "Routes users to all canonical services."
     }
   ],
   "excluded_or_alias_intents": [
@@ -703,12 +421,6 @@
       "disposition": "problem_or_subservice_not_standalone_at_launch",
       "canonical_target": "svc-sewer-cleaning",
       "reason": "Existing cleaning service removes roots; avoid intent fragmentation until demand supports a separate page."
-    },
-    {
-      "term": "Grease Trap Cleaning",
-      "disposition": "hold_pending_service_confirmation",
-      "canonical_target": null,
-      "reason": "Current hydro-jetting content recommends maintenance programs that include grease-trap cleaning, but does not clearly establish that The Sewer Pros performs grease-trap cleaning."
     },
     {
       "term": "Sewer Repair",
@@ -742,31 +454,30 @@
     }
   ],
   "summary": {
-    "service_records": 18,
-    "hub_records": 2,
+    "service_records": 11,
+    "hub_records": 1,
     "by_record_type": {
       "core_service": 6,
       "derived_service": 4,
-      "market_specific_service": 1,
-      "commercial_service": 7
+      "market_specific_service": 1
     },
     "by_launch_tier": {
-      "launch": 13,
+      "launch": 8,
       "launch_candidate": 2,
-      "phase_2_candidate": 3
+      "phase_2_candidate": 1
     },
     "by_service_family": {
-      "inspection_diagnostics": 7,
-      "cleaning": 7,
-      "locating": 2,
-      "maintenance": 2
+      "inspection_diagnostics": 6,
+      "cleaning": 3,
+      "locating": 1,
+      "maintenance": 1
     }
   },
   "source_notes": [
     "Both existing public sites list the same six core specialties: sewer camera inspection, sewer cleaning, hydro jetting, sewer cleaning & camera inspection, line locating, and drain cleaning.",
     "Current camera-inspection content explicitly supports pre-purchase/home-buyer intent and photo/video reporting.",
     "Current combined cleaning & camera content explicitly supports recurring-backup diagnosis and independent third-party evaluation because the company states it does not perform broken-line repairs.",
-    "Current hydro-jetting content explicitly supports grease/sludge removal, commercial property use cases, food establishments, and scheduled preventative maintenance.",
+    "Current hydro-jetting content explicitly supports grease/sludge removal and scheduled preventative maintenance.",
     "The St. Louis site states it is licensed through most municipal sewer lateral programs for submitting reports; exact program coverage must be validated before localized claims.",
     "Las Vegas service availability is part of the project scope supplied by the user, but each service remains operational-confirmation-required until the company confirms the Las Vegas service menu."
   ]

@@ -34,11 +34,10 @@
  *   location          LocationPageTemplate
  *   service-location  ServiceLocationPageTemplate
  *   audience          AudiencePageTemplate
- *   commercial        CommercialPageTemplate
  *   comparison        ComparisonPageTemplate
  *   resource          ResourcePageTemplate
  *
- * DEC-066 also defines `audience-location`, `commercial-location`,
+ * DEC-066 also defines `audience-location`,
  * `alternative`, `topic-hub`, and `legal`. None has an approved page in
  * doc 04, so none has a template — building templates for unapproved
  * families would invite the routes to follow (04 §18, CLAUDE.md §18).
@@ -78,9 +77,6 @@ export type { ServiceLocationPageTemplateProps } from './ServiceLocationPageTemp
 
 export { AudiencePageTemplate } from './AudiencePageTemplate'
 export type { AudiencePageTemplateProps } from './AudiencePageTemplate'
-
-export { CommercialPageTemplate } from './CommercialPageTemplate'
-export type { CommercialPageTemplateProps } from './CommercialPageTemplate'
 
 export { ComparisonPageTemplate } from './ComparisonPageTemplate'
 export type { ComparisonPageTemplateProps } from './ComparisonPageTemplate'

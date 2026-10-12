@@ -34,7 +34,6 @@ export const RESERVED_ROOT_SEGMENTS = [
   'services',
   'locations',
   'for',
-  'commercial',
   'compare',
   'alternatives',
   'resources',

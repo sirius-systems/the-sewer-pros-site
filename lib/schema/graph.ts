@@ -92,7 +92,6 @@ function webPageType(page: MasterPageRecord): WebPageType {
     case 'service-hub':
     case 'markets-hub':
     case 'audience-hub':
-    case 'commercial-hub':
     case 'resource-hub':
     case 'market':
       return 'CollectionPage'

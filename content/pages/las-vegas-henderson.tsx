@@ -396,7 +396,6 @@ const formConfig: LeadFormConfig = {
       value: serviceId,
       label: getService(serviceId).name,
     })),
-    { value: 'hub-commercial', label: 'Commercial Sewer & Drain Services' },
     { value: 'other', label: 'Not sure which service I need' },
   ],
   locationLabel: 'Property location',

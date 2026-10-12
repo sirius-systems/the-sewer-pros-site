@@ -599,7 +599,6 @@ export const sanDiegoServiceLocationContent: Partial<
     relatedPageIds: [
       id('loc-sd-mission-valley'),
       id('svc-hydro-jetting'),
-      id('com-hydro-jetting'),
     ],
   },
 }

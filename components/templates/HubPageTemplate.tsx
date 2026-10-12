@@ -213,10 +213,7 @@ export function HubPageTemplate({
   const showsHeroForm = content.showHeroForm === true
   const showsReviews =
     content.showTrustSections === true && reviewMarqueeRenders()
-  // `dense` on the commercial hub only: `standard` there makes a four-section
-  // run with its neighbours (Appendix A).
-  const reviewsDensity: SectionDensity =
-    page.id === 'hub-commercial' ? 'dense' : 'standard'
+  const reviewsDensity: SectionDensity = 'standard'
   const showsConfidence =
     content.showTrustSections === true && confidenceModuleRenders()
 

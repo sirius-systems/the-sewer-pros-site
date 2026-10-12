@@ -17,7 +17,6 @@
  */
 
 import type { AudienceId } from './audience'
-import type { CommercialSegmentId } from './commercial'
 import type { LocationId, MarketId, PageId, Pathname } from './common'
 import type { ServiceId } from './service'
 
@@ -98,7 +97,7 @@ export function isIndexable(
  *   19 §28  has `contact` and `conversion`; lacks `resource-hub` and
  *           `legal`.
  *   03 §52  has the fullest taxonomy, including Service Hub, Markets Hub,
- *           Audience Hub, Commercial Hub, Topic Hub.
+ *           Audience Hub, Topic Hub.
  *
  * All three are explicitly provisional — 02 §26 says "Potential page
  * family types include" and "This list may evolve based on the final
@@ -111,7 +110,7 @@ export function isIndexable(
  *     type and governs code.
  *   - 03 §52 supplies the missing hub families. 02 §26 defers to the
  *     information architecture, and 03 IS that document. Doc 04's launch
- *     build needs them: /services/, /locations/, /for/, /commercial/,
+ *     build needs them: /services/, /locations/, /for/,
  *     and /resources/ are all approved launch pages with no family in
  *     02 §26's list.
  *   - 19 §28's `contact` and `conversion` are NOT included. They are
@@ -123,7 +122,7 @@ export function isIndexable(
  *
  * Families present in the 70-page launch build (04 §5):
  *   core (9) · service (10) · market (3) · location (16) ·
- *   service-location (14) · audience (6) · commercial (5) ·
+ *   service-location (14) · audience (6) ·
  *   comparison (2) · resource (5)
  */
 export type PageType =
@@ -144,10 +143,6 @@ export type PageType =
   | 'audience-hub'
   | 'audience'
   | 'audience-location'
-  // Commercial
-  | 'commercial-hub'
-  | 'commercial'
-  | 'commercial-location'
   // Decision support
   | 'comparison'
   | 'alternative'
@@ -176,8 +171,6 @@ export type AnalyticsPageType =
   | 'service-location'
   | 'audience'
   | 'audience-location'
-  | 'commercial'
-  | 'commercial-location'
   | 'comparison'
   | 'alternative'
   | 'resource'
@@ -203,8 +196,6 @@ export function analyticsPageType(pageType: PageType): AnalyticsPageType {
       return 'market'
     case 'audience-hub':
       return 'audience'
-    case 'commercial-hub':
-      return 'commercial'
     case 'resource-hub':
     case 'topic-hub':
       return 'resource'
@@ -259,7 +250,6 @@ export interface MasterPageRecord {
   locationId?: LocationId
   serviceId?: ServiceId
   audienceId?: AudienceId
-  commercialId?: CommercialSegmentId
 
   /**
    * Logical parent page id (03 §53).

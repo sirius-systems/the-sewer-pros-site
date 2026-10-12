@@ -1985,7 +1985,6 @@ export type HubAudienceIcon =
   | 'community'
   | 'eye'
   | 'document'
-  | 'commercial-building'
   | 'house-document'
   | 'house-search'
 
@@ -2965,13 +2964,6 @@ export interface AudiencePageContent extends BasePageContent {
   problems?: readonly ProblemContent[]
   inclusions?: readonly InclusionContent[]
   services?: readonly { pageId: PageId; description?: string }[]
-}
-
-/** Commercial service page — 18 §114. */
-export interface CommercialPageContent extends BasePageContent {
-  process?: readonly ProcessContent[]
-  problems?: readonly ProblemContent[]
-  inclusions?: readonly InclusionContent[]
 }
 
 /** Comparison page — 18 §66, 05 §41. */

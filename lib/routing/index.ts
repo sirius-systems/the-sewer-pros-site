@@ -25,7 +25,6 @@ export type { MarketRouteParams } from './pathname'
 
 export {
   serviceParams,
-  commercialServiceParams,
   audienceParams,
   comparisonParams,
   resourceParams,
