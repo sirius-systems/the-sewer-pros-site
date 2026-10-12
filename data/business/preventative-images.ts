@@ -47,8 +47,9 @@ export const preventativeImageSlots = {
     },
   },
   'preventative-prep': {
-    preferred: `${DIR}${NAME}-prep-cleanout-4x3.webp`,
-    alt: 'A capped sewer cleanout at a residential property',
+    // Filled by the shared owner-supplied render of a capped cleanout (not a job photo).
+    preferred: '/images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp',
+    alt: 'Capped sewer cleanout at the base of a house',
     caption: '',
     width: 1448,
     height: 1086,

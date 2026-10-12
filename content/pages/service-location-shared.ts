@@ -14,7 +14,7 @@
  */
 
 import { getService } from '@/data/services'
-import { resolveSlotImage, type ImageSlotLike } from '@/lib/image-slots'
+import { RENDER_IMAGE_SOURCE, resolveSlotImage, type ImageSlotLike } from '@/lib/image-slots'
 import type {
   CardImage,
   FaqContent,
@@ -49,6 +49,74 @@ function boxImage(slot: ImageSlotLike): CardImage | undefined {
   return image?.placeholder === undefined ? undefined : image
 }
 
+type RenderMarket = 'st-louis' | 'san-diego' | 'las-vegas'
+
+/** The market a service + location page key (`sl-<place>-<service>`) belongs to. */
+function renderMarket(key: string): RenderMarket {
+  const place = key.replace(/^sl-/, '')
+  if (/^(summerlin|nlv|lv-city|henderson|north-las-vegas|las-vegas)-/.test(place)) return 'las-vegas'
+  if (/^(stl-city|st-charles|florissant|ballwin|chesterfield|st-louis)-/.test(place)) return 'st-louis'
+  if (/^(sd-city|san-marcos|oceanside|mission-valley|escondido|chula-vista|carlsbad|san-diego)-/.test(place)) return 'san-diego'
+  throw new Error(`${key}: cannot tell which market this page key belongs to`)
+}
+
+const RENDER_DIR = '/images/shared/'
+
+/**
+ * Owner-supplied renders, keyed by the shot brief of the slot they fill. A
+ * market-specific render is a function of the page's market so one market's
+ * image is never shown in another.
+ */
+const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) => string }> = {
+  'Ordinary residential street, manhole and curb, no identifiable homes': {
+    alt: 'Residential street with a manhole cover near the curb',
+    src: (m) => `${RENDER_DIR}residential/the-sewer-pros-${m}-residential-street-manhole-curb-4x3.webp`,
+  },
+  'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings': {
+    alt: 'Commercial street with a manhole cover near the curb',
+    src: () => `${RENDER_DIR}commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`,
+  },
+  'Older home, cleanout visible, no identifiable address': {
+    alt: 'Older single-family home with a sewer cleanout cap near the foundation',
+    src: (m) => `${RENDER_DIR}residential/the-sewer-pros-${m}-older-home-visible-cleanout-4x3.webp`,
+  },
+  'Floor drain with cleanout access, nothing graphic': {
+    alt: 'Floor drain in a utility area with a cleanout fitting nearby',
+    src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-floor-drain-cleanout-access-4x3.webp`,
+  },
+  'Exterior cleanout cap at the base of a house': {
+    alt: 'Capped sewer cleanout at the base of a house',
+    src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp`,
+  },
+  'Capped exterior cleanout at a residential property, no identifiers': {
+    alt: 'Capped sewer cleanout at the base of a house',
+    src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp`,
+  },
+  'Kitchen sink with a slow drain, no people': {
+    alt: 'Kitchen sink with a small amount of water in the basin',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-kitchen-sink-slow-drain-4x3.webp`,
+  },
+  'Bathroom sink and tub side by side, no people': {
+    alt: 'Bathroom sink and bathtub side by side with a small amount of water in the sink',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-bathroom-sink-and-tub-4x3.webp`,
+  },
+  'Bathroom sink and tub, one draining slowly, no people': {
+    alt: 'Bathroom sink and bathtub side by side with a small amount of water in the sink',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-bathroom-sink-and-tub-4x3.webp`,
+  },
+  'Fence line and planting beds where digging might be planned, nothing identifiable': {
+    alt: 'Backyard fence line and planting beds',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp`,
+  },
+}
+
+/** The `src`, `source` and alt for a slot whose shot brief has an owner-supplied render. */
+function renderFor(pageKey: string, shot: string): Pick<ImageSlotLike, 'alt' | 'src' | 'source'> | undefined {
+  const render = RENDER_BY_SHOT[shot]
+  if (render === undefined) return undefined
+  return { alt: render.alt, src: render.src(renderMarket(pageKey)), source: RENDER_IMAGE_SOURCE }
+}
+
 /**
  * Slots for the four problem cards and the hero of one page. Ids are unique
  * per page so each page can receive its own photo.
@@ -78,7 +146,7 @@ export function pageImageSlots(
       shot: 'Wide, quiet exterior of a residential street and property, no identifiable address or people',
     }),
     problems: spec.problems.map((p, i) =>
-      slotImage({ id: `${pageKey}-problem-${i + 1}`, ratio: '4:3', ...p }),
+      slotImage({ id: `${pageKey}-problem-${i + 1}`, ratio: '4:3', ...p, ...renderFor(pageKey, p.shot) }),
     ),
   }
 }

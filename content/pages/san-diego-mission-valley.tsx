@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getService } from '@/data/services'
 import { marketOperatingDetail } from '@/data/markets/markets'
-import { resolveSlotImage } from '@/lib/image-slots'
+import { RENDER_IMAGE_SOURCE, resolveSlotImage } from '@/lib/image-slots'
 import { homeServiceCards } from './home-service-cards'
 import type {
   CardImage,
@@ -174,12 +174,16 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
     ratio: '4:3',
     alt: 'Commercial street with a manhole cover near the curb',
     shot: 'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings',
+    src: '/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp',
+    source: RENDER_IMAGE_SOURCE,
   },
   {
     id: 'call-cleanout',
     ratio: '4:3',
-    alt: 'Capped sewer cleanout beside a building foundation',
+    alt: 'Capped sewer cleanout at the base of a house',
     shot: 'Exterior cleanout cap at the base of a building',
+    src: '/images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp',
+    source: RENDER_IMAGE_SOURCE,
   },
   {
     id: 'program-footage',

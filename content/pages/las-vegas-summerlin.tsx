@@ -1,6 +1,6 @@
 import { getService } from '@/data/services'
 import { marketOperatingDetail } from '@/data/markets/markets'
-import { resolveSlotImage } from '@/lib/image-slots'
+import { RENDER_IMAGE_SOURCE, resolveSlotImage } from '@/lib/image-slots'
 import type {
   CardImage,
   LeadFormConfig,
@@ -152,8 +152,10 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'svc-backup',
     ratio: '4:3',
-    alt: 'Camera monitor showing the condition of a sewer line',
+    alt: 'Floor drain in a utility area with a cleanout fitting nearby',
     shot: 'Floor drain with cleanout access, nothing graphic',
+    src: '/images/shared/cleanouts/the-sewer-pros-floor-drain-cleanout-access-4x3.webp',
+    source: RENDER_IMAGE_SOURCE,
   },
   {
     id: 'svc-maintenance',
@@ -166,12 +168,16 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
     ratio: '4:3',
     alt: 'Residential street with a manhole cover near the curb',
     shot: 'Ordinary residential street, manhole and curb, no identifiable homes',
+    src: '/images/shared/residential/the-sewer-pros-las-vegas-residential-street-manhole-curb-4x3.webp',
+    source: RENDER_IMAGE_SOURCE,
   },
   {
     id: 'call-cleanout',
     ratio: '4:3',
-    alt: 'Capped sewer cleanout beside a house foundation',
+    alt: 'Capped sewer cleanout at the base of a house',
     shot: 'Exterior cleanout cap at the base of a house',
+    src: '/images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp',
+    source: RENDER_IMAGE_SOURCE,
   },
   {
     id: 'program-footage',
