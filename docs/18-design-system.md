@@ -333,7 +333,6 @@ Logo
 Services
 Locations
 Who We Help
-Commercial
 Resources
 About
 Contact
@@ -420,7 +419,6 @@ Hero
 ├── service-location
 ├── audience
 ├── audience-service
-├── commercial
 └── editorial
 ```
 
@@ -478,7 +476,6 @@ Use a compact set of major user pathways such as:
 * Services
 * Locations
 * Home Buyers / Who We Help
-* Commercial
 
 These should be functional navigation choices, not decorative feature cards.
 
@@ -970,7 +967,6 @@ Examples:
 * Home Buyers
 * Real Estate Agents
 * Property Managers
-* Commercial Property Owners
 
 The page should lead with the needs of the audience rather than the services of the company.
 
@@ -1193,38 +1189,7 @@ Use a CTA specifically aligned with the audience/service intent.
 
 # 22. Commercial Page Design
 
-Commercial pages should derive primarily from:
-
-```text
-audience-service-page.webp
-```
-
-and:
-
-```text
-service-page-performance.webp
-```
-
-depending on page intent.
-
-Commercial design should feel:
-
-* operational
-* professional
-* scalable
-* property-oriented
-* less residential
-
-Relevant visual subjects include:
-
-* commercial buildings
-* multifamily properties
-* commercial mechanical/service areas
-* hydro jetting equipment
-* drain/sewer inspection equipment
-* property management environments
-
-Do not simply reuse residential imagery for every commercial page.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1268,22 +1233,7 @@ Do not create a completely separate visual system.
 
 # 24. Commercial + Location Pages
 
-Use patterns from:
-
-```text
-audience-service-page.webp
-```
-
-and:
-
-```text
-location-service-page-performance.webp
-```
-
-Focus on:
-
-* commercial need
-* service
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 * geographic relevance
 * operational benefits
 * conversion
@@ -1501,8 +1451,6 @@ SEWER CAMERA INSPECTION
 FOR HOME BUYERS
 
 SERVING SAN DIEGO
-
-COMMERCIAL SEWER SERVICES
 ```
 
 Eyebrows should provide context.
@@ -1637,7 +1585,6 @@ High-intent page families may place a form relatively high on the page:
 * Service
 * Service + Location
 * Audience + Service
-* Commercial
 * Contact
 
 Lower-intent resources generally should not place a large lead form immediately below the hero.
@@ -1679,7 +1626,6 @@ Potential imagery:
 * cleaned line
 * hydro jetting equipment
 * locating equipment
-* commercial sewer environment
 * residential cleanout
 
 Cards may use:
@@ -1717,7 +1663,6 @@ Priority subjects include:
 * sewer locating equipment
 * professional service vehicle
 * residential service environments
-* commercial properties
 * technicians where appropriate
 
 ---
@@ -1780,7 +1725,6 @@ Prefer:
 * residential properties
 * multifamily
 * real-estate environments
-* commercial properties
 
 Do not rely primarily on beaches.
 
@@ -1792,7 +1736,6 @@ Prefer:
 * stucco homes
 * desert landscaping
 * multifamily
-* commercial properties
 * service environments
 
 Do not rely primarily on casinos or the Strip.
@@ -1862,7 +1805,6 @@ Request an Inspection
 Request Service
 Request a Sewer Camera Inspection
 Schedule a Pre-Purchase Sewer Inspection
-Request Commercial Service
 ```
 
 Use only language supported by actual operational functionality.
@@ -1961,8 +1903,6 @@ Services
 Locations
 
 Who We Help
-
-Commercial
 
 Resources / Company
 
@@ -2072,7 +2012,6 @@ RelatedResources
 
 ServiceRequestForm
 PrePurchaseRequestForm
-CommercialRequestForm
 
 FAQAccordion
 ComparisonTable
@@ -2525,13 +2464,6 @@ Home Buyers
 ```text
 Sewer Inspections for Home Buyers
 → audience-service-page.webp
-```
-
-```text
-Commercial Hydro Jetting
-→ audience-service-page.webp
-or
-service-page-performance.webp
 ```
 
 Choose based on whether audience or canonical service intent dominates.

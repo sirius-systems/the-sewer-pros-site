@@ -20,7 +20,6 @@ It establishes how the site's:
 * markets
 * locations
 * audiences
-* commercial segments
 * comparison content
 * alternative content
 * resource clusters
@@ -56,7 +55,6 @@ The architecture should allow users and search systems to move logically among:
 * market
 * location
 * audience
-* commercial
 * comparison
 * alternative
 * educational resource
@@ -92,19 +90,18 @@ The information architecture must support:
 3. multi-market scalability
 4. topical authority
 5. local search visibility
-6. commercial-intent search
-7. audience-specific search
-8. answer-engine optimization
-9. AI retrieval and entity understanding
-10. internal-link scalability
-11. controlled service + location expansion
-12. conversion journeys
-13. future market expansion
-14. future service expansion
-15. logical breadcrumb structures
-16. logical sitemap organization
-17. minimal keyword cannibalization
-18. minimal orphan-page risk
+6. audience-specific search
+7. answer-engine optimization
+8. AI retrieval and entity understanding
+9. internal-link scalability
+10. controlled service + location expansion
+11. conversion journeys
+12. future market expansion
+13. future service expansion
+14. logical breadcrumb structures
+15. logical sitemap organization
+16. minimal keyword cannibalization
+17. minimal orphan-page risk
 
 ---
 
@@ -155,7 +152,7 @@ Market Layer
     ↓
 Service Layer
     ↓
-Audience / Commercial Layer
+Audience Layer
     ↓
 Problem / Pipe-Material Layer
     ↓
@@ -190,7 +187,7 @@ Canonical sewer and drain services maintained in:
 
 Current research includes:
 
-* 18 canonical service records
+* 11 canonical service records
 
 ---
 
@@ -220,7 +217,7 @@ Current research includes:
 
 Customer and referral audiences approved in:
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 Potential strategic audiences include:
 
@@ -229,30 +226,7 @@ Potential strategic audiences include:
 * real estate agents
 * property investors
 * property managers
-* commercial property owners
-* facility managers
 * other approved groups
-
----
-
-## Commercial Segments
-
-Commercial customer and property segments approved in:
-
-`09-audience-commercial-matrix.md`
-
-Potential examples include:
-
-* property management
-* multifamily
-* restaurants
-* retail
-* office
-* hospitality
-* industrial
-* institutional properties
-
-These are not automatically public or indexable page categories.
 
 ---
 
@@ -308,7 +282,7 @@ Evidence is a formal site layer, not incidental content — see §4's updated la
 
 ## Conversion Actions
 
-The specific things a visitor can do: schedule a sewer inspection, request sewer cleaning, get help with a sewer problem, request line locating, coordinate a real-estate inspection, request commercial service, or seek an independent second opinion. See `17-conversion-architecture.md` for CTA mechanics; this document treats conversion actions as an entity every other entity should connect toward (§2's flow).
+The specific things a visitor can do: schedule a sewer inspection, request sewer cleaning, get help with a sewer problem, request line locating, coordinate a real-estate inspection, or seek an independent second opinion. See `17-conversion-architecture.md` for CTA mechanics; this document treats conversion actions as an entity every other entity should connect toward (§2's flow).
 
 ---
 
@@ -345,12 +319,6 @@ Home
 │   ├── Property Investors
 │   └── ...
 │
-├── Commercial
-│   ├── Commercial Sewer Services
-│   ├── Commercial Drain Services
-│   ├── Approved Commercial Segments
-│   └── Approved Market Variants
-│
 ├── Compare
 │   └── Approved Comparison Pages
 │
@@ -384,7 +352,6 @@ It should establish:
 * core services
 * independent inspection positioning
 * primary audiences
-* commercial capabilities
 * trust
 * core markets
 * important educational pathways
@@ -405,7 +372,6 @@ Potential company-level pages include:
 * Contact
 * Services
 * Locations
-* Commercial
 * Who We Serve
 * Resources
 
@@ -434,7 +400,6 @@ The services hub should:
 * introduce service categories
 * link to canonical service pages
 * distinguish inspection from cleaning
-* distinguish residential from commercial use cases
 * help users identify the appropriate service
 * reinforce the independent inspection positioning
 
@@ -456,8 +421,6 @@ Examples may include:
 * sewer line locating
 * drain cleaning
 * pre-purchase sewer inspection
-* commercial sewer services
-* commercial drain services
 
 The exact list is governed by:
 
@@ -477,7 +440,6 @@ Canonical service pages should support:
 * internal linking to markets
 * internal linking to relevant service + location pages
 * relevant audiences
-* related commercial applications
 * relevant resources
 * comparison content
 * conversion
@@ -497,7 +459,6 @@ Canonical Service
      ├── Market Variant
      ├── Location Variant
      ├── Audience Page
-     ├── Commercial Application
      ├── Comparison
      └── Resource Cluster
 ```
@@ -508,15 +469,15 @@ The canonical service page should remain the primary generalized page for the se
 
 # 12A. Service Architecture: Primary Hubs and Supporting Services
 
-The full canonical service taxonomy — **18 records**, `06-master-service-registry.md` — remains authoritative and is not reduced by this document. Not every service warrants equal navigation prominence or indexation priority (06 §4).
+The full canonical service taxonomy — **11 records**, `06-master-service-registry.md` — remains authoritative and is not reduced by this document. Not every service warrants equal navigation prominence or indexation priority (06 §4).
 
-The registry already distinguishes four record types (`data/services/master-service-registry.json`):
+The registry already distinguishes three record types (`data/services/master-service-registry.json`):
 
 ```text
 Services Hub
     ↓
 Primary Service Hub          6 core_service records — greatest
-                              navigation and commercial emphasis
+                              navigation emphasis
     ↓
 Supporting Service Page      derived_service and market_specific_service
                               records — accessible through internal
@@ -529,11 +490,11 @@ Audience-Service or Problem-Service Relationship
 Conversion Action
 ```
 
-The six `core_service` records (registry-verified, not newly designated here): Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. The seven `commercial_service` records are the commercial variants of these and the locating service.
+The six `core_service` records (registry-verified, not newly designated here): Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning.
 
 **Nine service pages (six primary, three supporting).** The Services section contains nine service pages: six primary service hubs (`core_service`: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, Drain Cleaning) and three supporting services (`derived_service`: Pre-Purchase Sewer Inspection, `launch`; Recurring Sewer Backup Diagnosis, `launch_candidate`; Preventative Sewer Maintenance, `launch_candidate`, tiers as recorded in `data/services/master-service-registry.json`). All nine keep their routes and may be linked from `/services/` and from relevant service and location pages. Primary-hub priority does not authorize every service + location page; the matrix may model all nine, while build, publication, and indexation remain separate decisions.
 
-Service + market pages should only be created when the combination has legitimate value and differentiated content (§23, §24, §51A) — never as a mechanical product of the 18 × 579 relationship space (`00-project-overview.md` §17).
+Service + market pages should only be created when the combination has legitimate value and differentiated content (§23, §24, §51A) — never as a mechanical product of the 11 × 579 relationship space (`00-project-overview.md` §17).
 
 **Independent second-opinion pathway.** `svc-independent-sewer-second-opinion` is a registry-confirmed `derived_service` at `phase_2_candidate` tier — an approved strategic concept, not yet a built page. It is represented as a strategic service/comparison pathway: independent documentation and evaluation that helps a customer distinguish the observed, documented condition of a sewer line from a proposed repair solution, using the approved concept:
 
@@ -567,7 +528,6 @@ A market hub should organize:
 * market-specific service information
 * local customer needs
 * local resources
-* approved commercial services
 * approved audience pages
 * relevant FAQs
 * conversion paths
@@ -590,7 +550,6 @@ Market Hub
         ├── Local Locations
         ├── Service + Location Pages
         ├── Audience + Market Content
-        ├── Commercial + Market Content
         └── Local Resources
 ```
 
@@ -648,7 +607,6 @@ They may include:
 * nearby areas served
 * market affiliation
 * relevant audience needs
-* commercial needs
 * FAQs
 * links to service-specific local pages
 
@@ -740,7 +698,7 @@ This creates dual topical and geographic context.
 
 Current research includes:
 
-**10,422 service × location relationships**
+**6,369 service × location relationships (11 services × 579 locations)**
 
 These represent SEO opportunities.
 
@@ -797,7 +755,6 @@ Potential audiences include:
 * real estate agents
 * property investors
 * property managers
-* commercial customers
 
 The final audience taxonomy will be established separately.
 
@@ -903,12 +860,11 @@ Property Managers
 ├── Sewer Cleaning
 ├── Drain Cleaning
 ├── Hydro Jetting
-├── Commercial Services
 ├── Recurring Maintenance
 └── Location-Specific Services
 ```
 
-This audience can serve as a bridge between residential/multifamily and commercial architecture.
+This audience can serve as a bridge between residential rental and multifamily residential properties and the relevant service and location pages.
 
 ---
 
@@ -962,7 +918,7 @@ Audience-Service Workflow
 Audience-Specific CTA
 ```
 
-`09-audience-commercial-matrix.md` §6 defines 13 canonical audience records; 6 are launch-status and built (`/for/home-buyers/`, `/for/home-sellers/`, `/for/real-estate-agents/`, `/for/home-inspectors/`, `/for/property-managers/`, `/for/hoa-communities/`), and 7 are Phase 2 candidates.
+`09-audience-matrix.md` §6 defines 10 canonical audience records; 6 are launch-status and built (`/for/home-buyers/`, `/for/home-sellers/`, `/for/real-estate-agents/`, `/for/home-inspectors/`, `/for/property-managers/`, `/for/hoa-communities/`), and 4 are Phase 2 candidates.
 
 Priority pathways for architecture and development attention:
 
@@ -988,86 +944,31 @@ Otherwise, the relationship should remain a section, internal link, or related-s
 
 # 34. Commercial Hub Architecture
 
-Commercial services should have a dedicated architectural pathway.
-
-Potential parent hub:
-
-**Commercial Sewer & Drain Services**
-
-The commercial hub should explain:
-
-* commercial capabilities
-* property types served
-* common commercial problems
-* relevant services
-* maintenance needs
-* service coordination
-* markets served
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 35. Commercial vs Audience Architecture
 
-"Commercial" should not be treated only as another audience keyword.
-
-Commercial may represent:
-
-* property context
-* business use case
-* service requirements
-* operational expectations
-* recurring maintenance need
-
-The site should therefore maintain a distinct commercial architecture where justified.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 36. Commercial Service Relationships
 
-Commercial pages may connect to:
-
-* sewer inspection
-* sewer cleaning
-* hydro jetting
-* drain cleaning
-* line locating
-* diagnostics
-* recurring maintenance
-
-Exact service relationships will be governed by approved registries.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 37. Commercial Segment Pages
 
-Potential commercial segments may include:
-
-* restaurants
-* multifamily
-* property management
-* retail
-* office
-* hospitality
-* industrial
-* institutional
-
-These should only become standalone pages if demand and business relevance justify them.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 38. Commercial + Location Architecture
 
-Local commercial pages may target combinations such as:
-
-```text
-Commercial Sewer Services + Market
-Commercial Drain Cleaning + Market
-Hydro Jetting for Commercial Properties + Market
-```
-
-Only strategically useful combinations should be selected for production. Other combinations may remain research records or development drafts.
-
-The architecture must prevent automatic commercial × 579-location expansion.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1201,7 +1102,7 @@ A central resource hub should organize educational content into logical clusters
 
 The resource section should not become an unstructured chronological blog archive.
 
-A potential parent concept, paralleling "Who We Serve" for audiences (§25) and "Commercial Sewer & Drain Services" for commercial (§34):
+A potential parent concept, paralleling "Who We Serve" for audiences (§25):
 
 **Sewer Learning Center**
 
@@ -1219,7 +1120,7 @@ Market or Audience Pathway
 Conversion CTA
 ```
 
-Resource pages should support commercial pages (service, market, audience, and commercial pages) rather than operate as disconnected informational content (§79 below, Resource-to-Money-Page Linking).
+Resource pages should support service, market, and audience pages rather than operate as disconnected informational content (§79 below, Resource-to-Money-Page Linking).
 
 ---
 
@@ -1239,7 +1140,6 @@ Potential high-level clusters include:
 * pre-purchase sewer inspections
 * sewer problems
 * real estate sewer inspections
-* commercial sewer maintenance
 
 ---
 
@@ -1257,9 +1157,9 @@ Educational Articles
 FAQs / Guides
 ```
 
-Educational content should reinforce commercial pages.
+Educational content should reinforce service and market pages.
 
-Commercial pages should provide appropriate pathways back into deeper educational content.
+Those pages should provide appropriate pathways back into deeper educational content.
 
 ---
 
@@ -1308,7 +1208,6 @@ Potential locations include:
 * service pages
 * market pages
 * audience pages
-* commercial pages
 * resource pages
 
 A standalone FAQ hub may also be useful if deliberately included in the production page inventory.
@@ -1416,9 +1315,6 @@ Service + Location
 Audience Hub
 Audience
 Audience + Location
-Commercial Hub
-Commercial Segment
-Commercial + Location
 Comparison
 Alternative
 Resource Hub
@@ -1472,11 +1368,6 @@ Parents → Service + Location/Market context
 ```text
 Audience
 Parent → Audience Hub
-```
-
-```text
-Commercial Segment
-Parent → Commercial Hub
 ```
 
 ```text
@@ -1542,7 +1433,6 @@ Potential cannibalization should be evaluated among:
 * canonical service vs service + location
 * market vs location
 * audience vs service
-* commercial vs service
 * resource vs service
 * comparison vs service
 * similar geographic pages
@@ -1675,7 +1565,6 @@ Potential top-level items:
 Services
 Locations
 Who We Serve
-Commercial
 Resources
 About
 Contact
@@ -1693,9 +1582,8 @@ The Services menu may provide access to:
 
 * primary canonical services
 * services hub
-* commercial services where appropriate
 
-If all 18 canonical services are not important enough for the main navigation, use hierarchy or grouping. The six primary service hubs (§12A) are the natural candidates for top-level or first-tier emphasis; supporting, market-specific, and commercial-variant services may remain reachable through the services hub, related-service modules, or secondary grouping rather than the primary menu itself.
+If all 11 canonical services are not important enough for the main navigation, use hierarchy or grouping. The six primary service hubs (§12A) are the natural candidates for top-level or first-tier emphasis; supporting and market-specific services may remain reachable through the services hub, related-service modules, or secondary grouping rather than the primary menu itself.
 
 The header should stay conversion-led without adding unsupported emergency, response-time, local-office, or city-phone claims (`00-project-overview.md` §41).
 
@@ -1734,15 +1622,7 @@ Long-tail audience combinations should remain contextual.
 
 # 67. Commercial Navigation
 
-Commercial should have visible navigation prominence if it represents a major revenue opportunity.
-
-Possible navigation destination:
-
-```text
-Commercial
-```
-
-with supporting links to approved commercial categories.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1755,7 +1635,6 @@ Potential pathways include:
 * Sewer Inspection
 * Sewer Problems
 * Homebuyer Guides
-* Commercial Guides
 * FAQs
 
 The final topical structure should reflect research.
@@ -1773,7 +1652,6 @@ Services
 Markets
 Company
 Resources
-Commercial
 Contact
 Legal
 ```
@@ -1787,7 +1665,7 @@ The footer should not become an SEO link dump.
 Do not place:
 
 * all 579 geographic records
-* all 10,422 service/location opportunities
+* all 6,369 service/location opportunities
 * hundreds of audience combinations
 
 in the footer.
@@ -1882,11 +1760,6 @@ Audience Hub
 ```
 
 ```text
-Commercial Hub
-→ Commercial Pages
-```
-
-```text
 Topic Hub
 → Resource Articles
 ```
@@ -1960,7 +1833,7 @@ This supports topical authority and user education.
 
 # 79. Resource-to-Money-Page Linking
 
-Educational content should link naturally to the relevant commercial page.
+Educational content should link naturally to the relevant service page.
 
 Preferred model:
 
@@ -1970,7 +1843,7 @@ Resource Article
 → Market / Relevant Local Page when justified
 ```
 
-Do not force multiple unrelated commercial links into every article.
+Do not force multiple unrelated service links into every article.
 
 ---
 
@@ -1993,7 +1866,6 @@ Examples may include:
 * sewer responsibilities in a municipality
 * common sewer line materials in an older housing market
 * local buyer inspection considerations
-* local commercial drain issues
 
 Local resource pages should require meaningful geographic differentiation.
 
@@ -2008,7 +1880,6 @@ Local content should remain connected to:
 * sewer systems
 * property ownership
 * real estate
-* commercial maintenance
 * relevant local regulations
 * customer needs
 
@@ -2037,10 +1908,6 @@ The architecture should support the full customer search journey.
 ## Audience
 
 "Sewer inspection for homebuyers"
-
-## Commercial
-
-"Commercial hydro jetting"
 
 ## Comparison
 
@@ -2109,7 +1976,6 @@ The homepage should provide fast access to:
 * schedule/request service
 * inspect a sewer line
 * choose a market
-* commercial service
 * homebuyer/pre-purchase service
 * important core services
 
@@ -2124,7 +1990,6 @@ A market hub should make it easy to:
 * identify available services
 * choose a nearby location
 * request service
-* access relevant commercial service
 * access relevant inspection services
 
 ---
@@ -2158,11 +2023,6 @@ Homebuyer
 ```text
 Property Manager
 → Request Property Management Sewer Service
-```
-
-```text
-Commercial
-→ Request Commercial Service
 ```
 
 Final CTA definitions belong in:
@@ -2267,7 +2127,6 @@ Local content may differentiate through legitimate factors such as:
 * soil
 * root conditions
 * property density
-* commercial property concentration
 * sewer ownership/responsibility
 * municipal context
 * real estate patterns
@@ -2309,18 +2168,7 @@ Changing only "homeowner" to "homebuyer" is not sufficient.
 
 # 96. Commercial Content Differentiation
 
-Commercial content should emphasize:
-
-* operational disruption
-* facilities
-* maintenance
-* high usage
-* scheduling
-* property portfolios
-* recurring needs
-* documentation
-
-It should not be residential copy with "commercial" inserted.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -2405,7 +2253,6 @@ Prioritize:
 * highest-value local pages
 * highest-value service + location pages
 * primary audience pages
-* commercial foundation
 * foundational resources
 
 ## Post-Launch Expansion
@@ -2414,7 +2261,6 @@ Potentially add:
 
 * additional service + location pages
 * audience + location pages
-* commercial + location pages
 * comparison content
 * alternative content
 * expanded resource clusters
@@ -2437,7 +2283,6 @@ New Market Hub
 ├── Approved Locations
 ├── Approved Service + Location Pages
 ├── Relevant Audiences
-├── Commercial Pages
 └── Local Resources
 ```
 
@@ -2458,8 +2303,6 @@ Selected Production Market / Location Variants
 ↓
 Audience Relationships
 ↓
-Commercial Relationships
-↓
 Resources
 ```
 
@@ -2476,7 +2319,6 @@ Potential future audiences may include:
 * inspectors
 * HOAs
 * real estate investors
-* facility managers
 * contractors
 * municipalities
 
@@ -2859,7 +2701,6 @@ The information architecture should guide design components such as:
 * service cards
 * location cards
 * audience cards
-* commercial cards
 * related-content modules
 * hub-page grids
 
@@ -2878,7 +2719,6 @@ Analytics should eventually distinguish performance for:
 * location pages
 * service + location pages
 * audience pages
-* commercial pages
 * resources
 * comparisons
 
@@ -2920,7 +2760,7 @@ It needs enough architecture to establish:
 * service authority
 * three market entities
 * local relevance
-* primary commercial pathways
+* primary service pathways
 * primary audience pathways
 * topic foundations
 * conversion coverage
@@ -2946,8 +2786,6 @@ The Sewer Pros
 ├── Locations
 │
 ├── Audiences
-│
-├── Commercial
 │
 ├── Comparisons
 │
@@ -2990,7 +2828,7 @@ Audience pages must represent distinct customer intent.
 
 ### Rule 7
 
-Commercial architecture must address genuine commercial needs rather than duplicate residential copy.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ### Rule 8
 
@@ -2998,7 +2836,7 @@ Comparison and alternative pages require meaningful decision-stage intent.
 
 ### Rule 9
 
-Resources must support topic clusters and relevant commercial pages.
+Resources must support topic clusters and relevant service and market pages.
 
 ### Rule 10
 
@@ -3087,7 +2925,7 @@ Defines how production pages are routed
 +
 07-master-location-registry.md
 +
-09-audience-commercial-matrix.md
+09-audience-matrix.md
 ↓
 Define canonical entities
 ```
@@ -3110,7 +2948,6 @@ It should be designed around a structured model of:
 * real markets
 * legitimate geographic targets
 * real customer groups
-* meaningful commercial use cases
 * customer questions
 * customer decisions
 * real evidence (§44A)

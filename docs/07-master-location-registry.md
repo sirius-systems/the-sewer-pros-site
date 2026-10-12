@@ -18,7 +18,6 @@ It establishes consistent geographic identities for use across:
 - location pages
 - service + location pages
 - audience + location pages
-- commercial + location pages
 - routing
 - internal linking
 - service-area relationships
@@ -138,7 +137,6 @@ Connect geography to:
 
 * services
 * audiences
-* commercial segments
 * nearby areas
 * market hubs
 * local resources
@@ -151,7 +149,6 @@ Provide structured data for:
 * location pages
 * service + location pages
 * audience + location pages
-* commercial + location pages
 
 ## 4.5 Analytics and Entity Consistency
 
@@ -979,23 +976,13 @@ rather than creating a new geographic entity.
 
 # 35. Commercial + Location Generation
 
-Likewise:
-
-```text
-Commercial Sewer Services
-+
-Las Vegas
-```
-
-may be built using canonical geographic records.
-
-Geographic identity should remain consistent across residential and commercial systems.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
-# 35A. Audience and Commercial Geographic Relationships
+# 35A. Audience Geographic Relationships
 
-Location records may relate to approved audiences (`09-audience-commercial-matrix.md`): home buyers, homeowners, home inspectors, real estate agents, property managers, contractors and remodelers, commercial property owners, facility managers, HOA communities, and other approved audiences.
+Location records may relate to approved audiences (`09-audience-matrix.md`): home buyers, homeowners, home inspectors, real estate agents, property managers, contractors and remodelers, HOA communities, and other approved audiences.
 
 Audience-location relationships should support relevant workflows (a real estate agent needing a transaction inspection in a specific market), not produce large volumes of thin local landing pages. The relationship existing in this registry does not authorize an audience + location page — see §33-35, `04-master-page-build-list.md` §11A.
 
@@ -1356,7 +1343,7 @@ Always preserve:
 and:
 
 ```text
-579 Locations × 18 Services
+579 Locations × 11 Services
 ≠
 Automatic Indexation of Every Combination
 ```
@@ -1502,11 +1489,11 @@ Use property/service context rather than relying on the Arch.
 
 ## San Diego
 
-Use residential, multifamily, real-estate, and commercial environments rather than generic beach imagery.
+Use residential, multifamily, and real-estate environments rather than generic beach imagery.
 
 ## Las Vegas
 
-Use Las Vegas Valley residential and commercial environments rather than casino/Strip imagery.
+Use Las Vegas Valley residential environments rather than casino/Strip imagery.
 
 ---
 

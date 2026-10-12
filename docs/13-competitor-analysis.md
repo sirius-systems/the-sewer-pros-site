@@ -25,7 +25,6 @@ The analysis is intended to support project-specific decisions involving:
 * location-page prioritization
 * audience architecture
 * service + location opportunities
-* commercial content
 * comparison content
 * alternative content
 * resource/topic clusters
@@ -254,7 +253,6 @@ Supporting concepts include:
 * second-opinion inspections
 * evidence before excavation
 * sewer inspection for real estate transactions
-* commercial sewer diagnostics
 
 The existing St. Louis messaging of the company also establishes experience with sewer lateral programs and states that it is licensed through most applicable municipal sewer lateral programs for submitting reports.
 
@@ -396,7 +394,6 @@ Its St. Louis architecture includes:
 * drain and sewer inspections
 * repair
 * replacement
-* commercial services
 * maintenance
 * city/service-area content
 * common clog content
@@ -409,8 +406,6 @@ Zoom Drain demonstrates a mature content hierarchy:
 Market
     ↓
 Service
-    ↓
-Commercial Service
     ↓
 Service Areas
     ↓
@@ -426,7 +421,6 @@ Its service-area architecture includes communities such as Kirkwood and other St
 * online booking
 * emergency positioning
 * repeated phone CTAs
-* commercial-specific messaging
 * strong specialization language
 
 ### Competitive Weakness
@@ -601,7 +595,6 @@ Affordable Drain has dedicated content for:
 * San Diego sewer camera inspection
 * hydro jetting
 * local sewer services
-* commercial applications
 * multiple community-specific pages
 
 Its website currently includes localized sewer-camera and hydro-jetting content for individual San Diego County communities, demonstrating an aggressive service + location SEO strategy.
@@ -609,10 +602,6 @@ Its website currently includes localized sewer-camera and hydro-jetting content 
 ### Content Strength
 
 Affordable Drain also maintains current informational content around sewer camera inspections and related drain problems.
-
-### Commercial Strength
-
-Public customer-facing content includes HOA/commercial use cases for sewer-main hydro jetting and camera documentation.
 
 ### Weakness for The Sewer Pros to Exploit
 
@@ -644,7 +633,6 @@ Arrow has an extensive content architecture covering:
 * trenchless repair
 * trenchless replacement
 * property management
-* commercial plumbing
 * multiple San Diego County communities
 
 ### SEO Strength
@@ -856,7 +844,6 @@ Vegas Drain Masters offers:
 * pipe locating
 * trenchless rehabilitation
 * residential service
-* commercial service
 * multiple service-area pages
 
 Its site also has dedicated geographic coverage for Las Vegas and surrounding communities.
@@ -872,7 +859,6 @@ Camera Inspection
 Hydro Jetting
 Drain Cleaning
 Pipe Locating
-Commercial
 ```
 
 ### Differentiation Opportunity
@@ -889,7 +875,7 @@ The Sewer Pros can more aggressively own:
 
 ## 20.1 Competitive Role
 
-**Major specialist and commercial competitor**
+**Major specialist competitor**
 
 The Las Vegas offering of Zoom Drain includes:
 
@@ -900,32 +886,6 @@ The Las Vegas offering of Zoom Drain includes:
 * repair
 * replacement
 * trenchless services
-* commercial services
-
-### Commercial Strength
-
-Zoom Drain has particularly strong commercial segmentation.
-
-Its Las Vegas commercial hydro-jetting content explicitly addresses:
-
-* restaurants
-* hotels
-* casinos
-* multi-tenant buildings
-* property managers
-* operators
-
-### Strategic Implication
-
-The commercial architecture of The Sewer Pros must be substantially stronger than a generic:
-
-```text
-Commercial Sewer Services
-```
-
-page.
-
-Candidate commercial audience/topic combinations should include property-specific needs rather than simply repeating residential content.
 
 ---
 
@@ -941,7 +901,6 @@ Sound Plumbing directly combines:
 * line locating
 * hydro jetting
 * drain cleaning
-* commercial plumbing
 * sewer repair
 
 ### Competitive Strength
@@ -1031,20 +990,7 @@ This should differentiate The Sewer Pros from:
 
 ## 23.3 Commercial Sewer and Drain Services
 
-Commercial content should become a major Las Vegas growth area.
-
-Priority audience concepts may eventually include:
-
-* restaurants
-* hospitality
-* property managers
-* apartment/multi-family
-* retail
-* offices
-* facilities
-* commercial property owners
-
-Audience/service candidates may be researched and built without a pre-build approval step. Production publication and indexation remain controlled by their explicit states in the Master Page Build List.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1183,7 +1129,7 @@ Drain Cleaning in [City]
 
 This validates the general architecture planned for The Sewer Pros.
 
-It does **not** validate publishing all 10,422 known service × location relationships.
+It does **not** validate publishing all 6,369 known service × location relationships.
 
 The existing matrix remains an opportunity dataset.
 
@@ -1193,22 +1139,7 @@ Candidate routes may be developed in bounded batches. Only routes selected in th
 
 # 28. Commercial Content
 
-Commercial is a meaningful competitive category.
-
-Strong competitors create content specifically around:
-
-* restaurants
-* property management
-* multi-tenant buildings
-* commercial kitchens
-* hospitality
-* maintenance
-* commercial hydro jetting
-* commercial inspections
-
-The Las Vegas commercial architecture of Zoom Drain and the San Diego property-management content of Arrow demonstrate the value of audience-specific commercial content.
-
-The Sewer Pros should not bury commercial services in one paragraph on a residential page.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1285,13 +1216,9 @@ Each major service deserves a comprehensive entity-level page.
 
 Services should be connected clearly to the markets in which they are actually offered.
 
-### Commercial segmentation
-
-Commercial customers need separate messaging.
-
 ### Audience segmentation
 
-Homebuyers, agents, property managers, and businesses have different questions.
+Homebuyers, agents, and property managers have different questions.
 
 ### Location hubs
 
@@ -1563,8 +1490,6 @@ sewer cleaning
 hydro jetting
 drain cleaning
 sewer line locating
-commercial sewer cleaning
-commercial hydro jetting
 ```
 
 ---
@@ -1586,7 +1511,6 @@ sewer cleaning + city
 ```text
 sewer inspection for home buyers
 sewer inspection for real estate agents
-commercial sewer inspection
 property management sewer services
 pre-purchase sewer inspection
 ```
@@ -1624,7 +1548,6 @@ Hydro Jetting
 Drain Cleaning
 Sewer Line Locating
 Pre-Purchase Sewer Inspection
-Commercial Sewer Services
 ```
 
 Secondary audience entities:
@@ -1636,8 +1559,6 @@ Home Sellers
 Real Estate Agents
 Home Inspectors
 Property Managers
-Commercial Property Owners
-Businesses
 ```
 
 Geographic entity relationships:
@@ -1682,18 +1603,6 @@ Pre-Purchase Sewer Inspection
 Sewer Camera Inspection
     ↓
 What Sewer Inspections Find
-```
-
-and:
-
-```text
-Commercial
-    ↓
-Commercial Sewer Inspection
-    ↓
-Commercial Sewer Cleaning
-    ↓
-Commercial Hydro Jetting
 ```
 
 and:
@@ -1768,8 +1677,7 @@ Priority themes:
 4. hydro jetting
 5. drain cleaning
 6. line locating
-7. commercial
-8. property management
+7. property management
 
 ---
 
@@ -1786,7 +1694,6 @@ Priority themes:
 | Drain cleaning          |      High |            High |        Critical |
 | Line locating           |      High |            High |            High |
 | Second opinions         |      High |        Critical |            High |
-| Commercial content      |      High |            High |        Critical |
 | Property managers       |      High |            High |        Critical |
 | Location expansion      |      High |        Critical |            High |
 | GBP support             |  Critical |          Future |          Future |
@@ -1884,7 +1791,6 @@ That category naturally supports:
 * locating
 * real estate
 * second opinions
-* commercial diagnostics
 
 ---
 
@@ -1904,8 +1810,6 @@ Cleaning Capability
 Real Estate Expertise
 +
 Local Market Knowledge
-+
-Commercial Expertise
 +
 Deep Educational Content
 +
@@ -2007,7 +1911,7 @@ That communicates the differentiator without making unsupported accusations.
 
 Based on the competitive landscape, the following concepts should receive serious consideration in the Master Page Build List.
 
-## Core Commercial Pages
+## Core Service Pages
 
 * Sewer Camera Inspection
 * Sewer Inspection
@@ -2016,8 +1920,6 @@ Based on the competitive landscape, the following concepts should receive seriou
 * Sewer Line Locating
 * Drain Cleaning
 * Pre-Purchase Sewer Inspection
-* Commercial Sewer Services
-* Commercial Drain Services
 
 ---
 
@@ -2029,7 +1931,6 @@ Based on the competitive landscape, the following concepts should receive seriou
 * Real Estate Agents
 * Home Inspectors
 * Property Managers
-* Commercial Property Owners
 
 ---
 
@@ -2094,7 +1995,7 @@ Create powerful market ecosystems for:
 
 ## Priority 5 — Build Commercial Depth
 
-Especially important for Las Vegas and San Diego.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -2109,8 +2010,8 @@ Create a defensible category around independent validation before expensive sewe
 Use the existing:
 
 * 579-location registry
-* 18-service registry
-* 10,422 service × location relationships
+* 11-service registry
+* 6,369 service × location relationships
 
 as opportunity intelligence.
 
@@ -2154,7 +2055,7 @@ This produces a strong brand promise:
 
 The desired long-term category position is:
 
-> **The Sewer Pros is the independent sewer inspection, diagnostics, and cleaning specialist for homeowners, home buyers, real estate professionals, property managers, and commercial properties that need clear evidence and objective answers about sewer-line conditions.**
+> **The Sewer Pros is the independent sewer inspection, diagnostics, and cleaning specialist for homeowners, home buyers, real estate professionals, and property managers who need clear evidence and objective answers about sewer-line conditions.**
 
 The rebuilt site should reinforce this position at every architectural level:
 
@@ -2168,8 +2069,6 @@ Markets
 Locations
     ↓
 Audiences
-    ↓
-Commercial
     ↓
 Comparisons
     ↓

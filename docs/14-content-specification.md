@@ -20,7 +20,6 @@ It establishes:
 * differentiation requirements
 * localization requirements
 * audience-specific content requirements
-* commercial content requirements
 * search-intent requirements
 * AEO and AI-answer formatting principles
 * conversion-content requirements
@@ -158,8 +157,6 @@ All content should reinforce The Sewer Pros as a specialist in:
 * sewer line locating
 * drain cleaning
 * pre-purchase sewer inspections
-* commercial sewer services
-* commercial drain services
 
 The company should be positioned around:
 
@@ -303,7 +300,6 @@ Move an appropriate user toward:
 * requesting an inspection
 * scheduling service
 * submitting an inquiry
-* requesting commercial service
 * contacting The Sewer Pros
 
 ---
@@ -336,17 +332,9 @@ Primary audience families include:
 * multi-family operators
 * community managers where applicable
 
-### Commercial
-
-* business owners
-* commercial property owners
-* facility managers
-* commercial property managers
-* operators responsible for sewer and drain infrastructure
-
 Final audience taxonomy is controlled by:
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 ---
 
@@ -541,7 +529,7 @@ Entity usage should reflect real subject matter rather than keyword insertion.
 
 # 15. Content Structure Standard
 
-Most substantial service, market, audience, and commercial pages should contain:
+Most substantial service, market, and audience pages should contain:
 
 1. clear H1
 2. immediate explanation of page purpose
@@ -595,10 +583,6 @@ Sewer Camera Inspection in St. Louis, MO
 
 ```text
 Pre-Purchase Sewer Inspections for Home Buyers
-```
-
-```text
-Commercial Sewer Cleaning in Las Vegas
 ```
 
 Subheadings should reflect meaningful questions or concepts.
@@ -748,7 +732,6 @@ Never invent:
 * review counts
 * municipal approvals
 * repair capabilities
-* commercial capabilities
 
 All factual claims must come from documented business data or verified research.
 
@@ -842,7 +825,6 @@ Potential pages include:
 * contact
 * services
 * locations
-* commercial
 * resources
 * FAQ
 
@@ -878,7 +860,7 @@ Introduce independent inspection without repair-driven upselling.
 
 ### Who The Company Serves
 
-Include relevant residential, real-estate, and commercial audiences.
+Include relevant residential, real-estate, and property-management audiences.
 
 ### What the Customer Should Do Next
 
@@ -1034,7 +1016,6 @@ Hydro jetting content should cover:
 * scale
 * sludge
 * roots where applicable
-* commercial applications
 * why line condition matters
 * inspection before jetting where appropriate
 * post-cleaning inspection
@@ -1133,10 +1114,6 @@ Link to published location pages.
 
 Introduce applicable audience pages.
 
-### Commercial Context
-
-Include relevant business/property needs.
-
 ### Local Differentiation
 
 Provide meaningful market-specific information.
@@ -1164,7 +1141,6 @@ Each market should contain meaningful differences based on:
 * common sewer conditions
 * real-estate environment
 * municipal considerations
-* commercial environment
 * local services
 * location coverage
 * actual market proof
@@ -1204,7 +1180,7 @@ San Diego content should develop genuine local relevance around:
 * cleaning
 * hydro jetting
 * registry-supported community coverage
-* commercial/property-management needs
+* property-management needs
 
 Avoid superficial localization based on:
 
@@ -1230,9 +1206,6 @@ Potential themes include:
 * hydro jetting
 * property management
 * multi-family
-* hospitality
-* restaurants
-* commercial facilities
 * registry-supported surrounding communities
 
 Do not fabricate climate-related sewer claims simply because Las Vegas is in a desert.
@@ -1275,7 +1248,6 @@ Useful local differentiation may include:
 * applicable municipal programs
 * common sewer-line materials where verified
 * local real-estate considerations
-* commercial districts
 * actual service coverage
 * neighborhood relationships
 * relevant infrastructure context
@@ -1452,9 +1424,8 @@ Property manager pages should address:
 * sewer cleaning
 * hydro jetting
 * documentation
-* commercial scheduling considerations
 
-The page should speak to operational reliability rather than homeowner concerns.
+The page should speak to recurring-problem reliability across rental homes and multifamily residential properties.
 
 ---
 
@@ -1500,72 +1471,19 @@ with token substitutions.
 
 # 51. Commercial Page Specification
 
-Commercial content should address business operational needs.
-
-Potential concerns include:
-
-* downtime
-* recurring blockages
-* tenant/customer disruption
-* grease
-* high-volume drain usage
-* maintenance
-* large sewer lines
-* inspection documentation
-* locating
-* preventative cleaning
-* scheduling
-* multi-property needs
-
-Commercial pages should use business terminology naturally.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 52. Commercial Service Page Requirements
 
-Production pages such as:
-
-```text
-Commercial Sewer Inspection
-Commercial Hydro Jetting
-Commercial Drain Cleaning
-```
-
-should explain:
-
-* relevant commercial environments
-* service use cases
-* operational impact
-* preventative versus reactive needs
-* process
-* documentation
-* related services
-* appropriate CTA
-
-Do not simply append "commercial" to a residential page.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 53. Commercial + Location Page Specification
 
-Commercial + location pages should address local business/property conditions where relevant.
-
-Example:
-
-```text
-Commercial Hydro Jetting in Las Vegas
-```
-
-may appropriately address verified audiences such as:
-
-* restaurants
-* hospitality
-* retail
-* multi-family
-* property management
-* commercial facilities
-
-Only mention industries The Sewer Pros actually serves.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1647,7 +1565,7 @@ Never imply that structural repair can always be avoided.
 
 Resource articles should answer a specific customer question or topic.
 
-Resources should support one or more commercial page clusters.
+Resources should support one or more service page clusters.
 
 Primary clusters may include:
 
@@ -1659,7 +1577,6 @@ Primary clusters may include:
 * sewer backups
 * sewer line problems
 * homebuyer inspections
-* commercial sewer maintenance
 * sewer repair decision-making
 
 Each resource should connect to a relevant:
@@ -1668,7 +1585,6 @@ Each resource should connect to a relevant:
 * audience
 * market
 * comparison
-* commercial page
 
 where contextually appropriate.
 
@@ -1691,7 +1607,7 @@ Comparison Content
     ↓
 Audience Content
     ↓
-Relevant Local Commercial Pages
+Relevant Local Service Pages
 ```
 
 Example:
@@ -1798,7 +1714,6 @@ Market and location FAQs may address:
 * common local inspection use cases
 * local sewer-lateral considerations
 * homebuyer inspection questions
-* commercial availability
 * scheduling
 * relevant local infrastructure questions
 
@@ -1816,7 +1731,6 @@ Useful CTA concepts include:
 * Request a Sewer Camera Inspection
 * Get Your Sewer Line Checked
 * Schedule Sewer Cleaning
-* Request Commercial Service
 * Talk With The Sewer Pros
 
 The final CTA system is governed by:
@@ -1842,12 +1756,6 @@ Primary CTA:
 Primary CTA:
 
 > Schedule a Pre-Purchase Sewer Inspection
-
-### Commercial Page
-
-Primary CTA:
-
-> Request Commercial Sewer Service
 
 Avoid using the exact same CTA on every page regardless of intent.
 
@@ -2130,11 +2038,7 @@ If yes, the audience page does not contain enough audience-specific value.
 
 # 82. Commercial Content Quality Test
 
-A commercial page should fail:
-
-> Could this entire page be used for homeowners by changing "business" to "home"?
-
-If yes, commercial differentiation is insufficient.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -2143,8 +2047,8 @@ If yes, commercial differentiation is insufficient.
 The project contains:
 
 * 579 normalized geographic records
-* 18 canonical service records
-* 10,422 service × location relationships
+* 11 canonical service records
+* 6,369 service × location relationships
 
 These datasets can assist:
 
@@ -2216,7 +2120,7 @@ Substantial market-specific coverage.
 
 ### Service + Market Pages
 
-Focused but complete local commercial intent.
+Focused but complete local intent.
 
 ### Audience Pages
 
@@ -2244,7 +2148,6 @@ Avoid:
 * identical service sections
 * city-name substitution
 * template-generated testimonials
-* repeated commercial sections
 * exact-copy conclusions
 
 Reusable factual components may be centrally maintained where appropriate, but the visible page experience must still deliver unique value.
@@ -2267,12 +2170,6 @@ sewer camera inspection
 drain cleaning
 vs.
 sewer cleaning
-```
-
-```text
-commercial sewer services
-vs.
-commercial drain services
 ```
 
 ```text
@@ -2514,7 +2411,7 @@ Market
         ↓
 Published Service + Location
         ↓
-Audience / Commercial
+Audience
         ↓
 Supporting Resources
 ```
@@ -2597,8 +2494,8 @@ pageId                    stable identifier, distinct from pageName
 pageFamily                see 03-information-architecture.md §12/§12A
 canonicalRoute            governed by 05-url-routing-strategy.md
 secondaryIntents          supporting the one primaryIntent (§12)
-businessPurpose           why this page exists commercially
-audienceOrCommercialRelationship
+businessPurpose           why this page exists
+audienceRelationship
 approvedFacts             verified facts this page may state
 claimsRequiringVerification
 unsupportedClaimsToAvoid  explicit list, not just "be careful"
@@ -2701,9 +2598,9 @@ Content creators should defer to the following documents for project-specific fa
 
 `08-service-location-matrix.md`
 
-### Audiences and Commercial
+### Audiences
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 ### SEO
 
@@ -2824,7 +2721,7 @@ Provide market-specific knowledge without manufacturing local signals.
 
 ### 8. Commercial Reliability
 
-Reduce uncertainty and disruption for commercial property operators.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -2875,7 +2772,7 @@ Avoid overusing any one phrase.
 
 The content of the project should ultimately communicate:
 
-> **The Sewer Pros helps property owners, home buyers, real estate professionals, and commercial customers understand sewer-line conditions through independent inspection, diagnostics, locating, and cleaning—so they can make informed decisions based on evidence rather than assumptions.**
+> **The Sewer Pros helps property owners, home buyers, and real estate professionals understand sewer-line conditions through independent inspection, diagnostics, locating, and cleaning—so they can make informed decisions based on evidence rather than assumptions.**
 
 ---
 

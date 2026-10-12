@@ -23,7 +23,6 @@ It establishes project-specific requirements for:
 * market attribution
 * service attribution
 * audience attribution
-* commercial-lead attribution
 * real-estate lead attribution
 * content performance
 * local SEO measurement
@@ -142,19 +141,18 @@ The analytics system should eventually answer:
 3. Which services generate those leads?
 4. Which landing pages generate those leads?
 5. Which audiences generate those leads?
-6. How many leads come from commercial visitors?
-7. How many come from home buyers or real-estate-related searches?
-8. Which organic search queries produce conversions?
-9. Which service + location pages generate meaningful traffic?
-10. Which resource clusters assist conversions?
-11. Which markets are gaining search visibility?
-12. Which pages are indexed but underperforming?
-13. Which pages receive impressions but weak click-through rates?
-14. Which pages generate traffic but no useful conversion behavior?
-15. Which external sources send qualified visitors?
-16. Is AI/LLM referral traffic producing useful engagement or leads?
-17. Are phone calls and forms being attributed correctly?
-18. Is the site gaining visibility without creating index bloat?
+6. How many come from home buyers or real-estate-related searches?
+7. Which organic search queries produce conversions?
+8. Which service + location pages generate meaningful traffic?
+9. Which resource clusters assist conversions?
+10. Which markets are gaining search visibility?
+11. Which pages are indexed but underperforming?
+12. Which pages receive impressions but weak click-through rates?
+13. Which pages generate traffic but no useful conversion behavior?
+14. Which external sources send qualified visitors?
+15. Is AI/LLM referral traffic producing useful engagement or leads?
+16. Are phone calls and forms being attributed correctly?
+17. Is the site gaining visibility without creating index bloat?
 
 ---
 
@@ -201,7 +199,6 @@ GA4 should measure:
 * market context
 * service context
 * audience context
-* commercial context
 
 GA4 should not be treated as the sole source of SEO performance data.
 
@@ -325,7 +322,6 @@ Phone Call Click
 General Service Request
 Sewer Inspection Request
 Pre-Purchase Inspection Request
-Commercial Service Request
 ```
 
 Additional conversion events may be introduced as the conversion architecture evolves.
@@ -345,7 +341,6 @@ Examples:
 ```text
 generate_lead
 phone_lead
-commercial_lead
 prepurchase_inspection_lead
 ```
 
@@ -416,8 +411,6 @@ form_error
 service_select
 market_select
 audience_select
-commercial_form_start
-commercial_form_submit
 prepurchase_form_start
 prepurchase_form_submit
 ```
@@ -548,7 +541,6 @@ The measurement architecture should distinguish at minimum:
 ```text
 general_service
 prepurchase_inspection
-commercial_service
 ```
 
 If service-specific forms are added later, the same structure can be extended.
@@ -596,7 +588,6 @@ hydro-jetting
 sewer-line-locating
 drain-cleaning
 pre-purchase-sewer-inspection
-commercial-sewer-service
 ```
 
 Canonical identifiers should derive from:
@@ -667,13 +658,11 @@ home-seller
 real-estate-agent
 home-inspector
 property-manager
-commercial-property-owner
-facility-manager
 ```
 
 Final taxonomy is controlled by:
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 ---
 
@@ -684,7 +673,6 @@ Recommended high-level lead types:
 ```text
 residential
 real-estate
-commercial
 unknown
 ```
 
@@ -714,8 +702,6 @@ location
 service-location
 audience
 audience-location
-commercial
-commercial-location
 comparison
 alternative
 resource
@@ -755,7 +741,6 @@ sewer-cleaning
 hydro-jetting
 sewer-problems
 real-estate
-commercial
 ```
 
 This allows content performance to be evaluated at the topic-cluster level.
@@ -1010,7 +995,6 @@ Brand
 Service
 Service + Location
 Audience
-Commercial
 Problem
 Comparison
 Informational
@@ -1066,7 +1050,6 @@ For each market, monitor visibility around combinations such as:
 Service + Market
 Service + Registry-Supported Location
 Audience + Market
-Commercial Service + Market
 ```
 
 The tracked keyword universe should distinguish candidate opportunities, published pages, and indexable pages.
@@ -1116,7 +1099,6 @@ Las Vegas measurement should emphasize:
 * drain cleaning
 * line locating
 * property management
-* commercial intent
 * published local-service coverage
 
 Because no GBP currently exists, organic web performance is especially important.
@@ -1282,18 +1264,7 @@ Particularly important audiences include:
 
 # 59. Commercial Measurement
 
-Commercial reporting should distinguish:
-
-```text
-Commercial Sessions
-Commercial CTA Clicks
-Commercial Form Starts
-Commercial Leads
-Commercial Services
-Commercial Markets
-```
-
-Commercial lead quality should ultimately matter more than raw commercial page traffic.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1347,7 +1318,6 @@ Measure:
 * search impressions
 * organic clicks
 * ranking/query breadth
-* links to commercial pages
 * assisted conversions
 * cluster growth
 * external backlinks where measured separately
@@ -1371,7 +1341,7 @@ Supporting topical visibility.
 
 ### Assisted Conversion
 
-Sending users toward commercial services.
+Sending users toward relevant service pages.
 
 ### Link Acquisition
 
@@ -1664,7 +1634,6 @@ market
 location
 service-location
 resource
-commercial
 ```
 
 A technical problem affecting one template could affect hundreds of routes.
@@ -1831,7 +1800,6 @@ Do not automatically delete a page because it has low traffic.
 Low traffic may be appropriate for:
 
 * high-value niche services
-* commercial pages
 * emerging markets
 * supporting architecture
 * long-tail intent
@@ -1915,7 +1883,6 @@ A future executive report should be able to summarize:
 
 * organic visibility
 * leads
-* commercial performance
 * top services
 * local-page growth
 
@@ -1947,7 +1914,6 @@ Market Hubs
 Location Pages
 Service + Location
 Audience
-Commercial
 Resources
 Comparison
 Alternative
@@ -1983,7 +1949,7 @@ This can reveal whether a scaled local strategy is working.
 
 # 95. Service + Location Development and Publishing Feedback Loop
 
-The matrix contains 10,422 potential service × location relationships.
+The matrix contains 6,369 potential service × location relationships.
 
 Candidate batches may be researched and built without waiting for prior cohorts to earn production selection. Analytics should still create a disciplined release-and-learning loop:
 
@@ -2322,7 +2288,6 @@ Desktop may be particularly important for:
 
 * real estate professionals
 * property managers
-* commercial users
 * longer research sessions
 
 Compare behavior rather than assuming mobile always dominates.
@@ -2336,7 +2301,6 @@ Compare behavior rather than assuming mobile always dominates.
 ```text
 Qualified Leads
 Inspection Requests
-Commercial Leads
 Phone Leads
 Completed/Scheduled Opportunities if integrated
 ```
@@ -2399,7 +2363,6 @@ If third-party rank tracking is introduced, rankings should be segmented by:
 * market
 * service
 * audience
-* commercial intent
 * device where relevant
 
 Do not reduce SEO reporting to a single list of hundreds of keyword positions.
@@ -2420,7 +2383,7 @@ and:
 Live Performance Dataset
 ```
 
-The 10,422 service × location relationships are opportunity data.
+The 6,369 service × location relationships are opportunity data.
 
 Search Console and analytics show what the published site actually earns.
 
@@ -2558,7 +2521,6 @@ A concise executive view should prioritize:
 ```text
 Qualified Leads
 Organic Leads
-Commercial Leads
 Pre-Purchase Inspection Leads
 Phone Leads
 Organic Click Trend
@@ -2610,16 +2572,7 @@ This supports topical-authority decisions.
 
 # 128. Commercial Dashboard
 
-A commercial view should focus on:
-
-* commercial organic sessions
-* commercial service views
-* commercial form starts
-* commercial leads
-* market
-* service
-* property type if captured operationally
-* lead quality where available
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -2845,7 +2798,6 @@ Before production launch, confirm project-specific requirements such as:
 * failed submissions do not fire successful conversion events
 * market context is correct
 * service context is correct
-* commercial forms are distinguishable
 * pre-purchase forms are distinguishable
 * no PII is being sent
 * Search Console verification is ready
@@ -2880,7 +2832,6 @@ After launch, test actual conversion paths across:
 * primary services
 * general form
 * real-estate form
-* commercial form
 * phone links
 
 Do not assume analytics is correct because the tracking script loads.
@@ -3117,7 +3068,6 @@ The launch measurement foundation should establish reliable tracking for:
 * phone clicks
 * successful service requests
 * pre-purchase inspection requests
-* commercial requests
 
 ### Segmentation
 
@@ -3139,7 +3089,6 @@ As sufficient data accumulates, reporting can expand to:
 * leads by market
 * leads by page family
 * real-estate leads
-* commercial leads
 * organic query growth
 * service + location page productivity
 * content-cluster performance
@@ -3208,7 +3157,7 @@ Growing Organic Market Visibility
 +
 Sewer / Drain Specialist Recognition
 +
-Commercial and Property Manager Opportunities
+Property Manager Opportunities
 +
 Qualified Service Leads
 ```
@@ -3257,9 +3206,9 @@ Analytics implementation must remain consistent with:
 
 `07-master-location-registry.md`
 
-### Audience / Commercial Taxonomy
+### Audience Taxonomy
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 ### SEO Strategy
 
@@ -3328,7 +3277,6 @@ Which service produces the best leads?
 Which pages are creating leads?
 Are service + location pages working?
 Is the real-estate strategy working?
-Is commercial content generating opportunities?
 Which resources assist conversions?
 Where is organic visibility increasing?
 Where are we publishing pages that search engines do not value?

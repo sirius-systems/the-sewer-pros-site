@@ -12,14 +12,14 @@
 
 **Verified:** September 21, 2026, against commit `5b9586a` on `main`.
 
-**Phase:** Active implementation, pre-launch. This project is no longer a scaffold. All 70 approved launch pages are built, and the repository passes `npm run typecheck`, `npm run lint`, and `npm run build`. It is not yet launch-ready.
+**Phase:** Active implementation, pre-launch. This project is no longer a scaffold. All 65 approved launch pages are built, and the repository passes `npm run typecheck`, `npm run lint`, and `npm run build`. It is not yet launch-ready.
 
 ## Completed Implementation
 
-* 70 approved pages built and rendering as static HTML (Next.js 16, `output: 'export'`): 9 core and hub, 10 service, 3 market, 16 location, 14 service + location, 6 audience, 5 commercial, 2 comparison, 5 resource
-* 70 of 70 pages `launch` and indexable; none gated, noindex, or deferred. The five Las Vegas pages were released from DEC-063 by DEC-080
-* Sitemap of 70 URLs, matching the approved set; `robots.txt` allows all crawlers plus `OAI-SearchBot` and declares the sitemap
-* JSON-LD on all 70 pages (single Organization entity, WebSite, breadcrumbs, and page-type schema); no per-location `LocalBusiness`
+* 65 approved pages built and rendering as static HTML (Next.js 16, `output: 'export'`): 9 core and hub, 10 service, 3 market, 16 location, 14 service + location, 6 audience, 2 comparison, 5 resource
+* 65 of 65 pages `launch` and indexable; none gated, noindex, or deferred. The five Las Vegas pages were released from DEC-063 by DEC-080
+* Sitemap of 65 URLs, matching the approved set; `robots.txt` allows all crawlers plus `OAI-SearchBot` and declares the sitemap
+* JSON-LD on all 65 pages (single Organization entity, WebSite, breadcrumbs, and page-type schema); no per-location `LocalBusiness`
 * Production canonical host `https://www.thesewerpros.com` (DEC-078)
 * Brand colour and typography (DEC-096), six page-family design references, and a reusable template and section component library
 * Verified business facts for all three markets (DEC-070 to DEC-077, DEC-083, DEC-088)
@@ -33,7 +33,7 @@
 * Phase 2 page `svc-independent-sewer-second-opinion`: a registry-confirmed `phase_2_candidate` (`data/services/master-service-registry.json`), approved as a strategic concept, not built as a standalone `/services/` page (see §9A below)
 * Build-time cross-registry validation (`validateCrossRegistry()` exists but is not wired into `npm run check`)
 * Content follow-ups: PENDING-014 (Chesterfield program details), PENDING-015 (Census housing-age figures), PENDING-016 (three withheld claims)
-* **Existing page-inventory quality review.** All 70 built pages were approved and indexed under the prior strategic framing. The revised direction in §9A below applies the evidence-led quality model to that inventory; it does not automatically re-approve every page. See §0A, priority 4.
+* **Existing page-inventory quality review.** All 65 built pages were approved and indexed under the prior strategic framing. The revised direction in §9A below applies the evidence-led quality model to that inventory; it does not automatically re-approve every page. See §0A, priority 4.
 
 ## Documentation Work Still Required
 
@@ -45,7 +45,7 @@
 
 * No evidence layer exists yet: no anonymized inspection findings, report examples, video stills, case studies, or buyer/agent checklists are published (§0B)
 * Local reviews exist only for St. Louis (DEC-084); San Diego and Las Vegas have no review content because neither has a verified GBP
-* No audit has yet been performed against the location/service/audience/commercial quality tests in §19 for the existing 30 location and service+location pages
+* No audit has yet been performed against the location/service/audience quality tests in §19 for the existing 30 location and service+location pages
 
 ## Launch Preparation
 
@@ -148,7 +148,7 @@ Detailed implementation requirements are maintained in the subject-specific repo
 
 # 2. Project Mission
 
-The Sewer Pros website should become a multi-market digital authority and customer-acquisition platform for sewer inspection, diagnostics, locating, cleaning, hydro jetting, pre-purchase inspections, drain services, and commercial sewer/drain needs.
+The Sewer Pros website should become a multi-market digital authority and customer-acquisition platform for sewer inspection, diagnostics, locating, cleaning, hydro jetting, pre-purchase inspections, and drain services. Commercial services were removed by owner decision on Oct 12, 2026 and are not offered.
 
 The site should function as more than a traditional service-business website.
 
@@ -162,13 +162,12 @@ It should operate as a:
 - AI-search knowledge source
 - customer education resource
 - real-estate due-diligence resource
-- commercial customer acquisition platform
 - lead-generation system
 - conversion platform
 - scalable geographic expansion system
 - long-term content publishing system
 
-The long-term objective is to make The Sewer Pros easier to discover whenever homeowners, buyers, real-estate professionals, property managers, commercial operators, search engines, or AI systems need reliable information about sewer-line conditions, diagnostics, inspection, cleaning, or related decisions.
+The long-term objective is to make The Sewer Pros easier to discover whenever homeowners, buyers, real-estate professionals, property managers, search engines, or AI systems need reliable information about sewer-line conditions, diagnostics, inspection, cleaning, or related decisions.
 
 ---
 
@@ -186,8 +185,6 @@ Primary service themes include:
 - sewer line locating
 - drain cleaning
 - pre-purchase sewer inspection
-- commercial sewer services
-- commercial drain services
 
 The exact canonical service taxonomy is maintained in:
 
@@ -318,7 +315,6 @@ Strategic opportunities include:
 * hydro jetting
 * sewer cleaning
 * property management
-* commercial sewer/drain services
 * selected San Diego-area communities
 
 Do not fabricate:
@@ -349,8 +345,6 @@ Strategic opportunities include:
 * sewer line locating
 * property management
 * multifamily
-* commercial sewer services
-* commercial drain services
 * approved Las Vegas Valley locations
 
 Do not fabricate:
@@ -417,7 +411,6 @@ Las Vegas
         ↓
 Approved Locations
 Audiences
-Commercial Segments
 Resources
 ```
 
@@ -441,23 +434,21 @@ Physical Business Location
 
 # 6A. Service Model: Canonical Registry, Primary Hubs, and Selective Expansion
 
-The project maintains the full canonical service registry: **18 service records**, in `data/services/master-service-registry.json` and described narratively in `06-master-service-registry.md`. This model is preserved, not collapsed.
+The project maintains the full canonical service registry: **11 service records**, in `data/services/master-service-registry.json` and described narratively in `06-master-service-registry.md`. This model is preserved, not collapsed.
 
-Not every service or service-market combination requires equal navigation prominence or immediate indexation (06 §4). The registry itself already distinguishes four record types:
+Not every service or service-market combination requires equal navigation prominence or immediate indexation (06 §4). The registry itself already distinguishes three record types:
 
 ```text
-core_service            6 records — the primary commercial service hubs
+core_service            6 records — the primary service hubs
 derived_service          4 records — pre-purchase inspection, recurring-
                                       backup diagnosis, preventative
                                       maintenance, and the independent
                                       second-opinion concept (§9)
 market_specific_service  1 record — the St. Louis lateral-inspection
                                       and municipal-reporting page
-commercial_service       7 records — the commercial variants of the
-                                      core and locating services
 ```
 
-The six `core_service` records (verified in the registry, not newly designated here) are: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive the initial commercial emphasis as primary service hubs. This does not remove or diminish the other 12 records — derived, market-specific, and commercial services remain part of the canonical taxonomy and may be built, linked, and expanded on their own merits (06 §3.5, §18).
+The six `core_service` records (verified in the registry, not newly designated here) are: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive the initial emphasis as primary service hubs. This does not remove or diminish the other 5 records — derived and market-specific services remain part of the canonical taxonomy and may be built, linked, and expanded on their own merits (06 §3.5, §18).
 
 **Nine service pages (six primary, three supporting).** The Services section contains nine service pages: six primary service hubs (`core_service`: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, Drain Cleaning) and three supporting services (`derived_service`: Pre-Purchase Sewer Inspection, `launch`; Recurring Sewer Backup Diagnosis, `launch_candidate`; Preventative Sewer Maintenance, `launch_candidate`, tiers as recorded in `data/services/master-service-registry.json`). All nine keep their routes and may be linked from `/services/` and from relevant service and location pages. Primary-hub priority does not authorize every service + location page; the matrix may model all nine, while build, publication, and indexation remain separate decisions.
 
@@ -493,23 +484,15 @@ Important audience categories may include:
 * portfolio managers
 * community managers
 
-## Commercial
-
-* business owners
-* commercial property owners
-* facility managers
-* commercial property managers
-* other verified commercial audiences
-
 The detailed audience taxonomy is maintained in:
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 ---
 
 # 7A. Priority Audience Pathways and Conversion Actions
 
-The site supports audience-specific journeys, not only generic service pages. `09-audience-commercial-matrix.md` §6 defines 13 canonical audience records; 6 are currently launch-status and built (`/for/home-buyers/`, `/for/home-sellers/`, `/for/real-estate-agents/`, `/for/home-inspectors/`, `/for/property-managers/`, `/for/hoa-communities/`), and 7 are Phase 2 candidates, including homeowners and contractors & remodelers.
+The site supports audience-specific journeys, not only generic service pages. `09-audience-matrix.md` §6 defines 10 canonical audience records; 6 are currently launch-status and built (`/for/home-buyers/`, `/for/home-sellers/`, `/for/real-estate-agents/`, `/for/home-inspectors/`, `/for/property-managers/`, `/for/hoa-communities/`), and 4 are Phase 2 candidates, including homeowners and contractors & remodelers.
 
 Priority pathways going forward:
 
@@ -528,7 +511,6 @@ Relevant conversion pathways include:
 * requesting help with a sewer problem
 * coordinating a transaction (pre-purchase) inspection
 * requesting line locating
-* requesting commercial sewer or drain service
 * seeking an independent evaluation of a repair recommendation (§9)
 
 CTA language should still match page intent (§26); this list names the underlying actions, not final button copy.
@@ -619,44 +601,13 @@ Explicitly prohibited, regardless of what the structured data supports:
 * fabricated offices, addresses, phone numbers, teams, reviews, or availability (§41)
 * mass indexation of weak matrix-generated pages
 
-This model applies going forward to new pages and, per §0A priority 4, as an audit standard for the existing 70-page inventory. It does not retroactively mark any built page as non-compliant; it defines the standard the audit in §0A/priority 4 evaluates against. `04-master-page-build-list.md` is the operational record of that audit.
+This model applies going forward to new pages and, per §0A priority 4, as an audit standard for the existing 65-page inventory. It does not retroactively mark any built page as non-compliant; it defines the standard the audit in §0A/priority 4 evaluates against. `04-master-page-build-list.md` is the operational record of that audit.
 
 ---
 
 # 10. Commercial Strategy
 
-Commercial sewer and drain services should have a dedicated architecture rather than functioning as a minor subsection of residential content.
-
-The commercial ecosystem may support:
-
-```text
-Commercial Hub
-        ↓
-Commercial Services
-        ↓
-Commercial Audiences
-        ↓
-Market-Specific Commercial Pages
-        ↓
-Commercial Resources
-```
-
-Relevant commercial themes may include:
-
-* sewer inspection
-* drain cleaning
-* sewer cleaning
-* hydro jetting
-* recurring backups
-* high-use drainage systems
-* preventative cleaning
-* property management
-* multifamily
-* documentation
-* operational disruption
-* multiple properties
-
-Only audiences, property types, and industries actually served should be represented.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -711,7 +662,6 @@ The platform should be capable of supporting the following page families:
 * Contact
 * Services
 * Locations
-* Commercial
 * Resources
 * supporting company pages
 
@@ -746,14 +696,6 @@ Pages combining a specific audience need with a specific service.
 ## Audience + Location Pages
 
 Pages where audience and local intent meaningfully intersect.
-
-## Commercial Pages
-
-Commercial hubs, services, audiences, and industry content.
-
-## Commercial + Location Pages
-
-Local commercial pages where sufficient opportunity and differentiation exist.
 
 ## Comparison Pages
 
@@ -886,9 +828,9 @@ The list should reflect the evolving site rather than requiring every implementa
 The project currently contains approximately:
 
 ```text
-18 canonical service records
+11 canonical service records
 579 normalized geographic records
-10,422 service × location relationships
+6,369 service × location relationships
 ```
 
 This data should be treated as a valuable strategic asset.
@@ -980,12 +922,6 @@ Could "home buyer" be replaced with "property manager" while the content still w
 
 If yes, improve audience specificity.
 
-## Commercial Test
-
-Could "commercial property" be replaced with "homeowner" while most content remained valid?
-
-If yes, improve commercial specificity.
-
 These tests should improve drafts rather than prevent them from being created.
 
 ---
@@ -1005,7 +941,6 @@ Priorities include:
 * service relationships
 * local context
 * audience context
-* commercial context
 * comparison content
 * decision-support content
 * contextual conversion
@@ -1063,7 +998,6 @@ Priority clusters may include:
 * pre-purchase inspection
 * real estate
 * second opinions
-* commercial sewer/drain services
 
 Conceptually:
 
@@ -1142,7 +1076,6 @@ Internal links should help users and search systems understand relationships amo
 * markets
 * locations
 * audiences
-* commercial topics
 * problems
 * resources
 * conversions
@@ -1197,7 +1130,6 @@ Primary conversions may include:
 * general service requests
 * inspection requests
 * pre-purchase sewer inspection requests
-* commercial inquiries
 
 CTA language should match the intent of the page.
 
@@ -1568,7 +1500,6 @@ Primary measurement questions include:
 * Which local cohorts perform?
 * Which resources assist conversions?
 * Is real-estate content generating opportunities?
-* Is commercial SEO generating opportunities?
 * Which page families deserve expansion?
 
 Success should not be measured primarily through page count.
@@ -1601,12 +1532,11 @@ Priority should generally be given to:
 6. building real-estate authority
 7. controlled local expansion
 8. service + location expansion
-9. commercial authority
-10. second-opinion and comparison content
-11. reviews
-12. citations
-13. links
-14. content refresh
+9. second-opinion and comparison content
+10. reviews
+11. citations
+12. links
+13. content refresh
 
 Expansion should be informed by evidence rather than raw page-count goals.
 
@@ -1676,7 +1606,6 @@ The project should be judged by whether The Sewer Pros becomes:
 * stronger across its markets
 * more useful to home buyers
 * more useful to real-estate professionals
-* more relevant to commercial customers
 * more visible to search engines
 * more useful to AI-answer systems
 * capable of scalable future growth

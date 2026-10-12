@@ -1693,7 +1693,7 @@ Confirm the reconciliation before templates are built on it (build sequence step
 **Affected Documents:**
 
 * `07-master-location-registry.md` §14, §59
-* `09-audience-commercial-matrix.md` §122, §123
+* `09-audience-matrix.md` §122, §123
 * `04-master-page-build-list.md` §44
 
 ### Decision
@@ -1763,7 +1763,7 @@ If ids are ever added to the location registry, they must match this derivation 
 **Decision Owner:** Project
 **Affected Documents:**
 
-* `09-audience-commercial-matrix.md` §10, §57, §68, §69, §70
+* `09-audience-matrix.md` §10, §57, §68, §69, §70
 
 ### Decision
 
@@ -3983,6 +3983,8 @@ It is not required for the initial build architecture.
 
 Complete legacy URL mapping before final migration.
 
+Legacy thesewerpros.com commercial URLs need mapping to the nearest residential service page, or to the Services hub (`/services/`) if none matches, never the homepage, once the legacy inventory exists. Use direct single-hop permanent redirects with no chains or loops. Do not create redirects for URLs that cannot be verified (DEC-142).
+
 This does not prevent unrelated website development from continuing.
 
 ---
@@ -4445,7 +4447,7 @@ The README and overview still described a scaffold. The repository at commit `5b
 * `06-master-service-registry.md`
 * `07-master-location-registry.md`
 * `08-service-location-matrix.md`
-* `09-audience-commercial-matrix.md`
+* `09-audience-matrix.md`
 * `10-seo-strategy.md`
 * `12-content-aeo-ai-strategy.md`
 * `14-content-specification.md`
@@ -5316,6 +5318,40 @@ The owner directed that location pages and service + location pages sit under `/
 ```
 
 Unchanged: market hubs (`/{market}/`), market contact pages (`/{market}/contact/`) and the St. Louis market-specific service (`/st-louis-mo/sewer-lateral-inspection-reporting/`). The owner asked for the published URLs to be rewritten in place. No redirects from the old paths were added (see CLAUDE.md §46, §52: location hubs were live and may carry search equity or GBP links; confirm whether 301s from the old paths are wanted).
+
+## DEC-142 - Commercial Services Removed; Property Managers and Multifamily Retained as Residential Audiences
+
+**Date:** 2026-10-12
+**Status:** APPROVED
+**Impact:** Major (business positioning, URL removal)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** earlier decisions that treated commercial services as active; `04-master-page-build-list.md` §5 and §56 counts; the service, location, matrix and audience registries
+**Affected Documents:**
+
+* `CLAUDE.md` and docs 00 through 21
+* `data/services/master-service-registry.json`, `data/locations/master-location-registry.json`, `data/matrices/*`
+* `data/pages/*`, `data/navigation/navigation.ts`, `lib/analytics/*`, `lib/routing/*`, `types/*`
+* `app/`, `components/`, `content/` (commercial route, template and content deleted; wording and links updated)
+
+**Reason:** owner positioning decision. The Sewer Pros does not list or market commercial services.
+
+Commercial services and pages removed; property managers and multifamily retained as residential-focused audiences; real estate unchanged (home buyers, home sellers, real estate agents, home inspectors, pre-purchase inspection, second opinion and comparison content). Investors stay where residential. Mission Valley and every other location page stay.
+
+What was removed:
+
+* The `/commercial/` hub and its five service pages (sewer camera inspection, sewer cleaning, hydro jetting, drain cleaning, preventative maintenance). The static build went from 206 to 200 pages and the sitemap from 203 to 197 URLs.
+* The seven `svc-commercial-*` service records (18 services became 11), the commercial hub record, and the `commercial_applicability` field.
+* The commercial audience ids (`aud-facility-managers`, `aud-restaurants`, `aud-commercial-property-owners`) and the commercial-only audience statuses and types.
+* 4,053 commercial rows from the service + location matrix (10,422 became 6,369 relationships), the `location_commercial_matrix` column, the `commercial_matrix` field on all 579 locations, and the commercial, restaurants and hospitality location tags. The `commercial_or_mixed_use_district` location type is now `mixed_use_district`.
+* The Commercial header and footer links, the commercial cards on the home page and market hubs, the commercial Contact form option (now a rental or multifamily option), and every commercial FAQ, CTA and form.
+* Analytics values: lead type `commercial`, form type `commercial_service`, content cluster `commercial`, and any commercial audience_id.
+* Commercial wording from titles, descriptions, body copy, structured data and the Mission Valley pages. Municipal program wording that names commercial property as outside a City program is kept as local fact.
+
+Legacy thesewerpros.com commercial URLs are handled under PENDING-010. No redirect was created for a URL that could not be verified.
+
+Superseded wording: where an earlier entry describes commercial services, pages or audiences as active, this decision governs.
+
+---
 
 ---
 

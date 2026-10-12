@@ -147,7 +147,7 @@ It also does not replace:
 * `06-master-service-registry.md`
 * `07-master-location-registry.md`
 * `08-service-location-matrix.md`
-* `09-audience-commercial-matrix.md`
+* `09-audience-matrix.md`
 
 Those documents provide taxonomy and relationships.
 
@@ -170,7 +170,6 @@ It may come from:
 * competitor gaps
 * service/location data
 * customer questions
-* commercial opportunity
 * audience need
 * Search Console data
 * AI/LLM query patterns
@@ -399,7 +398,6 @@ The project may generate:
 * service + location pages
 * audience + service pages
 * audience + location pages
-* commercial + location pages
 * structured resource pages
 
 provided that production indexation remains quality-controlled.
@@ -481,12 +479,6 @@ Could the audience name be swapped without changing the customer journey?
 
 If yes, strengthen audience-specific value.
 
-## Commercial Test
-
-Could a commercial page become a residential page by replacing a few nouns?
-
-If yes, strengthen commercial differentiation.
-
 ---
 
 # 11A. Formal Indexability Standard and Review Fields
@@ -500,7 +492,7 @@ An indexable page should have:
 * accurate service and market coverage
 * meaningful content differentiation
 * verified claims
-* appropriate local, audience, or commercial context
+* appropriate local or audience context
 * a clear conversion purpose
 * relevant internal links
 * a defined parent and breadcrumb relationship
@@ -510,7 +502,7 @@ An indexable page should have:
 
 A page should **not** be intentionally indexable solely because:
 
-* it exists in a matrix (`08-service-location-matrix.md`, `09-audience-commercial-matrix.md`)
+* it exists in a matrix (`08-service-location-matrix.md`, `09-audience-matrix.md`)
 * it contains a valid URL
 * it targets a city keyword
 * it is a token-swapped version of another page
@@ -561,9 +553,6 @@ The site may support the following page families.
 | Audience              | `/home-buyers/`                      | Audience authority              |
 | Audience + Service    | audience/service route               | Specific audience need          |
 | Audience + Location   | localized audience route             | Local audience intent           |
-| Commercial            | `/commercial/`                       | Commercial authority            |
-| Commercial Service    | commercial service route             | Commercial transactional intent |
-| Commercial + Location | localized commercial route           | Local commercial intent         |
 | Comparison            | comparison route                     | Decision support                |
 | Alternative           | alternatives route                   | Decision support                |
 | Resource              | educational route                    | Topical authority               |
@@ -596,7 +585,7 @@ Standard: represent legitimate market coverage, avoid implying an office unless 
 
 ## Service-Market Pages
 
-Standard: have a distinct local commercial purpose, include meaningful market-specific content, include verified service coverage, include a differentiated CTA, and avoid city-name substitution.
+Standard: have a distinct local purpose, include meaningful market-specific content, include verified service coverage, include a differentiated CTA, and avoid city-name substitution.
 
 ## Audience Pages
 
@@ -633,7 +622,6 @@ Exact current status should be updated as the build progresses.
 | Contact        | build-ready / published | indexable  |
 | Services Hub   | build-ready / published | indexable  |
 | Locations Hub  | build-ready / published | indexable  |
-| Commercial Hub | build-ready / published | indexable  |
 | Resources Hub  | build-ready / published | indexable  |
 
 Status should reflect actual repository state rather than remaining static.
@@ -673,7 +661,6 @@ Examples include approved services such as:
 * Sewer Line Locating
 * Drain Cleaning
 * Pre-Purchase Sewer Inspection
-* Commercial Sewer Services
 
 The service registry determines exact canonical names.
 
@@ -778,11 +765,10 @@ Important candidate audiences include:
 * real-estate agents
 * home inspectors
 * property managers
-* commercial property owners
 
 The exact taxonomy should generally align with:
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 A candidate audience page does not require a new decision-log entry.
 
@@ -797,7 +783,6 @@ Examples:
 ```text
 Sewer Inspections for Home Buyers
 Hydro Jetting for Property Managers
-Commercial Drain Cleaning for Property Managers
 ```
 
 These pages should combine genuinely distinct:
@@ -832,18 +817,7 @@ They may still be generated as candidates and evaluated before indexation.
 
 # 21. Commercial Pages
 
-Commercial architecture may include:
-
-* commercial hub
-* commercial service pages
-* property-management pages
-* approved industry pages
-* commercial + location pages
-* commercial educational resources
-
-Commercial content should address actual commercial needs.
-
-Do not create commercial pages by simply adding "commercial" to residential content.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -895,7 +869,6 @@ Priority clusters may include:
 * real estate
 * home buyers
 * second opinions
-* commercial services
 
 Resource pages may be added as research reveals useful questions.
 
@@ -907,7 +880,7 @@ There is no requirement that every resource be manually pre-approved before draf
 
 Evidence is a distinct page family from resources (§12, §12A): anonymized inspection findings, report examples, video stills, case studies, local reviews, buyer/agent checklists (`00-project-overview.md` §0B, `03-information-architecture.md` §44A).
 
-For local, service-market, audience-service, and commercial pages, track an `evidenceStatus` field (§27):
+For local, service-market, and audience-service pages, track an `evidenceStatus` field (§27):
 
 ```text
 verified-local-proof-available
@@ -917,7 +890,7 @@ proof-not-applicable
 blocked-pending-verification
 ```
 
-None of the current 70 pages has been reviewed against this field (§56A); it is a planning field going forward, not a retroactive audit result.
+None of the current 64 launch pages has been reviewed against this field (§56A); it is a planning field going forward, not a retroactive audit result.
 
 Do not fabricate evidence to satisfy the field. If a page needs evidence it does not yet have, record `draft-proof-needed` rather than inventing a review, a statistic, or a case study.
 
@@ -994,7 +967,6 @@ type PageRecord = {
   marketId?: string;
   locationId?: string;
   audienceId?: string;
-  commercialSegmentId?: string;
 
   // Finer-grained lifecycle, additive to `status` (§6A). Optional:
   // a record may carry only `status`, or `status` plus any of these.
@@ -1050,7 +1022,6 @@ Examples:
 * important service + market pages
 * pre-purchase inspection
 * home-buyer pages
-* major commercial pages
 
 ## `P2`
 
@@ -1085,7 +1056,7 @@ This sequenced framework supersedes the generic P0-P3 buckets above for whole-pr
 
 Homepage, About, Contact, core conversion components, market selector, forms and tracking, primary navigation.
 
-## Priority 2 — Primary Commercial Coverage
+## Priority 2 - Primary Coverage
 
 Primary service hubs (the six `core_service` records, `06-master-service-registry.md`), the three authentic market hubs, highest-value service-market pages, high-value audience hubs.
 
@@ -1119,7 +1090,6 @@ Candidate pages may be added based on:
 * local market research
 * matrix relationships
 * AI/LLM query analysis
-* new commercial opportunities
 
 Candidate creation should be easy.
 
@@ -1141,7 +1111,7 @@ Cohort 2
 Top San Diego pre-purchase pages
 
 Cohort 3
-Las Vegas commercial pages
+Las Vegas pre-purchase pages
 ```
 
 Cohorts allow:
@@ -1368,7 +1338,7 @@ After launch, page status and priority may be influenced by:
 * backlink acquisition
 * AI referrals
 * market growth
-* commercial performance
+* business performance
 
 The page inventory should evolve based on evidence.
 
@@ -1562,7 +1532,6 @@ Launch inventory should cover:
 * major services
 * three primary markets
 * high-value audiences
-* commercial entry points
 * conversion paths
 * initial resources
 
@@ -1669,8 +1638,8 @@ Large-Scale Indexation
 08-service-location-matrix.md
 → Service/geographic relationships
 
-09-audience-commercial-matrix.md
-→ Audience and commercial relationships
+09-audience-matrix.md
+→ Audience relationships
 
 15-schema-entity-strategy.md
 → Schema and entity implementation
@@ -1696,19 +1665,18 @@ This document should not duplicate or override the canonical data in the registr
 
 This section reconciles the inventory with the repository. The authoritative machine-readable registry is `data/pages/approved-pages.ts`; this section summarizes it and does not replace it.
 
-Verified against commit `5b9586a`: 70 approved records, all `status: launch` and `indexable: true`; `gatedPages` is empty; all 70 are built (content exists and a route is generated); the production sitemap lists exactly those 70 URLs. Built and indexable here reflects the registry's own `launch` decision, not the existence of a route.
+Verified against commit `5b9586a`: 64 approved records, all `status: launch` and `indexable: true`; `gatedPages` is empty; all 64 are built (content exists and a route is generated); the production sitemap lists exactly those 64 URLs. Built and indexable here reflects the registry's own `launch` decision, not the existence of a route. Commercial services were removed by owner decision on Oct 12, 2026 and are not offered; the original 70-page launch build is now 64 launch pages, and the current build is 200 static pages with 197 sitemap URLs and 198 approved page records.
 
 | Family | Built | Indexable | Paths |
 |---|---|---|---|
 | Home | 1 | 1 | `/` |
 | Core | 3 | 3 | `/about/`, `/contact/`, `/faq/` |
-| Hubs | 5 | 5 | `/services/`, `/locations/`, `/for/`, `/commercial/`, `/resources/` |
+| Hubs | 4 | 4 | `/services/`, `/locations/`, `/for/`, `/resources/` |
 | Service | 10 | 10 | 9 under `/services/` (drain-cleaning, hydro-jetting, pre-purchase-sewer-inspection, preventative-sewer-maintenance, recurring-sewer-backup-diagnosis, sewer-camera-inspection, sewer-cleaning-camera-inspection, sewer-cleaning, sewer-line-locating) plus `/st-louis-mo/sewer-lateral-inspection-reporting/` |
 | Market | 3 | 3 | `/st-louis-mo/`, `/san-diego-ca/`, `/las-vegas-nv/` |
 | Location | 16 | 16 | Paths `/locations/{market}/{location}/` (DEC-141). St. Louis 5 (St. Louis City, Chesterfield, Ballwin, Florissant, St. Charles); San Diego 7 (San Diego, Mission Valley, Carlsbad, Chula Vista, Escondido, Oceanside, San Marcos); Las Vegas 4 (Las Vegas, Henderson, North Las Vegas, Summerlin) |
 | Service + Location | 144 | 144 | 9 residential services x 16 locations (St. Louis 45, San Diego 63, Las Vegas 36), at `/locations/{market}/{location}/{service-slug}/` (DEC-139, DEC-140, DEC-141). See section 56D. This table row supersedes the 14-page count in the September 21 snapshot |
 | Audience | 6 | 6 | `/for/` home-buyers, home-sellers, real-estate-agents, home-inspectors, property-managers, hoa-communities |
-| Commercial | 5 | 5 | `/commercial/` sewer-camera-inspection, sewer-cleaning, hydro-jetting, drain-cleaning, preventative-maintenance |
 | Comparison | 2 | 2 | `/compare/` hydro-jetting-vs-sewer-snaking, independent-sewer-inspection-vs-repair-company |
 | Resource | 5 | 5 | `/resources/` how-to-read-a-sewer-camera-inspection-video, st-louis-city-sewer-lateral-program, st-louis-county-sewer-lateral-program, st-louis-sewer-lateral-report, what-is-in-a-sewer-camera-inspection-report |
 
@@ -1717,17 +1685,17 @@ Other lifecycle states:
 * **Gated or noindex:** none. The five Las Vegas records moved from `launch_pending_validation` to `launch` under DEC-080. Only the framework 404 pages emit noindex
 * **Deferred:** `svc-independent-sewer-second-opinion` (Phase 2, approved, not built, not in the registry)
 * **Retired:** none
-* **Pages not built and not in the approved page registry:** audience + service, audience + location, commercial + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records. Geographic records for candidate locations may already exist in `07-master-location-registry.md`; a geographic record is not a page approval. See §56C for the proposed expansion candidates
+* **Pages not built and not in the approved page registry:** audience + service, audience + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records. Geographic records for candidate locations may already exist in `07-master-location-registry.md`; a geographic record is not a page approval. See §56C for the proposed expansion candidates
 
 The families table in §13 to §24 describes intent. Where it says "build-ready / published", the state above applies.
 
 ---
 
-# 56A. 70-Page Inventory Audit Process
+# 56A. 64-Page Launch Inventory Audit Process
 
-§56's snapshot confirms *what exists*: 70 built, launch-status, indexable pages. It does not confirm that all 70 satisfy the evidence-led quality model in §11A — that per-page review has not been performed as of this writing (September 22, 2026).
+§56's snapshot confirms *what exists*: 64 built, launch-status, indexable pages. It does not confirm that all 64 satisfy the evidence-led quality model in §11A — that per-page review has not been performed as of this writing (September 22, 2026).
 
-**Do not assume all 70 pages should remain permanently indexable, and do not retire or noindex any of them merely because they have not yet been individually reviewed.** Record each as requiring review where evidence is incomplete, per the outcomes below.
+**Do not assume all 64 pages should remain permanently indexable, and do not retire or noindex any of them merely because they have not yet been individually reviewed.** Record each as requiring review where evidence is incomplete, per the outcomes below.
 
 ## Required Audit Process, Per Page
 
@@ -1752,7 +1720,7 @@ The families table in §13 to §24 describes intent. Where it says "build-ready 
 
 ## Current Status
 
-**This audit has now been performed.** See §56B for the confirmed results, recorded September 22, 2026. All 70 pages remain in their current implemented state (`status: launch`, `indexable: true`, per §56) — the audit found no reason to change any page's disposition. This satisfied priority 4 in `00-project-overview.md` §0A.
+**This audit has now been performed.** See §56B for the confirmed results, recorded September 22, 2026. All 64 pages remain in their current implemented state (`status: launch`, `indexable: true`, per §56) — the audit found no reason to change any page's disposition. This satisfied priority 4 in `00-project-overview.md` §0A.
 
 
 ---
@@ -1765,14 +1733,14 @@ Full report: `/tmp/the-sewer-pros-page-audit-report.md`. This section is the inv
 
 | Source | Count |
 |---|---|
-| Registry (`data/pages/approved-pages.ts`, `status: launch`) | 70 |
-| Build output (`out/`, excluding `/404/` and `/_not-found/`) | 70 |
-| Sitemap (`out/sitemap.xml` `<loc>` entries) | 70 |
+| Registry (`data/pages/approved-pages.ts`, `status: launch`) | 64 |
+| Build output (`out/`, excluding `/404/` and `/_not-found/`) | 64 |
+| Sitemap (`out/sitemap.xml` `<loc>` entries) | 64 |
 | Additions found | 0 |
 | Omissions found | 0 |
 | Duplicates found | 0 |
 
-Page-family counts, confirmed against §56's table: Home 1, Core 3, Hubs 5, Service 10, Market 3, Location 16, Service + Location 14, Audience 6, Commercial 5, Comparison 2, Resource 5. Total 70.
+Page-family counts, confirmed against §56's table: Home 1, Core 3, Hubs 4, Service 10, Market 3, Location 16, Service + Location 14, Audience 6, Comparison 2, Resource 5. Total 64.
 
 ## Findings (10 total: 0 Critical, 3 High, 4 Medium, 3 Low)
 
@@ -1781,8 +1749,8 @@ No Critical findings.
 **High:**
 
 1. **H1 — `/st-louis-mo/` needs a unique meta description.** The flagship market page, and the only GBP-verified market, currently shares the generic site-wide fallback description rather than an authored one — notable because its sibling market hubs (`/san-diego-ca/`, `/las-vegas-nv/`) both have unique descriptions.
-2. **H2 — 63 of 70 pages (90%) share one identical fallback meta/OG/Twitter description**, "Independent sewer inspection, diagnostics, locating, and cleaning." Traced to `lib/seo/metadata.ts`: the root-layout fallback (`rootMetadata()`) silently fills in for any page whose content record supplies no `description`, where the code's own comment states the intent was for an unauthored page's tag to be omitted instead. This is a metadata authoring and fallback-behavior issue, not a business-accuracy or content-body issue. **Not fixed in this task** — `lib/seo/metadata.ts` was not modified.
-3. **H3 — the lead-form submission endpoint remains unwired (PENDING-018).** `handleSubmit` in `components/sections/LeadFormSection.tsx` is a stub; it affects 57 of the 70 pages that render the form. **Not fixed in this task** — the form and endpoint were not modified.
+2. **H2 — Most of the 64 pages share one identical fallback meta/OG/Twitter description**, "Independent sewer inspection, diagnostics, locating, and cleaning." Traced to `lib/seo/metadata.ts`: the root-layout fallback (`rootMetadata()`) silently fills in for any page whose content record supplies no `description`, where the code's own comment states the intent was for an unauthored page's tag to be omitted instead. This is a metadata authoring and fallback-behavior issue, not a business-accuracy or content-body issue. **Not fixed in this task** — `lib/seo/metadata.ts` was not modified.
+3. **H3 — the lead-form submission endpoint remains unwired (PENDING-018).** `handleSubmit` in `components/sections/LeadFormSection.tsx` is a stub; it affects the pages that render the form. **Not fixed in this task** — the form and endpoint were not modified.
 
 **Medium:**
 
@@ -1807,7 +1775,7 @@ No Critical findings.
 | `npm run validate` | passed |
 | `npm run check` | passed |
 
-## Per-Page Inventory (all 70 pages)
+## Per-Page Inventory (all 64 pages)
 
 `Build`, `Publication`, and `Indexation` are the three separate lifecycle dimensions from §6A; `Content`, `Evidence`, `Conversion`, and `QA` are the review fields from §11A; `Disposition` is the overall §11A outcome. Every row below is `complete` / `published` / `indexable` / `keep-indexable` — the audit changed no page's status.
 
@@ -1819,7 +1787,6 @@ No Critical findings.
 | `hub-services` | Hub | `/services/` | Brand/trust | — | — | — | complete | published | indexable | pass | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | No page-specific finding; has a unique authored description (§56B) | No page-specific action required |
 | `hub-locations` | Hub | `/locations/` | Brand/trust | — | — | — | complete | published | indexable | pass | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | No page-specific finding; has a unique authored description (§56B) | No page-specific action required |
 | `hub-audiences` | Hub | `/for/` | Brand/trust | — | — | — | complete | published | indexable | pass | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | No page-specific finding; has a unique authored description (§56B) | No page-specific action required |
-| `hub-commercial` | Hub | `/commercial/` | Brand/trust | — | — | — | complete | published | indexable | pass | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | No page-specific finding; has a unique authored description (§56B) | No page-specific action required |
 | `hub-resources` | Hub | `/resources/` | Educational | — | — | — | complete | published | indexable | needs-revision (metadata only) | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `core-faq` | Core | `/faq/` | Educational/brand | — | — | — | complete | published | indexable | needs-revision (metadata only) | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `svc-sewer-camera-inspection` | Service | `/services/sewer-camera-inspection/` | Transactional service | svc-sewer-camera-inspection | — | — | complete | published | indexable | pass | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | Rewritten on Service Page Template v2 (DEC-123); unique authored title and description; scripts/verify-sewer-camera-inspection-page.mjs passes | No page-specific action required |
@@ -1830,7 +1797,7 @@ No Critical findings.
 | `svc-drain-cleaning` | Service | `/services/drain-cleaning/` | Transactional service | svc-drain-cleaning | — | — | complete | published | indexable | pass | needs-collection (image placeholders in place) | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | Migrated to Service Page Template v2 (DEC-129); unique authored title and description; scripts/verify-drain-cleaning-page.mjs passes | Confirm what record of the cleaning is provided; answer the held questions (duration, cost, roof-vent access, toilet removal); save real drain cleaning photography for a future evidence section |
 | `svc-pre-purchase-sewer-inspection` | Service | `/services/pre-purchase-sewer-inspection/` | Transactional service | svc-pre-purchase-sewer-inspection | — | — | complete | published | indexable | pass | partially-verified (evidence examples reuse the four approved camera-page slots) | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | Migrated to Service Page Template v2 (DEC-131); unique authored title and description; scripts/verify-pre-purchase-sewer-inspection-page.mjs passes | Confirm video delivery and retention, whether findings note unviewed portions, whether someone must be present and whether locating is part of the visit; link the independent second-opinion page and a sewer-scope-vs-home-inspection comparison once they exist; save real pre-purchase example imagery |
 | `svc-recurring-sewer-backup-diagnosis` | Service | `/services/recurring-sewer-backup-diagnosis/` | Transactional service | svc-recurring-sewer-backup-diagnosis | — | — | complete | published | indexable | pass | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Migrated to Service Page Template v2 (DEC-135); unique authored title and description; scripts/verify-recurring-sewer-backup-diagnosis-page.mjs passes | Real photographs for image slots 1 to 7 (consent for job photos) before the indexation gate; Search Console diff of the replaced copy |
-| `svc-preventative-sewer-maintenance` | Service | `/services/preventative-sewer-maintenance/` | Transactional service | svc-preventative-sewer-maintenance | — | — | complete | published | indexable | pass | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Migrated to Service Page Template v2 (DEC-137); unique authored title and description; scripts/verify-preventative-sewer-maintenance-page.mjs passes | Real photographs for image slots 1 to 3 (consent for job photos) before the indexation gate; owner decision on the removed commercial block and audience rows; Search Console diff of the replaced copy |
+| `svc-preventative-sewer-maintenance` | Service | `/services/preventative-sewer-maintenance/` | Transactional service | svc-preventative-sewer-maintenance | — | — | complete | published | indexable | pass | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Migrated to Service Page Template v2 (DEC-137); unique authored title and description; scripts/verify-preventative-sewer-maintenance-page.mjs passes | Real photographs for image slots 1 to 3 (consent for job photos) before the indexation gate; owner decision on the removed audience rows; Search Console diff of the replaced copy |
 | `svc-stl-sewer-lateral-inspection-reporting` | Service | `/st-louis-mo/sewer-lateral-inspection-reporting/` | Transactional service | svc-stl-sewer-lateral-inspection-reporting | st-louis-mo | — | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `market-st-louis-mo` | Market | `/st-louis-mo/` | Local service | — | st-louis-mo | — | complete | published | indexable | needs-revision (metadata only) | partially-verified | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | High | Flagship, GBP-verified market shares generic fallback description while San Diego/Las Vegas hubs have unique ones (Finding H1) | Author unique meta description for /st-louis-mo/ (top priority) |
 | `market-san-diego-ca` | Market | `/san-diego-ca/` | Local service | — | san-diego-ca | — | complete | published | indexable | pass | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | No page-specific finding; has a unique authored description (§56B) | No page-specific action required |
@@ -1846,7 +1813,7 @@ No Critical findings.
 | `loc-sd-escondido` | Location | `/locations/san-diego-ca/escondido/` | Local service | — | san-diego-ca | — | complete | published | indexable | pass (rich composition; title "Sewer Inspection & Cleaning in Escondido, CA"; description "Sewer camera inspection, hydro jetting and cleaning in Escondido, CA. See what Municipal Code 22-165 makes the owner responsible for on your lateral."; FAQPage per DEC-114) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Resolved by the Escondido rebuild (DEC-118); real photos and one consented local proof item still needed | Add real photos |
 | `loc-sd-oceanside` | Location | `/locations/san-diego-ca/oceanside/` | Local service | — | san-diego-ca | — | complete | published | indexable | pass (rich composition; title "Sewer Inspection & Cleaning in Oceanside, CA"; description "Sewer camera inspection and cleaning in Oceanside, CA. See what the City says about private sewer lines, who to call, and what we did not find."; FAQPage per DEC-114) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Resolved by the Oceanside rebuild (DEC-120); real photos and one consented local proof item still needed | Add real photos |
 | `loc-sd-chula-vista` | Location | `/locations/san-diego-ca/chula-vista/` | Local service | — | san-diego-ca | — | complete | published | indexable | pass (rich composition; title "Sewer Inspection & Cleaning in Chula Vista, CA"; description "Sewer camera inspection, hydro jetting and cleaning in Chula Vista, CA. See who maintains your lateral and what the City's sewer policy says."; FAQPage per DEC-114) | partially-verified (City of Chula Vista pages, Council Policy 570-01 and CVMC 13.08.100 and 13.08.110 read 2026-10-04; the sewer authority is the City, not CVSan, which is the Castro Valley Sanitary District; no grant found; no housing-age section and no review band until Census and San Diego review figures are supplied) | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | No original local proof item on file (eight photo slots draw labelled placeholders in the review build; the hero, nine service cards and final background cannot draw one) | Add one real Chula Vista or San Diego job photo or footage still with owner consent; confirm the current text of Council Policy 570-01 with Public Works at (619) 397-6000 (posted copy has a blank 2014 resolution number); paste Census B25034 and B25035 for Chula Vista city to add housing age; recheck City sources on publish day; re-verify sources by 2027-04-04 |
-| `loc-sd-mission-valley` | Location | `/locations/san-diego-ca/mission-valley/` | Local service | — | san-diego-ca | — | complete | published | indexable | pass (rich composition; title "Mission Valley Sewer Inspection & Cleaning"; description "Sewer camera inspection, hydro jetting and cleaning for Mission Valley businesses and mixed-use properties, with the City's grease and lateral rules."; FAQPage per DEC-114) | partially-verified (City of San Diego sources read 2026-10-04; no housing-age section, review band or commercial band) | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | No original local proof item on file (a real Mission Valley job photo or footage still with owner consent closes it) | Add a real Mission Valley photo or footage still; recheck City sources by 2027-04-04 |
+| `loc-sd-mission-valley` | Location | `/locations/san-diego-ca/mission-valley/` | Local service | — | san-diego-ca | — | complete | published | indexable | pass (rich composition; title "Mission Valley Sewer Inspection & Cleaning"; description "Sewer camera inspection, hydro jetting and cleaning for Mission Valley businesses and mixed-use properties, with the City's grease and lateral rules."; FAQPage per DEC-114) | partially-verified (City of San Diego sources read 2026-10-04; no housing-age section or review band) | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | No original local proof item on file (a real Mission Valley job photo or footage still with owner consent closes it) | Add a real Mission Valley photo or footage still; recheck City sources by 2027-04-04 |
 | `loc-lv-las-vegas` | Location | `/locations/las-vegas-nv/las-vegas/` | Local service | — | las-vegas-nv | — | complete | published | indexable | pass (rich composition; title "Sewer Inspection & Cleaning in Las Vegas, NV"; description "Sewer camera inspection and cleaning in Las Vegas, NV. See what the City says about private sewer lines, who to call, and how old local homes are."; FAQPage per DEC-114, nine questions) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Rebuilt 2026-10-04 from City of Las Vegas and Census sources; the unsourced warranty price, "Water Pollution Control" name, 2019-2023 label, PVC narrative and "Since 2011" cell were removed; no real Las Vegas photo or proof item yet | Add real photos and one consented Las Vegas proof item; recheck City sources by 2027-04-04 |
 | `loc-lv-henderson` | Location | `/locations/las-vegas-nv/henderson/` | Local service | — | las-vegas-nv | — | complete | published | indexable | pass (rich composition; title "Sewer Inspection & Cleaning in Henderson, NV"; description "Sewer camera inspection and cleaning in Henderson, NV. See what the City says about your sewer lateral, who to call, and how old local homes are."; FAQPage per DEC-114, ten questions) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass (2026-10-04, commit 7ae5239 on pages.dev: Lighthouse desktop 100/100/100/100; mobile performance 82-87 over three runs, accessibility 100, best practices 100, SEO 100, LCP 3.8-4.4 s on the hero intro paragraph, CLS 0, TBT 80 ms, against Las Vegas (City) mobile performance 99 and LCP 1.4 s; axe 0 violations at 1440 and 390; Lighthouse flags td-has-header on the shared table component; follow-up 2026-10-04: five interleaved live mobile runs give median performance 88 (range 86-93) for Henderson, 91 for Las Vegas (City) and 87 for Oceanside, and 94 on all three served locally, so the earlier 82-87 against 99 gap was measurement noise on a shared template, not Henderson-specific) | keep-indexable | Medium | Rebuilt 2026-10-04 from City of Henderson and Census sources; the comparative wording, the county-district treatment sentence, the 2019-2023 label, the PVC narrative and the generic meta description were removed; no real Henderson photo or proof item yet | Add real photos and one consented Henderson proof item; recheck City sources by 2027-04-04 |
 | `loc-lv-north-las-vegas` | Location | `/locations/las-vegas-nv/north-las-vegas/` | Local service | — | las-vegas-nv | — | complete | published | indexable | pass (rich composition; title "Sewer Inspection & Cleaning in North Las Vegas, NV"; description "Sewer camera inspection and cleaning in North Las Vegas, NV. See what the City says about your sewer lateral, blockages, breaks, and who to call."; FAQPage per DEC-114, ten questions) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass (2026-10-04 on pages.dev: `npm run check`, `verify-north-las-vegas-page.mjs` and `verify-market-phones.mjs` pass, byte-identical regression against the pre-edit export for every other page, 19 image-slot placeholders, flag-off build clean; Lighthouse and axe not run in this pass) | keep-indexable | Medium | Rebuilt 2026-10-04 from City of North Las Vegas sources (Water Leaks, Water, utility portal; all undated or 2023); the "not able to locate" statement, the "every other authority" comparison, the "Public Works and Utilities" naming, the home-page-only City link, the generic meta description and the shared contact block with its email were removed; no housing-age section (primary Census tables not supplied); no real North Las Vegas photo or proof item yet | Add real photos and one consented North Las Vegas proof item; supply B25034 and B25035 for North Las Vegas city if a housing-age section is wanted; recheck City sources by 2027-04-04 |
@@ -1871,11 +1838,6 @@ No Critical findings.
 | `aud-home-inspectors` | Audience | `/for/home-inspectors/` | Audience workflow | — | — | aud-home-inspectors | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `aud-property-managers` | Audience | `/for/property-managers/` | Audience workflow | — | — | aud-property-managers | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `aud-hoa-communities` | Audience | `/for/hoa-communities/` | Audience workflow | — | — | aud-hoa-communities | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
-| `com-camera` | Commercial | `/commercial/sewer-camera-inspection/` | Commercial workflow | svc-commercial-sewer-camera-inspection | — | — | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
-| `com-sewer-cleaning` | Commercial | `/commercial/sewer-cleaning/` | Commercial workflow | svc-commercial-sewer-cleaning | — | — | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
-| `com-hydro-jetting` | Commercial | `/commercial/hydro-jetting/` | Commercial workflow | svc-commercial-hydro-jetting | — | — | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
-| `com-drain-cleaning` | Commercial | `/commercial/drain-cleaning/` | Commercial workflow | svc-commercial-drain-cleaning | — | — | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
-| `com-maintenance` | Commercial | `/commercial/preventative-maintenance/` | Commercial workflow | svc-commercial-preventative-maintenance | — | — | complete | published | indexable | needs-revision (metadata only) | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `cmp-independent-vs-repair` | Comparison | `/compare/independent-sewer-inspection-vs-repair-company/` | Comparison | — | — | — | complete | published | indexable | needs-revision (metadata only) | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `cmp-hydro-vs-snaking` | Comparison | `/compare/hydro-jetting-vs-sewer-snaking/` | Comparison | — | — | — | complete | published | indexable | needs-revision (metadata only) | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `res-stl-lateral-report` | Resource | `/resources/st-louis-sewer-lateral-report/` | Educational | — | — | — | complete | published | indexable | needs-revision (metadata only) | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
@@ -1886,18 +1848,18 @@ No Critical findings.
 
 ## Inventory Summary
 
-* The audit confirmed a complete, exactly-reconciled 70-page inventory — no additions, omissions, or duplicates.
-* All 70 pages remain approved for indexation. **0 pages changed disposition.**
+* The audit confirmed a complete, exactly-reconciled 64-page inventory — no additions, omissions, or duplicates.
+* All 64 pages remain approved for indexation. **0 pages changed disposition.**
 * The 10 findings above are implementation and content-quality follow-ups (a metadata-authoring gap and two already-tracked pending items), not page-retirement or noindex decisions.
 * The inventory should be re-audited after the metadata, lead-form endpoint, TCPA, and evidence-production work (next actions below) is completed, per the process in §56A.
 
 Confirmed result:
 
 ```text
-70 built
-70 published
-70 indexable
-70 keep-indexable
+64 built
+64 published
+64 indexable
+64 keep-indexable
 0 disposition changes
 ```
 
@@ -1995,7 +1957,7 @@ The proposal's "27" and "29" totals conflicted. The enumerated set is 27 (15 + 1
 /san-diego-ca/la-mesa/sewer-camera-inspection/
 ```
 
-`/san-diego-ca/mission-valley/hydro-jetting/` is an **existing** route, not a new candidate. It is under review: keep it only if local intent, evidence, and commercial or property-management relevance support a distinct page; otherwise assess consolidation under a broader San Diego page.
+`/san-diego-ca/mission-valley/hydro-jetting/` is an **existing** route, not a new candidate. It is under review: keep it only if local intent, evidence, and property-management relevance support a distinct page; otherwise assess consolidation under a broader San Diego page.
 
 ## Conditions before any candidate is selected
 

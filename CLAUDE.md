@@ -259,8 +259,6 @@ The Sewer Pros specializes in approved services centered on:
 * sewer line locating
 * drain cleaning
 * pre-purchase sewer inspection
-* commercial sewer services
-* commercial drain services
 
 The core differentiator is:
 
@@ -415,7 +413,7 @@ The project currently includes:
 06-master-service-registry.md
 07-master-location-registry.md
 08-service-location-matrix.md
-09-audience-commercial-matrix.md
+09-audience-matrix.md
 10-seo-strategy.md
 11-local-seo-gbp-strategy.md
 12-content-aeo-ai-strategy.md
@@ -663,9 +661,9 @@ The project contains a substantial service/location opportunity dataset.
 
 Current research includes approximately:
 
-* 18 canonical service records
+* 11 canonical service records
 * 579 normalized geographic records
-* 10,422 service × location relationships
+* 6,369 service × location relationships
 
 This dataset may be actively used for:
 
@@ -738,10 +736,6 @@ If changing the service name would leave nearly all copy intact, the service con
 
 If "home buyer" could be replaced with "property manager" without meaningful rewriting, the audience content is too generic.
 
-## Commercial Test
-
-If a commercial page is essentially residential copy with "commercial" added, it needs improvement.
-
 These are quality tests, not reasons to stop development before a draft exists.
 
 ---
@@ -812,13 +806,14 @@ Important audiences may include:
 * home sellers
 * real estate agents
 * home inspectors
-* investors
-* property managers
-* commercial property owners
-* facility managers
-* other verified audiences
+* property managers (residential-focused)
+* multifamily (residential-focused)
+* investors (residential only)
+* other verified residential and real-estate audiences
 
-The canonical audience taxonomy should generally follow `09-audience-commercial-matrix.md`.
+Property managers and multifamily owners are served as residential-focused audiences: landlords, rental homes, and apartment or multifamily residential properties. The Sewer Pros does not serve commercial audiences.
+
+The canonical audience taxonomy should generally follow `09-audience-matrix.md`.
 
 Audience pages should address actual audience concerns rather than simply swapping an audience label into generic content.
 
@@ -873,24 +868,9 @@ Do not attack competitors.
 
 ---
 
-# 28. Commercial Strategy
+# 28. Commercial Services
 
-Commercial content should address commercial operational needs.
-
-Potential themes include:
-
-* recurring blockages
-* high-use drain systems
-* property management
-* multifamily
-* preventative cleaning
-* sewer camera inspection
-* hydro jetting
-* documentation
-* operational disruption
-* multiple properties
-
-Do not create generic residential copy with commercial keywords inserted.
+The Sewer Pros does not list or market commercial services (owner decision, Oct 12, 2026). Do not create commercial pages, commercial service or audience entries, commercial keyword targets, or commercial CTAs, forms, schema or analytics values. Reintroducing commercial services requires explicit owner approval.
 
 ---
 
@@ -932,9 +912,8 @@ Build connected topic ecosystems around:
 * pre-purchase sewer inspection
 * real estate
 * second opinions
-* commercial sewer/drain services
 
-Resources should support relevant service, audience, market, or commercial pages.
+Resources should support relevant service, audience, or market pages.
 
 ---
 
@@ -947,7 +926,7 @@ Preferred conceptual flow:
 ```text
 Homepage
 → Primary Hubs
-→ Core Services / Markets / Audiences / Commercial
+→ Core Services / Markets / Audiences
 → Localized or Specialized Pages
 ↔ Supporting Resources
 ```
@@ -1032,22 +1011,6 @@ Derived page families should use the closest appropriate reference.
 
 # 35. Derived Page-Family References
 
-## Commercial Service
-
-Start from:
-
-```text
-audience-service-page.webp
-```
-
-or:
-
-```text
-service-page-performance.webp
-```
-
-depending on the intent.
-
 ## Audience + Location
 
 Combine patterns from:
@@ -1055,15 +1018,6 @@ Combine patterns from:
 ```text
 audience-page-performance.webp
 location-page-performance.webp
-```
-
-## Commercial + Location
-
-Combine patterns from:
-
-```text
-audience-service-page.webp
-location-service-page-performance.webp
 ```
 
 ## Comparison / Alternative
@@ -1189,7 +1143,6 @@ ReviewCard
 ProcessSteps
 SplitContentSection
 ServiceRequestForm
-CommercialRequestForm
 PrePurchaseRequestForm
 FAQAccordion
 RelatedServices
@@ -1255,7 +1208,7 @@ Potential form types include:
 ```text
 general_service
 prepurchase_inspection
-commercial_service
+contact_request
 ```
 
 Where page context already identifies:
@@ -1303,7 +1256,6 @@ Appropriate CTA concepts may include:
 * Request an Inspection
 * Request Service
 * Schedule a Pre-Purchase Sewer Inspection
-* Request Commercial Service
 * Call The Sewer Pros
 
 Final labels may vary by page context.
@@ -1406,7 +1358,7 @@ Stabilize
 → Measure Again
 ```
 
-The project should use performance data to determine which services, locations, audiences, and commercial areas deserve deeper investment.
+The project should use performance data to determine which services, locations, and audiences deserve deeper investment.
 
 Page inventory may grow substantially.
 
@@ -1503,7 +1455,6 @@ Potential local differentiation includes:
 * housing characteristics
 * municipal programs
 * market-specific inspection considerations
-* commercial context
 * local service relationships
 * nearby communities
 
