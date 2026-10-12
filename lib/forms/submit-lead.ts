@@ -49,8 +49,8 @@ export interface LeadPayload {
   smsConsentVersion: string
   /** Analytics form type of the form that sent this (`contact_request` or `general_service`). */
   formType: string
-  /** Honeypot. Always empty from a person; the server drops a lead where it is filled. */
-  website: string
+  /** Honeypot (the input is named sp_ref). Always empty from a person; the server drops a lead where it is filled. */
+  spRef: string
   /** When the form was opened (ms since epoch). The server drops a submit that is too fast. */
   formOpenedAt: number
 }

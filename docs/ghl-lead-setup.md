@@ -44,12 +44,14 @@ Custom fields. Create these in GHL (Settings, Custom Fields) as **Single Line** 
 | Unique key | Value sent |
 |---|---|
 | `preferred_contact_method` | Call, Text or Email |
-| `sms_nonmarketing_consent` | `true` or `false` (true only if the box was checked) |
-| `sms_marketing_consent` | `true` or `false` (true only if the box was checked) |
-| `sms_consent_version` | for example `sms-consent-v1` |
-| `sms_consent_timestamp` | UTC ISO time of receipt, set by the server, only when at least one box was checked |
+| `sms_nonmarketing_consent` | `true` or `false`; sent only when at least one box was checked in that submission |
+| `sms_marketing_consent` | `true` or `false`; sent only when at least one box was checked in that submission |
+| `sms_consent_version` | for example `sms-consent-v1`; sent only when at least one box was checked |
+| `sms_consent_timestamp` | UTC ISO time of receipt, set by the server; sent only when at least one box was checked |
 | `market` | St. Louis, San Diego, Las Vegas, or none |
 | `source_page` | the page path, for example `/contact/` |
+
+Consent state rule (a records-keeping choice, not legal advice): the four consent fields are written together, and only when the visitor checked at least one box in that submission. A later submission with both boxes unchecked therefore never overwrites an earlier `true` and never leaves an old timestamp next to `false` flags. Declining a box on a later form is not a withdrawal; a withdrawal (a STOP reply or a request) is handled in GHL. Every note still records that submission's own choices (both values, true or false), the consent version and the UTC time of receipt, so the full history stays in the notes. The owner should confirm this rule with whoever advises on SMS consent.
 
 GHL does not refuse a custom field that is missing or misnamed: it returns success and stores nothing. Because the field alone is therefore not proof, **every note repeats the consent record** (both values, version, UTC time). If GHL ever does reject the custom fields with a 4xx, the function retries the upsert without them. Create the fields before launch so the data lands in the fields.
 
@@ -63,7 +65,7 @@ Two form facts to know:
 
 ## Spam protection
 
-A hidden honeypot field, a 3 second minimum time-to-submit and a per-IP limit (5 per 10 minutes, kept in memory per Cloudflare isolate, so it limits bursts but is not a hard global cap). Bots that trip the honeypot or the timer get the same success reply as a person and nothing is sent. Cloudflare Turnstile (needs site and secret keys from the dashboard) or a Cloudflare rate limiting rule is the follow-up.
+A honeypot field, a 3 second minimum time-to-submit and a per-IP limit (5 per 10 minutes, kept in memory per Cloudflare isolate, so it limits bursts but is not a hard global cap). Bots that trip the honeypot or the timer get the same success reply as a person (HTTP 200, `{"ok":true}`) and nothing is sent to GHL; the log records only `bot-dropped` and a status. The honeypot input is named `sp_ref` (label "Reference code", payload key `spRef`). The name is deliberately neutral so browsers and password managers do not autofill it; it is not a website, url, company, address, phone, email or name variant. It carries `autocomplete="off"`, `tabindex="-1"`, `data-lpignore="true"`, `data-1p-ignore="true"`, sits in a wrapper with `aria-hidden="true"`, and is positioned off-screen (absolute, far left, zero size, overflow hidden) rather than `display:none`, which some bots skip. The browser code also drops a filled honeypot without sending, so the server check is the backstop for direct posts. Cloudflare Turnstile (needs site and secret keys from the dashboard) or a Cloudflare rate limiting rule is the follow-up.
 
 ## Per-market routing
 
@@ -109,4 +111,15 @@ Run with `wrangler pages dev` and the real `.dev.vars`, through the real contact
 * Function logs held only request ids and status codes: no token, location id, name, phone number or message text.
 * The Do Not Disturb setting was not touched (the contact shows no DND flag set).
 
-Cleanup for the owner: the test contact "Test Website Lead" and its three notes are still in GHL. Delete them by hand.
+### Branch tests, same contact, one submission each
+
+| Step | Submission | GHL calls | Result on the contact |
+|---|---|---|---|
+| a (before the consent rule) | Contact form, no boxes, Call | upsert 201, tags 201, note 201 | The earlier `sms_nonmarketing_consent` = true was **overwritten with false**, and `sms_consent_timestamp` stayed at the older time while the new note carried a newer time (stale). This is what the consent state rule above fixes. |
+| b | Survey form, both boxes, Email | upsert 201, tags 201, note 201 | Tag `form-survey` added. Both consent fields true, version `sms-consent-v1`, new timestamp, preferred contact Email. No marketing tag. |
+| a again (after the rule) | Contact form, no boxes, Call | upsert 201, tags 201, note 201 | Both consent fields stayed true, the version and the step b timestamp were unchanged, only the non-consent fields (Call, source page) changed. The new note recorded false and false, the version and its own UTC time. |
+| c | Honeypot filled | none | The browser sent no request. A direct POST with the honeypot filled got HTTP 200 `{"ok":true}`, the log showed only `bot-dropped`, and the contact, tags, fields and notes did not change. |
+
+Observations: tags only accumulate (the contact now holds both `form-contact` and `form-survey`, one per form used). The survey form splits "Full name" on the first space, so the same person submitted through it is saved as first name "Test" and last name "Website Lead" until another submission rewrites it. Function logs again held only request ids and statuses.
+
+Cleanup for the owner: the test contact "Test Website Lead" and its notes are still in GHL. Delete them by hand.

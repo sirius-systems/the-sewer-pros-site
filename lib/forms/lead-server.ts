@@ -113,7 +113,7 @@ const STRING_LIMITS: Record<string, number> = {
   propertyType: 40,
   smsConsentVersion: 40,
   formType: 40,
-  website: 200,
+  spRef: 200,
 }
 const BOOLEAN_FIELDS = ['smsNonMarketingConsent', 'smsMarketingConsent'] as const
 const NUMBER_FIELDS = ['formOpenedAt'] as const
@@ -185,7 +185,7 @@ export function validateLead(input: unknown, nowMs: number): Validated {
 
   // Spam: a filled honeypot or a submit faster than a person can type is dropped quietly.
   const elapsed = (nowMs - opened) / 1000
-  if (str.website !== '' || elapsed < MIN_SECONDS_TO_SUBMIT) return { kind: 'bot' }
+  if (str.spRef !== '' || elapsed < MIN_SECONDS_TO_SUBMIT) return { kind: 'bot' }
   if (elapsed > MAX_AGE_HOURS * 3600) return { kind: 'invalid' }
 
   const firstName = clean(str.firstName)
@@ -249,10 +249,13 @@ export function customFieldValues(lead: Lead, receivedAtIso: string): { key: str
   const anyConsent = lead.smsNonMarketingConsent || lead.smsMarketingConsent
   const values: Record<(typeof GHL_CUSTOM_FIELD_KEYS)[number], string> = {
     preferred_contact_method: lead.contactMethod,
-    sms_nonmarketing_consent: String(lead.smsNonMarketingConsent),
-    sms_marketing_consent: String(lead.smsMarketingConsent),
-    sms_consent_version: lead.smsConsentVersion,
-    // Server-side UTC time of receipt, recorded only when a consent box was checked.
+    // The consent fields (flags, version, timestamp) are written only when at least one box was checked
+    // in this submission, so a later submission with no boxes never overwrites an earlier true or leaves
+    // a stale timestamp. Every note still records that submission's choices (see noteBody).
+    sms_nonmarketing_consent: anyConsent ? String(lead.smsNonMarketingConsent) : '',
+    sms_marketing_consent: anyConsent ? String(lead.smsMarketingConsent) : '',
+    sms_consent_version: anyConsent ? lead.smsConsentVersion : '',
+    // Server-side UTC time of receipt.
     sms_consent_timestamp: anyConsent ? receivedAtIso : '',
     market: lead.marketLabel,
     source_page: lead.sourcePage,

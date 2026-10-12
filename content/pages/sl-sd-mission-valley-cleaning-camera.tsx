@@ -148,7 +148,7 @@ export const missionValleyCleaningCameraContent: ServiceLocationPageContent = {
     {
       title: 'A shared lateral serving many units',
       description:
-        "A multifamily building feeds many fixtures into one lateral. Cleaning and a camera pass show the lateral's condition, and the before and after footage shows what changed.",
+        "A multifamily building feeds many fixtures into one lateral. Cleaning and a camera pass show the lateral's condition, and the recorded footage shows what changed.",
       image: slots.problems[3],
     },
   ],
