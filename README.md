@@ -34,7 +34,7 @@ Counts re-derived on 2026-10-12 from the production build of `main`.
 | Noindex output | The contact confirmation page and the framework 404 pages |
 | Build output | 201 HTML files in `out/` (198 pages, `/404/`, `/_not-found/`, `404.html`) |
 | Structured data | JSON-LD on all 197 indexable pages: Organization and WebSite on every page; BreadcrumbList on 196; WebPage on 185; Service on 170; Article on 7; CollectionPage on 7; ContactPage on 4; AboutPage on 1; FAQPage on 195 |
-| Lead form | Built and rendered on six templates. **Submission is a stub: nothing is sent** (PENDING-018) |
+| Lead form | The survey form and the contact form are built and rendered across the page templates. **Nothing is sent yet**: `lib/forms/submit-lead.ts` posts to `NEXT_PUBLIC_LEAD_ENDPOINT`, which is unset, so a submit shows "Online requests are not available yet. Please call <market number> to schedule." with no confirmation and no analytics event (PENDING-018) |
 | Analytics | GA4 loader and typed events built; inert until `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set |
 | Redirects | None implemented (no `_redirects` file); legacy inventory open (PENDING-010) |
 

@@ -172,8 +172,8 @@ export const homeContent: HomePageContent = {
     },
   ],
   routingBackground: {
-    src: '/images/homepage/differentiator/the-sewer-pros-commercial-multifamily-properties.webp',
-    alt: 'Exterior of a mixed-use multifamily building and its parking area',
+    src: '/images/homepage/differentiator/the-sewer-pros-multifamily-properties.webp',
+    alt: 'Exterior of a multifamily building and its parking area',
     source:
       'Supplied by the business owner, 2026-09-04. Rendered scene, not a photograph of a Sewer Pros job.',
   },

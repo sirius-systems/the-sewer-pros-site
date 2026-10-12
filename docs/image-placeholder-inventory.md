@@ -4,7 +4,7 @@ Regenerated 2026-10-12 after wiring the 12 owner-supplied render images, from a 
 
 **Reading the counts.** "Rendered" is the number of placeholder boxes present in the built HTML for that route, the exact count a reviewer sees. "Registered" is the number of slot objects in the source registry. They differ where the template uses existing approved art instead of the slot (hero, cards, final CTA), so that slot draws no box.
 
-Total before the Oct 12 photo wiring: 537 placeholder boxes on 162 of 200 built pages (393 listed in the original tables plus 144 from `slc-services-section`). **Current: 0 placeholder boxes on 0 of 200 built pages** (status block below). Pages not listed render no box.
+Total before the Oct 12 photo wiring: 537 placeholder boxes on 162 of the 198 approved pages (393 listed in the original tables plus 144 from `slc-services-section`). **Current: 0 placeholder boxes on 0 of the 198 approved pages** (status block below). Pages not listed render no box.
 
 ## Status after wiring the 12 render images (historical step; current status is in the next block)
 
@@ -36,7 +36,7 @@ At that step the 537 remaining boxes belonged only to the 16 real-photo files (5
 
 ## Status after wiring the photo files (Oct 12, 2026)
 
-**0 placeholder boxes remain on 0 of 200 built pages.** Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 511 (15 photo files, 3 of them inferred matches, wired earlier) + 2 (the 2 existing assets) + 24 (IMG-12, wired on Oct 12, 2026 on owner approval) = 929, so 0 boxes remain. By page type: the 24 IMG-12 boxes were 16 service + location and 8 location hub; core service was already 0.
+**0 placeholder boxes remain on 0 of the 198 approved pages.** (`scripts/count-placeholders.mjs` prints a denominator of 200 because it also counts the route documents `/404/` and `/_not-found/`.) Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 511 (15 photo files, 3 of them inferred matches, wired earlier) + 2 (the 2 existing assets) + 24 (IMG-12, wired on Oct 12, 2026 on owner approval) = 929, so 0 boxes remain. By page type: the 24 IMG-12 boxes were 16 service + location and 8 location hub; core service was already 0.
 
 | | Boxes |
 |---|---|
