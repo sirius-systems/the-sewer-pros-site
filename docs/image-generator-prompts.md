@@ -46,7 +46,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, hose, cable, tools, bucket, puddle, stain, rust, drain cover brand marking, pipes with labels
   ```
 
-- **Alt text:** Floor drain in a utility area with a cleanout fitting nearby
+- **Alt text:** Concrete floor with a round drain grate and a threaded fitting, with a sewer camera reel and open monitor beside them
 
 ## 2. IMG-02  Capped exterior cleanout
 
@@ -65,7 +65,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, tools, wrench, cracked pipe, open pipe, window, door, house number, mailbox, vehicle
   ```
 
-- **Alt text:** Capped sewer cleanout at the base of a house
+- **Alt text:** White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it
 
 ## 3. IMG-03  Residential street, manhole and curb (St. Louis)
 
@@ -85,7 +85,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, identifiable house, mailbox, street sign, parked car, driveway vehicle, pedestrians
   ```
 
-- **Alt text:** Residential street with a manhole cover near the curb
+- **Alt text:** Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk
 
 ## 4. IMG-09  Bathroom sink and tub
 
@@ -104,7 +104,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, toiletries, product label, toilet, mold, dirt, stain, mirror reflection of a person
   ```
 
-- **Alt text:** Bathroom sink and bathtub side by side with a small amount of water in the sink
+- **Alt text:** Bathroom with a white vanity sink and a bathtub, and a red drain machine standing on the tile floor
 
 ## 5. IMG-16  Kitchen sink with a slow drain
 
@@ -123,7 +123,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, dishes, food, soap bottle label, mold, dirt, stain, brand-name faucet
   ```
 
-- **Alt text:** Kitchen sink with a small amount of water in the basin
+- **Alt text:** Kitchen sink with an empty basin and a red drain machine in the background
 
 ## 6. IMG-19  Fence line and planting beds
 
@@ -142,7 +142,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, shovel, spade, utility paint marks, house, shed, pets, garden gnome
   ```
 
-- **Alt text:** Backyard fence line and planting beds
+- **Alt text:** Backyard wooden fence with shrubs and a mulch bed beside a lawn, with a yellow locator receiver lying on the grass
 
 ## 7. IMG-22  Older home with a visible cleanout (St. Louis)
 
@@ -162,7 +162,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, for sale sign, mailbox, car, window detail, damaged foundation, broken pipe, identifiable property
   ```
 
-- **Alt text:** Older single-family home with a sewer cleanout cap near the foundation
+- **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 
 ## 8. IMG-26  Residential street, manhole and curb (San Diego)
 
@@ -182,7 +182,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, identifiable house, mailbox, street sign, parked car, driveway vehicle, pedestrians
   ```
 
-- **Alt text:** Residential street with a manhole cover near the curb
+- **Alt text:** Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk
 
 ## 9. IMG-27  Older home with a visible cleanout (San Diego)
 
@@ -202,7 +202,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, for sale sign, mailbox, car, window detail, damaged foundation, broken pipe, identifiable property
   ```
 
-- **Alt text:** Older single-family home with a sewer cleanout cap near the foundation
+- **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 
 ## 10. IMG-28  Commercial or mixed-use street, manhole and curb
 
@@ -221,7 +221,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, readable storefront, awning text, parked car, pedestrians, traffic light, street sign
   ```
 
-- **Alt text:** Commercial street with a manhole cover near the curb
+- **Alt text:** Street with a manhole cover in the pavement, low commercial buildings with glass windows beyond, and a yellow locator receiver on the sidewalk
 
 ## 11. IMG-29  Residential street, manhole and curb (Las Vegas)
 
@@ -241,7 +241,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, identifiable house, mailbox, street sign, parked car, driveway vehicle, pedestrians
   ```
 
-- **Alt text:** Residential street with a manhole cover near the curb
+- **Alt text:** Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk
 
 ## 12. IMG-30  Older home with a visible cleanout (Las Vegas)
 
@@ -261,5 +261,5 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, for sale sign, mailbox, car, window detail, damaged foundation, broken pipe, identifiable property
   ```
 
-- **Alt text:** Older single-family home with a sewer cleanout cap near the foundation
+- **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 
