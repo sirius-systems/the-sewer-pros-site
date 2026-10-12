@@ -30,7 +30,6 @@ This document should be referenced whenever content is created involving:
 * service pages
 * market pages
 * location pages
-* commercial pages
 * audience pages
 * comparison pages
 * alternative pages
@@ -72,7 +71,6 @@ Primary conceptual categories include:
 * sewer line locating service
 * drain cleaning service
 * pre-purchase sewer inspection service
-* commercial sewer and drain service
 
 Exact third-party platform categories, including Google Business Profile categories, will be governed separately.
 
@@ -80,7 +78,7 @@ Exact third-party platform categories, including Google Business Profile categor
 
 # 3. Core Business Positioning
 
-The Sewer Pros helps property owners, buyers, real estate professionals, property managers, and commercial customers understand and maintain sewer and drain systems through specialized inspection, diagnostics, locating, and cleaning services.
+The Sewer Pros helps property owners, buyers, real estate professionals, and property managers understand and maintain sewer and drain systems through specialized inspection, diagnostics, locating, and cleaning services. Commercial services were removed by owner decision on Oct 12, 2026 and are not offered.
 
 The core positioning is:
 
@@ -225,7 +223,6 @@ Potential positioning includes:
 * heavy buildup removal
 * grease removal
 * recurring blockage treatment
-* commercial drain maintenance
 * sewer line cleaning
 
 Do not describe hydro jetting as universally appropriate for every pipe or condition.
@@ -275,17 +272,7 @@ The purpose is to provide additional information about sewer conditions before a
 
 ## 6.9 Commercial Sewer and Drain Services
 
-Inspection, diagnostics, cleaning, locating, and related approved sewer/drain services for commercial properties.
-
-Commercial positioning should emphasize:
-
-* operational reliability
-* recurring maintenance needs
-* diagnostics
-* documentation
-* minimizing disruption
-* property management coordination
-* planned cleaning where applicable
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -308,7 +295,6 @@ Common customer situations may include:
 * conflicting sewer recommendations
 * expensive repair recommendations
 * buying a property without knowing the sewer condition
-* commercial drains that repeatedly clog
 * property managers needing documentation
 * real estate transactions requiring additional information
 
@@ -340,7 +326,7 @@ Remove appropriate buildup or obstructions using approved cleaning methods.
 
 ### Document
 
-Provide useful inspection information for homeowners, buyers, agents, property managers, or commercial operators.
+Provide useful inspection information for homeowners, buyers, agents, or property managers.
 
 ### Decide
 
@@ -442,19 +428,7 @@ Core message:
 
 ## 9.6 Commercial Property Owners and Operators
 
-Primary concerns may include:
-
-* downtime
-* recurring blockages
-* customer or tenant disruption
-* grease or buildup
-* high-use drain systems
-* preventative maintenance
-* documentation
-
-Core message:
-
-**Keep commercial sewer and drain systems operating with specialized inspection, diagnostics, and cleaning.**
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -737,31 +711,7 @@ The brand should support agents rather than implying that agents are responsible
 
 # 18. Commercial Positioning
 
-Commercial messaging should differ from consumer messaging.
-
-Commercial customers should see The Sewer Pros as capable of helping with:
-
-* recurring drain problems
-* commercial sewer inspection
-* high-use drain systems
-* hydro jetting
-* preventative cleaning
-* property maintenance
-* diagnostics
-* documenting recurring issues
-* locating lines
-* coordinating work across managed properties
-
-Commercial content should focus more heavily on:
-
-* operations
-* reliability
-* maintenance
-* disruption
-* scheduling
-* facilities management
-* property portfolios
-* recurring service needs
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -859,7 +809,6 @@ Potential trust assets include:
 * camera footage
 * inspection reports
 * before-and-after cleaning evidence
-* commercial client experience
 * property types served
 * service process explanations
 * real customer questions
@@ -924,7 +873,6 @@ Local relevance may be developed through:
 * municipal sewer responsibilities
 * local permitting considerations
 * neighborhood characteristics
-* commercial property types
 * local real estate patterns
 
 These topics require accurate research.
@@ -968,8 +916,6 @@ Use the following hierarchy consistently.
 * sewer line locating
 * drain cleaning
 * pre-purchase sewer inspection
-* commercial sewer services
-* commercial drain services
 
 ## Supporting Terms
 
@@ -1057,7 +1003,6 @@ Content should answer questions such as:
 * How do you locate a sewer line?
 * What is a sewer belly?
 * What does an offset sewer pipe mean?
-* When should commercial drains be cleaned?
 * Who is responsible for a sewer lateral?
 * Should I get a second opinion before sewer replacement?
 
@@ -1107,7 +1052,6 @@ Core recurring facts should remain consistent across content:
 * real estate professionals
 * property investors
 * property managers
-* commercial property operators
 
 Clear entity consistency is more important than forcing artificial "AI keywords" into copy.
 
@@ -1124,7 +1068,6 @@ Potential CTA concepts include:
 * Get Your Sewer Line Inspected
 * Schedule Sewer Cleaning
 * Request Hydro Jetting
-* Request Commercial Service
 * Schedule a Pre-Purchase Sewer Inspection
 * Talk With a Sewer Specialist
 * Request Service
@@ -1270,7 +1213,6 @@ Examples include:
 * A new core service is approved.
 * A major guarantee is introduced.
 * Licensing or certification information changes.
-* Commercial positioning changes materially.
 * The independent-inspection model changes.
 
 Approved changes should be reflected in:
@@ -1298,7 +1240,6 @@ The website should therefore be built around:
 * locating
 * informed decisions
 * real estate risk reduction
-* commercial reliability
 
 The brand should not drift into a generic plumbing identity or an unapproved sewer repair and replacement identity simply because those keywords exist in search demand.
 

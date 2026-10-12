@@ -203,7 +203,6 @@ Static generation provides a strong fit for:
 * market hubs
 * location pages
 * audience pages
-* commercial pages
 * service + location pages
 * comparison pages
 * alternative pages
@@ -349,7 +348,6 @@ app/
 ├── sitemap.ts
 ├── services/
 ├── locations/
-├── commercial/
 ├── audiences/
 ├── resources/
 └── [approved route structures]
@@ -406,7 +404,6 @@ the-sewer-pros-site/
 │   ├── services/
 │   ├── locations/
 │   ├── audiences/
-│   ├── commercial/
 │   ├── comparisons/
 │   ├── alternatives/
 │   └── resources/
@@ -418,7 +415,6 @@ the-sewer-pros-site/
 │   ├── markets/
 │   ├── matrices/
 │   ├── audiences/
-│   ├── commercial/
 │   ├── pages/
 │   ├── navigation/
 │   └── redirects/
@@ -438,7 +434,6 @@ the-sewer-pros-site/
 │   ├── location.ts
 │   ├── page.ts
 │   ├── audience.ts
-│   ├── commercial.ts
 │   ├── seo.ts
 │   └── schema.ts
 │
@@ -495,7 +490,7 @@ docs/
 ├── 06-master-service-registry.md
 ├── 07-master-location-registry.md
 ├── 08-service-location-matrix.md
-├── 09-audience-commercial-matrix.md
+├── 09-audience-matrix.md
 ├── 10-seo-strategy.md
 ├── 11-local-seo-gbp-strategy.md
 ├── 12-content-aeo-ai-strategy.md
@@ -527,7 +522,6 @@ Structured records describing:
 * locations
 * markets
 * audiences
-* commercial segments
 * page approvals
 * routes
 * relationships
@@ -571,7 +565,6 @@ Primary structured registries will include:
 * market registry
 * page registry
 * audience registry
-* commercial registry
 * redirect registry
 
 Example conceptual structure:
@@ -614,7 +607,6 @@ export interface ApprovedPage {
   marketId?: string
   locationId?: string
   audienceId?: string
-  commercialId?: string
 }
 ```
 
@@ -683,7 +675,7 @@ This provides better control over:
 
 # 17. Canonical Service Records
 
-The 18 canonical services should be represented as structured records.
+The 11 canonical services should be represented as structured records.
 
 Conceptual example:
 
@@ -766,7 +758,7 @@ Do not hard-code market business facts directly inside components.
 
 The existing research contains:
 
-**10,422 service × location relationships.**
+**6,369 service × location relationships (11 services × 579 locations).**
 
 These relationships must not directly power route creation.
 
@@ -921,8 +913,6 @@ type PageType =
   | 'service-location'
   | 'audience'
   | 'audience-location'
-  | 'commercial'
-  | 'commercial-location'
   | 'comparison'
   | 'alternative'
   | 'resource-hub'
@@ -977,7 +967,6 @@ InspectionProcess
 Benefits
 ServiceAreaGrid
 AudienceUseCases
-CommercialUseCases
 WhySewerPros
 IndependentInspection
 RelatedServices
@@ -1162,7 +1151,6 @@ Use TypeScript or JSON for:
 * locations
 * markets
 * audiences
-* commercial types
 * redirects
 * indexability
 * metadata configuration
@@ -1321,7 +1309,6 @@ Potential groups include:
 * services
 * locations
 * service-location
-* commercial
 * audiences
 * resources
 
@@ -1436,7 +1423,6 @@ Navigation may contain:
 * primary links
 * service groups
 * market links
-* commercial links
 * resources
 
 Large page inventories should be accessed through contextual linking and hubs rather than enormous navigation menus.
@@ -1455,7 +1441,6 @@ service → service-location
 market → location
 location → service-location
 audience → relevant service
-commercial → relevant service
 resource → service
 service → resource
 comparison → service
@@ -1490,7 +1475,7 @@ All 579 locations on every service page
 or:
 
 ```text
-All 10,422 service-location combinations in a footer
+All 6,369 service-location combinations in a footer
 ```
 
 These patterns are prohibited.
@@ -1529,7 +1514,6 @@ The site may use lead forms for:
 * general service requests
 * sewer inspection requests
 * pre-purchase inspections
-* commercial requests
 * contact inquiries
 
 The static site should generally submit these through approved external systems or endpoints.
@@ -2380,21 +2364,21 @@ Claude Code must not interpret:
 ```text
 579 locations
 ×
-18 services
+11 services
 =
-10,422 opportunities
+6,369 opportunities
 ```
 
 as:
 
 ```text
-10,422 pages to build
+6,369 pages to build
 ```
 
 The correct interpretation is:
 
 ```text
-10,422 researched relationships
+6,369 researched relationships
 ↓
 subset strategically evaluated
 ↓
@@ -2605,7 +2589,7 @@ Only pages selected for publication in the Master Page Build List may become pro
 
 ### Rule 7
 
-Treat services, locations, markets, audiences, and commercial segments as canonical structured entities.
+Treat services, locations, markets, and audiences as canonical structured entities.
 
 ### Rule 8
 

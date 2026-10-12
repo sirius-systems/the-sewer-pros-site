@@ -80,9 +80,11 @@ The matrix should enable the project to scale efficiently.
 
 The project research currently includes approximately:
 
-* **18 canonical service records**
+* **11 canonical service records**
 * **579 normalized geographic records**
-* **10,422 service × location relationships**
+* **6,369 service × location relationships** (11 services × 579 locations)
+
+Commercial services were removed by owner decision on Oct 12, 2026 and are not offered; 4,053 commercial rows came out of the dataset (it was 10,422).
 
 This is a strategic dataset.
 
@@ -416,10 +418,8 @@ relationshipStatus     verified | supported | candidate | research |
                         not-eligible
 operationalCoverage    same as businessCoverage (§14); named field for
                         clarity when read alongside the others below
-commercialPriority     primary | supporting | selective | future |
-                        educational  (06-master-service-registry.md §9A)
 searchIntent           see searchOpportunity above; retained as-is
-audienceRelevance      references 09-audience-commercial-matrix.md
+audienceRelevance      references 09-audience-matrix.md
 contentOpportunity     free text / content-brief reference
 pageEligibility        see §62 (Indexation Decision Framework)
 evidenceReadiness      verified | partially-verified | needs-collection |
@@ -433,7 +433,7 @@ schemaStatus           free text / status reference
 internalLinkStatus     free text / status reference
 ```
 
-A relationship should not be assigned a strong `relationshipStatus` or high `commercialPriority` based solely on keyword demand or geographic proximity — it must reflect actual business relevance, operational realism, and (where a page is being considered) available or attainable evidence (§14, §25).
+A relationship should not be assigned a strong `relationshipStatus` or high priority based solely on keyword demand or geographic proximity — it must reflect actual business relevance, operational realism, and (where a page is being considered) available or attainable evidence (§14, §25).
 
 ---
 
@@ -604,7 +604,6 @@ Potential emphasis:
 * line locating
 * real-estate inspection
 * property management
-* commercial services
 
 ## Las Vegas
 
@@ -617,7 +616,6 @@ Potential emphasis:
 * hydro jetting
 * line locating
 * property management
-* commercial services
 
 Actual service availability remains controlled by verified business data.
 
@@ -639,7 +637,7 @@ Potential factors include:
 * existing authority
 * conversion potential
 * content differentiation potential
-* commercial relevance
+* business relevance
 
 A conceptual score may be used to sort opportunities.
 
@@ -657,7 +655,7 @@ Critical market/service combinations.
 
 ## P1 — High Priority
 
-Strong commercial or search opportunity.
+Strong business or search opportunity.
 
 ## P2 — Expansion
 
@@ -679,19 +677,18 @@ A business-value-sequenced view of the same P0-P3 model, aligned with `00-projec
 
 ```text
 Tier 1 — Primary market and core service opportunities
-The three primary markets, primary commercial service hubs (the six
+The three primary markets, primary service hubs (the six
 core_service records, 06-master-service-registry.md §14A), strong
 business relevance, strong conversion potential, available evidence.
 
 Tier 2 — High-value service-market opportunities
-Distinct local commercial intent, verified service coverage, strong
+Distinct local intent, verified service coverage, strong
 audience/customer need, differentiated content potential, reasonable
 evidence readiness.
 
-Tier 3 — Selective audience or commercial opportunities
+Tier 3 — Selective audience opportunities
 Home buyers, home inspectors, real estate agents, homeowners, property
-managers, contractors and remodelers, commercial property owners,
-facility managers.
+managers, contractors and remodelers.
 
 Tier 4 — Resource and authority opportunities
 Problem education, pipe-material education, buyer guidance, local
@@ -884,7 +881,7 @@ The final link should be:
 
 # 30. Navigation Guardrail
 
-Do not expose all 10,422 relationships through:
+Do not expose all 6,369 relationships through:
 
 * header menus
 * footer grids
@@ -1172,27 +1169,7 @@ A service/location combination with modest traffic but strong qualified lead val
 
 # 45. Commercial Relationships
 
-The matrix may also model commercial service/location relationships.
-
-Examples:
-
-```text
-Commercial Hydro Jetting
-×
-Las Vegas
-```
-
-```text
-Commercial Sewer Inspection
-×
-San Diego
-```
-
-Commercial matrix opportunities should connect with:
-
-`09-audience-commercial-matrix.md`
-
-where audience context is relevant.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1202,7 +1179,7 @@ The service × location matrix does not need to independently contain every audi
 
 Audience relationships should generally remain in:
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 Systems may join datasets when needed.
 
@@ -1604,7 +1581,7 @@ The matrix is successful when it helps the project:
 It is failing if it becomes:
 
 * an administrative spreadsheet that prevents implementation
-* an automatic 10,422-page indexation system
+* an automatic 6,369-page indexation system
 * a source of fake local claims
 
 ---
@@ -1637,7 +1614,7 @@ Performance Feedback
 
 # 67. Final Governing Principle
 
-> **The Service × Location Matrix is an active generation, research, relationship, and prioritization system—not a pre-build approval gate and not an automatic indexing engine. Use the 10,422 service-location relationships of the project productively to research, generate, organize, and scale the website. Keep business truth strict, allow development to move quickly, and control SEO risk at the point of intentional indexation through relevance, usefulness, differentiation, and technical quality.**
+> **The Service × Location Matrix is an active generation, research, relationship, and prioritization system—not a pre-build approval gate and not an automatic indexing engine. Use the 6,369 service-location relationships of the project productively to research, generate, organize, and scale the website. Keep business truth strict, allow development to move quickly, and control SEO risk at the point of intentional indexation through relevance, usefulness, differentiation, and technical quality.**
 
 ---
 
@@ -1670,4 +1647,4 @@ Update 2026-10-05: the owner has confirmed Las Vegas operations repeatedly in th
 
 The 9 residential services x 16 built locations (144 pairs) are built, published and indexable (DEC-139, DEC-140), so those 144 relationships move from `candidate` to `launch` and `indexable`. Page IDs are `sl-<location>-<service>`; URLs are `/locations/{market}/{location}/{service-slug}/` (DEC-141). The inventory and counts are in `04-master-page-build-list.md` section 56D (204 built, 203 indexable).
 
-Cohort A (Las Vegas, Henderson, North Las Vegas x 5 services) and the St. Louis and San Diego entries on existing hubs in section 17 are now covered by this grid. The Enterprise, Spring Valley, Paradise, O'Fallon, Wildwood, Vista, El Cajon, Encinitas and La Mesa relationships stay `candidate` because their hubs are not built. The remaining relationships in the 10,422-row dataset stay research data and are not indexed. Titles and descriptions are checked for uniqueness with `npm run verify:metadata`.
+Cohort A (Las Vegas, Henderson, North Las Vegas x 5 services) and the St. Louis and San Diego entries on existing hubs in section 17 are now covered by this grid. The Enterprise, Spring Valley, Paradise, O'Fallon, Wildwood, Vista, El Cajon, Encinitas and La Mesa relationships stay `candidate` because their hubs are not built. The remaining relationships in the 6,369-row dataset stay research data and are not indexed. Titles and descriptions are checked for uniqueness with `npm run verify:metadata`.

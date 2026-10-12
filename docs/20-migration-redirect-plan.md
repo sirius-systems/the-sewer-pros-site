@@ -579,7 +579,6 @@ If existing San Diego content exists, evaluate whether it maps to:
 * San Diego market hub
 * service + San Diego pages
 * audience + San Diego pages
-* commercial + San Diego pages
 * published or candidate community pages
 
 Because San Diego currently has no GBP, organic URL continuity may be especially valuable.
@@ -681,7 +680,7 @@ New:
 /st-louis-mo/sewer-camera-inspection/
 ```
 
-The new route should preserve the same commercial intent.
+The new route should preserve the same intent.
 
 ---
 
@@ -717,18 +716,14 @@ Do not publish duplicate audience/service pages if one planned or published page
 
 # 30. Commercial Content Migration
 
-Legacy commercial pages should map to the appropriate published commercial destination.
+Commercial services were removed by owner decision on Oct 12, 2026 and are not offered. Once the legacy thesewerpros.com inventory exists (PENDING-010), any legacy commercial URL maps to the nearest matching residential service page, or to the Services hub (/services/) if none matches, and never to the homepage.
 
-Possible examples:
+Rules:
 
-```text
-Commercial Sewer Service
-Commercial Drain Cleaning
-Commercial Hydro Jetting
-Property Management Sewer Services
-```
-
-Commercial traffic should not be redirected into purely residential pages when a relevant commercial page exists.
+* use direct, single-hop permanent redirects
+* no redirect chains or loops
+* do not create new destination pages for these redirects
+* specific legacy URLs are listed only after they are verified in the legacy inventory
 
 ---
 
@@ -2040,7 +2035,6 @@ Before launch, explicitly identify:
 
 * major location pages
 * audience pages
-* commercial pages
 * strong resources
 
 ### Tier 3

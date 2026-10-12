@@ -28,7 +28,6 @@ It establishes:
 * FAQ schema policy
 * review and rating schema restrictions
 * audience relationships
-* commercial-service relationships
 * multi-market entity architecture
 * schema inheritance rules
 * structured-data guardrails
@@ -131,8 +130,7 @@ The Sewer Pros
     ├── Hydro Jetting
     ├── Sewer Line Locating
     ├── Drain Cleaning
-    ├── Pre-Purchase Sewer Inspection
-    └── Commercial Sewer / Drain Services
+    └── Pre-Purchase Sewer Inspection
             ↓
         St. Louis
         San Diego
@@ -581,7 +579,7 @@ Exact paths are controlled by:
 
 The project contains:
 
-* 18 canonical service records
+* 11 canonical service records
 
 Schema implementation should reference the canonical service registry.
 
@@ -679,15 +677,15 @@ Only include markets where the specific service is actually offered.
 
 ---
 
-# 23. No Automatic 10,422-Relationship Schema
+# 23. No Automatic 6,369-Relationship Schema
 
 The project currently contains:
 
-* 10,422 service × location relationships
+* 6,369 service × location relationships
 
 These represent SEO opportunities.
 
-They do not need to be expressed as 10,422 structured-data relationships.
+They do not need to be expressed as 6,369 structured-data relationships.
 
 The schema graph should prioritize:
 
@@ -1177,8 +1175,6 @@ Potential verified target audiences include:
 * real estate agents
 * property managers
 * landlords
-* commercial property owners
-* facility managers
 
 Example:
 
@@ -1232,7 +1228,7 @@ Audience
 Relevant Services
 ```
 
-Schema should reinforce the page purpose without pretending the audience itself is a commercial service.
+Schema should reinforce the page purpose without pretending the audience itself is a service.
 
 ---
 
@@ -1262,48 +1258,13 @@ The page should not generate a new LocalBusiness entity.
 
 # 45. Commercial Entity Architecture
 
-Commercial pages should continue using `Service` unless another clearly more accurate schema type is available.
-
-Examples:
-
-```text
-Commercial Sewer Inspection
-Commercial Sewer Cleaning
-Commercial Hydro Jetting
-Commercial Drain Cleaning
-```
-
-Potential relationships:
-
-```text
-Service
-    ↓ audience
-Commercial Property Owners
-
-Service
-    ↓ audience
-Property Managers
-
-Service
-    ↓ areaServed
-Las Vegas
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 46. Industry Audience Entities
 
-If production commercial pages target verified industries such as:
-
-* restaurants
-* hospitality
-* property management
-* multifamily
-* retail
-
-use structured data only when the relationship appears visibly on the page and reflects actual business capability.
-
-Do not create artificial industry expertise in schema that is absent from the content.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1874,7 +1835,7 @@ Drain Cleaning
 Pre-Purchase Sewer Inspection
 ```
 
-Do not populate all 18 services plus hundreds of long-tail topics without a clear semantic reason.
+Do not populate all 11 services plus hundreds of long-tail topics without a clear semantic reason.
 
 ---
 
@@ -1884,7 +1845,7 @@ The Organization description should reinforce documented positioning.
 
 Conceptual example:
 
-> The Sewer Pros provides independent sewer inspection, sewer camera diagnostics, sewer cleaning, hydro jetting, drain cleaning, sewer line locating, pre-purchase sewer inspections, and commercial sewer and drain services.
+> The Sewer Pros provides independent sewer inspection, sewer camera diagnostics, sewer cleaning, hydro jetting, drain cleaning, sewer line locating, and pre-purchase sewer inspections.
 
 Do not mention repair or replacement as company services unless they are formally added to the Master Service Registry and Decisions & Change Log.
 
@@ -1992,7 +1953,6 @@ Possible contact types:
 ```text
 customer service
 sales
-commercial inquiries
 ```
 
 Do not create separate phone numbers or departments unless they actually exist.
@@ -2116,29 +2076,7 @@ represent market ecosystems, not automatically physical entities.
 
 # 81. Commercial Location Entities
 
-Example:
-
-```text
-Commercial Sewer Cleaning in Las Vegas
-```
-
-should normally use:
-
-```text
-Service
-    ↓ areaServed
-Las Vegas
-```
-
-not:
-
-```text
-LocalBusiness: Commercial Sewer Cleaning Las Vegas
-```
-
-Services are not businesses.
-
-Pages are not businesses.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 Cities are not businesses.
 
@@ -2162,9 +2100,6 @@ Recommended baseline:
 | Service + Location      | `WebPage`, `Service`, `Place`             |
 | Audience Page           | `WebPage`, `Audience`                     |
 | Audience + Location     | `WebPage`, `Audience`, `Place`            |
-| Commercial Hub          | `CollectionPage`, `Service` relationships |
-| Commercial Service      | `WebPage`, `Service`                      |
-| Commercial + Location   | `WebPage`, `Service`, `Place`             |
 | Comparison Page         | `Article` or `WebPage`                    |
 | Alternative Page        | `Article` or `WebPage`                    |
 | Resource Article        | `Article` or `BlogPosting`                |
@@ -2420,24 +2355,7 @@ This creates machine-readable topical relationships without creating unnecessary
 
 # 94. Entity Relationship Example — Commercial
 
-```text
-The Sewer Pros
-    ↓ provider
-Commercial Hydro Jetting
-    ↓ audience
-Commercial Property Operators
-    ↓ areaServed
-Las Vegas
-```
-
-Supporting articles may then link semantically to:
-
-```text
-Commercial Hydro Jetting
-Grease Buildup
-Drain Maintenance
-Sewer Camera Inspection
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -2506,7 +2424,6 @@ Homeowners
 Home buyers
 Real estate professionals
 Property managers
-Commercial customers
 
 Differentiator:
 Inspection and cleaning without repair-driven selling
@@ -3046,7 +2963,6 @@ Hydro jetting
 Drain cleaning
 Sewer line locating
 Pre-purchase sewer inspection
-Commercial sewer/drain services
 ```
 
 ### Primary Markets
@@ -3064,7 +2980,6 @@ Homeowners
 Home buyers
 Real estate professionals
 Property managers
-Commercial customers
 ```
 
 ### Competitive Position

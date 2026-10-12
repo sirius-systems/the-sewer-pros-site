@@ -34,7 +34,6 @@ It governs:
 * FAQs
 * comparison content
 * audience content
-* commercial content
 * local content
 * AI-assisted drafting
 * AI crawler accessibility
@@ -50,7 +49,7 @@ This document should be used with:
 * `06-master-service-registry.md`
 * `07-master-location-registry.md`
 * `08-service-location-matrix.md`
-* `09-audience-commercial-matrix.md`
+* `09-audience-matrix.md`
 * `10-seo-strategy.md`
 * `11-local-seo-gbp-strategy.md`
 
@@ -60,7 +59,7 @@ This document should be used with:
 
 The content objective is:
 
-> **Make The Sewer Pros one of the clearest and most useful sources for understanding sewer inspection, diagnostics, sewer cleaning, hydro jetting, sewer line locating, drain cleaning, pre-purchase sewer inspections, recurring sewer problems, and commercial sewer/drain maintenance.**
+> **Make The Sewer Pros one of the clearest and most useful sources for understanding sewer inspection, diagnostics, sewer cleaning, hydro jetting, sewer line locating, drain cleaning, pre-purchase sewer inspections, and recurring sewer problems.**
 
 The governing model is:
 
@@ -157,8 +156,6 @@ Diagnostic Knowledge
 Local Knowledge
 +
 Audience Knowledge
-+
-Commercial Knowledge
 +
 Decision Support
 +
@@ -343,11 +340,10 @@ Content should help The Sewer Pros:
 6. support home-purchase decisions
 7. support real estate professionals
 8. support property managers
-9. support commercial operators
-10. explain inspection evidence
-11. build topical authority
-12. build market authority
-13. convert qualified visitors
+9. explain inspection evidence
+10. build topical authority
+11. build market authority
+12. convert qualified visitors
 
 ---
 
@@ -361,7 +357,6 @@ The Sewer Pros
 ├── Markets
 ├── Locations
 ├── Audiences
-├── Commercial Segments
 ├── Sewer Problems
 ├── Diagnostic Findings
 ├── Comparisons
@@ -384,7 +379,6 @@ Market Content
 Location Content
 Service + Location Content
 Audience Content
-Commercial Content
 Comparison Content
 Alternative Content
 Resource Content
@@ -474,19 +468,7 @@ Schedule Inspection
 
 # 19. Example Commercial Journey
 
-```text
-Why Does Our Restaurant Drain Keep Clogging?
-↓
-Hydro Jetting vs Snaking
-↓
-Commercial Hydro Jetting
-↓
-Restaurant / Property Context
-↓
-Relevant Market
-↓
-Commercial Inquiry
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -639,15 +621,6 @@ Sewer Camera Inspection
 ├── How long does it take?
 ├── Can roots be seen?
 └── Should I get one before buying?
-```
-
-### Commercial Page
-
-```text
-Commercial Hydro Jetting
-├── What buildup can hydro jetting remove?
-├── When should commercial lines be jetted?
-└── Can hydro jetting help recurring backups?
 ```
 
 ---
@@ -905,7 +878,6 @@ Examples:
 * process
 * reporting
 * business history
-* commercial capabilities
 
 Primary source:
 
@@ -1193,7 +1165,6 @@ Potential case studies may include:
 Recurring Backup Diagnosis
 Home Purchase Inspection
 Independent Second Opinion
-Commercial Hydro Jetting
 Property Management Maintenance
 ```
 
@@ -1387,7 +1358,7 @@ This describes The Sewer Pros' own business model (no repair contract to sell); 
 
 # 64A. Priority Audience Content Pathways
 
-Priority order for audience content investment: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers (`00-project-overview.md` §7A). Home inspectors, homeowners, and contractors/remodelers do not yet have dedicated sections below (§65-68 cover homebuyer, agent, property manager, and restaurant); homeowners and contractors/remodelers are `Phase 2` in the audience registry (`09-audience-commercial-matrix.md` §6-8). Each audience section should answer: the audience's situation, what they need to decide, relevant service workflows, what they receive, what information they should provide, what questions they should ask, and the correct CTA — not audience terms inserted into general service copy (§62, `03-information-architecture.md` §33A).
+Priority order for audience content investment: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers (`00-project-overview.md` §7A). Home inspectors, homeowners, and contractors/remodelers do not yet have dedicated sections below (§65-68 cover homebuyer, agent, and property manager); homeowners and contractors/remodelers are `Phase 2` in the audience registry (`09-audience-matrix.md` §6-8). Each audience section should answer: the audience's situation, what they need to decide, relevant service workflows, what they receive, what information they should provide, what questions they should ask, and the correct CTA — not audience terms inserted into general service copy (§62, `03-information-architecture.md` §33A).
 
 ---
 
@@ -1429,42 +1400,19 @@ Property-management content should focus on:
 * recurring maintenance
 * camera documentation
 * hydro jetting
-* commercial drain cleaning
 * preventative maintenance
 
 ---
 
 # 68. Restaurant Content Strategy
 
-Restaurant content may address:
-
-* grease/sludge buildup
-* recurring drain issues
-* hydro jetting
-* sewer cleaning
-* drain cleaning
-* preventative maintenance
-* operational disruption
-
-Do not describe grease-trap cleaning as an offered service unless confirmed.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 69. Commercial Content Standard
 
-Commercial content should address business consequences such as:
-
-```text
-Downtime
-Tenant Disruption
-Customer Disruption
-Recurring Maintenance
-Documentation
-Scheduling
-Property Coordination
-```
-
-It should not be residential copy with "commercial" inserted.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1501,7 +1449,6 @@ Possible differentiation:
 * verified service coverage
 * local property context
 * real estate context
-* commercial context
 * relevant municipal information
 * location-specific FAQs
 * neighboring verified or strategically selected areas
@@ -1856,7 +1803,6 @@ Actual sewer camera equipment
 Actual inspection monitor
 Hydro-jetting equipment
 Line-locating equipment
-Commercial service environment
 ```
 
 ---
@@ -2201,7 +2147,7 @@ If not, improve entity clarity.
 
 # 110. Content QA — Conversion
 
-Every commercial-intent page should provide a clear next action.
+Every conversion-intent page should provide a clear next action.
 
 Examples:
 
@@ -2209,7 +2155,6 @@ Examples:
 Request Sewer Inspection
 Request Service
 Call The Sewer Pros
-Commercial Inquiry
 ```
 
 Do not sacrifice conversion because the page is optimized for informational answers.
@@ -2704,7 +2649,7 @@ Examples:
 ```text
 Should I get a sewer inspection before buying?
 Should I get a second opinion before sewer replacement?
-When should a commercial property schedule hydro jetting?
+When should a home schedule hydro jetting?
 ```
 
 These are particularly valuable for:
@@ -2727,7 +2672,6 @@ average prices
 price ranges
 minimum charges
 inspection costs
-commercial rates
 ```
 
 for SEO.
@@ -2997,7 +2941,7 @@ Every substantial informational resource should have a logical path to:
 * a relevant market
 * a contact action
 
-when commercially relevant.
+when relevant.
 
 ---
 
@@ -3063,7 +3007,7 @@ These ideas should appear naturally where relevant.
 
 When an AI system summarizes The Sewer Pros, the ideal factual entity understanding is:
 
-> The Sewer Pros specializes in sewer inspection, diagnostics, cleaning, hydro jetting, sewer line locating, drain cleaning, pre-purchase inspections, and commercial sewer/drain services, with an emphasis on independent inspection rather than repair-driven upselling.
+> The Sewer Pros specializes in sewer inspection, diagnostics, cleaning, hydro jetting, sewer line locating, drain cleaning, and pre-purchase inspections, with an emphasis on independent inspection rather than repair-driven upselling.
 
 All major pages should reinforce this entity model.
 
@@ -3250,7 +3194,7 @@ Useful content matters more than page volume.
 06-master-service-registry.md     → Canonical service entities
 07-master-location-registry.md    → Geographic truth
 08-service-location-matrix.md     → Service/geographic relationships
-09-audience-commercial-matrix.md  → Audience and commercial relationships
+09-audience-matrix.md  → Audience relationships
 10-seo-strategy.md                → SEO objectives and intent strategy
 11-local-seo-gbp-strategy.md      → Local execution
 12-content-aeo-ai-strategy.md     → Content, AEO, GEO, and AI retrieval execution (this document)

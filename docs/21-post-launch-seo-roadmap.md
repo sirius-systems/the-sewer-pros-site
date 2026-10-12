@@ -23,7 +23,6 @@ It establishes the strategic sequence for:
 * location-page expansion
 * service + location expansion
 * audience expansion
-* commercial expansion
 * real-estate content growth
 * topic-cluster development
 * comparison content
@@ -173,7 +172,7 @@ Increase performance of pages already earning impressions, clicks, or leads.
 
 ## Lever 2 — Expand High-Value Service Coverage
 
-Develop deeper authority around the most commercially important services.
+Develop deeper authority around the most important services.
 
 ## Lever 3 — Expand Geographic Coverage
 
@@ -207,7 +206,7 @@ Phase 1 — Stabilization
 Phase 2 — Early Optimization
 Phase 3 — Authority Expansion
 Phase 4 — Geographic Expansion
-Phase 5 — Audience & Commercial Expansion
+Phase 5 — Audience Expansion
 Phase 6 — Competitive Content Expansion
 Phase 7 — Authority & Link Growth
 Phase 8 — Continuous Optimization
@@ -514,8 +513,6 @@ Priority themes should likely include:
 6. sewer line locating
 7. drain cleaning
 8. pre-purchase sewer inspection
-9. commercial sewer services
-10. commercial drain services
 
 The final priority order should use actual performance and business data.
 
@@ -603,7 +600,6 @@ Potential content:
 * when hydro jetting is appropriate
 * hydro jetting for roots
 * hydro jetting for grease
-* hydro jetting for commercial lines
 * inspection before hydro jetting
 * inspection after hydro jetting
 * when hydro jetting should not be used
@@ -668,7 +664,6 @@ Expand
 Potential scoring factors:
 
 * search demand
-* commercial value
 * actual service coverage
 * market importance
 * existing impressions
@@ -900,7 +895,7 @@ A GBP should amplify a real operating market, not manufacture one.
 
 # 38. Las Vegas Post-Launch Priority
 
-Las Vegas is an active operational market. Post-launch research, content development, technical SEO, local-page development, and commercial expansion may proceed without a separate market, GBP, website, or SEO gate. The absence of a GBP or verified physical office must not block accurate market work or be misrepresented as a local branch.
+Las Vegas is an active operational market. Post-launch research, content development, technical SEO, and local-page development may proceed without a separate market, GBP, website, or SEO gate. The absence of a GBP or verified physical office must not block accurate market work or be misrepresented as a local branch.
 
 Las Vegas should emphasize:
 
@@ -909,28 +904,15 @@ Sewer Diagnostics
 Hydro Jetting
 Drain Cleaning
 Line Locating
-Commercial
 Property Management
 Selected Local Coverage
 ```
-
-Commercial SEO may be particularly important.
 
 ---
 
 # 39. Las Vegas Commercial Opportunity
 
-Potential post-launch commercial clusters may include:
-
-* commercial hydro jetting
-* commercial drain cleaning
-* commercial sewer inspection
-* property management sewer services
-* multi-family sewer services
-* restaurant drain/sewer services
-* hospitality sewer/drain services
-
-Only develop segments actually supported by operations.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -954,8 +936,6 @@ Priority audience opportunities include:
 * real estate agents
 * home inspectors
 * property managers
-* commercial property owners
-* facility managers
 
 ---
 
@@ -1018,93 +998,34 @@ Potential content:
 
 * recurring property drain issues
 * multi-unit diagnostics
-* commercial cleaning
 * preventative evaluation
 * hydro jetting
 * inspection documentation
 * multi-property service
 
-This audience connects naturally to commercial growth.
-
 ---
 
 # 46. Phase 6 — Commercial Expansion
 
-Commercial SEO should become a separate authority system rather than a subsection of residential pages.
-
-Preferred architecture:
-
-```text
-Commercial Hub
-        ↓
-Commercial Services
-        ↓
-Commercial Audiences
-        ↓
-Commercial Markets
-        ↓
-Commercial Resources
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 47. Commercial Content Depth
 
-Develop verified, business-relevant content around:
-
-* recurring drain problems
-* grease
-* high-use systems
-* backups
-* preventative cleaning
-* inspection
-* hydro jetting
-* operational disruption
-* documentation
-* multi-property management
-
-Avoid generic:
-
-```text
-We serve businesses too.
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 48. Commercial Market Expansion
 
-Highest-value combinations may include:
-
-```text
-Commercial Service
-+
-Primary Market
-```
-
-such as:
-
-* Commercial Hydro Jetting in Las Vegas
-* Commercial Sewer Inspection in San Diego
-* Commercial Sewer Cleaning in St. Louis
-
-These may be researched and built as candidates immediately. Production publication and indexation should be selected based on actual opportunity, differentiation, and quality.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 49. Industry-Specific Commercial Expansion
 
-Only after the commercial foundation is strong should narrowly segmented industries be considered.
-
-Potential examples:
-
-* restaurants
-* hospitality
-* multifamily
-* property management
-* retail
-* commercial facilities
-
-Each should have genuine operational and search differentiation.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1220,12 +1141,12 @@ pages.
 
 Resources should be published to strengthen defined clusters.
 
-Do not create a generic blog publishing calendar disconnected from commercial priorities.
+Do not create a generic blog publishing calendar disconnected from defined topic clusters.
 
 Preferred content sequence:
 
 ```text
-Commercial Priority
+Cluster Priority
         ↓
 User Questions
         ↓
@@ -1261,7 +1182,6 @@ Comparisons
 Buyer Guides
 Decision Support
 Local Resources
-Commercial Resources
 ```
 
 Avoid creating hundreds of nearly identical "What is..." articles.
@@ -1530,7 +1450,6 @@ Strong potential assets include:
 * pre-purchase inspection guide
 * sewer inspection terminology guide
 * hydro jetting decision guide
-* commercial maintenance guide
 
 These should be genuinely useful enough to reference.
 
@@ -1558,7 +1477,6 @@ Potential referral/link relationships may include:
 Real Estate Agents
 Home Inspectors
 Property Managers
-Commercial Property Professionals
 Relevant Local Organizations
 ```
 
@@ -1730,15 +1648,7 @@ Weak audience pages should not automatically lead to more audience pages.
 
 # 85. Commercial Performance Scorecard
 
-Commercial SEO should be measured using:
-
-* commercial organic traffic
-* commercial leads
-* commercial service performance
-* market performance
-* property/industry demand where known
-
-Commercial opportunity value may justify pages with lower traffic but stronger lead value.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1752,7 +1662,6 @@ Market Hubs
 Location Pages
 Service + Location Pages
 Audience Pages
-Commercial Pages
 Resources
 Comparison Pages
 Alternative Pages
@@ -1830,7 +1739,6 @@ Examples:
 * new market priority
 * service-page consolidation
 * GBP launch
-* new commercial audience
 * revised URL decision
 * major content cohort publication or indexation decision
 * repair capability change
@@ -1881,7 +1789,6 @@ Based on performance:
 Expand Winning Locations
 Expand Service + Location Pages
 Build Audience Authority
-Strengthen Commercial
 Develop Comparison Content
 Acquire Local Links
 Grow Reviews
@@ -1895,7 +1802,6 @@ Potential focus:
 
 ```text
 Deeper Geographic Expansion
-Commercial Industry Segments
 Advanced Topic Clusters
 Digital PR
 Linkable Assets
@@ -1919,7 +1825,6 @@ The architecture should support:
 * new registry-listed services
 * larger resource clusters
 * more audience segmentation
-* stronger commercial authority
 
 without redesigning the entire site.
 
@@ -1967,7 +1872,6 @@ Then evaluate:
 * markets
 * locations
 * audiences
-* commercial applications
 * supporting content
 
 Do not allow keyword research alone to invent new business offerings.
@@ -2002,9 +1906,8 @@ When choosing what to build next:
 2. High-Value Service Gap
 3. High-Value Market Gap
 4. High-Value Audience Gap
-5. High-Value Commercial Gap
-6. Supporting Resource Gap
-7. Long-Tail Expansion
+5. Supporting Resource Gap
+6. Long-Tail Expansion
 ```
 
 Do not prioritize novelty over obvious opportunity.
@@ -2016,14 +1919,13 @@ Do not prioritize novelty over obvious opportunity.
 A lower-volume keyword may be strategically more valuable when it represents:
 
 ```text
-High Commercial Intent
+High Purchase Intent
 +
 High Customer Value
 ```
 
 Examples may include:
 
-* commercial sewer inspection
 * pre-purchase sewer inspection
 * sewer replacement second opinion
 
@@ -2141,7 +2043,6 @@ Competitors should be reviewed periodically for:
 
 * new service pages
 * market expansion
-* commercial content
 * real-estate content
 * promotions
 * resource strategy
@@ -2193,7 +2094,6 @@ If the business has inspection footage or educational video capability, video ma
 * hydro jetting demonstrations
 * homebuyer education
 * case studies
-* commercial education
 
 Video can strengthen:
 
@@ -2230,7 +2130,6 @@ Potential case-study categories:
 * recurring backup diagnosis
 * root intrusion
 * hydro jetting
-* commercial cleaning
 * line locating
 
 Each should use verified real-world information.
@@ -2246,7 +2145,7 @@ Case studies should link to:
 * related resource
 * CTA
 
-They should support commercial pages rather than live as isolated stories.
+They should support service pages rather than live as isolated stories.
 
 ---
 
@@ -2506,7 +2405,7 @@ What hub owns it?
 
 # 130. Conversion Governance Maintenance
 
-Every new commercial page must define:
+Every new landing page must define:
 
 * primary CTA
 * secondary CTA
@@ -2709,8 +2608,6 @@ Growing Las Vegas Organic Presence
 +
 Established Homebuyer Authority
 +
-Growing Commercial Authority
-+
 Controlled Local Page Expansion
 +
 Strong Resource Clusters
@@ -2722,7 +2619,7 @@ Strong Resource Clusters
 
 The desired category position is:
 
-> **The Sewer Pros is a trusted source for independent sewer inspection, diagnostics, sewer cleaning, hydro jetting, locating, pre-purchase sewer inspections, and commercial sewer/drain expertise across its operational markets.**
+> **The Sewer Pros is a trusted source for independent sewer inspection, diagnostics, sewer cleaning, hydro jetting, locating, and pre-purchase sewer inspections across its operational markets.**
 
 Search engines and AI systems should increasingly associate the brand with:
 
@@ -2733,7 +2630,6 @@ Evidence
 Camera Inspection
 Cleaning
 Homebuyer Due Diligence
-Commercial Sewer Expertise
 ```
 
 ---
@@ -2750,8 +2646,6 @@ High-Quality Service Content
 Deep Local Market Content
 +
 Real Estate Authority
-+
-Commercial Authority
 +
 Original Resources
 +
@@ -2785,10 +2679,9 @@ The following rules remain mandatory after launch:
 9. Do not rewrite strong pages unnecessarily.
 10. Do not use AI-generated facts without verification.
 11. Do not allow local content to degrade into city-name substitution.
-12. Do not allow commercial pages to become generic residential copies.
-13. Do not allow new content to become orphaned.
-14. Do not create new service taxonomy outside the Master Service Registry.
-15. Use the Master Page Build List as the production and indexation control plane, never as a pre-build gate.
+12. Do not allow new content to become orphaned.
+13. Do not create new service taxonomy outside the Master Service Registry.
+14. Use the Master Page Build List as the production and indexation control plane, never as a pre-build gate.
 
 ---
 
@@ -2803,14 +2696,12 @@ The roadmap should ultimately improve:
 * service visibility
 * market visibility
 * audience visibility
-* commercial visibility
 
 ## Business
 
 * qualified leads
 * inspection requests
 * pre-purchase inspection leads
-* commercial leads
 * phone leads
 
 ## Authority
@@ -2869,12 +2760,11 @@ The recommended long-term sequence is:
 6. Build homebuyer and real-estate authority.
 7. Expand priority locations in controlled cohorts.
 8. Expand winning service + location combinations.
-9. Build commercial authority.
-10. Add comparison and second-opinion content.
-11. Strengthen GBP/local entity signals.
-12. Earn local and industry authority.
-13. Refresh and consolidate existing assets.
-14. Use performance data to determine the next expansion cycle.
+9. Add comparison and second-opinion content.
+10. Strengthen GBP/local entity signals.
+11. Earn local and industry authority.
+12. Refresh and consolidate existing assets.
+13. Use performance data to determine the next expansion cycle.
 ```
 
 ---
@@ -2885,7 +2775,7 @@ The launch is the beginning of the SEO strategy, not the completion of it.
 
 The governing standard is:
 
-> **Use the new website architecture as a controlled growth platform. Protect existing authority first, measure real search and conversion behavior, strengthen pages showing opportunity, then expand services, locations, audiences, commercial content, and resources in deliberate cohorts. The Sewer Pros should grow topical and local authority through evidence-driven publishing—not through uncontrolled page generation.**
+> **Use the new website architecture as a controlled growth platform. Protect existing authority first, measure real search and conversion behavior, strengthen pages showing opportunity, then expand services, locations, audiences, and resources in deliberate cohorts. The Sewer Pros should grow topical and local authority through evidence-driven publishing—not through uncontrolled page generation.**
 
 
 

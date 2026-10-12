@@ -19,7 +19,6 @@ It establishes:
 * phone-call strategy
 * form strategy
 * inspection-request flows
-* commercial inquiry flows
 * real-estate conversion paths
 * market-specific conversion handling
 * trust architecture
@@ -131,9 +130,7 @@ This should be treated as a distinct conversion path because the information nee
 
 ## 3.4 Commercial Service Request
 
-A property manager, business, facility manager, or commercial property owner requests commercial sewer/drain service.
-
-Commercial inquiries should not be forced through a purely residential form.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -151,8 +148,6 @@ Secondary conversions may include:
 * reading inspection FAQs
 * viewing reviews
 * visiting a real-estate audience page
-* visiting commercial content
-* moving from educational content to a commercial page
 
 These actions matter because many visitors will not convert on the first page viewed.
 
@@ -206,7 +201,6 @@ Supporting conversion language may include:
 * Get clear information about the condition of your sewer.
 * Schedule an inspection before buying a property.
 * Have recurring sewer problems properly evaluated.
-* Request commercial sewer or drain service.
 
 ---
 
@@ -309,8 +303,6 @@ Different page families should use different conversion emphasis.
 | Service + Location  | Request specific local service          |
 | Audience Page       | Request service appropriate to audience |
 | Audience + Location | Request audience-specific local service |
-| Commercial Hub      | Request commercial service              |
-| Commercial Service  | Request specific commercial service     |
 | Comparison Page     | Move toward diagnostic service          |
 | Alternative Page    | Request independent evaluation          |
 | Resource Article    | Move toward relevant service            |
@@ -333,7 +325,6 @@ Examples:
 * Request a Sewer Camera Inspection
 * Request Service
 * Schedule a Pre-Purchase Sewer Inspection
-* Request Commercial Service
 
 ---
 
@@ -381,7 +372,7 @@ Get Started
 Prefer:
 
 ```text
-Request Commercial Sewer Service
+Request a Sewer Camera Inspection
 ```
 
 over:
@@ -553,29 +544,7 @@ Schedule a Sewer Inspection
 
 # 18. Commercial CTA Strategy
 
-Commercial pages should clearly distinguish their conversion path.
-
-Primary CTA examples:
-
-```text
-Request Commercial Sewer Service
-```
-
-```text
-Request Commercial Drain Service
-```
-
-```text
-Discuss a Commercial Sewer Problem
-```
-
-Commercial inquiries should not use consumer-style messaging such as:
-
-```text
-Fix My Drain
-```
-
-unless specifically appropriate.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -835,7 +804,6 @@ Example options may include:
 * Sewer Line Locating
 * Drain Cleaning
 * Pre-Purchase Sewer Inspection
-* Commercial Service
 * Not Sure / Other
 
 ---
@@ -940,52 +908,19 @@ Do not create unnecessary complexity.
 
 # 39. Commercial Inquiry Form
 
-Commercial forms may request different information.
-
-Potential fields:
-
-* Contact name
-* Company
-* Phone
-* Email
-* Property address
-* Property type
-* Service needed
-* Description of issue
-* Number of properties if relevant
-* Preferred contact method
-
-Avoid forcing commercial users through homeowner terminology.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 40. Commercial Property Types
 
-Potential selections may include only verified categories such as:
-
-* Office
-* Retail
-* Restaurant
-* Hospitality
-* Multifamily
-* Property Management
-* Other Commercial Property
-
-Only include industries actually served.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 41. Multi-Property Commercial Leads
 
-Where relevant, commercial forms may include:
-
-```text
-Is this request for more than one property?
-```
-
-This can help identify property-management and portfolio opportunities.
-
-It should remain optional unless necessary.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -998,7 +933,7 @@ Market
 +
 Service
 +
-Audience / Commercial Type
+Audience
 ```
 
 Example:
@@ -1006,7 +941,7 @@ Example:
 ```text
 Las Vegas
 +
-Commercial Hydro Jetting
+Hydro Jetting
 +
 Property Manager
 ```
@@ -1213,7 +1148,6 @@ The site should incorporate verified trust elements such as:
 * documented service processes
 * verified credentials
 * market-specific proof
-* commercial experience
 * real-estate use cases
 
 ---
@@ -1248,7 +1182,6 @@ Verified reviews may appear:
 * after service explanations
 * on market pages
 * on audience pages
-* on commercial pages
 
 Prefer reviews that match the page context.
 
@@ -1328,7 +1261,7 @@ Visuals should not create false repair positioning.
 
 # 60. CTA Placement Strategy
 
-Major commercial pages should generally include CTAs:
+Major landing pages should generally include CTAs:
 
 * near the top
 * after major educational sections
@@ -1432,15 +1365,7 @@ This allows more accurate follow-up and reporting.
 
 # 65. Commercial-Aware Conversion
 
-Commercial page submissions should preserve:
-
-```text
-Lead Type: Commercial
-```
-
-and the relevant service/market where known.
-
-Commercial inquiries should be distinguishable operationally from normal residential service requests.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1620,21 +1545,7 @@ Request Service
 
 # 72. Commercial Conversion Funnel
 
-Preferred funnel:
-
-```text
-Commercial Drain / Sewer Issue
-        ↓
-Business-Specific Service Page
-        ↓
-Operational Relevance
-        ↓
-Capabilities / Trust
-        ↓
-Commercial Inquiry Form or Call
-```
-
-Commercial visitors should not have to navigate through residential content first.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1646,7 +1557,6 @@ The Contact page should provide:
 * primary service request form
 * market selection
 * contact expectations
-* commercial pathway
 * real-estate inspection pathway if needed
 
 It should not become a generic page with only:
@@ -1837,7 +1747,6 @@ The design system should support reusable components such as:
 PrimaryCTA
 PhoneCTA
 ServiceRequestForm
-CommercialRequestForm
 PrePurchaseRequestForm
 MarketCTA
 AudienceCTA
@@ -1989,14 +1898,6 @@ Reviews about:
 * line cleaning
 * hydro jetting
 
-## Commercial
-
-Reviews about:
-
-* professionalism
-* reliability
-* operational service
-
 Only use actual verified reviews.
 
 ---
@@ -2040,7 +1941,7 @@ before converting.
 
 # 94. Conversion and SEO Balance
 
-Commercial pages must satisfy both:
+Landing pages must satisfy both:
 
 ```text
 Search Intent
@@ -2145,7 +2046,6 @@ Potential elements:
 * phone
 * Request Service
 * markets
-* commercial inquiry
 * contact
 
 ---
@@ -2178,7 +2078,6 @@ Primary conversion events should eventually include:
 * phone click
 * form start
 * form submission
-* commercial submission
 * pre-purchase submission
 * CTA click
 * email click if applicable
@@ -2238,7 +2137,6 @@ Sewer Inspection Leads
 Hydro Jetting Leads
 Drain Cleaning Leads
 Pre-Purchase Inspection Leads
-Commercial Leads
 ```
 
 should be distinguishable where possible.
@@ -2253,7 +2151,6 @@ High-value audience segmentation should allow reporting such as:
 Home Buyer Leads
 Agent Leads
 Property Manager Leads
-Commercial Leads
 ```
 
 where sufficient data exists.
@@ -2345,7 +2242,6 @@ Highest-value pathways:
 * drain cleaning
 * line locating
 * property management
-* commercial sewer/drain service
 
 Final priorities remain subject to actual business data.
 
@@ -2522,7 +2418,7 @@ The analytics document establishes:
 
 # 117. Conversion Acceptance Criteria
 
-A build-ready commercial page should answer:
+A build-ready page should answer:
 
 * What is the primary conversion?
 * Is the CTA obvious?
@@ -2552,7 +2448,6 @@ A page should be revised if it:
 * uses fake discounts
 * collects excessive information
 * hides important trust information
-* uses a residential form for complex commercial inquiries
 * loses market/service attribution
 * contains broken forms
 * provides no confirmation after submission
@@ -2567,12 +2462,11 @@ At launch, the highest-priority conversion infrastructure should include:
 2. general service request form
 3. sewer inspection conversion
 4. pre-purchase inspection conversion
-5. commercial inquiry path
-6. market-aware forms
-7. thank-you/confirmation experience
-8. basic source attribution
-9. mobile CTA accessibility
-10. conversion analytics
+5. market-aware forms
+6. thank-you/confirmation experience
+7. basic source attribution
+8. mobile CTA accessibility
+9. conversion analytics
 
 Advanced experimentation can follow after reliable baseline tracking exists.
 
@@ -2590,7 +2484,6 @@ Future optimization may evaluate:
 * proof placement
 * review positioning
 * mobile sticky CTAs
-* commercial lead pathways
 * market-specific behavior
 * homebuyer conversion behavior
 
@@ -2648,18 +2541,6 @@ Inspection / Service Explanation
 Request Service
 ```
 
-## Path 5 — Commercial
-
-```text
-Commercial Problem
-        ↓
-Commercial Service
-        ↓
-Operational Trust
-        ↓
-Commercial Inquiry
-```
-
 ---
 
 # 122. Core Conversion Guardrails
@@ -2679,8 +2560,7 @@ The following rules are mandatory:
 11. Do not make unsupported guarantees.
 12. Do not prioritize raw lead volume over qualified inquiries.
 13. CTAs must match page intent.
-14. Commercial leads should have a commercial pathway.
-15. Real-estate users should have a relevant inspection pathway.
+14. Real-estate users should have a relevant inspection pathway.
 
 ---
 

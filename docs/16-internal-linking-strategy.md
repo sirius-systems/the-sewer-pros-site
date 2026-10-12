@@ -18,7 +18,6 @@ It establishes:
 * market-specific linking rules
 * service linking rules
 * audience linking rules
-* commercial linking rules
 * resource/topic-cluster linking
 * service + location linking
 * breadcrumb relationships
@@ -121,7 +120,7 @@ Related Child Pages
  ↓
 Supporting Content
  ↓
-Related Commercial Intent
+Related Service Pages
  ↓
 Return to Hub
 ```
@@ -146,7 +145,7 @@ The project should follow these rules:
 
 1. Link based on relevance.
 2. Prioritize user usefulness over link volume.
-3. Connect commercial and informational intent.
+3. Connect service and informational intent.
 4. Keep major services close to the homepage.
 5. Keep major markets close to the homepage.
 6. Reinforce parent-child relationships.
@@ -154,7 +153,7 @@ The project should follow these rules:
 8. Connect services to applicable markets.
 9. Connect markets to published local services.
 10. Connect audiences to services that solve their needs.
-11. Connect resources to commercial pages.
+11. Connect resources to service pages.
 12. Avoid unnecessary cross-market linking.
 13. Avoid keyword-stuffed anchors.
 14. Avoid sitewide link bloat.
@@ -197,9 +196,9 @@ Controls geographic relationships.
 
 Provides opportunity intelligence and may support candidate link graphs in protected previews. It does not make a destination eligible for production linking or indexation.
 
-## Audiences and Commercial
+## Audiences
 
-`09-audience-commercial-matrix.md`
+`09-audience-matrix.md`
 
 Controls valid audience/service/market relationships.
 
@@ -262,10 +261,6 @@ Homepage
 │   ├── Real Estate Agents
 │   └── Property Managers
 │
-├── Commercial
-│   ├── Commercial Sewer Services
-│   └── Commercial Drain Services
-│
 └── Resources
     ├── Sewer Inspection Cluster
     ├── Sewer Cleaning Cluster
@@ -279,7 +274,7 @@ Each branch should then link back into related branches where contextually appro
 
 # 7. Homepage Linking Strategy
 
-The homepage should link directly to the site's highest-value commercial entities.
+The homepage should link directly to the site's highest-value entities.
 
 At minimum, homepage links should support:
 
@@ -288,7 +283,6 @@ At minimum, homepage links should support:
 * St. Louis market hub
 * San Diego market hub
 * Las Vegas market hub
-* commercial hub
 * major audience pathways
 * resources hub
 * contact/conversion path
@@ -310,7 +304,6 @@ Potential examples include:
 * Sewer Line Locating
 * Drain Cleaning
 * Pre-Purchase Sewer Inspection
-* Commercial Sewer Services
 
 The final set should reflect the selected launch priorities in the Master Page Build List.
 
@@ -447,7 +440,6 @@ Hydro Jetting
 Camera Inspection
 Recurring Backup Content
 Root Intrusion Content
-Commercial Cleaning
 ```
 
 This reinforces the relationship between diagnosis and appropriate cleaning.
@@ -480,25 +472,7 @@ This is especially important in St. Louis and San Diego.
 
 # 17. Commercial Cluster
 
-Commercial internal linking should connect:
-
-```text
-Commercial Hub
-    ↓
-Commercial Sewer Inspection
-    ↓
-Commercial Sewer Cleaning
-    ↓
-Commercial Hydro Jetting
-    ↓
-Commercial Drain Cleaning
-    ↓
-Property Managers
-    ↓
-Relevant Market Pages
-```
-
-Where industry-specific pages are selected for production, they may connect underneath this structure.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -514,7 +488,6 @@ St. Louis
 ├── St. Louis Service Pages
 ├── Published St. Louis Location Pages
 ├── Audience + St. Louis Pages
-├── Commercial + St. Louis Pages
 └── St. Louis Resources
 ```
 
@@ -529,7 +502,6 @@ Each market hub should generally link to:
 * primary published service + market pages
 * published location pages within the market
 * relevant audience pages
-* relevant commercial pages
 * local educational resources where appropriate
 * contact/conversion path
 
@@ -610,13 +582,12 @@ Hydro Jetting
 Drain Cleaning
 Sewer Line Locating
         ↓
-Commercial
 Property Managers
         ↓
 Published Las Vegas Valley Locations
 ```
 
-Commercial and property-management linking may have greater importance here than in other markets.
+Property-management linking may have greater importance here than in other markets.
 
 ---
 
@@ -629,7 +600,6 @@ It should generally link to:
 * parent market hub
 * published service + location pages
 * relevant audience + location pages
-* relevant commercial + location pages
 * nearby published locations where useful
 * broader canonical services
 * conversion page
@@ -799,12 +769,12 @@ The page should help agents navigate directly to the service most relevant to cl
 
 Property management content should link to:
 
-* commercial sewer services
-* commercial drain cleaning
-* commercial hydro jetting
+* sewer cleaning
+* drain cleaning
+* hydro jetting
 * camera inspection
 * recurring maintenance/problem resources
-* relevant local commercial pages
+* relevant local service pages
 
 ---
 
@@ -836,71 +806,19 @@ Local Context
 
 # 34. Commercial Hub Strategy
 
-The Commercial hub should distribute authority to all published commercial service categories.
-
-Potential hierarchy:
-
-```text
-Commercial Sewer & Drain Services
-    ↓
-Commercial Sewer Inspection
-Commercial Sewer Cleaning
-Commercial Hydro Jetting
-Commercial Drain Cleaning
-```
-
-It may also link to:
-
-* Property Managers
-* Commercial Property Owners
-* Facility Managers
-* relevant markets
-
-when those destinations are published and relevant.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 35. Commercial + Location Linking
 
-Example:
-
-```text
-Commercial Hydro Jetting in Las Vegas
-```
-
-should link to:
-
-* canonical Commercial Hydro Jetting page
-* Las Vegas market hub
-* Commercial hub
-* Property Managers
-* related local commercial services
-* commercial resources
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 36. Industry-Specific Commercial Linking
 
-If pages are later selected for production for industries such as:
-
-* restaurants
-* hospitality
-* multifamily
-* retail
-
-they should sit below the appropriate commercial hub and link to relevant services.
-
-Example:
-
-```text
-Restaurants
-    ↓
-Commercial Drain Cleaning
-    ↓
-Commercial Hydro Jetting
-```
-
-Do not create large production industry link grids unless those pages are published and substantively differentiated.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -916,7 +834,6 @@ Sewer Cleaning
 Hydro Jetting
 Sewer Problems
 Home Buying
-Commercial
 ```
 
 The resource hub should not become an unstructured chronological blog archive.
@@ -925,7 +842,7 @@ The resource hub should not become an unstructured chronological blog archive.
 
 # 38. Resource-to-Service Linking
 
-Every resource article should have at least one meaningful path toward the relevant commercial service.
+Every resource article should have at least one meaningful path toward the relevant service.
 
 Example:
 
@@ -942,7 +859,7 @@ This relationship should be contextual and useful.
 
 # 39. Service-to-Resource Linking
 
-Commercial pages should also link outward to strong educational resources where they help users understand the service.
+Service pages should also link outward to strong educational resources where they help users understand the service.
 
 Example:
 
@@ -980,8 +897,7 @@ Hydro Jetting
 ├── Hydro Jetting vs. Snaking
 ├── What Does Hydro Jetting Remove?
 ├── Can Hydro Jetting Remove Roots?
-├── When Should a Sewer Be Hydro Jetted?
-└── Commercial Hydro Jetting
+└── When Should a Sewer Be Hydro Jetted?
 ```
 
 ---
@@ -1088,7 +1004,6 @@ Contextual links are particularly important for:
 * topical relationships
 * audience relationships
 * problem → service pathways
-* commercial pathways
 
 Both types matter.
 
@@ -1104,7 +1019,6 @@ A likely conceptual hierarchy:
 Services
 Locations
 Who We Help
-Commercial
 Resources
 About
 Contact
@@ -1126,8 +1040,7 @@ Example:
 Services
 ├── Inspection & Diagnostics
 ├── Cleaning
-├── Locating
-└── Commercial
+└── Locating
 ```
 
 and:
@@ -1150,7 +1063,6 @@ The footer may provide persistent access to:
 * main services
 * three primary markets
 * company pages
-* commercial hub
 * resources
 * contact
 * privacy/legal pages
@@ -1343,7 +1255,7 @@ This keeps the graph understandable and scalable.
 
 # 57. Crawl Depth Goal
 
-High-value commercial pages should generally remain within a small number of logical clicks from the homepage.
+High-value service pages should generally remain within a small number of logical clicks from the homepage.
 
 Priority pages should ideally be reachable through:
 
@@ -1367,7 +1279,6 @@ Highest-priority pages include:
 
 * canonical services
 * three market hubs
-* major commercial pages
 * major audience pages
 
 These should receive strong internal-link exposure.
@@ -1394,7 +1305,7 @@ When a candidate page is created, the development process should determine:
 2. Which related pages should link to it?
 3. Which pages should it link back to?
 4. Which breadcrumb path applies?
-5. Which resource or commercial cluster it belongs to?
+5. Which resource cluster it belongs to?
 6. Whether those links become public when the route enters production?
 
 A route selected for production must have a complete production link plan before publication.
@@ -1414,7 +1325,6 @@ The site should naturally reinforce:
 * core services
 * major markets
 * high-value audience pages
-* important commercial pages
 * strategic differentiation pages
 
 ---
@@ -1486,7 +1396,6 @@ Good examples:
 * learn how sewer camera inspections work
 * pre-purchase sewer inspection
 * sewer inspections for home buyers
-* commercial hydro jetting services
 * sewer inspection services in St. Louis
 
 ---
@@ -1758,17 +1667,14 @@ Chronological archives may exist, but topic relationships should drive internal 
 
 | Source Page           | Primary Destinations                                        |
 | --------------------- | ----------------------------------------------------------- |
-| Homepage              | Services, Markets, Audiences, Commercial, Resources         |
+| Homepage              | Services, Markets, Audiences, Resources                     |
 | Services Hub          | Canonical Services                                          |
 | Core Service          | Related Services, Markets, Resources, Audiences             |
-| Market Hub            | Local Services, Locations, Audiences, Commercial            |
+| Market Hub            | Local Services, Locations, Audiences                        |
 | Location Page         | Market Hub, Local Services, Nearby Locations                |
 | Service + Location    | Canonical Service, Market, Location, Related Local Services |
 | Audience Page         | Relevant Services, Markets, Resources                       |
 | Audience + Location   | Audience Hub, Market, Local Services                        |
-| Commercial Hub        | Commercial Services, Markets, Commercial Audiences          |
-| Commercial Service    | Commercial Hub, Markets, Resources                          |
-| Commercial + Location | Commercial Service, Market, Related Local Services          |
 | Resource Article      | Relevant Service, Audience, Market, Related Resources       |
 | Comparison Page       | Both Compared Topics, Relevant Service                      |
 | Alternative Page      | Diagnostic Services, Supporting Resources                   |
@@ -1810,16 +1716,7 @@ This creates a defined real-estate authority cluster.
 
 # 85. Commercial Internal Link Example
 
-```text
-/commercial/
-│
-├── /commercial/sewer-inspection/
-├── /commercial/sewer-cleaning/
-├── /commercial/hydro-jetting/
-├── /commercial/drain-cleaning/
-├── /property-managers/
-└── Published Commercial + Market Pages
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1836,7 +1733,7 @@ Sewer Inspection
 └── What to Do Before Sewer Replacement
 ```
 
-Each supporting page should link toward the most relevant canonical commercial page.
+Each supporting page should link toward the most relevant canonical service page.
 
 ---
 
@@ -1938,7 +1835,6 @@ Examples:
 
 ```text
 Schedule a Sewer Inspection
-Request Commercial Service
 Contact The Sewer Pros
 ```
 
@@ -2054,7 +1950,7 @@ Registry-Supported Locations
         ↓
 Verified Audiences
         ↓
-Candidate Commercial Pages
+Candidate Pages
         ↓
 Production and Indexation Selection
 ```
@@ -2304,7 +2200,7 @@ Internal search should not surface unpublished opportunity URLs.
 
 Strong informational resources may naturally earn backlinks.
 
-Those resources should contain contextual links to the relevant commercial page so external authority can flow into the core commercial architecture.
+Those resources should contain contextual links to the relevant service page so external authority can flow into the core service architecture.
 
 Example:
 
@@ -2345,7 +2241,6 @@ Related Resources
 Services in This Market
 Who We Help
 Nearby Service Areas
-Commercial Services
 Next Steps
 ```
 
@@ -2379,7 +2274,6 @@ relatedResourceIds
 marketIds
 locationIds
 audienceIds
-commercialIds
 parentId
 childIds
 ```
@@ -2456,9 +2350,8 @@ At launch, internal linking should prioritize:
 3. three market hubs
 4. launch-selected service + market pages
 5. major audiences
-6. commercial hub/pages
-7. launch resources
-8. conversion pages
+6. launch resources
+7. conversion pages
 
 Post-launch content should be connected into these existing hubs as it is published.
 
@@ -2567,17 +2460,7 @@ Recurring Backups
 Root Intrusion
 ```
 
-## Cluster 4 — Commercial
-
-```text
-Commercial Sewer Services
-Commercial Drain Services
-Commercial Hydro Jetting
-Property Managers
-Commercial Markets
-```
-
-## Cluster 5 — Local Markets
+## Cluster 4 — Local Markets
 
 ```text
 St. Louis
@@ -2598,16 +2481,16 @@ Homepage
     ↓
 Primary Hubs
     ↓
-Core Commercial Pages
+Core Service Pages
     ↓
-Localized Commercial Pages
+Localized Service Pages
     ↕
 Audience Pages
     ↕
 Resource Content
 ```
 
-Supporting informational pages should strengthen commercial and entity pages rather than become disconnected content islands.
+Supporting informational pages should strengthen service and entity pages rather than become disconnected content islands.
 
 ---
 

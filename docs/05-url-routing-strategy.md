@@ -23,7 +23,6 @@ It governs:
 * service routing
 * service + location routing
 * audience routing
-* commercial routing
 * comparison pages
 * alternative pages
 * resource pages
@@ -100,7 +99,7 @@ Remains outside active production generation unless its documented state changes
 
 The exact status field names must match `04-master-page-build-list.md`. This document defines routing behavior, not a competing status vocabulary.
 
-Service, location, audience, commercial, and opportunity data may support candidate-route generation in bounded development workflows. They must not automatically populate the production route collection.
+Service, location, audience, and opportunity data may support candidate-route generation in bounded development workflows. They must not automatically populate the production route collection.
 
 Pre-build permission gates must not be added to pathname helpers, route registries, `generateStaticParams()`, CI, or validation. These systems should validate route integrity and filter environment exposure—not prevent legitimate components, drafts, or candidate routes from being created.
 
@@ -307,15 +306,6 @@ The supported route families are:
 ```
 
 ```text
-/commercial/
-/commercial/{service}/
-```
-
-```text
-/{market}/{location-path}/commercial/{service}/
-```
-
-```text
 /compare/{comparison}/
 ```
 
@@ -343,7 +333,6 @@ faq
 services
 locations
 for
-commercial
 compare
 alternatives
 resources
@@ -587,12 +576,6 @@ Audience + location:
 /st-louis-mo/st-louis-city/soulard/for/home-buyers/
 ```
 
-Commercial + location:
-
-```text
-/st-louis-mo/st-louis-city/soulard/commercial/hydro-jetting/
-```
-
 This allows the routing system to support both shallow and nested geographic entities.
 
 ---
@@ -669,9 +652,9 @@ unless an explicit future decision establishes it as a separate search intent.
 
 # 20A. Primary vs. Supporting Service Routes
 
-All 18 canonical services (`06-master-service-registry.md`) use the same `/services/{service}/` pattern (or the market-specific pattern in §27 for the one `market_specific_service` record) — this section does not add a new route shape. It clarifies commercial and navigation emphasis only.
+All 11 canonical services (`06-master-service-registry.md`) use the same `/services/{service}/` pattern (or the market-specific pattern in §27 for the one `market_specific_service` record) — this section does not add a new route shape. It clarifies navigation emphasis only.
 
-The registry already distinguishes six `core_service` records as primary service hubs: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive first-tier navigation and commercial emphasis. The remaining 12 records (`derived_service`, `market_specific_service`, and `commercial_service`) keep the same canonical URL pattern and remain reachable through the services hub, related-service modules, or secondary navigation — a supporting classification affects prominence, not URL shape (`03-information-architecture.md` §12A, `04-master-page-build-list.md` §12A).
+The registry already distinguishes six `core_service` records as primary service hubs: Sewer Camera Inspection, Sewer Cleaning, Hydro Jetting, Sewer Cleaning & Camera Inspection, Sewer Line Locating, and Drain Cleaning. These receive first-tier navigation emphasis. The remaining 5 records (`derived_service` and `market_specific_service`) keep the same canonical URL pattern and remain reachable through the services hub, related-service modules, or secondary navigation — a supporting classification affects prominence, not URL shape (`03-information-architecture.md` §12A, `04-master-page-build-list.md` §12A).
 
 ---
 
@@ -991,105 +974,31 @@ Preserve the current audience URL conventions (§29-33) unless a separately appr
 
 # 34. Commercial Hub
 
-The canonical commercial hub is:
-
-```text
-/commercial/
-```
-
-Commercial is treated as a first-class acquisition channel.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 35. Commercial Service Pattern
 
-Company-wide commercial services use:
-
-```text
-/commercial/{service}/
-```
-
-Approved examples:
-
-```text
-/commercial/sewer-camera-inspection/
-
-/commercial/sewer-cleaning/
-
-/commercial/hydro-jetting/
-
-/commercial/drain-cleaning/
-
-/commercial/preventative-maintenance/
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 36. Commercial Route Naming
 
-Commercial service slugs should generally reuse the canonical service concept rather than unnecessarily repeating "commercial" inside the child slug.
-
-Preferred:
-
-```text
-/commercial/hydro-jetting/
-```
-
-Avoid:
-
-```text
-/commercial/commercial-hydro-jetting/
-```
-
-The parent namespace already establishes commercial intent.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 37. Commercial + Location Pattern
 
-Local commercial pages use:
-
-```text
-/{canonical-location-path}/commercial/{service}/
-```
-
-Examples:
-
-```text
-/san-diego-ca/mission-valley/commercial/hydro-jetting/
-
-/st-louis-mo/maryland-heights/commercial/sewer-cleaning/
-```
-
-when approved.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 38. Do Not Flatten Commercial Local URLs
 
-Avoid:
-
-```text
-/san-diego-ca/commercial-hydro-jetting-mission-valley/
-```
-
-or:
-
-```text
-/commercial/hydro-jetting/san-diego-ca/mission-valley/
-```
-
-Canonical model:
-
-```text
-Market
-→
-Location
-→
-Commercial
-→
-Service
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1237,7 +1146,6 @@ Potential structure:
 
 /resources/homebuyer-sewer-inspections/
 
-/resources/commercial-sewer-maintenance/
 ```
 
 These are structural possibilities, not current page approvals.
@@ -1564,13 +1472,13 @@ Keep URLs as short as the architecture permits without sacrificing clarity.
 Preferred:
 
 ```text
-/commercial/hydro-jetting/
+/services/hydro-jetting/
 ```
 
 Avoid:
 
 ```text
-/commercial-services/commercial-sewer-and-drain-hydro-jetting-services/
+/services/sewer-and-drain-hydro-jetting-services-in-the-area/
 ```
 
 ---
@@ -1628,8 +1536,6 @@ getLocationPath(location)
 getServiceLocationPath(page)
 getAudiencePath(audience)
 getAudienceLocationPath(page)
-getCommercialPath(service)
-getCommercialLocationPath(page)
 getResourcePath(resource)
 ```
 
@@ -1772,7 +1678,7 @@ A catch-all market route can support:
 
 /san-diego-ca/carlsbad/for/home-buyers/
 
-/las-vegas-nv/las-vegas-strip/commercial/hydro-jetting/
+/las-vegas-nv/las-vegas-strip/for/home-buyers/
 ```
 
 without creating overlapping filesystem dynamic-route definitions.
@@ -1825,7 +1731,7 @@ Never populate it from:
 ```text
 579 locations
 ×
-18 services
+11 services
 ```
 
 ---
@@ -1854,11 +1760,6 @@ app/
 ├── for/
 │   ├── page.tsx
 │   └── [audience]/
-│       └── page.tsx
-│
-├── commercial/
-│   ├── page.tsx
-│   └── [service]/
 │       └── page.tsx
 │
 ├── compare/
@@ -1890,7 +1791,6 @@ Known global namespaces such as:
 ```text
 /services/
 /resources/
-/commercial/
 ```
 
 must remain dedicated global routes.
@@ -2420,8 +2320,6 @@ Each route family has a defined intent.
 | `/{location}/{service}/`            | Local service          |
 | `/for/{audience}/`                  | Audience               |
 | `/{location}/for/{audience}/`       | Local audience         |
-| `/commercial/{service}/`            | Commercial service     |
-| `/{location}/commercial/{service}/` | Local commercial       |
 | `/compare/{comparison}/`            | Decision/comparison    |
 | `/alternatives/{alternative}/`      | Alternative evaluation |
 | `/resources/{resource}/`            | Informational          |
@@ -2544,7 +2442,6 @@ services → unique canonical slug
 markets → unique canonical slug
 locations → unique canonical pathname
 audiences → unique canonical slug
-commercial services → unique canonical pathname
 pages → unique canonical pathname
 redirects → unique source
 ```
@@ -2828,7 +2725,6 @@ Conceptually:
     /location/
         /service/
         /for/audience/
-        /commercial/service/
 ```
 
 The exact future market slug must be entered into the market registry before route generation.
@@ -2873,17 +2769,7 @@ Local variants remain:
 
 # 127. Future Commercial Expansion
 
-New company-wide commercial services receive:
-
-```text
-/commercial/{service}/
-```
-
-Local commercial variants remain:
-
-```text
-/{canonical-location-path}/commercial/{service}/
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -3133,19 +3019,6 @@ schema, navigation, and internal linking.
 /{canonical-location-path}/for/{audience}/
 ```
 
-## Commercial
-
-```text
-/commercial/
-/commercial/{service}/
-```
-
-## Commercial + Location
-
-```text
-/{canonical-location-path}/commercial/{service}/
-```
-
 ## Comparisons
 
 ```text
@@ -3213,14 +3086,6 @@ schema, navigation, and internal linking.
 /for/property-managers/
 ```
 
-## Commercial
-
-```text
-/commercial/sewer-camera-inspection/
-/commercial/hydro-jetting/
-/commercial/preventative-maintenance/
-```
-
 ## Comparison
 
 ```text
@@ -3275,10 +3140,6 @@ Do not create:
 /san-diego-ca/carlsbad-ca-san-diego-county/
 ```
 
-```text
-/commercial/commercial-hydro-jetting/
-```
-
 unless a future approved decision explicitly changes the architecture.
 
 ---
@@ -3331,11 +3192,11 @@ Local audiences use `{location}/for/{audience}/`.
 
 ### Rule 12
 
-Commercial services live under `/commercial/`.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ### Rule 13
 
-Local commercial services use `{location}/commercial/{service}/`.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ### Rule 14
 
@@ -3401,7 +3262,6 @@ Conceptually:
 app/
 ├── services/
 ├── for/
-├── commercial/
 ├── compare/
 ├── alternatives/
 ├── resources/
@@ -3444,10 +3304,6 @@ Audience
 
 Company
 ↓
-Commercial Service
-
-Company
-↓
 Resources / Comparisons / Alternatives
 ```
 
@@ -3475,7 +3331,6 @@ The presence of:
 * a location
 * a service
 * an audience
-* a commercial segment
 * a matrix relationship
 
 never creates a URL by itself.

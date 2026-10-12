@@ -409,8 +409,7 @@ Prioritize GBP service areas based on:
 4. primary cities
 5. market importance
 6. historical customer concentration
-7. commercial opportunity
-8. real estate referral activity
+7. real estate referral activity
 
 Accuracy takes priority over keyword coverage.
 
@@ -945,7 +944,6 @@ Recommended triggers may include:
 * completed inspection
 * completed cleaning
 * completed hydro jetting
-* completed commercial work
 * positive service interaction
 
 ---
@@ -1231,7 +1229,6 @@ The market hub should support:
 * North County
 * priority cities
 * real estate inspection
-* commercial services
 * contact pathway
 
 ---
@@ -1348,17 +1345,7 @@ There is no separate Las Vegas operational hold. Page-specific claims, service a
 
 # 70. Las Vegas Commercial Opportunity
 
-Las Vegas local SEO may strongly emphasize:
-
-* commercial sewer cleaning
-* hydro jetting
-* drain cleaning
-* preventative maintenance
-* property managers
-* restaurants
-* hospitality
-
-particularly around verified service areas.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1449,7 +1436,6 @@ Recommended actions:
 * Request Sewer Inspection
 * Request Service
 * Contact The Sewer Pros
-* Commercial Inquiry
 
 Avoid forcing every visitor through a generic contact journey.
 
@@ -1546,7 +1532,6 @@ Potential sources:
 * real estate agencies
 * home inspectors
 * property-management companies
-* commercial associations
 * local publications
 * community sponsorships
 * industry partners
@@ -1582,7 +1567,6 @@ Partnerships may produce:
 Property managers can support:
 
 * recurring work
-* commercial authority
 * local mentions
 * multi-property relationships
 * testimonials
@@ -1609,12 +1593,10 @@ Examples:
 
 * North County service areas
 * real estate inspection
-* commercial properties
 * market-specific sewer concerns where researched
 
 ### Las Vegas
 
-* hospitality/commercial
 * master-planned communities
 * local property-management needs
 
@@ -1637,7 +1619,7 @@ Can I schedule a sewer inspection before buying a home in St. Louis?
 ```
 
 ```text
-Does The Sewer Pros provide commercial hydro jetting in San Diego?
+Does The Sewer Pros provide hydro jetting in San Diego?
 ```
 
 Only answer affirmatively where the business actually does.
@@ -1993,7 +1975,6 @@ For market and location pages, track:
 * form starts
 * form submissions
 * inspection requests
-* commercial inquiries
 * service type
 * market
 * location
@@ -2150,8 +2131,6 @@ Reviews
 North County Authority
 ↓
 Real Estate Partnerships
-↓
-Commercial Expansion
 ```
 
 ---
@@ -2194,8 +2173,6 @@ Core Local Proof
 Review Base
 ↓
 Primary City Coverage
-↓
-Commercial / Hospitality Expansion
 ```
 
 ---
@@ -2209,7 +2186,6 @@ The full location registry remains valuable for:
 * SEO research
 * service-area planning
 * future expansion
-* commercial targeting
 
 It should not be interpreted as:
 
@@ -2230,13 +2206,13 @@ or:
 Likewise:
 
 ```text
-10,422 Service × Location Relationships
+6,369 Service × Location Relationships
 ```
 
 do not imply:
 
 ```text
-10,422 Local Search Pages
+6,369 Local Search Pages
 ```
 
 Local SEO quality depends on accurate, meaningful geographic targeting.

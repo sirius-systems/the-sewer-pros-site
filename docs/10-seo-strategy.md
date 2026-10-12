@@ -23,7 +23,6 @@ It governs:
 * location SEO
 * service + location SEO
 * audience SEO
-* commercial SEO
 * comparison SEO
 * alternative SEO
 * resource/topic authority
@@ -49,7 +48,7 @@ This strategy works with, but does not replace:
 * `06-master-service-registry.md`
 * `07-master-location-registry.md`
 * `08-service-location-matrix.md`
-* `09-audience-commercial-matrix.md`
+* `09-audience-matrix.md`
 
 ---
 
@@ -61,7 +60,7 @@ The SEO objective is not simply:
 
 The objective is:
 
-> **Make The Sewer Pros the clearest, most useful, and most authoritative search entity for sewer inspection, diagnostics, locating, cleaning, hydro jetting, pre-purchase sewer inspections, and commercial sewer/drain services across its three active markets: St. Louis, San Diego, and Las Vegas.**
+> **Make The Sewer Pros the clearest, most useful, and most authoritative search entity for sewer inspection, diagnostics, locating, cleaning, hydro jetting, and pre-purchase sewer inspections across its three active markets: St. Louis, San Diego, and Las Vegas.**
 
 The governing model is:
 
@@ -110,7 +109,7 @@ Claude Code, content systems, and developers may:
 * conduct keyword and intent research
 * map opportunities to canonical entities
 * build page-family templates
-* draft service, location, audience, commercial, comparison, and resource content
+* draft service, location, audience, comparison, and resource content
 * generate bounded candidate-page records
 * build local or protected-preview routes
 * prepare metadata, schema, internal-link, and conversion models
@@ -161,7 +160,6 @@ Drain Cleaning
 Pre-Purchase Sewer Inspection
 Recurring Sewer Backup Diagnosis
 Preventative Sewer Maintenance
-Commercial Sewer & Drain Services
 Independent Sewer Evaluation
 ```
 
@@ -249,7 +247,6 @@ The website should pursue visibility across:
 * local service search
 * pre-purchase / real estate search
 * audience search
-* commercial search
 * comparison search
 * informational search
 * featured-answer opportunities
@@ -281,8 +278,6 @@ Service + Location
 ↓
 Audiences
 ↓
-Commercial
-↓
 Comparisons / Alternatives
 ↓
 Resources / Topic Clusters
@@ -304,7 +299,6 @@ Diagnostic
 Transactional
 Real Estate
 Audience
-Commercial
 Comparison
 Alternative
 Informational
@@ -404,14 +398,6 @@ sewer scope home purchase
 home buyer sewer inspection
 ```
 
-## Commercial Keywords
-
-```text
-commercial hydro jetting
-commercial drain cleaning
-commercial sewer inspection
-```
-
 ## Local Keywords
 
 ```text
@@ -473,7 +459,7 @@ Priority pages include:
 /services/preventative-sewer-maintenance/
 ```
 
-Of these, six are registry-verified `core_service` primary hubs and receive the greatest commercial and navigation priority: sewer-camera-inspection, sewer-cleaning, hydro-jetting, sewer-cleaning-camera-inspection, sewer-line-locating, and drain-cleaning (`06-master-service-registry.md` §14A). The remaining three, plus the one market-specific and seven commercial-variant records not listed here, remain part of the canonical taxonomy and are not lower quality — they simply carry supporting rather than primary navigation and commercial emphasis (04-master-page-build-list.md §12A).
+Of these, six are registry-verified `core_service` primary hubs and receive the greatest business and navigation priority: sewer-camera-inspection, sewer-cleaning, hydro-jetting, sewer-cleaning-camera-inspection, sewer-line-locating, and drain-cleaning (`06-master-service-registry.md` §14A). The remaining three, plus the two records not listed here (the market-specific St. Louis lateral record and the independent second-opinion record), remain part of the canonical taxonomy and are not lower quality - they simply carry supporting rather than primary navigation emphasis (04-master-page-build-list.md §12A).
 
 ---
 
@@ -678,7 +664,6 @@ Market pages should contain meaningful market-specific information such as:
 * market-specific customer needs
 * market-specific FAQs
 * local trust signals
-* relevant commercial opportunity
 * relevant real estate intent
 * location links
 * service links
@@ -710,7 +695,6 @@ Potential emphasis:
 * North County
 * homebuyer / real estate
 * hydro jetting
-* commercial service
 * broad county/service-area architecture
 
 ## Las Vegas
@@ -721,7 +705,6 @@ Active-market emphasis:
 * inspection
 * cleaning
 * hydro jetting
-* commercial/hospitality
 * property management
 
 ---
@@ -766,7 +749,6 @@ A strong location page can connect users to:
 * local service pages
 * market hub
 * audience content
-* commercial content
 * resources
 * conversion actions
 
@@ -828,7 +810,7 @@ A local service page should exist only when:
 The project contains:
 
 ```text
-10,422
+6,369
 ```
 
 service × location relationships.
@@ -876,7 +858,6 @@ Promote additional matrix pages based on evidence such as:
 * service requests
 * phone calls
 * referral patterns
-* commercial demand
 * competitive gaps
 * page performance
 
@@ -921,9 +902,9 @@ Property Managers
 HOA Communities
 ```
 
-Priority pathways for audience SEO investment going forward: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers (`00-project-overview.md` §7A). Homeowners and contractors/remodelers are `Phase 2` in the audience registry (`09-audience-commercial-matrix.md` §6-8) — prioritized for evaluation, not yet built.
+Priority pathways for audience SEO investment going forward: home buyers, home inspectors, real estate agents, homeowners, property managers, and contractors and remodelers (`00-project-overview.md` §7A). Homeowners and contractors/remodelers are `Phase 2` in the audience registry (`09-audience-matrix.md` §6-8) — prioritized for evaluation, not yet built.
 
-An audience-service page should only be created when it has distinct search intent, a distinct workflow, distinct audience questions, distinct deliverables, a distinct CTA, sufficient content depth, and evidence or a defined evidence plan (`03-information-architecture.md` §33A). Do not publish the full audience-service or commercial matrix automatically (`09-audience-commercial-matrix.md` §48-49).
+An audience-service page should only be created when it has distinct search intent, a distinct workflow, distinct audience questions, distinct deliverables, a distinct CTA, sufficient content depth, and evidence or a defined evidence plan (`03-information-architecture.md` §33A). Do not publish the full audience-service matrix automatically (`09-audience-matrix.md` §48).
 
 ---
 
@@ -997,95 +978,31 @@ Referral relationships may create significant business value even from lower-vol
 
 # 39. Commercial SEO Strategy
 
-Commercial SEO is a distinct acquisition channel.
-
-Canonical hub:
-
-```text
-/commercial/
-```
-
-Current production commercial services include:
-
-```text
-/commercial/sewer-camera-inspection/
-/commercial/sewer-cleaning/
-/commercial/hydro-jetting/
-/commercial/drain-cleaning/
-/commercial/preventative-maintenance/
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 40. Commercial Search Intent
 
-Commercial content should target operational needs such as:
-
-* recurring backups
-* business disruption
-* grease/sludge buildup
-* high-use drains
-* scheduled maintenance
-* diagnostics
-* documentation
-* property coordination
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 41. Commercial Content Differentiation
 
-Commercial pages must differ meaningfully from residential pages.
-
-Commercial-specific content may address:
-
-* operational interruption
-* tenants
-* customers
-* kitchens
-* shared systems
-* property portfolios
-* scheduled service
-* facilities
-* maintenance planning
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 42. Commercial Audience Strategy
 
-Important commercial audiences include:
-
-```text
-Property Managers
-Facility Managers
-Restaurants
-Multifamily Properties
-HOA Communities
-Commercial Property Owners
-Hospitality
-Retail
-```
-
-These relationships should support the commercial service architecture without generating unnecessary duplicate pages.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
 # 43. Commercial Local SEO
 
-Future commercial + location pages should prioritize:
-
-```text
-Commercial Fit
-+
-Service Fit
-+
-Search Intent
-+
-Lead Value
-+
-Operational Coverage
-```
-
-rather than raw city population.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1166,9 +1083,9 @@ Content should be organized by topic clusters rather than becoming an unstructur
 
 ---
 
-# 49. Service Page as Commercial Pillar
+# 49. Service Page as Transactional Pillar
 
-For transactional topics, the canonical service page should generally act as the primary commercial authority entity.
+For transactional topics, the canonical service page should generally act as the primary transactional authority entity.
 
 Example:
 
@@ -1237,7 +1154,6 @@ Hydro Jetting vs Sewer Snaking
 When Is Hydro Jetting Appropriate?
 Hydro Jetting for Grease and Sludge
 Can Hydro Jetting Help Recurring Backups?
-Commercial Hydro Jetting Maintenance
 ```
 
 ---
@@ -1257,17 +1173,7 @@ Camera Inspection vs Sewer Line Locating
 
 # 55. Commercial Topic Cluster
 
-Potential supporting content:
-
-```text
-Commercial Sewer Maintenance
-Restaurant Drain Maintenance
-Recurring Commercial Drain Backups
-Preventative Hydro Jetting
-Multifamily Sewer Problems
-Commercial Sewer Inspection Reports
-Property Management Sewer Maintenance
-```
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ---
 
@@ -1362,7 +1268,6 @@ Examples:
 * addresses
 * hours
 * reporting capabilities
-* commercial contracts
 
 Never allow AI to fill missing business facts with assumptions.
 
@@ -1396,7 +1301,6 @@ Where available, pages should incorporate genuine trust evidence such as:
 * inspection imagery
 * sewer-camera examples
 * reporting examples
-* commercial experience
 * real project photos
 * team/company information
 * transparent service boundaries
@@ -1834,10 +1738,6 @@ Audience
 ↔
 Relevant Service
 
-Commercial Segment
-↔
-Commercial Service
-
 Resource
 ↔
 Relevant Service
@@ -1924,7 +1824,6 @@ Home Buyers
 Agents
 Inspectors
 Property Managers
-Commercial Operators
 ```
 
 ---
@@ -1988,7 +1887,7 @@ High Impressions
 +
 Positions 5–20
 +
-Relevant Commercial Intent
+Relevant Search Intent
 ```
 
 These queries often provide some of the best optimization opportunities.
@@ -2168,7 +2067,6 @@ Potential local facts include:
 * pipe materials
 * soil conditions
 * tree/root patterns
-* commercial concentration
 
 Never infer local facts from stereotypes.
 
@@ -2332,7 +2230,7 @@ Expand Tier 1
 ↓
 Build Topic Clusters
 ↓
-Expand Commercial / Audience
+Expand Audience
 ↓
 Expand Selected Phase 2 Geographies
 ↓
@@ -2352,12 +2250,11 @@ Launch should establish:
 5. priority location hubs
 6. selected service + location pages
 7. audience foundation
-8. commercial foundation
-9. comparison foundation
-10. resource foundation
-11. internal linking
-12. schema/entity foundation
-13. analytics/search-tool configuration
+8. comparison foundation
+9. resource foundation
+10. internal linking
+11. schema/entity foundation
+12. analytics/search-tool configuration
 
 ---
 
@@ -2394,8 +2291,6 @@ High-value missing local service intent
 Remaining Tier 1 locations
 ↓
 Real estate / homebuyer content
-↓
-Commercial local opportunities
 ↓
 Problem clusters
 ↓
@@ -2510,7 +2405,6 @@ Service vs Resource
 Market vs Same-Named City
 Location vs Local Service
 Audience vs Service
-Commercial vs Audience
 ```
 
 Resolve by:
@@ -2575,7 +2469,6 @@ Service
 Market
 Location
 Audience
-Commercial
 Resource Cluster
 ```
 
@@ -2615,7 +2508,6 @@ Hydro Jetting
 Line Locating
 Drain Cleaning
 Pre-Purchase Inspection
-Commercial Services
 ```
 
 This can guide both SEO and business priorities.
@@ -2632,7 +2524,6 @@ Market Hubs
 Location Pages
 Service + Location Pages
 Audience Pages
-Commercial Pages
 Resources
 Comparisons
 ```
@@ -2670,7 +2561,6 @@ Where possible, attribute:
 * market
 * location
 * audience
-* commercial status
 
 to incoming leads.
 
@@ -2685,7 +2575,6 @@ Primary:
 * qualified organic leads
 * organic calls
 * inspection requests
-* commercial inquiries
 * local-market visibility
 * service query visibility
 
@@ -2892,7 +2781,7 @@ Supporting Content
 06-master-service-registry.md     → Canonical services
 07-master-location-registry.md    → Geographic truth
 08-service-location-matrix.md     → Service/geographic opportunities
-09-audience-commercial-matrix.md  → Audience and commercial relationships
+09-audience-matrix.md             → Audience relationships
 10-seo-strategy.md (this doc)     → SEO objectives, intent, quality, measurement
 11-local-seo-gbp-strategy.md      → Local and GBP execution (§136)
 12-content-aeo-ai-strategy.md     → AEO and AI retrieval execution (§137)
@@ -2941,7 +2830,7 @@ Market hubs and city/location pages must have distinct roles.
 
 ### Rule 9
 
-The 10,422 matrix relationships are opportunities, not required pages.
+The 6,369 matrix relationships are opportunities, not required pages.
 
 ### Rule 10
 
@@ -2953,7 +2842,7 @@ Audience + location publishing must remain selective.
 
 ### Rule 12
 
-Commercial + location publishing must remain selective.
+Removed (owner decision, Oct 12, 2026): commercial services are not offered. Do not build commercial content or architecture.
 
 ### Rule 13
 
@@ -3076,7 +2965,7 @@ Measure Continuously
 Expand From Evidence
 ```
 
-This approach gives The Sewer Pros a scalable organic-search platform capable of building authority across services, markets, audiences, commercial segments, educational topics, and future geographies without compromising search quality or the specialized independent-inspection positioning of the company.
+This approach gives The Sewer Pros a scalable organic-search platform capable of building authority across services, markets, audiences, educational topics, and future geographies without compromising search quality or the specialized independent-inspection positioning of the company.
 
 
 ---
@@ -3089,5 +2978,5 @@ Verified against commit `5b9586a`. Records repository state only. No rankings, i
 * **Indexable:** 70 of 70 approved pages (`launch`, `indexable: true`). Trailing-slash canonicals on `https://www.thesewerpros.com` (DEC-061, DEC-078)
 * **Noindex, gated, draft, deferred:** none among approved pages. The five Las Vegas pages were released from DEC-063 by DEC-080. The framework 404 pages are the only noindex output
 * **Robots:** allow-all for `*`, explicit allow for `OAI-SearchBot`, sitemap declared. No `Disallow`, deliberately, so `noindex` stays readable. No GPTBot directive; PENDING-011 is open, so GPTBot is currently permitted by the general allow
-* **Not built:** Las Vegas service + location pages, audience + service, audience + location, commercial + location, and alternatives. None is in the sitemap
+* **Not built:** Las Vegas service + location pages, audience + service, audience + location, and alternatives. None is in the sitemap
 * **Remaining SEO tasks:** decide PENDING-011; implement redirects (see `20`); submit the sitemap and capture the Phase 0 baseline after deployment; verify canonicals, sitemap, and robots on the deployed host; review the 14 service + location pages against the quality tests in `04` §11 before treating them as proven
