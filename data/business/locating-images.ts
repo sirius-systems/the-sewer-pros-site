@@ -8,7 +8,7 @@ import type { CameraImageSlotSpec } from './camera-inspection-images'
  * ⚠ SLOTS, NOT ASSETS. Same contract as the cleaning hub
  * (`cleaning-images.ts`): nothing here points at a stand-in image. Save
  * the real file at `preferred` (shot list in
- * `public/images/services/sewer-line-locating/README.md`) and it is used
+ * `docs/images-readme/services/sewer-line-locating/README.md`) and it is used
  * at the next build. Until then the slot resolves to a labelled
  * placeholder in development and to NOTHING in a production build.
  *

@@ -71,7 +71,7 @@ const SOURCE_DIRS = ['app', 'components', 'content', 'data', 'lib', 'types', 'ho
 const DOC_DIRS = ['docs']
 const STRUCTURED = /^data\/(matrices\/|locations\/master-location-registry\.json|services\/master-service-registry\.json|reviews\/google-reviews\.json)/
 const SELF = /^scripts\/audit-commercial\.mjs$/
-const OWN_DOCS = /^docs\/(commercial-removal-(audit|inventory|verification)|property-manager-restore|multifamily-page-decision)\.md$/
+const OWN_DOCS = /^docs\/(commercial-removal-(audit|inventory|verification)|property-manager-restore|multifamily-page-decision|placeholder-and-readme-audit)\.md$/
 
 /* ===================== helpers ===================== */
 const sh = (c) => {

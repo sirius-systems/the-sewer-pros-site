@@ -34,7 +34,7 @@ import type { ContactPageContent, MasterPageRecord } from '@/types'
  * details per market, and a city-aware closing CTA.
  *
  * ⚠ IMAGES ARE PLACEHOLDER SLOTS until real photography lands; see
- * `data/business/contact-backdrop.ts` and `public/images/contact/README.md`.
+ * `data/business/contact-backdrop.ts` and `docs/images-readme/contact/README.md`.
  * The hero uses the technician-monitor slot. It is decorative (`alt=""`)
  * while the interim scene is in use.
  *

@@ -116,7 +116,7 @@ The E group has 466 distinct phrases in total (948 hits).
 | 1 | CLAUDE.md | not create commercial pages, [commercial] service or audience entries, | The rule that commercial services are not offered (CLAUDE.md section 28). Not marketing. |
 | 1 | CLAUDE.md | service or audience entries, [commercial] keyword targets, or commercial | The rule that commercial services are not offered (CLAUDE.md section 28). Not marketing. |
 | 1 | CLAUDE.md | commercial keyword targets, or [commercial] ctas, forms, schema or | The rule that commercial services are not offered (CLAUDE.md section 28). Not marketing. |
-| 1 | public/images/README.md | so there is no [commercial] folder to add. - | Image README: "there is no commercial folder to add". Not marketing. |
+| 1 | docs/images-readme/README.md | so there is no [commercial] folder to add. - | Image README: "there is no commercial folder to add". Not marketing. |
 
 ### Phrases that refer to The Sewer Pros' services, audiences, pages or marketing
 

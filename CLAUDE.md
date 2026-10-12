@@ -975,6 +975,8 @@ They should guide:
 
 They are not pixel-perfect requirements.
 
+**Image files.** Image placement, naming and slot rules are in `docs/images-readme/README.md` (with a README per service folder in `docs/images-readme/services/`). Do not reuse one market's photo as another market's context: market-specific imagery stays in its market folder. Do not place README, notes or other non-image files in `public/`, because everything there is published. Placeholder counts come from `scripts/count-placeholders.mjs` run on a production build.
+
 ---
 
 # 33. Primary Design Reference Files

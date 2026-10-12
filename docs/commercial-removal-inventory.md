@@ -99,7 +99,7 @@ Files that exist only for commercial pages (deleted in Phase 1):
 | content/pages/sl-sd-mission-valley-prepurchase.tsx | 9 |  |
 | content/pages/services.tsx | 8 |  |
 | types/content.ts | 8 |  |
-| public/images/README.md | 8 |  |
+| docs/images-readme/README.md | 8 |  |
 | content/pages/about.tsx | 7 |  |
 | content/pages/sl-sd-mission-valley-backup.tsx | 7 |  |
 | content/pages/sl-sd-mission-valley-maintenance.tsx | 7 |  |
@@ -117,7 +117,7 @@ Files that exist only for commercial pages (deleted in Phase 1):
 | components/templates/index.ts | 4 |  |
 | components/ui/Callout.tsx | 4 | 'commercial' variant |
 | content/pages/contact.tsx | 4 |  |
-| public/images/services/preventative-sewer-maintenance/README.md | 4 |  |
+| docs/images-readme/services/preventative-sewer-maintenance/README.md | 4 |  |
 | components/sections/ProcessSteps.tsx | 3 |  |
 | components/templates/HomePageTemplate.tsx | 3 |  |
 | content/pages/las-vegas-henderson.tsx | 3 |  |
@@ -143,7 +143,7 @@ Files that exist only for commercial pages (deleted in Phase 1):
 | content/pages/san-diego-san-marcos.tsx | 2 |  |
 | content/pages/st-louis-ballwin.tsx | 2 |  |
 | content/pages/st-louis-city.tsx | 2 |  |
-| public/images/markets/README.md | 2 |  |
+| docs/images-readme/markets/README.md | 2 |  |
 | components/templates/MarketPageTemplate.tsx | 1 |  |
 | components/ui/Badge.tsx | 1 |  |
 | components/ui/Button.tsx | 1 |  |
