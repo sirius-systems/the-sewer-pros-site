@@ -38,6 +38,14 @@ export interface LeadPayload {
   serviceLocation?: string
   /** Survey form only: `home` or `rental-multifamily`. */
   propertyType?: string
+  /**
+   * SMS consent, from the two optional checkboxes (lib/forms/sms-consent.ts).
+   * Both are false unless the visitor checked the box. Never sent to analytics.
+   */
+  smsNonMarketingConsent: boolean
+  smsMarketingConsent: boolean
+  /** Id of the consent wording shown, for example `sms-consent-v1`. */
+  smsConsentVersion: string
 }
 
 export type SubmitLeadResult =

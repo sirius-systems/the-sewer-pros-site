@@ -2095,6 +2095,8 @@ Resolution needs a chosen submission path (a Cloudflare Pages Function,
 a third-party form endpoint, or equivalent), then the handler wired and
 `trackFormSubmitted` called on success only.
 
+**Payload shape note (Oct 12, 2026; status unchanged).** The lead payload (`LeadPayload` in `lib/forms/submit-lead.ts`) now also carries `smsNonMarketingConsent` (boolean), `smsMarketingConsent` (boolean) and `smsConsentVersion` (string, for example `sms-consent-v1`), alongside the existing `sourcePath` (page path). Both consent values are false unless the visitor checked the box. The backend still does not exist, nothing is stored, and consent values are never sent to analytics. When the endpoint is built it must store the three fields with each lead.
+
 ---
 
 ## PENDING-019 — TCPA Consent Disclosure for the "Text" Contact Option
@@ -5403,6 +5405,22 @@ Recorded: the image was not edited, blurred or regenerated. The label is not nam
 **Reason:** the owner decided that generated images are acceptable for every image slot on the site, including the slots that depict a technician, report, tablet, agent or monitor footage. Real photographs are an optional upgrade, starting with IMG-05 (178 boxes on 144 pages).
 
 Recorded: equipment shown in the images is owner-approved. Generated images may be used as illustrations. They must not be presented as a real customer job, a real inspection finding, a real report, a real customer or a real technician, so alt text, captions and nearby copy describe the scene only. The rule and the optional upgrade are on the launch checklist (`docs/launch-checklist.md`) and in `CLAUDE.md`. The owner specifically approved the eight generated files that depict reports, tablets, monitor footage or paperwork (IMG-04, IMG-05, IMG-06, IMG-07, IMG-10, IMG-18, IMG-20, IMG-21), none of which shows a person, with the guardrail that nearby copy must not present them as real jobs, findings, reports, customers or technicians (Oct 12, 2026).
+
+## DEC-146 - SMS Consent Copy on the Lead Forms (SHH Group)
+
+**Date:** 2026-10-12
+**Status:** APPROVED
+**Impact:** Minor (form copy; no backend change)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** none; does not change PENDING-018
+**Affected Documents:**
+
+* `docs/17-conversion-architecture.md` section 125, `CLAUDE.md` section 42
+* `lib/forms/sms-consent.ts`, `components/sections/SmsConsent.tsx`, `components/sections/ContactForm.tsx`, `components/sections/SurveyLeadForm.tsx`, `lib/forms/submit-lead.ts`
+
+**Reason:** the owner provided the SMS consent wording and named the sender, SHH Group. Two separate optional checkboxes (non-marketing and marketing) were added to the lead forms that collect a phone number.
+
+Recorded: the two consent strings are used exactly as the owner wrote them and live in one constants file with a version id (`sms-consent-v1`, 2026-10-12); a wording change is a new version, not an edit in place. Neither box is checked by default or required, and the forms submit with both unchecked. The block sits under the phone and preferred-contact fields. The "See our Privacy Policy and Terms." line is built but not shown, because no privacy or terms page exists yet and no policy text was written. Consent values are in the lead payload only and never go to analytics.
 
 ---
 

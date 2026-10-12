@@ -6,6 +6,8 @@ import { Button, Field, RadioGroup, TextInput, Textarea } from '@/components/ui'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { SURVEY_LOCATION_GROUPS, findSurveyLocation } from '@/lib/forms/survey-locations'
 import { submitLead } from '@/lib/forms/submit-lead'
+import { SMS_CONSENT_VERSION } from '@/lib/forms/sms-consent'
+import { SmsConsent } from './SmsConsent'
 import type { ServiceId } from '@/types'
 
 /**
@@ -215,6 +217,9 @@ export function SurveyLeadForm({
       locationId: location,
       serviceLocation: selectedLocation?.label ?? '',
       ...(property !== '' && { propertyType: property }),
+      smsNonMarketingConsent: data.get('smsNonMarketingConsent') === 'on',
+      smsMarketingConsent: data.get('smsMarketingConsent') === 'on',
+      smsConsentVersion: SMS_CONSENT_VERSION,
     })
     setPending(false)
 
@@ -493,6 +498,7 @@ export function SurveyLeadForm({
             options={CONTACT_METHOD_OPTIONS}
             required
           />
+          <SmsConsent idPrefix={id('sms')} className="sm:col-span-2" />
           <Field
             htmlFor={id('message')}
             label={unsure ? 'What is happening?' : 'Anything we should know?'}
