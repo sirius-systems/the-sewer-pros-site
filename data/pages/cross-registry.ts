@@ -43,9 +43,6 @@ const AUDIENCE_IDS = new Set([
   'aud-real-estate-investors',
   'aud-landlords',
   'aud-contractors-remodelers',
-  'aud-facility-managers',
-  'aud-restaurants',
-  'aud-commercial-property-owners',
 ])
 
 function checkPage(page: MasterPageRecord): CrossRegistryIssue[] {

@@ -40,8 +40,8 @@ import type { AnalyticsPageType, MarketId, ServiceId } from '@/types'
  * 19 §14: "Actual implementation should remain as simple as possible
  * while preserving useful attribution." This is the documented list
  * minus the per-form-type variants — `form_type` is a parameter, so
- * `commercial_form_submit` would encode in the event name what the
- * parameter already carries, and split one funnel across three names.
+ * `prepurchase_form_submit` would encode in the event name what the
+ * parameter already carries, and split one funnel across several names.
  */
 export type AnalyticsEvent =
   | 'page_view'
@@ -64,11 +64,10 @@ export type AnalyticsEvent =
 export type FormType =
   | 'general_service'
   | 'prepurchase_inspection'
-  | 'commercial_service'
   | 'contact_request'
 
 /** What kind of lead an event represents (19 §27). */
-export type LeadType = 'residential' | 'commercial' | 'real_estate'
+export type LeadType = 'residential' | 'real_estate'
 
 /**
  * Where on the page an action was taken (19 §32).
@@ -92,7 +91,6 @@ export type ContentCluster =
   | 'hydro_jetting'
   | 'sewer_problems'
   | 'real_estate'
-  | 'commercial'
   | 'municipal_programs'
 
 /**

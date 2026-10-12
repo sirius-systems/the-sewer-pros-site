@@ -3,12 +3,12 @@
  *
  * Authority: docs/09-audience-commercial-matrix.md §4-30, §57, §59, §122
  *
- * 13 audience records; 6 approved as launch pages under `/for/`.
+ * 10 audience records; 6 approved as launch pages under `/for/`.
  *
- * An audience is a PERSON OR ROLE — who the customer is. A commercial
- * segment is a BUSINESS CONTEXT — what kind of property or operation is
- * served (09 §4, §94). Keep them distinct: "property managers" is an
- * audience, "property management" is a commercial segment.
+ * An audience is a PERSON OR ROLE: who the customer is. The Sewer Pros
+ * serves residential and real-estate audiences only. Commercial services
+ * are not offered (owner decision, Oct 12, 2026), so there are no
+ * commercial audience records.
  */
 
 import type { LocationId, MarketId } from './common'
@@ -18,7 +18,7 @@ import type { ServiceId } from './service'
    Identifiers — 09 §6
    ========================================================================== */
 
-/** The 13 canonical audience ids. */
+/** The 10 canonical audience ids. */
 export type AudienceId =
   // Launch (09 §7)
   | 'aud-home-buyers'
@@ -32,9 +32,6 @@ export type AudienceId =
   | 'aud-real-estate-investors'
   | 'aud-landlords'
   | 'aud-contractors-remodelers'
-  | 'aud-facility-managers'
-  | 'aud-restaurants'
-  | 'aud-commercial-property-owners'
 
 /** The six audiences with approved launch pages (09 §7). */
 export const LAUNCH_AUDIENCE_IDS = [
@@ -55,7 +52,6 @@ export type AudienceType =
   | 'referral_partner'
   | 'professional'
   | 'property_decision_maker'
-  | 'commercial_operator'
   | 'organization'
 
 /** Page authorisation. Confirmed by 04 for the launch six. */
@@ -65,7 +61,6 @@ export type AudiencePageStatus = 'launch' | 'phase_2' | 'phase_3' | 'hold'
 export type AudienceLocationMatrixRule =
   | 'full_on_relevant_locations'
   | 'selective'
-  | 'commercial_only'
   | 'hold'
 
 /* ==========================================================================
@@ -78,10 +73,8 @@ export interface Audience {
   /**
    * URL slug.
    *
-   * ⚠ Does NOT always derive from the id. `aud-commercial-property-owners`
-   * maps to `/for/commercial-properties/` per 09 §8, not
-   * `/for/commercial-property-owners/`. Always read the slug; never
-   * reconstruct it by stripping the `aud-` prefix.
+   * Always read the slug; never reconstruct it by stripping the `aud-`
+   * prefix.
    */
   slug: string
   canonicalUrl: string
@@ -105,26 +98,15 @@ export interface Audience {
  * ---------------------------------------------------------------------------
  * ⚠ DOC 09 CONTRADICTS ITSELF
  * ---------------------------------------------------------------------------
- * §10's table lists EIGHT statuses, including `commercial_fit_only`
- * ("Better handled through commercial architecture").
- *
- * §57's `AudienceMatrixStatus` type lists only SEVEN and omits
- * `commercial_fit_only`.
- *
- * `commercial_fit_only` is retained here. It encodes a real routing
- * decision the architecture depends on — §68-70's cannibalisation rules
- * turn on exactly this distinction, sending property-manager and
- * restaurant geography into `/commercial/` rather than `/for/`. Dropping
- * it would leave those cases unrepresentable.
- *
- * ⚠ Recorded as DEC-068, status PROPOSED.
+ * Commercial services are not offered (owner decision, Oct 12, 2026), so
+ * the former `commercial_fit_only` status no longer exists. Property
+ * manager geography stays under `/for/`.
  */
 export type AudienceMatrixStatus =
   | 'strong_candidate'
   | 'phase_2_candidate'
   | 'selective_candidate'
   | 'low_intent_fit'
-  | 'commercial_fit_only'
   | 'operational_confirmation_required'
   | 'hold_location'
   | 'research_only'

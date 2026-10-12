@@ -25,9 +25,6 @@ import type { AnalyticsContext, ContentCluster, LeadType } from './events'
  * stored, so a page cannot drift out of its cluster.
  */
 function contentCluster(page: MasterPageRecord): ContentCluster | undefined {
-  if (page.pageType === 'commercial' || page.pageType === 'commercial-hub') {
-    return 'commercial'
-  }
   if (page.pageType === 'audience' || page.pageType === 'audience-hub') {
     return 'real_estate'
   }
@@ -50,36 +47,11 @@ function contentCluster(page: MasterPageRecord): ContentCluster | undefined {
 /**
  * Lead type for a page (19 §27).
  *
- * Commercial pages produce commercial leads; audience pages in the
- * real-estate cluster produce real-estate leads. Everything else is
- * residential by default, which matches how the service registry
- * classifies the non-commercial menu.
+ * Audience pages in the real-estate cluster produce real-estate leads.
+ * Everything else is residential, because The Sewer Pros does not offer
+ * commercial services (owner decision, Oct 12, 2026).
  */
-/**
- * Approved location pages that are commercial districts rather than
- * residential geography (04 §13, 07 §29).
- *
- * An explicit list because the alternative is importing the ~462 KB
- * location registry to read one `location_type` field — and this
- * function runs for every page. Currently one entry: Mission Valley,
- * whose pages are commercial in framing while their page family is
- * `location` and `service-location`.
- *
- * ⚠ Add to this when a commercial-district location page is approved,
- * or its leads will be attributed residential.
- */
-const COMMERCIAL_DISTRICT_LOCATIONS = new Set(['loc-sd-mission-valley'])
-
 function leadType(page: MasterPageRecord): LeadType {
-  if (page.pageType === 'commercial' || page.pageType === 'commercial-hub') {
-    return 'commercial'
-  }
-  if (
-    page.locationId !== undefined &&
-    COMMERCIAL_DISTRICT_LOCATIONS.has(page.locationId)
-  ) {
-    return 'commercial'
-  }
   if (page.audienceId !== undefined) {
     const realEstate = [
       'aud-home-buyers',

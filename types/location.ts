@@ -87,7 +87,7 @@ export type LocationType =
   | 'neighborhood_or_master_planned_community'
   | 'st_louis_city_neighborhood'
   | 'san_diego_community_or_neighborhood'
-  | 'commercial_or_mixed_use_district'
+  | 'mixed_use_district'
   | 'landmark_or_corridor'
   | 'county'
   | 'county_or_submarket_cluster'
@@ -163,9 +163,6 @@ export type LocationServiceMatrix = MatrixEligibility
  */
 export type LocationAudienceMatrix = 'selective' | 'conditional' | 'hold'
 
-/** Commercial-matrix eligibility (07 §6). */
-export type LocationCommercialMatrix = MatrixEligibility
-
 /* ==========================================================================
    Raw record — mirrors data/locations/master-location-registry.json
    ========================================================================== */
@@ -187,7 +184,6 @@ export interface RawLocationRecord {
   priority_tags: string[]
   service_matrix: LocationServiceMatrix
   audience_matrix: LocationAudienceMatrix
-  commercial_matrix: LocationCommercialMatrix
   validation_status: LocationValidationStatus
   aliases: string[]
   /** Research provenance back to the source documents. */
@@ -227,7 +223,6 @@ export interface Location {
   priorityTags: string[]
   serviceMatrix: LocationServiceMatrix
   audienceMatrix: LocationAudienceMatrix
-  commercialMatrix: LocationCommercialMatrix
   validationStatus: LocationValidationStatus
   aliases: string[]
   notes?: string

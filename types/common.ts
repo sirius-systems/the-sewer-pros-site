@@ -58,7 +58,7 @@ export function isMarketId(value: string): value is MarketId {
  * Eligibility of a location to participate in a given matrix
  * (07 §6, 08 §49).
  *
- * Applies to serviceMatrix, audienceMatrix, and commercialMatrix.
+ * Applies to serviceMatrix and audienceMatrix.
  *
  * Note: eligibility is NOT page authorisation. A location marked `full`
  * may still receive zero approved pages (07 §54, 08 §29).

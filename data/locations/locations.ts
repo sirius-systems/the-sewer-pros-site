@@ -173,7 +173,6 @@ function toLocation(raw: RawLocationRecord): Location {
     priorityTags: raw.priority_tags,
     serviceMatrix: raw.service_matrix,
     audienceMatrix: raw.audience_matrix,
-    commercialMatrix: raw.commercial_matrix,
     validationStatus: raw.validation_status,
     aliases: raw.aliases,
     ...(raw.notes !== '' && { notes: raw.notes }),
