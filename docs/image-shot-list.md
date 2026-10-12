@@ -1,6 +1,6 @@
 # Image shot list
 
-Source: [docs/image-placeholder-inventory.md](image-placeholder-inventory.md) (785 placeholder boxes on 162 pages). Every box was mapped from its shot brief to one reusable image. 26 distinct shots (30 files once the street and older-home shots are split by market) fill all 785 boxes.
+Source: [docs/image-placeholder-inventory.md](image-placeholder-inventory.md) (929 placeholder boxes on 162 pages: the 785 counted before the renders were wired, plus 144 from the services-section image on every service + location page, found Oct 12, 2026). Every box was mapped from its shot brief to one reusable image. 26 distinct shots (30 files once the street and older-home shots are split by market) fill all 929 boxes.
 
 ## Equipment in the 12 renders
 
@@ -9,9 +9,9 @@ The equipment shown in the 12 render images is owner-approved (Oct 12, 2026). Th
 ## Decisions to confirm
 
 1. **Launch cohort is my assumption.** `docs/04-master-page-build-list.md` lists all 162 affected pages as built and indexable and defines no launch cohort. I prioritized by the market order in CLAUDE.md (St. Louis has the established business profile): **P1** = any image used on a St. Louis page or a core service page, **P2** = used on San Diego pages but no St. Louis page, **P3** = Las Vegas only. Universal images are P1 because they also unlock the other markets.
-2. **Photo versus render.** The repo rule (`public/images/services/sewer-camera-inspection/README.md`, `lib/image-slots.ts`) is that anything showing crew, equipment, footage, customers or reports must be a real job photo. I marked those "Real photo needed". Fixtures and scenery with none of those (street, cleanout cap, sinks, floor drain, older home, fence line) are marked "Photorealistic render", matching the owner-approved rendered scenes already on the site. If you want real photos for those too, the real-photo count rises.
-3. **Market-specific shots.** `public/images/README.md` says not to reuse one market's photo as another's, so the street and older-home shots are split into three per-market images. Everything else is framed tight (equipment, fixtures, monitors) so it can be universal.
-4. **Filenames** follow `the-sewer-pros-<subject>-<ratio>.webp`, under the existing `public/images/shared/<subfolder>/` layout (equipment, pipe-interiors, cleanouts, residential, and one mixed-use folder) from `public/images/README.md`. Each slot's registry entry must then be pointed at the new file (set `src` and `source`); the two core service pages already reference specific paths.
+2. **Photo versus render.** The repo rule (`docs/images-readme/services/sewer-camera-inspection/README.md`, `lib/image-slots.ts`) is that anything showing crew, equipment, footage, customers or reports must be a real job photo. I marked those "Real photo needed". Fixtures and scenery with none of those (street, cleanout cap, sinks, floor drain, older home, fence line) are marked "Photorealistic render", matching the owner-approved rendered scenes already on the site. If you want real photos for those too, the real-photo count rises.
+3. **Market-specific shots.** `docs/images-readme/README.md` says not to reuse one market's photo as another's, so the street and older-home shots are split into three per-market images. Everything else is framed tight (equipment, fixtures, monitors) so it can be universal.
+4. **Filenames** follow `the-sewer-pros-<subject>-<ratio>.webp`, under the existing `public/images/shared/<subfolder>/` layout (equipment, pipe-interiors, cleanouts, residential, and one mixed-use folder) from `docs/images-readme/README.md`. Each slot's registry entry must then be pointed at the new file (set `src` and `source`); the two core service pages already reference specific paths.
 
 ## Shot list
 
@@ -21,7 +21,7 @@ The equipment shown in the 12 render images is owner-approved (Oct 12, 2026). Th
 | IMG-02 | shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp | 4:3 | Capped exterior cleanout at the base of a house. No identifiers. *The one "building" variant (Mission Valley) can use the same image.* | universal | 65 | 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 48 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 1 on core service pages (data/business/*-images.ts). Ids: call-cleanout, preventative-sewer-maintenance-prep-cleanout-4x3.webp, sl-*-problem-1, sl-*-problem-2, sl-*-problem-3 | Photorealistic render | P1 |
 | IMG-03 | shared/residential/the-sewer-pros-st-louis-residential-street-manhole-curb-4x3.webp | 4:3 | Ordinary residential street with a manhole cover and curb. No identifiable homes, addresses or plates. *Environment only. Shoot or render it so the street looks like that market.* | per market (St. Louis) | 50 | 5 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 45 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P1 |
 | IMG-04 | shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp | 4:3 | Technician at a for-sale property starting a pre-purchase sewer scope, clipboard visible. Covers three near-identical shot wordings. *Crew in frame, so real job photo. Frame tight so no region is identifiable.* | universal | 41 | 24 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 17 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: buy-buyer, sl-*-problem-2, sl-*-problem-3, svc-prepurchase | Real photo needed | P1 |
-| IMG-05 | shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp | 4:3 | Technician reviewing sewer camera footage on a monitor, crew behind. Also serves "monitor showing a cleaned pipe with crew behind" and "crew member recording a post-cleaning camera pass". *Crew in frame, so real job photo.* | universal | 34 | 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 16 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 2 on core service pages (data/business/*-images.ts). Ids: preventative-sewer-maintenance-explainer-review-4x3.webp, recurring-sewer-backup-diagnosis-explainer-monitor-4x3.webp, sl-*-problem-1, svc-cleaning-camera, svc-maintenance | Real photo needed | P1 |
+| IMG-05 | shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp | 4:3 | Technician reviewing sewer camera footage on a monitor, crew behind. Also serves "monitor showing a cleaned pipe with crew behind" and "crew member recording a post-cleaning camera pass". *Crew in frame, so real job photo.* Also serves the services-section image on every service + location page. | universal | 178 | 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 160 on service + location pages (16 in pageImageSlots in content/pages/sl-*.tsx, 144 from the shared services-section slot in components/templates/ServiceLocationPageTemplate.tsx); 2 on core service pages (data/business/*-images.ts). Ids: slc-services-section, preventative-sewer-maintenance-explainer-review-4x3.webp, recurring-sewer-backup-diagnosis-explainer-monitor-4x3.webp, sl-*-problem-1, svc-cleaning-camera, svc-maintenance | Real photo needed | P1 |
 | IMG-06 | shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp | 4:3 | Monitor or tablet with the inspection video beside the written findings. Address and customer details redacted. *Real report, redacted. An existing camera-page asset of this kind is in place.* | universal | 34 | 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 16 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 2 on core service pages (data/business/*-images.ts). Ids: preventative-sewer-maintenance-records-video-and-findings-4x3.webp, recurring-sewer-backup-diagnosis-records-video-and-findings-4x3.webp, sl-*-problem-3, so-document | Real photo needed | P1 |
 | IMG-07 | shared/residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp | 4:3 | Technician and property owner or buyer reviewing findings. Faces not identifiable. Covers buyer, homeowner and owner wordings. *Customer in frame: real photo with a release or posed with consenting staff.* | universal | 33 | 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 17 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-2, sl-*-problem-3, so-decide | Real photo needed | P1 |
 | IMG-08 | shared/cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp | 4:3 | Cleaning cable or hose entering an open cleanout, close up. *Shows equipment in use, so real job photo.* | universal | 33 | 32 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 1 on core service pages (data/business/*-images.ts). Ids: recurring-sewer-backup-diagnosis-process-cleanout-access-4x3.webp, sl-*-problem-2 | Real photo needed | P1 |
@@ -51,54 +51,56 @@ The equipment shown in the 12 render images is owner-approved (Oct 12, 2026). Th
 ## Totals
 
 - Unique image files: **30** (covering 26 distinct shots).
-- Real photos needed: **16** (fill 391 boxes).
+- Real photos needed: **16** (fill 535 boxes).
 - Photorealistic render: **12** (fill 392 boxes).
 - Existing asset can be reused or repointed: **2** (fill 2 boxes).
-- Boxes covered: 785.
+- Boxes covered: 929.
 
 | Priority | Images | Boxes filled |
 |---|---|---|
-| P1 | 25 | 664 |
+| P1 | 25 | 808 |
 | P2 | 3 | 77 |
 | P3 | 2 | 44 |
 
 ## Reconciliation against the inventory
 
-Every one of the 785 boxes in [image-placeholder-inventory.md](image-placeholder-inventory.md) is assigned to exactly one of the 30 files. The generator that wrote this page assigns each box once while walking the built pages, then asserts the per-file, per-type and per-priority sums all equal 785 and equal the inventory's page-by-page total.
+Every one of the 929 boxes (785 before wiring plus the 144 services-section boxes) in [image-placeholder-inventory.md](image-placeholder-inventory.md) is assigned to exactly one of the 30 files. The generator that wrote this page assigns each box once while walking the built pages, then asserts the per-file, per-type and per-priority sums all equal 929 and equal the inventory's page-by-page total.
 
 | Check | Result |
 |---|---|
-| Boxes in inventory | 785 |
-| Boxes assigned to a file | 785 |
+| Boxes in inventory | 929 |
+| Boxes assigned to a file | 929 |
 | Boxes listed as "draws nothing" | 0 (those are slots, not boxes; see below) |
 | Boxes unassigned | 0 |
 | Boxes double-counted | 0 |
 | Boxes dropped | 0 |
 | Files | 30 |
-| Sum by type | 391 + 392 + 2 = 785 |
-| Sum by priority | 664 + 77 + 44 = 785 |
+| Sum by type | 535 + 392 + 2 = 929 |
+| Sum by priority | 808 + 77 + 44 = 929 |
 
 **What was wrong before.** The tables in the previous version of this page were correct. The summary I gave in chat was not: it quoted 383, 381 and 2 boxes by type (sum 766), 515 / 77 / 44 by priority (sum 636), "24 distinct shots" and 4 P2 files. The real figures are the ones below. Nothing was double-counted or dropped in the file; the chat figures were simply misreported.
+
+**Baseline correction (Oct 12, 2026).** The 785 count missed one slot: `slc-services-section`, the image in the right-hand column of the services section on every service + location page (`components/templates/ServiceLocationPageTemplate.tsx`, added Oct 5, 2026 in `ad9de4c`). It draws one box on each of the 144 service + location pages. The services section lists the same approved services on every page, so the slot is one shared image, assigned to IMG-05 (technician at a monitor, 4:3). That raises IMG-05 from 34 to 178 boxes and the totals to 929 (537 still drawing, 392 filled by the 12 renders). Counts are produced by `scripts/count-placeholders.mjs`.
 
 ### Totals by type and priority
 
 | Type | Files | Boxes |
 |---|---|---|
-| Real photo needed | 16 | 391 |
+| Real photo needed | 16 | 535 |
 | Photorealistic render | 12 | 392 |
 | Existing asset, reuse or repoint | 2 | 2 |
-| **Total** | **30** | **785** |
+| **Total** | **30** | **929** |
 
 | Priority | Files | Boxes |
 |---|---|---|
-| P1 | 25 | 664 |
+| P1 | 25 | 808 |
 | P2 | 3 | 77 |
 | P3 | 2 | 44 |
-| **Total** | **30** | **785** |
+| **Total** | **30** | **929** |
 
 ### Where the files merge several shot wordings
 
-No box is counted twice. These files absorb more than one wording of the same shot, which is how 44 inventory wordings become 26 shots and 30 files. If you disagree with a merge, split it and add one file.
+No box is counted twice. These files absorb more than one wording of the same shot, which is how 45 inventory wordings become 26 shots and 30 files. If you disagree with a merge, split it and add one file.
 
 | Boxes | Shot wording in the inventory | File |
 |---|---|---|
@@ -146,7 +148,8 @@ No box is counted twice. These files absorb more than one wording of the same sh
 | 1 | A real frame showing standing water in a line, where the waterline limits the view | IMG-25 |
 | 1 | An open cleanout with a camera cable or cleaning hose entering it | IMG-08 |
 | 1 | A technician holding a locating receiver over a yard or driveway during a locate | IMG-11 |
-| **785** | **44 wordings** | |
+| 144 | Technician with inspection equipment at a residential property, no identifiable address or people | IMG-05 |
+| **929** | **45 wordings** | |
 
 The wordings that most deserve a second look are the ones merged into IMG technician-at-monitor: "Monitor showing a cleaned pipe with crew behind" and "Crew member recording a post-cleaning camera pass" are the two service-card shots for cleaning plus camera and maintenance. They are on the location hubs that use card photos. A single image of a technician at a monitor serves both; split it only if you want the cards to look different.
 
@@ -229,12 +232,12 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp`
 - **Slot ratio:** 4:3 (1448 x 1086)
 - **Type:** Real photo needed. Priority P1.
-- **Subject and composition:** Technician seen from behind or in profile reviewing footage on a monitor, shoulder and monitor in frame, blurred truck-free background. Serves the cleaned-pipe and post-cleaning-pass card shots too.
+- **Subject and composition:** Technician seen from behind or in profile reviewing footage on a monitor, shoulder and monitor in frame, blurred truck-free background. Serves the cleaned-pipe and post-cleaning-pass card shots too. Also serves the services-section image on service + location pages: the same frame works with a residential home exterior or yard softly blurred behind the technician and monitor, with no identifiable address or house number.
 - **Must NOT appear:** No identifiable face, no vehicle, no uniform text or logo, no address or customer details on screen, no claim of a finding. Plus the common rules above.
-- **Alt text:** Technician reviewing sewer camera footage on a monitor
+- **Alt text:** Technician reviewing sewer camera footage on a monitor. Where the file is used for the services-section slot, the template alt text applies: "Technician and inspection equipment at a residential property".
 - **Shoot instructions:** Real photo on a real job. Over-the-shoulder, monitor shows ordinary pipe. Have the technician wear an unmarked jacket or crop out any lettering.
-- **Reuse scope:** universal. Fills 34 boxes: 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 16 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 2 on core service pages (data/business/*-images.ts).
-- **Slot ids:** preventative-sewer-maintenance: explainer-review; preventative-sewer-maintenance: problem-1; recurring-sewer-backup-diagnosis: explainer-monitor; svc-cleaning-camera; svc-maintenance
+- **Reuse scope:** universal. Fills 178 boxes: 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 160 on service + location pages (16 in pageImageSlots in content/pages/sl-*.tsx, 144 from the shared services-section slot `slc-services-section` in components/templates/ServiceLocationPageTemplate.tsx); 2 on core service pages (data/business/*-images.ts).
+- **Slot ids:** slc-services-section (services-section image, 144 pages); preventative-sewer-maintenance: explainer-review; preventative-sewer-maintenance: problem-1; recurring-sewer-backup-diagnosis: explainer-monitor; svc-cleaning-camera; svc-maintenance
 
 ### IMG-06  Monitor or tablet with report and video
 

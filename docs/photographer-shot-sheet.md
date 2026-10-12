@@ -1,6 +1,6 @@
 # Photographer shot sheet
 
-Real-photo files only. 16 shots, in four groups by where you shoot. Source: [image-shot-list.md](image-shot-list.md). Each shot fills the boxes listed on its line; one good frame per shot is enough, but the framing variants give choices.
+Real-photo files only. 16 shots, in four groups by where you shoot. Together they fill 535 boxes. Source: [image-shot-list.md](image-shot-list.md). Each shot fills the boxes listed on its line; one good frame per shot is enough, but the framing variants give choices.
 
 
 Note: the 12 render images are not on this sheet. The equipment shown in those renders is owner-approved (Oct 12, 2026); their briefs and alt text are in [image-shot-list.md](image-shot-list.md).
@@ -117,13 +117,14 @@ Before you shoot, read the "Must NOT appear" line on each shot; it adds to these
 - [ ] **Shot captured and approved**
 - **Filename:** `public/images/shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp`
 - **Ratio:** 4:3 (1448 x 1086 px)
-- **Priority:** P1. Fills 34 boxes.
-- **What to capture:** A technician reviewing sewer camera footage on a monitor, shot over the shoulder or in profile. Also serves the cleaned-pipe and post-cleaning-pass card shots.
+- **Priority:** P1. Fills 178 boxes: 34 card and problem images plus the services-section image on all 144 service + location pages.
+- **What to capture:** A technician reviewing sewer camera footage on a monitor, shot over the shoulder or in profile. Also serves the cleaned-pipe and post-cleaning-pass card shots. Also serves the services-section image shown beside the service list on every service + location page ("Technician with inspection equipment at a residential property"), so at least one frame should show a residential home exterior or yard softly blurred behind the technician and monitor.
 - **Framing variants:**
   - Over the shoulder, monitor filling the right half of the frame.
   - Profile view with the monitor in front of the technician.
   - Hands-and-monitor crop with the face out of frame.
-- **Must NOT appear:** No identifiable face, no vehicle, no uniform text or logo, no address or customer details on screen, no claim of a finding.
+  - Residential setting: technician and monitor at the side of a house or in a yard, house softly blurred behind (this is the services-section frame).
+- **Must NOT appear:** No identifiable face, no vehicle, no uniform text or logo, no address or customer details on screen, no claim of a finding. In the residential-setting frame also: no house number, street name, mailbox or identifiable home, and no people other than the technician.
 
 ### 8. IMG-10  Monitor showing a pipe interior
 
