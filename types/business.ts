@@ -104,7 +104,7 @@ export interface Market {
  *
  * Only instantiate for a market with `gbpStatus:
  * 'verified_physical_location'`. 15 §12 prohibits fake LocalBusiness
- * entities; 09 §113 prohibits fake local commercial presence.
+ * entities; 09 §113 prohibits fake local business presence.
  */
 export interface PhysicalLocation {
   streetAddress: string

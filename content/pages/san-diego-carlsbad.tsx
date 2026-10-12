@@ -755,7 +755,7 @@ export const carlsbadContent: LocationPageContent = {
       },
       {
         title: 'Mission Valley',
-        description: 'Commercial-leaning property sewer services',
+        description: 'Local sewer details',
         pageId: id('loc-sd-mission-valley'),
       },
       {

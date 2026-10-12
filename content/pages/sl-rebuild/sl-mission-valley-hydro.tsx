@@ -3,13 +3,13 @@
  *
  * Authority: CLAUDE.md sections 9, 22, 24, 28. One local source
  * (`sanDiegoMissionValleyContent`) x one service source (`svc-hydro-jetting`
- * v2). No new research. Mission Valley is a commercial and mixed-use district,
- * so the operating-site angle of the existing page is kept.
+ * v2). No new research. Mission Valley is a mixed-use district, so the
+ * page speaks to residents, multifamily owners and property managers.
  *
  * Section recipe (each section ties a Mission Valley fact to what jetting does):
  *   1. Responsibility - owner maintains the lateral to the City main, past the
- *      lot line; jetting reaches the accessible private line; occupied sites
- *   2. Kitchen grease - the City's FEWD permit program vs. what jetting cleans
+ *      lot line; jetting reaches the accessible private line; renters
+ *   2. Grease - the City names it a leading cause of spills; what jetting cleans
  *   3. Shared laterals - many fixtures, one line; water is paced to the line;
  *      camera first; jetting does not fix defects
  *   4. No City help found - schedule on evidence, the City's contacts
@@ -28,18 +28,18 @@ export const rebuild: PageRebuild = {
   hero: {
     intro: (
       <p>
-        Mission Valley is a City of San Diego planning area the City describes as a regional
-        center of offices, hotels, retail and a growing residential community, and the City says
+        Mission Valley is a City of San Diego planning area the City describes as a mixed-use
+        area with a growing residential community, and the City says
         the owner maintains the lateral all the way to the City main. Hydro jetting cleans that
         line with pressurized water, loosening buildup and flushing it out. It is a cleaning
-        method, not a repair, and which method suits a kitchen or tenant line should rest on what
-        the line looks like.
+        method, not a repair, and which method suits a shared or multifamily line should rest on
+        what the line looks like.
       </p>
     ),
   },
   body: (
     <>
-      <h2>A lateral you maintain past your lot line, on a site that stays open</h2>
+      <h2>A lateral you maintain past your lot line, in a building where people live</h2>
       <p>
         We did not find a Mission Valley sewer utility separate from City of San Diego Public
         Utilities. The City&rsquo;s guidance says the property owner maintains the lateral from
@@ -50,33 +50,24 @@ export const rebuild: PageRebuild = {
         Public Utilities.
       </p>
       <p>
-        If you lease space, the City&rsquo;s guidance speaks to the property owner, and how a
-        lease divides the duty is a matter for the lease, not legal advice. On an occupied site,
-        access means trading hours, tenants, service corridors and other contractors. Raise that
+        If you rent your home, the City&rsquo;s guidance speaks to the property owner, and how a
+        lease divides the duty is a matter for the lease, not legal advice. In a multifamily
+        building, access means residents, shared corridors and other contractors. Raise that
         when you request service.
       </p>
 
-      <h2>Kitchen grease, and the City&rsquo;s permit program</h2>
+      <h2>Grease on the pipe wall</h2>
       <p>
-        A restaurant or hotel kitchen sends cooking fat, oil and grease down its line every day,
-        and the City names grease, along with roots, as a leading cause of sewer spills. Jetting
-        is a way to loosen grease and soap buildup on the pipe wall and flush it out. The City
-        says every food service establishment must hold a permit from its Food Establishment
-        Wastewater Discharge (FEWD) program, which ensures the facility installs equipment to trap
-        grease before it enters the sewer.
-      </p>
-      <p>
-        That equipment, a hydromechanical grease interceptor or a larger gravity grease
-        interceptor, is a City permit question: call 858-654-4188 (the City&rsquo;s number, not
-        ours). Jetting cleans the lateral. It does not show whether equipment meets the
-        City&rsquo;s requirements, and we make no claim that our work satisfies any FEWD or permit
-        requirement.
+        The City names grease, along with roots, as a leading cause of sewer spills. Jetting is a
+        way to loosen grease and soap buildup on the pipe wall and flush it out. It cleans the
+        lateral. It does not correct the pipe itself, and a camera look can show how much buildup
+        there is before cleaning.
       </p>
 
       <h2>Many fixtures on one lateral: look before you add water</h2>
       <p>
-        A multi-tenant building feeds many fixtures into one lateral, so one failure can reach
-        every tenant at once. Added water can contribute to a backup if the line cannot carry it
+        A multifamily building feeds many fixtures into one lateral, so one failure can reach
+        every unit at once. Added water can contribute to a backup if the line cannot carry it
         away, and whether jetting is safe depends on the pipe&rsquo;s condition and material. The
         nozzle and settings depend on what the line looks like and what is in it, and the work is
         paced to the line. A camera look first, when included, helps pick the method, and visible
@@ -93,8 +84,8 @@ export const rebuild: PageRebuild = {
       <p>
         We found no active City program that gives owners a grant, reimbursement or other help
         with lateral repair, replacement, cleaning or inspection (&ldquo;none found in the pages
-        we reviewed&rdquo;, not a statement that none exists). Where lines carry grease or
-        continuous volume, the useful pattern is usually to establish the line&rsquo;s condition,
+        we reviewed&rdquo;, not a statement that none exists). Where a line keeps loading
+        up, the useful pattern is usually to establish the line&rsquo;s condition,
         clean on an interval the evidence supports, and re-inspect, rather than respond to
         backups as they happen. No single interval fits every property, and if a line needs
         repeated cleaning, a camera can help find out why.
@@ -110,12 +101,12 @@ export const rebuild: PageRebuild = {
     </>
   ),
   local: {
-    title: 'Several tenants report slow drains',
+    title: 'Several units report slow drains',
     description:
-      'A multi-tenant building feeds many fixtures into one lateral, so one failure can reach every tenant at once. Several slow fixtures can point to a restriction in a shared line, and whether hydro jetting suits it depends on what the line looks like.',
+      'A multifamily building feeds many fixtures into one lateral, so one failure can reach every unit at once. Several slow fixtures can point to a restriction in a shared line, and whether hydro jetting suits it depends on what the line looks like.',
   },
   cta: {
     title: 'Request hydro jetting in Mission Valley',
-    body: 'Tell us what the line serves and how the site operates, and ask what a visit includes before you book.',
+    body: 'Tell us what the line serves and how the property is occupied, and ask what a visit includes before you book.',
   },
 }

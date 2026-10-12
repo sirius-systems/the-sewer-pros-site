@@ -16,10 +16,9 @@
  *   2. Street, easement, canyon - the lateral runs to the City main wherever it
  *                               connects; no separate MV utility found; a locate
  *                               does not find the connection.
- *   3. Before anyone digs     - Right-of-Way Permit, FEWD plan review and the
- *                               underground interceptor, the private-property
+ *   3. Before anyone digs     - Right-of-Way Permit, the private-property
  *                               permit gap, and the service's one-call wording.
- *   4. Buying or leasing      - City buyer advice, no point-of-sale rule found;
+ *   4. Buying or renting      - City buyer advice, no point-of-sale rule found;
  *                               route is not condition.
  *
  * Mission Valley is a City of San Diego planning area: only facts the Mission
@@ -43,7 +42,7 @@ const id = (value: string): PageId => value as PageId
 const slots = pageImageSlots('sl-mission-valley-locating', {
   hero: {
     alt: 'Technician using a sewer line locator receiver beside a building',
-    shot: 'Technician with a locator receiver at a commercial or mixed-use property, paint marks on pavement, no identifiable address',
+    shot: 'Technician with a locator receiver at a multifamily or mixed-use property, paint marks on pavement, no identifiable address',
   },
   problems: shots,
 })
@@ -61,8 +60,6 @@ const faq = mergeRelevantFaqs(
   sanDiegoMissionValleyContent.faq,
   v2.faq,
   [
-    // Location page: a cleaning-interval question the locating page does not own.
-    'How often should a restaurant line be cleaned?',
     // Service page: about cleaning and pipe health, off the locating topic.
     'If the line drains after cleaning, is the pipe healthy?',
   ],
@@ -101,8 +98,8 @@ export const missionValleyLocatingContent: ServiceLocationPageContent = {
       <p>
         The City of San Diego says Development Services can show where a property&rsquo;s lateral
         connects to the City main, at 619-446-5300 (the City&rsquo;s number, not ours), but that it
-        has no diagrams of where private lines run on the property. On a mixed-use or commercial
-        parcel, with several buildings or tenants on one lot, that gap is easy to hit.
+        has no diagrams of where private lines run on the property. On a mixed-use or multifamily
+        parcel, with several buildings on one lot, that gap is easy to hit.
       </p>
       <p>
         A locating service fills that gap. It estimates the path of the accessible line, and it is
@@ -119,13 +116,11 @@ export const missionValleyLocatingContent: ServiceLocationPageContent = {
         is.
       </p>
 
-      <h2>Before anyone digs: permits, interceptors and your one-call program</h2>
+      <h2>Before anyone digs: permits and your one-call program</h2>
       <p>
         The City says a Right-of-Way Permit is required for work in the public right-of-way or in a
-        water or sewer easement. It also says a new food service establishment, remodel or retrofit
-        needs a FEWD plan review, and that a gravity grease interceptor is a larger tank installed
-        underground outside the facility. Where a project like that means digging near the lateral,
-        knowing the route matters. For plan checks, call 858-654-4188 (the City&rsquo;s number).
+        water or sewer easement. Where a project means digging near the lateral, knowing the route
+        matters.
       </p>
       <p>
         We found no City page on whether work confined to private property needs a permit, so ask
@@ -135,12 +130,12 @@ export const missionValleyLocatingContent: ServiceLocationPageContent = {
         applicable requirements.
       </p>
 
-      <h2>Buying or leasing in Mission Valley: the route is not the condition</h2>
+      <h2>Buying in Mission Valley: the route is not the condition</h2>
       <p>
         For homes, the City says it is a good idea for a prospective buyer to get a licensed-plumber
         report on the condition of the lateral connection, in addition to a home inspection. That is
         City guidance, not a requirement, and we did not find a City sewer-lateral inspection rule
-        at sale. That is none found, not a confirmed absence. If you lease space, how a lease
+        at sale. That is none found, not a confirmed absence. If you rent, how a lease
         divides the duty is a matter for the lease, not legal advice.
       </p>
       <p>

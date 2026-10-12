@@ -19,10 +19,10 @@ import type {
  * `san-diego.tsx`. Same structure as the San Diego City module
  * (`san-diego-city.tsx`): only copy, data, links and image slots differ.
  * Mission Valley is a City of San Diego community planning area, so the City's
- * Public Utilities rules apply. The page is commercial and mixed-use oriented
- * and owns the FEWD (food service grease) angle; the citywide page owns the
- * residential lateral rules. The program terms were read from City of San
- * Diego sources on 2026-10-04 (DEC-072).
+ * Public Utilities rules apply. The page speaks to residents, multifamily
+ * owners, property managers and buyers or sellers in a mixed-use district; the
+ * citywide page owns the residential lateral rules. The program terms were
+ * read from City of San Diego sources on 2026-10-04 (DEC-072).
  *
  * ⚠ MISSION VALLEY IS A DISTRICT, NOT A LOCATION OF THE BUSINESS. No office,
  * address, map pin or GBP statement appears, and the schema graph has no
@@ -35,14 +35,7 @@ import type {
  * is made for The Sewer Pros, and the page states no dollar amount.
  *
  * ⚠ NOT CARRIED OVER FROM THE OLD PAGE: "no reimbursement", "usually exceeds
- * the repair", and the "predominantly serve hotels..." wording. The City
- * describes the valley as a regional center of offices, hotels, retail and a
- * growing residential community, and that sentence is used instead.
- *
- * ⚠ NO COMMERCIAL BAND. `LocationPageContent` has no field that renders a
- * commercial band, so the two operator paragraphs live in the program callout
- * and the commercial links in the program closing line. No shared type or
- * component was changed for this.
+ * the repair", and the "predominantly serve..." wording.
  *
  * ⚠ IMAGES: the hero uses the existing shared hero art and the nine service
  * cards use their approved art (all rendered scenes, not job photos). Every
@@ -104,16 +97,13 @@ interface ImageSlot {
  * if the photo is from a Mission Valley property: for `mission-valley-hero`
  * "Technician with a sewer camera at a Mission Valley, San Diego property", and
  * for `final-bg` "Mission Valley, San Diego property exterior with a crew truck".
- *
- * The commercial-band slot (`com-site`) is not registered: this page has no
- * commercial band (see the module comment).
  */
 const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'mission-valley-hero',
     ratio: '16:9',
-    alt: 'Technician feeding a sewer camera into a cleanout at a commercial building',
-    shot: 'Technician at a commercial back-of-house cleanout, truck and monitor in frame',
+    alt: 'Technician feeding a sewer camera into a cleanout at a building exterior',
+    shot: 'Technician at an exterior cleanout, truck and monitor in frame',
   },
   {
     id: 'svc-camera',
@@ -172,8 +162,8 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'system-street',
     ratio: '4:3',
-    alt: 'Street with a manhole cover in the pavement, low commercial buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
-    shot: 'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings',
+    alt: 'Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
+    shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
     src: '/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
   },
@@ -224,7 +214,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'final-bg',
     ratio: '16:9',
-    alt: 'Crew truck at the curb of a commercial building',
+    alt: 'Crew truck at the curb of a building',
     shot: 'Crew truck at a curb, reel visible, no plate, no business name',
   },
 ]
@@ -394,7 +384,6 @@ const formConfig: LeadFormConfig = {
 }
 
 const CITY_PLANNING_URL = 'https://www.sandiego.gov/planning/community-plans/mission-valley'
-const CITY_FEWD_URL = 'https://www.sandiego.gov/public-utilities/sewer-spill-reduction/fewd'
 const CITY_PLUMBING_URL =
   'https://www.sandiego.gov/public-utilities/customer-support/meter-water-pressure-plumbing-system'
 const CITY_SPILL_URL = 'https://www.sandiego.gov/public-utilities/sewer-spill-reduction'
@@ -409,16 +398,15 @@ const CITY_IBA_URL =
 export const sanDiegoMissionValleyContent: LocationPageContent = {
   seoTitle: 'Mission Valley Sewer Inspection & Cleaning',
   metaDescription:
-    "Sewer camera inspection, hydro jetting and cleaning for Mission Valley businesses and mixed-use properties, with the City's grease and lateral rules.",
+    "Sewer camera inspection, hydro jetting and cleaning for Mission Valley homes, condos, apartments and mixed-use properties, with the City's lateral rules.",
   hero: {
     title: 'Sewer and Drain Service in Mission Valley, San Diego',
     intro: (
       <p>
         Independent sewer camera inspection, diagnostics, hydro jetting and cleaning for Mission
-        Valley&rsquo;s hotels, restaurants, retail, offices and mixed-use buildings. Mission
-        Valley is a City of San Diego planning area, so the City&rsquo;s rules apply: the owner
-        maintains the sewer lateral to the City main, and food service businesses answer to the
-        City&rsquo;s grease permit program. Get recorded evidence of the line before you clean,
+        Valley&rsquo;s apartments, condos, homes and mixed-use buildings. Mission Valley is a
+        City of San Diego planning area, so the City&rsquo;s rules apply: the owner maintains the
+        sewer lateral to the City main. Get recorded evidence of the line before you clean,
         remodel, buy or approve major work.
       </p>
     ),
@@ -426,7 +414,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
   heroForm: {
     bullets: [
       'Camera inspection with documented findings',
-      'Cleaning and hydro jetting planned around your operations when the evidence supports it',
+      'Cleaning and hydro jetting when the evidence supports it',
       `Serving San Diego since ${sd.foundingYear}`,
     ],
     primaryAction: { href: '#request', label: 'Schedule a Sewer Inspection' },
@@ -465,7 +453,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
     title: 'Key takeaways',
     items: [
       'Mission Valley is a City of San Diego planning area of about 2,418 net acres, not a separate city or sewer district. City of San Diego Public Utilities rules apply, and guidance written for other San Diego County cities or districts does not.',
-      'The City describes the valley as a regional center of offices, hotels, retail and a growing residential community. Every food service establishment in the City needs a City grease permit, and a new restaurant or a remodel needs a grease review before construction.',
+      'The City describes the valley as a mixed-use area with a growing residential community. Sewer lateral responsibility follows the City’s rules for property owners, and a recorded camera inspection shows what is inside your line.',
       'The City’s guidance says the owner maintains the lateral all the way to the City main, and we did not find a City program that helps owners pay for lateral work. A camera inspection gives you recorded evidence before you spend money.',
     ],
     jumpNavLabel: 'On this page:',
@@ -510,7 +498,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
           <a href={CITY_PLUMBING_URL} rel="noopener">
             Public Utilities
           </a>
-          . If you lease space, the
+          . If you rent your home, the
           City&rsquo;s guidance speaks to the property owner. How a lease divides the duty
           between landlord and tenant is a matter for the lease, and this page does not give
           legal advice.
@@ -531,7 +519,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
       {
         tag: 'Property - Owner',
         title: 'The lateral line',
-        body: 'The pipe from the building to the City sewer main is the lateral. For a restaurant, a hotel kitchen or a multi-tenant building it is the line that carries everything the property sends out, and the City says the owner maintains it up to the main.',
+        body: 'The pipe from the building to the City sewer main is the lateral. For a house, a condo building or a multifamily property it is the line that carries everything the property sends out, and the City says the owner maintains it up to the main.',
       },
     ],
     table: {
@@ -555,11 +543,6 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
             'A plumber or cleaning company for the lateral; for a break beyond the property line the City’s process starts with a plumber’s call and a Plumber’s Report.',
         },
         {
-          label: 'Food service grease',
-          publicMain: 'The City permits and monitors food service establishments through its FEWD program.',
-          privateLateral: 'The facility installs the grease-removal equipment its permit calls for.',
-        },
-        {
           label: 'Where an inspection helps',
           publicMain: 'Not applicable',
           privateLateral:
@@ -573,15 +556,15 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
     eyebrow: 'Mission Valley sewers',
     title: 'What makes a Mission Valley sewer line different?',
     paragraphs: [
-      'Mission Valley sits in the San Diego River floodplain and, in the City’s words, has become a regional center of offices, hotels, retail sales and a growing residential community. The City’s planning page says major development began in 1958 after regional highway improvements, with Interstate 8 giving commercial development its push. The public sewer is the City’s. What differs is what the buildings on it send down their lines.',
-      'A restaurant or hotel kitchen sends cooking fat, oil and grease down its line every day, and the City names grease, along with roots, as a leading cause of sewer spills. A multi-tenant building feeds many fixtures into one lateral, so one failure can reach every tenant at once. That is why the City runs a permit program for food service grease, covered below.',
+      'Mission Valley sits in the San Diego River floodplain and, in the City’s words, has become a mixed-use area with a growing residential community. The City’s planning page says major development began in 1958 after regional highway improvements. The public sewer is the City’s. What differs is what the buildings on it send down their lines.',
+      'The City names grease, along with roots, as a leading cause of sewer spills. A multifamily building feeds many fixtures into one lateral, so one failure can reach every unit at once.',
       'The City’s pages we reviewed do not say whether the collection system serving Mission Valley is combined or separate, or how old its pipes are, and we do not guess. A development date for the valley does not tell you the age or material of any one lateral. Only an inspection of your line can.',
       'The City also describes the valley as part of the San Diego River floodplain. We did not find a City statement linking that to sewer conditions, so we make no claim about groundwater, flooding or infiltration.',
       'You may hear people say East Mission Valley or West Mission Valley. The City folded its 1963 East Mission Valley Area Plan and 1971 West Mission Valley Report into one community plan in 1985, updated in 2019. We found no City source that divides sewer rules between east and west.',
     ],
     card: {
       image: slotImage('system-street'),
-      title: 'What a camera inspection can show on a commercial lateral',
+      title: 'What a camera inspection can show on a sewer lateral',
       bullets: [
         'Blockages and grease build-up along the pipe wall',
         'Root intrusion',
@@ -599,21 +582,15 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
   },
   whoToCall: {
     eyebrow: 'Know who to call',
-    title: 'Spill, grease permit or lateral condition? Start with the right contact.',
+    title: 'Spill or lateral condition? Start with the right contact.',
     paragraphs: [
-      'For a sewer spill or a bad sewer odor, call the City. For grease permits, plan review or interceptor questions, the City’s FEWD program is the contact. For the condition of your own lateral, an independent camera inspection shows what is inside the line.',
+      'For a sewer spill or a bad sewer odor, call the City. For the condition of your own lateral, an independent camera inspection shows what is inside the line.',
     ],
     image: slotImage('call-cleanout'),
     agency: {
       label: 'City of San Diego Public Utilities - sewer spill and emergency reporting line',
       phone: { label: '619-515-3525', href: 'tel:+16195153525' },
       text: 'The City lists this number to report a sewer spill or bad sewer odor, and for a licensed plumber filing a Plumber’s Report. This is the City’s number, not ours. The City’s pages we reviewed do not label it as a 24-hour line, and we did not find a separate after-hours sewer number.',
-      links: [],
-    },
-    secondaryAgency: {
-      label: 'City of San Diego FEWD - grease permits and plan checks',
-      phone: { label: '858-654-4188', href: 'tel:+18586544188' },
-      text: 'The City lists this number for plan checks and for information about grease-removal equipment at food service establishments. This is the City’s number, not ours, and we did not find published hours for it.',
       links: [],
     },
     company: {
@@ -624,17 +601,16 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
   municipalProgram: {
     eyebrow: 'City programs',
     title: 'City programs that apply to a Mission Valley property',
-    lede: 'We did not find an active City of San Diego program that gives property owners a grant, reimbursement or other financial help with sewer lateral repair, replacement, cleaning or inspection. We checked the City’s Public Utilities sewer pages, its sewer construction page, its maps and records page, Development Services Information Bulletin 166 and its funding-opportunities page. That is “none found in the pages we reviewed”, not a statement that no help exists. What the City does run that matters to Mission Valley’s businesses is a permit program for food service grease.',
+    lede: 'We did not find an active City of San Diego program that gives property owners a grant, reimbursement or other financial help with sewer lateral repair, replacement, cleaning or inspection. We checked the City’s Public Utilities sewer pages, its sewer construction page, its maps and records page, Development Services Information Bulletin 166 and its funding-opportunities page. That is “none found in the pages we reviewed”, not a statement that no help exists. What the City does publish for property owners is its spill reporting line, its Plumber’s Report process and its sewer maps and records.',
     paragraphs: [],
     image: slotImage('program-footage'),
     covers: {
-      title: 'The City’s food service grease program (FEWD)',
+      title: 'What the City does publish',
       items: [
-        'The City says every food service establishment within the City must obtain a permit from its Food Establishment Wastewater Discharge (FEWD) program, run by Public Utilities. The permit ensures the facility installs equipment designed to trap cooking fats, oil and grease before they enter the sewer.',
-        'Plans for new commercial food service establishments, including new construction, remodels and retrofits, must receive a FEWD plan review so the right equipment goes in during construction.',
-        'After a grease-related sewer spill, FEWD inspectors look at facilities in the immediate area to find which contributed. Where more equipment is required, the facility is given a due date to comply.',
-        'The City calls the small device usually installed inside a facility a hydromechanical grease interceptor (HGI), previously called a grease trap. A gravity grease interceptor (GGI) is a larger tank installed underground outside, usually at high-volume or new establishments.',
-        'FEWD is a permit program. It is not financial help, and it does not review the condition of a lateral. Plan checks and equipment questions: 858-654-4188 (the City’s number).',
+        'The City asks you to call 619-515-3525 if you see, smell or suspect a sewer spill or bad sewer odor. This is the City’s number, not ours.',
+        'When a licensed plumber finds a break or collapse beyond the property line, the City directs the plumber to file a Plumber’s Report, and says it will investigate within 24 hours.',
+        'Development Services can show where a property’s lateral connects to the City main (619-446-5300, the City’s number), but the City says it has no diagrams of where private lines run on the property.',
+        'None of this is financial help, and none of it reviews the condition of your lateral. A camera inspection does.',
       ],
     },
     doesNotCover: {
@@ -650,10 +626,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
       title: 'Where an independent inspection fits',
       paragraphs: [
         'Because we found no assistance program, plan on arranging inspection, cleaning and any repair yourself, and ask the City whether anything applies to your address. A camera inspection gives you your own recorded evidence: whether the line has grease build-up or a defect, where along the line it sits, and how that compares with a cleaning schedule or a repair recommendation. We make no claim that the City accepts an outside report or that our work satisfies any FEWD or permit requirement.',
-        // The two commercial-operator paragraphs from the content brief: this
-        // page has no commercial band field to hold them.
-        'Where lines carry grease or continuous volume, the useful pattern is usually to establish the line’s condition, clean on an interval the evidence supports, and re-inspect, rather than respond to backups as they happen. Not every line needs that. Inspection shows which ones do, and putting a line on a schedule its condition does not justify is the kind of recommendation we exist to avoid making.',
-        'On an occupied commercial site, access means trading hours, tenants, service corridors and other contractors. That is a planning constraint to work around, and it is worth raising when you request service. The cost of a failure on a commercial site can include lost trading time and displaced tenants on top of the plumbing.',
+        'Where a line keeps loading up, the useful pattern is usually to establish the line’s condition, clean on an interval the evidence supports, and re-inspect, rather than respond to backups as they happen. Not every line needs that. Inspection shows which ones do, and putting a line on a schedule its condition does not justify is the kind of recommendation we exist to avoid making.',
         'The contractors you hire perform approved repairs. The Sewer Pros does not perform repairs or replacements.',
       ],
     },
@@ -706,10 +679,10 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in Mission Valley',
     title: 'Sewer inspection before buying Mission Valley property',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. That applies to a mixed-use building, a multifamily property or a commercial space as much as to a home. The City’s own advice to buyers is written for homes: in addition to a home inspection, it is a good idea to get a licensed-plumber report on the condition of the home’s lateral connection. That is City guidance, not a requirement.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. That applies to a condo, a multifamily property or a mixed-use building as much as to a house. The City’s own advice to buyers is written for homes: in addition to a home inspection, it is a good idea to get a licensed-plumber report on the condition of the home’s lateral connection. That is City guidance, not a requirement.',
     // `body` is a single string in the shared type, so the two source
     // paragraphs are joined into one.
-    body: 'We did not find a City of San Diego rule that requires a sewer lateral inspection when a property is sold, and we did not find a sewer-lateral disclosure rule in the materials we reviewed. That reads as none found, not as a confirmed absence, and it does not address lenders, leases, redevelopment permits or state-level rules. Two details matter to a buyer here. Development Services can show where a property’s lateral connects to the City main (619-446-5300, the City’s number), but the City says it has no diagrams of where private lines run on the property. And if the space is a restaurant, ask the seller or landlord for the FEWD permit and grease-removal equipment records. The City issues that permit, so the paperwork starts with them. Findings are informational and not legal advice.',
+    body: 'We did not find a City of San Diego rule that requires a sewer lateral inspection when a property is sold, and we did not find a sewer-lateral disclosure rule in the materials we reviewed. That reads as none found, not as a confirmed absence, and it does not address lenders, leases, redevelopment permits or state-level rules. Two details matter to a buyer here. Development Services can show where a property’s lateral connects to the City main (619-446-5300, the City’s number), but the City says it has no diagrams of where private lines run on the property. Findings are informational and not legal advice.',
     image: slotImage('buy-buyer'),
     links: [{ label: 'Sewer inspection for home buyers', pageId: id('aud-home-buyers') }],
     cta: { label: 'Schedule a Pre-Purchase Sewer Inspection' },
@@ -769,51 +742,15 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
       ),
     },
     {
-      question: 'Who maintains the sewer lateral at a Mission Valley business?',
+      question: 'Who maintains the sewer lateral at a Mission Valley property?',
       answer: (
         <p>
           The City says the property owner maintains the sewer lateral from the building all the
           way to its connection with the City sewer main, even when that connection is in the
-          street, past the property line, in an easement or in a canyon. If you lease the space,
+          street, past the property line, in an easement or in a canyon. If you rent,
           how the duty is divided between landlord and tenant is a matter for the lease, and this
           is not legal advice. Sources: City Public Utilities sewer plumbing page; City maps and
           records page.
-        </p>
-      ),
-    },
-    {
-      question: 'Does a Mission Valley restaurant need a City grease permit?',
-      answer: (
-        <p>
-          The City says all food service establishments within the City must obtain a permit
-          from its Food Establishment Wastewater Discharge (FEWD) program. The permit ensures the
-          facility installs equipment designed to trap cooking fats, oil and grease before they
-          enter the sewer. For plan checks or equipment questions the City lists 858-654-4188.
-          Source: City FEWD program page.
-        </p>
-      ),
-    },
-    {
-      question: 'Do a new restaurant, a remodel or a retrofit in Mission Valley need a grease review?',
-      answer: (
-        <p>
-          Yes. The City says all plans for new commercial food service establishments, including
-          new construction, remodels and retrofits, must receive a FEWD plan review so the
-          appropriate grease-removal equipment is installed during construction. Source: City
-          FEWD program page.
-        </p>
-      ),
-    },
-    {
-      question: 'What is the difference between a grease trap and a gravity grease interceptor?',
-      answer: (
-        <p>
-          The City now calls a grease trap a hydromechanical grease interceptor (HGI): a small
-          device usually installed inside a facility. A gravity grease interceptor (GGI) is a
-          larger tank installed underground outside a facility, and the City says it is usually
-          used by high-volume or new establishments. Both slow the water so grease can float to
-          the top for removal. A camera inspection shows the condition of the line, not whether
-          equipment meets the City&rsquo;s requirements. Source: City FEWD program page.
         </p>
       ),
     },
@@ -857,17 +794,6 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
       ),
     },
     {
-      question: 'How often should a restaurant line be cleaned?',
-      answer: (
-        <p>
-          It depends on volume, what enters the line and its condition, not on a standard
-          interval. A camera pass shows how much has built up since the last cleaning, which is a
-          better basis for a schedule than a default. If the City has required grease-removal
-          equipment for your facility, follow the City&rsquo;s requirements for it.
-        </p>
-      ),
-    },
-    {
       question: 'Do you repair or replace sewer lines?',
       answer: (
         <p>
@@ -901,11 +827,6 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
       {
         label: 'City of San Diego: Mission Valley Community Plan (adopted Sep. 10, 2019)',
         href: CITY_PLANNING_URL,
-      },
-      {
-        label:
-          'City of San Diego Public Utilities: Food Establishment Wastewater Discharge (FEWD) Program (undated)',
-        href: CITY_FEWD_URL,
       },
       {
         label: 'City of San Diego Public Utilities: Sewer plumbing and lateral responsibility (undated)',

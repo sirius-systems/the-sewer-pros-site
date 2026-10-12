@@ -365,7 +365,7 @@ check('no em dash (U+2014) or en dash (U+2013)', !html.includes('—') && !html.
 check('no literal [CONFIRM placeholder', !/\[CONFIRM/i.test(html))
 check('no markdown link syntax in visible text', !/\]\(\//.test(visible))
 
-// The Organization node is the site-wide catalogue (it lists the commercial
+// The Organization node is the site-wide catalogue (it lists the
 // services); only this page's own nodes are scanned. Two negated phrases are
 // allowed by exact text: "do not guarantee future performance" (agents row)
 // and "does not prove" / "not proof" (callout and FAQ).

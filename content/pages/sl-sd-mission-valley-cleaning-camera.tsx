@@ -13,10 +13,10 @@
  *   1. Where the line ends   - owner maintains to the City main (street,
  *                              easement, canyon); footage records distance from
  *                              the entry point, not the connection.
- *   2. Kitchen grease        - the City's grease statement and FEWD permit vs.
- *                              cleaning first, then camera; a clean video is not
- *                              proof of a sound line.
- *   3. Occupied multi-tenant site - one lateral, many fixtures; before/after
+ *   2. Grease                - the City's grease statement vs. cleaning first,
+ *                              then camera; a clean video is not proof of a
+ *                              sound line.
+ *   3. Multifamily building  - one lateral, many fixtures; before/after
  *                              footage as the basis for a schedule; access.
  *   4. Break past the line, no City help found - Plumber's Report (the City's);
  *                              footage and findings are your own evidence.
@@ -45,7 +45,7 @@ if (sd === undefined) throw new Error('marketOperatingDetail is missing san-dieg
 const slots = pageImageSlots('sl-mission-valley-cleaning-camera', {
   hero: {
     alt: 'Technician reviewing camera footage on a monitor after a cleaning',
-    shot: 'Monitor showing a cleaned pipe with crew behind, commercial or mixed-use property, no identifiable address',
+    shot: 'Monitor showing a cleaned pipe with crew behind, multifamily or mixed-use property, no identifiable address',
   },
   problems: [shots[0], shots[1], shots[2], shots[3]] as const,
 })
@@ -106,30 +106,25 @@ export const missionValleyCleaningCameraContent: ServiceLocationPageContent = {
         City&rsquo;s number, not ours).
       </p>
 
-      <h2>Kitchen grease: clean first, then see what is left</h2>
+      <h2>Grease: clean first, then see what is left</h2>
       <p>
-        The City names grease, along with roots, as a leading cause of sewer spills, and says every
-        food service establishment must hold a permit from its Food Establishment Wastewater
-        Discharge (FEWD) program. A camera may be used before cleaning, after it, or both. If the
+        The City names grease, along with roots, as a leading cause of sewer spills. A camera may be used before cleaning, after it, or both. If the
         line is blocked and full of water, the camera cannot see under the water, so cleaning may
         need to come first.
       </p>
       <p>
-        A clear video, or a line that flows again, is not proof that the whole line is sound, and
-        neither one shows whether grease-removal equipment meets the City&rsquo;s requirements. We
-        make no claim that our work satisfies any FEWD requirement. For plan checks, call
-        858-654-4188 (the City&rsquo;s number).
+        A clear video, or a line that flows again, is not proof that the whole line is sound.
       </p>
 
-      <h2>One lateral, many tenants: let the footage set the schedule</h2>
+      <h2>One lateral, many units: let the footage set the schedule</h2>
       <p>
-        A multi-tenant building feeds many fixtures into one lateral, so one failure can reach every
-        tenant at once. Footage from before and after a cleaning is a basis for deciding how often
+        A multifamily building feeds many fixtures into one lateral, so one failure can reach every
+        unit at once. Footage from before and after a cleaning is a basis for deciding how often
         the line needs attention, rather than a default interval. Not every line needs a schedule,
         and the footage shows which ones do.
       </p>
       <p>
-        On an occupied site, access means trading hours, tenants, service corridors and other
+        In a multifamily building, access means residents, shared corridors and other
         contractors. Raise that when you request service.
       </p>
 
@@ -151,9 +146,9 @@ export const missionValleyCleaningCameraContent: ServiceLocationPageContent = {
   problems: [
     ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
     {
-      title: 'A kitchen line under a City grease permit',
+      title: 'A shared lateral serving many units',
       description:
-        "Food service establishments in the City need a FEWD permit for grease-removal equipment. Cleaning and a camera pass show the lateral's condition, not whether that equipment meets the City's requirements.",
+        "A multifamily building feeds many fixtures into one lateral. Cleaning and a camera pass show the lateral's condition, and the before and after footage shows what changed.",
       image: slots.problems[3],
     },
   ],

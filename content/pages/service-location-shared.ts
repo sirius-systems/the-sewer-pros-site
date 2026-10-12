@@ -72,8 +72,8 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     alt: 'Residential street with a manhole cover in the pavement, houses beyond, and a yellow locator receiver on the sidewalk',
     src: (m) => `${RENDER_DIR}residential/the-sewer-pros-${m}-residential-street-manhole-curb-4x3.webp`,
   },
-  'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings': {
-    alt: 'Street with a manhole cover in the pavement, low commercial buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
+  'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings': {
+    alt: 'Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
     src: () => `${RENDER_DIR}commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`,
   },
   'Older home, cleanout visible, no identifiable address': {

@@ -58,9 +58,8 @@ export const homeContent: HomePageContent = {
     ⚠ `homeServiceCards`, NOT `coreServiceCards`, AS OF 2026-09-22.
 
     This page's grid was given its own heading ("Sewer Inspection,
-    Diagnostics & Cleaning Services") and its own nine cards, dropping
-    Preventative Sewer Maintenance in favor of Commercial Sewer & Drain
-    Services and moving to an equal-size 3x3 grid rather than the
+    Diagnostics & Cleaning Services") and its own nine cards, moving
+    to an equal-size 3x3 grid rather than the
     flagship mosaic. `coreServiceCards` stays exactly as it was for the
     three market hubs and `/services/`, which still render the
     flagship-mosaic nine — see `content/pages/home-service-cards.ts` for
@@ -635,7 +634,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       puts a comparison-stage searcher on `/services/`, warmer than a
       single closing panel serves well.
 
-      `/for/`, `/commercial/` and `/resources/` are NOT covered and must
+      `/for/` and `/resources/` are NOT covered and must
       keep rendering byte-for-byte as before. Each hub's conversion case
       gets evaluated on its own intent evidence; nothing here licenses
       pattern-matching the flag onto the remaining three.
@@ -655,9 +654,8 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       That is the template's existing `showHeroForm` branch, not a new
       behaviour: the band exists to stop the FAQ's neighbour and the
       closing CTA sharing a surface, and the split CTA is `muted` where
-      the panel was `brand`. `/commercial/` still renders
-      `AuthorityBand -> FAQ`, which is why DEC-103 refused to reorder it
-      globally.
+      the panel was `brand`. DEC-103 refused to reorder the other
+      hubs globally.
     */
     showHeroForm: true,
     /*
@@ -763,8 +761,8 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       halves the list, so the count below IS the split: adding a
       fifteenth would give eight and seven.
 
-      ⚠ NO OTHER HUB SETS THIS. `/commercial/` has three questions and
-      `/locations/` nine, and splitting either would leave the thin
+      ⚠ NO OTHER HUB SETS THIS. `/locations/` has nine questions, and
+      splitting it would leave the thin
       columns `FaqSection.columns` documents against.
     */
     faqColumns: 2,
@@ -897,7 +895,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       title:
         'Find the right sewer service by starting with the condition of the line',
       body: [
-        'Recurring sewer backups, multiple slow drains, unexplained odors, and concerns about an older sewer line can have several possible causes. The Sewer Pros provides sewer camera inspection, sewer diagnostics, sewer cleaning, hydro jetting, drain cleaning, sewer line locating, pre-purchase sewer inspection, and preventative maintenance services for residential, commercial, and managed properties.',
+        'Recurring sewer backups, multiple slow drains, unexplained odors, and concerns about an older sewer line can have several possible causes. The Sewer Pros provides sewer camera inspection, sewer diagnostics, sewer cleaning, hydro jetting, drain cleaning, sewer line locating, pre-purchase sewer inspection, and preventative maintenance services for residential and managed properties.',
         'Our evidence-first process starts by understanding the symptoms, inspecting accessible portions of the sewer line when appropriate, and documenting visible conditions. Depending on what the line shows, the appropriate next step may be cleaning, hydro jetting, locating the sewer route, monitoring a condition, or consulting a separate repair provider.',
         'Because The Sewer Pros does not perform sewer repair or replacement, our findings remain separate from a repair sale. You receive practical information that can help you make a more informed maintenance, property-purchase, or second-opinion decision.',
         'Service is available across the St. Louis, San Diego, and Las Vegas markets. Select a service below to learn what it addresses, how the process works, and what information you can expect to receive.',
@@ -1218,8 +1216,8 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
           <p>
             Recurring backups, slow drains, drainage odors, or an uncertain
             sewer-line condition can have more than one possible cause. The
-            Sewer Pros helps property owners, buyers, managers, and commercial
-            customers start with the right sewer inspection, cleaning, hydro
+            Sewer Pros helps property owners, buyers, and managers
+            start with the right sewer inspection, cleaning, hydro
             jetting, locating, or diagnostic service.
           </p>
           <p>
@@ -1704,8 +1702,8 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       title: 'Who We Serve',
       intro: (
         <p>
-          Property owners, buyers, real estate professionals, property
-          managers, and commercial operators, each arriving with a different
+          Property owners, buyers, real estate professionals, and property
+          managers, each arriving with a different
           question about the same underground pipe.
         </p>
       ),

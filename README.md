@@ -38,7 +38,7 @@ Verified 2026-09-21 against commit `5b9586a` on `main`.
 | Analytics | GA4 loader and typed events built; inert until `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set |
 | Redirects | None implemented (no `_redirects` file); legacy inventory open (PENDING-010) |
 
-Page families built: 9 core and hub, 10 service, 3 market, 16 location, 14 service + location, 6 audience, 5 commercial, 2 comparison, 5 resource. Per-page detail is in `docs/04-master-page-build-list.md` §56.
+Page families built: 8 core and hub, 10 service, 3 market, 16 location, 14 service + location, 6 audience, 2 comparison, 5 resource. Per-page detail is in `docs/04-master-page-build-list.md` §56.
 
 ### Validation (2026-09-21)
 

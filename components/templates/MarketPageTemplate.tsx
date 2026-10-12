@@ -64,7 +64,7 @@ import type { AuthoritySectionId, MarketPageContent, MasterPageRecord } from '@/
  *
  *   Local Hero → Market Service Overview → Local Differentiation
  *   → Primary Local Services → Who We Help → Approved Locations
- *   → Local Proof → Commercial → Resources → FAQ → CTA
+ *   → Local Proof → Resources → FAQ → CTA
  *
  * 18 §109: "Market — location-led and locally contextual."
  *

@@ -33,7 +33,7 @@ want St. Louis goes to `/st-louis-mo/`, which converts. Someone who does not
 know whether they are covered at all lands here — and this is the only page in
 the site whose subject is that question.
 
-The other four hubs (`/services/`, `/for/`, `/commercial/`, `/resources/`)
+The other three hubs (`/services/`, `/for/`, `/resources/`)
 orient a visitor toward a page that already converts. They do **not** get these
 sections merely because the mechanism now exists.
 
@@ -142,7 +142,7 @@ No two adjacent surfaces match; longest density run is 2;
    above it, because that module is muted. The condition reads the module, not
    the flag, because the module is the neighbour.
 3. `AuthorityBand` moves below the FAQ **only on the split branch**. A global
-   reorder was rejected: `/services/` and `/commercial/` both render
+   reorder was rejected: `/services/` and the other hubs both render
    `AuthorityBand → FAQ` today and would have changed.
 
 ## 8. Verification

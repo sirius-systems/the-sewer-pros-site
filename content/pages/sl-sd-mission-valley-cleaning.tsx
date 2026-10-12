@@ -9,11 +9,11 @@
  * Section recipe (each section ties a Mission Valley fact to what cleaning does):
  *   1. Where the line ends   - owner maintains to the City main; no separate MV
  *                              utility found; our cleaning is private lines only.
- *   2. Kitchen grease        - the City's grease/roots statement and FEWD permit
- *                              program vs. what cleaning removes; nearby-facility
- *                              inspections after a grease spill.
+ *   2. Grease                - the City's grease/roots statement vs. what
+ *                              cleaning removes.
  *   3. Many fixtures, one lateral - schedule from evidence, not a default;
- *                              occupied-site access; a clean line is not proof.
+ *                              access in a multifamily building; a clean line
+ *                              is not proof.
  *   4. Break past the line, no City help found - Plumber's Report (the City's),
  *                              crew program suspended, cleaning is not repair.
  *
@@ -58,23 +58,22 @@ if (v2 === undefined || sanDiegoMissionValleyContent.faq === undefined) {
 const slots = pageImageSlots('sl-mission-valley-cleaning', {
   hero: {
     alt: 'Technician setting up sewer cleaning equipment at a cleanout beside a building',
-    shot: 'Technician with a cleaning machine and cable or hose at a cleanout at a commercial or mixed-use building, no identifiable address',
+    shot: 'Technician with a cleaning machine and cable or hose at a cleanout at a multifamily or mixed-use building, no identifiable address',
   },
   problems: [shots[0], shots[1], shots[2], shots[3]] as const,
 })
 
 /**
  * Every question from the Mission Valley location page and the sewer cleaning
- * service page. Nothing is skipped: the location page's restaurant cleaning
- * interval question sits beside the service page's frequency question, and the
- * service page's cost question (DEC-088 wording) is carried as published.
+ * service page. Nothing is skipped: the service
+ * page's cost question (DEC-088 wording) is carried as published.
  */
 const faq = mergeRelevantFaqs(sanDiegoMissionValleyContent.faq, v2.faq, [], 'In Mission Valley')
 
 export const missionValleyCleaningContent: ServiceLocationPageContent = {
   seoTitle: 'Sewer Cleaning in Mission Valley, San Diego',
   metaDescription:
-    'Sewer cleaning in Mission Valley, San Diego. The City says owners maintain the lateral to its main and food service needs a grease permit. See what cleaning does.',
+    'Sewer cleaning in Mission Valley, San Diego. The City says owners maintain the lateral to its main. See what cleaning does.',
   serviceDescription:
     'Sewer cleaning is the removal of grease, roots, deposits, debris, and other material that restricts flow in an accessible private sewer line, for properties in Mission Valley, San Diego, California.',
   heroImage: slots.hero,
@@ -87,8 +86,7 @@ export const missionValleyCleaningContent: ServiceLocationPageContent = {
       <p>
         Mission Valley is a City of San Diego planning area, and the City says the property owner
         maintains the sewer lateral all the way to its connection with the City sewer main. Sewer
-        cleaning removes buildup from the accessible private line, including the grease a kitchen
-        sends down it. It clears the pipe. It does not repair it.
+        cleaning removes buildup from the accessible private line, including grease. It clears the pipe. It does not repair it.
       </p>
     ),
   },
@@ -108,29 +106,24 @@ export const missionValleyCleaningContent: ServiceLocationPageContent = {
         City&rsquo;s number, not ours).
       </p>
 
-      <h2>Kitchen grease: cleaning the line, not the permit</h2>
+      <h2>Grease and roots: cleaning the line</h2>
       <p>
-        The City names grease, along with roots, as a leading cause of sewer spills, and says every
-        food service establishment must hold a permit from its Food Establishment Wastewater
-        Discharge (FEWD) program. After a grease-related spill, FEWD inspectors look at facilities
-        in the immediate area to find which contributed.
+        The City names grease, along with roots, as a leading cause of sewer spills.
       </p>
       <p>
         Sewer cleaning removes the grease, roots, deposits or debris that have built up in the
-        lateral. It does not show whether a grease interceptor meets the City&rsquo;s requirements,
-        and we make no claim that our work satisfies any FEWD or permit requirement. For equipment
-        and plan checks, call 858-654-4188 (the City&rsquo;s number).
+        lateral. It does not repair the pipe, and it does not show where the connection is.
       </p>
 
       <h2>Many fixtures, one lateral: clean on evidence, not a default</h2>
       <p>
-        A multi-tenant building feeds many fixtures into one lateral, so one failure can reach every
-        tenant at once. How often a line needs cleaning depends on volume, what enters it and its
+        A multifamily building feeds many fixtures into one lateral, so one failure can reach every
+        unit at once. How often a line needs cleaning depends on volume, what enters it and its
         condition, not on a standard interval, and a camera pass shows how much has built up since
         the last cleaning. A line that drains again is not proof that the pipe is sound.
       </p>
       <p>
-        On an occupied site, access means trading hours, tenants, service corridors and other
+        In a multifamily building, access means residents, shared corridors and other
         contractors. Raise that when you request service.
       </p>
 
@@ -153,9 +146,9 @@ export const missionValleyCleaningContent: ServiceLocationPageContent = {
   problems: [
     ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
     {
-      title: 'A kitchen or tenant line that keeps loading up',
+      title: 'A shared line that keeps loading up',
       description:
-        'A restaurant or hotel kitchen sends grease down its line every day, and a multi-tenant building feeds many fixtures into one lateral. Cleaning removes the buildup. A camera pass shows how much returned since the last visit.',
+        'A multifamily building feeds many fixtures into one lateral, and grease can build up on the pipe wall. Cleaning removes the buildup. A camera pass shows how much returned since the last visit.',
       image: slots.problems[3],
     },
   ],

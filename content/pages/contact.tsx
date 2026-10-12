@@ -501,8 +501,8 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
         question: 'How do I book a sewer inspection as a Las Vegas property manager?',
         answer: (
           <p>
-            Choose the commercial or multi-unit option on the form and give the number of
-            properties and the best operational contact. See{' '}
+            Choose the rental or multifamily property option on the form and give the number of
+            properties and the best contact. See{' '}
             <ApprovedInlineLink pageId={id('aud-property-managers')}>
               sewer services for property managers
             </ApprovedInlineLink>{' '}

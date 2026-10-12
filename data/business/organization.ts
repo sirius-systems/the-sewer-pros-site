@@ -252,7 +252,6 @@ export const businessCategories = [
   'sewer line locating service',
   'drain cleaning service',
   'pre-purchase sewer inspection service',
-  'commercial sewer and drain service',
 ] as const
 
 /**

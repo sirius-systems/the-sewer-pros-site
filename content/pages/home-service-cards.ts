@@ -51,7 +51,7 @@ const id = (value: string): PageId => value as PageId
 export const approvedServicesTitle =
   'Sewer Inspection, Diagnostics & Cleaning Services'
 export const approvedServicesIntro =
-  'The Sewer Pros provides sewer camera inspections, sewer diagnostics, sewer cleaning, hydro jetting, sewer line locating, and drain cleaning for residential and commercial properties. We document the conditions we observe so property owners, homebuyers, and property managers can understand the issue and consider appropriate next steps.'
+  'The Sewer Pros provides sewer camera inspections, sewer diagnostics, sewer cleaning, hydro jetting, sewer line locating, and drain cleaning for residential properties. We document the conditions we observe so property owners, homebuyers, and property managers can understand the issue and consider appropriate next steps.'
 
 const OWNER_RENDER =
   'Supplied by the business owner, 2026-09-22. Rendered scene, not a photograph of a Sewer Pros job.'

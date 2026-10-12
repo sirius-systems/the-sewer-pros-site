@@ -403,7 +403,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
           <p>
             The Sewer Pros provides sewer camera inspections, sewer
             diagnostics, sewer cleaning, hydro jetting, sewer line
-            locating, and drain cleaning for residential and commercial
+            locating, and drain cleaning for residential
             properties. We document the conditions we observe so
             property owners, homebuyers, and property managers can
             understand the issue and consider appropriate next steps.
@@ -488,8 +488,8 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         <FaqSection
           eyebrow={content.faqEyebrow}
           /*
-            ⚠ SET HERE, NOT ON `FaqSection`'s DEFAULT. Six other
-            templates render that default - commercial, comparison,
+            ⚠ SET HERE, NOT ON `FaqSection`'s DEFAULT. Five other
+            templates render that default - comparison,
             core, hub, location and market - and "about sewer and
             drain services" would be wrong on the About page and on a
             market hub. The home page is the one that is genuinely
