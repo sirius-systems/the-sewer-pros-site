@@ -503,7 +503,6 @@ export function SurveyLeadForm({
             options={CONTACT_METHOD_OPTIONS}
             required
           />
-          <SmsConsent idPrefix={id('sms')} className="sm:col-span-2" />
           <Field
             htmlFor={id('message')}
             label={unsure ? 'What is happening?' : 'Anything we should know?'}
@@ -511,6 +510,7 @@ export function SurveyLeadForm({
           >
             <Textarea id={id('message')} name="message" rows={3} />
           </Field>
+          <SmsConsent idPrefix={id('sms')} className="sm:col-span-2" />
           {/* Honeypot. Off-screen (not display:none, which some bots skip), hidden from assistive technology,
               and given a neutral name so browsers and password managers do not autofill it. */}
           <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
