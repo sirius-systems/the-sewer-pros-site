@@ -5402,7 +5402,7 @@ Recorded: the image was not edited, blurred or regenerated. The label is not nam
 
 **Reason:** the owner decided that generated images are acceptable for every image slot on the site, including the slots that depict a technician, report, tablet, agent or monitor footage. Real photographs are an optional upgrade, starting with IMG-05 (178 boxes on 144 pages).
 
-Recorded: equipment shown in the images is owner-approved. Generated images may be used as illustrations. They must not be presented as a real customer job, a real inspection finding, a real report, a real customer or a real technician, so alt text, captions and nearby copy describe the scene only. The rule and the optional upgrade are on the launch checklist (`docs/launch-checklist.md`) and in `CLAUDE.md`.
+Recorded: equipment shown in the images is owner-approved. Generated images may be used as illustrations. They must not be presented as a real customer job, a real inspection finding, a real report, a real customer or a real technician, so alt text, captions and nearby copy describe the scene only. The rule and the optional upgrade are on the launch checklist (`docs/launch-checklist.md`) and in `CLAUDE.md`. The owner specifically approved the eight generated files that depict reports, tablets, monitor footage or paperwork (IMG-04, IMG-05, IMG-06, IMG-07, IMG-10, IMG-18, IMG-20, IMG-21), none of which shows a person, with the guardrail that nearby copy must not present them as real jobs, findings, reports, customers or technicians (Oct 12, 2026).
 
 ---
 
