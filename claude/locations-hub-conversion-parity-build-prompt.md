@@ -20,7 +20,7 @@ carry, per DEC-103, **without changing any other hub**.
 
 ## Hard requirements
 
-1. `/services/`, `/for/`, `/commercial/` and `/resources/` must render
+1. `/services/`, `/for/` and `/resources/` must render
    **byte-identical**. Stated as the single most important check in the build.
 2. No fabricated business facts. No invented image asset, phone number, office,
    address, or market association.
@@ -58,7 +58,7 @@ Rulings quoted verbatim in `dec-103-locations-hub-conversion-parity.md` §6.
 
 One conflict was found between two Gate 2 instructions and resolved before
 building: the instruction to reorder `AuthorityBand` below the closing CTA
-would, if applied globally, have changed `/services/` and `/commercial/` — both
+would, if applied globally, have changed `/services/` and the other hubs, which both
 render `AuthorityBand → FAQ` today — breaking hard requirement 1. The reorder
 was gated on the same flag that switches the CTA to `split`, so it applies only
 where its reasoning does.

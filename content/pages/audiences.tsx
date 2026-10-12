@@ -1,7 +1,7 @@
 /**
  * Audience page content — the 6 launch audiences.
  *
- * Authority: docs/09-audience-commercial-matrix.md §16, §18-22, §63, §77-83
+ * Authority: docs/09-audience-matrix.md §16, §18-22, §63, §77-83
  *            docs/14-content-specification.md §46-49, §81
  *            docs/18-design-system.md §113, §140
  *            CLAUDE.md §21, §31, §63, §75
@@ -25,8 +25,8 @@
  *   HOA             — a board decision about shared responsibility
  *
  * Service relationships differ accordingly: buyers get pre-purchase
- * inspection, property managers get the commercial menu and recurring
- * maintenance, inspectors get camera work and nothing operational.
+ * inspection, property managers get recurring maintenance and the
+ * camera and cleaning work, inspectors get camera work and nothing operational.
  *
  * ---------------------------------------------------------------------------
  * ⚠ NO LEGAL OR TRANSACTIONAL ADVICE

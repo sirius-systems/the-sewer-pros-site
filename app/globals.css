@@ -486,7 +486,7 @@ h4 {
      residential-camera-service     1.62:1   <- worst, bright sky and lawn
      high-pressure-line-cleaning    2.58:1
      homebuyer-sewer-due-diligence  2.53:1
-     commercial-drain-diagnostics   2.42:1
+     drain-diagnostics              2.42:1
      pipe-condition-review          3.68:1
 
    Every frame fails 4.5:1. This overlay is the only reason the hero is

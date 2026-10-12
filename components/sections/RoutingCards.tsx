@@ -81,7 +81,7 @@ import type { CardImage, RoutingContent } from '@/types'
  * The title is `link.label`, the approved page record's own name.
  * Adding a `title` field would put a second source beside it for
  * strings that are currently identical ("Services", "Locations /
- * Service Areas", "Commercial Sewer & Drain Services", "Contact"), and
+ * Service Areas", "Contact"), and
  * the day someone renames a page the card would quietly disagree with
  * its own destination. Same resolution `Differentiator` and
  * `AuthorityBand` reached for their headings.
@@ -137,7 +137,7 @@ function MapPinnedIcon(props: IconProps) {
   )
 }
 
-/** Commercial — a multi-storey building. */
+/** Property managers - a multi-storey building. */
 function BuildingIcon(props: IconProps) {
   return (
     <svg {...baseIconProps(props)}>
@@ -240,7 +240,7 @@ const ACCENT: Record<
   /*
     ⚠ NAVY TAKES THE BLUE BUTTON, NOT A NAVY ONE, AND THAT IS THE ONLY
     PLACE THIS MAP DISAGREES WITH ITSELF. Owner direction, 2026-09-04:
-    the commercial card keeps its navy mark and top rule but its action
+    the navy card keeps its navy mark and top rule but its action
     is solid blue. Every other row's `button` follows its own accent.
   */
   navy: {
@@ -625,7 +625,7 @@ export function RoutingCards({
               {/*
                 ⚠ THE FOOTER ACTION IS A BUTTON; THE LINK LIST ABOVE IT
                 IS NOT. Owner direction, 2026-09-04. The named services,
-                markets and commercial services stay plain chevron links
+                markets and property manager services stay plain chevron links
                 - four cards each carrying five buttons would be a wall
                 of equal-weight actions, which is the failure 18 §62 and
                 §106 both name.
@@ -666,7 +666,7 @@ export function RoutingCards({
                     {/*
                       `shrink-0` so the arrow keeps its width when a
                       long label meets a narrow card - "Explore
-                      Commercial Services" in a tablet column is the
+                      Property Manager Services" in a tablet column is the
                       tight case. Without it the flex row would take
                       the space out of the glyph before wrapping the
                       text.

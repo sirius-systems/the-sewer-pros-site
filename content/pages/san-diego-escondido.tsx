@@ -859,7 +859,7 @@ export const escondidoContent: LocationPageContent = {
       { title: 'San Marcos', description: 'Local sewer details', pageId: id('loc-sd-san-marcos') },
       {
         title: 'Mission Valley',
-        description: 'Commercial-leaning property sewer services',
+        description: 'Local sewer details',
         pageId: id('loc-sd-mission-valley'),
       },
       {

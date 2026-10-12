@@ -4942,12 +4942,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       ⚠ THE H1 IS UNCHANGED ("Preventative Sewer Maintenance").
 
       ⚠ REMOVED FROM THE LIVE COPY (owner decision pending, see DEC-137):
-      the "Where it fits for commercial properties" block, the property
-      manager and commercial audience rows, the equipment-naming override of
+      the "Where it fits" block for managed properties, the property
+      manager audience rows, the equipment-naming override of
       the independent band (the shared band renders now), and the "we
-      recommend an interval" wording. The page is residential-first;
-      commercial maintenance belongs on the Commercial preventative
-      maintenance page.
+      recommend an interval" wording. The page is residential-first.
 
       ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
       same-day or emergency claim, guarantee, warranty, licence (DEC-072),

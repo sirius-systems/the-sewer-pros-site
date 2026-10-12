@@ -1,7 +1,7 @@
 /**
  * Audience types.
  *
- * Authority: docs/09-audience-commercial-matrix.md §4-30, §57, §59, §122
+ * Authority: docs/09-audience-matrix.md §4-30, §57, §59, §122
  *
  * 10 audience records; 6 approved as launch pages under `/for/`.
  *

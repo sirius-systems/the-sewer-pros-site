@@ -27,9 +27,9 @@ import type { ServiceId } from '@/types'
  * (2026-09-01) decided it. The owner confirmed the field list directly
  * for this build.
  *
- * ⚠ THIS OPENS SITEWIDE. Seven templates already call this component:
- * Audience, Commercial, Home, Location, Market, ServiceLocation and
- * Service. All seven begin rendering a real form.
+ * ⚠ THIS OPENS SITEWIDE. Six templates already call this component:
+ * Audience, Home, Location, Market, ServiceLocation and Service. All
+ * six begin rendering a real form.
  *
  * ===========================================================================
  * ⚠⚠ TWO BLOCKERS BEFORE THIS IS LAUNCH-READY
@@ -75,11 +75,10 @@ type LeadServiceValue = ServiceId | 'other'
  * Service options: a FIXED CURATED SET OF SEVEN, not the registry.
  *
  * ⚠ Deliberate, owner-specified, and not an oversight. Do not "fix"
- * this back to the full 18 records. The registry is the taxonomy; this
- * is a customer-facing menu, and 18 records (five of which repeat a
- * core name under a commercial record) is a worse thing to ask someone
+ * this back to the full 11 records. The registry is the taxonomy; this
+ * is a customer-facing menu, and 11 records is a worse thing to ask someone
  * to read than six plain choices and an escape hatch. `homeContent.services`
- * already does the same thing, showing a curated 9 of 18 on the grid.
+ * already does the same thing, showing a curated 9 of 11 on the grid.
  *
  * LABELS ARE SHORTHAND, VALUES ARE CANONICAL. "Sewer Cleaning &
  * Inspection" and "Line Location" are how customers say it; the values

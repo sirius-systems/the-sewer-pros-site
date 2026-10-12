@@ -337,7 +337,7 @@ check('no literal [CONFIRM placeholder', !/\[CONFIRM/i.test(html))
 
 // The FAQ question "Is hydro jetting safe for every pipe?" is answered "No."
 // It is the one allowed use of this phrase, matched by question text only.
-// The Organization node is the site-wide catalogue (it lists the commercial
+// The Organization node is the site-wide catalogue (it lists the
 // services); only this page's own nodes are scanned.
 const pageLdText = JSON.stringify(graph.filter((n) => n['@type'] !== 'Organization'))
 let scanText = flat(`${visible} ${pageLdText}`).toLowerCase()

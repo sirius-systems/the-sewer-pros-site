@@ -43,8 +43,7 @@ import type { ReactNode } from 'react'
 import type { HubPageContent, MasterPageRecord } from '@/types'
 
 /**
- * Hub page — `/services/`, `/locations/`, `/for/`, `/commercial/`,
- * `/resources/`.
+ * Hub page — `/services/`, `/locations/`, `/for/`, `/resources/`.
  *
  * Governed by docs/03-information-architecture.md §52-53;
  * docs/16-internal-linking-strategy.md; docs/18-design-system.md §5.6.
@@ -200,7 +199,7 @@ export function HubPageTemplate({
     ==========================================================================
     Three sections the market hubs carry and the hubs did not. All
     three are OFF unless the content file opts in, which is what leaves
-    `/services/`, `/for/`, `/commercial/` and `/resources/` byte-for-byte
+    `/services/`, `/for/` and `/resources/` byte-for-byte
     unchanged - only `/locations/` sets either flag.
 
     ⚠ THE FLAGS ARE ANDed WITH THE EXISTING DATA PREDICATES, NOT
@@ -249,9 +248,9 @@ export function HubPageTemplate({
     `homeContent.services` - the home page's own nine cards, artwork
     and all - and rendered them as a plain row list, because
     `HubPageContent.items` carried no `image` field for the template to
-    read. `/for/`, `/commercial/` and `/resources/` list pages that
+    read. `/for/` and `/resources/` list pages that
     have no frames, and `/locations/` renders `MarketCoverage` instead
-    of this band, so none of the four moves.
+    of this band, so none of the three moves.
 
     ⚠ THE DENSITY MOVES WITH THE VARIANT, AND IT HAS TO. `dense` is
     what the home page and all three market hubs give this mosaic: the
@@ -863,7 +862,7 @@ export function HubPageTemplate({
           ⚠ `columns` IS THE HUB'S OWN, DEFAULTING TO ONE. Passing
           `content.faqColumns` straight through leaves every hub that
           does not set it rendering exactly as before, including
-          `/commercial/` at three questions and `/locations/` at nine.
+          `/locations/` at nine questions.
           See `HubPageContent.faqColumns` for why this is authored
           rather than derived from the entry count.
         */

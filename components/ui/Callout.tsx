@@ -6,13 +6,12 @@ import { cn } from '@/lib/utils/cn'
  *
  * Governed by docs/18-design-system.md §74, §96, §138.
  *
- * The five approved kinds from §74:
+ * The four approved kinds from §74:
  *
  *   important   — a key warning or limitation
  *   good-to-know — helpful context
  *   independent — differentiator information
  *   buyer-tip   — real-estate content
- *   commercial  — operational content
  *
  * ---------------------------------------------------------------------------
  * MEANING NEVER RESTS ON COLOUR — 18 §96

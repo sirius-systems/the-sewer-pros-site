@@ -14,13 +14,12 @@
  * or cannot):
  *   1. Responsibility - the City's spill and odor line vs. the owner's lateral
  *      to the connection, vs. what footage can establish
- *   2. Grease and roots - the City's named causes, the kitchens on the line and
- *      the FEWD permit, vs. the named causes of a repeat backup and what
- *      cleaning does not repair
+ *   2. Grease and roots - the City's named causes vs. the named causes of a
+ *      repeat backup and what cleaning does not repair
  *   3. Beyond the property line - the Plumber's Report process, who pays (not
  *      stated), vs. what footage shows
  *   4. No City program - none found, suspended crew program, permit question,
- *      occupied-site access, vs. "does not repair"
+ *      access in an occupied building, vs. "does not repair"
  *
  * ⚠ Mission Valley is a neighborhood (a City planning area). Only facts the
  * Mission Valley page itself states are used: no Council Policy 400-10, no EMRA
@@ -42,16 +41,16 @@ const id = (value: string): PageId => value as PageId
 // Alt text stays neutral: no place-specific photo is claimed.
 const slots = pageImageSlots('sl-mission-valley-backup', {
   hero: {
-    alt: 'Technician at a cleanout beside a commercial building',
-    shot: 'Technician at an exterior cleanout of a commercial or mixed-use property, camera monitor in frame, nothing graphic',
+    alt: 'Technician at a cleanout beside a building',
+    shot: 'Technician at an exterior cleanout of a multifamily or mixed-use property, camera monitor in frame, nothing graphic',
   },
   problems: [
     shots[0],
     shots[1],
     shots[2],
     {
-      alt: 'Commercial street with a manhole cover near the curb',
-      shot: 'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings',
+      alt: 'Street with a manhole cover near the curb',
+      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })
@@ -112,17 +111,15 @@ export const missionValleyBackupContent: ServiceLocationPageContent = {
       <p>
         A diagnosis documents what is visible in the part of the line the camera reached. Those
         findings apply only to the segment inspected and do not by themselves establish
-        responsibility, and if you lease the space, how a lease divides the duty is a matter for the
+        responsibility, and if you rent, how a lease divides the duty is a matter for the
         lease, not legal advice.
       </p>
 
       <h2>Grease and roots are the City&rsquo;s named causes, and cleaning will not show which</h2>
       <p>
-        The City names grease, along with roots, as a leading cause of sewer spills, and a
-        restaurant or hotel kitchen sends fat, oil and grease down its line every day. After a
-        grease-related spill, City FEWD inspectors look at facilities in the immediate area to find
-        which contributed. A diagnosis does not show whether a facility&rsquo;s grease-removal
-        equipment meets its City permit.
+        The City names grease, along with roots, as a leading cause of sewer spills. A
+        diagnosis shows what the camera sees in the line, so you can tell grease buildup from a
+        root intrusion or another condition.
       </p>
       <p>
         Cleaning removes roots and grease, but it does not repair the opening a root came through, a
@@ -153,8 +150,8 @@ export const missionValleyBackupContent: ServiceLocationPageContent = {
         number).
       </p>
       <p>
-        On an occupied commercial site, access means trading hours, tenants, service corridors and
-        other contractors, so raise it when you request service. A diagnosis does not repair
+        In a multifamily building, access means residents, shared corridors and other contractors,
+        so raise it when you request service. A diagnosis does not repair
         anything, and The Sewer Pros does not sell repair or replacement. Keep the video and compare
         more than one written estimate.
       </p>
@@ -163,9 +160,9 @@ export const missionValleyBackupContent: ServiceLocationPageContent = {
   problems: [
     ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
     {
-      title: 'A shared lateral serving several tenants',
+      title: 'A shared lateral serving several units',
       description:
-        'A multi-tenant building feeds many fixtures into one lateral, so one failure can reach every tenant at once. A diagnosis records the accessible line from the entry point. How a lease divides the duty between landlord and tenant is a matter for the lease, and this page does not give legal advice.',
+        'A multifamily building feeds many fixtures into one lateral, so one failure can reach every unit at once. A diagnosis records the accessible line from the entry point. How a lease divides the duty between landlord and tenant is a matter for the lease, and this page does not give legal advice.',
       image: slots.problems[3],
     },
   ],

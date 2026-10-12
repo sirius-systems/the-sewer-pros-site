@@ -679,7 +679,7 @@ export const stLouisMarketContent: MarketPageContent = {
         {
           name: 'St. Louis County, Missouri',
           description:
-            'Sewer inspection, cleaning, locating, and diagnostic services for residential, commercial, and managed properties across St. Louis County.',
+            'Sewer inspection, cleaning, locating, and diagnostic services for residential and managed properties across St. Louis County.',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-county-mo-sewer-service-area.webp',
             alt: 'Residential service area in St. Louis County, Missouri',
@@ -689,7 +689,7 @@ export const stLouisMarketContent: MarketPageContent = {
         {
           name: 'St. Charles County, Missouri',
           description:
-            'Evidence-first sewer inspection and cleaning services for homes, businesses, buyers, and property professionals across St. Charles County.',
+            'Evidence-first sewer inspection and cleaning services for homes, buyers, and property professionals across St. Charles County.',
           image: {
             src: '/images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-county-mo-sewer-service-area.webp',
             alt: 'Residential service area in St. Charles County, Missouri',

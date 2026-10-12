@@ -9,12 +9,12 @@
  * Nothing here is new research. Section recipe, each tied to what THIS service
  * does or cannot:
  *   1. responsibility + systemExplainer - the owner maintains the lateral to the
- *      City main; a multi-tenant lateral; no standard interval
+ *      City main; a multifamily lateral; no standard interval
  *   2. municipalProgram.callout - establish the condition, clean on an interval
  *      the evidence supports, re-inspect; what a visit records and cannot
- *   3. systemExplainer + municipalProgram.covers - kitchen grease and the City's
- *      FEWD permit: what a maintenance visit is not
- *   4. municipalProgram + callout - occupied-site access, none found, suspended
+ *   3. systemExplainer + municipalProgram.covers - grease and roots, the City's
+ *      named causes: what a maintenance visit records
+ *   4. municipalProgram + callout - multifamily access, none found, suspended
  *      crew program, the permit question, not an emergency response
  * Swap the location and sections 1-4 fail; swap the service and 1-3 fail.
  *
@@ -48,16 +48,16 @@ if (v2 === undefined || sanDiegoMissionValleyContent.faq === undefined) {
 // Alt text stays neutral: no place-specific photo is claimed.
 const slots = pageImageSlots('sl-mission-valley-maintenance', {
   hero: {
-    alt: 'Technician on a scheduled sewer maintenance visit at a commercial building',
-    shot: 'Technician at a cleanout during a maintenance visit at a commercial or mixed-use property, monitor in frame, no identifiable address',
+    alt: 'Technician on a scheduled sewer maintenance visit at a building',
+    shot: 'Technician at a cleanout during a maintenance visit at a multifamily or mixed-use property, monitor in frame, no identifiable address',
   },
   problems: [
     shots[0],
     shots[1],
     shots[2],
     {
-      alt: 'Commercial street with a manhole cover near the curb',
-      shot: 'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings',
+      alt: 'Street with a manhole cover near the curb',
+      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })
@@ -66,9 +66,6 @@ const slots = pageImageSlots('sl-mission-valley-maintenance', {
  * Every question from the Mission Valley location page and the maintenance
  * service page, minus one: "Do you repair or replace sewer lines?", which the
  * service page's "Do you offer sewer repair or replacement?" answers in full.
- * "How often should a restaurant line be cleaned?" stays: it is the Mission
- * Valley, kitchen-line version of the service page's "How often should I
- * schedule it?".
  */
 const faq = mergeRelevantFaqs(
   sanDiegoMissionValleyContent.faq,
@@ -97,8 +94,7 @@ export const missionValleyMaintenanceContent: ServiceLocationPageContent = {
     intro: (
       <p>
         In Mission Valley, a City of San Diego planning area, the City says the owner maintains the
-        sewer lateral all the way to its connection with the City sewer main, and food service
-        businesses answer to the City&rsquo;s grease permit program. Preventative sewer maintenance
+        sewer lateral all the way to its connection with the City sewer main. Preventative sewer maintenance
         is the planned version with evidence: a camera pass that records the visible condition of
         the accessible line, and cleaning when it is appropriate, before buildup becomes a backup.
       </p>
@@ -110,18 +106,18 @@ export const missionValleyMaintenanceContent: ServiceLocationPageContent = {
       <p>
         The City of San Diego says the property owner maintains the sewer lateral from the building
         all the way to its connection with the City sewer main, in the street, beyond the property
-        line, in an easement or in a canyon. For a multi-tenant building that lateral carries many
-        fixtures, so one failure can reach every tenant at once. How a lease divides the duty is a
+        line, in an easement or in a canyon. For a multifamily building that lateral carries many
+        fixtures, so one failure can reach every unit at once. How a lease divides the duty is a
         matter for the lease, not legal advice.
       </p>
       <p>
-        We state no interval for a maintenance visit. How often a kitchen line needs cleaning
+        We state no interval for a maintenance visit. How often a line needs cleaning
         depends on volume, what enters the line and its condition, not on a standard interval.
       </p>
 
       <h2>Establish the condition, clean on what the evidence supports</h2>
       <p>
-        On a line that carries grease or continuous volume, the useful pattern is usually to
+        Where a line keeps loading up, the useful pattern is usually to
         establish the line&rsquo;s condition, clean on an interval the evidence supports, and
         re-inspect, rather than respond to backups as they happen. Not every line needs that. A
         visit includes a recorded camera pass through the accessible section, with anything that
@@ -136,24 +132,17 @@ export const missionValleyMaintenanceContent: ServiceLocationPageContent = {
         <li>Cleaning does not repair pipe. The Sewer Pros does not perform repairs.</li>
       </ul>
 
-      <h2>Kitchen grease: what the City permits and what a visit does not</h2>
+      <h2>Grease and roots: what a visit records</h2>
       <p>
-        The City names grease, along with roots, as a leading cause of sewer spills. It says every
-        food service establishment within it needs a permit from its FEWD program, so the facility
-        installs equipment that traps cooking fats, oil and grease, and a small interior device and
-        a larger underground tank are the two kinds it describes.
-      </p>
-      <p>
-        A maintenance visit is not service of that equipment, and we make no claim that it satisfies
-        any FEWD or permit requirement. Questions about equipment go to the City&rsquo;s FEWD
-        program at 858-654-4188 (the City&rsquo;s number).
+        The City names grease, along with roots, as a leading cause of sewer spills. A maintenance
+        visit records how much has built up since the last cleaning, which is a better basis for a
+        schedule than a default interval.
       </p>
 
-      <h2>On an occupied site, access is part of the plan</h2>
+      <h2>In a multifamily building, access is part of the plan</h2>
       <p>
-        Access on an occupied commercial site means trading hours, tenants, service corridors and
-        other contractors. That is a planning constraint to raise when you request service, and a
-        failure can cost lost trading time and displaced tenants on top of the plumbing.
+        Access in a multifamily building means residents, shared corridors and other contractors.
+        That is a planning constraint to raise when you request service.
       </p>
       <p>
         We did not find an active City program that gives owners help with lateral costs, and the
@@ -169,9 +158,9 @@ export const missionValleyMaintenanceContent: ServiceLocationPageContent = {
   problems: [
     ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
     {
-      title: 'A remodel or restaurant retrofit',
+      title: 'A remodel or a change of ownership',
       description:
-        'The City says plans for new food service construction, remodels and retrofits must receive a FEWD plan review. A camera pass records the visible condition of the accessible lateral before you plan, which gives you a baseline. It does not review plans or satisfy a permit.',
+        'A camera pass records the visible condition of the accessible lateral before you plan, which gives you a baseline. It does not review plans or satisfy a permit.',
       image: slots.problems[3],
     },
   ],

@@ -817,7 +817,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
   regionalCoverage: {
     title: 'Serving properties throughout the San Diego region',
     body: [
-      'The Sewer Pros serves homeowners, home buyers, real estate professionals, property managers, multifamily buildings, and commercial properties throughout the greater San Diego region. Featured service areas include San Diego, San Marcos, Carlsbad, Escondido, Oceanside, Chula Vista, and Mission Valley.',
+      'The Sewer Pros serves homeowners, home buyers, real estate professionals, property managers, and multifamily buildings throughout the greater San Diego region. Featured service areas include San Diego, San Marcos, Carlsbad, Escondido, Oceanside, Chula Vista, and Mission Valley.',
       'Service availability can vary by property location. Contact us with the property location, the service you are considering, and the symptoms you are seeing so we can confirm current coverage before scheduling.',
     ],
     primary: {
@@ -946,7 +946,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
           pageId: id('loc-sd-san-diego'),
           title: 'San Diego, CA',
           description:
-            'Sewer camera inspection, cleaning, locating, and diagnostic services for residential and commercial properties across San Diego.',
+            'Sewer camera inspection, cleaning, locating, and diagnostic services for residential properties across San Diego.',
           ctaLabel: 'Explore San Diego',
           image: {
             src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-san-diego-ca-sewer-services.webp',
@@ -958,7 +958,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
           pageId: id('loc-sd-san-marcos'),
           title: 'San Marcos, CA',
           description:
-            'Explore sewer inspection and cleaning services for homes, buyers, property managers, and commercial properties in San Marcos.',
+            'Explore sewer inspection and cleaning services for homes, buyers, and property managers in San Marcos.',
           ctaLabel: 'Explore San Marcos',
           image: {
             src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-san-marcos-ca-sewer-services.webp',
@@ -994,7 +994,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
           pageId: id('loc-sd-oceanside'),
           title: 'Oceanside, CA',
           description:
-            'Explore sewer camera inspection and cleaning services for residential and commercial properties in Oceanside.',
+            'Explore sewer camera inspection and cleaning services for residential properties in Oceanside.',
           ctaLabel: 'Explore Oceanside',
           image: {
             src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-oceanside-ca-sewer-services.webp',
@@ -1024,7 +1024,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
           pageId: id('loc-sd-mission-valley'),
           title: 'Mission Valley, San Diego',
           description:
-            'Explore sewer inspection and cleaning services for homes, multifamily buildings, and commercial properties in Mission Valley.',
+            'Explore sewer inspection and cleaning services for homes and multifamily buildings in Mission Valley.',
           ctaLabel: 'Explore Mission Valley',
           image: {
             src: '/images/markets/san-diego-ca/service-locations/the-sewer-pros-mission-valley-san-diego-sewer-services.webp',

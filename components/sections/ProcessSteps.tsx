@@ -35,7 +35,7 @@ import type { CardImage } from '@/types'
  * A second departure from Appendix A on this component, on top of the
  * card treatment: §27 says no decorative icons. Owner-directed and
  * scoped to `cards`, which is homepage-only. `grid` — the variant
- * `CommercialPageTemplate` renders — keeps its numerals and is
+ * the other templates render — keeps its numerals and is
  * untouched.
  *
  * NO `sr-only` NUMERAL WAS ADDED, DELIBERATELY. The paragraph above is
@@ -138,9 +138,9 @@ export interface ProcessStepsProps {
    *
    * `grid` is the documented default described in this file's header:
    * a seamless hairline grid, no cards. It stays the default because
-   * four other templates render this band and none of them asked to
-   * change (AudiencePageTemplate, CommercialPageTemplate,
-   * ServiceLocationPageTemplate, ServicePageTemplate).
+   * three other templates render this band and none of them asked to
+   * change (AudiencePageTemplate, ServiceLocationPageTemplate,
+   * ServicePageTemplate).
    *
    * `cards` is an OWNER-DIRECTED EXCEPTION, scoped to the homepage
    * (2026-09-03). It departs from the header's "no cards" note the same
@@ -490,7 +490,7 @@ export function ProcessSteps({
               <div className={cn(image !== undefined && 'p-6')}>
                 {/*
                   ⚠ `cards` ONLY. `grid` keeps its numeral, unchanged —
-                  that is the variant CommercialPageTemplate renders.
+                  that is the variant the other templates render.
 
                   The icon takes --accent-secondary, NOT the numeral's
                   --muted-foreground. That is a step up in prominence

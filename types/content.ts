@@ -452,9 +452,9 @@ export interface ScenariosContent {
  *
  * ⚠ `InclusionContent` PLUS AN ICON, DECLARED SEPARATELY RATHER THAN
  * WIDENING THAT TYPE. `InclusionContent` is shared by the service,
- * audience, commercial and comparison templates, all of which render
+ * audience and comparison templates, all of which render
  * it in an even card grid with no icon slot. Adding a field there
- * would put an option on four templates that cannot honour it.
+ * would put an option on three templates that cannot honour it.
  */
 export interface DeliverableItem extends InclusionContent {
   /**
@@ -3080,7 +3080,7 @@ export interface SelectionPanelContent {
   secondaryLink?: { label: string; pageId: PageId }
 }
 
-/** Hub page — services, locations, for, commercial, resources. */
+/** Hub page — services, locations, for, resources. */
 export interface HubPageContent extends BasePageContent {
   /**
    * The hub's own members, rendered by `ServiceIndex`.
@@ -3113,8 +3113,8 @@ export interface HubPageContent extends BasePageContent {
    * Renders the home page's market cards INSTEAD OF the `items` index.
    *
    * ⚠ ONLY `/locations/` SETS THIS, AND ONLY BECAUSE ITS MEMBERS ARE
-   * THE MARKETS. The other four hubs list services, audiences,
-   * commercial services and resources, none of which `MarketCoverage`
+   * THE MARKETS. The other three hubs list services, audiences
+   * and resources, none of which `MarketCoverage`
    * knows how to resolve - it builds its cards from `market` page
    * records, not from `items`.
    *
@@ -3151,8 +3151,8 @@ export interface HubPageContent extends BasePageContent {
     second without the first. Collapsing them into one boolean would
     make that combination unreachable without another type change.
 
-    ⚠ BOTH DEFAULT TO OFF, WHICH IS WHY THE OTHER FOUR HUBS ARE
-    UNTOUCHED. `/services/`, `/for/`, `/commercial/` and `/resources/`
+    ⚠ BOTH DEFAULT TO OFF, WHICH IS WHY THE OTHER THREE HUBS ARE
+    UNTOUCHED. `/services/`, `/for/` and `/resources/`
     set neither and render byte-for-byte as they did.
   */
   /**
@@ -3211,8 +3211,8 @@ export interface HubPageContent extends BasePageContent {
    * accordion columns without each becoming unreadably narrow. A hub
    * with a short list should stay at `1` for that reason alone.
    *
-   * ⚠ ONLY `/services/` SETS THIS. `/commercial/` has three questions
-   * and `/locations/` nine; splitting either would leave thin columns,
+   * ⚠ ONLY `/services/` SETS THIS. `/locations/` has nine questions,
+   * and splitting it would leave thin columns,
    * which is the case `FaqSection.columns` documents against.
    */
   faqColumns?: 1 | 2

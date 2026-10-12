@@ -91,7 +91,7 @@ const SOURCE = 'Supplied by the business owner, 2026-09-22. Rendered scene, not 
  *   residential-camera-service-hero    -> residential-sewer-camera-inspection-hero
  *   pipe-condition-review-hero         -> sewer-pipe-condition-review-hero
  *   high-pressure-line-cleaning-hero   -> high-pressure-sewer-line-cleaning-hero
- *   commercial-drain-diagnostics-hero  -> (unchanged)
+ *   drain-diagnostics-hero             -> (unchanged; the file keeps its original name)
  *   homebuyer-sewer-due-diligence-hero -> (unchanged)
  */
 const homeFrames: readonly HeroBackdropImage[] = [
@@ -113,7 +113,7 @@ const homeFrames: readonly HeroBackdropImage[] = [
   },
   {
     src: '/images/homepage/hero/the-sewer-pros-commercial-drain-diagnostics-hero.webp',
-    describes: 'Camera reel at a floor cleanout in a commercial service corridor',
+    describes: 'Camera reel at a floor cleanout in a service corridor',
     source: SOURCE,
   },
   {

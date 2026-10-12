@@ -15,9 +15,8 @@
  *      guidance; no sale-time rule found; a scope is not a permit or City check
  *   3. buyingGuide + whoToCall - where the lateral connects is a City records
  *      question; footage measures distance, not property lines; Plumber's Report
- *   4. municipalProgram + buyingGuide - a restaurant space: the FEWD permit and
- *      equipment records come from the City; a scope shows the line, not the
- *      equipment; the permit question
+ *   4. municipalProgram + buyingGuide - the permit question: whether work on
+ *      private property needs a permit is a City question
  * Swap the location and sections 1-4 fail; swap the service and 1-3 fail.
  *
  * ⚠ Mission Valley is a neighborhood (a City planning area). Only facts the
@@ -69,23 +68,22 @@ const slots = pageImageSlots('sl-mission-valley-prepurchase', {
     serviceShots[1],
     serviceShots[2],
     {
-      alt: 'Commercial street with a manhole cover near the curb',
-      shot: 'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings',
+      alt: 'Street with a manhole cover near the curb',
+      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })
 
 /**
  * Every question from the Mission Valley location page and the pre-purchase
- * service page, minus one: the location page's "How often should a restaurant
- * line be cleaned?", which is about a cleaning schedule, not a purchase. The
- * service page's generic "Is a sewer scope required when buying or selling a
- * house?" stays, because the Mission Valley FAQ has no purchase question.
+ * service page. The service page's generic "Is a sewer scope required when
+ * buying or selling a house?" stays, because the Mission Valley FAQ has no
+ * purchase question.
  */
 const faq = mergeRelevantFaqs(
   sanDiegoMissionValleyContent.faq,
   v2.faq,
-  ['How often should a restaurant line be cleaned?'],
+  [],
   'In Mission Valley',
 )
 
@@ -130,7 +128,7 @@ export const missionValleyPrePurchaseContent: ServiceLocationPageContent = {
       <p>
         A sewer scope is a separate, focused inspection of the sewer line. It documents visible
         conditions in the section the camera reaches, on the day of the visit, whether the property
-        is a home, a mixed-use building or a commercial space. Ask your home inspector what theirs
+        is a house, a condo, a multifamily property or a mixed-use building. Ask your home inspector what theirs
         covers.
       </p>
 
@@ -163,15 +161,9 @@ export const missionValleyPrePurchaseContent: ServiceLocationPageContent = {
         beyond the property line.
       </p>
 
-      <h2>A restaurant space: the grease paperwork starts with the City</h2>
+      <h2>Permits for work after you buy are a City question</h2>
       <p>
-        If the space is a restaurant, ask the seller or landlord for the facility&rsquo;s FEWD
-        permit and grease-removal equipment records. The City issues that permit, and says a remodel
-        or retrofit needs a FEWD plan review. A scope shows the condition of the line. It does not
-        show whether equipment meets the City&rsquo;s requirements.
-      </p>
-      <p>
-        We found no City page on whether work confined to private property needs a permit, so ask
+        A scope shows the condition of the line. It does not review plans or satisfy a permit. We found no City page on whether work confined to private property needs a permit, so ask
         Development Services (619-446-5242, the City&rsquo;s number).
       </p>
     </>

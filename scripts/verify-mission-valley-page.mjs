@@ -7,7 +7,7 @@
  *   node scripts/verify-mission-valley-page.mjs
  *
  * Adapted from `verify-san-diego-city-page.mjs`. This page has no review band,
- * no housing-age section and no commercial band, and its phone, hours and founding year are San
+ * and no housing-age section, and its phone, hours and founding year are San
  * Diego's own (DEC-071), so the cross-market scan runs over `<main>` (which
  * holds the hero card, both forms and the mobile contact bar). The sitewide
  * header, footer and Organization node legitimately carry company-wide values.
@@ -144,7 +144,7 @@ check(
 const contentSrc = fs.readFileSync(path.resolve('content/pages/san-diego-mission-valley.tsx'), 'utf8')
 const faqOn = !/faqSchemaApproved:\s*false/.test(contentSrc)
 const faqQs = [...mainHtml.matchAll(/<summary[^>]*><span[^>]*><h3[^>]*>([\s\S]*?)<\/h3>/g)].map((m) => norm(m[1].replace(/<[^>]+>/g, ' ')))
-check('ten FAQ questions in the DOM', faqQs.length === 10, `found ${faqQs.length}`)
+check('six FAQ questions in the DOM', faqQs.length === 6, `found ${faqQs.length}`)
 const faqLd = graph.find((n) => n['@type'] === 'FAQPage')
 const webPage = graph.find((n) => n['@type'] === 'WebPage')
 if (faqOn) {
@@ -165,7 +165,7 @@ if (faqOn) {
 check('Organization is the first node', graph[0]?.['@type'] === 'Organization' || graph[0]?.['@id'] === `${ORIGIN}/#organization`, JSON.stringify(graph[0]?.['@type']))
 
 /* ---- WebPage ---- */
-const META = "Sewer camera inspection, hydro jetting and cleaning for Mission Valley businesses and mixed-use properties, with the City's grease and lateral rules."
+const META = "Sewer camera inspection, hydro jetting and cleaning for Mission Valley homes, condos, apartments and mixed-use properties, with the City's lateral rules."
 check('WebPage name equals the seoTitle', webPage?.name === 'Mission Valley Sewer Inspection & Cleaning', webPage?.name)
 check('WebPage description equals the meta description', webPage?.description === META, String(webPage?.description))
 console.log(`INFO  meta description length ${META.length}`)
@@ -194,7 +194,7 @@ const dupes = idAttrs.filter((v, i) => idAttrs.indexOf(v) !== i)
 check('no duplicate ids (hero and final form ids differ)', dupes.length === 0, dupes.join(', '))
 const ORDER = ['request', 'services', 'responsible', 'how-system', 'who-to-call', 'city-program', 'second-opinion', 'buying', 'areas', 'faq']
 for (const anchor of [...ORDER, 'sources']) check(`anchor #${anchor} exists`, idAttrs.includes(anchor))
-for (const absent of ['reviews', 'age', 'commercial']) check(`no #${absent} section (intentionally absent)`, !idAttrs.includes(absent))
+for (const absent of ['reviews', 'age']) check(`no #${absent} section (intentionally absent)`, !idAttrs.includes(absent))
 const pos = ORDER.map((a) => mainHtml.indexOf(`id="${a}"`))
 check('anchors appear in the required order', pos.every((p, i) => p > -1 && (i === 0 || p > pos[i - 1])), pos.join(','))
 const jump = ['#services', '#responsible', '#how-system', '#who-to-call', '#city-program', '#second-opinion', '#buying', '#faq']
@@ -205,8 +205,8 @@ check('jump nav lists the eight links in order', jumpPos.every((p, i) => p > -1 
 check('no em dashes in visible text (U+2014)', !text.includes(String.fromCharCode(8212)))
 const REQUIRED = [
   SD_PHONE, SD_HOURS, `Since ${SD_YEAR}`,
-  '619-515-3525', '858-654-4188', '619-446-5300', '619-446-5242',
-  "Plumber's Report", 'Food Establishment Wastewater Discharge', 'hydromechanical', 'gravity grease interceptor',
+  '619-515-3525', '619-446-5300', '619-446-5242',
+  "Plumber's Report",
   'currently suspended', '2,418', 'Public Utilities', 'Right-of-Way Permit', "the City's number",
   'Last reviewed: October 4, 2026',
 ]
@@ -268,7 +268,7 @@ check('program section lists render', /<ul[\s>]/.test(mainHtml))
 const repairClaims = /(we|our crews?)\s+(repair|replace|install|excavate|line)\b/i.exec(text)
 check('no claim that The Sewer Pros repairs or replaces', repairClaims === null, repairClaims?.[0])
 const repairNo = (text.match(/does not perform repairs or replacements|do not perform sewer repairs or replacements|No\. We inspect, locate, diagnose and clean|without a repair sale/g) ?? []).length
-check('approved no-repair statements present (second opinion, program callout, FAQ 10, final CTA)', repairNo >= 4, String(repairNo))
+check('approved no-repair statements present (second opinion, program callout, FAQ, final CTA)', repairNo >= 4, String(repairNo))
 check('page states no dollar amount', !/\$\d/.test(text))
 check('no office, address, map or "visit us" language', !/(\bour (san diego )?(office|location)|visit (us|our)|storefront)/i.test(text))
 

@@ -15,12 +15,12 @@
  *                                  easement, canyon); no separate MV utility
  *                                  found; the City has no diagrams of private
  *                                  lines; footage is distance, not a boundary.
- *   2. Kitchen grease            - the City's grease naming and FEWD permit vs.
- *                                  what a camera records on the pipe wall.
- *   3. Many fixtures, one lateral - multi-tenant failure reach; the 1958
+ *   2. Grease on the pipe wall   - the City's grease naming vs. what a camera
+ *                                  records on the pipe wall.
+ *   3. Many fixtures, one lateral - multifamily failure reach; the 1958
  *                                  development date says nothing about a lateral.
- *   4. Buying, remodeling, leasing - City buyer advice, no point-of-sale rule
- *                                  found, FEWD plan review, permit gap.
+ *   4. Buying or remodeling      - City buyer advice, no point-of-sale rule
+ *                                  found, permit gap.
  *
  * Mission Valley is a City of San Diego planning area: only facts the Mission
  * Valley location page states are used. No housing-age section exists there.
@@ -59,7 +59,7 @@ if (v2 === undefined || sanDiegoMissionValleyContent.faq === undefined) {
 const slots = pageImageSlots('sl-mission-valley-camera', {
   hero: {
     alt: 'Technician feeding a sewer camera into a cleanout beside a building',
-    shot: 'Technician feeding a camera into a cleanout at a commercial or mixed-use building, monitor in frame, no identifiable address',
+    shot: 'Technician feeding a camera into a cleanout at a multifamily or mixed-use building, monitor in frame, no identifiable address',
   },
   problems: [shots[0], shots[1], shots[2], shots[3]] as const,
 })
@@ -101,7 +101,7 @@ export const missionValleyCameraContent: ServiceLocationPageContent = {
       <p>
         Mission Valley is a City of San Diego planning area, and the City says the property owner
         maintains the sewer lateral all the way to its connection with the City sewer main. A camera
-        inspection records what is inside that line, on video, before you clean it, remodel, lease,
+        inspection records what is inside that line, on video, before you clean it, remodel,
         buy or approve work.
       </p>
     ),
@@ -124,12 +124,10 @@ export const missionValleyCameraContent: ServiceLocationPageContent = {
         City&rsquo;s number, not ours).
       </p>
 
-      <h2>Kitchen grease on camera, and the City&rsquo;s permit program</h2>
+      <h2>Grease on the pipe wall, on camera</h2>
       <p>
-        The City names grease, along with roots, as a leading cause of sewer spills, and says every
-        food service establishment in the City must hold a permit from its Food Establishment
-        Wastewater Discharge (FEWD) program, which ensures the facility installs equipment to trap
-        grease before it enters the sewer.
+        The City names grease, along with roots, as a leading cause of sewer spills. A camera
+        records what is on the pipe wall, so you can tell grease buildup from other conditions.
       </p>
       <ul>
         <li>Grease and other deposits visible on the pipe wall</li>
@@ -137,17 +135,12 @@ export const missionValleyCameraContent: ServiceLocationPageContent = {
         <li>Standing water, and the places where other lines join the pipe</li>
         <li>Any part of the line the camera could not view</li>
       </ul>
-      <p>
-        A camera does not show whether grease-removal equipment meets the City&rsquo;s requirements,
-        and we make no claim that our work satisfies any FEWD requirement. For plan checks, call
-        858-654-4188 (the City&rsquo;s number).
-      </p>
 
       <h2>Many fixtures on one lateral</h2>
       <p>
-        The City describes Mission Valley as a regional center of offices, hotels, retail and a
-        growing residential community. A multi-tenant building feeds many fixtures into one lateral,
-        so one failure can reach every tenant at once. That is a reason to look at the line before a
+        The City describes Mission Valley as a mixed-use area with a growing residential
+        community. A multifamily building feeds many fixtures into one lateral, so one failure can
+        reach every unit at once. That is a reason to look at the line before a
         problem forces the question.
       </p>
       <p>
@@ -156,7 +149,7 @@ export const missionValleyCameraContent: ServiceLocationPageContent = {
         pipes are. Only an inspection of your line can.
       </p>
 
-      <h2>Buying, remodeling or leasing: what the camera adds</h2>
+      <h2>Buying or remodeling: what the camera adds</h2>
       <p>
         For homes, the City advises buyers to get a licensed-plumber report on the condition of the
         lateral connection in addition to a home inspection. That is City guidance, not a
@@ -164,8 +157,7 @@ export const missionValleyCameraContent: ServiceLocationPageContent = {
         found, not a confirmed absence.
       </p>
       <p>
-        A new restaurant, remodel or retrofit needs a FEWD plan review before construction, and we
-        found no City page on whether work confined to private property needs a permit. Ask
+        We found no City page on whether work confined to private property needs a permit. Ask
         Development Services at 619-446-5242 (the City&rsquo;s number). A recording is evidence you
         bring to those conversations, not an approval.
       </p>
@@ -174,9 +166,9 @@ export const missionValleyCameraContent: ServiceLocationPageContent = {
   problems: [
     ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
     {
-      title: 'Grease or a shared lateral on an occupied site',
+      title: 'Grease or a shared lateral in a multifamily building',
       description:
-        "A kitchen sends grease down its line every day, and a multi-tenant building feeds many fixtures into one lateral. A recorded inspection shows the line's condition, not whether grease equipment meets the City's FEWD rules.",
+        "A multifamily building feeds many fixtures into one lateral, and grease can build up on the pipe wall. A recorded inspection shows the line's condition and where along the line it sits.",
       image: slots.problems[3],
     },
   ],

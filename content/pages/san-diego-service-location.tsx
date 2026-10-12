@@ -529,26 +529,25 @@ export const sanDiegoServiceLocationContent: Partial<
       title: 'Hydro Jetting in Mission Valley',
       intro: (
         <p>
-          High-pressure cleaning for Mission Valley&rsquo;s hotel, restaurant,
-          retail, and multifamily lines, where accumulation is a scheduling
-          problem rather than an emergency.
+          High-pressure cleaning for Mission Valley&rsquo;s apartment, condo and
+          multifamily lines, where accumulation is a scheduling problem rather
+          than an emergency.
         </p>
       ),
     },
     body: (
       <>
-        <h2>A commercial district, and the lines reflect it</h2>
+        <h2>A mixed-use district, and the lines reflect it</h2>
         <p>
-          Mission Valley is a commercial and mixed-use district within the City
-          of San Diego rather than a residential neighbourhood. The City
-          describes it as a regional center of offices, hotels, retail and a
-          growing residential community.
+          Mission Valley is a mixed-use district within the City of San Diego.
+          The City describes it as a mixed-use area with a growing residential
+          community.
         </p>
         <p>
-          That changes what accumulates. Food-service and high-volume lines
-          collect grease and solids on the pipe wall at a rate residential lines
-          do not, and the accumulation is progressive rather than sudden: the
-          line narrows until flow fails.
+          In apartment and condo buildings, many fixtures feed one lateral.
+          Grease and solids collect on the pipe wall over time, and the
+          accumulation is progressive rather than sudden: the line narrows until
+          flow fails.
         </p>
 
         <h2>Why jetting suits this specifically</h2>
@@ -560,19 +559,17 @@ export const sanDiegoServiceLocationContent: Partial<
           between clearing it and clearing it repeatedly.
         </p>
 
-        <h2>The cost of a failure here is not the plumbing</h2>
+        <h2>Who maintains the line</h2>
         <p>
           In the City of San Diego, the City&rsquo;s guidance says the property
           owner maintains the lateral to the City main, and we did not find a
-          City program that helps owners pay for lateral work. On a commercial
-          property that cost sits alongside the operational cost: a closed
-          kitchen, displaced tenants, an interrupted trading day.
+          City program that helps owners pay for lateral work.
         </p>
         <p>
-          That arithmetic is what makes planned service on grease-bearing lines
-          more defensible than reacting to backups, and it is a calculation the
-          operator should be able to make from evidence rather than from a
-          contractor&rsquo;s assurance.
+          That is what makes planned service on lines that keep loading up more
+          defensible than reacting to backups, and it is a decision an owner or
+          property manager should be able to make from evidence rather than from
+          a contractor&rsquo;s assurance.
         </p>
 
         <h2>Establish condition before applying pressure</h2>
@@ -588,11 +585,11 @@ export const sanDiegoServiceLocationContent: Partial<
           jetting will not fix it, and we will say that instead.
         </p>
 
-        <h2>Working around an operating site</h2>
+        <h2>Working around residents</h2>
         <p>
-          Access here means trading hours, tenants, service corridors, and other
-          contractors on site. That is a planning constraint to work around
-          rather than an afterthought.
+          In a multifamily building, access means residents, shared
+          corridors, and other contractors on site. That is a planning
+          constraint to work around rather than an afterthought.
         </p>
       </>
     ),

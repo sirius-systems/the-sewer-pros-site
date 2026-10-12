@@ -11,10 +11,10 @@
  *   1. Planning area + lateral - Mission Valley is a City planning area, the
  *                                owner maintains the lateral to the City main;
  *                                fixture drains sit upstream of it.
- *   2. One drain, several tenants, or water coming up - the service's triage,
- *                                the multi-tenant lateral, the CITY's spill line.
- *   3. Kitchen grease          - the City's named causes and its FEWD permit vs.
- *                                what a drain cleaning does; no interval.
+ *   2. One drain, several units, or water coming up - the service's triage,
+ *                                the multifamily lateral, the CITY's spill line.
+ *   3. Grease                  - the City's named causes vs. what a drain
+ *                                cleaning does; no interval.
  *   4. No City help found      - "none found", the suspended crew program, the
  *                                permit question, what cleaning does not fix.
  *
@@ -46,15 +46,15 @@ if (sd === undefined) throw new Error('marketOperatingDetail is missing san-dieg
 const slots = pageImageSlots('sl-mission-valley-drain', {
   hero: {
     alt: 'Drain cleaning equipment at a floor drain',
-    shot: 'Drain machine at a floor drain, commercial or mixed-use building, no identifiable address',
+    shot: 'Drain machine at a floor drain, multifamily or mixed-use building, no identifiable address',
   },
   problems: [
     shots[0],
     shots[1],
     shots[2],
     {
-      alt: 'Commercial street with a manhole cover near the curb',
-      shot: 'Ordinary commercial or mixed-use street, manhole and curb, no business names or identifiable buildings',
+      alt: 'Street with a manhole cover near the curb',
+      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })
@@ -90,7 +90,7 @@ const faq = mergeRelevantFaqs(
 export const missionValleyDrainContent: ServiceLocationPageContent = {
   seoTitle: 'Drain Cleaning in Mission Valley, San Diego',
   metaDescription:
-    'Drain cleaning in Mission Valley, San Diego. The City says the owner maintains the lateral to the City main and permits kitchen grease. See what cleaning fixes.',
+    'Drain cleaning in Mission Valley, San Diego. The City says the owner maintains the lateral to the City main. See what cleaning fixes.',
   serviceDescription:
     'Drain cleaning removes grease, roots, deposits, debris and other restricting material from a drain line using a rotating cable, water jetting, or both, for properties in Mission Valley, a City of San Diego planning area in California. It restores flow and does not repair the pipe.',
   heroImage: slots.hero,
@@ -116,7 +116,7 @@ export const missionValleyDrainContent: ServiceLocationPageContent = {
         The City of San Diego describes Mission Valley as a community planning area, and we did not
         find a separate Mission Valley sewer utility. The City says the property owner maintains the
         sewer lateral from the building to its connection with the City sewer main, in the street,
-        beyond the property line, in an easement or in a canyon. How a lease divides that duty is a
+        beyond the property line, in an easement or in a canyon. If you rent, how a lease divides that duty is a
         lease matter, not something this page answers.
       </p>
       <p>
@@ -125,7 +125,7 @@ export const missionValleyDrainContent: ServiceLocationPageContent = {
         or the connection to it.
       </p>
 
-      <h2>One drain, several tenants, or water coming up</h2>
+      <h2>One drain, several units, or water coming up</h2>
       <ul>
         <li>
           <strong>One fixture slow or clogged:</strong> usually that fixture&rsquo;s own drain line,
@@ -133,8 +133,8 @@ export const missionValleyDrainContent: ServiceLocationPageContent = {
         </li>
         <li>
           <strong>Several fixtures slow or gurgling:</strong> a shared branch or the larger sewer
-          line. A multi-tenant building feeds many fixtures into one lateral, so one failure can
-          reach every tenant at once.
+          line. A multifamily building feeds many fixtures into one lateral, so one failure can
+          reach every unit at once.
         </li>
         <li>
           <strong>Water or sewage coming up:</strong> avoid contact, keep children and pets away,
@@ -147,14 +147,10 @@ export const missionValleyDrainContent: ServiceLocationPageContent = {
         a drain, call {sd.phone}.
       </p>
 
-      <h2>Kitchen grease is a cleaning job, and the City&rsquo;s grease permit is not</h2>
+      <h2>Grease in a drain line is a cleaning job</h2>
       <p>
-        The City names grease, along with roots, as a leading cause of sewer spills, and a
-        restaurant or hotel kitchen sends fat, oil and grease down its line every day. Grease that
-        cools in a kitchen branch line is a drain cleaning job. The City also says every food
-        service establishment needs a permit from its FEWD program, so the facility installs
-        equipment that traps grease. Cleaning does not install or service that equipment, and we
-        make no claim our work satisfies any FEWD requirement.
+        The City names grease, along with roots, as a leading cause of sewer spills. Grease that
+        cools in a kitchen branch line is a drain cleaning job.
       </p>
       <p>
         How often a kitchen line needs cleaning depends on volume, what enters the line and its
@@ -181,9 +177,9 @@ export const missionValleyDrainContent: ServiceLocationPageContent = {
   problems: [
     ...problems.map((p, i) => ({ ...p, image: slots.problems[i] })),
     {
-      title: 'A food service kitchen drain',
+      title: 'A kitchen drain that keeps clogging',
       description:
-        'The City says every food service establishment needs a FEWD grease permit, and plans for a new restaurant, remodel or retrofit need a FEWD plan review. Cleaning clears grease from a drain line. It is not the grease-removal equipment, and we make no claim it satisfies a permit. Equipment questions go to the City at 858-654-4188 (the City’s number).',
+        'Grease that cools in a kitchen branch line is a drain cleaning job. Cleaning clears grease from a drain line. It does not repair the pipe, and when a drain clogs again a camera look at the accessible line may help show whether the restriction was fully removed.',
       image: slots.problems[3],
     },
   ],

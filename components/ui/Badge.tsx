@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils/cn'
  *
  * ⚠ 18 §88: "Use badges sparingly." Legitimate uses are factual
  * classification — a market label, a service category, an article
- * topic, commercial, home buyer.
+ * topic, home buyer.
  *
  * "Avoid decorative trust badges with unverifiable claims." This
  * component is not for credentials, ratings, awards, guarantees, or

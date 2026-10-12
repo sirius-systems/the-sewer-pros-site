@@ -101,7 +101,6 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           <li>Grease accumulation along a length of line</li>
           <li>Scale and sediment narrowing the pipe progressively</li>
           <li>Lines that block repeatedly from buildup rather than one object</li>
-          <li>Commercial and food-service lines carrying continuous volume</li>
         </ul>
 
         <h2>Where jetting is the wrong choice</h2>

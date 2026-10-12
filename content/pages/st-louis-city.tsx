@@ -222,8 +222,8 @@ const serviceCards: readonly LocationServiceCard[] = [
 
 /**
  * Service select order for the detailed form. Labels come from the service
- * registry, so a renamed service updates here; the two extras have no
- * registry record of their own (the commercial hub, and "Not sure").
+ * registry, so a renamed service updates here; the one extra has no
+ * registry record of its own ("Not sure").
  */
 const FORM_SERVICE_ORDER: readonly ServiceId[] = [
   'svc-sewer-camera-inspection',

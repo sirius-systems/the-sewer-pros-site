@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils/cn'
  * ---------------------------------------------------------------------------
  * HIERARCHY — 18 §46, §106
  * ---------------------------------------------------------------------------
- *   primary   — Request Service, Schedule Inspection, Request Commercial
+ *   primary   — Request Service, Schedule Inspection
  *   secondary — Call, View Services, Learn More
  *   tertiary  — inline and card links, supporting navigation
  *

@@ -48,10 +48,6 @@
  * eighteenth being St. Louis lateral reporting, which is
  * `not_applicable` here rather than a gap. No page cites a count.
  *
- * ⚠ Four commercial services remain `capability_validate_packaging` in
- * EVERY market, Las Vegas included, so commercial packaging still must
- * not be presented as an established offering (06 §43).
- *
  * ---------------------------------------------------------------------------
  * WHY THE HOUSING ANGLE IS ABSENT HERE
  * ---------------------------------------------------------------------------
@@ -437,7 +433,7 @@ export const lasVegasMarketContent: MarketPageContent = {
       {
         title: 'Property-management documentation',
         description:
-          'Create a clearer record of visible sewer conditions when managing multifamily, rental, or commercial properties.',
+          'Create a clearer record of visible sewer conditions when managing multifamily or rental properties.',
         image: {
           src: '/images/markets/las-vegas-nv/services/the-sewer-pros-property-management-sewer-condition-documentation.webp',
           alt: 'Documenting visible sewer conditions for a managed Las Vegas property',
@@ -522,7 +518,7 @@ export const lasVegasMarketContent: MarketPageContent = {
   regionalCoverage: {
     title: 'Sewer inspection and cleaning across the Las Vegas Valley',
     body: [
-      'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, drain cleaning, and diagnostic services for homeowners, home buyers, property managers, multifamily properties, and commercial properties across the Las Vegas Valley.',
+      'The Sewer Pros provides sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, drain cleaning, and diagnostic services for homeowners, home buyers, property managers, and multifamily properties across the Las Vegas Valley.',
       'These featured community pages do not define the full limit of the service area. Tell us where the property is located and what is happening with the line so we can confirm current coverage before scheduling.',
       /*
         ⚠ KEPT VERBATIM FROM THE FORMER SHARED CONTACT BLOCK, AND IT IS A
@@ -869,7 +865,7 @@ export const lasVegasMarketContent: MarketPageContent = {
           pageId: id('loc-lv-las-vegas'),
           title: 'Las Vegas, NV',
           description:
-            'Sewer camera inspection, cleaning, locating, and diagnostic services for residential and commercial properties across Las Vegas.',
+            'Sewer camera inspection, cleaning, locating, and diagnostic services for residential properties across Las Vegas.',
           ctaLabel: 'Explore Las Vegas',
           image: {
             src: '/images/markets/las-vegas-nv/service-locations/the-sewer-pros-las-vegas-nv-sewer-services.webp',
@@ -882,7 +878,7 @@ export const lasVegasMarketContent: MarketPageContent = {
           wide: true,
           title: 'Henderson, NV',
           description:
-            'Explore evidence-first sewer inspection and cleaning services for homes, buyers, property managers, and businesses in Henderson.',
+            'Explore evidence-first sewer inspection and cleaning services for homes, buyers, and property managers in Henderson.',
           ctaLabel: 'Explore Henderson',
           image: {
             src: '/images/markets/las-vegas-nv/service-locations/the-sewer-pros-henderson-nv-sewer-services.webp',
@@ -912,7 +908,7 @@ export const lasVegasMarketContent: MarketPageContent = {
           pageId: id('loc-lv-summerlin'),
           title: 'Summerlin, Las Vegas',
           description:
-            'Explore sewer inspection and cleaning services for homes, managed properties, and commercial properties in the Summerlin area.',
+            'Explore sewer inspection and cleaning services for homes and managed properties in the Summerlin area.',
           ctaLabel: 'Explore Summerlin',
           image: {
             src: '/images/markets/las-vegas-nv/service-locations/the-sewer-pros-summerlin-las-vegas-sewer-services.webp',
