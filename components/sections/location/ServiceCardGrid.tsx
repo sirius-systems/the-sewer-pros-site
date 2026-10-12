@@ -4,6 +4,7 @@ import { SectionHeading } from '../SectionHeading'
 import { LocationLinkAnchor } from './LocationLinkAnchor'
 import { SlotPlaceholderBox } from './SlotPlaceholderBox'
 import { cn } from '@/lib/utils/cn'
+import { gridHasImageGaps } from '@/lib/image-slots'
 import type { LocationServiceCards, MarketId } from '@/types'
 
 /**
@@ -42,7 +43,13 @@ export function ServiceCardGrid({
     <Section density="standard" surface="muted" labelledBy={id}>
       <SectionHeading eyebrow={content.eyebrow} title={content.title} id={id} />
 
-      <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <ul
+        className={cn(
+          'mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3',
+          // Placeholders hidden and some cards have no image: natural height, top aligned.
+          gridHasImageGaps(content.cards.map((card) => card.image ?? card.slotPlaceholder)) && 'items-start',
+        )}
+      >
         {content.cards.map((card) => (
           <li
             key={card.serviceId}
