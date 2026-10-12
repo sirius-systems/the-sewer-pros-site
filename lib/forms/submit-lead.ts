@@ -51,13 +51,18 @@ export interface LeadPayload {
   formType: string
   /** Honeypot (the input is named sp_ref). Always empty from a person; the server drops a lead where it is filled. */
   spRef: string
-  /** When the form was opened (ms since epoch). The server drops a submit that is too fast. */
+  /** When the visitor first interacted with the form (ms since epoch). The server asks for a retry on a submit that is too fast. */
   formOpenedAt: number
+}
+
+/** Records the time of the visitor's first interaction with a form; later calls change nothing. */
+export function stampFirstInteraction(clock: { current: number }): void {
+  if (clock.current === 0) clock.current = Date.now()
 }
 
 export type SubmitLeadResult =
   | { ok: true }
-  | { ok: false; reason: 'not-configured' | 'rejected' | 'network' }
+  | { ok: false; reason: 'not-configured' | 'rejected' | 'network' | 'retry' }
 
 export async function submitLead(payload: LeadPayload): Promise<SubmitLeadResult> {
   try {
@@ -66,7 +71,15 @@ export async function submitLead(payload: LeadPayload): Promise<SubmitLeadResult
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-    return response.ok ? { ok: true } : { ok: false, reason: 'rejected' }
+    if (response.ok) return { ok: true }
+    if (response.status === 429) {
+      // The function's own "too quick, send again" reply carries retry: true; a rate limit does not.
+      const body: unknown = await response.json().catch(() => undefined)
+      if (typeof body === 'object' && body !== null && (body as { retry?: unknown }).retry === true) {
+        return { ok: false, reason: 'retry' }
+      }
+    }
+    return { ok: false, reason: 'rejected' }
   } catch {
     return { ok: false, reason: 'network' }
   }

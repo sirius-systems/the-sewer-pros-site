@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { Button, Field, RadioGroup, TextInput, Textarea } from '@/components/ui'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { SURVEY_LOCATION_GROUPS, findSurveyLocation } from '@/lib/forms/survey-locations'
-import { submitLead } from '@/lib/forms/submit-lead'
+import { stampFirstInteraction, submitLead } from '@/lib/forms/submit-lead'
 import { SMS_CONSENT_VERSION } from '@/lib/forms/sms-consent'
 import { SmsConsent } from './SmsConsent'
 import type { ServiceId } from '@/types'
@@ -42,6 +42,7 @@ import type { ServiceId } from '@/types'
  */
 
 const FORM_TYPE = 'general_service' as const
+const RETRY_NOTICE = 'That was quick, please press Send again.'
 
 /** Labels are shorthand; values are canonical registry ids. */
 const SERVICE_PILLS: readonly { value: ServiceId; label: string }[] = [
@@ -118,11 +119,12 @@ export function SurveyLeadForm({
   const [errors, setErrors] = useState<{ name?: string; phone?: string; email?: string }>({})
   const started = useRef(false)
   const headingRef = useRef<HTMLHeadingElement>(null)
-  // When the form was opened; the server drops a submit that comes faster than a person can type.
+  // When the visitor first touched the form (not page load); the server asks for a retry on a submit
+  // that comes faster than a person can type.
   const openedAt = useRef(0)
-  useEffect(() => {
-    openedAt.current = Date.now()
-  }, [])
+  function markInteraction() {
+    stampFirstInteraction(openedAt)
+  }
 
   // Registry locations only; the "other area" pills have no registry id.
   const analyticsLocationId = location.startsWith('loc-') ? location : undefined
@@ -184,8 +186,12 @@ export function SurveyLeadForm({
     const data = new FormData(event.currentTarget)
     const value = (key: string) => String(data.get(key) ?? '').trim()
 
-    // Honeypot: a real visitor never sees or fills this field.
-    if (value('sp_ref') !== '') return
+    // Honeypot: a real visitor never sees or fills this field. Show the same notice as a failed send,
+    // send nothing, and do not go to the thank-you page.
+    if (value('sp_ref') !== '') {
+      setNotice(sendFailedNotice())
+      return
+    }
 
     const next: typeof errors = {}
     if (value('name') === '') next.name = 'Enter your full name.'
@@ -206,6 +212,7 @@ export function SurveyLeadForm({
       return
     }
 
+    markInteraction()
     setPending(true)
     const result = await submitLead({
       marketId,
@@ -244,7 +251,11 @@ export function SurveyLeadForm({
       return
     }
 
-    setNotice(`We could not send your request. Please try again, or call ${phoneLabel}.`)
+    setNotice(result.reason === 'retry' ? RETRY_NOTICE : sendFailedNotice())
+  }
+
+  function sendFailedNotice() {
+    return `We could not send your request. Please try again, or call ${phoneLabel}.`
   }
 
   const question =
@@ -274,7 +285,16 @@ export function SurveyLeadForm({
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} onInput={start} className="mt-5">
+      <form
+        onSubmit={handleSubmit}
+        onInput={() => {
+          markInteraction()
+          start()
+        }}
+        onPointerDownCapture={markInteraction}
+        onKeyDownCapture={markInteraction}
+        className="mt-5"
+      >
         <h3 ref={headingRef} tabIndex={-1} className="text-lg font-semibold outline-none">
           {question}
         </h3>

@@ -74,7 +74,7 @@ export const GHL_CUSTOM_FIELD_KEYS = [
 
 const KNOWN_CONSENT_VERSIONS: readonly string[] = [SMS_CONSENT_VERSION]
 const MAX_BODY_BYTES = 16 * 1024
-const MIN_SECONDS_TO_SUBMIT = 3
+const MIN_SECONDS_TO_SUBMIT = 2
 const MAX_AGE_HOURS = 24
 const RATE_LIMIT = { max: 5, windowMs: 10 * 60 * 1000 }
 const GHL_TIMEOUT_MS = 8000
@@ -161,6 +161,7 @@ function marketFromPath(path: string): string | undefined {
 export type Validated =
   | { kind: 'invalid' }
   | { kind: 'bot' }
+  | { kind: 'retry' }
   | { kind: 'ok'; lead: Lead }
 
 /** Checks the browser payload. Unknown fields, wrong types and over-long values are rejected. */
@@ -183,9 +184,12 @@ export function validateLead(input: unknown, nowMs: number): Validated {
   const opened = body.formOpenedAt
   if (typeof opened !== 'number' || !Number.isFinite(opened)) return { kind: 'invalid' }
 
-  // Spam: a filled honeypot or a submit faster than a person can type is dropped quietly.
+  // Spam. A filled honeypot is dropped quietly (the browser never sends one, so this is a direct post).
+  // A submit faster than a person can type gets a retry reply, so a real visitor who was just quick
+  // (autofill) loses nothing. The browser measures from the first interaction with the form.
   const elapsed = (nowMs - opened) / 1000
-  if (str.spRef !== '' || elapsed < MIN_SECONDS_TO_SUBMIT) return { kind: 'bot' }
+  if (str.spRef !== '') return { kind: 'bot' }
+  if (elapsed < MIN_SECONDS_TO_SUBMIT) return { kind: 'retry' }
   if (elapsed > MAX_AGE_HOURS * 3600) return { kind: 'invalid' }
 
   const firstName = clean(str.firstName)
@@ -376,6 +380,13 @@ export async function handleLead(request: Request, env: LeadEnv, deps: HandlerDe
   if (result.kind === 'invalid') return done(false, 400, 'validation')
   // Bots get the same reply a person would, and nothing is sent anywhere.
   if (result.kind === 'bot') return done(true, 200, 'bot-dropped')
+  if (result.kind === 'retry') {
+    log(JSON.stringify({ requestId: id, step: 'too-fast', status: 429 }))
+    return new Response(JSON.stringify({ ok: false, retry: true }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+    })
+  }
   const lead = result.lead
 
   const token = env.GHL_PRIVATE_INTEGRATION_TOKEN
