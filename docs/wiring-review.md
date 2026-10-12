@@ -7,7 +7,7 @@ Terms: "P" is the provenance string `RENDER_IMAGE_SOURCE` in `lib/image-slots.ts
 ## Findings first
 
 1. **16 generated files, not 14.** The earlier "14 photo files" figure in the wiring report was a miscount. 15 files were wired first and IMG-12 after owner approval, so 16 files plus 2 existing assets fill the 513 + 24 = 537 boxes counted after the baseline correction.
-2. **IMG-23 (recurring backup hero) is wired but never shown.** The service page template only draws the hero figure while the slot is an unfilled placeholder (`heroSlot` in `ServicePageTemplateV2.tsx`). With the file present, the figure is skipped and the page keeps its default hero, so the image is on disk but renders on no page (0 uses in the build). It cleared 1 placeholder box and adds no visible image. Showing it would be a template change.
+2. **IMG-23 (recurring backup hero): fixed.** It was wired but never shown, because the service page template only drew the hero figure while the slot was an unfilled placeholder. The template (`ServicePageTemplateV2.tsx`) now uses one rule: file present means the photo is the hero backdrop (replacing the default hero, never drawn with it); unfilled with placeholders shown means the placeholder figure on the default hero; unfilled with placeholders hidden means the default hero only. IMG-23 now renders as the Recurring Sewer Backup Diagnosis hero, 1 use in the build. The rest of the 30 files were cross-checked: each renders on exactly as many slots as the shot list documents.
 3. **No image shows a person.** None depicts a technician or a customer, although several briefs and file names say "technician" or "owner". Alt text now describes only the scene.
 4. **Alt text rewritten for three files** so it no longer calls a prop "an inspection report" (section 6).
 5. **No misspelled or non-approved lettering is legible at display size** except the approved IMG-12 label (section 3).
@@ -33,7 +33,7 @@ Slots are rendered uses in the production build (one per slot). "Depicts" marks:
 | `shared/equipment/the-sewer-pros-camera-head-push-cable-entering-cleanout-4x3.webp` (IMG-14) | 24 | P | A sewer camera head on a red push cable resting on an open threaded cleanout beside a house wall | Camera head on a red cable on a cleanout fitting | none |
 | `shared/equipment/the-sewer-pros-cleaning-machine-cable-at-cleanout-4x3.webp` (IMG-15) | 24 | P | A red cleaning machine with its cable running into an open cleanout beside a house | A drain machine with cable in a cleanout, house behind | none |
 | `shared/equipment/the-sewer-pros-jetter-trailer-at-curb-4x3.webp` (IMG-17) | 16 | P | A hose-reel jetting trailer parked at the curb of a residential street | A jetter trailer at a curb, houses behind | none |
-| `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp` (IMG-23) | 1 slot, **0 rendered** | none (core module) | A sewer camera reel and open monitor on a sidewalk beside an open exterior cleanout in front of a house | Reel and monitor on a sidewalk beside an open cleanout | M (small screen) |
+| `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp` (IMG-23) | 1 (hero backdrop) | none (core module) | A sewer camera reel and open monitor on a sidewalk beside an open exterior cleanout in front of a house | Reel and monitor on a sidewalk beside an open cleanout | M (small screen) |
 | `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-causes-root-footage-4x3.webp` (IMG-24, existing) | 1 | none (core module; origin of the frame not recorded) | Camera view of tree roots entering a sewer pipe joint | Camera frame inside a pipe with roots at a joint | M, F |
 | `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-4x3.webp` (IMG-25, existing) | 1 | none (core module; origin of the frame not recorded) | Camera view of standing water inside a sewer line | Camera frame inside a pipe with standing water | M, F |
 
@@ -80,7 +80,7 @@ All alternates are in the gitignored `image-originals/` folder. The files in `pu
 | IMG-18 | none (blurred) | none | none |
 | IMG-20 | "RIDGID SeeSnake" on the monitor bezel; recording timer "0:6:18" | locator screen digits | "SeeSnake" alone is not on the approved list (the list has "RIDGID", "SeeSnake CS12x" and "SeeSnake Standard Camera Reel with TruSense"); low risk, it is the product family printed on the monitor |
 | IMG-21 | "12 ft" distance counter | none | none (a distance reading) |
-| IMG-23 | none | tiny labels | none (not rendered on any page) |
+| IMG-23 | none | tiny labels | none |
 | IMG-24, IMG-25 | none | none | none |
 
 Result: apart from the approved IMG-12 label, nothing legible at display size is an unapproved equipment name. Two zoom-only items (IMG-05, IMG-11) are garbled and unreadable at the sizes shown. The distance and timer overlays are footage figures, not equipment text.

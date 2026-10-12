@@ -22,6 +22,7 @@ import { Section } from '@/components/ui'
 import { SectionHeading } from '@/components/sections/SectionHeading'
 import { CameraImageSlot } from '@/components/sections/CameraImageSlot'
 import { resolveHubImage } from '@/data/business/hub-images'
+import { slotDraws } from '@/lib/image-slots'
 import {
   SignalList,
   LimitsPanel,
@@ -204,9 +205,18 @@ export function ServicePageTemplateV2({
       </>
     )
 
-  // A pending-photography slot, shown only while no approved photograph exists.
+  // The hero slot, resolved once. One rule for all three states:
+  //   file present                            -> the photo is the hero backdrop (it replaces
+  //                                              the default hero, never drawn with it)
+  //   unfilled and placeholders shown         -> the labelled placeholder figure under the
+  //                                              intro, on top of the default hero
+  //   unfilled and placeholders hidden        -> the default hero only
+  const heroSlotImage = v2.hero.slot !== undefined ? resolveHubImage(v2.hero.slot) : null
+  const heroPhoto = heroSlotImage !== null && !heroSlotImage.placeholder ? heroSlotImage.preferred : undefined
   const heroSlot =
-    v2.hero.slot !== undefined && resolveHubImage(v2.hero.slot)?.placeholder === true
+    v2.hero.slot !== undefined &&
+    heroSlotImage?.placeholder === true &&
+    slotDraws({ placeholder: true })
       ? v2.hero.slot
       : undefined
 
@@ -236,7 +246,7 @@ export function ServicePageTemplateV2({
           className="absolute inset-0 -z-10 overflow-hidden bg-brand"
         >
           <BackdropImage
-            src={heroImage}
+            src={heroPhoto ?? heroImage}
             priority
             className="object-cover object-[15%_50%]"
           />
