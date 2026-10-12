@@ -132,7 +132,7 @@ export const recurringImageSlots = {
   },
   'recurring-records': {
     preferred: '/images/shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp',
-    alt: 'A tablet showing a blurred inspection report with a pipe video, beside a printed report on a clipboard on a table',
+    alt: 'A tablet showing a blurred document and a pipe image, beside a printed form on a clipboard on a table',
     caption: '',
     width: 1600,
     height: 1200,

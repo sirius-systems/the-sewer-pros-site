@@ -12,6 +12,8 @@ Delivering a file does not by itself remove a placeholder. After a photo is save
 
 The new files were wired the same day: **0 boxes remain**. Every file in all four sessions and both existing assets is wired. IMG-12 (drain machine at a floor or tub drain) was held first for a readable "PF1500" label on the machine leg and was then wired, owner-approved as generated with the label, for this file only (DEC-144). Three files were inferred matches and need owner confirmation: IMG-07, IMG-11 and IMG-18. Full list in [image-shot-list.md](image-shot-list.md), section "Wiring status".
 
+All 16 files above are generated images that are already wired (status column). Real photographs are an optional upgrade, IMG-05 first (178 boxes on 144 pages); owner decision DEC-145, Oct 12, 2026.
+
 ## Rules that apply to every frame
 
 From the photographer sheet: no faces; no license plates; no readable house numbers, street names or addresses; no branded lettering, and no model names or spec plates on equipment; no customer property identifiers; no text overlays or watermarks and no addresses, dates or GPS on any monitor; no repair, excavation or replacement work in frame, and nothing that implies a local office, storefront or branch; do not present any frame as a finding about a real property.
@@ -20,12 +22,12 @@ From the photographer sheet: no faces; no license plates; no readable house numb
 
 Shoot at the truck, trailer or a bench. No customer property is needed, which makes this the first session to run. IMG-05 comes first because it clears 178 boxes on its own.
 
-| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining |
-|---|---|---|---|---|---|---|---|---|
-| 1 | IMG-05 Technician reviewing footage at a monitor | `shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp` | 4:3 | **178** | 154 | 4 | 178 | 359 |
-| 2 | IMG-10 Monitor showing a pipe interior | `shared/pipe-interiors/the-sewer-pros-monitor-showing-pipe-interior-4x3.webp` | 4:3 | 31 | 31 | 3 | 209 | 328 |
-| 3 | IMG-17 Jetter trailer at a curb | `shared/equipment/the-sewer-pros-jetter-trailer-at-curb-4x3.webp` | 4:3 | 16 | 16 | 3 | 225 | 312 |
-| 4 | IMG-20 Monitor beside a handheld locator receiver | `shared/equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp` | 4:3 | 16 | 16 | 3 | 241 | 296 |
+| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | IMG-05 Technician reviewing footage at a monitor | `shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp` | 4:3 | **178** | 154 | 4 | 178 | 359 | generated, wired, optional real-photo upgrade |
+| 2 | IMG-10 Monitor showing a pipe interior | `shared/pipe-interiors/the-sewer-pros-monitor-showing-pipe-interior-4x3.webp` | 4:3 | 31 | 31 | 3 | 209 | 328 | generated, wired, optional real-photo upgrade |
+| 3 | IMG-17 Jetter trailer at a curb | `shared/equipment/the-sewer-pros-jetter-trailer-at-curb-4x3.webp` | 4:3 | 16 | 16 | 3 | 225 | 312 | generated, wired, optional real-photo upgrade |
+| 4 | IMG-20 Monitor beside a handheld locator receiver | `shared/equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp` | 4:3 | 16 | 16 | 3 | 241 | 296 | generated, wired, optional real-photo upgrade |
 
 Session total: 241 boxes, 13 framing variants.
 
@@ -37,14 +39,14 @@ Session notes: IMG-17 needs the plate cropped or removed on the trailer and tow 
 
 Real jobs only. Do not start this session until the checklist below is complete for every property.
 
-| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining |
-|---|---|---|---|---|---|---|---|---|
-| 5 | IMG-08 Cable or hose entering a cleanout | `shared/cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp` | 4:3 | 33 | 33 | 3 | 274 | 263 |
-| 6 | IMG-12 Drain machine at a floor or tub drain | `shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp` | 4:3 | 24 | 24 | 3 | 298 | 239 |
-| 7 | IMG-13 Jetting nozzle and hose at the line | `shared/equipment/the-sewer-pros-jetting-nozzle-hose-at-sewer-line-4x3.webp` | 4:3 | 24 | 24 | 3 | 322 | 215 |
-| 8 | IMG-14 Camera head entering a cleanout | `shared/equipment/the-sewer-pros-camera-head-push-cable-entering-cleanout-4x3.webp` | 4:3 | 24 | 16 | 3 | 346 | 191 |
-| 9 | IMG-15 Cleaning machine and cable at a cleanout | `shared/equipment/the-sewer-pros-cleaning-machine-cable-at-cleanout-4x3.webp` | 4:3 | 24 | 24 | 3 | 370 | 167 |
-| 10 | IMG-23 Recurring backup hero: technician at an exterior cleanout | `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp` | 16:9 | 1 | 1 | 3 | 371 | 166 |
+| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| 5 | IMG-08 Cable or hose entering a cleanout | `shared/cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp` | 4:3 | 33 | 33 | 3 | 274 | 263 | generated, wired, optional real-photo upgrade |
+| 6 | IMG-12 Drain machine at a floor or tub drain | `shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp` | 4:3 | 24 | 24 | 3 | 298 | 239 | generated, wired, optional real-photo upgrade |
+| 7 | IMG-13 Jetting nozzle and hose at the line | `shared/equipment/the-sewer-pros-jetting-nozzle-hose-at-sewer-line-4x3.webp` | 4:3 | 24 | 24 | 3 | 322 | 215 | generated, wired, optional real-photo upgrade |
+| 8 | IMG-14 Camera head entering a cleanout | `shared/equipment/the-sewer-pros-camera-head-push-cable-entering-cleanout-4x3.webp` | 4:3 | 24 | 16 | 3 | 346 | 191 | generated, wired, optional real-photo upgrade |
+| 9 | IMG-15 Cleaning machine and cable at a cleanout | `shared/equipment/the-sewer-pros-cleaning-machine-cable-at-cleanout-4x3.webp` | 4:3 | 24 | 24 | 3 | 370 | 167 | generated, wired, optional real-photo upgrade |
+| 10 | IMG-23 Recurring backup hero: technician at an exterior cleanout | `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp` | 16:9 | 1 | 1 | 3 | 371 | 166 | generated, wired, optional real-photo upgrade |
 
 Session total: 130 boxes, 18 framing variants.
 
@@ -69,11 +71,11 @@ Session notes: IMG-23 is wide 16:9 (1600 x 900), the technician at an exterior c
 
 Needs a property for the exterior, a for-sale property for IMG-04, and a customer, owner or buyer stand-in for IMG-07. Apply the job-site checklist to each property.
 
-| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining |
-|---|---|---|---|---|---|---|---|---|
-| 11 | IMG-04 Technician at a for-sale property starting a scope | `shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp` | 4:3 | 41 | 33 | 3 | 412 | 125 |
-| 12 | IMG-07 Technician reviewing findings with the owner or buyer | `shared/residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp` | 4:3 | 33 | 33 | 3 | 445 | 92 |
-| 13 | IMG-11 Technician with a locator receiver in a yard | `shared/equipment/the-sewer-pros-technician-locator-receiver-yard-paint-marks-4x3.webp` | 4:3 | 25 | 25 | 3 | 470 | 67 |
+| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| 11 | IMG-04 Technician at a for-sale property starting a scope | `shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp` | 4:3 | 41 | 33 | 3 | 412 | 125 | generated, wired, optional real-photo upgrade |
+| 12 | IMG-07 Technician reviewing findings with the owner or buyer | `shared/residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp` | 4:3 | 33 | 33 | 3 | 445 | 92 | generated, wired, optional real-photo upgrade |
+| 13 | IMG-11 Technician with a locator receiver in a yard | `shared/equipment/the-sewer-pros-technician-locator-receiver-yard-paint-marks-4x3.webp` | 4:3 | 25 | 25 | 3 | 470 | 67 | generated, wired, optional real-photo upgrade |
 
 Session total: 99 boxes, 9 framing variants.
 
@@ -83,11 +85,11 @@ Session notes: IMG-04 must not show a "for sale" sign or agent branding; clipboa
 
 Indoors, with redacted material. No customer is on site.
 
-| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining |
-|---|---|---|---|---|---|---|---|---|
-| 14 | IMG-06 Monitor or tablet with report and video | `shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp` | 4:3 | 34 | 34 | 3 | 504 | 33 |
-| 15 | IMG-18 Report handed to an agent | `shared/residential/the-sewer-pros-inspection-report-handed-to-agent-4x3.webp` | 4:3 | 16 | 16 | 3 | 520 | 17 |
-| 16 | IMG-21 Camera still with distance counter | `shared/pipe-interiors/the-sewer-pros-camera-footage-still-distance-counter-4x3.webp` | 4:3 | 15 | 15 | 3 | 535 | 2 |
+| # | File | Filename under `public/images/` | Ratio | Boxes filled | Pages that use it | Framing variants | Cleared | Remaining | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| 14 | IMG-06 Monitor or tablet with report and video | `shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp` | 4:3 | 34 | 34 | 3 | 504 | 33 | generated, wired, optional real-photo upgrade |
+| 15 | IMG-18 Report handed to an agent | `shared/residential/the-sewer-pros-inspection-report-handed-to-agent-4x3.webp` | 4:3 | 16 | 16 | 3 | 520 | 17 | generated, wired, optional real-photo upgrade |
+| 16 | IMG-21 Camera still with distance counter | `shared/pipe-interiors/the-sewer-pros-camera-footage-still-distance-counter-4x3.webp` | 4:3 | 15 | 15 | 3 | 535 | 2 | generated, wired, optional real-photo upgrade |
 
 Session total: 65 boxes, 9 framing variants.
 

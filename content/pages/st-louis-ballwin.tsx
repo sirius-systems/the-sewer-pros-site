@@ -188,7 +188,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'so-document',
     ratio: '4:3',
-    alt: 'A tablet showing a blurred inspection report with a pipe video, beside a printed report on a clipboard on a table',
+    alt: 'A tablet showing a blurred document and a pipe image, beside a printed form on a clipboard on a table',
     shot: 'Monitor or tablet with the report open beside it, address redacted',
     src: '/images/shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
@@ -196,7 +196,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'so-decide',
     ratio: '4:3',
-    alt: 'A tablet in a case showing a blurred inspection report and a pipe video, standing on a bin in front of a house',
+    alt: 'A tablet in a case showing a blurred document and a pipe image, standing on a bin in front of a house',
     shot: 'Technician and homeowner reviewing findings, faces not identifiable',
     src: '/images/shared/residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
@@ -212,7 +212,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'buy-agent',
     ratio: '4:3',
-    alt: 'A printed inspection report with blurred text, a pen and a closed laptop on a table',
+    alt: 'A printed form with blurred text, a pen and a closed laptop on a table',
     shot: 'Report handed to an agent, hands only, redacted',
     src: '/images/shared/residential/the-sewer-pros-inspection-report-handed-to-agent-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
