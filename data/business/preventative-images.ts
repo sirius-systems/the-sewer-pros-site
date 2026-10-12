@@ -21,11 +21,14 @@ import type { CameraImageSlotSpec } from './camera-inspection-images'
  *
  * `alt` is the draft alt text for the REAL photograph. It is emitted only when
  * the file exists and has been approved; a placeholder carries no alt text.
+ * ⚠ UPDATE Oct 12, 2026: the slots below are filled with owner-supplied rendered
+ * scenes (the same provenance as `RENDER_IMAGE_SOURCE` in `lib/image-slots.ts`), not job
+ * photographs, so the "real photo only" rule above is not met yet. Their alt text
+ * describes only what is visible. Replace each file with a real photograph when
+ * one exists.
+ *
  * Keys are prefixed `preventative-` so they never collide with another hub's key.
  */
-const DIR = '/images/services/preventative-sewer-maintenance/'
-const NAME = 'the-sewer-pros-preventative-sewer-maintenance'
-
 export interface PreventativeImageSlotSpec extends CameraImageSlotSpec {
   /** The labelled placeholder shown while no approved photograph exists. */
   pending: { label: string; aspect: '16/9' | '4/3' | '7/4' }
@@ -33,11 +36,11 @@ export interface PreventativeImageSlotSpec extends CameraImageSlotSpec {
 
 export const preventativeImageSlots = {
   'preventative-explainer': {
-    preferred: `${DIR}${NAME}-explainer-review-4x3.webp`,
-    alt: 'Technician reviewing sewer camera footage on a monitor',
+    preferred: '/images/shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp',
+    alt: 'Sewer camera reel and an open monitor showing the inside of a pipe, set on a lawn between two houses',
     caption: '',
-    width: 1448,
-    height: 1086,
+    width: 1600,
+    height: 1200,
     kind: 'photo',
     subject: 'A technician reviewing sewer camera footage on a monitor.',
     requiresRelease: true,
@@ -62,11 +65,11 @@ export const preventativeImageSlots = {
     },
   },
   'preventative-records': {
-    preferred: `${DIR}${NAME}-records-video-and-findings-4x3.webp`,
-    alt: 'Inspection video and written findings from a sewer visit',
+    preferred: '/images/shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp',
+    alt: 'A tablet showing a blurred inspection report with a pipe video, beside a printed report on a clipboard on a table',
     caption: '',
-    width: 1448,
-    height: 1086,
+    width: 1600,
+    height: 1200,
     kind: 'photo',
     subject:
       'A monitor or tablet showing inspection video beside written findings, with customer details removed.',

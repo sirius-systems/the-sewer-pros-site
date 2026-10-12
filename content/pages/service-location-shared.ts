@@ -104,6 +104,58 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     alt: 'Bathroom with a white vanity sink and a bathtub, and a red drain machine standing on the tile floor',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-bathroom-sink-and-tub-4x3.webp`,
   },
+  'Jetting nozzle and hose at the line': {
+    alt: 'A jetting nozzle and hose coiled beside an open cleanout, with a hose trailer parked on the street behind',
+    src: () => `${RENDER_DIR}equipment/the-sewer-pros-jetting-nozzle-hose-at-sewer-line-4x3.webp`,
+  },
+  'Technician at a for-sale property starting a pre-purchase scope': {
+    alt: 'Sewer camera reel, a small monitor and a clipboard with a form on the ground beside an open cleanout at the corner of a house, with other homes across the street',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp`,
+  },
+  'Cable or hose entering a cleanout, close up': {
+    alt: 'A flexible cable entering an open threaded cleanout fitting beside a house foundation',
+    src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp`,
+  },
+  'Monitor with a pipe interior, nothing graphic': {
+    alt: 'An open sewer camera monitor on the grass, showing the inside of a pipe',
+    src: () => `${RENDER_DIR}pipe-interiors/the-sewer-pros-monitor-showing-pipe-interior-4x3.webp`,
+  },
+  'Jetter trailer at a curb, no plate': {
+    alt: 'A hose-reel jetting trailer parked at the curb of a residential street',
+    src: () => `${RENDER_DIR}equipment/the-sewer-pros-jetter-trailer-at-curb-4x3.webp`,
+  },
+  'Technician at a for-sale property starting a scope': {
+    alt: 'Sewer camera reel, a small monitor and a clipboard with a form on the ground beside an open cleanout at the corner of a house, with other homes across the street',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp`,
+  },
+  'Technician and buyer reviewing findings, faces not identifiable': {
+    alt: 'A tablet in a case showing a blurred inspection report and a pipe video, standing on a bin in front of a house',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp`,
+  },
+  'Technician and owner reviewing findings, faces not identifiable': {
+    alt: 'A tablet in a case showing a blurred inspection report and a pipe video, standing on a bin in front of a house',
+    src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp`,
+  },
+  'Technician reviewing sewer camera footage on a monitor': {
+    alt: 'Sewer camera reel and an open monitor showing the inside of a pipe, set on a lawn between two houses',
+    src: () => `${RENDER_DIR}equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp`,
+  },
+  'Monitor or tablet showing inspection video beside written findings, customer details removed': {
+    alt: 'A tablet showing a blurred inspection report with a pipe video, beside a printed report on a clipboard on a table',
+    src: () => `${RENDER_DIR}pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp`,
+  },
+  'Cleaning machine and cable at a cleanout': {
+    alt: 'A red cleaning machine with its cable running into an open cleanout beside a house',
+    src: () => `${RENDER_DIR}equipment/the-sewer-pros-cleaning-machine-cable-at-cleanout-4x3.webp`,
+  },
+  'Technician with a locator receiver in a yard, paint marks on pavement, no identifiable address': {
+    alt: 'A yellow handheld locator receiver standing on a lawn beside a sidewalk with orange and blue paint marks',
+    src: () => `${RENDER_DIR}equipment/the-sewer-pros-technician-locator-receiver-yard-paint-marks-4x3.webp`,
+  },
+  'Monitor showing a pipe interior next to a handheld receiver, nothing graphic': {
+    alt: 'A sewer camera monitor showing the inside of a pipe, next to a yellow handheld locator receiver on a bin',
+    src: () => `${RENDER_DIR}equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp`,
+  },
   'Fence line and planting beds where digging might be planned, nothing identifiable': {
     alt: 'Backyard wooden fence with shrubs and a mulch bed beside a lawn, with a yellow locator receiver lying on the grass',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp`,

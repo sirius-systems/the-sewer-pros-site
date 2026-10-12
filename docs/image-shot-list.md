@@ -41,12 +41,39 @@ The equipment shown in the 12 render images is owner-approved (Oct 12, 2026). Th
 | IMG-22 | shared/residential/the-sewer-pros-st-louis-older-home-visible-cleanout-4x3.webp | 4:3 | Older home with the cleanout visible. No identifiable address. *Environment only. Match the market's housing look.* | per market (St. Louis) | 5 | 5 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-1 | Photorealistic render | P1 |
 | IMG-23 | services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp | 16:9 | Technician at an exterior cleanout with camera reel and monitor set up at a residential property. *Page-unique. The page already points at this exact path, and the file is missing (broken hero).* | page-unique | 1 | 1 on core service pages (data/business/*-images.ts). Ids: recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp | Real photo needed | P1 |
 | IMG-24 | services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-causes-root-footage-4x3.webp | 4:3 | Real frame from inspection video showing visible root intrusion at a joint or crack. No identifiers. *Existing: `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-root-intrusion-pipe-joint-4x3.webp`. Copy or repoint, if you accept reusing it.* | page-unique | 1 | 1 on core service pages (data/business/*-images.ts). Ids: recurring-sewer-backup-diagnosis-causes-root-footage-4x3.webp | Existing asset | P1 |
-| IMG-25 | services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp | 7:4 | Real frame showing standing water in a line, where the waterline limits the view. *Existing 4:3 asset: `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp`. The slot wants 7:4, so crop or change the slot ratio.* | page-unique | 1 | 1 on core service pages (data/business/*-images.ts). Ids: recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp | Existing asset | P1 |
+| IMG-25 | services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-4x3.webp | 4:3 | Real frame showing standing water in a line, where the waterline limits the view. *Existing 4:3 asset: `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp`. The slot wants 7:4, so crop or change the slot ratio.* | page-unique | 1 | 1 on core service pages (data/business/*-images.ts). Ids: recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp | Existing asset | P1 |
 | IMG-26 | shared/residential/the-sewer-pros-san-diego-residential-street-manhole-curb-4x3.webp | 4:3 | Ordinary residential street with a manhole cover and curb. No identifiable homes, addresses or plates. *Environment only. Shoot or render it so the street looks like that market.* | per market (San Diego) | 65 | 6 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 59 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P2 |
 | IMG-27 | shared/residential/the-sewer-pros-san-diego-older-home-visible-cleanout-4x3.webp | 4:3 | Older home with the cleanout visible. No identifiable address. *Environment only. Match the market's housing look.* | per market (San Diego) | 7 | 7 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-1 | Photorealistic render | P2 |
 | IMG-28 | shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp | 4:3 | Ordinary mixed-use street, manhole and curb. No business names or identifiable buildings. *Used only by Mission Valley.* | page-unique (Mission Valley) | 5 | 1 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P2 |
 | IMG-29 | shared/residential/the-sewer-pros-las-vegas-residential-street-manhole-curb-4x3.webp | 4:3 | Ordinary residential street with a manhole cover and curb. No identifiable homes, addresses or plates. *Environment only. Shoot or render it so the street looks like that market.* | per market (Las Vegas) | 40 | 4 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 36 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-4, system-street | Photorealistic render | P3 |
 | IMG-30 | shared/residential/the-sewer-pros-las-vegas-older-home-visible-cleanout-4x3.webp | 4:3 | Older home with the cleanout visible. No identifiable address. *Environment only. Match the market's housing look.* | per market (Las Vegas) | 4 | 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx). Ids: sl-*-problem-1 | Photorealistic render | P3 |
+
+## Wiring status (Oct 12, 2026)
+
+**24 placeholder boxes remain on 24 pages** (was 537 on 162). 15 of the 16 real-photo files and both existing assets are wired; IMG-12 is held. Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 513 (14 photo files, 3 of them inferred matches, plus the 2 existing assets, wired now) + 24 (IMG-12, held). Counted by page type: service + location 16, location hub 8, core service 0, so 24 boxes on 24 pages.
+
+The files were generated renders, not job photographs: same 2400 x 1792 size, naming and rendering artifacts as the 12 renders wired earlier, no camera metadata. They carry the same provenance string (`RENDER_IMAGE_SOURCE`). Alt text describes only what is visible. Each file was center-cropped (0.45% off 4:3; the hero 0.78% off 16:9), resized to 1600 x 1200 (hero 1360 x 765), saved as WebP at 97 to 257 KB with no metadata, and the originals were moved to the gitignored `image-originals/` folder.
+
+| Image | Subject | Boxes | Status | Notes |
+|---|---|---|---|---|
+| IMG-05 | Technician reviewing footage at a monitor | 178 | **Wired** | Exact name. Fills the shared `slc-services-section` slot on 144 pages, plus 34 card and core-page boxes. No technician in frame (equipment only). |
+| IMG-10 | Monitor showing a pipe interior | 31 | **Wired** | Exact name. Distance counter "14.5 ft" is visible on the monitor. |
+| IMG-17 | Jetter trailer at a curb | 16 | **Wired** | Exact name. Trailer decal blurred in the image; no plate. |
+| IMG-20 | Monitor beside a handheld locator receiver | 16 | **Wired** | Exact name. |
+| IMG-08 | Cable or hose entering a cleanout | 33 | **Wired** | Exact name; the file arrived in `public/images/clean-outs/` and was saved at the shot-list path `shared/cleanouts/`. |
+| IMG-12 | Drain machine at a floor or tub drain | 24 | **HELD (privacy)** | Exact name, but the machine leg carries a readable label ("PF1500"), a brand-like word that is not an approved equipment name. Not wired. Original kept in `image-originals/`. 8 hub and 16 service + location slots stay as placeholders. |
+| IMG-13 | Jetting nozzle and hose at the line | 24 | **Wired** | Exact name. House number plaque in the background is blurred. |
+| IMG-14 | Camera head entering a cleanout | 24 | **Wired** | Exact name. |
+| IMG-15 | Cleaning machine and cable at a cleanout | 24 | **Wired** | Exact name. |
+| IMG-23 | Recurring backup hero | 1 | **Wired** | Exact name. 16:9 file is 1360 x 765 (the source was 1376 x 768; no upscaling). No technician in frame. |
+| IMG-04 | Technician at a for-sale property starting a scope | 41 | **Wired** | Exact name. No technician in frame; clipboard text is illegible. |
+| IMG-07 | Technician reviewing findings with the owner or buyer | 33 | **Wired (inferred match)** | No file had this name. Matched to `sewer-inspection-findings-tablet-outside-home` by scene (report findings on a tablet at a home) and by generation order. No people in frame. Owner to confirm. |
+| IMG-11 | Technician with a locator receiver in a yard | 25 | **Wired (inferred match)** | No file had this name. Matched to `seektech-sr20-locator-yard-paint-marks` by scene. Owner to confirm. |
+| IMG-06 | Monitor or tablet with report and video | 34 | **Wired** | Exact name. Report text is blurred. |
+| IMG-18 | Report handed to an agent | 16 | **Wired (inferred match)** | No file had this name. Matched to `inspection-report-prepared-for-agent`; a second candidate (`sewer-inspection-report-ready-for-real-estate-agent`) was set aside. No hands in frame. Owner to confirm. |
+| IMG-21 | Camera still with distance counter | 15 | **Wired** | Exact name. |
+| IMG-24 | Camera frame showing root intrusion | 1 | **Wired (existing asset)** | Copied from `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-root-intrusion-pipe-joint-4x3.webp`. |
+| IMG-25 | Camera frame showing standing water | 1 | **Wired (existing asset)** | Copied from `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp`. Slot changed from 7:4 to 4:3; the file is now `...-limits-waterline-footage-4x3.webp`. |
 
 ## Totals
 
@@ -469,13 +496,13 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 
 ### IMG-25  Camera frame showing standing water
 
-- **Filename:** `public/images/services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp`
-- **Slot ratio:** 7:4 (7:4)
+- **Filename:** `public/images/services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-4x3.webp`
+- **Slot ratio:** 4:3 (1448 x 1086). Changed from 7:4 on Oct 12, 2026 so the existing 4:3 file stays intact.
 - **Type:** Existing asset. Priority P1.
 - **Subject and composition:** Existing camera still showing standing water along the bottom of a pipe.
 - **Must NOT appear:** No overlay text, address or customer details. Treat as an example, never as a finding on a specific property. Plus the common rules above.
 - **Alt text:** Sewer camera view down a pipe with water pooled along the bottom of the pipe
-- **Existing asset:** No new shoot. The existing file is 4:3 and the recurring slot is 7:4, so either crop to 7:4 or change the slot to 4:3.
+- **Existing asset:** No new shoot. Wired Oct 12, 2026: the slot was changed to 4:3 and the existing frame copied to the path above.
 - **Reuse scope:** page-unique. Fills 1 box: 1 on core service pages (data/business/*-images.ts).
 - **Slot ids:** recurring-sewer-backup-diagnosis: limits-waterline-footage
 

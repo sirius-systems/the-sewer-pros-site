@@ -88,3 +88,6 @@ desktop.ini
 
 # Throwaway audit render made by scripts/report-unfilled-slots.mjs
 /.slot-audit/
+
+# Original photo files kept out of public/ (large, may carry metadata)
+/image-originals/

@@ -8,6 +8,10 @@ Sessions run in this order: truck and equipment, job site, property exterior, st
 
 Delivering a file does not by itself remove a placeholder. After a photo is saved at its path, the slot in the page registry (or the template constant for IMG-05) still needs its `src` and `source` set. That wiring is a separate step.
 
+## Status after wiring (Oct 12, 2026)
+
+The new files were wired the same day: **24 boxes remain on 24 pages**. Wired: every file in all four sessions except IMG-12, plus both existing assets. Held: IMG-12 (drain machine at a floor or tub drain), because a readable non-approved label ("PF1500") shows on the machine leg. To clear the last 24 boxes, supply a replacement frame for IMG-12 without that label and wire it. Three files were inferred matches and need owner confirmation: IMG-07, IMG-11 and IMG-18. Full list in [image-shot-list.md](image-shot-list.md), section "Wiring status".
+
 ## Rules that apply to every frame
 
 From the photographer sheet: no faces; no license plates; no readable house numbers, street names or addresses; no branded lettering, and no model names or spec plates on equipment; no customer property identifiers; no text overlays or watermarks and no addresses, dates or GPS on any monitor; no repair, excavation or replacement work in frame, and nothing that implies a local office, storefront or branch; do not present any frame as a finding about a real property.
@@ -110,9 +114,9 @@ Both fill the recurring-backup page. They are example frames, never findings on 
 | File | Target path under `public/images/` | Source file | Steps | Ratio | Boxes | Cleared | Remaining |
 |---|---|---|---|---|---|---|---|
 | IMG-24 Camera frame showing root intrusion | `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-causes-root-footage-4x3.webp` | `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-root-intrusion-pipe-joint-4x3.webp` (exists) | Copy the source file to the target path (or repoint the recurring slot to the source path). Set `src` and `source` on the slot in `data/business/recurring-images.ts`. Alt text: "Sewer camera view down a pipe with tree roots hanging into the pipe near a joint at the upper right". | 4:3, no change | 1 | 536 | 1 |
-| IMG-25 Camera frame showing standing water | `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp` | `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp` (exists) | Either crop the source to 7:4 and save it at the target path, or change the recurring slot to 4:3 and use a `-4x3` path. Then set `src` and `source` on the slot. Alt text: "Sewer camera view down a pipe with water pooled along the bottom of the pipe". | **Ratio change needed: the file is 4:3 and the slot is 7:4** (`aspect: '7/4'` in `data/business/recurring-images.ts`) | 1 | 537 | **0** |
+| IMG-25 Camera frame showing standing water | `services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-4x3.webp` | `services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-standing-water-in-pipe-example-4x3.webp` (exists) | Either crop the source to 7:4 and save it at the target path, or change the recurring slot to 4:3 and use a `-4x3` path. Then set `src` and `source` on the slot. Alt text: "Sewer camera view down a pipe with water pooled along the bottom of the pipe". | 4:3 (slot changed from 7:4, done)  | 1 | 537 | **0** |
 
-Ratio change for IMG-25, in one line: the slot is declared 7:4 and the file name ends in `-7x4`, but the only available frame is 4:3, so the choice is to crop the image to 7:4 (no code change) or to change the slot aspect to `4/3` and the path to `-4x3` (a small code change).
+Ratio change for IMG-25 (done Oct 12, 2026): the slot was changed from 7:4 to 4:3 and the file renamed to end in `-4x3`, so the existing 4:3 frame is used without cropping.
 
 ## Final boxes-remaining
 
