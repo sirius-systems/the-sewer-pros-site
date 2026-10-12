@@ -5351,6 +5351,27 @@ Legacy thesewerpros.com commercial URLs are handled under PENDING-010. No redire
 
 Superseded wording: where an earlier entry describes commercial services, pages or audiences as active, this decision governs.
 
+## DEC-143 - Owner Confirmations for the Multifamily Section on /for/property-managers/
+
+**Date:** 2026-10-12
+**Status:** APPROVED
+**Impact:** Minor (confirms existing copy; no page change)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** none. Builds on DEC-142.
+**Affected Documents:**
+
+* `docs/owner-confirmed-service-deliverables.md` (new)
+* `docs/multifamily-verification.md`
+
+**Reason:** the multifamily section and FAQs added to `/for/property-managers/` (`#multifamily`) made two claims that the registries did not state. The owner confirmed both.
+
+Confirmed:
+
+* Pre-purchase sewer inspection is offered for a duplex, fourplex or multi-unit home.
+* The covered multifamily building types are duplexes, fourplexes and residential apartment buildings.
+
+The properties remain residential-focused (DEC-142). No page copy changed with this entry.
+
 ---
 
 ---
