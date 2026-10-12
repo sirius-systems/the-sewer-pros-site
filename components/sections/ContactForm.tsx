@@ -13,7 +13,7 @@ import {
   type SelectOption,
 } from '@/components/ui'
 import { marketList, marketOperatingDetail } from '@/data/markets/markets'
-import { submitLead } from '@/lib/forms/submit-lead'
+import { stampFirstInteraction, submitLead } from '@/lib/forms/submit-lead'
 import { SMS_CONSENT_VERSION } from '@/lib/forms/sms-consent'
 import { SmsConsent } from './SmsConsent'
 import type { MarketId, ServiceId } from '@/types'
@@ -40,6 +40,7 @@ import type { MarketId, ServiceId } from '@/types'
  */
 
 const FORM_TYPE = 'contact_request' as const
+const RETRY_NOTICE = 'That was quick, please press Send again.'
 const MARKET_STORAGE_KEY = 'sp-contact-market'
 
 type IssueValue =
@@ -289,11 +290,12 @@ export function ContactForm({
   const [errors, setErrors] = useState<Errors>({})
   const [started, setStarted] = useState(false)
   const [pending, setPending] = useState(false)
-  // When the form was opened; the server drops a submit that comes faster than a person can type.
+  // When the visitor first touched the form (not page load); the server asks for a retry on a submit
+  // that comes faster than a person can type.
   const openedAt = useRef(0)
-  useEffect(() => {
-    openedAt.current = Date.now()
-  }, [])
+  function markInteraction() {
+    stampFirstInteraction(openedAt)
+  }
   const [notice, setNotice] = useState<string | undefined>(undefined)
 
   // Prefill from `?market=` / `?service=`, then from a manual earlier
@@ -364,8 +366,12 @@ export function ContactForm({
     const data = new FormData(event.currentTarget)
     const value = (key: string) => String(data.get(key) ?? '').trim()
 
-    // Honeypot: a real visitor never sees or fills this field.
-    if (value('sp_ref') !== '') return
+    // Honeypot: a real visitor never sees or fills this field. Show the same notice as a failed send,
+    // send nothing, and do not go to the thank-you page.
+    if (value('sp_ref') !== '') {
+      setNotice(sendFailedNotice())
+      return
+    }
 
     const next: Errors = {}
     if (market === '') next.market = 'Choose your location.'
@@ -390,6 +396,7 @@ export function ContactForm({
       return
     }
 
+    markInteraction()
     setPending(true)
     const result = await submitLead({
       marketId: market,
@@ -425,10 +432,12 @@ export function ContactForm({
       return
     }
 
+    setNotice(result.reason === 'retry' ? RETRY_NOTICE : sendFailedNotice())
+  }
+
+  function sendFailedNotice() {
     const phone = market === '' ? undefined : marketOperatingDetail[market]?.phone
-    setNotice(
-      `We could not send your request. Please try again, or call${phone === undefined ? ' your local team' : ` ${phone}`}.`,
-    )
+    return `We could not send your request. Please try again, or call${phone === undefined ? ' your local team' : ` ${phone}`}.`
   }
 
   const selectedIssue = ISSUES.find((i) => i.value === issue)
@@ -478,7 +487,12 @@ export function ContactForm({
 
       <form
         onSubmit={handleSubmit}
-        onInput={handleFirstInput}
+        onInput={() => {
+          markInteraction()
+          handleFirstInput()
+        }}
+        onPointerDownCapture={markInteraction}
+        onKeyDownCapture={markInteraction}
         noValidate
         aria-labelledby={hideHeading ? labelledBy : id('heading')}
         className={(hideHeading && !shortcuts ? '' : 'mt-6 ') + 'grid gap-x-6 gap-y-5 sm:grid-cols-2'}

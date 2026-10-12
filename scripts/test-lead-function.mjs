@@ -151,12 +151,35 @@ await post(lead({ marketId: '', sourcePath: '/about/', formType: 'general_servic
 const tg = received.find((x) => x.url.endsWith('/tags'))
 check('no market: market field "none" and no market tag; survey tag', cf(upsert().body, 'market') === 'none' && !tg.body.tags.some((t) => t.startsWith('market-')) && tg.body.tags.includes('form-survey'))
 
+// Browser honeypot path (source check; the rendered behavior was checked in a browser against a stub endpoint):
+// a filled sp_ref shows the failed-send notice and returns before any request is made.
+for (const file of ['components/sections/ContactForm.tsx', 'components/sections/SurveyLeadForm.tsx']) {
+  const src = fs.readFileSync(path.join(repo, file), 'utf8').replace(/\r\n/g, '\n')
+  const at = src.indexOf("if (value('sp_ref') !== '') {")
+  const block = at === -1 ? '' : src.slice(at, at + 140)
+  check(file.split('/').pop() + ': filled honeypot sets the send-failed notice and returns before submitLead', at !== -1 && at < src.indexOf('await submitLead(') && /setNotice\(sendFailedNotice\(\)\)\s+return/.test(block), block)
+  check(file.split('/').pop() + ': timer starts at the first interaction, not on mount', src.includes('stampFirstInteraction(openedAt)') && !/openedAt\.current = Date\.now\(\)/.test(src))
+}
+
 reset()
 r = await post(lead({ spRef: 'filled by a bot' }))
-check('honeypot filled: success-looking reply, nothing sent to GHL', r.status === 200 && r.text === '{"ok":true}' && received.length === 0)
+check('direct post with the honeypot filled: fake success {"ok":true} (200), nothing sent to GHL', r.status === 200 && r.text === '{"ok":true}' && received.length === 0)
 reset()
-r = await post(lead({ formOpenedAt: Date.now() - 500 }))
-check('submit faster than 3 seconds: success-looking reply, nothing sent', r.status === 200 && r.text === '{"ok":true}' && received.length === 0)
+r = await post(lead({ spRef: 'filled by a bot', formOpenedAt: Date.now() - 100 }))
+check('honeypot filled and also fast: still the fake success, never the retry reply', r.status === 200 && r.text === '{"ok":true}' && received.length === 0)
+reset()
+const quickOpenedAt = Date.now() - 500
+r = await post(lead({ formOpenedAt: quickOpenedAt }))
+check('submit faster than 2 seconds: distinct retry reply (429 {"ok":false,"retry":true}), nothing sent', r.status === 429 && r.text === '{"ok":false,"retry":true}' && received.length === 0, r.text)
+await new Promise((res) => setTimeout(res, 1700))
+r = await post(lead({ formOpenedAt: quickOpenedAt }), { ip: '10.8.8.8' })
+check('the same submit after the 2 second minimum has passed succeeds and reaches GHL', r.status === 200 && r.text === '{"ok":true}' && received.some((x) => x.url === '/contacts/upsert'), r.text)
+reset()
+r = await post(lead({ formOpenedAt: Date.now() - 1900 }))
+check('1.9 seconds is still too fast; the minimum is 2 seconds', r.status === 429 && received.length === 0)
+reset()
+r = await post(lead({ formOpenedAt: Date.now() - 2300 }))
+check('2.3 seconds is accepted', r.status === 200 && received.some((x) => x.url === '/contacts/upsert'))
 
 reset()
 r = await post(lead(), { origin: 'http://evil.example' })
