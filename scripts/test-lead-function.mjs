@@ -117,7 +117,7 @@ const reset = () => {
   mode = 'ok'
 }
 const upsert = () => received.find((r) => r.url === '/contacts/upsert')
-const cf = (b, key) => b.customFields.find((f) => f.key === `contact.${key}`)?.fieldValue
+const cf = (b, key) => b.customFields.find((f) => f.key === key)?.fieldValue
 
 /* ---- tests ---- */
 reset()
@@ -192,7 +192,7 @@ r = await post(lead({ smsNonMarketingConsent: true }))
 const calls = received.filter((x) => x.url === '/contacts/upsert')
 check('missing custom fields in GHL: retried without them, still success', r.status === 200 && calls.length === 2 && !('customFields' in calls[1].body))
 const nb = received.find((x) => x.url.endsWith('/notes'))?.body.body ?? ''
-check('consent record kept in the note when custom fields fail', nb.includes('SMS non-marketing consent: true') && nb.includes('SMS consent version: sms-consent-v1'))
+check('consent record is in the note (also when custom fields fail)', nb.includes('SMS non-marketing consent: true') && nb.includes('SMS consent version: sms-consent-v1'))
 
 reset()
 mode = 'server-error'

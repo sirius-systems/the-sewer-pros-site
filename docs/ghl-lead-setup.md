@@ -1,6 +1,6 @@
 # GoHighLevel lead capture: setup and data flow
 
-Status as of Oct 12, 2026: the function and the form wiring are built and tested against a mock GoHighLevel (GHL). Nothing has been sent to a real GHL account. The owner steps below are still to do.
+Status as of Oct 12, 2026: the function and the form wiring are built, tested against a mock GoHighLevel (GHL), and tested once against the real GHL account from a local run (results at the end). Nothing is deployed. The owner steps below are still to do.
 
 ## Data flow
 
@@ -26,10 +26,10 @@ The site stays a static export. `functions/` is deployed by Cloudflare Pages nex
 |---|---|
 | Base URL | `https://services.leadconnectorhq.com` |
 | Auth | `Authorization: Bearer <Private Integration token>` |
-| Version header | `Version: 2021-07-28` (the value in the Private Integration and contacts docs). The upsert page of the newer v3 docs lists `v3`; if a call is ever refused over the version, change `GHL_VERSION` in `lib/forms/lead-server.ts`. |
+| Version header | `Version: 2021-07-28`. **Confirmed against the live API** (upsert, tags, notes and the read calls all succeeded). The upsert page of the newer v3 docs lists `v3`; it was not needed. |
 | Upsert | `POST /contacts/upsert`, body needs `locationId`; accepts `firstName`, `lastName`, `phone`, `email`, `source`, `customFields`, `tags`, `dnd`, `dndSettings`. Follows the location's "Allow Duplicate Contact" setting, so a repeat submission updates the existing contact. Response has `new`, `contact`, `traceId`. |
 | Scope | `contacts.write` |
-| Custom field items | `{ key: "contact.<unique_key>", fieldValue: "..." }` (docs: pass `id` or `key`; the field key format is `contact.<name>`) |
+| Custom field items | `{ key: "<unique_key>", fieldValue: "..." }` with **no `contact.` prefix**. Confirmed against the live API: a key written `contact.<name>` is accepted (HTTP 201) but silently ignored; the bare key, the field id, and id plus key all store the value. GHL also silently ignores a key for a field that does not exist. |
 | Tags | The upsert `tags` field overwrites every existing tag, so tags are added with `POST /contacts/{id}/tags` instead. |
 | Notes | `POST /contacts/{id}/notes` with `body`. |
 | Rate limits | Documented for OAuth Marketplace apps: 100 requests per 10 seconds and 200,000 per day, counted per app per location. The docs do not state limits for Private Integration tokens (sandbox tokens have 25 per 10 seconds and 10,000 per day). Each lead uses 3 calls. Check the `X-RateLimit-*` response headers on live responses. |
@@ -39,7 +39,7 @@ The site stays a static export. `functions/` is deployed by Cloudflare Pages nex
 
 Standard GHL contact fields: First Name, Last Name, Phone (E.164, for example +13145550123), Email (optional), Source ("The Sewer Pros website").
 
-Custom fields. Create these in GHL (Settings, Custom Fields) as **Single Line** text fields, using these exact unique keys:
+Custom fields. Create these in GHL (Settings, Custom Fields) as **Single Line** text fields, using these exact unique keys. (`preferred_contact_method` may be a Radio field if its options are exactly Call, Text and Email; this is how it exists in the account today.)
 
 | Unique key | Value sent |
 |---|---|
@@ -51,7 +51,7 @@ Custom fields. Create these in GHL (Settings, Custom Fields) as **Single Line** 
 | `market` | St. Louis, San Diego, Las Vegas, or none |
 | `source_page` | the page path, for example `/contact/` |
 
-If a custom field does not exist yet, GHL refuses the upsert. The function then saves the contact without custom fields and writes the consent record (both values, version, UTC time) into the note, so consent is never lost. Create the fields before launch so the data lands in the fields.
+GHL does not refuse a custom field that is missing or misnamed: it returns success and stores nothing. Because the field alone is therefore not proof, **every note repeats the consent record** (both values, version, UTC time). If GHL ever does reject the custom fields with a 4xx, the function retries the upsert without them. Create the fields before launch so the data lands in the fields.
 
 Tags added to every lead: `website-lead`, the form type (`form-contact` or `form-survey`) and the market (`market-st-louis`, `market-san-diego`, `market-las-vegas`; none when the lead has no market). No marketing tag is ever added.
 
@@ -95,4 +95,18 @@ In Cloudflare Pages:
 
 ## Testing
 
-`node scripts/test-lead-function.mjs` runs the real function under `wrangler pages dev` in a temporary folder with fake credentials and a mock GHL on localhost. It checks validation, honeypot and timer rejection, rate limiting, origin and content-type checks, the exact payloads sent to GHL, the field mapping, the custom-field fallback, and that no token, location id, phone number or name appears in logs or replies.
+The mock suite: `node scripts/test-lead-function.mjs` runs the real function under `wrangler pages dev` in a temporary folder with fake credentials and a mock GHL on localhost. It checks validation, honeypot and timer rejection, rate limiting, origin and content-type checks, the exact payloads sent to GHL, the field mapping, the custom-field fallback, and that no token, location id, phone number or name appears in logs or replies.
+
+## Live test, Oct 12, 2026 (local function against the real GHL account)
+
+Run with `wrangler pages dev` and the real `.dev.vars`, through the real contact form, with the name "Test Website Lead" and a test phone number the owner controls. No SMS or email was sent, and no contact was deleted.
+
+* Two identical submissions (non-marketing box checked, marketing unchecked, Text, "Test submission, delete me") produced **one contact**: the phone-based upsert de-duplicated. Each submission added its own note and the tags were not duplicated.
+* Version header `2021-07-28`: worked. Upsert, tags and notes returned 201. The token also had read access (contact lookup, contact read, custom field list).
+* Tags on the contact: exactly `website-lead`, `form-contact`, `market-las-vegas`. No marketing tag.
+* First pass: the custom fields were **not stored**, because the key was sent as `contact.<name>` (accepted but ignored). Variants tested against the live API: `id` plus `fieldValue` stored; `key` with the `contact.` prefix did not; bare `key` stored; `id` plus `key` stored; deprecated `field_value` with `id` stored. The function now sends the bare key (no extra read scope needed).
+* After the fix, one more submission stored all seven fields with these values: `preferred_contact_method` = Text, `sms_nonmarketing_consent` = true, `sms_marketing_consent` = false, `sms_consent_version` = sms-consent-v1, `sms_consent_timestamp` = a UTC ISO time, `market` = Las Vegas, `source_page` = /contact/.
+* Function logs held only request ids and status codes: no token, location id, name, phone number or message text.
+* The Do Not Disturb setting was not touched (the contact shows no DND flag set).
+
+Cleanup for the owner: the test contact "Test Website Lead" and its three notes are still in GHL. Delete them by hand.
