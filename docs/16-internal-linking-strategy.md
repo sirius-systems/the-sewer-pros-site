@@ -328,7 +328,7 @@ These should link to market hubs, not directly to arbitrary localized service pa
 Do not create a giant homepage footer or body section containing:
 
 * 579 locations
-* all 18 services
+* all 11 services
 * all service + location combinations
 * all audience combinations
 
@@ -620,7 +620,7 @@ Sewer Cleaning in Kirkwood
 
 Only link to these routes in production when they are live and marked for public linking in the Master Page Build List. Candidate links may be tested in protected previews.
 
-Do not generate destination links directly from the 10,422 opportunity relationships.
+Do not generate destination links directly from the 6,369 opportunity relationships.
 
 ---
 
@@ -1590,15 +1590,15 @@ in production. Matrix existence alone is not a public-link state.
 
 ---
 
-# 77. 10,422 Relationship Safeguard
+# 77. 6,369 Relationship Safeguard
 
-The 10,422 service × location relationships are not a sitewide link graph.
+The 6,369 service × location relationships are not a sitewide link graph.
 
 They represent opportunity data.
 
 Do not:
 
-* generate 10,422 links
+* generate 6,369 links
 * create giant location indexes
 * create automated "related locations" based only on matrix existence
 * expose unpublished route patterns

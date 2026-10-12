@@ -710,7 +710,7 @@ Service availability by geography should primarily be represented through:
 
 `08-service-location-matrix.md`
 
-The service registry does not need to duplicate all 10,422 geographic relationships.
+The service registry does not need to duplicate all 6,369 geographic relationships.
 
 Prefer:
 

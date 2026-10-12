@@ -13,7 +13,7 @@
  *
  * Usage:
  *   npm run build
- *   node scripts/count-placeholders.mjs [--out=out] [--expect=537:162] [--json]
+ *   node scripts/count-placeholders.mjs [--out=out] [--expect=0:0] [--json]
  *
  * With --expect=<boxes>:<pages> the exit code is 1 if the totals differ.
  */

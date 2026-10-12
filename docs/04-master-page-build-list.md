@@ -352,9 +352,9 @@ Human approval is most important for **large-scale indexation decisions or mater
 The project currently contains approximately:
 
 ```text
-18 canonical services
+11 canonical services
 579 normalized geographic records
-10,422 service × location relationships
+6,369 service × location relationships
 ```
 
 These relationships should be used productively.
@@ -1877,7 +1877,7 @@ Confirmed result:
 
 # 56D. Service + Location Grid (October 6, 2026)
 
-The full residential service x location grid is built, published and indexable (DEC-139, DEC-140). Registry: `data/pages/approved-pages.ts`. Totals now: **204 built, 204 published, 203 indexable** (the one non-indexable record is not a service + location page). `EXPECTED_PAGE_COUNT` is 204 and `EXPECTED_INDEXABLE_COUNT` is 203 in `data/pages/pages.ts`.
+The full residential service x location grid is built, published and indexable (DEC-139, DEC-140). Registry: `data/pages/approved-pages.ts`. Totals now: **198 built, 198 published, 197 indexable** (the one non-indexable record is the contact confirmation page; DEC-142 of Oct 12, 2026 took the total from 204 to 198). `EXPECTED_PAGE_COUNT` is 198 and `EXPECTED_INDEXABLE_COUNT` is 197 in `data/pages/pages.ts`.
 
 | Item | Value |
 |---|---|
