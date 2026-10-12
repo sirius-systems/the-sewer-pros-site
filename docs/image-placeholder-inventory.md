@@ -1,12 +1,12 @@
 # Image placeholder inventory
 
-Regenerated 2026-10-12 after wiring the 12 owner-supplied render images, from a fresh production build (`npm run build`) of the repo, parsing the rendered HTML plus the source registries. `SHOW_IMAGE_SLOTS` is still true, so every slot with no image still draws a box. The original pre-wiring inventory counted 785 boxes. It missed one slot, `slc-services-section`, the image beside the services list on every service + location page (added Oct 5, 2026 in `ad9de4c`; 144 boxes). Corrected baseline: 929 boxes before wiring, 537 remaining. Counts come from `scripts/count-placeholders.mjs`, which counts both box markups (the `Image slot:` box and the dashed `ImagePlaceholder` component).
+Regenerated 2026-10-12 after wiring the 12 owner-supplied render images, from a fresh production build (`npm run build`) of the repo, parsing the rendered HTML plus the source registries. `SHOW_IMAGE_SLOTS` is still true, so every slot with no image still draws a box. The original pre-wiring inventory counted 785 boxes. It missed one slot, `slc-services-section`, the image beside the services list on every service + location page (added Oct 5, 2026 in `ad9de4c`; 144 boxes). Corrected baseline: 929 boxes before wiring, 537 remaining before the Oct 12 photo wiring and **0 remaining after it**. Counts come from `scripts/count-placeholders.mjs`, which counts both box markups (the `Image slot:` box and the dashed `ImagePlaceholder` component).
 
 **Reading the counts.** "Rendered" is the number of placeholder boxes present in the built HTML for that route, the exact count a reviewer sees. "Registered" is the number of slot objects in the source registry. They differ where the template uses existing approved art instead of the slot (hero, cards, final CTA), so that slot draws no box.
 
-Total: **537 placeholder boxes on 162 of 200 built pages** (393 listed in the original tables plus 144 from `slc-services-section`). Pages not listed render no box.
+Total before the Oct 12 photo wiring: 537 placeholder boxes on 162 of 200 built pages (393 listed in the original tables plus 144 from `slc-services-section`). **Current: 0 placeholder boxes on 0 of 200 built pages** (status block below). Pages not listed render no box.
 
-## Status after wiring the 12 render images
+## Status after wiring the 12 render images (historical step; current status is in the next block)
 
 | | Boxes |
 |---|---|
@@ -32,7 +32,7 @@ The 392 filled boxes, by file (these match the counts in [image-shot-list.md](im
 | Fence line and planting beds | 16 |
 | **Total** | **392** |
 
-The 537 remaining boxes belong only to the 16 real-photo files (535 boxes, 144 of them the services-section image assigned to IMG-05) and the 2 existing-asset files (2 boxes: the root-intrusion and standing-water frames on the recurring-backup page). No box from any of the 12 render files remains.
+At that step the 537 remaining boxes belonged only to the 16 real-photo files (535 boxes, 144 of them the services-section image assigned to IMG-05) and the 2 existing-asset files (2 boxes: the root-intrusion and standing-water frames on the recurring-backup page). No box from any of the 12 render files remains.
 
 ## Status after wiring the photo files (Oct 12, 2026)
 

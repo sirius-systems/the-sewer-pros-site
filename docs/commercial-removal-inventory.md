@@ -1,3 +1,5 @@
+> Historical snapshot, written 2026-10-12. Current baselines: 200 built pages, 197 sitemap URLs, 11 service records, 6,369 service + location matrix rows, 10 audience ids, 579 locations, 0 placeholder boxes, 30 image files (929 boxes on the shot list, all wired). See docs/image-placeholder-inventory.md and the decisions log for the current state.
+
 # Commercial removal inventory (Phase 0)
 
 Owner decision, Oct 12, 2026: The Sewer Pros no longer lists commercial services. This inventory is read-only. It records every place commercial or commercial-adjacent wording appears so the removal phases can be done and reverted one at a time.

@@ -2,7 +2,7 @@
 
 Multi-market website for The Sewer Pros: sewer inspection, diagnostics, locating, and cleaning across St. Louis MO, San Diego CA, and Las Vegas NV.
 
-**Status:** Active, partially implemented build. All 70 approved launch pages are built and pass typecheck, lint, and the production build. Not yet launch-ready: the lead form has no submission endpoint, and legacy redirects, analytics activation, and the GPTBot policy are open (see [Launch blockers](#launch-blockers)).
+**Status:** Active, partially implemented build. All 198 approved pages are built and pass typecheck, lint, and the production build. Not yet launch-ready: the lead form has no submission endpoint, and legacy redirects, analytics activation, and the GPTBot policy are open (see [Launch blockers](#launch-blockers)).
 
 ---
 
@@ -11,36 +11,36 @@ Multi-market website for The Sewer Pros: sewer inspection, diagnostics, locating
 This repository is documentation-governed. Before changing anything meaningful, read:
 
 - **[`CLAUDE.md`](./CLAUDE.md)** — operating instructions for anyone (human or AI) working in this repo
-- **[`docs/`](./docs/)** — 23 numbered source-of-truth documents
+- **[`docs/`](./docs/)** — 24 numbered source-of-truth documents (00 to 23)
 
 The single most important rule (build-first model, DEC-090 to DEC-092):
 
 > **Building a page is not the same as indexing it.** Routes are generated only from the approved page registry, and only pages the registry marks `launch` and `indexable` enter the sitemap.
 
-The repository contains 18 canonical services, 579 geographic records, and 10,422 service × location relationships. That data models *opportunity*. It is not a publishing queue. See `docs/08-service-location-matrix.md` §2.
+The repository contains 11 canonical services, 579 geographic records, and 6,369 service × location relationships. That data models *opportunity*. It is not a publishing queue. See `docs/08-service-location-matrix.md` §2.
 
 ---
 
 ## Current implementation status
 
-Verified 2026-09-21 against commit `5b9586a` on `main`.
+Counts re-derived on 2026-10-12 from the production build of `main`.
 
 | Area | State |
 |---|---|
-| Approved page records | 70, all `launch` and `indexable: true`; none gated, noindex, or deferred |
-| Built routes | 70 of 70 (every approved record has content and renders) |
-| Sitemap | 70 URLs, identical to the approved set |
+| Approved page records | 198; 197 `launch` and `indexable: true`, and the contact confirmation page is noindex; none gated or deferred |
+| Built routes | 198 of 198 (every approved record has content and renders) |
+| Sitemap | 197 URLs, identical to the indexable approved set |
 | Robots | `User-Agent: *` allow all, `OAI-SearchBot` allow, sitemap declared. No GPTBot directive (PENDING-011) |
-| Noindex output | Only the framework 404 pages |
-| Build output | 73 HTML files in `out/` (70 pages, `/404/`, `/_not-found/`, `404.html`) |
-| Structured data | JSON-LD on all 70 pages: Organization and WebSite on every page; BreadcrumbList on 69; WebPage on 60; Service on 15; Article on 7; CollectionPage on 8; FAQPage on the home page only |
-| Lead form | Built and rendered on 7 templates. **Submission is a stub: nothing is sent** (PENDING-018) |
+| Noindex output | The contact confirmation page and the framework 404 pages |
+| Build output | 201 HTML files in `out/` (198 pages, `/404/`, `/_not-found/`, `404.html`) |
+| Structured data | JSON-LD on all 197 indexable pages: Organization and WebSite on every page; BreadcrumbList on 196; WebPage on 185; Service on 170; Article on 7; CollectionPage on 7; ContactPage on 4; AboutPage on 1; FAQPage on 195 |
+| Lead form | Built and rendered on six templates. **Submission is a stub: nothing is sent** (PENDING-018) |
 | Analytics | GA4 loader and typed events built; inert until `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set |
 | Redirects | None implemented (no `_redirects` file); legacy inventory open (PENDING-010) |
 
-Page families built: 8 core and hub, 10 service, 3 market, 16 location, 14 service + location, 6 audience, 2 comparison, 5 resource. Per-page detail is in `docs/04-master-page-build-list.md` §56.
+Page families built: 8 core and hub, 10 service, 3 market, 3 market contact, 16 location, 144 service + location, 6 audience, 2 comparison, 5 resource, and the contact confirmation page (198 in all). Per-page detail is in `docs/04-master-page-build-list.md` §56.
 
-### Validation (2026-09-21)
+### Validation (2026-10-12)
 
 `npm run typecheck`, `npm run lint`, and `npm run build` all exit 0. `npm run check` is the composition of those three.
 
@@ -112,15 +112,15 @@ public/       Static assets
 types/        Shared TypeScript types
 ```
 
-The intended structure is specified in `docs/02-nextjs-technical-architecture.md` §10. There is no `scripts/` directory yet.
+The intended structure is specified in `docs/02-nextjs-technical-architecture.md` §10. `scripts/` holds the page verification scripts, `count-placeholders.mjs` (image placeholder counts), `report-unfilled-slots.mjs` (build report) and the removal audit script.
 
 ### `data/`
 
 | Path | Contents |
 |---|---|
-| `data/services/master-service-registry.json` | 18 canonical services |
+| `data/services/master-service-registry.json` | 11 canonical services |
 | `data/locations/master-location-registry.json` | 579 geographic records |
-| `data/matrices/service-location-master-matrix.json` | 10,422 relationships |
+| `data/matrices/service-location-master-matrix.json` | 6,369 relationships |
 | `data/matrices/service-location-master-matrix.csv` | Same, spreadsheet form |
 
 These are **research and validation inputs**, not route-generation inputs. Route generation consumes the approved page registry derived from `docs/04-master-page-build-list.md`. See `docs/02` §21 and §46.
@@ -129,7 +129,7 @@ These are **research and validation inputs**, not route-generation inputs. Route
 
 ## Launch inventory
 
-70 approved page records, all built and all indexable. The five Las Vegas pages were gated under DEC-063 and released by DEC-080 (2026-08-17). One further approved record, `svc-independent-sewer-second-opinion`, is Phase 2 and is not built or in the registry. See `docs/04-master-page-build-list.md` §56.
+198 approved page records, all built; 197 are indexable and the contact confirmation page is noindex. The five Las Vegas pages were gated under DEC-063 and released by DEC-080 (2026-08-17). One further approved record, `svc-independent-sewer-second-opinion`, is Phase 2 and is not built or in the registry. See `docs/04-master-page-build-list.md` §56.
 
 ---
 

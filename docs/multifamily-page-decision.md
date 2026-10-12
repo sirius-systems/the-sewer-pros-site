@@ -1,3 +1,5 @@
+> Historical snapshot, written 2026-10-12. Current baselines: 200 built pages, 197 sitemap URLs, 11 service records, 6,369 service + location matrix rows, 10 audience ids, 579 locations, 0 placeholder boxes, 30 image files (929 boxes on the shot list, all wired). See docs/image-placeholder-inventory.md and the decisions log for the current state.
+
 # Multifamily page decision
 
 Date: Oct 12, 2026. Question: should multifamily (duplexes, fourplexes and residential apartment buildings) get its own audience page, or stay as a section on `/for/property-managers/`?

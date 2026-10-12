@@ -1,6 +1,6 @@
 # Shoot day schedule
 
-Built from [image-shot-list.md](image-shot-list.md) and [photographer-shot-sheet.md](photographer-shot-sheet.md). Counts are from `scripts/count-placeholders.mjs` on the production build of Oct 12, 2026: **537 boxes on 162 pages** are still placeholders.
+Built from [image-shot-list.md](image-shot-list.md) and [photographer-shot-sheet.md](photographer-shot-sheet.md). Counts are from `scripts/count-placeholders.mjs` on the production build of Oct 12, 2026: **537 boxes on 162 pages** were still placeholders when this schedule was written; all are now wired and 0 remain.
 
 The remaining 18 files are 16 real photographs (535 boxes) and 2 existing assets (2 boxes). Every file below is P1. Delivery size for 4:3 files is 1448 x 1086 px WebP; the one 16:9 file is 1600 x 900 px. Deliver the original RAW or full-size JPEG as well, with EXIF and GPS stripped from the WebP.
 
@@ -122,4 +122,4 @@ Ratio change for IMG-25 (done Oct 12, 2026): the slot was changed from 7:4 to 4:
 
 ## Final boxes-remaining
 
-537 at the start; 2 after all 16 real-photo files; **0** after the 2 existing assets. This is the running total only; the actual figure falls when each delivered file is wired into its slot and the site is rebuilt. Re-run `scripts/count-placeholders.mjs` on the build to confirm.
+537 at the start (when this schedule was written); 2 after all 16 real-photo files; **0** after the 2 existing assets. This is the running total only; the actual figure falls when each delivered file is wired into its slot and the site is rebuilt. Re-run `scripts/count-placeholders.mjs` on the build to confirm.
