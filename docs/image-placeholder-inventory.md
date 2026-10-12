@@ -34,6 +34,26 @@ The 392 filled boxes, by file (these match the counts in [image-shot-list.md](im
 
 The 537 remaining boxes belong only to the 16 real-photo files (535 boxes, 144 of them the services-section image assigned to IMG-05) and the 2 existing-asset files (2 boxes: the root-intrusion and standing-water frames on the recurring-backup page). No box from any of the 12 render files remains.
 
+## Status after wiring the photo files (Oct 12, 2026)
+
+**24 placeholder boxes remain on 24 of 200 built pages.** Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 513 (14 photo files, 3 of them inferred matches, plus the 2 existing assets, wired now) + 24 (IMG-12, held). Counted by page type: service + location 16, location hub 8, core service 0, so 24 boxes on 24 pages.
+
+| | Boxes |
+|---|---|
+| Corrected baseline before any wiring | 929 |
+| Filled by the 12 renders (earlier) | 392 |
+| Filled by 14 photo files and 2 existing assets (now) | 513 |
+| **Remaining (IMG-12, held for a privacy flag)** | **24** |
+
+| Market | Location hub | Service + location | Core service | Total | Pages affected |
+|---|---|---|---|---|---|
+| Las Vegas | 4 | 4 | 0 | 8 | 8 |
+| San Diego | 4 | 7 | 0 | 11 | 11 |
+| St. Louis | 0 | 5 | 0 | 5 | 5 |
+| **Total** | **8** | **16** | **0** | **24** | **24** |
+
+What is left: the `svc-drain` card on the 8 hubs that draw service cards (Henderson, Las Vegas, North Las Vegas, Summerlin, Chula Vista, Escondido, Oceanside, San Marcos), and the "Drain machine at a floor or tub drain" problem card on the 16 drain-cleaning service + location pages. Sections 1 to 8 below list the boxes as they stood before the Oct 12 photo wiring.
+
 ## 1. Location hub pages (16)
 
 | Page type | Market | Route | Source file : lines | Registered | With src | No src | Rendered as box | Slots with no src: id (role): alt, or shot brief |

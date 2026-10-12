@@ -21,6 +21,12 @@ import type { CameraImageSlotSpec } from './camera-inspection-images'
  *
  * `alt` is the draft alt text for the REAL photograph. It is emitted only when
  * the file exists and has been approved; a placeholder carries no alt text.
+ * ⚠ UPDATE Oct 12, 2026: the slots below are filled with owner-supplied rendered
+ * scenes (the same provenance as `RENDER_IMAGE_SOURCE` in `lib/image-slots.ts`), not job
+ * photographs, so the "real photo only" rule above is not met yet. Their alt text
+ * describes only what is visible. Replace each file with a real photograph when
+ * one exists.
+ *
  * Keys are prefixed `recurring-` so they never collide with another hub's key.
  */
 const DIR = '/images/services/recurring-sewer-backup-diagnosis/'
@@ -34,10 +40,10 @@ export interface RecurringImageSlotSpec extends CameraImageSlotSpec {
 export const recurringImageSlots = {
   'recurring-hero': {
     preferred: `${DIR}${NAME}-hero-cleanout-16x9.webp`,
-    alt: 'Technician setting up a sewer camera at a residential cleanout',
+    alt: 'A sewer camera reel and open monitor on a sidewalk beside an open exterior cleanout in front of a house',
     caption: '',
-    width: 1600,
-    height: 900,
+    width: 1360,
+    height: 765,
     kind: 'photo',
     subject:
       'A technician at an exterior cleanout with camera reel and monitor set up at a residential property.',
@@ -49,11 +55,11 @@ export const recurringImageSlots = {
     },
   },
   'recurring-explainer': {
-    preferred: `${DIR}${NAME}-explainer-monitor-4x3.webp`,
-    alt: 'Technician reviewing sewer camera footage during a recurring-backup diagnosis',
+    preferred: '/images/shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp',
+    alt: 'Sewer camera reel and an open monitor showing the inside of a pipe, set on a lawn between two houses',
     caption: '',
-    width: 1448,
-    height: 1086,
+    width: 1600,
+    height: 1200,
     kind: 'photo',
     subject: 'A technician reviewing sewer camera footage on a monitor.',
     requiresRelease: true,
@@ -79,11 +85,11 @@ export const recurringImageSlots = {
     },
   },
   'recurring-limits': {
-    preferred: `${DIR}${NAME}-limits-waterline-footage-7x4.webp`,
+    preferred: `${DIR}${NAME}-limits-waterline-footage-4x3.webp`,
     alt: 'Camera view of standing water inside a sewer line',
     caption: '',
-    width: 1400,
-    height: 800,
+    width: 1448,
+    height: 1086,
     kind: 'footage-still',
     subject:
       'A real frame showing standing water in a line, where the waterline limits the view.',
@@ -91,15 +97,15 @@ export const recurringImageSlots = {
     pending: {
       label:
         'A real frame showing standing water in a line, where the waterline limits the view',
-      aspect: '7/4',
+      aspect: '4/3',
     },
   },
   'recurring-process-access': {
-    preferred: `${DIR}${NAME}-process-cleanout-access-4x3.webp`,
-    alt: 'Camera cable entering an open sewer cleanout',
+    preferred: '/images/shared/cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp',
+    alt: 'A flexible cable entering an open threaded cleanout fitting beside a house foundation',
     caption: '',
-    width: 1448,
-    height: 1086,
+    width: 1600,
+    height: 1200,
     kind: 'photo',
     subject: 'An open cleanout with a camera cable or cleaning hose entering it.',
     requiresRelease: true,
@@ -109,11 +115,11 @@ export const recurringImageSlots = {
     },
   },
   'recurring-process-locate': {
-    preferred: `${DIR}${NAME}-process-locate-receiver-4x3.webp`,
-    alt: 'Technician using a locating receiver above a buried sewer line',
+    preferred: '/images/shared/equipment/the-sewer-pros-technician-locator-receiver-yard-paint-marks-4x3.webp',
+    alt: 'A yellow handheld locator receiver standing on a lawn beside a sidewalk with orange and blue paint marks',
     caption: '',
-    width: 1448,
-    height: 1086,
+    width: 1600,
+    height: 1200,
     kind: 'photo',
     subject:
       'A technician holding a locating receiver over a yard or driveway during a locate.',
@@ -125,11 +131,11 @@ export const recurringImageSlots = {
     },
   },
   'recurring-records': {
-    preferred: `${DIR}${NAME}-records-video-and-findings-4x3.webp`,
-    alt: 'Inspection video and written findings from a sewer diagnosis',
+    preferred: '/images/shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp',
+    alt: 'A tablet showing a blurred inspection report with a pipe video, beside a printed report on a clipboard on a table',
     caption: '',
-    width: 1448,
-    height: 1086,
+    width: 1600,
+    height: 1200,
     kind: 'photo',
     subject:
       'A monitor or tablet showing inspection video beside written findings, with customer details removed.',

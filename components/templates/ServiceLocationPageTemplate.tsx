@@ -44,7 +44,7 @@ import {
 } from '@/content/pages/home-service-cards'
 import { FaqGrouped } from '@/components/sections/service-v2'
 import { getService } from '@/data/services'
-import { resolveSlotImage } from '@/lib/image-slots'
+import { RENDER_IMAGE_SOURCE, resolveSlotImage } from '@/lib/image-slots'
 import { requireLocation } from '@/data/locations'
 import { getMarketContent } from '@/content'
 import { getMarket, marketOperatingDetail } from '@/data/markets/markets'
@@ -154,8 +154,10 @@ function splitBodySections(body: ReactNode):
 const SERVICES_IMAGE = resolveSlotImage({
   id: 'slc-services-section',
   ratio: '4:3',
-  alt: 'Technician and inspection equipment at a residential property',
+  alt: 'Sewer camera reel and an open monitor showing the inside of a pipe, set on a lawn between two houses',
   shot: 'Technician with inspection equipment at a residential property, no identifiable address or people',
+  src: '/images/shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp',
+  source: RENDER_IMAGE_SOURCE,
 })
 
 export function ServiceLocationPageTemplate({
