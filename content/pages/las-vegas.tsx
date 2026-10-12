@@ -1020,6 +1020,29 @@ export const lasVegasMarketContent: MarketPageContent = {
         label: 'Explore Preventative Maintenance',
       },
     },
+    {
+      pageId: id('aud-property-managers'),
+      category: 'Property solutions',
+      icon: 'building-2',
+      accent: 'blue',
+      description:
+        'Sewer inspection, cleaning, and hydro jetting for rental homes, multifamily residential properties, and the people who manage them.',
+      linksHeading: 'Services for property managers',
+      links: [
+        {
+          pageId: id('svc-sewer-camera-inspection'),
+          label: 'Sewer Camera Inspection',
+        },
+        {
+          pageId: id('svc-hydro-jetting'),
+          label: 'Hydro Jetting',
+        },
+      ],
+      secondaryLink: {
+        pageId: id('aud-property-managers'),
+        label: 'Explore Property Manager Services',
+      },
+    },
   ],
   /*
     ⚠ THE HOME PAGE'S APPROVED SECTION, VERBATIM, AS OF 2026-09-23.

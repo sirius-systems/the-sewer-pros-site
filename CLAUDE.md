@@ -326,6 +326,8 @@ Potential strategic themes include:
 * sewer cleaning
 * hydro jetting
 * line locating
+* property management (residential)
+* multifamily (residential)
 
 Municipality-specific sewer lateral rules must be verified individually.
 
@@ -347,6 +349,8 @@ Do not fabricate:
 
 Organic content may still target legitimate San Diego service demand.
 
+Residential-focused opportunities include property management (residential) and multifamily (residential).
+
 ---
 
 ## Las Vegas, Nevada
@@ -362,6 +366,8 @@ Do not fabricate:
 * Las Vegas GBP
 
 Organic content may still target legitimate Las Vegas service demand.
+
+Residential-focused opportunities include property management (residential) and multifamily (residential).
 
 ---
 

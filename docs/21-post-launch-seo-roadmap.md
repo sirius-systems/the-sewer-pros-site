@@ -799,6 +799,8 @@ Priority growth areas may include:
 Independent Inspection
 Sewer Laterals
 Pre-Purchase Inspection
+Property Management (residential)
+Multifamily (residential)
 Municipal/Local Resources
 Selected Nearby Locations
 ```
@@ -857,7 +859,8 @@ Real Estate Agents
 Independent Second Opinions
 Hydro Jetting
 Selected Communities
-Property Management
+Property Management (residential)
+Multifamily (residential)
 ```
 
 ---
@@ -904,7 +907,8 @@ Sewer Diagnostics
 Hydro Jetting
 Drain Cleaning
 Line Locating
-Property Management
+Property Management (residential)
+Multifamily (residential)
 Selected Local Coverage
 ```
 
@@ -993,6 +997,8 @@ The objective is to make The Sewer Pros easier for agents to recommend.
 ---
 
 # 45. Property Management Expansion
+
+Property management and multifamily content is residential-focused: rental homes, landlords, and apartment or multifamily residential properties. It applies in all three markets.
 
 Potential content:
 

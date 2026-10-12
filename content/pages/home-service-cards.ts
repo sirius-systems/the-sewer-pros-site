@@ -34,9 +34,21 @@
  */
 
 import type { CardImage, PageId } from '@/types'
-import type { ServiceCard } from './service-cards'
 
 const id = (value: string): PageId => value as PageId
+
+/**
+ * One card in the services band.
+ *
+ * Structurally the element type of both `HomePageContent['services']`
+ * and `MarketPageContent['services']`; TypeScript matches it
+ * structurally at every call site.
+ */
+export interface ServiceCard {
+  pageId: PageId
+  description?: string
+  image?: CardImage
+}
 
 /**
  * The approved section's heading and intro paragraph.

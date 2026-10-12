@@ -4403,9 +4403,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           label: 'Recurring Sewer Backup Diagnosis',
         },
       ],
-      images: {
-        hero: '/images/services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp',
-      },
+      // TODO(real image): this page uses the template's default hero until a real
+      // 16:9 hero photo exists at
+      // /images/services/recurring-sewer-backup-diagnosis/the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp
+      // (see the `recurring-hero` image slot). Then set `images: { hero: '<that path>' }`.
       hero: {
         scope: [
           'Accessible residential sewer and drain lines',
