@@ -37,6 +37,7 @@
  * for the reader's own advisers, and the pages say so.
  */
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type { AudiencePageContent, PageId } from '@/types'
 
 const id = (value: string): PageId => value as PageId
@@ -447,7 +448,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
   /* =============================================== property managers -- */
   [id('aud-property-managers')]: {
     metaDescription:
-      'Explore sewer inspection, cleaning, diagnostics, and documentation services for property managers handling recurring sewer and drain concerns.',
+      'Sewer inspection, cleaning, diagnostics, and documentation for property managers and owners of multifamily homes handling recurring sewer and drain concerns.',
     hero: {
       eyebrow: 'For property managers',
       title: 'Stop absorbing the same sewer call every few months',
@@ -515,6 +516,82 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
           That is a planning
           constraint rather than an afterthought.
         </p>
+
+        <h2 id="multifamily">Multifamily homes: duplexes, fourplexes and residential apartment buildings</h2>
+        <p>
+          Owners and managers of multifamily homes ask the same question as
+          anyone with a recurring backup: where does it start, and what can be
+          shown for it? The answers below apply to duplexes, fourplexes and
+          residential apartment buildings.
+        </p>
+
+        <h3>When several units share one sewer line, how do you find where a backup starts?</h3>
+        <p>
+          Start with a sewer camera inspection of the shared lateral or main
+          line. The camera records video of the accessible line, so the place
+          where a restriction sits can be seen rather than guessed at.
+        </p>
+        <p>
+          In a multifamily home, more than one unit can drain to the same
+          lateral or main line, and a backup that shows up in one unit may
+          start further along the line than the unit that notices it. A camera
+          inspection documents what is visible in the accessible part of the
+          line, such as roots, an offset joint or buildup, and where along the
+          line it is. That helps separate a problem in one unit&rsquo;s fixture
+          from a condition in the line the units share.
+        </p>
+        <p>
+          Next step: read how a{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+            sewer camera inspection
+          </ApprovedInlineLink>{' '}
+          works, or how{' '}
+          <ApprovedInlineLink pageId={id('svc-recurring-sewer-backup-diagnosis')}>
+            recurring sewer backup diagnosis
+          </ApprovedInlineLink>{' '}
+          looks for the cause of a backup that keeps coming back.
+        </p>
+
+        <h3>What can be shared with owners, managers and buyers?</h3>
+        <p>
+          The inspection video and the written findings. When a camera is used,
+          you receive both, and either can go to an owner, a manager or a buyer
+          who needs to see the same evidence.
+        </p>
+        <p>
+          The findings describe what was visible in the accessible line. They
+          are not a repair recommendation: The Sewer Pros does not perform
+          sewer repairs or replacements, so the findings stay separate from a
+          repair sale.
+        </p>
+        <p>
+          Next step: see how{' '}
+          <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
+            an independent inspection differs from a repair company&rsquo;s
+          </ApprovedInlineLink>
+          .
+        </p>
+
+        <h3>Is there a pre-purchase sewer inspection for a multi-unit home?</h3>
+        <p>
+          Yes. A pre-purchase sewer inspection documents the visible condition
+          of the accessible sewer line before you close, and a multi-unit home
+          has the same need as a single-family one.
+        </p>
+        <p>
+          In a multifamily home, the line that serves several units is the part
+          worth seeing on video before closing. The video and written findings
+          give a buyer, and the people advising the buyer, the same documented
+          picture of what the camera could reach.
+        </p>
+        <p>
+          Next step: read about a{' '}
+          <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>
+            pre-purchase sewer inspection
+          </ApprovedInlineLink>
+          , or the page for{' '}
+          <ApprovedInlineLink pageId={id('aud-home-buyers')}>home buyers</ApprovedInlineLink>.
+        </p>
       </>
     ),
     services: [
@@ -547,6 +624,56 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
             The objective. Clearing addresses the blockage; diagnosis addresses
             why it forms. That needs inspection and usually locating, and
             produces a different kind of answer.
+          </p>
+        ),
+      },
+      {
+        question: 'Which multifamily properties does the multifamily section cover?',
+        answer: (
+          <p>
+            Duplexes, fourplexes and residential apartment buildings. Property
+            managers of rental homes are covered by the rest of this page.
+          </p>
+        ),
+      },
+      {
+        question: 'Who receives the inspection video and written findings?',
+        answer: (
+          <p>
+            You do. When a camera is used, the inspection video and the written
+            findings come to you, and you can share them with an owner, a
+            manager or a buyer.
+          </p>
+        ),
+      },
+      {
+        question: 'Can a camera inspection show where a recurring backup starts on a shared line?',
+        answer: (
+          <p>
+            It can show conditions in the accessible part of the line, such as
+            roots, an offset joint or buildup, and where along the line they
+            are. It cannot show parts of the line it cannot reach, and the
+            findings document what was visible; they do not by themselves
+            establish why a backup recurs.
+          </p>
+        ),
+      },
+      {
+        question: 'Do you repair or replace sewer lines in multifamily homes?',
+        answer: (
+          <p>
+            No. The Sewer Pros inspects, diagnoses, locates and cleans. It does
+            not perform repairs or replacements.
+          </p>
+        ),
+      },
+      {
+        question: 'Is a pre-purchase sewer inspection available for a duplex or fourplex?',
+        answer: (
+          <p>
+            Yes. A pre-purchase sewer inspection documents the visible condition
+            of the accessible sewer line before closing, and the same inspection
+            applies to a multi-unit home.
           </p>
         ),
       },

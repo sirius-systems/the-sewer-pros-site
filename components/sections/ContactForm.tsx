@@ -119,7 +119,7 @@ const ISSUES: readonly Issue[] = [
   {
     value: 'multi-unit',
     label: 'Rental or multifamily property',
-    learn: { href: '/for/property-managers/', label: 'Sewer service for property managers' },
+    learn: { href: '/for/property-managers/#multifamily', label: 'Multifamily homes and property managers' },
   },
   {
     value: 'agent-inspector',
