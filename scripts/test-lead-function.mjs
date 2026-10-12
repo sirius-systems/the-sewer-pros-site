@@ -21,6 +21,8 @@ import { spawn } from 'node:child_process'
 const repo = process.cwd()
 const FAKE_TOKEN = 'pit-FAKE-TEST-TOKEN-0000'
 const FAKE_LOCATION = 'LOCFAKETEST0000'
+const FAKE_TS_SECRET = '0xFAKE-TURNSTILE-SECRET-0000'
+const GOOD_TS_TOKEN = 'ts-token-VALID-1111'
 const MOCK_PORT = 5990
 const FN_PORT = 8799
 const PHONE_DIGITS = '3145550199'
@@ -37,17 +39,24 @@ put('functions/api/lead.ts', fs.readFileSync(path.join(repo, 'functions/api/lead
 put('lib/forms/lead-server.ts', fs.readFileSync(path.join(repo, 'lib/forms/lead-server.ts'), 'utf8'))
 put('lib/forms/sms-consent.ts', fs.readFileSync(path.join(repo, 'lib/forms/sms-consent.ts'), 'utf8'))
 put('public/index.html', '<!doctype html><title>stub</title>')
-put('.dev.vars', `GHL_PRIVATE_INTEGRATION_TOKEN=${FAKE_TOKEN}\nGHL_LOCATION_ID=${FAKE_LOCATION}\nGHL_API_BASE=http://127.0.0.1:${MOCK_PORT}\n`)
+put('.dev.vars', `GHL_PRIVATE_INTEGRATION_TOKEN=${FAKE_TOKEN}\nGHL_LOCATION_ID=${FAKE_LOCATION}\nGHL_API_BASE=http://127.0.0.1:${MOCK_PORT}\nTURNSTILE_SECRET_KEY=${FAKE_TS_SECRET}\nTURNSTILE_VERIFY_URL=http://127.0.0.1:${MOCK_PORT}/turnstile/v0/siteverify\n`)
 
 /* ---- mock GHL ---- */
 let received = []
+let tsCalls = []
 let mode = 'ok'
 const mock = http.createServer((req, res) => {
   let body = ''
   req.on('data', (c) => (body += c))
   req.on('end', () => {
-    received.push({ method: req.method, url: req.url, headers: req.headers, body: body === '' ? undefined : JSON.parse(body) })
     res.setHeader('Content-Type', 'application/json')
+    if (req.url === '/turnstile/v0/siteverify') {
+      const b = JSON.parse(body)
+      tsCalls.push(b)
+      if (mode === 'ts-error') return res.writeHead(500).end('{}')
+      return res.writeHead(200).end(JSON.stringify({ success: b.secret === FAKE_TS_SECRET && b.response === GOOD_TS_TOKEN }))
+    }
+    received.push({ method: req.method, url: req.url, headers: req.headers, body: body === '' ? undefined : JSON.parse(body) })
     if (req.url === '/contacts/upsert') {
       const hasFields = Array.isArray(JSON.parse(body).customFields)
       if (mode === 'server-error') return res.writeHead(500).end('{"message":"RAW GHL ERROR SECRET-TEXT"}')
@@ -101,6 +110,7 @@ const lead = (over = {}) => ({
   smsConsentVersion: 'sms-consent-v1',
   formType: 'contact_request',
   spRef: '',
+  turnstileToken: GOOD_TS_TOKEN,
   formOpenedAt: Date.now() - 60000,
   ...over,
 })
@@ -114,6 +124,7 @@ const post = async (body, { origin = base, ip, ctype = 'application/json', raw }
 }
 const reset = () => {
   received = []
+  tsCalls = []
   mode = 'ok'
 }
 const upsert = () => received.find((r) => r.url === '/contacts/upsert')
@@ -181,6 +192,34 @@ reset()
 r = await post(lead({ formOpenedAt: Date.now() - 2300 }))
 check('2.3 seconds is accepted', r.status === 200 && received.some((x) => x.url === '/contacts/upsert'))
 
+// Cloudflare Turnstile.
+reset()
+r = await post(lead())
+check('valid Turnstile token: lead accepted and sent to GHL', r.status === 200 && received.some((x) => x.url === '/contacts/upsert') && tsCalls.length === 1)
+check('Turnstile check sends the server secret and the visitor token (and the visitor ip)', tsCalls[0]?.secret === FAKE_TS_SECRET && tsCalls[0]?.response === GOOD_TS_TOKEN && typeof tsCalls[0]?.remoteip === 'string')
+check('the Turnstile token is not forwarded to GHL', !JSON.stringify(received).includes(GOOD_TS_TOKEN))
+reset()
+r = await post(lead({ turnstileToken: 'ts-token-BAD' }))
+check('wrong Turnstile token: refused (403), nothing sent to GHL', r.status === 403 && r.text === '{"ok":false}' && received.length === 0 && tsCalls.length === 1, r.text)
+reset()
+r = await post(lead({ turnstileToken: '' }))
+check('missing Turnstile token: refused (403) without calling Cloudflare, nothing sent to GHL', r.status === 403 && received.length === 0 && tsCalls.length === 0)
+reset()
+const noTs = lead()
+delete noTs.turnstileToken
+r = await post(noTs)
+check('payload without the token field: refused (403), nothing sent to GHL', r.status === 403 && received.length === 0)
+reset()
+mode = 'ts-error'
+r = await post(lead())
+check('Turnstile service error: generic failure (502), nothing sent to GHL', r.status === 502 && r.text === '{"ok":false}' && received.length === 0)
+reset()
+r = await post(lead({ spRef: 'filled by a bot', turnstileToken: '' }))
+check('direct honeypot post is dropped before the Turnstile check (fake success, no calls)', r.status === 200 && r.text === '{"ok":true}' && tsCalls.length === 0 && received.length === 0)
+reset()
+r = await post(lead({ formOpenedAt: Date.now() - 300 }))
+check('too-fast submit gets the retry reply without using up the Turnstile token', r.status === 429 && r.text === '{"ok":false,"retry":true}' && tsCalls.length === 0)
+
 reset()
 r = await post(lead(), { origin: 'http://evil.example' })
 check('other origin rejected (403)', r.status === 403 && received.length === 0)
@@ -234,7 +273,7 @@ check('GET refused (405)', g.status === 405)
 
 await new Promise((r) => setTimeout(r, 500))
 const all = logs
-check('logs hold no token, location id, phone number or name', ![FAKE_TOKEN, FAKE_LOCATION, PHONE_DIGITS, '555-0199', FIRST, LAST, 'Plain text note', 'Bearer'].some((s) => all.includes(s)))
+check('logs hold no token, location id, Turnstile secret or token, phone number or name', ![FAKE_TOKEN, FAKE_LOCATION, FAKE_TS_SECRET, GOOD_TS_TOKEN, PHONE_DIGITS, '555-0199', FIRST, LAST, 'Plain text note', 'Bearer'].some((s) => all.includes(s)))
 check('logs hold request ids and status codes', /"requestId"/.test(all) && /"status":200/.test(all))
 
 console.log(`\n${pass} passed, ${fail} failed`)
