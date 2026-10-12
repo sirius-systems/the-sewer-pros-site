@@ -38,10 +38,15 @@ import { SMS_CONSENT_VERSION } from './sms-consent'
 export interface LeadEnv {
   GHL_PRIVATE_INTEGRATION_TOKEN?: string
   GHL_LOCATION_ID?: string
+  /** Cloudflare Turnstile secret key. Server only. Without it the function refuses every lead. */
+  TURNSTILE_SECRET_KEY?: string
+  /** Test hook only: points the Turnstile check at a mock server. Leave unset in production. */
+  TURNSTILE_VERIFY_URL?: string
   /** Test hook only: points the GHL calls at a mock server. Leave unset in production. */
   GHL_API_BASE?: string
 }
 
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
 const GHL_BASE = 'https://services.leadconnectorhq.com'
 const GHL_VERSION = '2021-07-28'
 
@@ -114,6 +119,7 @@ const STRING_LIMITS: Record<string, number> = {
   smsConsentVersion: 40,
   formType: 40,
   spRef: 200,
+  turnstileToken: 2100,
 }
 const BOOLEAN_FIELDS = ['smsNonMarketingConsent', 'smsMarketingConsent'] as const
 const NUMBER_FIELDS = ['formOpenedAt'] as const
@@ -132,6 +138,8 @@ export interface Lead {
   smsNonMarketingConsent: boolean
   smsMarketingConsent: boolean
   smsConsentVersion: string
+  /** Cloudflare Turnstile response token from the browser; checked by the handler, never stored. */
+  turnstileToken: string
   details: { label: string; value: string }[]
 }
 
@@ -240,6 +248,7 @@ export function validateLead(input: unknown, nowMs: number): Validated {
       smsNonMarketingConsent: body.smsNonMarketingConsent === true,
       smsMarketingConsent: body.smsMarketingConsent === true,
       smsConsentVersion: consentVersion,
+      turnstileToken: str.turnstileToken,
       details,
     },
   }
@@ -341,6 +350,29 @@ function reply(ok: boolean, status: number): Response {
   })
 }
 
+/** Cloudflare siteverify. 'error' means the check itself could not be completed. */
+async function verifyTurnstile(
+  fetchImpl: typeof fetch,
+  url: string,
+  secret: string,
+  token: string,
+  ip: string,
+): Promise<'ok' | 'fail' | 'error'> {
+  try {
+    const res = await fetchImpl(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, response: token, ...(ip !== 'unknown' && { remoteip: ip }) }),
+      signal: AbortSignal.timeout(5000),
+    })
+    if (!res.ok) return 'error'
+    const json = (await res.json()) as { success?: unknown }
+    return json.success === true ? 'ok' : 'fail'
+  } catch {
+    return 'error'
+  }
+}
+
 function locationIdFor(env: LeadEnv, marketKey: MarketKey): string | undefined {
   // Per-market routing placeholder: see LEAD_ROUTING. Everything uses the default location today.
   void marketKey
@@ -388,6 +420,21 @@ export async function handleLead(request: Request, env: LeadEnv, deps: HandlerDe
     })
   }
   const lead = result.lead
+
+  // Cloudflare Turnstile. Runs after the cheap spam checks so a retry reply never uses up the token.
+  // Fails closed: with no secret configured the function refuses the lead instead of skipping the check.
+  const turnstileSecret = env.TURNSTILE_SECRET_KEY
+  if (!turnstileSecret) return done(false, 500, 'not-configured')
+  if (lead.turnstileToken === '') return done(false, 403, 'turnstile-missing')
+  const verdict = await verifyTurnstile(
+    fetchImpl,
+    env.TURNSTILE_VERIFY_URL ?? TURNSTILE_VERIFY_URL,
+    turnstileSecret,
+    lead.turnstileToken,
+    ip,
+  )
+  if (verdict === 'fail') return done(false, 403, 'turnstile-failed')
+  if (verdict === 'error') return done(false, 502, 'turnstile-error')
 
   const token = env.GHL_PRIVATE_INTEGRATION_TOKEN
   const locationId = locationIdFor(env, lead.marketKey)

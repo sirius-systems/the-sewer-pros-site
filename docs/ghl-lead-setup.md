@@ -11,6 +11,7 @@ Lead form in the browser (ContactForm or SurveyLeadForm)
        logic in lib/forms/lead-server.ts
        origin check, content-type check, per-IP rate limit, size limit
        validation, honeypot and time-to-submit checks
+       Cloudflare Turnstile token check (siteverify), after the cheap spam checks
   -> GHL  POST /contacts/upsert        (create or update by phone or email)
   -> GHL  POST /contacts/{id}/tags     (adds tags; never overwrites tags)
   -> GHL  POST /contacts/{id}/notes    (free-text details)
@@ -73,7 +74,18 @@ A honeypot field, a 2 second minimum time-to-submit and a per-IP limit (5 per 10
 
 The timer starts at the **first interaction** with the form (pointer down, key press or input, including autofill), not at page load, so reading the page first does not count. If a form is somehow submitted with no recorded interaction, the time of the submit is used and the visitor gets the retry notice once.
 
- The honeypot input is named `sp_ref` (label "Reference code", payload key `spRef`). The name is deliberately neutral so browsers and password managers do not autofill it; it is not a website, url, company, address, phone, email or name variant. It carries `autocomplete="off"`, `tabindex="-1"`, `data-lpignore="true"`, `data-1p-ignore="true"`, sits in a wrapper with `aria-hidden="true"`, and is positioned off-screen (absolute, far left, zero size, overflow hidden) rather than `display:none`, which some bots skip. Cloudflare Turnstile (needs site and secret keys from the dashboard) or a Cloudflare rate limiting rule is the follow-up.
+ The honeypot input is named `sp_ref` (label "Reference code", payload key `spRef`). The name is deliberately neutral so browsers and password managers do not autofill it; it is not a website, url, company, address, phone, email or name variant. It carries `autocomplete="off"`, `tabindex="-1"`, `data-lpignore="true"`, `data-1p-ignore="true"`, sits in a wrapper with `aria-hidden="true"`, and is positioned off-screen (absolute, far left, zero size, overflow hidden) rather than `display:none`, which some bots skip. A Cloudflare rate limiting rule on `/api/lead` is still an optional follow-up.
+
+### Cloudflare Turnstile
+
+Both lead forms (`ContactForm`, `SurveyLeadForm`) carry a Turnstile widget (`lib/forms/turnstile.ts`). The **site key** is public and is a constant in that file. The **secret key** is the server variable `TURNSTILE_SECRET_KEY` (see the table below), never in client code.
+
+* The Turnstile script is loaded on the visitor's first interaction with a form, not on page load. The widget is `interaction-only`, so it stays invisible unless Cloudflare asks for a challenge.
+* The token goes to the function as `turnstileToken`. After the honeypot and timer checks, the function posts the secret, the token and the visitor ip to Cloudflare's siteverify endpoint. A refused token returns 403 `{"ok":false}`, a missing token 403, a Cloudflare outage 502; nothing reaches GHL in any of these cases. The log records only `turnstile-failed`, `turnstile-missing` or `turnstile-error` and a status. The token is never stored or sent to GHL.
+* **Fails closed:** with no `TURNSTILE_SECRET_KEY` set, the function refuses every lead (500, `not-configured`). Set it in Cloudflare Pages before deploying.
+* If the visitor presses Send before the token has arrived, the form says "One moment, please press Send again." and sends nothing. If the script is blocked (for example by an ad blocker) or the challenge errors, the form shows the failed-send notice with the market phone number.
+* Tokens are single use. The widget is reset after each send that reached the server; after a "That was quick" retry reply the same token is reused because it was not consumed.
+* **Allowed hostnames:** a Turnstile site key only works on the hostnames listed for it in the Cloudflare dashboard (Turnstile, the widget, Hostname management). Add `www.thesewerpros.com`, `thesewerpros.com` and the Pages `*.pages.dev` hostname you test on. On an unlisted host (including `localhost`) the widget errors with code 110200 and the form shows the failed-send notice. For local testing Cloudflare's published test keys can be used instead (a site key and secret that always pass); never ship them.
 
 ## Per-market routing
 
@@ -87,7 +99,8 @@ Names only; never put values in the repo, in chat or behind a `NEXT_PUBLIC_` pre
 |---|---|
 | `GHL_PRIVATE_INTEGRATION_TOKEN` | `.dev.vars` locally (gitignored); encrypted variable in Cloudflare Pages |
 | `GHL_LOCATION_ID` | same |
-| `GHL_API_BASE` | test hook only; leave unset in production |
+| `TURNSTILE_SECRET_KEY` | `.dev.vars` and `.env.local` locally (both gitignored); Cloudflare Pages as a **Secret** (encrypted) |
+| `GHL_API_BASE`, `TURNSTILE_VERIFY_URL` | test hooks only; leave unset in production |
 
 ## What the owner must do
 
@@ -98,7 +111,7 @@ In GHL:
 4. Rotate the token every 90 days (GHL recommendation) and update it in Cloudflare.
 
 In Cloudflare Pages:
-1. Project, Settings, Variables and Secrets: add `GHL_PRIVATE_INTEGRATION_TOKEN` (secret) and `GHL_LOCATION_ID` for Production, and for Preview if previews should send leads.
+1. Project, Settings, Variables and Secrets: add `GHL_PRIVATE_INTEGRATION_TOKEN` (secret), `TURNSTILE_SECRET_KEY` (secret) and `GHL_LOCATION_ID` for Production, and for Preview if previews should send leads.
 2. Deploy. Pages picks up `functions/` automatically from the repo root; no build setting changes.
 3. After the first deploy, make one test submission with a fake name and a phone you control (do not use a real customer number), confirm the contact, tags, note and custom fields in GHL, then delete the test contact.
 4. Optional: add Turnstile and a Cloudflare rate limiting rule on `/api/lead`.

@@ -14,6 +14,7 @@ import {
 } from '@/components/ui'
 import { marketList, marketOperatingDetail } from '@/data/markets/markets'
 import { stampFirstInteraction, submitLead } from '@/lib/forms/submit-lead'
+import { useTurnstile } from '@/lib/forms/turnstile'
 import { SMS_CONSENT_VERSION } from '@/lib/forms/sms-consent'
 import { SmsConsent } from './SmsConsent'
 import type { MarketId, ServiceId } from '@/types'
@@ -41,6 +42,7 @@ import type { MarketId, ServiceId } from '@/types'
 
 const FORM_TYPE = 'contact_request' as const
 const RETRY_NOTICE = 'That was quick, please press Send again.'
+const CHECK_PENDING_NOTICE = 'One moment, please press Send again.'
 const MARKET_STORAGE_KEY = 'sp-contact-market'
 
 type IssueValue =
@@ -293,8 +295,10 @@ export function ContactForm({
   // When the visitor first touched the form (not page load); the server asks for a retry on a submit
   // that comes faster than a person can type.
   const openedAt = useRef(0)
+  const { container: turnstileRef, start: startTurnstile, read: readTurnstile, reset: resetTurnstile } = useTurnstile()
   function markInteraction() {
     stampFirstInteraction(openedAt)
+    startTurnstile()
   }
   const [notice, setNotice] = useState<string | undefined>(undefined)
 
@@ -397,6 +401,12 @@ export function ContactForm({
     }
 
     markInteraction()
+    // The Cloudflare check runs in the background after the first interaction. No token yet: ask for another press.
+    const check = readTurnstile()
+    if (check.token === '') {
+      setNotice(check.failed ? sendFailedNotice() : CHECK_PENDING_NOTICE)
+      return
+    }
     setPending(true)
     const result = await submitLead({
       marketId: market,
@@ -416,8 +426,11 @@ export function ContactForm({
       smsConsentVersion: SMS_CONSENT_VERSION,
       formType: FORM_TYPE,
       spRef: value('sp_ref'),
+      turnstileToken: check.token,
       formOpenedAt: openedAt.current,
     })
+    if (!result.ok && result.reason !== 'retry') resetTurnstile()
+    if (result.ok) resetTurnstile()
     setPending(false)
 
     if (result.ok) {
@@ -674,6 +687,8 @@ export function ContactForm({
         </Field>
 
         <SmsConsent idPrefix={id('sms')} className="sm:col-span-2" />
+
+        <div ref={turnstileRef} className="sm:col-span-2" />
 
         <div className="flex flex-col items-center gap-3 sm:col-span-2">
           <Button type="submit" pending={pending} pendingLabel="Sending…">

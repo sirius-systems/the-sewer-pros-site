@@ -51,6 +51,8 @@ export interface LeadPayload {
   formType: string
   /** Honeypot (the input is named sp_ref). Always empty from a person; the server drops a lead where it is filled. */
   spRef: string
+  /** Cloudflare Turnstile response token. Verified by the function and never stored. */
+  turnstileToken: string
   /** When the visitor first interacted with the form (ms since epoch). The server asks for a retry on a submit that is too fast. */
   formOpenedAt: number
 }

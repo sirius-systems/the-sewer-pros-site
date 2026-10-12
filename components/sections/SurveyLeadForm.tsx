@@ -6,6 +6,7 @@ import { Button, Field, RadioGroup, TextInput, Textarea } from '@/components/ui'
 import { marketOperatingDetail } from '@/data/markets/markets'
 import { SURVEY_LOCATION_GROUPS, findSurveyLocation } from '@/lib/forms/survey-locations'
 import { stampFirstInteraction, submitLead } from '@/lib/forms/submit-lead'
+import { useTurnstile } from '@/lib/forms/turnstile'
 import { SMS_CONSENT_VERSION } from '@/lib/forms/sms-consent'
 import { SmsConsent } from './SmsConsent'
 import type { ServiceId } from '@/types'
@@ -43,6 +44,7 @@ import type { ServiceId } from '@/types'
 
 const FORM_TYPE = 'general_service' as const
 const RETRY_NOTICE = 'That was quick, please press Send again.'
+const CHECK_PENDING_NOTICE = 'One moment, please press Send again.'
 
 /** Labels are shorthand; values are canonical registry ids. */
 const SERVICE_PILLS: readonly { value: ServiceId; label: string }[] = [
@@ -122,8 +124,10 @@ export function SurveyLeadForm({
   // When the visitor first touched the form (not page load); the server asks for a retry on a submit
   // that comes faster than a person can type.
   const openedAt = useRef(0)
+  const { container: turnstileRef, start: startTurnstile, read: readTurnstile, reset: resetTurnstile } = useTurnstile()
   function markInteraction() {
     stampFirstInteraction(openedAt)
+    startTurnstile()
   }
 
   // Registry locations only; the "other area" pills have no registry id.
@@ -213,6 +217,12 @@ export function SurveyLeadForm({
     }
 
     markInteraction()
+    // The Cloudflare check runs in the background after the first interaction. No token yet: ask for another press.
+    const check = readTurnstile()
+    if (check.token === '') {
+      setNotice(check.failed ? sendFailedNotice() : CHECK_PENDING_NOTICE)
+      return
+    }
     setPending(true)
     const result = await submitLead({
       marketId,
@@ -235,8 +245,11 @@ export function SurveyLeadForm({
       smsConsentVersion: SMS_CONSENT_VERSION,
       formType: FORM_TYPE,
       spRef: value('sp_ref'),
+      turnstileToken: check.token,
       formOpenedAt: openedAt.current,
     })
+    if (!result.ok && result.reason !== 'retry') resetTurnstile()
+    if (result.ok) resetTurnstile()
     setPending(false)
 
     if (result.ok) {
@@ -545,6 +558,7 @@ export function SurveyLeadForm({
               data-1p-ignore="true"
             />
           </div>
+          <div ref={turnstileRef} className="sm:col-span-2" />
           {/* Submit centred; Back sits below it. */}
           <div className="flex flex-col items-center gap-3 sm:col-span-2">
             <Button type="submit" disabled={pending}>
