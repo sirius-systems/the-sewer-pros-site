@@ -6,6 +6,7 @@ import { LocationLinkAnchor } from './LocationLinkAnchor'
 import { SlotPlaceholderBox } from './SlotPlaceholderBox'
 import { resolveApprovedLink } from '@/lib/links/approved-link'
 import { cn } from '@/lib/utils/cn'
+import { SHOW_IMAGE_SLOTS } from '@/lib/image-slots'
 import type {
   CardImage,
   LocationBuyingGuide,
@@ -561,8 +562,11 @@ export function BuyingGuideSection({ content }: { content: LocationBuyingGuide }
     With no photograph for either block, the agents card sits BESIDE the
     buying copy rather than below it, so the right half of the section is
     never empty. With a photograph, the original stacked layout applies.
+    Once placeholders are hidden (launch), a missing photograph collapses the
+    section to one full-width column: the card sits below the copy.
   */
-  const sideBySide = content.image === undefined && content.agents.image === undefined
+  const sideBySide =
+    content.image === undefined && content.agents.image === undefined && SHOW_IMAGE_SLOTS
 
   const agentsCard = (
     <div

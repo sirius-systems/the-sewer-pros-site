@@ -76,3 +76,37 @@ export function resolveSlotImage(slot: ImageSlotLike | undefined): CardImage | u
     placeholder: { slotId: slot.id, ratio: slot.ratio, shot: slot.shot },
   }
 }
+
+/**
+ * Will this slot draw anything?
+ *
+ * True for a slot with a photograph. For a slot with none it is true only
+ * while placeholders are shown, and false once they are hidden (`LAUNCH_MODE`
+ * or `NEXT_PUBLIC_SHOW_IMAGE_SLOTS=false`). Layout code uses this to collapse a
+ * section around a missing image. It never changes a layout while placeholders
+ * are shown, because an unfilled slot then draws its box.
+ *
+ * Accepts a registry slot (`ImageSlotLike`), a resolved `CardImage`, or
+ * `undefined` (what `resolveSlotImage` returns for a hidden slot).
+ */
+export function slotDraws(
+  slot: ImageSlotLike | { src?: string; placeholder?: unknown } | undefined,
+): boolean {
+  if (slot === undefined) return false
+  if ('id' in slot) return slot.src && slot.source ? true : SHOW_IMAGE_SLOTS
+  if (slot.placeholder !== undefined) return SHOW_IMAGE_SLOTS
+  return Boolean(slot.src)
+}
+
+/**
+ * True when a grid of cards mixes cards that draw an image with cards that do
+ * not, and placeholders are hidden. Only then are the cards top-aligned at
+ * their natural height; while placeholders are shown the grid is unchanged.
+ */
+export function gridHasImageGaps(
+  slots: ReadonlyArray<ImageSlotLike | { src?: string; placeholder?: unknown } | undefined>,
+): boolean {
+  if (SHOW_IMAGE_SLOTS) return false
+  const drawn = slots.filter((s) => slotDraws(s)).length
+  return drawn > 0 && drawn < slots.length
+}

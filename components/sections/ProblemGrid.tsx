@@ -6,6 +6,7 @@ import {
   type SectionSurface,
 } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
+import { gridHasImageGaps } from '@/lib/image-slots'
 import { SectionHeading } from './SectionHeading'
 import { SlotPlaceholderBox } from './location/SlotPlaceholderBox'
 import { SECTION_ICONS } from './section-icons'
@@ -226,6 +227,8 @@ export function ProblemGrid({
         className={cn(
           'mt-10 grid grid-cols-1 gap-6',
           columns === 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-2',
+          // Placeholders hidden and some cards have no image: natural height, top aligned.
+          gridHasImageGaps(items.map((item) => item.image)) && 'items-start',
         )}
       >
         {items.map((item, index) => {
