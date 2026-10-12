@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
@@ -289,6 +289,11 @@ export function ContactForm({
   const [errors, setErrors] = useState<Errors>({})
   const [started, setStarted] = useState(false)
   const [pending, setPending] = useState(false)
+  // When the form was opened; the server drops a submit that comes faster than a person can type.
+  const openedAt = useRef(0)
+  useEffect(() => {
+    openedAt.current = Date.now()
+  }, [])
   const [notice, setNotice] = useState<string | undefined>(undefined)
 
   // Prefill from `?market=` / `?service=`, then from a manual earlier
@@ -391,6 +396,7 @@ export function ContactForm({
       issue,
       followUp: value('followUp'),
       firstName: value('firstName'),
+      lastName: '',
       phone: value('phone'),
       email: value('email'),
       zip: value('zip'),
@@ -401,6 +407,9 @@ export function ContactForm({
       smsNonMarketingConsent: data.get('smsNonMarketingConsent') === 'on',
       smsMarketingConsent: data.get('smsMarketingConsent') === 'on',
       smsConsentVersion: SMS_CONSENT_VERSION,
+      formType: FORM_TYPE,
+      website: value('website'),
+      formOpenedAt: openedAt.current,
     })
     setPending(false)
 
@@ -418,9 +427,7 @@ export function ContactForm({
 
     const phone = market === '' ? undefined : marketOperatingDetail[market]?.phone
     setNotice(
-      result.reason === 'not-configured'
-        ? `Online requests are not available yet. Please call${phone === undefined ? ' your local team' : ` ${phone}`} to schedule.`
-        : `We could not send your request. Please try again, or call${phone === undefined ? ' your local team' : ` ${phone}`}.`,
+      `We could not send your request. Please try again, or call${phone === undefined ? ' your local team' : ` ${phone}`}.`,
     )
   }
 
