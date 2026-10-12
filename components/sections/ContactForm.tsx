@@ -14,6 +14,8 @@ import {
 } from '@/components/ui'
 import { marketList, marketOperatingDetail } from '@/data/markets/markets'
 import { submitLead } from '@/lib/forms/submit-lead'
+import { SMS_CONSENT_VERSION } from '@/lib/forms/sms-consent'
+import { SmsConsent } from './SmsConsent'
 import type { MarketId, ServiceId } from '@/types'
 
 /**
@@ -396,6 +398,9 @@ export function ContactForm({
       appointmentWindow: value('appointmentWindow'),
       message: value('message'),
       sourcePath: window.location.pathname,
+      smsNonMarketingConsent: data.get('smsNonMarketingConsent') === 'on',
+      smsMarketingConsent: data.get('smsMarketingConsent') === 'on',
+      smsConsentVersion: SMS_CONSENT_VERSION,
     })
     setPending(false)
 
@@ -624,6 +629,8 @@ export function ContactForm({
           />
           <FieldError id={id('contactMethod-error')} message={errors.contactMethod} />
         </div>
+
+        <SmsConsent idPrefix={id('sms')} className="sm:col-span-2" />
 
         <Field htmlFor={id('appointmentWindow')} label="Preferred appointment window">
           <Select

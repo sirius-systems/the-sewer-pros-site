@@ -2594,3 +2594,28 @@ The governing standard is:
 
 > **Every high-value page should give the visitor enough information to understand the problem, enough evidence to trust The Sewer Pros' specialized approach, and a clear, low-friction path to request the appropriate service—without exaggerating urgency, inventing capabilities, or turning an independent inspection brand into a repair-driven sales funnel.**
 
+---
+
+# 125. SMS Consent Block on Lead Forms
+
+Owner-provided consent copy (Oct 12, 2026, DEC-146). The sender named in the copy is SHH Group. Every lead form that collects a phone number shows this block, from one shared component (`components/sections/SmsConsent.tsx`) and one constants file (`lib/forms/sms-consent.ts`, version `sms-consent-v1`).
+
+Copy, used exactly as written and never edited in place (a wording change is a new version):
+
+Checkbox 1 (non-marketing):
+
+> By checking this box, I consent to receive non-marketing text messages from SHH Group about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
+
+Checkbox 2 (marketing):
+
+> By checking this box, I consent to receive marketing text messages from SHH Group about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
+
+Placement and behavior rules:
+
+* Two separate checkboxes, never bundled into one.
+* Neither is checked by default and neither is required. The form must submit with both unchecked.
+* Placed directly under the phone and preferred-contact (Call or Text) fields, above the submit button.
+* A small separate line, outside the checkbox labels, reads "See our Privacy Policy and Terms." with links to the privacy and terms pages. It is shown only when both pages exist (`SMS_LEGAL_LINKS` in the constants file). Neither page exists yet, so the line is not shown. Do not write policy text to fill the gap.
+* Accessibility: real checkbox inputs with labels wired by id, keyboard operable, visible focus, touch target of at least 44 px, full label text at every width, no truncation, tooltip or placeholder.
+* Consent values and phone numbers never go to analytics. Track the submit event without them.
+* Forms with no phone field do not get the block.

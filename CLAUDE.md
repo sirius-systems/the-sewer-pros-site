@@ -1231,6 +1231,8 @@ preserve that context without unnecessarily asking the visitor to enter it again
 
 Do not invent business response promises.
 
+**SMS consent (owner-provided copy, Oct 12, 2026, DEC-146).** Every lead form that collects a phone number shows two separate, optional, unchecked SMS consent checkboxes (non-marketing and marketing, sender SHH Group) directly under the phone and preferred-contact fields and above the submit button. They come from one component (`components/sections/SmsConsent.tsx`) and one constants file (`lib/forms/sms-consent.ts`, version `sms-consent-v1`). Use the wording exactly; never edit it in place (a change is a new version). The form must submit with both unchecked. Consent values and phone numbers never go to analytics. A "See our Privacy Policy and Terms." line appears only once those pages exist. Copy and rules: `docs/17-conversion-architecture.md` section 125.
+
 ---
 
 # 43. Conversion Philosophy
