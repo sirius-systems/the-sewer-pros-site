@@ -193,11 +193,8 @@ export const authorityProcess: AuthorityProcessContent = {
       <ApprovedInlineLink pageId={id('svc-drain-cleaning')}>
         drain cleaning
       </ApprovedInlineLink>
-      , pre-purchase sewer inspection, and{' '}
-      <ApprovedInlineLink pageId={id('hub-commercial')}>
-        commercial sewer and drain service
-      </ApprovedInlineLink>
-      , all built around the same evidence-first process.
+      , and pre-purchase sewer inspection, all built around the same
+      evidence-first process.
     </>
   ),
   /*

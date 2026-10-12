@@ -374,7 +374,6 @@ const formConfig: LeadFormConfig = {
       value: serviceId,
       label: getService(serviceId).name,
     })),
-    { value: 'hub-commercial', label: 'Commercial Sewer & Drain Services' },
     { value: 'other', label: 'Not sure which service I need' },
   ],
   locationLabel: 'Property location',
@@ -664,13 +663,9 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
         <Link href="/locations/san-diego-ca/mission-valley/hydro-jetting/">
           hydro jetting in Mission Valley
         </Link>{' '}
-        page. For businesses and property managers:{' '}
-        <Link href="/commercial/">commercial sewer and drain services</Link>,{' '}
-        <Link href="/commercial/sewer-camera-inspection/">
-          commercial sewer camera inspection
-        </Link>{' '}
-        and <Link href="/commercial/hydro-jetting/">commercial hydro jetting</Link>, or{' '}
-        <Link href="#request">request commercial service</Link>.
+        page. For property managers, see{' '}
+        <Link href="/for/property-managers/">sewer service for property managers</Link>
+        , or <Link href="#request">request service</Link>.
       </>
     ),
   },

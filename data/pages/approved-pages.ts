@@ -6,10 +6,10 @@
  * ===========================================================================
  * THIS FILE IS THE ONLY AUTHORISED INPUT TO ROUTE GENERATION
  * ===========================================================================
- *   18 services x 579 locations = 10,422 relationships
- *   7,527 audience x location   |  4,632 commercial x location
+ *   11 services x 579 locations = 6,369 relationships
+ *   7,527 audience x location
  *   ------------------------------------------------------------
- *   70 approved pages
+ *   64 launch pages (see doc 04)
  *
  * `generateStaticParams()` reads this registry and nothing else. Never
  * the service registry, the location registry, or the matrix
@@ -27,7 +27,7 @@
  *    -1 phase_2      (`svc-independent-sewer-second-opinion`, §9,
  *                     approved but NOT part of the launch build)
  *   ---
- *    70 launch records, all 70 indexable
+ *    70 launch records, all 70 indexable (64 after the commercial removal)
  *
  * The five Las Vegas records were `launch_pending_validation` until
  * DEC-080 released DEC-063's indexation gate. No record is gated now,
@@ -36,7 +36,7 @@
  *
  * Page-family counts match 04 §5 exactly: 9 core/hub, 10 service,
  * 3 market, 16 location, 14 service+location, 6 audience,
- * 5 commercial, 2 comparison, 5 resource.
+ * 2 comparison, 5 resource.
  *
  * To change what may be published, change doc 04 first, then this file.
  * Never the reverse.
@@ -168,16 +168,6 @@ export const approvedPages: readonly MasterPageRecord[] = [
     name: 'Who We Serve',
     pageType: 'audience-hub',
     pathname: toPathname('/for/'),
-    status: 'launch',
-    indexable: true,
-    priority: 'L1',
-    parentId: 'core-home' as PageId,
-  },
-  {
-    id: 'hub-commercial' as PageId,
-    name: 'Commercial Sewer & Drain Services',
-    pageType: 'commercial-hub',
-    pathname: toPathname('/commercial/'),
     status: 'launch',
     indexable: true,
     priority: 'L1',
@@ -747,36 +737,6 @@ export const approvedPages: readonly MasterPageRecord[] = [
     indexable: true,
     audienceId: 'aud-hoa-communities',
     parentId: 'hub-audiences' as PageId,
-  },
-  {
-    id: 'com-camera' as PageId,
-    name: 'Commercial Sewer Camera Inspection',
-    pageType: 'commercial',
-    pathname: toPathname('/commercial/sewer-camera-inspection/'),
-    status: 'launch',
-    indexable: true,
-    serviceId: 'svc-commercial-sewer-camera-inspection',
-    parentId: 'hub-commercial' as PageId,
-  },
-  {
-    id: 'com-sewer-cleaning' as PageId,
-    name: 'Commercial Sewer Cleaning',
-    pageType: 'commercial',
-    pathname: toPathname('/commercial/sewer-cleaning/'),
-    status: 'launch',
-    indexable: true,
-    serviceId: 'svc-commercial-sewer-cleaning',
-    parentId: 'hub-commercial' as PageId,
-  },
-  {
-    id: 'com-hydro-jetting' as PageId,
-    name: 'Commercial Hydro Jetting',
-    pageType: 'commercial',
-    pathname: toPathname('/commercial/hydro-jetting/'),
-    status: 'launch',
-    indexable: true,
-    serviceId: 'svc-commercial-hydro-jetting',
-    parentId: 'hub-commercial' as PageId,
   },
   {
     id: 'sl-henderson-camera' as PageId,
@@ -2486,26 +2446,6 @@ export const approvedPages: readonly MasterPageRecord[] = [
     serviceId: 'svc-preventative-sewer-maintenance',
     locationId: 'loc-sd-san-diego' as LocationId,
     parentId: 'loc-sd-san-diego' as PageId,
-  },
-  {
-    id: 'com-drain-cleaning' as PageId,
-    name: 'Commercial Drain Cleaning',
-    pageType: 'commercial',
-    pathname: toPathname('/commercial/drain-cleaning/'),
-    status: 'launch',
-    indexable: true,
-    serviceId: 'svc-commercial-drain-cleaning',
-    parentId: 'hub-commercial' as PageId,
-  },
-  {
-    id: 'com-maintenance' as PageId,
-    name: 'Commercial Preventative Sewer & Drain Maintenance',
-    pageType: 'commercial',
-    pathname: toPathname('/commercial/preventative-maintenance/'),
-    status: 'launch',
-    indexable: true,
-    serviceId: 'svc-commercial-preventative-maintenance',
-    parentId: 'hub-commercial' as PageId,
   },
   {
     id: 'cmp-independent-vs-repair' as PageId,

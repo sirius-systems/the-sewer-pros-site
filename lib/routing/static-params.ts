@@ -68,11 +68,6 @@ export function serviceParams(): { service: string }[] {
   return paramsUnder('/services/', 'service') as { service: string }[]
 }
 
-/** `app/commercial/[service]/page.tsx` */
-export function commercialServiceParams(): { service: string }[] {
-  return paramsUnder('/commercial/', 'service') as { service: string }[]
-}
-
 /** `app/for/[audience]/page.tsx` */
 export function audienceParams(): { audience: string }[] {
   return paramsUnder('/for/', 'audience') as { audience: string }[]
@@ -171,7 +166,6 @@ export function unroutedPages(staticRoutes: readonly string[]): string[] {
 
   for (const [prefix, params] of [
     ['/services/', serviceParams().map((p) => p.service)],
-    ['/commercial/', commercialServiceParams().map((p) => p.service)],
     ['/for/', audienceParams().map((p) => p.audience)],
     ['/compare/', comparisonParams().map((p) => p.comparison)],
     ['/resources/', resourceParams().map((p) => p.resource)],

@@ -33,14 +33,12 @@ export type CalloutKind =
   | 'good-to-know'
   | 'independent'
   | 'buyer-tip'
-  | 'commercial'
 
 const LABEL: Record<CalloutKind, string> = {
   important: 'Important',
   'good-to-know': 'Good to know',
   independent: 'Independent inspection note',
   'buyer-tip': 'Buyer tip',
-  commercial: 'Commercial note',
 }
 
 /**
@@ -55,7 +53,6 @@ const ACCENT: Record<CalloutKind, string> = {
   'good-to-know': 'border-l-border',
   independent: 'border-l-accent',
   'buyer-tip': 'border-l-accent',
-  commercial: 'border-l-brand',
 }
 
 export interface CalloutProps {

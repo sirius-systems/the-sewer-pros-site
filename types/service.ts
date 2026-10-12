@@ -38,17 +38,9 @@ export type ServiceId =
   | 'svc-independent-sewer-second-opinion'
   // Market-specific (06 §23) — St. Louis only
   | 'svc-stl-sewer-lateral-inspection-reporting'
-  // Commercial (06 §24)
-  | 'svc-commercial-sewer-camera-inspection'
-  | 'svc-commercial-sewer-cleaning'
-  | 'svc-commercial-hydro-jetting'
-  | 'svc-commercial-drain-cleaning'
-  | 'svc-commercial-sewer-line-locating'
-  | 'svc-commercial-preventative-maintenance'
-  | 'svc-commercial-grease-sludge-removal'
 
 /** Service hub ids (06 §4). Hubs are architectural, not among the 18. */
-export type ServiceHubId = 'hub-services' | 'hub-commercial'
+export type ServiceHubId = 'hub-services'
 
 /* ==========================================================================
    Classification
@@ -59,7 +51,6 @@ export type ServiceRecordType =
   | 'core_service'
   | 'derived_service'
   | 'market_specific_service'
-  | 'commercial_service'
 
 /** 06 §6. Drives related-service logic, navigation, and schema grouping. */
 export type ServiceFamily =
@@ -108,19 +99,9 @@ export type ServiceMatrixEligibility =
   | 'full'
   | 'full_on_residential_real_estate_locations'
   | 'full_on_residential_property_management_locations'
-  | 'full_on_commercial_eligible_locations'
   | 'selective'
   | 'selective_st_louis_only'
   | 'none'
-
-/**
- * Commercial applicability.
- *
- * Doc 06 §47 models this as `boolean | 'strong' | 'conditional'`.
- * The committed data uses the strings below. The data is authoritative
- * for what exists; `'yes'`/`'no'` carry the boolean meaning.
- */
-export type CommercialApplicability = 'yes' | 'no' | 'strong' | 'conditional'
 
 /**
  * Per-market operational status.
@@ -131,8 +112,8 @@ export type CommercialApplicability = 'yes' | 'no' | 'strong' | 'conditional'
  * Doc 06 §7 defines five semantic categories. The committed data uses a
  * finer-grained vocabulary (12 observed values) that maps onto them —
  * e.g. `supported_by_existing_camera_service` is a `supported` variant,
- * and `capability_confirmed_commercial_packaging_requires_validation`
- * is a `capability_validate_packaging` variant.
+ * and a status ending `packaging_requires_validation` is a
+ * `capability_validate_packaging` variant.
  *
  * This type is `string` rather than a union deliberately. Pinning the
  * observed values would break on the next registry regeneration and
@@ -179,8 +160,8 @@ export function marketServiceStatusCategory(
  * True only when a service may be presented as available in a market.
  *
  * `capability_validate_packaging` returns false: the underlying
- * capability exists but the commercial packaging is unvalidated, and
- * 06 §43 forbids presenting unvalidated commercial detail as offered.
+ * capability exists but how it would be offered is unvalidated, and
+ * 06 §43 forbids presenting unvalidated detail as offered.
  */
 export function isServiceAvailableInMarket(
   raw: MarketServiceStatusRaw,
@@ -206,7 +187,6 @@ export interface RawServiceRecord {
   source_status: string
   launch_tier: ServiceLaunchTier
   matrix_eligibility: ServiceMatrixEligibility
-  commercial_applicability: CommercialApplicability
   primary_intents: string[]
   primary_audiences: string[]
   aliases: string[]
@@ -266,7 +246,6 @@ export interface Service {
   parentServiceId?: ServiceId
   launchTier: ServiceLaunchTier
   matrixEligibility: ServiceMatrixEligibility
-  commercialApplicability: CommercialApplicability
   primaryIntents: string[]
   primaryAudiences: string[]
   aliases: string[]
@@ -290,7 +269,3 @@ export function isStLouisOnlyService(serviceId: ServiceId): boolean {
   return serviceId === 'svc-stl-sewer-lateral-inspection-reporting'
 }
 
-/** True for the seven commercial services (06 §24). */
-export function isCommercialService(serviceId: ServiceId): boolean {
-  return serviceId.startsWith('svc-commercial-')
-}

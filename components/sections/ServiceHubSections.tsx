@@ -11,7 +11,6 @@ import {
   CheckIcon,
   BuildingIcon,
   ChecklistIcon,
-  CommercialBuildingIcon,
   CommunityIcon,
   CrackedPipeIcon,
   DebrisFlowIcon,
@@ -1190,7 +1189,6 @@ const AUDIENCE_ICON_BY_NAME: Record<HubAudienceIcon, (props: IconProps) => React
   community: CommunityIcon,
   eye: EyeIcon,
   document: DocumentIcon,
-  'commercial-building': CommercialBuildingIcon,
   'house-document': HouseDocumentIcon,
   'house-search': HouseSearchIcon,
 }

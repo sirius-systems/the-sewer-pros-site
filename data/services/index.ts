@@ -5,10 +5,9 @@
  *
  *   import { getService, servicesOfferedIn } from '@/data/services'
  *
- * ⚠ There is no `getServiceBySlug`. Five slugs are shared between a
- * residential service and its commercial counterpart, so an unqualified
- * slug is ambiguous. Use `getServiceBySlugInNamespace()`, or look up by
- * `serviceId` / `canonicalUrl`.
+ * There is no `getServiceBySlug`. Slugs are namespaced by URL prefix, so
+ * use `getServiceBySlugInNamespace()`, or look up by `serviceId` /
+ * `canonicalUrl`.
  */
 
 export {

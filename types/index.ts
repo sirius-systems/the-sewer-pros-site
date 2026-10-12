@@ -17,11 +17,10 @@
  *
  *   OPPORTUNITY                        AUTHORISATION
  *   -----------                        -------------
- *   RawServiceRegistry     18          MasterPageRecord      70
+ *   RawServiceRegistry     11          MasterPageRecord      70
  *   RawLocationRegistry   579
- *   RawMatrixRecord    10,422
+ *   RawMatrixRecord     6,369
  *   AudienceLocation…   7,527
- *   CommercialLocation… 4,632
  *
  * Only `MasterPageRecord` authorises a page. `generateStaticParams()`
  * reads the approved page registry and nothing else
@@ -35,7 +34,6 @@ export * from './location'
 export * from './matrix'
 export * from './page'
 export * from './audience'
-export * from './commercial'
 export * from './content'
 export * from './seo'
 export * from './schema'

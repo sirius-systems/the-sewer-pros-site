@@ -20,7 +20,7 @@
  * NOTE — `/compare/` IS NOT AN APPROVED PAGE
  * ---------------------------------------------------------------------------
  * Every other hub segment used by an approved URL is itself an approved
- * page: `/services/`, `/locations/`, `/for/`, `/commercial/`,
+ * page: `/services/`, `/locations/`, `/for/`,
  * `/resources/`. `/compare/` is not, yet two approved pages live beneath
  * it. That segment will 404 while its children resolve.
  *
@@ -45,17 +45,19 @@ import { approvedPages } from './approved-pages'
    Validation
    ========================================================================== */
 
-// 70 launch pages + the three market contact endpoints + the noindex
+// 64 launch pages (70 before the commercial hub and its five service pages
+// were removed, owner decision Oct 12, 2026) + the three market contact
+// endpoints + the noindex
 // contact confirmation page, + 1 noindex service+location pilot
 // (`sl-henderson-camera`, the template for the remaining matrix pages), + 8
 // noindex Henderson service+location pages (batch 1).
-const EXPECTED_PAGE_COUNT = 204
+const EXPECTED_PAGE_COUNT = 198
 // Was 65 while DEC-063 gated the five Las Vegas pages. DEC-080 released
-// that gate. The 73 indexable pages are the original 70 plus the three
+// that gate. The 67 indexable pages are the original 64 plus the three
 // market contact pages; the contact confirmation page is deliberately
 // noindex. Keep this pinned: it is the guard that catches a page becoming
 // indexable without a decision behind it (CLAUDE.md §45).
-const EXPECTED_INDEXABLE_COUNT = 203 // 73 + 9 Henderson + 9 City of Las Vegas + 9 North Las Vegas + 9 Summerlin + 39 St. Louis + 8 San Diego City + 16 Chula Vista/Mission Valley + 15 Carlsbad/San Marcos + 16 Escondido/Oceanside service+location pages
+const EXPECTED_INDEXABLE_COUNT = 197 // 67 + 9 Henderson + 9 City of Las Vegas + 9 North Las Vegas + 9 Summerlin + 39 St. Louis + 8 San Diego City + 16 Chula Vista/Mission Valley + 15 Carlsbad/San Marcos + 16 Escondido/Oceanside service+location pages
 
 function fail(message: string): never {
   throw new Error(`Approved page registry invalid: ${message}`)
@@ -65,7 +67,7 @@ function validate(pages: readonly MasterPageRecord[]): void {
   if (pages.length !== EXPECTED_PAGE_COUNT) {
     fail(
       `expected ${EXPECTED_PAGE_COUNT} records, found ${pages.length}. ` +
-        `The launch build is fixed at 70 by 04 §5. Adding a public page ` +
+        `The launch build is fixed at 64 by 04 §5. Adding a public page ` +
         `requires doc 04 approval first (04 §18, CLAUDE.md §18).`,
     )
   }
@@ -100,7 +102,7 @@ function validate(pages: readonly MasterPageRecord[]): void {
   if (indexable !== EXPECTED_INDEXABLE_COUNT) {
     fail(
       `expected ${EXPECTED_INDEXABLE_COUNT} indexable pages, found ${indexable}. ` +
-        `04 §5 and DEC-080 fix this at all 70 approved pages indexable.`,
+        `04 §5 and DEC-080 fix this at all 64 approved pages indexable.`,
     )
   }
 
@@ -177,14 +179,12 @@ const ALLOWED_PARENT_TYPES: Partial<Record<PageType, readonly PageType[]>> = {
   'service-hub': ['home'],
   'markets-hub': ['home'],
   'audience-hub': ['home'],
-  'commercial-hub': ['home'],
   'resource-hub': ['home'],
   service: ['service-hub', 'market'],
   market: ['markets-hub'],
   location: ['market'],
   'service-location': ['location'],
   audience: ['audience-hub'],
-  commercial: ['commercial-hub'],
   resource: ['resource-hub'],
   comparison: ['home'],
 }

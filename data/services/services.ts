@@ -4,7 +4,7 @@
  * Authority: docs/06-master-service-registry.md
  * Data:      data/services/master-service-registry.json
  *
- * Build sequence step 10 (02 §103). Loads the 18 canonical service
+ * Build sequence step 10 (02 §103). Loads the 11 canonical service
  * records, validates them at module load, and exposes typed accessors.
  *
  * ---------------------------------------------------------------------------
@@ -16,24 +16,16 @@
  * (CLAUDE.md §45, 02 §95).
  *
  * ---------------------------------------------------------------------------
- * ⚠ SLUGS ARE NOT UNIQUE
+ * SLUGS ARE NAMESPACED
  * ---------------------------------------------------------------------------
- * Five slugs appear twice — each residential service and its commercial
- * counterpart share one:
- *
- *   sewer-camera-inspection   /services/…  and  /commercial/…
- *   sewer-cleaning            /services/…  and  /commercial/…
- *   hydro-jetting             /services/…  and  /commercial/…
- *   sewer-line-locating       /services/…  and  /commercial/…
- *   drain-cleaning            /services/…  and  /commercial/…
- *
- * This is correct: 06's `canonical_url_rules` namespace them under
- * different URL prefixes, and slugs ARE unique within each namespace.
- *
- * The consequence is an API constraint. There is no `getServiceBySlug`,
- * because for 5 of 18 services that question has two answers. Look up
- * by `serviceId` or `canonicalUrl`, or use the namespaced
+ * 06's `canonical_url_rules` put services under `/services/` and the one
+ * St. Louis market-specific service under `/st-louis-mo/`. Look up by
+ * `serviceId` or `canonicalUrl`, or use the namespaced
  * `getServiceBySlugInNamespace()`.
+ *
+ * The Sewer Pros does not list commercial services (owner decision,
+ * Oct 12, 2026), so the registry holds residential and real-estate
+ * services only.
  */
 
 import type {
@@ -55,7 +47,7 @@ import registryJson from './master-service-registry.json'
    ========================================================================== */
 
 /**
- * The 18 canonical service ids, mirroring the `ServiceId` union.
+ * The 11 canonical service ids, mirroring the `ServiceId` union.
  *
  * Exists so the data can be checked against the type. TypeScript cannot
  * verify that a JSON string matches a literal union at runtime, so
@@ -74,20 +66,12 @@ const EXPECTED_SERVICE_IDS = [
   'svc-preventative-sewer-maintenance',
   'svc-independent-sewer-second-opinion',
   'svc-stl-sewer-lateral-inspection-reporting',
-  'svc-commercial-sewer-camera-inspection',
-  'svc-commercial-sewer-cleaning',
-  'svc-commercial-hydro-jetting',
-  'svc-commercial-drain-cleaning',
-  'svc-commercial-sewer-line-locating',
-  'svc-commercial-preventative-maintenance',
-  'svc-commercial-grease-sludge-removal',
 ] as const satisfies readonly ServiceId[]
 
 /** Canonical URL shape per record type (06 `canonical_url_rules`). */
 const CANONICAL_URL_PATTERN: Record<ServiceRecordType, RegExp> = {
   core_service: /^\/services\/[a-z0-9-]+\/$/,
   derived_service: /^\/services\/[a-z0-9-]+\/$/,
-  commercial_service: /^\/commercial\/[a-z0-9-]+\/$/,
   market_specific_service: /^\/st-louis-mo\/[a-z0-9-]+\/$/,
 }
 
@@ -233,7 +217,6 @@ function toService(raw: RawServiceRecord): Service {
     ...(raw.parent_service_id !== null && { parentServiceId: raw.parent_service_id }),
     launchTier: raw.launch_tier,
     matrixEligibility: raw.matrix_eligibility,
-    commercialApplicability: raw.commercial_applicability,
     primaryIntents: raw.primary_intents,
     primaryAudiences: raw.primary_audiences,
     aliases: raw.aliases,
@@ -242,7 +225,7 @@ function toService(raw: RawServiceRecord): Service {
   }
 }
 
-/** All 18 services, in registry order. */
+/** All 11 services, in registry order. */
 export const serviceList: readonly Service[] = rawRegistry.services.map(toService)
 
 const serviceById = new Map<ServiceId, Service>(
@@ -253,7 +236,7 @@ const serviceByUrl = new Map<string, Service>(
   serviceList.map((s) => [s.canonicalUrl, s]),
 )
 
-/** The two service hubs, `/services/` and `/commercial/` (06 §4). */
+/** The service hub, `/services/` (06 §4). */
 export const serviceHubs: readonly RawServiceHub[] = rawRegistry.hubs
 
 /** Alias and exclusion register (06 §36). */
@@ -285,13 +268,12 @@ export function getServiceByCanonicalUrl(url: string): Service | undefined {
 /**
  * Returns a service by slug within a URL namespace.
  *
- * Namespaced because 5 slugs are shared between a residential service
- * and its commercial counterpart — see the header note.
+ * Namespaced by URL prefix — see the header note.
  *
- * @example getServiceBySlugInNamespace('/commercial/', 'hydro-jetting')
+ * @example getServiceBySlugInNamespace('/services/', 'hydro-jetting')
  */
 export function getServiceBySlugInNamespace(
-  namespace: '/services/' | '/commercial/' | '/st-louis-mo/',
+  namespace: '/services/' | '/st-louis-mo/',
   slug: string,
 ): Service | undefined {
   return serviceByUrl.get(`${namespace}${slug}/`)
@@ -310,9 +292,7 @@ export function servicesByRecordType(type: ServiceRecordType): Service[] {
 /**
  * Direct children of a service.
  *
- * Note the graph is two levels deep in places — `grease-sludge-removal`
- * parents to `commercial-hydro-jetting`, which parents to
- * `hydro-jetting`. This returns direct children only.
+ * This returns direct children only.
  */
 export function childServices(parentId: ServiceId): Service[] {
   return serviceList.filter((s) => s.parentServiceId === parentId)
@@ -339,7 +319,7 @@ export function serviceMarketStatus(
  * True only when a service may be presented as available in a market.
  *
  * `capability_validate_packaging` returns false — the capability exists
- * but its commercial packaging is unvalidated, and 06 §43 forbids
+ * but how it would be offered is unvalidated, and 06 §43 forbids
  * presenting that as offered.
  */
 export function isServiceOfferedIn(

@@ -85,12 +85,8 @@ function checkPage(page: MasterPageRecord): CrossRegistryIssue[] {
   }
 
   // A service page's pathname must be the service's own canonical URL.
-  // Catches a page pointing at the right service but the wrong route —
-  // e.g. the residential URL carrying the commercial service id.
-  if (
-    page.serviceId !== undefined &&
-    (page.pageType === 'service' || page.pageType === 'commercial')
-  ) {
+  // Catches a page pointing at the right service but the wrong route.
+  if (page.serviceId !== undefined && page.pageType === 'service') {
     const owner = getServiceByCanonicalUrl(page.pathname)
     if (owner === undefined) {
       issues.push({

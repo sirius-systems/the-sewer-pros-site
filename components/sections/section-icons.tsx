@@ -557,17 +557,6 @@ export function WashingMachineIcon(props: IconProps) {
   )
 }
 
-/** A commercial or office building - a single tower with a window grid. */
-export function CommercialBuildingIcon(props: IconProps) {
-  return (
-    <svg {...baseIconProps(props)}>
-      <path d="M6 21V3h12v18" />
-      <path d="M3 21h18" />
-      <path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15" />
-    </svg>
-  )
-}
-
 /** A house paired with a document - real estate paperwork. */
 export function HouseDocumentIcon(props: IconProps) {
   return (

@@ -1133,26 +1133,26 @@ export const sanDiegoMarketContent: MarketPageContent = {
       },
     },
     {
-      pageId: id('hub-commercial'),
+      pageId: id('aud-property-managers'),
       category: 'Property solutions',
       icon: 'building-2',
       accent: 'blue',
       description:
-        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multifamily buildings, and the people who manage them.',
-      linksHeading: 'Commercial services',
+        'Sewer inspection, cleaning, and hydro jetting for rental homes, multifamily residential properties, and the people who manage them.',
+      linksHeading: 'Services for property managers',
       links: [
         {
-          pageId: id('com-camera'),
+          pageId: id('svc-sewer-camera-inspection'),
           label: 'Sewer Camera Inspection',
         },
         {
-          pageId: id('com-hydro-jetting'),
+          pageId: id('svc-hydro-jetting'),
           label: 'Hydro Jetting',
         },
       ],
       secondaryLink: {
-        pageId: id('hub-commercial'),
-        label: 'Explore Commercial Services',
+        pageId: id('aud-property-managers'),
+        label: 'Explore Property Manager Services',
       },
     },
   ],
@@ -1308,20 +1308,6 @@ export const sanDiegoMarketContent: MarketPageContent = {
           addresses the main sewer line itself. We offer both, and a camera
           inspection can help identify which one actually addresses the problem
           you are experiencing.
-        </p>
-      ),
-    },
-    {
-      question:
-        'Do you offer sewer inspections for commercial properties in San Diego?',
-      answer: (
-        <p>
-          Yes. We provide{' '}
-          <ApprovedInlineLink pageId={id('hub-commercial')}>
-            commercial sewer inspection and cleaning
-          </ApprovedInlineLink>{' '}
-          for property managers, facility operators, and commercial property
-          owners across the San Diego market.
         </p>
       ),
     },

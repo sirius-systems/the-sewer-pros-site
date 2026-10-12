@@ -1024,29 +1024,6 @@ export const lasVegasMarketContent: MarketPageContent = {
         label: 'Explore Preventative Maintenance',
       },
     },
-    {
-      pageId: id('hub-commercial'),
-      category: 'Property solutions',
-      icon: 'building-2',
-      accent: 'blue',
-      description:
-        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multifamily buildings, and the people who manage them.',
-      linksHeading: 'Commercial services',
-      links: [
-        {
-          pageId: id('com-camera'),
-          label: 'Sewer Camera Inspection',
-        },
-        {
-          pageId: id('com-sewer-cleaning'),
-          label: 'Sewer Cleaning',
-        },
-      ],
-      secondaryLink: {
-        pageId: id('hub-commercial'),
-        label: 'Explore Commercial Services',
-      },
-    },
   ],
   /*
     ⚠ THE HOME PAGE'S APPROVED SECTION, VERBATIM, AS OF 2026-09-23.

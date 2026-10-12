@@ -68,28 +68,6 @@ export const homeContent: HomePageContent = {
   */
   services: homeServiceCards,
   /*
-    ⚠ THE COMMERCIAL LINKS USE PAGE IDS, NOT SERVICE IDS.
-
-    The brief named `svc-commercial-sewer-camera-inspection` and its
-    two siblings. Those are SERVICE REGISTRY ids;
-    `ApprovedInlineLink` takes a PAGE id and would have thrown the
-    build on all three.
-
-    The pages exist and are live, and the mapping is recorded in the
-    data rather than inferred — each commercial page record declares
-    the service it covers:
-
-      svc-commercial-sewer-camera-inspection -> com-camera
-      svc-commercial-sewer-cleaning          -> com-sewer-cleaning
-      svc-commercial-hydro-jetting           -> com-hydro-jetting
-
-    All three are status `launch` and indexable, so none had to fall
-    back to plain text.
-
-    Wording is unchanged from the approved copy. Only the named terms
-    are wrapped.
-  */
-  /*
     ⚠ THE NAMED DESTINATIONS LIVE IN `links`, NOT IN `description`.
 
     They were inline `ApprovedInlineLink`s inside the paragraph for one
@@ -103,11 +81,6 @@ export const homeContent: HomePageContent = {
     Every `pageId` below still resolves through the approved registry at
     render, so a gated or unauthored page fails there rather than
     shipping a dead link (16 §25, CLAUDE.md §37, §51).
-
-    ⚠ THE COMMERCIAL IDS ARE `com-*`, NOT `svc-commercial-*`. The
-    latter are SERVICE ids in the service registry, not PAGE ids, and
-    would throw at the resolver. Same substitution the inline-links
-    version already made.
   */
   routing: [
     {
@@ -157,21 +130,21 @@ export const homeContent: HomePageContent = {
       },
     },
     {
-      pageId: id('hub-commercial'),
+      pageId: id('aud-property-managers'),
       category: 'Property solutions',
       icon: 'building-2',
       accent: 'navy',
       description:
-        'Sewer inspection, cleaning, and hydro jetting for commercial properties, multi-family buildings, and property managers. Recurring backups and drainage issues get handled without disrupting your operations.',
-      linksHeading: 'Commercial services',
+        'Sewer inspection, cleaning, and hydro jetting for rental homes, multifamily residential properties, and property managers. Recurring backups and drainage issues start with an inspection.',
+      linksHeading: 'Services for property managers',
       links: [
-        { pageId: id('com-camera'), label: 'Sewer Camera Inspection' },
-        { pageId: id('com-sewer-cleaning'), label: 'Sewer Cleaning' },
-        { pageId: id('com-hydro-jetting'), label: 'Hydro Jetting' },
+        { pageId: id('svc-sewer-camera-inspection'), label: 'Sewer Camera Inspection' },
+        { pageId: id('svc-sewer-cleaning'), label: 'Sewer Cleaning' },
+        { pageId: id('svc-hydro-jetting'), label: 'Hydro Jetting' },
       ],
       secondaryLink: {
-        pageId: id('hub-commercial'),
-        label: 'Explore Commercial Services',
+        pageId: id('aud-property-managers'),
+        label: 'Explore Property Manager Services',
       },
     },
     {
@@ -352,17 +325,6 @@ export const homeContent: HomePageContent = {
           through a blockage. Neither is better in every case. The right
           choice depends on the line and what is in it, and a camera
           inspection can show what is in the line first.
-        </p>
-      ),
-    },
-    {
-      question: 'Do you offer commercial sewer and drain services?',
-      answer: (
-        <p>
-          The Sewer Pros provides commercial sewer camera inspection, cleaning,
-          and hydro jetting for property managers, multi-family properties, and
-          commercial facilities, with service available across St. Louis, San
-          Diego, and Las Vegas.
         </p>
       ),
     },
@@ -1297,84 +1259,6 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         same-day language may be added here.
       */
       note: 'Prefer to talk? Select your service market in the form, or contact the appropriate local team during Monday through Friday, 8:00 a.m. to 4:00 p.m.',
-    },
-  },
-
-  [id('hub-commercial')]: {
-    // Reviews carousel (and the confidence band) on the commercial hub, as on
-    // the services and locations hubs. Company-wide figures, DEC-100.
-    showTrustSections: true,
-    hero: {
-      title: 'Commercial Sewer & Drain Services',
-      intro: (
-        <p>
-          Inspection, cleaning, and planned maintenance for commercial
-          properties, where a blocked line closes something rather than merely
-          inconveniencing someone.
-        </p>
-      ),
-    },
-    // No brand suffix: the root title template appends it.
-    seoTitle: 'Commercial Sewer & Drain Services',
-    metaDescription:
-      'Sewer camera inspection, cleaning, hydro jetting, and maintenance for commercial properties across St. Louis, San Diego, and Las Vegas: planned service, not reactive fixes.',
-    body: (
-      <>
-        <h2>What changes on a commercial property</h2>
-        <p>
-          The plumbing is not fundamentally different. The consequences are.
-          Higher and more continuous volume means lines accumulate faster, and a
-          failure interrupts trading, displaces tenants, or closes a kitchen.
-        </p>
-        <p>
-          That shifts the useful work from reactive to planned, and makes
-          documentation matter: decisions on commercial property usually have
-          to be justified to someone.
-        </p>
-      </>
-    ),
-    items: [
-      { pageId: id('com-camera'), description: 'Documented condition across a property or portfolio.' },
-      { pageId: id('com-sewer-cleaning'), description: 'Clearing commercial lines around operations.' },
-      { pageId: id('com-hydro-jetting'), description: 'High-pressure cleaning for grease, scale, and sludge.' },
-      { pageId: id('com-drain-cleaning'), description: 'Fixture and branch drains across occupied buildings.' },
-      { pageId: id('com-maintenance'), description: 'Servicing lines on an evidence-based interval.' },
-    ],
-    faq: [
-      {
-        question: 'Do you serve restaurants and food-service properties?',
-        answer: (
-          <p>
-            Yes. Grease and buildup in food-service lines is one of the most
-            common reasons commercial properties need cleaning, and it is a
-            large part of what hydro jetting addresses.
-          </p>
-        ),
-      },
-      {
-        question: 'Do you offer commercial sewer repair?',
-        answer: (
-          <p>
-            No. We inspect, diagnose, locate, and clean commercial lines.
-            Where a finding suggests repair, that is a separate conversation
-            with a qualified repair contractor.
-          </p>
-        ),
-      },
-      {
-        question: 'Can you service multiple properties under one account?',
-        answer: (
-          <p>
-            Yes, scheduling across a portfolio is part of the conversation.
-            What we will not do is put every line on the same interval
-            regardless of what it actually needs.
-          </p>
-        ),
-      },
-    ],
-    cta: {
-      title: 'Talk to us about a commercial property',
-      body: 'Start with what the lines actually need, established by inspection.',
     },
   },
 

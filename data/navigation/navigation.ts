@@ -77,7 +77,6 @@ export const primaryNav: NavItem[] = [
   { pageId: id('hub-services'), label: 'Services' },
   { pageId: id('hub-locations'), label: 'Locations' },
   { pageId: id('hub-audiences'), label: 'Who We Serve' },
-  { pageId: id('hub-commercial'), label: 'Commercial' },
   { pageId: id('hub-resources'), label: 'Resources' },
   { pageId: id('core-about'), label: 'About' },
   { pageId: id('core-contact'), label: 'Contact' },
@@ -133,7 +132,6 @@ export const footerNav: NavGroup[] = [
       { pageId: id('aud-home-buyers'), label: 'Home buyers' },
       { pageId: id('aud-real-estate-agents'), label: 'Real estate agents' },
       { pageId: id('aud-property-managers'), label: 'Property managers' },
-      { pageId: id('hub-commercial'), label: 'Commercial' },
     ],
   },
   {

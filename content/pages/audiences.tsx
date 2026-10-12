@@ -520,9 +520,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
     services: [
       { pageId: id('svc-recurring-sewer-backup-diagnosis'), description: 'Establish why a line keeps blocking.' },
       { pageId: id('svc-preventative-sewer-maintenance'), description: 'Service on an evidence-based interval.' },
-      { pageId: id('com-camera'), description: 'Documented condition across a portfolio.' },
-      { pageId: id('com-hydro-jetting'), description: 'High-pressure cleaning for grease and buildup.' },
-      { pageId: id('com-maintenance'), description: 'Planned commercial servicing.' },
+      { pageId: id('svc-sewer-camera-inspection'), description: 'Documented condition of the line, property by property.' },
+      { pageId: id('svc-hydro-jetting'), description: 'High-pressure cleaning for buildup in the line.' },
     ],
     process: [
       { title: 'Review the history', description: 'Which properties, how often, what was done.' },
@@ -552,7 +551,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('hub-commercial'), id('com-maintenance')],
+    relatedPageIds: [id('hub-services'), id('svc-preventative-sewer-maintenance')],
     cta: {
       title: 'Talk to us about a portfolio',
       body: 'Start with the lines that keep coming back, and find out why.',
@@ -630,9 +629,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
     services: [
       { pageId: id('svc-sewer-camera-inspection'), description: 'Documented condition of common-area lines.' },
       { pageId: id('svc-preventative-sewer-maintenance'), description: 'Planned servicing where evidence supports it.' },
-      { pageId: id('com-camera'), description: 'Survey across a community.' },
-      { pageId: id('com-hydro-jetting'), description: 'High-pressure cleaning for shared lines.' },
-      { pageId: id('com-maintenance'), description: 'Commercial preventative servicing.' },
+      { pageId: id('svc-hydro-jetting'), description: 'High-pressure cleaning for shared lines.' },
     ],
     faq: [
       {
@@ -656,7 +653,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('hub-commercial'), id('com-maintenance')],
+    relatedPageIds: [id('hub-services'), id('svc-preventative-sewer-maintenance')],
     cta: {
       title: 'Get the common-area lines documented',
       body: 'Evidence a board can put in front of owners and competing bidders.',
