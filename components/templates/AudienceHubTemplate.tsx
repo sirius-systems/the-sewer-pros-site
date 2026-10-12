@@ -29,7 +29,7 @@ import type { AudienceHubContent, MasterPageRecord } from '@/types'
  *
  * ⚠ IMAGES ARE PLACEHOLDER SLOTS until real photography lands; see
  * `data/business/audience-hub-images.ts` and
- * `public/images/audience-hub/README.md`. Interim scenes are decorative
+ * `docs/images-readme/markets/README.md`. Interim scenes are decorative
  * (`alt=""`); the real files carry their own alt text.
  *
  * ⚠ NOTHING HERE IS CLIENT-SIDE NAVIGATION. Every audience, need, and

@@ -7,7 +7,7 @@ import { join } from 'node:path'
  *
  * ⚠ SLOTS, NOT ASSETS. Nothing here points at a stand-in image. Save the
  * real file at `preferred` (see
- * `public/images/services/sewer-camera-inspection/README.md`) and it is
+ * `docs/images-readme/services/sewer-camera-inspection/README.md`) and it is
  * used at the next build; until then the slot resolves to a labelled
  * placeholder frame in development and to NOTHING in a production build.
  * Sections that depend on a slot omit themselves rather than ship an

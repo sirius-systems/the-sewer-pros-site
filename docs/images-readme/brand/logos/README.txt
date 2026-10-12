@@ -17,6 +17,7 @@ CONTENTS
 
 05-brand-guide
   PDF quick-reference guide for color, spacing, selection, and logo misuse.
+  Kept in brand/the-sewer-pros-brand-guide.pdf at the repository root, not published with the site.
 
 CORE COLORS
 Sewer Blue  #2463AB

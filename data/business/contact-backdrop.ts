@@ -10,7 +10,7 @@ import type { MarketId } from '@/types'
  * ⚠ PLACEHOLDER SLOTS: DROP THE REAL FILE AT `preferred` AND IT IS USED
  * ===========================================================================
  * Each slot names the path the real photograph should be saved to
- * (see `public/images/contact/README.md`) and an interim image that
+ * (see `docs/images-readme/contact/README.md`) and an interim image that
  * already exists in the repository. `resolve()` checks the filesystem at
  * build time and uses `preferred` when the file is there, otherwise the
  * interim, so the page always renders and a swap needs no code change.

@@ -6,7 +6,7 @@ import type { CardImage } from '@/types'
  * Who We Serve hub (`/for/`) image slots.
  *
  * ⚠ PLACEHOLDER SLOTS, THE SAME MECHANISM AS `contact-backdrop.ts`. Drop
- * the real photograph at `preferred` (see `public/images/audience-hub/README.md`)
+ * the real photograph at `preferred` (see `docs/images-readme/markets/README.md`)
  * and it is used at the next build; until then the `interim` image, which
  * already exists in the repository, renders. No code change is needed.
  *

@@ -1,7 +1,10 @@
 # Image Assets
 
-Production image directory for The Sewer Pros site. Structure only — no
-assets are committed here yet.
+Guide to the production image directory (`public/images/`) for The Sewer Pros
+site. This README and the per-folder slot READMEs live in `docs/images-readme/`
+so they are not published with the site. Empty folders are not tracked: create a
+folder when the first file for it is added. The brand guide PDF is kept in
+`brand/` at the repository root, not under `public/`.
 
 Governed by `docs/18-design-system.md` §40-44 (image direction, hierarchy,
 AI-generated imagery, market imagery) and `CLAUDE.md` §24 (never invent
@@ -50,9 +53,7 @@ Folder names under `services/`, `markets/`, and
 
 - **Services** — `data/services/master-service-registry.json`. The registry
   holds 11 records, each filed under `services/` by its slug and matching the
-  record's own `canonical_url`. The Sewer Pros does not offer commercial
-  services (owner decision, Oct 12, 2026), so there is no commercial folder
-  to add.
+  record's own `canonical_url`.
 - **Audiences** — `LAUNCH_AUDIENCE_IDS` in `types/audience.ts`. Six of the 10
   canonical audiences have approved pages; the remaining Phase 2 audiences
   (09 §8) get folders when their pages are approved.
