@@ -50,7 +50,7 @@ The equipment shown in the 12 render images is owner-approved (Oct 12, 2026). Th
 
 ## Wiring status (Oct 12, 2026)
 
-**24 placeholder boxes remain on 24 pages** (was 537 on 162). 15 of the 16 real-photo files and both existing assets are wired; IMG-12 is held. Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 513 (14 photo files, 3 of them inferred matches, plus the 2 existing assets, wired now) + 24 (IMG-12, held). Counted by page type: service + location 16, location hub 8, core service 0, so 24 boxes on 24 pages.
+**0 placeholder boxes remain** (was 537 on 162). All 16 real-photo files and both existing assets are wired; IMG-12 was held for a privacy flag and wired later the same day on owner approval. Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 511 (15 photo files, 3 of them inferred matches, wired earlier) + 2 (the 2 existing assets) + 24 (IMG-12, wired on Oct 12, 2026 on owner approval) = 929, so 0 boxes remain. By page type: the 24 IMG-12 boxes were 16 service + location and 8 location hub; core service was already 0.
 
 The files were generated renders, not job photographs: same 2400 x 1792 size, naming and rendering artifacts as the 12 renders wired earlier, no camera metadata. They carry the same provenance string (`RENDER_IMAGE_SOURCE`). Alt text describes only what is visible. Each file was center-cropped (0.45% off 4:3; the hero 0.78% off 16:9), resized to 1600 x 1200 (hero 1360 x 765), saved as WebP at 97 to 257 KB with no metadata, and the originals were moved to the gitignored `image-originals/` folder.
 
@@ -61,7 +61,7 @@ The files were generated renders, not job photographs: same 2400 x 1792 size, na
 | IMG-17 | Jetter trailer at a curb | 16 | **Wired** | Exact name. Trailer decal blurred in the image; no plate. |
 | IMG-20 | Monitor beside a handheld locator receiver | 16 | **Wired** | Exact name. |
 | IMG-08 | Cable or hose entering a cleanout | 33 | **Wired** | Exact name; the file arrived in `public/images/clean-outs/` and was saved at the shot-list path `shared/cleanouts/`. |
-| IMG-12 | Drain machine at a floor or tub drain | 24 | **HELD (privacy)** | Exact name, but the machine leg carries a readable label ("PF1500"), a brand-like word that is not an approved equipment name. Not wired. Original kept in `image-originals/`. 8 hub and 16 service + location slots stay as placeholders. |
+| IMG-12 | Drain machine at a floor or tub drain | 24 | **Wired, owner-approved** | Exact name. A readable label ("PF1500") shows on the machine leg. The owner approved the image as generated, with the label, on Oct 12, 2026 (DEC-144). The approval covers this file only. Not edited, blurred or regenerated. The label is not named in alt text or page copy and is not a confirmed equipment name. 8 hub cards and 16 service + location problem cards. |
 | IMG-13 | Jetting nozzle and hose at the line | 24 | **Wired** | Exact name. House number plaque in the background is blurred. |
 | IMG-14 | Camera head entering a cleanout | 24 | **Wired** | Exact name. |
 | IMG-15 | Cleaning machine and cable at a cleanout | 24 | **Wired** | Exact name. |

@@ -36,23 +36,24 @@ The 537 remaining boxes belong only to the 16 real-photo files (535 boxes, 144 o
 
 ## Status after wiring the photo files (Oct 12, 2026)
 
-**24 placeholder boxes remain on 24 of 200 built pages.** Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 513 (14 photo files, 3 of them inferred matches, plus the 2 existing assets, wired now) + 24 (IMG-12, held). Counted by page type: service + location 16, location hub 8, core service 0, so 24 boxes on 24 pages.
+**0 placeholder boxes remain on 0 of 200 built pages.** Arithmetic: 929 boxes in the corrected baseline = 392 (12 renders, wired earlier) + 511 (15 photo files, 3 of them inferred matches, wired earlier) + 2 (the 2 existing assets) + 24 (IMG-12, wired on Oct 12, 2026 on owner approval) = 929, so 0 boxes remain. By page type: the 24 IMG-12 boxes were 16 service + location and 8 location hub; core service was already 0.
 
 | | Boxes |
 |---|---|
 | Corrected baseline before any wiring | 929 |
 | Filled by the 12 renders (earlier) | 392 |
-| Filled by 14 photo files and 2 existing assets (now) | 513 |
-| **Remaining (IMG-12, held for a privacy flag)** | **24** |
+| Filled by 15 photo files and 2 existing assets (earlier) | 513 |
+| Filled by IMG-12, wired on owner approval (now) | 24 |
+| **Remaining** | **0** |
 
-| Market | Location hub | Service + location | Core service | Total | Pages affected |
-|---|---|---|---|---|---|
-| Las Vegas | 4 | 4 | 0 | 8 | 8 |
-| San Diego | 4 | 7 | 0 | 11 | 11 |
-| St. Louis | 0 | 5 | 0 | 5 | 5 |
-| **Total** | **8** | **16** | **0** | **24** | **24** |
+| Market | Location hub | Service + location | Core service | Total |
+|---|---|---|---|---|
+| Las Vegas | 4 to 0 | 4 to 0 | 0 | 8 cleared |
+| San Diego | 4 to 0 | 7 to 0 | 0 | 11 cleared |
+| St. Louis | 0 | 5 to 0 | 0 | 5 cleared |
+| **Total** | **8 to 0** | **16 to 0** | **0** | **24 cleared** |
 
-What is left: the `svc-drain` card on the 8 hubs that draw service cards (Henderson, Las Vegas, North Las Vegas, Summerlin, Chula Vista, Escondido, Oceanside, San Marcos), and the "Drain machine at a floor or tub drain" problem card on the 16 drain-cleaning service + location pages. Sections 1 to 8 below list the boxes as they stood before the Oct 12 photo wiring.
+IMG-12 (drain machine at a floor or tub drain) was held first because a readable label ("PF1500") shows on the machine leg. It was wired the same day: the owner approved the image as generated, label included, for this file only. Sections 1 to 8 below list the boxes as they stood before the Oct 12 photo wiring.
 
 ## 1. Location hub pages (16)
 

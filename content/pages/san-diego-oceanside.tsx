@@ -153,8 +153,10 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'svc-drain',
     ratio: '4:3',
-    alt: 'Drain cleaning equipment at a fixture',
+    alt: 'A red cleaning machine on a bare concrete floor with its cable running down an open floor drain, and the drain grate lying beside it',
     shot: 'Drain machine at a floor or tub drain',
+    src: '/images/shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp',
+    source: RENDER_IMAGE_SOURCE,
   },
   {
     id: 'svc-prepurchase',

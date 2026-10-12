@@ -5372,6 +5372,22 @@ Confirmed:
 
 The properties remain residential-focused (DEC-142). No page copy changed with this entry.
 
+## DEC-144 - IMG-12 Approved as Generated, Including the Visible Machine Label
+
+**Date:** 2026-10-12
+**Status:** APPROVED
+**Impact:** Minor (one image file; no page copy changed)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** none
+**Affected Documents:**
+
+* `docs/image-shot-list.md`, `docs/image-placeholder-inventory.md`, `docs/shoot-day-schedule.md`
+* `public/images/shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp`
+
+**Reason:** the image for IMG-12 (drain machine at a floor or tub drain) shows a legible label on the machine leg that is not an approved equipment name. It had been held for that reason. The owner approved the image as generated, with the label, for this file only.
+
+Recorded: the image was not edited, blurred or regenerated. The label is not named in alt text or in any page copy, and it is not treated as a confirmed equipment name anywhere. The approval covers this file only; any other file with legible non-approved lettering is still subject to the privacy check. The 8 hub cards and 16 drain-cleaning service + location problem cards that use it were wired the same day, which cleared the last 24 placeholder boxes.
+
 ---
 
 ---

@@ -156,6 +156,10 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     alt: 'A sewer camera monitor showing the inside of a pipe, next to a yellow handheld locator receiver on a bin',
     src: () => `${RENDER_DIR}equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp`,
   },
+  'Drain machine at a floor or tub drain': {
+    alt: 'A red cleaning machine on a bare concrete floor with its cable running down an open floor drain, and the drain grate lying beside it',
+    src: () => `${RENDER_DIR}equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp`,
+  },
   'Fence line and planting beds where digging might be planned, nothing identifiable': {
     alt: 'Backyard wooden fence with shrubs and a mulch bed beside a lawn, with a yellow locator receiver lying on the grass',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp`,
