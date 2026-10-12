@@ -20,8 +20,8 @@ Searched `app`, `components`, `content`, `data`, `lib`, `types`, `scripts`, `pub
 |---|---|---|
 | A | 123 | 5 |
 | B | 56,829 | 25 |
-| C | 2,407 | 146 |
-| D | 24 | 4 |
+| C | 2,431 | 150 |
+| D | 0 lines (4 items listed below) | 0 |
 | E | 165 | 8 |
 | **Total** | **59,548** | **188** |
 

@@ -1,14 +1,13 @@
 # Preventative Sewer Maintenance — pending photography
 
-Two photo slots on `/services/preventative-sewer-maintenance/` are currently
-`ImagePlaceholder` stand-ins (`content/pages/services.tsx`, the
-`svc-preventative-sewer-maintenance` entry's `explainer.image` and
-`considerations.image`) rather than fabricated stock/AI imagery — see
-`18-design-system.md` §28-34 and CLAUDE.md §24. Once each photo below is
+A photo slot on `/services/preventative-sewer-maintenance/` is currently an
+`ImagePlaceholder` stand-in (`content/pages/services.tsx`, the
+`svc-preventative-sewer-maintenance` entry's `explainer.image`) rather than fabricated stock/AI imagery — see
+`18-design-system.md` §28-34 and CLAUDE.md §24. Once the photo below is
 shot and approved, replace the matching `{ label, filename }` placeholder
 with `{ src, alt }` pointing at the saved file in this directory.
 
-Shared rules for both shots (same as every other service page's photography):
+Rules for the shot (same as every other service page's photography):
 
 - Real Sewer Pros / RIDGID equipment and job-site conditions only. No stock
   photography, no AI-generated imagery, no imagery implying repair,
@@ -29,16 +28,6 @@ Shared rules for both shots (same as every other service page's photography):
 - **Alt text (once live):** "A technician reviewing sewer camera footage to
   establish a maintenance interval"
 
-## 2. Considerations photo
-
-- **Filename:** `the-sewer-pros-preventative-sewer-maintenance-considerations-commercial-4x3.webp`
-- **Aspect ratio:** 4:3
-- **Shot:** Sewer cleaning equipment staged at a commercial property
-  cleanout — supports the page's "where it fits for commercial properties"
-  section. No active cleaning mid-process; a staged, ready-to-work scene.
-- **Alt text (once live):** "Sewer cleaning equipment staged at a commercial
-  property cleanout"
-
-Neither photo blocks publication — the page already renders correctly with
-placeholders in place — but the page should not be treated as
-photography-complete until both are replaced (`components/ui/ImagePlaceholder.tsx`).
+The photo above does not block publication (the page already renders
+correctly with a placeholder in place), but the page should not be treated as
+photography-complete until it is replaced (`components/ui/ImagePlaceholder.tsx`).
