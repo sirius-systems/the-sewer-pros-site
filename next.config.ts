@@ -27,6 +27,13 @@ const nextConfig: NextConfig = {
   output: 'export',
 
   /**
+   * Alternate output folder, set only by scripts/report-unfilled-slots.mjs when
+   * it renders a throwaway audit copy of a launch build. Unset for every real
+   * build, which then writes to the default folders.
+   */
+  ...(process.env.NEXT_DIST_DIR ? { distDir: process.env.NEXT_DIST_DIR } : {}),
+
+  /**
    * Trailing slash.
    *
    * DEC-061 — canonical URLs end with `/`.

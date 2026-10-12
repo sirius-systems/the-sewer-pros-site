@@ -85,3 +85,6 @@ desktop.ini
 # rather than removing these files, and record the decision in
 # 22-decisions-change-log.md.
 # ---------------------------------------------------------------
+
+# Throwaway audit render made by scripts/report-unfilled-slots.mjs
+/.slot-audit/

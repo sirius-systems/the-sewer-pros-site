@@ -975,7 +975,7 @@ They should guide:
 
 They are not pixel-perfect requirements.
 
-**Image files.** Image placement, naming and slot rules are in `docs/images-readme/README.md` (with a README per service folder in `docs/images-readme/services/`). Do not reuse one market's photo as another market's context: market-specific imagery stays in its market folder. Do not place README, notes or other non-image files in `public/`, because everything there is published. Placeholder counts come from `scripts/count-placeholders.mjs` run on a production build.
+**Image files.** Image placement, naming and slot rules are in `docs/images-readme/README.md` (with a README per service folder in `docs/images-readme/services/`). Do not reuse one market's photo as another market's context: market-specific imagery stays in its market folder. Do not place README, notes or other non-image files in `public/`, because everything there is published. Placeholder counts come from `scripts/count-placeholders.mjs` run on a production build. Unfilled image slots draw placeholders in the preview by default. **Set LAUNCH_MODE to true at launch** (`LAUNCH_MODE` in `lib/launch.ts`, currently false): it forces `SHOW_IMAGE_SLOTS` off and makes every unfilled slot and `ImagePlaceholder` render nothing, with no environment variable or hosting setting. Do not set it to true before the owner says to. Every build logs the list of pages with unfilled slots (`scripts/report-unfilled-slots.mjs`): a warning while the flag is false, an error message (exit code still 0) when it is true.
 
 ---
 

@@ -1,19 +1,20 @@
 import Image from 'next/image'
 import { cn } from '@/lib/utils/cn'
+import { SHOW_IMAGE_SLOTS } from '@/lib/image-slots'
 import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
 import { resolveHubImage, type HubImageKey } from '@/data/business/hub-images'
 
 /**
  * One service hub image slot (camera inspection or sewer cleaning).
  *
- * Renders the real image when the file exists, a labelled placeholder
- * frame in development, and nothing in a production build. See
+ * Renders the real image when the file exists. When it does not, it draws a
+ * labelled placeholder frame while `SHOW_IMAGE_SLOTS` is on and nothing when
+ * it is off (`LAUNCH_MODE` in `lib/launch.ts` forces it off). See
  * `data/business/camera-inspection-images.ts`.
  *
  * ⚠ THE PLACEHOLDER IS A WORKING TOOL, NOT CONTENT. It names the slot,
  * the filename and the capture notes so the photographer and the
- * developer read the same brief. It never reaches production and never
- * reaches structured data.
+ * developer read the same brief. It never reaches structured data.
  */
 export interface CameraImageSlotProps {
   slot: HubImageKey
@@ -33,6 +34,7 @@ export function CameraImageSlot({
 }: CameraImageSlotProps) {
   const image = resolveHubImage(slot)
   if (image === null) return null
+  if (image.placeholder && !SHOW_IMAGE_SLOTS) return null
 
   // A slot with a `pending` label shows the shared pending-photography box
   // (flag-gated upstream) and never a caption. Every other slot is unchanged.
@@ -72,7 +74,7 @@ export function CameraImageSlot({
             </p>
             <p>{image.subject}</p>
             {image.requiresRelease && <p>Requires release and anonymizing.</p>}
-            <p>Development only. Not rendered in production.</p>
+            <p>Preview only. Not rendered when LAUNCH_MODE is true.</p>
           </div>
         ) : (
           <Image
