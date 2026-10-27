@@ -77,7 +77,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const escondidoBackupContent: ServiceLocationPageContent = {
   seoTitle: 'Recurring Sewer Backup Diagnosis in Escondido, CA',
   metaDescription:
-    'Recurring sewer backup diagnosis in Escondido, CA. Municipal Code 22-165 puts the lateral on the owner. See what a camera can find before you approve work.',
+    'Recurring sewer backup diagnosis in Escondido, CA. Municipal Code 22-165 puts the lateral on the owner. See what a camera finds before you approve work.',
   serviceDescription:
     'Recurring sewer backup diagnosis is the process of inspecting the accessible sewer line to identify visible conditions that may cause repeated wastewater backups, for properties in Escondido, California. It generally combines a camera inspection, cleaning when needed, and written findings.',
   heroImage: slots.hero,

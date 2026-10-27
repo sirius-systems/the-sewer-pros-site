@@ -84,7 +84,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const escondidoMaintenanceContent: ServiceLocationPageContent = {
   seoTitle: 'Preventative Sewer Maintenance in Escondido, CA',
   metaDescription:
-    'Preventative sewer maintenance in Escondido, CA. Municipal Code 22-165 puts upkeep of the lateral on the owner. See what a camera and cleaning visit covers.',
+    'Preventative sewer maintenance in Escondido, CA. Municipal Code 22-165 puts lateral upkeep on the owner. See what a camera and cleaning visit covers.',
   serviceDescription:
     "Preventative sewer maintenance is planned inspection and cleaning of a home's drain and sewer line before buildup or an obstruction causes a backup, for properties in Escondido, California. It is diagnostic and cleaning work, not repair.",
   heroImage: slots.hero,

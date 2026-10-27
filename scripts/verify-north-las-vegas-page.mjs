@@ -253,7 +253,8 @@ const ldHosts = [...new Set([...ldRaw.matchAll(/https?:\/\/[^/"\s]+/g)].map((m) 
 check('JSON-LD uses only the build origin plus schema.org', ldHosts.every((h) => h === ORIGIN || h === 'https://schema.org'), ldHosts.join(', '))
 
 /* ---- Head ---- */
-check('title (brand suffix once)', /<title>Sewer Inspection &amp; Cleaning in North Las Vegas, NV \| The Sewer Pros<\/title>/.test(html))
+// The brand suffix is dropped when it would push the title past the search-result width (lib/seo/metadata.ts).
+check('title (brand suffix once, or dropped for width)', /<title>Sewer Inspection &amp; Cleaning in North Las Vegas, NV( \| The Sewer Pros)?<\/title>/.test(html))
 check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/locations/las-vegas-nv/north-las-vegas/"/>`))
 check('robots index, follow (unchanged)', html.includes('<meta name="robots" content="index, follow"/>'))
 const h1s = [...mainHtml.matchAll(/<h1[\s>][\s\S]*?<\/h1>/g)]

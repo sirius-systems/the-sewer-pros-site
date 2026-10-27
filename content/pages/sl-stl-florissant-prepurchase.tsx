@@ -92,7 +92,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const florissantPrePurchaseContent: ServiceLocationPageContent = {
   seoTitle: 'Pre-Purchase Sewer Inspection in Florissant, MO',
   metaDescription:
-    'Buying in Florissant, MO? The City allows “as is” sales, and its lateral program is not for sale contingencies. See what a sewer scope shows.',
+    'Pre-purchase sewer inspection in Florissant, MO. The City allows as-is sales, and its lateral program is not for sale contingencies.',
   serviceDescription:
     'A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase, recording the visible condition of the accessible sewer line serving a home in Florissant, Missouri, before closing.',
   heroImage: slots.hero,

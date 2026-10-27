@@ -28,6 +28,7 @@ import type { Metadata } from 'next'
 import type { MasterPageRecord } from '@/types'
 import { robotsForPage } from '@/types'
 import { absoluteUrl, siteOrigin, SITE_NAME } from '@/data/business'
+import { titleWidth, TITLE_BUDGET } from './text-width.mjs'
 
 /**
  * Brand assets used in metadata.
@@ -82,7 +83,12 @@ const TITLE_SUFFIX = ` | ${SITE_NAME}`
  * unchanged rather than suffixed twice.
  */
 function brandedTitle(title: string): string {
-  return title.endsWith(TITLE_SUFFIX) ? title : `${title}${TITLE_SUFFIX}`
+  if (title.endsWith(TITLE_SUFFIX)) return title
+  const branded = `${title}${TITLE_SUFFIX}`
+  // Brand last only when there is room (2026-10-27 meta audit): a title that would
+  // pass the ~580px search-result width with the suffix is shown without it, so the
+  // primary keyword and the place are never the part that gets cut.
+  return titleWidth(branded) <= TITLE_BUDGET ? branded : title
 }
 
 /**

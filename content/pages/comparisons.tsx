@@ -50,7 +50,7 @@ export const comparisonCardImages: Partial<Record<PageId, CardImage>> = {
 export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> = {
   [id('cmp-hydro-vs-snaking')]: {
     metaDescription:
-      'Compare hydro jetting and sewer snaking, including how each approach works, when it may help, and what a sewer inspection can clarify.',
+      'Hydro jetting vs sewer snaking: snaking clears one obstruction, jetting cleans buildup along the pipe. See which fits and when a camera should come first.',
     hero: {
       eyebrow: 'Comparison',
       title: 'Hydro Jetting vs Sewer Snaking',

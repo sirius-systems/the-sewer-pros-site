@@ -45,9 +45,9 @@ export const aboutContent: AboutPageContent = {
       </p>
     ),
   },
-  seoTitle: 'About The Sewer Pros | Independent Sewer Inspection',
+  seoTitle: 'About The Sewer Pros: Independent Sewer Inspection',
   metaDescription:
-    'Independent sewer inspection and cleaning from The Sewer Pros: how we help homeowners, buyers and property professionals understand sewer-line conditions.',
+    'Independent sewer inspection and cleaning from The Sewer Pros: how we help homeowners, buyers and property professionals understand their sewer lines.',
   heroImage: {
     src: '/images/brand/about/hero/the-sewer-pros-about-independent-sewer-inspection-hero.webp',
     alt: 'Sewer camera inspection equipment set up at a sewer access point',

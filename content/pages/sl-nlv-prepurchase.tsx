@@ -95,7 +95,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const northLasVegasPrePurchaseContent: ServiceLocationPageContent = {
   seoTitle: 'Pre-Purchase Sewer Inspection in North Las Vegas, NV',
   metaDescription:
-    'Buying in North Las Vegas, NV? The City says the lateral is the owner’s up to the main, and we found no sale-time inspection rule. See what a scope shows.',
+    'Pre-purchase sewer inspection in North Las Vegas, NV: the City says the lateral is the owner\'s up to the main, and we found no rule requiring one at sale.',
   serviceDescription:
     'A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase, recording the visible condition of the accessible sewer line serving a home in the City of North Las Vegas, Nevada, before closing.',
   heroImage: slots.hero,

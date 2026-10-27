@@ -210,7 +210,7 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
       ),
       primaryAction: { href: '#request-service', label: 'Request Service' },
     },
-    seoTitle: 'Contact The Sewer Pros in St. Louis, MO | Sewer Inspection',
+    seoTitle: 'Request Sewer Inspection in St. Louis, MO',
     metaDescription:
       'Contact The Sewer Pros in St. Louis, MO for sewer camera inspection, cleaning, hydro jetting and line locating in St. Louis, St. Charles and Jefferson counties.',
     localSection: {
@@ -320,7 +320,7 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
       ),
       primaryAction: { href: '#request-service', label: 'Request Service' },
     },
-    seoTitle: 'Contact The Sewer Pros in San Diego, CA | Sewer Inspection',
+    seoTitle: 'Request Sewer Inspection in San Diego, CA',
     metaDescription:
       'Contact The Sewer Pros in San Diego, CA for sewer camera inspection, cleaning, hydro jetting and line locating in San Diego, Carlsbad and Escondido.',
     localSection: {
@@ -426,7 +426,7 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
       ),
       primaryAction: { href: '#request-service', label: 'Request Service' },
     },
-    seoTitle: 'Contact The Sewer Pros in Las Vegas, NV | Sewer Inspection',
+    seoTitle: 'Request Sewer Inspection in Las Vegas, NV',
     metaDescription:
       'Contact The Sewer Pros in Las Vegas, NV for sewer camera inspection, cleaning, hydro jetting and line locating across the Las Vegas Valley.',
     localSection: {

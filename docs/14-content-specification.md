@@ -1831,6 +1831,10 @@ Example:
 
 Do not promise rankings, pricing, or availability not supported by documented information.
 
+## Enforced title and description rules (2026-10-27)
+
+`scripts/verify-meta.mjs` enforces these on every build: a unique title and description per page; titles within about 580px (the brand suffix is dropped by `lib/seo/metadata.ts` when it would not fit); descriptions 110 to 160 characters and within about 920px, answer-first, naming the place or audience on location and audience pages; the registered service name exactly in service titles; Open Graph and Twitter text equal to the title and description; no repair or replacement offer, commercial wording, free estimate, licensing, price or empty superlative. Details: `docs/source-reports/meta-audit-2026-10-27.md`.
+
 ---
 
 # 69. Internal Link Content

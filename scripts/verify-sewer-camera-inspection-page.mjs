@@ -56,7 +56,7 @@ const visible = strip(copyMain)
 
 /* ---- Head ---- */
 const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]
-check('title', title === 'Sewer Camera Inspection for Homes | The Sewer Pros', title)
+check('title', title === 'Sewer Camera Inspection: What It Shows | The Sewer Pros', title)
 const canonical = (html.match(/<link rel="canonical" href="([^"]+)"/) || [])[1]
 check('canonical', canonical === `${ORIGIN}/services/sewer-camera-inspection/`, canonical)
 const robots = (html.match(/<meta name="robots" content="([^"]+)"/) || [])[1]

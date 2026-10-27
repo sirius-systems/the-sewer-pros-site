@@ -450,7 +450,7 @@ const CCWRD_URL = 'https://www.cleanwaterteam.com/services/customer-service/repo
 export const summerlinContent: LocationPageContent = {
   seoTitle: 'Sewer Inspection & Cleaning in Summerlin, NV',
   metaDescription:
-    'Sewer camera inspection and cleaning in Summerlin, NV. Summerlin spans the City of Las Vegas and unincorporated Clark County, so see who serves your address.',
+    'Sewer inspection and cleaning in Summerlin, NV. Summerlin spans the City of Las Vegas and unincorporated Clark County, so check who serves your address.',
   hero: {
     title: 'Sewer Inspection and Cleaning in Summerlin',
     intro: (

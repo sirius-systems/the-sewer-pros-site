@@ -83,7 +83,7 @@ const faq = mergeRelevantFaqs(
 export const florissantCleaningCameraContent: ServiceLocationPageContent = {
   seoTitle: 'Sewer Cleaning & Camera Inspection in Florissant, MO',
   metaDescription:
-    'Sewer cleaning and camera inspection in Florissant, MO. MSD handles the public sewer; the lateral is yours. See what a visit covers and what a camera cannot.',
+    'Sewer cleaning and camera inspection in Florissant, MO. MSD handles the public sewer; the lateral is yours. See what a combined visit covers and its limits.',
   serviceDescription:
     'Sewer cleaning removes material that restricts flow in an accessible sewer line, and a camera inspection records its visible inside on video. The two can be combined in one visit, for properties in Florissant, Missouri.',
   heroImage: slots.hero,

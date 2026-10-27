@@ -118,7 +118,8 @@ const webPage = graph.find((n) => n['@type'] === 'WebPage')
 check('WebPage name equals the seoTitle', webPage?.name === 'Sewer Inspection & Cleaning in St. Louis City, MO', webPage?.name)
 
 /* ---- Head ---- */
-check('title', /<title>Sewer Inspection &amp; Cleaning in St\. Louis City, MO \| The Sewer Pros<\/title>/.test(html))
+// The brand suffix is dropped when it would push the title past the search-result width (lib/seo/metadata.ts).
+check('title', /<title>Sewer Inspection &amp; Cleaning in St\. Louis City, MO( \| The Sewer Pros)?<\/title>/.test(html))
 check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/locations/st-louis-mo/st-louis-city/"/>`))
 check('robots index, follow (unchanged)', html.includes('<meta name="robots" content="index, follow"/>'))
 check('one H1', (bodyHtml.match(/<h1[\s>]/g) ?? []).length === 1)

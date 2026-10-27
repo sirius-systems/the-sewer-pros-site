@@ -229,7 +229,7 @@ check('Organization is the first node', graph[0]?.['@type'] === 'Organization' |
 }
 
 /* ---- WebPage ---- */
-const META = 'Sewer camera inspection and cleaning in Summerlin, NV. Summerlin spans the City of Las Vegas and unincorporated Clark County, so see who serves your address.'
+const META = 'Sewer inspection and cleaning in Summerlin, NV. Summerlin spans the City of Las Vegas and unincorporated Clark County, so check who serves your address.'
 check('WebPage name equals the seoTitle', webPage?.name === 'Sewer Inspection & Cleaning in Summerlin, NV', webPage?.name)
 check('WebPage description equals the meta description', webPage?.description === META, String(webPage?.description))
 check(`meta description length is within 120 to 160 characters (${META.length})`, META.length > 120 && META.length <= 160, String(META.length))

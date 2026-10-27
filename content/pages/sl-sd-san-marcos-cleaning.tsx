@@ -71,7 +71,7 @@ const faq = mergeRelevantFaqs(sanMarcosContent.faq, v2.faq, [], 'In San Marcos')
 export const sanMarcosCleaningContent: ServiceLocationPageContent = {
   seoTitle: 'Sewer Cleaning in San Marcos, CA',
   metaDescription:
-    'Sewer cleaning in San Marcos, CA. The City does not provide sewer service; where Vallecitos serves, the lateral is the owner’s. See what cleaning does.',
+    'Sewer cleaning in San Marcos, CA. One of three agencies serves each address, so confirm yours first. See what cleaning clears and what it does not.',
   serviceDescription:
     'Sewer cleaning is the removal of grease, roots, deposits, debris, and other material that restricts flow in an accessible private sewer line, for properties in the City of San Marcos, California.',
   heroImage: slots.hero,

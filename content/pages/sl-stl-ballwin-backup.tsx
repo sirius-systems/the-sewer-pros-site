@@ -70,7 +70,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const ballwinBackupContent: ServiceLocationPageContent = {
   seoTitle: 'Recurring Sewer Backup Diagnosis in Ballwin, MO',
   metaDescription:
-    'Recurring sewer backup diagnosis in Ballwin, MO. MSD owns the main; the lateral is the owner’s. See what a camera can document.',
+    'Recurring sewer backup diagnosis in Ballwin, MO. MSD owns the main; the lateral is the owner\'s. See what a camera can document before you approve work.',
   serviceDescription:
     'Recurring sewer backup diagnosis is the process of inspecting the accessible sewer line to identify visible conditions that may cause repeated wastewater backups, for properties in Ballwin, Missouri. It generally combines a camera inspection, cleaning when needed, and written findings.',
   heroImage: slots.hero,

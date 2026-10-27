@@ -88,7 +88,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const lasVegasCityPrePurchaseContent: ServiceLocationPageContent = {
   seoTitle: 'Pre-Purchase Sewer Inspection in Las Vegas, NV',
   metaDescription:
-    'Buying in Las Vegas, NV? The City says the private lateral is the owner’s to the City main, and we found no sale-time inspection rule. See what a scope shows.',
+    'Buying in Las Vegas, NV? The City says the lateral is yours to its main. We found no sale-time inspection rule, so a pre-purchase sewer inspection is your call.',
   serviceDescription:
     'A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase, recording the visible condition of the accessible sewer line serving a home in the City of Las Vegas, Nevada, before closing.',
   heroImage: slots.hero,

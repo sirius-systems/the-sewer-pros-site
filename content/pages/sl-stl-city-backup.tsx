@@ -80,7 +80,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const stLouisCityBackupContent: ServiceLocationPageContent = {
   seoTitle: "Recurring Sewer Backup Diagnosis in St. Louis City",
   metaDescription:
-    "Recurring sewer backup diagnosis in St. Louis City, MO. MSD maintains the main; your lateral is private. See what a camera can document before you approve work.",
+    "Recurring sewer backup diagnosis in St. Louis City, MO. MSD maintains the main; your lateral is private. See what a camera shows before you approve work.",
   serviceDescription:
     "Recurring sewer backup diagnosis is the process of inspecting the accessible sewer line to identify visible conditions that may cause repeated wastewater backups, for properties in St. Louis City, Missouri. It generally combines a camera inspection, cleaning when needed, and written findings.",
   heroImage: slots.hero,

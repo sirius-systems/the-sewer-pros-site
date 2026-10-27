@@ -37,7 +37,7 @@ export const audienceHubContent: AudienceHubContent = {
     secondaryAction: { href: '/locations/', label: 'Choose Your Location' },
   },
   // Already ends with the brand suffix, so `brandedTitle()` leaves it as is.
-  seoTitle: 'Who We Serve | Sewer Inspection & Drain Services | The Sewer Pros',
+  seoTitle: 'Who We Serve: Sewer Inspection and Drain Help',
   metaDescription:
     'Sewer inspection for home buyers, sellers, real estate agents, home inspectors, property managers and HOA communities, with cleaning and line locating.',
   audiences: {

@@ -57,7 +57,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       service page's own description.
     */
     metaDescription:
-      'Understand what a sewer inspection can reveal about a property you are considering, and why home buyers request one before closing.',
+      'Sewer inspection for home buyers: see what a sewer scope can reveal before closing, with inspection video and written findings. Know the line first.',
     hero: {
       eyebrow: 'For home buyers',
       title: 'Know the condition of the sewer line before you buy',
@@ -317,7 +317,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
   [id('aud-real-estate-agents')]: {
     seoTitle: 'Sewer Inspection for Real Estate Agents',
     metaDescription:
-      'Sewer inspection for real estate agents: an independent camera inspection with video and written findings, so clients decide with evidence during a transaction.',
+      'Sewer inspection for real estate agents: an independent camera inspection with video and written findings, so clients decide with evidence in a transaction.',
     hero: {
       eyebrow: 'For real estate agents',
       title: 'A sewer inspection that does not become a sales process',
@@ -503,7 +503,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
   [id('aud-property-managers')]: {
     seoTitle: 'Sewer Inspection for Property Managers',
     metaDescription:
-      'Sewer inspection, cleaning, diagnostics, and documentation for property managers and owners of multifamily homes handling recurring sewer and drain concerns.',
+      'Sewer inspection for property managers: find why a line keeps backing up, with inspection video and written findings for rental homes and multifamily.',
     hero: {
       eyebrow: 'For property managers',
       title: 'Stop absorbing the same sewer call every few months',
@@ -755,7 +755,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
   [id('aud-hoa-communities')]: {
     seoTitle: 'Sewer Inspection for HOA Communities',
     metaDescription:
-      'Explore sewer inspection, cleaning, diagnostics, and documentation services for HOA communities and shared property concerns.',
+      'Sewer inspection for HOA communities: inspection video and written findings on shared sewer lines, so a board can weigh vendor advice against evidence.',
     hero: {
       eyebrow: 'For HOA communities',
       title: 'Evidence a board can actually make a decision on',
