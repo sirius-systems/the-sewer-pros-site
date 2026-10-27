@@ -83,7 +83,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const sanDiegoCityBackupContent: ServiceLocationPageContent = {
   seoTitle: "Recurring Sewer Backup Diagnosis in San Diego, CA",
   metaDescription:
-    "Recurring sewer backup diagnosis in San Diego, CA. The City says the lateral is yours to the City main; we found no help with costs. See what a camera shows.",
+    "Recurring sewer backup diagnosis in San Diego, CA. The City says the lateral is yours to its main; we found no help with costs. See what a camera shows.",
   serviceDescription:
     "Recurring sewer backup diagnosis is the process of inspecting the accessible sewer line to identify visible conditions that may cause repeated wastewater backups, for properties in the City of San Diego, California. It generally combines a camera inspection, cleaning when needed, and written findings.",
   heroImage: slots.hero,

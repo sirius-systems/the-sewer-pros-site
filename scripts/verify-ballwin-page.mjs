@@ -117,7 +117,7 @@ check('15 JSON-LD objects including the Organization', graph.length === 15, `fou
 /* ---- WebPage ---- */
 const webPage = graph.find((n) => n['@type'] === 'WebPage')
 check('WebPage name equals the seoTitle', webPage?.name === 'Ballwin, MO Sewer Inspection & Cleaning', webPage?.name)
-check('WebPage description is the 146-character meta description', webPage?.description?.length === 146, String(webPage?.description?.length))
+check('WebPage description is the 151-character meta description', webPage?.description?.length === 151, String(webPage?.description?.length))
 
 /* ---- Head ---- */
 check('title', /<title>Ballwin, MO Sewer Inspection &amp; Cleaning \| The Sewer Pros<\/title>/.test(html))

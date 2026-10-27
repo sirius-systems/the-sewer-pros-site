@@ -84,7 +84,7 @@ const faq = mergeRelevantFaqs(summerlinContent.faq, v2.faq, [], "In Summerlin");
 export const summerlinHydroContent: ServiceLocationPageContent = {
   seoTitle: "Hydro Jetting in Summerlin, NV",
   metaDescription:
-    "Hydro jetting in Summerlin, NV. Two agencies word the owner’s side differently. See what jetting clears and what it cannot fix.",
+    "Hydro jetting in Summerlin, NV. The City and CCWRD word the owner's side differently, so check your address. See what jetting clears and what it cannot fix.",
   serviceDescription:
     "Hydro jetting cleans an accessible sewer or drain line with pressurized water sent through a hose and nozzle, for properties in Summerlin, Nevada.",
   heroImage: slots.hero,

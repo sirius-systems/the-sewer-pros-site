@@ -78,7 +78,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const ballwinMaintenanceContent: ServiceLocationPageContent = {
   seoTitle: 'Preventative Sewer Maintenance in Ballwin, MO',
   metaDescription:
-    'Preventative sewer maintenance in Ballwin, MO. The City counts roots cleared once a year or less as normal maintenance. See what a visit covers and leaves out.',
+    'Preventative sewer maintenance in Ballwin, MO. The City counts roots cleared once a year or less as normal maintenance. See what a visit covers.',
   serviceDescription:
     "Preventative sewer maintenance is planned inspection and cleaning of a home's drain and sewer line before buildup or an obstruction causes a backup, for properties in Ballwin, Missouri. It is diagnostic and cleaning work, not repair.",
   heroImage: slots.hero,

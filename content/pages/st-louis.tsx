@@ -104,9 +104,9 @@ export const stLouisMarketContent: MarketPageContent = {
     are the second. Before 2026-09-07 the same point was made in one
     paragraph above a plain list.
   */
-  seoTitle: 'Sewer Camera Inspection & Cleaning in St. Louis, MO',
+  seoTitle: 'Sewer Inspection and Cleaning in St. Louis, MO',
   metaDescription:
-    'Independent sewer camera inspection, diagnostics, and cleaning across the St. Louis area. Evidence before major sewer decisions, with no repair upselling.',
+    'Independent sewer camera inspection and cleaning across the St. Louis area. Video and written findings before major sewer decisions, no repair upselling.',
   hero: {
     eyebrow: 'St. Louis sewer and drain specialists',
     title: 'Sewer camera inspection and cleaning in St. Louis, MO',
@@ -1231,7 +1231,7 @@ export const lateralReportingContent: ServicePageContent = {
     'Learn about sewer lateral inspection and reporting services in St. Louis, including documented findings for municipal repair-program claims.',
   hero: {
     eyebrow: 'St. Louis area',
-    title: 'Sewer Lateral Inspection & Municipal Reporting',
+    title: 'Sewer Lateral Inspection and Municipal Reporting in St. Louis',
     intro: (
       <p>
         Camera inspection of the lateral with documentation prepared for

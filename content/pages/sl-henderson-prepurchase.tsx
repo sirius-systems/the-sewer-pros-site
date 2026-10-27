@@ -83,7 +83,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const hendersonPrePurchaseContent: ServiceLocationPageContent = {
   seoTitle: 'Pre-Purchase Sewer Inspection in Henderson, NV',
   metaDescription:
-    'Buying in Henderson, NV? The City says the sewer lateral is yours from the main connection, and we found no sale-time inspection rule. See what a scope shows.',
+    'Pre-purchase sewer inspection in Henderson, NV. The City says the lateral is yours from the main connection, and we found no sale-time inspection rule.',
   serviceDescription:
     'A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase, recording the visible condition of the accessible sewer line serving a home in the City of Henderson, Nevada, before closing.',
   heroImage: slots.hero,

@@ -96,7 +96,7 @@ const faq = mergeRelevantFaqs(
 export const stCharlesCameraContent: ServiceLocationPageContent = {
   seoTitle: "Sewer Camera Inspection in St. Charles, MO",
   metaDescription:
-    "Sewer camera inspection in St. Charles, MO. The City runs its own sewer and lateral program. See what a camera records on your line and what it cannot show.",
+    "Sewer camera inspection in St. Charles, MO. The City runs its own sewer and lateral program. See what a camera records and what it cannot show.",
   serviceDescription:
     "A sewer camera inspection is a visual inspection of the accessible inside of a sewer line, recorded on video, for properties in the City of St. Charles, Missouri.",
   heroImage: slots.hero,

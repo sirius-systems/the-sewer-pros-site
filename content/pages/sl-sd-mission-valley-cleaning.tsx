@@ -73,7 +73,7 @@ const faq = mergeRelevantFaqs(sanDiegoMissionValleyContent.faq, v2.faq, [], 'In 
 export const missionValleyCleaningContent: ServiceLocationPageContent = {
   seoTitle: 'Sewer Cleaning in Mission Valley, San Diego',
   metaDescription:
-    'Sewer cleaning in Mission Valley, San Diego. The City says owners maintain the lateral to its main. See what cleaning does.',
+    'Sewer cleaning in Mission Valley, San Diego. The City says owners maintain the lateral to its main. See what cleaning clears and what it cannot fix.',
   serviceDescription:
     'Sewer cleaning is the removal of grease, roots, deposits, debris, and other material that restricts flow in an accessible private sewer line, for properties in Mission Valley, San Diego, California.',
   heroImage: slots.hero,

@@ -84,7 +84,7 @@ const faq = mergeRelevantFaqs(
 export const chesterfieldCleaningContent: ServiceLocationPageContent = {
   seoTitle: "Sewer Cleaning in Chesterfield, MO",
   metaDescription:
-    "Sewer cleaning in Chesterfield, MO. MSD says the lateral is the owner’s, and the City treats cabling and roots as maintenance. See what cleaning does.",
+    "Sewer cleaning in Chesterfield, MO: roots, grease and buildup in the owner's lateral. MSD owns the main, and the City treats cabling and roots as maintenance.",
   serviceDescription:
     "Sewer cleaning is the removal of grease, roots, deposits, debris, and other material that restricts flow in an accessible private sewer line, for properties in Chesterfield, Missouri. It clears the pipe and does not repair it.",
   heroImage: slots.hero,

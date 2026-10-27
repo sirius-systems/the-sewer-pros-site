@@ -399,7 +399,7 @@ const BW_UTILITIES_URL = 'https://www.ballwin.mo.us/Utilities-and-Services/'
 export const ballwinContent: LocationPageContent = {
   seoTitle: 'Ballwin, MO Sewer Inspection & Cleaning',
   metaDescription:
-    'Sewer camera inspection and cleaning in Ballwin, MO. Who owns the lateral, what the City’s $4,500 lateral program covers, and when evidence helps.',
+    'Sewer inspection and cleaning in Ballwin, MO. MSD owns the main; the lateral is yours. See what the City\'s lateral program covers and when video helps.',
   hero: {
     title: 'Sewer Inspection and Cleaning in Ballwin, MO',
     intro: (

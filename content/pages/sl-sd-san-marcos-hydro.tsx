@@ -64,7 +64,7 @@ const faq = mergeRelevantFaqs(sanMarcosContent.faq, v2.faq, [], 'In San Marcos')
 export const sanMarcosHydroContent: ServiceLocationPageContent = {
   seoTitle: 'Hydro Jetting in San Marcos, CA',
   metaDescription:
-    'Hydro jetting in San Marcos, CA. The City does not provide sewer service; where Vallecitos serves, the lateral is the owner’s. See what jetting clears.',
+    'Hydro jetting in San Marcos, CA. The City does not provide sewer service; where Vallecitos serves, the lateral is the owner\'s. See what jetting clears.',
   serviceDescription:
     'Hydro jetting cleans an accessible sewer or drain line with pressurized water sent through a hose and nozzle, for properties in the City of San Marcos, California.',
   heroImage: slots.hero,

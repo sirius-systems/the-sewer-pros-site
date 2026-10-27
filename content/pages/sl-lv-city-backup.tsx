@@ -71,7 +71,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const lasVegasCityBackupContent: ServiceLocationPageContent = {
   seoTitle: 'Recurring Sewer Backup Diagnosis in Las Vegas, NV',
   metaDescription:
-    'Recurring sewer backup diagnosis in Las Vegas, NV. The City handles main stoppages; the lateral to the connection is yours. See what a camera can document.',
+    'Recurring sewer backup diagnosis in Las Vegas, NV. The City handles main stoppages; the lateral to the connection is yours. See what a camera documents.',
   serviceDescription:
     'Recurring sewer backup diagnosis is the process of inspecting the accessible sewer line to identify visible conditions that may cause repeated wastewater backups, for properties in the City of Las Vegas, Nevada. It generally combines a camera inspection, cleaning when needed, and written findings.',
   heroImage: slots.hero,

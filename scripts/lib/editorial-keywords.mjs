@@ -226,14 +226,14 @@ export function specFor(url, type) {
   }
   if (type === 'market-hub') {
     const city = MARKET_CITY[s[0]]
-    spec.primary = one(`sewer camera inspection ${city.toLowerCase()}`, norm(`sewer camera inspection and cleaning in ${city}`), norm(`sewer camera inspection in ${city}`), norm(`sewer inspection in ${city}`))
+    spec.primary = one(`sewer inspection and cleaning ${city.toLowerCase()}`, norm(`sewer inspection and cleaning in ${city}`), norm(`sewer camera inspection and cleaning in ${city}`), norm(`sewer camera inspection in ${city}`), norm(`sewer inspection in ${city}`))
     spec.partsOnly = { service: ['sewer camera inspection', 'sewer inspection'], place: [norm(city)] }
     spec.secondary = ['sewer cleaning', 'hydro jetting', 'sewer line locating']
     return spec
   }
   if (type === 'market-contact') {
     const city = MARKET_CITY[s[0]]
-    spec.primary = one(`contact the sewer pros in ${city.toLowerCase()}`, norm(`contact the sewer pros in ${city}`))
+    spec.primary = one(`contact the sewer pros in ${city.toLowerCase()}`, norm(`contact the sewer pros in ${city}`), norm(`request sewer inspection in ${city}`), norm(`sewer inspection in ${city}`))
     return spec
   }
   if (type === 'market-other') {

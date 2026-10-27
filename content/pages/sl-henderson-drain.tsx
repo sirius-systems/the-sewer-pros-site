@@ -77,7 +77,7 @@ const faq = mergeRelevantFaqs(
 export const hendersonDrainContent: ServiceLocationPageContent = {
   seoTitle: 'Drain Cleaning in Henderson, NV',
   metaDescription:
-    'Drain cleaning in Henderson, NV. The City says the lateral and your home plumbing are yours and it cleans its own main. See what cleaning does and does not fix.',
+    'Drain cleaning in Henderson, NV. The City says the lateral and home plumbing are yours and it cleans its main. See what cleaning does and does not fix.',
   serviceDescription:
     'Drain cleaning removes grease, roots, deposits, debris and other restricting material from a drain line using a rotating cable, water jetting, or both, for homes in the City of Henderson, Nevada. It restores flow and does not repair the pipe.',
   heroImage: slots.hero,

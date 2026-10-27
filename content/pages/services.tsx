@@ -65,9 +65,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       ⚠ MARKET-NEUTRAL, NO PHONE NUMBER (DEC-071). Numbers reach this page
       only through the labelled footer and the mobile bar's market sheet.
     */
-    seoTitle: 'Sewer Camera Inspection for Homes',
+    seoTitle: 'Sewer Camera Inspection: What It Shows',
     metaDescription:
-      'A sewer camera inspection records the visible inside of accessible residential sewer and drain lines. See what it shows, what it can’t, and what to ask for.',
+      'A sewer camera inspection records the visible inside of accessible home sewer lines, with video and written findings. See what it can and cannot confirm.',
     serviceDescription:
       'A sewer camera inspection, sometimes called a sewer scope, is a visual inspection of the accessible inside of a drain or sewer line. A technician advances a camera on a flexible cable through an entry point and watches the live view on a monitor.',
     hero: {
@@ -3724,7 +3724,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
     */
     seoTitle: 'Pre-Purchase Sewer Inspection (Sewer Scope)',
     metaDescription:
-      'A pre-purchase sewer inspection documents the visible condition of an accessible sewer line before closing. Learn the limits. St. Louis, San Diego, Las Vegas.',
+      'A pre-purchase sewer inspection records the visible condition of the sewer line before closing, with video and written findings. See what it cannot show.',
     serviceDescription:
       "A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase. A technician guides a camera through the accessible part of the sewer line and records what it can see, so a buyer can review the line's visible condition before closing.",
     hero: {

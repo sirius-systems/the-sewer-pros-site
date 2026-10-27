@@ -53,7 +53,7 @@ export const homeContent: HomePageContent = {
   },
   seoTitle: 'Independent Sewer Inspection and Cleaning | The Sewer Pros',
   metaDescription:
-    "Independent sewer inspection and cleaning across St. Louis, San Diego, and Las Vegas: camera diagnostics and locating that show the line's condition first.",
+    "Independent sewer inspection and cleaning in St. Louis, San Diego and Las Vegas. Get inspection video and written findings before you decide on sewer work.",
   /*
     ⚠ `homeServiceCards`, NOT `coreServiceCards`, AS OF 2026-09-22.
 
@@ -1505,7 +1505,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     heroFormIntro:
       'Not sure which service you need? Select Other and briefly describe the symptoms you are seeing.',
     // No brand suffix: the root title template appends it.
-    seoTitle: 'Service Areas | St. Louis, San Diego & Las Vegas',
+    seoTitle: 'Sewer Service Areas: St. Louis, San Diego and Las Vegas',
     metaDescription:
       'The Sewer Pros provides sewer and drain services across St. Louis, San Diego, and Las Vegas: service-area coverage, not branch offices.',
     /*

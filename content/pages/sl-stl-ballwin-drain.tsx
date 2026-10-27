@@ -77,7 +77,7 @@ const faq = mergeRelevantFaqs(
 export const ballwinDrainContent: ServiceLocationPageContent = {
   seoTitle: 'Drain Cleaning in Ballwin, MO',
   metaDescription:
-    'Drain cleaning in Ballwin, MO. MSD owns the main; the lateral is the owner’s. See what cleaning does and does not fix.',
+    'Drain cleaning in Ballwin, MO. MSD owns the main and the lateral is the owner\'s. See what drain cleaning clears and what it does not fix.',
   serviceDescription:
     'Drain cleaning removes grease, roots, deposits, debris and other restricting material from a drain line using a rotating cable, water jetting, or both, for homes in Ballwin, Missouri. It restores flow and does not repair the pipe.',
   heroImage: slots.hero,

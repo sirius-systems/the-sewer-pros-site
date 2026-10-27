@@ -74,7 +74,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const missionValleyLocatingContent: ServiceLocationPageContent = {
   seoTitle: 'Sewer Line Locating in Mission Valley, San Diego',
   metaDescription:
-    'Sewer line locating for Mission Valley, San Diego properties. The City has no diagrams of private sewer lines on your lot. See what a locate is and is not.',
+    'Sewer line locating in Mission Valley, San Diego. The City has no diagrams of private lines, and a parcel with several buildings makes that gap easy to hit.',
   serviceDescription:
     'Sewer line locating estimates where an accessible underground sewer line runs, using a transmitter inside the line and a receiver at the surface, for properties in Mission Valley, San Diego, California. Results are estimates, not a survey.',
   heroImage: slots.hero,

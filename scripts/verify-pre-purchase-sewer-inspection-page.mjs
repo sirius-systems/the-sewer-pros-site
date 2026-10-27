@@ -75,7 +75,7 @@ check('meta description length (<= 160)', desc.length > 0 && desc.length <= 160,
 check(
   'meta description is the content-doc sentence',
   desc ===
-    'A pre-purchase sewer inspection documents the visible condition of an accessible sewer line before closing. Learn the limits. St. Louis, San Diego, Las Vegas.',
+    'A pre-purchase sewer inspection records the visible condition of the sewer line before closing, with video and written findings. See what it cannot show.',
   desc,
 )
 

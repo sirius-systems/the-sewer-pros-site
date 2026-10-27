@@ -73,7 +73,7 @@ const faq = mergeRelevantFaqs(
 export const carlsbadCleaningCameraContent: ServiceLocationPageContent = {
   seoTitle: 'Sewer Cleaning & Camera Inspection in Carlsbad, CA',
   metaDescription:
-    'Sewer cleaning and camera inspection in Carlsbad, CA. Three sewer agencies word the owner’s lateral differently. See what a cleaning and camera visit covers.',
+    'Sewer cleaning and camera inspection in Carlsbad, CA. Three sewer agencies word the owner\'s lateral differently. See what a combined visit covers.',
   serviceDescription:
     'Sewer cleaning removes material that restricts flow in an accessible sewer line, and a camera inspection records its visible inside on video. The two can be combined in one visit, for properties in Carlsbad, California.',
   heroImage: slots.hero,
