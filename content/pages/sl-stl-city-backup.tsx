@@ -78,7 +78,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 }));
 
 export const stLouisCityBackupContent: ServiceLocationPageContent = {
-  seoTitle: "Recurring Sewer Backup Diagnosis in St. Louis City, MO",
+  seoTitle: "Recurring Sewer Backup Diagnosis in St. Louis City",
   metaDescription:
     "Recurring sewer backup diagnosis in St. Louis City, MO. MSD maintains the main; your lateral is private. See what a camera can document before you approve work.",
   serviceDescription:

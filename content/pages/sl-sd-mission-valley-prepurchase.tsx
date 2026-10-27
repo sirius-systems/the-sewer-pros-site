@@ -93,9 +93,9 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 }))
 
 export const missionValleyPrePurchaseContent: ServiceLocationPageContent = {
-  seoTitle: 'Pre-Purchase Sewer Inspection in Mission Valley, San Diego',
+  seoTitle: 'Pre-Purchase Sewer Inspection in Mission Valley',
   metaDescription:
-    'Buying in Mission Valley, San Diego? The City says the owner maintains the lateral to the City main, and we found no sale-time inspection rule. See what a scope shows.',
+    'Pre-purchase sewer inspection in Mission Valley, San Diego. The City says the owner maintains the lateral to the City main; we found no sale-time rule.',
   serviceDescription:
     'A pre-purchase sewer inspection is a sewer camera inspection arranged during a property purchase, recording the visible condition of the accessible sewer line serving a property in Mission Valley, a City of San Diego planning area in California, before closing.',
   heroImage: slots.hero,

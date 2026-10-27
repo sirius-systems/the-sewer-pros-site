@@ -39,7 +39,7 @@ export const audienceHubContent: AudienceHubContent = {
   // Already ends with the brand suffix, so `brandedTitle()` leaves it as is.
   seoTitle: 'Who We Serve | Sewer Inspection & Drain Services | The Sewer Pros',
   metaDescription:
-    'The Sewer Pros helps home buyers, sellers, real estate agents, home inspectors, property managers, and HOA communities with sewer camera inspections, drain cleaning, hydro jetting, and line locating.',
+    'Sewer inspection for home buyers, sellers, real estate agents, home inspectors, property managers and HOA communities, with cleaning and line locating.',
   audiences: {
     title: 'Choose the support that fits your role',
     intro:

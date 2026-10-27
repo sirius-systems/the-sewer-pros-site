@@ -171,7 +171,7 @@ if (faqOn) {
 check('Organization is the first node', graph[0]?.['@type'] === 'Organization' || graph[0]?.['@id'] === `${ORIGIN}/#organization`, JSON.stringify(graph[0]?.['@type']))
 
 /* ---- WebPage ---- */
-const META = "Sewer camera inspection, hydro jetting and cleaning for Mission Valley homes, condos, apartments and mixed-use properties, with the City's lateral rules."
+const META = "Sewer inspection and cleaning for Mission Valley homes, condos and apartments: camera inspection, hydro jetting and the City's lateral rules."
 check('WebPage name equals the seoTitle', webPage?.name === 'Mission Valley Sewer Inspection & Cleaning', webPage?.name)
 check('WebPage description equals the meta description', webPage?.description === META, String(webPage?.description))
 console.log(`INFO  meta description length ${META.length}`)
@@ -192,7 +192,7 @@ check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/location
 check('robots index, follow (unchanged)', html.includes('<meta name="robots" content="index, follow"/>'))
 const h1s = [...mainHtml.matchAll(/<h1[\s>][\s\S]*?<\/h1>/g)]
 check('one H1', h1s.length === 1)
-check('H1 text', h1s.length === 1 && strip(h1s[0][0]) === 'Sewer and Drain Service in Mission Valley, San Diego', h1s[0] && strip(h1s[0][0]))
+check('H1 text', h1s.length === 1 && strip(h1s[0][0]) === 'Sewer Inspection and Cleaning in Mission Valley, San Diego', h1s[0] && strip(h1s[0][0]))
 
 /* ---- Anchors and order ---- */
 const idAttrs = [...mainHtml.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])

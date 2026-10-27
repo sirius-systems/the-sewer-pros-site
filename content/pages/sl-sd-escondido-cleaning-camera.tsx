@@ -85,7 +85,7 @@ export const escondidoCleaningCameraContent: ServiceLocationPageContent = {
   sources: escondidoContent.sources,
   hero: {
     eyebrow: 'Escondido, CA',
-    title: 'Sewer Cleaning and Camera Inspection in Escondido',
+    title: 'Sewer Cleaning & Camera Inspection in Escondido',
     intro: (
       <p>
         Section 22-165 of the Escondido Municipal Code puts cleaning the sewer lateral on the

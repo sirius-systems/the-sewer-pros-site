@@ -77,7 +77,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 }))
 
 export const northLasVegasBackupContent: ServiceLocationPageContent = {
-  seoTitle: 'Recurring Sewer Backup Diagnosis in North Las Vegas, NV',
+  seoTitle: 'Recurring Sewer Backup Diagnosis in North Las Vegas',
   metaDescription:
     'Recurring sewer backup diagnosis in North Las Vegas, NV. The City words blockages and breaks differently. See what a camera can document on your lateral.',
   serviceDescription:

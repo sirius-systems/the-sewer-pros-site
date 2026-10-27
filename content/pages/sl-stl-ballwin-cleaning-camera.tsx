@@ -96,7 +96,7 @@ export const ballwinCleaningCameraContent: ServiceLocationPageContent = {
   sources: ballwinContent.sources,
   hero: {
     eyebrow: "Ballwin, MO",
-    title: "Sewer Cleaning and Camera Inspection in Ballwin",
+    title: "Sewer Cleaning & Camera Inspection in Ballwin",
     intro: (
       <p>
         In Ballwin, the City&rsquo;s Sewer Lateral Repair Program pays for

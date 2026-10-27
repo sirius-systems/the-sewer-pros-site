@@ -81,7 +81,7 @@ export const hendersonCleaningCameraContent: ServiceLocationPageContent = {
   sources: hendersonContent.sources,
   hero: {
     eyebrow: 'Henderson, NV',
-    title: 'Sewer Cleaning and Camera Inspection in Henderson',
+    title: 'Sewer Cleaning & Camera Inspection in Henderson',
     intro: (
       <p>
         In the City of Henderson, the City says it cleans blockages in its own sewer main, and that

@@ -81,7 +81,7 @@ export const oceansideCleaningCameraContent: ServiceLocationPageContent = {
   sources: oceansideContent.sources,
   hero: {
     eyebrow: 'Oceanside, CA',
-    title: 'Sewer Cleaning and Camera Inspection in Oceanside',
+    title: 'Sewer Cleaning & Camera Inspection in Oceanside',
     intro: (
       <p>
         In Oceanside, the City says private sewer lines, “from the street to your house,” are the

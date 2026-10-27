@@ -79,9 +79,9 @@ const faq = mergeRelevantFaqs(
 )
 
 export const northLasVegasCleaningCameraContent: ServiceLocationPageContent = {
-  seoTitle: 'Sewer Cleaning & Camera Inspection in North Las Vegas, NV',
+  seoTitle: 'Sewer Cleaning & Camera Inspection in North Las Vegas',
   metaDescription:
-    'Sewer cleaning and camera inspection in North Las Vegas, NV. The City words blockages and breakages differently. See what a visit covers and what it cannot show.',
+    'Sewer cleaning and camera inspection in North Las Vegas, NV. The City words blockages and breakages differently. See what a visit covers and cannot show.',
   serviceDescription:
     'Sewer cleaning removes material that restricts flow in an accessible sewer line, and a camera inspection records its visible inside on video. The two can be combined in one visit, for properties in the City of North Las Vegas, Nevada.',
   heroImage: slots.hero,
@@ -89,7 +89,7 @@ export const northLasVegasCleaningCameraContent: ServiceLocationPageContent = {
   sources: northLasVegasContent.sources,
   hero: {
     eyebrow: 'North Las Vegas, NV',
-    title: 'Sewer Cleaning and Camera Inspection in North Las Vegas',
+    title: 'Sewer Cleaning & Camera Inspection in North Las Vegas',
     intro: (
       <p>
         In the City of North Las Vegas, the City says the homeowner&rsquo;s responsibility for the

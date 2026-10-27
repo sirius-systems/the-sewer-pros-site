@@ -241,7 +241,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           { pageId: id('svc-hydro-jetting'), label: 'Hydro Jetting' },
           {
             pageId: id('svc-sewer-cleaning-camera-inspection'),
-            label: 'Sewer Cleaning and Camera Inspection',
+            label: 'Sewer Cleaning & Camera Inspection',
           },
         ],
       },
@@ -1353,7 +1353,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         ],
       },
       signals: {
-        title: 'When might a line need cleaning?',
+        title: 'When might hydro jetting be appropriate?',
         note: 'Common signs include:',
         image: 'hydro-definition',
         items: [
@@ -1790,9 +1790,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       intro: (
         <>
           <p>
-            Clear what can be cleared, and see what the line looks like. Sewer
-            cleaning removes buildup that restricts flow. A camera inspection
-            shows the visible inside of the line. A camera may be used before
+            Clear what can be cleared, and see what the line looks like. A
+            sewer cleaning and camera inspection visit combines the two: sewer
+            cleaning removes buildup that restricts flow, and the camera shows
+            the visible inside of the line. A camera may be used before
             cleaning, after cleaning, or both, depending on the line.
           </p>
           <p>

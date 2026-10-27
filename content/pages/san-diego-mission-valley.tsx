@@ -410,13 +410,13 @@ const CITY_IBA_URL =
 export const sanDiegoMissionValleyContent: LocationPageContent = {
   seoTitle: 'Mission Valley Sewer Inspection & Cleaning',
   metaDescription:
-    "Sewer camera inspection, hydro jetting and cleaning for Mission Valley homes, condos, apartments and mixed-use properties, with the City's lateral rules.",
+    "Sewer inspection and cleaning for Mission Valley homes, condos and apartments: camera inspection, hydro jetting and the City's lateral rules.",
   hero: {
-    title: 'Sewer and Drain Service in Mission Valley, San Diego',
+    title: 'Sewer Inspection and Cleaning in Mission Valley, San Diego',
     intro: (
       <p>
         Independent sewer camera inspection, diagnostics, hydro jetting and cleaning for Mission
-        Valley&rsquo;s apartments, condos, homes and mixed-use buildings. Mission Valley is a
+        Valley&rsquo;s apartments, condos and homes. Mission Valley is a
         City of San Diego planning area, so the City&rsquo;s rules apply: the owner maintains the
         sewer lateral to the City main. Get recorded evidence of the line before you clean,
         remodel, buy or approve major work.

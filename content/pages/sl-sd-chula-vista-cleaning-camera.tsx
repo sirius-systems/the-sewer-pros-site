@@ -83,7 +83,7 @@ export const chulaVistaCleaningCameraContent: ServiceLocationPageContent = {
   sources: chulaVistaContent.sources,
   hero: {
     eyebrow: 'Chula Vista, CA',
-    title: 'Sewer Cleaning and Camera Inspection in Chula Vista',
+    title: 'Sewer Cleaning & Camera Inspection in Chula Vista',
     intro: (
       <p>
         In Chula Vista, the City’s Council policy puts the sewer lateral on the owner from the first

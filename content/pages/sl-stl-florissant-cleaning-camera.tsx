@@ -91,7 +91,7 @@ export const florissantCleaningCameraContent: ServiceLocationPageContent = {
   sources: florissantContent.sources,
   hero: {
     eyebrow: 'Florissant, MO',
-    title: 'Sewer Cleaning and Camera Inspection in Florissant',
+    title: 'Sewer Cleaning & Camera Inspection in Florissant',
     intro: (
       <p>
         In Florissant, MSD says the lateral from your building to the public sewer, including its

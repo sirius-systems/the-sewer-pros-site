@@ -77,7 +77,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 }))
 
 export const missionValleyBackupContent: ServiceLocationPageContent = {
-  seoTitle: 'Recurring Sewer Backup Diagnosis in Mission Valley, San Diego',
+  seoTitle: 'Recurring Sewer Backup Diagnosis in Mission Valley',
   metaDescription:
     "Recurring sewer backup diagnosis in Mission Valley, San Diego. The City says the lateral is the owner's to the City main; we found no help with costs.",
   serviceDescription:

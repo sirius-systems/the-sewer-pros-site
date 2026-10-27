@@ -80,7 +80,7 @@ export const sanMarcosCleaningCameraContent: ServiceLocationPageContent = {
   sources: sanMarcosContent.sources,
   hero: {
     eyebrow: 'San Marcos, CA',
-    title: 'Sewer Cleaning and Camera Inspection in San Marcos',
+    title: 'Sewer Cleaning & Camera Inspection in San Marcos',
     intro: (
       <p>
         The City of San Marcos says it does not provide sewer service, and where Vallecitos Water

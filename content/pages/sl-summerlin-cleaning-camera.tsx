@@ -104,7 +104,7 @@ export const summerlinCleaningCameraContent: ServiceLocationPageContent = {
   sources: summerlinContent.sources,
   hero: {
     eyebrow: "Summerlin, NV",
-    title: "Sewer Cleaning and Camera Inspection in Summerlin",
+    title: "Sewer Cleaning & Camera Inspection in Summerlin",
     intro: (
       <p>
         Clark County&rsquo;s boundary map shows Summerlin partly in the City of

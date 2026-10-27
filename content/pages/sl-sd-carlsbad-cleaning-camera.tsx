@@ -81,7 +81,7 @@ export const carlsbadCleaningCameraContent: ServiceLocationPageContent = {
   sources: carlsbadContent.sources,
   hero: {
     eyebrow: 'Carlsbad, CA',
-    title: 'Sewer Cleaning and Camera Inspection in Carlsbad',
+    title: 'Sewer Cleaning & Camera Inspection in Carlsbad',
     intro: (
       <p>
         In Carlsbad, three sewer agencies each describe the owner’s lateral in their own words, and

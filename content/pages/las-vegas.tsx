@@ -133,7 +133,7 @@ export const lasVegasMarketContent: MarketPageContent = {
   */
   seoTitle: 'Sewer Inspection Las Vegas',
   metaDescription:
-    'Independent sewer camera inspection, diagnostics, and cleaning across the Las Vegas Valley. Evidence before major sewer decisions, with no repair upselling. Schedule an inspection today.',
+    'Independent sewer camera inspection, diagnostics and cleaning across the Las Vegas Valley. Evidence before major sewer decisions, no repair upselling.',
   /*
     ==========================================================================
     COMPANY EXPERIENCE. Added 2026-09-07 on owner direction.
