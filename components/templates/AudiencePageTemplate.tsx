@@ -26,6 +26,8 @@ import {
   ReviewMarquee,
 } from '@/components/sections'
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
+import { PlannedLinks, plannedLinksRenders } from '@/components/sections/PlannedLinks'
+import { audienceLocalPageIds, audienceMarketPageIds } from '@/lib/links/link-plan'
 import { PageShell } from './PageShell'
 import type { AudiencePageContent, MasterPageRecord } from '@/types'
 
@@ -94,6 +96,13 @@ export function AudiencePageTemplate({
   // was previously a four-section `standard` run through body →
   // services → process → differentiator, a live rhythm warning on
   // /for/home-buyers/ and /for/property-managers/ before the port.
+  // Bounded by the link plan: the three launch markets and the audience's lead
+  // service in each market's flagship location (one page per market).
+  const audienceGroups = [
+    { title: 'Service areas', pageIds: audienceMarketPageIds(page.id) },
+    { title: 'Local service pages', pageIds: audienceLocalPageIds(page.id) },
+  ]
+
   const densities: SectionDensity[] = [
     'sparse',
     // ExperienceCounterStrip — inserted below Hero, above `TrustBar`
@@ -116,6 +125,7 @@ export function AudiencePageTemplate({
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
+    ...(plannedLinksRenders(audienceGroups) ? (['standard'] as const) : []),
     ...(reviewMarqueeRenders() ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
     'sparse',
@@ -224,6 +234,14 @@ export function AudiencePageTemplate({
           descriptions={content.relatedDescriptions}
         />
       )}
+
+      <PlannedLinks
+        id="where-we-serve"
+        density="standard"
+        surface="default"
+        title="Where we serve"
+        groups={audienceGroups}
+      />
 
       {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 

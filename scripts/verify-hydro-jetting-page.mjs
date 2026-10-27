@@ -56,7 +56,8 @@ const mainStart = body.indexOf('<main')
 const mainEnd = body.indexOf('</main>')
 const main = mainStart >= 0 && mainEnd > mainStart ? body.slice(mainStart, mainEnd) : body
 // The review carousel (every page type, 6a41d72) and the SMS consent legal text are not service copy.
-const copyMain = main.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
+// The "Related guides" slot links existing guide pages by their own titles, which are not service copy.
+const copyMain = main.replace(/<section[^>]*aria-labelledby="related-guides"[\s\S]*?<\/section>/, '').replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
 const visible = strip(copyMain)
 
 /* ---- Head ---- */

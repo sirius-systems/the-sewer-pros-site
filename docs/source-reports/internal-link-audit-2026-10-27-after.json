@@ -179,10 +179,10 @@
     "st. louis, mo service locations": 4,
     "see all service locations": 3,
     "view st. louis services and areas": 2,
+    "st. louis, mo sewer services": 59,
     "st. louis": 3,
     "explore st. louis": 2,
     "explore st. louis service locations": 1,
-    "st. louis, mo sewer services": 53,
     "all st. louis service areas see the full st. louis market": 5,
     "view st. louis drain cleaning": 1,
     "view st. louis": 1,
@@ -203,10 +203,10 @@
     "san diego, ca service locations": 4,
     "see all service locations": 3,
     "view san diego services and areas": 2,
+    "san diego, ca sewer services": 77,
     "san diego": 3,
     "explore san diego": 2,
     "explore san diego service locations": 1,
-    "san diego, ca sewer services": 71,
     "all san diego service areas see the full san diego market": 7,
     "san diego page": 1,
     "explore san diego service areas": 1,
@@ -227,8 +227,8 @@
     "las vegas, nv service locations": 4,
     "see all service locations": 3,
     "view las vegas services and areas": 2,
+    "las vegas, nv sewer services": 47,
     "las vegas": 3,
-    "las vegas, nv sewer services": 41,
     "las vegas page": 1,
     "explore las vegas valley service areas": 1,
     "explore las vegas": 2,
@@ -289,7 +289,7 @@
    "target": "/for/home-buyers/",
    "distinct": 9,
    "anchors": {
-    "home buyers": 7,
+    "home buyers": 10,
     "explore home-buyer inspections": 1,
     "buying a home": 1,
     "sewer inspection for home buyers": 16,
@@ -384,7 +384,7 @@
    "target": "/for/real-estate-agents/",
    "distinct": 7,
    "anchors": {
-    "real estate agents": 9,
+    "real estate agents": 12,
     "explore sewer inspections for agents": 1,
     "sewer inspection for real estate agents": 16,
     "real estate agents coordinate a sewer inspection around your client's inspection period and share the video and written findings for buyers and sellers to discuss. findings record visible conditions. they do not guarantee future performance or decide repairs. for real estate agents": 1,
@@ -926,13 +926,13 @@
   {
    "url": "/for/hoa-communities/",
    "type": "audience",
-   "total": 45,
-   "distinct": 22,
+   "total": 51,
+   "distinct": 25,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 5,
+    "body": 11,
     "aside": 3,
     "footer": 19
    }
@@ -940,13 +940,13 @@
   {
    "url": "/for/home-buyers/",
    "type": "audience",
-   "total": 47,
-   "distinct": 24,
+   "total": 53,
+   "distinct": 27,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 5,
+    "body": 11,
     "aside": 4,
     "faq": 1,
     "footer": 19
@@ -955,13 +955,13 @@
   {
    "url": "/for/home-inspectors/",
    "type": "audience",
-   "total": 45,
-   "distinct": 23,
+   "total": 51,
+   "distinct": 26,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 5,
+    "body": 11,
     "aside": 3,
     "footer": 19
    }
@@ -969,13 +969,13 @@
   {
    "url": "/for/home-sellers/",
    "type": "audience",
-   "total": 45,
-   "distinct": 23,
+   "total": 51,
+   "distinct": 26,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 5,
+    "body": 11,
     "aside": 3,
     "footer": 19
    }
@@ -996,13 +996,13 @@
   {
    "url": "/for/property-managers/",
    "type": "audience",
-   "total": 53,
-   "distinct": 25,
+   "total": 59,
+   "distinct": 28,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 11,
+    "body": 17,
     "aside": 4,
     "faq": 1,
     "footer": 19
@@ -1011,13 +1011,13 @@
   {
    "url": "/for/real-estate-agents/",
    "type": "audience",
-   "total": 44,
-   "distinct": 23,
+   "total": 50,
+   "distinct": 26,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 4,
+    "body": 10,
     "aside": 3,
     "footer": 19
    }
@@ -1039,12 +1039,12 @@
   {
    "url": "/las-vegas-nv/contact/",
    "type": "market-contact",
-   "total": 45,
+   "total": 48,
    "distinct": 21,
    "zones": {
     "nav": 15,
     "breadcrumb": 3,
-    "body": 2,
+    "body": 5,
     "aside": 4,
     "faq": 2,
     "footer": 19
@@ -3391,12 +3391,12 @@
   {
    "url": "/san-diego-ca/contact/",
    "type": "market-contact",
-   "total": 43,
+   "total": 46,
    "distinct": 21,
    "zones": {
     "nav": 15,
     "breadcrumb": 3,
-    "body": 1,
+    "body": 4,
     "aside": 4,
     "faq": 1,
     "footer": 19
@@ -3419,13 +3419,13 @@
   {
    "url": "/services/drain-cleaning/",
    "type": "service",
-   "total": 55,
+   "total": 56,
    "distinct": 23,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 16,
+    "body": 17,
     "faq": 2,
     "footer": 19
    }
@@ -3433,13 +3433,13 @@
   {
    "url": "/services/hydro-jetting/",
    "type": "service",
-   "total": 57,
+   "total": 58,
    "distinct": 23,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 15,
+    "body": 16,
     "faq": 5,
     "footer": 19
    }
@@ -3460,13 +3460,13 @@
   {
    "url": "/services/pre-purchase-sewer-inspection/",
    "type": "service",
-   "total": 60,
-   "distinct": 23,
+   "total": 62,
+   "distinct": 25,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 18,
+    "body": 20,
     "faq": 5,
     "footer": 19
    }
@@ -3488,13 +3488,13 @@
   {
    "url": "/services/recurring-sewer-backup-diagnosis/",
    "type": "service",
-   "total": 55,
-   "distinct": 22,
+   "total": 57,
+   "distinct": 24,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 15,
+    "body": 17,
     "faq": 3,
     "footer": 19
    }
@@ -3502,13 +3502,13 @@
   {
    "url": "/services/sewer-camera-inspection/",
    "type": "service",
-   "total": 62,
+   "total": 64,
    "distinct": 25,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 24,
+    "body": 26,
     "faq": 1,
     "footer": 19
    }
@@ -3516,13 +3516,13 @@
   {
    "url": "/services/sewer-cleaning/",
    "type": "service",
-   "total": 57,
+   "total": 58,
    "distinct": 23,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 19,
+    "body": 20,
     "faq": 1,
     "footer": 19
    }
@@ -3530,13 +3530,13 @@
   {
    "url": "/services/sewer-cleaning-camera-inspection/",
    "type": "service",
-   "total": 64,
-   "distinct": 24,
+   "total": 66,
+   "distinct": 26,
    "zones": {
     "nav": 15,
     "breadcrumb": 2,
     "hero": 1,
-    "body": 24,
+    "body": 26,
     "faq": 3,
     "footer": 19
    }
@@ -3558,12 +3558,12 @@
   {
    "url": "/st-louis-mo/contact/",
    "type": "market-contact",
-   "total": 44,
+   "total": 47,
    "distinct": 22,
    "zones": {
     "nav": 15,
     "breadcrumb": 3,
-    "body": 1,
+    "body": 4,
     "aside": 4,
     "faq": 2,
     "footer": 19
@@ -3671,13 +3671,13 @@
    "pages": 1,
    "avgTotalLinks": 40,
    "avgBodyLinks": 5,
-   "avgEditorialInbound": 5
+   "avgEditorialInbound": 8
   },
   "audience": {
    "pages": 6,
-   "avgTotalLinks": 46.5,
-   "avgBodyLinks": 10.5,
-   "avgEditorialInbound": 21
+   "avgTotalLinks": 52.5,
+   "avgBodyLinks": 16.5,
+   "avgEditorialInbound": 22
   },
   "audience-hub": {
    "pages": 1,
@@ -3693,15 +3693,15 @@
   },
   "market-contact": {
    "pages": 3,
-   "avgTotalLinks": 44,
-   "avgBodyLinks": 7,
+   "avgTotalLinks": 47,
+   "avgBodyLinks": 10,
    "avgEditorialInbound": 8.3
   },
   "market-hub": {
    "pages": 3,
    "avgTotalLinks": 97.7,
    "avgBodyLinks": 61.7,
-   "avgEditorialInbound": 22
+   "avgEditorialInbound": 28
   },
   "locations-hub": {
    "pages": 1,
@@ -3713,7 +3713,7 @@
    "pages": 144,
    "avgTotalLinks": 63.2,
    "avgBodyLinks": 25.2,
-   "avgEditorialInbound": 6.7
+   "avgEditorialInbound": 6.8
   },
   "location": {
    "pages": 16,
@@ -3725,7 +3725,7 @@
    "pages": 5,
    "avgTotalLinks": 40.4,
    "avgBodyLinks": 4.4,
-   "avgEditorialInbound": 6
+   "avgEditorialInbound": 7.2
   },
   "resources-hub": {
    "pages": 1,
@@ -3735,8 +3735,8 @@
   },
   "service": {
    "pages": 9,
-   "avgTotalLinks": 58.4,
-   "avgBodyLinks": 22.4,
+   "avgTotalLinks": 59.7,
+   "avgBodyLinks": 23.7,
    "avgEditorialInbound": 177
   },
   "services-hub": {

@@ -41,6 +41,8 @@ import {
   IndependentBand,
   TellUsList,
 } from '@/components/sections/service-v2'
+import { PlannedLinks, plannedLinksRenders } from '@/components/sections/PlannedLinks'
+import { guidePageIdsForService } from '@/lib/links/link-plan'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ServicePageContent } from '@/types'
 
@@ -593,6 +595,16 @@ export function ServicePageTemplateV2({
           density="standard"
         />
       ),
+    )
+  }
+
+  // Related guides (lib/links/link-plan.ts, GUIDE_RULES): at most three, from the existing guides.
+  const guideIds = guidePageIdsForService(page.serviceId ?? page.id)
+  if (plannedLinksRenders([{ pageIds: guideIds }])) {
+    add(
+      'dense',
+      'related-guides',
+      <PlannedLinks id="related-guides" title="Related guides" groups={[{ pageIds: guideIds }]} />,
     )
   }
 

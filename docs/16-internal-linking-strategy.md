@@ -2568,3 +2568,14 @@ The service x location matrix is never exposed as a link block. All relationship
 * No indexable page links to a noindex page or one outside the sitemap.
 * No cross-market links in page content (market contact pages and the locations hub are not market pages).
 * No page has more than 100 distinct internal destinations, navigation and footer included.
+
+## 126.6 Planned slots (added 2026-10-27, second pass)
+
+All three slots are driven by `lib/links/link-plan.ts` and rendered by `components/sections/PlannedLinks.tsx` (short titled rows, not cards). Gated or unauthored pages are dropped by the resolver, and an empty slot renders nothing.
+
+* **Related guides on core service pages** (`id="related-guides"`, after the related-services cards). Rows in `GUIDE_RULES` name the services a guide answers for. At most `MAX_GUIDES_PER_PAGE` (3) per page; guides and comparison pages only, never a service or sales page. Today: Pre-Purchase Sewer Inspection, Sewer Camera Inspection, Sewer Cleaning & Camera Inspection and Recurring Sewer Backup Diagnosis link the report and video guides; Hydro Jetting, Drain Cleaning and Sewer Cleaning link the hydro jetting vs. sewer snaking comparison; Sewer Line Locating and Preventative Sewer Maintenance have no matching guide and show no slot.
+* **Where we serve on audience pages** (`id="where-we-serve"`). Rule: the three launch markets, established market first (St. Louis, San Diego, Las Vegas), and the audience's lead service in each market's flagship location, one page per market (three in all). Lead service: pre-purchase inspection for home buyers, home sellers, real estate agents and home inspectors; preventative sewer maintenance for property managers and HOA communities (residential only). If a fourth market is added, the market list is capped at three by relevance order in `MARKET_HUB_IDS`.
+* **Before you reach out on market contact pages** (`id="helpful-pages"`). Rule: the site FAQ (there is no per-market FAQ page) and the two audiences with the clearest need at contact time, real estate agents and home buyers (`CONTACT_AUDIENCES`, overridable per market).
+* **Guides on location hubs** use the same `GUIDE_RULES` table, matched by location or by market. To add a San Diego or Las Vegas guide once it exists, add one row (`guide`, plus `locations` and/or `markets`, plus `services` if it belongs on a service page too). No component changes; the hub block, the service slot and the gate pick it up.
+
+`scripts/verify-internal-links.mjs` fails if a service slot holds more than 3 links or a non-guide, if the pre-purchase and camera pages lose the report and video guides, if an audience page does not link exactly the three market hubs and 1 to 3 local pages in different markets, if a market contact page lacks the FAQ or two audience links, or if a hub guide block exceeds 3.
