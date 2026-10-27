@@ -58,7 +58,7 @@ if (v2 === undefined || sanDiegoMissionValleyContent.faq === undefined) {
 const slots = pageImageSlots('sl-mission-valley-cleaning', {
   hero: {
     alt: 'Technician setting up sewer cleaning equipment at a cleanout beside a building',
-    shot: 'Technician with a cleaning machine and cable or hose at a cleanout at a multifamily or mixed-use building, no identifiable address',
+    shot: 'Technician with a cleaning machine and cable or hose at a cleanout at a multifamily building, no identifiable address',
   },
   problems: [shots[0], shots[1], shots[2], shots[3]] as const,
 })

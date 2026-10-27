@@ -65,7 +65,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
     },
     body: (
       <>
-        <h2>The short answer</h2>
+        <h2>Hydro jetting vs. sewer snaking: the short answer</h2>
         <p>
           Snaking (mechanical clearing) is well suited to a discrete
           obstruction: something lodged at a point in the line. Hydro jetting
@@ -138,6 +138,17 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
         ),
       },
       {
+        question: 'When is hydro jetting the better choice?',
+        answer: (
+          <p>
+            When the problem is grease or other buildup along a length of pipe
+            rather than one obstruction, and the pipe is in a condition to be
+            cleaned. A camera inspection shows both. For a single object lodged
+            at one point, mechanical clearing may be all that is needed.
+          </p>
+        ),
+      },
+      {
         question: 'Should I always ask for jetting?',
         answer: (
           <p>
@@ -179,7 +190,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
     },
     body: (
       <>
-        <h2>What is actually different</h2>
+        <h2>An independent sewer inspection vs. a repair company: what is actually different</h2>
         <p>
           A repair contractor earns from performing repairs. An independent
           inspection company earns from inspecting and cleaning. Both are

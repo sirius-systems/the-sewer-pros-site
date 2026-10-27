@@ -382,3 +382,87 @@ Y = present in full, ~ = natural short form or parts (service name and place), -
 * `npm run build`: passes.
 * `node scripts/verify-editorial-keywords.mjs`: passes (new).
 * All verify scripts, including `verify-internal-links.mjs` (linking structure unchanged): 30 of 30 pass.
+
+## 13. Follow-up pass (after f353c78)
+
+Data: `prompt-13-editorial-audit-2026-10-27-followup.json` (same engine, current build). The earlier `-after.json` is the f353c78 baseline used for the "before" column here.
+
+### 13.1 Coverage, before and after this pass (197 pages)
+
+| Metric | f353c78 | Now |
+| ------ | ------: | --: |
+| Primary keyword in title / meta / H1 | 100% / 99.5% / 100% | 100% / 99.5% / 100% |
+| Primary keyword in at least one H2 or H3 | 93.4% (13 pages without) | 97.0% (6 pages without) |
+| Primary keyword (or short form) in the opening | 95.4% | 94.9% |
+| Primary keyword (or place) in a FAQ question | 88.8% | 90.4% |
+| Expected researched questions missing | 17 | 0 |
+| Required researched questions missing | 0 | 0 |
+| Hydro jetting Henderson vs Las Vegas shared copy | 36% | 27% |
+| Service + location pairs 35% or more the same copy | 2 | 0 |
+| "mixed-use" in copy, shot notes or docs | 54 occurrences in 26 files | 0 |
+| Pages by severity (high / medium / low / clean) | 0 / 0 / 88 / 109 | 0 / 0 / 85 / 112 |
+
+The opening figure fell half a point because the homepage's primary phrase changed to "independent sewer inspection and cleaning", which its eyebrow and H1 carry but its first paragraph (about camera inspection, diagnostics and locating) does not. Repeating the phrase a third time in the hero would read as stuffing, so it was left.
+
+### 13.2 Homepage
+
+* **Title:** "Independent Sewer Inspection and Cleaning | The Sewer Pros" (was "Sewer Camera Inspection, Diagnostics & Cleaning | The Sewer Pros").
+* **Meta:** "Independent sewer inspection and cleaning across St. Louis, San Diego, and Las Vegas: camera diagnostics and locating that show the line's condition first." The three markets and the brand stay (markets in the meta, brand in the title); the title has no room for all three markets under 70 characters.
+* **H1:** "Independent sewer inspection and cleaning." (was "Sewer camera inspection and cleaning."). The brief named title, meta and H2s; the H1 was changed too because it carried the contested phrase.
+* **H2s:** "How we can help" is now "How independent sewer inspection and cleaning helps"; the services grid heading is now "Independent Sewer Inspection, Diagnostics & Cleaning Services".
+* **Ownership:** the gate now fails if the homepage title or H1 contains "sewer camera inspection", if the Sewer Camera Inspection page loses it from its title or H1, or if a services hub, about, FAQ, contact, audience, resources or locations page title carries it. The only pages with it in a title are the camera page, its 16 local pages and the three market hubs.
+
+### 13.3 The 17 expected researched questions
+
+15 new FAQ entries, 1 renamed, 1 already covered. Each answer opens with the direct answer, is conditional on pipe condition (which a camera inspection shows), promises no outcome, names no equipment or capability, and offers an independent camera inspection or second opinion as the next step where it fits. The seven core-service entries also appear on the 99 service + location pages that reuse the matching service FAQ. FAQPage JSON-LD matches the visible text on all 5,173 FAQ answers checked.
+
+| # | Page | Question | Phrase recorded in |
+| -: | ---- | -------- | ------------------ |
+| 1 | Hydro Jetting | Can hydro jetting damage a sewer line? | docs/14 s.2215 |
+| 2 | Hydro Jetting | Can hydro jetting help recurring backups? | docs/10 s.1156 |
+| 3 | Sewer Cleaning | Can a sewer line be cleaned instead of replaced? | docs/14 s.682 |
+| 4 | Sewer Cleaning | Hydro jetting vs snaking: already covered by "What is the difference between hydro jetting and snaking?" (the phrase match was widened; no duplicate entry) | docs/10 s.11 |
+| 5 | Drain Cleaning | Is hydro jetting better than snaking? | docs/10 s.11 |
+| 6 | Sewer Cleaning & Camera Inspection | How does a camera inspection work during a cleaning visit? | docs/10 s.1108 |
+| 7 | Preventative Sewer Maintenance | When should a sewer line be inspected? | docs/10 s.1112, s.1127 |
+| 8 | Pre-Purchase Sewer Inspection | What happens if a sewer problem is found before closing? | docs/10 s.1126 |
+| 9 | Home buyers | What happens if a sewer problem is found before closing? (renamed from "What if it finds a problem?", same answer) | docs/10 s.1126 |
+| 10 | Home buyers | What is included in a sewer inspection? | docs/12 s.456 |
+| 11 | Home sellers | Is a sewer inspection worth it before closing on a sale? | docs/12 s.454 (seller form) |
+| 12 | Real estate agents | What happens if a sewer problem is found before closing? | docs/10 s.1126 |
+| 13 | HOA communities | Why does our common sewer line keep backing up? | docs/10 s.1138 (HOA form) |
+| 14 | Hydro jetting vs sewer snaking | When is hydro jetting the better choice? | docs/10 s.1154 |
+| 15 | Video guide | What does a sewer camera inspection show? | docs/10 s.1107 |
+| 16 | Video guide | How does a sewer camera inspection work? | docs/10 s.1108 |
+| 17 | Inspection report guide | What does a sewer camera inspection show? | docs/10 s.1107 |
+
+Also added to close FAQ-question gaps (item 5): home "What is independent sewer inspection and cleaning?", services hub "What sewer and drain services does The Sewer Pros offer?", home buyers "Should a home buyer get a sewer inspection?" (docs/09 s.2175), property managers "When should a property manager schedule hydro jetting?" (docs/09 s.2179). The FAQ counts in the six page scripts that gained entries were updated.
+
+### 13.4 Hydro jetting, Henderson and Las Vegas
+
+* **Las Vegas: fact added.** Source: City of Las Vegas Public Works, *Water Quality FAQ* (PDF, no date shown, read 2026-10-27), https://files.lasvegasnevada.gov/public-works/Water-Quality-FAQ.pdf. The FAQ asks "Can I put used cooking oil down my sink if I use hot water?" and answers "No, as it will clog the sewer line and cause a sewage backup", then says that outside the holiday season the oil can be soaked up with cat litter and put in the garbage or taken to Republic Services' household hazardous waste drop-off. The page now says this in a paragraph in its "what jetting can clear" section (grease is on the list of things jetting clears) and lists the source in its Sources block.
+* **Henderson: no fact added, page unchanged.** I looked for a matching primary-source fact (the City's fats, oils, grease and grit guidance for residents). The City of Henderson website returned HTTP 403 to every automated fetch (the environmental FAQ, pretreatment and utility FAQ pages), the Internet Archive copy was blocked, and a search of Henderson's municipal code returned only other cities. A search-result snippet mentioned a percentage of sewer clogs linked to grease, but I could not read the page, so I did not use it. If you can send a copy of the City's page or brochure, the fact can be added quickly.
+* **Result:** the Las Vegas fact alone moved the pair from 36% to 27% shared copy, below the 30% target. The gate now checks this pair.
+
+### 13.5 "Mixed-use" removed
+
+Removed from page copy, Mission Valley body text and code comments, image shot notes, and 14 docs (image shot list, generator prompts, placeholder inventory, images README, the master page build list, three source reports, the commercial-removal records, the property-manager restore record and the historical Mission Valley text in the decision log). Where the City's description of the district was quoted, it is now paraphrased as "an area with a growing residential community". One unreferenced image file whose name contained the term was renamed to `the-sewer-pros-san-diego-commercial-street-manhole-seektech-sr20-4x3.webp`; nothing referenced it. The gate fails if the term returns to any page.
+
+### 13.6 H2 and FAQ keyword gaps
+
+* **H2 (7 headings; pages without a primary-keyword H2 went from 13 to 6):** the two comparison pages ("Hydro jetting vs. sewer snaking: the short answer"; "An independent sewer inspection vs. a repair company: what is actually different"), the video guide ("What you are looking at in a sewer camera inspection video"), the report guide ("What a sewer camera inspection report should contain"), the St. Louis lateral report ("What a usable St. Louis sewer lateral report contains"), the City program ("What the St. Louis City sewer lateral program covers") and the County program ("Start by identifying which St. Louis County sewer lateral program applies").
+* **Left as they are (not forced):** the FAQ, Who We Serve, Resources hub and three market contact pages, whose primary phrase is a label ("FAQs", "Contact"), so a heading with the phrase would read as stuffing. The five resource guides and several audience pages have no FAQ question carrying the page phrase; adding one would repeat content already in the guide.
+
+### 13.7 Decisions to confirm
+
+| Item | Status | Blocking | Next action |
+| ---- | ------ | -------- | ----------- |
+| Homepage H1 changed with the title | CONFIRM | NO | Revert the H1 to "Sewer camera inspection and cleaning." if you want only title, meta and H2s changed |
+| Henderson hydro jetting has no new local fact | NEEDS SOURCE | NO | Send the City's fats, oils, grease and grit page or brochure |
+| Homepage first paragraph does not repeat "independent sewer inspection and cleaning" | CONFIRM | NO | Left to avoid triple repetition in the hero |
+
+Section 10 items resolved by this pass: the homepage vs. camera inspection page ownership, the 17 expected questions, the Hydro Jetting Las Vegas copy overlap (Henderson page still open, above) and the "mixed-use" wording.
+
+### 13.8 Verification
+
+`npx tsc --noEmit` passes; `npm run build` passes; all 30 verify scripts pass, including `verify-editorial-keywords.mjs` (now covering expected questions, homepage ownership, the Henderson and Las Vegas pair and the "mixed-use" ban) and `verify-internal-links.mjs`.

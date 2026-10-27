@@ -42,7 +42,7 @@ const id = (value: string): PageId => value as PageId
 export const homeContent: HomePageContent = {
   hero: {
     eyebrow: 'Independent sewer inspection and cleaning',
-    title: 'Sewer camera inspection and cleaning.',
+    title: 'Independent sewer inspection and cleaning.',
     intro: (
       <p>
         Sewer camera inspection, diagnostics, locating, and cleaning:
@@ -51,9 +51,9 @@ export const homeContent: HomePageContent = {
       </p>
     ),
   },
-  seoTitle: 'Sewer Camera Inspection, Diagnostics & Cleaning | The Sewer Pros',
+  seoTitle: 'Independent Sewer Inspection and Cleaning | The Sewer Pros',
   metaDescription:
-    "Independent sewer camera inspection, diagnostics, locating, and cleaning across St. Louis, San Diego, and Las Vegas. See the line's condition first.",
+    "Independent sewer inspection and cleaning across St. Louis, San Diego, and Las Vegas: camera diagnostics and locating that show the line's condition first.",
   /*
     ⚠ `homeServiceCards`, NOT `coreServiceCards`, AS OF 2026-09-22.
 
@@ -204,6 +204,17 @@ export const homeContent: HomePageContent = {
           Visible conditions inside the accessible line: blockages, root
           intrusion, separated joints, cracks, offsets, standing water, and
           debris. It cannot guarantee detection of every hidden defect.
+        </p>
+      ),
+    },
+    {
+      question: 'What is independent sewer inspection and cleaning?',
+      answer: (
+        <p>
+          It means The Sewer Pros inspects, documents, and cleans sewer and
+          drain lines, and does not perform sewer repair or replacement, so the
+          findings are not attached to a repair sale. When a camera is used, you
+          receive the inspection video, and written findings are included.
         </p>
       ),
     },
@@ -980,6 +991,18 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     */
     faq: [
       ...reusedHomeFaq,
+      {
+        question: 'What sewer and drain services does The Sewer Pros offer?',
+        answer: (
+          <p>
+            Sewer camera inspection, sewer cleaning, Sewer Cleaning &amp; Camera
+            Inspection, hydro jetting, sewer line locating, drain cleaning,
+            pre-purchase sewer inspection, recurring sewer backup diagnosis, and
+            preventative sewer maintenance. We do not offer sewer repair or
+            replacement.
+          </p>
+        ),
+      },
       {
         question: 'What is preventative sewer maintenance?',
         answer: (
@@ -1901,7 +1924,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
           or showing someone else what was found.
         </p>
 
-        <h2>What a report should contain</h2>
+        <h2>What a sewer camera inspection report should contain</h2>
         <h3>Identification</h3>
         <p>
           The property, the date, and which line was inspected. Obvious, and
@@ -1957,6 +1980,18 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
     ),
     faq: [
       {
+        question: 'What does a sewer camera inspection show?',
+        answer: (
+          <p>
+            It shows the visible inside of the accessible pipe: standing water,
+            joints, roots or material in the pipe, and changes in the pipe, and
+            where along the line each one sits. What it records depends on the
+            access and the length the camera reached. It cannot show wall
+            thickness or soil support.
+          </p>
+        ),
+      },
+      {
         question: 'Should the report include a repair quote?',
         answer: (
           <p>
@@ -1987,7 +2022,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
     ),
     body: (
       <>
-        <h2>What you are looking at</h2>
+        <h2>What you are looking at in a sewer camera inspection video</h2>
         <p>
           The camera travels along the inside of the pipe, lit from the head.
           The picture is close, wide-angle, and often wet, which is why
@@ -2047,6 +2082,29 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       </>
     ),
     faq: [
+      {
+        question: 'What does a sewer camera inspection show?',
+        answer: (
+          <p>
+            It shows the visible inside of the accessible pipe on video: standing
+            water, joints that are separated or misaligned, roots or material
+            entering the pipe, and changes in the pipe’s shape or surface, along
+            with where along the line each one is. It cannot show wall thickness,
+            soil support, or the outside of the pipe.
+          </p>
+        ),
+      },
+      {
+        question: 'How does a sewer camera inspection work?',
+        answer: (
+          <p>
+            A camera is fed into the line through an access point such as a
+            cleanout and travels along the inside of the pipe, lit from the head,
+            while the picture is recorded. The findings apply only to the length
+            the camera reached.
+          </p>
+        ),
+      },
       {
         question: 'The video looks bad. Does that mean the line is failing?',
         answer: (

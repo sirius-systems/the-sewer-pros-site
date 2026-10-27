@@ -132,4 +132,4 @@ Total FAQ on the page: 25 (9 Mission Valley + 16 service).
 
 - Mission Valley's own page says it found no separate Mission Valley sewer utility and that a parcel can still be an exception; the page repeats that wording and never says which agency serves an address.
 - City phone numbers used (619-515-3525, 619-446-5242, 619-446-5300, 858-654-4188) are each labelled the City's, not ours, and appear only as the Mission Valley page states them. No dates are stated.
-- The service pages say "residential"; the Mission Valley page serves hotels, restaurants, retail, offices and mixed-use buildings. This page does not claim commercial capability beyond what the Mission Valley location page states.
+- The service pages say "residential"; the Mission Valley page serves hotels, restaurants, retail, offices and similar buildings. This page does not claim commercial capability beyond what the Mission Valley location page states.

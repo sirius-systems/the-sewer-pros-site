@@ -59,7 +59,7 @@ if (v2 === undefined || sanDiegoMissionValleyContent.faq === undefined) {
 const slots = pageImageSlots('sl-mission-valley-camera', {
   hero: {
     alt: 'Technician feeding a sewer camera into a cleanout beside a building',
-    shot: 'Technician feeding a camera into a cleanout at a multifamily or mixed-use building, monitor in frame, no identifiable address',
+    shot: 'Technician feeding a camera into a cleanout at a multifamily building, monitor in frame, no identifiable address',
   },
   problems: [shots[0], shots[1], shots[2], shots[3]] as const,
 })
@@ -138,7 +138,7 @@ export const missionValleyCameraContent: ServiceLocationPageContent = {
 
       <h2>Many fixtures on one lateral</h2>
       <p>
-        The City describes Mission Valley as a mixed-use area with a growing residential
+        The City describes Mission Valley as an area with a growing residential
         community. A multifamily building feeds many fixtures into one lateral, so one failure can
         reach every unit at once. That is a reason to look at the line before a
         problem forces the question.

@@ -365,7 +365,7 @@ Canonicals under /commercial/: 0. hreflang: none emitted.
 
 ## 8. Area 6: Images and assets
 
-- Commercial-named files and flagged alt text: /images/commercial/the-sewer-pros-san-diego-commercial-mixed-use-street-manhole-seektech-sr20-4x3.webp (X); /images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp (X).
+- Commercial-named files and flagged alt text: /images/commercial/the-sewer-pros-san-diego-commercial-street-manhole-seektech-sr20-4x3.webp (X); /images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp (X).
 - The 12 render files exist at their shot-list paths: yes.
 - Placeholder boxes in this build: 0.
 - Images not referenced by any page or source file (not deleted, 47):
@@ -391,7 +391,7 @@ Canonicals under /commercial/: 0. hreflang: none emitted.
   - /images/brand/logos/04-digital/the-sewer-pros-social-avatar.png
   - /images/clean-outs/the-sewer-pros-capped-exterior-sewer-cleanout-ridgid-seesnake-4x3.webp
   - /images/clean-outs/the-sewer-pros-floor-drain-cleanout-access-ridgid-seesnake-4x3.webp
-  - /images/commercial/the-sewer-pros-san-diego-commercial-mixed-use-street-manhole-seektech-sr20-4x3.webp
+  - /images/commercial/the-sewer-pros-san-diego-commercial-street-manhole-seektech-sr20-4x3.webp
   - /images/residential/the-sewer-pros-backyard-fence-line-planting-bed-seektech-sr20-4x3.webp
   - /images/residential/the-sewer-pros-bathroom-sink-tub-slow-drain-ridgid-k7500-4x3.webp
   - /images/residential/the-sewer-pros-kitchen-sink-slow-drain-ridgid-k7500-4x3.webp

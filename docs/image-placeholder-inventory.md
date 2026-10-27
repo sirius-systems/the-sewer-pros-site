@@ -23,7 +23,7 @@ The 392 filled boxes, by file (these match the counts in [image-shot-list.md](im
 | Residential street, St. Louis | 50 |
 | Residential street, San Diego | 65 |
 | Residential street, Las Vegas | 40 |
-| Mixed-use street, San Diego (Mission Valley) | 5 |
+| City street, San Diego (Mission Valley) | 5 |
 | Older home, St. Louis | 5 |
 | Older home, San Diego | 7 |
 | Older home, Las Vegas | 4 |

@@ -46,7 +46,7 @@ if (sd === undefined) throw new Error('marketOperatingDetail is missing san-dieg
 const slots = pageImageSlots('sl-mission-valley-drain', {
   hero: {
     alt: 'Drain cleaning equipment at a floor drain',
-    shot: 'Drain machine at a floor drain, multifamily or mixed-use building, no identifiable address',
+    shot: 'Drain machine at a floor drain, multifamily building, no identifiable address',
   },
   problems: [
     shots[0],
@@ -54,7 +54,7 @@ const slots = pageImageSlots('sl-mission-valley-drain', {
     shots[2],
     {
       alt: 'Street with a manhole cover near the curb',
-      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
+      shot: 'Ordinary city street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })

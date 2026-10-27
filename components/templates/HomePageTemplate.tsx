@@ -364,7 +364,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
         <RoutingCards
           id="how-we-can-help"
           eyebrow="Start here"
-          title="How we can help"
+          title="How independent sewer inspection and cleaning helps"
           /*
             Navigational framing only. It says what the four cards are
             for and makes no claim about the business, which is the
@@ -392,7 +392,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       <ServiceIndex
         density="dense"
         id="services"
-        title="Sewer Inspection, Diagnostics & Cleaning Services"
+        title="Independent Sewer Inspection, Diagnostics & Cleaning Services"
         /*
           ⚠ APPROVED COPY, VERBATIM (2026-09-22). Not sourced from
           `content` because it is fixed template-level text, the same

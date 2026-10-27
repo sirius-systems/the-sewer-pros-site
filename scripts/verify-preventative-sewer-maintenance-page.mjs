@@ -152,8 +152,8 @@ const faqVisible = details.map((d) => ({
   q: strip((d.match(/<h4[^>]*>([\s\S]*?)<\/h4>/) || [])[1] || ''),
   a: strip(d.slice(d.indexOf('</summary>') + '</summary>'.length)),
 }))
-check('FAQPage has 16 questions', faqLd.length === 16, String(faqLd.length))
-check('16 visible questions', faqVisible.length === 16, String(faqVisible.length))
+check('FAQPage has 17 questions', faqLd.length === 17, String(faqLd.length))
+check('17 visible questions', faqVisible.length === 17, String(faqVisible.length))
 check(
   'FAQPage text equals the visible FAQ',
   faqLd.length === faqVisible.length &&
@@ -162,6 +162,7 @@ check(
 const QUESTIONS = [
   'What is preventative sewer maintenance?',
   'How often should I schedule it?',
+  'When should a sewer line be inspected?',
   'Do all homes need routine sewer cleaning?',
   'What does a sewer camera inspection find?',
   'What can a sewer camera not see?',
@@ -178,7 +179,7 @@ const QUESTIONS = [
   'What should I ask for before approving major sewer work?',
 ]
 check(
-  'the 16 questions match the content doc, in order',
+  'the 17 questions match the content doc, in order',
   JSON.stringify(faqVisible.map((f) => flat(f.q))) === JSON.stringify(QUESTIONS.map(flat)),
 )
 const groupLabels = [...faqSection.matchAll(/<h3[^>]*id="faq-[^"]*"[^>]*>([\s\S]*?)<\/h3>/g)].map((m) => strip(m[1]))
@@ -190,8 +191,8 @@ check(
 )
 const groupChunks = faqSection.split(/<h3[^>]*id="faq-/).slice(1)
 check(
-  'FAQ groups hold 3, 3, 3, 2, 3 and 2 questions',
-  groupChunks.map((c) => count(/<details[\s>]/g, c)).join(',') === '3,3,3,2,3,2',
+  'FAQ groups hold 4, 3, 3, 2, 3 and 2 questions',
+  groupChunks.map((c) => count(/<details[\s>]/g, c)).join(',') === '4,3,3,2,3,2',
   groupChunks.map((c) => count(/<details[\s>]/g, c)).join(','),
 )
 check('group labels are navigation only (no group heading sits inside a question)', details.every((d) => !/<h3[\s>]/.test(d)))

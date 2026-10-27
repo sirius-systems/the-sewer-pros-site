@@ -71,7 +71,19 @@ export const lasVegasCityHydroContent: ServiceLocationPageContent = {
     'Hydro jetting cleans an accessible sewer or drain line with pressurized water sent through a hose and nozzle, for properties in the City of Las Vegas, Nevada.',
   heroImage: slots.hero,
   ctaImage: slots.cta,
-  sources: lasVegasCityContent.sources,
+  sources:
+    lasVegasCityContent.sources === undefined
+      ? undefined
+      : {
+    ...lasVegasCityContent.sources,
+    links: [
+      ...lasVegasCityContent.sources.links,
+      {
+        label: 'City of Las Vegas: Water Quality FAQ, Public Works (date not shown; accessed Oct 27, 2026)',
+        href: 'https://files.lasvegasnevada.gov/public-works/Water-Quality-FAQ.pdf',
+      },
+    ],
+  },
   hero: {
     eyebrow: 'Las Vegas, NV',
     title: 'Hydro Jetting in Las Vegas',
@@ -107,6 +119,15 @@ export const lasVegasCityHydroContent: ServiceLocationPageContent = {
         <li>Roots that are loose or accessible</li>
         <li>General buildup on the pipe wall</li>
       </ul>
+      <p>
+        Grease is on that list for a reason the City gives itself. In its water quality FAQ, the
+        City of Las Vegas answers no to putting used cooking oil down a sink, even with hot
+        water, because it will clog the sewer line and cause a sewage backup. Outside the holiday
+        season it says the oil can be soaked up with cat litter and put in the garbage, or taken
+        to Republic Services&rsquo; household hazardous waste drop-off. Jetting clears grease that
+        has already built up. Keeping it out of the line is the City&rsquo;s advice for keeping
+        the line clear.
+      </p>
       <p>
         Jetting does not correct a cracked or broken pipe, an offset or separated joint, a
         collapsed section, or a low spot that holds water. We found no City lateral repair, grant

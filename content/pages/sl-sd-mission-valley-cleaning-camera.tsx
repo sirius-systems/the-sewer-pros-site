@@ -45,7 +45,7 @@ if (sd === undefined) throw new Error('marketOperatingDetail is missing san-dieg
 const slots = pageImageSlots('sl-mission-valley-cleaning-camera', {
   hero: {
     alt: 'Technician reviewing camera footage on a monitor after a cleaning',
-    shot: 'Monitor showing a cleaned pipe with crew behind, multifamily or mixed-use property, no identifiable address',
+    shot: 'Monitor showing a cleaned pipe with crew behind, multifamily property, no identifiable address',
   },
   problems: [shots[0], shots[1], shots[2], shots[3]] as const,
 })

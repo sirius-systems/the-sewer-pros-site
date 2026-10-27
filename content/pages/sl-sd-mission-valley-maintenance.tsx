@@ -49,7 +49,7 @@ if (v2 === undefined || sanDiegoMissionValleyContent.faq === undefined) {
 const slots = pageImageSlots('sl-mission-valley-maintenance', {
   hero: {
     alt: 'Technician on a scheduled sewer maintenance visit at a building',
-    shot: 'Technician at a cleanout during a maintenance visit at a multifamily or mixed-use property, monitor in frame, no identifiable address',
+    shot: 'Technician at a cleanout during a maintenance visit at a multifamily property, monitor in frame, no identifiable address',
   },
   problems: [
     shots[0],
@@ -57,7 +57,7 @@ const slots = pageImageSlots('sl-mission-valley-maintenance', {
     shots[2],
     {
       alt: 'Street with a manhole cover near the curb',
-      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
+      shot: 'Ordinary city street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })

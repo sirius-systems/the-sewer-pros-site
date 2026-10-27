@@ -1164,6 +1164,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
         {
           group: 'Limits and risks',
+          question: 'Can a sewer line be cleaned instead of replaced?',
+          answer:
+            'Sometimes, when the pipe is sound. If the problem is buildup, cleaning can restore flow without other work. It cannot fix a cracked, offset, or collapsed pipe, and a camera inspection shows which condition you have. If replacement has been recommended, an independent camera inspection is a sensible next step before you decide.',
+        },
+        {
+          group: 'Limits and risks',
           question: 'Can sewer cleaning fix a cracked, offset, or collapsed pipe?',
           answer: `No. Cleaning removes buildup and obstructions. It does not repair pipe. A camera can document a visible structural condition, and further evaluation outside our cleaning and diagnostic scope may be appropriate.`,
         },
@@ -1611,6 +1617,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
         {
           group: 'Safety and limits',
+          question: 'Can hydro jetting damage a sewer line?',
+          answer:
+            'It can, if the pipe is already weakened, which is why the method is matched to the line. Whether a line is a candidate depends on its material and condition, which a camera inspection shows before cleaning when one is included. We cannot promise an outcome, and a visible structural defect calls for a closer evaluation before cleaning.',
+        },
+        {
+          group: 'Safety and limits',
           question: 'Can hydro jetting cause a backup?',
           answer:
             'Added water can contribute to a backup if the line cannot carry it away. This is one reason the method and settings are matched to the line.',
@@ -1626,6 +1638,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           question: 'Why are several drains slow at once?',
           answer:
             'Several slow fixtures can point to a restriction in a shared line rather than in one drain. It does not prove where. See drain cleaning and sewer camera inspection.',
+        },
+        {
+          group: 'Symptoms',
+          question: 'Can hydro jetting help recurring backups?',
+          answer:
+            'It can help when buildup, such as grease or loose roots, is what keeps blocking the line, because cleaning removes what is in the pipe. It does not repair the cause when a defect is catching material, so the backup can return. A camera inspection shows which it is. See recurring sewer backup diagnosis.',
         },
         {
           group: 'Symptoms',
@@ -2159,6 +2177,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'The basics',
           question: 'Does the camera or the cleaning come first?',
           answer: `There is no single required order. A camera may be used before cleaning, after cleaning, or both. If a line is blocked and full of water, a camera cannot see under the water, so cleaning may need to come first. Ask which order applies to your visit.`,
+        },
+        {
+          group: 'The basics',
+          question: 'How does a camera inspection work during a cleaning visit?',
+          answer:
+            'A camera is fed into the accessible line through an access point such as a cleanout, and the picture is recorded as it moves along the pipe. It may be used before cleaning to see the line’s condition, after cleaning to see what remains, or both, depending on the line. When a camera is used, you receive the inspection video, and written findings are included.',
         },
         {
           group: 'The basics',
@@ -3396,6 +3420,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         },
         {
           group: 'Understanding drain cleaning',
+          question: 'Is hydro jetting better than snaking?',
+          answer:
+            'Neither is better in every case. Snaking suits a single obstruction at one point in the line, and hydro jetting suits buildup along a length of pipe. Which applies depends on what is blocking the line and the pipe’s condition, which a camera inspection can show. See hydro jetting vs. snaking.',
+        },
+        {
+          group: 'Understanding drain cleaning',
           question: 'Does drain cleaning repair a damaged pipe?',
           answer: `No. Cleaning removes material from inside the pipe. It does not repair cracks, offsets, or collapse. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.`,
         },
@@ -4223,6 +4253,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'Buying and timing',
           question: 'Should I get a sewer scope before buying a house?',
           answer: `It is your decision. Inspections happen during the contingency period set by your purchase agreement, and no national rule requires a sewer scope. A scope gives you a record of the accessible line's visible condition before you close. It does not decide whether you should buy.`,
+        },
+        {
+          group: 'Buying and timing',
+          question: 'What happens if a sewer problem is found before closing?',
+          answer:
+            'You have documented evidence of the line’s condition while the decision is still open. What to do with it, such as asking the seller questions, getting a further evaluation, or discussing it with your agent and advisers, is yours to decide, and we cannot give legal advice. We inspect and document. We do not perform sewer repair or replacement, so no repair quote comes attached to the findings.',
         },
         {
           group: 'Buying and timing',
@@ -5307,6 +5343,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'The basics',
           question: 'How often should I schedule it?',
           answer: `There is no single interval for every home. The useful frequency comes from the line: roots, pipe age and material, prior backups, how quickly buildup returned after cleaning, and how the line can be accessed. Some local utilities publish their own guidance, so it is worth checking yours. If an inspection does not support a recurring schedule, we will say so.`,
+        },
+        {
+          group: 'The basics',
+          question: 'When should a sewer line be inspected?',
+          answer:
+            'When something points to a problem, such as slow drains in more than one fixture, repeated backups, or odors, and when a line has needed cleaning more than once. There is no single schedule that fits every property. A camera inspection shows the line’s condition, which is what makes a maintenance plan, if one is appropriate, specific to your property.',
         },
         {
           group: 'The basics',

@@ -69,7 +69,7 @@ const slots = pageImageSlots('sl-mission-valley-prepurchase', {
     serviceShots[2],
     {
       alt: 'Street with a manhole cover near the curb',
-      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
+      shot: 'Ordinary city street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })
@@ -128,7 +128,7 @@ export const missionValleyPrePurchaseContent: ServiceLocationPageContent = {
       <p>
         A sewer scope is a separate, focused inspection of the sewer line. It documents visible
         conditions in the section the camera reaches, on the day of the visit, whether the property
-        is a house, a condo, a multifamily property or a mixed-use building. Ask your home inspector what theirs
+        is a house, a condo or a multifamily property. Ask your home inspector what theirs
         covers.
       </p>
 

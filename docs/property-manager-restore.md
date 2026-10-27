@@ -57,7 +57,7 @@ Not in scope of this list and not kept: `aud-facility-managers`, `aud-restaurant
 | P | page or copy | content/pages/contact.tsx:507 | sewer services for property managers | none |
 | E | page or copy | content/pages/core.tsx:165 | 'Sewer inspection, cleaning, and hydro jetting for commercial properties, multi-family buildings, and property managers. Recurring | none |
 | E | page or copy | content/pages/core.tsx:203 | src: '/images/homepage/differentiator/the-sewer-pros-commercial-multifamily-properties.webp', | none |
-| P | page or copy | content/pages/core.tsx:204 | alt: 'Exterior of a mixed-use multifamily building and its parking area', | none |
+| P | page or copy | content/pages/core.tsx:204 | alt: 'Exterior of a multifamily building and its parking area', | none |
 | P | page or copy | content/pages/core.tsx:363 | and hydro jetting for property managers, multi-family properties, and | none |
 | P | page or copy | content/pages/core.tsx:1832 | 'Sewer inspection, diagnostics, and cleaning for home buyers, sellers, real estate agents, home inspectors, property managers, and | none |
 | P | page or copy | content/pages/core.tsx:1840 | client without it becoming a sales process. A property manager wants | none |
