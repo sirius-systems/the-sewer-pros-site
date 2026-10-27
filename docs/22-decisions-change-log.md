@@ -5516,3 +5516,20 @@ governance decisions were moved to DEC-090..095.
 # 28. Final Governing Principle
 
 > **The Decisions & Change Log exists to preserve important strategic memory, not to govern every implementation action. Record material changes to business capabilities, primary markets, local entity status, core positioning, major architecture, production domain, and other foundational decisions. Let Git, structured registries, the page inventory, and normal project files handle routine evolution. Claude and Claude Code should continue ordinary work without waiting for a decision-log entry unless the work requires a genuine material business or production decision.**
+
+## DEC-148 - Free Second Opinion Replaces the Free Estimate Wording Site-Wide
+
+**Date:** 2026-10-27
+**Status:** APPROVED
+**Impact:** Moderate (public offer wording)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-088, DEC-136, DEC-139 (wording only; those entries stay as historical record)
+**Affected Documents:**
+
+* `data/business/offers.ts`, `data/business/organization.ts` (`CLAIMS_REQUIRING_VERIFICATION`), `content/pages/core.tsx`, `content/pages/services.tsx`, `CLAUDE.md` section 37, `docs/14-content-specification.md`, `docs/17-conversion-architecture.md`, the page verify scripts
+
+**Reason:** the owner directed that "free estimate" be replaced by "free second opinion" everywhere it is published. "Free estimate" is no longer used on the site.
+
+Recorded: the DEC-088 scoping still applies. The offer is stated as "Ask about a free second opinion before scheduling" and may be hedged ("may be available") but not tightened. No price, discount or other free-service claim is authorized. Cost answers now read "If cost is the concern, ask about a free second opinion before scheduling." The same-day FAQ no longer carries the offer sentence. `'free second opinion'` replaces `'free second opinions'` in `CLAIMS_REQUIRING_VERIFICATION`, so the guard still governs every appearance outside the DEC-088 and DEC-139 placements. Anchors, IDs, slugs, analytics names and form mappings were not touched.
+
+---

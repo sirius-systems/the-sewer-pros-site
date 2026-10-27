@@ -248,7 +248,7 @@ const FORBIDDEN = [
   'entirely on the owner', 'septic', 'CVSan', 'Castro Valley', 'programme', 'Since 2011', 'same-day',
   '24/7', 'guarantee', 'insured', 'still open', 'now open', 'currently open', 'accepting applications',
   'funds remain', 'fully funded', 'you will be reimbursed', 'Unlike', 'Placeholder', 'NOT FOR PRODUCTION',
-  'testimonial', '20,737', '@vwd.org', '201 Vallecitos', '7:30', 'free estimate',
+  'testimonial', '20,737', '@vwd.org', '201 Vallecitos', '7:30', 'free second opinion',
 ]
 const forbiddenHits = FORBIDDEN.filter((w) => text.toLowerCase().includes(norm(w).toLowerCase()))
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))

@@ -10,7 +10,7 @@
  * The page is market-neutral and residential-first: no phone number or
  * `tel:` link before the company footer (DEC-071), no repair offered as a
  * service, no equipment named (CLAUDE.md section 24), no commercial copy, no
- * price, offer, free estimate, same-day or emergency wording, no interval,
+ * price, offer, free second opinion, same-day or emergency wording, no interval,
  * duration or pressure figure. Owner-confirmed 2026-10-05: the inspection
  * video and written findings are included. Nothing else about deliverables
  * is claimed. FAQPage JSON-LD must equal the visible FAQ (DEC-114).
@@ -392,7 +392,7 @@ const forbidden = [
   'same-day',
   '24/7',
   'emergency',
-  'free estimate',
+  'free second opinion',
   'free inspection',
   'discount',
   'pacp',

@@ -279,7 +279,7 @@ const FORBIDDEN = [
   'all the way to the main', 'through the right-of-way', 'Since 2011', 'same-day', '24/7', '24 hours',
   'guarantee', 'insured', 'still open', 'now open', 'currently open', 'accepting applications',
   'funds remain', 'fully funded', 'you will be reimbursed', 'Placeholder', 'NOT FOR PRODUCTION',
-  'testimonial', 'free estimate', 'office hours of', 'Water Engineering', '435-5812',
+  'testimonial', 'free second opinion', 'office hours of', 'Water Engineering', '435-5812',
 ]
 const forbiddenHits = FORBIDDEN.filter((w) => text.toLowerCase().includes(norm(w).toLowerCase()))
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))

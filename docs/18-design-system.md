@@ -133,7 +133,7 @@ Do not copy example-company:
 * service claims
 * emergency claims
 * same-day claims
-* free estimate claims
+* free second opinion claims
 * pricing
 * warranties
 * guarantees

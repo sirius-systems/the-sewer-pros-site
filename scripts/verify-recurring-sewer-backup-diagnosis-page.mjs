@@ -13,7 +13,7 @@
  * used, the inspection video and written findings are included. Nothing
  * else about deliverables is claimed (no surface marks, coding performed,
  * photos, narration, delivery format or timing, or "report" as the
- * deliverable name). The DEC-088 free-estimate and same-day wording appears
+ * deliverable name). The DEC-088 free-second-opinion and same-day wording appears
  * in exactly the three approved places and nowhere else. FAQPage JSON-LD
  * must equal the visible FAQ (DEC-114).
  *
@@ -378,17 +378,18 @@ check('no literal [CONFIRM placeholder', !/\[CONFIRM/i.test(html))
 check('no appointment-preparation placeholder line', !/appointment preparation|before arrival/i.test(visible))
 
 // DEC-088 wording: exactly the three approved places, nowhere else.
-const FREE_EST = 'Ask about a free estimate before scheduling.'
+const FREE_EST = 'Ask about a free second opinion before scheduling.'
+const FREE_COST = 'If cost is the concern, ask about a free second opinion before scheduling.'
 const SAME_DAY =
   'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends. We do not offer 24/7 or emergency service.'
-check('"free estimate" appears exactly twice (cost FAQ, final request intro)', count(/free estimate/gi, visible) === 2 && count(new RegExp(FREE_EST.replace(/[.]/g, '\\.'), 'g'), visible) === 2, String(count(/free estimate/gi, visible)))
+check('"free second opinion" appears exactly twice (cost FAQ sentence, final request intro)', count(/free second opinion/gi, visible) === 2 && count(new RegExp(FREE_EST.replace(/[.]/g, '\\.'), 'g'), visible) === 1 && visible.includes(FREE_COST), String(count(/free second opinion/gi, visible)))
 check('same-day sentence appears exactly once, verbatim', count(/same-day/gi, visible) === 1 && visible.includes(SAME_DAY), String(count(/same-day/gi, visible)))
 const SAME_DAY_Q = 'Can you come the same day, and is this emergency service?'
 check('"24/7" appears once and "emergency" only in the same-day question and answer', count(/24\/7/g, visible) === 1 && count(/emergency/gi, visible) === 2 && visible.includes(SAME_DAY_Q))
 const requestSection = (main.match(/<section[^>]*aria-labelledby="request"[\s\S]*?<\/section>/) || [''])[0]
-check('final request intro carries the free-estimate line', strip(requestSection).includes(FREE_EST))
+check('final request intro carries the free-second-opinion line', strip(requestSection).includes(FREE_EST))
 const costFaq = faqLd.find((f) => f.q === 'How long does it take, and how much does it cost?')
-check('cost FAQ carries the free-estimate line', costFaq !== undefined && costFaq.a.includes(FREE_EST))
+check('cost FAQ carries the free-second-opinion line', costFaq !== undefined && costFaq.a.includes(FREE_COST))
 
 let scanText = flat(`${visible} ${ldText}`).toLowerCase()
 // The DEC-088 strings (and the same-day question that carries the word "emergency") are removed before the scan; any other use still fails.
@@ -407,7 +408,7 @@ const forbidden = [
   'same-day',
   '24/7',
   'emergency',
-  'free estimate',
+  'free second opinion',
   'free inspection',
   'discount',
   'permanent',

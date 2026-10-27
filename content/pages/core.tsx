@@ -332,7 +332,7 @@ export const homeContent: HomePageContent = {
         Answer text is the canonical DEC-088 wording. The same-day half
         is reused from the `/services/` FAQ answer to the same question
         (see hubContent, hub-services) so the two pages state one thing,
-        not two; the free-estimate sentence is verbatim from
+        not two; the free-second-opinion sentence is verbatim from
         `verifiedOffers` in data/business/offers.ts.
 
         ⚠ Same-day wording is load-bearing. DEC-088 approved
@@ -343,12 +343,12 @@ export const homeContent: HomePageContent = {
         offer. Changing it here without changing `/services/` puts the
         two pages back into contradiction.
       */
-      // TODO: A stronger, unconditional version of this answer may be used only if the client confirms a standing, always-available same-day/free-estimate policy that does not vary by market or season. Do not change this answer without that explicit confirmation.
-      question: 'Do you offer free estimates or same-day appointments?',
+      // TODO: A stronger, unconditional version of this answer may be used only if the client confirms a standing, always-available same-day/free-second-opinion policy that does not vary by market or season. Do not change this answer without that explicit confirmation.
+      question: 'Do you offer a free second opinion or same-day appointments?',
       answer: (
         <>
           <p>
-            Ask about a free estimate before scheduling a sewer inspection or
+            Ask about a free second opinion before scheduling a sewer inspection or
             cleaning. Same-day is sometimes possible, but never guaranteed. We
             operate Monday through Friday, 8:00am to 4:00pm, and are closed
             weekends. We do not offer 24/7 or emergency service.

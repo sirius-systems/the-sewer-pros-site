@@ -1249,7 +1249,7 @@ Do not copy:
 * licenses
 * emergency claims
 * same-day claims
-* free estimates
+* free second opinions
 * pricing
 * warranties
 * service claims
@@ -1577,7 +1577,7 @@ Do not invent:
 * pricing
 * discounts
 * free inspections
-* free estimates
+* free second opinions
 * emergency availability
 * same-day availability
 * response times

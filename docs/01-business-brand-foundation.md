@@ -1100,7 +1100,7 @@ The following claims must not be added without documented evidence:
 * warranties
 * flat-rate pricing
 * free inspections
-* free estimates
+* free second opinions
 * licensed plumber status
 * bonded status
 * insured status

@@ -102,9 +102,9 @@
  * ⚠ `ConfidenceModule` — SUPERSEDES THE ORIGINAL "REMOVED ENTIRELY" NOTE
  * ---------------------------------------------------------------------------
  * The 2026-08-23 port design removed `power`'s confidence/offer module
- * (free estimate, financing, warranty, same-day availability) from every
+ * (free second opinion, financing, warranty, same-day availability) from every
  * composition map, because none of those claims were verified. DEC-088
- * changed that for two of the four: free estimate and same-day
+ * changed that for two of the four: free second opinion and same-day
  * availability are now owner-confirmed (`data/business/offers.ts`).
  * `ConfidenceModule` renders only those two, gated the same way as every
  * other data-backed section — empty data means the section is absent.

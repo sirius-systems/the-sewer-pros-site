@@ -9,7 +9,7 @@
  * ⚠ EVERY ENTRY HERE MUST BE OWNER-CONFIRMED, NOT INVENTED
  * ===========================================================================
  * `data/business/organization.ts` lists "same-day service", "free
- * inspections", and "free estimates" among `CLAIMS_REQUIRING_VERIFICATION`
+ * inspections", and "free second opinion" among `CLAIMS_REQUIRING_VERIFICATION`
  * — claims that must never be invented (CLAUDE.md §11, §23). This file is
  * the verification: the two entries below are owner-confirmed (Sedrick,
  * 2026-09-01, DEC-088), which is what makes them usable rather than a
@@ -68,7 +68,7 @@ export interface VerifiedOffer {
    * Expanded card content for `ConfidenceModule` (owner, 2026-09-04).
    *
    * ⚠ MORE STRUCTURE AROUND THE SAME TWO FACTS, NOT A NEW OFFER. DEC-088
-   * approved exactly two things: a free estimate is available on
+   * approved exactly two things: a free second opinion is available on
    * request, and same-day appointments are sometimes available on
    * weekdays. Everything below restates those in more detail. Nothing
    * here adds a price, a turnaround, a guarantee, a weekend, or an
@@ -98,24 +98,24 @@ export interface VerifiedOffer {
 
 export const verifiedOffers: readonly VerifiedOffer[] = [
   {
-    label: 'Free estimate',
+    label: 'Free second opinion',
     detail:
-      'Ask about a free estimate before scheduling a sewer inspection or cleaning.',
+      'Ask about a free second opinion before scheduling a sewer inspection or cleaning.',
     source: 'Owner-confirmed 2026-09-01 — DEC-088',
     card: {
-      eyebrow: 'Estimate options',
-      heading: 'Ask About a Free Estimate',
+      eyebrow: 'Second opinion options',
+      heading: 'Ask About a Free Second Opinion',
       /*
         ⚠ "MAY BE AVAILABLE" IS WEAKER THAN DEC-088 ALLOWS, ON PURPOSE.
         That entry approved "available; ask before scheduling". Hedging
         further is always safe; the reverse is not. Do not tighten this
-        to "free estimates are available" without re-reading DEC-088.
+        to "a free second opinion is available" without re-reading DEC-088.
 
         No price, no dollar figure, no discount or coupon framing. This
         card says "ask whether you qualify", not "save money".
       */
       body:
-        'Free estimates may be available before a sewer camera inspection or sewer cleaning. Tell us what is happening, which service you are considering, and where the property is located. We will explain what can be estimated before an appointment is scheduled.',
+        'A free second opinion may be available before a sewer camera inspection or sewer cleaning. Tell us what is happening, which service you are considering, and where the property is located. We will explain what the second opinion covers before an appointment is scheduled.',
       facts: [
         {
           label: 'Available for',
@@ -123,7 +123,7 @@ export const verifiedOffers: readonly VerifiedOffer[] = [
         },
         { label: 'Next step', value: 'Ask about eligibility before scheduling' },
       ],
-      action: { href: '/contact/', label: 'Request an Estimate' },
+      action: { href: '/contact/', label: 'Ask About a Second Opinion' },
       accent: 'blue',
     },
   },

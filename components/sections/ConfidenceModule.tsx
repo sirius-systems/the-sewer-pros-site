@@ -11,7 +11,7 @@ import { SectionHeading } from './SectionHeading'
 import { verifiedOffers, type VerifiedOffer } from '@/data/business/offers'
 
 /**
- * Confidence / offer module — free estimate, same-day availability.
+ * Confidence / offer module — free second opinion, same-day availability.
  *
  * Governed by docs/22-decisions-change-log.md DEC-088.
  *
@@ -19,13 +19,13 @@ import { verifiedOffers, type VerifiedOffer } from '@/data/business/offers'
  * WHY THIS EXISTS NOW, WHEN THE PORT DELIBERATELY REMOVED IT
  * ===========================================================================
  * `docs/superpowers/specs/2026-08-23-power-page-templates-design.md`
- * removed `power`'s "optional confidence module" (free estimate,
+ * removed `power`'s "optional confidence module" (free second opinion,
  * financing, warranty, same-day/emergency availability) from the ported
  * composition maps entirely, citing CLAUDE.md §11/§23, 18 §89/§145, and
  * 01 §34 — none of those claims were verified at the time.
  *
  * DEC-088 changes the input, not the rule. Two of the four original
- * items — free estimate and same-day availability — are now
+ * items — free second opinion and same-day availability — are now
  * owner-confirmed (`data/business/offers.ts`). Financing and warranty
  * remain unconfirmed and are NOT part of this module; adding them here
  * would repeat exactly the mistake this file's sibling components exist
