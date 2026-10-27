@@ -20,7 +20,7 @@ import type {
  * (`san-diego-city.tsx`): only copy, data, links and image slots differ.
  * Mission Valley is a City of San Diego community planning area, so the City's
  * Public Utilities rules apply. The page speaks to residents, multifamily
- * owners, property managers and buyers or sellers in a mixed-use district; the
+ * owners, property managers and buyers or sellers in a district with a growing residential community; the
  * citywide page owns the residential lateral rules. The program terms were
  * read from City of San Diego sources on 2026-10-04 (DEC-072).
  *
@@ -163,7 +163,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
     id: 'system-street',
     ratio: '4:3',
     alt: 'Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
-    shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
+    shot: 'Ordinary city street, manhole and curb, no business names or identifiable buildings',
     src: '/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
   },
@@ -465,7 +465,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
     title: 'Key takeaways',
     items: [
       'Mission Valley is a City of San Diego planning area of about 2,418 net acres, not a separate city or sewer district. City of San Diego Public Utilities rules apply, and guidance written for other San Diego County cities or districts does not.',
-      'The City describes the valley as a mixed-use area with a growing residential community. Sewer lateral responsibility follows the City’s rules for property owners, and a recorded camera inspection shows what is inside your line.',
+      'The City describes the valley as an area with a growing residential community. Sewer lateral responsibility follows the City’s rules for property owners, and a recorded camera inspection shows what is inside your line.',
       'The City’s guidance says the owner maintains the lateral all the way to the City main, and we did not find a City program that helps owners pay for lateral work. A camera inspection gives you recorded evidence before you spend money.',
     ],
     jumpNavLabel: 'On this page:',
@@ -568,7 +568,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
     eyebrow: 'Mission Valley sewers',
     title: 'What makes a Mission Valley sewer line different?',
     paragraphs: [
-      'Mission Valley sits in the San Diego River floodplain and, in the City’s words, has become a mixed-use area with a growing residential community. The City’s planning page says major development began in 1958 after regional highway improvements. The public sewer is the City’s. What differs is what the buildings on it send down their lines.',
+      'Mission Valley sits in the San Diego River floodplain and, in the City’s words, has become an area with a growing residential community. The City’s planning page says major development began in 1958 after regional highway improvements. The public sewer is the City’s. What differs is what the buildings on it send down their lines.',
       'The City names grease, along with roots, as a leading cause of sewer spills. A multifamily building feeds many fixtures into one lateral, so one failure can reach every unit at once.',
       'The City’s pages we reviewed do not say whether the collection system serving Mission Valley is combined or separate, or how old its pipes are, and we do not guess. A development date for the valley does not tell you the age or material of any one lateral. Only an inspection of your line can.',
       'The City also describes the valley as part of the San Diego River floodplain. We did not find a City statement linking that to sewer conditions, so we make no claim about groundwater, flooding or infiltration.',
@@ -691,7 +691,7 @@ export const sanDiegoMissionValleyContent: LocationPageContent = {
   buyingGuide: {
     eyebrow: 'Buying in Mission Valley',
     title: 'Sewer inspection before buying Mission Valley property',
-    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. That applies to a condo, a multifamily property or a mixed-use building as much as to a house. The City’s own advice to buyers is written for homes: in addition to a home inspection, it is a good idea to get a licensed-plumber report on the condition of the home’s lateral connection. That is City guidance, not a requirement.',
+    lede: 'A sewer camera inspection shows the visible condition of the lateral before you close. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. That applies to a condo or a multifamily property as much as to a house. The City’s own advice to buyers is written for homes: in addition to a home inspection, it is a good idea to get a licensed-plumber report on the condition of the home’s lateral connection. That is City guidance, not a requirement.',
     // `body` is a single string in the shared type, so the two source
     // paragraphs are joined into one.
     body: 'We did not find a City of San Diego rule that requires a sewer lateral inspection when a property is sold, and we did not find a sewer-lateral disclosure rule in the materials we reviewed. That reads as none found, not as a confirmed absence, and it does not address lenders, leases, redevelopment permits or state-level rules. Two details matter to a buyer here. Development Services can show where a property’s lateral connects to the City main (619-446-5300, the City’s number), but the City says it has no diagrams of where private lines run on the property. Findings are informational and not legal advice.',

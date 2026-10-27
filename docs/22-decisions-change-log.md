@@ -1603,9 +1603,9 @@ Two other resolutions were available and were rejected:
 
 ### Content Constraint
 
-Mission Valley is a **commercial/mixed-use district**, not a residential city. `07-master-location-registry.md` §46 uses it as the reference example of a district whose value is commercial rather than residential.
+Mission Valley is a **commercial district**, not a residential city. `07-master-location-registry.md` §46 uses it as the reference example of a district whose value is commercial rather than residential.
 
-Its location page should therefore emphasize commercial and mixed-use property context rather than reusing the residential pattern applied to the North County city pages. Applying `14-content-specification.md` §79's substitution test, the page should not read correctly if "Mission Valley" were swapped for "Carlsbad."
+Its location page should therefore emphasize commercial property context rather than reusing the residential pattern applied to the North County city pages. Applying `14-content-specification.md` §79's substitution test, the page should not read correctly if "Mission Valley" were swapped for "Carlsbad."
 
 ### Follow-Up
 

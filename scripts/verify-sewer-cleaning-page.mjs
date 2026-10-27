@@ -112,8 +112,8 @@ const faqVisible = details.map((d) => ({
   q: strip((d.match(/<h4[^>]*>([\s\S]*?)<\/h4>/) || [])[1] || ''),
   a: strip(d.slice(d.indexOf('</summary>') + '</summary>'.length)),
 }))
-check('FAQPage has 14 questions', faqLd.length === 14, String(faqLd.length))
-check('14 visible questions', faqVisible.length === 14, String(faqVisible.length))
+check('FAQPage has 15 questions', faqLd.length === 15, String(faqLd.length))
+check('15 visible questions', faqVisible.length === 15, String(faqVisible.length))
 check(
   'FAQPage text equals the visible FAQ',
   faqLd.length === faqVisible.length &&

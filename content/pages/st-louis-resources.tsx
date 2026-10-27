@@ -86,7 +86,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           years.
         </p>
 
-        <h2>What a usable report contains</h2>
+        <h2>What a usable St. Louis sewer lateral report contains</h2>
 
         <h3>Who inspected the line, and their standing</h3>
         <p>
@@ -232,7 +232,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
     ),
     body: (
       <>
-        <h2>What the program covers</h2>
+        <h2>What the St. Louis City sewer lateral program covers</h2>
         <p>
           The program addresses breaks in the sewer lateral beneath the public
           right-of-way where they cause a cave-in or a backup. For an eligible
@@ -408,7 +408,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           the next one over, and it is repeated confidently either way.
         </p>
 
-        <h2>Start by identifying your jurisdiction</h2>
+        <h2>Start by identifying which St. Louis County sewer lateral program applies</h2>
         <p>
           Before looking up terms, establish which applies:
         </p>

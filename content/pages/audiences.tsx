@@ -141,6 +141,18 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
     ],
     faq: [
       {
+        question: 'Should a home buyer get a sewer inspection?',
+        answer: (
+          <p>
+            It can be worth it, because the lateral is underground and a serious
+            problem can exist with no symptom on the day you view the house. A
+            camera inspection shows the accessible line’s condition before you
+            commit. It cannot show everything, and a clear result does not
+            promise how the line will behave later.
+          </p>
+        ),
+      },
+      {
         question: 'Is a sewer inspection part of a standard home inspection?',
         answer: (
           <p>
@@ -149,7 +161,18 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
       {
-        question: 'What if it finds a problem?',
+        question: 'What is included in a sewer inspection?',
+        answer: (
+          <p>
+            A sewer camera inspection records the accessible line on video, and
+            written findings are included. What it shows depends on the line’s
+            condition and access. It cannot show wall thickness, soil support,
+            or the outside of the pipe.
+          </p>
+        ),
+      },
+      {
+        question: 'What happens if a sewer problem is found before closing?',
         answer: (
           <p>
             You have documented evidence of the line&rsquo;s condition while the
@@ -254,6 +277,19 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
     ],
     faq: [
       {
+        question: 'Is a sewer inspection worth it before closing on a sale?',
+        answer: (
+          <p>
+            It can be, if you want to know the line’s condition before a buyer’s
+            inspection raises it. A camera inspection shows the accessible line as
+            it is. It does not predict what a buyer’s inspector will find or
+            whether a buyer will ask for anything. What you disclose is governed
+            by your state’s rules and your agent’s guidance, which we cannot
+            advise on.
+          </p>
+        ),
+      },
+      {
         question: 'A buyer’s inspector says the line needs replacing. What now?',
         answer: (
           <p>
@@ -344,6 +380,19 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       { pageId: id('svc-sewer-camera-inspection'), description: 'Documented condition with distances.' },
     ],
     faq: [
+      {
+        question: 'What happens if a sewer problem is found before closing?',
+        answer: (
+          <p>
+            Your client has documented evidence of the line’s condition while the
+            decision is still open. What to do with it, such as asking the seller
+            questions or getting a further evaluation, is for your client and
+            their advisers, and we cannot give legal advice. We inspect and
+            document. We do not perform sewer repair or replacement, so no
+            repair quote comes attached to the findings.
+          </p>
+        ),
+      },
       {
         question: 'Do you provide documentation my client can keep?',
         answer: (
@@ -614,6 +663,17 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
     ],
     faq: [
       {
+        question: 'When should a property manager schedule hydro jetting?',
+        answer: (
+          <p>
+            When a line needs repeated clearing, and after a camera inspection
+            shows that buildup, not a defect, is what keeps blocking it. Hydro
+            jetting is a cleaning method for buildup. It does not repair a damaged
+            pipe, so the camera look comes first.
+          </p>
+        ),
+      },
+      {
         question: 'Can you service multiple properties on one schedule?',
         answer: (
           <p>
@@ -767,6 +827,18 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       { pageId: id('svc-hydro-jetting'), description: 'High-pressure cleaning for shared lines.' },
     ],
     faq: [
+      {
+        question: 'Why does our common sewer line keep backing up?',
+        answer: (
+          <p>
+            A line that backs up repeatedly usually has something in it that keeps
+            catching material, such as roots at a defect, grease buildup, or a low
+            section. Which one it is depends on the line’s condition, and a camera
+            inspection shows it. Clearing the line again without finding the
+            cause can leave the backup free to return.
+          </p>
+        ),
+      },
       {
         question: 'Two vendors gave us different recommendations. Who is right?',
         answer: (

@@ -42,7 +42,7 @@ const id = (value: string): PageId => value as PageId
 const slots = pageImageSlots('sl-mission-valley-backup', {
   hero: {
     alt: 'Technician at a cleanout beside a building',
-    shot: 'Technician at an exterior cleanout of a multifamily or mixed-use property, camera monitor in frame, nothing graphic',
+    shot: 'Technician at an exterior cleanout of a multifamily property, camera monitor in frame, nothing graphic',
   },
   problems: [
     shots[0],
@@ -50,7 +50,7 @@ const slots = pageImageSlots('sl-mission-valley-backup', {
     shots[2],
     {
       alt: 'Street with a manhole cover near the curb',
-      shot: 'Ordinary mixed-use street, manhole and curb, no business names or identifiable buildings',
+      shot: 'Ordinary city street, manhole and curb, no business names or identifiable buildings',
     },
   ] as const,
 })

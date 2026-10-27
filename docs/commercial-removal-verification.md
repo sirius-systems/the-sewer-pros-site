@@ -125,7 +125,7 @@ The E group has 466 distinct phrases in total (948 hits).
 Flagged by searching every phrase for first-person and service words (we, our, The Sewer Pros, provides, offers, serves, services for), then reading each match:
 
 - **Nothing in the built site or in current source, docs 00 to 21 or `CLAUDE.md` describes commercial service as offered.** The only first-person matches are the owner decision statements ("Commercial services were removed by owner decision on Oct 12, 2026 and are not offered") and `CLAUDE.md` section 28 ("does not serve commercial audiences").
-- **Historical files (class E:history) still describe commercial service as it was planned:** `docs/archive/06-master-service-registry.research-output.md` and `07-master-location-registry.research-output.md` (raw research with commercial eligibility fields and tags), and several `docs/source-reports/*` build notes (for example `sl-mission-valley-backup.md`: "Mission Valley page serves hotels, restaurants, retail, offices" and `sl-mission-valley-drain.md`: "serves commercial and mixed-use buildings"). They record what was written and left out at the time. They are not published and not part of the build. Owner decision: leave as history, or archive or delete them.
+- **Historical files (class E:history) still describe commercial service as it was planned:** `docs/archive/06-master-service-registry.research-output.md` and `07-master-location-registry.research-output.md` (raw research with commercial eligibility fields and tags), and several `docs/source-reports/*` build notes (for example `sl-mission-valley-backup.md`: "Mission Valley page serves hotels, restaurants, retail, offices" and `sl-mission-valley-drain.md`: "serves commercial buildings"). They record what was written and left out at the time. They are not published and not part of the build. Owner decision: leave as history, or archive or delete them.
 - **Class D, current copy:** the Escondido page has a City "Businesses" note about a fats, oil and grease program, and several City pages mention hotels, schools and treatment facilities in describing the City's own system. These describe City programs, not Sewer Pros services. Left as they are.
 - **Approved image file names** keep "commercial" (`the-sewer-pros-commercial-multifamily-properties.webp`, `the-sewer-pros-commercial-drain-diagnostics-hero.webp`, `shared/commercial/...`). Not renamed, by decision.
 
@@ -194,7 +194,7 @@ Flagged by searching every phrase for first-person and service words (we, our, T
 | 4 | docs | docs/source-reports/san-diego/sl-mission-valley-backup.md | how often should a [restaurant] line be cleaned? / |
 | 4 | docs | docs/source-reports/san-diego/sl-mission-valley-backup.md | mission valley page serves [hotels] , restaurants, retail, offices |
 | 4 | docs | docs/source-reports/san-diego/sl-mission-valley-backup.md | valley page serves hotels, [restaurant] s, retail, offices and |
-| 4 | docs | docs/source-reports/san-diego/sl-mission-valley-backup.md | page serves hotels, restaurants, [retail] , offices and mixed-use |
+| 4 | docs | docs/source-reports/san-diego/sl-mission-valley-backup.md | page serves hotels, restaurants, [retail] , offices and similar buildings |
 | 4 | docs | docs/source-reports/san-diego/sl-mission-valley-camera.md | systemexplainer p2 (kitchen grease, [multi-tenant] single lateral) / see |
 | 4 | docs | docs/source-reports/san-diego/sl-mission-valley-camera.md | plan review, hgi/ggi, nearby- [facility] inspections) / see sections |
 | 4 | docs | docs/source-reports/san-diego/sl-mission-valley-camera.md | used: do a new [restaurant] , a remodel or |
@@ -659,7 +659,7 @@ Flagged by searching every phrase for first-person and service words (we, our, T
 | 1 | source | scripts/verify-preventative-sewer-maintenance-page.mjs | 'no-dig', 'non-invasive', 'commercial', ' [restaurant] ', 'property manager', 'we |
 | 1 | source | scripts/verify-st-charles-page.mjs | 949-3222', '2871 elm point [industrial] drive', 'sewer lateral repair |
 | 1 | source | claude/dec-103-locations-hub-conversion-parity.md | issued:** 2026-09-07 **decision owner:** [business owner] (sedrick) **status:** approved — |
-| 1 | docs | docs/04-master-page-build-list.md | cleaning for mission valley [businesses] and mixed-use properties, with |
+| 1 | docs | docs/04-master-page-build-list.md | cleaning for mission valley [businesses] and similar properties, with |
 | 1 | docs | docs/09-audience-matrix.md | confirmed. --- # 26. [facility] managers removed (owner decision, |
 | 1 | docs | docs/09-audience-matrix.md | architecture. --- # 27. [restaurant] s & food-service operators |
 | 1 | docs | docs/09-audience-matrix.md | architecture. --- # 36. [restaurant] s & food service |

@@ -17,7 +17,7 @@ business facts).
 | Directory | Holds |
 | --------- | ----- |
 | `brand/` | Company identity. `logos/` full lockups, `marks/` standalone symbols, `social/` share and profile images. |
-| `shared/` | Reusable subject photography with no page or market tie: `equipment/`, `pipe-interiors/`, `cleanouts/`, `residential/`, plus one mixed-use street folder. Anything used by more than one page belongs here. |
+| `shared/` | Reusable subject photography with no page or market tie: `equipment/`, `pipe-interiors/`, `cleanouts/`, `residential/`, plus one city street folder. Anything used by more than one page belongs here. |
 | `homepage/` | Homepage-only imagery, split by section: `hero/`, `services/`, `differentiator/`, `markets/`, `conversion/`. |
 | `services/` | One folder per service in the canonical registry, named with that record's exact `slug`. |
 | `markets/` | Per-market imagery for the three approved markets. Each has `hero/`, `locations/`, `service-locations/`. |

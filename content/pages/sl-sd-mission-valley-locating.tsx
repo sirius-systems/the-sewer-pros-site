@@ -42,7 +42,7 @@ const id = (value: string): PageId => value as PageId
 const slots = pageImageSlots('sl-mission-valley-locating', {
   hero: {
     alt: 'Technician using a sewer line locator receiver beside a building',
-    shot: 'Technician with a locator receiver at a multifamily or mixed-use property, paint marks on pavement, no identifiable address',
+    shot: 'Technician with a locator receiver at a multifamily property, paint marks on pavement, no identifiable address',
   },
   problems: shots,
 })
@@ -98,7 +98,7 @@ export const missionValleyLocatingContent: ServiceLocationPageContent = {
       <p>
         The City of San Diego says Development Services can show where a property&rsquo;s lateral
         connects to the City main, at 619-446-5300 (the City&rsquo;s number, not ours), but that it
-        has no diagrams of where private lines run on the property. On a mixed-use or multifamily
+        has no diagrams of where private lines run on the property. On a multifamily
         parcel, with several buildings on one lot, that gap is easy to hit.
       </p>
       <p>

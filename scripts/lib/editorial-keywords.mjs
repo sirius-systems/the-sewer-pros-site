@@ -100,7 +100,7 @@ export const QUESTIONS = {
   'jet-how': { q: 'How does hydro jetting work?', src: 'docs/10 s.2449', re: /how (does|do|is) (hydro ?)?jetting( work| done)?|how hydro ?jetting works/ },
   'jet-damage': { q: 'Can hydro jetting damage a sewer line?', src: 'docs/14 s.2215', re: /(can|does|will|could) (hydro ?)?jetting .{0,20}(damage|harm|hurt|break)|(damage|harm)/ },
   'jet-backups': { q: 'Can hydro jetting help recurring backups?', src: 'docs/10 s.1156', re: /(can|does|will) (hydro ?)?jetting .{0,20}(help|fix|stop|prevent)/ },
-  'jet-vs-snake': { q: 'Hydro jetting vs snaking', src: 'docs/10 s.11 (decision keywords)', re: /(jetting|jetter).{0,20}(vs|versus|or|compared|better than|instead of).{0,20}(snak|cable|rodd?)|(snak|cable).{0,20}(vs|versus|or).{0,20}jetting/ },
+  'jet-vs-snake': { q: 'Hydro jetting vs snaking', src: 'docs/10 s.11 (decision keywords)', re: /difference between (hydro )?jetting and (sewer )?(snaking|cable)|(jetting|jetter).{0,20}(vs|versus|or|compared|better than|instead of).{0,20}(snak|cable|rodd?)|(snak|cable).{0,20}(vs|versus|or).{0,20}jetting/ },
   'loc-what': { q: 'What is sewer line locating?', src: 'docs/12 s.2606', re: /what (is|are) (a )?(sewer )?(line )?locating|what (sewer )?(line )?locating (is|means)/ },
   'loc-where': { q: 'Can you locate where the sewer line runs?', src: 'docs/14 s.685', re: /(can|do|will) you (locate|find|trace|mark)|where (the |my )?(sewer )?line runs|locate where/ },
   'loc-remodel': { q: 'Why locate a sewer before remodeling?', src: 'docs/10 s.1168', re: /(before|prior to) (a )?(remodel|dig|digging|build|construction|landscap)|why (locate|find)/ },
@@ -190,7 +190,7 @@ export function specFor(url, type) {
     return spec
   }
   const fixed = {
-    '/': one('sewer camera inspection', 'sewer camera inspection'),
+    '/': one('independent sewer inspection and cleaning', 'independent sewer inspection and cleaning'),
     '/services/': one('sewer and drain services', 'sewer and drain', 'sewer services'),
     '/locations/': one('service areas', 'service area'),
     '/for/': one('who we serve', 'who we serve', 'every property'),

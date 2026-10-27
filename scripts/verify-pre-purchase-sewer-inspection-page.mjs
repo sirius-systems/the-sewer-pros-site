@@ -141,8 +141,8 @@ const faqVisible = details.map((d) => ({
   q: strip((d.match(/<h4[^>]*>([\s\S]*?)<\/h4>/) || [])[1] || ''),
   a: strip(d.slice(d.indexOf('</summary>') + '</summary>'.length)),
 }))
-check('FAQPage has 29 questions', faqLd.length === 29, String(faqLd.length))
-check('29 visible questions', faqVisible.length === 29, String(faqVisible.length))
+check('FAQPage has 30 questions', faqLd.length === 30, String(faqLd.length))
+check('30 visible questions', faqVisible.length === 30, String(faqVisible.length))
 check(
   'FAQPage text equals the visible FAQ',
   faqLd.length === faqVisible.length &&
@@ -163,7 +163,7 @@ check(
 )
 check('group labels are not part of any answer', faqLd.every((f) => !groupLabels.some((g) => f.a.includes(g))))
 const perGroup = [...faqSection.matchAll(/<h3[^>]*id="faq-[^"]*"[^>]*>[\s\S]*?(?=<h3[^>]*id="faq-|$)/g)].map((m) => (m[0].match(/<details/g) || []).length)
-check('FAQ group sizes are 5, 10, 3, 7, 4', perGroup.join(',') === '5,10,3,7,4', perGroup.join(','))
+check('FAQ group sizes are 5, 10, 3, 8, 4', perGroup.join(',') === '5,10,3,8,4', perGroup.join(','))
 check(
   'the two linked FAQ answers keep their links and the JSON-LD text stays plain',
   /href="\/services\/sewer-cleaning\/"/.test(faqSection) &&

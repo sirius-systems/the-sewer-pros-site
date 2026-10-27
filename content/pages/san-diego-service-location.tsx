@@ -537,10 +537,10 @@ export const sanDiegoServiceLocationContent: Partial<
     },
     body: (
       <>
-        <h2>A mixed-use district, and the lines reflect it</h2>
+        <h2>A district with a growing residential community, and the lines reflect it</h2>
         <p>
-          Mission Valley is a mixed-use district within the City of San Diego.
-          The City describes it as a mixed-use area with a growing residential
+          Mission Valley is a district within the City of San Diego.
+          The City describes it as an area with a growing residential
           community.
         </p>
         <p>

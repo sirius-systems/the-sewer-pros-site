@@ -12,7 +12,7 @@ Status key: USED = text taken as published; ADAPTED = fact kept, wording changed
 
 | # | h2 on the page | Mission Valley source | Service source |
 |---|---|---|---|
-| 1 | What you take on when a Mission Valley sale closes | `responsibility` (answer p1-p2, table rows 1-2), `buyingGuide.lede` (a scope is separate and focused; mixed-use and commercial spaces) | `definition.supporting` 1-2 |
+| 1 | What you take on when a Mission Valley sale closes | `responsibility` (answer p1-p2, table rows 1-2), `buyingGuide.lede` (a scope is separate and focused; commercial spaces) | `definition.supporting` 1-2 |
 | 2 | The City's advice to buyers is written for homes, and no sale-time rule found | `buyingGuide.lede` and `body` (City advice; none found; not lenders, leases, redevelopment permits, state rules), `municipalProgram.callout` p1 and p4 | `definition.supporting` 1 (does not repair), `independent` |
 | 3 | Where the lateral connects is a City records question | `buyingGuide.body` (Development Services 619-446-5300; no diagrams of private lines), `responsibility.answer` p3 and `note` (Plumber's Report, 619-515-3525, who pays), `systemExplainer.card.closing` (distance, not a property line) | `ask` items (access point and location along the line), line locating as a separate service |
 | 4 | A restaurant space: the grease paperwork starts with the City | `buyingGuide.body` (ask for FEWD records), `municipalProgram.covers` 1-2 (permit; plan review), `doesNotCover` 4 (619-446-5242) | `definition.supporting` 1 (documents visible conditions; not equipment) |
@@ -97,7 +97,7 @@ Status key: USED = text taken as published; ADAPTED = fact kept, wording changed
 |---|---|---|
 | seoTitle | ADAPTED | "Pre-Purchase Sewer Inspection in Mission Valley, San Diego, CA" |
 | metaDescription | LEFT OUT | Market-neutral; replaced |
-| serviceDescription | ADAPTED | Same definition, Mission Valley added; "property" replaces "home" because the Mission Valley page applies a scope to mixed-use and commercial purchases |
+| serviceDescription | ADAPTED | Same definition, Mission Valley added; "property" replaces "home" because the Mission Valley page applies a scope to commercial purchases |
 | hero.title, hero.intro, hero.scope | ADAPTED / LEFT OUT | Intro rewritten; scope bullets are a template element |
 | definition.answer | ADAPTED | `serviceDescription` and hero |
 | definition.supporting 1 (private lateral; visible conditions on the day; does not repair) | ADAPTED | Sections 1, 2 and 4 |
@@ -133,4 +133,4 @@ Total FAQ on the page: 38 (9 Mission Valley + 29 service).
 
 - Mission Valley's own page says it found no separate Mission Valley sewer utility and that a parcel can still be an exception; the page repeats that wording and never says which agency serves an address.
 - City phone numbers used (619-515-3525, 619-446-5242, 619-446-5300, 858-654-4188) are each labelled the City's, not ours, and appear only as the Mission Valley page states them. No dates are stated.
-- The service pages say "residential"; the Mission Valley page serves hotels, restaurants, retail, offices and mixed-use buildings. This page does not claim commercial capability beyond what the Mission Valley location page states.
+- The service pages say "residential"; the Mission Valley page serves hotels, restaurants, retail, offices and similar buildings. This page does not claim commercial capability beyond what the Mission Valley location page states.

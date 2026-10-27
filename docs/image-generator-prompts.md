@@ -24,7 +24,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
 | 7 | IMG-22 | Older home with a visible cleanout | St. Louis |
 | 8 | IMG-26 | Residential street, manhole and curb | San Diego |
 | 9 | IMG-27 | Older home with a visible cleanout | San Diego |
-| 10 | IMG-28 | Mixed-use street, manhole and curb | all |
+| 10 | IMG-28 | City street, manhole and curb | all |
 | 11 | IMG-29 | Residential street, manhole and curb | Las Vegas |
 | 12 | IMG-30 | Older home with a visible cleanout | Las Vegas |
 | | | **Total** | **12** |
@@ -204,7 +204,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
 
 - **Alt text:** Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it
 
-## 10. IMG-28  Mixed-use street, manhole and curb
+## 10. IMG-28  City street, manhole and curb
 
 - **Filename:** `public/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`
 - **Ratio:** 4:3 (1448 x 1086 px)
@@ -212,7 +212,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
 - **Prompt (paste as is):**
 
   ```text
-  Photorealistic render of an empty mixed-use street at curb level, a round manhole cover and curb in the foreground, low storefront blocks softly out of focus beyond with blank unlettered facades. Market look: stucco and glass storefronts in a San Diego style, kept generic. photorealistic render, natural daylight, realistic materials and textures, neutral documentary look, muted natural color, uncluttered composition, matches the existing owner-approved renders on the site. 4:3 landscape.
+  Photorealistic render of an empty city street at curb level, a round manhole cover and curb in the foreground, low storefront blocks softly out of focus beyond with blank unlettered facades. Market look: stucco and glass storefronts in a San Diego style, kept generic. photorealistic render, natural daylight, realistic materials and textures, neutral documentary look, muted natural color, uncluttered composition, matches the existing owner-approved renders on the site. 4:3 landscape.
   ```
 
 - **Negative prompt:**

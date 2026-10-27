@@ -3,7 +3,7 @@
  *
  * Authority: CLAUDE.md sections 9, 22, 24, 28. One local source
  * (`sanDiegoMissionValleyContent`) x one service source (`svc-hydro-jetting`
- * v2). No new research. Mission Valley is a mixed-use district, so the
+ * v2). No new research. Mission Valley has a growing residential community, so the
  * page speaks to residents, multifamily owners and property managers.
  *
  * Section recipe (each section ties a Mission Valley fact to what jetting does):
@@ -28,7 +28,7 @@ export const rebuild: PageRebuild = {
   hero: {
     intro: (
       <p>
-        Mission Valley is a City of San Diego planning area the City describes as a mixed-use
+        Mission Valley is a City of San Diego planning area the City describes as an
         area with a growing residential community, and the City says
         the owner maintains the lateral all the way to the City main. Hydro jetting cleans that
         line with pressurized water, loosening buildup and flushing it out. It is a cleaning
