@@ -1104,7 +1104,7 @@ export function MarketPageTemplate({
 
       {/* SECTION 13 - FAQ, in the home page's two-column presentation. */}
       {faqSectionRenders(content.faq) && content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           eyebrow={content.faqEyebrow}
           entries={content.faq}
           columns={2}

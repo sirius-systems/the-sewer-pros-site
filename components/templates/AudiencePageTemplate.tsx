@@ -251,7 +251,7 @@ export function AudiencePageTemplate({
         audience page shows a filtered index of several (18 §113).
       */}
       {content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           title={
             page.audienceId !== undefined
               ? `Answers to common questions ${page.name} have`

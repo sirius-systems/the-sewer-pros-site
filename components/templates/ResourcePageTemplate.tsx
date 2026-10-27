@@ -170,7 +170,7 @@ export function ResourcePageTemplate({
         until DEC-082 corrected it to the order this file renders.)
       */}
       {content.faq !== undefined && (
-        <FaqSection title="Related questions" entries={content.faq} />
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }} title="Related questions" entries={content.faq} />
       )}
 
       {content.relatedPageIds !== undefined && (

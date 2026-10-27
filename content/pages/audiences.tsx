@@ -169,7 +169,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-read-video')],
+    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-read-video'), id('aud-real-estate-agents'), id('core-faq')],
     cta: {
       title: 'Inspect the line before you commit',
       body: 'Documented condition while the decision is still yours to make.',
@@ -272,7 +272,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-camera-report')],
+    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-camera-report'), id('aud-home-buyers')],
   },
 
   /* ========================================================= agents -- */
@@ -360,7 +360,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-camera-report')],
+    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-camera-report'), id('aud-home-buyers')],
   },
 
   /* ===================================================== inspectors -- */
@@ -442,7 +442,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('res-camera-report'), id('res-read-video')],
+    relatedPageIds: [id('res-camera-report'), id('res-read-video'), id('aud-real-estate-agents')],
   },
 
   /* =============================================== property managers -- */
@@ -678,7 +678,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('hub-services'), id('svc-preventative-sewer-maintenance')],
+    relatedPageIds: [id('hub-services'), id('svc-preventative-sewer-maintenance'), id('aud-hoa-communities'), id('core-faq')],
     cta: {
       title: 'Talk to us about a portfolio',
       body: 'Start with the lines that keep coming back, and find out why.',
@@ -780,7 +780,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('hub-services'), id('svc-preventative-sewer-maintenance')],
+    relatedPageIds: [id('hub-services'), id('svc-preventative-sewer-maintenance'), id('aud-property-managers')],
     cta: {
       title: 'Get the common-area lines documented',
       body: 'Evidence a board can put in front of owners and competing bidders.',

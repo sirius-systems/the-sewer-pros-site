@@ -185,7 +185,7 @@ export function LocationPageTemplate({
 
       {reviewMarqueeRenders() && <ReviewMarquee density="dense" surface="muted" />}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {content.faq !== undefined && <FaqSection linkContext={{ pageId: page.id }} entries={content.faq} />}
 
       {/*
         ⚠ `action={null}`, NOT OMITTED. The form in `proof` carries its

@@ -1,0 +1,5353 @@
+{
+ "orphans": [
+  "/locations/las-vegas-nv/henderson/drain-cleaning/",
+  "/locations/las-vegas-nv/henderson/hydro-jetting/",
+  "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/henderson/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/henderson/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/henderson/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/henderson/sewer-cleaning/",
+  "/locations/las-vegas-nv/henderson/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/henderson/sewer-line-locating/",
+  "/locations/las-vegas-nv/las-vegas/drain-cleaning/",
+  "/locations/las-vegas-nv/las-vegas/hydro-jetting/",
+  "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/las-vegas/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/las-vegas/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/las-vegas/sewer-cleaning/",
+  "/locations/las-vegas-nv/las-vegas/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/las-vegas/sewer-line-locating/",
+  "/locations/las-vegas-nv/north-las-vegas/drain-cleaning/",
+  "/locations/las-vegas-nv/north-las-vegas/hydro-jetting/",
+  "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/north-las-vegas/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/north-las-vegas/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-line-locating/",
+  "/locations/las-vegas-nv/summerlin/drain-cleaning/",
+  "/locations/las-vegas-nv/summerlin/hydro-jetting/",
+  "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/summerlin/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/summerlin/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/summerlin/sewer-cleaning/",
+  "/locations/las-vegas-nv/summerlin/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/summerlin/sewer-line-locating/",
+  "/locations/san-diego-ca/carlsbad/drain-cleaning/",
+  "/locations/san-diego-ca/carlsbad/hydro-jetting/",
+  "/locations/san-diego-ca/carlsbad/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/carlsbad/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/carlsbad/sewer-cleaning/",
+  "/locations/san-diego-ca/carlsbad/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/carlsbad/sewer-line-locating/",
+  "/locations/san-diego-ca/chula-vista/drain-cleaning/",
+  "/locations/san-diego-ca/chula-vista/hydro-jetting/",
+  "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/chula-vista/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/chula-vista/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/chula-vista/sewer-cleaning/",
+  "/locations/san-diego-ca/chula-vista/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/chula-vista/sewer-line-locating/",
+  "/locations/san-diego-ca/escondido/drain-cleaning/",
+  "/locations/san-diego-ca/escondido/hydro-jetting/",
+  "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/escondido/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/escondido/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/escondido/sewer-camera-inspection/",
+  "/locations/san-diego-ca/escondido/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/escondido/sewer-line-locating/",
+  "/locations/san-diego-ca/mission-valley/drain-cleaning/",
+  "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/mission-valley/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/mission-valley/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
+  "/locations/san-diego-ca/mission-valley/sewer-cleaning/",
+  "/locations/san-diego-ca/mission-valley/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/mission-valley/sewer-line-locating/",
+  "/locations/san-diego-ca/oceanside/drain-cleaning/",
+  "/locations/san-diego-ca/oceanside/hydro-jetting/",
+  "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/oceanside/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/oceanside/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/oceanside/sewer-camera-inspection/",
+  "/locations/san-diego-ca/oceanside/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/oceanside/sewer-line-locating/",
+  "/locations/san-diego-ca/san-diego/drain-cleaning/",
+  "/locations/san-diego-ca/san-diego/hydro-jetting/",
+  "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/san-diego/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/san-diego/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/san-diego/sewer-cleaning/",
+  "/locations/san-diego-ca/san-diego/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/san-diego/sewer-line-locating/",
+  "/locations/san-diego-ca/san-marcos/drain-cleaning/",
+  "/locations/san-diego-ca/san-marcos/hydro-jetting/",
+  "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/san-marcos/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/san-marcos/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/san-marcos/sewer-cleaning/",
+  "/locations/san-diego-ca/san-marcos/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/san-marcos/sewer-line-locating/",
+  "/locations/st-louis-mo/ballwin/drain-cleaning/",
+  "/locations/st-louis-mo/ballwin/hydro-jetting/",
+  "/locations/st-louis-mo/ballwin/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/ballwin/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/ballwin/sewer-camera-inspection/",
+  "/locations/st-louis-mo/ballwin/sewer-cleaning/",
+  "/locations/st-louis-mo/ballwin/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/ballwin/sewer-line-locating/",
+  "/locations/st-louis-mo/chesterfield/drain-cleaning/",
+  "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
+  "/locations/st-louis-mo/chesterfield/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/chesterfield/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/chesterfield/sewer-cleaning/",
+  "/locations/st-louis-mo/chesterfield/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/chesterfield/sewer-line-locating/",
+  "/locations/st-louis-mo/florissant/drain-cleaning/",
+  "/locations/st-louis-mo/florissant/hydro-jetting/",
+  "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
+  "/locations/st-louis-mo/florissant/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/florissant/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/florissant/sewer-camera-inspection/",
+  "/locations/st-louis-mo/florissant/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/florissant/sewer-line-locating/",
+  "/locations/st-louis-mo/st-charles/drain-cleaning/",
+  "/locations/st-louis-mo/st-charles/hydro-jetting/",
+  "/locations/st-louis-mo/st-charles/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/st-charles/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/st-charles/sewer-camera-inspection/",
+  "/locations/st-louis-mo/st-charles/sewer-cleaning/",
+  "/locations/st-louis-mo/st-charles/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/st-charles/sewer-line-locating/",
+  "/locations/st-louis-mo/st-louis-city/drain-cleaning/",
+  "/locations/st-louis-mo/st-louis-city/hydro-jetting/",
+  "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
+  "/locations/st-louis-mo/st-louis-city/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/st-louis-city/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/st-louis-city/sewer-cleaning/",
+  "/locations/st-louis-mo/st-louis-city/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/st-louis-city/sewer-line-locating/"
+ ],
+ "editorialOrphans": [
+  "/",
+  "/locations/las-vegas-nv/henderson/drain-cleaning/",
+  "/locations/las-vegas-nv/henderson/hydro-jetting/",
+  "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/henderson/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/henderson/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/henderson/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/henderson/sewer-cleaning/",
+  "/locations/las-vegas-nv/henderson/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/henderson/sewer-line-locating/",
+  "/locations/las-vegas-nv/las-vegas/drain-cleaning/",
+  "/locations/las-vegas-nv/las-vegas/hydro-jetting/",
+  "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/las-vegas/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/las-vegas/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/las-vegas/sewer-cleaning/",
+  "/locations/las-vegas-nv/las-vegas/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/las-vegas/sewer-line-locating/",
+  "/locations/las-vegas-nv/north-las-vegas/drain-cleaning/",
+  "/locations/las-vegas-nv/north-las-vegas/hydro-jetting/",
+  "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/north-las-vegas/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/north-las-vegas/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/north-las-vegas/sewer-line-locating/",
+  "/locations/las-vegas-nv/summerlin/drain-cleaning/",
+  "/locations/las-vegas-nv/summerlin/hydro-jetting/",
+  "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+  "/locations/las-vegas-nv/summerlin/preventative-sewer-maintenance/",
+  "/locations/las-vegas-nv/summerlin/recurring-sewer-backup-diagnosis/",
+  "/locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
+  "/locations/las-vegas-nv/summerlin/sewer-cleaning/",
+  "/locations/las-vegas-nv/summerlin/sewer-cleaning-camera-inspection/",
+  "/locations/las-vegas-nv/summerlin/sewer-line-locating/",
+  "/locations/san-diego-ca/carlsbad/drain-cleaning/",
+  "/locations/san-diego-ca/carlsbad/hydro-jetting/",
+  "/locations/san-diego-ca/carlsbad/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/carlsbad/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/carlsbad/sewer-cleaning/",
+  "/locations/san-diego-ca/carlsbad/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/carlsbad/sewer-line-locating/",
+  "/locations/san-diego-ca/chula-vista/drain-cleaning/",
+  "/locations/san-diego-ca/chula-vista/hydro-jetting/",
+  "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/chula-vista/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/chula-vista/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/chula-vista/sewer-cleaning/",
+  "/locations/san-diego-ca/chula-vista/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/chula-vista/sewer-line-locating/",
+  "/locations/san-diego-ca/escondido/drain-cleaning/",
+  "/locations/san-diego-ca/escondido/hydro-jetting/",
+  "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/escondido/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/escondido/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/escondido/sewer-camera-inspection/",
+  "/locations/san-diego-ca/escondido/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/escondido/sewer-line-locating/",
+  "/locations/san-diego-ca/mission-valley/drain-cleaning/",
+  "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/mission-valley/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/mission-valley/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
+  "/locations/san-diego-ca/mission-valley/sewer-cleaning/",
+  "/locations/san-diego-ca/mission-valley/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/mission-valley/sewer-line-locating/",
+  "/locations/san-diego-ca/oceanside/drain-cleaning/",
+  "/locations/san-diego-ca/oceanside/hydro-jetting/",
+  "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/oceanside/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/oceanside/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/oceanside/sewer-camera-inspection/",
+  "/locations/san-diego-ca/oceanside/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/oceanside/sewer-line-locating/",
+  "/locations/san-diego-ca/san-diego/drain-cleaning/",
+  "/locations/san-diego-ca/san-diego/hydro-jetting/",
+  "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/san-diego/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/san-diego/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/san-diego/sewer-cleaning/",
+  "/locations/san-diego-ca/san-diego/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/san-diego/sewer-line-locating/",
+  "/locations/san-diego-ca/san-marcos/drain-cleaning/",
+  "/locations/san-diego-ca/san-marcos/hydro-jetting/",
+  "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
+  "/locations/san-diego-ca/san-marcos/preventative-sewer-maintenance/",
+  "/locations/san-diego-ca/san-marcos/recurring-sewer-backup-diagnosis/",
+  "/locations/san-diego-ca/san-marcos/sewer-cleaning/",
+  "/locations/san-diego-ca/san-marcos/sewer-cleaning-camera-inspection/",
+  "/locations/san-diego-ca/san-marcos/sewer-line-locating/",
+  "/locations/st-louis-mo/ballwin/drain-cleaning/",
+  "/locations/st-louis-mo/ballwin/hydro-jetting/",
+  "/locations/st-louis-mo/ballwin/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/ballwin/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/ballwin/sewer-camera-inspection/",
+  "/locations/st-louis-mo/ballwin/sewer-cleaning/",
+  "/locations/st-louis-mo/ballwin/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/ballwin/sewer-line-locating/",
+  "/locations/st-louis-mo/chesterfield/drain-cleaning/",
+  "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
+  "/locations/st-louis-mo/chesterfield/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/chesterfield/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/chesterfield/sewer-cleaning/",
+  "/locations/st-louis-mo/chesterfield/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/chesterfield/sewer-line-locating/",
+  "/locations/st-louis-mo/florissant/drain-cleaning/",
+  "/locations/st-louis-mo/florissant/hydro-jetting/",
+  "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
+  "/locations/st-louis-mo/florissant/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/florissant/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/florissant/sewer-camera-inspection/",
+  "/locations/st-louis-mo/florissant/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/florissant/sewer-line-locating/",
+  "/locations/st-louis-mo/st-charles/drain-cleaning/",
+  "/locations/st-louis-mo/st-charles/hydro-jetting/",
+  "/locations/st-louis-mo/st-charles/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/st-charles/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/st-charles/sewer-camera-inspection/",
+  "/locations/st-louis-mo/st-charles/sewer-cleaning/",
+  "/locations/st-louis-mo/st-charles/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/st-charles/sewer-line-locating/",
+  "/locations/st-louis-mo/st-louis-city/drain-cleaning/",
+  "/locations/st-louis-mo/st-louis-city/hydro-jetting/",
+  "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
+  "/locations/st-louis-mo/st-louis-city/preventative-sewer-maintenance/",
+  "/locations/st-louis-mo/st-louis-city/recurring-sewer-backup-diagnosis/",
+  "/locations/st-louis-mo/st-louis-city/sewer-cleaning/",
+  "/locations/st-louis-mo/st-louis-city/sewer-cleaning-camera-inspection/",
+  "/locations/st-louis-mo/st-louis-city/sewer-line-locating/"
+ ],
+ "weak": [
+  {
+   "url": "/",
+   "type": "home",
+   "editorialInbound": 0,
+   "anyInbound": 196
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/drain-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-line-locating/",
+   "type": "service-location",
+   "editorialInbound": 0,
+   "anyInbound": 0
+  },
+  {
+   "url": "/about/",
+   "type": "about",
+   "editorialInbound": 1,
+   "anyInbound": 196
+  },
+  {
+   "url": "/faq/",
+   "type": "faq",
+   "editorialInbound": 1,
+   "anyInbound": 196
+  },
+  {
+   "url": "/for/",
+   "type": "audience-hub",
+   "editorialInbound": 1,
+   "anyInbound": 196
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/hydro-jetting/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-cleaning/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
+   "type": "service-location",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/resources/st-louis-county-sewer-lateral-program/",
+   "type": "resource",
+   "editorialInbound": 1,
+   "anyInbound": 1
+  },
+  {
+   "url": "/for/hoa-communities/",
+   "type": "audience",
+   "editorialInbound": 2,
+   "anyInbound": 2
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "editorialInbound": 2,
+   "anyInbound": 2
+  }
+ ],
+ "broken": [],
+ "oldPattern": [],
+ "commercial": [],
+ "toNoindex": [],
+ "genericAnchors": [],
+ "sameAnchorManyTargets": [
+  {
+   "anchor": "read the guide",
+   "targets": 6,
+   "sample": [
+    "/resources/what-is-in-a-sewer-camera-inspection-report/",
+    "/resources/how-to-read-a-sewer-camera-inspection-video/",
+    "/compare/hydro-jetting-vs-sewer-snaking/",
+    "/resources/st-louis-sewer-lateral-report/"
+   ]
+  },
+  {
+   "anchor": "contact us",
+   "targets": 4,
+   "sample": [
+    "/contact/",
+    "/las-vegas-nv/contact/",
+    "/san-diego-ca/contact/",
+    "/st-louis-mo/contact/"
+   ]
+  },
+  {
+   "anchor": "see all service locations",
+   "targets": 3,
+   "sample": [
+    "/st-louis-mo/",
+    "/san-diego-ca/",
+    "/las-vegas-nv/"
+   ]
+  },
+  {
+   "anchor": "san diego",
+   "targets": 2,
+   "sample": [
+    "/locations/san-diego-ca/san-diego/",
+    "/san-diego-ca/"
+   ]
+  },
+  {
+   "anchor": "las vegas",
+   "targets": 2,
+   "sample": [
+    "/locations/las-vegas-nv/las-vegas/",
+    "/las-vegas-nv/"
+   ]
+  },
+  {
+   "anchor": "explore las vegas valley service areas",
+   "targets": 2,
+   "sample": [
+    "/services/",
+    "/las-vegas-nv/"
+   ]
+  },
+  {
+   "anchor": "how pre-purchase inspection works",
+   "targets": 2,
+   "sample": [
+    "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+    "/services/pre-purchase-sewer-inspection/"
+   ]
+  },
+  {
+   "anchor": "how a pre-purchase sewer inspection works",
+   "targets": 2,
+   "sample": [
+    "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+    "/services/pre-purchase-sewer-inspection/"
+   ]
+  },
+  {
+   "anchor": "how camera inspection works",
+   "targets": 2,
+   "sample": [
+    "/locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
+    "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/"
+   ]
+  },
+  {
+   "anchor": "how hydro jetting works",
+   "targets": 2,
+   "sample": [
+    "/locations/st-louis-mo/chesterfield/hydro-jetting/",
+    "/services/hydro-jetting/"
+   ]
+  }
+ ],
+ "targetManyAnchors": [
+  {
+   "target": "/services/pre-purchase-sewer-inspection/",
+   "distinct": 19,
+   "anchors": {
+    "learn more about pre-purchase sewer inspection": 156,
+    "pre-purchase sewer inspection": 50,
+    "pre-purchase sewer inspections": 1,
+    "pre-purchase sewer inspection the inspection built around a purchase decision.": 1,
+    "pre-purchase sewer inspection timed to a transaction.": 1,
+    "pre-purchase sewer inspection the transaction-timed inspection.": 1,
+    "before closing": 6,
+    "pre-purchase sewer inspection check the sewer line before you buy": 1,
+    "learn about pre-purchase sewer inspections": 1,
+    "about pre-purchase inspection": 13,
+    "about pre-purchase sewer inspection": 2,
+    "how pre-purchase inspection works": 3,
+    "how a pre-purchase sewer inspection works": 3,
+    "pre-purchase sewer inspection a sewer scope during your inspection period": 1,
+    "explore pre-purchase inspection": 1,
+    "home buyers and sellers documents the line's visible condition during a transaction. learn about pre-purchase sewer inspection": 1,
+    "pre-purchase sewer inspection a sewer scope with video evidence before you close": 1,
+    "pre-purchase inspection": 1,
+    "explore pre-purchase sewer inspection": 1
+   }
+  },
+  {
+   "target": "/st-louis-mo/",
+   "distinct": 18,
+   "anchors": {
+    "st. louis, mo service locations": 4,
+    "see all service locations": 3,
+    "view st. louis services and areas": 2,
+    "st. louis": 3,
+    "explore st. louis": 2,
+    "explore st. louis service locations": 1,
+    "st. louis, mo sewer services": 53,
+    "all st. louis service areas see the full st. louis market": 5,
+    "view st. louis drain cleaning": 1,
+    "view st. louis": 1,
+    "view st. louis inspection services": 2,
+    "view st. louis sewer services": 1,
+    "view st. louis sewer diagnostics": 1,
+    "view st. louis sewer cleaning": 1,
+    "view st. louis service": 1,
+    "view st. louis sewer line locating": 1,
+    "st. louis page": 1,
+    "learn more about st. louis, mo sewer services": 1
+   }
+  },
+  {
+   "target": "/san-diego-ca/",
+   "distinct": 18,
+   "anchors": {
+    "san diego, ca service locations": 4,
+    "see all service locations": 3,
+    "view san diego services and areas": 2,
+    "san diego": 3,
+    "explore san diego": 2,
+    "explore san diego service locations": 1,
+    "san diego, ca sewer services": 71,
+    "all san diego service areas see the full san diego market": 7,
+    "san diego page": 1,
+    "explore san diego service areas": 1,
+    "view san diego drain cleaning": 1,
+    "view san diego": 1,
+    "view san diego inspection services": 2,
+    "view san diego sewer services": 1,
+    "view san diego sewer diagnostics": 1,
+    "view san diego sewer cleaning": 1,
+    "view san diego service": 1,
+    "view san diego sewer line locating": 1
+   }
+  },
+  {
+   "target": "/las-vegas-nv/",
+   "distinct": 18,
+   "anchors": {
+    "las vegas, nv service locations": 4,
+    "see all service locations": 3,
+    "view las vegas services and areas": 2,
+    "las vegas": 3,
+    "las vegas, nv sewer services": 41,
+    "las vegas page": 1,
+    "explore las vegas valley service areas": 1,
+    "explore las vegas": 2,
+    "explore las vegas service locations": 1,
+    "all las vegas service areas see the full las vegas market": 4,
+    "view las vegas drain cleaning": 1,
+    "view las vegas": 1,
+    "view las vegas inspection services": 2,
+    "view las vegas sewer services": 1,
+    "view las vegas sewer diagnostics": 1,
+    "view las vegas sewer cleaning": 1,
+    "view las vegas service": 1,
+    "view las vegas sewer line locating": 1
+   }
+  },
+  {
+   "target": "/services/sewer-camera-inspection/",
+   "distinct": 17,
+   "anchors": {
+    "learn more about sewer camera inspection": 160,
+    "sewer camera inspection": 163,
+    "sewer camera inspection documented condition of common-area lines.": 1,
+    "sewer camera inspection what the camera can and cannot establish.": 1,
+    "sewer camera inspection a separate, focused inspection of the sewer line.": 1,
+    "sewer camera inspection establish the condition before listing.": 1,
+    "sewer camera inspection documented condition of the line, property by property.": 1,
+    "sewer camera inspection documented condition with distances.": 1,
+    "sewer camera inspection video evidence of what is inside the line": 1,
+    "explore sewer camera inspection": 2,
+    "about sewer camera inspection": 10,
+    "sewer camera inspection video of the line, so decisions rest on what is actually there": 1,
+    "camera inspection (separate service)": 1,
+    "review sewer camera inspection": 1,
+    "learn about sewer camera inspection": 1,
+    "camera inspection": 2,
+    "sewer camera inspection see the line condition before you decide on next steps": 1
+   }
+  },
+  {
+   "target": "/contact/",
+   "distinct": 12,
+   "anchors": {
+    "schedule a sewer inspection": 325,
+    "get an independent second opinion": 16,
+    "contact us": 11,
+    "contact": 3,
+    "contact the sewer pros": 151,
+    "ask about a second opinion": 6,
+    "check appointment availability": 6,
+    "schedule a las vegas sewer inspection": 1,
+    "confirm service availability for your property": 1,
+    "schedule a pre-purchase sewer inspection": 2,
+    "schedule a san diego sewer inspection": 1,
+    "ask about your property": 2
+   }
+  },
+  {
+   "target": "/services/sewer-cleaning-camera-inspection/",
+   "distinct": 9,
+   "anchors": {
+    "learn more about sewer cleaning & camera inspection": 156,
+    "sewer cleaning & camera inspection where buildup prevents a clear assessment.": 1,
+    "sewer cleaning & camera inspection where the line must be cleared to be assessed.": 1,
+    "sewer cleaning & camera inspection clean the line, then see what was underneath.": 1,
+    "about cleaning with camera": 16,
+    "sewer cleaning and camera inspection": 24,
+    "sewer cleaning & camera inspection": 46,
+    "cleaning with camera inspection": 1,
+    "cleaning and camera inspection": 1
+   }
+  },
+  {
+   "target": "/for/home-buyers/",
+   "distinct": 9,
+   "anchors": {
+    "explore home-buyer inspections": 1,
+    "buying a home": 1,
+    "home buyers": 3,
+    "sewer inspection for home buyers": 16,
+    "home buyers a buyer who learns of drain or sewer concerns can ask for a camera look at the accessible line before deciding. this is general information, not legal advice. disclosure rules vary by state. for home buyers": 1,
+    "home buyers understand the visible condition of the sewer line before you close, with the inspection video and written findings in hand. for home buyers": 1,
+    "home buyers a sewer camera inspection can document visible conditions in accessible portions of the sewer line during the due diligence period. buyers can use the findings to discuss the line’s condition before closing. learn about home-buyer sewer inspections": 1,
+    "home buyers a sewer line can be hard to judge from the surface. a camera can document visible conditions in the accessible line, and cleaning may be needed first for the camera to see. local requirements and timelines vary. home buyer sewer inspections": 1,
+    "home buyers locating shows where a line runs. a camera inspection shows the visible condition inside it. a pre-purchase sewer inspection focuses on condition. timing follows your purchase contract's inspection period. home buyer sewer inspections": 1
+   }
+  },
+  {
+   "target": "/services/hydro-jetting/",
+   "distinct": 8,
+   "anchors": {
+    "learn more about hydro jetting": 157,
+    "hydro jetting": 77,
+    "hydro jetting high-pressure cleaning for shared lines.": 1,
+    "hydro jetting high-pressure cleaning for buildup in the line.": 1,
+    "about hydro jetting": 13,
+    "how hydro jetting works": 1,
+    "water jetting": 1,
+    "hydro jetting cleaning for grease, scale, and buildup on pipe walls": 1
+   }
+  },
+  {
+   "target": "/services/recurring-sewer-backup-diagnosis/",
+   "distinct": 8,
+   "anchors": {
+    "learn more about recurring sewer backup diagnosis": 154,
+    "recurring sewer backup or clog": 1,
+    "recurring sewer backup diagnosis": 22,
+    "recurring sewer backup diagnosis establish why a line keeps blocking.": 1,
+    "recurring backup": 6,
+    "recurring backup diagnosis": 3,
+    "how diagnosis works": 16,
+    "explore backup diagnosis": 1
+   }
+  },
+  {
+   "target": "/services/preventative-sewer-maintenance/",
+   "distinct": 7,
+   "anchors": {
+    "learn more about preventative sewer maintenance": 152,
+    "preventative sewer maintenance planned servicing where evidence supports it.": 1,
+    "preventative sewer maintenance": 20,
+    "preventative sewer maintenance service on an evidence-based interval.": 1,
+    "preventative maintenance": 7,
+    "explore preventative maintenance": 1,
+    "about maintenance": 16
+   }
+  },
+  {
+   "target": "/for/real-estate-agents/",
+   "distinct": 7,
+   "anchors": {
+    "explore sewer inspections for agents": 1,
+    "sewer inspection for real estate agents": 16,
+    "real estate agents": 2,
+    "real estate agents coordinate a sewer inspection around your client's inspection period and share the video and written findings for buyers and sellers to discuss. findings record visible conditions. they do not guarantee future performance or decide repairs. for real estate agents": 1,
+    "real estate agents gives clients a clear record of what the camera did and did not show. learn about transaction support": 1,
+    "real estate agents documented findings can give buyers and sellers clearer information to discuss during a transaction. the inspection records visible conditions; it does not guarantee future performance or determine repairs. learn about transaction support": 1,
+    "real estate agents route information can support due diligence and project planning on a property. it is separate from the condition of the line. transaction support": 1
+   }
+  },
+  {
+   "target": "/for/property-managers/",
+   "distinct": 7,
+   "anchors": {
+    "explore property-management support": 1,
+    "managing multiple properties": 1,
+    "property managers": 7,
+    "explore property manager services": 6,
+    "sewer services for property managers": 1,
+    "sewer service for property managers": 1,
+    "property managers approximate route information may support maintenance planning, access coordination, and vendor communication on residential properties. tenant notice depends on your lease and local law. property manager support": 1
+   }
+  },
+  {
+   "target": "/st-louis-mo/sewer-lateral-inspection-reporting/",
+   "distinct": 7,
+   "anchors": {
+    "sewer lateral inspection & reporting": 5,
+    "sewer lateral inspection & municipal reporting": 5,
+    "st. louis sewer lateral inspection and reporting": 1,
+    "sewer lateral inspection & municipal reporting documented inspection for st. louis area lateral requirements": 1,
+    "lateral inspection and reporting": 1,
+    "lateral reporting": 1,
+    "learn about st. louis sewer lateral programs": 1
+   }
+  },
+  {
+   "target": "/services/sewer-cleaning/",
+   "distinct": 6,
+   "anchors": {
+    "learn more about sewer cleaning": 157,
+    "sewer cleaning": 127,
+    "sewer cleaning where the finding is accumulation rather than damage.": 1,
+    "explore sewer cleaning": 1,
+    "about sewer cleaning": 13,
+    "sewer cleaning clearing buildup and blockages from the main line": 1
+   }
+  },
+  {
+   "target": "/services/sewer-line-locating/",
+   "distinct": 6,
+   "anchors": {
+    "learn more about sewer line locating": 158,
+    "sewer line locating": 91,
+    "line locating": 3,
+    "sewer line locating mark the line path before digging or planning work": 1,
+    "how line locating works": 16,
+    "sewer line locating find where the line runs and at what depth": 1
+   }
+  }
+ ],
+ "serviceNameMismatch": [
+  {
+   "from": "/for/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "Recurring Sewer Backup or Clog →",
+   "zone": "body:need-router"
+  },
+  {
+   "from": "/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "recurring backup",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "before closing",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "preventative maintenance",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/las-vegas-nv/contact/",
+   "to": "/services/sewer-line-locating/",
+   "text": "line locating",
+   "zone": "body:local-heading"
+  },
+  {
+   "from": "/las-vegas-nv/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "Recurring Backup Diagnosis",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/las-vegas-nv/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "Explore Preventative Maintenance →",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/las-vegas-nv/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "recurring backup",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/las-vegas-nv/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "before closing",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/las-vegas-nv/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "preventative maintenance",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/locations/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "recurring backup",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/locations/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "before closing",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/locations/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "preventative maintenance",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/locations/las-vegas-nv/henderson/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/henderson/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/henderson/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/henderson/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/henderson/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/henderson/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:buying"
+  },
+  {
+   "from": "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/las-vegas-nv/las-vegas/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/las-vegas/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/las-vegas/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/las-vegas/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/las-vegas/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/las-vegas/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:buying"
+  },
+  {
+   "from": "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/las-vegas-nv/north-las-vegas/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/north-las-vegas/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/north-las-vegas/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/north-las-vegas/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/north-las-vegas/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/north-las-vegas/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:buying"
+  },
+  {
+   "from": "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/las-vegas-nv/summerlin/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/summerlin/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/summerlin/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/summerlin/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/summerlin/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/las-vegas-nv/summerlin/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:buying"
+  },
+  {
+   "from": "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/san-diego-ca/carlsbad/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/carlsbad/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/carlsbad/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/carlsbad/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/san-diego-ca/chula-vista/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/chula-vista/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/chula-vista/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/chula-vista/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/chula-vista/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/san-diego-ca/escondido/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/escondido/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/escondido/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/escondido/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/escondido/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/san-diego-ca/mission-valley/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/mission-valley/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/mission-valley/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/mission-valley/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/san-diego-ca/oceanside/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/oceanside/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/oceanside/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/oceanside/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/oceanside/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/oceanside/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:buying"
+  },
+  {
+   "from": "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-diego/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-diego/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-diego/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-diego/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-marcos/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-marcos/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-marcos/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "About pre-purchase inspection",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-marcos/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-marcos/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/st-louis-mo/ballwin/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/ballwin/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/ballwin/",
+   "to": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "text": "How pre-purchase inspection works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/ballwin/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/ballwin/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/st-louis-mo/chesterfield/",
+   "to": "/locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
+   "text": "How camera inspection works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/chesterfield/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/chesterfield/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/chesterfield/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "How pre-purchase inspection works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/chesterfield/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/chesterfield/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/st-louis-mo/florissant/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/florissant/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/florissant/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "How pre-purchase inspection works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/florissant/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/florissant/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-charles/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-charles/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-charles/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-charles/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-charles/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-louis-city/",
+   "to": "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
+   "text": "How camera inspection works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-louis-city/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "About cleaning with camera",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-louis-city/",
+   "to": "/services/sewer-line-locating/",
+   "text": "How line locating works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-louis-city/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "How pre-purchase inspection works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-louis-city/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "How diagnosis works",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-louis-city/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "About maintenance",
+   "zone": "body:services"
+  },
+  {
+   "from": "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "body:faq"
+  },
+  {
+   "from": "/san-diego-ca/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "Explore Pre-Purchase Inspection →",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/san-diego-ca/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "Preventative Maintenance",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/san-diego-ca/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "Explore Backup Diagnosis →",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/san-diego-ca/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "recurring backup",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/san-diego-ca/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "before closing",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/san-diego-ca/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "preventative maintenance",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/services/drain-cleaning/",
+   "to": "/services/hydro-jetting/",
+   "text": "Water jetting",
+   "zone": "body:cable-cleaning-water-jetting-and-the-camera"
+  },
+  {
+   "from": "/services/drain-cleaning/",
+   "to": "/services/sewer-camera-inspection/",
+   "text": "Camera inspection (separate service)",
+   "zone": "body:cable-cleaning-water-jetting-and-the-camera"
+  },
+  {
+   "from": "/services/hydro-jetting/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "cleaning with camera inspection",
+   "zone": "body:camera-first-or-cleaning-first"
+  },
+  {
+   "from": "/services/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "recurring backup",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/services/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "before closing",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/services/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "preventative maintenance",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/services/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Sewer cleaning and camera inspection",
+   "zone": "body:inspection-and-cleaning-are-separate-services"
+  },
+  {
+   "from": "/services/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Sewer cleaning and camera inspection",
+   "zone": "body:pre-purchase-sewer-inspection-vs-related-services"
+  },
+  {
+   "from": "/services/pre-purchase-sewer-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "sewer cleaning and camera inspection",
+   "zone": "faq"
+  },
+  {
+   "from": "/services/recurring-sewer-backup-diagnosis/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Sewer cleaning and camera inspection",
+   "zone": "body:cleaning-camera-inspection-or-locating-which-does-a-repeat-backup-need"
+  },
+  {
+   "from": "/services/sewer-camera-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Sewer Cleaning and Camera Inspection",
+   "zone": "body:cleaning-and-the-camera-are-separate-services"
+  },
+  {
+   "from": "/services/sewer-camera-inspection/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Sewer cleaning and camera inspection",
+   "zone": "body:sewer-camera-inspection-vs-related-services"
+  },
+  {
+   "from": "/services/sewer-camera-inspection/",
+   "to": "/services/sewer-line-locating/",
+   "text": "Line locating",
+   "zone": "body:sewer-camera-inspection-vs-related-services"
+  },
+  {
+   "from": "/services/sewer-cleaning/",
+   "to": "/services/sewer-camera-inspection/",
+   "text": "camera inspection",
+   "zone": "body:when-sewer-cleaning-may-be-worth-asking-about"
+  },
+  {
+   "from": "/services/sewer-cleaning/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Sewer cleaning and camera inspection",
+   "zone": "body:what-sewer-cleaning-does-not-do"
+  },
+  {
+   "from": "/services/sewer-cleaning/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "Recurring backup diagnosis",
+   "zone": "body:what-sewer-cleaning-does-not-do"
+  },
+  {
+   "from": "/services/sewer-cleaning/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Cleaning and camera inspection",
+   "zone": "body:sewer-cleaning-vs-related-services"
+  },
+  {
+   "from": "/services/sewer-cleaning/",
+   "to": "/services/sewer-line-locating/",
+   "text": "Line locating",
+   "zone": "body:sewer-cleaning-vs-related-services"
+  },
+  {
+   "from": "/services/sewer-line-locating/",
+   "to": "/services/sewer-cleaning-camera-inspection/",
+   "text": "Sewer cleaning and camera inspection",
+   "zone": "body:locating-or-camera-inspection-which-do-you-need"
+  },
+  {
+   "from": "/st-louis-mo/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "Recurring Backup Diagnosis",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/st-louis-mo/",
+   "to": "/services/sewer-camera-inspection/",
+   "text": "Camera Inspection →",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/st-louis-mo/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "Pre-Purchase Inspection →",
+   "zone": "body:how-we-can-help"
+  },
+  {
+   "from": "/st-louis-mo/",
+   "to": "/services/recurring-sewer-backup-diagnosis/",
+   "text": "recurring backup",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/st-louis-mo/",
+   "to": "/services/pre-purchase-sewer-inspection/",
+   "text": "before closing",
+   "zone": "body:why-the-sewer-pros"
+  },
+  {
+   "from": "/st-louis-mo/",
+   "to": "/services/preventative-sewer-maintenance/",
+   "text": "preventative maintenance",
+   "zone": "body:why-the-sewer-pros"
+  }
+ ],
+ "hierarchy": [
+  {
+   "url": "/locations/las-vegas-nv/henderson/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "0 found"
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "0 found"
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "0 found"
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "0 found"
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "2 found"
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "2 found"
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/",
+   "rule": "location hub links to at least 3 of its service+location pages",
+   "missing": "1 found"
+  }
+ ],
+ "crossMarket": [],
+ "breadcrumb": [],
+ "counts": [
+  {
+   "url": "/about/",
+   "type": "about",
+   "total": 69,
+   "distinct": 39,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "hero": 2,
+    "body": 34,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/compare/hydro-jetting-vs-sewer-snaking/",
+   "type": "compare",
+   "total": 37,
+   "distinct": 19,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "aside": 3,
+    "body": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/compare/independent-sewer-inspection-vs-repair-company/",
+   "type": "compare",
+   "total": 36,
+   "distinct": 20,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "aside": 2,
+    "body": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/contact/",
+   "type": "contact",
+   "total": 50,
+   "distinct": 23,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "body": 15,
+    "faq": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/contact/thank-you/",
+   "type": "thank-you",
+   "total": 36,
+   "distinct": 19,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/faq/",
+   "type": "faq",
+   "total": 35,
+   "distinct": 19,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/for/hoa-communities/",
+   "type": "audience",
+   "total": 42,
+   "distinct": 20,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 5,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/for/home-buyers/",
+   "type": "audience",
+   "total": 42,
+   "distinct": 23,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 5,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/for/home-inspectors/",
+   "type": "audience",
+   "total": 42,
+   "distinct": 23,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 5,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/for/home-sellers/",
+   "type": "audience",
+   "total": 42,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 5,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/for/",
+   "type": "audience-hub",
+   "total": 58,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "hero": 1,
+    "body": 24,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/for/property-managers/",
+   "type": "audience",
+   "total": 48,
+   "distinct": 23,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 11,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/for/real-estate-agents/",
+   "type": "audience",
+   "total": 41,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 4,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/",
+   "type": "home",
+   "total": 106,
+   "distinct": 42,
+   "zones": {
+    "nav": 15,
+    "hero": 3,
+    "body": 67,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/las-vegas-nv/contact/",
+   "type": "market-contact",
+   "total": 43,
+   "distinct": 20,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "body": 2,
+    "aside": 4,
+    "faq": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/las-vegas-nv/",
+   "type": "market-hub",
+   "total": 94,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 2,
+    "body": 57,
+    "faq": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/",
+   "type": "locations-hub",
+   "total": 94,
+   "distinct": 39,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "hero": 2,
+    "body": 59,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/drain-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/hydro-jetting/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/",
+   "type": "location",
+   "total": 52,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 16,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 59,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/sewer-line-locating/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/drain-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/hydro-jetting/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "type": "location",
+   "total": 52,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 16,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 59,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-line-locating/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/drain-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/hydro-jetting/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "type": "location",
+   "total": 52,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 16,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 59,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-line-locating/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/drain-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/hydro-jetting/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "type": "location",
+   "total": 52,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 16,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 59,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-line-locating/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 27,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 14,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/drain-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/hydro-jetting/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/",
+   "type": "location",
+   "total": 56,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 20,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 61,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 21,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/carlsbad/sewer-line-locating/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/drain-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/hydro-jetting/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/",
+   "type": "location",
+   "total": 56,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 20,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 62,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 21,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/sewer-line-locating/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/drain-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/hydro-jetting/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/",
+   "type": "location",
+   "total": 55,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 19,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 62,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 21,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 59,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-cleaning/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-line-locating/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/drain-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/hydro-jetting/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/",
+   "type": "location",
+   "total": 56,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 20,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 62,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 21,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 59,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/mission-valley/sewer-line-locating/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/drain-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/hydro-jetting/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/",
+   "type": "location",
+   "total": 55,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 19,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 62,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 21,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 59,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-cleaning/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/sewer-line-locating/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/drain-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/hydro-jetting/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/",
+   "type": "location",
+   "total": 56,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 20,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 62,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 21,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-diego/sewer-line-locating/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/drain-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/hydro-jetting/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/",
+   "type": "location",
+   "total": 55,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 19,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 62,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 21,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 18,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-cleaning/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/san-diego-ca/san-marcos/sewer-line-locating/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 17,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/drain-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/hydro-jetting/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/",
+   "type": "location",
+   "total": 54,
+   "distinct": 29,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 18,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 19,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 16,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/sewer-line-locating/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/drain-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/hydro-jetting/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 29,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/",
+   "type": "location",
+   "total": 54,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 18,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 60,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 19,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 29,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 16,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/chesterfield/sewer-line-locating/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/drain-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/hydro-jetting/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/",
+   "type": "location",
+   "total": 54,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 18,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 60,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 19,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 16,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-cleaning/",
+   "type": "service-location",
+   "total": 55,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/florissant/sewer-line-locating/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/drain-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/hydro-jetting/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/",
+   "type": "location",
+   "total": 54,
+   "distinct": 29,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 18,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 58,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 19,
+    "aside": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 57,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 16,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-charles/sewer-line-locating/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/drain-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/hydro-jetting/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/",
+   "type": "location",
+   "total": 54,
+   "distinct": 30,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 18,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
+   "type": "service-location",
+   "total": 60,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 19,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/preventative-sewer-maintenance/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/recurring-sewer-backup-diagnosis/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 29,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 16,
+    "aside": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-cleaning/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-cleaning-camera-inspection/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-line-locating/",
+   "type": "service-location",
+   "total": 56,
+   "distinct": 28,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 4,
+    "hero": 1,
+    "body": 15,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/resources/how-to-read-a-sewer-camera-inspection-video/",
+   "type": "resource",
+   "total": 37,
+   "distinct": 20,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "aside": 2,
+    "body": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/resources/",
+   "type": "resources-hub",
+   "total": 36,
+   "distinct": 21,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "hero": 1,
+    "body": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/resources/st-louis-city-sewer-lateral-program/",
+   "type": "resource",
+   "total": 38,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "aside": 3,
+    "body": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/resources/st-louis-county-sewer-lateral-program/",
+   "type": "resource",
+   "total": 38,
+   "distinct": 21,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "aside": 3,
+    "body": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/resources/st-louis-sewer-lateral-report/",
+   "type": "resource",
+   "total": 38,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "aside": 3,
+    "body": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/resources/what-is-in-a-sewer-camera-inspection-report/",
+   "type": "resource",
+   "total": 37,
+   "distinct": 20,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "aside": 2,
+    "body": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/san-diego-ca/contact/",
+   "type": "market-contact",
+   "total": 41,
+   "distinct": 20,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "body": 1,
+    "aside": 4,
+    "faq": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/san-diego-ca/",
+   "type": "market-hub",
+   "total": 90,
+   "distinct": 31,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 2,
+    "body": 51,
+    "faq": 3,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/drain-cleaning/",
+   "type": "service",
+   "total": 51,
+   "distinct": 21,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 16,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/hydro-jetting/",
+   "type": "service",
+   "total": 50,
+   "distinct": 23,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 15,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/",
+   "type": "services-hub",
+   "total": 94,
+   "distinct": 39,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 1,
+    "body": 60,
+    "faq": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/pre-purchase-sewer-inspection/",
+   "type": "service",
+   "total": 57,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 18,
+    "faq": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/preventative-sewer-maintenance/",
+   "type": "service",
+   "total": 57,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 2,
+    "body": 21,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/recurring-sewer-backup-diagnosis/",
+   "type": "service",
+   "total": 50,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 15,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/sewer-camera-inspection/",
+   "type": "service",
+   "total": 60,
+   "distinct": 25,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 24,
+    "faq": 1,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/sewer-cleaning/",
+   "type": "service",
+   "total": 54,
+   "distinct": 23,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 19,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/sewer-cleaning-camera-inspection/",
+   "type": "service",
+   "total": 59,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 24,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/services/sewer-line-locating/",
+   "type": "service",
+   "total": 53,
+   "distinct": 22,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 1,
+    "body": 18,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/st-louis-mo/contact/",
+   "type": "market-contact",
+   "total": 42,
+   "distinct": 21,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "body": 1,
+    "aside": 4,
+    "faq": 2,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/st-louis-mo/",
+   "type": "market-hub",
+   "total": 97,
+   "distinct": 34,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 2,
+    "hero": 2,
+    "body": 57,
+    "aside": 4,
+    "footer": 17
+   }
+  },
+  {
+   "url": "/st-louis-mo/sewer-lateral-inspection-reporting/",
+   "type": "market-other",
+   "total": 40,
+   "distinct": 19,
+   "zones": {
+    "nav": 15,
+    "breadcrumb": 3,
+    "hero": 1,
+    "body": 4,
+    "footer": 17
+   }
+  }
+ ],
+ "overCeiling": [
+  {
+   "url": "/",
+   "type": "home",
+   "total": 106,
+   "distinct": 42,
+   "zones": {
+    "nav": 15,
+    "hero": 3,
+    "body": 67,
+    "aside": 4,
+    "footer": 17
+   }
+  }
+ ],
+ "byType": {
+  "about": {
+   "pages": 1,
+   "avgTotalLinks": 69,
+   "avgBodyLinks": 36,
+   "avgEditorialInbound": 1
+  },
+  "compare": {
+   "pages": 2,
+   "avgTotalLinks": 36.5,
+   "avgBodyLinks": 3.5,
+   "avgEditorialInbound": 6
+  },
+  "contact": {
+   "pages": 1,
+   "avgTotalLinks": 50,
+   "avgBodyLinks": 17,
+   "avgEditorialInbound": 175
+  },
+  "thank-you": {
+   "pages": 1,
+   "avgTotalLinks": 36,
+   "avgBodyLinks": 2,
+   "avgEditorialInbound": 0
+  },
+  "faq": {
+   "pages": 1,
+   "avgTotalLinks": 35,
+   "avgBodyLinks": 2,
+   "avgEditorialInbound": 1
+  },
+  "audience": {
+   "pages": 6,
+   "avgTotalLinks": 42.8,
+   "avgBodyLinks": 8.8,
+   "avgEditorialInbound": 11.5
+  },
+  "audience-hub": {
+   "pages": 1,
+   "avgTotalLinks": 58,
+   "avgBodyLinks": 25,
+   "avgEditorialInbound": 1
+  },
+  "home": {
+   "pages": 1,
+   "avgTotalLinks": 106,
+   "avgBodyLinks": 74,
+   "avgEditorialInbound": 0
+  },
+  "market-contact": {
+   "pages": 3,
+   "avgTotalLinks": 42,
+   "avgBodyLinks": 7,
+   "avgEditorialInbound": 8.3
+  },
+  "market-hub": {
+   "pages": 3,
+   "avgTotalLinks": 93.7,
+   "avgBodyLinks": 59.7,
+   "avgEditorialInbound": 22
+  },
+  "locations-hub": {
+   "pages": 1,
+   "avgTotalLinks": 94,
+   "avgBodyLinks": 61,
+   "avgEditorialInbound": 5
+  },
+  "service-location": {
+   "pages": 144,
+   "avgTotalLinks": 57,
+   "avgBodyLinks": 21,
+   "avgEditorialInbound": 0.1
+  },
+  "location": {
+   "pages": 16,
+   "avgTotalLinks": 54.2,
+   "avgBodyLinks": 19.2,
+   "avgEditorialInbound": 60.3
+  },
+  "resource": {
+   "pages": 5,
+   "avgTotalLinks": 37.6,
+   "avgBodyLinks": 3.6,
+   "avgEditorialInbound": 4.2
+  },
+  "resources-hub": {
+   "pages": 1,
+   "avgTotalLinks": 36,
+   "avgBodyLinks": 3,
+   "avgEditorialInbound": 3
+  },
+  "service": {
+   "pages": 9,
+   "avgTotalLinks": 54.6,
+   "avgBodyLinks": 20.6,
+   "avgEditorialInbound": 176.4
+  },
+  "services-hub": {
+   "pages": 1,
+   "avgTotalLinks": 94,
+   "avgBodyLinks": 61,
+   "avgEditorialInbound": 10
+  },
+  "market-other": {
+   "pages": 1,
+   "avgTotalLinks": 40,
+   "avgBodyLinks": 5,
+   "avgEditorialInbound": 11
+  }
+ },
+ "summary": {
+  "pages": 198,
+  "indexable": 197,
+  "orphans": 130,
+  "editorialOrphans": 131,
+  "under3EditorialInbound": 150,
+  "broken": 0,
+  "oldPattern": 0,
+  "commercial": 0,
+  "toNoindex": 0,
+  "genericAnchors": 0,
+  "serviceNameMismatch": 143,
+  "hierarchyGaps": 16,
+  "crossMarket": 0,
+  "breadcrumbMismatch": 0,
+  "overCeiling": 1
+ }
+}

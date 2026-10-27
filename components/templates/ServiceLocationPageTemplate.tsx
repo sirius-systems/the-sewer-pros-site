@@ -44,6 +44,7 @@ import {
 } from '@/content/pages/home-service-cards'
 import { FaqGrouped } from '@/components/sections/service-v2'
 import { getService } from '@/data/services'
+import { locationHubPageId, siblingLocationPageIds, siblingServicePageIds } from '@/lib/links/link-plan'
 import { RENDER_IMAGE_SOURCE, resolveSlotImage } from '@/lib/image-slots'
 import { requireLocation } from '@/data/locations'
 import { getMarketContent } from '@/content'
@@ -211,6 +212,19 @@ export function ServiceLocationPageTemplate({
       : undefined
   const showsOtherAreas = serviceAreaRenders(otherAreas)
 
+  // Bounded, central link plan (lib/links/link-plan.ts): the location hub,
+  // related services in this location, and the same service in neighbouring
+  // locations of this market. Replaces the hand-listed core-service cards, which
+  // the service cards section above already provides.
+  const relatedPageIds: readonly PageId[] | undefined =
+    page.locationId !== undefined && page.marketId !== undefined && page.serviceId !== undefined
+      ? [
+          ...(locationHubPageId(page.locationId) !== undefined ? [locationHubPageId(page.locationId) as PageId] : []),
+          ...siblingServicePageIds(page.locationId, page.serviceId),
+          ...siblingLocationPageIds(page.marketId, page.locationId, page.serviceId),
+        ]
+      : content.relatedPageIds
+
   // The homepage's nine service cards, unmodified (owner, 2026-10-05).
   const showsServiceCards = page.marketId !== undefined
 
@@ -233,7 +247,7 @@ export function ServiceLocationPageTemplate({
       : []),
     ...(showsServiceCards ? (['standard'] as const) : []),
     ...(authorityBandRenders() ? (['standard'] as const) : []),
-    ...(relatedLinksRenders(content.relatedPageIds)
+    ...(relatedLinksRenders(relatedPageIds)
       ? (['dense'] as const)
       : []),
     ...(showsOtherAreas
@@ -422,10 +436,10 @@ export function ServiceLocationPageTemplate({
 
       <TestimonialBand />
 
-      {content.relatedPageIds !== undefined && (
+      {relatedPageIds !== undefined && (
         <RelatedLinks
           title={content.relatedTitle ?? 'Related pages'}
-          pageIds={content.relatedPageIds}
+          pageIds={relatedPageIds}
           descriptions={content.relatedDescriptions}
         />
       )}
@@ -475,7 +489,7 @@ export function ServiceLocationPageTemplate({
         faqIsGrouped ? (
           // Every entry has a topic: pill-and-category FAQ, as on the service
           // pages. Labels are navigation only; FAQPage markup is unchanged.
-          <FaqGrouped
+          <FaqGrouped linkContext={{ pageId: page.id, locationId: page.locationId }}
             id="faq"
             layout="tabs"
             title={faqTitle}
@@ -486,7 +500,7 @@ export function ServiceLocationPageTemplate({
             }))}
           />
         ) : (
-          <FaqSection title={faqTitle} entries={content.faq} />
+          <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }} title={faqTitle} entries={content.faq} />
         )
       )}
 

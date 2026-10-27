@@ -358,7 +358,7 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
         entries are the same shape of problem.
       */}
       {showsFaq && content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           entries={content.faq}
           title="About The Sewer Pros: Frequently Asked Questions"
           eyebrow={content.faqEyebrow}

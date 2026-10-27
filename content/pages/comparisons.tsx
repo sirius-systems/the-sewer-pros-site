@@ -279,6 +279,9 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
     relatedPageIds: [
       id('svc-sewer-camera-inspection'),
       id('svc-pre-purchase-sewer-inspection'),
+      id('aud-home-buyers'),
+      id('aud-real-estate-agents'),
+      id('hub-audiences'),
     ],
   },
 }

@@ -10,6 +10,8 @@ import {
   MobileContactBar,
   faqSectionRenders,
   ReviewMarquee,
+  RelatedLinks,
+  relatedLinksRenders,
 } from '@/components/sections'
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import {
@@ -29,6 +31,8 @@ import {
 import { SurveyLeadForm } from '@/components/sections/SurveyLeadForm'
 import { HERO_REQUEST_ID } from '@/components/sections/location/HeroRequestCard'
 import { marketOperatingDetail } from '@/data/markets/markets'
+import { getPage } from '@/data/pages'
+import { TOP_LOCAL_SERVICES, guidePageIdsForLocation, localServicePageId } from '@/lib/links/link-plan'
 import { PageShell } from './PageShell'
 import type { LocationHeroForm, LocationPageContent, MasterPageRecord } from '@/types'
 
@@ -71,6 +75,29 @@ export function RichLocationComposition({
       : undefined
 
   const showsFaq = faqSectionRenders(content.faq)
+  const guideIds = page.locationId !== undefined ? guidePageIdsForLocation(page.locationId) : []
+  // Link plan (lib/links/link-plan.ts): the hub's top services also link to this
+  // location's own service page ("Sewer Cleaning in Ballwin").
+  const serviceCards =
+    content.serviceCards !== undefined && page.locationId !== undefined
+      ? {
+          ...content.serviceCards,
+          cards: content.serviceCards.cards.map((card) => {
+            const localId = TOP_LOCAL_SERVICES.includes(card.serviceId)
+              ? localServicePageId(page.locationId as string, card.serviceId)
+              : undefined
+            const local = localId !== undefined ? getPage(localId) : undefined
+            // Every card keeps its link to the core service page, named by the
+            // registered service name; a top service adds its local page.
+            const core = card.secondaryLink.pageId !== undefined ? getPage(card.secondaryLink.pageId) : undefined
+            const withCore =
+              core !== undefined && core.pageType === 'service'
+                ? { ...card, secondaryLink: { ...card.secondaryLink, label: `About ${core.name}` } }
+                : card
+            return local !== undefined ? { ...withCore, localLink: { label: local.name, pageId: local.id } } : withCore
+          }),
+        }
+      : content.serviceCards
   // The final CTA background feeds `CtaSection` (not `Photo`), which cannot
   // draw a placeholder, so a review-build placeholder is dropped here.
   const finalCtaBackground =
@@ -107,6 +134,7 @@ export function RichLocationComposition({
     ...(content.secondOpinion ? (['sparse'] as const) : []),
     ...(content.buyingGuide ? (['standard'] as const) : []),
     ...(content.nearbyAreas ? (['standard'] as const) : []),
+    ...(guideIds.length > 0 && relatedLinksRenders(guideIds) ? (['standard'] as const) : []),
     ...(reviewMarqueeRenders() && !content.reviewBand ? (['dense'] as const) : []),
     ...(showsFaq ? (['dense'] as const) : []),
     // `split` (photo) renders dense; `panel` (no photo) renders sparse.
@@ -212,9 +240,9 @@ export function RichLocationComposition({
 
       {content.keyTakeaways && <KeyTakeaways content={content.keyTakeaways} />}
 
-      {content.serviceCards && page.marketId !== undefined && phone !== undefined && (
+      {serviceCards && page.marketId !== undefined && phone !== undefined && (
         <ServiceCardGrid
-          content={content.serviceCards}
+          content={serviceCards}
           marketId={page.marketId}
           phone={phone}
         />
@@ -248,10 +276,20 @@ export function RichLocationComposition({
       {content.buyingGuide && <BuyingGuideSection content={content.buyingGuide} />}
       {content.nearbyAreas && <NearbyAreasSection content={content.nearbyAreas} />}
 
+      {guideIds.length > 0 && (
+        <RelatedLinks
+          id="local-guides"
+          density="standard"
+          surface="default"
+          title="Sewer lateral program guides"
+          pageIds={guideIds}
+        />
+      )}
+
       {reviewMarqueeRenders() && !content.reviewBand && <ReviewMarquee density="dense" surface="muted" />}
 
       {showsFaq && content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id }}
           eyebrow="Common questions"
           title={content.faqHeading ?? 'Common questions'}
           entries={content.faq}

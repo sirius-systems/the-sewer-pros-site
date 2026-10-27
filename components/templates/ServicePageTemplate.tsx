@@ -561,7 +561,7 @@ export function ServicePageTemplate({
         an expected state.
       */}
       {content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           title={
             content.faqTitle ??
             (page.serviceId !== undefined

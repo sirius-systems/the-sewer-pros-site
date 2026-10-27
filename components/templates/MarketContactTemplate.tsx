@@ -189,7 +189,7 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
       {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {showsFaq && content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           entries={content.faq}
           title={`${market.city} contact questions`}
           surface="default"

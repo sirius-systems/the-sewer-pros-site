@@ -1867,7 +1867,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('hub-services'), id('hub-resources')],
+    relatedPageIds: [id('hub-services'), id('hub-resources'), id('hub-audiences'), id('core-about')],
   },
 }
 
@@ -1968,7 +1968,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('res-read-video'), id('svc-sewer-camera-inspection')],
+    relatedPageIds: [id('res-read-video'), id('svc-sewer-camera-inspection'), id('svc-pre-purchase-sewer-inspection'), id('core-faq')],
   },
 
   [id('res-read-video')]: {
@@ -2059,6 +2059,6 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('res-camera-report'), id('svc-sewer-camera-inspection')],
+    relatedPageIds: [id('res-camera-report'), id('svc-sewer-camera-inspection'), id('svc-pre-purchase-sewer-inspection'), id('core-faq')],
   },
 }

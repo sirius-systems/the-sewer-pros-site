@@ -360,7 +360,7 @@ export function ServiceHubTemplate({ page, content }: ServiceHubTemplateProps) {
     add(
       faqSectionRenders(content.faq) ? 'standard' : null,
       'faq',
-      <FaqSection
+      <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
         title={hub.headings?.faq ?? 'Common Questions About Sewer Camera Inspection'}
         entries={content.faq}
         columns={2}

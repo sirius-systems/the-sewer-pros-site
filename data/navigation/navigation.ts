@@ -111,9 +111,11 @@ export const footerNav: NavGroup[] = [
     items: [
       { pageId: id('svc-sewer-camera-inspection') },
       { pageId: id('svc-sewer-cleaning') },
+      { pageId: id('svc-sewer-cleaning-camera-inspection') },
       { pageId: id('svc-hydro-jetting') },
       { pageId: id('svc-sewer-line-locating') },
       { pageId: id('svc-drain-cleaning') },
+      { pageId: id('svc-pre-purchase-sewer-inspection') },
       { pageId: id('hub-services'), label: 'All services' },
     ],
   },
