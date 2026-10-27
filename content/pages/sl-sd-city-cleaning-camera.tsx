@@ -97,7 +97,7 @@ export const sanDiegoCityCleaningCameraContent: ServiceLocationPageContent = {
   sources: sanDiegoCityContent.sources,
   hero: {
     eyebrow: "San Diego, CA",
-    title: "Sewer Cleaning and Camera Inspection in San Diego",
+    title: "Sewer Cleaning & Camera Inspection in San Diego",
     intro: (
       <p>
         In the City of San Diego, the City says the owner maintains the sewer

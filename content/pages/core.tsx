@@ -837,7 +837,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       and the line still fits the display limit.
     */
     metaDescription:
-      'Sewer camera inspection, cleaning, hydro jetting, locating, and more. Independent service across St. Louis, San Diego, and Las Vegas. No repair upsell.',
+      'Sewer and drain services: sewer camera inspection, cleaning, hydro jetting and locating across St. Louis, San Diego and Las Vegas. No repair upsell.',
     /*
       ==========================================================================
       THE OPENING BAND, REPLACING THE PROSE PARAGRAPH (owner, 2026-09-08)
@@ -1980,7 +1980,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
     },
     directAnswer: (
       <p>
-        Watch for four things: standing water where the line should drain,
+        Watch for four things in a sewer camera inspection video: standing water where the line should drain,
         joints that are separated or misaligned, roots or material entering the
         pipe, and any change in the pipe&rsquo;s shape or surface. Note where along the line you see them: position is what makes an observation useful.
       </p>

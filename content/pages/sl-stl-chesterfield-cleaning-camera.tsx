@@ -87,7 +87,7 @@ const faq = mergeRelevantFaqs(
 );
 
 export const chesterfieldCleaningCameraContent: ServiceLocationPageContent = {
-  seoTitle: "Sewer Cleaning & Camera Inspection in Chesterfield, MO",
+  seoTitle: "Sewer Cleaning & Camera Inspection in Chesterfield",
   metaDescription:
     "Sewer cleaning and camera inspection in Chesterfield, MO. The City cables first and runs its own video. See what your own footage adds and what it cannot.",
   serviceDescription:
@@ -97,7 +97,7 @@ export const chesterfieldCleaningCameraContent: ServiceLocationPageContent = {
   sources: chesterfieldContent.sources,
   hero: {
     eyebrow: "Chesterfield, MO",
-    title: "Sewer Cleaning and Camera Inspection in Chesterfield",
+    title: "Sewer Cleaning & Camera Inspection in Chesterfield",
     intro: (
       <p>
         In Chesterfield, MSD says the lateral from your building to its public

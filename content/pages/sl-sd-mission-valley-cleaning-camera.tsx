@@ -69,7 +69,7 @@ const process: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 const faq = mergeRelevantFaqs(sanDiegoMissionValleyContent.faq, v2.faq, [], 'In Mission Valley')
 
 export const missionValleyCleaningCameraContent: ServiceLocationPageContent = {
-  seoTitle: 'Sewer Cleaning & Camera Inspection in Mission Valley, San Diego',
+  seoTitle: 'Sewer Cleaning & Camera Inspection in Mission Valley',
   metaDescription:
     'Sewer cleaning and camera inspection in Mission Valley, San Diego. The City says owners maintain the lateral to its main. See what a visit covers.',
   serviceDescription:
@@ -79,7 +79,7 @@ export const missionValleyCleaningCameraContent: ServiceLocationPageContent = {
   sources: sanDiegoMissionValleyContent.sources,
   hero: {
     eyebrow: 'Mission Valley, San Diego',
-    title: 'Sewer Cleaning and Camera Inspection in Mission Valley',
+    title: 'Sewer Cleaning & Camera Inspection in Mission Valley',
     intro: (
       <p>
         Mission Valley is a City of San Diego planning area, and the City says the property owner

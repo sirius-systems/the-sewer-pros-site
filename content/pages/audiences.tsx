@@ -45,6 +45,7 @@ const id = (value: string): PageId => value as PageId
 export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
   /* ========================================================= buyers -- */
   [id('aud-home-buyers')]: {
+    seoTitle: 'Sewer Inspection for Home Buyers',
     /*
       ⚠ NOT THE PROPOSED COPY. The draft description for this page was
       byte-identical to the one for svc-pre-purchase-sewer-inspection —
@@ -62,7 +63,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       title: 'Know the condition of the sewer line before you buy',
       intro: (
         <p>
-          The sewer lateral is underground and not visible without a camera. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. It is one of the few systems where a serious problem can exist with no symptom on the
+          As a home buyer, you cannot see the sewer lateral: it is underground and not visible without a camera. Ask your home inspector what their inspection covers. A sewer scope is a separate, focused inspection of the sewer line. It is one of the few systems where a serious problem can exist with no symptom on the
           day you view the house.
         </p>
       ),
@@ -178,6 +179,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ======================================================== sellers -- */
   [id('aud-home-sellers')]: {
+    seoTitle: 'Sewer Inspection Before Selling a House',
     metaDescription:
       'Prepare for property questions with documented sewer inspection findings and practical information for sellers and real-estate transactions.',
     hero: {
@@ -185,8 +187,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       title: 'Find out what a buyer’s inspection will find',
       intro: (
         <p>
-          A sewer finding raised late in a transaction is a problem you are
-          reacting to on someone else&rsquo;s timeline, with someone
+          For a home seller, a sewer finding raised late in a transaction is a
+          problem you are reacting to on someone else&rsquo;s timeline, with someone
           else&rsquo;s evidence. Knowing beforehand changes that.
         </p>
       ),
@@ -277,16 +279,18 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ========================================================= agents -- */
   [id('aud-real-estate-agents')]: {
+    seoTitle: 'Sewer Inspection for Real Estate Agents',
     metaDescription:
-      'Help clients understand sewer-line conditions with professional inspections, documented findings, and service pathways for real-estate transactions.',
+      'Sewer inspection for real estate agents: an independent camera inspection with video and written findings, so clients decide with evidence during a transaction.',
     hero: {
       eyebrow: 'For real estate agents',
       title: 'A sewer inspection that does not become a sales process',
       intro: (
         <p>
-          You need a clear answer you can pass to a client, documentation that
-          holds up, and no surprises late in a transaction. What you do not need
-          is an inspection that arrives attached to a repair quote.
+          As a real estate agent, you need a clear answer you can pass to a client,
+          documentation that holds up, and no surprises late in a transaction.
+          What you do not need is a sewer inspection that arrives attached to a
+          repair quote.
         </p>
       ),
     },
@@ -305,7 +309,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
           for you to have to caveat.
         </p>
 
-        <h2>What you get to pass on</h2>
+        <h2>What a real estate agent needs from a sewer inspection</h2>
         <ul>
           <li>What was observed, and at what distance along the line</li>
           <li>Which sections could not be assessed, and why</li>
@@ -365,14 +369,15 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ===================================================== inspectors -- */
   [id('aud-home-inspectors')]: {
+    seoTitle: 'Sewer Inspection for Home Inspectors',
     metaDescription:
-      'Coordinate sewer camera inspections with documented video findings and clear information to support home-inspection clients.',
+      'Sewer inspection for home inspectors: a focused sewer camera inspection with video and written findings that sits beside your own inspection scope.',
     hero: {
       eyebrow: 'For home inspectors',
       title: 'A focused sewer line inspection for your clients',
       intro: (
         <p>
-          A sewer scope is a separate, focused inspection of the sewer line. When a client wants a closer look at the lateral, you can refer it out and your own inspection keeps its scope.
+          A sewer scope is a separate, focused inspection of the sewer line. When a client wants a closer look at the lateral, you, as a home inspector, can refer the sewer inspection out and your own inspection keeps its scope.
         </p>
       ),
     },
@@ -447,6 +452,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* =============================================== property managers -- */
   [id('aud-property-managers')]: {
+    seoTitle: 'Sewer Inspection for Property Managers',
     metaDescription:
       'Sewer inspection, cleaning, diagnostics, and documentation for property managers and owners of multifamily homes handling recurring sewer and drain concerns.',
     hero: {
@@ -454,8 +460,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       title: 'Stop absorbing the same sewer call every few months',
       intro: (
         <p>
-          A line that backs up on a cycle is a recurring cost, a recurring
-          tenant complaint, and a recurring interruption. Clearing it again
+          For a property manager, a line that backs up on a cycle is a recurring
+          cost, a recurring tenant complaint, and a recurring interruption. Clearing it again
           resets the clock without changing anything.
         </p>
       ),
@@ -510,7 +516,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
           ignored.
         </p>
 
-        <h2>Scheduling around occupancy</h2>
+        <h2>When to schedule sewer cleaning around occupancy</h2>
         <p>
           Access on occupied property means notice and tenant availability.
           That is a planning
@@ -687,6 +693,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
 
   /* ============================================================ HOA -- */
   [id('aud-hoa-communities')]: {
+    seoTitle: 'Sewer Inspection for HOA Communities',
     metaDescription:
       'Explore sewer inspection, cleaning, diagnostics, and documentation services for HOA communities and shared property concerns.',
     hero: {
@@ -694,7 +701,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       title: 'Evidence a board can actually make a decision on',
       intro: (
         <p>
-          Common-area sewer problems become board decisions: about shared cost,
+          In an HOA community, common-area sewer problems become board decisions:
+          about shared cost,
           competing vendor recommendations, and what to tell owners. Documented
           condition is what makes that decision defensible.
         </p>

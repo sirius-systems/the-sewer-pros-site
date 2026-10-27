@@ -139,7 +139,7 @@ check('FAQ answers are plain strings (no markup in JSON-LD)', faqLd.every((f) =>
 /* ---- Structure ---- */
 const sectionById = (id) =>
   (main.match(new RegExp(`<section[^>]*aria-labelledby="${id}"[\\s\\S]*?</section>`)) || [''])[0]
-const signalsSection = sectionById('when-might-a-line-need-cleaning')
+const signalsSection = sectionById('when-might-hydro-jetting-be-appropriate')
 const signalsOl = (signalsSection.match(/<ol[\s\S]*?<\/ol>/) || [''])[0]
 check('exactly five signals', (signalsOl.match(/<li[\s>]/g) || []).length === 5)
 const processSection = sectionById('how-does-a-hydro-jetting-visit-work')

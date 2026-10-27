@@ -80,9 +80,9 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 }))
 
 export const missionValleyMaintenanceContent: ServiceLocationPageContent = {
-  seoTitle: 'Preventative Sewer Maintenance in Mission Valley, San Diego',
+  seoTitle: 'Preventative Sewer Maintenance in Mission Valley',
   metaDescription:
-    'Preventative sewer maintenance in Mission Valley, San Diego. The owner maintains the lateral to the City main; evidence sets the interval. See what a visit covers.',
+    'Preventative sewer maintenance in Mission Valley, San Diego. The owner maintains the lateral to the City main; evidence sets the interval. See a visit.',
   serviceDescription:
     "Preventative sewer maintenance is planned inspection and cleaning of a property's drain and sewer line before buildup or an obstruction causes a backup, for properties in Mission Valley, a City of San Diego planning area in California. It is diagnostic and cleaning work, not repair.",
   heroImage: slots.hero,

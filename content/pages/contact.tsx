@@ -210,9 +210,9 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
       ),
       primaryAction: { href: '#request-service', label: 'Request Service' },
     },
-    seoTitle: 'Contact The Sewer Pros in St. Louis, MO | Sewer Inspection & Drain Service',
+    seoTitle: 'Contact The Sewer Pros in St. Louis, MO | Sewer Inspection',
     metaDescription:
-      'Contact The Sewer Pros in St. Louis, MO for sewer camera inspection, drain cleaning, sewer cleaning, hydro jetting, and line locating in St. Louis, St. Charles, and Jefferson counties.',
+      'Contact The Sewer Pros in St. Louis, MO for sewer camera inspection, cleaning, hydro jetting and line locating in St. Louis, St. Charles and Jefferson counties.',
     localSection: {
       eyebrow: 'St. Louis area',
       title: 'Serving St. Louis County, St. Charles County, and Jefferson County',
@@ -320,9 +320,9 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
       ),
       primaryAction: { href: '#request-service', label: 'Request Service' },
     },
-    seoTitle: 'Contact The Sewer Pros in San Diego, CA | Sewer Inspection & Drain Service',
+    seoTitle: 'Contact The Sewer Pros in San Diego, CA | Sewer Inspection',
     metaDescription:
-      'Contact The Sewer Pros in San Diego, CA for sewer camera inspection, drain cleaning, sewer cleaning, hydro jetting, and line locating across San Diego, Carlsbad, Escondido, and nearby areas.',
+      'Contact The Sewer Pros in San Diego, CA for sewer camera inspection, cleaning, hydro jetting and line locating in San Diego, Carlsbad and Escondido.',
     localSection: {
       eyebrow: 'San Diego area',
       title: 'Working across San Diego, North County, and the South Bay',
@@ -426,9 +426,9 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
       ),
       primaryAction: { href: '#request-service', label: 'Request Service' },
     },
-    seoTitle: 'Contact The Sewer Pros in Las Vegas, NV | Sewer Inspection & Drain Service',
+    seoTitle: 'Contact The Sewer Pros in Las Vegas, NV | Sewer Inspection',
     metaDescription:
-      'Contact The Sewer Pros in Las Vegas, NV for sewer camera inspection, drain cleaning, sewer cleaning, hydro jetting, and line locating in Las Vegas, Henderson, North Las Vegas, and Summerlin.',
+      'Contact The Sewer Pros in Las Vegas, NV for sewer camera inspection, cleaning, hydro jetting and line locating across the Las Vegas Valley.',
     localSection: {
       eyebrow: 'Las Vegas area',
       title: 'Working across Las Vegas, Henderson, North Las Vegas, and Summerlin',

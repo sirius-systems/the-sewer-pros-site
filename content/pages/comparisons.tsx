@@ -56,7 +56,8 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
       title: 'Hydro Jetting vs Sewer Snaking',
       intro: (
         <p>
-          Two different tools for two different problems. Which one is right
+          Hydro jetting and sewer snaking are two different tools for two
+          different problems. Which one is right
           depends on what is blocking the line and what condition the line is
           in.
         </p>
@@ -169,7 +170,8 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
       title: 'Independent Sewer Inspection vs Repair Company Inspection',
       intro: (
         <p>
-          Both can inspect a sewer line competently. The difference is what
+          An independent sewer inspection and an inspection by a repair company
+          can both be done competently. The difference is what
           happens to the findings, and it is a difference in business model,
           not in character.
         </p>

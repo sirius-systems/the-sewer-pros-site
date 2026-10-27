@@ -145,7 +145,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
   */
   seoTitle: 'Sewer Inspection & Camera Inspection in San Diego',
   metaDescription:
-    'Independent sewer camera inspection, diagnostics, and cleaning in San Diego. Evidence before assumptions, no repair-driven upselling. Request an inspection today.',
+    'Independent sewer camera inspection, diagnostics and cleaning in San Diego. Evidence before assumptions, no repair-driven upselling. Request an inspection.',
   /*
     ==========================================================================
     THE LOCAL-EDUCATION RUN. Three sections carved out of `body`

@@ -83,7 +83,7 @@ export const lasVegasCityCleaningCameraContent: ServiceLocationPageContent = {
   sources: lasVegasCityContent.sources,
   hero: {
     eyebrow: 'Las Vegas, NV',
-    title: 'Sewer Cleaning and Camera Inspection in Las Vegas',
+    title: 'Sewer Cleaning & Camera Inspection in Las Vegas',
     intro: (
       <p>
         In the City of Las Vegas, the City maintains the public sewer main and says owners maintain

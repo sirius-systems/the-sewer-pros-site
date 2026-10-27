@@ -79,7 +79,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const chesterfieldBackupContent: ServiceLocationPageContent = {
   seoTitle: "Recurring Sewer Backup Diagnosis in Chesterfield, MO",
   metaDescription:
-    "Recurring sewer backup diagnosis in Chesterfield, MO. MSD maintains the main; the lateral is the owner’s, and the City has its own rules. See what a camera documents.",
+    "Recurring sewer backup diagnosis in Chesterfield, MO. MSD maintains the main; the lateral is the owner’s, and the City has its rules. See what a camera shows.",
   serviceDescription:
     "Recurring sewer backup diagnosis is the process of inspecting the accessible sewer line to identify visible conditions that may cause repeated wastewater backups, for properties in Chesterfield, Missouri. It generally combines a camera inspection, cleaning when needed, and written findings.",
   heroImage: slots.hero,

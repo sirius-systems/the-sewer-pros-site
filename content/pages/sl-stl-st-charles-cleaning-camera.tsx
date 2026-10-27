@@ -96,7 +96,7 @@ export const stCharlesCleaningCameraContent: ServiceLocationPageContent = {
   sources: stCharlesContent.sources,
   hero: {
     eyebrow: "St. Charles, MO",
-    title: "Sewer Cleaning and Camera Inspection in St. Charles",
+    title: "Sewer Cleaning & Camera Inspection in St. Charles",
     intro: (
       <p>
         In the City of St. Charles, the City runs the public sewer, not MSD, and

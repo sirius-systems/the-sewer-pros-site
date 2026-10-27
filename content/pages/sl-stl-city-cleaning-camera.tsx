@@ -78,7 +78,7 @@ const faq = mergeRelevantFaqs(
 )
 
 export const stLouisCityCleaningCameraContent: ServiceLocationPageContent = {
-  seoTitle: 'Sewer Cleaning & Camera Inspection in St. Louis City, MO',
+  seoTitle: 'Sewer Cleaning & Camera Inspection in St. Louis City',
   metaDescription:
     'Sewer cleaning and camera inspection in St. Louis City, MO. Your lateral is private to the MSD main, even under the street. See what a visit covers.',
   serviceDescription:
@@ -88,7 +88,7 @@ export const stLouisCityCleaningCameraContent: ServiceLocationPageContent = {
   sources: stLouisCityContent.sources,
   hero: {
     eyebrow: 'St. Louis City, MO',
-    title: 'Sewer Cleaning and Camera Inspection in St. Louis City',
+    title: 'Sewer Cleaning & Camera Inspection in St. Louis City',
     intro: (
       <p>
         In St. Louis City, MSD maintains the public sewer main, and the lateral from your building

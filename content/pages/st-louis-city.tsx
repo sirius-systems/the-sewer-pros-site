@@ -289,7 +289,7 @@ export const stLouisCityContent: LocationPageContent = {
   // Non-breaking spaces keep "St. Louis City" on one line in the H1.
   seoTitle: 'Sewer Inspection & Cleaning in St. Louis City, MO',
   metaDescription:
-    'Independent sewer camera inspection, locating, hydro jetting and sewer cleaning for St. Louis City properties. Get clear video evidence before major sewer decisions.',
+    'Independent sewer camera inspection, locating, hydro jetting and cleaning for St. Louis City properties. Clear video evidence before major sewer decisions.',
   hero: {
     title: 'Sewer Inspection & Cleaning in St. Louis City, MO',
     intro: (

@@ -99,7 +99,7 @@ const steps: ProcessContent[] = (v2.process?.steps ?? []).map((step) => ({
 export const chesterfieldPrePurchaseContent: ServiceLocationPageContent = {
   seoTitle: "Pre-Purchase Sewer Inspection in Chesterfield, MO",
   metaDescription:
-    "Buying in Chesterfield, MO? The lateral is the owner’s, the City program has its own seller rule, and we found no sale-time inspection rule. See what a scope shows.",
+    "Pre-purchase sewer inspection in Chesterfield, MO. The lateral is the owner’s, the City program has its own seller rule, and we found no sale-time rule.",
   serviceDescription:
     "A pre-purchase sewer inspection is a sewer camera inspection arranged during a home purchase, recording the visible condition of the accessible sewer line serving a home in Chesterfield, Missouri, before closing.",
   heroImage: slots.hero,
