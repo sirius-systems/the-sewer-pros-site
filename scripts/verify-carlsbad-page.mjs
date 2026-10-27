@@ -1,5 +1,5 @@
 /**
- * Post-build checks for /san-diego-ca/carlsbad/.
+ * Post-build checks for /locations/san-diego-ca/carlsbad/.
  *
  * Reads the static export in `out/` (run `npm run build` first). No
  * dependencies. Exits 1 on any failure.
@@ -17,7 +17,7 @@ import path from 'node:path'
 import { otherMarketPhoneHits } from './lib/market-phones.mjs'
 
 const ROOT = path.resolve('out')
-const PAGE = path.join(ROOT, 'san-diego-ca', 'carlsbad', 'index.html')
+const PAGE = path.join(ROOT, 'locations', 'san-diego-ca', 'carlsbad', 'index.html')
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
 const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
@@ -58,7 +58,14 @@ const strip = (h) => norm(h.replace(/<[^>]+>/g, ' ').replace(/\s+([.,;:)])/g, '$
 const mainStart = bodyHtml.indexOf('<main')
 const mainEnd = bodyHtml.indexOf('</main>')
 check('<main> found', mainStart > -1 && mainEnd > mainStart)
-const mainHtml = bodyHtml.slice(mainStart, mainEnd)
+const REVIEWS_RE = /<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/
+const mainRaw = bodyHtml.slice(mainStart, mainEnd)
+// The review carousel (every page type, 6a41d72) and the SMS consent legal text are not page copy.
+const mainHtml = mainRaw
+  .replace(REVIEWS_RE, '')
+  .replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
+  // Company-wide service-area line in the hero aside (all three markets), not market copy.
+  .replace(/Serving St\. Louis[^<]{1,6}San Diego[^<]{1,6}Las Vegas/g, '')
 const text = strip(mainHtml)
 check('mobile contact bar renders inside <main>', /aria-label="Quick contact"/.test(mainHtml))
 
@@ -85,7 +92,8 @@ for (const bad of [
   check(`JSON-LD has no ${bad}`, !ldRaw.includes(bad))
 }
 check('page HTML has no itemprop rating microdata', !/itemprop="(ratingValue|reviewCount|aggregateRating|review)"/i.test(html))
-check('no review marquee on the page', !/marquee-track/.test(mainHtml))
+const reviewsAt = mainRaw.indexOf('aria-labelledby="reviews"')
+check('review carousel renders above the FAQ (every page type, 6a41d72)', /marquee-track/.test(mainRaw) && reviewsAt > -1 && reviewsAt < mainRaw.indexOf('aria-labelledby="faq"'))
 check('no placeholder strings in JSON-LD', !/REPLACE-|TODO|Placeholder/i.test(ldRaw))
 const places = graph.filter((n) => ['Place', 'City'].includes(n['@type']))
 check(
@@ -182,7 +190,7 @@ check('JSON-LD uses only the build origin plus schema.org', ldHosts.every((h) =>
 
 /* ---- Head ---- */
 check('title (brand suffix once)', /<title>Sewer Inspection &amp; Cleaning in Carlsbad, CA \| The Sewer Pros<\/title>/.test(html))
-check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/san-diego-ca/carlsbad/"/>`))
+check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/locations/san-diego-ca/carlsbad/"/>`))
 check('robots index, follow (unchanged)', html.includes('<meta name="robots" content="index, follow"/>'))
 const h1s = [...mainHtml.matchAll(/<h1[\s>][\s\S]*?<\/h1>/g)]
 check('one H1', h1s.length === 1)
@@ -194,12 +202,12 @@ const dupes = idAttrs.filter((v, i) => idAttrs.indexOf(v) !== i)
 check('no duplicate ids (hero and final form ids differ)', dupes.length === 0, dupes.join(', '))
 const ORDER = ['request', 'services', 'responsible', 'how-system', 'who-to-call', 'city-program', 'second-opinion', 'buying', 'areas', 'faq']
 for (const anchor of [...ORDER, 'sources']) check(`anchor #${anchor} exists`, idAttrs.includes(anchor))
-for (const absent of ['reviews', 'age']) check(`no #${absent} section (intentionally absent)`, !idAttrs.includes(absent))
+for (const absent of ['age']) check(`no #${absent} section (intentionally absent)`, !idAttrs.includes(absent))
 const pos = ORDER.map((a) => mainHtml.indexOf(`id="${a}"`))
 check('anchors appear in the required order', pos.every((p, i) => p > -1 && (i === 0 || p > pos[i - 1])), pos.join(','))
 const jump = ['#services', '#responsible', '#how-system', '#who-to-call', '#city-program', '#second-opinion', '#buying', '#faq']
 const jumpPos = jump.map((h) => mainHtml.indexOf(`href="${h}"`))
-check('jump nav lists the eight links in order', jumpPos.every((p, i) => p > -1 && (i === 0 || p > jumpPos[i - 1])), jumpPos.join(','))
+check('no in-page jump nav (removed with the "On this page" navs, 05dcf85)', jumpPos.every((p) => p === -1), jumpPos.join(','))
 
 /* ---- Copy checks ---- */
 check('no em dashes in visible text (U+2014)', !text.includes(String.fromCharCode(8212)))
@@ -264,7 +272,7 @@ const moduleSrc = fs.readFileSync(path.resolve('content/pages/san-diego-carlsbad
 const DEFINED = ['carlsbad-hero', 'svc-camera', 'svc-cleaning', 'svc-jetting', 'svc-cleaning-camera', 'svc-locating', 'svc-drain', 'svc-prepurchase', 'svc-backup', 'svc-maintenance', 'system-street', 'call-cleanout', 'program-footage', 'so-inspect', 'so-document', 'so-decide', 'buy-buyer', 'buy-agent', 'final-bg']
 const definedIds = [...moduleSrc.matchAll(/^\s+id: '([a-z-]+)',$/gm)].map((m) => m[1])
 check('exactly the 19 expected slot ids are defined in the module', JSON.stringify(definedIds) === JSON.stringify(DEFINED), definedIds.join(','))
-check('no defined slot has a src yet', !/^\s+src: '/m.test(moduleSrc.slice(moduleSrc.indexOf('const IMAGE_SLOTS'), moduleSrc.indexOf('function slotImage'))))
+check('defined slots carry generated art (DEC-145)', /^\s+src: '/m.test(moduleSrc.slice(moduleSrc.indexOf('const IMAGE_SLOTS'), moduleSrc.indexOf('function slotImage'))))
 if (PLACEHOLDERS_ON) {
   const EXPECT = ['system-street', 'call-cleanout', 'program-footage', 'so-inspect', 'so-document', 'so-decide', 'buy-buyer', 'buy-agent']
   check('the eight drawable unfilled slots draw a placeholder (final-bg is dropped)', EXPECT.every((e) => got.includes(e)) && got.length === EXPECT.length, got.join(', '))
@@ -304,7 +312,7 @@ for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)
 /* ---- Sitemap ---- */
 const sitemapPath = path.join(ROOT, 'sitemap.xml')
 if (fs.existsSync(sitemapPath)) {
-  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/san-diego-ca/carlsbad/`))
+  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/locations/san-diego-ca/carlsbad/`))
 }
 
 /* ---- Market phones (whole document, header and footer included) ---- */

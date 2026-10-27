@@ -1,5 +1,5 @@
 /**
- * Post-build checks for /st-louis-mo/st-louis-city/.
+ * Post-build checks for /locations/st-louis-mo/st-louis-city/.
  *
  * Reads the static export in `out/` (run `npm run build` first). No
  * dependencies. Exits 1 on any failure.
@@ -11,7 +11,7 @@ import path from 'node:path'
 import { otherMarketPhoneHits } from './lib/market-phones.mjs'
 
 const ROOT = path.resolve('out')
-const PAGE = path.join(ROOT, 'st-louis-mo', 'st-louis-city', 'index.html')
+const PAGE = path.join(ROOT, 'locations', 'st-louis-mo', 'st-louis-city', 'index.html')
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.thesewerpros.com').replace(/\/+$/, '')
 const html = fs.readFileSync(PAGE, 'utf8')
 
@@ -45,7 +45,8 @@ const decode = (s) =>
 const norm = (s) => decode(s).replace(/\s+/g, ' ').trim()
 
 const bodyHtml = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '')
-const text = norm(bodyHtml.replace(/<[^>]+>/g, ' '))
+// The review carousel (every page type, 6a41d72) and the SMS consent legal text are not page copy.
+const text = norm(bodyHtml.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '').replace(/<[^>]+>/g, ' '))
 
 /* ---- JSON-LD ---- */
 const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
@@ -118,7 +119,7 @@ check('WebPage name equals the seoTitle', webPage?.name === 'Sewer Inspection & 
 
 /* ---- Head ---- */
 check('title', /<title>Sewer Inspection &amp; Cleaning in St\. Louis City, MO \| The Sewer Pros<\/title>/.test(html))
-check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/st-louis-mo/st-louis-city/"/>`))
+check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/locations/st-louis-mo/st-louis-city/"/>`))
 check('robots index, follow (unchanged)', html.includes('<meta name="robots" content="index, follow"/>'))
 check('one H1', (bodyHtml.match(/<h1[\s>]/g) ?? []).length === 1)
 
@@ -169,7 +170,7 @@ for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)
 /* ---- Sitemap ---- */
 const sitemapPath = ['sitemap.xml'].map((f) => path.join(ROOT, f)).find(fs.existsSync)
 if (sitemapPath) {
-  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/st-louis-mo/st-louis-city/`))
+  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/locations/st-louis-mo/st-louis-city/`))
 }
 
 /* ---- Market phones (whole document, header and footer included) ---- */

@@ -49,7 +49,9 @@ const body = html
 const mainStart = body.indexOf('<main')
 const mainEnd = body.indexOf('</main>')
 const main = mainStart >= 0 && mainEnd > mainStart ? body.slice(mainStart, mainEnd) : body
-const visible = strip(main)
+// The review carousel (every page type, 6a41d72) and the SMS consent legal text are not service copy.
+const copyMain = main.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
+const visible = strip(copyMain)
 
 /* ---- Head ---- */
 const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]
@@ -129,12 +131,8 @@ check('exactly five process steps', (processOl.match(/<li[\s>]/g) || []).length 
 const trust = ['Independent inspection and diagnostics', 'Sewer and drain specialists, not general plumbing', 'No repair-driven upselling', 'Serving St. Louis']
 check('trust strip present with the existing statements', trust.every((t) => visible.includes(t)))
 
-check('hero request card has a market select', /id="hero-lead-market"/.test(html))
-check(
-  'hero request card shows the service chip and preselects the service',
-  /id="hero-lead-service"[\s\S]*?<option value="svc-sewer-camera-inspection" selected/.test(html) &&
-    /text-caption[^>]*>Service<\/p><p[^>]*>Sewer Camera Inspection</.test(html),
-)
+check('hero survey form renders (service step first; location asked only when unknown)', /id="hero-lead-name"/.test(html) && /name="service"/.test(html))
+check('hero survey form preselects the service', /id="hero-lead-service-svc-sewer-camera-inspection"[^>]*checked=""/.test(html))
 
 const ids = [...body.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])
 const dupes = ids.filter((v, i) => ids.indexOf(v) !== i)
@@ -142,9 +140,9 @@ check('no duplicate ids', dupes.length === 0, [...new Set(dupes)].join(', '))
 
 const navBlock = (main.match(/<nav[^>]*aria-labelledby="on-this-page"[\s\S]*?<\/nav>/) || [''])[0]
 const navHrefs = [...navBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
-check('"On this page" list present (8 or more sections)', navHrefs.length >= 8, String(navHrefs.length))
+check('no "On this page" nav (removed, 05dcf85)', navHrefs.length === 0, String(navHrefs.length))
 check('every "On this page" anchor resolves', navHrefs.every((h) => ids.includes(h)), navHrefs.filter((h) => !ids.includes(h)).join(', '))
-check('"On this page" nav renders exactly once in the DOM', (main.match(/aria-labelledby="on-this-page"/g) || []).length === 1)
+check('"On this page" nav is not rendered', (main.match(/aria-labelledby="on-this-page"/g) || []).length === 0)
 check('nav is not hidden from assistive technology', !/aria-hidden="true"[^>]*aria-labelledby="on-this-page"|aria-labelledby="on-this-page"[^>]*aria-hidden="true"/.test(navBlock) && !/<nav[^>]*\shidden/.test(navBlock))
 // The nav lists only sections that rendered: each target is a heading inside main.
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])

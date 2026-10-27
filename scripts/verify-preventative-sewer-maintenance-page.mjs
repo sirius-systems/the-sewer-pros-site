@@ -28,7 +28,6 @@ const PAGE = path.join(ROOT, 'services', 'preventative-sewer-maintenance', 'inde
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
 const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
-const SLOTS_ON = process.env.NEXT_PUBLIC_SHOW_IMAGE_SLOTS !== 'false'
 const NAME = 'Preventative Sewer Maintenance'
 const H1 = 'Preventative Sewer Maintenance'
 const html = fs.readFileSync(PAGE, 'utf8')
@@ -63,7 +62,9 @@ const body = html
 const mainStart = body.indexOf('<main')
 const mainEnd = body.indexOf('</main>')
 const main = mainStart >= 0 && mainEnd > mainStart ? body.slice(mainStart, mainEnd) : body
-const visible = strip(main)
+// The review carousel (every page type, 6a41d72) and the SMS consent legal text are not service copy.
+const copyMain = main.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
+const visible = strip(copyMain)
 
 /* ---- Head ---- */
 const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]
@@ -222,9 +223,9 @@ check('four preparation items', count(/<li[\s>]/g, prepUl) === 4, String(count(/
 const trust = ['Independent inspection and diagnostics', 'Sewer and drain specialists, not general plumbing', 'No repair-driven upselling', 'Serving St. Louis']
 check('trust strip present with the existing statements', trust.every((t) => visible.includes(t)))
 
-check('hero request card has a market select', /id="hero-lead-market"/.test(html))
-check('hero request card preselects the service', /id="hero-lead-service"[\s\S]*?<option value="svc-preventative-sewer-maintenance" selected/.test(html))
-check('request form preselects the service', /id="request-lead-service"[\s\S]*?<option value="svc-preventative-sewer-maintenance" selected/.test(html))
+check('hero survey form renders (service step first; location asked only when unknown)', /id="hero-lead-name"/.test(html) && /name="service"/.test(html))
+check('hero survey form preselects the service', /id="hero-lead-service-svc-preventative-sewer-maintenance"[^>]*checked=""/.test(html))
+check('request survey form preselects the service', /id="request-survey-service-svc-preventative-sewer-maintenance"[^>]*checked=""/.test(html))
 check('hero primary action is "Request Service" and secondary links the camera page', /href="#request"[^>]*>Request Service</.test(main) && /href="\/services\/sewer-camera-inspection\/"[^>]*>Learn about sewer camera inspection</.test(main))
 
 const ids = [...body.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])
@@ -234,23 +235,9 @@ check('no duplicate ids', dupes.length === 0, [...new Set(dupes)].join(', '))
 const navBlock = (main.match(/<nav[^>]*aria-labelledby="on-this-page"[\s\S]*?<\/nav>/) || [''])[0]
 const navHrefs = [...navBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 const navLabels = [...navBlock.matchAll(/<a [^>]*>([\s\S]*?)<\/a>/g)].map((m) => strip(m[1]))
-check(
-  '"On this page" list has the eight entries',
-  JSON.stringify(navLabels) ===
-    JSON.stringify([
-      'Signs it may be time',
-      'What a camera can and cannot show',
-      'What a visit involves',
-      'Camera first, or cleaning first',
-      'What it may include',
-      'What to ask for',
-      'Who this is for',
-      'Questions',
-    ]),
-  JSON.stringify(navLabels),
-)
+check('no "On this page" nav (removed, 05dcf85)', navHrefs.length === 0, JSON.stringify(navLabels))
 check('every "On this page" anchor resolves', navHrefs.every((h) => ids.includes(h)), navHrefs.filter((h) => !ids.includes(h)).join(', '))
-check('"On this page" nav renders exactly once in the DOM', count(/aria-labelledby="on-this-page"/g, main) === 1)
+check('"On this page" nav is not rendered', count(/aria-labelledby="on-this-page"/g, main) === 0)
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
@@ -330,18 +317,9 @@ check(
 
 /* ---- Image slots ---- */
 const slotBoxes = [...body.matchAll(/data-image-placeholder="([^"]*)"/g)].map((m) => m[1])
-const SLOT_FILES = [
-  'the-sewer-pros-preventative-sewer-maintenance-explainer-review-4x3.webp',
-  'the-sewer-pros-preventative-sewer-maintenance-prep-cleanout-4x3.webp',
-  'the-sewer-pros-preventative-sewer-maintenance-records-video-and-findings-4x3.webp',
-]
-if (SLOTS_ON) {
-  check('three image-slot boxes (flag on)', slotBoxes.length === 3, String(slotBoxes.length))
-  check('slot boxes carry the slot filenames', SLOT_FILES.every((f) => body.includes(f)), SLOT_FILES.filter((f) => !body.includes(f)).join(', '))
-} else {
-  check('no slot boxes and no data-image-placeholder markup (flag off)', slotBoxes.length === 0 && !SLOT_FILES.some((f) => body.includes(f)))
-}
-check('no alt text is shipped for a missing photograph', !/alt="Technician reviewing sewer camera footage/.test(html) && !/alt="A capped sewer cleanout/.test(html))
+// Generated images are approved for every slot (DEC-145): all slots are filled, so no placeholder box is drawn in any mode.
+check('no slot boxes and no data-image-placeholder markup (every slot is filled)', slotBoxes.length === 0)
+check('image alt text describes the scene only (DEC-145: no real-job, real-customer or before-and-after claims)', !/alt="[^"]*(our technician|recent job|real customer|actual customer|before and after|before-and-after)/i.test(html))
 check('no literal "IMAGE SLOT" marker', !/IMAGE SLOT/.test(html))
 
 /* ---- Rhythm: brand surfaces are the independent band and the final request, with >= 4 sections between ---- */
