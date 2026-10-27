@@ -50,7 +50,8 @@ const mainStart = body.indexOf('<main')
 const mainEnd = body.indexOf('</main>')
 const main = mainStart >= 0 && mainEnd > mainStart ? body.slice(mainStart, mainEnd) : body
 // The review carousel (every page type, 6a41d72) and the SMS consent legal text are not service copy.
-const copyMain = main.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
+// The "Related guides" slot links existing guide pages by their own titles, which are not service copy.
+const copyMain = main.replace(/<section[^>]*aria-labelledby="related-guides"[\s\S]*?<\/section>/, '').replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
 const visible = strip(copyMain)
 
 /* ---- Head ---- */
@@ -210,7 +211,7 @@ const bandHtml = (main.match(/<section[^>]*aria-labelledby="independent"[\s\S]*?
 const bandText = strip(bandHtml)
 const relatedHtml = strip((main.match(/<section[^>]*aria-labelledby="related"[\s\S]*?<\/section>/) || [''])[0])
 // The related cards link a resource article whose approved title names a "report"; a link title, not a deliverable claim.
-const outsideBand = strip(main.replace(bandHtml, ''))
+const outsideBand = strip(main.replace(bandHtml, '').replace(/<section[^>]*aria-labelledby="related-guides"[\s\S]*?<\/section>/, ''))
 check(
   'outside the shared band, only the owner-confirmed video and written-findings wording (2026-10-05); no coding claim',
   !/(video|report|findings) (is|are) included(?! for)/i.test(outsideBand.replace(/video is included when a camera is used, and written findings are included/gi, '').replace(/written findings are included/gi, '').replace(/whether the video is included/gi, '')) &&

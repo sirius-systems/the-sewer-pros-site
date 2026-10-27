@@ -292,3 +292,4 @@ export type {
 } from './ContactSections'
 export { ThankYouDetails } from './ThankYouDetails'
 export { contactStepIcons } from './ContactStepIcons'
+export { PlannedLinks, plannedLinksRenders } from './PlannedLinks'

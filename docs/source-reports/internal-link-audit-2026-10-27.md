@@ -144,3 +144,22 @@ None blocks shipping. For later: whether to write San Diego and Las Vegas local 
 ## 9. Linking rules now enforced
 
 See `docs/16-internal-linking-strategy.md` section 126 (hierarchy, bounded sibling-location rule, anchor rules, no-orphan and ceiling rules). The gate runs: orphans, content-inbound minimum of two, broken, old-route, commercial, noindex-bound, generic-anchor and cross-market links, hierarchy, breadcrumbs, distinct-destination ceiling, sibling bounds and FAQ JSON-LD plain text. Run against the pre-change build it fails four checks (orphans 130, content inbound 147, hierarchy 16, hub links 16), as intended.
+
+## 10. Second pass: planned slots (follow-up to b1c7c5e)
+
+Implemented opportunities 17 and 18 in part, plus the market contact slot: a "Related guides" block on core service pages, a "Where we serve" block on audience pages, and a "Before you reach out" block on market contact pages, all from the link plan. Guide rules moved into one table (`GUIDE_RULES`) so San Diego and Las Vegas guides need a row, not code. Rules and wording are in `docs/16-internal-linking-strategy.md` section 126.6.
+
+| Page type | Pages | Total links before / after | Content links before / after | Content inbound before / after |
+| --------- | ----: | ----: | ----: | ----: |
+| Core service | 9 | 58.4 / 59.7 | 22.4 / 23.7 | 177 / 177 |
+| Audience | 6 | 46.5 / 52.5 | 10.5 / 16.5 | 21 / 22 |
+| Market contact | 3 | 44 / 47 | 7 / 10 | 8.3 / 8.3 |
+| Location hub | 16 | 62 / 62 | 25 / 25 | 60.3 / 60.3 |
+| Resource | 5 | 40.4 / 40.4 | 4.4 / 4.4 | 6.0 / 7.2 |
+| FAQ | 1 | 40 / 40 | 5 / 5 | 5 / 8 |
+
+Selected pages (content inbound): camera report guide 8 to 11, video guide 6 to 9, FAQ 6 to 9, real estate agents 29 to 32, home buyers 29 to 32, St. Louis City pre-purchase page 8 to 12, San Diego market hub 23 to 29. Service + location inbound is unchanged (min 3, avg 6.8, max 12). Orphans stay 0 and hierarchy gaps 0.
+
+Slot contents: 7 of the 9 core services show a guides block (2 or 3 links; locating and preventative maintenance have no matching guide); each of the 6 audience pages links 3 market hubs and 3 local pages (lead service in each market's flagship location); each market contact page links the FAQ, real estate agents and home buyers.
+
+Decision for the owner to confirm (does not block): the report guide's page title contains the word "report" ("What Is Included in a Sewer Camera Inspection Report?"), and the Related guides block shows that title on the pre-purchase and camera pages, which otherwise avoid "report" as a deliverable (the deliverables are inspection video and written findings). The service verify scripts now exclude the guides slot from their service-copy scans. If you prefer, rename the guide or show a custom link label in `PlannedLinks`.

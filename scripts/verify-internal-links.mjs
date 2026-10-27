@@ -23,6 +23,10 @@
  *   - more than MAX_DISTINCT distinct internal destinations on one page
  *   - more than MAX_SIBLING_LINKS content links from one service+location page
  *     to other service+location pages (the bounded sibling rule)
+ *   - planned slots out of bounds: core service "Related guides" (max 3, guides
+ *     only, report and video guides on pre-purchase and camera pages), audience
+ *     "Where we serve" (3 market hubs, 1 to 3 local pages one per market), market
+ *     contact "Before you reach out" (FAQ and two audiences), hub guides (max 3)
  *   - markup in FAQPage JSON-LD answers (the schema text stays plain)
  */
 import fs from 'node:fs'
@@ -124,6 +128,60 @@ check(
     .map((u) => ({ u, n: new Set(editorial(u).filter((l) => P[l.path]?.type === 'service-location' && l.path.startsWith(u)).map((l) => l.path)).size }))
     .filter((x) => x.n < 3 || x.n > 6)
     .map((x) => `${x.u}: ${x.n}`),
+)
+
+/* ---- Planned slots (lib/links/link-plan.ts) ---- */
+const inZone = (u, zone) => editorial(u).filter((l) => l.zone === zone)
+const MAX_GUIDES = 3
+
+check(
+  `core service "Related guides" slot has at most ${MAX_GUIDES} guide links`,
+  urls.filter((u) => P[u].type === 'service' && new Set(inZone(u, 'body:related-guides').map((l) => l.path)).size > MAX_GUIDES).map((u) => u),
+)
+check(
+  'Pre-Purchase Sewer Inspection and Sewer Camera Inspection link the report and video guides from the slot',
+  ['/services/pre-purchase-sewer-inspection/', '/services/sewer-camera-inspection/'].flatMap((u) =>
+    ['/resources/what-is-in-a-sewer-camera-inspection-report/', '/resources/how-to-read-a-sewer-camera-inspection-video/']
+      .filter((g) => !inZone(u, 'body:related-guides').some((l) => l.path === g))
+      .map((g) => `${u} -> ${g}`),
+  ),
+)
+check(
+  'a "Related guides" slot only links guides and comparisons (no service or sales page)',
+  urls.flatMap((u) => inZone(u, 'body:related-guides').filter((l) => !/^\/(resources|compare)\//.test(l.path)).map((l) => ({ from: u, to: l.path, text: l.text }))),
+  fmt,
+)
+check(
+  'location-hub guide block has at most 3 guide links',
+  urls.filter((u) => P[u].type === 'location' && new Set(inZone(u, 'aside:local-guides').map((l) => l.path)).size > MAX_GUIDES),
+)
+check(
+  'audience pages link the three launch market hubs and 1 to 3 local service pages, one per market',
+  urls
+    .filter((u) => P[u].type === 'audience')
+    .flatMap((u) => {
+      const slot = inZone(u, 'body:where-we-serve').map((l) => l.path)
+      const hubs = new Set(slot.filter((p) => P[p]?.type === 'market-hub'))
+      const local = [...new Set(slot.filter((p) => P[p]?.type === 'service-location'))]
+      const markets = new Set(local.map(marketOf))
+      const out = []
+      if (hubs.size !== 3) out.push(`${u}: ${hubs.size} market hubs`)
+      if (local.length < 1 || local.length > 3 || markets.size !== local.length) out.push(`${u}: ${local.length} local pages in ${markets.size} markets`)
+      return out
+    }),
+)
+check(
+  'market contact pages link the FAQ and two audience pages',
+  urls
+    .filter((u) => P[u].type === 'market-contact')
+    .flatMap((u) => {
+      const slot = inZone(u, 'body:helpful-pages').map((l) => l.path)
+      const aud = new Set(slot.filter((p) => P[p]?.type === 'audience'))
+      const out = []
+      if (!slot.includes('/faq/')) out.push(`${u}: no FAQ link`)
+      if (aud.size !== 2) out.push(`${u}: ${aud.size} audience links`)
+      return out
+    }),
 )
 
 // FAQPage JSON-LD answers must be plain text (links live only in the visible HTML).

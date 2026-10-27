@@ -20,6 +20,8 @@ import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { TrackedPhoneLink } from '@/components/tracking/TrackedPhoneLink'
 import { resolveMarketContactImage } from '@/data/business/contact-backdrop'
 import { getMarket, marketOperatingDetail } from '@/data/markets/markets'
+import { PlannedLinks } from '@/components/sections/PlannedLinks'
+import { marketContactPageIds } from '@/lib/links/link-plan'
 import { PageShell } from './PageShell'
 import type { MarketContactContent, MarketId, MasterPageRecord, PageId } from '@/types'
 
@@ -50,6 +52,8 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
   const detail = marketOperatingDetail[marketId]
   const image = resolveMarketContactImage(marketId)
   const showsFaq = faqSectionRenders(content.faq)
+  // The FAQ and the two audiences with the clearest need at contact time (link plan).
+  const contactLinkIds = marketContactPageIds(marketId)
 
   const densities: SectionDensity[] = [
     'sparse', // hero
@@ -58,6 +62,7 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
     'standard', // form
     'standard', // local section
     'dense', // services
+    ...(contactLinkIds.length > 0 ? (['standard'] as const) : []), // helpful pages
     'dense', // process
     'standard', // business details
     'dense', // proof stats
@@ -164,6 +169,14 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
         descriptions={descriptions}
         title={`Services for ${market.city} properties`}
         surface="muted"
+      />
+
+      <PlannedLinks
+        id="helpful-pages"
+        density="standard"
+        surface="default"
+        title="Before you reach out"
+        groups={[{ pageIds: contactLinkIds }]}
       />
 
       <ProcessSteps

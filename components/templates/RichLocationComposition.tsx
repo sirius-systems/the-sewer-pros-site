@@ -75,7 +75,7 @@ export function RichLocationComposition({
       : undefined
 
   const showsFaq = faqSectionRenders(content.faq)
-  const guideIds = page.locationId !== undefined ? guidePageIdsForLocation(page.locationId) : []
+  const guideIds = page.locationId !== undefined ? guidePageIdsForLocation(page.locationId, page.marketId) : []
   // Link plan (lib/links/link-plan.ts): the hub's top services also link to this
   // location's own service page ("Sewer Cleaning in Ballwin").
   const serviceCards =

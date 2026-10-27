@@ -168,22 +168,138 @@ export function siblingServicePageIds(locationId: string, serviceId: string): Pa
 }
 
 /**
- * Local guides each location hub links to: the St. Louis lateral-program
- * resources. St. Louis County covers the county municipalities (Ballwin,
- * Chesterfield, Florissant); St. Charles runs its own system and St. Louis
- * City has its own program page. The general report guide applies to all.
- * San Diego and Las Vegas have no local guides yet (see the audit report).
+ * Guide rules: which existing guide or comparison page is offered where.
+ *
+ * ONE TABLE DRIVES EVERY GUIDE SLOT. A guide is offered on a core service page
+ * when its `services` list names the service, and on a location hub when its
+ * `locations` list names the location or its `markets` list names the
+ * location's market. To add a guide (for example a San Diego or Las Vegas
+ * lateral-program page once it exists), add one row here; no component changes.
+ *
+ * Rules for choosing, in priority order of the rows (the first rows win when a
+ * page's cap is reached):
+ *   - a guide is offered only where it answers the next question a reader of
+ *     that page has (a report guide on an inspection page, a local program
+ *     guide on that locality's hub);
+ *   - at most `MAX_GUIDES_PER_PAGE` guides per page, so the slot stays a short
+ *     block and never a link dump;
+ *   - guides only: no service or sales page belongs in this table.
  */
-const GUIDES_BY_LOCATION: Readonly<Record<string, readonly string[]>> = {
-  'loc-stl-st-louis-city': ['res-stl-city-program', 'res-stl-lateral-report'],
-  'loc-stl-ballwin': ['res-stl-county-program', 'res-stl-lateral-report'],
-  'loc-stl-chesterfield': ['res-stl-county-program', 'res-stl-lateral-report'],
-  'loc-stl-florissant': ['res-stl-county-program', 'res-stl-lateral-report'],
-  'loc-stl-st-charles': ['res-stl-lateral-report'],
+export interface GuideRule {
+  guide: string
+  services?: readonly ServiceId[]
+  locations?: readonly string[]
+  markets?: readonly MarketId[]
 }
 
-export function guidePageIdsForLocation(locationId: string): PageId[] {
-  return (GUIDES_BY_LOCATION[locationId] ?? []) as PageId[]
+export const MAX_GUIDES_PER_PAGE = 3
+
+export const GUIDE_RULES: readonly GuideRule[] = [
+  // Inspection guides: what a camera inspection produces and how to read it.
+  {
+    guide: 'res-camera-report',
+    services: [
+      'svc-pre-purchase-sewer-inspection',
+      'svc-sewer-camera-inspection',
+      'svc-sewer-cleaning-camera-inspection',
+      'svc-recurring-sewer-backup-diagnosis',
+    ],
+  },
+  {
+    guide: 'res-read-video',
+    services: [
+      'svc-pre-purchase-sewer-inspection',
+      'svc-sewer-camera-inspection',
+      'svc-sewer-cleaning-camera-inspection',
+      'svc-recurring-sewer-backup-diagnosis',
+    ],
+  },
+  // Cleaning comparison: hydro jetting against cable cleaning.
+  {
+    guide: 'cmp-hydro-vs-snaking',
+    services: ['svc-hydro-jetting', 'svc-drain-cleaning', 'svc-sewer-cleaning'],
+  },
+  // St. Louis lateral-program guides (locality first, then the general guide).
+  { guide: 'res-stl-city-program', locations: ['loc-stl-st-louis-city'] },
+  { guide: 'res-stl-county-program', locations: ['loc-stl-ballwin', 'loc-stl-chesterfield', 'loc-stl-florissant'] },
+  { guide: 'res-stl-lateral-report', markets: ['st-louis-mo'] },
+  // San Diego and Las Vegas: no guides exist yet. Add rows here when they do.
+]
+
+function dedupeCap(ids: readonly string[]): PageId[] {
+  return [...new Set(ids)].slice(0, MAX_GUIDES_PER_PAGE) as PageId[]
+}
+
+/** Guides offered on a core service page (at most `MAX_GUIDES_PER_PAGE`). */
+export function guidePageIdsForService(serviceId: string): PageId[] {
+  return dedupeCap(GUIDE_RULES.filter((r) => r.services?.includes(serviceId as ServiceId)).map((r) => r.guide))
+}
+
+/** Guides offered on a location hub (at most `MAX_GUIDES_PER_PAGE`). */
+export function guidePageIdsForLocation(locationId: string, marketId?: MarketId): PageId[] {
+  return dedupeCap(
+    GUIDE_RULES.filter((r) => r.locations?.includes(locationId) || (marketId !== undefined && r.markets?.includes(marketId))).map((r) => r.guide),
+  )
+}
+
+/* ==========================================================================
+   Audience pages and market contact pages
+   ========================================================================== */
+
+/** Market hub page ids, in the order audience and contact pages list them. */
+const MARKET_HUB_IDS: readonly { marketId: MarketId; hubId: string; flagshipLocationId: string }[] = [
+  // St. Louis first: the established local entity (CLAUDE.md section 10).
+  { marketId: 'st-louis-mo', hubId: 'market-st-louis-mo', flagshipLocationId: 'loc-stl-st-louis-city' },
+  { marketId: 'san-diego-ca', hubId: 'market-san-diego-ca', flagshipLocationId: 'loc-sd-san-diego' },
+  { marketId: 'las-vegas-nv', hubId: 'market-las-vegas-nv', flagshipLocationId: 'loc-lv-las-vegas' },
+]
+
+/**
+ * The service each audience asks about first. Real estate audiences ask about
+ * the pre-purchase inspection; landlords and HOAs ask about keeping lines
+ * clear. Residential only (CLAUDE.md sections 25 and 28).
+ */
+const AUDIENCE_SERVICE: Readonly<Record<string, ServiceId>> = {
+  'aud-home-buyers': 'svc-pre-purchase-sewer-inspection',
+  'aud-home-sellers': 'svc-pre-purchase-sewer-inspection',
+  'aud-real-estate-agents': 'svc-pre-purchase-sewer-inspection',
+  'aud-home-inspectors': 'svc-pre-purchase-sewer-inspection',
+  'aud-property-managers': 'svc-preventative-sewer-maintenance',
+  'aud-hoa-communities': 'svc-preventative-sewer-maintenance',
+}
+
+/** Market hubs an audience page offers: the three launch markets, established market first. */
+export function audienceMarketPageIds(audiencePageId: string): PageId[] {
+  return AUDIENCE_SERVICE[audiencePageId] === undefined ? [] : (MARKET_HUB_IDS.map((m) => m.hubId).slice(0, 3) as PageId[])
+}
+
+/**
+ * Service + location pages an audience page offers: the audience's lead
+ * service in each market's flagship location (the market's named city), three
+ * pages in all, one per market. Chosen by rule, never by search volume.
+ */
+export function audienceLocalPageIds(audiencePageId: string): PageId[] {
+  const service = AUDIENCE_SERVICE[audiencePageId]
+  if (service === undefined) return []
+  return MARKET_HUB_IDS.map((m) => localServicePageId(m.flagshipLocationId, service))
+    .filter((x): x is PageId => x !== undefined)
+    .slice(0, 3)
+}
+
+/**
+ * Pages a market contact page offers next to the form: the FAQ and the two
+ * audiences with the clearest time-bound need at contact time. Real estate
+ * first (CLAUDE.md section 26). Override per market here if a market's mix
+ * differs.
+ */
+const CONTACT_AUDIENCES: Readonly<Record<MarketId, readonly [string, string]>> = {
+  'st-louis-mo': ['aud-real-estate-agents', 'aud-home-buyers'],
+  'san-diego-ca': ['aud-real-estate-agents', 'aud-home-buyers'],
+  'las-vegas-nv': ['aud-real-estate-agents', 'aud-home-buyers'],
+}
+
+export function marketContactPageIds(marketId: MarketId): PageId[] {
+  return ['core-faq', ...CONTACT_AUDIENCES[marketId]] as PageId[]
 }
 
 /** Registry id of a location hub page. */
