@@ -138,7 +138,7 @@ export function ComparisonPageTemplate({
         />
       )}
 
-      {content.faq !== undefined && <FaqSection entries={content.faq} />}
+      {content.faq !== undefined && <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }} entries={content.faq} />}
 
       <CtaSection
         variant="band"

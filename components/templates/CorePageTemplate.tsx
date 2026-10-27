@@ -133,7 +133,7 @@ export function CorePageTemplate({
       {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
       {content.faq !== undefined && (
-        <FaqSection entries={content.faq} openFirst />
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }} entries={content.faq} openFirst />
       )}
 
       {/*

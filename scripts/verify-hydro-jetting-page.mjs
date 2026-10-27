@@ -132,7 +132,8 @@ check(
   JSON.stringify(groupLabels),
 )
 check('group labels are not part of any answer', faqLd.every((f) => !groupLabels.some((g) => f.a.includes(g))))
-check('no anchors inside FAQ answers', details.every((d) => !/<a[\s>]/.test(d.slice(d.indexOf('</summary>')))))
+// Visible answers may link to a service or audience page (docs/16 section 126.3); the schema text stays plain.
+check('FAQ answers are plain strings (no markup in JSON-LD)', faqLd.every((f) => !/<[a-z][^>]*>/i.test(f.a)))
 
 /* ---- Structure ---- */
 const sectionById = (id) =>

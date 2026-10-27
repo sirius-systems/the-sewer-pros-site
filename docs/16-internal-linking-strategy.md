@@ -2523,3 +2523,48 @@ How Do I Contact The Sewer Pros?
 The governing standard is:
 
 > **Every internal link should help clarify a real relationship between a service, market, location, audience, problem, resource, or conversion path. The website should distribute authority through deliberate hubs and contextual relationships—not through indiscriminate link volume, keyword-stuffed navigation, or automated exposure of every theoretical service-location combination.**
+
+---
+
+# 126. Enforced Linking Rules (2026-10-27)
+
+Added after the internal linking audit in `docs/source-reports/internal-link-audit-2026-10-27.md`. These rules are implemented in code and gated by `scripts/verify-internal-links.mjs`, which runs after `npm run build` with the other verify scripts. Where an older section of this document conflicts with DEC-140 (all service + location pages indexable) or DEC-141 (location routes under `/locations/`), the DEC entry governs.
+
+## 126.1 Hierarchy rules (every indexable page)
+
+| Page type | Must link to |
+| --------- | ------------ |
+| Service + location (`/locations/{market}/{location}/{service}/`) | its location hub, its market hub (`/{market}/`), its core service page (`/services/{service}/`) |
+| Location hub (`/locations/{market}/{location}/`) | its market hub, and 3 to 6 of its own service + location pages |
+| Market hub (`/{market}/`) | every location hub in the market, and `/locations/` |
+| Core service (`/services/{service}/`) | at least one audience page and at least one market hub |
+| Audience page (`/for/{audience}/`) | at least one service page and at least one market hub |
+| Resource (`/resources/{slug}/`) | at least one service page |
+| Every page | a breadcrumb that follows the URL structure |
+
+## 126.2 Bounded service + location linking
+
+The service x location matrix is never exposed as a link block. All relationships are computed in `lib/links/link-plan.ts` from the approved page registry:
+
+* **Location hub to service + location (top services).** The hub's service cards for the top five services (`TOP_LOCAL_SERVICES`: Sewer Camera Inspection, Pre-Purchase Sewer Inspection, Sewer Cleaning & Camera Inspection, Sewer Cleaning, Hydro Jetting) link to that location's own page, for example "Sewer Cleaning in Ballwin". The other cards keep their link to the core service page, labelled "About {registered service name}". Rule for choosing: inspection and real estate first, then cleaning, because that is the primary positioning and the strongest search intent (docs 10 and 16 sections 14 to 16).
+* **Sibling services, same location.** A service + location page links to the two services that naturally follow its own (`SERVICE_RELATIONS`), in the same location.
+* **Sibling locations, same service, same market.** A service + location page links to three neighbouring locations for the same service: the next two and the previous one in the market's registry order (a ring). It never leaves the market and never lists the whole market. A ring guarantees every service + location page at least three inbound links from same-service siblings.
+* The gate fails if a service + location page links to more than 12 other service + location pages, or a location hub links to fewer than 3 or more than 9 of its own.
+
+## 126.3 FAQ answer links
+
+`lib/links/faq-links.tsx` links the first mention of a registered service name (and the audience names "real estate agents", "home inspectors", "home buyers", "property managers") in FAQ answers, at most two per answer and once per target per page. On service + location pages a service mention links to that location's own page; on location hubs it links to the core service page, so a hub stays within its 3 to 6 service + location links. The visible words are not changed. FAQPage JSON-LD is built from the content's own answer nodes, never from the linked copy, so the schema text stays plain and identical to the visible text; the gate fails on any markup in a FAQPage answer.
+
+## 126.4 Anchor rules
+
+* Anchors to a service use the registered service name ("Sewer Cleaning & Camera Inspection", with the ampersand) or a natural phrase that contains it; local links add the place ("Hydro Jetting in Ballwin").
+* No generic anchors ("click here", "learn more", "read more", "here"). A visible label that must stay short ("Read the guide") carries the target's name in screen-reader text, which is also what crawlers read.
+* Use hyphens, not em dashes, in any sentence added to carry a link.
+* No link or anchor implies repair or replacement services, and none points to a commercial page (CLAUDE.md sections 9 and 28).
+
+## 126.5 Other enforced limits
+
+* No orphans: every indexable page has an inbound link from another indexable page, and every indexable page except the homepage has at least two inbound links from page content (navigation, footer and breadcrumbs excluded).
+* No indexable page links to a noindex page or one outside the sitemap.
+* No cross-market links in page content (market contact pages and the locations hub are not market pages).
+* No page has more than 100 distinct internal destinations, navigation and footer included.

@@ -195,7 +195,7 @@ check(
 )
 check('group labels are navigation only (no group heading sits inside a question)', details.every((d) => !/<h3[\s>]/.test(d)))
 check('FAQ answers are plain strings (no markup in JSON-LD)', faqLd.every((f) => !/<[a-z][^>]*>/i.test(f.a)))
-check('no link inside any FAQ answer', details.every((d) => !/<a[\s>]/.test(d)))
+// Visible answers may link to a service or audience page (docs/16 section 126.3); the schema text stays plain (checked above).
 // Interval, time and cost FAQs state no figure.
 const figureFaqs = faqLd.filter((f) => ['How often should I schedule it?', 'How long does it take?', 'How much does it cost?'].includes(f.q))
 check('interval, time and cost FAQs state no figure', figureFaqs.length === 3 && figureFaqs.every((f) => !/\d/.test(f.a)))

@@ -484,7 +484,9 @@ export function RelatedLinks({
                   the card's background should re-measure, because a
                   lighter card would fix this on its own.
                 */}
-                <ButtonLink href={featured.href}>Read the guide</ButtonLink>
+                <ButtonLink href={featured.href}>
+                  Read the guide<span className="sr-only">: {featured.label}</span>
+                </ButtonLink>
               </div>
             </div>
           </div>
@@ -539,7 +541,7 @@ export function RelatedLinks({
                       href={link.href}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground"
                     >
-                      Read the guide
+                      Read the guide<span className="sr-only">: {link.label}</span>
                       <span aria-hidden="true">&rarr;</span>
                     </Link>
                   </div>

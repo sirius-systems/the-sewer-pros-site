@@ -190,7 +190,7 @@ export const contactHubContent: ContactPageContent = {
       ),
     },
   ],
-  relatedPageIds: [id('hub-services'), id('hub-locations'), id('core-faq')],
+  relatedPageIds: [id('hub-services'), id('hub-locations'), id('core-faq'), id('core-about')],
 }
 
 /* ==========================================================================

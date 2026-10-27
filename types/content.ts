@@ -2769,6 +2769,11 @@ export interface LocationServiceCard {
   bestWhen: string
   bookingLabel: string
   secondaryLink: LocationLink
+  /**
+   * This location's own page for the service ("Sewer Cleaning in Ballwin"),
+   * set by the link plan for a hub's top services (lib/links/link-plan.ts).
+   */
+  localLink?: LocationLink
   image?: CardImage
   /** Opt-in review-build box when `image` is unset. Drawn only with `placeholder` metadata. */
   slotPlaceholder?: CardImage

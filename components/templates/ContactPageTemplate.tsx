@@ -216,7 +216,7 @@ export function ContactPageTemplate({ page, content }: ContactPageTemplateProps)
       </Section>
 
       {showsFaq && content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           entries={content.faq}
           title="Sewer Service and Scheduling FAQs"
           surface="muted"

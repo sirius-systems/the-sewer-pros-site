@@ -485,7 +485,7 @@ export function HomePageTemplate({ page, content }: HomePageTemplateProps) {
       )}
 
       {content.faq !== undefined && (
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           eyebrow={content.faqEyebrow}
           /*
             ⚠ SET HERE, NOT ON `FaqSection`'s DEFAULT. Five other

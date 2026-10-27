@@ -91,6 +91,12 @@ export function ServiceCardGrid({
                 >
                   {card.bookingLabel}
                 </a>
+                {card.localLink !== undefined && (
+                  <LocationLinkAnchor
+                    link={card.localLink}
+                    className="inline-flex min-h-11 items-center text-sm font-semibold text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                  />
+                )}
                 <LocationLinkAnchor
                   link={card.secondaryLink}
                   className="inline-flex min-h-11 items-center text-sm font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground"

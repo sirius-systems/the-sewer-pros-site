@@ -866,7 +866,7 @@ export function HubPageTemplate({
           See `HubPageContent.faqColumns` for why this is authored
           rather than derived from the entry count.
         */
-        <FaqSection
+        <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }}
           entries={content.faq}
           title={content.faqTitle}
           columns={content.faqColumns}

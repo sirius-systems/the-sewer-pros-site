@@ -1,3 +1,4 @@
+import { createFaqLinker, type FaqLinkContext } from '@/lib/links/faq-links'
 import type { ReactNode } from 'react'
 import { Section, Accordion, AccordionItem } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
@@ -33,7 +34,10 @@ export function FaqGrouped({
   entries,
   surface = 'muted',
   layout = 'columns',
+  linkContext,
 }: {
+  /** Links the first mention of a service in each answer (lib/links/faq-links.tsx). */
+  linkContext?: FaqLinkContext
   id?: string
   eyebrow?: string
   title: string
@@ -47,6 +51,7 @@ export function FaqGrouped({
    */
   layout?: 'columns' | 'single' | 'tabs'
 }) {
+  const linkAnswer = linkContext !== undefined ? createFaqLinker(linkContext) : undefined
   const tabs = layout === 'tabs'
   const single = layout === 'single' || tabs
   const groups: { label: string; id: string; items: GroupedFaqEntry[] }[] = []
@@ -105,7 +110,7 @@ export function FaqGrouped({
                         {entry.question}
                       </h4>
                       <div className="mt-3 text-body text-muted-foreground">
-                        {entry.answer}
+                        {linkAnswer !== undefined ? linkAnswer(entry.answer) : entry.answer}
                       </div>
                     </div>
                   ))}
@@ -118,7 +123,7 @@ export function FaqGrouped({
                     question={entry.question}
                     headingLevel="h4"
                   >
-                    {entry.answer}
+                    {linkAnswer !== undefined ? linkAnswer(entry.answer) : entry.answer}
                   </AccordionItem>
                 ))}
               </Accordion>

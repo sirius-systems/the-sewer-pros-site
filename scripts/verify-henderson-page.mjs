@@ -414,7 +414,8 @@ if (PLACEHOLDERS_ON) {
   check('no slot placeholders when the flag is off', got.length === 0 && dashed === 0)
 }
 check('program section renders its lists', /<ul[\s>]/.test(regionHtml('city-program', 'second-opinion')))
-check('FAQ answers contain no links (schema rule)', !/<a\s/.test(regionHtml('faq', 'cta')))
+// Visible answers may link to a service or audience page (docs/16 section 126.3); the schema text stays plain.
+check('FAQPage JSON-LD answers are plain text (no markup)', (graph.find((n) => n['@type'] === 'FAQPage')?.mainEntity ?? []).every((q) => !/<[a-z][^>]*>/i.test(q.acceptedAnswer?.text ?? '')))
 {
   const quotes = [...text.matchAll(/“([^”]{1,200})”/g)].map((m) => m[1])
   const longQuotes = quotes.filter((q) => q.split(/\s+/).length > 12)

@@ -1,3 +1,4 @@
+import { createFaqLinker, type FaqLinkContext } from '@/lib/links/faq-links'
 import type { ReactNode } from 'react'
 import {
   Section,
@@ -42,6 +43,8 @@ export interface FaqEntry {
 }
 
 export interface FaqSectionProps {
+  /** Links the first mention of a service in each answer (lib/links/faq-links.tsx). */
+  linkContext?: FaqLinkContext
   id?: string
   /**
    * Small line above the title.
@@ -122,7 +125,9 @@ export function FaqSection({
   surface = 'default',
   columns = 2,
   density = 'dense',
+  linkContext,
 }: FaqSectionProps) {
+  const linkAnswer = linkContext !== undefined ? createFaqLinker(linkContext) : undefined
   // 18 §120 — render nothing rather than an empty shell.
   if (entries.length === 0) return null
 
@@ -139,7 +144,7 @@ export function FaqSection({
           defaultOpen={openFirst && startIndex + i === 0}
           icon={entry.icon}
         >
-          {entry.answer}
+          {linkAnswer !== undefined ? linkAnswer(entry.answer) : entry.answer}
         </AccordionItem>
       ))}
     </Accordion>

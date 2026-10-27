@@ -553,14 +553,14 @@ export function ServicePageTemplateV2({
     'dense',
     'faq',
     v2.faqSurface === undefined ? (
-      <FaqGrouped
+      <FaqGrouped linkContext={{ pageId: page.id, locationId: page.locationId }}
         id="faq"
         eyebrow={v2.eyebrows?.faq}
         title={v2.faqTitle ?? 'Common questions'}
         entries={v2.faq}
       />
     ) : (
-      <FaqGrouped
+      <FaqGrouped linkContext={{ pageId: page.id, locationId: page.locationId }}
         id="faq"
         eyebrow={v2.eyebrows?.faq}
         title={v2.faqTitle ?? 'Common questions'}
