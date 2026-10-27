@@ -57,7 +57,9 @@ const body = html
 const mainStart = body.indexOf('<main')
 const mainEnd = body.indexOf('</main>')
 const main = mainStart >= 0 && mainEnd > mainStart ? body.slice(mainStart, mainEnd) : body
-const visible = strip(main)
+// The review carousel (every page type, 6a41d72) and the SMS consent legal text are not service copy.
+const copyMain = main.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
+const visible = strip(copyMain)
 
 /* ---- Head ---- */
 const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]
@@ -175,12 +177,9 @@ check('access points block present without a photograph', /Access points/.test(p
 const trust = ['Independent inspection and diagnostics', 'Sewer and drain specialists, not general plumbing', 'No repair-driven upselling', 'Serving St. Louis']
 check('trust strip present with the existing statements', trust.every((t) => visible.includes(t)))
 
-check('hero request card has a market select', /id="hero-lead-market"/.test(html))
-check(
-  'hero request card preselects the service',
-  /id="hero-lead-service"[\s\S]*?<option value="svc-drain-cleaning" selected/.test(html),
-)
-check('request form preselects the service', /id="request-lead-service"[\s\S]*?<option value="svc-drain-cleaning" selected/.test(html))
+check('hero survey form renders (service step first; location asked only when unknown)', /id="hero-lead-name"/.test(html) && /name="service"/.test(html))
+check('hero survey form preselects the service', /id="hero-lead-service-svc-drain-cleaning"[^>]*checked=""/.test(html))
+check('request survey form preselects the service', /id="request-survey-service-svc-drain-cleaning"[^>]*checked=""/.test(html))
 
 const ids = [...body.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])
 const dupes = ids.filter((v, i) => ids.indexOf(v) !== i)
@@ -189,24 +188,9 @@ check('no duplicate ids', dupes.length === 0, [...new Set(dupes)].join(', '))
 const navBlock = (main.match(/<nav[^>]*aria-labelledby="on-this-page"[\s\S]*?<\/nav>/) || [''])[0]
 const navHrefs = [...navBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 const navLabels = [...navBlock.matchAll(/<a [^>]*>([\s\S]*?)<\/a>/g)].map((m) => strip(m[1]))
-check(
-  '"On this page" list has the nine entries',
-  JSON.stringify(navLabels) ===
-    JSON.stringify([
-      'When to look into it',
-      'One drain or several',
-      'What cleaning can and cannot fix',
-      'How it works',
-      'Methods',
-      'The camera',
-      'What to ask for',
-      'Terms',
-      'Questions',
-    ]),
-  JSON.stringify(navLabels),
-)
+check('no "On this page" nav (removed, 05dcf85)', navHrefs.length === 0, JSON.stringify(navLabels))
 check('every "On this page" anchor resolves', navHrefs.every((h) => ids.includes(h)), navHrefs.filter((h) => !ids.includes(h)).join(', '))
-check('"On this page" nav renders exactly once in the DOM', (main.match(/aria-labelledby="on-this-page"/g) || []).length === 1)
+check('"On this page" nav is not rendered', (main.match(/aria-labelledby="on-this-page"/g) || []).length === 0)
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]

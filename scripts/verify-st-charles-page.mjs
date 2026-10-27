@@ -1,5 +1,5 @@
 /**
- * Post-build checks for /st-louis-mo/st-charles/.
+ * Post-build checks for /locations/st-louis-mo/st-charles/.
  *
  * Reads the static export in `out/` (run `npm run build` first). No
  * dependencies. Exits 1 on any failure.
@@ -11,7 +11,7 @@ import path from 'node:path'
 import { otherMarketPhoneHits } from './lib/market-phones.mjs'
 
 const ROOT = path.resolve('out')
-const PAGE = path.join(ROOT, 'st-louis-mo', 'st-charles', 'index.html')
+const PAGE = path.join(ROOT, 'locations', 'st-louis-mo', 'st-charles', 'index.html')
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.thesewerpros.com').replace(/\/+$/, '')
 const html = fs.readFileSync(PAGE, 'utf8')
 
@@ -154,7 +154,7 @@ check('meta description tag matches', html.includes(`<meta name="description" co
 
 /* ---- Head ---- */
 check('title (brand suffix once)', /<title>St\. Charles, MO Sewer Inspection &amp; Cleaning \| The Sewer Pros<\/title>/.test(html))
-check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/st-louis-mo/st-charles/"/>`))
+check('canonical', html.includes(`<link rel="canonical" href="${ORIGIN}/locations/st-louis-mo/st-charles/"/>`))
 check('robots index, follow (unchanged)', html.includes('<meta name="robots" content="index, follow"/>'))
 const h1s = [...bodyHtml.matchAll(/<h1[\s>][\s\S]*?<\/h1>/g)]
 check('one H1', h1s.length === 1)
@@ -170,7 +170,7 @@ const pos = ORDER.map((a) => bodyHtml.indexOf(`id="${a}"`))
 check('anchors appear in the required order', pos.every((p, i) => p > -1 && (i === 0 || p > pos[i - 1])), pos.join(','))
 const jump = ['#services', '#reviews', '#responsible', '#how-system', '#age', '#who-to-call', '#city-program', '#second-opinion', '#buying', '#faq']
 const jumpPos = jump.map((h) => bodyHtml.indexOf(`href="${h}"`))
-check('jump nav lists the ten links in order', jumpPos.every((p, i) => p > -1 && (i === 0 || p > jumpPos[i - 1])), jumpPos.join(','))
+check('no in-page jump nav (removed with the "On this page" navs, 05dcf85)', jumpPos.every((p) => p === -1), jumpPos.join(','))
 
 /* ---- Review band ---- */
 check('#reviews shows "4.9" and "from 595 Google reviews"', /4\.9.*from 595 Google reviews/.test(strip(reviewsHtml)))
@@ -265,7 +265,7 @@ for (const u of new Set(external.map((m) => m[1]))) console.log('  ext', u)
 /* ---- Sitemap ---- */
 const sitemapPath = path.join(ROOT, 'sitemap.xml')
 if (fs.existsSync(sitemapPath)) {
-  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/st-louis-mo/st-charles/`))
+  check('page is in the sitemap', fs.readFileSync(sitemapPath, 'utf8').includes(`${ORIGIN}/locations/st-louis-mo/st-charles/`))
 }
 
 /* ---- Market phones (whole document, header and footer included) ---- */

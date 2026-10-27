@@ -30,7 +30,6 @@ const PAGE = path.join(ROOT, 'services', 'recurring-sewer-backup-diagnosis', 'in
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
 const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
-const SLOTS_ON = process.env.NEXT_PUBLIC_SHOW_IMAGE_SLOTS !== 'false'
 const NAME = 'Recurring Sewer Backup Diagnosis'
 const H1 = 'Recurring Sewer Backup Diagnosis'
 const html = fs.readFileSync(PAGE, 'utf8')
@@ -65,7 +64,9 @@ const body = html
 const mainStart = body.indexOf('<main')
 const mainEnd = body.indexOf('</main>')
 const main = mainStart >= 0 && mainEnd > mainStart ? body.slice(mainStart, mainEnd) : body
-const visible = strip(main)
+// The review carousel (every page type, 6a41d72) and the SMS consent legal text are not service copy.
+const copyMain = main.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '')
+const visible = strip(copyMain)
 
 /* ---- Head ---- */
 const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]
@@ -222,10 +223,10 @@ check('five preparation items (the placeholder bullet is omitted)', count(/<li[\
 const trust = ['Independent inspection and diagnostics', 'Sewer and drain specialists, not general plumbing', 'No repair-driven upselling', 'Serving St. Louis']
 check('trust strip present with the existing statements', trust.every((t) => visible.includes(t)))
 
-check('hero request card has a market select', /id="hero-lead-market"/.test(html))
-check('hero request card preselects the service', /id="hero-lead-service"[\s\S]*?<option value="svc-recurring-sewer-backup-diagnosis" selected/.test(html))
-check('request form preselects the service', /id="request-lead-service"[\s\S]*?<option value="svc-recurring-sewer-backup-diagnosis" selected/.test(html))
-check('form message label is "What keeps happening?"', /What keeps happening\?/.test(html))
+check('hero survey form renders (service step first; location asked only when unknown)', /id="hero-lead-name"/.test(html) && /name="service"/.test(html))
+check('hero survey form preselects the service', /id="hero-lead-service-svc-recurring-sewer-backup-diagnosis"[^>]*checked=""/.test(html))
+check('request survey form preselects the service', /id="request-survey-service-svc-recurring-sewer-backup-diagnosis"[^>]*checked=""/.test(html))
+check('survey form message label is the shared "Anything we should know?"', /Anything we should know\?/.test(html))
 
 const ids = [...body.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])
 const dupes = ids.filter((v, i) => ids.indexOf(v) !== i)
@@ -234,22 +235,9 @@ check('no duplicate ids', dupes.length === 0, [...new Set(dupes)].join(', '))
 const navBlock = (main.match(/<nav[^>]*aria-labelledby="on-this-page"[\s\S]*?<\/nav>/) || [''])[0]
 const navHrefs = [...navBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 const navLabels = [...navBlock.matchAll(/<a [^>]*>([\s\S]*?)<\/a>/g)].map((m) => strip(m[1]))
-check(
-  '"On this page" list has the seven entries',
-  JSON.stringify(navLabels) ===
-    JSON.stringify([
-      'When it may be worth diagnosing',
-      'What commonly causes a repeat backup',
-      'What a camera can and cannot show',
-      'What happens during a visit',
-      'Cleaning, camera, or locating',
-      'What to ask for and keep',
-      'Questions',
-    ]),
-  JSON.stringify(navLabels),
-)
+check('no "On this page" nav (removed, 05dcf85)', navHrefs.length === 0, JSON.stringify(navLabels))
 check('every "On this page" anchor resolves', navHrefs.every((h) => ids.includes(h)), navHrefs.filter((h) => !ids.includes(h)).join(', '))
-check('"On this page" nav renders exactly once in the DOM', count(/aria-labelledby="on-this-page"/g, main) === 1)
+check('"On this page" nav is not rendered', count(/aria-labelledby="on-this-page"/g, main) === 0)
 check('nav is not hidden from assistive technology', !/aria-hidden="true"[^>]*aria-labelledby="on-this-page"|aria-labelledby="on-this-page"[^>]*aria-hidden="true"/.test(navBlock) && !/<nav[^>]*\shidden/.test(navBlock))
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
@@ -319,33 +307,9 @@ check(
 
 /* ---- Image slots ---- */
 const slotBoxes = [...body.matchAll(/data-image-placeholder="([^"]*)"/g)].map((m) => m[1])
-const SLOT_FILES = [
-  'the-sewer-pros-recurring-sewer-backup-diagnosis-hero-cleanout-16x9.webp',
-  'the-sewer-pros-recurring-sewer-backup-diagnosis-explainer-monitor-4x3.webp',
-  'the-sewer-pros-recurring-sewer-backup-diagnosis-causes-root-footage-4x3.webp',
-  'the-sewer-pros-recurring-sewer-backup-diagnosis-limits-waterline-footage-7x4.webp',
-  'the-sewer-pros-recurring-sewer-backup-diagnosis-process-cleanout-access-4x3.webp',
-  'the-sewer-pros-recurring-sewer-backup-diagnosis-process-locate-receiver-4x3.webp',
-  'the-sewer-pros-recurring-sewer-backup-diagnosis-records-video-and-findings-4x3.webp',
-]
-const SLOT_LABELS = [
-  'A technician at an exterior cleanout with camera reel and monitor set up at a residential property',
-  'A technician reviewing sewer camera footage on a monitor',
-  'A real frame from an inspection video showing visible root intrusion at a joint or crack (no identifiers)',
-  'A real frame showing standing water in a line, where the waterline limits the view',
-  'An open cleanout with a camera cable or cleaning hose entering it',
-  'A technician holding a locating receiver over a yard or driveway during a locate',
-  'A monitor or tablet showing inspection video beside written findings, with customer details removed',
-]
-if (SLOTS_ON) {
-  check('seven image-slot boxes (flag on)', slotBoxes.length === 7, String(slotBoxes.length))
-  check('slot boxes carry the content-doc filenames', SLOT_FILES.every((f) => body.includes(f)), SLOT_FILES.filter((f) => !body.includes(f)).join(', '))
-  check('slot boxes carry the content-doc labels', SLOT_LABELS.every((l) => visible.includes(l)), SLOT_LABELS.filter((l) => !visible.includes(l)).join(' | '))
-  check('slot aspects are 16/9, 4/3 and 7/4 only', count(/aspect-video/g, body) >= 1 && count(/aspect-\[7\/4\]/g, body) === 1)
-} else {
-  check('no slot boxes and no data-image-placeholder markup (flag off)', slotBoxes.length === 0 && !SLOT_FILES.some((f) => body.includes(f)))
-}
-check('no alt text is shipped for a missing photograph', !/alt="Technician setting up a sewer camera/.test(html) && !/alt="Camera view of tree roots/.test(html))
+// Generated images are approved for every slot (DEC-145): all slots are filled, so no placeholder box is drawn in any mode.
+check('no slot boxes and no data-image-placeholder markup (every slot is filled)', slotBoxes.length === 0)
+check('image alt text describes the scene only (DEC-145: no real-job, real-customer or before-and-after claims)', !/alt="[^"]*(our technician|recent job|real customer|actual customer|before and after|before-and-after)/i.test(html))
 check('no literal "IMAGE SLOT" marker', !/IMAGE SLOT/.test(html))
 
 /* ---- Rhythm: brand surfaces are the independent band and the final request, with >= 4 sections between ---- */
