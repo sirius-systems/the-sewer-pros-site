@@ -308,7 +308,7 @@ const FORBIDDEN = [
   'insured', 'as in most', 'neighbouring', 'programme', 'enquiries', 'unlike', 'to the property line',
   'all the way to the main', '702-229-2489', 'still open', 'accepting applications', 'you will be reimbursed',
   'Clark County', 'Water Reclamation District', 'Contractors Board', 'owner-builder', 'Placeholder',
-  'NOT FOR PRODUCTION', 'testimonial', 'free estimate', 'newest',
+  'NOT FOR PRODUCTION', 'testimonial', 'free second opinion', 'newest',
 ]
 const lowerText = text.toLowerCase()
 const forbiddenHits = FORBIDDEN.filter((w) => lowerText.includes(norm(w).toLowerCase()))

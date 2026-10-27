@@ -262,7 +262,7 @@ export const businessCategories = [
  * copy for these assertions rather than relying on review alone. The
  * list is a governance artefact, not display data — never render it.
  *
- * ⚠ 'same-day service' and 'free estimates' now HAVE that documented
+ * ⚠ 'same-day service' and 'free second opinion' now HAVE that documented
  * evidence — DEC-088 (owner-confirmed 2026-09-01) — and are published
  * via `data/business/offers.ts` -> `ConfidenceModule`, homepage only.
  * They stay listed here because this array still governs every OTHER
@@ -284,7 +284,7 @@ export const CLAIMS_REQUIRING_VERIFICATION = [
   'warranties',
   'flat-rate pricing',
   'free inspections',
-  'free estimates',
+  'free second opinion',
   'licensed plumber status',
   'bonded status',
   'insured status',

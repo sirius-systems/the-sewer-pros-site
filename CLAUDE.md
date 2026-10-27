@@ -1079,7 +1079,7 @@ Do not copy:
 * guarantees
 * emergency claims
 * same-day claims
-* free estimates
+* free-estimate claims (The Sewer Pros' own approved offer is the free second opinion, DEC-148; do not copy Silver State's)
 * pricing
 * service claims
 * employee identities

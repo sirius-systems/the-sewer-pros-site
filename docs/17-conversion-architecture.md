@@ -1644,7 +1644,7 @@ unless explicitly offered and documented by the business.
 
 Pricing is a business decision, not a CRO assumption.
 
-`DEC-088` supplies the documented exception for one item on this list: free estimates are owner-confirmed and approved. It authorizes no pricing figure, no discount, and no other free-service claim.
+`DEC-088` supplies the documented exception for one item on this list: free second opinions are owner-confirmed and approved. It authorizes no pricing figure, no discount, and no other free-service claim.
 
 ---
 
@@ -1670,12 +1670,12 @@ Promotions may be introduced later if the business approves them.
 
 ---
 
-# 80. "Free Estimate" Guardrail
+# 80. "Free Second Opinion" Guardrail
 
 Do not use:
 
 ```text
-Free Estimate
+Free Second Opinion
 ```
 
 for inspection or cleaning unless the business actually provides that offer.
@@ -1684,9 +1684,9 @@ A sewer camera inspection itself may be a paid diagnostic service.
 
 Do not unintentionally devalue the company's core service.
 
-`DEC-088` is that offer. Free estimates are owner-confirmed and approved for the homepage confidence module.
+`DEC-088` is that offer. Free second opinions are owner-confirmed and approved for the homepage confidence module.
 
-The approval is scoped: `'free estimates'` remains in `CLAIMS_REQUIRING_VERIFICATION`, which still governs every appearance outside that module, and the sewer camera inspection itself remains a paid diagnostic service.
+The approval is scoped: `'free second opinion'` remains in `CLAIMS_REQUIRING_VERIFICATION`, which still governs every appearance outside that module, and the sewer camera inspection itself remains a paid diagnostic service.
 
 ---
 

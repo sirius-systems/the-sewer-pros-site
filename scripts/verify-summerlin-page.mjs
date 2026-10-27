@@ -300,7 +300,7 @@ const FORBIDDEN = [
   'census-designated', 'Since 2011', '2011', '2019', '2003', '41.8', 'same-day', '24/7', '24-hour', 'guarantee',
   'insured', 'Public Works', 'every other authority', 'programme', 'enquiries', '229-6541', '229-6251', '434-6600',
   '229-2489', 'porous', 'caliche', 'conservation', 'still open', 'accepting applications', 'you will be reimbursed',
-  'TODO', 'Placeholder', 'NOT FOR PRODUCTION', 'testimonial', 'free estimate', 'median year', 'Census', 'built in',
+  'TODO', 'Placeholder', 'NOT FOR PRODUCTION', 'testimonial', 'free second opinion', 'median year', 'Census', 'built in',
   'acres', 'short distance apart',
 ]
 const lowerText = text.toLowerCase()

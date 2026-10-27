@@ -9,7 +9,7 @@
  * The page is market-neutral: no phone number or `tel:` link before the
  * company footer (DEC-071), no repair offered as a service, and no claim
  * that video, written findings, coding, locating or re-inspection are
- * included. The free-estimate and same-day wording is the owner-approved
+ * included. The free-second-opinion and same-day wording is the owner-approved
  * DEC-088 text and may appear only where the content doc puts it.
  * FAQPage JSON-LD must equal the visible FAQ (DEC-114).
  */
@@ -228,17 +228,20 @@ check('no literal [CONFIRM placeholder', !/\[CONFIRM/i.test(html))
 
 // The owner-approved DEC-088 sentences and the one 24/7 sentence are the only
 // permitted hits for their words. Count each, then remove them before scanning.
-const FREE = 'Ask about a free estimate before scheduling.'
+const FREE = 'Ask about a free second opinion before scheduling.'
+const FREE_COST = 'If cost is the concern, ask about a free second opinion before scheduling.'
 const SAME =
   'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends.'
 const NOT247 = 'We do not offer 24/7 or emergency service.'
 const v = flat(visible)
-check('free-estimate sentence appears 3 times (same-day FAQ, cost FAQ, final request)', count(v, flat(FREE)) === 3, String(count(v, flat(FREE))))
+check('free-second-opinion sentence appears once (final request)', count(v, flat(FREE)) === 1, String(count(v, flat(FREE))))
+check('cost FAQ free-second-opinion sentence appears once', count(v, flat(FREE_COST)) === 1, String(count(v, flat(FREE_COST))))
 check('same-day sentence appears 2 times (same-day FAQ, final request)', count(v, flat(SAME)) === 2, String(count(v, flat(SAME))))
 check('"We do not offer 24/7 or emergency service." appears once', count(v, flat(NOT247)) === 1, String(count(v, flat(NOT247))))
 
 const scrubbed = (s) =>
   flat(s)
+    .split(flat(FREE_COST)).join(' ')
     .split(flat(FREE)).join(' ')
     .split(flat(SAME)).join(' ')
     .split(flat(NOT247)).join(' ')
@@ -262,7 +265,7 @@ const forbidden = [
   'same-day',
   '24/7',
   'emergency',
-  'free estimate',
+  'free second opinion',
   'free inspection',
   'discount',
   'pacp',

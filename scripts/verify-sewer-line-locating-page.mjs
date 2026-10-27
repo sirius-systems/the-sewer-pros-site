@@ -308,7 +308,7 @@ const forbidden = [
   'same-day',
   '24/7',
   'emergency',
-  'free estimate',
+  'free second opinion',
   'free inspection',
   'discount',
   'pacp',

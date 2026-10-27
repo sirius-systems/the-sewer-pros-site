@@ -306,7 +306,7 @@ const FORBIDDEN = [
   'guarantee', 'insured', 'City of Las Vegas', 'programme', 'enquiries', 'property line', 'all the way to the main',
   '2770', '13.24', '13.28', 'porous', 'caliche', 'conservation', '633-1216', '633-1536', '399-0383',
   'still open', 'accepting applications', 'you will be reimbursed', 'Placeholder', 'NOT FOR PRODUCTION',
-  'testimonial', 'free estimate', 'newest', 'median year', 'Census', 'built in', 'Not able to locate', 'not able to locate',
+  'testimonial', 'free second opinion', 'newest', 'median year', 'Census', 'built in', 'Not able to locate', 'not able to locate',
 ]
 const lowerText = text.toLowerCase()
 const forbiddenHits = FORBIDDEN.filter((w) => lowerText.includes(norm(w).toLowerCase()))

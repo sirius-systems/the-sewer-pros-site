@@ -50,7 +50,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       no traffic data justifies a change. The longer phrase is carried by
       the eyebrow and the SEO title. Changing it is a one-line edit.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free second opinion,
       guarantee, warranty, licence (DEC-072), insurance wording, response
       time, same-day or emergency claim, equipment spec, duration
       or inspection interval in years. Only the owner-confirmed equipment
@@ -609,7 +609,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       `faq` fields were replaced by their v2 equivalents for this entry
       only; every other service page is untouched.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free second opinion,
       guarantee, warranty, licence (DEC-072), insurance wording, response
       time, same-day or emergency claim, equipment model or spec, duration
       or interval in years. The page deliberately states no standard time
@@ -1252,7 +1252,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       only; every other service page is untouched.
 
       ⚠ OWNER-APPROVED WORDING (DEC-088), USED VERBATIM AND ONLY HERE. The
-      free-estimate sentence and the same-day sentence appear in the
+      free-second-opinion sentence and the same-day sentence appear in the
       same-day FAQ answer and the final request (the trust strip is the
       shared one every service page uses), exactly as the
       content doc shows them. They are not paraphrased, extended or moved,
@@ -1649,7 +1649,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'Planning',
           question: 'Do you offer same-day hydro jetting?',
           answer:
-            'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends. We do not offer 24/7 or emergency service. Ask about a free estimate before scheduling.',
+            'Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends. We do not offer 24/7 or emergency service.',
         },
         {
           group: 'Planning',
@@ -1661,7 +1661,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'Planning',
           question: 'How much does it cost?',
           answer:
-            'Pricing depends on the scope of work, so we do not publish a standard price. Ask about a free estimate before scheduling.',
+            'Pricing depends on the scope of work, so we do not publish a standard price. If cost is the concern, ask about a free second opinion before scheduling.',
         },
         {
           group: 'Planning',
@@ -1710,7 +1710,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         title: 'Request hydro jetting',
         intro: [
           'Tell us what is happening with your line.',
-          'Describe the symptoms, how long they have been going on, and whether you have had the line cleaned before. We will tell you what we can do and what is included. Ask about a free estimate before scheduling. Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends.',
+          'Describe the symptoms, how long they have been going on, and whether you have had the line cleaned before. We will tell you what we can do and what is included. Ask about a free second opinion before scheduling. Same-day appointments can be arranged when scheduling permits, Monday through Friday, 8:00am to 4:00pm. Not available on weekends.',
         ],
         scopeNote:
           'We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
@@ -1750,7 +1750,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       with an ampersand (matches the shared registries). Sentence copy may say
       "cleaning and camera inspection" generically.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free second opinion,
       guarantee, warranty, licence (DEC-072), insurance wording, response
       time, same-day or emergency claim, equipment model or spec, duration
       or interval in years. The page deliberately states no standard time
@@ -2313,7 +2313,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       only; every other service page is untouched. Copy source:
       sewer-line-locating-page-content.md.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free second opinion,
       guarantee, warranty, licence (DEC-072), insurance wording, response
       time, same-day or emergency claim, equipment frequency or spec (only
       the owner-confirmed locator name, DEC-132, is named), maximum locating depth, duration or interval in years. The
@@ -2895,7 +2895,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       only; every other service page is untouched. Copy source:
       drain-cleaning-page-content.md.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free second opinion,
       guarantee, warranty, licence (DEC-072), insurance wording, response
       time, same-day or emergency claim, equipment brand, model or spec,
       PSI or GPM, duration or interval. The page deliberately states no
@@ -3663,7 +3663,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       v2 equivalents for this entry only; every other service page is
       untouched. Copy source: pre-purchase-sewer-inspection-page-content.md.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free second opinion,
       guarantee, warranty, licence (DEC-072, DEC-090), insurance wording,
       response time, same-day or emergency claim, equipment brand, model
       or spec, duration or turnaround. The time and cost questions state
@@ -4860,7 +4860,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'The visit and your records',
           question: 'How long does it take, and how much does it cost?',
-          answer: `Time and cost depend on access, line length and pipe size, how much obstruction is present, whether cleaning is needed, and whether locating and video are included. We do not publish a standard time or price on this page. Ask about a free estimate before scheduling.`,
+          answer: `Time and cost depend on access, line length and pipe size, how much obstruction is present, whether cleaning is needed, and whether locating and video are included. We do not publish a standard time or price on this page. If cost is the concern, ask about a free second opinion before scheduling.`,
         },
         {
           group: 'The visit and your records',
@@ -4897,7 +4897,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       request: {
         title: 'Request a sewer backup diagnosis',
         intro: [
-          'Choose your service area and tell us what keeps happening. Ask about a free estimate before scheduling.',
+          'Choose your service area and tell us what keeps happening. Ask about a free second opinion before scheduling.',
         ],
         scopeNote:
           'This service is designed for accessible residential sewer and drain lines. Equipment selection and available service depend on the entry point, pipe size, line condition, and scope of work. We provide cleaning, camera diagnostics, and line locating only. We do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
@@ -4947,7 +4947,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       the independent band (the shared band renders now), and the "we
       recommend an interval" wording. The page is residential-first.
 
-      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free estimate,
+      ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, offer, free second opinion,
       same-day or emergency claim, guarantee, warranty, licence (DEC-072),
       insurance wording, response time, equipment brand, model or spec,
       pressure, duration, or interval in months or years. The interval, time
