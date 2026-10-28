@@ -52,15 +52,24 @@
   "words": []
  },
  "images/brand/about/hero/the-sewer-pros-about-independent-sewer-inspection-hero.webp": {
-  "sha256": "56eaa5f90aacb894bac975c5bd47161e0474b570c03e9e0011d0a0f2f63f9db6",
-  "words": []
+  "sha256": "f63222b76f8786e2f415df3a32524df48262843861d18bfe61242582e1f3dec1",
+  "words": [
+   {
+    "text": "Nox",
+    "confidence": 77
+   },
+   {
+    "text": "Vid",
+    "confidence": 77
+   }
+  ]
  },
  "images/brand/about/the-sewer-pros-about-contact-cta-sewer-camera-inspection-16x9.webp": {
-  "sha256": "14014582b15deaa82ba3ef5f5e38e85102efafb83b12ed2d9348eea20a2dc8d1",
+  "sha256": "184301bd7513b35f52bd90ea5d37e299eddfb05f2cf4b49dcc78a3385b743e07",
   "words": []
  },
  "images/brand/about/the-sewer-pros-about-what-to-expect-sewer-camera-inspection-4x3.webp": {
-  "sha256": "e27e785719d75f7e3a20495a44673c3f110fb4464bd709959a5ee7e213ec1c47",
+  "sha256": "27c8feb778fb0c3e680a3990cba10db46d78b8f632d27e9c91c64268bcc7689d",
   "words": []
  },
  "images/brand/logos/01-primary-logo/the-sewer-pros-logo-original.webp": {
