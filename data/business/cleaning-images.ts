@@ -25,7 +25,7 @@ const DIR = '/images/services/sewer-cleaning/'
 export const cleaningImageSlots = {
   'cleaning-definition': {
     preferred: `${DIR}the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp`,
-    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor',
+    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID camera reel and monitor',
     // Still accurate for the supplied photo: the cleaning cable is in the cleanout.
     caption: 'Cleaning equipment is connected at an accessible cleanout.',
     width: 1448,
@@ -36,7 +36,7 @@ export const cleaningImageSlots = {
   },
   'cleaning-process': {
     preferred: `${DIR}the-sewer-pros-sewer-cleaning-visit-process-ridgid-seesnake-4x3.webp`,
-    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor',
+    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID camera reel and monitor',
     // Describes the photo only. It makes no claim about which equipment or
     // method any given visit uses.
     caption: 'Example: a cleaning machine at an open cleanout, with a separate camera-inspection reel beside it.',
@@ -52,7 +52,7 @@ export const cleaningImageSlots = {
   // camera equipment, so it no longer backs this slot.
   'cleaning-equipment': {
     preferred: `${DIR}the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp`,
-    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor',
+    alt: 'Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID camera reel and monitor',
     caption: 'Cleaning equipment is connected at an accessible cleanout.',
     width: 1448,
     height: 1086,
@@ -62,7 +62,7 @@ export const cleaningImageSlots = {
   },
   'cleaning-monitor': {
     preferred: `${DIR}the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-review-4x3.webp`,
-    alt: 'RIDGID SeeSnake series monitor showing sewer camera footage of a pipe interior, beside a camera reel and camera head',
+    alt: 'RIDGID monitor showing sewer camera footage of a pipe interior, beside a camera reel and camera head',
     caption: 'A monitor showing camera footage, with property details removed.',
     width: 1448,
     height: 1086,

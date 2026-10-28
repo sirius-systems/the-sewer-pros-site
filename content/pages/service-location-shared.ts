@@ -73,7 +73,7 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     src: (m) => `${RENDER_DIR}residential/the-sewer-pros-${m}-residential-street-manhole-curb-4x3.webp`,
   },
   'Ordinary city street, manhole and curb, no business names or identifiable buildings': {
-    alt: 'Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk',
+    alt: 'Street with a manhole cover in the pavement, low buildings beyond, and a yellow locator receiver on the sidewalk',
     src: () => `${RENDER_DIR}commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`,
   },
   'Older home, cleanout visible, no identifiable address': {
@@ -85,11 +85,11 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-floor-drain-cleanout-access-4x3.webp`,
   },
   'Exterior cleanout cap at the base of a house': {
-    alt: 'White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it',
+    alt: 'White threaded cleanout cap at the base of an exterior wall, with a camera reel and open monitor on mulch beside it',
     src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp`,
   },
   'Capped exterior cleanout at a residential property, no identifiers': {
-    alt: 'White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it',
+    alt: 'White threaded cleanout cap at the base of an exterior wall, with a camera reel and open monitor on mulch beside it',
     src: () => `${RENDER_DIR}cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp`,
   },
   'Kitchen sink with a slow drain, no people': {
@@ -109,7 +109,7 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     src: () => `${RENDER_DIR}equipment/the-sewer-pros-jetting-nozzle-hose-at-sewer-line-4x3.webp`,
   },
   'Technician at a for-sale property starting a pre-purchase scope': {
-    alt: 'Sewer camera reel, a small monitor and a clipboard with a form on the ground beside an open cleanout at the corner of a house, with other homes across the street',
+    alt: 'Sewer camera reel, a small monitor and a clipboard on the ground beside an open cleanout at a house corner',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp`,
   },
   'Cable or hose entering a cleanout, close up': {
@@ -125,7 +125,7 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     src: () => `${RENDER_DIR}equipment/the-sewer-pros-jetter-trailer-at-curb-4x3.webp`,
   },
   'Technician at a for-sale property starting a scope': {
-    alt: 'Sewer camera reel, a small monitor and a clipboard with a form on the ground beside an open cleanout at the corner of a house, with other homes across the street',
+    alt: 'Sewer camera reel, a small monitor and a clipboard on the ground beside an open cleanout at a house corner',
     src: () => `${RENDER_DIR}residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp`,
   },
   'Technician and buyer reviewing findings, faces not identifiable': {
@@ -157,7 +157,7 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
     src: () => `${RENDER_DIR}equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp`,
   },
   'Drain machine at a floor or tub drain': {
-    alt: 'A red cleaning machine on a bare concrete floor with its cable running down an open floor drain, and the drain grate lying beside it',
+    alt: 'A red cleaning machine on a concrete floor with its cable running into an open floor drain, the grate beside it',
     src: () => `${RENDER_DIR}equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp`,
   },
   'Fence line and planting beds where digging might be planned, nothing identifiable': {

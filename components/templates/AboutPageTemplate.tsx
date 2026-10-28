@@ -136,6 +136,7 @@ export function AboutPageTemplate({ page, content }: AboutPageTemplateProps) {
                 alt=""
                 fill
                 priority
+                fetchPriority="high"
                 sizes="100vw"
                 /*
                   ⚠ `object-[65%_50%]`, NOT CENTRED. The equipment in

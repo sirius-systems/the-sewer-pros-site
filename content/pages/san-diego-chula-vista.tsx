@@ -143,7 +143,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'svc-drain',
     ratio: '4:3',
-    alt: 'A red cleaning machine on a bare concrete floor with its cable running down an open floor drain, and the drain grate lying beside it',
+    alt: 'A red cleaning machine on a concrete floor with its cable running into an open floor drain, the grate beside it',
     shot: 'Drain machine at a floor or tub drain',
     src: '/images/shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
@@ -151,7 +151,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'svc-prepurchase',
     ratio: '4:3',
-    alt: 'Sewer camera reel, a small monitor and a clipboard with a form on the ground beside an open cleanout at the corner of a house, with other homes across the street',
+    alt: 'Sewer camera reel, a small monitor and a clipboard on the ground beside an open cleanout at a house corner',
     shot: 'Technician scoping a for-sale property, clipboard visible',
     src: '/images/shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
@@ -183,7 +183,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'call-cleanout',
     ratio: '4:3',
-    alt: 'White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it',
+    alt: 'White threaded cleanout cap at the base of an exterior wall, with a camera reel and open monitor on mulch beside it',
     shot: 'Exterior cleanout cap at the base of a house',
     src: '/images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
@@ -223,7 +223,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
   {
     id: 'buy-buyer',
     ratio: '4:3',
-    alt: 'Sewer camera reel, a small monitor and a clipboard with a form on the ground beside an open cleanout at the corner of a house, with other homes across the street',
+    alt: 'Sewer camera reel, a small monitor and a clipboard on the ground beside an open cleanout at a house corner',
     shot: 'Technician at a for-sale property starting a pre-purchase scope',
     src: '/images/shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp',
     source: RENDER_IMAGE_SOURCE,

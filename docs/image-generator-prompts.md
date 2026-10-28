@@ -65,7 +65,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, tools, wrench, cracked pipe, open pipe, window, door, house number, mailbox, vehicle
   ```
 
-- **Alt text:** White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it
+- **Alt text:** White threaded cleanout cap at the base of an exterior wall, with a camera reel and open monitor on mulch beside it
 
 ## 3. IMG-03  Residential street, manhole and curb (St. Louis)
 
@@ -221,7 +221,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
   people, faces, hands, crew, technician, truck, van, trailer, car, vehicle, license plate, signage, sign, readable text, letters, numbers, house number, address, logo, brand name, branded lettering, equipment brand, caption, watermark, sewage, waste, pipe interior, inside of a pipe, camera view, camera frame, inspection footage, inspection video frame, video still, visible damage, crack, defect, broken pipe, flood, before and after, split image, comparison, repair, excavation, trench, heavy machinery, cartoon, illustration, vector art, painting, readable storefront, awning text, parked car, pedestrians, traffic light, street sign
   ```
 
-- **Alt text:** Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk
+- **Alt text:** Street with a manhole cover in the pavement, low buildings beyond, and a yellow locator receiver on the sidewalk
 
 ## 11. IMG-29  Residential street, manhole and curb (Las Vegas)
 

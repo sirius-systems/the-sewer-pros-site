@@ -91,6 +91,7 @@ export function AudienceHubTemplate({ page, content }: AudienceHubTemplateProps)
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover"
           />
