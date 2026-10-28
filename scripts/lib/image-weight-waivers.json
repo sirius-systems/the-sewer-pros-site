@@ -1,9 +1,4 @@
 {
- "images/brand/about/hero/the-sewer-pros-about-independent-sewer-inspection-hero.webp": {
-  "bytes": 216226,
-  "budget": 204800,
-  "reason": "at the quality floor (q70, hero, not resized); a smaller source export is needed to reach the budget"
- },
  "images/services/service-cards/the-sewer-pros-preventative-sewer-maintenance.webp": {
   "bytes": 206034,
   "budget": 204800,
@@ -36,11 +31,6 @@
  },
  "images/services/service-cards/the-sewer-pros-pre-purchase-sewer-inspection.webp": {
   "bytes": 122812,
-  "budget": 102400,
-  "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
- },
- "images/brand/about/the-sewer-pros-about-what-to-expect-sewer-camera-inspection-4x3.webp": {
-  "bytes": 109392,
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
  },
@@ -318,5 +308,10 @@
   "bytes": 143018,
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
+ },
+ "images/brand/about/hero/the-sewer-pros-about-independent-sewer-inspection-hero.webp": {
+  "bytes": 206432,
+  "budget": 204800,
+  "reason": "at the quality floor (q70, hero, not resized); a smaller source export is needed to reach the budget"
  }
 }
