@@ -25,7 +25,7 @@
   <!-- Background and title band -->
   <rect width="1600" height="1200" fill="#F4F7F8"/>
   <g id="heading" aria-label="Diagram heading">
-    <text x="80" y="82" class="label" font-size="34">Residential sewer connection — general side view</text>
+    <text x="80" y="82" class="label" font-size="34">Residential sewer connection - general side view</text>
     <line x1="80" y1="110" x2="1520" y2="110" stroke="#D7E0E5" stroke-width="2"/>
   </g>
 

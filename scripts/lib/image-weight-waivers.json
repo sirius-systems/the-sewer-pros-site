@@ -119,11 +119,6 @@
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
  },
- "images/shared/residential/the-sewer-pros-las-vegas-residential-street-manhole-curb-4x3.webp": {
-  "bytes": 108704,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
  "images/markets/locations-hub/the-sewer-pros-st-louis-sewer-service-area-hero.webp": {
   "bytes": 312986,
   "budget": 204800,
@@ -154,11 +149,6 @@
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
  },
- "images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp": {
-  "bytes": 151902,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
  "images/shared/equipment/the-sewer-pros-technician-locator-receiver-yard-paint-marks-4x3.webp": {
   "bytes": 136524,
   "budget": 102400,
@@ -169,50 +159,15 @@
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
  },
- "images/shared/residential/the-sewer-pros-las-vegas-older-home-visible-cleanout-4x3.webp": {
-  "bytes": 312146,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
  "images/shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp": {
   "bytes": 144444,
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
  },
- "images/shared/residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp": {
-  "bytes": 274072,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
- "images/shared/residential/the-sewer-pros-san-diego-residential-street-manhole-curb-4x3.webp": {
-  "bytes": 172556,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
- "images/shared/residential/the-sewer-pros-san-diego-older-home-visible-cleanout-4x3.webp": {
-  "bytes": 254634,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
- "images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp": {
-  "bytes": 132250,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
- "images/shared/residential/the-sewer-pros-st-louis-residential-street-manhole-curb-4x3.webp": {
-  "bytes": 273174,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
- },
  "images/shared/pipe-interiors/the-sewer-pros-monitor-showing-pipe-interior-4x3.webp": {
   "bytes": 135472,
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
- },
- "images/shared/residential/the-sewer-pros-st-louis-older-home-visible-cleanout-4x3.webp": {
-  "bytes": 360020,
-  "budget": 102400,
-  "reason": "at the quality floor (q68, approved render, not resized); a smaller source export is needed to reach the budget"
  },
  "images/shared/cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp": {
   "bytes": 166862,
@@ -351,6 +306,16 @@
  },
  "images/markets/st-louis-mo/services/the-sewer-pros-st-louis-pre-purchase-sewer-inspection.webp": {
   "bytes": 222650,
+  "budget": 102400,
+  "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
+ },
+ "images/services/pre-purchase-sewer-inspection/the-sewer-pros-independent-sewer-inspection-vs-repair-company-inspection-ridgid-seesnake-4x3.webp": {
+  "bytes": 119144,
+  "budget": 102400,
+  "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
+ },
+ "images/services/hydro-jetting/the-sewer-pros-hydro-jetting-vs-sewer-snaking-cleaning-methods-4x3.webp": {
+  "bytes": 143018,
   "budget": 102400,
   "reason": "at the quality floor (q70); a smaller source export is needed to reach the budget"
  }

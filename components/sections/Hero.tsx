@@ -19,6 +19,10 @@ import { cn } from '@/lib/utils/cn'
  *   image-led — full-bleed image with a smaller text block. Only when
  *               the visual is the strongest asset.
  *
+ * `editorial` also takes a `media` node since Oct 27, 2026 (the audience pages and
+ * the Resources hub carry an existing render beside the copy). Without `media` it is
+ * unchanged.
+ *
  * ⚠ `split` and `image-led` accept a `media` node but no image is
  * shipped with this component. 18 §28-34 require real inspection
  * photography, and §34 rules out "unrealistic AI imagery" and staged
@@ -131,7 +135,7 @@ export function Hero({
   className,
 }: HeroProps) {
   const hasAside = aside !== undefined
-  const hasMedia = !hasAside && media !== undefined && variant !== 'editorial'
+  const hasMedia = !hasAside && media !== undefined
   const onBackdrop = backdrop !== undefined
 
   const copy = (

@@ -213,6 +213,12 @@ export function auditPage(file, outDir) {
   // Stylesheet-level background images are checked once per site, not per page.
   const record = (r) => {
     if (!r.src) return r
+    if (r.srcset) {
+      r.srcsetUrls = r.srcset.split(',').map((x) => x.trim().split(/\s+/)[0]).filter(Boolean)
+      const resolved = r.srcsetUrls.map((u) => resolveSrc(u, outDir)).filter((q) => q.path)
+      r.srcsetMissing = resolved.filter((q) => !fileFacts(q.path).exists).map((q) => q.publicPath)
+      r.srcsetResolved = resolved.map((q) => path.relative(outDir, q.path).replace(/\\/g, '/'))
+    }
     const res = resolveSrc(r.src, outDir)
     r.resolved = res.path ? path.relative(outDir, res.path).replace(/\\/g, '/') : null
     r.external = res.external

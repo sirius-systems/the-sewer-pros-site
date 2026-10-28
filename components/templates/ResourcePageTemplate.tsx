@@ -5,6 +5,7 @@ import {
   CtaSection,
   relatedLinksRenders,
   faqSectionRenders,
+  EditorialMedia,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { MasterPageRecord, ResourcePageContent } from '@/types'
@@ -142,6 +143,8 @@ export function ResourcePageTemplate({
             {content.hero.intro}
           </div>
         )}
+
+        <EditorialMedia pathname={page.pathname} />
       </Section>
 
       {content.body !== undefined && (

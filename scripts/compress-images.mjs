@@ -28,10 +28,14 @@ const FLOOR = 62
 const pages = auditSite('out')
 const files = publicFiles('public')
 const s = summarize(pages, files)
-const targets = s.overBudget.filter((f) => f.path.endsWith('.webp'))
+const approvedSet = new Set(Object.keys(JSON.parse(fs.readFileSync('scripts/lib/approved-renders.json', 'utf8'))))
+const WAIVER_FILE = 'scripts/lib/image-weight-waivers.json'
+const existingWaivers = fs.existsSync(WAIVER_FILE) ? JSON.parse(fs.readFileSync(WAIVER_FILE, 'utf8')) : {}
+// A waived file is already at the quality floor; re-encoding it would only add generation loss.
+const targets = s.overBudget.filter((f) => f.path.endsWith('.webp') && !approvedSet.has(f.path) && !existingWaivers[f.path]) // the approved renders are byte-locked, never re-encoded
 
-/** The 12 owner-approved render files (1448 x 1086): quality only, never resized (DEC-145). */
-const APPROVED_RENDERS = new Set(files.filter((f) => f.width === 1448 && f.height === 1086 && /^images\/shared\//.test(f.path)).map((f) => f.path))
+/** The 12 owner-approved renders and IMG-12 (scripts/lib/approved-renders.json, SHA-256 locked): never touched. */
+const APPROVED_RENDERS = new Set(Object.keys(JSON.parse(fs.readFileSync('scripts/lib/approved-renders.json', 'utf8'))))
 const SOURCE_MAX = 1600 // a 4:3 file wider than this is oversized for any card or split image
 const FLOOR_OK = 70
 let before = 0

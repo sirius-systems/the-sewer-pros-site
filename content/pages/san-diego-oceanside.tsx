@@ -482,7 +482,13 @@ export const oceansideContent: LocationPageContent = {
     secondaryActionLabel: `Call ${sd.phone}`,
     // A photo in the `oceanside-hero` slot replaces the labelled box and
     // becomes the backdrop.
-    backdrop: inlineSlotImage('oceanside-hero'),
+    // The market hero render stands in until a photo fills the `oceanside-hero` slot.
+    backdrop: inlineSlotImage('oceanside-hero') ?? {
+      src: '/images/markets/san-diego-ca/hero/the-sewer-pros-san-diego-residential-sewer-camera-inspection-hero.webp',
+      alt: 'Camera monitor and cable reel beside an open cleanout in front of a Southern California home',
+      source:
+        'San Diego market hero still from the repository asset folder. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     slotPlaceholder: placeholderSlot('oceanside-hero'),
     card: {
       title: 'Request a Sewer Inspection',

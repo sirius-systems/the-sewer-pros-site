@@ -475,7 +475,13 @@ export const escondidoContent: LocationPageContent = {
     secondaryActionLabel: `Call ${sd.phone}`,
     // A photo in the `escondido-hero` slot replaces the labelled box and
     // becomes the backdrop.
-    backdrop: inlineSlotImage('escondido-hero'),
+    // The market hero render stands in until a photo fills the `escondido-hero` slot.
+    backdrop: inlineSlotImage('escondido-hero') ?? {
+      src: '/images/markets/san-diego-ca/hero/the-sewer-pros-san-diego-residential-sewer-camera-inspection-hero.webp',
+      alt: 'Camera monitor and cable reel beside an open cleanout in front of a Southern California home',
+      source:
+        'San Diego market hero still from the repository asset folder. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     slotPlaceholder: placeholderSlot('escondido-hero'),
     card: {
       title: 'Request a Sewer Inspection',

@@ -26,6 +26,7 @@
  */
 
 import type { CardImage, ComparisonPageContent, PageId } from '@/types'
+import { RENDER_IMAGE_SOURCE } from '@/lib/image-slots'
 
 const id = (value: string): PageId => value as PageId
 
@@ -42,8 +43,8 @@ const id = (value: string): PageId => value as PageId
 export const comparisonCardImages: Partial<Record<PageId, CardImage>> = {
   [id('cmp-hydro-vs-snaking')]: {
     src: '/images/services/hydro-jetting/the-sewer-pros-hydro-jetting-vs-sewer-snaking-cleaning-methods-4x3.webp',
-    alt: 'Hydro jetting and mechanical sewer snaking equipment side by side',
-    source: 'The Sewer Pros field photography.',
+    alt: 'Trailer-mounted jetter behind a camera monitor, set beside an open access cover on a paved driveway',
+    source: RENDER_IMAGE_SOURCE,
   },
 }
 

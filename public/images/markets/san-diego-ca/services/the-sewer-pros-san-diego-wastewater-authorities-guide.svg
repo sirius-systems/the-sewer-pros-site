@@ -24,7 +24,7 @@
 
   <g id="heading" aria-label="Illustration heading">
     <text x="800" y="70" text-anchor="middle" class="heading">Wastewater service can vary across the San Diego region</text>
-    <text x="800" y="118" text-anchor="middle" class="meta">Conceptual regional pattern — not an official jurisdiction map</text>
+    <text x="800" y="118" text-anchor="middle" class="meta">Conceptual regional pattern - not an official jurisdiction map</text>
     <line x1="76" y1="145" x2="1524" y2="145" stroke="#D7E0E5" stroke-width="2"/>
   </g>
 

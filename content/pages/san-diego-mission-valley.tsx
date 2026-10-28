@@ -164,7 +164,7 @@ const IMAGE_SLOTS: readonly ImageSlot[] = [
     ratio: '4:3',
     alt: 'Street with a manhole cover in the pavement, low buildings beyond, and a yellow locator receiver on the sidewalk',
     shot: 'Ordinary city street, manhole and curb, no business names or identifiable buildings',
-    src: '/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp',
+    src: '/images/shared/city-street/the-sewer-pros-san-diego-city-street-manhole-curb-4x3.webp',
     source: RENDER_IMAGE_SOURCE,
   },
   {

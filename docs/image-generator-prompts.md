@@ -206,7 +206,7 @@ These prompts ask for a photorealistic render with natural light, realistic mate
 
 ## 10. IMG-28  City street, manhole and curb
 
-- **Filename:** `public/images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`
+- **Filename:** `public/images/shared/city-street/the-sewer-pros-san-diego-city-street-manhole-curb-4x3.webp`
 - **Ratio:** 4:3 (1448 x 1086 px)
 - **Priority:** P2. Fills 5 boxes.
 - **Prompt (paste as is):**

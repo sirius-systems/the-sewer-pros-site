@@ -26,6 +26,7 @@ import {
   serviceIndexRenders,
   marketCoverageRenders,
   faqSectionRenders,
+  EditorialMedia,
 } from '@/components/sections'
 /*
   ⚠ NOT FROM THE SECTIONS BARREL, UNLIKE EVERY OTHER PREDICATE ABOVE.
@@ -38,6 +39,7 @@ import {
   approvedServicesTitle,
   approvedServicesIntro,
 } from '@/content/pages/home-service-cards'
+import { editorialImage } from '@/data/business/editorial-images'
 import { PageShell } from './PageShell'
 import type { ReactNode } from 'react'
 import type { HubPageContent, MasterPageRecord } from '@/types'
@@ -498,6 +500,11 @@ export function HubPageTemplate({
         title={content.hero.title}
         intro={content.hero.intro}
         backdrop={backdrop}
+        media={
+          backdrop === undefined && editorialImage(page.pathname) !== undefined ? (
+            <EditorialMedia pathname={page.pathname} variant="hero" />
+          ) : undefined
+        }
         primaryAction={content.hero.primaryAction}
         secondaryAction={content.hero.secondaryAction}
         /*
