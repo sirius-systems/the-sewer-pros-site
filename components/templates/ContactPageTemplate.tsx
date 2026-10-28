@@ -103,6 +103,7 @@ export function ContactPageTemplate({ page, content }: ContactPageTemplateProps)
               alt=""
               fill
               priority
+              fetchPriority="high"
               sizes="100vw"
               // The reel, monitor, and cleanout sit right of centre and low
               // in the frame; weighting the crop there keeps them visible

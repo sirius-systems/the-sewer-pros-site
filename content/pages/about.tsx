@@ -144,7 +144,7 @@ export const aboutContent: AboutPageContent = {
     */
     image: {
       src: '/images/brand/about/the-sewer-pros-about-what-to-expect-sewer-camera-inspection-4x3.webp',
-      alt: 'Sewer camera inspection equipment, including a cable reel and a monitor displaying the inside of a sewer line, staged beside an open cleanout',
+      alt: 'Sewer camera equipment, a cable reel and a monitor showing the inside of a sewer line, beside an open cleanout',
       source: 'Supplied by the business owner for the About page rebuild.',
     },
   },

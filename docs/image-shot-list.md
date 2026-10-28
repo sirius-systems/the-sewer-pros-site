@@ -225,7 +225,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Type:** Photorealistic render. Priority P1.
 - **Subject and composition:** Low three-quarter view of a threaded cleanout cap at the base of a house wall, a few inches above soil or mulch. House siding or brick fills the background out of focus.
 - **Must NOT appear:** No house number, mailbox, crew, or cracked or damaged pipe. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
-- **Alt text:** White threaded sewer cleanout cap at the base of an exterior wall, with a sewer camera reel and open monitor on the mulch beside it
+- **Alt text:** White threaded cleanout cap at the base of an exterior wall, with a camera reel and open monitor on mulch beside it
 - **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic capped sewer cleanout pipe at the foundation of a home, exterior wall out of focus, mulch bed, soft daylight, no people, no text, 4:3." The one "building" wording (Mission Valley) can use this same image.
 - **Reuse scope:** universal. Fills 65 boxes: 16 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 48 on service + location pages (pageImageSlots in content/pages/sl-*.tsx); 1 on core service pages (data/business/*-images.ts).
 - **Slot ids:** call-cleanout; preventative-sewer-maintenance: prep-cleanout; preventative-sewer-maintenance: problem-2; recurring-sewer-backup-diagnosis: problem-3; sewer-camera-inspection: problem-1
@@ -553,7 +553,7 @@ Each brief covers one file, in the same ID order as the shot list. Common rules 
 - **Type:** Photorealistic render. Priority P2.
 - **Subject and composition:** City street at curb height with a manhole cover and curb in the foreground, storefront shapes blurred beyond.
 - **Must NOT appear:** No readable business names, signage, logos, identifiable buildings, plates or people. Plus the common rules above. Equipment shown in this render is owner-approved (Oct 12, 2026).
-- **Alt text:** Street with a manhole cover in the pavement, low buildings with glass windows beyond, and a yellow locator receiver on the sidewalk
+- **Alt text:** Street with a manhole cover in the pavement, low buildings beyond, and a yellow locator receiver on the sidewalk
 - **Photorealistic render prompt or shoot:** Render prompt: "Photorealistic city street, manhole cover and curb in foreground, buildings out of focus with no readable signs, empty street, San Diego style stucco and glass storefronts, soft daylight, 4:3." Used only by the Mission Valley page.
 - **Reuse scope:** page-unique (Mission Valley). Fills 5 boxes: 1 on location hubs (IMAGE_SLOTS in content/pages/<market>-<city>.tsx); 4 on service + location pages (pageImageSlots in content/pages/sl-*.tsx).
 - **Slot ids:** drain-cleaning: problem-4; pre-purchase-sewer-inspection: problem-4; preventative-sewer-maintenance: problem-4; recurring-sewer-backup-diagnosis: problem-4; system-street

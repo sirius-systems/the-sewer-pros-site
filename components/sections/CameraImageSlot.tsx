@@ -84,6 +84,7 @@ export function CameraImageSlot({
             height={image.height}
             sizes={sizes}
             priority={priority}
+            fetchPriority={priority ? 'high' : undefined}
             className="h-full w-full object-cover"
           />
         )}

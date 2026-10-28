@@ -258,6 +258,7 @@ export function HeroBackdrop({
               only one in the server-rendered HTML.
             */
             priority={i === 0}
+            fetchPriority={i === 0 ? 'high' : undefined}
             sizes="100vw"
             /*
               ⚠ FRAME 0 IS THE BASE LAYER AND NEVER FADES. That is a

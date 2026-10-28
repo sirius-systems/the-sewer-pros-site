@@ -44,7 +44,7 @@ const DIR = '/images/services/sewer-camera-inspection/'
 export const cameraImageSlots = {
   process: {
     preferred: `${DIR}the-sewer-pros-ridgid-seesnake-sewer-camera-inspection-process-illustration-4x3.webp`,
-    alt: 'Cutaway view of a camera reel beside a house, with the cable running through an open cleanout and down into an underground sewer pipe',
+    alt: 'Cutaway view of a camera reel beside a house, its cable running through an open cleanout into an underground sewer pipe',
     caption: 'Illustration of the process, not inspection footage.',
     width: 1448,
     height: 1086,
@@ -54,7 +54,7 @@ export const cameraImageSlots = {
   },
   monitor: {
     preferred: `${DIR}the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-pipe-footage-4x3.webp`,
-    alt: 'RIDGID SeeSnake-series monitor showing the inside of a sewer pipe, beside a cable reel and an open access cover',
+    alt: 'RIDGID monitor showing the inside of a sewer pipe, beside a cable reel and an open access cover',
     caption: 'The live feed is reviewed while the camera moves through the line.',
     width: 1448,
     height: 1086,
@@ -64,7 +64,7 @@ export const cameraImageSlots = {
   },
   equipment: {
     preferred: `${DIR}the-sewer-pros-ridgid-seesnake-camera-reel-cable-equipment-4x3.webp`,
-    alt: 'RIDGID SeeSnake-series camera reel with push cable and camera head, next to a monitor on a concrete surface',
+    alt: 'RIDGID camera reel with push cable and camera head, next to a monitor on a concrete surface',
     caption: 'Camera equipment is fed through an accessible access point.',
     width: 1448,
     height: 1086,
@@ -74,7 +74,7 @@ export const cameraImageSlots = {
   },
   'findings-review': {
     preferred: `${DIR}the-sewer-pros-ridgid-seesnake-inspection-footage-report-review-4x3.webp`,
-    alt: 'RIDGID SeeSnake-series monitor showing sewer pipe footage beside a tablet displaying an inspection report with pipe images, in front of a camera reel and equipment case',
+    alt: 'RIDGID monitor showing sewer pipe footage beside a tablet with an inspection report and pipe images, before a camera reel',
     caption: 'Monitor footage and a findings document, side by side.',
     width: 1448,
     height: 1086,
@@ -114,7 +114,7 @@ export const cameraImageSlots = {
   },
   report: {
     preferred: `${DIR}the-sewer-pros-sewer-camera-inspection-monitor-findings-summary-review-4x3.webp`,
-    alt: 'Rugged inspection monitor showing pipe footage beside a tablet displaying an inspection summary with pipe images, in front of a camera reel',
+    alt: 'Rugged monitor showing pipe footage beside a tablet with an inspection summary and pipe images, before a camera reel',
     caption: 'Example: footage and a findings summary.',
     width: 1448,
     height: 1086,

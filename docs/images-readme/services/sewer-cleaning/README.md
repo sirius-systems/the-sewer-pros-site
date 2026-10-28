@@ -29,10 +29,10 @@ Rules for every image:
 
 | File | Aspect | Slot key | Alt text | Shot |
 |---|---|---|---|---|
-| `the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp` (in place) | 4:3 (1448x1086) | `cleaning-definition` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
-| `the-sewer-pros-sewer-cleaning-visit-process-ridgid-seesnake-4x3.webp` (in place) | 4:3 | `cleaning-process` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
-| `the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp` (in place, shared with the definition section) | 4:3 | `cleaning-equipment` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID SeeSnake series camera reel and monitor | Reused from the definition section. A dedicated cleaning-equipment photo can replace it later. |
-| `the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-review-4x3.webp` (in place) | 4:3 | `cleaning-monitor` | RIDGID SeeSnake series monitor showing sewer camera footage, beside a camera reel and camera head | Monitor with non-dramatic footage. No customer data, address, GPS or readable text. |
+| `the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp` (in place) | 4:3 (1448x1086) | `cleaning-definition` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
+| `the-sewer-pros-sewer-cleaning-visit-process-ridgid-seesnake-4x3.webp` (in place) | 4:3 | `cleaning-process` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID camera reel and monitor | Cleaning machine at a cleanout with the camera reel beside it. |
+| `the-sewer-pros-sewer-cleaning-definition-ridgid-seesnake-equipment-4x3.webp` (in place, shared with the definition section) | 4:3 | `cleaning-equipment` | Sewer cleaning machine with its cable in an open cleanout, beside a separate RIDGID camera reel and monitor | Reused from the definition section. A dedicated cleaning-equipment photo can replace it later. |
+| `the-sewer-pros-ridgid-seesnake-sewer-camera-monitor-review-4x3.webp` (in place) | 4:3 | `cleaning-monitor` | RIDGID monitor showing sewer camera footage, beside a camera reel and camera head | Monitor with non-dramatic footage. No customer data, address, GPS or readable text. |
 
 The field-evidence section (`cleaning-equipment`, `cleaning-monitor`) renders
 only when at least one of its files exists.

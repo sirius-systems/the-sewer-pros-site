@@ -56,7 +56,7 @@ export const drainImageSlots = {
   },
   'drain-monitor': {
     preferred: `${DIR}the-sewer-pros-recurring-drain-issue-ridgid-seesnake-cs12x-monitor-4x3.webp`,
-    alt: 'A RIDGID SeeSnake camera monitor and reel staged beside an indoor cleanout',
+    alt: 'A RIDGID camera monitor and reel staged beside an indoor cleanout',
     caption: 'When a camera is used, the technician reviews visible conditions on the monitor.',
     width: 2400,
     height: 1792,
@@ -66,7 +66,7 @@ export const drainImageSlots = {
   },
   'drain-camera-explainer': {
     preferred: `${DIR}the-sewer-pros-slow-drain-sewer-line-camera-inspection-ridgid-seesnake-4x3.webp`,
-    alt: 'A RIDGID SeeSnake camera monitor and reel staged beside an exterior cleanout',
+    alt: 'A RIDGID camera monitor and reel staged beside an exterior cleanout',
     caption: 'A technician can explain what the visible conditions may indicate.',
     width: 2400,
     height: 1792,

@@ -119,6 +119,7 @@ export function BackdropImage({
         alt=""
         fill
         priority={priority}
+        fetchPriority={priority ? 'high' : undefined}
         sizes="100vw"
         className={`absolute inset-0 -z-10 ${className}`}
       />

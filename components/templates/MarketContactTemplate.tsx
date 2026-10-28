@@ -118,6 +118,7 @@ export function MarketContactTemplate({ page, content, marketId }: MarketContact
               alt={image.usingInterim ? '' : image.alt}
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"
             />

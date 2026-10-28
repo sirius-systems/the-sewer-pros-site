@@ -95,6 +95,27 @@ These apply to every asset in this tree, generated or not:
 
 ---
 
+## Weight budget and checks
+
+- **Budget.** A hero image should be 200KB or less, any other image 100KB or
+  less. `scripts/compress-images.mjs` re-encodes anything over budget (WebP,
+  quality floor 70; the 12 owner-approved renders are never resized). A file
+  that cannot reach the budget at the floor is listed with its reason in
+  `scripts/lib/image-weight-waivers.json`; the fix for those is a smaller export
+  from the source, not a lower quality floor.
+- **Not published.** The original-size source renders (2400 px wide) live in
+  `image-originals/` at the repo root, not in `public/`. Everything in `public/`
+  is published, so keep sources, README files and notes out of it.
+- **Gate.** After `npm run build`, `npm run verify:images` fails on a broken
+  reference, a visible placeholder, missing or banned alt, an image with no
+  dimensions, a lazy hero, a missing og:image, a broken schema image, a file
+  over budget, or a commercial image. `npm run audit:images` writes the full
+  per-page inventory (`docs/source-reports/image-audit-*.json` and `.csv`).
+- **Alt text.** Scene only, 125 characters or fewer, no real-job,
+  before-and-after, customer, address, licence, office, commercial or repair
+  wording, and no equipment name other than `RIDGID` or the five confirmed names.
+  Decorative backdrops and hidden collages use `alt=""` on purpose.
+
 ## Design references
 
 The six page-family composition references stay in `docs/design-references/`
