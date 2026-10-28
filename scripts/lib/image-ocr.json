@@ -238,116 +238,51 @@
   "words": []
  },
  "images/markets/las-vegas-nv/locations/the-sewer-pros-las-vegas-service-area-map.webp": {
-  "sha256": "888de8c2a657cccca1416fe0c8beb1d43dbe1c1d67817fa6387f91f76962e9f7",
+  "sha256": "0053b68b61d6a93791a3e3ddd15e036922fa5e784b7563c7d28286b089b966b3",
   "words": [
    {
+    "text": "158",
+    "confidence": 72
+   },
+   {
+    "text": "AFB",
+    "confidence": 93
+   },
+   {
     "text": "Red",
+    "confidence": 89
+   },
+   {
+    "text": "Canyon",
     "confidence": 96
    },
    {
-    "text": "Las",
-    "confidence": 96
+    "text": "National",
+    "confidence": 91
    },
    {
     "text": "Las",
-    "confidence": 96
+    "confidence": 90
    },
    {
     "text": "Vegas",
     "confidence": 96
    },
    {
-    "text": "Winchester",
-    "confidence": 97
+    "text": "167",
+    "confidence": 82
    },
    {
     "text": "South",
     "confidence": 97
-   },
-   {
-    "text": "Spring",
-    "confidence": 95
-   },
-   {
-    "text": "Valley",
-    "confidence": 93
    },
    {
     "text": "Paradise",
-    "confidence": 92
-   },
-   {
-    "text": "Henderson",
-    "confidence": 97
-   },
-   {
-    "text": "Springs",
-    "confidence": 72
-   },
-   {
-    "text": "City",
     "confidence": 96
-   },
-   {
-    "text": "Sloan",
-    "confidence": 91
-   },
-   {
-    "text": "data",
-    "confidence": 97
-   },
-   {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
-    "confidence": 97
-   }
-  ]
- },
- "images/markets/las-vegas-nv/service-locations/the-sewer-pros-henderson-nv-sewer-services.webp": {
-  "sha256": "4bba075be8efb65f9ae5b11bdf0238e7ba923bf4fcf7c56fa529097176be4b02",
-  "words": [
-   {
-    "text": "167",
-    "confidence": 79
-   },
-   {
-    "text": "Summerlin",
-    "confidence": 96
-   },
-   {
-    "text": "Callville",
-    "confidence": 89
-   },
-   {
-    "text": "Bay",
-    "confidence": 86
-   },
-   {
-    "text": "South",
-    "confidence": 97
-   },
-   {
-    "text": "Spring",
-    "confidence": 97
-   },
-   {
-    "text": "Valle",
-    "confidence": 72
-   },
-   {
-    "text": "pring",
-    "confidence": 96
-   },
-   {
-    "text": "paradise",
-    "confidence": 93
    },
    {
     "text": "Whitney",
-    "confidence": 96
+    "confidence": 92
    },
    {
     "text": "Blue",
@@ -358,89 +293,150 @@
     "confidence": 96
    },
    {
-    "text": "Henderson",
+    "text": "Mountain",
     "confidence": 97
    },
    {
-    "text": "Enterprise",
-    "confidence": 96
+    "text": "Springs",
+    "confidence": 87
+   },
+   {
+    "text": "146",
+    "confidence": 71
+   },
+   {
+    "text": "City",
+    "confidence": 77
    },
    {
     "text": "Sloan",
-    "confidence": 91
+    "confidence": 88
+   }
+  ]
+ },
+ "images/markets/las-vegas-nv/service-locations/the-sewer-pros-henderson-nv-sewer-services.webp": {
+  "sha256": "238533b7d021f98ab5194f4e23b8e2f33f27327c46a0e4bd77ff55060e9f4782",
+  "words": [
+   {
+    "text": "Las'Vegas",
+    "confidence": 72
+   },
+   {
+    "text": "Callville",
+    "confidence": 84
+   },
+   {
+    "text": "Bay",
+    "confidence": 97
+   },
+   {
+    "text": "Winchester",
+    "confidence": 97
+   },
+   {
+    "text": "Spring",
+    "confidence": 96
+   },
+   {
+    "text": "valley",
+    "confidence": 92
+   },
+   {
+    "text": "Paradise",
+    "confidence": 96
+   },
+   {
+    "text": "Whitney",
+    "confidence": 96
+   },
+   {
+    "text": "Diamond",
+    "confidence": 97
+   },
+   {
+    "text": "prise",
+    "confidence": 96
+   },
+   {
+    "text": "Boulder",
+    "confidence": 97
+   },
+   {
+    "text": "City",
+    "confidence": 97
+   },
+   {
+    "text": "Sloan",
+    "confidence": 97
    },
    {
     "text": "Canyon",
     "confidence": 96
    },
    {
-    "text": "National",
-    "confidence": 96
-   },
-   {
     "text": "Conservation",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "Willow",
-    "confidence": 97
-   },
-   {
-    "text": "Bea",
-    "confidence": 97
-   },
-   {
-    "text": "Goodsprings",
-    "confidence": 91
-   },
-   {
-    "text": "Map",
     "confidence": 96
    },
    {
-    "text": "data",
-    "confidence": 97
-   },
-   {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
-    "confidence": 97
+    "text": "Beach",
+    "confidence": 96
    }
   ]
  },
  "images/markets/las-vegas-nv/service-locations/the-sewer-pros-las-vegas-nv-sewer-services.webp": {
-  "sha256": "bf08a5701c459658f77799373078621deb87d90c44ee312dac4db132f478cdcb",
+  "sha256": "29c54ecf3b44d68fb7185acb3993e46b1039ed8b9d1f1fe3adca64a42440840f",
   "words": [
    {
-    "text": "Red",
+    "text": "Nellis",
+    "confidence": 80
+   },
+   {
+    "text": "AFB",
     "confidence": 97
+   },
+   {
+    "text": "Red",
+    "confidence": 92
+   },
+   {
+    "text": "Rock",
+    "confidence": 92
    },
    {
     "text": "North",
-    "confidence": 96
+    "confidence": 94
    },
    {
     "text": "Las",
+    "confidence": 94
+   },
+   {
+    "text": "Canyon",
     "confidence": 97
    },
    {
-    "text": "Las'Vegas",
-    "confidence": 70
-   },
-   {
-    "text": "Summerlin",
-    "confidence": 97
-   },
-   {
-    "text": "Winchester",
+    "text": "Area",
     "confidence": 96
    },
    {
-    "text": "South",
+    "text": "Summerlin",
+    "confidence": 87
+   },
+   {
+    "text": "Winchester",
     "confidence": 97
+   },
+   {
+    "text": "Valley",
+    "confidence": 94
+   },
+   {
+    "text": "Paradise",
+    "confidence": 92
    },
    {
     "text": "Blue",
@@ -456,52 +452,28 @@
    },
    {
     "text": "Mountain",
-    "confidence": 97
-   },
-   {
-    "text": "Enterprise",
-    "confidence": 96
+    "confidence": 79
    },
    {
     "text": "Springs",
-    "confidence": 97
-   },
-   {
-    "text": "Boulder",
-    "confidence": 95
-   },
-   {
-    "text": "City",
-    "confidence": 94
-   },
-   {
-    "text": "data",
     "confidence": 96
    },
    {
-    "text": "2026",
+    "text": "Boulder",
     "confidence": 97
    },
    {
-    "text": "Google",
+    "text": "Sloan",
     "confidence": 97
    }
   ]
  },
  "images/markets/las-vegas-nv/service-locations/the-sewer-pros-north-las-vegas-nv-sewer-services.webp": {
-  "sha256": "1910953746bcf4e5d906cd1169b21db197586317f8305bcc0e63d7e93ae8ef22",
+  "sha256": "4df5fa52e7f31e65b0ef32ea322c988ffaad2f915aaa4364a2add39f3f2e82c3",
   "words": [
    {
-    "text": "156",
-    "confidence": 88
-   },
-   {
     "text": "Dry",
-    "confidence": 96
-   },
-   {
-    "text": "Lake",
-    "confidence": 96
+    "confidence": 95
    },
    {
     "text": "Corn",
@@ -509,111 +481,35 @@
    },
    {
     "text": "Creek",
-    "confidence": 96
+    "confidence": 97
    },
    {
-    "text": "Red",
-    "confidence": 93
-   },
-   {
-    "text": "Rock",
-    "confidence": 93
-   },
-   {
-    "text": "Canyon",
-    "confidence": 96
-   },
-   {
-    "text": "National",
+    "text": "Arrolime",
     "confidence": 91
    },
    {
-    "text": "Vegas",
-    "confidence": 96
-   },
-   {
-    "text": "167",
-    "confidence": 77
-   },
-   {
-    "text": "Summerlin",
-    "confidence": 96
-   },
-   {
-    "text": "South",
-    "confidence": 96
+    "text": "Nationa",
+    "confidence": 90
    },
    {
     "text": "Winchester",
-    "confidence": 97
-   },
-   {
-    "text": "Map",
-    "confidence": 97
-   },
-   {
-    "text": "data",
-    "confidence": 96
-   },
-   {
-    "text": "2026",
-    "confidence": 96
-   },
-   {
-    "text": "Google",
     "confidence": 97
    }
   ]
  },
  "images/markets/las-vegas-nv/service-locations/the-sewer-pros-summerlin-las-vegas-sewer-services.webp": {
-  "sha256": "2321c89214866d75c73d9aa487546aced0decc01500ac7456952ccff98846853",
+  "sha256": "e5277113fa4e0557eeabdb80d54fd06087533b33f2ad650c9a12d33cfa7c5708",
   "words": [
    {
     "text": "Red",
-    "confidence": 97
+    "confidence": 94
    },
    {
     "text": "Rock",
-    "confidence": 97
+    "confidence": 95
    },
    {
-    "text": "SUMMERLIN",
-    "confidence": 80
-   },
-   {
-    "text": "Canyon",
-    "confidence": 96
-   },
-   {
-    "text": "NORTH",
-    "confidence": 97
-   },
-   {
-    "text": "WEST",
-    "confidence": 90
-   },
-   {
-    "text": "LAS",
-    "confidence": 90
-   },
-   {
-    "text": "Vegas",
-    "confidence": 97
-   },
-   {
-    "text": "National",
-    "confidence": 86
-   },
-   {
-    "text": "SUMMERLIN",
-    "confidence": 97
-   },
-   {
-    "text": "SUMMERLIN",
-    "confidence": 97
-   },
-   {
-    "text": "WEST",
+    "text": "North",
     "confidence": 95
    },
    {
@@ -621,48 +517,56 @@
     "confidence": 95
    },
    {
-    "text": "Vege",
-    "confidence": 80
-   },
-   {
-    "text": "159",
-    "confidence": 79
-   },
-   {
-    "text": "Calico",
-    "confidence": 97
-   },
-   {
-    "text": "Basin",
-    "confidence": 97
-   },
-   {
-    "text": "Summerlin",
+    "text": "NORTH",
     "confidence": 96
    },
    {
-    "text": "THE",
+    "text": "Vegas",
+    "confidence": 96
+   },
+   {
+    "text": "National",
+    "confidence": 83
+   },
+   {
+    "text": "SUMMERLIN",
+    "confidence": 74
+   },
+   {
+    "text": "SUMMERLIN",
     "confidence": 97
+   },
+   {
+    "text": "Las",
+    "confidence": 97
+   },
+   {
+    "text": "Calico",
+    "confidence": 96
+   },
+   {
+    "text": "Summerlin",
+    "confidence": 75
+   },
+   {
+    "text": "THE",
+    "confidence": 75
    },
    {
     "text": "LAKES",
-    "confidence": 97
+    "confidence": 96
    },
    {
-    "text": "Winchest",
-    "confidence": 90
+    "text": "Winchester",
+    "confidence": 97
    },
    {
     "text": "South",
     "confidence": 97
    },
    {
-    "text": "596",
-    "confidence": 77
-   },
-   {
     "text": "Bellagio",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "Hotel",
@@ -673,10 +577,6 @@
     "confidence": 97
    },
    {
-    "text": "Valley",
-    "confidence": 96
-   },
-   {
     "text": "Paradise",
     "confidence": 96
    },
@@ -685,40 +585,16 @@
     "confidence": 96
    },
    {
-    "text": "RANCH",
-    "confidence": 97
-   },
-   {
-    "text": "Bonnie",
-    "confidence": 91
-   },
-   {
     "text": "Springs",
-    "confidence": 96
+    "confidence": 95
    },
    {
     "text": "Blue",
-    "confidence": 96
+    "confidence": 84
    },
    {
     "text": "Diamond",
-    "confidence": 96
-   },
-   {
-    "text": "Map",
-    "confidence": 96
-   },
-   {
-    "text": "data",
-    "confidence": 97
-   },
-   {
-    "text": "2026",
-    "confidence": 70
-   },
-   {
-    "text": "Google",
-    "confidence": 70
+    "confidence": 93
    }
   ]
  },
@@ -985,31 +861,35 @@
   "words": []
  },
  "images/markets/san-diego-ca/locations/the-sewer-pros-san-diego-service-area-map.webp": {
-  "sha256": "b35b0addc9b9a700b9031f72a44e3638e31bfaba3a4cd24605f45ac1ecefba85",
+  "sha256": "689d0d6a5c57e0aa09a6fa37bcffea8feb02a620b20f93c17db4b809febf4ecb",
   "words": [
    {
-    "text": "Oceanside",
-    "confidence": 71
-   },
-   {
     "text": "Escondido",
-    "confidence": 96
+    "confidence": 97
    },
    {
-    "text": "esert",
-    "confidence": 91
+    "text": "Anza-Borrego",
+    "confidence": 92
    },
    {
-    "text": "State",
-    "confidence": 96
+    "text": "Julian",
+    "confidence": 97
    },
    {
-    "text": "Park",
+    "text": "Desert",
     "confidence": 96
    },
    {
     "text": "Ramona",
-    "confidence": 95
+    "confidence": 96
+   },
+   {
+    "text": "State",
+    "confidence": 97
+   },
+   {
+    "text": "Park",
+    "confidence": 97
    },
    {
     "text": "Solana",
@@ -1021,26 +901,26 @@
    },
    {
     "text": "Del",
-    "confidence": 93
+    "confidence": 97
+   },
+   {
+    "text": "Mar",
+    "confidence": 97
    },
    {
     "text": "Poway",
+    "confidence": 97
+   },
+   {
+    "text": "santee",
+    "confidence": 87
+   },
+   {
+    "text": "Mesa",
     "confidence": 96
    },
    {
-    "text": "Descanso",
-    "confidence": 96
-   },
-   {
-    "text": "Santee",
-    "confidence": 89
-   },
-   {
-    "text": "Cajon",
-    "confidence": 96
-   },
-   {
-    "text": "Boulevar",
+    "text": "oulevard",
     "confidence": 92
    },
    {
@@ -1049,48 +929,24 @@
    },
    {
     "text": "Vista",
-    "confidence": 96
+    "confidence": 97
+   },
+   {
+    "text": "Tijuana",
+    "confidence": 79
    },
    {
     "text": "del",
-    "confidence": 89
-   },
-   {
-    "text": "Campo",
-    "confidence": 95
-   },
-   {
-    "text": "Map/data",
-    "confidence": 79
-   },
-   {
-    "text": "2026",
-    "confidence": 96
-   },
-   {
-    "text": "Google",
-    "confidence": 91
-   },
-   {
-    "text": "INEGI",
-    "confidence": 79
+    "confidence": 86
    }
   ]
  },
  "images/markets/san-diego-ca/service-locations/the-sewer-pros-carlsbad-ca-sewer-services.webp": {
-  "sha256": "77cd8eadb3f645b750d4839f94ba9d36e2f07d3d62fad91cce7dd3603dac1456",
+  "sha256": "792842271d17405aa2c88e40ed8e301e9f5dd728253cff59a29257dbb68d589e",
   "words": [
    {
     "text": "Oceanside",
-    "confidence": 94
-   },
-   {
-    "text": "TRI-CITY",
-    "confidence": 93
-   },
-   {
-    "text": "Vista",
-    "confidence": 96
+    "confidence": 88
    },
    {
     "text": "MIRA",
@@ -1102,23 +958,23 @@
    },
    {
     "text": "TWIN",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "OAKS",
-    "confidence": 96
-   },
-   {
-    "text": "OCEAN",
     "confidence": 95
    },
    {
-    "text": "HILLS",
+    "text": "Carlsbad",
+    "confidence": 73
+   },
+   {
+    "text": "OCEAN",
     "confidence": 96
    },
    {
     "text": "HILLS",
-    "confidence": 80
+    "confidence": 96
    },
    {
     "text": "RICHLAND",
@@ -1130,14 +986,18 @@
    },
    {
     "text": "Marcos",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "LEGOLAND",
-    "confidence": 92
+    "confidence": 91
    },
    {
     "text": "California",
+    "confidence": 97
+   },
+   {
+    "text": "Resort",
     "confidence": 97
    },
    {
@@ -1146,19 +1006,19 @@
    },
    {
     "text": "San",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "BRESSI",
-    "confidence": 76
-   },
-   {
-    "text": "RANCH",
-    "confidence": 92
+    "confidence": 75
    },
    {
     "text": "Marcos",
-    "confidence": 87
+    "confidence": 96
+   },
+   {
+    "text": "Escondido",
+    "confidence": 97
    },
    {
     "text": "Harmony",
@@ -1169,12 +1029,16 @@
     "confidence": 93
    },
    {
+    "text": "ELIJO",
+    "confidence": 91
+   },
+   {
     "text": "HILLS",
-    "confidence": 95
+    "confidence": 97
    },
    {
     "text": "Grove",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "LEUCADIA",
@@ -1187,63 +1051,47 @@
    {
     "text": "Encinitas",
     "confidence": 96
-   },
-   {
-    "text": "Map",
-    "confidence": 96
-   },
-   {
-    "text": "data",
-    "confidence": 97
-   },
-   {
-    "text": "2026",
-    "confidence": 97
    }
   ]
  },
  "images/markets/san-diego-ca/service-locations/the-sewer-pros-chula-vista-ca-sewer-services.webp": {
-  "sha256": "c04ad12c4a728626e0022433ea74c0ff0d13ff27529bb03b89c8db92824d6498",
+  "sha256": "439695945a279f87b8bf62202b6bf58d2202b17dea23e3b875344da72733e33f",
   "words": [
    {
     "text": "San",
-    "confidence": 97
+    "confidence": 93
    },
    {
-    "text": "BARRIO",
-    "confidence": 95
+    "text": "Coronado",
+    "confidence": 97
    },
    {
     "text": "National",
-    "confidence": 96
-   },
-   {
-    "text": "City",
-    "confidence": 96
-   },
-   {
-    "text": "EASTLAKE",
-    "confidence": 97
-   },
-   {
-    "text": "Chula",
-    "confidence": 89
-   },
-   {
-    "text": "Vista",
     "confidence": 95
    },
    {
-    "text": "OTAY",
-    "confidence": 87
-   },
-   {
-    "text": "RANCH",
+    "text": "City",
     "confidence": 97
    },
    {
+    "text": "Bonita",
+    "confidence": 84
+   },
+   {
+    "text": "EASTLAKE",
+    "confidence": 96
+   },
+   {
+    "text": "Vista",
+    "confidence": 84
+   },
+   {
+    "text": "RANCH",
+    "confidence": 96
+   },
+   {
     "text": "Otay",
-    "confidence": 94
+    "confidence": 96
    },
    {
     "text": "Open",
@@ -1251,63 +1099,47 @@
    },
    {
     "text": "Space",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "Preserve",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "TES",
     "confidence": 96
    },
    {
-    "text": "ITED",
-    "confidence": 87
+    "text": "UNITED",
+    "confidence": 88
    },
    {
-    "text": "STALES",
-    "confidence": 73
-   },
-   {
-    "text": "data",
-    "confidence": 95
-   },
-   {
-    "text": "2026",
-    "confidence": 95
-   },
-   {
-    "text": "Google",
-    "confidence": 92
-   },
-   {
-    "text": "INEGI",
-    "confidence": 81
+    "text": "STA",
+    "confidence": 82
    }
   ]
  },
  "images/markets/san-diego-ca/service-locations/the-sewer-pros-escondido-ca-sewer-services.webp": {
-  "sha256": "0729552c1e86f352f3a2931ebf148fd8d60495fbcc6e2b50745e23ab15f1edfe",
+  "sha256": "31ad7b5cb103cde4c5454e30f3ad80306dd409674e81cfd32ddd97f0cd9cba1b",
   "words": [
    {
+    "text": "Meadows",
+    "confidence": 96
+   },
+   {
     "text": "Hellhole",
-    "confidence": 88
+    "confidence": 92
    },
    {
     "text": "Valley",
-    "confidence": 97
+    "confidence": 94
    },
    {
     "text": "Center",
-    "confidence": 97
+    "confidence": 94
    },
    {
-    "text": "Canyon",
-    "confidence": 97
-   },
-   {
-    "text": "Cnty",
+    "text": "County",
     "confidence": 96
    },
    {
@@ -1319,161 +1151,161 @@
     "confidence": 97
    },
    {
-    "text": "Daley",
+    "text": "Twin",
     "confidence": 97
    },
    {
-    "text": "TWIN",
-    "confidence": 96
-   },
-   {
-    "text": "OAKS",
-    "confidence": 75
-   },
-   {
-    "text": "LAKE",
+    "text": "Oaks",
     "confidence": 97
    },
    {
-    "text": "OCEAN",
-    "confidence": 95
-   },
-   {
-    "text": "HILLS",
-    "confidence": 95
-   },
-   {
-    "text": "SANTA",
+    "text": "Ranch",
     "confidence": 96
    },
    {
-    "text": "HILLS",
+    "text": "Park",
+    "confidence": 96
+   },
+   {
+    "text": "Wohlford",
+    "confidence": 92
+   },
+   {
+    "text": "Ocean",
+    "confidence": 96
+   },
+   {
+    "text": "Hills",
     "confidence": 95
    },
    {
-    "text": "BROADWAY",
-    "confidence": 95
+    "text": "North",
+    "confidence": 77
    },
    {
-    "text": "RICHLAND",
-    "confidence": 83
+    "text": "Broadway",
+    "confidence": 96
+   },
+   {
+    "text": "San",
+    "confidence": 96
    },
    {
     "text": "Marcos",
-    "confidence": 96
+    "confidence": 97
    },
    {
-    "text": "EAST",
-    "confidence": 96
+    "text": "East",
+    "confidence": 97
    },
    {
-    "text": "GROVE",
-    "confidence": 95
+    "text": "Grove",
+    "confidence": 97
    },
    {
     "text": "Lake",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "San",
     "confidence": 97
    },
    {
-    "text": "RANCH",
+    "text": "Bressi",
+    "confidence": 92
+   },
+   {
+    "text": "Ranch",
     "confidence": 97
    },
    {
     "text": "Marcos",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "Escondido",
-    "confidence": 70
+    "confidence": 80
    },
    {
     "text": "Harmony",
     "confidence": 97
    },
    {
-    "text": "SAN",
+    "text": "San",
     "confidence": 93
    },
    {
-    "text": "HILLS",
-    "confidence": 97
+    "text": "Elijo",
+    "confidence": 93
+   },
+   {
+    "text": "Hills",
+    "confidence": 94
    },
    {
     "text": "Grove",
-    "confidence": 96
-   },
-   {
-    "text": "Tal",
-    "confidence": 70
-   },
-   {
-    "text": "SAN",
-    "confidence": 92
-   },
-   {
-    "text": "PASQUAL",
-    "confidence": 91
-   },
-   {
-    "text": "VALLEY",
-    "confidence": 96
-   },
-   {
-    "text": "LIVENHAI",
-    "confidence": 78
-   },
-   {
-    "text": "Map",
     "confidence": 97
    },
    {
-    "text": "data",
+    "text": "East",
     "confidence": 97
    },
-   {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
-    "confidence": 95
-   }
-  ]
- },
- "images/markets/san-diego-ca/service-locations/the-sewer-pros-mission-valley-san-diego-sewer-services.webp": {
-  "sha256": "44bcba10eb9675d3b632427b7d341d1e0f79549488cede4e9a09c5de9d41c911",
-  "words": [
    {
     "text": "Canyon",
     "confidence": 97
    },
    {
-    "text": "Cajon",
-    "confidence": 71
-   },
-   {
-    "text": "Mesa",
-    "confidence": 86
-   },
-   {
     "text": "San",
+    "confidence": 93
+   },
+   {
+    "text": "Pasqual",
+    "confidence": 92
+   },
+   {
+    "text": "Kit",
     "confidence": 97
    },
    {
-    "text": "Diego",
-    "confidence": 81
-   },
-   {
-    "text": "Coronado",
+    "text": "Carson",
     "confidence": 96
    },
    {
-    "text": "National",
+    "text": "Valley",
+    "confidence": 97
+   },
+   {
+    "text": "Olivenhain",
     "confidence": 91
+   }
+  ]
+ },
+ "images/markets/san-diego-ca/service-locations/the-sewer-pros-mission-valley-san-diego-sewer-services.webp": {
+  "sha256": "9f896886d6c4b443c33b34d851895d3dfe7761d355d152273500c8308842a80b",
+  "words": [
+   {
+    "text": "Lakeside",
+    "confidence": 97
+   },
+   {
+    "text": "Canyon",
+    "confidence": 96
+   },
+   {
+    "text": "Mesa",
+    "confidence": 95
+   },
+   {
+    "text": "Valley",
+    "confidence": 97
+   },
+   {
+    "text": "National",
+    "confidence": 97
+   },
+   {
+    "text": "City",
+    "confidence": 96
    },
    {
     "text": "Bonita",
@@ -1489,11 +1321,11 @@
    },
    {
     "text": "Otay",
-    "confidence": 95
+    "confidence": 97
    },
    {
     "text": "Open",
-    "confidence": 95
+    "confidence": 96
    },
    {
     "text": "Space",
@@ -1509,108 +1341,96 @@
    },
    {
     "text": "Beach",
-    "confidence": 95
+    "confidence": 96
    },
    {
     "text": "Tijuana",
-    "confidence": 95
+    "confidence": 77
    },
    {
     "text": "Villa",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "del",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "Campo",
     "confidence": 96
-   },
-   {
-    "text": "Map",
-    "confidence": 88
-   },
-   {
-    "text": "data",
-    "confidence": 94
-   },
-   {
-    "text": "2026",
-    "confidence": 94
    }
   ]
  },
  "images/markets/san-diego-ca/service-locations/the-sewer-pros-oceanside-ca-sewer-services.webp": {
-  "sha256": "188cada695275a5fa0f0e92c46e1de81598964a8c90a92102a6142ff00dbddea",
+  "sha256": "dde6308a2acbaa4e8718c71017293a3130f163783827e60ade80265dc537522c",
   "words": [
    {
     "text": "Camp",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "Pendleton",
-    "confidence": 95
+    "confidence": 97
    },
    {
     "text": "North",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "Bonsall",
-    "confidence": 93
+    "confidence": 97
    },
    {
     "text": "NORTH",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "VALLEY",
     "confidence": 96
    },
    {
+    "text": "Camp",
+    "confidence": 97
+   },
+   {
+    "text": "SAN",
+    "confidence": 97
+   },
+   {
+    "text": "LUIS",
+    "confidence": 95
+   },
+   {
     "text": "REY",
-    "confidence": 83
+    "confidence": 81
    },
    {
-    "text": "Pendleton",
-    "confidence": 80
-   },
-   {
-    "text": "IVEY",
-    "confidence": 96
+    "text": "out",
+    "confidence": 97
    },
    {
     "text": "RANCH",
-    "confidence": 97
+    "confidence": 93
    },
    {
     "text": "Hidden",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "RANCHO",
-    "confidence": 96
+    "confidence": 70
    },
    {
     "text": "Meadows",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "DEL",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "ORO",
     "confidence": 95
-   },
-   {
-    "text": "Oceanside",
-    "confidence": 93
-   },
-   {
-    "text": "TRI-CITY",
-    "confidence": 92
    },
    {
     "text": "Vista",
@@ -1618,92 +1438,116 @@
    },
    {
     "text": "MIRA",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "COSTA",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "TWIN",
-    "confidence": 91
+    "confidence": 97
    },
    {
-    "text": "0AKS",
-    "confidence": 82
+    "text": "OAKS",
+    "confidence": 83
+   },
+   {
+    "text": "Carlsbad",
+    "confidence": 88
    },
    {
     "text": "OCEAN",
-    "confidence": 93
-   },
-   {
-    "text": "SANTA",
-    "confidence": 95
+    "confidence": 96
    },
    {
     "text": "HILLS",
-    "confidence": 94
+    "confidence": 96
+   },
+   {
+    "text": "SANTA",
+    "confidence": 97
+   },
+   {
+    "text": "HILLS",
+    "confidence": 96
    },
    {
     "text": "RICHLAND",
+    "confidence": 96
+   },
+   {
+    "text": "San",
     "confidence": 97
    },
    {
     "text": "Marcos",
-    "confidence": 75
-   },
-   {
-    "text": "data",
     "confidence": 96
-   },
-   {
-    "text": "2026",
-    "confidence": 94
-   },
-   {
-    "text": "Google",
-    "confidence": 94
    }
   ]
  },
  "images/markets/san-diego-ca/service-locations/the-sewer-pros-san-diego-ca-sewer-services.webp": {
-  "sha256": "86d35b2cd679083613fd4369cf0ec9ccd2df393bf8ef11b1ead9d4066f33178d",
+  "sha256": "60fc593fa2b262733551e1a320b664f6d08b6536deb34a3d9245a748781165f0",
   "words": [
    {
-    "text": "Escondido",
-    "confidence": 85
+    "text": "Vista",
+    "confidence": 71
    },
    {
-    "text": "State",
+    "text": "Carlsbad",
+    "confidence": 84
+   },
+   {
+    "text": "Escondido",
     "confidence": 96
    },
    {
-    "text": "Park",
+    "text": "Anza-Borrego",
+    "confidence": 90
+   },
+   {
+    "text": "Desert",
+    "confidence": 96
+   },
+   {
+    "text": "State",
     "confidence": 97
+   },
+   {
+    "text": "Park",
+    "confidence": 87
+   },
+   {
+    "text": "Encinitas",
+    "confidence": 96
    },
    {
     "text": "Ramona",
     "confidence": 96
    },
    {
-    "text": "Beach",
+    "text": "Solana",
     "confidence": 97
    },
    {
-    "text": "Del",
-    "confidence": 93
+    "text": "Del'Mar",
+    "confidence": 85
    },
    {
-    "text": "Poway",
-    "confidence": 94
-   },
-   {
-    "text": "Cajon",
+    "text": "Santee",
     "confidence": 96
    },
    {
-    "text": "Boulevar",
-    "confidence": 79
+    "text": "La'Mesa",
+    "confidence": 88
+   },
+   {
+    "text": "Diego",
+    "confidence": 96
+   },
+   {
+    "text": "Boulevard",
+    "confidence": 97
    },
    {
     "text": "Chula",
@@ -1714,89 +1558,101 @@
     "confidence": 97
    },
    {
+    "text": "Tecate",
+    "confidence": 77
+   },
+   {
     "text": "Tijuana",
-    "confidence": 94
-   },
-   {
-    "text": "Villa",
-    "confidence": 86
-   },
-   {
-    "text": "Campo",
     "confidence": 96
-   },
-   {
-    "text": "2026",
-    "confidence": 96
-   },
-   {
-    "text": "Google",
-    "confidence": 97
-   },
-   {
-    "text": "INEGI",
-    "confidence": 92
    }
   ]
  },
  "images/markets/san-diego-ca/service-locations/the-sewer-pros-san-marcos-ca-sewer-services.webp": {
-  "sha256": "e98cfb24053099a81f3ce689accea274af0570e22ad9f8c362f388f0050cc25d",
+  "sha256": "966c6a8820295b7ffd7eb1508a159423b2dbcdd030a970d63166b3dc70b23af3",
   "words": [
    {
+    "text": "IVEY",
+    "confidence": 96
+   },
+   {
+    "text": "RANCH",
+    "confidence": 93
+   },
+   {
+    "text": "RANCHO",
+    "confidence": 96
+   },
+   {
     "text": "Valley",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "Center",
     "confidence": 97
    },
    {
-    "text": "Vista",
-    "confidence": 97
-   },
-   {
     "text": "Oceanside",
-    "confidence": 91
-   },
-   {
-    "text": "Daley",
-    "confidence": 97
-   },
-   {
-    "text": "TWIN",
-    "confidence": 90
-   },
-   {
-    "text": "OAKS",
-    "confidence": 90
-   },
-   {
-    "text": "Ranch",
     "confidence": 96
    },
    {
-    "text": "LAKE",
+    "text": "Vista",
+    "confidence": 96
+   },
+   {
+    "text": "MIRA",
+    "confidence": 97
+   },
+   {
+    "text": "COSTA",
+    "confidence": 96
+   },
+   {
+    "text": "Daley",
+    "confidence": 73
+   },
+   {
+    "text": "Ranch",
+    "confidence": 97
+   },
+   {
+    "text": "Park",
     "confidence": 97
    },
    {
     "text": "WOHLFORD",
-    "confidence": 89
+    "confidence": 92
    },
    {
-    "text": "OCEAN",
-    "confidence": 94
-   },
-   {
-    "text": "HILLS",
+    "text": "Carlsbad",
     "confidence": 90
    },
    {
+    "text": "OCEAN",
+    "confidence": 97
+   },
+   {
     "text": "HILLS",
-    "confidence": 91
+    "confidence": 96
+   },
+   {
+    "text": "NORTH",
+    "confidence": 97
+   },
+   {
+    "text": "SANTA",
+    "confidence": 96
+   },
+   {
+    "text": "HILLS",
+    "confidence": 97
+   },
+   {
+    "text": "BROADWAY",
+    "confidence": 80
    },
    {
     "text": "RICHLAND",
-    "confidence": 96
+    "confidence": 84
    },
    {
     "text": "San",
@@ -1804,15 +1660,15 @@
    },
    {
     "text": "Marcos",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "EAST",
-    "confidence": 95
+    "confidence": 97
    },
    {
     "text": "GROVE",
-    "confidence": 95
+    "confidence": 97
    },
    {
     "text": "LEGOLAND",
@@ -1820,27 +1676,35 @@
    },
    {
     "text": "California",
-    "confidence": 95
+    "confidence": 97
    },
    {
     "text": "Resort",
     "confidence": 97
    },
    {
-    "text": "Marcos",
-    "confidence": 73
+    "text": "Lake",
+    "confidence": 97
+   },
+   {
+    "text": "San",
+    "confidence": 97
    },
    {
     "text": "Escondido",
-    "confidence": 91
+    "confidence": 93
+   },
+   {
+    "text": "Harmony",
+    "confidence": 96
    },
    {
     "text": "SAN",
-    "confidence": 81
+    "confidence": 93
    },
    {
     "text": "Grove",
-    "confidence": 90
+    "confidence": 97
    },
    {
     "text": "EAST",
@@ -1848,7 +1712,7 @@
    },
    {
     "text": "CANYON",
-    "confidence": 95
+    "confidence": 96
    },
    {
     "text": "SAN",
@@ -1859,24 +1723,24 @@
     "confidence": 92
    },
    {
+    "text": "KIT",
+    "confidence": 96
+   },
+   {
+    "text": "CARSON",
+    "confidence": 96
+   },
+   {
     "text": "VALLEY",
     "confidence": 97
    },
    {
-    "text": "Map",
-    "confidence": 97
-   },
-   {
-    "text": "data",
-    "confidence": 97
-   },
-   {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
+    "text": "Leucadia",
     "confidence": 96
+   },
+   {
+    "text": "OLIVENHAIN",
+    "confidence": 92
    }
   ]
  },
@@ -2474,143 +2338,179 @@
   "words": []
  },
  "images/markets/st-louis-mo/locations/the-sewer-pros-st-louis-service-area-map.webp": {
-  "sha256": "adc45c63ccaa365fa26d9fc3ac9f6ed0e742d78f2c35b7a6eecf0fcaee679be9",
+  "sha256": "b45f45314a4534f1a4534930db704cb881cbb5cf64b39567f0a69a076ff13b98",
   "words": [
    {
     "text": "Edwardsville",
-    "confidence": 86
-   },
-   {
-    "text": "Florissant",
-    "confidence": 95
-   },
-   {
-    "text": "Ferguson",
     "confidence": 96
    },
    {
-    "text": "Maryville",
-    "confidence": 94
-   },
-   {
-    "text": "Creve",
-    "confidence": 97
-   },
-   {
-    "text": "Coeur",
+    "text": "Charles",
     "confidence": 96
    },
    {
-    "text": "Wildwood",
-    "confidence": 86
+    "text": "Bridgeton",
+    "confidence": 83
    },
    {
-    "text": "Kirkwood",
-    "confidence": 96
-   },
-   {
-    "text": "shioh",
+    "text": "Chouteau",
     "confidence": 90
    },
    {
+    "text": "Island",
+    "confidence": 97
+   },
+   {
+    "text": "Cottleville",
+    "confidence": 89
+   },
+   {
+    "text": "Ferguson",
+    "confidence": 91
+   },
+   {
+    "text": "Maryland",
+    "confidence": 97
+   },
+   {
+    "text": "Maryville",
+    "confidence": 95
+   },
+   {
+    "text": "Heights",
+    "confidence": 95
+   },
+   {
+    "text": "Granite",
+    "confidence": 74
+   },
+   {
+    "text": "City",
+    "confidence": 95
+   },
+   {
+    "text": "Chesterfield",
+    "confidence": 97
+   },
+   {
+    "text": "Creve",
+    "confidence": 96
+   },
+   {
+    "text": "University",
+    "confidence": 76
+   },
+   {
+    "text": "City",
+    "confidence": 95
+   },
+   {
+    "text": "Collinsville",
+    "confidence": 93
+   },
+   {
+    "text": "Louis",
+    "confidence": 89
+   },
+   {
+    "text": "Manchester",
+    "confidence": 93
+   },
+   {
     "text": "Scott",
+    "confidence": 92
+   },
+   {
+    "text": "Swansea",
     "confidence": 96
    },
    {
-    "text": "Map",
+    "text": "Eureka",
     "confidence": 97
-   },
-   {
-    "text": "data",
-    "confidence": 97
-   },
-   {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
-    "confidence": 96
    }
   ]
  },
  "images/markets/st-louis-mo/service-locations/the-sewer-pros-ballwin-mo-sewer-service-area.webp": {
-  "sha256": "777e3874b970aed45add758b7882891563b62bd1792bdb9a8c57079176eefd6a",
+  "sha256": "f5a27f0246ff42fec0a1dae94ef65c2910151f6609025a5bdc25717598a289dc",
   "words": [
    {
     "text": "Country",
     "confidence": 97
    },
    {
-    "text": "Clarkson",
-    "confidence": 76
-   },
-   {
     "text": "Life",
-    "confidence": 97
+    "confidence": 95
    },
    {
     "text": "Acres",
+    "confidence": 97
+   },
+   {
+    "text": "Clarkson",
     "confidence": 96
+   },
+   {
+    "text": "Valle",
+    "confidence": 97
    },
    {
     "text": "Queeny",
-    "confidence": 92
-   },
-   {
-    "text": "Park",
-    "confidence": 96
-   },
-   {
-    "text": "Town",
-    "confidence": 96
-   },
-   {
-    "text": "and",
-    "confidence": 97
+    "confidence": 91
    },
    {
     "text": "Country",
-    "confidence": 97
+    "confidence": 96
    },
    {
-    "text": "Wildwood",
-    "confidence": 92
+    "text": "Ballwin",
+    "confidence": 88
    },
    {
-    "text": "Hotel",
+    "text": "Manchester",
+    "confidence": 96
+   },
+   {
+    "text": "Ellisville",
+    "confidence": 81
+   },
+   {
+    "text": "Winchester",
     "confidence": 96
    },
    {
     "text": "The",
-    "confidence": 96
+    "confidence": 97
    },
    {
-    "text": "National",
-    "confidence": 96
+    "text": "Wildwood",
+    "confidence": 97
+   },
+   {
+    "text": "Hotel",
+    "confidence": 97
+   },
+   {
+    "text": "The'National",
+    "confidence": 83
    },
    {
     "text": "Museum",
+    "confidence": 97
+   },
+   {
+    "text": "Grover",
     "confidence": 96
    },
    {
-    "text": "GROVER",
-    "confidence": 97
+    "text": "Transportation",
+    "confidence": 96
    },
    {
-    "text": "Twin",
-    "confidence": 75
+    "text": "Keyes",
+    "confidence": 96
    },
    {
-    "text": "Oaks",
-    "confidence": 75
-   },
-   {
-    "text": "KEYES",
-    "confidence": 97
-   },
-   {
-    "text": "SUMMIT",
+    "text": "Summit",
     "confidence": 96
    },
    {
@@ -2619,121 +2519,133 @@
    },
    {
     "text": "State",
-    "confidence": 96
-   },
-   {
-    "text": "Park",
-    "confidence": 97
-   },
-   {
-    "text": "Valley",
     "confidence": 97
    },
    {
     "text": "Park",
-    "confidence": 95
-   },
-   {
-    "text": "Map",
-    "confidence": 90
-   },
-   {
-    "text": "data",
-    "confidence": 96
-   },
-   {
-    "text": "2026",
-    "confidence": 96
-   },
-   {
-    "text": "Google",
     "confidence": 97
    }
   ]
  },
  "images/markets/st-louis-mo/service-locations/the-sewer-pros-chesterfield-mo-sewer-service-area.webp": {
-  "sha256": "138b902671f82e3e7cf41c43a1217a12f6b4179ccf87fab3f6be64906005978c",
+  "sha256": "a71f3faca3de89b79631ea9db8a5565dc3c1d4a68b2d5b64ca53b08715a77764",
   "words": [
    {
-    "text": "WESTBURY",
-    "confidence": 83
-   },
-   {
-    "text": "EERNWOOD",
-    "confidence": 71
+    "text": "BENBUSH",
+    "confidence": 93
    },
    {
     "text": "MANOR",
     "confidence": 97
    },
    {
-    "text": "Spirit",
-    "confidence": 90
-   },
-   {
-    "text": "GUMBO",
-    "confidence": 81
-   },
-   {
-    "text": "Slick",
+    "text": "BELLERIVE",
     "confidence": 97
    },
    {
-    "text": "City",
+    "text": "ESTATES",
+    "confidence": 97
+   },
+   {
+    "text": "Spirit",
     "confidence": 95
+   },
+   {
+    "text": "Slick",
+    "confidence": 80
+   },
+   {
+    "text": "City",
+    "confidence": 93
    },
    {
     "text": "Action",
-    "confidence": 95
+    "confidence": 96
    },
    {
     "text": "Park",
-    "confidence": 95
+    "confidence": 97
+   },
+   {
+    "text": "Louis",
+    "confidence": 96
+   },
+   {
+    "text": "Airport",
+    "confidence": 96
    },
    {
     "text": "Chesterfield",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "Central",
     "confidence": 97
    },
    {
+    "text": "Park",
+    "confidence": 97
+   },
+   {
     "text": "Chesterfield",
     "confidence": 97
    },
    {
-    "text": "Miniature",
+    "text": "Ranch",
     "confidence": 97
+   },
+   {
+    "text": "Miniature",
+    "confidence": 95
+   },
+   {
+    "text": "Horse",
+    "confidence": 97
+   },
+   {
+    "text": "Sanctuary",
+    "confidence": 97
+   },
+   {
+    "text": "340",
+    "confidence": 71
+   },
+   {
+    "text": "109",
+    "confidence": 73
    },
    {
     "text": "Clarkson",
-    "confidence": 90
+    "confidence": 97
+   },
+   {
+    "text": "LAFAYETTE",
+    "confidence": 97
    },
    {
     "text": "Valley",
-    "confidence": 84
-   },
-   {
-    "text": "data",
     "confidence": 97
    },
    {
-    "text": "2026",
+    "text": "FARMS",
     "confidence": 96
-   },
-   {
-    "text": "Google",
-    "confidence": 97
    }
   ]
  },
  "images/markets/st-louis-mo/service-locations/the-sewer-pros-florissant-mo-sewer-service-area.webp": {
-  "sha256": "eb74142235203b2690f767f665878aa672cbf37669b14e4aca37034ce94a6df1",
+  "sha256": "2565f408f5ed1ce1430cf4a21092aa80b133c21c934aa30e09dc99c0066d9cbb",
   "words": [
    {
-    "text": "Mis",
-    "confidence": 93
+    "text": "Rive",
+    "confidence": 74
+   },
+   {
+    "text": "Sunset",
+    "confidence": 96
+   },
+   {
+    "text": "Park",
+    "confidence": 96
    },
    {
     "text": "CROSS",
@@ -2744,32 +2656,16 @@
     "confidence": 96
    },
    {
-    "text": "Black",
-    "confidence": 97
-   },
-   {
-    "text": "Jack",
-    "confidence": 90
-   },
-   {
     "text": "Florissant",
-    "confidence": 97
+    "confidence": 96
    },
    {
     "text": "Christian",
-    "confidence": 96
+    "confidence": 97
    },
    {
     "text": "Hospital",
-    "confidence": 96
-   },
-   {
-    "text": "Hazelwoo",
-    "confidence": 92
-   },
-   {
-    "text": "geton",
-    "confidence": 93
+    "confidence": 86
    },
    {
     "text": "Calverton",
@@ -2778,84 +2674,223 @@
    {
     "text": "Park",
     "confidence": 97
-   },
-   {
-    "text": "Berkeley",
-    "confidence": 97
-   },
-   {
-    "text": "Map",
-    "confidence": 96
-   },
-   {
-    "text": "data",
-    "confidence": 96
-   },
-   {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
-    "confidence": 96
    }
   ]
  },
  "images/markets/st-louis-mo/service-locations/the-sewer-pros-jefferson-county-mo-sewer-service-area.webp": {
-  "sha256": "187a03ac82b893b62f4cd0e55457e6f0a0b8e37ec3a1cc871a27f2f4f506b29d",
+  "sha256": "22351b33f95d26133f9716cdc283abea941160a8a6ac354aaf6163795c77c66b",
   "words": [
    {
-    "text": "New.Haven",
-    "confidence": 82
-   },
-   {
     "text": "O'Fallon",
-    "confidence": 92
-   },
-   {
-    "text": "Washington",
-    "confidence": 96
+    "confidence": 86
    },
    {
     "text": "Belleville",
-    "confidence": 85
+    "confidence": 78
    },
    {
-    "text": "Gerald",
+    "text": "Union",
     "confidence": 97
    },
    {
     "text": "Sullivan",
+    "confidence": 96
+   },
+   {
+    "text": "Soto",
+    "confidence": 95
+   },
+   {
+    "text": "Leesburg",
     "confidence": 97
    },
    {
     "text": "155",
-    "confidence": 73
+    "confidence": 71
    },
    {
-    "text": "Potosi",
+    "text": "Ste",
     "confidence": 96
    },
    {
-    "text": "Map",
-    "confidence": 93
-   },
-   {
-    "text": "Google",
-    "confidence": 94
+    "text": "Bonne",
+    "confidence": 97
    }
   ]
  },
  "images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-county-mo-sewer-service-area.webp": {
-  "sha256": "271b4199fbfe765dc420a369a6929c21243a40397e4e776c3f63655a9ee059ed",
+  "sha256": "e54cda766099ead57e87344929f25f16d4fdefd1afe29488f9d7c55e7bdae1a4",
   "words": [
    {
     "text": "Hawk",
-    "confidence": 92
+    "confidence": 96
    },
    {
     "text": "Point",
-    "confidence": 73
+    "confidence": 92
+   },
+   {
+    "text": "Alton",
+    "confidence": 94
+   },
+   {
+    "text": "Warrenton",
+    "confidence": 94
+   },
+   {
+    "text": "Edwardsville",
+    "confidence": 95
+   },
+   {
+    "text": "Lake",
+    "confidence": 95
+   },
+   {
+    "text": "Louis",
+    "confidence": 96
+   },
+   {
+    "text": "New",
+    "confidence": 97
+   },
+   {
+    "text": "Haven",
+    "confidence": 90
+   },
+   {
+    "text": "O'Fallon",
+    "confidence": 74
+   },
+   {
+    "text": "Mascoutah",
+    "confidence": 97
+   },
+   {
+    "text": "Gerald",
+    "confidence": 96
+   }
+  ]
+ },
+ "images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-mo-sewer-service-area.webp": {
+  "sha256": "b62ff9dedc39eb6a5cb4297af7e4a5cd149c2e005e2d78c863aa4d302b0e50a1",
+  "words": [
+   {
+    "text": "Black",
+    "confidence": 97
+   },
+   {
+    "text": "Walnut",
+    "confidence": 96
+   },
+   {
+    "text": "NEW",
+    "confidence": 74
+   },
+   {
+    "text": "TOWN",
+    "confidence": 74
+   },
+   {
+    "text": "CHARLES",
+    "confidence": 97
+   },
+   {
+    "text": "River",
+    "confidence": 97
+   },
+   {
+    "text": "Florissant",
+    "confidence": 90
+   },
+   {
+    "text": "Dardenne",
+    "confidence": 91
+   },
+   {
+    "text": "All",
+    "confidence": 88
+   },
+   {
+    "text": "Saints",
+    "confidence": 95
+   },
+   {
+    "text": "Hazelwood",
+    "confidence": 96
+   },
+   {
+    "text": "Village",
+    "confidence": 96
+   },
+   {
+    "text": "Cottleville",
+    "confidence": 89
+   },
+   {
+    "text": "Ferguson",
+    "confidence": 97
+   },
+   {
+    "text": "Weldon",
+    "confidence": 96
+   },
+   {
+    "text": "Maryland",
+    "confidence": 96
+   },
+   {
+    "text": "Heights",
+    "confidence": 97
+   }
+  ]
+ },
+ "images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-city-mo-sewer-service-area.webp": {
+  "sha256": "fd4fca016867f6da9921e059631dbf64eacfc70bf084b4b9c83826aea64d3a67",
+  "words": [
+   {
+    "text": "Edwardsville",
+    "confidence": 96
+   },
+   {
+    "text": "Bridgeton",
+    "confidence": 97
+   },
+   {
+    "text": "Ferguson",
+    "confidence": 85
+   },
+   {
+    "text": "ranite",
+    "confidence": 93
+   },
+   {
+    "text": "City",
+    "confidence": 97
+   },
+   {
+    "text": "Clayton",
+    "confidence": 97
+   },
+   {
+    "text": "Shiloh",
+    "confidence": 97
+   },
+   {
+    "text": "Scott",
+    "confidence": 95
+   },
+   {
+    "text": "Fenton",
+    "confidence": 97
+   }
+  ]
+ },
+ "images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-county-mo-sewer-service-area.webp": {
+  "sha256": "1b5281fe62fa0603084efca7fe8758df8f9f70044e585587a73f72a08bd971a9",
+  "words": [
+   {
+    "text": "ton",
+    "confidence": 76
    },
    {
     "text": "Warrenton",
@@ -2867,258 +2902,27 @@
    },
    {
     "text": "Louis",
-    "confidence": 96
-   },
-   {
-    "text": "New.Haven",
-    "confidence": 92
-   },
-   {
-    "text": "Washington",
-    "confidence": 97
-   },
-   {
-    "text": "Bellevill",
-    "confidence": 91
-   },
-   {
-    "text": "Mascoutah",
-    "confidence": 97
-   },
-   {
-    "text": "Arnold",
     "confidence": 95
    },
    {
-    "text": "Map",
-    "confidence": 95
-   },
-   {
-    "text": "Google",
+    "text": "Haven",
     "confidence": 97
-   }
-  ]
- },
- "images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-mo-sewer-service-area.webp": {
-  "sha256": "bc7746f7afe9e9b7cf774af8759d1539ee7da3936eb5955b184097465f50cc3d",
-  "words": [
-   {
-    "text": "Orchard",
-    "confidence": 97
-   },
-   {
-    "text": "Farm",
-    "confidence": 96
-   },
-   {
-    "text": "Black",
-    "confidence": 97
-   },
-   {
-    "text": "Walnut",
-    "confidence": 97
-   },
-   {
-    "text": "Kampville",
-    "confidence": 86
    },
    {
     "text": "O'Fallon",
-    "confidence": 90
-   },
-   {
-    "text": "Peters",
-    "confidence": 93
-   },
-   {
-    "text": "Florissant",
-    "confidence": 94
-   },
-   {
-    "text": "ardenne",
-    "confidence": 93
-   },
-   {
-    "text": "Prairie",
-    "confidence": 96
-   },
-   {
-    "text": "Saints",
-    "confidence": 94
-   },
-   {
-    "text": "Earth",
-    "confidence": 92
-   },
-   {
-    "text": "City",
-    "confidence": 92
-   },
-   {
-    "text": "Bridgeton",
-    "confidence": 81
-   },
-   {
-    "text": "Hazelwood",
-    "confidence": 95
-   },
-   {
-    "text": "Village",
-    "confidence": 96
-   },
-   {
-    "text": "Berkeley",
-    "confidence": 97
-   },
-   {
-    "text": "Howell",
-    "confidence": 92
-   },
-   {
-    "text": "141",
-    "confidence": 72
-   },
-   {
-    "text": "Ferguson",
-    "confidence": 97
-   },
-   {
-    "text": "Maryland",
-    "confidence": 97
-   },
-   {
-    "text": "Spring",
-    "confidence": 97
-   },
-   {
-    "text": "Heights",
-    "confidence": 92
-   },
-   {
-    "text": "Map",
-    "confidence": 97
-   },
-   {
-    "text": "data",
-    "confidence": 95
-   },
-   {
-    "text": "2026",
-    "confidence": 95
-   },
-   {
-    "text": "Google",
-    "confidence": 96
-   }
-  ]
- },
- "images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-city-mo-sewer-service-area.webp": {
-  "sha256": "59d268a2cc834cb93719f73031fe6608cf93e83074d9400698a1f4453d48fbd1",
-  "words": [
-   {
-    "text": "Edwardsville",
-    "confidence": 95
-   },
-   {
-    "text": "Florissant",
-    "confidence": 94
-   },
-   {
-    "text": "Bridgeton",
-    "confidence": 90
-   },
-   {
-    "text": "Chouteau",
-    "confidence": 89
-   },
-   {
-    "text": "Ferguson",
-    "confidence": 85
-   },
-   {
-    "text": "Maryville",
-    "confidence": 82
-   },
-   {
-    "text": "Heights",
-    "confidence": 71
-   },
-   {
-    "text": "Granite",
-    "confidence": 94
-   },
-   {
-    "text": "Creve",
-    "confidence": 91
-   },
-   {
-    "text": "Coeur",
-    "confidence": 93
-   },
-   {
-    "text": "Collinsville",
-    "confidence": 88
-   },
-   {
-    "text": "Clayton",
-    "confidence": 97
-   },
-   {
-    "text": "Louis",
-    "confidence": 97
-   },
-   {
-    "text": "Wildwood",
-    "confidence": 90
-   },
-   {
-    "text": "Scott",
-    "confidence": 97
-   },
-   {
-    "text": "Map",
-    "confidence": 85
-   },
-   {
-    "text": "data",
-    "confidence": 97
-   },
-   {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
-    "confidence": 97
-   }
-  ]
- },
- "images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-county-mo-sewer-service-area.webp": {
-  "sha256": "13b00e9fd445ef0676f3164409b7d9450b71e93df2d620f78d66aaceeed0f445",
-  "words": [
-   {
-    "text": "Lake",
-    "confidence": 87
-   },
-   {
-    "text": "Louis",
-    "confidence": 96
+    "confidence": 83
    },
    {
     "text": "Washington",
     "confidence": 97
    },
    {
-    "text": "ap.data",
-    "confidence": 93
+    "text": "Belleville",
+    "confidence": 74
    },
    {
-    "text": "2026",
-    "confidence": 97
-   },
-   {
-    "text": "Google",
-    "confidence": 97
+    "text": "Amold",
+    "confidence": 89
    }
   ]
  },
