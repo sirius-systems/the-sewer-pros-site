@@ -24,6 +24,7 @@ import {
   problemGridRenders,
   inclusionsGridRenders,
   ReviewMarquee,
+  EditorialMedia,
 } from '@/components/sections'
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { PlannedLinks, plannedLinksRenders } from '@/components/sections/PlannedLinks'
@@ -148,6 +149,7 @@ export function AudiencePageTemplate({
         eyebrow={content.hero.eyebrow}
         title={content.hero.title}
         intro={content.hero.intro}
+        media={<EditorialMedia pathname={page.pathname} variant="hero" />}
       />
 
       {/*

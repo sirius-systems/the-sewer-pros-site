@@ -20,7 +20,8 @@
  * Valley and every other location page.
  *
  * Approved exceptions (class X): the committed image source folders
- * (public/images/clean-outs, residential, commercial) and the 12 render images
+ * (image-originals/clean-outs, residential, commercial; before Oct 27, 2026 they sat in
+ * public/images) and the 12 render images
  * with their filenames and equipment.
  *
  * Classes: A page or route still present, B registry or data entry, C wording
@@ -59,7 +60,7 @@ const RENDER_FILES = [
   'residential/the-sewer-pros-st-louis-residential-street-manhole-curb-4x3.webp',
   'residential/the-sewer-pros-san-diego-residential-street-manhole-curb-4x3.webp',
   'residential/the-sewer-pros-las-vegas-residential-street-manhole-curb-4x3.webp',
-  'commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp',
+  'city-street/the-sewer-pros-san-diego-city-street-manhole-curb-4x3.webp',
   'residential/the-sewer-pros-st-louis-older-home-visible-cleanout-4x3.webp',
   'residential/the-sewer-pros-san-diego-older-home-visible-cleanout-4x3.webp',
   'residential/the-sewer-pros-las-vegas-older-home-visible-cleanout-4x3.webp',
@@ -117,7 +118,7 @@ function classifyLine(file, text, kind, near = { prev1: '', next1: '', win2: '',
   const strict = STRICT.test(text)
   const win1 = `${near.prev1} ${text} ${near.next1}`
   if (SELF.test(file) || OWN_DOCS.test(file)) return 'X'
-  if (/^public\/images\/(clean-outs|residential|commercial)\//.test(file)) return 'X'
+  if (/^(public\/images|image-originals)\/(clean-outs|residential|commercial)\//.test(file)) return 'X'
   if (/images\/shared\/commercial\//.test(text) || /commercial\/the-sewer-pros-san-diego-commercial-street-manhole/.test(text) || /ridgid|seektech|seesnake/i.test(text) && /\/images\//.test(text)) return 'X'
   if (!strict && /business owner/i.test(text)) return 'E'
   // "overcommercializing", "commercially": a different meaning of the word, not a commercial service.
@@ -128,6 +129,10 @@ function classifyLine(file, text, kind, near = { prev1: '', next1: '', win2: '',
   if (/^docs\/22-decisions-change-log\.md$/.test(file)) return 'E' // historical decision record
   if (/^\.claude\//.test(file)) return 'E' // local tool permission log
   if (/^scripts\/verify-.*\.mjs$/.test(file) && strict) return 'E' // page tests that assert commercial text is absent
+  // Audit tooling and shared guard libraries whose commercial patterns exist to detect and ban it (link, meta, editorial and image guards).
+  if (/^scripts\/(audit-(?!commercial).*|lib\/.*)\.mjs$/.test(file) && strict) return 'E'
+  // Docs that list commercial wording among the things a gate bans.
+  if (strict && /(no (link or anchor|repair or replacement offer)[^.]{0,120}commercial|none points to a commercial page|commercial wording, free estimate)/i.test(text)) return 'E'
   if (strict && REMOVAL_NOTE.test(win1)) return 'E'
   // A markdown heading kept only so section numbers still resolve, whose body is the removal note.
   if (strict && /^\s*#{1,6}\s/.test(text) && (/Removed \(owner decision/.test(near.next3) || REMOVAL_NOTE.test(near.next3))) return 'E'
@@ -347,7 +352,7 @@ const publicDir = path.join(repo, 'public')
 const publicImgs = walk(path.join(publicDir, 'images')).map((f) => '/' + path.relative(publicDir, f).replace(/\\/g, '/')).filter((f) => /\.(webp|png|jpg|jpeg|svg|mp4)$/i.test(f))
 const srcText = ['app', 'components', 'content', 'data', 'lib', 'types'].flatMap(walk).filter((f) => /\.(ts|tsx|json|mjs|css)$/.test(f)).map((f) => fs.readFileSync(f, 'utf8')).join('\n')
 const refSet = new Set([...srcText.matchAll(/\/images\/[A-Za-z0-9_./-]+\.(?:webp|png|jpg|jpeg|svg|mp4)/g)].map((m) => m[0]))
-const unusedImgs = publicImgs.filter((f) => !imgs.includes(f) && !refSet.has(f) && !srcText.includes(path.basename(f)))
+const unusedImgs = publicImgs.filter((f) => !/-(640|960|1280)w.webp$/.test(f) && !imgs.includes(f) && !refSet.has(f) && !srcText.includes(path.basename(f)))
 const imgNamed = publicImgs.filter((f) => TERM.test(f))
 const altCommercial = pages.filter((p) => p.where.alt).flatMap((p) => p.where.alt.map((t) => ({ route: p.route, text: t })))
 for (const f of imgNamed) {

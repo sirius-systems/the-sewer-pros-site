@@ -49,16 +49,23 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
 
   /**
-   * Unoptimized images.
+   * Responsive images without an optimizer.
    *
    * 02 §7, §8 — the Next.js image optimizer requires a server runtime,
-   * which `output: 'export'` does not provide.
+   * which `output: 'export'` does not provide, so the default loader is
+   * unavailable. Instead a custom loader (lib/image-loader.ts) maps each
+   * requested width to a pre-built variant file (640, 960 and 1280 px WebP beside
+   * the original, made by scripts/generate-image-variants.mjs), so
+   * `next/image` emits `srcset` and `sizes` as usual. The original is the
+   * largest variant.
    *
-   * Images must therefore be pre-optimized at authoring time:
-   * correct dimensions, modern formats, compressed (02 §8, §36).
+   * The widths are kept to the variant set so `srcset` stays short.
    */
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './lib/image-loader.ts',
+    deviceSizes: [640, 960, 1280, 1920],
+    imageSizes: [320],
   },
 }
 

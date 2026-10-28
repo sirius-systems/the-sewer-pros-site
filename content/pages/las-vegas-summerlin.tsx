@@ -472,7 +472,13 @@ export const summerlinContent: LocationPageContent = {
     primaryAction: { href: '#request', label: 'Schedule a Sewer Inspection' },
     secondaryActionLabel: `Call ${lv.phone}`,
     // A photo in the `summerlin-hero` slot replaces the labelled box and becomes the backdrop.
-    backdrop: inlineSlotImage('summerlin-hero'),
+    // The market hero render stands in until a photo fills the `summerlin-hero` slot.
+    backdrop: inlineSlotImage('summerlin-hero') ?? {
+      src: '/images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-residential-sewer-camera-inspection-hero.webp',
+      alt: 'Sewer camera monitor and reel beside an open cleanout in the front yard of a desert-landscaped home',
+      source:
+        'Supplied by the business owner, 2026-09-25. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     slotPlaceholder: placeholderSlot('summerlin-hero'),
     card: {
       title: 'Request a Sewer Inspection',

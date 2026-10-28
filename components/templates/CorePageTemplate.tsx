@@ -8,6 +8,7 @@ import {
   relatedLinksRenders,
   faqSectionRenders,
   ReviewMarquee,
+  EditorialMedia,
 } from '@/components/sections'
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { PageShell } from './PageShell'
@@ -112,6 +113,8 @@ export function CorePageTemplate({
             </div>
           )}
         </header>
+
+        <EditorialMedia pathname={page.pathname} />
       </Section>
 
       <TrustBar />

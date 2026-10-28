@@ -116,6 +116,7 @@ export { SectionHeading } from './SectionHeading'
 export type { SectionHeadingProps } from './SectionHeading'
 
 export { Hero } from './Hero'
+export { EditorialMedia } from './EditorialMedia'
 export type { HeroProps, HeroVariant } from './Hero'
 
 // Client component: the homepage hero's cross-fading photographic

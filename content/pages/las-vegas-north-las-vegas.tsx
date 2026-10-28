@@ -474,7 +474,13 @@ export const northLasVegasContent: LocationPageContent = {
     secondaryActionLabel: `Call ${lv.phone}`,
     // A photo in the `north-las-vegas-hero` slot replaces the labelled box and
     // becomes the backdrop.
-    backdrop: inlineSlotImage('north-las-vegas-hero'),
+    // The market hero render stands in until a photo fills the `north-las-vegas-hero` slot.
+    backdrop: inlineSlotImage('north-las-vegas-hero') ?? {
+      src: '/images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-residential-sewer-camera-inspection-hero.webp',
+      alt: 'Sewer camera monitor and reel beside an open cleanout in the front yard of a desert-landscaped home',
+      source:
+        'Supplied by the business owner, 2026-09-25. Rendered scene, not a photograph of a Sewer Pros job.',
+    },
     slotPlaceholder: placeholderSlot('north-las-vegas-hero'),
     card: {
       title: 'Request a Sewer Inspection',

@@ -7,6 +7,7 @@ import {
   relatedLinksRenders,
   faqSectionRenders,
   problemGridRenders,
+  EditorialMedia,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
 import type { ComparisonPageContent, MasterPageRecord } from '@/types'
@@ -114,6 +115,8 @@ export function ComparisonPageTemplate({
             </div>
           )}
         </header>
+
+        <EditorialMedia pathname={page.pathname} />
       </Section>
 
       {content.body !== undefined && (

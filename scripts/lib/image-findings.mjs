@@ -10,8 +10,8 @@ import { CONFIRMED_EQUIPMENT_NAMES } from './service-page-checks.mjs'
 export const BUDGET = { hero: 200 * 1024, other: 100 * 1024 }
 export const ALT_MAX = 125
 
-/** The one wired file whose folder and name carry "commercial" (IMG-28, an ordinary city street render). */
-export const COMMERCIAL_NAMED_EXCEPTIONS = new Set(['images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp'])
+/** No file name, folder or URL may carry the word commercial (the former IMG-28 street render was renamed, Oct 27, 2026). */
+export const COMMERCIAL_NAMED_EXCEPTIONS = new Set([])
 
 const EQUIPMENT_TOKEN = /ridgid|see ?snake|seek ?tech|sr-?20|cs ?-?12|trusense|mongoose|184 ?-?lt|k-?7500|7500/gi
 const OTHER_BRANDS = /\b(vactor|envirosight|cues|rothenberger|spartan|gorlitz|general wire|picote|electric eel|sewer ?rat|jetter ?pro|hydro ?flo|pf ?1500|milwaukee|dewalt|makita|rigid(?!\w)|ridgid ?mongoose)\b/i
@@ -101,6 +101,7 @@ export function summarize(pages, files) {
     fileUse.get(k).refs++
   }
   const used = new Set([...fileUse.keys()])
+  for (const r of refs) for (const u of r.srcsetResolved ?? []) used.add(u)
   // icons, manifest and share images reached from head/schema rather than <img>
   for (const p of pages) {
     for (const ic of p.icons) if (ic.href) used.add(ic.href.split('?')[0].replace(/^\//, ''))

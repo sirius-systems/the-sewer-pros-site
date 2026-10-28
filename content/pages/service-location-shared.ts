@@ -74,7 +74,7 @@ const RENDER_BY_SHOT: Record<string, { alt: string; src: (market: RenderMarket) 
   },
   'Ordinary city street, manhole and curb, no business names or identifiable buildings': {
     alt: 'Street with a manhole cover in the pavement, low buildings beyond, and a yellow locator receiver on the sidewalk',
-    src: () => `${RENDER_DIR}commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp`,
+    src: () => `${RENDER_DIR}city-street/the-sewer-pros-san-diego-city-street-manhole-curb-4x3.webp`,
   },
   'Older home, cleanout visible, no identifiable address': {
     alt: 'Home exterior with a capped cleanout pipe in the yard, and a sewer camera reel with an open monitor beside it',

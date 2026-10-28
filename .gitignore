@@ -91,3 +91,6 @@ desktop.ini
 
 # Original photo files kept out of public/ (large, may carry metadata)
 /image-originals/
+
+# tesseract.js language-data cache (scripts/ocr-images.mjs)
+eng.traineddata

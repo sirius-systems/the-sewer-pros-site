@@ -8,7 +8,7 @@ The site was already in good shape on the hard gaps: no broken references, no pl
 
 ## Fixes made
 
-1. **Weight.** 125 files over budget re-encoded (WebP, quality floor 70). 37.1 MB to 17.3 MB on those files; image bytes referenced by pages 40.0 MB to 20.2 MB; published image/video bytes 62.0 MB to 36.1 MB. Typical page: home 3.3 MB to 2.1 MB, service + location 3.3 MB to 2.2 MB, market hub 6.7 MB to 3.4 MB. Files wider than 1600 px (2400 to 4096 px sources) were scaled down; the 12 owner-approved renders (1448 x 1086, in `shared/`) were re-encoded at quality 68 or higher with **no resize** and no change of name or content. Filenames and aspect ratios are unchanged everywhere. Originals are in git history.
+1. **Weight.** 125 files over budget re-encoded (WebP, quality floor 70). 37.1 MB to 17.3 MB on those files; image bytes referenced by pages 40.0 MB to 20.2 MB; published image/video bytes 62.0 MB to 36.1 MB. Typical page: home 3.3 MB to 2.1 MB, service + location 3.3 MB to 2.2 MB, market hub 6.7 MB to 3.4 MB. Files wider than 1600 px (2400 to 4096 px sources) were scaled down; the 12 owner-approved renders were first re-encoded without resizing; the second pass restored them and IMG-12 byte-identical (see below). Filenames and aspect ratios are unchanged everywhere. Originals are in git history.
 2. **Hero priority.** Next 16's `priority` only emits a preload link. Added `fetchPriority="high"` to every hero image component (`HeroBackdrop`, `HeroVideoBackdrop`, `BackdropImage`, `CameraImageSlot`, and the About, Contact, Market, Market contact, Audience hub, rich location and service + location templates). 29 pages lacked it; 0 now.
 3. **Alt text.** 142 references over 125 characters (12 distinct strings) shortened to scene-only wording in 18 page modules, the shared service + location registry and 4 `data/business/*-images.ts` files (80 string replacements). 8 references named "SeeSnake-series" or "SeeSnake" alone, which are not confirmed spellings; they now say "RIDGID" alone (the allowed form, DEC-132/133). The same strings were updated in the docs that quote them.
 4. **Unpublished sources.** `public/images/clean-outs/`, `residential/` and `commercial/` held the 12 original-size (2400 x 1792) source renders, 5.1 MB, published but referenced by nothing. Moved with `git mv` to `image-originals/` (alongside the existing clean-outs file). The commercial source file is no longer served from the site and is not wired anywhere.
@@ -24,70 +24,66 @@ One rule refinement, not a source change: the "before" crawl counted 4 meaningfu
 - **Unconfirmed equipment in alt:** 8 references, fixed (see above). No other equipment brand appears in any alt. No equipment text in JSON-LD images.
 - **Text inside images:** a visual pass over the 28 shared renders showed no legible brand, phone, licence or plate text. Visible text is limited to the distance counters ("12 ft", "14.5 ft") and blurred document and tablet text. The jetter trailer (IMG-17) carries a small illegible toolbox label. IMG-12's machine-leg label is left as owner-approved. No OCR was available, so small text inside the other service, hero and card images was not machine-checked.
 - **Repair or replacement imagery:** none found (no excavation, trenchless, lining or pipe replacement subjects; alt scan clean).
-- **Commercial:** no page references anything from the commercial source folder. One wired file still carries "commercial" in its folder and name, `shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp` (IMG-28, an ordinary street with low buildings, used on Mission Valley and in the shared service + location registry). It is an approved render whose name was kept by an earlier decision; its alt is scene-only. The gate allows this one file and fails on any other commercial reference. See decision 1.
+- **Commercial:** no page references anything from the commercial source folder, and (second pass) no image file, folder or URL carries the word. The former IMG-28 street render was renamed `shared/city-street/...`.
 - **Real-customer or identity implication:** none. Filenames of IMG-04, IMG-05 and IMG-07 contain "technician" or "property-owner" although no person is shown, and alt describes equipment only. Filenames left as is (approved).
 
-## Remaining gaps (no code or file can close them)
+## Second pass (follow-up to 8aa9147)
 
-Page families that render no content image, compared with the design references:
+Nine items from the owner's follow-up. Everything below supersedes the matching statements above.
 
-| Family | Pages | Reference shows | Gap |
-|---|---|---|---|
-| Service + location | 144 | hero image, split image, problem cards, process, proof tiles, CTA image | Has everything except a hero image (text hero). 17 to 20 images per page otherwise. |
-| Location / market | 8 of 16 | hero image | Those 8 have a text hero; the other 8 have one. No location-specific photo tiles (the reference shows neighbourhood tiles); only the market maps and market street and home renders are market-specific. |
-| Audience | 6 | hero image, split image, service cards with art, proof tiles, CTA image | No images at all. The 6 per-audience card renders already exist under `audiences/audience-hub/` (used only on `/for/`). |
-| Comparison | 2 | editorial hero or figure | None. |
-| Resource, FAQ, Resources hub | 7 | editorial header image | None. |
-| Thank-you | 1 | n/a | Intentional. |
+1. **audit-commercial.mjs.** Run against the commit before 8aa9147 (04fdf9d, in a worktree, so no `out/`): the docs-text failure was **pre-existing**. At 04fdf9d, section 7 (docs) reported C 2, D 22, E 393 and section 1 (source) reported C 13. The flagged lines were not leftover commercial wording: 13 were the commercial guard patterns in `scripts/audit-internal-links.mjs`, `scripts/lib/editorial-audit.mjs`, `link-rules.mjs` and `meta-audit.mjs` (code that exists to detect and ban commercial wording), and 2 were doc lines describing those bans (`docs/14-content-specification.md:1836`, `docs/16-internal-linking-strategy.md:2563`: "no repair or replacement offer, commercial wording, free estimate..." and "none points to a commercial page"). The first pass added 6 more guard-code lines (`audit-images.mjs`, `image-findings.mjs`) and 2 README lines. Fix: the audit now classifies audit tooling and shared guard libraries (`scripts/audit-*.mjs` other than itself, `scripts/lib/*.mjs`) as E like the verify scripts already were, treats a doc line that lists commercial wording among banned things as E, treats `image-originals/` as the approved source-folder location (class X), and expects the renamed IMG-28 path. My two README lines were reworded as ban statements. It is a classification fix, not a stale count threshold. Result: **CLEAN** (A 0, B 0, C 0, D 119 owner-review items that are municipal wording such as "facilities" and "businesses", unchanged in kind).
+2. **Hash comparison against 04fdf9d.** 23 of the 27 `shared/` files differed because of the first-pass recompression; the 4 untouched were the two smallest sinks, the floor drain and the tablet. All 13 files in scope (the 12 approved renders, including the former IMG-28, plus IMG-12) were **restored byte-identical** from 04fdf9d and are now locked: `scripts/lib/approved-renders.json` holds their SHA-256 values, `compress-images.mjs` never touches them, and `verify-images.mjs` fails if any changes. They are exempt from the weight budget. The other generated renders stay recompressed. A before-and-after sheet of 10 recompressed images (before and after size, pixel size) is `image-audit-2026-10-27-recompression-sheet.jpg` in this folder; the pairs are visually indistinguishable at that scale.
+3. **IMG-28 renamed.** `shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp` is now `shared/city-street/the-sewer-pros-san-diego-city-street-manhole-curb-4x3.webp` (same bytes, `git mv`). Updated the Mission Valley page, `service-location-shared.ts`, the docs that name it, the approved-render lock and the waiver list; the gate's allow-list is now empty and fails on the word "commercial" in any file, folder or URL. Alt unchanged and scene-only.
+4. **Responsive images.** The site is a static export (`output: 'export'`) with no image optimizer (`images.unoptimized` was set), so `next/image` emitted no `srcset`. Now: `scripts/generate-image-variants.mjs` writes 640, 960 and 1280 px WebP variants beside every WebP a page uses (162 originals, 359 variant files, 19.7 MB; only widths well under the original), `lib/image-variants.json` lists them, and a custom loader (`lib/image-loader.ts`, `images.loader: 'custom'`) makes `next/image` emit `srcset` and `sizes` everywhere. Originals stay the largest size; the 12 approved renders (1448 px) get 640 and 960 variants only. I added 960 to the requested 640 and 1280 because a 390 px phone at 2x needs about 780 px: with only 640 and 1280 most files served the 1280 size and the saving was 8 to 11 percent. `sizes` was added to the two card components that lacked it (`ProcessSteps`, `RelatedLinks`).
 
-No slot in any registry is empty and no template calls for an image it does not render; these are gaps in the templates relative to the references.
+   Bytes a 390 px phone downloads for images (computed from the built HTML with `scripts/measure-mobile-bytes.mjs`: `sizes` evaluated at 390 px, times the device pixel ratio, smallest `srcset` candidate that fits; lazy images counted as a full scroll). "Pre-audit" uses the file sizes at 04fdf9d, "single src" is the same HTML served the old way after the first pass.
 
-Other observations (report only):
+   | Page, 390 px at 2x | Full scroll, pre-audit | After first pass (single src) | Now (srcset) | Above the fold (eager), pre-audit | Now |
+   |---|---|---|---|---|---|
+   | Home `/` | 3,337 KB | 2,074 KB | **1,214 KB** | 210 KB | 135 KB |
+   | Market hub `/st-louis-mo/` | 5,453 KB | 3,031 KB | **1,764 KB** | 554 KB | 176 KB |
+   | Service + location `/locations/st-louis-mo/ballwin/drain-cleaning/` | 3,170 KB | 2,206 KB | **1,293 KB** | 74 KB | 74 KB |
 
-- **Repeated use.** The 9 service-card images appear on 161 to 168 pages each and IMG-05 on 154; that is the related-services card row and the services section, not hero filler. No hero is shared across the 144 service + location pages (they have none). Market renders (street, older home) are per market as required.
-- **Sizes and srcset.** The static export disables the image optimizer, so no `srcset` is emitted and every device downloads the one file. Per-width variants would need new derivative files, which this audit did not create.
+   At 1x the same pages are 738, 1,046 and 792 KB; at 3x they are 1,843, 2,779 and 2,088 KB (3x needs about 1170 px, which picks the 1280 size). The service + location page has no hero image, so its eager weight is the logo. Published bytes in `public/` rose (variants), about 49.9 MB, but no page downloads them all. This is a computed figure, not a device trace; it ignores CSS-hidden images (equally before and after).
+5. **OCR** (tesseract.js 5, run with `scripts/ocr-images.mjs`; SVG diagrams read by text node, not rasterised): all 213 images under `public/images`. 38 returned text; none is a conflicting claim. Details:
+   - **22 maps** (service-area and market maps, rendered from Google Maps captures): place names and "Map data 2026 Google" or "Google INEGI" attribution, plus a few map labels such as "Legoland California Resort", "Christian Hospital", "Chesterfield Miniature Golf". Real geography, no business claims. **Decision for you: confirm you are licensed to use these Google Maps captures** (the attribution is in the images, which helps, but a captured map on a commercial site is the owner's call).
+   - **4 SVG diagrams** (sewer lateral responsibility, wastewater authorities): generic labels ("Public sewer main", "Property boundary", "Confirm requirements with the applicable local utility"). Two of them used em dashes in their text; changed to hyphens.
+   - **1 brand asset**: the email-signature PNG, "SEWER DRAIN SPECIALISTS" (not placed on any page).
+   - **11 OCR noise hits** (3-letter non-words such as "SAE", "AAT", "FAVAVAVAVA" on equipment, stucco and footage textures; checked by eye on the 8 not already reviewed, no legible text).
+   - Not seen by OCR because they are shorter than 3 characters: the distance counters ("12 ft", "14.5 ft") on two renders, already known and consistent with the text "ft".
+   All are recorded with reasons in `scripts/lib/image-ocr-waivers.json`; `verify-images.mjs` fails on any new image with legible text that is not waived, and on any image changed since its OCR.
+6. **Existing renders wired, no new images.** 23 pages gained images:
+   - **8 location pages** with no hero (Henderson, Las Vegas, North Las Vegas, Summerlin; Chula Vista, Escondido, Oceanside, San Marcos) now use their market's own hero render as the backdrop, under the black scrim, through the existing `heroForm.backdrop` (a photo in the page's hero slot still takes priority). All 16 location pages now have a hero.
+   - **6 audience pages**: `Hero` now takes `media` in the editorial variant (a 4:3 picture in the right 5 of 12 columns, below the copy on mobile, priority and fetchpriority high), and each audience page shows its card render from `/for/`, as the audience design reference does (hero image beside the copy). Scene-only alt written for each.
+   - **9 resource, comparison, FAQ and hub pages**: a header picture from existing files (`data/business/editorial-images.ts` keyed by pathname, rendered by the new `EditorialMedia` component: in the hero for the Resources hub, a 7:4 figure under the header for articles, comparisons and the FAQ). The two comparisons use the two renders that were made for them and sat unused. The St. Louis guides use St. Louis renders. While wiring I also corrected the stale card entry for the hydro-jetting comparison in `content/pages/comparisons.tsx`, whose alt ("jetting and snaking equipment side by side") described a different image and whose source said "field photography"; it now has the scene-only alt and the render source line.
+   Still without an image: the thank-you page (intentional) and the 144 service + location pages (hero only; see item 8).
+7. **Unused files moved, nothing deleted.** 15 files moved from `public/` to `image-originals/unused-from-public/` (same sub-paths) with `git mv`. The list was 16; one of them, the independent-versus-repair comparison render, is now wired (item 6), so 15 moved. They no longer ship with the site.
+8. **Hero brief:** `service-location-hero-brief.md` in this folder. 27 images (9 services x 3 markets) cover all 144 service + location pages (St. Louis 5 cities, San Diego 7, Las Vegas 4); each entry has the file name, slot, a generation prompt in the style of the approved renders, scene-only alt, the confirmed equipment names to use and a market setting. Rule: a page uses the hero for its service in its own market, never another market's, and falls back to no hero rather than a generic one. Nothing was generated.
+9. **Gate and checks.** `verify-images.mjs` now has 33 checks, adding: no "commercial" in any image file, folder or URL; approved renders byte-identical; `srcset` and `sizes` on every hero, card and grid image that has variants, every `srcset` URL resolves, every manifest variant exists; audience, location, resource, comparison, FAQ and hub pages each have an image; every published image OCR-clean or waived. After the final rebuild: `tsc --noEmit` clean, `verify-images` all pass, all 31 other verify scripts pass, `audit-commercial` CLEAN, `count-placeholders --expect=0:0` passes, eslint 0 errors (11 pre-existing warnings).
+
+### Decisions for you (updated)
+
+1. Google Maps captures used as the service-area maps: confirm licensing (item 5).
+2. 61 files remain over the 100 KB or 200 KB budget at the quality floor (listed with reasons in `scripts/lib/image-weight-waivers.json`). Default accepted.
+3. Whether to generate the 27 service + location heroes in the brief (item 8).
+
+## Still open
+
+- **Service + location hero images** (144 pages, text hero): needs new generated images; see `service-location-hero-brief.md` (27 files).
+- **Location-specific photo tiles** on location pages (the reference shows neighbourhood tiles): would need new generated images.
 - **Header logo.** `the-sewer-pros-logo-primary-transparent.png` is 926 x 184 (75 KB), preloaded on every page and displayed about 200 px wide. A 2x derivative would save about 50 KB per page.
-- **Naming.** Two outliers lack the `the-sewer-pros-` prefix: `contact/hero/sewer-pros-contact-sewer-camera-inspection-hero-16x9.webp` and `markets/st-louis-mo/services/st-louis-residential-sewer-lateral-public-main.svg`. Left alone to avoid a rename across code and docs. The 12 approved render names are untouched.
-- **Share image.** All 197 indexable pages use one brand card (1200 x 630 PNG, 88 KB, absolute URL, loads). Acceptable as a default; per-market cards would need new images.
-- **Schema.** Only the Organization `logo` appears in image fields (absolute, resolves). No page-level `image`; adding one would be optional.
-- **Orphans.** 16 non-brand files (6.4 MB, mostly service backdrops such as the hydro-jetting closing CTA) are referenced by no page and no source, and 17 brand-kit variants are unreferenced by design. 24 more files are loaded only on the client (hero cross-fade frames, hero video). Orphans still ship from `public/`; none was deleted.
-
-## Lists
-
-### 1. Slots that still need an image file, ranked by page impact
-
-No registered slot is empty. The gaps below are unregistered template positions.
-
-| Rank | Position | Pages | Covered by an approved file? |
-|---|---|---|---|
-| 1 | Service + location hero image | 144 | No. Would need a new generated image per market or service (reusing one file would be template filler). |
-| 2 | Audience page hero or split image | 6 | Yes: the 6 `audiences/audience-hub/*` card renders map one to one. Needs a template change (the `editorial` hero takes no media). |
-| 3 | Resource, comparison, FAQ and hub header image | 9 | Existing service renders could be reused; a topical image would need a new generated render. |
-| 4 | Hero on the 8 location pages without one | 8 | Yes: market hero renders exist (`markets/*/hero`) and are used on the other 8. |
-| 5 | Location-specific neighbourhood tiles | 16 | No. Would need new generated images; none invented here. |
-
-### 2. Where a real photo would be a worthwhile upgrade later
-
-1. IMG-05, technician reviewing footage (154 pages, including the shared services-section image on every service + location page). First.
-2. The service-card renders used on about 165 pages each (camera, cleaning, jetting, locating, pre-purchase).
-3. The three market hero renders.
-
-Approved renders are not marked as needing real photos.
-
-### 3. Decisions for you (each has a default, already applied or recorded)
-
-1. The IMG-28 file under `shared/commercial/` and its name: default kept as is (approved render, scene-only alt). Renaming it to a neutral name is a small code change if you want the word gone from the URL.
-2. 71 files remain over budget at the quality floor (each recorded in `scripts/lib/image-weight-waivers.json`, mostly 100 to 300 KB). Default: accepted. The fix is a smaller export of the source art, not a lower quality floor.
-3. Audience pages: default is no image until you want the hero change in list 1, row 2.
-4. Orphaned files (16, 6.4 MB): default keep. Moving them to `image-originals/` would drop that from the deploy.
+- **Naming.** Two files lack the `the-sewer-pros-` prefix: `contact/hero/sewer-pros-contact-sewer-camera-inspection-hero-16x9.webp` and `markets/st-louis-mo/services/st-louis-residential-sewer-lateral-public-main.svg`. Left alone to avoid a rename across code and docs.
+- **Share image.** All 197 indexable pages use one brand card (1200 x 630 PNG, 88 KB, absolute URL, loads). Per-market cards would need new images.
+- **Schema.** Only the Organization `logo` appears in image fields (absolute, resolves). No page-level `image`.
+- **Real-photo upgrades, if wanted later:** IMG-05 first (154 pages, including the shared services-section image on every service + location page), then the service-card renders used on about 165 pages each, then the three market hero renders. Approved renders are not marked as needing real photos.
 
 ## Before and after
 
 | Metric | Before | After |
 |---|---|---|
 | Pages crawled (indexable) | 198 (197) | 198 (197) |
-| Image references | 3668 | 3668 |
-| Unique image files referenced | 170 | 170 |
+| Image references | 3668 | 3691 |
+| Unique image files referenced | 170 | 172 |
 | Broken image references | 0 | 0 |
 | Placeholder boxes or placeholder strings | 0 | 0 |
 | Slots with no file (visible placeholder boxes) | 0 (build log: "Unfilled image slots: none") | 0 |
@@ -100,34 +96,34 @@ Approved renders are not marked as needing real photos.
 | Lazy-loaded hero images | 0 | 0 |
 | Pages whose hero lacks fetchpriority=high | 29 | 0 |
 | Files over the weight budget | 125 | 71 |
-| Image bytes referenced by pages (unique files) | 40.0 MB | 20.2 MB |
-| Image and video bytes published from public/ | 62.0 MB | 36.1 MB |
+| Image bytes referenced by pages (unique files) | 40.0 MB | 20.9 MB |
+| Image and video bytes published from public/ | 62.0 MB | 49.9 MB |
 | Pages missing a valid og:image or twitter:image | 0 | 0 |
 | Schema image URLs broken or relative | 0 | 0 |
 | Commercial images referenced | 0 | 0 |
-| Unreferenced files in public/ (not in any page or in source) | 45 | 33 |
-| Files loaded only on the client (hero frames, video) | 24 | 24 |
+| Unreferenced files in public/ (not in any page or in source) | 45 | 19 |
+| Files loaded only on the client (hero frames, video) | 24 | 23 |
 
 ## Image weight by page type
 
 | Page type | Pages | Avg image KB before | After | Largest page before | After | Avg images |
 |---|---|---|---|---|---|---|
 | about | 1 | 3249 | 1994 | 3249 | 1994 | 19 |
-| compare | 2 | 101 | 101 | 101 | 101 | 2 |
+| compare | 2 | 101 | 229 | 101 | 241 | 3 |
 | contact | 1 | 1800 | 862 | 1800 | 862 | 8 |
 | thank-you | 1 | 101 | 101 | 101 | 101 | 2 |
-| faq | 1 | 101 | 101 | 101 | 101 | 2 |
-| audience | 6 | 101 | 101 | 101 | 101 | 2 |
+| faq | 1 | 101 | 166 | 101 | 166 | 3 |
+| audience | 6 | 101 | 222 | 101 | 282 | 3 |
 | audience-hub | 1 | 3344 | 1601 | 3344 | 1601 | 17 |
 | home | 1 | 3337 | 2074 | 3337 | 2074 | 18 |
 | market-contact | 3 | 719 | 331 | 963 | 407 | 3 |
 | market-hub | 3 | 6677 | 3445 | 8826 | 3924 | 33 |
 | locations-hub | 1 | 4707 | 2348 | 4707 | 2348 | 18 |
-| service-location | 144 | 3334 | 2203 | 3701 | 2532 | 20.5 |
-| location | 16 | 3144 | 2103 | 3756 | 2512 | 18 |
-| resource | 5 | 101 | 101 | 101 | 101 | 2 |
-| resources-hub | 1 | 101 | 101 | 101 | 101 | 2 |
-| service | 9 | 3087 | 1684 | 4217 | 2184 | 15.6 |
+| service-location | 144 | 3334 | 2258 | 3701 | 2620 | 20.5 |
+| location | 16 | 3144 | 2266 | 3756 | 2582 | 18.5 |
+| resource | 5 | 101 | 307 | 101 | 502 | 3 |
+| resources-hub | 1 | 101 | 199 | 101 | 199 | 3 |
+| service | 9 | 3087 | 1688 | 4217 | 2184 | 15.6 |
 | services-hub | 1 | 3921 | 2219 | 3921 | 2219 | 19 |
 | market-other | 1 | 188 | 188 | 188 | 188 | 3 |
 
@@ -136,20 +132,20 @@ Approved renders are not marked as needing real photos.
 | Page family | Pages | Pages with no content image | Pages with no hero image | Content images per page (min-max) | Pages with a market-specific image |
 |---|---|---|---|---|---|
 | about | 1 | 0 | 0 | 17-17 | 1 |
-| compare | 2 | 2 | 2 | 0-0 | 0 |
+| compare | 2 | 0 | 2 | 1-1 | 0 |
 | contact | 1 | 0 | 0 | 9-9 | 1 |
 | thank-you | 1 | 1 | 1 | 0-0 | 0 |
-| faq | 1 | 1 | 1 | 0-0 | 0 |
-| audience | 6 | 6 | 6 | 0-0 | 0 |
+| faq | 1 | 0 | 1 | 1-1 | 0 |
+| audience | 6 | 0 | 0 | 1-1 | 0 |
 | audience-hub | 1 | 0 | 0 | 15-15 | 1 |
 | home | 1 | 0 | 0 | 16-16 | 1 |
 | market-contact | 3 | 0 | 0 | 1-1 | 3 |
 | market-hub | 3 | 0 | 0 | 26-37 | 3 |
 | locations-hub | 1 | 0 | 0 | 16-16 | 1 |
 | service-location | 144 | 0 | 144 | 17-20 | 144 |
-| location | 16 | 0 | 8 | 17-18 | 16 |
-| resource | 5 | 5 | 5 | 0-0 | 0 |
-| resources-hub | 1 | 1 | 1 | 0-0 | 0 |
+| location | 16 | 0 | 0 | 18-18 | 16 |
+| resource | 5 | 0 | 5 | 1-1 | 2 |
+| resources-hub | 1 | 0 | 0 | 1-1 | 0 |
 | service | 9 | 0 | 0 | 11-18 | 9 |
 | services-hub | 1 | 0 | 0 | 16-16 | 1 |
 | market-other | 1 | 0 | 1 | 1-1 | 0 |
@@ -191,8 +187,8 @@ Approved renders are not marked as needing real photos.
 | (unregistered) | 161 | `images/services/service-cards/the-sewer-pros-preventative-sewer-maintenance.webp` | 201 KB 1600x1195 | about, home, market-hub, locations-hub, service-location, location, services-hub, service | wired; existing asset |
 | IMG-05 | 154 | `images/shared/equipment/the-sewer-pros-technician-reviewing-camera-footage-monitor-4x3.webp` | 133 KB 1296x972 | service-location, location, service | wired; generated render (approved, DEC-145) |
 | IMG-01 | 87 | `images/shared/cleanouts/the-sewer-pros-floor-drain-cleanout-access-4x3.webp` | 98 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
-| IMG-02 | 65 | `images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp` | 148 KB 1448x1086 | location, service-location, service | wired; generated render (approved, DEC-145) |
-| IMG-26 | 65 | `images/shared/residential/the-sewer-pros-san-diego-residential-street-manhole-curb-4x3.webp` | 169 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
+| IMG-02 | 65 | `images/shared/cleanouts/the-sewer-pros-capped-exterior-cleanout-base-of-house-4x3.webp` | 178 KB 1448x1086 | location, service-location, service | wired; generated render (approved, DEC-145) |
+| IMG-26 | 65 | `images/shared/residential/the-sewer-pros-san-diego-residential-street-manhole-curb-4x3.webp` | 202 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
 | (unregistered) | 55 | `images/markets/san-diego-ca/service-locations/the-sewer-pros-san-diego-ca-sewer-services.webp` | 47 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 55 | `images/markets/san-diego-ca/service-locations/the-sewer-pros-san-marcos-ca-sewer-services.webp` | 54 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 55 | `images/markets/san-diego-ca/service-locations/the-sewer-pros-escondido-ca-sewer-services.webp` | 51 KB 1300x676 | service-location, market-hub | wired; existing asset |
@@ -200,48 +196,56 @@ Approved renders are not marked as needing real photos.
 | (unregistered) | 55 | `images/markets/san-diego-ca/service-locations/the-sewer-pros-chula-vista-ca-sewer-services.webp` | 52 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 55 | `images/markets/san-diego-ca/service-locations/the-sewer-pros-mission-valley-san-diego-sewer-services.webp` | 49 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 55 | `images/markets/san-diego-ca/service-locations/the-sewer-pros-carlsbad-ca-sewer-services.webp` | 41 KB 1300x676 | service-location, market-hub | wired; existing asset |
-| IMG-03 | 50 | `images/shared/residential/the-sewer-pros-st-louis-residential-street-manhole-curb-4x3.webp` | 267 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
-| IMG-29 | 40 | `images/shared/residential/the-sewer-pros-las-vegas-residential-street-manhole-curb-4x3.webp` | 106 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
+| IMG-03 | 51 | `images/shared/residential/the-sewer-pros-st-louis-residential-street-manhole-curb-4x3.webp` | 306 KB 1448x1086 | service-location, location, resource | wired; generated render (approved, DEC-145) |
+| IMG-29 | 40 | `images/shared/residential/the-sewer-pros-las-vegas-residential-street-manhole-curb-4x3.webp` | 130 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
 | (unregistered) | 37 | `images/markets/st-louis-mo/service-locations/the-sewer-pros-st-louis-city-mo-sewer-service-area.webp` | 88 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 37 | `images/markets/st-louis-mo/service-locations/the-sewer-pros-florissant-mo-sewer-service-area.webp` | 47 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 37 | `images/markets/st-louis-mo/service-locations/the-sewer-pros-chesterfield-mo-sewer-service-area.webp` | 52 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 37 | `images/markets/st-louis-mo/service-locations/the-sewer-pros-st-charles-mo-sewer-service-area.webp` | 66 KB 1300x676 | service-location, market-hub | wired; existing asset |
 | (unregistered) | 37 | `images/markets/st-louis-mo/service-locations/the-sewer-pros-ballwin-mo-sewer-service-area.webp` | 52 KB 1300x676 | service-location, market-hub | wired; existing asset |
-| IMG-06 | 34 | `images/shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp` | 97 KB 1600x1200 | location, service-location, service | wired; generated render (approved, DEC-145) |
+| IMG-06 | 35 | `images/shared/pipe-interiors/the-sewer-pros-tablet-inspection-video-beside-written-findings-4x3.webp` | 97 KB 1600x1200 | location, service-location, resource, service | wired; generated render (approved, DEC-145) |
 | IMG-04 | 33 | `images/shared/residential/the-sewer-pros-technician-for-sale-property-starting-sewer-scope-4x3.webp` | 141 KB 1296x972 | location, service-location | wired; generated render (approved, DEC-145) |
 | IMG-07 | 33 | `images/shared/residential/the-sewer-pros-technician-reviewing-findings-with-property-owner-4x3.webp` | 97 KB 1600x1200 | location, service-location | wired; generated render (approved, DEC-145) |
 | IMG-08 | 33 | `images/shared/cleanouts/the-sewer-pros-cleaning-cable-entering-cleanout-close-up-4x3.webp` | 163 KB 1296x972 | service-location, service | wired; generated render (approved, DEC-145) |
 | IMG-09 | 32 | `images/shared/residential/the-sewer-pros-bathroom-sink-and-tub-4x3.webp` | 48 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
-| IMG-10 | 31 | `images/shared/pipe-interiors/the-sewer-pros-monitor-showing-pipe-interior-4x3.webp` | 132 KB 1296x972 | service-location | wired; generated render (approved, DEC-145) |
+| IMG-10 | 32 | `images/shared/pipe-interiors/the-sewer-pros-monitor-showing-pipe-interior-4x3.webp` | 132 KB 1296x972 | service-location, resource | wired; generated render (approved, DEC-145) |
 | (unregistered) | 28 | `images/markets/las-vegas-nv/service-locations/the-sewer-pros-las-vegas-nv-sewer-services.webp` | 56 KB 1300x676 | market-hub, service-location | wired; existing asset |
 | (unregistered) | 28 | `images/markets/las-vegas-nv/service-locations/the-sewer-pros-henderson-nv-sewer-services.webp` | 52 KB 1300x676 | market-hub, service-location | wired; existing asset |
 | (unregistered) | 28 | `images/markets/las-vegas-nv/service-locations/the-sewer-pros-north-las-vegas-nv-sewer-services.webp` | 37 KB 1300x676 | market-hub, service-location | wired; existing asset |
 | (unregistered) | 28 | `images/markets/las-vegas-nv/service-locations/the-sewer-pros-summerlin-las-vegas-sewer-services.webp` | 58 KB 1300x676 | market-hub, service-location | wired; existing asset |
 | IMG-11 | 25 | `images/shared/equipment/the-sewer-pros-technician-locator-receiver-yard-paint-marks-4x3.webp` | 133 KB 1296x972 | location, service-location, service | wired; generated render (approved, DEC-145) |
-| IMG-12 | 24 | `images/shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp` | 96 KB 1600x1200 | service-location, location | wired; generated render (approved, DEC-145) |
+| IMG-12 | 24 | `images/shared/equipment/the-sewer-pros-drain-machine-at-floor-drain-4x3.webp` | 116 KB 1600x1200 | service-location, location | wired; generated render (approved, DEC-145) |
 | IMG-13 | 24 | `images/shared/equipment/the-sewer-pros-jetting-nozzle-hose-at-sewer-line-4x3.webp` | 141 KB 1296x972 | service-location, location | wired; generated render (approved, DEC-145) |
 | IMG-15 | 24 | `images/shared/equipment/the-sewer-pros-cleaning-machine-cable-at-cleanout-4x3.webp` | 122 KB 1296x972 | location, service-location | wired; generated render (approved, DEC-145) |
-| IMG-16 | 16 | `images/shared/residential/the-sewer-pros-kitchen-sink-slow-drain-4x3.webp` | 65 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
+| IMG-16 | 17 | `images/shared/residential/the-sewer-pros-kitchen-sink-slow-drain-4x3.webp` | 65 KB 1448x1086 | faq, service-location | wired; generated render (approved, DEC-145) |
+| IMG-18 | 17 | `images/shared/residential/the-sewer-pros-inspection-report-handed-to-agent-4x3.webp` | 94 KB 1600x1200 | location, resource | wired; generated render (approved, DEC-145) |
+| IMG-20 | 17 | `images/shared/equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp` | 97 KB 1600x1200 | service-location, resources-hub | wired; generated render (approved, DEC-145) |
 | IMG-17 | 16 | `images/shared/equipment/the-sewer-pros-jetter-trailer-at-curb-4x3.webp` | 101 KB 1296x972 | service-location | wired; generated render (approved, DEC-145) |
 | IMG-14 | 16 | `images/shared/equipment/the-sewer-pros-camera-head-push-cable-entering-cleanout-4x3.webp` | 120 KB 1296x972 | location | wired; generated render (approved, DEC-145) |
-| IMG-18 | 16 | `images/shared/residential/the-sewer-pros-inspection-report-handed-to-agent-4x3.webp` | 94 KB 1600x1200 | location | wired; generated render (approved, DEC-145) |
-| IMG-19 | 16 | `images/shared/residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp` | 268 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
-| IMG-20 | 16 | `images/shared/equipment/the-sewer-pros-monitor-pipe-interior-beside-locator-receiver-4x3.webp` | 97 KB 1600x1200 | service-location | wired; generated render (approved, DEC-145) |
+| IMG-19 | 16 | `images/shared/residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp` | 309 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
 | (unregistered) | 15 | `images/markets/st-louis-mo/locations/the-sewer-pros-st-louis-service-area-map.webp` | 94 KB 1400x728 | about, contact, audience-hub, home, locations-hub, service, services-hub | wired; existing asset |
 | (unregistered) | 15 | `images/markets/san-diego-ca/locations/the-sewer-pros-san-diego-service-area-map.webp` | 95 KB 1920x998 | about, contact, audience-hub, home, locations-hub, service, services-hub | wired; existing asset |
 | (unregistered) | 15 | `images/markets/las-vegas-nv/locations/the-sewer-pros-las-vegas-service-area-map.webp` | 93 KB 1920x998 | about, contact, audience-hub, home, locations-hub, service, services-hub | wired; existing asset |
 | IMG-21 | 15 | `images/shared/pipe-interiors/the-sewer-pros-camera-footage-still-distance-counter-4x3.webp` | 92 KB 1440x1080 | location | wired; generated render (approved, DEC-145) |
-| IMG-27 | 7 | `images/shared/residential/the-sewer-pros-san-diego-older-home-visible-cleanout-4x3.webp` | 249 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
-| IMG-28 | 5 | `images/shared/commercial/the-sewer-pros-san-diego-commercial-street-manhole-curb-4x3.webp` | 129 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
+| IMG-27 | 7 | `images/shared/residential/the-sewer-pros-san-diego-older-home-visible-cleanout-4x3.webp` | 297 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
+| IMG-22 | 6 | `images/shared/residential/the-sewer-pros-st-louis-older-home-visible-cleanout-4x3.webp` | 400 KB 1448x1086 | service-location, resource | wired; generated render (approved, DEC-145) |
+| (unregistered) | 5 | `images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-residential-sewer-camera-inspection-hero.webp` | 171 KB 1672x941 | market-hub, location | wired; existing asset |
+| (unregistered) | 5 | `images/markets/san-diego-ca/hero/the-sewer-pros-san-diego-residential-sewer-camera-inspection-hero.webp` | 193 KB 1672x941 | location, market-hub | wired; existing asset |
+| IMG-28 | 5 | `images/shared/city-street/the-sewer-pros-san-diego-city-street-manhole-curb-4x3.webp` | 159 KB 1448x1086 | service-location, location | wired; generated render (approved, DEC-145) |
 | (unregistered) | 5 | `images/markets/st-louis-mo/hero/the-sewer-pros-st-louis-residential-sewer-camera-inspection-hero-1280.webp` | 169 KB 1280x714 | location | wired; existing asset |
-| IMG-22 | 5 | `images/shared/residential/the-sewer-pros-st-louis-older-home-visible-cleanout-4x3.webp` | 352 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
 | (unregistered) | 4 | `images/homepage/hero/the-sewer-pros-residential-sewer-camera-inspection-hero.webp` | 137 KB 1672x940 | home, location | wired; existing asset |
 | (unregistered) | 4 | `images/homepage/differentiator/the-sewer-pros-st-louis-residential-property-exterior.webp` | 183 KB 1355x763 | home, locations-hub, services-hub, market-hub | wired; existing asset |
-| IMG-30 | 4 | `images/shared/residential/the-sewer-pros-las-vegas-older-home-visible-cleanout-4x3.webp` | 305 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
+| IMG-30 | 4 | `images/shared/residential/the-sewer-pros-las-vegas-older-home-visible-cleanout-4x3.webp` | 349 KB 1448x1086 | service-location | wired; generated render (approved, DEC-145) |
 | (unregistered) | 3 | `images/markets/locations-hub/the-sewer-pros-three-market-service-areas-cta.webp` | 198 KB 1400x788 | contact, audience-hub, locations-hub | wired; existing asset |
 | (unregistered) | 3 | `images/homepage/differentiator/the-sewer-pros-multifamily-properties.webp` | 95 KB 1355x763 | home, locations-hub, services-hub | wired; existing asset |
 | (unregistered) | 3 | `images/services/sewer-camera-inspection/the-sewer-pros-sewer-camera-footage-visible-pipe-offset-example-4x3.webp` | 95 KB 1303x977 | location, service | wired; existing asset |
 | (unregistered) | 3 | `images/services/sewer-camera-inspection/the-sewer-pros-ridgid-seesnake-sewer-inspection-request-form-background-16x9.webp` | 94 KB 1400x788 | service | wired; existing asset |
+| (unregistered) | 2 | `images/audiences/audience-hub/the-sewer-pros-hoa-community-sewer-inspection-evidence.webp` | 113 KB 1296x972 | audience, audience-hub | wired; existing asset |
+| (unregistered) | 2 | `images/audiences/audience-hub/the-sewer-pros-home-buyers-pre-purchase-sewer-inspection.webp` | 148 KB 1303x977 | audience, audience-hub | wired; existing asset |
+| (unregistered) | 2 | `images/audiences/audience-hub/the-sewer-pros-home-inspectors-specialized-sewer-inspection.webp` | 97 KB 1448x1086 | audience, audience-hub | wired; existing asset |
+| (unregistered) | 2 | `images/audiences/audience-hub/the-sewer-pros-home-sellers-pre-listing-sewer-documentation.webp` | 93 KB 1440x1080 | audience, audience-hub | wired; existing asset |
+| (unregistered) | 2 | `images/audiences/audience-hub/the-sewer-pros-real-estate-agents-sewer-inspection-findings.webp` | 93 KB 1600x1200 | audience-hub, audience | wired; existing asset |
+| (unregistered) | 2 | `images/audiences/audience-hub/the-sewer-pros-property-managers-recurring-sewer-diagnosis.webp` | 181 KB 1296x972 | audience-hub, audience | wired; existing asset |
 | (unregistered) | 2 | `images/homepage/differentiator/the-sewer-pros-schedule-sewer-inspection-home-exterior.webp` | 94 KB 1505x847 | home, market-hub | wired; existing asset |
 | (unregistered) | 2 | `images/markets/locations-hub/the-sewer-pros-st-louis-sewer-service-area-hero.webp` | 306 KB 1728x973 | locations-hub, market-contact | wired; existing asset |
 | (unregistered) | 2 | `images/services/sewer-camera-inspection/the-sewer-pros-ridgid-seesnake-camera-reel-cable-equipment-4x3.webp` | 95 KB 1303x977 | service | wired; existing asset |
@@ -255,6 +259,8 @@ Approved renders are not marked as needing real photos.
 | (unregistered) | 1 | `images/brand/about/founders/the-sewer-pros-rick-coffman-profile-image.webp` | 7 KB 480x600 | about | wired; brand asset |
 | (unregistered) | 1 | `images/brand/about/the-sewer-pros-about-what-to-expect-sewer-camera-inspection-4x3.webp` | 107 KB 1303x977 | about | wired; brand asset |
 | (unregistered) | 1 | `images/brand/about/the-sewer-pros-about-contact-cta-sewer-camera-inspection-16x9.webp` | 94 KB 1728x973 | about | wired; brand asset |
+| (unregistered) | 1 | `images/services/hydro-jetting/the-sewer-pros-hydro-jetting-vs-sewer-snaking-cleaning-methods-4x3.webp` | 140 KB 1296x968 | compare | wired; existing asset |
+| (unregistered) | 1 | `images/services/pre-purchase-sewer-inspection/the-sewer-pros-independent-sewer-inspection-vs-repair-company-inspection-ridgid-seesnake-4x3.webp` | 116 KB 1296x968 | compare | wired; existing asset |
 | (unregistered) | 1 | `images/contact/hero/sewer-pros-contact-sewer-camera-inspection-hero-16x9.webp` | 186 KB 1920x1072 | contact | wired; existing asset |
 | (unregistered) | 1 | `images/contact/the-sewer-pros-contact-request-inspection-background-16x9.webp` | 95 KB 1555x868 | contact | wired; existing asset |
 | (unregistered) | 1 | `images/audiences/audience-hub/hero/the-sewer-pros-who-we-serve-hero-blue-gray-background.webp` | 14 KB 1672x941 | audience-hub | wired; existing asset |
@@ -262,14 +268,7 @@ Approved renders are not marked as needing real photos.
 | (unregistered) | 1 | `images/audiences/audience-hub/hero/the-sewer-pros-home-inspectors-seesnake-standard-camera-reel-trusense.webp` | 73 KB 1448x1086 | audience-hub | wired; existing asset |
 | (unregistered) | 1 | `images/audiences/audience-hub/hero/the-sewer-pros-home-inspectors-ridgid-seektech-sr-20-utility-line-locator.webp` | 62 KB 1448x1086 | audience-hub | wired; existing asset |
 | (unregistered) | 1 | `images/audiences/audience-hub/hero/the-sewer-pros-home-inspectors-ridgid-k-7500-drum-machine.webp` | 62 KB 1448x1086 | audience-hub | wired; existing asset |
-| (unregistered) | 1 | `images/audiences/audience-hub/the-sewer-pros-home-buyers-pre-purchase-sewer-inspection.webp` | 148 KB 1303x977 | audience-hub | wired; existing asset |
-| (unregistered) | 1 | `images/audiences/audience-hub/the-sewer-pros-home-sellers-pre-listing-sewer-documentation.webp` | 93 KB 1440x1080 | audience-hub | wired; existing asset |
-| (unregistered) | 1 | `images/audiences/audience-hub/the-sewer-pros-real-estate-agents-sewer-inspection-findings.webp` | 93 KB 1600x1200 | audience-hub | wired; existing asset |
-| (unregistered) | 1 | `images/audiences/audience-hub/the-sewer-pros-home-inspectors-specialized-sewer-inspection.webp` | 97 KB 1448x1086 | audience-hub | wired; existing asset |
-| (unregistered) | 1 | `images/audiences/audience-hub/the-sewer-pros-property-managers-recurring-sewer-diagnosis.webp` | 181 KB 1296x972 | audience-hub | wired; existing asset |
-| (unregistered) | 1 | `images/audiences/audience-hub/the-sewer-pros-hoa-community-sewer-inspection-evidence.webp` | 113 KB 1296x972 | audience-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/locations-hub/the-sewer-pros-las-vegas-sewer-service-area-hero.webp` | 191 KB 1920x1081 | market-contact | wired; existing asset |
-| (unregistered) | 1 | `images/markets/las-vegas-nv/hero/the-sewer-pros-las-vegas-residential-sewer-camera-inspection-hero.webp` | 171 KB 1672x941 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-sewer-inspection-experience.webp` | 133 KB 1303x977 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-sewer-camera-evidence.webp` | 136 KB 1303x977 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/las-vegas-nv/services/the-sewer-pros-pre-purchase-sewer-camera-inspection.webp` | 118 KB 1344x768 | market-hub | wired; existing asset |
@@ -286,7 +285,6 @@ Approved renders are not marked as needing real photos.
 | (unregistered) | 1 | `images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-pre-purchase-sewer-inspection.webp` | 118 KB 1303x977 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/las-vegas-nv/services/the-sewer-pros-las-vegas-residential-service-cta.webp` | 134 KB 1400x788 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/locations-hub/the-sewer-pros-san-diego-sewer-service-area-hero.webp` | 193 KB 1728x973 | market-contact | wired; existing asset |
-| (unregistered) | 1 | `images/markets/san-diego-ca/hero/the-sewer-pros-san-diego-residential-sewer-camera-inspection-hero.webp` | 193 KB 1672x941 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/san-diego-ca/services/the-sewer-pros-san-diego-sewer-inspection-experience.webp` | 106 KB 1200x896 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-root-intrusion-camera-inspection.webp` | 105 KB 1296x972 | market-hub | wired; existing asset |
 | (unregistered) | 1 | `images/markets/san-diego-ca/services/the-sewer-pros-sewer-line-grease-scale-buildup-camera-inspection.webp` | 124 KB 1296x972 | market-hub | wired; existing asset |

@@ -109,11 +109,11 @@ These apply to every asset in this tree, generated or not:
 - **Gate.** After `npm run build`, `npm run verify:images` fails on a broken
   reference, a visible placeholder, missing or banned alt, an image with no
   dimensions, a lazy hero, a missing og:image, a broken schema image, a file
-  over budget, or a commercial image. `npm run audit:images` writes the full
+  over budget, or a banned commercial image. `npm run audit:images` writes the full
   per-page inventory (`docs/source-reports/image-audit-*.json` and `.csv`).
 - **Alt text.** Scene only, 125 characters or fewer, no real-job,
-  before-and-after, customer, address, licence, office, commercial or repair
-  wording, and no equipment name other than `RIDGID` or the five confirmed names.
+  before-and-after, customer, address, licence, office, banned commercial or
+  repair wording, and no equipment name other than `RIDGID` or the five confirmed names.
   Decorative backdrops and hidden collages use `alt=""` on purpose.
 
 ## Design references
