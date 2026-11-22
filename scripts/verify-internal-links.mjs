@@ -233,6 +233,14 @@ for (const ans of faq.answers) {
 }
 check('FAQ answer links resolve to existing, indexable pages other than the page itself', faqLinkIssues)
 
+// A `{{a|b}}` answer variant (lib/links/variants.tsx) must be resolved on every page, in the HTML and in the JSON-LD.
+const leftoverMarkers = []
+for (const u of urls) {
+  const html = fs.readFileSync(path.join(g.root, u === '/' ? '' : u, 'index.html'), 'utf8')
+  if (/\{\{[^{}]*\|[^{}]*\}\}/.test(html.replace(/<script[^>]*>(?:self\.__next_f)[\s\S]*?<\/script>/g, ''))) leftoverMarkers.push(u)
+}
+check('no unresolved {{a|b}} answer variant in any page', leftoverMarkers)
+
 // Generic anchors in FAQ answers (the page-wide check above already covers body content).
 check(
   'no generic anchor text in FAQ answers',
