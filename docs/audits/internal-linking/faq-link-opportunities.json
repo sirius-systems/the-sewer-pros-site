@@ -668,8 +668,8 @@
    "faqCount": 33,
    "schema": true,
    "schemaCount": 33,
-   "linkedAnswers": 9,
-   "answerLinks": 9
+   "linkedAnswers": 8,
+   "answerLinks": 8
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/",
@@ -678,8 +678,8 @@
    "faqCount": 10,
    "schema": true,
    "schemaCount": 10,
-   "linkedAnswers": 1,
-   "answerLinks": 1
+   "linkedAnswers": 0,
+   "answerLinks": 0
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
@@ -688,8 +688,8 @@
    "faqCount": 37,
    "schema": true,
    "schemaCount": 37,
-   "linkedAnswers": 6,
-   "answerLinks": 9
+   "linkedAnswers": 5,
+   "answerLinks": 8
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/preventative-sewer-maintenance/",
@@ -698,8 +698,8 @@
    "faqCount": 23,
    "schema": true,
    "schemaCount": 23,
-   "linkedAnswers": 4,
-   "answerLinks": 4
+   "linkedAnswers": 3,
+   "answerLinks": 3
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/recurring-sewer-backup-diagnosis/",
@@ -708,8 +708,8 @@
    "faqCount": 37,
    "schema": true,
    "schemaCount": 37,
-   "linkedAnswers": 8,
-   "answerLinks": 8
+   "linkedAnswers": 7,
+   "answerLinks": 7
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/sewer-camera-inspection/",
@@ -718,8 +718,8 @@
    "faqCount": 31,
    "schema": true,
    "schemaCount": 31,
-   "linkedAnswers": 5,
-   "answerLinks": 5
+   "linkedAnswers": 4,
+   "answerLinks": 4
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/sewer-cleaning/",
@@ -738,8 +738,8 @@
    "faqCount": 31,
    "schema": true,
    "schemaCount": 31,
-   "linkedAnswers": 3,
-   "answerLinks": 3
+   "linkedAnswers": 2,
+   "answerLinks": 2
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/sewer-line-locating/",
@@ -748,8 +748,8 @@
    "faqCount": 29,
    "schema": true,
    "schemaCount": 29,
-   "linkedAnswers": 4,
-   "answerLinks": 4
+   "linkedAnswers": 3,
+   "answerLinks": 3
   },
   {
    "url": "/locations/san-diego-ca/escondido/drain-cleaning/",
@@ -1848,8 +1848,8 @@
    "faqCount": 15,
    "schema": true,
    "schemaCount": 15,
-   "linkedAnswers": 4,
-   "answerLinks": 5
+   "linkedAnswers": 3,
+   "answerLinks": 4
   },
   {
    "url": "/services/pre-purchase-sewer-inspection/",
@@ -1954,8 +1954,8 @@
  ],
  "totals": {
   "answers": 5173,
-  "withLinks": 758,
-  "links": 834
+  "withLinks": 749,
+  "links": 825
  },
  "schemaMismatch": [],
  "opportunities": [
@@ -2354,18 +2354,6 @@
    "index": 2,
    "alreadyLinked": false,
    "sentence": " sewer scope is a separate, focused inspection of the sewer line, done with a camera and different equipment."
-  },
-  {
-   "url": "/for/property-managers/",
-   "type": "audience",
-   "question": "When should a property manager schedule hydro jetting?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/hydro-jetting/",
-   "mention": "Hydro jetting",
-   "index": 128,
-   "alreadyLinked": true,
-   "sentence": "Hydro jetting is a cleaning method for buildup."
   },
   {
    "url": "/for/property-managers/",
@@ -3342,6 +3330,18 @@
   {
    "url": "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
    "type": "service-location",
+   "question": "Can a sewer scope tell where a problem is in the yard?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 78,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+  },
+  {
+   "url": "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -3782,18 +3782,6 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
-  },
-  {
-   "url": "/locations/las-vegas-nv/henderson/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/las-vegas-nv/henderson/sewer-camera-inspection/",
@@ -4866,18 +4854,6 @@
   {
    "url": "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
    "type": "service-location",
-   "question": "Can a sewer scope tell where a problem is in the yard?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 78,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
-  },
-  {
-   "url": "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
-   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -5294,6 +5270,18 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
+  },
+  {
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
+   "type": "service-location",
+   "question": "Can a sewer camera tell how deep the pipe is?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 133,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
@@ -6646,10 +6634,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 78,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
@@ -7318,10 +7306,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 133,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/",
@@ -8622,6 +8610,18 @@
   {
    "url": "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
    "type": "service-location",
+   "question": "Can a sewer scope tell where a problem is in the yard?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 78,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -9050,6 +9050,18 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
+  },
+  {
+   "url": "/locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
+   "type": "service-location",
+   "question": "Can a sewer camera tell how deep the pipe is?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 133,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
@@ -10062,18 +10074,6 @@
   {
    "url": "/locations/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/",
    "type": "service-location",
-   "question": "Can a sewer scope tell where a problem is in the yard?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 78,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
-  },
-  {
-   "url": "/locations/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/",
-   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -10490,18 +10490,6 @@
    "index": 186,
    "alreadyLinked": true,
    "sentence": "See sewer cleaning and camera inspection."
-  },
-  {
-   "url": "/locations/san-diego-ca/carlsbad/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/carlsbad/sewer-camera-inspection/",
@@ -11347,12 +11335,12 @@
    "url": "/locations/san-diego-ca/chula-vista/",
    "type": "location",
    "question": "What should I do if sewage backs up inside my Chula Vista home?",
-   "status": "linked",
+   "status": "open",
    "kind": "service",
    "target": "/services/sewer-cleaning/",
    "mention": "sewer cleaning",
    "index": 318,
-   "alreadyLinked": true,
+   "alreadyLinked": false,
    "sentence": "If the sewage stops when the water is off, it says to contact a licensed plumber or sewer cleaning contractor."
   },
   {
@@ -11510,18 +11498,6 @@
    "index": 6,
    "alreadyLinked": true,
    "sentence": "A pre-purchase sewer inspection is a camera inspection."
-  },
-  {
-   "url": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer scope tell where a problem is in the yard?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 78,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
@@ -11986,10 +11962,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 133,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/chula-vista/sewer-camera-inspection/",
@@ -12055,12 +12031,12 @@
    "url": "/locations/san-diego-ca/chula-vista/sewer-cleaning/",
    "type": "service-location",
    "question": "What should I do if sewage backs up inside my Chula Vista home?",
-   "status": "linked",
+   "status": "covered",
    "kind": "service",
    "target": "/services/sewer-cleaning/",
    "mention": "sewer cleaning",
    "index": 318,
-   "alreadyLinked": true,
+   "alreadyLinked": false,
    "sentence": "If the sewage stops when the water is off, it says to contact a licensed plumber or sewer cleaning contractor."
   },
   {
@@ -13074,6 +13050,18 @@
   {
    "url": "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
    "type": "service-location",
+   "question": "Can a sewer scope tell where a problem is in the yard?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 78,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -13526,6 +13514,18 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
+  },
+  {
+   "url": "/locations/san-diego-ca/escondido/sewer-camera-inspection/",
+   "type": "service-location",
+   "question": "Can a sewer camera tell how deep the pipe is?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 133,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/escondido/sewer-camera-inspection/",
@@ -14346,18 +14346,6 @@
   {
    "url": "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
    "type": "service-location",
-   "question": "Can a sewer scope tell where a problem is in the yard?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 78,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
-  },
-  {
-   "url": "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
-   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -14630,18 +14618,6 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
-  },
-  {
-   "url": "/locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
@@ -15486,6 +15462,18 @@
   {
    "url": "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
    "type": "service-location",
+   "question": "Can a sewer scope tell where a problem is in the yard?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 78,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+  },
+  {
+   "url": "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -15926,18 +15914,6 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
-  },
-  {
-   "url": "/locations/san-diego-ca/oceanside/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/oceanside/sewer-camera-inspection/",
@@ -16666,10 +16642,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 78,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
@@ -16838,18 +16814,6 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
-  },
-  {
-   "url": "/locations/san-diego-ca/san-diego/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/san-diego/sewer-camera-inspection/",
@@ -17554,10 +17518,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 78,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
@@ -17942,18 +17906,6 @@
    "index": 186,
    "alreadyLinked": true,
    "sentence": "See sewer cleaning and camera inspection."
-  },
-  {
-   "url": "/locations/san-diego-ca/san-marcos/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/san-diego-ca/san-marcos/sewer-camera-inspection/",
@@ -18858,6 +18810,18 @@
   {
    "url": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
    "type": "service-location",
+   "question": "Can a sewer scope tell where a problem is in the yard?",
+   "status": "linked",
+   "kind": "service",
+   "target": "/services/sewer-line-locating/",
+   "mention": "Locating the sewer line",
+   "index": 78,
+   "alreadyLinked": true,
+   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+  },
+  {
+   "url": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -19250,18 +19214,6 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
-  },
-  {
-   "url": "/locations/st-louis-mo/ballwin/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/st-louis-mo/ballwin/sewer-camera-inspection/",
@@ -20050,10 +20002,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 78,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
@@ -20306,18 +20258,6 @@
    "index": 186,
    "alreadyLinked": true,
    "sentence": "See sewer cleaning and camera inspection."
-  },
-  {
-   "url": "/locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
@@ -21114,18 +21054,6 @@
   {
    "url": "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
    "type": "service-location",
-   "question": "Can a sewer scope tell where a problem is in the yard?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 78,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
-  },
-  {
-   "url": "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
-   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -21590,18 +21518,6 @@
    "index": 186,
    "alreadyLinked": true,
    "sentence": "See sewer cleaning and camera inspection."
-  },
-  {
-   "url": "/locations/st-louis-mo/florissant/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/st-louis-mo/florissant/sewer-camera-inspection/",
@@ -22450,10 +22366,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 78,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/st-louis-mo/st-charles/pre-purchase-sewer-inspection/",
@@ -22710,18 +22626,6 @@
   {
    "url": "/locations/st-louis-mo/st-charles/sewer-camera-inspection/",
    "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
-  },
-  {
-   "url": "/locations/st-louis-mo/st-charles/sewer-camera-inspection/",
-   "type": "service-location",
    "question": "Will I get the video and written findings?",
    "status": "linked",
    "kind": "resource",
@@ -22922,18 +22826,6 @@
    "index": 39,
    "alreadyLinked": true,
    "sentence": "hen a camera is used, you receive the inspection video."
-  },
-  {
-   "url": "/locations/st-louis-mo/st-louis-city/drain-cleaning/",
-   "type": "service-location",
-   "question": "Can a sewer line be cleaned instead of replaced?",
-   "status": "open",
-   "kind": "service",
-   "target": "/services/hydro-jetting/",
-   "mention": "hydro jetting",
-   "index": 154,
-   "alreadyLinked": false,
-   "sentence": "A camera inspection shows which situation you have, so cleaning or hydro jetting is chosen on evidence rather than assumption."
   },
   {
    "url": "/locations/st-louis-mo/st-louis-city/drain-cleaning/",
@@ -23214,18 +23106,6 @@
   {
    "url": "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
    "type": "service-location",
-   "question": "Can a sewer scope tell where a problem is in the yard?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 78,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
-  },
-  {
-   "url": "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
-   "type": "service-location",
    "question": "Should I get a sewer scope before buying a house?",
    "status": "covered",
    "kind": "service",
@@ -23306,18 +23186,6 @@
    "index": 79,
    "alreadyLinked": false,
    "sentence": "et the scope in writing, compare more than one written estimate, and keep the inspection video and written findings."
-  },
-  {
-   "url": "/locations/st-louis-mo/st-louis-city/recurring-sewer-backup-diagnosis/",
-   "type": "service-location",
-   "question": "Can a sewer line be cleaned instead of replaced?",
-   "status": "open",
-   "kind": "service",
-   "target": "/services/hydro-jetting/",
-   "mention": "hydro jetting",
-   "index": 154,
-   "alreadyLinked": false,
-   "sentence": "A camera inspection shows which situation you have, so cleaning or hydro jetting is chosen on evidence rather than assumption."
   },
   {
    "url": "/locations/st-louis-mo/st-louis-city/recurring-sewer-backup-diagnosis/",
@@ -23418,18 +23286,6 @@
   {
    "url": "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
    "type": "service-location",
-   "question": "Can a sewer line be cleaned instead of replaced?",
-   "status": "open",
-   "kind": "service",
-   "target": "/services/hydro-jetting/",
-   "mention": "hydro jetting",
-   "index": 154,
-   "alreadyLinked": false,
-   "sentence": "A camera inspection shows which situation you have, so cleaning or hydro jetting is chosen on evidence rather than assumption."
-  },
-  {
-   "url": "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
-   "type": "service-location",
    "question": "What is a sewer camera inspection?",
    "status": "linked",
    "kind": "service",
@@ -23438,18 +23294,6 @@
    "index": 2,
    "alreadyLinked": true,
    "sentence": " sewer camera inspection is a visual inspection of the accessible inside of a drain or sewer line."
-  },
-  {
-   "url": "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
-   "type": "service-location",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
@@ -23594,18 +23438,6 @@
    "index": 9,
    "alreadyLinked": false,
    "sentence": "sk your home inspector what their inspection covers."
-  },
-  {
-   "url": "/locations/st-louis-mo/st-louis-city/sewer-line-locating/",
-   "type": "service-location",
-   "question": "Can a sewer line be cleaned instead of replaced?",
-   "status": "open",
-   "kind": "service",
-   "target": "/services/hydro-jetting/",
-   "mention": "hydro jetting",
-   "index": 154,
-   "alreadyLinked": false,
-   "sentence": "A camera inspection shows which situation you have, so cleaning or hydro jetting is chosen on evidence rather than assumption."
   },
   {
    "url": "/locations/st-louis-mo/st-louis-city/sewer-line-locating/",
@@ -23925,23 +23757,11 @@
    "question": "Is drain cleaning the same as sewer cleaning?",
    "status": "linked",
    "kind": "service",
-   "target": "/services/sewer-cleaning/",
-   "mention": "sewer cleaning",
-   "index": 93,
-   "alreadyLinked": true,
-   "sentence": "Drain cleaning generally addresses individual fixture or branch-line clogs, while sewer cleaning addresses the main sewer line itself."
-  },
-  {
-   "url": "/san-diego-ca/",
-   "type": "market-hub",
-   "question": "Is drain cleaning the same as sewer cleaning?",
-   "status": "linked",
-   "kind": "service",
    "target": "/services/drain-cleaning/",
    "mention": "Drain cleaning",
    "index": 11,
    "alreadyLinked": true,
-   "sentence": "Drain cleaning generally addresses individual fixture or branch-line clogs, while sewer cleaning addresses the main sewer line itself."
+   "sentence": "Drain cleaning generally addresses individual fixture or branch-line clogs, while main sewer line cleaning addresses the main sewer line itself."
   },
   {
    "url": "/services/drain-cleaning/",
@@ -24127,7 +23947,7 @@
    "url": "/services/",
    "type": "services-hub",
    "question": "What sewer and drain services does The Sewer Pros offer?",
-   "status": "covered",
+   "status": "open",
    "kind": "service",
    "target": "/services/sewer-camera-inspection/",
    "mention": "Sewer camera inspection",
@@ -24283,12 +24103,12 @@
    "url": "/services/",
    "type": "services-hub",
    "question": "Is a sewer scope the same as a sewer camera inspection?",
-   "status": "linked",
+   "status": "open",
    "kind": "service",
    "target": "/services/sewer-camera-inspection/",
    "mention": "Sewer scope",
    "index": 6,
-   "alreadyLinked": true,
+   "alreadyLinked": false,
    "sentence": "“Sewer scope” and “sewer camera inspection” describe the same service: a camera run through the line to document its condition on video."
   },
   {
@@ -24334,10 +24154,10 @@
    "status": "linked",
    "kind": "service",
    "target": "/services/sewer-line-locating/",
-   "mention": "Locating the sewer line",
+   "mention": "Sewer line locating",
    "index": 78,
    "alreadyLinked": true,
-   "sentence": "Locating the sewer line can estimate a position from the surface, and a locate is an estimate, not a survey."
+   "sentence": "Sewer line locating service can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/services/pre-purchase-sewer-inspection/",
@@ -24518,18 +24338,6 @@
    "index": 186,
    "alreadyLinked": true,
    "sentence": "See sewer cleaning and camera inspection."
-  },
-  {
-   "url": "/services/sewer-camera-inspection/",
-   "type": "service",
-   "question": "Can a sewer camera tell how deep the pipe is?",
-   "status": "linked",
-   "kind": "service",
-   "target": "/services/sewer-line-locating/",
-   "mention": "Sewer line locating",
-   "index": 133,
-   "alreadyLinked": true,
-   "sentence": "Sewer line locating can estimate a position from the surface, and a locate is an estimate, not a survey."
   },
   {
    "url": "/services/sewer-camera-inspection/",

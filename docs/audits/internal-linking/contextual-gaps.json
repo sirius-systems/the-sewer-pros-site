@@ -821,6 +821,14 @@
    "url": "/locations/san-diego-ca/chula-vista/",
    "type": "location",
    "kind": "service",
+   "target": "/services/sewer-cleaning/",
+   "onlyCardOrModule": true,
+   "snippet": "ewer camera inspection, diagnostics, line locating, hydro jetting and sewer cleaning for Chula Vista properties. The City of Chula Vista runs th"
+  },
+  {
+   "url": "/locations/san-diego-ca/chula-vista/",
+   "type": "location",
+   "kind": "service",
    "target": "/services/hydro-jetting/",
    "onlyCardOrModule": true,
    "snippet": " Independent sewer camera inspection, diagnostics, line locating, hydro jetting and sewer cleaning for Chula Vista properties. The City of "

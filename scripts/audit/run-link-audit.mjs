@@ -217,6 +217,28 @@ if (r3Dir && fs.existsSync(path.resolve(r3Dir))) {
   md += `### 9.2 Anchor distribution (targets with ${MIN_LINKS} or more editorial links)\n\n${table(['Target', 'Links before', 'Top anchor before', 'Top share before', 'Links after', 'Distinct anchors after', 'Top anchor after', 'Top share after'], [...new Set([...bAN3.violations.map((v) => v.target), ...AN.violations.map((v) => v.target)])].map((t) => { const b = bAN3.violations.find((v) => v.target === t); const a = AN.stats.find((v) => v.target === t); return [t, b?.total ?? dash, b?.topAnchor ?? dash, b?.topShare ?? dash, a?.total ?? dash, a?.distinct ?? dash, a?.topAnchor ?? dash, a?.topShare ?? dash] }))}\n`
   md += `Answers compared: ${compared}. Visible answer text changed on ${changed} (shared answers resolve one \`{{a|b|c}}\` option per route, and a few answers gained a one-line pointer to the combined service). FAQPage text equals the visible text on every page (${F.schemaMismatch.length} mismatches).\n\n`
 }
+
+/* Section 11: owner-approved anchor pass (proposal: anchor-pass-proposal-2026-11-22.md). */
+{
+  const BEFORE11 = { '/services/sewer-cleaning/': 0.69, '/services/hydro-jetting/': 0.53, '/services/sewer-line-locating/': 0.47, '/services/drain-cleaning/': 0.64 }
+  const after = (t) => AN.stats.find((x) => x.target === t)
+  md += `\n## 11. Anchor pass (owner-approved proposals)\n\n`
+  md += `### 11.1 Top-anchor share before and after\n\n${table(['Target', 'Editorial links', 'Top share before', 'Top anchor after', 'Top share after', 'Gate'], Object.entries(BEFORE11).map(([t, b]) => { const a = after(t); return [t, a?.total ?? dash, b, a?.topAnchor ?? dash, a?.topShare ?? dash, a && a.topShare <= MAX_SHARE ? 'at or under 40%, off the baseline' : 'over 40%'] }))}\n`
+  md += `### 11.2 Sentences changed\n\n${table(['ID', 'Page(s)', 'Old anchor', 'New anchor'], [
+    ['P-C1 + P-H1', 'Home (How we work, closing call-to-action), 3 market hubs, Locations hub, Services hub (data/business/process.tsx)', 'sewer cleaning; hydro jetting', 'main sewer line cleaning; water jetting (registered aliases; "a maintenance issue a" becomes "that")'],
+    ['P-C2', 'Drain Cleaning definition (services.tsx)', 'Sewer cleaning', 'Sewer line cleaning'],
+    ['P-C3', 'Hydro Jetting definition (services.tsx)', 'sewer cleaning', 'sewer line cleaning'],
+    ['P-C4', 'San Diego hub FAQ (san-diego.tsx)', 'sewer cleaning', 'one of: sewer cleaning, main sewer line cleaning, sewer line cleaning (per route)'],
+    ['P-H2', 'Recurring Sewer Backup Diagnosis FAQ (services.tsx)', 'hydro jetting', 'one of: hydro jetting, water jetting, the hydro jetting service (per route)'],
+    ['P-H3', 'Property Managers FAQ (audiences.tsx)', 'Hydro jetting', 'one of: Water jetting, Sewer jetting, Hydro jetting (per route)'],
+    ['P-H4', 'St. Louis City hydro jetting FAQ (st-louis-city.tsx)', 'hydro jetting', 'one of: water jetting, sewer jetting, hydro jetting (per route)'],
+    ['P-L1, P-L2', 'Shared locating answers on local pages (services.tsx)', 'one of: Sewer line locating, Line locating, Locating the sewer line', 'one of: Line locating, Locating the sewer line, Sewer line locating service'],
+    ['P-D1', 'Hydro Jetting page signs section (services.tsx; the report named service-location-shared.ts, whose sentence is not a link)', 'drain cleaning', 'drain-line cleaning'],
+    ['P-D2', 'Sewer Cleaning page signs section (services.tsx)', 'drain cleaning', 'cleaning a single drain'],
+    ['P-D3', 'Sewer Cleaning & Camera Inspection page signs section (services.tsx)', 'drain cleaning', 'drain-line cleaning'],
+  ])}\nNot applied (rated Not worth it or keep): P-C5, P-L3, P-L4, P-D4. Skipped as pinned: none (each sentence was re-checked against scripts/verify-*.mjs before editing).\n\n`
+  md += `### 11.3 Linker rule: no links in third-party text\n\nThe shared FAQ linker now skips text between double quotation marks (straight or curly), inside q, blockquote and cite elements, and inside any element marked data-no-link. The Chula Vista answer that reported the City brochure ("contact a licensed plumber or sewer cleaning contractor") was linking "sewer cleaning" to our Sewer Cleaning page; that sentence is now wrapped in a data-no-link span and carries no link. A scan of the built FAQ output found one other link inside quotation marks, the Services hub answer that quotes the terms "sewer scope" and "sewer camera inspection"; the new rule removes it. \`scripts/verify-internal-links.mjs\` now fails if an FAQ answer link sits inside quoted or marked third-party text.\n\n`
+}
 md += `## 7. Decisions and open questions\n\n- FAQ answers are authored as JSX, not strings. Instead of adding a markdown-link format, the existing linker (\`lib/links/faq-links.tsx\`) was extended; JSON-LD is already derived from the same JSX (\`lib/schema/faq.ts\`), so text cannot drift, and the gate now verifies it from the built HTML.\n- Linker limits: first mention of a target per page, 2 links per answer (3 only when an answer names several markets), never inside questions, never to the page itself, no cross-market links from a market page, "City of X" is not treated as a market mention, location links only from market, resource and location pages.\n- No open questions that change business facts.\n`
 fs.writeFileSync(path.join(outDir, `internal-linking-audit-${date}.md`), md)
 console.log(JSON.stringify(metrics, null, 1))
