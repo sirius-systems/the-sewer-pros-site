@@ -165,6 +165,13 @@ export function specFor(url, type) {
     spec.serviceSlug = slug
     spec.primary = one(svc.name.toLowerCase(), norm(svc.name))
     spec.secondary = svc.aliases
+    // Owner-directed title, meta and H1 for the second opinion page (DEC-151, 2026-11-22): the title is
+    // "Sewer Second Opinion | Independent Review", the H1 is a question headline and the meta description speaks of
+    // an "independent opinion". The registered name stays the schema name. Only this page, only these forms.
+    if (slug === 'independent-sewer-inspection-second-opinion') {
+      spec.primary = one('sewer second opinion', 'sewer second opinion', 'second opinion', 'independent opinion')
+      spec.nameExempt = 'Owner directed 2026-11-22 (DEC-151): the title, H1 and meta description are owner-approved wording; the registered name stays the schema name'
+    }
     const q = SERVICE_QUESTIONS[slug] ?? { r: [], e: [] }
     spec.required = q.r
     spec.expected = q.e
