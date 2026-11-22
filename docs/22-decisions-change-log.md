@@ -5749,3 +5749,24 @@ Recorded:
 * **Demand.** No search volume is claimed anywhere; demand is unverified (no Keyword Planner data). Revisit after Search Console data on the new URL.
 
 ---
+
+## DEC-159 - Per-Market Lead Email Routing Is Done in GoHighLevel
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Low (documentation and data sources; no change to the function)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-147 (routing section only)
+**Affected Documents:**
+
+* `docs/lead-routing.md` (new), `README.md`, `docs/00-project-overview.md`, `content/pages/las-vegas.tsx`, `data/business/organization.ts` (comments), `components/sections/LeadFormSection.tsx` (header), `scripts/verify-lead-routing.mjs` (new)
+
+Recorded:
+
+* **Decision.** Per-market email routing is done in GoHighLevel, not in site code: one workflow per `market-*` tag emails that market's published address (St. Louis `info@`, San Diego `admin@`, Las Vegas `bookaninspection@`). The owner can change a recipient in GHL. The site sends no email itself.
+* **Unchanged.** `functions/api/lead`, Turnstile, the honeypot, the rate limit and the tag logic. The upgrade path (a separate GHL location per market through `LEAD_ROUTING`) stays as a placeholder.
+* **Data sources.** The Las Vegas hub reads its email from `marketOperatingDetail`. The St. Louis `contactPoints` and `contact.email` constants in `organization.ts` have no reader and are not used for JSON-LD; they are commented, not changed.
+* **Legacy stub.** `LeadFormSection` sends nothing. No built page renders it, but live templates still import it (the legacy sparse location composition, `ServiceHubTemplate` and two else-branches), so it carries a warning header and `verify-lead-routing.mjs` fails if a built page renders it.
+* **PENDING-018.** Still honest: built and tested once against live GHL; the owner confirms deployment and the Cloudflare variables.
+
+---
