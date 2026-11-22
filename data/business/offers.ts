@@ -115,7 +115,7 @@ export const verifiedOffers: readonly VerifiedOffer[] = [
         card says "ask whether you qualify", not "save money".
       */
       body:
-        'A free second opinion may be available before a sewer camera inspection or sewer cleaning. Tell us what is happening, which service you are considering, and where the property is located. We will explain what the second opinion covers before an appointment is scheduled.',
+        'A second opinion may be available on an inspection report or video you already have. Tell us what is happening, what you were told, and where the property is located. We explain what a second opinion covers before anything is scheduled.',
       facts: [
         {
           label: 'Available for',
