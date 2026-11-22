@@ -147,7 +147,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     competitor contrast. "Evidence before assumptions" is the
     positioning stated as a model rather than a guarantee.
   */
-  seoTitle: 'Sewer Inspection and Cleaning in San Diego, CA',
+  seoTitle: 'Sewer Inspection and Cleaning Across San Diego County',
   metaDescription:
     'Independent sewer camera inspection and cleaning in San Diego. Video and written findings before assumptions, no repair upselling. Request an inspection.',
   /*

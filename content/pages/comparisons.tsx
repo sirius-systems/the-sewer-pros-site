@@ -175,9 +175,9 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
       case (see its doc comment in types/content.ts): it overrides the
       search-facing title without touching the H1 or any visible copy.
     */
-    seoTitle: 'Independent Sewer Inspection vs. Repair Company',
+    seoTitle: 'Independent Sewer Inspection vs. Repair: Second Opinion',
     metaDescription:
-      'Compare independent sewer inspection with repair-company evaluations and learn how documented findings can support an informed next-step decision.',
+      'Got a sewer repair quote? Compare an independent sewer inspection with a repair company evaluation and see how video findings support a second opinion.',
     hero: {
       eyebrow: 'Comparison',
       title: 'Independent Sewer Inspection vs Repair Company Inspection',
@@ -215,7 +215,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           second opinion first, then choose who does the work.
         </p>
 
-        <h2>Where an independent inspection is worth considering</h2>
+        <h2>Where an independent second opinion is worth considering</h2>
         <ul>
           <li>
             Before approving major work, when you want the condition assessed

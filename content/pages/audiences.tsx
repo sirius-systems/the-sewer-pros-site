@@ -205,7 +205,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
   [id('aud-home-sellers')]: {
     seoTitle: 'Sewer Inspection Before Selling a House',
     metaDescription:
-      'Prepare for property questions with documented sewer inspection findings and practical information for sellers and real-estate transactions.',
+      'Sewer inspection before selling a house: see what a buyer’s inspection may find, with inspection video and written findings you can share.',
     hero: {
       eyebrow: 'For home sellers',
       title: 'Find out what a buyer’s inspection will find',
