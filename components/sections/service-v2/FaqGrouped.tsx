@@ -110,7 +110,7 @@ export function FaqGrouped({
                         {entry.question}
                       </h4>
                       <div className="mt-3 text-body text-muted-foreground">
-                        {linkAnswer !== undefined ? linkAnswer(entry.answer) : entry.answer}
+                        {linkAnswer !== undefined ? linkAnswer(entry.answer, entry.question) : entry.answer}
                       </div>
                     </div>
                   ))}
@@ -123,7 +123,7 @@ export function FaqGrouped({
                     question={entry.question}
                     headingLevel="h4"
                   >
-                    {linkAnswer !== undefined ? linkAnswer(entry.answer) : entry.answer}
+                    {linkAnswer !== undefined ? linkAnswer(entry.answer, entry.question) : entry.answer}
                   </AccordionItem>
                 ))}
               </Accordion>

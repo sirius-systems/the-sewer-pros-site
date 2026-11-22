@@ -434,6 +434,7 @@ export function pageSchema({
     absoluteUrl(page.pathname),
     title,
     ref(websiteId()),
+    page.pathname,
   )
   if (faqPage !== undefined) nodes.push(faqPage)
 

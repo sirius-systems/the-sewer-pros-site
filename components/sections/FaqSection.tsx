@@ -144,7 +144,7 @@ export function FaqSection({
           defaultOpen={openFirst && startIndex + i === 0}
           icon={entry.icon}
         >
-          {linkAnswer !== undefined ? linkAnswer(entry.answer) : entry.answer}
+          {linkAnswer !== undefined ? linkAnswer(entry.answer, entry.question) : entry.answer}
         </AccordionItem>
       ))}
     </Accordion>
