@@ -59,7 +59,7 @@ const add = (check, severity, url, evidence, fix, status = 'open') => findings.p
 for (const u of R.orphans) add('orphan', 'A', u, 'no inbound links from any indexable page', 'link from its parent hub')
 for (const u of R.editorialOrphans) add('editorial-orphan', 'B', u, 'inbound links are chrome/breadcrumb only', 'add a body link from a related page')
 for (const x of R.broken) add('broken-link', 'A', x.from, `${x.from} -> ${x.to} (${x.text})`, 'fix target')
-for (const x of R.commercial) add('commercial-leftover', 'A', x.from, `${x.from} -> ${x.to}`, 'remove link')
+for (const x of R.commercial) add('removed-route-link', 'A', x.from, `${x.from} -> ${x.to}`, 'remove the link to a removed route')
 for (const x of R.toNoindex) add('link-to-noindex', 'A', x.from, `${x.from} -> ${x.to}`, 'remove or retarget')
 for (const x of R.genericAnchors) add('generic-anchor', 'B', x.from, `"${x.text}" -> ${x.to}`, 'use a descriptive anchor')
 for (const x of R.serviceNameMismatch) add('anchor-vs-registry-name', 'C', x.from, `"${x.text}" -> ${x.to}`, 'watch: anchor is a natural variant of the registered name')
