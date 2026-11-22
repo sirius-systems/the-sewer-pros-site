@@ -193,12 +193,10 @@ export function IndependentProcess({
         </ButtonLink>
         {/*
           `PRIMARY_CTA.href` is `/contact/`, the only approved
-          conversion destination in doc 04 (05 §-, 17 §288). There is
-          no approved dedicated second-opinion route —
-          `svc-independent-sewer-second-opinion` is Phase 2 and not
-          built (data/pages/approved-pages.ts) — so this CTA reuses the
-          existing inspection-scheduling destination rather than
-          creating one.
+          conversion destination in doc 04 (05 §-, 17 §288). The
+          dedicated second-opinion page exists
+          (svc-independent-sewer-second-opinion, DEC-151), but this shared
+          CTA keeps the existing inspection-scheduling destination.
         */}
         <p className="mt-3 max-w-4xl text-sm leading-6 opacity-80">{ctaNote}</p>
       </div>

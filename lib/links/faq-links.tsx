@@ -66,7 +66,9 @@ const PHRASES: readonly { re: RegExp; serviceId: string }[] = [
   { re: /property managers?/i, serviceId: 'aud-property-managers' },
   { re: /sewer cleaning (?:&|and) camera inspection/i, serviceId: 'svc-sewer-cleaning-camera-inspection' },
   { re: /(?<!sewer )cleaning (?:&|and) camera inspection/i, serviceId: 'svc-sewer-cleaning-camera-inspection' },
-  // Second-opinion language points to the independent-inspection comparison, never to a repair page.
+  // A second opinion on an existing report or video is the dedicated second opinion page (DEC-151).
+  { re: /second opinion on (?:an? |another company.s )?(?:inspection )?(?:report|video)/i, serviceId: 'svc-independent-sewer-second-opinion' },
+  // Other second-opinion language points to the independent-inspection comparison, never to a repair page.
   { re: /(?<!free )(?:independent )?second opinion/i, serviceId: 'cmp-independent-vs-repair' },
   { re: /pre-purchase (?:sewer )?inspection|sewer (?:inspection|scope) before (?:you buy|closing|buying)/i, serviceId: 'svc-pre-purchase-sewer-inspection' },
   { re: /recurring sewer backup diagnosis/i, serviceId: 'svc-recurring-sewer-backup-diagnosis' },
