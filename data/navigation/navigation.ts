@@ -142,6 +142,7 @@ export const footerNav: NavGroup[] = [
       { pageId: id('core-about'), label: 'About' },
       { pageId: id('core-contact'), label: 'Contact' },
       { pageId: id('core-faq'), label: 'FAQs' },
+      { pageId: id('core-reviews'), label: 'Reviews' },
       { pageId: id('hub-resources'), label: 'Resources' },
     ],
   },

@@ -55,6 +55,9 @@ export type { HomePageTemplateProps } from './HomePageTemplate'
 export { CorePageTemplate } from './CorePageTemplate'
 export type { CorePageTemplateProps } from './CorePageTemplate'
 
+export { ReviewsPageTemplate } from './ReviewsPageTemplate'
+export type { ReviewsPageTemplateProps } from './ReviewsPageTemplate'
+
 export { AboutPageTemplate } from './AboutPageTemplate'
 export type { AboutPageTemplateProps } from './AboutPageTemplate'
 
