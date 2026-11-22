@@ -309,7 +309,7 @@ export const homeContent: HomePageContent = {
           Recurring backups are often caused by root intrusion, grease buildup,
           a pipe offset, or a partial blockage that returns after snaking. A
           camera inspection identifies the specific cause so the right next
-          step, whether cleaning, hydro jetting, or further diagnosis, can be
+          step, whether cleaning, {'{{hydro jetting|water jetting|sewer jetting}}'}, or further diagnosis, can be
           chosen.
         </p>
       ),
@@ -329,7 +329,7 @@ export const homeContent: HomePageContent = {
       question: 'Is hydro jetting different from regular drain cleaning?',
       answer: (
         <p>
-          Yes, they use different tools. Hydro jetting sends pressurized water
+          Yes, they use different tools. {'{{Hydro jetting|Water jetting|Sewer jetting}}'} sends pressurized water
           through a hose and nozzle to loosen buildup and flush it out of an
           accessible line. Cable cleaning uses a rotating cable to break
           through a blockage. Neither is better in every case. The right

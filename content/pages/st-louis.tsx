@@ -951,7 +951,7 @@ export const stLouisMarketContent: MarketPageContent = {
       answer: (
         <p>
           You get the video and the documented findings, and you decide what
-          happens next. If the issue is something a cleaning or hydro jetting
+          happens next. If the issue is something a cleaning or {'{{hydro jetting|water jetting|sewer jetting}}'}
           can resolve, that is on the table as our service. If what is found
           looks more serious, structural repair or replacement is not something
           we sell. You are free to get a second opinion, consult a repair
