@@ -270,6 +270,18 @@ export const businessCategories = [
  * elsewhere (a service page, a market page, a CTA) without the same
  * scoping and hedged phrasing DEC-088 approved. Do not treat their
  * presence in `offers.ts` as blanket approval to use them anywhere else.
+ *
+ * ALLOWED PLACEMENTS for 'free second opinion' (hedged wording only,
+ * DEC-088, DEC-139, DEC-148, DEC-151): the homepage offer card
+ * (`offers.ts` -> `ConfidenceModule`); the pinned cost-FAQ and request-intro
+ * sentences on the hydro jetting and recurring sewer backup diagnosis pages;
+ * and the independent sewer second opinion page
+ * (/services/independent-sewer-inspection-second-opinion/), which may say
+ * 'Ask about a free second opinion before scheduling.' and 'a free second
+ * opinion may be available on an inspection report or video you already
+ * have', never in its title, meta description or H1, and never defining
+ * what 'free' covers (still unconfirmed by the owner). Every other page
+ * stays on the forbidden-text list.
  */
 export const CLAIMS_REQUIRING_VERIFICATION = [
   'years in business',

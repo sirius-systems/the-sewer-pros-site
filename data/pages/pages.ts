@@ -52,13 +52,14 @@ import { approvedPages } from './approved-pages'
 // (`sl-henderson-camera`, the template for the remaining matrix pages), + 8
 // noindex Henderson service+location pages (batch 1).
 // + the /reviews/ core page (owner request, Nov 22, 2026).
-const EXPECTED_PAGE_COUNT = 199
+// + the independent sewer second opinion service page (DEC-151).
+const EXPECTED_PAGE_COUNT = 200
 // Was 65 while DEC-063 gated the five Las Vegas pages. DEC-080 released
 // that gate. The 67 indexable pages are the original 64 plus the three
 // market contact pages; the contact confirmation page is deliberately
 // noindex. Keep this pinned: it is the guard that catches a page becoming
 // indexable without a decision behind it (CLAUDE.md §45).
-const EXPECTED_INDEXABLE_COUNT = 198 // /reviews/ + 67 + 9 Henderson + 9 City of Las Vegas + 9 North Las Vegas + 9 Summerlin + 39 St. Louis + 8 San Diego City + 16 Chula Vista/Mission Valley + 15 Carlsbad/San Marcos + 16 Escondido/Oceanside service+location pages
+const EXPECTED_INDEXABLE_COUNT = 199 // /reviews/ + the independent second opinion page (DEC-151) + 67 + 9 Henderson + 9 City of Las Vegas + 9 North Las Vegas + 9 Summerlin + 39 St. Louis + 8 San Diego City + 16 Chula Vista/Mission Valley + 15 Carlsbad/San Marcos + 16 Escondido/Oceanside service+location pages
 
 function fail(message: string): never {
   throw new Error(`Approved page registry invalid: ${message}`)

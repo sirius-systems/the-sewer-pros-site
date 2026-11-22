@@ -681,9 +681,9 @@ This page inventory should track implementation status.
 | Primary audience | Any customer who has already received a repair or replacement recommendation — overlaps home buyers, home sellers, and homeowners rather than one exclusive audience |
 | Conversion purpose | Request an independent sewer second opinion (`00-project-overview.md` §7A) |
 | Relationship to inspection/diagnosis/repair | Inspect and document the line, present findings, and let the customer weigh them against a repair recommendation they already received. The Sewer Pros does not perform the repair itself, and has no financial incentive in the outcome |
-| Build status | Not built. No content file, no route |
-| Publication status | Not published |
-| Indexation status | Not indexable (no page exists) |
+| Build status | Built (DEC-151). Route /services/independent-sewer-inspection-second-opinion/, Service Page Template v2 |
+| Publication status | Launch. Sequence pending (03/11/20/13): Prompts 01, 09, 02 and 04 waived for this build, 01 and 09 blocked on Keyword Planner data |
+| Indexation status | Indexable |
 
 Approved positioning concept:
 
