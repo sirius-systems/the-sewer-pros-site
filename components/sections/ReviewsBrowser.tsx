@@ -101,14 +101,10 @@ function ReviewItem({
 
       {review.stars !== null && <StarRow value={review.stars} />}
 
-      {review.quote !== '' ? (
+      {review.quote !== '' && (
         <blockquote className="whitespace-pre-line text-sm leading-6">
           {review.quote}
         </blockquote>
-      ) : (
-        <p className="text-sm leading-6 text-muted-foreground">
-          Star rating only, no written comment.
-        </p>
       )}
 
       <a
