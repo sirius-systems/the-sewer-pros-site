@@ -269,7 +269,7 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
             second opinion
           </ApprovedInlineLink>{' '}
-          from a company with nothing to sell is the one view
+          from a company that does not sell the repair is the one view
           of your line that is not tied to a quote. If it says repair is needed,
           it is because the evidence says so.
         </p>
