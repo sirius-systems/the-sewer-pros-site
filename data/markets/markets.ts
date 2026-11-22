@@ -97,8 +97,13 @@ export const markets: Record<MarketId, Market> = {
     stateCode: 'CA',
     slug: 'san-diego-ca',
     /**
-     * 01 §21: "No current GBP identified." CLAUDE.md §29 forbids
-     * implying a San Diego office, storefront, GBP, or public address.
+     * A San Diego Google Business Profile exists and is company-owned
+     * (owner, 2026-11-22, DEC-153), so this is `existing_type_unconfirmed`:
+     * the profile exists, but whether it is a storefront or a service-area
+     * business is not recorded here. 01 §21's older "No current GBP
+     * identified" is superseded. A GBP is not an address licence: CLAUDE.md
+     * §10 still forbids implying a San Diego office, storefront or public
+     * address until the owner approves how the address is displayed.
      *
      * Note 01 §22 records a San Diego Instagram and Facebook presence.
      * That is social presence, not a GBP, and no URLs are documented —
@@ -106,11 +111,11 @@ export const markets: Record<MarketId, Market> = {
      *
      * ⚠ San Diego IS an operating market. It publishes its own site,
      * thesewerprossd.com, with its own phone and hours and a founding
-     * year of 2015 (DEC-071). "No GBP" is not "no operations" — the
-     * two are separate facts and were briefly conflated before the
-     * San Diego research resolved it.
+     * year of 2015 (DEC-071). A GBP and an operating market are separate
+     * facts, and were briefly conflated before the San Diego research
+     * resolved it.
      */
-    gbpStatus: 'none_identified',
+    gbpStatus: 'existing_type_unconfirmed',
     /** thesewerprossd.com/contact — DEC-071. NOT the St. Louis number. */
     phone: '(858) 257-2888',
   },

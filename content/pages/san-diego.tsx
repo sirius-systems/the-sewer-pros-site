@@ -25,11 +25,13 @@
  * differentiation available in this cluster.
  *
  * ---------------------------------------------------------------------------
- * ⚠ ORGANIC-FIRST — NO GBP, NO OFFICE, NO ADDRESS
+ * ⚠ ORGANIC-FIRST — NO OFFICE, NO ADDRESS (A GBP EXISTS, DEC-153)
  * ---------------------------------------------------------------------------
- * DEC-059 and 21 §35-37 make San Diego organic-first. CLAUDE.md §29
- * forbids implying a San Diego office, storefront, GBP, or public
- * address. Nothing below states or implies local premises.
+ * DEC-059 and 21 §35-37 make San Diego organic-first. CLAUDE.md §10
+ * forbids implying a San Diego office, storefront, or public address.
+ * A company-owned San Diego GBP exists (owner, 2026-11-22, DEC-153), but
+ * its address is not approved for display. Nothing below states or
+ * implies local premises.
  *
  * San Diego IS an operating market — it publishes its own site, phone,
  * hours, and a 2015 founding year (DEC-071). Operating is not the same
