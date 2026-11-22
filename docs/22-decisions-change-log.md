@@ -5558,3 +5558,26 @@ Recorded:
 * **Footer.** Reviews added to the Company group.
 
 ---
+
+## DEC-150 - Second Opinion Defined as a Review of the Customer's Existing Report or Video
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Moderate (how a service is described)
+**Decision Owner:** Business owner (Richard)
+**Amends:** DEC-148 (wording of the offer's description only)
+**Affected Documents:**
+
+* `components/sections/IndependentProcess.tsx`, the 16 location page content files (`secondOpinion` block), `content/pages/core.tsx`, `content/pages/las-vegas.tsx`, `content/pages/about.tsx`, `content/pages/comparisons.tsx`, `content/pages/audiences.tsx`
+
+**Reason:** The owner explained on a recorded call that the second opinion is a review of another company's inspection report or video that the customer already has, usually without a visit to the property, and asked for a more forceful independence message.
+
+Recorded:
+
+* **Definition.** A second opinion is a review of a report or video the customer already holds. There are three outcomes: we agree with the recommendation, we disagree, or the video is too unclear to tell and we recommend a new inspection. A site visit is not always needed.
+* **Independence.** The Sewer Pros has no vested interest and does not perform repairs or replacements. If our opinion is that a line needs repair, we say so because that is what the evidence shows. The message rests on having nothing to sell, never on accusing other contractors.
+* **Copy changed.** The fixed second opinion block on location pages (new supporting line, new sentence on repair opinions), the shared default in `IndependentProcess`, the second opinion FAQ answers on the home and Las Vegas pages and the About page, the buyer's-inspector FAQ on the home seller page, and the independent vs repair comparison page.
+* **Still open.** Where "free second opinion" may appear is a separate question and remains governed by DEC-088 and DEC-148 placement scoping. Also open: what "free" covers, accepted report formats and how to send them, turnaround, whether contractor quotes are reviewed, and any limits on who qualifies. None of these appear in live copy.
+* **No page yet.** No dedicated second opinion page exists (`svc-independent-sewer-second-opinion` is a Phase 2 candidate). It is built separately.
+
+---

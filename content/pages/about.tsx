@@ -217,10 +217,12 @@ export const aboutContent: AboutPageContent = {
         'Can The Sewer Pros give me a second opinion on a sewer repair recommendation?',
       answer: (
         <p>
-          Yes. The Sewer Pros can inspect and document visible
-          sewer-line conditions to help you understand a repair
-          recommendation before deciding what to do. The company does not
-          perform sewer repairs or replacements.
+          Yes. A second opinion can start with the inspection report or video
+          you already have: The Sewer Pros reviews it and tells you whether we
+          agree, disagree, or cannot tell from the footage. If the footage is
+          unclear, we can inspect and document visible sewer-line conditions
+          ourselves. The company does not perform sewer repairs or
+          replacements, so it has no repair to sell.
         </p>
       ),
     },

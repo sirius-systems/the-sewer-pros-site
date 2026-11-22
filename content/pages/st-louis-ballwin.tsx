@@ -728,11 +728,12 @@ export const ballwinContent: LocationPageContent = {
     ledes: [
       'A sewer backup or major repair recommendation can make a costly decision feel urgent. The Sewer Pros inspects and documents the condition inside your sewer line so you can understand what is actually happening before you approve cleaning, excavation, lining, or replacement.',
       'Because we do not perform sewer repairs or replacements, we do not profit from selling you the work. Our role is to give you clear video evidence, straightforward findings, and an honest opinion you can use to make the next decision.',
+      'If our opinion is that your line needs repair, we will say so, because that is what the evidence shows, not because we want the work.',
     ],
     cta: {
       label: 'Get an Independent Second Opinion',
       supportLine:
-        'Already received a repair recommendation? Bring us in for an independent second opinion before you sign off on major work.',
+        'Already received a repair recommendation or an inspection report? Send us what you have and we will review it. Tell us what is happening and where the property is, and we explain what a second opinion covers before anything is scheduled.',
     },
     steps: [
       {

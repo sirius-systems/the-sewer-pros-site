@@ -1184,12 +1184,12 @@ export const lasVegasMarketContent: MarketPageContent = {
       question: 'Should I get a second opinion before approving sewer replacement?',
       answer: (
         <p>
-          If a contractor has already told you your sewer line needs
-          replacement, it is worth getting an independent camera inspection
-          before authorizing the work. The Sewer Pros documents the
-          line&rsquo;s actual condition on video, so you can verify the
-          recommendation with your own evidence before committing to an
-          expensive repair. Our{' '}
+          A second opinion can start with the report or video you already have.
+          The Sewer Pros reviews another company&rsquo;s inspection findings and
+          tells you whether we agree, disagree, or cannot tell from the
+          footage, and can follow with an independent camera inspection if the
+          footage is unclear. We do not perform repairs or replacements, so we
+          have no incentive to sell either. Our{' '}
           <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
             independent inspection compared with a repair company
           </ApprovedInlineLink>{' '}
