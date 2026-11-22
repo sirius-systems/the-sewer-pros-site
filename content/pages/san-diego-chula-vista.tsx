@@ -876,8 +876,7 @@ export const chulaVistaContent: LocationPageContent = {
           The City’s brochure says to shut off all water sources, including faucets, the
           dishwasher and the clothes washer. If sewage keeps backing up into the house, it says to
           contact Public Works or the City’s after-hours number right away. If the sewage stops
-          when the water is off, it says to contact a licensed plumber or sewer cleaning
-          contractor. The City’s overflow page gives the same stop-all-water-use instruction.
+          when the water is off, it says to contact <span data-no-link>a licensed plumber or sewer cleaning contractor</span>. The City’s overflow page gives the same stop-all-water-use instruction.
           These are the City’s instructions, not ours. Sources: City of Chula Vista sewer lateral
           maintenance brochure; City of Chula Vista sanitary sewer overflow page.
         </p>

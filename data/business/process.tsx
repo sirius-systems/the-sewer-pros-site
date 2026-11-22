@@ -152,13 +152,13 @@ export const authorityProcess: AuthorityProcessContent = {
       body: (
         <>
           We walk you through the footage and explain what it actually shows in
-          plain language, what is a maintenance issue a{' '}
+          plain language, what is a maintenance issue that{' '}
           <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
-            sewer cleaning
+            main sewer line cleaning
           </ApprovedInlineLink>{' '}
           or{' '}
           <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
-            hydro jetting
+            water jetting
           </ApprovedInlineLink>{' '}
           can resolve, and what may point toward a structural issue worth a
           second opinion.

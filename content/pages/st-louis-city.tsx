@@ -720,8 +720,8 @@ export const stLouisCityContent: LocationPageContent = {
       answer: (
         <p>
           Often, when the problem is roots, grease or debris and the pipe is structurally
-          sound. A camera inspection shows which situation you have, so cleaning or hydro
-          jetting is chosen on evidence rather than assumption.
+          sound. A camera inspection shows which situation you have, so cleaning or{' '}
+          {'{{water jetting|sewer jetting|hydro jetting}}'} is chosen on evidence rather than assumption.
         </p>
       ),
     },

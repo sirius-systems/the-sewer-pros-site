@@ -469,7 +469,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             <p>
               No. A camera shows what is inside the pipe, not how deep it sits or where it runs in your yard. It also does not measure pipe slope.{' '}
               <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
-                {'{{Sewer line locating|Line locating|Locating the sewer line}}'}
+                {'{{Line locating|Locating the sewer line|Sewer line locating service}}'}
               </ApprovedInlineLink>{' '}
               can estimate a position from the surface, and a locate is an estimate, not a survey.
             </p>
@@ -711,7 +711,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             prove a cause, and not every one calls for cleaning. If only one
             fixture is affected,{' '}
             <ApprovedInlineLink pageId={id('svc-drain-cleaning')}>
-              drain cleaning
+              cleaning a single drain
             </ApprovedInlineLink>{' '}
             may be the better fit. If the cause is unclear, a{' '}
             <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
@@ -1353,7 +1353,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           <>
             It is one of the methods used in{' '}
             <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
-              sewer cleaning
+              sewer line cleaning
             </ApprovedInlineLink>
             .
           </>,
@@ -1376,7 +1376,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             These signs point to a restriction somewhere, but they do not
             prove what or where it is. A single slow sink is often a{' '}
             <ApprovedInlineLink pageId={id('svc-drain-cleaning')}>
-              drain cleaning
+              drain-line cleaning
             </ApprovedInlineLink>{' '}
             question. Several slow drains, or a backup that returns, is worth
             looking at in the main line. If it keeps coming back, see{' '}
@@ -1876,7 +1876,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             condition. They do not prove a cause. If only one fixture is
             affected,{' '}
             <ApprovedInlineLink pageId={id('svc-drain-cleaning')}>
-              drain cleaning
+              drain-line cleaning
             </ApprovedInlineLink>{' '}
             may be the better fit. If the cause is unclear, a camera
             inspection alone may be a better starting point.
@@ -3022,7 +3022,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           <>
             Drain cleaning usually refers to fixture and branch lines.{' '}
             <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
-              Sewer cleaning
+              Sewer line cleaning
             </ApprovedInlineLink>{' '}
             refers to the larger line that carries wastewater away from the
             building.{' '}
@@ -4245,7 +4245,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
               A camera shows what is inside the pipe, not where the pipe sits
               in your yard.{' '}
               <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
-                {'{{Sewer line locating|Line locating|Locating the sewer line}}'}
+                {'{{Line locating|Locating the sewer line|Sewer line locating service}}'}
               </ApprovedInlineLink>{' '}
               can estimate a position from the surface, and a locate is an
               estimate, not a survey. Ask whether locating is part of your
@@ -4876,7 +4876,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Cleaning',
           question: 'Will hydro jetting damage my sewer line, and is it safe for older pipe?',
-          answer: `Hydro jetting is condition-dependent. It is not automatically appropriate for every pipe material, blockage, or visible defect. EPA notes that pipe damage is possible whenever powerful cleaning equipment is used, that eroded, corroded, or deteriorated pipe may collapse during cleaning, and that tools should be matched to pipe condition. ASTM publishes material-specific cleaning practices and says procedures for other materials should be checked against the pipe manufacturer's guidance. Whether jetting, cable cleaning, or no cleaning fits your line depends on what is found. Jetting does not repair pipe defects. See hydro jetting.`,
+          answer: `Hydro jetting is condition-dependent. It is not automatically appropriate for every pipe material, blockage, or visible defect. EPA notes that pipe damage is possible whenever powerful cleaning equipment is used, that eroded, corroded, or deteriorated pipe may collapse during cleaning, and that tools should be matched to pipe condition. ASTM publishes material-specific cleaning practices and says procedures for other materials should be checked against the pipe manufacturer's guidance. Whether jetting, cable cleaning, or no cleaning fits your line depends on what is found. Jetting does not repair pipe defects. See {{hydro jetting|water jetting|the hydro jetting service}}.`,
         },
         {
           group: 'The visit and your records',

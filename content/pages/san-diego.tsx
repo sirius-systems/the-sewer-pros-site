@@ -1303,7 +1303,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
           </ApprovedInlineLink>{' '}
           generally addresses individual fixture or branch-line clogs, while{' '}
           <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
-            sewer cleaning
+            {'{{sewer cleaning|main sewer line cleaning|sewer line cleaning}}'}
           </ApprovedInlineLink>{' '}
           addresses the main sewer line itself. We offer both, and a camera
           inspection can help identify which one actually addresses the problem

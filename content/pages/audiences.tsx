@@ -668,8 +668,8 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         answer: (
           <p>
             When a line needs repeated clearing, and after a camera inspection
-            shows that buildup, not a defect, is what keeps blocking it. Hydro
-            jetting is a cleaning method for buildup. It does not repair a damaged
+            shows that buildup, not a defect, is what keeps blocking it.{' '}
+            {'{{Water jetting|Sewer jetting|Hydro jetting}}'} is a cleaning method for buildup. It does not repair a damaged
             pipe, so the camera look comes first.
           </p>
         ),
