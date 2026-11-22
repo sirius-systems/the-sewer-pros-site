@@ -5581,3 +5581,26 @@ Recorded:
 * **No page yet.** No dedicated second opinion page exists (`svc-independent-sewer-second-opinion` is a Phase 2 candidate). It is built separately.
 
 ---
+
+## DEC-151 - Independent Sewer Second Opinion Page Built; New Allowed Placement for the Hedged Free Second Opinion
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Moderate (one new indexable service page and one new placement for an offer wording)
+**Decision Owner:** Business owner (Richard)
+**Amends:** DEC-148 (placement list only)
+**Affected Documents:**
+
+* `data/pages/approved-pages.ts`, `data/pages/pages.ts` (page counts 199 to 200, indexable 198 to 199), `content/pages/services.tsx`, `data/business/organization.ts` (placement comment), `lib/links/faq-links.tsx`, `content/pages/comparisons.tsx`, `scripts/verify-independent-sewer-second-opinion-page.mjs`, docs 04, 05 and 06
+
+**Reason:** the owner's recorded direction and the approved page copy outline call for a dedicated page for the independent second opinion (`svc-independent-sewer-second-opinion`, registry Phase 2 candidate).
+
+Recorded:
+
+* **Route.** `/services/independent-sewer-inspection-second-opinion/`, the registered slug (05 section 41A). Service Page Template v2. Launch, indexable. Page record parent `hub-services` like every service page; the registry service parent is `svc-sewer-cleaning-camera-inspection` (`parent_service_id`).
+* **Allowed placements for "free second opinion" after this entry:** the homepage offer card (`offers.ts` via `ConfidenceModule`), the pinned cost-FAQ and request-intro sentences on the hydro jetting and recurring sewer backup diagnosis pages, and this page. On this page only the hedged wording is used: "Ask about a free second opinion before scheduling." and "a free second opinion may be available on an inspection report or video you already have". Never in the title, meta description or H1. The CTA label is "Ask About a Free Second Opinion". No other page is added.
+* **Still open.** What "free" covers, accepted report formats and how to send them, whether contractor quotes are reviewed, turnaround, and any limits on who qualifies. None appear in live copy. Where "free second opinion" may appear beyond the placements above remains a separate question.
+* **Site OS sequence: partial waiver.** The page was built before the full numbered sequence. Waived for this build only: Prompts 01 (keyword research), 09 (entity and topical authority), 02 (outline) and 04 (gap fix); the owner's outline stands in for 02 and 04. Reasons: the copy comes from the owner's own recorded direction, the repo holds no keyword volumes, and 01, 09 and 11 need Keyword Planner data and a live SERP review. Not waived, to run strategy-side against the built page: 03 (ten-metric scoring), 11 (SERP and competitor analysis), 20 (visibility and conversion alignment) and 13 (editorial pass); gaps are fixed in a follow-up. Blocked and carried forward: 01 and 09 until a Keyword Planner export for the second opinion terms exists. Build-list status: launch, "sequence pending (03/11/20/13)". The page has not completed the full sequence.
+* **Not changed.** The fixed second opinion block on location pages, the home process band, site-wide CTAs, `offers.ts`, `IndependentProcess` labels, and the comparison page title, meta and H2 (those belong to the editorial audit apply run). Link from the location block: link once verifiers allow.
+
+---

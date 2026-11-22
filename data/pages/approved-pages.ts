@@ -281,6 +281,17 @@ export const approvedPages: readonly MasterPageRecord[] = [
     parentId: 'hub-services' as PageId,
   },
   {
+    id: 'svc-independent-sewer-second-opinion' as PageId,
+    name: 'Independent Sewer Inspection / Second Opinion',
+    pageType: 'service',
+    pathname: toPathname('/services/independent-sewer-inspection-second-opinion/'),
+    status: 'launch',
+    indexable: true,
+    priority: 'L2',
+    serviceId: 'svc-independent-sewer-second-opinion',
+    parentId: 'hub-services' as PageId,
+  },
+  {
     id: 'svc-recurring-sewer-backup-diagnosis' as PageId,
     name: 'Recurring Sewer Backup Diagnosis',
     pageType: 'service',

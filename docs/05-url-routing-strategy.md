@@ -1071,7 +1071,7 @@ This preserves intent separation.
 /services/independent-sewer-inspection-second-opinion/
 ```
 
-This is the existing proposed slug, used here rather than inventing a new one. It has not been built. `data/matrices/service-location-master-matrix.csv` currently marks the relationship `selective_candidate` and market-scoped rather than sitewide — that scoping is an open question this document does not resolve; record it for a future routing decision rather than silently choosing sitewide or market-scoped here.
+This is the existing proposed slug, used here rather than inventing a new one. It was built under DEC-151. `data/matrices/service-location-master-matrix.csv` currently marks the relationship `selective_candidate` and market-scoped rather than sitewide — that scoping is an open question this document does not resolve; record it for a future routing decision rather than silently choosing sitewide or market-scoped here.
 
 The page should be positioned as an independent evaluation and documentation pathway, not an accusation against another business, using the approved concept:
 

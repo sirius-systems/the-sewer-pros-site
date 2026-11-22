@@ -5460,4 +5460,390 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         'Work out why backups keep returning.',
     },
   },
+  /* ======================================================================
+     Independent Sewer Second Opinion
+     Service Page Template v2. Copy source: the owner-approved outline
+     (Independent Sewer Second Opinion page copy outline) and the owner's
+     recorded direction, DEC-150 and DEC-151.
+
+     ⚠ WHAT THIS COPY DOES NOT CLAIM. No price, dollar figure, statistic
+     about how many lines need repair, turnaround, guarantee, warranty,
+     licence (DEC-072), 24/7, emergency or same-day wording, or equipment
+     name (CLAUDE.md section 24). It does not define what "free" covers,
+     name accepted report formats or how to send them, say that contractor
+     quotes are reviewed, or limit who qualifies: the owner has not
+     confirmed those. It never accuses another contractor of anything: the
+     force of the page is that The Sewer Pros has nothing to sell.
+
+     ⚠ FREE SECOND OPINION (DEC-151). This page is an allowed placement for
+     the wording, hedged only: "Ask about a free second opinion before
+     scheduling." and "a free second opinion may be available on an
+     inspection report or video you already have". Never in the title,
+     meta description or H1.
+
+     ⚠ MARKET-NEUTRAL, NO PHONE NUMBER (DEC-071). Numbers reach this page
+     only through the labelled footer and the mobile bar's market sheet.
+     No image slots: there is no `second-opinion-*` slot in the image
+     data, so nothing draws a placeholder here.
+     ====================================================================== */
+  [id('svc-independent-sewer-second-opinion')]: {
+    seoTitle: 'Sewer Second Opinion | Independent Review',
+    metaDescription:
+      'Told you need a new sewer line? We review the inspection report or video you already have and give an independent opinion. We do not sell repairs.',
+    serviceDescription:
+      'An independent sewer second opinion is a review of the inspection report or video a customer already has. The Sewer Pros tells the customer whether it agrees with the recommendation, disagrees, or cannot tell from the footage. A new camera inspection is available when the footage is unclear.',
+    hero: {
+      eyebrow: 'Independent sewer second opinions',
+      title: 'Told You Need a New Sewer Line? Get a Second Opinion First.',
+      primaryAction: { href: '#request', label: 'Ask About a Free Second Opinion' },
+      secondaryAction: { href: '#choose-market', label: 'Find Service in Your Area' },
+      intro: (
+        <>
+          <p>
+            A major sewer repair is a large decision. Before you approve one,
+            send us the inspection report or video you already have. We tell you
+            whether we agree, whether we disagree, or whether the footage is too
+            unclear to say.
+          </p>
+          <p>
+            We do not perform repairs or replacements, so nothing we tell you is
+            shaped by what we would be paid to fix.
+          </p>
+        </>
+      ),
+    },
+    showDifferentiator: true,
+    v2: {
+      defaultServiceId: 'svc-independent-sewer-second-opinion',
+      messageLabel: 'What were you told?',
+      extraServiceOptions: [
+        {
+          value: 'svc-independent-sewer-second-opinion',
+          label: 'Sewer Second Opinion',
+        },
+      ],
+      hero: {
+        scope: [
+          'A review of the inspection report or video you already have',
+          'Our opinion: we agree, we disagree, or we cannot tell',
+          'A new camera inspection when the footage is unclear',
+          'No repair or replacement work offered',
+        ],
+        cardTitle: 'Ask about a second opinion',
+        cardIntro:
+          'Tell us what you were told and where the property is. Ask about a free second opinion before scheduling.',
+      },
+      navLabels: {
+        signals: 'Why get one',
+        triage: 'What you will hear from us',
+        audiences: 'When people ask',
+        process: 'How it works',
+        decision: 'If you do not have a report',
+        limits: 'What it is and is not',
+        faq: 'Questions',
+      },
+      definition: {
+        eyebrow: 'The short answer',
+        title: 'What is a sewer second opinion?',
+        answer:
+          'A sewer second opinion is an independent review of the inspection report or video you already have. We look at what was found and tell you whether we agree with the recommendation, disagree with it, or cannot tell from the footage and recommend a clearer inspection. It usually does not require anyone coming to your property.',
+        supporting: [
+          <>
+            A free second opinion may be available on an inspection report or
+            video you already have. We explain what it covers before anything is
+            scheduled.
+          </>,
+          <>
+            If you do not have a report, or the video is too poor to read, an
+            independent{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+              camera inspection of your line
+            </ApprovedInlineLink>{' '}
+            gives you your own evidence.
+          </>,
+        ],
+        scope:
+          'The opinion is based on the footage and findings we are given. It is informational and is not legal advice. We provide inspection, diagnostics, locating, and cleaning only, and we do not provide sewer repair, replacement, lining, excavation, or pipe installation.',
+      },
+      signals: {
+        eyebrow: 'Why get one',
+        title: 'Why a second opinion is worth getting before you approve major sewer work',
+        note: 'A sewer recommendation often arrives when someone is worried about a backup, so it is easy to approve work you do not understand.',
+        items: [
+          {
+            title: 'It is a large decision',
+            description:
+              'Major sewer work deserves more than one view of the evidence, and you can ask for it before you commit.',
+          },
+          {
+            title: 'Diagnosis and sale can come from the same place',
+            description:
+              'When the company that diagnoses the problem also sells the repair, the diagnosis and the sale come from the same business. That is how the business is set up, not a statement about anyone’s honesty, and it is why an opinion from someone with nothing to sell is useful.',
+          },
+          {
+            title: 'We have no vested interest',
+            description:
+              'We do not repair or replace sewer lines. Our opinion is based only on what the footage shows.',
+          },
+          {
+            title: 'Repair is sometimes necessary',
+            description:
+              'If our opinion is that your line needs repair, we will say so, because that is what the evidence shows, not because we want the work.',
+          },
+        ],
+      },
+      triage: {
+        eyebrow: 'The three outcomes',
+        title: 'What you will hear from us',
+        caption: 'The three outcomes of a sewer second opinion',
+        columns: ['Our opinion', 'What it means', 'What you can do'],
+        rows: [
+          {
+            service: 'We agree',
+            purpose: 'The footage supports the recommendation.',
+            fit: 'You can approve the work with more confidence.',
+            plain: true,
+          },
+          {
+            service: 'We disagree',
+            purpose:
+              'What we see does not support the scope of work recommended. We explain what we see.',
+            fit: 'You can talk through what a smaller or different next step could look like.',
+            plain: true,
+          },
+          {
+            service: 'We cannot tell',
+            purpose: 'The video is too unclear to judge.',
+            fit: 'We recommend a new inspection so you can see what is actually happening in the line.',
+            plain: true,
+          },
+        ],
+      },
+      audiences: {
+        eyebrow: 'Who asks',
+        title: 'When people ask us for a second opinion',
+        items: [
+          {
+            audience: 'Told the line needs replacement or excavation',
+            description:
+              'You have a recommendation for major work and want to see whether the evidence supports it.',
+          },
+          {
+            audience: 'A report or video that does not explain itself',
+            description:
+              'Footage with no narration, or findings you cannot follow, is hard to act on.',
+          },
+          {
+            audience: 'Backups that keep coming back',
+            description:
+              'A backup that returns after a repair or a cleaning is a reason to look at the evidence again.',
+          },
+          {
+            pageId: id('aud-home-buyers'),
+            audience: 'Home buyers',
+            description:
+              'A sewer finding during a transaction is easier to weigh with a second reading of the footage.',
+            actionLabel: 'Sewer inspection for home buyers',
+          },
+          {
+            pageId: id('aud-real-estate-agents'),
+            audience: 'Real estate agents',
+            description:
+              'When a client faces a sewer finding, an independent reading helps them decide what to do next.',
+            actionLabel: 'Sewer inspection for real estate agents',
+          },
+          {
+            pageId: id('aud-property-managers'),
+            audience: 'Landlords and property managers',
+            description:
+              'A large sewer decision on a rental home or apartment property deserves clear evidence first.',
+            actionLabel: 'Sewer inspection for property managers',
+          },
+        ],
+      },
+      process: {
+        eyebrow: 'How it works',
+        title: 'How a second opinion works',
+        intro:
+          'A free second opinion may be available on an inspection report or video you already have. Ask about it before scheduling, and we explain what it covers before anything is scheduled.',
+        steps: [
+          {
+            title: 'Tell us what is happening',
+            description:
+              'Describe the problem, what you were told or offered, and where the property is.',
+          },
+          {
+            title: 'Send what you have',
+            description: 'Share the inspection report or video you received.',
+          },
+          {
+            title: 'Get our opinion',
+            description:
+              'We tell you whether we agree, disagree, or cannot tell, and what a sensible next step looks like.',
+          },
+        ],
+      },
+      decision: {
+        eyebrow: 'If you do not have a usable report',
+        title: 'When a camera inspection is the right next step',
+        answer:
+          'If no inspection was done, or the footage cannot be read, a sewer camera inspection from us documents the line with video and written findings you keep.',
+        note: 'If the problem is a recurring blockage, cleaning may be the answer instead of repair.',
+        listTitle: 'Where to start',
+        list: [
+          'If you hold a report or video, start with a second opinion on it.',
+          'If the footage is unclear or there is none, a camera inspection gives you your own evidence.',
+          'If you are buying a home, a pre-purchase inspection focuses on the visible condition of the line before you close.',
+          'If the issue is a repeated blockage, cleaning with a camera inspection may fit better than a repair.',
+        ],
+        links: [
+          { pageId: id('svc-sewer-camera-inspection'), label: 'Camera inspection for your own evidence' },
+          { pageId: id('svc-pre-purchase-sewer-inspection'), label: 'Inspection before you buy a home' },
+          {
+            pageId: id('svc-sewer-cleaning-camera-inspection'),
+            label: 'Cleaning with a camera inspection',
+          },
+          { pageId: id('svc-hydro-jetting'), label: 'Hydro jetting for a recurring blockage' },
+        ],
+      },
+      limits: {
+        eyebrow: 'Plainly stated',
+        title: 'What a second opinion is, and what it is not',
+        canTitle: 'A second opinion is',
+        can: [
+          'An independent review of the footage and findings you give us',
+          'Our honest reading: agree, disagree, or cannot tell',
+          'Separate from any repair, because we do not perform repairs or replacements',
+          'Informational',
+        ],
+        cannotTitle: 'A second opinion is not',
+        cannot: [
+          'A repair or replacement, or a sales pitch for one',
+          'Legal advice',
+          'A guarantee about what any contractor will find or charge',
+        ],
+        callout:
+          'We do not sell you a repair after giving an opinion. Our opinion is based on the footage and findings we are given.',
+      },
+      independent: {
+        eyebrow: 'Independent by design',
+        title: 'Major sewer decisions deserve clear evidence.',
+        steps: [
+          {
+            title: 'Review',
+            body: 'We read the report or video you already have.',
+          },
+          {
+            title: 'Explain',
+            body: 'We say what we see, in plain language, and whether it supports the recommendation.',
+          },
+          {
+            title: 'Decide',
+            body: 'You choose what happens next. We have nothing to sell you.',
+          },
+        ],
+        note: 'We do not perform sewer repairs or replacements. If the evidence shows your line needs repair, we will say so, because that is what the evidence shows.',
+        link: { href: '#request', label: 'Ask About a Free Second Opinion' },
+      },
+      markets: {
+        id: 'choose-market',
+        eyebrow: 'Service areas',
+        title: 'Sewer second opinion service areas',
+        intro: 'Choose your market for local service details and scheduling options.',
+        items: [
+          {
+            pageId: id('market-st-louis-mo'),
+            description: 'Independent sewer inspection across the St. Louis area.',
+            actionLabel: 'View St. Louis sewer services',
+          },
+          {
+            pageId: id('market-san-diego-ca'),
+            description: 'Independent sewer inspection in the San Diego area.',
+            actionLabel: 'View San Diego sewer services',
+          },
+          {
+            pageId: id('market-las-vegas-nv'),
+            description: 'Independent sewer inspection across the Las Vegas Valley.',
+            actionLabel: 'View Las Vegas sewer services',
+          },
+        ],
+      },
+      faq: [
+        {
+          group: 'The basics',
+          question: 'What is a sewer second opinion?',
+          answer:
+            'A sewer second opinion is an independent review of the inspection report or video you already have. We tell you whether we agree with the recommendation, disagree with it, or cannot tell from the footage and recommend a clearer inspection.',
+        },
+        {
+          group: 'The basics',
+          question: 'Is the second opinion free?',
+          answer:
+            'A free second opinion may be available on an inspection report or video you already have. Ask about it before scheduling, and we explain what it covers before anything is scheduled.',
+        },
+        {
+          group: 'The basics',
+          question: 'What do I need to send?',
+          answer:
+            'The inspection report or video you received, what the recommendation was, and where the property is. Tell us what is happening and we will explain what we can review.',
+        },
+        {
+          group: 'The basics',
+          question: 'Does someone have to come to my property?',
+          answer:
+            'Usually not for a review of an existing report or video. If the footage is unclear, we may recommend a new inspection.',
+        },
+        {
+          group: 'The opinion',
+          question: 'What if the video is too poor to read?',
+          answer:
+            'We tell you that, and recommend a clearer inspection instead of guessing.',
+        },
+        {
+          group: 'The opinion',
+          question: 'Do you do the repair if I need one?',
+          answer:
+            'No. We do not perform repairs or replacements, and our opinion is separate from any repair.',
+        },
+        {
+          group: 'The opinion',
+          question: 'Why not just ask the contractor who gave the quote?',
+          answer:
+            'A company that diagnoses the problem and also sells the repair has a stake in the answer. That is a point about how the business is set up, not about anyone’s honesty. We have nothing to sell, so our opinion rests only on what the footage shows.',
+        },
+        {
+          group: 'Buying a home',
+          question:
+            'I am buying a home and the inspection found a sewer problem. Can you review it?',
+          answer:
+            'Yes, we can review the findings you have. We cannot advise on contracts or disclosure, which are for your agent and advisers.',
+        },
+      ],
+      relatedTitle: 'Keep reading',
+      relatedColumns: 4,
+      request: {
+        title: 'Send us what you were told',
+        intro: [
+          'Told you need major sewer work? Tell us what you were told and where the property is. Ask about a free second opinion before scheduling.',
+        ],
+        scopeNote:
+          'We provide inspection, diagnostics, locating, and cleaning for accessible residential sewer and drain lines. We do not provide sewer repair, replacement, lining, excavation, or pipe installation. Our opinion is informational and is not legal advice.',
+        submitLabel: 'Ask About a Free Second Opinion',
+      },
+    },
+    relatedPageIds: [
+      id('svc-sewer-camera-inspection'),
+      id('svc-pre-purchase-sewer-inspection'),
+      id('svc-sewer-cleaning-camera-inspection'),
+      id('svc-hydro-jetting'),
+    ],
+    relatedDescriptions: {
+      [id('svc-sewer-camera-inspection')]: 'Get your own evidence of the line.',
+      [id('svc-pre-purchase-sewer-inspection')]:
+        'A focused look at the line before you buy.',
+      [id('svc-sewer-cleaning-camera-inspection')]:
+        'When the problem may be a blockage, not a repair.',
+      [id('svc-hydro-jetting')]: 'When jetting fits, and when it does not.',
+    },
+  },
 }

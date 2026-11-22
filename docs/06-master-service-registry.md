@@ -823,7 +823,7 @@ Those audience pages do not necessarily require additional canonical service rec
 
 # 23A. Independent Second-Opinion Service
 
-`svc-independent-sewer-second-opinion` ("Independent Sewer Inspection / Second Opinion") is an approved registry record: `derived_service`, `service_family: inspection_diagnostics`, `launch_tier: phase_2_candidate` (`data/services/master-service-registry.json`). It is preserved as part of the 11-service taxonomy, not built as a page.
+`svc-independent-sewer-second-opinion` ("Independent Sewer Inspection / Second Opinion") is an approved registry record: `derived_service`, `service_family: inspection_diagnostics`, `launch_tier: phase_2_candidate` (`data/services/master-service-registry.json`). It is preserved as part of the 11-service taxonomy. The page was built under DEC-151 (registry parent: `svc-sewer-cleaning-camera-inspection`).
 
 Relationship to other concepts:
 
@@ -838,7 +838,7 @@ Approved positioning concept:
 
 This describes The Sewer Pros' own business model (no repair contract to sell); it is not an accusation that any competitor is dishonest, and it does not imply repair or replacement is never necessary (§7, CLAUDE.md §9, §27).
 
-Proposed canonical route (not yet built): `/services/independent-sewer-inspection-second-opinion/` (`05-url-routing-strategy.md` §41A).
+Canonical route (built, DEC-151): `/services/independent-sewer-inspection-second-opinion/` (`05-url-routing-strategy.md` §41A).
 
 ---
 
