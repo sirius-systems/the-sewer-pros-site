@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getService } from '@/data/services'
 import { marketOperatingDetail } from '@/data/markets/markets'
+import { foundingYear } from '@/data/business/organization'
 import { RENDER_IMAGE_SOURCE, resolveSlotImage } from '@/lib/image-slots'
 import { homeServiceCards } from './home-service-cards'
 import type {
@@ -423,7 +424,7 @@ export const sanDiegoCityContent: LocationPageContent = {
     bullets: [
       'Camera inspection with documented findings',
       'Cleaning and hydro jetting when the evidence supports it',
-      `Serving San Diego since ${sd.foundingYear}`,
+      `Serving San Diego. The Sewer Pros has delivered the same service since ${foundingYear}`,
     ],
     primaryAction: { href: '#request', label: 'Schedule a Sewer Inspection' },
     secondaryActionLabel: `Call ${sd.phone}`,

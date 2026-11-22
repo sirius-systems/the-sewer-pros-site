@@ -24,6 +24,7 @@
  */
 
 import { marketOperatingDetail } from '@/data/markets/markets'
+import { foundingYear } from '@/data/business/organization'
 import type { PageId, ServiceLocationPageContent } from '@/types'
 import { chulaVistaContent } from './san-diego-chula-vista'
 import { serviceContent } from './services'
@@ -140,8 +141,7 @@ export const chulaVistaCleaningContent: ServiceLocationPageContent = {
         or collapsed pipe. The Sewer Pros does not perform repairs or replacements.
       </p>
       <p>
-        To talk through cleaning the line you maintain, call The Sewer Pros at {sd.phone}. We have
-        served the San Diego area since {sd.foundingYear}. If sewage is actively backing up into
+        To talk through cleaning the line you maintain, call The Sewer Pros at {sd.phone}. We serve the San Diego area. The Sewer Pros has delivered the same service since {foundingYear}. If sewage is actively backing up into
         your home, contact us to discuss the situation.
       </p>
     </>

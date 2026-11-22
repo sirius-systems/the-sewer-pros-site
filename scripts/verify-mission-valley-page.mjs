@@ -64,16 +64,19 @@ const text = strip(mainHtml)
 // The experience counter strip is company-wide (DEC-156): it shows "Since 2011" on every page. The scans below
 // run on the page without the strip, so St. Louis and other-market values are still caught in the page's own copy.
 const BAND_RE = /<aside[^>]*aria-labelledby="experience-counters"[\s\S]*?<\/aside>/
-const mainHtmlNoBand = mainHtml.replace(BAND_RE, '')
+// The company-level sentence (DEC-157) carries the company year; it is not a St. Louis value.
+const COMPANY_YEAR_RE = /The Sewer Pros has delivered the same service since \d{4}/g
+const mainHtmlNoBand = mainHtml.replace(BAND_RE, '').replace(COMPANY_YEAR_RE, '')
 check('mobile contact bar renders inside <main>', /aria-label="Quick contact"/.test(mainHtml))
 
 /* ---- San Diego market constants (DEC-071), read from the data file ---- */
 const marketsSrc = fs.readFileSync(path.resolve('data/markets/markets.ts'), 'utf8')
-const sdBlock = marketsSrc.match(/'san-diego-ca':\s*\{\s*phone:[\s\S]*?foundingYear:\s*(\d+)/)?.[0] ?? ''
+const sdBlock = marketsSrc.match(/'san-diego-ca':\s*\{\s*phone:[\s\S]*?hours:\s*'[^']*'/)?.[0] ?? ''
 const SD_PHONE = sdBlock.match(/phone:\s*'([^']+)'/)?.[1]
 const SD_E164 = sdBlock.match(/phoneE164:\s*'([^']+)'/)?.[1]
 const SD_HOURS = sdBlock.match(/hours:\s*'([^']+)'/)?.[1]
-const SD_YEAR = sdBlock.match(/foundingYear:\s*(\d+)/)?.[1]
+// One company founding year (DEC-156, DEC-157): San Diego pages say the company year, read from organization.ts.
+const SD_YEAR = fs.readFileSync(path.resolve('data/business/organization.ts'), 'utf8').match(/export const foundingYear = (\d+)/)?.[1]
 check('San Diego constants found in data/markets/markets.ts', Boolean(SD_PHONE && SD_E164 && SD_HOURS && SD_YEAR), JSON.stringify({ SD_PHONE, SD_E164, SD_HOURS, SD_YEAR }))
 
 /* ---- JSON-LD ---- */

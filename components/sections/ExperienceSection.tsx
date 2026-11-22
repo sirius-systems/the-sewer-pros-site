@@ -37,11 +37,11 @@ import type {
  *
  * 01 §20 forbids carrying one market's business facts onto another's
  * page, so NEITHER may appear on a San Diego or Las Vegas page. The
- * founding years are scoped the same way and are NOT interchangeable:
- * St. Louis 2011 (DEC-070), San Diego 2015 (DEC-071), and Las Vegas
- * NONE - `marketOperatingDetail['las-vegas-nv'].foundingYear` is 0
- * because the market is newly launching and importing a year would
- * assert an operating history it does not have.
+ * founding year is now ONE company-level year, 2011 (`foundingYear` in
+ * `data/business/organization.ts`, DEC-156 and DEC-157). It is a
+ * company-wide statement, not a local operating history: no market page
+ * may say "serving <city> since 2011", and Las Vegas keeps
+ * `marketOperatingDetail['las-vegas-nv'].foundingYear` at 0.
  *
  * ⚠ THE COMPONENT CANNOT ENFORCE THIS AND DOES NOT PRETEND TO. Proof
  * copy is per-market content, so the guard is the content file and the

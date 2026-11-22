@@ -1225,7 +1225,7 @@ Address display:
 
 # 63. San Diego Website Alignment
 
-San Diego GBP should ultimately link to:
+The San Diego GBP's website link should point to:
 
 ```text
 /san-diego-ca/
@@ -1262,9 +1262,9 @@ Do not copy all 222 San Diego research geographies into GBP.
 
 ---
 
-# 65. San Diego Review Launch
+# 65. San Diego Review Process
 
-Once verified and actively servicing customers:
+For the existing, company-owned profile (DEC-153), the review process for completed customers is:
 
 ```text
 Completed Customer
@@ -1276,7 +1276,7 @@ Initial Review Base
 Ongoing Review Velocity
 ```
 
-The first objective is authentic market proof, not an artificial numerical target.
+The objective is authentic market proof, not an artificial numerical target. The review figure the site displays still comes only from `ratingSnapshot` in `data/reviews/reviews.ts` (DEC-149), not from the profile or a third-party aggregation page. No address, map pin or `LocalBusiness` schema is added for San Diego until the owner approves how the address is displayed.
 
 ---
 

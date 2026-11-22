@@ -33,9 +33,10 @@
  * its address is not approved for display. Nothing below states or
  * implies local premises.
  *
- * San Diego IS an operating market — it publishes its own site, phone,
- * hours, and a 2015 founding year (DEC-071). Operating is not the same
- * as having a verified physical location, and only the first is claimed.
+ * San Diego IS an operating market, and it publishes its own site, phone
+ * and hours (DEC-071). Operating is not the same as having a verified
+ * physical location, and only the first is claimed. The founding year on
+ * this page is the company year (DEC-156, DEC-157), in company-level words.
  *
  * ---------------------------------------------------------------------------
  * ⚠ HOUSING-AGE FIGURES ARE NOT CITED, AND THE ANGLE IS WEAKER HERE
@@ -56,6 +57,7 @@
  * is published, and none is averaged.
  */
 
+import { foundingYear } from '@/data/business/organization'
 import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
@@ -374,7 +376,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     eyebrow: 'Specialized experience, clear findings',
     title: 'Sewer inspection experience San Diego property owners can use',
     intro: [
-      'The Sewer Pros has served San Diego property owners since 2015, bringing a specialized, evidence-first approach to customers who need to investigate a drainage problem, evaluate a sewer line before buying a property, or understand the condition of a line before making a larger decision.',
+      `Serving San Diego property owners. The Sewer Pros has delivered the same service since ${foundingYear}, bringing a specialized, evidence-first approach to customers who need to investigate a drainage problem, evaluate a sewer line before buying a property, or understand the condition of a line before making a larger decision.`,
       'Our San Diego sewer services include sewer camera inspection, sewer cleaning, hydro jetting, sewer line locating, recurring sewer backup diagnosis, pre-purchase sewer inspection, and preventative sewer maintenance. We inspect accessible portions of the sewer line, document visible conditions on video, and explain what the footage shows in clear language.',
     ],
     /*
@@ -390,7 +392,7 @@ export const sanDiegoMarketContent: MarketPageContent = {
     */
     proof: [
       {
-        title: 'Serving San Diego Since 2015',
+        title: `Serving San Diego. The Same Service Since ${foundingYear}`,
         body: 'Specialized experience across coastal, inland, and older inner-city properties throughout the greater San Diego region.',
         icon: 'experience',
         accent: 'blue',

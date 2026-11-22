@@ -25,6 +25,7 @@
  */
 
 import { marketOperatingDetail } from "@/data/markets/markets";
+import { foundingYear } from "@/data/business/organization";
 import type { PageId, ServiceLocationPageContent } from "@/types";
 import { sanDiegoCityContent } from "./san-diego-city";
 import { serviceContent } from "./services";
@@ -162,8 +163,8 @@ export const sanDiegoCityCleaningContent: ServiceLocationPageContent = {
         We found no City page on whether work confined to private property needs
         a permit, so ask Development Services at 619-446-5242 (the City&rsquo;s
         number). To talk through cleaning a line on your side of the connection,
-        call The Sewer Pros at {sd.phone}. We have served San Diego since{" "}
-        {sd.foundingYear}. If sewage is actively backing up into your home,
+        call The Sewer Pros at {sd.phone}. We serve San Diego. The Sewer Pros has delivered the same service since{" "}
+        {foundingYear}. If sewage is actively backing up into your home,
         contact us to discuss the situation.
       </p>
     </>
