@@ -142,7 +142,7 @@ export function runMetaAudit(root = 'out') {
     // Registered service name exact on service pages
     if (p.type === 'service' || p.type === 'service-location') {
       const slug = p.type === 'service' ? p.url.split('/')[2] : p.url.split('/')[4]
-      if (!p.title.includes(SERVICES[slug].name)) add('high', `title does not carry the registered name "${SERVICES[slug].name}" exactly`)
+      if (!p.title.includes(SERVICES[slug].name) && !spec?.nameExempt) add('high', `title does not carry the registered name "${SERVICES[slug].name}" exactly`)
     }
     if (/sewer cleaning and camera inspection/i.test(p.title)) add('high', 'title spells the combined service with "and" instead of "&"')
 

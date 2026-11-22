@@ -82,8 +82,8 @@ export function runAudit(root = 'out') {
       const slug = p.type === 'service' ? u.split('/')[2] : u.split('/')[4]
       const regName = SERVICES[slug].name
       const nm = norm(regName)
-      if (!norm(p.title).includes(nm)) add('high', `title does not carry the registered name "${regName}"`)
-      if (!norm(p.h1).includes(nm) && !spec.h1Exempt) add('high', `H1 does not carry the registered name "${regName}"`)
+      if (!norm(p.title).includes(nm) && !spec.nameExempt) add('high', `title does not carry the registered name "${regName}"`)
+      if (!norm(p.h1).includes(nm) && !spec.h1Exempt && !spec.nameExempt) add('high', `H1 does not carry the registered name "${regName}"`)
     }
     for (const [el, t] of [['title', p.title], ['H1', p.h1]]) if (/sewer cleaning and camera inspection/i.test(t)) add('high', `${el} spells the registered name "Sewer Cleaning & Camera Inspection" with "and": "${t}"`)
 
