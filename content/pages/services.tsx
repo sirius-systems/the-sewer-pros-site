@@ -450,7 +450,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'How it works',
           question: 'Should the line be cleaned before the camera goes in?',
-          answer: `Sometimes. If standing water or debris keeps the camera from traveling or seeing, cleaning may be needed first. There is no universal order. It depends on the condition of the line.`,
+          answer: `Sometimes. If standing water or debris keeps the camera from traveling or seeing, cleaning may be needed first. There is no universal order. It depends on the condition of the line. See {{sewer cleaning and camera inspection|cleaning and camera inspection|the cleaning and camera inspection service}}.`,
         },
         {
           group: 'What it can and can’t show',
@@ -469,7 +469,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             <p>
               No. A camera shows what is inside the pipe, not how deep it sits or where it runs in your yard. It also does not measure pipe slope.{' '}
               <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
-                Sewer line locating
+                {'{{Sewer line locating|Line locating|Locating the sewer line}}'}
               </ApprovedInlineLink>{' '}
               can estimate a position from the surface, and a locate is an estimate, not a survey.
             </p>
@@ -1131,7 +1131,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'The basics',
           question: 'What is sewer cleaning?',
-          answer: `Sewer cleaning is the removal of grease, roots, deposits, debris, and other material that restricts flow in a sewer line, using hydraulic or mechanical methods. It clears and maintains the pipe. It does not repair it.`,
+          answer: `{{Sewer cleaning|Sewer line cleaning|Cleaning the sewer line}} is the removal of grease, roots, deposits, debris, and other material that restricts flow in a sewer line, using hydraulic or mechanical methods. It clears and maintains the pipe. It does not repair it.`,
         },
         {
           group: 'The basics',
@@ -1146,7 +1146,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'The basics',
           question: 'Do you use a camera before or after cleaning?',
-          answer: `A camera may be used to document the line before cleaning, after cleaning, or both, when the line can be viewed. There is no single required order. If a line is blocked and full of water, a camera cannot see under the water, so cleaning may need to come first. Ask what is included in your appointment.`,
+          answer: `A camera may be used to document the line before cleaning, after cleaning, or both, when the line can be viewed. There is no single required order. If a line is blocked and full of water, a camera cannot see under the water, so cleaning may need to come first. Ask what is included in your appointment. See {{sewer cleaning and camera inspection|cleaning and camera inspection|the cleaning and camera inspection service}}.`,
         },
         {
           group: 'Limits and risks',
@@ -1591,7 +1591,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'The basics',
           question: 'What is hydro jetting?',
           answer:
-            'Hydro jetting cleans an accessible sewer or drain line with pressurized water sent through a hose and nozzle. It loosens buildup and flushes it out of the line.',
+            '{{Hydro jetting|Water jetting|Sewer jetting}} cleans an accessible sewer or drain line with pressurized water sent through a hose and nozzle. It loosens buildup and flushes it out of the line.',
         },
         {
           group: 'The basics',
@@ -1639,7 +1639,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'Symptoms',
           question: 'Why are several drains slow at once?',
           answer:
-            'Several slow fixtures can point to a restriction in a shared line rather than in one drain. It does not prove where. See drain cleaning and sewer camera inspection.',
+            'Several slow fixtures can point to a restriction in a shared line rather than in one drain. It does not prove where. See {{drain cleaning|drain-line cleaning|drain clearing}} and {{sewer camera inspection|camera inspection|sewer scope}}.',
         },
         {
           group: 'Symptoms',
@@ -1710,13 +1710,13 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'Related questions',
           question: 'Should I get my line cleaned before buying or selling a home?',
           answer:
-            'Cleaning is not an inspection. If you are buying, a pre-purchase sewer inspection shows the condition of the line.',
+            'Cleaning is not an inspection. If you are buying, {{a pre-purchase sewer inspection|a sewer inspection before you buy|a sewer scope before closing|a pre-purchase inspection}} shows the condition of the line.',
         },
         {
           group: 'Related questions',
           question: 'Can the line be located?',
           answer:
-            'Line locating is a separate service, offered when in scope. Locate readings are approximate, not survey-grade. See sewer line locating.',
+            'Line locating is a separate service, offered when in scope. Locate readings are approximate, not survey-grade. See {{sewer line locating|line locating|sewer line locating service}}.',
         },
         {
           group: 'Related questions',
@@ -2763,7 +2763,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'The basics',
           question: 'What is sewer line locating?',
-          answer: `Sewer line locating estimates the route and position of an existing underground sewer line. A technician uses compatible locating equipment, often with a sewer camera, to help identify where an accessible line runs. The results can help with property planning or with deciding where further inspection may be useful.`,
+          answer: `{{Sewer line locating|Line locating|Sewer line locating service}} estimates the route and position of an existing underground sewer line. A technician uses compatible locating equipment, often with a sewer camera, to help identify where an accessible line runs. The results can help with property planning or with deciding where further inspection may be useful.`,
         },
         {
           group: 'The basics',
@@ -2848,7 +2848,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Planning and property',
           question: 'If the line drains after cleaning, is the pipe healthy?',
-          answer: `Not necessarily. Clearing a clog may restore flow, but a camera inspection can still be needed to document the condition of the accessible pipe and look for visible sources of recurring problems.`,
+          answer: `Not necessarily. Clearing a clog may restore flow, but a camera inspection can still be needed to document the condition of the accessible pipe and look for visible sources of recurring problems. See {{sewer cleaning and camera inspection|cleaning and camera inspection|the cleaning and camera inspection service}}.`,
         },
         {
           group: 'Planning and property',
@@ -2873,7 +2873,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Planning and property',
           question: 'Should I have the line located before buying a house?',
-          answer: `Locating shows where a line runs, not what condition it is in. If you are buying, a pre-purchase sewer inspection shows visible conditions in the accessible line. Ask whether locating is part of your appointment.`,
+          answer: `Locating shows where a line runs, not what condition it is in. If you are buying, {{a pre-purchase sewer inspection|a sewer inspection before you buy|a sewer scope before closing|a pre-purchase inspection}} shows visible conditions in the accessible line. Ask whether locating is part of your appointment.`,
         },
       ],
       relatedTitle: 'Keep reading',
@@ -3399,7 +3399,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Understanding drain cleaning',
           question: 'What is drain cleaning?',
-          answer: `Drain cleaning is the removal of grease, roots, deposits, debris, and other restricting material from a drain line, using a rotating cable, water jetting, or both. It restores flow. It does not repair the pipe.`,
+          answer: `{{Drain cleaning|Drain-line cleaning|Cleaning a drain line}} is the removal of grease, roots, deposits, debris, and other restricting material from a drain line, using a rotating cable, water jetting, or both. It restores flow. It does not repair the pipe.`,
         },
         {
           group: 'Understanding drain cleaning',
@@ -3510,7 +3510,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Limits and cameras',
           question: 'Does a camera inspection come with drain cleaning?',
-          answer: `They are separate services. A camera can be added when it is feasible for the line. Neither one requires the other.`,
+          answer: `They are separate services. A camera can be added when it is feasible for the line. Neither one requires the other. See {{sewer cleaning and camera inspection|cleaning and camera inspection|the cleaning and camera inspection service}}.`,
         },
         {
           group: 'Limits and cameras',
@@ -4223,15 +4223,15 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
               Cleaning is a separate service. If the camera cannot pass, ask
               what options apply. See{' '}
               <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
-                sewer cleaning
+                {'{{sewer cleaning|sewer line cleaning|cleaning the sewer line}}'}
               </ApprovedInlineLink>
               ,{' '}
               <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
-                hydro jetting
+                {'{{hydro jetting|water jetting|sewer jetting}}'}
               </ApprovedInlineLink>
               , and{' '}
               <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>
-                sewer cleaning and camera inspection
+                {'{{sewer cleaning and camera inspection|cleaning and camera inspection|cleaning with a camera inspection}}'}
               </ApprovedInlineLink>
               .
             </p>
@@ -4245,7 +4245,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
               A camera shows what is inside the pipe, not where the pipe sits
               in your yard.{' '}
               <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>
-                Sewer line locating
+                {'{{Sewer line locating|Line locating|Locating the sewer line}}'}
               </ApprovedInlineLink>{' '}
               can estimate a position from the surface, and a locate is an
               estimate, not a survey. Ask whether locating is part of your
@@ -4861,7 +4861,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'What the camera can show',
           question: 'Can a diagnosis show where the problem is from above ground?',
-          answer: `When a camera with a compatible sonde is used, a receiver at the surface can estimate the position of the camera head and its approximate depth. That is an estimate affected by signal, soil, pipe material, nearby utilities, concrete, rebar, and interference. It is not a survey, utility clearance, or permission to dig. Ask whether locating is part of your visit. See sewer line locating.`,
+          answer: `When a camera with a compatible sonde is used, a receiver at the surface can estimate the position of the camera head and its approximate depth. That is an estimate affected by signal, soil, pipe material, nearby utilities, concrete, rebar, and interference. It is not a survey, utility clearance, or permission to dig. Ask whether locating is part of your visit. See {{sewer line locating|line locating|sewer line locating service}}.`,
         },
         {
           group: 'Cleaning',
@@ -5378,7 +5378,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Cleaning and hydro jetting',
           question: 'Is hydro jetting safe for my pipes?',
-          answer: `It depends on the line. Hydro jetting uses pressurized water through a hose and nozzle to clean certain accessible lines. It is not right for every pipe, blockage, or visible defect, and it does not repair pipe damage. We look at the accessible condition of the line and may document a limitation instead of proceeding.`,
+          answer: `It depends on the line. {{Hydro jetting|Water jetting|Sewer jetting}} uses pressurized water through a hose and nozzle to clean certain accessible lines. It is not right for every pipe, blockage, or visible defect, and it does not repair pipe damage. We look at the accessible condition of the line and may document a limitation instead of proceeding.`,
         },
         {
           group: 'Cleaning and hydro jetting',

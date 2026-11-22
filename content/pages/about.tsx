@@ -263,7 +263,7 @@ export const aboutContent: AboutPageContent = {
       answer: (
         <p>
           Yes. The Sewer Pros provides sewer and drain cleaning, including
-          hydro jetting where appropriate. Inspection findings can help
+          {'{{hydro jetting|water jetting|sewer jetting}}'} where appropriate. Inspection findings can help
           clarify whether cleaning may address an observed condition.
         </p>
       ),
