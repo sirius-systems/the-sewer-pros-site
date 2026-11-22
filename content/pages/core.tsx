@@ -1826,7 +1826,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
     },
     seoTitle: 'Customer Reviews - Sewer Inspection and Cleaning',
     metaDescription:
-      'Read Google reviews of The Sewer Pros from St. Louis and San Diego customers, covering sewer camera inspections, pre-purchase scopes, cleaning, and hydro jetting.',
+      'Read Google reviews of The Sewer Pros from St. Louis and San Diego customers on camera inspections, pre-purchase scopes, and cleaning.',
     relatedTitle: 'Related pages',
     relatedPageIds: [
       id('hub-services'),
