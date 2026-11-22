@@ -46,6 +46,14 @@ const decode = (s) =>
 const norm = (s) => decode(s).replace(/\s+/g, ' ').trim()
 
 const bodyHtml = html.replace(/<!-- -->/g, '').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '')
+// The review figure and date are read from the one data source the band renders (data/reviews/reviews.ts), so a refresh does not make this check stale.
+const snapshotSrc = fs.readFileSync('data/reviews/reviews.ts', 'utf8')
+const SNAP = {
+  rating: /ratingSnapshot[\s\S]*?rating: ([\d.]+)/.exec(snapshotSrc)[1],
+  count: /ratingSnapshot[\s\S]*?reviewCount: (\d+)/.exec(snapshotSrc)[1],
+  date: /ratingSnapshot[\s\S]*?verifiedAt: '([\d-]+)'/.exec(snapshotSrc)[1],
+}
+const SNAP_READABLE = new Date(`${SNAP.date}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
 const strip = (h) => norm(h.replace(/<[^>]+>/g, ' ').replace(/\s+([.,;:)])/g, '$1').replace(/\(\s+/g, '('))
 const text = strip(bodyHtml)
 
@@ -53,7 +61,8 @@ const text = strip(bodyHtml)
 // wording. Everything else is checked with it removed.
 const reviewsMatch = bodyHtml.match(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/)
 const reviewsHtml = reviewsMatch ? reviewsMatch[0] : ''
-const textNoReviews = strip(bodyHtml.replace(reviewsHtml, ' '))
+// The footer link to /reviews/ (74ef0c1) is sitewide chrome, not page copy.
+const textNoReviews = strip(bodyHtml.replace(reviewsHtml, ' ').replace(/<a [^>]*href="\/reviews\/"[^>]*>[\s\S]*?<\/a>/g, ' '))
 // Customer review cards are third-party text; the aggregate line and caption are ours.
 const reviewsOurText = strip(reviewsHtml.replace(/<ul class="marquee-track"[\s\S]*<\/ul>/, ' '))
 
@@ -173,8 +182,8 @@ const jumpPos = jump.map((h) => bodyHtml.indexOf(`href="${h}"`))
 check('no in-page jump nav (removed with the "On this page" navs, 05dcf85)', jumpPos.every((p) => p === -1), jumpPos.join(','))
 
 /* ---- Review band ---- */
-check('#reviews shows "4.9" and "from 595 Google reviews"', /4\.9.*from 595 Google reviews/.test(strip(reviewsHtml)))
-check('#reviews shows "as of September 1, 2026"', reviewsOurText.includes('as of September 1, 2026'))
+check(`#reviews shows "${SNAP.rating}" and "from ${Number(SNAP.count).toLocaleString('en-US')} Google reviews"`, strip(reviewsHtml).replace(/\s+/g, ' ').includes(`${SNAP.rating} ★ out of 5 from ${Number(SNAP.count).toLocaleString('en-US')} Google reviews`) || new RegExp(`${SNAP.rating}.*from ${Number(SNAP.count).toLocaleString('en-US')} Google reviews`).test(strip(reviewsHtml)))
+check(`#reviews shows "as of ${SNAP_READABLE}"`, reviewsOurText.includes(`as of ${SNAP_READABLE}`))
 check('#reviews carries the not-specific caption', reviewsOurText.includes('not specific to St. Charles'))
 const outsideReviewWords = textNoReviews.replace('Services Reviews Who is responsible', 'Services Who is responsible')
 check(
