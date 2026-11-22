@@ -19,3 +19,9 @@ Five checks were red on `main` before the Nov 22 internal linking work. Each was
 
 - Retiring `verify-unique-metadata` (its job is a subset of `verify-meta`).
 - Treating the footer "Reviews" link as chrome in the three page checks, rather than banning review wording from the footer.
+
+## Addendum: audit-commercial regression (after the Nov 22 cleanup)
+
+| Check | Failing assertion | Cause | Outcome | Reason |
+|---|---|---|---|---|
+| `audit-commercial.mjs` | One class C hit: `docs/audits/editorial/prompt-13-editorial-audit-2026-11-22.md:64` | The editorial audit report, added after the cleanup, says "no repair or commercial wording reads as an offer". It records an absence, but the removal-note pattern did not recognize that phrasing. Not a commercial leftover. | Check update | Added `no (repair or )?commercial wording` to `REMOVAL_NOTE` in `scripts/audit-commercial.mjs`. The pattern only matches a line stating commercial wording is absent. No assertion was loosened. |
