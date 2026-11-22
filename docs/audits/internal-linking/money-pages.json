@@ -1,0 +1,44 @@
+{
+ "generated": "2026-11-22",
+ "rows": [
+  {
+   "name": "Pre-Purchase Sewer Inspection",
+   "path": "/services/pre-purchase-sewer-inspection/",
+   "inboundEditorial": 185,
+   "inboundContextual": 76,
+   "editorialDepth": 1
+  },
+  {
+   "name": "Sewer Camera Inspection",
+   "path": "/services/sewer-camera-inspection/",
+   "inboundEditorial": 189,
+   "inboundContextual": 98,
+   "editorialDepth": 1
+  },
+  {
+   "name": "Sewer Cleaning & Camera Inspection",
+   "path": "/services/sewer-cleaning-camera-inspection/",
+   "inboundEditorial": 176,
+   "inboundContextual": 34,
+   "editorialDepth": 1
+  },
+  {
+   "name": "Independent second opinion (comparison page; there is no dedicated second-opinion route)",
+   "path": "/compare/independent-sewer-inspection-vs-repair-company/",
+   "inboundEditorial": 9,
+   "inboundContextual": 5,
+   "editorialDepth": 2
+  }
+ ],
+ "serviceContextualInbound": {
+  "/services/drain-cleaning/": 26,
+  "/services/hydro-jetting/": 45,
+  "/services/pre-purchase-sewer-inspection/": 76,
+  "/services/preventative-sewer-maintenance/": 6,
+  "/services/recurring-sewer-backup-diagnosis/": 24,
+  "/services/sewer-camera-inspection/": 98,
+  "/services/sewer-cleaning/": 42,
+  "/services/sewer-cleaning-camera-inspection/": 34,
+  "/services/sewer-line-locating/": 60
+ }
+}
