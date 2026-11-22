@@ -36,6 +36,7 @@ export const GUIDE_SERVICE = {
   '/resources/st-louis-sewer-lateral-report/': ['pre-purchase-sewer-inspection'],
   '/resources/st-louis-city-sewer-lateral-program/': ['sewer-camera-inspection'],
   '/resources/st-louis-county-sewer-lateral-program/': ['sewer-camera-inspection'],
+  '/resources/questions-to-ask-before-approving-sewer-line-replacement/': ['sewer-camera-inspection'],
   '/compare/hydro-jetting-vs-sewer-snaking/': ['hydro-jetting'],
   '/compare/independent-sewer-inspection-vs-repair-company/': ['sewer-camera-inspection'],
 }

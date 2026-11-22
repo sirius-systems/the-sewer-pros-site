@@ -73,6 +73,10 @@ export const editorialImages: Record<string, CardImage> = {
     `${SHARED}residential/the-sewer-pros-st-louis-residential-street-manhole-curb-4x3.webp`,
     'Residential street with a manhole cover in the pavement and a yellow locator receiver on the sidewalk',
   ),
+  '/resources/questions-to-ask-before-approving-sewer-line-replacement/': render(
+    `${SHARED}residential/the-sewer-pros-fence-line-planting-beds-possible-dig-area-4x3.webp`,
+    'A yellow handheld locator receiver lying on a lawn beside a wooden fence and planting beds in a backyard',
+  ),
   '/resources/st-louis-sewer-lateral-report/': render(
     `${SHARED}residential/the-sewer-pros-inspection-report-handed-to-agent-4x3.webp`,
     'A printed form with blurred text, a pen and a closed laptop on a table',

@@ -216,6 +216,7 @@ export function specFor(url, type) {
     '/resources/st-louis-sewer-lateral-report/': one('st. louis sewer lateral report', 'st louis sewer lateral report', 'sewer lateral report'),
     '/resources/st-louis-city-sewer-lateral-program/': one('st. louis city sewer lateral program', 'st louis city sewer lateral program', 'st louis city sewer lateral', 'city sewer lateral program', /st louis city .{0,30}sewer lateral/),
     '/resources/st-louis-county-sewer-lateral-program/': one('st. louis county sewer lateral program', 'st louis county sewer lateral program', 'st louis county sewer lateral', 'county sewer lateral program', /st louis county .{0,60}lateral/),
+    '/resources/questions-to-ask-before-approving-sewer-line-replacement/': one('sewer line replacement', 'sewer line replacement', 'sewer replacement', 'questions to ask'),
     '/compare/hydro-jetting-vs-sewer-snaking/': one('hydro jetting vs sewer snaking', 'hydro jetting vs sewer snaking', 'hydro jetting vs snaking', 'hydro jetting and sewer snaking', 'hydro jetting and snaking', 'jetting and snaking', 'snaking and hydro jetting'),
     '/compare/independent-sewer-inspection-vs-repair-company/': one('independent sewer inspection vs repair company', 'independent sewer inspection vs repair company', 'independent sewer inspection vs repair', 'independent sewer inspection with repair', 'independent sewer inspection and repair', 'independent inspection from a repair company', 'independent sewer inspection'),
   }

@@ -161,7 +161,8 @@ for (const dest of [
 ]) {
   check(`links to ${dest}`, hrefs.includes(dest))
 }
-check('no link to a repair, lining or replacement route', !hrefs.some((h) => /repair|replace|lining|trenchless|excavat/i.test(h)))
+// Service and comparison routes only: the replacement-questions resource (DEC-158) is an educational guide whose slug names the topic.
+check('no link to a repair, lining or replacement service route', !hrefs.some((h) => /^\/(services|compare)\//.test(h) && /repair|replace|lining|trenchless|excavat/i.test(h)))
 checkRelatedCards({
   main: copyMain,
   check,

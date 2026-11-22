@@ -123,6 +123,8 @@ export function runMetaAudit(root = 'out') {
         if (label === 'repair or replacement wording' && REPAIR_ALLOWED.test(t)) continue
         // The comparison page's subject is how an independent inspection differs from a repair company's.
         if (label === 'repair or replacement wording' && p.url === '/compare/independent-sewer-inspection-vs-repair-company/') continue
+        // The replacement-questions resource is about evaluating a replacement recommendation (DEC-158); the page says we do not sell repairs or replacements.
+        if (label === 'repair or replacement wording' && p.url === '/resources/questions-to-ask-before-approving-sewer-line-replacement/') continue
         add('high', `${el} contains ${label}: "${m[0]}"`)
       }
       if (FEAR.test(t)) add('medium', `${el} contains fear or urgency language: "${t.match(FEAR)[0]}"`)

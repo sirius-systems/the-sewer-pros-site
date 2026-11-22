@@ -1811,6 +1811,10 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         pageId: id('res-read-video'),
         description: 'How to interpret sewer camera footage yourself.',
       },
+      {
+        pageId: id('res-replacement-questions'),
+        description: 'What to ask, and what a clear answer sounds like, before you approve a replacement.',
+      },
     ],
   },
 }
@@ -2014,6 +2018,13 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
           <li>Was the line cleaned before this inspection?</li>
           <li>Can I have a copy of the footage?</li>
         </ul>
+        <p>
+          If the report is behind a recommendation to replace the line, see{' '}
+          <ApprovedInlineLink pageId={id('res-replacement-questions')}>
+            questions to ask before approving a replacement
+          </ApprovedInlineLink>
+          .
+        </p>
       </>
     ),
     faq: [
@@ -2160,5 +2171,295 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       },
     ],
     relatedPageIds: [id('res-camera-report'), id('svc-sewer-camera-inspection'), id('svc-pre-purchase-sewer-inspection'), id('core-faq')],
+  },
+
+  /*
+    Questions to ask before approving a sewer line replacement (DEC-158).
+
+    ⚠ EVIDENCE-FIRST, NOT A COST PAGE. No price, cost range or third-party
+    statistic. No red-flag language aimed at contractors: every answer is
+    framed as "what a clear answer sounds like". "We do not sell repairs or
+    replacements" appears once, in the closing section. No "free", no promised
+    formats, turnaround, quote review or limits (DEC-155). Not legal advice.
+
+    ⚠ ONE LINK TO THE SECOND OPINION PAGE, in item 10, with the anchor "ask an
+    independent inspector to review the footage". Do not add a second one (the
+    anchor gate counts each distinct phrasing as a row).
+  */
+  [id('res-replacement-questions')]: {
+    seoTitle: 'Questions to Ask Before Approving Sewer Line Replacement',
+    metaDescription:
+      'Questions to ask before approving a sewer line replacement: what the footage shows, if the whole line was checked, and what alternatives were ruled out.',
+    hero: {
+      eyebrow: 'Resource',
+      title: 'Questions to Ask Before Approving a Sewer Line Replacement',
+    },
+    directAnswer: (
+      <p>
+        Before approving a sewer line replacement, ask to see the evidence behind
+        it: the camera footage, where the problem is in the line, whether the
+        whole line was inspected, and what other options were considered. A
+        replacement is a large, expensive job, and clear answers to these
+        questions make it easier to decide with confidence.
+      </p>
+    ),
+    body: (
+      <>
+        <h2>How to use this list</h2>
+        <p>
+          Bring these questions to the person who recommended the work, and to any
+          independent reviewer you choose. A clear answer usually names a location,
+          points to something visible on the footage and explains why the
+          recommended scope fits it. If an answer is vague, that only means the
+          evidence may not be complete yet. Asking the question is not an
+          accusation.
+        </p>
+
+        <h2>Ten questions to ask before you approve the work</h2>
+        <ol>
+          <li>
+            <p>
+              <strong>What exactly is wrong with the line, and where?</strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: a replacement decision should rest on a specific
+              defect in a specific place, not a general statement that the line is
+              in bad shape.
+            </p>
+            <p className="mt-1">
+              A clear answer: names the type of problem, such as a break, offset,
+              severe root intrusion or collapse, and where it is along the line.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Can I see the footage and get a copy of the findings?</strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: footage is the evidence. With it, you or another
+              party can review the same pipe conditions.
+            </p>
+            <p className="mt-1">
+              A clear answer: you can watch the recording, with locations marked,
+              and keep a copy.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>
+                Did the camera cover the whole line, from the cleanout to the
+                connection?
+              </strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: if the camera stopped early, part of the line may not
+              have been seen, and that part may be fine or may be worse.
+            </p>
+            <p className="mt-1">
+              A clear answer: states where the camera started and stopped, and
+              explains why if it stopped before the end.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Was the line cleaned before it was inspected?</strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: buildup, grease and debris can limit what a camera
+              can show. Cleaning first often gives a clearer picture of the pipe
+              itself.
+            </p>
+            <p className="mt-1">
+              A clear answer: says whether the line was cleaned, and what the
+              camera could and could not see.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Does the whole line need replacing, or a section?</strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: scope drives disruption and cost. The evidence should
+              support the length being recommended.
+            </p>
+            <p className="mt-1">
+              A clear answer: ties the recommended length to the footage, section
+              by section.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>
+                What other options were considered, and why were they ruled out?
+              </strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: depending on the condition, options may include
+              cleaning, hydro jetting, a localized fix or a trenchless method. Not
+              every line can use every option, and the reason should be
+              explainable.
+            </p>
+            <p className="mt-1">
+              A clear answer: names the alternatives and points to what on the
+              footage rules each one out.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>
+                What happens if I wait, and what does the evidence say about
+                urgency?
+              </strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: some conditions need prompt attention and others can
+              be monitored. You should know which this is.
+            </p>
+            <p className="mt-1">
+              A clear answer: separates active problems, such as repeated backups,
+              from conditions that are worth watching.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>What does the written estimate include?</strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: scope, method, excavation, restoration, permits and
+              who handles what should be written down before you approve anything.
+            </p>
+            <p className="mt-1">
+              A clear answer: a written scope you can compare line by line with any
+              other proposal.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Which part of the line is my responsibility?</strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: responsibility for a sewer lateral differs by city,
+              county and utility, and part of a line can sit in a public
+              right-of-way. Check with your local utility or municipality.
+            </p>
+            <p className="mt-1">
+              A clear answer: identifies where private responsibility ends and
+              whether any local program or permit applies.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Can an independent party review the footage before I sign?</strong>
+            </p>
+            <p className="mt-1">
+              Why it matters: a review by a company that does not sell the work
+              gives you another read on the same evidence. You can{' '}
+              <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+                ask an independent inspector to review the footage
+              </ApprovedInlineLink>{' '}
+              before you approve anything.
+            </p>
+            <p className="mt-1">
+              A clear answer: yes. You keep the recording and can share it.
+            </p>
+          </li>
+        </ol>
+
+        <h2>Signs the evidence may not be complete yet</h2>
+        <ul>
+          <li>You have a recommendation but no footage.</li>
+          <li>The footage does not show where in the line the problem is.</li>
+          <li>
+            The camera stopped before the end of the line and the reason is unclear.
+          </li>
+          <li>The recommended scope is larger than the damage shown.</li>
+          <li>No alternatives were discussed.</li>
+        </ul>
+        <p>
+          Any of these is a reason to gather more information before deciding, not a
+          conclusion about anyone&rsquo;s intent. If you have footage but cannot follow
+          it,{' '}
+          <ApprovedInlineLink pageId={id('res-read-video')}>
+            how to read a sewer camera inspection video
+          </ApprovedInlineLink>{' '}
+          explains what to look for.
+        </p>
+
+        <h2>What an independent inspection adds</h2>
+        <p>
+          A sewer camera inspection from a company that does not sell repairs or
+          replacements records the condition of the line and documents it.
+          Independent review before you approve the work can focus on footage you
+          already have. If you need a new look at the line, a{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
+            camera inspection of the line
+          </ApprovedInlineLink>{' '}
+          shows what is happening inside it. If the footage shows buildup rather than
+          structural damage,{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
+            sewer cleaning
+          </ApprovedInlineLink>{' '}
+          may be worth discussing first. For how this differs from a repair
+          company&rsquo;s own evaluation, see{' '}
+          <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
+            how an independent inspection differs from a repair company evaluation
+          </ApprovedInlineLink>
+          . We do not sell repairs or replacements. This list is general information
+          and is not legal advice.
+        </p>
+      </>
+    ),
+    faq: [
+      {
+        question: 'Should I get a second opinion before replacing a sewer line?',
+        answer: (
+          <p>
+            A replacement is a major decision, and a review of the same footage by a
+            company that does not sell the work can confirm what the evidence shows.
+            It is reasonable to ask for the footage before you approve anything.
+          </p>
+        ),
+      },
+      {
+        question: 'Can a sewer line be cleaned instead of replaced?',
+        answer: (
+          <p>
+            Sometimes. If the problem is buildup or roots rather than a break or
+            collapse, cleaning or hydro jetting may address it. A camera inspection
+            shows which situation you have.
+          </p>
+        ),
+      },
+      {
+        question: 'Why does the camera need to cover the whole line?',
+        answer: (
+          <p>
+            Because the recommended scope should match the condition along the entire
+            line. Unseen sections leave open whether the problem is local or
+            widespread.
+          </p>
+        ),
+      },
+      {
+        question: 'Who is responsible for the sewer line on my property?',
+        answer: (
+          <p>
+            It depends on your city, county and utility. Part of the line may be the
+            property owner&rsquo;s and part may be public. Check with your local utility
+            or municipality.
+          </p>
+        ),
+      },
+    ],
+    relatedPageIds: [
+      id('res-read-video'),
+      id('res-camera-report'),
+      id('svc-sewer-camera-inspection'),
+      id('svc-sewer-cleaning'),
+      id('cmp-independent-vs-repair'),
+    ],
+    cta: {
+      title: 'Request a Sewer Camera Inspection',
+    },
   },
 }
