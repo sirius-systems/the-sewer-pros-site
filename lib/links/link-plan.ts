@@ -214,6 +214,8 @@ export const GUIDE_RULES: readonly GuideRule[] = [
       'svc-recurring-sewer-backup-diagnosis',
     ],
   },
+  // The independent second opinion page points to the comparison of an independent inspection with a repair company (DEC-151).
+  { guide: 'cmp-independent-vs-repair', services: ['svc-independent-sewer-second-opinion'] },
   // Cleaning comparison: hydro jetting against cable cleaning.
   {
     guide: 'cmp-hydro-vs-snaking',

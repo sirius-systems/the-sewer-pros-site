@@ -5530,7 +5530,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           'No repair or replacement work offered',
         ],
         scopeStatement:
-          'We do not sell the repair. We have nothing to gain from what your line needs, so our opinion rests only on what the footage shows.',
+          'We do not sell sewer repair or replacement. Our opinion rests on what your report and footage actually show.',
         cardTitle: 'Ask about a second opinion',
         cardIntro:
           'Tell us what you were told and where the property is. Ask about a free second opinion before scheduling.',
