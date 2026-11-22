@@ -190,6 +190,33 @@ md += `### 8.3 Contextual links\n\nPages whose running prose names a service, ma
 md += `### 8.4 Anchor variety\n\nEditorial links (prose and FAQ, identical shared copy counted once) to a target where one exact anchor is over ${MAX_SHARE * 100}% and the target has at least ${MIN_LINKS} editorial links: before ${bAN ? bAN.violations.filter((v) => v.total >= MIN_LINKS).length : dash}, after ${AN.violations.filter((v) => v.total >= MIN_LINKS).length}.\n\n${table(['Target', 'Links', 'Distinct anchors', 'Top anchor', 'Top share before', 'Top share after'], AN.violations.filter((v) => v.total >= MIN_LINKS).map((v) => { const b = bAN?.violations?.find((x) => x.target === v.target); return [v.target, v.total, v.distinct, v.topAnchor, b ? b.topShare : dash, v.topShare] }))}\nThe remaining targets are the baseline in \`scripts/lib/anchor-variety-baseline.json\`: the gate fails if one gets worse or a new one appears. They are definition-style FAQ answers on service + location pages where the registered service name is the only natural phrase.\n\n`
 md += `### 8.5 Money pages\n\n${table(['Page', 'Contextual inbound before', 'Contextual inbound after', 'Body inbound after', 'Body click depth'], MP.rows.map((r) => [r.name, bMP?.rows?.find((x) => x.path === r.path)?.inboundContextual ?? dash, r.inboundContextual, r.inboundEditorial, r.editorialDepth]))}\nContextual inbound across the nine service pages: ${Object.entries(MP.serviceContextualInbound).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k.split('/')[2]} ${v}`).join(', ')}. There is no dedicated second-opinion route; the independent-inspection comparison page is the closest registered page, so it is tracked here and "free second opinion" links go to the contact pages.\n\n`
 md += `### 8.6 What the Resources hub and the Reviews page should link when they change\n\n- \`/resources/\` (exists, ${urls.filter((u) => P[u].type === 'resource').length} guides): each guide card should keep its parent service in the sentence under the title (camera-inspection guides -> Sewer Camera Inspection, lateral guides -> Pre-Purchase Sewer Inspection and the St. Louis market hub), the hub intro should link Sewer Camera Inspection and Pre-Purchase Sewer Inspection, and a new guide should be added to GUIDE_RULES in link-plan.ts so the matching service pages and location hubs link it (max 3 per page).\n- \`/reviews/\` (exists): keep it linked from the footer and the homepage review band only. Each review card that names a service should link that service page (Pre-Purchase, Camera Inspection, Sewer Cleaning & Camera Inspection) and each market review group should link its market hub, so the page passes relevance to the money pages. Do not add it to service-page body copy.\n- Both pages should link back to the Contact page for the free second opinion offer using the market contact page where the review or guide is market-specific.\n\n`
+
+/* Round 3: Sewer Cleaning & Camera Inspection boost and template-level anchor variants. */
+const r3Dir = arg('round3-before')
+if (r3Dir && fs.existsSync(path.resolve(r3Dir))) {
+  const rj = (f) => JSON.parse(fs.readFileSync(path.join(path.resolve(r3Dir), f), 'utf8'))
+  const bMP3 = rj('money-pages.json')
+  const bAN3 = rj('anchor-variety.json')
+  const bHash = rj('answer-hashes.json')
+  const nowHash = {}
+  for (const a of F.answers) nowHash[`${a.url}|${a.q}`] = true
+  const crypto = await import('node:crypto')
+  let changed = 0
+  let compared = 0
+  for (const a of F.answers) {
+    const k = `${a.url}|${a.q}`
+    if (bHash[k] === undefined) continue
+    compared++
+    if (bHash[k] !== crypto.createHash('sha1').update(a.text).digest('hex').slice(0, 10)) changed++
+  }
+  const rank = (m) => Object.entries(m).sort((a, b) => b[1] - a[1]).map(([k]) => k)
+  const bRank = rank(bMP3.serviceContextualInbound)
+  const aRank = rank(MP.serviceContextualInbound)
+  md += `\n## 9. Round 3: Sewer Cleaning & Camera Inspection and template-level anchor variants\n\n`
+  md += `### 9.1 Contextual inbound links per service\n\n${table(['Service', 'Before', 'Rank before', 'After', 'Rank after'], aRank.map((k) => [k.split('/')[2], bMP3.serviceContextualInbound[k], bRank.indexOf(k) + 1, MP.serviceContextualInbound[k], aRank.indexOf(k) + 1]))}\n`
+  md += `### 9.2 Anchor distribution (targets with ${MIN_LINKS} or more editorial links)\n\n${table(['Target', 'Links before', 'Top anchor before', 'Top share before', 'Links after', 'Distinct anchors after', 'Top anchor after', 'Top share after'], [...new Set([...bAN3.violations.map((v) => v.target), ...AN.violations.map((v) => v.target)])].map((t) => { const b = bAN3.violations.find((v) => v.target === t); const a = AN.stats.find((v) => v.target === t); return [t, b?.total ?? dash, b?.topAnchor ?? dash, b?.topShare ?? dash, a?.total ?? dash, a?.distinct ?? dash, a?.topAnchor ?? dash, a?.topShare ?? dash] }))}\n`
+  md += `Answers compared: ${compared}. Visible answer text changed on ${changed} (shared answers resolve one \`{{a|b|c}}\` option per route, and a few answers gained a one-line pointer to the combined service). FAQPage text equals the visible text on every page (${F.schemaMismatch.length} mismatches).\n\n`
+}
 md += `## 7. Decisions and open questions\n\n- FAQ answers are authored as JSX, not strings. Instead of adding a markdown-link format, the existing linker (\`lib/links/faq-links.tsx\`) was extended; JSON-LD is already derived from the same JSX (\`lib/schema/faq.ts\`), so text cannot drift, and the gate now verifies it from the built HTML.\n- Linker limits: first mention of a target per page, 2 links per answer (3 only when an answer names several markets), never inside questions, never to the page itself, no cross-market links from a market page, "City of X" is not treated as a market mention, location links only from market, resource and location pages.\n- No open questions that change business facts.\n`
 fs.writeFileSync(path.join(outDir, `internal-linking-audit-${date}.md`), md)
 console.log(JSON.stringify(metrics, null, 1))

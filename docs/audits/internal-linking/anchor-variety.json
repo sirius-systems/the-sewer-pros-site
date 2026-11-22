@@ -2,58 +2,53 @@
  "generated": "2026-11-22",
  "violations": [
   {
-   "target": "/services/pre-purchase-sewer-inspection/",
-   "total": 10,
-   "distinct": 5,
-   "topAnchor": "pre-purchase sewer inspection",
-   "topShare": 0.5,
-   "anchors": {
-    "pre-purchase sewer inspection": 5,
-    "before closing": 1,
-    "pre-purchase sewer inspections": 1,
-    "a pre-purchase sewer inspection": 1,
-    "sewer inspection": 2
-   }
-  },
-  {
    "target": "/services/sewer-cleaning/",
-   "total": 9,
-   "distinct": 1,
+   "total": 13,
+   "distinct": 3,
    "topAnchor": "sewer cleaning",
-   "topShare": 1,
+   "topShare": 0.69,
    "anchors": {
-    "sewer cleaning": 9
+    "sewer cleaning": 9,
+    "cleaning the sewer line": 2,
+    "sewer line cleaning": 2
    }
   },
   {
    "target": "/services/hydro-jetting/",
-   "total": 12,
-   "distinct": 1,
+   "total": 17,
+   "distinct": 3,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.53,
    "anchors": {
-    "hydro jetting": 12
+    "hydro jetting": 9,
+    "sewer jetting": 3,
+    "water jetting": 5
    }
   },
   {
    "target": "/services/sewer-line-locating/",
-   "total": 9,
-   "distinct": 2,
+   "total": 15,
+   "distinct": 4,
    "topAnchor": "sewer line locating",
-   "topShare": 0.67,
+   "topShare": 0.47,
    "anchors": {
-    "sewer line locating": 6,
-    "line locating": 3
+    "sewer line locating": 7,
+    "line locating": 5,
+    "locating the sewer line": 2,
+    "sewer line locating service": 1
    }
   },
   {
    "target": "/services/drain-cleaning/",
-   "total": 9,
-   "distinct": 2,
+   "total": 11,
+   "distinct": 5,
    "topAnchor": "drain cleaning",
-   "topShare": 0.89,
+   "topShare": 0.64,
    "anchors": {
-    "drain cleaning": 8,
+    "drain cleaning": 7,
+    "cleaning a drain line": 1,
+    "drain-line cleaning": 1,
+    "drain clearing": 1,
     "a drain cleaning": 1
    }
   }
@@ -65,15 +60,15 @@
  "stats": [
   {
    "target": "/services/sewer-camera-inspection/",
-   "total": 20,
+   "total": 21,
    "distinct": 4,
    "topAnchor": "sewer camera inspection",
-   "topShare": 0.4,
+   "topShare": 0.38,
    "anchors": {
     "sewer camera inspection": 8,
     "camera inspection": 3,
     "a sewer scope": 7,
-    "sewer scope": 2
+    "sewer scope": 3
    }
   },
   {
@@ -101,16 +96,19 @@
   },
   {
    "target": "/services/pre-purchase-sewer-inspection/",
-   "total": 10,
-   "distinct": 5,
-   "topAnchor": "pre-purchase sewer inspection",
-   "topShare": 0.5,
+   "total": 17,
+   "distinct": 8,
+   "topAnchor": "a pre-purchase sewer inspection",
+   "topShare": 0.29,
    "anchors": {
-    "pre-purchase sewer inspection": 5,
+    "pre-purchase sewer inspection": 3,
     "before closing": 1,
+    "sewer inspection before closing": 1,
     "pre-purchase sewer inspections": 1,
-    "a pre-purchase sewer inspection": 1,
-    "sewer inspection": 2
+    "a pre-purchase sewer inspection": 5,
+    "a pre-purchase inspection": 2,
+    "sewer inspection before you buy": 2,
+    "sewer scope before closing": 2
    }
   },
   {
@@ -135,43 +133,52 @@
   },
   {
    "target": "/services/sewer-cleaning/",
-   "total": 9,
-   "distinct": 1,
+   "total": 13,
+   "distinct": 3,
    "topAnchor": "sewer cleaning",
-   "topShare": 1,
+   "topShare": 0.69,
    "anchors": {
-    "sewer cleaning": 9
+    "sewer cleaning": 9,
+    "cleaning the sewer line": 2,
+    "sewer line cleaning": 2
    }
   },
   {
    "target": "/services/hydro-jetting/",
-   "total": 12,
-   "distinct": 1,
+   "total": 17,
+   "distinct": 3,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.53,
    "anchors": {
-    "hydro jetting": 12
+    "hydro jetting": 9,
+    "sewer jetting": 3,
+    "water jetting": 5
    }
   },
   {
    "target": "/services/sewer-line-locating/",
-   "total": 9,
-   "distinct": 2,
+   "total": 15,
+   "distinct": 4,
    "topAnchor": "sewer line locating",
-   "topShare": 0.67,
+   "topShare": 0.47,
    "anchors": {
-    "sewer line locating": 6,
-    "line locating": 3
+    "sewer line locating": 7,
+    "line locating": 5,
+    "locating the sewer line": 2,
+    "sewer line locating service": 1
    }
   },
   {
    "target": "/services/drain-cleaning/",
-   "total": 9,
-   "distinct": 2,
+   "total": 11,
+   "distinct": 5,
    "topAnchor": "drain cleaning",
-   "topShare": 0.89,
+   "topShare": 0.64,
    "anchors": {
-    "drain cleaning": 8,
+    "drain cleaning": 7,
+    "cleaning a drain line": 1,
+    "drain-line cleaning": 1,
+    "drain clearing": 1,
     "a drain cleaning": 1
    }
   },
@@ -231,12 +238,13 @@
   {
    "target": "/locations/san-diego-ca/mission-valley/hydro-jetting/",
    "total": 4,
-   "distinct": 2,
+   "distinct": 3,
    "topAnchor": "hydro jetting",
-   "topShare": 0.75,
+   "topShare": 0.5,
    "anchors": {
     "hydro jetting in mission valley": 1,
-    "hydro jetting": 3
+    "water jetting": 1,
+    "hydro jetting": 2
    }
   },
   {
@@ -348,11 +356,26 @@
   {
    "target": "/locations/las-vegas-nv/henderson/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
+   "distinct": 2,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "hydro jetting": 2
+   }
+  },
+  {
+   "target": "/services/sewer-cleaning-camera-inspection/",
+   "total": 12,
+   "distinct": 5,
+   "topAnchor": "cleaning and camera inspection service",
+   "topShare": 0.33,
+   "anchors": {
+    "camera inspection": 3,
+    "cleaning with a camera inspection": 1,
+    "sewer cleaning and camera inspection": 2,
+    "cleaning and camera inspection service": 4,
+    "cleaning and camera inspection": 2
    }
   },
   {
@@ -387,13 +410,12 @@
   },
   {
    "target": "/locations/las-vegas-nv/henderson/sewer-line-locating/",
-   "total": 2,
-   "distinct": 2,
+   "total": 3,
+   "distinct": 1,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 1,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "line locating": 3
    }
   },
   {
@@ -404,17 +426,6 @@
    "topShare": 1,
    "anchors": {
     "real estate agents": 1
-   }
-  },
-  {
-   "target": "/services/sewer-cleaning-camera-inspection/",
-   "total": 2,
-   "distinct": 2,
-   "topAnchor": "sewer cleaning and camera inspection",
-   "topShare": 0.5,
-   "anchors": {
-    "sewer cleaning and camera inspection": 1,
-    "camera inspection": 1
    }
   },
   {
@@ -430,21 +441,22 @@
   {
    "target": "/locations/las-vegas-nv/las-vegas/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
+   "distinct": 2,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "hydro jetting": 2
    }
   },
   {
    "target": "/locations/las-vegas-nv/las-vegas/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -459,12 +471,12 @@
   },
   {
    "target": "/locations/las-vegas-nv/las-vegas/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
+    "line locating": 2,
     "sewer line locating": 1
    }
   },
@@ -481,21 +493,22 @@
   {
    "target": "/locations/las-vegas-nv/north-las-vegas/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
+   "distinct": 2,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "hydro jetting": 2
    }
   },
   {
    "target": "/locations/las-vegas-nv/north-las-vegas/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -510,13 +523,13 @@
   },
   {
    "target": "/locations/las-vegas-nv/north-las-vegas/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
-   "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topAnchor": "sewer line locating service",
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 2,
+    "line locating": 1
    }
   },
   {
@@ -532,21 +545,22 @@
   {
    "target": "/locations/las-vegas-nv/summerlin/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 2,
+   "topAnchor": "water jetting",
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
    "target": "/locations/las-vegas-nv/summerlin/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain-line cleaning",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain-line cleaning": 1
    }
   },
   {
@@ -561,13 +575,13 @@
   },
   {
    "target": "/locations/las-vegas-nv/summerlin/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 1,
+    "line locating": 2
    }
   },
   {
@@ -583,21 +597,23 @@
   {
    "target": "/locations/san-diego-ca/carlsbad/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 3,
+   "topAnchor": "water jetting",
+   "topShare": 0.33,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "sewer jetting": 1,
+    "hydro jetting": 1
    }
   },
   {
    "target": "/locations/san-diego-ca/carlsbad/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain-line cleaning",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain-line cleaning": 1
    }
   },
   {
@@ -622,13 +638,13 @@
   },
   {
    "target": "/locations/san-diego-ca/carlsbad/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 1,
+    "line locating": 2
    }
   },
   {
@@ -644,21 +660,23 @@
   {
    "target": "/locations/san-diego-ca/chula-vista/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 3,
+   "topAnchor": "water jetting",
+   "topShare": 0.33,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "sewer jetting": 1,
+    "hydro jetting": 1
    }
   },
   {
    "target": "/locations/san-diego-ca/chula-vista/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -673,13 +691,12 @@
   },
   {
    "target": "/locations/san-diego-ca/chula-vista/sewer-line-locating/",
-   "total": 2,
-   "distinct": 2,
+   "total": 3,
+   "distinct": 1,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 1,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "line locating": 3
    }
   },
   {
@@ -695,21 +712,22 @@
   {
    "target": "/locations/san-diego-ca/escondido/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
+   "distinct": 2,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "hydro jetting": 2
    }
   },
   {
    "target": "/locations/san-diego-ca/escondido/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -724,12 +742,12 @@
   },
   {
    "target": "/locations/san-diego-ca/escondido/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
+    "line locating": 2,
     "sewer line locating": 1
    }
   },
@@ -747,10 +765,10 @@
    "target": "/locations/san-diego-ca/mission-valley/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -765,13 +783,13 @@
   },
   {
    "target": "/locations/san-diego-ca/mission-valley/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 1,
+    "line locating": 2
    }
   },
   {
@@ -787,11 +805,13 @@
   {
    "target": "/locations/san-diego-ca/oceanside/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 3,
+   "topAnchor": "water jetting",
+   "topShare": 0.33,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "sewer jetting": 1,
+    "hydro jetting": 1
    }
   },
   {
@@ -816,11 +836,12 @@
   },
   {
    "target": "/locations/san-diego-ca/oceanside/sewer-line-locating/",
-   "total": 2,
-   "distinct": 2,
-   "topAnchor": "line locating",
-   "topShare": 0.5,
+   "total": 3,
+   "distinct": 3,
+   "topAnchor": "sewer line locating service",
+   "topShare": 0.33,
    "anchors": {
+    "sewer line locating service": 1,
     "line locating": 1,
     "sewer line locating": 1
    }
@@ -838,21 +859,22 @@
   {
    "target": "/locations/san-diego-ca/san-diego/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
+   "distinct": 2,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "hydro jetting": 2
    }
   },
   {
    "target": "/locations/san-diego-ca/san-diego/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -867,13 +889,13 @@
   },
   {
    "target": "/locations/san-diego-ca/san-diego/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 1,
+    "line locating": 2
    }
   },
   {
@@ -889,21 +911,22 @@
   {
    "target": "/locations/san-diego-ca/san-marcos/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 2,
+   "topAnchor": "water jetting",
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
    "target": "/locations/san-diego-ca/san-marcos/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -918,13 +941,13 @@
   },
   {
    "target": "/locations/san-diego-ca/san-marcos/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 1,
+    "line locating": 2
    }
   },
   {
@@ -960,11 +983,13 @@
   {
    "target": "/locations/st-louis-mo/ballwin/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 3,
+   "topAnchor": "water jetting",
+   "topShare": 0.33,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "sewer jetting": 1,
+    "hydro jetting": 1
    }
   },
   {
@@ -999,12 +1024,12 @@
   },
   {
    "target": "/locations/st-louis-mo/ballwin/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
+    "line locating": 2,
     "sewer line locating": 1
    }
   },
@@ -1021,21 +1046,22 @@
   {
    "target": "/locations/st-louis-mo/chesterfield/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 2,
+   "topAnchor": "water jetting",
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
    "target": "/locations/st-louis-mo/chesterfield/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain clearing",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain clearing": 1
    }
   },
   {
@@ -1050,11 +1076,12 @@
   },
   {
    "target": "/locations/st-louis-mo/chesterfield/sewer-line-locating/",
-   "total": 2,
-   "distinct": 2,
-   "topAnchor": "line locating",
-   "topShare": 0.5,
+   "total": 3,
+   "distinct": 3,
+   "topAnchor": "sewer line locating service",
+   "topShare": 0.33,
    "anchors": {
+    "sewer line locating service": 1,
     "line locating": 1,
     "sewer line locating": 1
    }
@@ -1072,11 +1099,12 @@
   {
    "target": "/locations/st-louis-mo/florissant/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
+   "distinct": 2,
    "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 1,
+    "hydro jetting": 2
    }
   },
   {
@@ -1101,13 +1129,13 @@
   },
   {
    "target": "/locations/st-louis-mo/florissant/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
-   "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topAnchor": "sewer line locating service",
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 2,
+    "line locating": 1
    }
   },
   {
@@ -1123,11 +1151,12 @@
   {
    "target": "/locations/st-louis-mo/st-charles/hydro-jetting/",
    "total": 3,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "distinct": 2,
+   "topAnchor": "water jetting",
+   "topShare": 0.67,
    "anchors": {
-    "hydro jetting": 3
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
@@ -1152,13 +1181,12 @@
   },
   {
    "target": "/locations/st-louis-mo/st-charles/sewer-line-locating/",
-   "total": 2,
-   "distinct": 2,
+   "total": 3,
+   "distinct": 1,
    "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topShare": 1,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "line locating": 3
    }
   },
   {
@@ -1195,10 +1223,10 @@
    "target": "/locations/st-louis-mo/st-louis-city/drain-cleaning/",
    "total": 1,
    "distinct": 1,
-   "topAnchor": "drain cleaning",
+   "topAnchor": "drain-line cleaning",
    "topShare": 1,
    "anchors": {
-    "drain cleaning": 1
+    "drain-line cleaning": 1
    }
   },
   {
@@ -1213,13 +1241,13 @@
   },
   {
    "target": "/locations/st-louis-mo/st-louis-city/sewer-line-locating/",
-   "total": 2,
+   "total": 3,
    "distinct": 2,
-   "topAnchor": "line locating",
-   "topShare": 0.5,
+   "topAnchor": "sewer line locating service",
+   "topShare": 0.67,
    "anchors": {
-    "line locating": 1,
-    "sewer line locating": 1
+    "sewer line locating service": 2,
+    "line locating": 1
    }
   },
   {

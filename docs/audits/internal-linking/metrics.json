@@ -4,13 +4,13 @@
  "canonicalServiceContextualPct": 71.3,
  "clusterEdgesExpected": 528,
  "clusterGaps": 0,
- "anchorVarietyViolations": 5,
+ "anchorVarietyViolations": 4,
  "contextOnlyCardOrModule": 144,
  "contextNoLinkAtAll": 84,
  "moneyInboundContextual": {
-  "/services/pre-purchase-sewer-inspection/": 76,
-  "/services/sewer-camera-inspection/": 98,
-  "/services/sewer-cleaning-camera-inspection/": 34,
+  "/services/pre-purchase-sewer-inspection/": 77,
+  "/services/sewer-camera-inspection/": 90,
+  "/services/sewer-cleaning-camera-inspection/": 86,
   "/compare/independent-sewer-inspection-vs-repair-company/": 5
  },
  "moneyEditorialDepth": {
@@ -21,14 +21,14 @@
  },
  "pages": 199,
  "indexable": 198,
- "links": 13236,
+ "links": 13298,
  "orphans": 0,
  "broken": 0,
- "avgEditorialInboundCoreServices": 178.1,
+ "avgEditorialInboundCoreServices": 178.2,
  "faqBlocks": 195,
  "faqAnswers": 5173,
- "faqAnswersWithLinks": 673,
- "faqLinks": 772,
- "openFaqOpportunities": 1154,
+ "faqAnswersWithLinks": 758,
+ "faqLinks": 834,
+ "openFaqOpportunities": 1138,
  "faqSchemaMismatches": 0
 }
