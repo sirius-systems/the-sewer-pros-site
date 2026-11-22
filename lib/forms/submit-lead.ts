@@ -45,7 +45,7 @@ export interface LeadPayload {
    */
   smsNonMarketingConsent: boolean
   smsMarketingConsent: boolean
-  /** Id of the consent wording shown, for example `sms-consent-v1`. */
+  /** Id of the consent wording shown, for example `sms-consent-v2`. */
   smsConsentVersion: string
   /** Analytics form type of the form that sent this (`contact_request` or `general_service`). */
   formType: string

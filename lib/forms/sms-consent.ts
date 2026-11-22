@@ -5,8 +5,10 @@
  * wording a visitor agreed to can always be identified from the version id sent
  * with the form.
  *
- * The sender named in the copy is SHH Group (owner decision, Oct 12, 2026,
- * recorded in docs/22-decisions-change-log.md).
+ * The sender named in the copy is The Sewer Pros (v2, DEC-161, 2026-11-22). Version
+ * `sms-consent-v1` (2026-10-12, DEC-146) named a different business name by mistake; its
+ * text is no longer shown and is kept only in git history. Contacts recorded under v1
+ * keep that version id, so they can be told apart.
  *
  * Both consents are optional and unchecked by default, and a form submits with
  * neither checked. Consent values go in the lead payload only and never to
@@ -22,17 +24,23 @@ export interface SmsConsentCopy {
   readonly marketing: string
 }
 
-export const SMS_CONSENT_V1: SmsConsentCopy = {
-  version: 'sms-consent-v1',
-  date: '2026-10-12',
+export const SMS_CONSENT_V2: SmsConsentCopy = {
+  version: 'sms-consent-v2',
+  date: '2026-11-22',
   nonMarketing:
-    'By checking this box, I consent to receive non-marketing text messages from SHH Group about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.',
+    'By checking this box, I consent to receive non-marketing text messages from The Sewer Pros about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.',
   marketing:
-    'By checking this box, I consent to receive marketing text messages from SHH Group about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.',
+    'By checking this box, I consent to receive marketing text messages from The Sewer Pros about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.',
 }
 
 /** The wording the forms show today. */
-export const SMS_CONSENT = SMS_CONSENT_V1
+export const SMS_CONSENT = SMS_CONSENT_V2
+
+/**
+ * Version ids the lead function accepts: the current one, and the retired v1 so a visitor who
+ * loaded the form before the change is not refused. Retired ids are never shown to anyone.
+ */
+export const SMS_CONSENT_ACCEPTED_VERSIONS: readonly string[] = [SMS_CONSENT_V2.version, 'sms-consent-v1']
 
 /** Convenience for the lead payload. */
 export const SMS_CONSENT_VERSION = SMS_CONSENT.version

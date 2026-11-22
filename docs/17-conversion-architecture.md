@@ -2598,17 +2598,17 @@ The governing standard is:
 
 # 125. SMS Consent Block on Lead Forms
 
-Owner-provided consent copy (Oct 12, 2026, DEC-146). The sender named in the copy is SHH Group. Every lead form that collects a phone number shows this block, from one shared component (`components/sections/SmsConsent.tsx`) and one constants file (`lib/forms/sms-consent.ts`, version `sms-consent-v1`).
+Owner-provided consent copy (Oct 12, 2026, DEC-146). The sender named in the copy is The Sewer Pros (corrected in DEC-161; version `sms-consent-v1` named a different business name by mistake and is retired). Every lead form that collects a phone number shows this block, from one shared component (`components/sections/SmsConsent.tsx`) and one constants file (`lib/forms/sms-consent.ts`, version `sms-consent-v2`, 2026-11-22; v1 was 2026-10-12).
 
 Copy, used exactly as written and never edited in place (a wording change is a new version):
 
 Checkbox 1 (non-marketing):
 
-> By checking this box, I consent to receive non-marketing text messages from SHH Group about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
+> By checking this box, I consent to receive non-marketing text messages from The Sewer Pros about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
 
 Checkbox 2 (marketing):
 
-> By checking this box, I consent to receive marketing text messages from SHH Group about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
+> By checking this box, I consent to receive marketing text messages from The Sewer Pros about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
 
 Placement and behavior rules:
 

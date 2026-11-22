@@ -47,7 +47,7 @@ Custom fields. Create these in GHL (Settings, Custom Fields) as **Single Line** 
 | `preferred_contact_method` | Call, Text or Email |
 | `sms_nonmarketing_consent` | `true` or `false`; sent only when at least one box was checked in that submission |
 | `sms_marketing_consent` | `true` or `false`; sent only when at least one box was checked in that submission |
-| `sms_consent_version` | for example `sms-consent-v1`; sent only when at least one box was checked |
+| `sms_consent_version` | for example `sms-consent-v2`; sent only when at least one box was checked |
 | `sms_consent_timestamp` | UTC ISO time of receipt, set by the server; sent only when at least one box was checked |
 | `market` | St. Louis, San Diego, Las Vegas, or none |
 | `source_page` | the page path, for example `/contact/` |
@@ -162,3 +162,8 @@ The careers form (`/careers/`) posts to a separate function, `POST /api/careers`
 - **Tags.** `website-careers`, `form-careers` and one of `careers-st-louis`, `careers-san-diego`, `careers-las-vegas`. Never `market-*`. All map to `info@thesewerpros.com` (docs/lead-routing.md section 3A).
 - **Custom fields written.** `preferred_contact_method`, `source_page`, `market` (the market label the applicant chose) and `inquiry_message` (the applicant's message), all from the list above, plus the resume File Upload field. Employment type, availability and skills have no custom field; they are in the note only. Order: upsert, resume attach, note, remove `website-careers`, add the tags, so the notification email sees the data and the resume.
 - **Files.** PDF and DOCX, one file, 5 MB.
+
+## SMS consent version history
+
+* `sms-consent-v1` (2026-10-12): named the wrong sender. Retired; contacts captured under it keep this id.
+* `sms-consent-v2` (2026-11-22): names The Sewer Pros (DEC-161). Only the company name changed.

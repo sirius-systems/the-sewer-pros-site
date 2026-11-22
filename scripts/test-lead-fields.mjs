@@ -56,7 +56,7 @@ const payload = (over = {}) => ({
   sourcePath: '/services/sewer-camera-inspection/',
   smsNonMarketingConsent: false,
   smsMarketingConsent: false,
-  smsConsentVersion: 'sms-consent-v1',
+  smsConsentVersion: 'sms-consent-v2',
   formType: 'contact_request',
   spRef: '',
   turnstileToken: 'ok',

@@ -107,7 +107,7 @@ const lead = (over = {}) => ({
   sourcePath: '/contact/',
   smsNonMarketingConsent: false,
   smsMarketingConsent: false,
-  smsConsentVersion: 'sms-consent-v1',
+  smsConsentVersion: 'sms-consent-v2',
   formType: 'contact_request',
   spRef: '',
   turnstileToken: GOOD_TS_TOKEN,
@@ -142,7 +142,7 @@ check('upsert sends no tags (tags are added separately) and no dnd settings', up
 check('custom field preferred_contact_method = Text', cf(up.body, 'preferred_contact_method') === 'Text')
 check('no box checked: no consent field, version or timestamp is sent (cannot overwrite an earlier true)', ['sms_nonmarketing_consent', 'sms_marketing_consent', 'sms_consent_version', 'sms_consent_timestamp'].every((k) => cf(up.body, k) === undefined))
 const nb0 = received.find((x) => x.url.endsWith('/notes'))?.body.body ?? ''
-check('no box checked: the note still records both choices as false, the version and the UTC time', nb0.includes('SMS non-marketing consent: false') && nb0.includes('SMS marketing consent: false') && nb0.includes('SMS consent version: sms-consent-v1') && /Received \(UTC\): \d{4}-\d\d-\d\dT/.test(nb0))
+check('no box checked: the note still records both choices as false, the version and the UTC time', nb0.includes('SMS non-marketing consent: false') && nb0.includes('SMS marketing consent: false') && nb0.includes('SMS consent version: sms-consent-v2') && /Received \(UTC\): \d{4}-\d\d-\d\dT/.test(nb0))
 check('market = St. Louis and source_page = /contact/', cf(up.body, 'market') === 'St. Louis' && cf(up.body, 'source_page') === '/contact/')
 const tags = received.find((x) => x.url === '/contacts/contact_abc123/tags')
 check('tags: website-lead, form-contact, market-st-louis; no marketing tag', JSON.stringify(tags?.body.tags) === JSON.stringify(['website-lead', 'form-contact', 'market-st-louis']))
@@ -255,7 +255,7 @@ r = await post(lead({ smsNonMarketingConsent: true }))
 const calls = received.filter((x) => x.url === '/contacts/upsert')
 check('missing custom fields in GHL: retried without them, still success', r.status === 200 && calls.length === 2 && !('customFields' in calls[1].body))
 const nb = received.find((x) => x.url.endsWith('/notes'))?.body.body ?? ''
-check('consent record is in the note (also when custom fields fail)', nb.includes('SMS non-marketing consent: true') && nb.includes('SMS consent version: sms-consent-v1'))
+check('consent record is in the note (also when custom fields fail)', nb.includes('SMS non-marketing consent: true') && nb.includes('SMS consent version: sms-consent-v2'))
 
 reset()
 mode = 'server-error'
