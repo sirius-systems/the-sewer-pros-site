@@ -161,37 +161,26 @@ export const ratingSnapshot: RatingSnapshot = {
 export const googleProfileReviewsUrl: string | null = googleProfiles[0]?.url ?? null
 
 /**
- * Reviews withheld from the carousel, each with the rule that withholds
- * it.
+ * Reviews withheld from the carousel and /reviews/, each with the rule
+ * that withholds it.
  *
- * ===========================================================================
- * WHY A NAMED LIST INSTEAD OF A PRE-FILTERED FILE
- * ===========================================================================
- * `google-reviews.json` holds every text review from the export UNCHANGED, and exclusions live
- * here as data. So the count that was removed is visible, each removal
- * states its reason, and reversing one is a one-line edit rather than a
- * re-export. Quietly deleting rows from the JSON would leave no trace
- * that a selection was ever made.
+ * `google-reviews.json` holds every text review from the export
+ * UNCHANGED, and exclusions live here as data, so the count removed is
+ * visible, each removal states its reason, and reversing one is a
+ * one-line edit rather than a re-export.
  *
- * ⚠ NONE of this is a claim these reviews are fake or that they are
- * hidden. They are public on Google and stay public on Google. This
- * list governs the marketing carousel and the /reviews/ page.
+ * NONE of this is a claim these reviews are fake or hidden. They are
+ * public on Google and stay public there.
  *
- * Two different reasons are mixed here deliberately, and the second is
- * the one worth understanding:
+ * Only one reason applies today: NEGATIVE - a 1 to 3 star review, since
+ * a marketing carousel is not the venue for an unresolved dispute.
  *
- *   1. NEGATIVE — a marketing carousel is not the venue for an
- *      unresolved dispute.
- *
- *   2. CLAIM CONFLICT — the review is positive, but quoting it in a
- *      company-curated carousel would publish a claim this project has
- *      specifically ruled out. A customer describing same-day service
- *      is reporting their own experience; The Sewer Pros REPEATING it
- *      as selected marketing copy is making an availability claim.
- *      DEC-035 (no unverified emergency/same-day), DEC-036 (no
- *      unverified pricing claims), and DEC-083 (published hours are
- *      Monday to Friday) all bind the company, and choosing which
- *      quotes to feature is a company act.
+ * ⚠ Positive reviews are NOT excluded for what they mention (same-day,
+ * turnaround, price, repair). The owner approved showing them on
+ * 2026-11-22 (DEC-149). That approval covers showing a customer's own
+ * words. It does NOT let The Sewer Pros' own copy make the same claims:
+ * DEC-035, DEC-036, DEC-083 and CLAUDE.md sections 24 and 28 still bind
+ * everything the company writes itself.
  */
 export interface ReviewExclusion {
   profileUrl: string
@@ -324,262 +313,6 @@ export const excludedReviews: readonly ReviewExclusion[] = [
       'https://www.google.com/maps/contrib/110114066315195939984/reviews?hl=en',
     reason:
       'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
-  },
-  {
-    name: 'andy dv',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/108382948439845096398/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "came out same-day to help me with an urgent matter". Advertises same-day and emergency availability. DEC-035.',
-  },
-  {
-    name: 'Ben',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/108941836893863475537/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "completed it same day" plus "still cheaper than the quotes from their competitors". Same-day availability and a comparative price claim. DEC-035, DEC-036.',
-  },
-  {
-    name: 'SH',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/116791268133088296139/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "about half the price of the other companies". Unsubstantiated comparative pricing claim. DEC-036.',
-  },
-  {
-    name: 'Vicki J. Harp',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/100306114139655826380/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "You work on Saturdays if I need you" contradicts the published hours (Monday to Friday, DEC-083).',
-  },
-  {
-    name: 'Victoria Krylov',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/102939052114483520392/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "finish the job in the same day" plus exposing a buried sewer vent. Same-day completion (DEC-035) and excavation-shaped work, which is not an approved service.',
-  },
-  {
-    name: 'lisa schmalz',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/108250722827329918166/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Emergency backup reported on a Sunday evening and booked for Monday. Reads as emergency and weekend availability. DEC-035, DEC-083.',
-  },
-  {
-    name: 'Bridget Kelly',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/103284708019406323196/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Response and service time frames ("less than 24 hours", "less than 45 minutes"). Unverified response-time claims. CLAUDE.md section 24.',
-  },
-  {
-    name: 'Jessica Craig',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/104544664834973114177/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "report and video ... within a couple of hours". Unverified turnaround claim.',
-  },
-  {
-    name: 'Heather',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/106792622145227357938/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "very short notice. (24 hours)". Unverified scheduling-speed claim.',
-  },
-  {
-    name: 'Hannah Wickers',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/118163193435391536537/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Booked "the next day". Unverified scheduling-speed claim.',
-  },
-  {
-    name: 'Brittany Stevenson',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/111620534944157768877/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Report received "that same day". Same-day claim. DEC-035.',
-  },
-  {
-    name: 'Blake Bredensteiner',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/113833324971022142335/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Report "in less than two hours". Unverified turnaround claim.',
-  },
-  {
-    name: 'Debbie Boyce',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/115462374131215610363/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - On site "within a couple hours". Same-day / response-time claim. DEC-035.',
-  },
-  {
-    name: 'Greg Sumpter',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/102756154932619028020/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Contractor list emailed "within a few minutes". Unverified response-time claim.',
-  },
-  {
-    name: 'clifford conway',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/108334322830128181850/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Appointment "the next day". Unverified scheduling-speed claim.',
-  },
-  {
-    name: 'Heather Austin',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/109407584971287207436/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "I had the report same day". Same-day claim. DEC-035.',
-  },
-  {
-    name: 'LM SF',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/109010206029442659179/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - References a master plumber completing repair work. Implies repair capability that is not offered.',
-  },
-  {
-    name: 'Kay Kahn-Henderson',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/106283836301977407165/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "find the problem and fix it". Ambiguous; can read as repair capability that is not offered.',
-  },
-  {
-    name: 'Mary Winslow',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/115226874673197322170/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Describes a site that "required digging". Excavation is not an approved service.',
-  },
-  {
-    name: 'Lawrence Meier',
-    market: 'st-louis-mo',
-    profileUrl:
-      'https://www.google.com/maps/contrib/101299731377881530111/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "Cost more than I would like to pay". A price complaint; not carousel material.',
-  },
-  {
-    name: 'Nicolas Bonnafoux',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/100835484796166033423/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - On site "within two days", report "the next day". Unverified turnaround claim.',
-  },
-  {
-    name: 'Jason Bedsole (Real Estate Simplified)',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/103529991929924316026/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Full report "later that day". Same-day claim. DEC-035.',
-  },
-  {
-    name: 'R Franco',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/108910768485731972586/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "the most affordable" plus "here the next day". Comparative price and scheduling-speed claims. DEC-036.',
-  },
-  {
-    name: 'Ali Enteshari',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/104994615189053186484/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Booked "the next day", report "soon after". Unverified scheduling-speed claim.',
-  },
-  {
-    name: 'Veronica Mejia-Guillen',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/107426956967330526986/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "The report was sent to us the same day". Same-day claim. DEC-035.',
-  },
-  {
-    name: 'NATHAN RUSSELL',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/110208940133593957620/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Report "within hours of the inspection". Unverified turnaround claim.',
-  },
-  {
-    name: 'Nick Parker-Cole',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/114861725228480573980/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Compares the fee with another plumber ("for less than the first plumber"). Comparative price claim. DEC-036.',
-  },
-  {
-    name: 'Lisa Standke',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/114438047308142924059/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "stand above the competition" plus what the "affordable base price" includes. Comparative and pricing claim. DEC-036.',
-  },
-  {
-    name: 'Andrew Morris',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/100189955727982943915/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "jetting at no additional cost". Free-service offer claim. CLAUDE.md section 24.',
-  },
-  {
-    name: 'Michael Phillips',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/105342148934676701494/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "utilizing SewerPros to complete the recommended repairs". Implies repair capability that is not offered.',
-  },
-  {
-    name: 'Julia Castronova',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/104870966641246924602/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - Phone estimate "for installing" a cleanout. Installation is not an approved service; also an estimate and price claim.',
-  },
-  {
-    name: 'David Zecha',
-    market: 'san-diego-ca',
-    profileUrl:
-      'https://www.google.com/maps/contrib/106207984089913743851/reviews?hl=en',
-    reason:
-      'CLAIM CONFLICT - "both my commercial and residential projects". Commercial services are not listed (CLAUDE.md section 28).',
   },
 ]
 
