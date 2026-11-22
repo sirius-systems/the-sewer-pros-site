@@ -1950,7 +1950,12 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <p>
           The inspection produces evidence. The report is what makes that
           evidence usable later: when comparing quotes, revisiting a decision,
-          or showing someone else what was found.
+          or showing someone else what was found. If you already hold a report
+          or video, you can{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            get an independent opinion on a report or video you already have
+          </ApprovedInlineLink>
+          .
         </p>
 
         <h2>What a sewer camera inspection report should contain</h2>
@@ -2106,7 +2111,11 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <h2>If you are unsure</h2>
         <p>
           Ask whoever inspected the line to talk you through the footage and where along the line each condition was seen. If the reading matters to a significant decision,
-          getting a second view of the same footage is reasonable.
+          you can{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            ask for a second opinion on the footage
+          </ApprovedInlineLink>{' '}
+          you already have.
         </p>
       </>
     ),

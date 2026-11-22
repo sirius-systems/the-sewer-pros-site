@@ -5473,7 +5473,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
      name accepted report formats or how to send them, say that contractor
      quotes are reviewed, or limit who qualifies: the owner has not
      confirmed those. It never accuses another contractor of anything: the
-     force of the page is that The Sewer Pros has nothing to sell.
+     force of the page is that The Sewer Pros does not sell repairs or replacements.
 
      ⚠ FREE SECOND OPINION (DEC-151). This page is an allowed placement for
      the wording, hedged only: "Ask about a free second opinion before
@@ -5506,8 +5506,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
             unclear to say.
           </p>
           <p>
-            We do not perform repairs or replacements, so nothing we tell you is
-            shaped by what we would be paid to fix.
+            We do not perform repairs or replacements, so there is no repair for
+            us to sell you.
           </p>
         </>
       ),
@@ -5580,12 +5580,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           {
             title: 'Diagnosis and sale can come from the same place',
             description:
-              'When the company that diagnoses the problem also sells the repair, the diagnosis and the sale come from the same business. That is how the business is set up, not a statement about anyone’s honesty, and it is why an opinion from someone with nothing to sell is useful.',
+              'When the company that diagnoses the problem also sells the repair, the diagnosis and the sale come from the same business. That is how the business is set up, not a statement about anyone’s honesty, and it is why an opinion from a company that does not sell the repair is useful.',
           },
           {
-            title: 'We have no vested interest',
+            title: 'We do not sell the repair',
             description:
-              'We do not repair or replace sewer lines. Our opinion is based only on what the footage shows.',
+              'We do not repair or replace sewer lines, so there is no repair for us to sell you. Our opinion is based on the footage and findings you give us.',
           },
           {
             title: 'Repair is sometimes necessary',
@@ -5637,8 +5637,16 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           },
           {
             audience: 'Backups that keep coming back',
-            description:
-              'A backup that returns after a repair or a cleaning is a reason to look at the evidence again.',
+            description: (
+              <>
+                A backup that returns after a repair or a cleaning is a reason to
+                look at the evidence again. Learn about{' '}
+                <ApprovedInlineLink pageId={id('svc-recurring-sewer-backup-diagnosis')}>
+                  diagnosing a recurring backup
+                </ApprovedInlineLink>
+                .
+              </>
+            ),
           },
           {
             pageId: id('aud-home-buyers'),
@@ -5741,7 +5749,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           },
           {
             title: 'Decide',
-            body: 'You choose what happens next. We have nothing to sell you.',
+            body: 'You choose what happens next. We do not sell repairs or replacements.',
           },
         ],
         note: 'We do not perform sewer repairs or replacements. If the evidence shows your line needs repair, we will say so, because that is what the evidence shows.',
@@ -5781,7 +5789,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'The basics',
           question: 'Is the second opinion free?',
           answer:
-            'A free second opinion may be available on an inspection report or video you already have. Ask about it before scheduling, and we explain what it covers before anything is scheduled.',
+            'It may be. A free second opinion may be available on an inspection report or video you already have. Ask about it before scheduling, and we explain what it covers before anything is scheduled.',
         },
         {
           group: 'The basics',
@@ -5811,19 +5819,19 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           group: 'The opinion',
           question: 'Why not just ask the contractor who gave the quote?',
           answer:
-            'A company that diagnoses the problem and also sells the repair has a stake in the answer. That is a point about how the business is set up, not about anyone’s honesty. We have nothing to sell, so our opinion rests only on what the footage shows.',
+            'A company that diagnoses the problem and also sells the repair has a stake in the answer. That is a point about how the business is set up, not about anyone’s honesty. We do not sell repairs or replacements, so our opinion rests on what the footage and findings show.',
         },
         {
           group: 'Before you approve work',
           question: 'Do I need a new sewer line?',
           answer:
-            'Only the condition of the line can answer that, and a recommendation is not the same as evidence. Ask to see the video and the written findings, and what in them led to the recommendation. If the footage is unclear, a clearer inspection comes before a decision.',
+            'You cannot tell from a recommendation alone. Only the condition of the line can answer that. Ask to see the video and the written findings, and what in them led to the recommendation. If the footage is unclear, a clearer inspection comes before a decision.',
         },
         {
           group: 'Before you approve work',
           question: 'Should I get a second opinion before replacing a sewer line?',
           answer:
-            'It is common advice to get more than one view before approving major work, and a second opinion is one way to do that. Send us the report or video you already have, and we tell you whether we agree, disagree, or cannot tell. We do not perform replacements, so we have nothing to sell.',
+            'It is common advice to get more than one view before approving major work, and a second opinion is one way to do that. Send us the report or video you already have, and we tell you whether we agree, disagree, or cannot tell. We do not perform repairs or replacements.',
         },
         {
           group: 'Before you approve work',

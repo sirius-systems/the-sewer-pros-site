@@ -203,6 +203,7 @@ export const GUIDE_RULES: readonly GuideRule[] = [
       'svc-sewer-camera-inspection',
       'svc-sewer-cleaning-camera-inspection',
       'svc-recurring-sewer-backup-diagnosis',
+      'svc-independent-sewer-second-opinion',
     ],
   },
   {
@@ -212,6 +213,7 @@ export const GUIDE_RULES: readonly GuideRule[] = [
       'svc-sewer-camera-inspection',
       'svc-sewer-cleaning-camera-inspection',
       'svc-recurring-sewer-backup-diagnosis',
+      'svc-independent-sewer-second-opinion',
     ],
   },
   // The independent second opinion page points to the comparison of an independent inspection with a repair company (DEC-151).
