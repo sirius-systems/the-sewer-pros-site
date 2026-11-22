@@ -38,7 +38,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { buildGraph, isIndexable, CHROME, normHref } from './lib/link-graph.mjs'
-import { runFaqAudit } from './audit/faq-audit.mjs'
+import { runFaqAudit, linksInQuotedText } from './audit/faq-audit.mjs'
 import { anchorStats, MAX_SHARE, MIN_LINKS } from './audit/anchors.mjs'
 import { canonicalCoverage } from './audit/clusters.mjs'
 import { GENERIC_ANCHORS, HIERARCHY_CEILING, expectedBreadcrumb, hierarchyIssues, marketOf, isCommercialPath } from './lib/link-rules.mjs'
@@ -232,6 +232,13 @@ for (const ans of faq.answers) {
   }
 }
 check('FAQ answer links resolve to existing, indexable pages other than the page itself', faqLinkIssues)
+
+// Third-party text is never linked (lib/links/faq-links.tsx): no anchor between quotation marks, inside
+// <q>, <blockquote>, <cite> or an element marked data-no-link.
+check(
+  'no FAQ answer link sits inside quoted or third-party text',
+  faq.answers.flatMap((ans) => linksInQuotedText(ans.html ?? '').map((t) => `${ans.url}: "${t}" in "${ans.q}"`)),
+)
 
 // A `{{a|b}}` answer variant (lib/links/variants.tsx) must be resolved on every page, in the HTML and in the JSON-LD.
 const leftoverMarkers = []

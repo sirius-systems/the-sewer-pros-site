@@ -32,7 +32,14 @@ import type { PageId } from '@/types'
  *     service page; elsewhere (location hubs included) it goes to the core
  *     service page, which keeps a hub within its bounded set of local links;
  *   - each target is linked once per page, at most `MAX_PER_ANSWER` per answer;
- *   - never a link to the page itself, and never inside an existing link.
+ *   - never a link to the page itself, and never inside an existing link;
+ *   - never inside third-party text. A phrase is not linked when it sits (a) between
+ *     straight or curly double quotation marks, (b) inside a <q>, <blockquote> or
+ *     <cite> element, or (c) inside an element marked `data-no-link`. Use (c) for text
+ *     that reports what a city, utility or other third party says without quotation
+ *     marks (for example "it says to contact a plumber or sewer cleaning contractor"):
+ *     a link there would put our service name in someone else's mouth. The same rule
+ *     is checked on the built HTML by scripts/verify-internal-links.mjs.
  */
 
 const MAX_PER_ANSWER = 2
@@ -163,6 +170,14 @@ function anchorSpan(text: string, index: number, length: number, key: string): {
   return candidates[hashOf(seed) % candidates.length]
 }
 
+/** Elements whose text is someone else's words (see the header comment). */
+const QUOTE_TAGS: ReadonlySet<string> = new Set(['q', 'blockquote', 'cite'])
+
+/** Ranges of text between double quotation marks, straight or curly. */
+function quoteRanges(text: string): [number, number][] {
+  return [...text.matchAll(/"[^"]*"|\u201c[^\u201d]*\u201d/g)].map((m) => [m.index as number, (m.index as number) + m[0].length] as [number, number])
+}
+
 const MARKET_RES = PHRASES.filter((p) => p.serviceId.startsWith('market-')).map((p) => p.re)
 
 /** Plain text of an answer, for deciding how many links a list-style answer may carry. */
@@ -225,6 +240,8 @@ export function createFaqLinker(ctx: FaqLinkContext) {
     firstEnd: number
     /** Second pass on a service + location page: only the page's own service, up to the canonical page. */
     ownOnly?: boolean
+    /** Absolute ranges of quoted third-party text; nothing inside them is linked. */
+    quotes: [number, number][]
   }
 
   const linkString = (text: string, budget: Budget, base: number): ReactNode => {
@@ -238,7 +255,10 @@ export function createFaqLinker(ctx: FaqLinkContext) {
       const re = new RegExp(p.re.source, p.re.flags.includes('g') ? p.re.flags : `${p.re.flags}g`)
       re.lastIndex = from
       let m = re.exec(text)
-      while (m !== null && p.serviceId.startsWith('svc-') && lists.some(([a, b]) => m !== null && m.index >= a && m.index < b)) m = re.exec(text)
+      const blocked = (x: RegExpExecArray): boolean =>
+        (p.serviceId.startsWith('svc-') && lists.some(([a, b]) => x.index >= a && x.index < b)) ||
+        budget.quotes.some(([a, b]) => base + x.index >= a && base + x.index < b)
+      while (m !== null && blocked(m)) m = re.exec(text)
       if (m === null) continue
       const id = targetFor(p.serviceId)
       if (id === undefined) continue
@@ -276,7 +296,13 @@ export function createFaqLinker(ctx: FaqLinkContext) {
       const fragmentProps = node.props as { children?: ReactNode }
       return <>{Children.map(fragmentProps.children, (c) => walk(c, budget))}</>
     }
-    if (typeof node.type !== 'string' || node.type === 'a') return node
+    // Not visited: existing links, components, and quoted or marked third-party text. Their text still
+    // counts toward the running offset so the quote ranges stay aligned with the answer's plain text.
+    const props0 = node.props as { children?: ReactNode; 'data-no-link'?: unknown }
+    if (typeof node.type !== 'string' || node.type === 'a' || QUOTE_TAGS.has(node.type) || props0['data-no-link'] !== undefined) {
+      budget.pos += plainText(node).length
+      return node
+    }
     const props = node.props as { children?: ReactNode }
     if (props.children === undefined) return node
     return cloneElement(node, undefined, Children.map(props.children, (c) => walk(c, budget)))
@@ -291,10 +317,11 @@ export function createFaqLinker(ctx: FaqLinkContext) {
     // The opening sentence is the direct answer that AEO extraction quotes: keep it clean.
     const end = /(?<!\bSt|\bvs|\bMt|\bDr)[.?!](?:\s|$)/.exec(text)
     const left = markets >= 2 ? Math.max(MAX_PER_ANSWER, markets) : MAX_PER_ANSWER
-    const budget: Budget = { left, pos: 0, firstEnd: end === null ? 0 : end.index + 1 }
+    const quotes = quoteRanges(text)
+    const budget: Budget = { left, pos: 0, firstEnd: end === null ? 0 : end.index + 1, quotes }
     const linked = walk(answer, budget)
     if (budget.left < left || ctx.locationId === undefined) return linked
     // Nothing after the opening sentence: a local page still names its canonical service (item 1, 16 §126).
-    return walk(answer, { left: 1, pos: 0, firstEnd: 0, ownOnly: true })
+    return walk(answer, { left: 1, pos: 0, firstEnd: 0, ownOnly: true, quotes })
   }
 }
