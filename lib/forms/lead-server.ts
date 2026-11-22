@@ -75,7 +75,37 @@ export const GHL_CUSTOM_FIELD_KEYS = [
   'sms_consent_timestamp',
   'market',
   'source_page',
+  // Merge fields for the GHL notification email (a note cannot be merged into an email).
+  'service_requested',
+  'inquiry_message',
+  'service_location',
 ] as const
+
+/** Keys that are always written, even when empty, so a repeat inquiry never leaves the last one's value in the email. */
+const ALWAYS_WRITTEN_KEYS: readonly string[] = ['service_requested', 'inquiry_message', 'service_location']
+
+/**
+ * Display labels for the `issue` value each form sends (ContactForm `ISSUES`, SurveyLeadForm
+ * `SERVICE_PILLS`, plus `not-sure`). scripts/verify-lead-routing.mjs checks every value has a label.
+ */
+export const ISSUE_LABELS: Record<string, string> = {
+  'sewer-backup': 'Sewer backup or recurring blockage',
+  'slow-drains': 'Slow drains',
+  'svc-sewer-camera-inspection': 'Sewer Camera Inspection',
+  prepurchase: 'Home-buyer sewer scope',
+  'svc-hydro-jetting': 'Hydro Jetting',
+  'svc-sewer-cleaning': 'Sewer Cleaning',
+  'svc-sewer-line-locating': 'Sewer Line Locating',
+  'svc-sewer-cleaning-camera-inspection': 'Cleaning & Camera Inspection',
+  'svc-drain-cleaning': 'Drain Cleaning',
+  'svc-pre-purchase-sewer-inspection': 'Pre-Purchase Inspection',
+  'svc-recurring-sewer-backup-diagnosis': 'Recurring Backup Diagnosis',
+  'svc-preventative-sewer-maintenance': 'Preventative Maintenance',
+  'multi-unit': 'Rental or multifamily property',
+  'agent-inspector': 'Agent or inspector coordination',
+  other: 'Something else',
+  'not-sure': 'Not sure',
+}
 
 const KNOWN_CONSENT_VERSIONS: readonly string[] = [SMS_CONSENT_VERSION]
 const MAX_BODY_BYTES = 16 * 1024
@@ -141,6 +171,12 @@ export interface Lead {
   /** Cloudflare Turnstile response token from the browser; checked by the handler, never stored. */
   turnstileToken: string
   details: { label: string; value: string }[]
+  /** Human label of the service or issue chosen (empty when none). Written to the service_requested field. */
+  serviceRequested: string
+  /** The visitor's message (empty when none). Written to the inquiry_message field. */
+  inquiryMessage: string
+  /** City label from the survey form, or the property ZIP from the contact form (empty when none). */
+  serviceLocationValue: string
 }
 
 /** Plain text only: control characters and angle brackets removed, spaces collapsed. */
@@ -221,7 +257,7 @@ export function validateLead(input: unknown, nowMs: number): Validated {
   const details = (
     [
       ['Additional information', clean(str.message)],
-      ['Service requested', clean(str.issue)],
+      ['Service requested', ISSUE_LABELS[str.issue] ?? clean(str.issue)],
       ['Follow-up answer', clean(str.followUp)],
       ['Service location', clean(str.serviceLocation)],
       ['Property type', clean(str.propertyType)],
@@ -250,6 +286,9 @@ export function validateLead(input: unknown, nowMs: number): Validated {
       smsConsentVersion: consentVersion,
       turnstileToken: str.turnstileToken,
       details,
+      serviceRequested: ISSUE_LABELS[str.issue] ?? clean(str.issue),
+      inquiryMessage: clean(str.message),
+      serviceLocationValue: [clean(str.serviceLocation), str.zip].filter((v) => v !== '').join(' '),
     },
   }
 }
@@ -272,8 +311,11 @@ export function customFieldValues(lead: Lead, receivedAtIso: string): { key: str
     sms_consent_timestamp: anyConsent ? receivedAtIso : '',
     market: lead.marketLabel,
     source_page: lead.sourcePage,
+    service_requested: lead.serviceRequested,
+    inquiry_message: lead.inquiryMessage,
+    service_location: lead.serviceLocationValue,
   }
-  return GHL_CUSTOM_FIELD_KEYS.filter((k) => values[k] !== '').map((k) => ({
+  return GHL_CUSTOM_FIELD_KEYS.filter((k) => values[k] !== '' || ALWAYS_WRITTEN_KEYS.includes(k)).map((k) => ({
     key: k,
     fieldValue: values[k],
   }))
@@ -447,10 +489,10 @@ export async function handleLead(request: Request, env: LeadEnv, deps: HandlerDe
     'Content-Type': 'application/json',
     Accept: 'application/json',
   }
-  const call = async (path: string, payload: unknown): Promise<{ status: number; json?: unknown }> => {
+  const call = async (path: string, payload: unknown, method: 'POST' | 'DELETE' = 'POST'): Promise<{ status: number; json?: unknown }> => {
     try {
       const res = await fetchImpl(`${base}${path}`, {
-        method: 'POST',
+        method,
         headers,
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(GHL_TIMEOUT_MS),
@@ -493,12 +535,21 @@ export async function handleLead(request: Request, env: LeadEnv, deps: HandlerDe
     return done(false, 502, 'ghl-failed')
   }
 
-  const tags = await call(`/contacts/${encodeURIComponent(contactId)}/tags`, { tags: leadTags(lead) })
-  log(JSON.stringify({ requestId: id, step: 'ghl-tags', status: tags.status }))
-  const note = await call(`/contacts/${encodeURIComponent(contactId)}/notes`, {
-    body: noteBody(lead, receivedAtIso),
-  })
+  // Order matters: the custom fields (upsert above) and the note are saved first, so the workflow
+  // that starts when the market tag is added already sees this submission's data.
+  const contactPath = `/contacts/${encodeURIComponent(contactId)}`
+  const note = await call(`${contactPath}/notes`, { body: noteBody(lead, receivedAtIso) })
   log(JSON.stringify({ requestId: id, step: 'ghl-note', status: note.status }))
+
+  // A returning contact still has the market tag, and GHL fires "Tag added" only when a tag is
+  // newly added. Remove it first so every submission fires the workflow. A failed remove is
+  // logged and the add still runs. Only the market tag is removed (never website-lead or form-*).
+  if (lead.marketKey !== 'none') {
+    const removed = await call(`${contactPath}/tags`, { tags: [`market-${lead.marketKey}`] }, 'DELETE')
+    log(JSON.stringify({ requestId: id, step: 'ghl-tag-remove', status: removed.status }))
+  }
+  const tags = await call(`${contactPath}/tags`, { tags: leadTags(lead) })
+  log(JSON.stringify({ requestId: id, step: 'ghl-tags', status: tags.status }))
 
   return done(true, 200, 'ok')
 }
