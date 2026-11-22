@@ -581,7 +581,7 @@ If existing San Diego content exists, evaluate whether it maps to:
 * audience + San Diego pages
 * published or candidate community pages
 
-Because San Diego currently has no GBP, organic URL continuity may be especially valuable.
+Because San Diego has no published office or address (its GBP exists, DEC-153), organic URL continuity may be especially valuable.
 
 ---
 

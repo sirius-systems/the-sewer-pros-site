@@ -1637,7 +1637,7 @@ Each relationship carries separate fields. Defaults for all 49:
 | A | Las Vegas core cities (Las Vegas, Henderson, North Las Vegas) x 5 services | 15 | First development cohort |
 | B | Las Vegas communities (Enterprise 3, Spring Valley 3, Paradise 3, Summerlin 3) | 12 | Requires operational confirmation |
 | C | St. Louis (City, Chesterfield, Florissant, St. Charles, O'Fallon, Wildwood) | 10 | O'Fallon slug is `ofallon-mo` |
-| D | San Diego (San Diego, Chula Vista, Oceanside, Escondido, Vista, El Cajon, Encinitas, La Mesa) | 12 | Service market, no office or GBP |
+| D | San Diego (San Diego, Chula Vista, Oceanside, Escondido, Vista, El Cajon, Encinitas, La Mesa) | 12 | Service market, no office (GBP exists, DEC-153) |
 
 Update 2026-10-05: the owner has confirmed Las Vegas operations repeatedly in the project, so the matrix no longer holds Las Vegas rows for operational confirmation. The 1,388 rows that carried `operational_confirmation_required` now take the status the same location and service combination takes in St. Louis and San Diego (launch, phase 2, phase 3 or selective). Indexation is still decided by cohort, not by this status alone.
 

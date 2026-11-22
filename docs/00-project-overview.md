@@ -44,7 +44,7 @@
 ## Content and Evidence Gaps
 
 * No evidence layer exists yet: no anonymized inspection findings, report examples, video stills, case studies, or buyer/agent checklists are published (§0B)
-* Local reviews exist only for St. Louis (DEC-084); San Diego and Las Vegas have no review content because neither has a verified GBP
+* Local reviews exist only for St. Louis (DEC-084); DEC-149 added the San Diego profile's reviews. Las Vegas has no review content because it has no verified GBP. A San Diego GBP exists and is company-owned (DEC-153)
 * No audit has yet been performed against the location/service/audience quality tests in §19 for the existing 30 location and service+location pages
 
 ## Launch Preparation
@@ -66,7 +66,7 @@ Governed by §0A priorities 7-8 below and `21-post-launch-seo-roadmap.md`: addit
 
 ## Unchanged Safeguards
 
-Business positioning, the repair/replacement guardrail, the service-market versus physical-location distinction, and the no-fabricated-facts rule below are unchanged by this status update. San Diego and Las Vegas remain service markets with no office or GBP claimed.
+Business positioning, the repair/replacement guardrail, the service-market versus physical-location distinction, and the no-fabricated-facts rule below are unchanged by this status update. San Diego and Las Vegas remain service markets with no office claimed. A San Diego GBP exists and is company-owned (DEC-153); No San Diego office, storefront, branch, public address or map pin is published until the owner approves how the San Diego address is displayed (DEC-153). Las Vegas has no GBP.
 
 ---
 

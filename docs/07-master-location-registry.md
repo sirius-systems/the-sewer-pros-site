@@ -266,7 +266,7 @@ This market may include:
 * neighborhoods
 * other verified service areas
 
-San Diego is currently a service market without a verified GBP.
+San Diego is a service market with a company-owned GBP (DEC-153). No San Diego office, storefront, branch, public address or map pin is published until the owner approves how the San Diego address is displayed (DEC-153).
 
 Geographic records do not create a physical San Diego branch.
 

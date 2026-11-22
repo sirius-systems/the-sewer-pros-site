@@ -337,15 +337,14 @@ Do not assume a St. Louis-area municipal rule applies throughout the metro.
 
 ## San Diego, California
 
-San Diego is currently treated as a service market without a verified Google Business Profile.
+San Diego is a service market. A San Diego Google Business Profile exists and is company-owned (owner confirmed 2026-11-22, DEC-153).
 
-Do not fabricate:
+Do not fabricate or publish:
 
 * San Diego office
 * San Diego storefront
-* public San Diego business address
+* public San Diego business address or map pin (until the owner approves how the address is displayed)
 * San Diego branch
-* San Diego GBP
 
 Organic content may still target legitimate San Diego service demand.
 

@@ -1375,7 +1375,7 @@ Do not generate unique LocalBusiness entities for every city or neighborhood sim
 Current known GBP status:
 
 * St. Louis — existing GBP
-* San Diego — no current GBP
+* San Diego — GBP exists, company-owned (DEC-153); address display not approved
 * Las Vegas — no current GBP
 
 Schema strategy must reflect real business and location facts.
