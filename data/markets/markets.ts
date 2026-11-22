@@ -111,7 +111,7 @@ export const markets: Record<MarketId, Market> = {
      *
      * ⚠ San Diego IS an operating market. It publishes its own site,
      * thesewerprossd.com, with its own phone and hours and a founding
-     * year of 2015 (DEC-071). A GBP and an operating market are separate
+     * year of 2015 (DEC-071; no longer used for copy, DEC-157). A GBP and an operating market are separate
      * facts, and were briefly conflated before the San Diego research
      * resolved it.
      */
@@ -187,8 +187,9 @@ export const markets: Record<MarketId, Market> = {
      * project to conflate them. Both now hold for Las Vegas. Neither
      * implies a GBP, an address, or an operating history — this market
      * has none of the three, `marketOperatingDetail` gives it
-     * `foundingYear: 0` deliberately, and 01 §20 forbids importing
-     * St. Louis's 2011 or San Diego's 2015 to fill the gap.
+     * `foundingYear: 0` deliberately. The company year (2011, DEC-156 and
+     * DEC-157) is a company-wide statement, not a Las Vegas operating
+     * history, and no copy says "serving Las Vegas since 2011".
      */
     gbpStatus: 'none_identified',
     /** Owner-confirmed 2026-08-17 (DEC-073). No live site to source from. */
@@ -222,8 +223,12 @@ export interface MarketOperatingDetail {
    */
   email: string
   hours: string
-  /** 0 where the market has no operating history to state (Las Vegas). */
-  foundingYear: number
+  /**
+   * Optional and unused for new copy: one company founding year (2011) lives
+   * in `data/business/organization.ts` (DEC-156, DEC-157). St. Louis keeps its
+   * entry, Las Vegas keeps 0, and San Diego's 2015 was removed.
+   */
+  foundingYear?: number
   /**
    * The market's service area.
    *
@@ -262,7 +267,6 @@ export const marketOperatingDetail: Partial<
     /** DEC-097 (2026-09-04): distinct from St. Louis's `info@` from here on. */
     email: 'admin@thesewerpros.com',
     hours: 'Monday to Friday, 8:00am – 4:00pm',
-    foundingYear: 2015,
     /**
      * Derived from the seven approved San Diego locations (doc 04
      * §10.2, §11, §13). thesewerprossd.com publishes phone, hours, and
@@ -278,9 +282,9 @@ export const marketOperatingDetail: Partial<
    * ⚠ Owner-confirmed rather than site-sourced (DEC-073). No Las Vegas
    * site or GBP exists.
    *
-   * No `foundingYear`: the market is newly launching, and a founding
-   * year would imply an operating history that does not exist. 01 §20
-   * forbids importing St. Louis's 2011 or San Diego's 2015 here.
+   * No market-level `foundingYear`: the market is newly launching, and a
+   * market-level year would imply a local operating history that does not
+   * exist. The company year (2011) is company-wide (DEC-156 and DEC-157).
    */
   'las-vegas-nv': {
     phone: '(725) 292-4030',

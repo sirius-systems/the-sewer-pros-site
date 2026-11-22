@@ -25,6 +25,7 @@
  */
 
 import { marketOperatingDetail } from '@/data/markets/markets'
+import { foundingYear } from '@/data/business/organization'
 import type { PageId, ServiceLocationPageContent } from '@/types'
 import { sanMarcosContent } from './san-diego-san-marcos'
 import { serviceContent } from './services'
@@ -141,7 +142,7 @@ export const sanMarcosCleaningContent: ServiceLocationPageContent = {
       <p>
         Cleaning removes the obstruction, not necessarily its cause. The Sewer Pros does not perform
         repairs or replacements. To talk through cleaning the line you maintain, call us at{' '}
-        {sd.phone}. We have served the San Diego area since {sd.foundingYear}. For a sewer spill,
+        {sd.phone}. We serve the San Diego area. The Sewer Pros has delivered the same service since {foundingYear}. For a sewer spill,
         the district’s website says to call 911.
       </p>
     </>

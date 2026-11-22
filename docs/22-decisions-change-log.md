@@ -5712,3 +5712,21 @@ Recorded:
 * **Guard.** `scripts/verify-stats-band.mjs` now requires the same year on every page. The Las Vegas and San Diego page verifiers still scan the page's own copy for St. Louis values and forbidden strings, with the company-wide strip excluded from those scans.
 
 ---
+
+## DEC-157 - Remaining "Since 2015" Copy Aligned to the Company Founding Year
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Low (copy alignment under DEC-156)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-156 (same decision, extended to visible copy), DEC-071 (the San Diego founding year)
+
+Recorded:
+
+* **Same decision.** The company has delivered the same service since 2011, and that one year is used everywhere. DEC-156 covered the counter strip; visible copy on San Diego pages still said "since 2015" and contradicted the strip on the same page.
+* **Wording.** Company-level, reading `foundingYear` from `data/business/organization.ts`: "Serving the San Diego area. The Sewer Pros has delivered the same service since 2011." Copy never says "serving San Diego since 2011". It claims no San Diego or Las Vegas office, local operating history or review count.
+* **Changed.** The seven San Diego location pages (trust list), the San Diego hub (intro and proof card), the five San Diego cleaning service-plus-location pages, and the market contact stats band label ("The same service since").
+* **Data.** The San Diego `foundingYear` (2015) is removed from `data/markets/markets.ts`; the field is optional. St. Louis keeps its entry and Las Vegas keeps 0. Las Vegas still shows no year cell on its market contact band.
+* **Not changed.** The strip's wording and figures, `ratingSnapshot`, any address, office or map pin wording, and Las Vegas `gbpStatus`.
+
+---

@@ -156,12 +156,12 @@ export const hours = {
  * it goes stale, and 01 §35 lists years in business among claims needing
  * documented evidence.
  *
- * DEC-152 (owner, 2026-11-22): "Since 2011" is approved on every page that
- * renders the experience counter strip with the company year, including the
- * San Diego and Las Vegas pages that currently show it. The per-market years
- * (DEC-071) still apply where a page passes its own `foundingYear` prop: the
- * San Diego location pages show 2015, and the Las Vegas hub and location pages
- * omit the year. `scripts/verify-stats-band.mjs` encodes those exceptions.
+ * DEC-152 and DEC-156 (owner, 2026-11-22): "Since 2011" is the one company
+ * founding year, shown on every page that renders the experience counter
+ * strip; there are no per-market exceptions (`scripts/verify-stats-band.mjs`
+ * requires it). DEC-157: visible copy on San Diego pages reads this constant
+ * in company-level wording ("The Sewer Pros has delivered the same service
+ * since 2011"), never "serving San Diego since 2011".
  */
 export const foundingYear = 2011
 

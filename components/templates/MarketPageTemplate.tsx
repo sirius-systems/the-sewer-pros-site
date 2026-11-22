@@ -652,7 +652,7 @@ export function MarketPageTemplate({
         ⚠⚠ IT CARRIES BUSINESS FACTS, AND THEY ARE MARKET-SCOPED.
         DEC-072 approved "over 100,000 camera inspections" for
         `/st-louis-mo/` ONLY, and founding years differ by market
-        (St. Louis 2011, San Diego 2015, Las Vegas none). 01 §20
+        (the company year is 2011, DEC-156 and DEC-157). 01 §20
         forbids carrying either onto another market's page. The content
         files hold each market's own copy; read `MARKET_SCOPED_CLAIMS`
         in `data/business/organization.ts` before editing one.

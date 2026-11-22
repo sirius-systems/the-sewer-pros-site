@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getService } from '@/data/services'
 import { marketOperatingDetail } from '@/data/markets/markets'
+import { foundingYear } from '@/data/business/organization'
 import { RENDER_IMAGE_SOURCE, resolveSlotImage } from '@/lib/image-slots'
 import type {
   CardImage,
@@ -467,7 +468,7 @@ export const chulaVistaContent: LocationPageContent = {
     bullets: [
       'Camera inspection with documented findings',
       'Cleaning and hydro jetting when the evidence supports it',
-      `Serving the San Diego area since ${sd.foundingYear}`,
+      `Serving the San Diego area. The Sewer Pros has delivered the same service since ${foundingYear}`,
     ],
     primaryAction: { href: '#request', label: 'Schedule a Sewer Inspection' },
     secondaryActionLabel: `Call ${sd.phone}`,

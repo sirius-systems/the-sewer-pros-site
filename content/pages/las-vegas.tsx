@@ -37,8 +37,9 @@
  *
  * Releasing the gate does NOT license a track record, and this is the
  * easiest thing to get wrong now that the pages are indexed. 01 §20
- * forbids importing another market's facts — St. Louis's 2011 founding
- * and San Diego's 2015 stay where they belong — so no page below claims
+ * forbids importing another market's facts, and the company founding
+ * year (2011, DEC-156) is a company-wide statement rather than a Las
+ * Vegas operating history, so no page below claims
  * years of local service, local volume, review counts, or a local
  * office. Indexation changes who sees these pages, not what the
  * business can say on them.
@@ -150,12 +151,11 @@ export const lasVegasMarketContent: MarketPageContent = {
       'over 100,000 camera inspections'  DEC-072 scopes it to
           `/st-louis-mo/` ONLY - see `MARKET_SCOPED_CLAIMS.stLouisOnly`.
 
-      '2011'  is ST. LOUIS's founding year. Las Vegas has NO founding
-          year at all: `marketOperatingDetail['las-vegas-nv'].foundingYear`
-          is 0, and its own comment says why - the market is newly
-          launching and importing St. Louis's 2011 or San Diego's 2015
-          would assert an operating history that does not exist
-          (DEC-073, DEC-077, 01 §20).
+      '2011'  is the company founding year (DEC-156, DEC-157), shown by
+          the shared counter strip. It is not a Las Vegas operating
+          history: `marketOperatingDetail['las-vegas-nv'].foundingYear`
+          stays 0, and no copy on this page says "serving Las Vegas
+          since 2011" (DEC-073, DEC-077, 01 §20).
 
     The supplied copy framed both as "company-wide", which is exactly
     the framing DEC-072 declines: the figure is a St. Louis SITE claim,

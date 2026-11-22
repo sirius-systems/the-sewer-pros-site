@@ -56,9 +56,10 @@
  * THAN SILENTLY REVERSING THE NOTE ABOVE
  * ---------------------------------------------------------------------------
  * This field was withheld for the reason once documented here: St.
- * Louis (2011) and San Diego (2015) are separate per-market facts
- * (DEC-070, DEC-071), and electing one as the ORGANISATION's founding
- * year risked asserting something no single source states company-wide.
+ * Louis (2011) and San Diego (2015) were treated as separate per-market
+ * facts (DEC-070, DEC-071). The owner has since confirmed one company
+ * founding year, 2011 (DEC-156, DEC-157), and the San Diego 2015 year
+ * is no longer used.
  *
  * `foundingYear` (`data/business/organization.ts`) is sourced
  * separately, from the business's own `/about/` page rather than a

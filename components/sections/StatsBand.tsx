@@ -3,7 +3,7 @@ import { Section, type SectionDensity, type SectionSurface } from '@/components/
 import { SectionHeading } from './SectionHeading'
 import { CountUpValue } from './CountUpValue'
 import { foundingYear, MARKET_SCOPED_CLAIMS } from '@/data/business/organization'
-import { markets, marketOperatingDetail } from '@/data/markets/markets'
+import { markets } from '@/data/markets/markets'
 import type { MarketId } from '@/types'
 
 /**
@@ -106,13 +106,14 @@ function marketStats(marketId: MarketId): readonly Stat[] {
   if (marketId === 'st-louis-mo') {
     return STATS.filter((s) => s.id !== 'markets-served')
   }
-  const year = marketOperatingDetail[marketId]?.foundingYear ?? 0
-  if (year === 0) return combined
+  // One company founding year (DEC-156, DEC-157): San Diego shows the company year in company-level words.
+  // Las Vegas shows no year cell.
+  if (marketId === 'las-vegas-nv') return combined
   return [
     {
       id: 'market-founding-year',
-      label: `Serving ${markets[marketId].city} since`,
-      value: year,
+      label: 'The same service since',
+      value: foundingYear,
       suffix: '',
       static: true,
     },

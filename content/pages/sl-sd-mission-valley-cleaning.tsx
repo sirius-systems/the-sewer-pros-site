@@ -27,6 +27,7 @@
  */
 
 import { marketOperatingDetail } from '@/data/markets/markets'
+import { foundingYear } from '@/data/business/organization'
 import type { PageId, ServiceLocationPageContent } from '@/types'
 import { sanDiegoMissionValleyContent } from './san-diego-mission-valley'
 import { serviceContent } from './services'
@@ -139,7 +140,7 @@ export const missionValleyCleaningContent: ServiceLocationPageContent = {
         help with lateral costs, and the City says its program for City crews to install laterals is
         suspended. That is none found, not a statement that none exists, so confirm with Public
         Utilities. To talk through cleaning a line on your side of the connection, call The Sewer
-        Pros at {sd.phone}. We have served San Diego since {sd.foundingYear}.
+        Pros at {sd.phone}. We serve San Diego. The Sewer Pros has delivered the same service since {foundingYear}.
       </p>
     </>
   ),
