@@ -23,7 +23,7 @@ import type {
  * `aria-pressed` state, and the result count is a polite live region.
  */
 
-const PAGE_SIZE = 24
+const PAGE_SIZE = 48
 
 export interface ReviewsBrowserProps {
   reviews: readonly GoogleReview[]
@@ -101,9 +101,15 @@ function ReviewItem({
 
       {review.stars !== null && <StarRow value={review.stars} />}
 
-      <blockquote className="whitespace-pre-line text-sm leading-6">
-        {review.quote}
-      </blockquote>
+      {review.quote !== '' ? (
+        <blockquote className="whitespace-pre-line text-sm leading-6">
+          {review.quote}
+        </blockquote>
+      ) : (
+        <p className="text-sm leading-6 text-muted-foreground">
+          Star rating only, no written comment.
+        </p>
+      )}
 
       <a
         className="mt-auto text-sm text-accent-secondary underline underline-offset-4 hover:text-foreground"
@@ -126,6 +132,7 @@ export function ReviewsBrowser({
 }: ReviewsBrowserProps) {
   const [market, setMarket] = useState<ReviewMarket | 'all'>('all')
   const [topic, setTopic] = useState<ReviewTopic | 'all'>('all')
+  const [kind, setKind] = useState<'all' | 'written' | 'rating'>('all')
   const [visible, setVisible] = useState(PAGE_SIZE)
 
   const marketCounts = useMemo(() => {
@@ -146,9 +153,11 @@ export function ReviewsBrowser({
       reviews.filter(
         (r) =>
           (market === 'all' || r.market === market) &&
-          (topic === 'all' || r.topics.includes(topic)),
+          (topic === 'all' || r.topics.includes(topic)) &&
+          (kind === 'all' ||
+            (kind === 'written' ? r.quote !== '' : r.quote === '')),
       ),
-    [reviews, market, topic],
+    [reviews, market, topic, kind],
   )
 
   const shown = filtered.slice(0, visible)
@@ -187,6 +196,35 @@ export function ReviewsBrowser({
                 }}
               >
                 {marketLabels[m]} ({marketCounts[m] ?? 0})
+              </Chip>
+            ))}
+          </div>
+        </div>
+
+        <div role="group" aria-labelledby="reviews-filter-kind">
+          <h3
+            id="reviews-filter-kind"
+            className="text-sm font-semibold text-foreground"
+          >
+            Review type
+          </h3>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {(
+              [
+                ['all', 'All reviews'],
+                ['written', 'Written reviews'],
+                ['rating', 'Star ratings only'],
+              ] as const
+            ).map(([value, label]) => (
+              <Chip
+                key={value}
+                active={kind === value}
+                onClick={() => {
+                  setKind(value)
+                  setVisible(PAGE_SIZE)
+                }}
+              >
+                {label}
               </Chip>
             ))}
           </div>
