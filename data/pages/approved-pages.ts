@@ -204,6 +204,27 @@ export const approvedPages: readonly MasterPageRecord[] = [
     parentId: 'core-home' as PageId,
   },
   {
+    id: 'core-careers' as PageId,
+    name: 'Careers',
+    pageType: 'core',
+    pathname: toPathname('/careers/'),
+    status: 'launch',
+    indexable: true,
+    priority: 'L3',
+    parentId: 'core-home' as PageId,
+  },
+  {
+    id: 'core-careers-thank-you' as PageId,
+    name: 'Application Received',
+    pageType: 'core',
+    pathname: toPathname('/careers/thank-you/'),
+    status: 'launch',
+    // Confirmation page: reachable, never indexed, never in the sitemap.
+    indexable: false,
+    priority: 'L3',
+    parentId: 'core-careers' as PageId,
+  },
+  {
     id: 'svc-sewer-camera-inspection' as PageId,
     name: 'Sewer Camera Inspection',
     pageType: 'service',

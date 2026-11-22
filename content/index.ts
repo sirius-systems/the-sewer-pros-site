@@ -159,6 +159,7 @@ export const authoredPageIds: ReadonlySet<PageId> = new Set<PageId>([
   'core-about' as PageId,
   'core-contact' as PageId,
   'core-contact-thank-you' as PageId,
+  'core-careers-thank-you' as PageId,
   ...(Object.keys(marketContactContent) as PageId[]),
   ...(Object.keys(serviceContent) as PageId[]),
   ...(Object.keys(comparisonContent) as PageId[]),

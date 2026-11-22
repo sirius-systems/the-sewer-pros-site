@@ -144,3 +144,12 @@ Run with `wrangler pages dev` and the real `.dev.vars`, through the real contact
 Observations: tags only accumulate (the contact now holds both `form-contact` and `form-survey`, one per form used). The survey form splits "Full name" on the first space, so the same person submitted through it is saved as first name "Test" and last name "Website Lead" until another submission rewrites it. Function logs again held only request ids and statuses.
 
 Cleanup for the owner: the test contact "Test Website Lead" and its notes are still in GHL. Delete them by hand.
+
+## Careers applications (DEC-160)
+
+The careers form (`/careers/`) posts to a separate function, `POST /api/careers` (`functions/api/careers.ts`, logic in `lib/forms/careers-server.ts`). It uses the same `GHL_PRIVATE_INTEGRATION_TOKEN`, `GHL_LOCATION_ID` and `TURNSTILE_SECRET_KEY`, plus one more server variable, `GHL_CAREERS_RESUME_FIELD_ID` (the id of a File Upload custom field on contacts; never put its value in the repo or in chat).
+
+- **Scope.** Attaching the resume calls `POST /forms/upload-custom-files`, which needs the `forms.write` scope on the Private Integration token, in addition to `contacts.write`. Without it (or without the field id) the contact, tags and note are still saved, the contact gets `careers-resume-failed`, and the visitor is asked to call.
+- **Tags.** `website-careers`, `form-careers` and one of `careers-st-louis`, `careers-san-diego`, `careers-las-vegas`. Never `market-*`. All map to `info@thesewerpros.com` (docs/lead-routing.md section 3A).
+- **Custom fields written.** `preferred_contact_method` and `source_page` (already in the list above) and the resume File Upload field. The `market` field is not written.
+- **Files.** PDF and DOCX, one file, 5 MB.

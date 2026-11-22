@@ -232,6 +232,10 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
             </ApprovedInlineLink>{' '}
             page explains how that work is documented.
           </p>
+          <p>
+            Interested in working with us? See{' '}
+            <ApprovedInlineLink pageId={id('core-careers')}>Careers in the St. Louis area</ApprovedInlineLink>.
+          </p>
         </>
       ),
     },
@@ -343,6 +347,10 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
             </ApprovedInlineLink>
             .
           </p>
+          <p>
+            Interested in working with us? See{' '}
+            <ApprovedInlineLink pageId={id('core-careers')}>Careers in the San Diego area</ApprovedInlineLink>.
+          </p>
         </>
       ),
     },
@@ -448,6 +456,10 @@ export const marketContactContent: Partial<Record<PageId, MarketContactContent>>
             answers it with video, and{' '}
             <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>line locating</ApprovedInlineLink>{' '}
             helps when you need to know where the line runs.
+          </p>
+          <p>
+            Interested in working with us? See{' '}
+            <ApprovedInlineLink pageId={id('core-careers')}>Careers in the Las Vegas Valley</ApprovedInlineLink>.
           </p>
         </>
       ),

@@ -283,6 +283,7 @@ export type { CtaSectionProps, CtaVariant } from './CtaSection'
 export { CtaBenefit } from './CtaBenefit'
 
 export { ContactForm } from './ContactForm'
+export { CareersForm } from './CareersForm'
 export type { ContactFormProps } from './ContactForm'
 export { MobileContactBar } from './MobileContactBar'
 export {

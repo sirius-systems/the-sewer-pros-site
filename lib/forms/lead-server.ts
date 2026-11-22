@@ -46,9 +46,9 @@ export interface LeadEnv {
   GHL_API_BASE?: string
 }
 
-const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-const GHL_BASE = 'https://services.leadconnectorhq.com'
-const GHL_VERSION = '2021-07-28'
+export const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
+export const GHL_BASE = 'https://services.leadconnectorhq.com'
+export const GHL_VERSION = '2021-07-28'
 
 /**
  * PLACEHOLDER FOR PER-MARKET ROUTING (owner has not decided yet).
@@ -82,7 +82,7 @@ const MAX_BODY_BYTES = 16 * 1024
 const MIN_SECONDS_TO_SUBMIT = 2
 const MAX_AGE_HOURS = 24
 const RATE_LIMIT = { max: 5, windowMs: 10 * 60 * 1000 }
-const GHL_TIMEOUT_MS = 8000
+export const GHL_TIMEOUT_MS = 8000
 
 /* ---------------------------------------------------------------------------
    Validation
@@ -144,7 +144,7 @@ export interface Lead {
 }
 
 /** Plain text only: control characters and angle brackets removed, spaces collapsed. */
-function clean(value: string): string {
+export function clean(value: string): string {
   return value
     .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '')
     .replace(/[<>]/g, ' ')
@@ -351,7 +351,7 @@ function reply(ok: boolean, status: number): Response {
 }
 
 /** Cloudflare siteverify. 'error' means the check itself could not be completed. */
-async function verifyTurnstile(
+export async function verifyTurnstile(
   fetchImpl: typeof fetch,
   url: string,
   secret: string,

@@ -1824,6 +1824,20 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
    ========================================================================== */
 
 export const coreContent: Partial<Record<PageId, CorePageContent>> = {
+  [id('core-careers')]: {
+    hero: {
+      title: 'Careers at The Sewer Pros',
+      intro: (
+        <p>
+          The Sewer Pros is accepting applications in the St. Louis area, the San Diego area and
+          the Las Vegas Valley.
+        </p>
+      ),
+    },
+    seoTitle: 'Careers in St. Louis, San Diego and Las Vegas',
+    metaDescription:
+      'The Sewer Pros is accepting applications in the St. Louis area, the San Diego area and the Las Vegas Valley. Choose your area and send your resume online.',
+  },
   [id('core-reviews')]: {
     hero: {
       title: 'Customer Reviews',
