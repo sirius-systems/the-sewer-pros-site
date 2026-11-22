@@ -5684,7 +5684,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           },
           {
             title: 'Send what you have',
-            description: 'Share the inspection report or video you received.',
+            description:
+              'We contact you, ask what report or video you have and what format it is in, and explain what we can review.',
           },
           {
             title: 'Get our opinion',
@@ -5796,6 +5797,12 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           question: 'What do I need to send?',
           answer:
             'The inspection report or video you received, what the recommendation was, and where the property is. Tell us what is happening and we will explain what we can review.',
+        },
+        {
+          group: 'The basics',
+          question: 'How do I send the report or video?',
+          answer:
+            'Start with the request form and tell us what you were told and where the property is. We contact you, ask what report or video you were given and what format it is in, and explain what we can review before anything is scheduled.',
         },
         {
           group: 'The basics',
