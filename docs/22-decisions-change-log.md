@@ -5730,3 +5730,22 @@ Recorded:
 * **Not changed.** The strip's wording and figures, `ratingSnapshot`, any address, office or map pin wording, and Las Vegas `gbpStatus`.
 
 ---
+
+## DEC-158 - Resource: Questions to Ask Before Approving a Sewer Line Replacement
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Low (one new educational resource page)
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/core.tsx` (`res-replacement-questions`, the resources hub list, the report guide), `data/pages/approved-pages.ts`, `data/pages/pages.ts` (page counts 200 to 201, indexable 199 to 200), `data/business/editorial-images.ts`, `scripts/lib/editorial-keywords.mjs`, `scripts/audit/clusters.mjs`, `scripts/lib/meta-audit.mjs`, `docs/04-master-page-build-list.md`
+
+Recorded:
+
+* **Page.** `/resources/questions-to-ask-before-approving-sewer-line-replacement/`, a numbered list of ten evidence-first questions with "why it matters" and "what a clear answer sounds like". No price, cost range or statistic, no red-flag language aimed at contractors, no "free", no promised formats, turnaround, quote review or limits (DEC-155). "We do not sell repairs or replacements" appears once, in the closing section. Not legal advice.
+* **Cluster.** It supports the second opinion page, the sewer camera inspection page and the comparison page. One link to the second opinion page, in item 10, with the anchor "ask an independent inspector to review the footage". The second opinion page FAQ "What should I ask before approving sewer replacement?" keeps its short answer and links here.
+* **Gate change.** The title, meta and H1 say "replacement", which the meta audit flags as repair wording. `scripts/lib/meta-audit.mjs` now exempts this one URL, as it already does for the comparison page, because the page is about evaluating a replacement recommendation and says we do not sell repairs or replacements.
+* **Demand.** No search volume is claimed anywhere; demand is unverified (no Keyword Planner data). Revisit after Search Console data on the new URL.
+
+---

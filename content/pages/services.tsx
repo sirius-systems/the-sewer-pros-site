@@ -5850,8 +5850,15 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         {
           group: 'Before you approve work',
           question: 'What should I ask before approving sewer replacement?',
-          answer:
-            'Ask for the full video and written findings, where in the line each problem was seen, whether repair is possible instead of full replacement, whether cleaning could resolve the problem, and for more than one written quote. Keep the footage so someone else can review it.',
+          answer: (
+            <p>
+              Ask for the full video and written findings, where in the line each problem was seen, whether repair is possible instead of full replacement, whether cleaning could resolve the problem, and for more than one written quote. Keep the footage so someone else can review it. The full list is in{' '}
+              <ApprovedInlineLink pageId={id('res-replacement-questions')}>
+                questions to ask before approving a sewer line replacement
+              </ApprovedInlineLink>
+              .
+            </p>
+          ),
         },
         {
           group: 'Before you approve work',

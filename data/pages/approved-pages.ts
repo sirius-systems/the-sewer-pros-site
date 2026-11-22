@@ -2531,4 +2531,13 @@ export const approvedPages: readonly MasterPageRecord[] = [
     indexable: true,
     parentId: 'hub-resources' as PageId,
   },
+  {
+    id: 'res-replacement-questions' as PageId,
+    name: 'Questions to Ask Before Approving a Sewer Line Replacement',
+    pageType: 'resource',
+    pathname: toPathname('/resources/questions-to-ask-before-approving-sewer-line-replacement/'),
+    status: 'launch',
+    indexable: true,
+    parentId: 'hub-resources' as PageId,
+  },
 ]

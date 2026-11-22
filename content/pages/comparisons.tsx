@@ -253,7 +253,10 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           <li>Ask whether the line was cleaned before inspection, and why</li>
           <li>
             For significant work, get more than one view of what the evidence
-            shows
+            shows, and see{' '}
+            <ApprovedInlineLink pageId={id('res-replacement-questions')}>
+              what to ask before you approve a sewer line replacement
+            </ApprovedInlineLink>
           </li>
         </ul>
 
