@@ -34,7 +34,7 @@ Counts re-derived on 2026-10-12 from the production build of `main`.
 | Noindex output | The contact confirmation page and the framework 404 pages |
 | Build output | 201 HTML files in `out/` (198 pages, `/404/`, `/_not-found/`, `404.html`) |
 | Structured data | JSON-LD on all 197 indexable pages: Organization and WebSite on every page; BreadcrumbList on 196; WebPage on 185; Service on 170; Article on 7; CollectionPage on 7; ContactPage on 4; AboutPage on 1; FAQPage on 195 |
-| Lead form | The survey form and the contact form are built and rendered across the page templates. **Nothing is sent yet**: `lib/forms/submit-lead.ts` posts to `NEXT_PUBLIC_LEAD_ENDPOINT`, which is unset, so a submit shows "Online requests are not available yet. Please call <market number> to schedule." with no confirmation and no analytics event (PENDING-018) |
+| Lead form | The survey form and the contact form post to `POST /api/lead`, a Cloudflare Pages Function (`functions/api/lead.ts`, DEC-147), which creates or updates a GoHighLevel contact with form and market tags and a note. The site sends no email itself; per-market notification emails are GoHighLevel workflows on the `market-*` tags (`docs/lead-routing.md`). `NEXT_PUBLIC_LEAD_ENDPOINT` is retired. A failed send shows "We could not send your request" with the market's number, and the thank-you page opens only after the function accepts the request. PENDING-018: built and tested once against live GoHighLevel; deployment and the Cloudflare variables are to be confirmed by the owner |
 | Analytics | GA4 loader and typed events built; inert until `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set |
 | Redirects | None implemented (no `_redirects` file); legacy inventory open (PENDING-010) |
 

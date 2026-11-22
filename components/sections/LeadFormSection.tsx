@@ -19,6 +19,17 @@ import type { LeadFormConfig, MarketId } from '@/types'
 import type { ServiceId } from '@/types'
 
 /**
+ * ⚠ LEGACY STUB: THIS FORM SENDS NOTHING AND MUST NOT BE RENDERED.
+ *
+ * The live lead forms are `SurveyLeadForm` and `ContactForm`; both POST to
+ * `/api/lead` (Cloudflare Pages Function, DEC-147). Their market is always known
+ * before they send. This component's `handleSubmit` below is still the old stub, so a
+ * visitor who used it would believe they had contacted someone and nobody would
+ * hear of it. No built page renders it today (`scripts/verify-lead-routing.mjs`
+ * fails the build if one does). It is still imported by the legacy sparse location
+ * composition, `ServiceHubTemplate` and two else-branches, which is why it has not
+ * been deleted: removing it means refactoring those templates.
+ *
  * Unified sitewide lead form.
  *
  * Opens the gate PENDING-008 held closed. This component returned

@@ -64,6 +64,7 @@ import type { LocationPageContent, MarketPageContent, PageId } from '@/types'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { CtaBenefit } from '@/components/sections'
+import { marketOperatingDetail } from '@/data/markets/markets'
 import { lasVegasCityContent } from './las-vegas-las-vegas'
 import { hendersonContent } from './las-vegas-henderson'
 import { northLasVegasContent } from './las-vegas-north-las-vegas'
@@ -75,6 +76,10 @@ import {
 } from './home-service-cards'
 
 const id = (value: string): PageId => value as PageId
+
+/** Las Vegas's published email comes from the market record, never typed here. */
+const lv = marketOperatingDetail['las-vegas-nv']
+if (lv === undefined) throw new Error('marketOperatingDetail is missing las-vegas-nv')
 
 /* ==========================================================================
    Market hub — /las-vegas-nv/
@@ -556,8 +561,8 @@ export const lasVegasMarketContent: MarketPageContent = {
       stating what is published and nothing more (01 §35).
     */
     email: {
-      label: 'bookaninspection@thesewerpros.com',
-      href: 'mailto:bookaninspection@thesewerpros.com',
+      label: lv.email,
+      href: `mailto:${lv.email}`,
     },
     hours: 'Monday to Friday, 8:00am to 4:00pm',
     backgroundImage: {

@@ -27,7 +27,7 @@
 
 ## Remaining Implementation
 
-* **Lead form submission endpoint** (PENDING-018). The forms render across the page templates, but nothing is sent: `NEXT_PUBLIC_LEAD_ENDPOINT` is unset, so a submit shows a "call to schedule" notice (see `lib/forms/submit-lead.ts`)
+* **Lead form deployment** (PENDING-018). The forms post to `POST /api/lead`, a Cloudflare Pages Function (DEC-147) that creates or updates a GoHighLevel contact with form and market tags and a note; the site sends no email itself, and `NEXT_PUBLIC_LEAD_ENDPOINT` is retired. The function is built and was tested once against live GoHighLevel. The owner still confirms that the Cloudflare variables are set and the function is deployed, and sets up one GoHighLevel workflow per `market-*` tag (see `docs/lead-routing.md`)
 * **TCPA consent copy** for the "text" contact option (PENDING-019)
 * ~~Market-scoped header contact (PENDING-017)~~ resolved; see the decision log entry that closed it
 * Phase 2 page `svc-independent-sewer-second-opinion`: a registry-confirmed `phase_2_candidate` (`data/services/master-service-registry.json`), approved as a strategic concept, not built as a standalone `/services/` page (see §9A below)

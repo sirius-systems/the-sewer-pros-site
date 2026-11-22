@@ -101,6 +101,8 @@ export const organization: Omit<OrganizationConfig, 'url'> = {
     'Specialized sewer inspection, diagnostics, locating, and cleaning ' +
     'without repair-driven upselling.',
 
+  // Not read by anything and not used for JSON-LD (the schema's `contactPoint` is built from
+  // `marketOperatingDetail`, which is the source for every published email, phone and hours value).
   contactPoints: [
     {
       contactType: 'customer service',
@@ -126,6 +128,8 @@ export const contact = {
   phone: '(314) 821-1600',
   /** E.164, for `tel:` links and schema. */
   phoneE164: '+1-314-821-1600',
+  // `phone` is read by the St. Louis pages. `email` is not read or used for JSON-LD:
+  // `marketOperatingDetail` (data/markets/markets.ts) is the source for every published email.
   email: 'info@thesewerpros.com',
 } as const
 
