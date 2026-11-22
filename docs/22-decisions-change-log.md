@@ -5651,3 +5651,23 @@ Recorded:
 * **Review figure:** the third-party review aggregation page (`reviews.listen360.com/the-sewer-pros-san-diego`) is the company's. The displayed review figure still comes only from `ratingSnapshot` in `data/reviews/reviews.ts` (DEC-149). The aggregation page's higher count is not used anywhere.
 
 ---
+
+## DEC-154 - Noindex Header for the pages.dev Hosts Only
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Low (hosting header; no change to the production domain)
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `public/_headers` (new), `scripts/verify-headers.mjs` (new)
+
+**Reason:** the static export is also served on `the-sewer-pros-site.pages.dev` and per-deployment preview hosts. They answered `robots: index, follow`, and the canonical to the www host was the only protection against indexing.
+
+Recorded:
+
+* `public/_headers` sends `X-Robots-Tag: noindex` for `https://:project.pages.dev/*` and `https://:version.:project.pages.dev/*` only. There is no catch-all rule, so `thesewerpros.com` and `www.thesewerpros.com` get no noindex header. Canonicals stay on `https://www.thesewerpros.com`.
+* `scripts/verify-headers.mjs` (part of `npm run verify`) checks that `out/_headers` exists, carries the two host-scoped rules and has no unscoped noindex.
+* No Cloudflare dashboard setting and no robots meta tag was changed. Owner check after deploy: `curl -I https://the-sewer-pros-site.pages.dev/` should show `x-robots-tag: noindex`, and `curl -I https://www.thesewerpros.com/` must not.
+
+---
