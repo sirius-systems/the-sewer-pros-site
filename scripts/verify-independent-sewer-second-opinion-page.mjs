@@ -111,7 +111,7 @@ check('BreadcrumbList ends with this page and sits under Services', crumbNames.l
 /* ---- FAQ: visible equals JSON-LD (DEC-114) ---- */
 const faqNode = graph.find((n) => n['@type'] === 'FAQPage')
 const faqQs = faqNode?.mainEntity ?? []
-check('FAQPage has 13 questions', faqQs.length === 13, String(faqQs.length))
+check('FAQPage has 14 questions', faqQs.length === 14, String(faqQs.length))
 const faqSection = (copyMain.match(/<section[^>]*aria-labelledby="faq"[\s\S]*?<\/section>/) || [''])[0]
 const faqVisible = flat(strip(faqSection))
 let faqOk = faqQs.length > 0

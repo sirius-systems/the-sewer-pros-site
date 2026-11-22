@@ -5671,3 +5671,22 @@ Recorded:
 * No Cloudflare dashboard setting and no robots meta tag was changed. Owner check after deploy: `curl -I https://the-sewer-pros-site.pages.dev/` should show `x-robots-tag: noindex`, and `curl -I https://www.thesewerpros.com/` must not.
 
 ---
+
+## DEC-155 - Second Opinion Intake: The Business Contacts the Client
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Low (how the offer is described on one page)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-150 (open question on formats and how to send)
+**Affected Documents:**
+
+* `content/pages/services.tsx` (second opinion page: step 2 and one new FAQ), `scripts/verify-independent-sewer-second-opinion-page.mjs` (FAQ count 13 to 14)
+
+Recorded:
+
+* **Intake.** For the second opinion offer, the business contacts the client and assesses what report, video and format the client has. No fixed formats, turnaround or limits are promised in advance.
+* **Copy.** Step 2 reads "We contact you, ask what report or video you have and what format it is in, and explain what we can review." A new FAQ, "How do I send the report or video?", sits after "What do I need to send?" in the basics group.
+* **Still open and not in copy:** turnaround, whether contractor quotes are reviewed, and what "free" covers. The hedged "free second opinion" placements (DEC-151) are unchanged and no new "free" was added.
+
+---
