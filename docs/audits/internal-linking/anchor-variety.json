@@ -1,58 +1,6 @@
 {
  "generated": "2026-11-22",
- "violations": [
-  {
-   "target": "/services/sewer-cleaning/",
-   "total": 13,
-   "distinct": 3,
-   "topAnchor": "sewer cleaning",
-   "topShare": 0.69,
-   "anchors": {
-    "sewer cleaning": 9,
-    "cleaning the sewer line": 2,
-    "sewer line cleaning": 2
-   }
-  },
-  {
-   "target": "/services/hydro-jetting/",
-   "total": 17,
-   "distinct": 3,
-   "topAnchor": "hydro jetting",
-   "topShare": 0.53,
-   "anchors": {
-    "hydro jetting": 9,
-    "sewer jetting": 3,
-    "water jetting": 5
-   }
-  },
-  {
-   "target": "/services/sewer-line-locating/",
-   "total": 15,
-   "distinct": 4,
-   "topAnchor": "sewer line locating",
-   "topShare": 0.47,
-   "anchors": {
-    "sewer line locating": 7,
-    "line locating": 5,
-    "locating the sewer line": 2,
-    "sewer line locating service": 1
-   }
-  },
-  {
-   "target": "/services/drain-cleaning/",
-   "total": 11,
-   "distinct": 5,
-   "topAnchor": "drain cleaning",
-   "topShare": 0.64,
-   "anchors": {
-    "drain cleaning": 7,
-    "cleaning a drain line": 1,
-    "drain-line cleaning": 1,
-    "drain clearing": 1,
-    "a drain cleaning": 1
-   }
-  }
- ],
+ "violations": [],
  "sitewideModules": [
   "/reviews/",
   "/resources/how-to-read-a-sewer-camera-inspection-video/"
@@ -60,15 +8,15 @@
  "stats": [
   {
    "target": "/services/sewer-camera-inspection/",
-   "total": 21,
+   "total": 20,
    "distinct": 4,
    "topAnchor": "sewer camera inspection",
-   "topShare": 0.38,
+   "topShare": 0.4,
    "anchors": {
     "sewer camera inspection": 8,
     "camera inspection": 3,
     "a sewer scope": 7,
-    "sewer scope": 3
+    "sewer scope": 2
    }
   },
   {
@@ -133,26 +81,28 @@
   },
   {
    "target": "/services/sewer-cleaning/",
-   "total": 13,
-   "distinct": 3,
+   "total": 12,
+   "distinct": 4,
    "topAnchor": "sewer cleaning",
-   "topShare": 0.69,
+   "topShare": 0.33,
    "anchors": {
-    "sewer cleaning": 9,
-    "cleaning the sewer line": 2,
-    "sewer line cleaning": 2
+    "main sewer line cleaning": 2,
+    "sewer cleaning": 4,
+    "sewer line cleaning": 4,
+    "cleaning the sewer line": 2
    }
   },
   {
    "target": "/services/hydro-jetting/",
    "total": 17,
-   "distinct": 3,
-   "topAnchor": "hydro jetting",
-   "topShare": 0.53,
+   "distinct": 4,
+   "topAnchor": "water jetting",
+   "topShare": 0.35,
    "anchors": {
-    "hydro jetting": 9,
-    "sewer jetting": 3,
-    "water jetting": 5
+    "water jetting": 6,
+    "hydro jetting": 6,
+    "sewer jetting": 4,
+    "hydro jetting service": 1
    }
   },
   {
@@ -160,24 +110,25 @@
    "total": 15,
    "distinct": 4,
    "topAnchor": "sewer line locating",
-   "topShare": 0.47,
+   "topShare": 0.33,
    "anchors": {
-    "sewer line locating": 7,
+    "sewer line locating": 5,
     "line locating": 5,
     "locating the sewer line": 2,
-    "sewer line locating service": 1
+    "sewer line locating service": 3
    }
   },
   {
    "target": "/services/drain-cleaning/",
    "total": 11,
-   "distinct": 5,
+   "distinct": 6,
    "topAnchor": "drain cleaning",
-   "topShare": 0.64,
+   "topShare": 0.36,
    "anchors": {
-    "drain cleaning": 7,
+    "drain cleaning": 4,
+    "drain-line cleaning": 3,
+    "cleaning a single drain": 1,
     "cleaning a drain line": 1,
-    "drain-line cleaning": 1,
     "drain clearing": 1,
     "a drain cleaning": 1
    }
@@ -239,12 +190,12 @@
    "target": "/locations/san-diego-ca/mission-valley/hydro-jetting/",
    "total": 4,
    "distinct": 3,
-   "topAnchor": "hydro jetting",
+   "topAnchor": "water jetting",
    "topShare": 0.5,
    "anchors": {
     "hydro jetting in mission valley": 1,
-    "water jetting": 1,
-    "hydro jetting": 2
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
@@ -494,11 +445,11 @@
    "target": "/locations/las-vegas-nv/north-las-vegas/hydro-jetting/",
    "total": 3,
    "distinct": 2,
-   "topAnchor": "hydro jetting",
+   "topAnchor": "water jetting",
    "topShare": 0.67,
    "anchors": {
-    "water jetting": 1,
-    "hydro jetting": 2
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
@@ -545,12 +496,11 @@
   {
    "target": "/locations/las-vegas-nv/summerlin/hydro-jetting/",
    "total": 3,
-   "distinct": 2,
+   "distinct": 1,
    "topAnchor": "water jetting",
-   "topShare": 0.67,
+   "topShare": 1,
    "anchors": {
-    "water jetting": 2,
-    "hydro jetting": 1
+    "water jetting": 3
    }
   },
   {
@@ -666,7 +616,7 @@
    "anchors": {
     "water jetting": 1,
     "sewer jetting": 1,
-    "hydro jetting": 1
+    "hydro jetting service": 1
    }
   },
   {
@@ -805,13 +755,12 @@
   {
    "target": "/locations/san-diego-ca/oceanside/hydro-jetting/",
    "total": 3,
-   "distinct": 3,
+   "distinct": 2,
    "topAnchor": "water jetting",
-   "topShare": 0.33,
+   "topShare": 0.67,
    "anchors": {
-    "water jetting": 1,
-    "sewer jetting": 1,
-    "hydro jetting": 1
+    "water jetting": 2,
+    "sewer jetting": 1
    }
   },
   {
@@ -860,11 +809,11 @@
    "target": "/locations/san-diego-ca/san-diego/hydro-jetting/",
    "total": 3,
    "distinct": 2,
-   "topAnchor": "hydro jetting",
+   "topAnchor": "water jetting",
    "topShare": 0.67,
    "anchors": {
-    "water jetting": 1,
-    "hydro jetting": 2
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
@@ -911,12 +860,11 @@
   {
    "target": "/locations/san-diego-ca/san-marcos/hydro-jetting/",
    "total": 3,
-   "distinct": 2,
+   "distinct": 1,
    "topAnchor": "water jetting",
-   "topShare": 0.67,
+   "topShare": 1,
    "anchors": {
-    "water jetting": 2,
-    "hydro jetting": 1
+    "water jetting": 3
    }
   },
   {
@@ -983,13 +931,12 @@
   {
    "target": "/locations/st-louis-mo/ballwin/hydro-jetting/",
    "total": 3,
-   "distinct": 3,
+   "distinct": 2,
    "topAnchor": "water jetting",
-   "topShare": 0.33,
+   "topShare": 0.67,
    "anchors": {
-    "water jetting": 1,
-    "sewer jetting": 1,
-    "hydro jetting": 1
+    "water jetting": 2,
+    "sewer jetting": 1
    }
   },
   {
@@ -1051,7 +998,7 @@
    "topShare": 0.67,
    "anchors": {
     "water jetting": 2,
-    "hydro jetting": 1
+    "hydro jetting service": 1
    }
   },
   {
@@ -1100,11 +1047,11 @@
    "target": "/locations/st-louis-mo/florissant/hydro-jetting/",
    "total": 3,
    "distinct": 2,
-   "topAnchor": "hydro jetting",
+   "topAnchor": "water jetting",
    "topShare": 0.67,
    "anchors": {
-    "water jetting": 1,
-    "hydro jetting": 2
+    "water jetting": 2,
+    "hydro jetting": 1
    }
   },
   {
@@ -1156,7 +1103,7 @@
    "topShare": 0.67,
    "anchors": {
     "water jetting": 2,
-    "hydro jetting": 1
+    "hydro jetting service": 1
    }
   },
   {
@@ -1201,12 +1148,14 @@
   },
   {
    "target": "/locations/st-louis-mo/st-louis-city/hydro-jetting/",
-   "total": 1,
-   "distinct": 1,
-   "topAnchor": "hydro jetting",
-   "topShare": 1,
+   "total": 3,
+   "distinct": 3,
+   "topAnchor": "water jetting",
+   "topShare": 0.33,
    "anchors": {
-    "hydro jetting": 1
+    "water jetting": 1,
+    "hydro jetting": 1,
+    "sewer jetting": 1
    }
   },
   {
