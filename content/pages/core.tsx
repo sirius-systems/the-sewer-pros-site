@@ -294,11 +294,12 @@ export const homeContent: HomePageContent = {
       question: 'Should I get a second opinion before agreeing to a sewer replacement?',
       answer: (
         <p>
-          A second inspection can confirm whether a sewer line actually needs
-          replacement or can be cleaned and maintained instead. The Sewer Pros
-          performs independent camera inspections without an incentive to sell
-          repair or replacement work, giving you an unbiased look at the
-          pipe&rsquo;s condition.
+          A second opinion can start with the report or video you already have.
+          The Sewer Pros reviews another company&rsquo;s inspection findings and
+          tells you whether we agree, disagree, or cannot tell from the
+          footage, and can follow with an independent camera inspection if the
+          footage is unclear. We do not perform repairs or replacements, so we
+          have no incentive to sell either.
         </p>
       ),
     },

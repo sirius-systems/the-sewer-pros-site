@@ -294,6 +294,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         question: 'A buyer’s inspector says the line needs replacing. What now?',
         answer: (
           <p>
+            Send us the inspector&rsquo;s report or video and we will review it.
             An independent second opinion on the same line is a reasonable step.
             Footage often supports more than one reading, and a company that
             does not perform the repair has no stake in which reading prevails.

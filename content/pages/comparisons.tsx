@@ -209,11 +209,9 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           If a line has a known, confirmed defect and you want it fixed, a
           repair contractor is who does that work. They can assess repair
           methods, quote the job, and carry it out. An independent inspection
-          company cannot, and we do not.
-        </p>
-        <p>
-          It is also often more efficient: one visit, one company, one
-          responsibility for the outcome.
+          company cannot, and we do not. If the recommendation is a large repair
+          or replacement you did not expect, the sensible order is to get a
+          second opinion first, then choose who does the work.
         </p>
 
         <h2>Where an independent inspection is worth considering</h2>
@@ -264,6 +262,11 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           perform sewer repair or replacement, so our findings do not lead to a
           quote from us for the remedy. That is the whole of the
           differentiator, not a claim about how anyone else works.
+        </p>
+        <p>
+          A second opinion from a company with nothing to sell is the one view
+          of your line that is not tied to a quote. If it says repair is needed,
+          it is because the evidence says so.
         </p>
       </>
     ),
