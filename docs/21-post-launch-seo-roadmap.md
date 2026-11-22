@@ -847,7 +847,7 @@ Detailed policy remains in:
 
 # 35. San Diego Post-Launch Priority
 
-San Diego initially requires stronger organic-first development because no GBP currently exists.
+San Diego initially requires stronger organic-first development because its GBP (DEC-153) exists but no office or address is published.
 
 Priority areas may include:
 

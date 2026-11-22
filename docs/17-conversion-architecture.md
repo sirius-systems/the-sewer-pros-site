@@ -2361,7 +2361,7 @@ Do not create a thin GBP-only doorway page.
 
 # 114. San Diego and Las Vegas Without GBP
 
-Because these markets currently lack GBPs, organic landing pages need particularly strong conversion clarity.
+Because Las Vegas currently lacks a GBP, and San Diego has a GBP (DEC-153) but no published office or address, organic landing pages in these markets need particularly strong conversion clarity.
 
 They should establish:
 

@@ -768,10 +768,10 @@ Current known GBP status:
 | Market        | Status                           |
 | ------------- | -------------------------------- |
 | St. Louis, MO | Existing Google Business Profile |
-| San Diego, CA | No current GBP identified        |
+| San Diego, CA | Existing Google Business Profile (company-owned, DEC-153) |
 | Las Vegas, NV | No current GBP identified        |
 
-The website must not imply that San Diego or Las Vegas has a verified local Google Business Profile or physical storefront unless that status changes.
+The website must not imply that Las Vegas has a verified local Google Business Profile, or that San Diego or Las Vegas has a physical storefront. A San Diego GBP exists and is company-owned (DEC-153), but No San Diego office, storefront, branch, public address or map pin is published until the owner approves how the San Diego address is displayed (DEC-153).
 
 Updates to these facts should be recorded in the appropriate local SEO documentation and decision log.
 

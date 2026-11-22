@@ -386,7 +386,7 @@ Current project baseline:
 | Market        | GBP          | Schema Treatment                               |
 | ------------- | ------------ | ---------------------------------------------- |
 | St. Louis, MO | Existing GBP | Evaluate for verified LocalBusiness entity     |
-| San Diego, CA | No GBP       | Market/Place + Service `areaServed` by default |
+| San Diego, CA | GBP exists (DEC-153); no address published | Market/Place + Service `areaServed` by default |
 | Las Vegas, NV | No GBP       | Market/Place + Service `areaServed` by default |
 
 The existence of the St. Louis GBP makes it the strongest candidate for a market-specific LocalBusiness entity.

@@ -1522,7 +1522,7 @@ Current status:
 | San Diego | None currently identified |
 | Las Vegas | None currently identified |
 
-San Diego and Las Vegas may still have legitimate market landing pages without active GBPs.
+San Diego and Las Vegas may still have legitimate market landing pages without published offices. San Diego has a company-owned GBP (DEC-153); Las Vegas has none.
 
 However, the site must not falsely imply verified local storefronts.
 

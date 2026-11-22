@@ -5629,3 +5629,25 @@ Recorded:
 * **Guard:** `scripts/verify-stats-band.mjs` (part of `npm run verify`) checks that every built page with the strip shows the `organization.ts` values, apart from the two exceptions above.
 
 ---
+
+## DEC-153 - San Diego Google Business Profile Exists and Belongs to the Company
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Moderate (entity and local SEO documentation)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** earlier statements that no San Diego GBP was identified (01 section 21, 07, 11, 15, CLAUDE.md section 10)
+**Affected Documents:**
+
+* `CLAUDE.md`, `docs/00`, `01`, `02`, `03`, `07`, `08`, `11`, `15`, `20` and `21` (documentation only; no code, data or content changed)
+
+**Reason:** the owner confirmed on 2026-11-22 that a San Diego Google Business Profile exists and belongs to the company.
+
+Recorded:
+
+* **Supersedes** the statements that San Diego has no GBP or "no current GBP identified", and the "organic-first because no GBP exists" reasoning in the post-launch roadmap.
+* **Still in force:** no San Diego office, storefront, branch, public street address or map pin is published until the owner approves how the San Diego address is displayed. The profile data suggests a street address, but its public visibility is not confirmed. No `LocalBusiness` schema, address, map or new Organization location is added by this entry.
+* **Data not changed:** `data/markets/markets.ts` still records San Diego as `gbpStatus: 'none_identified'`, and the San Diego code comments in `data/markets/markets.ts` and `content/pages/san-diego.tsx` still say no GBP. These are flagged for a separate change.
+* **Review figure:** the third-party review aggregation page (`reviews.listen360.com/the-sewer-pros-san-diego`) is the company's. The displayed review figure still comes only from `ratingSnapshot` in `data/reviews/reviews.ts` (DEC-149). The aggregation page's higher count is not used anywhere.
+
+---

@@ -144,7 +144,7 @@ Current project status:
 | Market        | Current GBP Status                      |
 | ------------- | --------------------------------------- |
 | St. Louis, MO | Existing Google Business Profile        |
-| San Diego, CA | No established GBP currently identified |
+| San Diego, CA | Existing GBP, company-owned (DEC-153)    |
 | Las Vegas, NV | No established GBP currently identified |
 
 The project strategy is therefore different by market.
