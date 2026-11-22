@@ -160,8 +160,11 @@ export const authorityProcess: AuthorityProcessContent = {
           <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>
             water jetting
           </ApprovedInlineLink>{' '}
-          can resolve, and what may point toward a structural issue worth a
-          second opinion.
+          can resolve, and what may point toward a structural issue{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            worth a second opinion
+          </ApprovedInlineLink>
+          .
         </>
       ),
     },

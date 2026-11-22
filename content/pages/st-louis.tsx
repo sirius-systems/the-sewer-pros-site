@@ -52,6 +52,7 @@
  * promises approval, reimbursement, or eligibility.
  */
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { stLouisCityContent } from './st-louis-city'
 import { chesterfieldContent } from './st-louis-chesterfield'
 import { stCharlesContent } from './st-louis-st-charles'
@@ -954,7 +955,11 @@ export const stLouisMarketContent: MarketPageContent = {
           happens next. If the issue is something a cleaning or {'{{hydro jetting|water jetting|sewer jetting}}'}
           can resolve, that is on the table as our service. If what is found
           looks more serious, structural repair or replacement is not something
-          we sell. You are free to get a second opinion, consult a repair
+          we sell. You are free to{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            get a second opinion
+          </ApprovedInlineLink>
+          , consult a repair
           contractor of your choosing, or simply monitor the condition. Nothing
           about the inspection commits you to a specific next step.
         </p>

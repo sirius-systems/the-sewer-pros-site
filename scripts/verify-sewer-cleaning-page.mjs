@@ -191,7 +191,7 @@ const unresolved = internal.filter((h) => {
 })
 check('internal links resolve to exported pages', unresolved.length === 0, unresolved.join(', '))
 check('market cards link to the three hubs only', ['/st-louis-mo/', '/san-diego-ca/', '/las-vegas-nv/'].every((h) => internal.includes(h)) && !internal.some((h) => /^\/(st-louis-mo|san-diego-ca|las-vegas-nv)\/.+\/.+/.test(h)))
-check('no link to the unbuilt independent second-opinion page', !internal.some((h) => h.includes('independent-sewer-inspection-second-opinion')))
+check('the independent band links to the independent second-opinion page', internal.includes('/services/independent-sewer-inspection-second-opinion/'))
 
 /* ---- Characters and forbidden text ---- */
 check('no em dash (U+2014)', !html.includes('—'))
