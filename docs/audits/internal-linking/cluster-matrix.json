@@ -1,0 +1,25 @@
+{
+ "generated": "2026-11-22",
+ "clusters": {
+  "Independent Inspection": {
+   "expected": 20,
+   "actual": 20,
+   "gaps": []
+  },
+  "Real Estate": {
+   "expected": 8,
+   "actual": 8,
+   "gaps": []
+  },
+  "Cleaning": {
+   "expected": 36,
+   "actual": 36,
+   "gaps": []
+  },
+  "Local Markets": {
+   "expected": 464,
+   "actual": 464,
+   "gaps": []
+  }
+ }
+}

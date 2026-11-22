@@ -28,6 +28,9 @@
  *     "Where we serve" (3 market hubs, 1 to 3 local pages one per market), market
  *     contact "Before you reach out" (FAQ and two audiences), hub guides (max 3)
  *   - markup in FAQPage JSON-LD answers (the schema text stays plain)
+ *   - a spoke page (service + location, audience, guide, comparison) with no link to its
+ *     canonical service, and one exact anchor above 40% of the editorial links to a target
+ *     (baselined targets may not get worse), and generic anchors in FAQ answers
  *   - FAQPage text that differs from the visible FAQ answer, a link inside a
  *     question, and FAQ answer links to missing, noindex or non-sitemap pages
  *     or to the page itself
@@ -36,6 +39,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { buildGraph, isIndexable, CHROME, normHref } from './lib/link-graph.mjs'
 import { runFaqAudit } from './audit/faq-audit.mjs'
+import { anchorStats, MAX_SHARE, MIN_LINKS } from './audit/anchors.mjs'
+import { canonicalCoverage } from './audit/clusters.mjs'
 import { GENERIC_ANCHORS, HIERARCHY_CEILING, expectedBreadcrumb, hierarchyIssues, marketOf, isCommercialPath } from './lib/link-rules.mjs'
 
 const MIN_INBOUND = 2
@@ -215,23 +220,47 @@ check('FAQPage JSON-LD answers are plain text (no markup or links)', markup)
 // FAQ blocks: schema text equals the visible answer, no links in questions, answer links are eligible.
 const faq = runFaqAudit(g, g.root)
 check('FAQPage text equals the visible FAQ answer text and no question carries a link', faq.schemaMismatch.map((m) => `${m.url}: ${m.reason}: ${m.q}`))
+// Reads every FAQ layout (accordion and the service + location tabs) through the shared FAQ parser.
 const faqLinkIssues = []
-for (const u of urls) {
-  const file = path.join(g.root, u === '/' ? '' : u, 'index.html')
-  const html = fs.readFileSync(file, 'utf8')
-  const main = html.indexOf('<main')
-  if (main < 0) continue
-  for (const m of html.slice(main).matchAll(/<details[^>]*>\s*<summary[^>]*>[\s\S]*?<\/summary>([\s\S]*?)<\/details>/g)) {
-    for (const a of m[1].matchAll(/<a\s[^>]*href="([^"]*)"/g)) {
-      const n = normHref(a[1])
-      if (n.kind !== 'internal') continue
-      if (n.path === u) faqLinkIssues.push(`${u}: FAQ answer links to its own page`)
-      else if (!P[n.path]) faqLinkIssues.push(`${u}: FAQ answer link to missing ${n.path}`)
-      else if (!isIndexable(P[n.path])) faqLinkIssues.push(`${u}: FAQ answer link to noindex ${n.path}`)
-    }
+for (const ans of faq.answers) {
+  for (const l of ans.links) {
+    const n = normHref(l.href)
+    if (n.kind !== 'internal') continue
+    if (n.path === ans.url) faqLinkIssues.push(`${ans.url}: FAQ answer links to its own page`)
+    else if (!P[n.path]) faqLinkIssues.push(`${ans.url}: FAQ answer link to missing ${n.path}`)
+    else if (!isIndexable(P[n.path])) faqLinkIssues.push(`${ans.url}: FAQ answer link to noindex ${n.path}`)
   }
 }
 check('FAQ answer links resolve to existing, indexable pages other than the page itself', faqLinkIssues)
+
+// Generic anchors in FAQ answers (the page-wide check above already covers body content).
+check(
+  'no generic anchor text in FAQ answers',
+  faq.answers.flatMap((ans) => ans.links.filter((l) => GENERIC_ANCHORS.test(l.text.toLowerCase().replace(/[.!→›»]+$/g, '').trim())).map((l) => `${ans.url}: "${l.text}"`)),
+)
+
+// Every spoke links to its canonical service (item 1 of the 2026-11-22 follow-up).
+const cc = canonicalCoverage(g)
+check(
+  'every service + location, audience, guide and comparison page links to its canonical service in body, FAQ or card content',
+  cc.gaps.filter((x) => !x.soft).map((x) => `${x.url}: missing ${x.missing.join(', ')}`),
+)
+check(
+  'no service + location page links a same-service local page instead of the canonical service',
+  cc.substitute.map((x) => `${x.url} -> ${x.links.join(', ')}`),
+)
+
+// Anchor variety: one exact anchor may not be more than MAX_SHARE of the editorial links to a target.
+// Targets already over the line when the check was added are listed in the baseline file; they may
+// not get worse, and a new target over the line fails.
+const baseline = JSON.parse(fs.readFileSync(path.resolve('scripts/lib/anchor-variety-baseline.json'), 'utf8')).targets
+const av = anchorStats(g, faq.answers).violations.filter((v) => v.total >= MIN_LINKS)
+const avIssues = av
+  .filter((v) => baseline[v.target] === undefined || v.topShare > baseline[v.target] + 0.02)
+  .map((v) => `${v.target}: "${v.topAnchor}" is ${Math.round(v.topShare * 100)}% of ${v.total} editorial links (limit ${MAX_SHARE * 100}%${baseline[v.target] !== undefined ? `, baseline ${Math.round(baseline[v.target] * 100)}%` : ''})`)
+check('no exact anchor is more than 40% of the editorial links to one target (baselined targets may not get worse)', avIssues)
+const accepted = av.filter((v) => baseline[v.target] !== undefined && v.topShare <= baseline[v.target] + 0.02)
+if (accepted.length) console.log(`INFO  ${accepted.length} baselined anchor-variety target(s) still over the line: ${accepted.map((v) => v.target).join(', ')}`)
 
 console.log(failures === 0 ? '\nAll checks passed.' : `\n${failures} check(s) FAILED.`)
 process.exit(failures === 0 ? 0 : 1)

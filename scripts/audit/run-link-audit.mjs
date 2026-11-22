@@ -12,6 +12,10 @@ import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { buildGraph, isIndexable, CHROME } from '../lib/link-graph.mjs'
 import { runFaqAudit } from './faq-audit.mjs'
+import { anchorStats, anchorContexts, MAX_SHARE, MIN_LINKS } from './anchors.mjs'
+import { canonicalCoverage, clusterMatrix, moneyPages, contextualGaps, editorialDepth } from './clusters.mjs'
+import { buildEntities } from './entities.mjs'
+import { decode } from '../lib/link-graph.mjs'
 
 const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i > 0 ? process.argv[i + 1] : d }
 const root = path.resolve(arg('root', 'out'))
@@ -85,16 +89,54 @@ const faqCount = faqPages.reduce((s, i) => s + i.faqCount, 0)
 let before = null
 if (beforeFile && fs.existsSync(beforeFile)) before = JSON.parse(fs.readFileSync(beforeFile, 'utf8'))
 const coreSvc = nodes.filter((n) => n.type === 'service')
-const metrics = { pages: urls.length, indexable: idx.length, links: edges.length, orphans: R.orphans.length, broken: R.broken.length, avgEditorialInboundCoreServices: +avg(coreSvc, 'editorialInbound'), faqBlocks: faqPages.length, faqAnswers: F.answerLinkTotals.answers, faqAnswersWithLinks: F.answerLinkTotals.withLinks, faqLinks: F.answerLinkTotals.links, openFaqOpportunities: oppTotals.open, faqSchemaMismatches: F.schemaMismatch.length }
+/* Cluster, canonical-service, anchor and money-page analysis. */
+const CC = canonicalCoverage(g)
+const CM = clusterMatrix(g)
+const AN = anchorStats(g, F.answers)
+const MP = moneyPages(g)
+const mainText = (u) => {
+  const f = path.join(root, u === '/' ? '' : u, 'index.html')
+  if (!fs.existsSync(f)) return ''
+  const h = fs.readFileSync(f, 'utf8')
+  const i = h.indexOf('<main')
+  if (i < 0) return ''
+  // Only running prose: text in <p> elements, with existing links removed, so a card title or label is not a "mention".
+  const paras = [...h.slice(i).matchAll(/<p[\s>][\s\S]*?<\/p>/g)].map((m) => m[0].replace(/<a\s[\s\S]*?<\/a>/g, ' ').replace(/<[^>]+>/g, ' '))
+  return decode(paras.join(' ')).replace(/\s+/g, ' ')
+}
+const CG = contextualGaps(g, buildEntities(g), mainText)
+const pct = (a, b) => (b === 0 ? 100 : Math.round((a / b) * 1000) / 10)
+const covAny = Object.values(CC.families).reduce((s2, f) => s2 + f.anyContent, 0)
+const covCtx = Object.values(CC.families).reduce((s2, f) => s2 + f.contextual, 0)
+const covN = Object.values(CC.families).reduce((s2, f) => s2 + f.pages, 0)
+const clusterGaps = Object.values(CM).reduce((s2, c) => s2 + c.gaps.length, 0)
+const clusterExpected = Object.values(CM).reduce((s2, c) => s2 + c.expected, 0)
+fs.writeFileSync(path.join(outDir, 'canonical-coverage.json'), JSON.stringify({ generated: date, ...CC }, null, 1))
+fs.writeFileSync(path.join(outDir, 'cluster-matrix.json'), JSON.stringify({ generated: date, clusters: CM }, null, 1))
+fs.writeFileSync(path.join(outDir, 'anchor-variety.json'), JSON.stringify({ generated: date, violations: AN.violations, sitewideModules: AN.sitewide, stats: AN.stats }, null, 1))
+fs.writeFileSync(path.join(outDir, 'money-pages.json'), JSON.stringify({ generated: date, ...MP }, null, 1))
+fs.writeFileSync(path.join(outDir, 'contextual-gaps.json'), JSON.stringify({ generated: date, gaps: CG }, null, 1))
+const metrics = {
+  canonicalServiceLinkPct: pct(covAny, covN),
+  canonicalServiceContextualPct: pct(covCtx, covN),
+  clusterEdgesExpected: clusterExpected,
+  clusterGaps,
+  anchorVarietyViolations: AN.violations.length,
+  contextOnlyCardOrModule: CG.filter((x) => x.onlyCardOrModule).length,
+  contextNoLinkAtAll: CG.filter((x) => !x.onlyCardOrModule).length,
+  moneyInboundContextual: Object.fromEntries(MP.rows.map((r) => [r.path, r.inboundContextual])),
+  moneyEditorialDepth: Object.fromEntries(MP.rows.map((r) => [r.path, r.editorialDepth])),
+  ...{ pages: urls.length, indexable: idx.length, links: edges.length, orphans: R.orphans.length, broken: R.broken.length, avgEditorialInboundCoreServices: +avg(coreSvc, 'editorialInbound'), faqBlocks: faqPages.length, faqAnswers: F.answerLinkTotals.answers, faqAnswersWithLinks: F.answerLinkTotals.withLinks, faqLinks: F.answerLinkTotals.links, openFaqOpportunities: oppTotals.open, faqSchemaMismatches: F.schemaMismatch.length } }
 fs.writeFileSync(path.join(outDir, 'metrics.json'), JSON.stringify({ generated: date, ...metrics }, null, 1))
+const fmt = (v) => (typeof v === 'object' && v !== null ? JSON.stringify(v) : v)
 const table = (head, rows) => `| ${head.join(' | ')} |\n|${head.map(() => '---').join('|')}|\n${rows.map((r) => `| ${r.join(' | ')} |`).join('\n')}\n`
 const pre = before?.metrics ?? before
 const ba = before
-  ? table(['Metric', 'Before', 'After'], Object.keys(metrics).map((k) => [k, pre?.[k] ?? 'n/a', metrics[k]]))
+  ? table(['Metric', 'Before', 'After'], Object.keys(metrics).map((k) => [k, fmt(pre?.[k] ?? 'n/a'), fmt(metrics[k])]))
   : '_No before snapshot supplied (pass --before <metrics.json>)._\n'
 
 let md = `# Internal Linking Audit (${date})\n\nGenerated by \`scripts/audit/run-link-audit.mjs\` from the static export. Policy: \`docs/16-internal-linking-strategy.md\`.\n\n`
-md += `## 1. Summary\n\n${table(['Metric', 'Value'], Object.entries(metrics).map(([k, v]) => [k, v]))}\n`
+md += `## 1. Summary\n\n${table(['Metric', 'Value'], Object.entries(metrics).map(([k, v]) => [k, fmt(v)]))}\n`
 md += `Structural findings by check: ${Object.entries(findings.reduce((a, f) => ((a[f.check] = (a[f.check] ?? 0) + 1), a), {})).map(([k, v]) => `${k} ${v}`).join(', ') || 'none'}.\n\nFAQ mentions of linkable entities: ${oppTotals.mentions} (already linked ${oppTotals.linked}, target linked elsewhere in the same page FAQ ${oppTotals.covered}, open ${oppTotals.open}).\n\n`
 md += `### Before / after\n\n${ba}\n`
 md += `## 2. Link graph\n\n${table(['Page family', 'Indexable pages', 'Avg inbound', 'Avg editorial inbound', 'Avg outbound (distinct)'], Object.entries(byType).map(([t, a]) => [t, a.length, avg(a, 'inbound'), avg(a, 'editorialInbound'), avg(a, 'outbound')]))}\n`
@@ -126,6 +168,28 @@ md += `\n## 5. Guardrail checks\n\n${table(['Guardrail', 'Result'], [
   ['FAQPage text differs from visible answer', F.schemaMismatch.length],
 ])}\nRepair guardrail: no internal link targets a repair or replacement service, because none is registered. Anchor-vs-registry-name rows (severity C) are natural variants such as "sewer scope" and "before closing"; none misdescribes its destination.\n\n`
 md += `## 6. Link once promoted / built\n\n- Reviews page (\`/reviews/\`) exists; linked from the homepage footer: ${inFooter('/reviews/')}.\n- Resources hub (\`/resources/\`) exists with ${urls.filter((u) => P[u].type === 'resource').length} guides; linked from the homepage footer: ${inFooter('/resources/')}. New guides should be linked from the matching service, audience and market pages (the "Related guides" slot, max 3 per page) when published.\n- Service + location pages published: ${slCount}. Remaining service x location matrix rows are candidates only and receive no links until promoted.\n- Market-contact FAQ answers that list every served area (San Diego, Las Vegas, St. Louis) name 3 to 6 location hubs in one sentence. Linking them is a judgment call (bloat vs coverage) and is left as severity B.\n- Location FAQ blocks mention services rarely, so most carry no answer links; a service-relevant sentence added to existing answers would be the way to raise that (suggestion only, no new FAQ copy was written).\n\n`
+
+/* Follow-up implementation (canonical service, clusters, contextual links, anchors, money pages). */
+const fbDir = arg('followup-before')
+const readJson = (f) => (fbDir && fs.existsSync(path.join(path.resolve(fbDir), f)) ? JSON.parse(fs.readFileSync(path.join(path.resolve(fbDir), f), 'utf8')) : null)
+const bM = readJson('metrics.json')
+const bCC = readJson('canonical-coverage.json')
+const bCM = readJson('cluster-matrix.json')?.clusters
+const bMP = readJson('money-pages.json')
+const bAN = readJson('anchor-variety.json')
+const bCG = readJson('contextual-gaps.json')?.gaps
+const dash = '-'
+md += `\n## 8. Follow-up implementation: before / after\n\n`
+md += `Counting rules. "Body" means any link outside the header, footer, breadcrumb and site chrome, card grids included. "Contextual" means a link inside running prose or an FAQ answer. Cluster edges are checked on body links only (breadcrumbs excluded). Click depth is measured on body links only; through the header menu every service is 1 click from the homepage.\n\n`
+md += `### 8.1 Link to the canonical service\n\n${table(['Page family', 'Pages', 'Body link before', 'Body link after', 'Contextual before', 'Contextual after'], Object.entries(CC.families).map(([f, a]) => { const b = bCC?.families?.[f]; return [f, a.pages, b ? `${pct(b.anyContent, b.pages)}%` : dash, `${pct(a.anyContent, a.pages)}%`, b ? `${pct(b.contextual, b.pages)}%` : dash, `${pct(a.contextual, a.pages)}%`] }))}\n`
+md += `Pages with no canonical-service link in body, FAQ or card content: before ${bCC ? bCC.gaps.filter((x) => !x.soft).length : dash}, after ${CC.gaps.filter((x) => !x.soft).length}. Service + location pages that link a same-service local page instead of the canonical service: ${CC.substitute.length}.\n\n`
+md += `### 8.2 Cluster matrix (expected vs actual body links)\n\n${table(['Cluster', 'Expected edges', 'Actual before', 'Actual after', 'Gaps before', 'Gaps after'], Object.entries(CM).map(([c, a]) => [c, a.expected, bCM ? bCM[c].actual : dash, a.actual, bCM ? bCM[c].gaps.length : dash, a.gaps.length]))}\n`
+md += `Edges: every registered service relation both ways (\`SERVICE_RELATIONS\` in link-plan.ts), each audience and its lead service both ways, market hub <-> each location hub, and for every published local page its location hub, market hub and canonical service. Market hub -> /locations/ is the breadcrumb parent and is not counted. Location hub -> local service pages is bounded by design (link-plan TOP_LOCAL_SERVICES, 3 to 6 pages) and is not an expected edge. Remaining gaps:\n\n${Object.entries(CM).flatMap(([c, a]) => a.gaps.map((g2) => `- ${c}: \`${g2.from}\` -> \`${g2.to}\` (${g2.kind})`)).join('\n') || 'None.'}\n\n`
+const cgAfter = CG
+md += `### 8.3 Contextual links\n\nPages whose running prose names a service, market or audience that only a card, module or nothing links: before ${bCG ? bCG.length : dash}, after ${cgAfter.length} (${cgAfter.filter((x) => x.onlyCardOrModule).length} linked from a card or module only, ${cgAfter.filter((x) => !x.onlyCardOrModule).length} not linked from the page at all). The count can rise when an FAQ link moves out of an opening sentence (see section 7), so the FAQ pass is measured separately: FAQ answers with links ${bM ? bM.faqAnswersWithLinks : dash} before, ${F.answerLinkTotals.withLinks} after; FAQ links ${bM ? bM.faqLinks : dash} before, ${F.answerLinkTotals.links} after. The list is in \`contextual-gaps.json\`.\n\n`
+md += `### 8.4 Anchor variety\n\nEditorial links (prose and FAQ, identical shared copy counted once) to a target where one exact anchor is over ${MAX_SHARE * 100}% and the target has at least ${MIN_LINKS} editorial links: before ${bAN ? bAN.violations.filter((v) => v.total >= MIN_LINKS).length : dash}, after ${AN.violations.filter((v) => v.total >= MIN_LINKS).length}.\n\n${table(['Target', 'Links', 'Distinct anchors', 'Top anchor', 'Top share before', 'Top share after'], AN.violations.filter((v) => v.total >= MIN_LINKS).map((v) => { const b = bAN?.violations?.find((x) => x.target === v.target); return [v.target, v.total, v.distinct, v.topAnchor, b ? b.topShare : dash, v.topShare] }))}\nThe remaining targets are the baseline in \`scripts/lib/anchor-variety-baseline.json\`: the gate fails if one gets worse or a new one appears. They are definition-style FAQ answers on service + location pages where the registered service name is the only natural phrase.\n\n`
+md += `### 8.5 Money pages\n\n${table(['Page', 'Contextual inbound before', 'Contextual inbound after', 'Body inbound after', 'Body click depth'], MP.rows.map((r) => [r.name, bMP?.rows?.find((x) => x.path === r.path)?.inboundContextual ?? dash, r.inboundContextual, r.inboundEditorial, r.editorialDepth]))}\nContextual inbound across the nine service pages: ${Object.entries(MP.serviceContextualInbound).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k.split('/')[2]} ${v}`).join(', ')}. There is no dedicated second-opinion route; the independent-inspection comparison page is the closest registered page, so it is tracked here and "free second opinion" links go to the contact pages.\n\n`
+md += `### 8.6 What the Resources hub and the Reviews page should link when they change\n\n- \`/resources/\` (exists, ${urls.filter((u) => P[u].type === 'resource').length} guides): each guide card should keep its parent service in the sentence under the title (camera-inspection guides -> Sewer Camera Inspection, lateral guides -> Pre-Purchase Sewer Inspection and the St. Louis market hub), the hub intro should link Sewer Camera Inspection and Pre-Purchase Sewer Inspection, and a new guide should be added to GUIDE_RULES in link-plan.ts so the matching service pages and location hubs link it (max 3 per page).\n- \`/reviews/\` (exists): keep it linked from the footer and the homepage review band only. Each review card that names a service should link that service page (Pre-Purchase, Camera Inspection, Sewer Cleaning & Camera Inspection) and each market review group should link its market hub, so the page passes relevance to the money pages. Do not add it to service-page body copy.\n- Both pages should link back to the Contact page for the free second opinion offer using the market contact page where the review or guide is market-specific.\n\n`
 md += `## 7. Decisions and open questions\n\n- FAQ answers are authored as JSX, not strings. Instead of adding a markdown-link format, the existing linker (\`lib/links/faq-links.tsx\`) was extended; JSON-LD is already derived from the same JSX (\`lib/schema/faq.ts\`), so text cannot drift, and the gate now verifies it from the built HTML.\n- Linker limits: first mention of a target per page, 2 links per answer (3 only when an answer names several markets), never inside questions, never to the page itself, no cross-market links from a market page, "City of X" is not treated as a market mention, location links only from market, resource and location pages.\n- No open questions that change business facts.\n`
 fs.writeFileSync(path.join(outDir, `internal-linking-audit-${date}.md`), md)
 console.log(JSON.stringify(metrics, null, 1))

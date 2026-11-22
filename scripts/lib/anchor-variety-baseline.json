@@ -1,0 +1,10 @@
+{
+ "note": "Targets over the 40% single-anchor line when the check was added (2026-11-22). They may not get worse; a new target over the line fails. Remove an entry once it is under the line.",
+ "targets": {
+  "/services/pre-purchase-sewer-inspection/": 0.5,
+  "/services/sewer-cleaning/": 1,
+  "/services/hydro-jetting/": 1,
+  "/services/sewer-line-locating/": 0.67,
+  "/services/drain-cleaning/": 0.89
+ }
+}

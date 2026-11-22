@@ -38,6 +38,12 @@ function visibleFaq(html) {
     const qLinks = [...m[1].matchAll(/<a\s/g)].length
     out.push({ q, html: ansHtml, text: strip(ansHtml), links, linksInQuestion: qLinks })
   }
+  // FaqGrouped "tabs" layout (service + location pages): h4 question, then a div holding the answer.
+  for (const m of body.matchAll(/<h4 class="text-h4 font-semibold tracking-tight text-foreground">([\s\S]*?)<\/h4><div class="mt-3[^"]*">([\s\S]*?)<\/div><\/div>/g)) {
+    const ansHtml = m[2]
+    const links = [...ansHtml.matchAll(/<a\s[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g)].map((a) => ({ href: decode(a[1]), text: strip(a[2]) }))
+    out.push({ q: strip(m[1]), html: ansHtml, text: strip(ansHtml), links, linksInQuestion: [...m[1].matchAll(/<a\s/g)].length })
+  }
   return out
 }
 
@@ -46,6 +52,7 @@ export function runFaqAudit(graph, root = path.resolve('out')) {
   const inventory = []
   const opportunities = []
   const schemaMismatch = []
+  const answers = []
   const answerLinkTotals = { answers: 0, withLinks: 0, links: 0 }
   const files = walkOut(root)
   for (const f of files) {
@@ -61,6 +68,7 @@ export function runFaqAudit(graph, root = path.resolve('out')) {
     inventory.push({ url, type: pg.type, indexable: !pg.noindex && pg.inSitemap, faqCount: vis.length, schema: ld.length > 0, schemaCount: ld.length, linkedAnswers: vis.filter((v) => v.links.length).length, answerLinks: vis.reduce((s, v) => s + v.links.length, 0) })
     for (const v of vis) {
       answerLinkTotals.answers++
+      answers.push({ url, q: v.q, links: v.links, text: v.text })
       if (v.links.length) answerLinkTotals.withLinks++
       answerLinkTotals.links += v.links.length
       if (ld.length > 0) {
@@ -75,5 +83,5 @@ export function runFaqAudit(graph, root = path.resolve('out')) {
       }
     }
   }
-  return { inventory, opportunities, schemaMismatch, answerLinkTotals }
+  return { inventory, opportunities, schemaMismatch, answerLinkTotals, answers }
 }

@@ -118,7 +118,7 @@ export function parsePage(html) {
       else if (secF && secF.sec) zone = 'body:' + secF.sec
       else if (aside) zone = 'aside:' + aside.aside
       else zone = 'body'
-      openA = { start: m.index + m[0].length, rec: { href, zone, rel: attr(attrs, 'rel') || '', text: '' } }
+      openA = { start: m.index + m[0].length, rec: { href, zone, rel: attr(attrs, 'rel') || '', prose: stack.some((f) => f.tag === 'p'), text: '' } }
     }
   }
   return { title, h1, robots, canonical, links }
@@ -157,7 +157,7 @@ export function buildGraph(root = path.resolve('out')) {
       h1: p.h1,
       noindex: /noindex/i.test(p.robots),
       inSitemap: inSitemap.has(url),
-      out: p.links.map((l) => ({ ...normHref(l.href), raw: l.href, text: l.text, zone: l.zone, rel: l.rel })),
+      out: p.links.map((l) => ({ ...normHref(l.href), raw: l.href, text: l.text, zone: l.zone, rel: l.rel, prose: l.prose })),
     }
   }
   const inbound = {}
