@@ -5422,7 +5422,7 @@ Recorded: the image was not edited, blurred or regenerated. The label is not nam
 
 Recorded: equipment shown in the images is owner-approved. Generated images may be used as illustrations. They must not be presented as a real customer job, a real inspection finding, a real report, a real customer or a real technician, so alt text, captions and nearby copy describe the scene only. The rule and the optional upgrade are on the launch checklist (`docs/launch-checklist.md`) and in `CLAUDE.md`. The owner specifically approved the eight generated files that depict reports, tablets, monitor footage or paperwork (IMG-04, IMG-05, IMG-06, IMG-07, IMG-10, IMG-18, IMG-20, IMG-21), none of which shows a person, with the guardrail that nearby copy must not present them as real jobs, findings, reports, customers or technicians (Oct 12, 2026).
 
-## DEC-146 - SMS Consent Copy on the Lead Forms (SHH Group)
+## DEC-146 - SMS Consent Copy on the Lead Forms (Original Sender Name, Corrected in DEC-161)
 
 **Date:** 2026-10-12
 **Status:** APPROVED
@@ -5434,7 +5434,7 @@ Recorded: equipment shown in the images is owner-approved. Generated images may 
 * `docs/17-conversion-architecture.md` section 125, `CLAUDE.md` section 42
 * `lib/forms/sms-consent.ts`, `components/sections/SmsConsent.tsx`, `components/sections/ContactForm.tsx`, `components/sections/SurveyLeadForm.tsx`, `lib/forms/submit-lead.ts`
 
-**Reason:** the owner provided the SMS consent wording and named the sender, SHH Group. Two separate optional checkboxes (non-marketing and marketing) were added to the lead forms that collect a phone number.
+**Reason:** the owner provided the SMS consent wording and named a sender; that business name was wrong and was replaced by The Sewer Pros in DEC-161 (version `sms-consent-v2`). Two separate optional checkboxes (non-marketing and marketing) were added to the lead forms that collect a phone number.
 
 Recorded: the two consent strings are used exactly as the owner wrote them and live in one constants file with a version id (`sms-consent-v1`, 2026-10-12); a wording change is a new version, not an edit in place. Neither box is checked by default or required, and the forms submit with both unchecked. The block sits under the phone and preferred-contact fields. The "See our Privacy Policy and Terms." line is built but not shown, because no privacy or terms page exists yet and no policy text was written. Consent values are in the lead payload only and never go to analytics.
 
@@ -5804,3 +5804,19 @@ Recorded:
 * **Honest failure.** If the contact, tags or note cannot be saved, the visitor sees "We could not send your application" with the market phone. If only the resume cannot be attached (or the field id is not set), the contact is kept, tagged `careers-resume-failed` and noted, and the visitor sees "We received your application, but we could not attach your resume. Please call [market phone] and we will take it from there." The site never says a resume was received in that case.
 * **Privacy gap.** Recorded as PENDING-020, a blocker for production cutover.
 * **Redirect.** `/careers` is added to the PENDING-010 inventory (docs/20). Tested on the pages.dev host: `/careers` gives one 308 to `/careers/` (200), so no `_redirects` rule was added.
+
+
+## DEC-161 - SMS Consent Sender Name Corrected to The Sewer Pros (sms-consent-v2)
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Minor (consent wording; no backend logic change)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-146
+**Affected Documents:**
+
+* `lib/forms/sms-consent.ts`, `lib/forms/lead-server.ts`, `docs/17-conversion-architecture.md` section 125, `docs/ghl-lead-setup.md`, `CLAUDE.md` section 42
+
+**Reason:** the sender named in the two consent sentences was the wrong business name. It must be The Sewer Pros.
+
+Recorded: only the company name changed; every other word of both sentences is as before. The version is now `sms-consent-v2` (2026-11-22). `sms-consent-v1` (2026-10-12) named the wrong sender; contacts and notes recorded under it keep that id, so they can be told apart. The function still accepts `sms-consent-v1` so a visitor who loaded the form before the change is not refused, but no page shows the v1 text. Timestamps are captured as before. `scripts/verify-lead-routing.mjs` checks the version, the sender, that the sentence lives in one file, and that the old name appears nowhere in tracked files. Still open: PENDING-019 (the "Text" option disclosure; the consent block now exists but the owner has not closed that item) and PENDING-020 (privacy and terms pages).

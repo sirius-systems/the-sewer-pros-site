@@ -12,6 +12,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { execFileSync } from 'node:child_process'
 
 let failures = 0
 const check = (name, ok, detail = '') => {
@@ -136,6 +137,27 @@ check(
 )
 check('careers function writes the market and inquiry_message fields', /key: 'market'/.test(careersCode) && /key: 'inquiry_message'/.test(careersCode))
 check('the lead form payload sends no new field (location comes from the existing zip and serviceLocation)', !/\bcity\b|\blocation:\s/.test((fs.readFileSync(path.resolve('lib/forms/submit-lead.ts'), 'utf8').match(/export interface LeadPayload[\s\S]*?\n\}/) || [''])[0].replace(/\/\*[\s\S]*?\*\//g, '')))
+
+/* ---------------------------------------------------------------------------
+   SMS consent copy (DEC-146, DEC-161): one source, names The Sewer Pros, no old sender name anywhere.
+   ------------------------------------------------------------------------- */
+const consentSrc = fs.readFileSync(path.resolve('lib/forms/sms-consent.ts'), 'utf8')
+const oldSender = 'S' + 'HH'
+const consentVersion = (consentSrc.match(/export const SMS_CONSENT_V2[\s\S]*?version:\s*'([^']+)'/) || [])[1]
+check('the current SMS consent version is sms-consent-v2 and SMS_CONSENT points at it', consentVersion === 'sms-consent-v2' && /export const SMS_CONSENT = SMS_CONSENT_V2/.test(consentSrc), String(consentVersion))
+check('both SMS consent sentences name The Sewer Pros as the sender', /non-marketing text messages from The Sewer Pros about appointments/.test(consentSrc) && /marketing text messages from The Sewer Pros about special offers/.test(consentSrc))
+check('the SMS consent sentence is defined in one file only', (() => {
+  const files = execFileSync('git', ['grep', '-I', '-l', '-F', 'I consent to receive', '--', 'components', 'lib', 'functions', 'app', 'content', 'data'], { encoding: 'utf8' }).split('\n').filter(Boolean)
+  return files.length === 1 && files[0] === 'lib/forms/sms-consent.ts'
+})())
+check('the old sender name appears nowhere in the tracked repo', (() => {
+  try {
+    const hits = execFileSync('git', ['grep', '-I', '-n', '-w', oldSender, '--', '.', ':!package-lock.json'], { encoding: 'utf8' })
+    return hits.trim() === ''
+  } catch (e) {
+    return e.status === 1
+  }
+})())
 
 const careersData = fs.readFileSync(path.resolve('data/business/careers.ts'), 'utf8')
 const openingTitles = [...careersData.matchAll(/^\s*title:\s*'([^']+)'/gm)].map((m) => m[1])

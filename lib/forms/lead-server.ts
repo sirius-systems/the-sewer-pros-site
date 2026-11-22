@@ -29,7 +29,7 @@
  * it as a channel block, not a consent record, so consent is kept in custom
  * fields instead.
  */
-import { SMS_CONSENT_VERSION } from './sms-consent'
+import { SMS_CONSENT_ACCEPTED_VERSIONS, SMS_CONSENT_VERSION } from './sms-consent'
 
 /* ---------------------------------------------------------------------------
    Configuration
@@ -107,7 +107,7 @@ export const ISSUE_LABELS: Record<string, string> = {
   'not-sure': 'Not sure',
 }
 
-const KNOWN_CONSENT_VERSIONS: readonly string[] = [SMS_CONSENT_VERSION]
+const KNOWN_CONSENT_VERSIONS: readonly string[] = SMS_CONSENT_ACCEPTED_VERSIONS
 const MAX_BODY_BYTES = 16 * 1024
 const MIN_SECONDS_TO_SUBMIT = 2
 const MAX_AGE_HOURS = 24
