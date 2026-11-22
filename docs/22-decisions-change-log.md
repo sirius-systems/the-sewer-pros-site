@@ -2128,6 +2128,18 @@ launch-ready.
 
 ---
 
+## PENDING-020 — Privacy Policy, Terms and Accessibility Pages Before Cutover
+
+**Status:** OPEN — blocker for production cutover (recorded 2026-11-22, DEC-160)
+
+The site has no privacy policy, terms or accessibility pages (the slugs `privacy`, `terms` and `accessibility` are reserved in `lib/routing/pathname.ts` but unbuilt, and the footer carries no legal links). Both the contact form and the careers form collect personal data (names, phone numbers, email addresses and, on the careers form, a resume). The old site's privacy, consent, conditions and accessibility links are hosted by the old web vendor and stop being linked at cutover, so at cutover the new site would collect lead and resume data with no privacy page and no accessibility statement.
+
+Before production cutover these pages must exist and be linked (footer, and the SMS consent line in `lib/forms/sms-consent.ts` through `SMS_LEGAL_LINKS`). The wording, including what is collected, who can see it and the retention period for application files, needs owner and legal review. **No legal text has been drafted and none should be invented here.** The careers page makes no retention promise until the owner decides one.
+
+Relates to [PENDING-018], [PENDING-019] and DEC-160.
+
+---
+
 ## DEC-072 — Business Owner Determinations on Open Content Questions
 
 **Date:** 2026-08-16
@@ -3987,6 +3999,8 @@ It is not required for the initial build architecture.
 
 Complete legacy URL mapping before final migration.
 
+Add `/careers` (no trailing slash) to the inventory as a retained URL with `/careers/` as its destination (DEC-160). Cloudflare Pages normally answers `/careers` with one redirect to `/careers/` for a page built as `careers/index.html`; see the test result in docs/20. No `_redirects` rule is added unless that test fails.
+
 Legacy thesewerpros.com commercial URLs need mapping to the nearest residential service page, or to the Services hub (`/services/`) if none matches, never the homepage, once the legacy inventory exists. Use direct single-hop permanent redirects with no chains or loops. Do not create redirects for URLs that cannot be verified (DEC-142).
 
 This does not prevent unrelated website development from continuing.
@@ -5770,3 +5784,23 @@ Recorded:
 * **PENDING-018.** Still honest: built and tested once against live GHL; the owner confirms deployment and the Cloudflare variables.
 
 ---
+
+## DEC-160 - Careers Page With Resume Upload (Three Markets, One Recipient)
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Medium (new public page, new Pages Function, personal data)
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `docs/reports/careers-page-proposal.md` (the proposal), `docs/lead-routing.md` (section 3A), `docs/04-master-page-build-list.md`, `docs/20-migration-redirect-plan.md`, `.env.example`, `scripts/verify-lead-routing.mjs`
+
+Recorded:
+
+* **Scope.** `/careers/` announces that The Sewer Pros is accepting applications in the St. Louis area, the San Diego area and the Las Vegas Valley, one block per market. No roles, pay, benefits, perks, schedules, headcounts, start dates or urgency. The per-market openings list (`data/business/careers.ts`) ships empty and renders nothing. No `JobPosting` schema. No email address is shown, only each market's phone from `marketOperatingDetail`. No retention promise.
+* **Storage (option A).** The resume is attached to the applicant's GoHighLevel contact through a File Upload custom field (`POST /forms/upload-custom-files`, scope `forms.write`, field id in `GHL_CAREERS_RESUME_FIELD_ID`), behind a new `POST /api/careers` Pages Function (multipart, separate from `/api/lead`). Cloudflare R2 is the fallback and is not built.
+* **File rules.** PDF and DOCX only (DOC dropped), one file, 5 MB, checked by extension and signature (PDF `%PDF-`; DOCX zip with `[Content_Types].xml` and a `word/` entry). The resume is optional. No virus scan exists on this stack.
+* **Tags and recipient.** `website-careers`, `form-careers` and one of `careers-st-louis`, `careers-san-diego`, `careers-las-vegas`; `careers-resume-failed` marks a contact whose resume could not be attached. All careers submissions in every market go to `info@thesewerpros.com` through one GHL workflow on `website-careers`. No tag contains `market-`; the careers function writes no `website-lead`, `form-contact`, `form-survey` or `market-*` tag and no `market` custom field. `/api/lead` and its tags are unchanged.
+* **Honest failure.** If the contact, tags or note cannot be saved, the visitor sees "We could not send your application" with the market phone. If only the resume cannot be attached (or the field id is not set), the contact is kept, tagged `careers-resume-failed` and noted, and the visitor sees "We received your application, but we could not attach your resume. Please call [market phone] and we will take it from there." The site never says a resume was received in that case.
+* **Privacy gap.** Recorded as PENDING-020, a blocker for production cutover.
+* **Redirect.** `/careers` is added to the PENDING-010 inventory (docs/20).

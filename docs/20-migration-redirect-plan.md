@@ -2786,4 +2786,5 @@ Verified at commit `5b9586a`.
 
 * No redirect is implemented: there is no `public/_redirects` or `_headers`, and none in `out/`. `next.config.ts` uses `output: 'export'`, so redirects must be supplied through the hosting layer (Cloudflare Pages)
 * The complete legacy URL inventory is not in the repository (PENDING-010, in progress)
+* **`/careers` (DEC-160).** The old site's careers page lived at `/careers` (no trailing slash). The new page is `/careers/` (`trailingSlash: true`). It is a retained URL in the PENDING-010 inventory, destination `/careers/`, no chain. No `_redirects` rule is added unless a test on the preview host shows `/careers` does not reach `/careers/` in one step; the test result is recorded in DEC-160's commit message and in the final report of that change.
 * **Blocker before launch:** finish the inventory and classification, map each relevant URL to its canonical destination with no chains or homepage catch-alls, implement, and test on a preview host

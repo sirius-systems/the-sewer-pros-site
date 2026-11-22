@@ -95,3 +95,6 @@ export type { MarketContactTemplateProps } from './MarketContactTemplate'
 
 export { AudienceHubTemplate } from './AudienceHubTemplate'
 export type { AudienceHubTemplateProps } from './AudienceHubTemplate'
+
+export { CareersPageTemplate } from './CareersPageTemplate'
+export type { CareersPageTemplateProps } from './CareersPageTemplate'

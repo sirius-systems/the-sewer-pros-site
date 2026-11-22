@@ -53,6 +53,47 @@ The recipient is the address the site already publishes for that market (`market
 
 Do not add a recipient that the site does not publish.
 
+## 3A. Careers applications (DEC-160)
+
+Careers applications are a separate flow. Their recipient is separate from the `market-*` lead recipients above: **every careers submission, in every market, goes to `info@thesewerpros.com`.** The market tag is kept only so the owner can see which area the applicant chose.
+
+```text
+Visitor fills the careers form on /careers/ (market required, resume optional)
+  v
+POST /api/careers                   Cloudflare Pages Function (functions/api/careers.ts)
+  |  checks: honeypot, minimum time, rate limit, Cloudflare Turnstile, resume type, size and signature
+  v
+GoHighLevel contact upsert          (by phone or email; merges with an existing lead contact)
+  |  adds the careers tags and a note with the answers, then attaches the resume to a File Upload custom field
+  v
+One GHL workflow on website-careers   internal notification to info@thesewerpros.com
+```
+
+| Tag | When | Recipient |
+|---|---|---|
+| `website-careers` | every careers application | info@thesewerpros.com |
+| `form-careers` | every careers application | info@thesewerpros.com |
+| `careers-st-louis` | the applicant chose the St. Louis area | info@thesewerpros.com |
+| `careers-san-diego` | the applicant chose the San Diego area | info@thesewerpros.com |
+| `careers-las-vegas` | the applicant chose the Las Vegas Valley | info@thesewerpros.com |
+| `careers-resume-failed` | a resume was sent but could not be attached (not a routing tag) | none (filter or review only) |
+
+- One workflow triggered when `website-careers` is added is enough. The market tags exist for filtering and visibility.
+- No careers tag contains `market-`, and the careers function never adds `website-lead`, `form-contact`, `form-survey` or a `market-*` tag, so the per-market lead workflows cannot match a careers contact. `scripts/verify-lead-routing.mjs` checks this.
+- The careers function does not write the `market` custom field. It writes `preferred_contact_method` and `source_page`, plus the resume File Upload field.
+- An applicant who is already a customer lead merges into the same GHL contact (the upsert matches on phone or email).
+- No new address is published. The careers page shows no email address, only each market's phone from `marketOperatingDetail`.
+
+**Resume failed handling.** If a resume was sent but the attach step fails or is not configured, the contact, tags and note are still saved, the contact gets `careers-resume-failed`, the note says the resume could not be attached, and the visitor sees: "We received your application, but we could not attach your resume. Please call [market phone] and we will take it from there." Review `careers-resume-failed` contacts regularly and ask the applicant to send the resume another way. If the contact itself cannot be created or the tags or note cannot be saved, the visitor sees "We could not send your application" with the market phone and no thank-you page opens.
+
+**Owner checklist for careers.**
+1. In GHL, create a File Upload custom field on contacts (for example "Resume") and copy its id. Set `GHL_CAREERS_RESUME_FIELD_ID` in Cloudflare Pages (encrypted variable; never in the repo or in chat).
+2. Add the `forms.write` scope to the Private Integration token (the lead function only needs `contacts.write`). Without it the attach step fails safe and applicants see the call message.
+3. Create one workflow triggered when the tag `website-careers` is added that sends an internal notification to `info@thesewerpros.com`.
+4. Confirm each of the three `market-*` lead workflows triggers on "tag added" with its exact tag, and not on "contact created" or "contact updated". A broader trigger would fire on a careers contact.
+5. Test one application per market with a fake name and a phone you control (never a real applicant), once with a PDF and once with a DOCX. Check the contact, the three tags, the note, the attached resume and the notification email. Then submit once with the resume field id unset in a preview and check the `careers-resume-failed` tag and the call message. Delete the test contacts.
+6. Privacy policy, terms and accessibility pages must exist and be linked before production cutover (see docs/22 PENDING-020).
+
 ## 4. Owner checklist
 
 In Cloudflare Pages (names only, never values in the repo or in chat):

@@ -57,6 +57,45 @@ for (const id of ids) {
 }
 check('every market has a market-* tag in lead-server.ts and a docs row whose recipient is its published email', bad.length === 0, bad.join(' | '))
 
+/* ---------------------------------------------------------------------------
+   Careers (DEC-160). All careers submissions go to info@thesewerpros.com; a careers
+   tag must never be able to fire a market-* lead workflow.
+   ------------------------------------------------------------------------- */
+const CAREERS_RECIPIENT = 'info@thesewerpros.com'
+const careersServer = fs.readFileSync(path.resolve('lib/forms/careers-server.ts'), 'utf8')
+const tagsBlock = (careersServer.match(/export const CAREERS_TAGS = \{[\s\S]*?\n\} as const/) || [''])[0]
+const careersAll = [...((tagsBlock.match(/all:\s*\[([^\]]*)\]/) || ['', ''])[1].matchAll(/'([a-z-]+)'/g))].map((m) => m[1])
+const careersByMarket = {}
+for (const m of ((tagsBlock.match(/byMarket:\s*\{([\s\S]*?)\},/) || ['', ''])[1]).matchAll(/'([a-z-]+)':\s*'([a-z-]+)'/g)) careersByMarket[m[1]] = m[2]
+const careersFailed = (tagsBlock.match(/resumeFailed:\s*'([a-z-]+)'/) || [])[1]
+const careersTags = [...careersAll, ...Object.values(careersByMarket), ...(careersFailed ? [careersFailed] : [])]
+check('the careers function declares website-careers, form-careers and a careers tag per market', careersAll.includes('website-careers') && careersAll.includes('form-careers'), careersAll.join(', '))
+
+const missingCareers = []
+for (const id of ids) {
+  const key = keyById[id]
+  const tag = key === undefined ? undefined : careersByMarket[key]
+  if (tag !== `careers-${key}`) missingCareers.push(`${id}: no careers-${key} tag in careers-server.ts`)
+}
+check('every market has a careers-* tag in careers-server.ts', missingCareers.length === 0, missingCareers.join(' | '))
+
+const recipientProblems = []
+for (const tag of [...careersAll, ...Object.values(careersByMarket)]) {
+  const rows = docs.split('\n').filter((l) => l.startsWith('|') && l.includes(`\`${tag}\``))
+  if (rows.length === 0) recipientProblems.push(`no docs row for ${tag}`)
+  else if (!rows.some((l) => l.includes(CAREERS_RECIPIENT))) recipientProblems.push(`${tag} row does not carry ${CAREERS_RECIPIENT}`)
+  else if (rows.some((l) => /@thesewerpros\.com/.test(l) && !l.includes(CAREERS_RECIPIENT))) recipientProblems.push(`${tag} row names another recipient`)
+}
+check(`every careers tag has a docs row whose only recipient is ${CAREERS_RECIPIENT}`, recipientProblems.length === 0, recipientProblems.join(' | '))
+
+const leadTagNames = ['website-lead', 'form-contact', 'form-survey']
+const collisions = careersTags.filter((t) => t.includes('market-') || leadTagNames.includes(t))
+check('no careers tag contains market- or equals a lead tag, so no market-* workflow can match it', collisions.length === 0, collisions.join(', '))
+check('the careers function never uses leadTags, the market-* tag template or the market custom field', !/leadTags|market-\$\{|key:\s*'market'/.test(careersServer.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')))
+
+const careersData = fs.readFileSync(path.resolve('data/business/careers.ts'), 'utf8')
+const openingTitles = [...careersData.matchAll(/^\s*title:\s*'([^']+)'/gm)].map((m) => m[1])
+
 // The legacy stub sends nothing, so it must not appear in any built page.
 const out = path.resolve('out')
 if (fs.existsSync(out)) {
@@ -70,6 +109,41 @@ if (fs.existsSync(out)) {
   }
   walk(out)
   check('no built page renders the legacy LeadFormSection stub (it sends nothing)', hits.length === 0, hits.slice(0, 5).join(', '))
+
+  // The built /careers/ page: copy rules (DEC-160). Only <main> is read, so the header and footer are not.
+  const careersFile = path.join(out, 'careers', 'index.html')
+  if (!fs.existsSync(careersFile)) {
+    check('the built /careers/ page exists', false, 'out/careers/index.html not found')
+  } else {
+    const html = fs.readFileSync(careersFile, 'utf8')
+    const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'))
+    const text = main.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
+    const banned = [
+      ['office', /\boffices?\b/i],
+      ['branch', /\bbranch(es)?\b/i],
+      ['local team', /\blocal team\b/i],
+      ['our ... location', /\bour [a-z. ]{0,20} location\b/i],
+      ['free', /\bfree\b/i],
+      ['superlative', /\b(best|top-rated|leading|premier|number one|finest|unmatched)\b|#1/i],
+      ['pay or benefits', /\$\d|\b(per hour|hourly|salary|wages?|pay|benefits?|perks?|bonus(es)?|401k|insurance)\b/i],
+      ['schedule, headcount or start date', /\b(schedules?|shifts?|full-time|start date|openings? available|positions? available|we are hiring)\b/i],
+      ['urgency', /\b(now hiring|urgent(ly)?|immediate(ly)?|apply today|limited|hurry)\b/i],
+      ['retention promise', /\b(retain|retention|delete[sd]? after|kept for|stored for)\b/i],
+    ]
+    // "Full time" is an option label in the form; the pattern above uses the hyphenated word only.
+    const hitsBanned = banned.filter(([, re]) => re.test(text)).map(([name]) => name)
+    check('/careers/ copy has no office, branch, free, superlative, pay, schedule, urgency or retention wording', hitsBanned.length === 0, hitsBanned.join(', '))
+    check('/careers/ shows no email address', !/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/.test(main) && !/mailto:/.test(main))
+    check('/careers/ has no JobPosting markup', !/JobPosting/.test(html))
+    // Any role listed must come from data/business/careers.ts (an invented role fails the build).
+    const listed = [...main.matchAll(/<ul class="mt-3 list-disc[^>]*>([\s\S]*?)<\/ul>/g)].flatMap((m) =>
+      [...m[1].matchAll(/<li[^>]*>([\s\S]*?)<\/li>/g)].map((x) => x[1].replace(/<[^>]+>/g, '').trim()),
+    )
+    const unknown = listed.filter((t) => !openingTitles.some((title) => t.startsWith(title)))
+    check('every role on /careers/ comes from careersOpenings', unknown.length === 0, unknown.join(' | '))
+    const thanks = path.join(out, 'careers', 'thank-you', 'index.html')
+    check('/careers/thank-you/ is noindex', fs.existsSync(thanks) && /noindex/.test(fs.readFileSync(thanks, 'utf8')))
+  }
 } else {
   console.log('NOTE  out/ not found; run npm run build to check the built pages')
 }

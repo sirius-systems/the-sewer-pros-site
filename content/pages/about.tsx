@@ -84,6 +84,13 @@ export const aboutContent: AboutPageContent = {
           does not perform sewer repair or replacement, so our findings are
           not tied to a repair contract to sell.
         </p>
+        <p>
+          Interested in joining the team? See{' '}
+          <ApprovedInlineLink pageId={id('core-careers')}>
+            Careers at The Sewer Pros
+          </ApprovedInlineLink>
+          .
+        </p>
       </>
     ),
   },
