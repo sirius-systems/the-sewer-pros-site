@@ -5529,6 +5529,8 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           'A new camera inspection when the footage is unclear',
           'No repair or replacement work offered',
         ],
+        scopeStatement:
+          'We do not sell the repair. We have nothing to gain from what your line needs, so our opinion rests only on what the footage shows.',
         cardTitle: 'Ask about a second opinion',
         cardIntro:
           'Tell us what you were told and where the property is. Ask about a free second opinion before scheduling.',
@@ -5810,6 +5812,36 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           question: 'Why not just ask the contractor who gave the quote?',
           answer:
             'A company that diagnoses the problem and also sells the repair has a stake in the answer. That is a point about how the business is set up, not about anyone’s honesty. We have nothing to sell, so our opinion rests only on what the footage shows.',
+        },
+        {
+          group: 'Before you approve work',
+          question: 'Do I need a new sewer line?',
+          answer:
+            'Only the condition of the line can answer that, and a recommendation is not the same as evidence. Ask to see the video and the written findings, and what in them led to the recommendation. If the footage is unclear, a clearer inspection comes before a decision.',
+        },
+        {
+          group: 'Before you approve work',
+          question: 'Should I get a second opinion before replacing a sewer line?',
+          answer:
+            'It is common advice to get more than one view before approving major work, and a second opinion is one way to do that. Send us the report or video you already have, and we tell you whether we agree, disagree, or cannot tell. We do not perform replacements, so we have nothing to sell.',
+        },
+        {
+          group: 'Before you approve work',
+          question: 'What should I ask before approving sewer replacement?',
+          answer:
+            'Ask for the full video and written findings, where in the line each problem was seen, whether repair is possible instead of full replacement, whether cleaning could resolve the problem, and for more than one written quote. Keep the footage so someone else can review it.',
+        },
+        {
+          group: 'Before you approve work',
+          question: 'Can a sewer line be cleaned instead of replaced?',
+          answer:
+            'Sometimes. Cleaning can clear material such as grease, roots, and debris from an accessible line, while it does not repair a structural defect. A camera inspection shows which of the two you are dealing with.',
+        },
+        {
+          group: 'Before you approve work',
+          question: 'What does a sewer camera inspection show?',
+          answer:
+            'A camera documents the visible conditions in the part of the line it reaches, such as blockages, roots, cracks, and offset joints. It cannot confirm wall thickness, pipe slope, or any section it could not reach or see.',
         },
         {
           group: 'Buying a home',

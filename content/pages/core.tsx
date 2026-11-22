@@ -294,7 +294,11 @@ export const homeContent: HomePageContent = {
       question: 'Should I get a second opinion before agreeing to a sewer replacement?',
       answer: (
         <p>
-          A second opinion can start with the report or video you already have.
+          A{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            second opinion
+          </ApprovedInlineLink>{' '}
+          can start with the report or video you already have.
           The Sewer Pros reviews another company&rsquo;s inspection findings and
           tells you whether we agree, disagree, or cannot tell from the
           footage, and can follow with an independent camera inspection if the
