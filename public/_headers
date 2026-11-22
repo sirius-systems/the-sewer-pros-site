@@ -1,0 +1,11 @@
+# Cloudflare Pages response headers (copied to out/_headers by the build).
+#
+# Keep the *.pages.dev hosts out of search indexes (DEC-154). Production is
+# https://www.thesewerpros.com (and thesewerpros.com): it must NOT get a noindex
+# header, so there is deliberately no catch-all "/*" rule here. Canonicals stay
+# on the www host.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
