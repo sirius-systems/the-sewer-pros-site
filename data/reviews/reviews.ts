@@ -11,7 +11,8 @@
  * ===========================================================================
  * REAL, ATTRIBUTED, THIRD-PARTY REVIEW DATA - ONE COMPANY, ALL MARKETS
  * ===========================================================================
- * `google-reviews.json` is an export of the public text reviews on the
+ * `google-reviews.json` is an export of the public reviews (written and
+ * rating-only) on the
  * two Google Business Profiles The Sewer Pros operates (St. Louis and
  * San Diego), read live on `capturedOn`. Every entry carries the
  * reviewer's public name and a link to their public Google profile, so
@@ -75,7 +76,10 @@ export interface GoogleReview {
   profileUrl: string
   /** Relative, as Google shows it. Rendered verbatim. */
   relativeDate: string
-  /** Full text as captured, expanded past Google's "More" cut-off. */
+  /**
+   * Full text as captured, expanded past Google's "More" cut-off. Empty
+   * string for a rating-only review (a star score with no written text).
+   */
   quote: string
   isLocalGuide: boolean
   reviewerReviewCount: number | null
@@ -416,6 +420,9 @@ export const publishedReviews: readonly GoogleReview[] = [
   return ageInMonths(a.relativeDate) - ageInMonths(b.relativeDate)
 })
 
+/** Rating-only reviews (a star score, no written text), published on /reviews/ only. */
+export const ratingOnlyCount = publishedReviews.filter((r) => r.quote === '').length
+
 /** Total captured, before exclusions — for the audit trail. */
 export const capturedReviewCount = allReviews.length
 
@@ -456,14 +463,13 @@ export const MARQUEE_REVIEW_COUNT = 50
  * this is a selection, which is the line that keeps a curated subset
  * honest (CLAUDE.md §23).
  */
-export const marqueeReviews: readonly GoogleReview[] = publishedReviews.slice(
-  0,
-  MARQUEE_REVIEW_COUNT,
-)
+export const marqueeReviews: readonly GoogleReview[] = publishedReviews
+  .filter((r) => r.quote !== '')
+  .slice(0, MARQUEE_REVIEW_COUNT)
 
 /** 18 §120 — the section omits itself rather than render an empty shell. */
 export function reviewMarqueeRenders(): boolean {
-  return publishedReviews.length > 0
+  return marqueeReviews.length > 0
 }
 
 /** Display labels for the two profiles. */

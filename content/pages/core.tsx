@@ -1816,9 +1816,11 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
       title: 'Customer Reviews',
       intro: (
         <p>
-          Written reviews from customers of The Sewer Pros, shown exactly as
-          posted on our Google Business Profiles in St. Louis and San Diego.
-          Each review links to the reviewer&apos;s public Google profile.
+          Reviews from customers of The Sewer Pros, shown exactly as posted on
+          our Google Business Profiles in St. Louis and San Diego. Written
+          reviews are quoted in full, and customers who left a star rating
+          only are shown too. Each review links to the reviewer&apos;s public
+          Google profile.
         </p>
       ),
     },
