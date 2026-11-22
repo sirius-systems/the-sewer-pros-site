@@ -10,7 +10,7 @@ import fs from 'node:fs'
 import { buildGraph, isIndexable, CHROME } from './lib/link-graph.mjs'
 import { SERVICE_NAMES, GENERIC_ANCHORS, HIERARCHY_CEILING, expectedBreadcrumb, hierarchyIssues, marketOf, isCommercialPath } from './lib/link-rules.mjs'
 
-const g = buildGraph()
+const g = buildGraph(process.env.AUDIT_ROOT || undefined)
 const P = g.pages
 const urls = Object.keys(P)
 const idx = urls.filter((u) => isIndexable(P[u]))

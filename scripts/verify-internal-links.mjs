@@ -28,10 +28,14 @@
  *     "Where we serve" (3 market hubs, 1 to 3 local pages one per market), market
  *     contact "Before you reach out" (FAQ and two audiences), hub guides (max 3)
  *   - markup in FAQPage JSON-LD answers (the schema text stays plain)
+ *   - FAQPage text that differs from the visible FAQ answer, a link inside a
+ *     question, and FAQ answer links to missing, noindex or non-sitemap pages
+ *     or to the page itself
  */
 import fs from 'node:fs'
 import path from 'node:path'
-import { buildGraph, isIndexable, CHROME } from './lib/link-graph.mjs'
+import { buildGraph, isIndexable, CHROME, normHref } from './lib/link-graph.mjs'
+import { runFaqAudit } from './audit/faq-audit.mjs'
 import { GENERIC_ANCHORS, HIERARCHY_CEILING, expectedBreadcrumb, hierarchyIssues, marketOf, isCommercialPath } from './lib/link-rules.mjs'
 
 const MIN_INBOUND = 2
@@ -207,6 +211,27 @@ for (const u of urls) {
   }
 }
 check('FAQPage JSON-LD answers are plain text (no markup or links)', markup)
+
+// FAQ blocks: schema text equals the visible answer, no links in questions, answer links are eligible.
+const faq = runFaqAudit(g, g.root)
+check('FAQPage text equals the visible FAQ answer text and no question carries a link', faq.schemaMismatch.map((m) => `${m.url}: ${m.reason}: ${m.q}`))
+const faqLinkIssues = []
+for (const u of urls) {
+  const file = path.join(g.root, u === '/' ? '' : u, 'index.html')
+  const html = fs.readFileSync(file, 'utf8')
+  const main = html.indexOf('<main')
+  if (main < 0) continue
+  for (const m of html.slice(main).matchAll(/<details[^>]*>\s*<summary[^>]*>[\s\S]*?<\/summary>([\s\S]*?)<\/details>/g)) {
+    for (const a of m[1].matchAll(/<a\s[^>]*href="([^"]*)"/g)) {
+      const n = normHref(a[1])
+      if (n.kind !== 'internal') continue
+      if (n.path === u) faqLinkIssues.push(`${u}: FAQ answer links to its own page`)
+      else if (!P[n.path]) faqLinkIssues.push(`${u}: FAQ answer link to missing ${n.path}`)
+      else if (!isIndexable(P[n.path])) faqLinkIssues.push(`${u}: FAQ answer link to noindex ${n.path}`)
+    }
+  }
+}
+check('FAQ answer links resolve to existing, indexable pages other than the page itself', faqLinkIssues)
 
 console.log(failures === 0 ? '\nAll checks passed.' : `\n${failures} check(s) FAILED.`)
 process.exit(failures === 0 ? 0 : 1)
