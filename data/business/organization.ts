@@ -155,6 +155,13 @@ export const hours = {
  * derived "X years of experience" claim — that is a different assertion,
  * it goes stale, and 01 §35 lists years in business among claims needing
  * documented evidence.
+ *
+ * DEC-152 (owner, 2026-11-22): "Since 2011" is approved on every page that
+ * renders the experience counter strip with the company year, including the
+ * San Diego and Las Vegas pages that currently show it. The per-market years
+ * (DEC-071) still apply where a page passes its own `foundingYear` prop: the
+ * San Diego location pages show 2015, and the Las Vegas hub and location pages
+ * omit the year. `scripts/verify-stats-band.mjs` encodes those exceptions.
  */
 export const foundingYear = 2011
 
@@ -219,14 +226,18 @@ export const MARKET_SCOPED_CLAIMS = {
 
 /**
  * Company-wide inspection volume, owner-confirmed accurate 2026-09-27,
- * for the homepage experience counter strip.
+ * for the experience counter strip.
  *
  * ⚠ COMPANY-WIDE, NOT THE SAME CLAIM AS `MARKET_SCOPED_CLAIMS.stLouisOnly`.
  * "Over 100,000 camera inspections" (DEC-072) is a St. Louis-only figure
  * and must stay off San Diego and Las Vegas pages. This is a separate,
- * newer figure the owner approved as accurate across all three markets,
- * so it may appear on the sitewide homepage. Do not merge the two or
- * infer one from the other.
+ * newer figure the owner approved as accurate across all three markets.
+ * Do not merge the two or infer one from the other.
+ *
+ * SCOPE (DEC-152, owner, 2026-11-22): approved for every page that renders
+ * `ExperienceCounterStrip` (site pages, location pages and the
+ * service-plus-location pages), not only the homepage. This supersedes the
+ * homepage-only wording this comment carried before.
  */
 export const inspectionVolume = {
   total: 145_000,

@@ -5606,3 +5606,26 @@ Recorded:
 * **Not changed.** The fixed second opinion block on location pages, the home process band, site-wide CTAs, `offers.ts`, `IndependentProcess` labels, and the comparison page title, meta and H2 (those belong to the editorial audit apply run). Link from the location block: link once verifiers allow.
 
 ---
+
+## DEC-152 - Experience Counter Strip Figures Approved Sitewide
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Moderate (public company figures on 190 pages)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-071 (the per-market founding-year handling, for the pages that currently show 2011 only)
+**Affected Documents:**
+
+* `data/business/organization.ts` (`inspectionVolume` and `foundingYear` comments only; values unchanged), `scripts/verify-stats-band.mjs` (new)
+
+**Reason:** the experience counter strip shows 145,000+ inspections, 8,000+ per year and "Since 2011" on 190 of 202 built pages, while the only approval on record was a code comment scoped to the homepage. The owner approved the figures for every page that renders the strip.
+
+Recorded:
+
+* **Approved:** `inspectionVolume` (145,000 total, 8,000 per year) and `foundingYear` 2011 on every page family that renders `ExperienceCounterStrip`: site pages (home, About, Contact, Services hub and the service pages, audience pages, Resources, Locations hub), the three market hubs and market contact pages, the location pages, and the service-plus-location pages in all three markets.
+* **Supersedes:** the homepage-only scope in the `inspectionVolume` code comment, and DEC-071's per-market year handling for the pages that show 2011 today, including the San Diego and Las Vegas service-plus-location pages, the San Diego hub and contact page, and the Las Vegas contact page.
+* **Unchanged:** the per-market handling on the San Diego location pages (Since 2015) and on the Las Vegas hub and location pages (no year) is not changed here. Whether to harmonize it is left to the owner. The new verifier encodes those two exceptions explicitly.
+* **Still not allowed:** "Since 2011" must not become a derived "X years of experience" claim (01 section 35). "Over 100,000 camera inspections" (DEC-072) stays St. Louis only and is a separate claim.
+* **Guard:** `scripts/verify-stats-band.mjs` (part of `npm run verify`) checks that every built page with the strip shows the `organization.ts` values, apart from the two exceptions above.
+
+---
