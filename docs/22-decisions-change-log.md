@@ -5533,3 +5533,27 @@ governance decisions were moved to DEC-090..095.
 Recorded: the DEC-088 scoping still applies. The offer is stated as "Ask about a free second opinion before scheduling" and may be hedged ("may be available") but not tightened. No price, discount or other free-service claim is authorized. Cost answers now read "If cost is the concern, ask about a free second opinion before scheduling." The same-day FAQ no longer carries the offer sentence. `'free second opinion'` replaces `'free second opinions'` in `CLAIMS_REQUIRING_VERIFICATION`, so the guard still governs every appearance outside the DEC-088 and DEC-139 placements. Anchors, IDs, slugs, analytics names and form mappings were not touched.
 
 ---
+
+## DEC-149 - Reviews From Both Google Profiles Show Sitewide; /reviews/ Page Added
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Moderate (public proof presentation and one new indexable page)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-084, DEC-085, DEC-100, DEC-103 (scope only; DEC-028 stays in force)
+**Affected Documents:**
+
+* `data/reviews/reviews.ts`, `data/reviews/google-reviews.json`, `components/sections/ReviewMarquee.tsx`, `components/sections/ReviewsBrowser.tsx`, `components/templates/ReviewsPageTemplate.tsx`, `app/reviews/page.tsx`, `data/pages/approved-pages.ts`, `data/pages/pages.ts` (page counts 198 to 199, indexable 197 to 198), `data/navigation/navigation.ts`, `docs/04-master-page-build-list.md`
+
+**Reason:** The Sewer Pros is one company across St. Louis, San Diego and Las Vegas. The owner directed that reviews from the St. Louis and San Diego Google Business Profiles may appear on any page, with no market-scoping, and asked for a `/reviews/` page and a Reviews link in the footer.
+
+Recorded:
+
+* **Data.** Both profiles were read live on 2026-11-22 (St. Louis 596 listed, San Diego 284 listed and 283 readable). All 440 text reviews are in `google-reviews.json` with a verified star value, the reviewer's profile link and a `market` field recording the profile each was written on. `market` is provenance, not a display restriction.
+* **Rating snapshot.** 4.9 from 879 ratings read, as of 2026-11-22 (distribution 853/11/0/1/14; implied mean 4.9204). The count is ratings read, not Google's listed total of 880. Visible text only. DEC-028 still bars `Review` and `AggregateRating` markup.
+* **Withheld from the carousel and /reviews/.** 47 of 440 are listed by name with a reason in `excludedReviews`: 15 reviews of 1 to 2 stars, and 32 positive reviews that would republish a same-day, response-time, comparative-price, free-service, weekend, repair, installation, excavation or commercial claim (DEC-035, DEC-036, DEC-083, CLAUDE.md sections 24 and 28). All stay public on Google. 393 are published.
+* **No office implied.** Showing a San Diego review elsewhere implies no San Diego or Las Vegas office or profile (CLAUDE.md sections 10-11).
+* **New page.** `/reviews/` (`core-reviews`), indexable, filterable by profile and theme, with a link to each profile on Google.
+* **Footer.** Reviews added to the Company group.
+
+---

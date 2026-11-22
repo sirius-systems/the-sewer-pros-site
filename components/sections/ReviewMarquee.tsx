@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import {
   Badge,
   Button,
@@ -12,7 +13,7 @@ import { SectionHeading } from './SectionHeading'
 import {
   marqueeReviews,
   ratingSnapshot,
-  googleProfileReviewsUrl,
+  googleProfiles,
   type GoogleReview,
 } from '@/data/reviews/reviews'
 
@@ -126,7 +127,7 @@ export interface ReviewMarqueeProps {
  * `reviewCount` in structured data. DEC-028 stands and DEC-085 says so
  * in as many words.
  */
-function AggregateStat() {
+export function ReviewAggregateStat() {
   const { rating, reviewCount, verifiedAt } = ratingSnapshot
   // Fixed locale: `output: 'export'` prerenders this, so a
   // locale-dependent format would differ between build and browser.
@@ -385,7 +386,7 @@ export function ReviewMarquee({
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <SectionHeading id={id} title={title} />
-          <AggregateStat />
+          <ReviewAggregateStat />
           {caption !== undefined && (
             <p className="mt-2 max-w-[var(--container-reading)] text-sm text-muted-foreground">
               {caption}
@@ -418,18 +419,26 @@ export function ReviewMarquee({
         rather than an empty `mt-8` paragraph. When a real profile URL
         is supplied it appears on its own, as it always would have.
       */}
-      {googleProfileReviewsUrl !== null && (
-        <p className="mt-8 text-sm text-muted-foreground">
+      <p className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+        <Link
+          className="text-accent-secondary underline underline-offset-4 hover:text-foreground"
+          href="/reviews/"
+        >
+          Read all customer reviews
+        </Link>
+        {googleProfiles.map((profile) => (
           <a
+            key={profile.marketId}
             className="text-accent-secondary underline underline-offset-4 hover:text-foreground"
-            href={googleProfileReviewsUrl}
+            href={profile.url}
             target="_blank"
             rel="noopener noreferrer"
           >
-            See all reviews on Google
+            {profile.label} reviews on Google
+            <span aria-hidden="true"> ↗</span>
           </a>
-        </p>
-      )}
+        ))}
+      </p>
     </Section>
   )
 }

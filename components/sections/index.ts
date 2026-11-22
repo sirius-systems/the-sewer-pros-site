@@ -199,8 +199,11 @@ export type { RegionalCoveragePanelProps } from './RegionalCoveragePanel'
 export { MarketGuidance, marketGuidanceRenders } from './MarketGuidance'
 export type { MarketGuidanceProps } from './MarketGuidance'
 
-export { ReviewMarquee } from './ReviewMarquee'
+export { ReviewMarquee, ReviewAggregateStat } from './ReviewMarquee'
 export type { ReviewMarqueeProps } from './ReviewMarquee'
+
+export { ReviewsBrowser } from './ReviewsBrowser'
+export type { ReviewsBrowserProps } from './ReviewsBrowser'
 
 export { LeadFormSection } from './LeadFormSection'
 export type { LeadFormSectionProps } from './LeadFormSection'

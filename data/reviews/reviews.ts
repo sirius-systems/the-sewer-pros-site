@@ -1,73 +1,45 @@
 /**
- * Google reviews — St. Louis Google Business Profile.
+ * Google reviews - The Sewer Pros, St. Louis and San Diego Google Business
+ * Profiles.
  *
- * Authority: docs/01-business-brand-foundation.md §20, §21, §35
- *            docs/18-design-system.md §69-70, §120
+ * Authority: docs/01-business-brand-foundation.md sections 20-21, 35
+ *            docs/18-design-system.md sections 69-70, 120
  *            docs/22-decisions-change-log.md DEC-020, DEC-028, DEC-035,
- *              DEC-036, DEC-072, DEC-083, DEC-084
- *            CLAUDE.md §23, §71, §77
+ *              DEC-036, DEC-072, DEC-083, DEC-084, DEC-085, DEC-100, DEC-103
+ *            CLAUDE.md sections 23, 24, 28
  *
  * ===========================================================================
- * THIS IS REAL, ATTRIBUTED, THIRD-PARTY REVIEW DATA
+ * REAL, ATTRIBUTED, THIRD-PARTY REVIEW DATA - ONE COMPANY, ALL MARKETS
  * ===========================================================================
- * `google-reviews.json` is a one-time export of the public reviews on
- * the St. Louis Google Business Profile, supplied by the business owner
- * on 2026-08-31 (DEC-084). Every entry carries the reviewer's public
- * name and a link to their public Google profile, so every quote on the
- * site is checkable against its source.
+ * `google-reviews.json` is an export of the public text reviews on the
+ * two Google Business Profiles The Sewer Pros operates (St. Louis and
+ * San Diego), read live on `capturedOn`. Every entry carries the
+ * reviewer's public name and a link to their public Google profile, so
+ * every quote on the site is checkable against its source.
  *
- * This is what CLAUDE.md §77 requires and what `data/business/proof.ts`
- * has been waiting for. It does NOT relax §77 for anything else: no
- * quote here may be edited, merged, shortened into a punchier version,
- * or re-attributed, and no market other than St. Louis may show these.
- *
- * ---------------------------------------------------------------------------
- * ⚠ ST. LOUIS ONLY — THIS IS NOT A SITEWIDE PROOF ASSET
- * ---------------------------------------------------------------------------
- * Only St. Louis has a Google Business Profile (01 §21; DEC-020).
- * San Diego and Las Vegas have none identified (DEC-021, DEC-022), and
- * 01 §20 forbids copying one market's business facts to another.
- *
- * These reviews may appear on the sitewide homepage and on St. Louis
- * pages. They must NOT appear on `/san-diego-ca/` or `/las-vegas-nv/`
- * or their location pages.
- *
- * This is why the carousel is a SEPARATE section from `TestimonialBand`
- * rather than a population of `data/business/proof.ts`. `TestimonialBand`
- * renders on six templates including `MarketPageTemplate`, so filling
- * its array would have put St. Louis reviews onto San Diego and Las
- * Vegas market pages automatically. `proof.ts` stays empty.
+ * The Sewer Pros is one company. Reviews from either profile may appear
+ * on any page, including San Diego and Las Vegas pages. The `market`
+ * field records which profile a review was written on so the reviews
+ * page can say so; it is NOT a display restriction. (Owner decision,
+ * 2026-11-22.) What stays forbidden is unchanged: no quote here may be
+ * edited, merged, shortened, or re-attributed, and none of this implies
+ * a physical office or Google profile in a market that has none
+ * (CLAUDE.md sections 10-11).
  *
  * ---------------------------------------------------------------------------
- * NO REVIEW SCHEMA — DEC-028
+ * NO REVIEW SCHEMA - DEC-028
  * ---------------------------------------------------------------------------
- * DEC-028 rejects self-serving review markup pursued for rating stars.
- * These reviews are presentation and conversion material only. Do NOT
- * emit `Review`, `AggregateRating`, or a `ratingValue` from this data.
- *
- * That holds even though eight records now carry a verified `stars`
- * value (DEC-084). Visible stars on a quote are presentation, which
- * DEC-028 explicitly permits — "authentic reviews remain important
- * visually and for conversion". Emitting them as markup to chase rating
- * snippets is the thing DEC-028 rejects. The two are not the same act.
- *
- * ⚠ The profile's OVERALL average and total review count ARE now
- * published, as visible text only — see `ratingSnapshot` below
- * (DEC-085). That approval is explicitly for human-readable content and
- * does NOT extend to schema: no `AggregateRating` node, no
- * `ratingValue`, no `reviewCount` property. DEC-085 restates DEC-028 as
- * remaining in force.
+ * Reviews and ratings are visible presentation only. Do NOT emit
+ * `Review`, `AggregateRating`, `ratingValue` or `reviewCount` from this
+ * data. DEC-085 approved the figures as human-readable text and restates
+ * DEC-028 as remaining in force.
  *
  * ---------------------------------------------------------------------------
- * STATIC SNAPSHOT — IT WILL GO STALE
+ * STATIC SNAPSHOT - IT WILL GO STALE
  * ---------------------------------------------------------------------------
- * This is a hand-transcribed export, not a live feed. It will not
- * reflect reviews posted, edited, or deleted on Google after
- * `capturedOn`. Refresh it periodically by re-exporting.
- *
- * Google's own Places API returns at most five reviews, so a live sync
- * at this scale means a paid third-party widget service. That remains a
- * reasonable future upgrade; it is not what this is.
+ * This is an export, not a live feed. It does not reflect reviews posted,
+ * edited, or deleted on Google after `capturedOn`. Refresh it by
+ * re-exporting both profiles and updating `ratingSnapshot`.
  */
 
 import raw from './google-reviews.json'
@@ -79,133 +51,114 @@ import raw from './google-reviews.json'
  * converting that to a calendar date would invent precision the source
  * does not have (CLAUDE.md §23, §78).
  */
+export type ReviewMarket = 'st-louis-mo' | 'san-diego-ca'
+
+/** Themes a review touches. A review may carry several, or none. */
+export type ReviewTopic =
+  | 'real-estate'
+  | 'landlord'
+  | 'cleaning'
+  | 'honest'
+  | 'inspection'
+
+/**
+ * One public Google review, exactly as captured.
+ *
+ * No `date`: Google publishes only relative time ("3 months ago"), and
+ * converting that to a calendar date would invent precision the source
+ * does not have (CLAUDE.md section 23).
+ */
 export interface GoogleReview {
   /** Reviewer's public display name on Google. Never abbreviated here. */
   name: string
-  /** Public Google profile — makes every quote checkable at source. */
+  /** Public Google profile - makes every quote checkable at source. */
   profileUrl: string
   /** Relative, as Google shows it. Rendered verbatim. */
   relativeDate: string
-  /** Full text as captured. See `isTruncated`. */
+  /** Full text as captured, expanded past Google's "More" cut-off. */
   quote: string
   isLocalGuide: boolean
   reviewerReviewCount: number | null
   reviewerPhotoCount: number | null
-  /**
-   * Star rating, ONLY where it was individually verified against the
-   * live listing. `null` everywhere else.
-   *
-   * =========================================================================
-   * ⚠ COVERAGE IS PARTIAL — 8 OF 278, AND null MEANS UNKNOWN
-   * =========================================================================
-   * The original export carried no star values. A live verification pass
-   * confirmed 5 stars for eight reviews individually; Google Maps
-   * throttled the scroll before the rest could be read (DEC-084).
-   *
-   * `null` means NOT VERIFIED. It does not mean unrated, and it
-   * certainly does not mean low.
-   *
-   * ⚠ DO NOT backfill these from the aggregate. The profile's overall
-   * average is high, and it is still a distribution containing one-star
-   * and two-star reviews — assuming 5 for an unverified record would
-   * manufacture a rating for a specific named person's review, which is
-   * exactly what CLAUDE.md §23 and §77 forbid. Backfilling requires
-   * per-review verification, not arithmetic.
-   *
-   * The component renders a star row only where this is non-null, and
-   * shows nothing at all otherwise — no placeholder, no greyed row, no
-   * assumed value.
-   */
+  /** Star rating read from the live listing for every record. */
   stars: number | null
+  /** Which Google Business Profile the review was written on. */
+  market: ReviewMarket
+  /** Keyword-derived themes, used only for filtering on /reviews/. */
+  topics: readonly ReviewTopic[]
 }
 
 const allReviews = raw as readonly GoogleReview[]
 
+/** Date both profiles were read. Everything here is a snapshot of this day. */
+export const capturedOn = '2026-11-22'
+
 /**
- * Date the export was taken. Everything here is a snapshot of this day.
+ * The two Google Business Profiles the reviews come from.
+ *
+ * `ratings` is the per-star count of every rating read on `capturedOn`
+ * (text reviews and rating-only reviews). `listedCount` is the total
+ * Google displayed; San Diego listed 284 and 283 loaded, so one rating
+ * was not readable and is not counted.
  */
-export const capturedOn = '2026-08-31'
+export interface GoogleProfile {
+  marketId: ReviewMarket
+  /** Short label for the profile. */
+  label: string
+  /** Link to the profile on Google, supplied by the business owner. */
+  url: string
+  listedCount: number
+  distribution: Readonly<Record<1 | 2 | 3 | 4 | 5, number>>
+}
 
-/** The only market these reviews may be shown for. See the header. */
-export const reviewsMarketId = 'st-louis-mo'
+export const googleProfiles: readonly GoogleProfile[] = [
+  {
+    marketId: 'st-louis-mo',
+    label: 'St. Louis',
+    url: 'https://share.google/ao4sfGaBLNpbIYygj',
+    listedCount: 596,
+    distribution: { 5: 576, 4: 7, 3: 0, 2: 1, 1: 12 },
+  },
+  {
+    marketId: 'san-diego-ca',
+    label: 'San Diego',
+    url: 'https://share.google/dSnq8FvXKTsrc1TmU',
+    listedCount: 284,
+    distribution: { 5: 277, 4: 4, 3: 0, 2: 0, 1: 2 },
+  },
+]
 
 /**
- * The profile's overall rating and review count — approved for
- * publication as VISIBLE TEXT ONLY (DEC-085).
+ * The combined rating and review count, published as VISIBLE TEXT ONLY
+ * (DEC-085, DEC-100, DEC-103).
  *
- * ===========================================================================
- * A SNAPSHOT, NOT A COUNTER
- * ===========================================================================
- * `verifiedAt` is the point this was read off the live listing. It is a
- * required field, not decoration: DEC-085 approves publishing the
- * figure *labelled as a point-in-time reading*, and the UI renders that
- * date alongside it. A bare "4.9 from 595 reviews" with no date would
- * assert something this project cannot support — that the number is
- * current.
+ * A SNAPSHOT, NOT A COUNTER: `verifiedAt` is the day the listings were
+ * read and the UI renders it beside the figure. The count is the number
+ * of ratings actually read (879), not Google's listed total (880), and
+ * the buckets sum to it. Checked when recorded: the implied mean is
+ * 4.9204, which rounds to 4.9.
  *
- * Refresh it whenever the review dataset itself is refreshed.
- *
- * ---------------------------------------------------------------------------
- * ⚠ TEXT ONLY — NO SCHEMA
- * ---------------------------------------------------------------------------
- * DEC-028 rejects self-serving review markup and DEC-085 explicitly
- * leaves it in force. Do NOT feed these values into `AggregateRating`,
- * `ratingValue`, `reviewCount`, or any other structured-data property.
- * The approval covers what a visitor reads, not what a crawler parses.
- *
- * ---------------------------------------------------------------------------
- * ⚠ ST. LOUIS ONLY
- * ---------------------------------------------------------------------------
- * This is the St. Louis profile's rating. 01 §20-21 and DEC-085 forbid
- * showing or implying it for San Diego or Las Vegas, which have no GBP.
- *
- * ---------------------------------------------------------------------------
- * The distribution is recorded but NOT rendered
- * ---------------------------------------------------------------------------
- * DEC-085 approves the rating and the count. The per-star breakdown is
- * its verification basis, kept here because it is the evidence and
- * because it is the standing argument against backfilling `stars` from
- * the average — the profile contains one- and two-star reviews, so "the
- * average is 4.9" does not make any particular unverified review a 5.
- *
- * Checked when recorded: the five buckets sum to 595, and the implied
- * mean is 4.9025, which rounds to the stated 4.9. The figures
- * corroborate each other rather than being three separate assertions.
+ * TEXT ONLY, NO SCHEMA (DEC-028). The distribution is the verification
+ * basis and is not rendered.
  */
 export interface RatingSnapshot {
   rating: number
   reviewCount: number
-  /** ISO date the live listing was read. Rendered with the figure. */
+  /** ISO date the live listings were read. Rendered with the figure. */
   verifiedAt: string
-  /** Verification basis. Not for display — see above. */
+  /** Verification basis. Not for display. */
   distribution: Readonly<Record<1 | 2 | 3 | 4 | 5, number>>
 }
 
 export const ratingSnapshot: RatingSnapshot = {
   rating: 4.9,
-  reviewCount: 595,
-  verifiedAt: '2026-09-01',
-  distribution: { 5: 575, 4: 7, 3: 0, 2: 1, 1: 12 },
+  reviewCount: 879,
+  verifiedAt: '2026-11-22',
+  distribution: { 5: 853, 4: 11, 3: 0, 2: 1, 1: 14 },
 }
 
-/**
- * Link to the full, unfiltered profile on Google.
- *
- * ⚠ NULL because no Google Business Profile URL is documented anywhere
- * in this repository — not in `organization.ts` (which has no `sameAs`
- * at all, per 15 §27), not in the market registry, not in doc 01 or 11.
- *
- * CLAUDE.md §23 forbids filling that gap with a plausible-looking Maps
- * URL. When the owner supplies the real one, set it here and the
- * marquee's "See all reviews on Google" link appears on its own.
- *
- * That link matters beyond convenience: it is where a visitor sees the
- * complete picture including the reviews excluded below. The marquee
- * used to say so in plain words while the link was missing; the owner
- * removed that sentence on 2026-09-03, so today the gap is simply
- * unstated. Supplying the URL is what closes it.
- */
-export const googleProfileReviewsUrl: string | null = null
+/** Google profile links, for "See all reviews on Google". */
+export const googleProfileReviewsUrl: string | null = googleProfiles[0]?.url ?? null
 
 /**
  * Reviews withheld from the carousel, each with the rule that withholds
@@ -214,7 +167,7 @@ export const googleProfileReviewsUrl: string | null = null
  * ===========================================================================
  * WHY A NAMED LIST INSTEAD OF A PRE-FILTERED FILE
  * ===========================================================================
- * `google-reviews.json` holds the export UNCHANGED, and exclusions live
+ * `google-reviews.json` holds every text review from the export UNCHANGED, and exclusions live
  * here as data. So the count that was removed is visible, each removal
  * states its reason, and reversing one is a one-line edit rather than a
  * re-export. Quietly deleting rows from the JSON would leave no trace
@@ -222,7 +175,7 @@ export const googleProfileReviewsUrl: string | null = null
  *
  * ⚠ NONE of this is a claim these reviews are fake or that they are
  * hidden. They are public on Google and stay public on Google. This
- * list governs one marketing carousel.
+ * list governs the marketing carousel and the /reviews/ page.
  *
  * Two different reasons are mixed here deliberately, and the second is
  * the one worth understanding:
@@ -243,71 +196,402 @@ export const googleProfileReviewsUrl: string | null = null
 export interface ReviewExclusion {
   profileUrl: string
   name: string
+  market: ReviewMarket
   reason: string
 }
 
 export const excludedReviews: readonly ReviewExclusion[] = [
   {
-    name: 'Brian Markowitz',
+    name: 'Sabi singh',
+    market: 'st-louis-mo',
     profileUrl:
-      'https://www.google.com/maps/contrib/105258453558610668556/reviews?hl=en-US',
+      'https://www.google.com/maps/contrib/114875746466232913807/reviews?hl=en-US',
     reason:
-      'NEGATIVE — disputes technician licensing and experience. Public on ' +
-      'Google; not carousel material. ⚠ Note its subject: it contests ' +
-      'licensing, which is exactly the evidence question left open at ' +
-      'DEC-063 criterion 7 and still unresolved (see DEC-080 and doc 22 ' +
-      '§39). Do not treat excluding it as answering it.',
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Laura Rudolphi',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/105071389469450359314/reviews?hl=en-US',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Sara Neil',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/113739447178348707984/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Rachel Hart',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/112671959166368772986/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Amanda Megl',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/103082190718036203152/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Phil K',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/117027551400007115457/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 2-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'RD LW',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/111461430097187974991/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Rhonda Lutker',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/105419040868835802101/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'J Island',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/117155816906815176734/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Justin Michael',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/105391961396971969062/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Brian Markowitz',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/105258453558610668556/reviews?hl=en',
+    reason:
+      'NEGATIVE - disputes technician licensing and experience. Public on ' +
+      'Google; not carousel material. Note its subject: it contests ' +
+      'licensing, which is the evidence question left open at DEC-063 ' +
+      'criterion 7 and still unresolved (see DEC-080). Do not treat ' +
+      'excluding it as answering it.',
+  },
+  {
+    name: 'Rachel Freeman',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/107766536303901652894/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'MrRebelyell83 bo',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/109754601836000240617/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Steven Martin',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/117499520586012735752/reviews?hl=en-US',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
+  },
+  {
+    name: 'Ruben Contreras',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/110114066315195939984/reviews?hl=en',
+    reason:
+      'NEGATIVE - a 1-star review. Public on Google and stays public there; a marketing carousel is not the venue for an unresolved dispute.',
   },
   {
     name: 'andy dv',
+    market: 'st-louis-mo',
     profileUrl:
-      'https://www.google.com/maps/contrib/108382948439845096398/reviews?hl=en-US',
+      'https://www.google.com/maps/contrib/108382948439845096398/reviews?hl=en',
     reason:
-      'CLAIM CONFLICT — "came out same-day to help me with an urgent ' +
-      'matter". Featuring it would advertise same-day and emergency ' +
-      'availability. DEC-035; CLAUDE.md §11.',
+      'CLAIM CONFLICT - "came out same-day to help me with an urgent matter". Advertises same-day and emergency availability. DEC-035.',
   },
   {
     name: 'Ben',
+    market: 'st-louis-mo',
     profileUrl:
-      'https://www.google.com/maps/contrib/108941836893863475537/reviews?hl=en-US',
+      'https://www.google.com/maps/contrib/108941836893863475537/reviews?hl=en',
     reason:
-      'CLAIM CONFLICT — "completed it same day" plus "still cheaper than ' +
-      'the quotes from their competitors". Same-day availability and a ' +
-      'comparative price claim. DEC-035, DEC-036.',
+      'CLAIM CONFLICT - "completed it same day" plus "still cheaper than the quotes from their competitors". Same-day availability and a comparative price claim. DEC-035, DEC-036.',
   },
   {
     name: 'SH',
+    market: 'st-louis-mo',
     profileUrl:
-      'https://www.google.com/maps/contrib/116791268133088296139/reviews?hl=en-US',
+      'https://www.google.com/maps/contrib/116791268133088296139/reviews?hl=en',
     reason:
-      'CLAIM CONFLICT — "about half the price of the other companies". A ' +
-      'comparative pricing claim with no substantiation. DEC-036; ' +
-      'CLAUDE.md §71.',
+      'CLAIM CONFLICT - "about half the price of the other companies". Unsubstantiated comparative pricing claim. DEC-036.',
   },
   {
     name: 'Vicki J. Harp',
+    market: 'st-louis-mo',
     profileUrl:
-      'https://www.google.com/maps/contrib/100306114139655826380/reviews?hl=en-US',
+      'https://www.google.com/maps/contrib/100306114139655826380/reviews?hl=en',
     reason:
-      'CLAIM CONFLICT — "You work on Saturdays if I need you" directly ' +
-      'contradicts the published hours this site states, Monday to ' +
-      'Friday, closed weekends (DEC-083). Featuring it would advertise ' +
-      'weekend availability the business does not publish.',
+      'CLAIM CONFLICT - "You work on Saturdays if I need you" contradicts the published hours (Monday to Friday, DEC-083).',
   },
   {
     name: 'Victoria Krylov',
+    market: 'st-louis-mo',
     profileUrl:
-      'https://www.google.com/maps/contrib/102939052114483520392/reviews?hl=en-US',
+      'https://www.google.com/maps/contrib/102939052114483520392/reviews?hl=en',
     reason:
-      'CLAIM CONFLICT — "finish the job in the same day" plus exposing a ' +
-      'buried sewer vent in the yard. Same-day completion (DEC-035) and ' +
-      'excavation-shaped work, which is not an approved service ' +
-      '(CLAUDE.md §4, DEC-013).',
+      'CLAIM CONFLICT - "finish the job in the same day" plus exposing a buried sewer vent. Same-day completion (DEC-035) and excavation-shaped work, which is not an approved service.',
+  },
+  {
+    name: 'lisa schmalz',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/108250722827329918166/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Emergency backup reported on a Sunday evening and booked for Monday. Reads as emergency and weekend availability. DEC-035, DEC-083.',
+  },
+  {
+    name: 'Bridget Kelly',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/103284708019406323196/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Response and service time frames ("less than 24 hours", "less than 45 minutes"). Unverified response-time claims. CLAUDE.md section 24.',
+  },
+  {
+    name: 'Jessica Craig',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/104544664834973114177/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "report and video ... within a couple of hours". Unverified turnaround claim.',
+  },
+  {
+    name: 'Heather',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/106792622145227357938/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "very short notice. (24 hours)". Unverified scheduling-speed claim.',
+  },
+  {
+    name: 'Hannah Wickers',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/118163193435391536537/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Booked "the next day". Unverified scheduling-speed claim.',
+  },
+  {
+    name: 'Brittany Stevenson',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/111620534944157768877/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Report received "that same day". Same-day claim. DEC-035.',
+  },
+  {
+    name: 'Blake Bredensteiner',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/113833324971022142335/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Report "in less than two hours". Unverified turnaround claim.',
+  },
+  {
+    name: 'Debbie Boyce',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/115462374131215610363/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - On site "within a couple hours". Same-day / response-time claim. DEC-035.',
+  },
+  {
+    name: 'Greg Sumpter',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/102756154932619028020/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Contractor list emailed "within a few minutes". Unverified response-time claim.',
+  },
+  {
+    name: 'clifford conway',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/108334322830128181850/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Appointment "the next day". Unverified scheduling-speed claim.',
+  },
+  {
+    name: 'Heather Austin',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/109407584971287207436/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "I had the report same day". Same-day claim. DEC-035.',
+  },
+  {
+    name: 'LM SF',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/109010206029442659179/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - References a master plumber completing repair work. Implies repair capability that is not offered.',
+  },
+  {
+    name: 'Kay Kahn-Henderson',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/106283836301977407165/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "find the problem and fix it". Ambiguous; can read as repair capability that is not offered.',
+  },
+  {
+    name: 'Mary Winslow',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/115226874673197322170/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Describes a site that "required digging". Excavation is not an approved service.',
+  },
+  {
+    name: 'Lawrence Meier',
+    market: 'st-louis-mo',
+    profileUrl:
+      'https://www.google.com/maps/contrib/101299731377881530111/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "Cost more than I would like to pay". A price complaint; not carousel material.',
+  },
+  {
+    name: 'Nicolas Bonnafoux',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/100835484796166033423/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - On site "within two days", report "the next day". Unverified turnaround claim.',
+  },
+  {
+    name: 'Jason Bedsole (Real Estate Simplified)',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/103529991929924316026/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Full report "later that day". Same-day claim. DEC-035.',
+  },
+  {
+    name: 'R Franco',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/108910768485731972586/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "the most affordable" plus "here the next day". Comparative price and scheduling-speed claims. DEC-036.',
+  },
+  {
+    name: 'Ali Enteshari',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/104994615189053186484/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Booked "the next day", report "soon after". Unverified scheduling-speed claim.',
+  },
+  {
+    name: 'Veronica Mejia-Guillen',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/107426956967330526986/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "The report was sent to us the same day". Same-day claim. DEC-035.',
+  },
+  {
+    name: 'NATHAN RUSSELL',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/110208940133593957620/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Report "within hours of the inspection". Unverified turnaround claim.',
+  },
+  {
+    name: 'Nick Parker-Cole',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/114861725228480573980/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Compares the fee with another plumber ("for less than the first plumber"). Comparative price claim. DEC-036.',
+  },
+  {
+    name: 'Lisa Standke',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/114438047308142924059/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "stand above the competition" plus what the "affordable base price" includes. Comparative and pricing claim. DEC-036.',
+  },
+  {
+    name: 'Andrew Morris',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/100189955727982943915/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "jetting at no additional cost". Free-service offer claim. CLAUDE.md section 24.',
+  },
+  {
+    name: 'Michael Phillips',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/105342148934676701494/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "utilizing SewerPros to complete the recommended repairs". Implies repair capability that is not offered.',
+  },
+  {
+    name: 'Julia Castronova',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/104870966641246924602/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - Phone estimate "for installing" a cleanout. Installation is not an approved service; also an estimate and price claim.',
+  },
+  {
+    name: 'David Zecha',
+    market: 'san-diego-ca',
+    profileUrl:
+      'https://www.google.com/maps/contrib/106207984089913743851/reviews?hl=en',
+    reason:
+      'CLAIM CONFLICT - "both my commercial and residential projects". Commercial services are not listed (CLAUDE.md section 28).',
   },
 ]
 
-const excludedUrls = new Set(excludedReviews.map((e) => e.profileUrl))
+/**
+ * Google profile URLs differ between exports only in their `hl=` suffix
+ * (`hl=en` vs `hl=en-US`), so identity is the numeric contributor id.
+ */
+function contribId(url: string): string {
+  return /contrib\/(\d+)/.exec(url)?.[1] ?? url
+}
+
+const excludedIds = new Set(excludedReviews.map((e) => contribId(e.profileUrl)))
 
 /**
  * Reviews pinned to the front of the rotation.
@@ -333,9 +617,13 @@ const pinnedUrls: readonly string[] = [
   'https://www.google.com/maps/contrib/105735436110082880381/reviews?hl=en-US',
   // Named real-estate agent, repeat referrer — Christy Christensen-Walls
   'https://www.google.com/maps/contrib/103953318193475797513/reviews?hl=en-US',
+  // Realtor: "ONLY does diagnosis (not repairs)" - Emily Holmes (San Diego profile)
+  'https://www.google.com/maps/contrib/108003881274999746450/reviews?hl=en',
   // Most recent detailed review; charged for cleaning only — Yu Ma
   'https://www.google.com/maps/contrib/101463023415017386350/reviews?hl=en-US',
 ]
+
+const pinnedIds: readonly string[] = pinnedUrls.map(contribId)
 
 /**
  * Approximate age in months, derived from the relative date string.
@@ -383,10 +671,10 @@ export function isTruncated(review: GoogleReview): boolean {
  * `allReviews` stays available unfiltered for auditing what was cut.
  */
 export const publishedReviews: readonly GoogleReview[] = [
-  ...allReviews.filter((r) => !excludedUrls.has(r.profileUrl)),
+  ...allReviews.filter((r) => !excludedIds.has(contribId(r.profileUrl))),
 ].sort((a, b) => {
-  const pinA = pinnedUrls.indexOf(a.profileUrl)
-  const pinB = pinnedUrls.indexOf(b.profileUrl)
+  const pinA = pinnedIds.indexOf(contribId(a.profileUrl))
+  const pinB = pinnedIds.indexOf(contribId(b.profileUrl))
   if (pinA !== -1 || pinB !== -1) {
     if (pinA === -1) return 1
     if (pinB === -1) return -1
@@ -444,3 +732,24 @@ export const marqueeReviews: readonly GoogleReview[] = publishedReviews.slice(
 export function reviewMarqueeRenders(): boolean {
   return publishedReviews.length > 0
 }
+
+/** Display labels for the two profiles. */
+export const reviewMarketLabels: Readonly<Record<ReviewMarket, string>> = {
+  'st-louis-mo': 'St. Louis',
+  'san-diego-ca': 'San Diego',
+}
+
+/** Filter labels for /reviews/, in display order. */
+export const reviewTopicLabels: Readonly<Record<ReviewTopic, string>> = {
+  'real-estate': 'Buying or selling a home',
+  inspection: 'Inspections and camera scopes',
+  cleaning: 'Cleaning and clearing',
+  honest: 'Honest, no upsell',
+  landlord: 'Rentals and investment properties',
+}
+
+/**
+ * Reviews for the /reviews/ page: everything cleared for publication,
+ * pinned first, then newest. The carousel takes the head of the same list.
+ */
+export const reviewsPageReviews: readonly GoogleReview[] = publishedReviews

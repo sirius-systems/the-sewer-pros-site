@@ -194,6 +194,16 @@ export const approvedPages: readonly MasterPageRecord[] = [
     parentId: 'core-home' as PageId,
   },
   {
+    id: 'core-reviews' as PageId,
+    name: 'Customer Reviews',
+    pageType: 'core',
+    pathname: toPathname('/reviews/'),
+    status: 'launch',
+    indexable: true,
+    priority: 'L3',
+    parentId: 'core-home' as PageId,
+  },
+  {
     id: 'svc-sewer-camera-inspection' as PageId,
     name: 'Sewer Camera Inspection',
     pageType: 'service',
