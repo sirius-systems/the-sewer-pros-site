@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getPage } from '@/data/pages'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import { localServicePageId } from '@/lib/links/link-plan'
+import { resolveVariants } from '@/lib/links/variants'
 import type { PageId } from '@/types'
 
 /**
@@ -60,20 +61,20 @@ const PHRASES: readonly { re: RegExp; serviceId: string }[] = [
   { re: /(?<!sewer )cleaning (?:&|and) camera inspection/i, serviceId: 'svc-sewer-cleaning-camera-inspection' },
   // Second-opinion language points to the independent-inspection comparison, never to a repair page.
   { re: /(?<!free )(?:independent )?second opinion/i, serviceId: 'cmp-independent-vs-repair' },
-  { re: /pre-purchase sewer inspection/i, serviceId: 'svc-pre-purchase-sewer-inspection' },
+  { re: /pre-purchase (?:sewer )?inspection|sewer (?:inspection|scope) before (?:you buy|closing|buying)/i, serviceId: 'svc-pre-purchase-sewer-inspection' },
   { re: /recurring sewer backup diagnosis/i, serviceId: 'svc-recurring-sewer-backup-diagnosis' },
   { re: /preventative sewer maintenance/i, serviceId: 'svc-preventative-sewer-maintenance' },
   { re: /sewer camera inspection/i, serviceId: 'svc-sewer-camera-inspection' },
-  { re: /sewer line locating/i, serviceId: 'svc-sewer-line-locating' },
+  { re: /(?:sewer )?line locating|locating the (?:sewer )?line/i, serviceId: 'svc-sewer-line-locating' },
   // "Sewer scope" is the everyday name for the camera inspection (06 registry aliases).
   { re: /sewer scope/i, serviceId: 'svc-sewer-camera-inspection' },
   { re: /hydro jetting (?:vs\.?|versus) (?:sewer )?snaking/i, serviceId: 'cmp-hydro-vs-snaking' },
   { re: /independent (?:sewer )?inspection (?:vs\.?|versus) (?:a )?repair company/i, serviceId: 'cmp-independent-vs-repair' },
   { re: /inspection video/i, serviceId: 'res-read-video' },
   { re: /free second opinion/i, serviceId: 'cta-second-opinion' },
-  { re: /hydro jetting/i, serviceId: 'svc-hydro-jetting' },
-  { re: /drain cleaning/i, serviceId: 'svc-drain-cleaning' },
-  { re: /sewer cleaning/i, serviceId: 'svc-sewer-cleaning' },
+  { re: /hydro[ -]jetting|water jetting|sewer jetting/i, serviceId: 'svc-hydro-jetting' },
+  { re: /drain[ -](?:line )?cleaning|drain clearing|cleaning a drain line/i, serviceId: 'svc-drain-cleaning' },
+  { re: /sewer (?:line )?cleaning|cleaning (?:of )?the sewer line/i, serviceId: 'svc-sewer-cleaning' },
   // Geography. A market is named by its hub; "St. Louis City" and "St. Louis County" are not the market.
   // "City of X" names the municipality and its sewer department, not our service market, so it is not linked.
   { re: /(?<!City of )St\. Louis(?! City| County)/, serviceId: 'market-st-louis-mo' },
@@ -110,7 +111,6 @@ const SHORT_FORM: Readonly<Record<string, RegExp>> = {
   'svc-sewer-camera-inspection': /camera inspection$/i,
   'svc-sewer-line-locating': /line locating$/i,
   'svc-sewer-cleaning-camera-inspection': /camera inspection$/i,
-  'svc-pre-purchase-sewer-inspection': /sewer inspection$/i,
 }
 const FOLLOWING_NOUN = /^ (?:service|services|visit|appointment|option)\b/i
 const MARKET_FOLLOWING = /^ (?:area|metro area|market|Valley|County)\b/
@@ -282,7 +282,9 @@ export function createFaqLinker(ctx: FaqLinkContext) {
     return cloneElement(node, undefined, Children.map(props.children, (c) => walk(c, budget)))
   }
 
-  return (answer: ReactNode): ReactNode => {
+  return (rawAnswer: ReactNode, question = ''): ReactNode => {
+    // Variant markers first: the visible text, the anchor and the FAQPage text all come from this choice.
+    const answer = resolveVariants(rawAnswer, `${here?.pathname ?? ''}|${question}`)
     // An answer that names several markets is a coverage answer: link each (16 §52 allows it).
     const text = plainText(answer)
     const markets = MARKET_RES.filter((re) => re.test(text)).length

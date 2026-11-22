@@ -42,6 +42,7 @@
 import { Fragment, isValidElement, type ReactNode } from 'react'
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
+import { resolveVariants } from '@/lib/links/variants'
 import type { AnswerNode, FaqContent, FaqPageNode, QuestionNode } from '@/types'
 
 interface WithChildren {
@@ -163,13 +164,15 @@ export function faqPageNode(
   url: string,
   name: string,
   websiteRef: { '@id': string },
+  /** The route, so a shared answer resolves the same `{{a|b}}` variants the page shows (lib/links/variants.tsx). */
+  pathname = '',
 ): FaqPageNode | undefined {
   if (faqs === undefined || faqs.length === 0) return undefined
 
   const mainEntity: QuestionNode[] = faqs.map((entry) => {
     const acceptedAnswer: AnswerNode = {
       '@type': 'Answer',
-      text: faqAnswerText(entry.answer, entry.question),
+      text: faqAnswerText(resolveVariants(entry.answer, `${pathname}|${entry.question}`), entry.question),
     }
     return {
       '@type': 'Question',
