@@ -28,7 +28,10 @@
  * question, remove the figure rather than soften or requalify it.
  */
 
-import type { AboutPageContent } from '@/types'
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
+import type { AboutPageContent, PageId } from '@/types'
+
+const id = (value: string): PageId => value as PageId
 
 export const aboutContent: AboutPageContent = {
   hero: {
@@ -217,7 +220,11 @@ export const aboutContent: AboutPageContent = {
         'Can The Sewer Pros give me a second opinion on a sewer repair recommendation?',
       answer: (
         <p>
-          Yes. A second opinion can start with the inspection report or video
+          Yes. A{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            second opinion
+          </ApprovedInlineLink>{' '}
+          can start with the inspection report or video
           you already have: The Sewer Pros reviews it and tells you whether we
           agree, disagree, or cannot tell from the footage. If the footage is
           unclear, we can inspect and document visible sewer-line conditions

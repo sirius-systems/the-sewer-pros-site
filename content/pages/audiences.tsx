@@ -250,7 +250,11 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         <h2>Responding to a buyer&rsquo;s finding</h2>
         <p>
           If an inspection has already been done and the findings are being used
-          to reopen terms, an independent second opinion is a reasonable step.
+          to reopen terms, an independent{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            second opinion
+          </ApprovedInlineLink>{' '}
+          is a reasonable step.
           Sewer footage frequently supports more than one reading: a joint may
           be a maintenance item or the start of a failure, and the interpretation
           matters.

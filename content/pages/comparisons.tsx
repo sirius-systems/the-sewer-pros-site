@@ -25,6 +25,7 @@
  * anyone's motives.
  */
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type { CardImage, ComparisonPageContent, PageId } from '@/types'
 import { RENDER_IMAGE_SOURCE } from '@/lib/image-slots'
 
@@ -264,7 +265,11 @@ export const comparisonContent: Partial<Record<PageId, ComparisonPageContent>> =
           differentiator, not a claim about how anyone else works.
         </p>
         <p>
-          A second opinion from a company with nothing to sell is the one view
+          A{' '}
+          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+            second opinion
+          </ApprovedInlineLink>{' '}
+          from a company with nothing to sell is the one view
           of your line that is not tied to a quote. If it says repair is needed,
           it is because the evidence says so.
         </p>
