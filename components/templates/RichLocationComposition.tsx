@@ -234,10 +234,7 @@ export function RichLocationComposition({
 
       <TrustBar />
 
-      <ExperienceCounterStrip
-        surface="muted"
-        foundingYear={detail?.foundingYear}
-      />
+      <ExperienceCounterStrip surface="muted" />
 
       {content.keyTakeaways && <KeyTakeaways content={content.keyTakeaways} />}
 

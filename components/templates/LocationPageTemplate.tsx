@@ -16,7 +16,6 @@ import {
   ReviewMarquee,
 } from '@/components/sections'
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
-import { marketOperatingDetail } from '@/data/markets'
 import { PageShell } from './PageShell'
 import { RichLocationComposition } from './RichLocationComposition'
 import type { LocationPageContent, MasterPageRecord } from '@/types'
@@ -142,15 +141,7 @@ export function LocationPageTemplate({
       */}
       <TrustBar />
 
-      {/* A market whose founding year is unknown (0) drops the cell; every other market keeps the company year. */}
-      <ExperienceCounterStrip
-        surface="muted"
-        foundingYear={
-          page.marketId !== undefined && marketOperatingDetail[page.marketId]?.foundingYear === 0
-            ? 0
-            : undefined
-        }
-      />
+      <ExperienceCounterStrip surface="muted" />
 
       {content.body !== undefined && (
         <Section density="standard" width="reading">

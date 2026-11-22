@@ -5690,3 +5690,25 @@ Recorded:
 * **Still open and not in copy:** turnaround, whether contractor quotes are reviewed, and what "free" covers. The hedged "free second opinion" placements (DEC-151) are unchanged and no new "free" was added.
 
 ---
+
+## DEC-156 - One Company Founding Year (2011) on the Experience Counter Strip
+
+**Date:** 2026-11-22
+**Status:** APPROVED
+**Impact:** Moderate (public company figure on 190 pages)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-152 (the two per-market exceptions), DEC-071 and 01 section 20 as they applied to the counter strip
+**Affected Documents:**
+
+* `components/sections/ExperienceCounterStrip.tsx` (the per-page `foundingYear` prop is removed), `components/templates/LocationPageTemplate.tsx`, `MarketPageTemplate.tsx`, `RichLocationComposition.tsx` (override removed), `scripts/verify-stats-band.mjs` and the page verifiers that pinned the old behavior
+
+**Reason:** the owner confirmed that the company has been in business since 2011 and directed that this date be used.
+
+Recorded:
+
+* **One year.** Every page that renders `ExperienceCounterStrip` shows "Since 2011" from `foundingYear` in `data/business/organization.ts`. The San Diego override (2015) and the Las Vegas override (no year) are removed. Result: 2011 on all 190 pages that render the strip.
+* **What the strip is.** A company-wide statement: the same service since 2011. It does not license a derived "X years of experience" claim (01 section 35). It does not claim a local office, a local operating history or a local review count in San Diego or Las Vegas.
+* **Unchanged.** The strip's wording, its figures (145,000+, 8,000+, 3 markets) and the other places that print a market year. Market-level `foundingYear` values in `data/markets/markets.ts` are still read by page copy and other components, so they stay; those lines are reported for the owner.
+* **Guard.** `scripts/verify-stats-band.mjs` now requires the same year on every page. The Las Vegas and San Diego page verifiers still scan the page's own copy for St. Louis values and forbidden strings, with the company-wide strip excluded from those scans.
+
+---

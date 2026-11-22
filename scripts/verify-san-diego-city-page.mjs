@@ -67,6 +67,12 @@ const mainHtml = mainRaw
   // Company-wide service-area line in the hero aside (all three markets), not market copy.
   .replace(/Serving St\. Louis[^<]{1,6}San Diego[^<]{1,6}Las Vegas/g, '')
 const text = strip(mainHtml)
+
+// The experience counter strip is company-wide (DEC-156): it shows "Since 2011" on every page. The scans below
+// run on the page without the strip, so St. Louis and other-market values are still caught in the page's own copy.
+const BAND_RE = /<aside[^>]*aria-labelledby="experience-counters"[\s\S]*?<\/aside>/
+const mainHtmlNoBand = mainHtml.replace(BAND_RE, '')
+const textNoBand = strip(mainHtmlNoBand)
 check('mobile contact bar renders inside <main>', /aria-label="Quick contact"/.test(mainHtml))
 
 /* ---- San Diego market constants (DEC-071), read from the data file ---- */
@@ -212,7 +218,7 @@ check('no in-page jump nav (removed with the "On this page" navs, 05dcf85)', jum
 /* ---- Copy checks ---- */
 check('no em dashes in visible text (U+2014)', !text.includes(String.fromCharCode(8212)))
 const REQUIRED = [
-  SD_PHONE, SD_HOURS, `Since ${SD_YEAR}`,
+  SD_PHONE, SD_HOURS, `Since 2011`,
   '619-515-3525', '619-515-3500', '619-446-5300', '619-446-5200', '619-446-5242',
   "Plumber's Report", 'Encroachment Maintenance Removal Agreement', 'currently suspended', 'Council Policy 400-10',
   'Public Utilities', 'Right-of-Way Permit', "This is the City's number", "These are the City's numbers, not ours",
@@ -225,7 +231,7 @@ check('phone is not also shown with any other market number in <main>', !/\(\d{3
 
 // Cross-market scan, scoped to <main> (hero card, forms, mobile contact bar).
 const CROSS = ['(314)', '314-', '821-1600', 'Since 2011', '2011', 'MSD', 'Metropolitan St. Louis', 'St. Louis', 'Missouri', '4.9', '595', 'Google reviews', 'Realtors', 'Lateral Repair Program']
-const crossHits = CROSS.filter((w) => text.includes(norm(w)) || mainHtml.includes(w))
+const crossHits = CROSS.filter((w) => textNoBand.includes(norm(w)) || mainHtmlNoBand.includes(w))
 check('cross-market scan of <main> finds no St. Louis value', crossHits.length === 0, crossHits.join(', '))
 check('<main> links contain no St. Louis or Las Vegas tel: number', !/href="tel:\+1-(314|725)/.test(mainHtml))
 
@@ -237,7 +243,7 @@ const FORBIDDEN = [
 const caseInsensitive = new Set(['neglect', 'certified', 'certification', 'insured', 'insurance', 'guarantee', 'warranty', 'same-day', 'weekend', 'best price', 'testimonial', 'placeholder', 'no reimbursement', 'median'])
 const forbiddenHits = FORBIDDEN.filter((w) => {
   const n = norm(w)
-  return caseInsensitive.has(w.toLowerCase()) ? text.toLowerCase().includes(n.toLowerCase()) : text.includes(n)
+  return caseInsensitive.has(w.toLowerCase()) ? textNoBand.toLowerCase().includes(n.toLowerCase()) : textNoBand.includes(n)
 })
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))
 const contextOnly = (pattern, allowed, label, flags = 'g') => {

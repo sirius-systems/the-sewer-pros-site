@@ -68,6 +68,14 @@ const mainHtml = mainRaw
   // Company-wide service-area line in the hero aside (all three markets), not market copy.
   .replace(/Serving St\. Louis[^<]{1,6}San Diego[^<]{1,6}Las Vegas/g, '')
 const text = strip(mainHtml)
+
+// The experience counter strip is company-wide (DEC-156): it shows "Since 2011" on every page. The scans below
+// run on the page without the strip, so St. Louis and other-market values are still caught in the page's own copy.
+const BAND_RE = /<aside[^>]*aria-labelledby="experience-counters"[\s\S]*?<\/aside>/
+const bandHtml = (mainHtml.match(BAND_RE) || [''])[0]
+const mainHtmlNoBand = mainHtml.replace(BAND_RE, '')
+const textNoBand = strip(mainHtmlNoBand)
+const htmlNoBand = html.replace(BAND_RE, '')
 check('mobile contact bar renders inside <main>', /aria-label="Quick contact"/.test(mainHtml))
 
 /* ---- San Diego market constants (DEC-071), read from the data file ---- */
@@ -247,7 +255,7 @@ check('footer shows the San Diego number as a tel: link', footerHtml.includes(`h
 
 // Cross-market scan, scoped to <main>. The district's 760 numbers are not company numbers.
 const CROSS = ['(314)', '314-', '821-1600', 'Since 2011', 'MSD', 'Metropolitan St. Louis', 'St. Louis', 'Missouri', 'Google reviews', 'Realtors', 'Las Vegas', 'Nevada', 'CVSan', 'Chula Vista’s', 'Escondido Municipal Code', 'Leucadia']
-const crossHits = CROSS.filter((w) => text.includes(norm(w)) || mainHtml.includes(w))
+const crossHits = CROSS.filter((w) => textNoBand.includes(norm(w)) || mainHtmlNoBand.includes(w))
 check('cross-market scan of <main> finds no St. Louis, Las Vegas or other-city rule', crossHits.length === 0, crossHits.join(', '))
 check('<main> links contain no St. Louis or Las Vegas tel: number', !/href="tel:\+1-?(314|725|702)/.test(mainHtml))
 
@@ -259,7 +267,7 @@ const FORBIDDEN = [
   'funds remain', 'fully funded', 'you will be reimbursed', 'Unlike', 'Placeholder', 'NOT FOR PRODUCTION',
   'testimonial', '20,737', '@vwd.org', '201 Vallecitos', '7:30', 'free second opinion',
 ]
-const forbiddenHits = FORBIDDEN.filter((w) => text.toLowerCase().includes(norm(w).toLowerCase()))
+const forbiddenHits = FORBIDDEN.filter((w) => textNoBand.toLowerCase().includes(norm(w).toLowerCase()))
 check('no forbidden strings', forbiddenHits.length === 0, forbiddenHits.join(', '))
 const contextOnly = (pattern, allowed, label, flags = 'g') => {
   const bad = [...text.matchAll(new RegExp(pattern, flags))]
@@ -358,8 +366,8 @@ if (fs.existsSync(sitemapPath)) {
 }
 
 /* ---- Trust strip founding year ---- */
-check('"Since 2011" appears nowhere on the page', !html.includes('Since 2011'))
-check(`trust strip founding-year cell reads Since ${SD_YEAR}`, new RegExp('Since ' + SD_YEAR).test(text) && !/2011/.test(text))
+check('"Since 2011" appears only in the company-wide strip, not in the page copy (DEC-156)', !htmlNoBand.includes('Since 2011'))
+check('trust strip founding-year cell reads Since 2011 (company year, DEC-156)', /Since\s*(<!-- -->)?\s*2011/.test(bandHtml))
 
 /* ---- Market phones (whole document, header and footer included) ---- */
 check(
