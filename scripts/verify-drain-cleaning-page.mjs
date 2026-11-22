@@ -283,7 +283,7 @@ check('no evidence mosaic section on this page', !/aria-labelledby="see-what/.te
 checkRelatedCards({
   main,
   check,
-  expectedHrefs: ['/services/sewer-cleaning/', '/services/hydro-jetting/', '/services/sewer-camera-inspection/', '/services/sewer-line-locating/'],
+  expectedHrefs: ['/services/sewer-cleaning/', '/services/hydro-jetting/', '/services/sewer-camera-inspection/', '/services/sewer-line-locating/', '/services/recurring-sewer-backup-diagnosis/'],
 })
 
 /* ---- Rhythm: two brand surfaces, the independent band and the final request ---- */

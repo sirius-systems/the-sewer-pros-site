@@ -220,6 +220,8 @@ export function ServiceLocationPageTemplate({
     page.locationId !== undefined && page.marketId !== undefined && page.serviceId !== undefined
       ? [
           ...(locationHubPageId(page.locationId) !== undefined ? [locationHubPageId(page.locationId) as PageId] : []),
+          // The market hub: a body link up the hierarchy, not only the breadcrumb (16 §126).
+          `market-${page.marketId}` as PageId,
           ...siblingServicePageIds(page.locationId, page.serviceId),
           ...siblingLocationPageIds(page.marketId, page.locationId, page.serviceId),
         ]
