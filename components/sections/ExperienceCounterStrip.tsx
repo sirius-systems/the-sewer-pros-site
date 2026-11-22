@@ -39,14 +39,6 @@ export interface ExperienceCounterStripProps {
   density?: SectionDensity
   surface?: SectionSurface
   id?: string
-  /**
-   * A market's own founding year (DEC-071), from `marketOperatingDetail`.
-   * Defaults to the company constant, so every caller that omits it renders
-   * exactly as before. Pass `0` for a market whose year is unknown: the
-   * founding-year cell is dropped, so a market with no verified year never
-   * falls back to another market's.
-   */
-  foundingYear?: number
 }
 
 const COUNTERS: readonly {
@@ -83,9 +75,9 @@ export function ExperienceCounterStrip({
   density = 'dense',
   surface = 'default',
   id = 'experience-counters',
-  foundingYear: marketFoundingYear,
 }: ExperienceCounterStripProps) {
-  const sinceYear = marketFoundingYear ?? foundingYear
+  // One company, one founding year (DEC-156): every page shows the company year.
+  const sinceYear = foundingYear
   const showSince = sinceYear > 0
   return (
     <Section density={density} surface={surface} as="aside" labelledBy={id}>

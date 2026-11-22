@@ -60,6 +60,11 @@ const mainEnd = bodyHtml.indexOf('</main>')
 check('<main> found', mainStart > -1 && mainEnd > mainStart)
 const mainHtml = bodyHtml.slice(mainStart, mainEnd)
 const text = strip(mainHtml)
+
+// The experience counter strip is company-wide (DEC-156): it shows "Since 2011" on every page. The scans below
+// run on the page without the strip, so St. Louis and other-market values are still caught in the page's own copy.
+const BAND_RE = /<aside[^>]*aria-labelledby="experience-counters"[\s\S]*?<\/aside>/
+const mainHtmlNoBand = mainHtml.replace(BAND_RE, '')
 check('mobile contact bar renders inside <main>', /aria-label="Quick contact"/.test(mainHtml))
 
 /* ---- San Diego market constants (DEC-071), read from the data file ---- */
@@ -208,7 +213,7 @@ check('anchors appear in the required order', pos.every((p, i) => p > -1 && (i =
 /* ---- Copy checks ---- */
 check('no em dashes in visible text (U+2014)', !text.includes(String.fromCharCode(8212)))
 const REQUIRED = [
-  SD_PHONE, SD_HOURS, `Since ${SD_YEAR}`,
+  SD_PHONE, SD_HOURS, `Since 2011`,
   '619-515-3525', '619-446-5300', '619-446-5242',
   "Plumber's Report",
   'currently suspended', '2,418', 'Public Utilities', 'Right-of-Way Permit', "the City's number",

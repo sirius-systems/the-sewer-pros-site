@@ -579,8 +579,7 @@ export function MarketPageTemplate({
         the hero on every page (owner, 2026-10-06). `default` matches
         neither the `muted` strip above nor the `brand` band below.
       */}
-      {/* A market whose founding year is unknown (0) drops the cell; every other market keeps the company year. */}
-      <ExperienceCounterStrip foundingYear={detail?.foundingYear === 0 ? 0 : undefined} />
+      <ExperienceCounterStrip />
 
       {/*
         ==================================================================
