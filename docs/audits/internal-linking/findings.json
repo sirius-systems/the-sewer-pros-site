@@ -1,0 +1,1277 @@
+{
+ "generated": "2026-11-22",
+ "findings": [
+  {
+   "check": "editorial-orphan",
+   "severity": "B",
+   "url": "/",
+   "evidence": "inbound links are chrome/breadcrumb only",
+   "fix": "add a body link from a related page",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/faq/",
+   "evidence": "\"sewer scope\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/for/home-buyers/",
+   "evidence": "\"sewer scope\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/for/home-inspectors/",
+   "evidence": "\"sewer scope\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/for/",
+   "evidence": "\"Recurring Sewer Backup or Clog →\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/",
+   "evidence": "\"recurring backup\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/",
+   "evidence": "\"before closing\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/",
+   "evidence": "\"preventative maintenance\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/las-vegas-nv/contact/",
+   "evidence": "\"line locating\" -> /services/sewer-line-locating/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/las-vegas-nv/",
+   "evidence": "\"Recurring Backup Diagnosis\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/las-vegas-nv/",
+   "evidence": "\"Explore Preventative Maintenance →\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/las-vegas-nv/",
+   "evidence": "\"recurring backup\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/las-vegas-nv/",
+   "evidence": "\"before closing\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/las-vegas-nv/",
+   "evidence": "\"preventative maintenance\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/",
+   "evidence": "\"recurring backup\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/",
+   "evidence": "\"before closing\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/",
+   "evidence": "\"preventative maintenance\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/henderson/",
+   "evidence": "\"About pre-purchase inspection\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/henderson/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/henderson/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/henderson/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/henderson/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"About pre-purchase inspection\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/las-vegas/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/las-vegas/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/las-vegas/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"About pre-purchase inspection\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/north-las-vegas/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/north-las-vegas/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/north-las-vegas/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "evidence": "\"About pre-purchase inspection\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/summerlin/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/las-vegas-nv/summerlin/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/las-vegas-nv/summerlin/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/carlsbad/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/carlsbad/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/carlsbad/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/carlsbad/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/chula-vista/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/chula-vista/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/chula-vista/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/escondido/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/escondido/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/escondido/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/escondido/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/mission-valley/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/mission-valley/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/mission-valley/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/oceanside/",
+   "evidence": "\"About pre-purchase inspection\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/oceanside/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/oceanside/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/oceanside/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/oceanside/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/san-diego/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/san-diego/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/san-diego/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/san-marcos/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/san-marcos/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/san-diego-ca/san-marcos/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/san-diego-ca/san-marcos/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/ballwin/",
+   "evidence": "\"How pre-purchase inspection works\" -> /locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/ballwin/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/ballwin/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/ballwin/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/ballwin/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/chesterfield/",
+   "evidence": "\"How camera inspection works\" -> /locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/chesterfield/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/chesterfield/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/florissant/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/florissant/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/florissant/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/florissant/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/st-charles/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/st-charles/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/st-charles/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/st-charles/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/st-charles/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/st-louis-city/",
+   "evidence": "\"How camera inspection works\" -> /locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/locations/st-louis-mo/st-louis-city/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /locations/st-louis-mo/st-louis-city/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/san-diego-ca/",
+   "evidence": "\"Explore Pre-Purchase Inspection →\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/san-diego-ca/",
+   "evidence": "\"Preventative Maintenance\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/san-diego-ca/",
+   "evidence": "\"Explore Backup Diagnosis →\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/san-diego-ca/",
+   "evidence": "\"recurring backup\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/san-diego-ca/",
+   "evidence": "\"before closing\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/san-diego-ca/",
+   "evidence": "\"preventative maintenance\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/drain-cleaning/",
+   "evidence": "\"Water jetting\" -> /services/hydro-jetting/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/drain-cleaning/",
+   "evidence": "\"Camera inspection (separate service)\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/hydro-jetting/",
+   "evidence": "\"cleaning with camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/",
+   "evidence": "\"recurring backup\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/",
+   "evidence": "\"before closing\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/",
+   "evidence": "\"preventative maintenance\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/pre-purchase-sewer-inspection/",
+   "evidence": "\"Sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/pre-purchase-sewer-inspection/",
+   "evidence": "\"Sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer scope\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/pre-purchase-sewer-inspection/",
+   "evidence": "\"sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/recurring-sewer-backup-diagnosis/",
+   "evidence": "\"Sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-camera-inspection/",
+   "evidence": "\"Sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-camera-inspection/",
+   "evidence": "\"Line locating\" -> /services/sewer-line-locating/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-cleaning/",
+   "evidence": "\"camera inspection\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-cleaning/",
+   "evidence": "\"Sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-cleaning/",
+   "evidence": "\"Recurring backup diagnosis\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-cleaning/",
+   "evidence": "\"Cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-cleaning/",
+   "evidence": "\"Line locating\" -> /services/sewer-line-locating/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-cleaning-camera-inspection/",
+   "evidence": "\"sewer scope\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/services/sewer-line-locating/",
+   "evidence": "\"Sewer cleaning and camera inspection\" -> /services/sewer-cleaning-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/st-louis-mo/contact/",
+   "evidence": "\"sewer scope\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/st-louis-mo/",
+   "evidence": "\"Recurring Backup Diagnosis\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/st-louis-mo/",
+   "evidence": "\"Camera Inspection →\" -> /services/sewer-camera-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/st-louis-mo/",
+   "evidence": "\"Pre-Purchase Inspection →\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/st-louis-mo/",
+   "evidence": "\"recurring backup\" -> /services/recurring-sewer-backup-diagnosis/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/st-louis-mo/",
+   "evidence": "\"before closing\" -> /services/pre-purchase-sewer-inspection/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "anchor-vs-registry-name",
+   "severity": "C",
+   "url": "/st-louis-mo/",
+   "evidence": "\"preventative maintenance\" -> /services/preventative-sewer-maintenance/",
+   "fix": "watch: anchor is a natural variant of the registered name",
+   "status": "open"
+  },
+  {
+   "check": "link-bloat",
+   "severity": "C",
+   "url": "/",
+   "evidence": "119 internal links (ceiling 100 distinct)",
+   "fix": "watch: nav + footer + body",
+   "status": "open"
+  },
+  {
+   "check": "link-bloat",
+   "severity": "C",
+   "url": "/las-vegas-nv/",
+   "evidence": "101 internal links (ceiling 100 distinct)",
+   "fix": "watch: nav + footer + body",
+   "status": "open"
+  },
+  {
+   "check": "link-bloat",
+   "severity": "C",
+   "url": "/locations/",
+   "evidence": "103 internal links (ceiling 100 distinct)",
+   "fix": "watch: nav + footer + body",
+   "status": "open"
+  },
+  {
+   "check": "link-bloat",
+   "severity": "C",
+   "url": "/services/",
+   "evidence": "103 internal links (ceiling 100 distinct)",
+   "fix": "watch: nav + footer + body",
+   "status": "open"
+  },
+  {
+   "check": "link-bloat",
+   "severity": "C",
+   "url": "/st-louis-mo/",
+   "evidence": "105 internal links (ceiling 100 distinct)",
+   "fix": "watch: nav + footer + body",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/about/",
+   "evidence": "\"sewer line locating\" -> /services/sewer-line-locating/ in \"What does The Sewer Pros specialize in?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/about/",
+   "evidence": "\"St. Charles\" -> /locations/st-louis-mo/st-charles/ in \"What professional affiliations does The Sewer Pros hold?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/contact/",
+   "evidence": "\"sewer line locating\" -> /services/sewer-line-locating/ in \"Which services can I request through the Contact page?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/contact/",
+   "evidence": "\"drain cleaning\" -> /services/drain-cleaning/ in \"Which services can I request through the Contact page?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/",
+   "evidence": "\"home buyers\" -> /for/home-buyers/ in \"Should I get a sewer inspection before buying a house?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/las-vegas-nv/contact/",
+   "evidence": "\"Henderson\" -> /locations/las-vegas-nv/henderson/ in \"Which Las Vegas-area cities do you cover?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/las-vegas-nv/contact/",
+   "evidence": "\"North Las Vegas\" -> /locations/las-vegas-nv/north-las-vegas/ in \"Which Las Vegas-area cities do you cover?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/las-vegas-nv/contact/",
+   "evidence": "\"Summerlin\" -> /locations/las-vegas-nv/summerlin/ in \"Which Las Vegas-area cities do you cover?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/",
+   "evidence": "\"hydro jetting\" -> /services/hydro-jetting/ in \"Does The Sewer Pros offer the same services in every market?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/",
+   "evidence": "\"sewer line locating\" -> /services/sewer-line-locating/ in \"Does The Sewer Pros offer the same services in every market?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Who is responsible for a sewer lateral at a City of Las Vegas property, and who maintains the main?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"How old are Las Vegas homes, and does that tell me about my lateral?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Who do I call about a sewer backup in Las Vegas?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does the City of Las Vegas help with lateral costs, and what is its warranty?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"How do I find where my lateral connects to the City main?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does lateral work in Las Vegas need a permit?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does Las Vegas require a sewer inspection when a home is sold?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Who is responsible for the sewer lateral in North Las Vegas?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does North Las Vegas treat a blockage the same as a breakage?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"What should I do if a plumber says the problem is on the City side?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does the City of North Las Vegas help pay for lateral repairs?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Who do I call about a sewer problem in North Las Vegas?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does North Las Vegas require a sewer inspection when a home is sold?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"How do I start water and sewer service when I buy a home in North Las Vegas?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/north-las-vegas/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does the City offer optional coverage for sewer lines?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Is Summerlin part of the City of Las Vegas?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Who is responsible for a sewer lateral at a City of Las Vegas address in Summerlin?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does public responsibility start at the property line in Summerlin?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Who do I call about a sewer backup in Summerlin?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does the City of Las Vegas warranty apply to my Summerlin property?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/las-vegas-nv/summerlin/",
+   "evidence": "\"Las Vegas\" -> /las-vegas-nv/ in \"Does Summerlin require a sewer inspection when a home is sold?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/san-diego-ca/chula-vista/",
+   "evidence": "\"San Diego\" -> /san-diego-ca/ in \"Is Chula Vista served by CVSan or a separate sanitation district?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/san-diego-ca/mission-valley/",
+   "evidence": "\"San Diego\" -> /san-diego-ca/ in \"Is Mission Valley a separate city?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/locations/san-diego-ca/mission-valley/",
+   "evidence": "\"landlord\" -> /for/property-managers/ in \"Who maintains the sewer lateral at a Mission Valley property?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/resources/st-louis-county-sewer-lateral-program/",
+   "evidence": "\"Florissant\" -> /locations/st-louis-mo/florissant/ in \"Why do the caps differ so much?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/resources/st-louis-county-sewer-lateral-program/",
+   "evidence": "\"St. Charles\" -> /locations/st-louis-mo/st-charles/ in \"Why do the caps differ so much?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/san-diego-ca/contact/",
+   "evidence": "\"Carlsbad\" -> /locations/san-diego-ca/carlsbad/ in \"Which San Diego-area communities do you work in?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/san-diego-ca/contact/",
+   "evidence": "\"Chula Vista\" -> /locations/san-diego-ca/chula-vista/ in \"Which San Diego-area communities do you work in?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/san-diego-ca/contact/",
+   "evidence": "\"Escondido\" -> /locations/san-diego-ca/escondido/ in \"Which San Diego-area communities do you work in?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/san-diego-ca/contact/",
+   "evidence": "\"Mission Valley\" -> /locations/san-diego-ca/mission-valley/ in \"Which San Diego-area communities do you work in?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/san-diego-ca/contact/",
+   "evidence": "\"Oceanside\" -> /locations/san-diego-ca/oceanside/ in \"Which San Diego-area communities do you work in?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/san-diego-ca/contact/",
+   "evidence": "\"San Marcos\" -> /locations/san-diego-ca/san-marcos/ in \"Which San Diego-area communities do you work in?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/services/",
+   "evidence": "\"Sewer Cleaning & Camera Inspection\" -> /services/sewer-cleaning-camera-inspection/ in \"What sewer and drain services does The Sewer Pros offer?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/services/",
+   "evidence": "\"pre-purchase sewer inspection\" -> /services/pre-purchase-sewer-inspection/ in \"What sewer and drain services does The Sewer Pros offer?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/services/",
+   "evidence": "\"recurring sewer backup diagnosis\" -> /services/recurring-sewer-backup-diagnosis/ in \"What sewer and drain services does The Sewer Pros offer?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/services/",
+   "evidence": "\"preventative sewer maintenance\" -> /services/preventative-sewer-maintenance/ in \"What sewer and drain services does The Sewer Pros offer?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/services/recurring-sewer-backup-diagnosis/",
+   "evidence": "\"inspection report\" -> /resources/what-is-in-a-sewer-camera-inspection-report/ in \"Can I use the sewer video for a sale or a city review?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  },
+  {
+   "check": "faq-opportunity",
+   "severity": "B",
+   "url": "/st-louis-mo/contact/",
+   "evidence": "\"St. Charles\" -> /locations/st-louis-mo/st-charles/ in \"What areas around St. Louis do you serve?\"",
+   "fix": "link in a supporting sentence if it reads naturally",
+   "status": "open"
+  }
+ ]
+}
