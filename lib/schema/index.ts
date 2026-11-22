@@ -20,7 +20,7 @@
  * DELIBERATELY ABSENT
  * ---------------------------------------------------------------------------
  * `AggregateRating` — 15 §61, DEC-028. Verified rating data DOES now
- *   exist (4.9 from 595 reviews, DEC-085), but that decision approves
+ *   exist (see `ratingSnapshot` in data/reviews/reviews.ts, DEC-149), but that decision approves
  *   it as VISIBLE TEXT only and restates DEC-028 as remaining in
  *   force. The absence is not pending better data: self-serving
  *   ratings on Organization/LocalBusiness are ineligible for Google
