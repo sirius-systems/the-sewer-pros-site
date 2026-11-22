@@ -1197,20 +1197,29 @@ Do not script what customers must say.
 
 # 62. San Diego GBP Strategy
 
-San Diego requires an eligibility-first strategy.
+A San Diego Google Business Profile exists and is company-owned (owner confirmed 2026-11-22, DEC-153). The strategy is to maintain and complete it, not to create it.
 
-Before creating a profile:
+The repository does not record the profile's details. No address, hours, categories, service areas or review counts are stated here; read them from the profile itself.
 
-1. confirm current operating base
-2. confirm business/customer contact model
-3. confirm address eligibility
-4. determine storefront vs SAB vs hybrid
-5. confirm business phone
-6. confirm hours
-7. confirm service coverage
-8. confirm owner account
-9. prepare verification evidence
-10. then create/claim and verify
+Maintain and complete:
+
+1. keep the business name, phone and hours consistent with the company's published facts (the San Diego number in `data/markets/markets.ts`)
+2. complete the profile's categories, services and service areas from verified coverage only (see section 64)
+3. keep the profile's website link pointed at the San Diego market hub (see section 63)
+4. keep posts and photos accurate and limited to real work and real services
+5. confirm who holds the owner account and that access is documented
+
+Review process:
+
+* respond to reviews from the profile, on the same plain, factual terms as elsewhere
+* do not script what customers must say
+* the review figure the site displays comes only from `ratingSnapshot` in `data/reviews/reviews.ts` (DEC-149), never from the profile or from a third-party aggregation page
+
+Address display:
+
+* the profile data may include a street address, but its public visibility on the website is not approved
+* no San Diego office, storefront, branch, public address or map pin is published on the site until the owner approves how the San Diego address is displayed
+* no `LocalBusiness` schema or San Diego location is added to Organization schema until that decision is made (see `15-schema-entity-strategy.md`)
 
 ---
 
