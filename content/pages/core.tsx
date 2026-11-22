@@ -838,13 +838,17 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       secondaryAction: { href: '#cta', label: 'Request Service' },
     },
     /*
-      ⚠ NO BRAND SUFFIX, WHICH IS WHY THIS IS NOT THE STRING THE BRIEF
-      GAVE. Prompt 04 specifies "Sewer & Drain Cleaning Services | The
-      Sewer Pros"; `rootMetadata`'s `%s | ${SITE_NAME}` template appends
-      the suffix for every nested route (`lib/seo/metadata.ts:149`), so
-      writing it here would ship it twice.
+      ⚠ NO BRAND SUFFIX, WHICH IS WHY THIS IS NOT THE EXACT STRING THE
+      BRIEF GAVE. Prompt 04 specified "Sewer & Drain Cleaning Services | The
+      Sewer Pros". The owner approved a new title on SEO grounds
+      (2026-11-22, editorial audit P6, DEC-104: the hub attracts a
+      comparison-stage searcher, and the old title said nothing about
+      inspection and shared "drain cleaning" with the Drain Cleaning page).
+      `rootMetadata`'s `%s | ${SITE_NAME}` template appends the suffix for
+      every nested route (`lib/seo/metadata.ts:149`), so writing it here
+      would ship it twice.
     */
-    seoTitle: 'Sewer & Drain Cleaning Services',
+    seoTitle: 'Sewer & Drain Inspection and Cleaning',
     /*
       ⚠ THE BRIEF'S EM DASH IS A FULL STOP HERE. Prompt 04 wrote
       "...and more — independent service across..."; this project does

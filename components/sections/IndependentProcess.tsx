@@ -127,7 +127,7 @@ export function IndependentProcess({
   const eyebrow = content?.eyebrow ?? 'Independent sewer inspection & second opinions'
   const title =
     content?.title ??
-    'Before You Approve an Expensive Sewer Repair, Get an Opinion From a Company That Does Not Sell Repairs or Replacements'
+    'Get an Opinion From a Company That Does Not Sell Repairs or Replacements'
   const intro = content?.intro ?? [
     'A sewer backup or major repair recommendation can make a costly decision feel urgent. The Sewer Pros inspects and documents the condition inside your sewer line so you can understand what is actually happening before you approve cleaning, excavation, lining, or replacement.',
     'Because we do not perform sewer repairs or replacements, we do not profit from selling you the work. Our role is to inspect and document visible conditions, explain what we found in plain language, and give you an honest opinion you can use to make the next decision.',
