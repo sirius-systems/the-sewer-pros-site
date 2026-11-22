@@ -132,6 +132,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       { pageId: id('svc-pre-purchase-sewer-inspection'), description: 'The inspection built around a purchase decision.' },
       { pageId: id('svc-sewer-camera-inspection'), description: 'What the camera can and cannot establish.' },
       { pageId: id('svc-sewer-cleaning-camera-inspection'), description: 'Where buildup prevents a clear assessment.' },
+      { pageId: id('svc-independent-sewer-second-opinion'), description: 'Review the inspection report or video you already have.' },
     ],
     process: [
       { title: 'Arrange access', description: 'Usually through an existing cleanout.' },
@@ -279,6 +280,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       { pageId: id('svc-sewer-camera-inspection'), description: 'Establish the condition before listing.' },
       { pageId: id('svc-sewer-cleaning-camera-inspection'), description: 'Clean the line, then see what was underneath.' },
       { pageId: id('svc-sewer-cleaning'), description: 'Where the finding is accumulation rather than damage.' },
+      { pageId: id('svc-independent-sewer-second-opinion'), description: 'Review the inspection report or video you already have.' },
     ],
     faq: [
       {
@@ -384,6 +386,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
     services: [
       { pageId: id('svc-pre-purchase-sewer-inspection'), description: 'The transaction-timed inspection.' },
       { pageId: id('svc-sewer-camera-inspection'), description: 'Documented condition with distances.' },
+      { pageId: id('svc-independent-sewer-second-opinion'), description: 'Review the inspection report or video you already have.' },
     ],
     faq: [
       {

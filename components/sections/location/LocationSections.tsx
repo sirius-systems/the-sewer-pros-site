@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { Section, Callout } from '@/components/ui'
 import { SectionHeading } from '../SectionHeading'
@@ -17,6 +18,7 @@ import type {
   LocationNearbyAreas,
   LocationResponsibility,
   LocationSecondOpinion,
+  PageId,
   LocationSources,
   LocationSystemExplainer,
   LocationWhoToCall,
@@ -524,6 +526,17 @@ export function SecondOpinionSection({ content }: { content: LocationSecondOpini
           {content.cta.label}
         </a>
         <p className="max-w-[var(--container-reading)] text-sm">{content.cta.supportLine}</p>
+        {/* DEC-157 follow-up: one shared line to the second opinion page for every location page. */}
+        <p className="max-w-[var(--container-reading)] text-sm">
+          See{' '}
+          <Link
+            href={resolveApprovedLink('svc-independent-sewer-second-opinion' as PageId).href}
+            className="underline underline-offset-2 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            how we review a report or video you already have
+          </Link>
+          .
+        </p>
       </div>
 
       <ol className="mt-10 grid gap-6 md:grid-cols-3">

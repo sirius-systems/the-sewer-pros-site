@@ -631,11 +631,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       ⚠ NO EVIDENCE MOSAIC. There is no verified cleaning imagery for it,
       so `v2.evidence` is deliberately absent.
 
-      ⚠ ONE LINK DROPPED. The content doc links "About independent
-      inspection" and "Independent sewer inspection" to the independent
-      second-opinion page, which is Phase 2 and not in the registry. The
-      band keeps its sentence without the link and the related list has
-      three links, not four.
+      ⚠ ONE LINK LEFT OUT. The content doc links "About independent
+      inspection" from the independent band to the second-opinion page; the
+      band now carries it (the page is built). The page is not in the related
+      cards, because that list uses homepage service cards and the second
+      opinion page has none, so the related list stays at three links.
     */
     seoTitle: 'Sewer Cleaning: Methods, Process and Limits',
     metaDescription:
@@ -909,9 +909,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           },
         ],
         note: 'If someone has recommended costly work, ask for the inspection video and written findings, get multiple written estimates, and ask for an explanation when they differ.',
-        // Once the independent second-opinion page is in the registry, add
-        // link: { pageId: <its id>, label: 'About independent inspection' }.
-        // It is Phase 2 and unbuilt, so the band carries no link today.
+        link: {
+          pageId: id('svc-independent-sewer-second-opinion'),
+          label: 'About independent inspection',
+        },
       },
       comparison: {
         eyebrow: 'Which service fits',
@@ -4401,9 +4402,11 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       its backdrop path below does not exist yet, so the hero is the brand
       surface under its scrim until the photograph is added.
 
-      ⚠ INDEPENDENT BAND carries no link to the independent second-opinion
-      page (not built), and the page is left out of the related cards for the
-      same reason. The preventative maintenance page is live and linked.
+      ⚠ INDEPENDENT BAND links to the independent second-opinion page
+      ("Independent review of your inspection video"). The page is left out of
+      the related cards because that list uses homepage service cards and the
+      second opinion page has none. The preventative maintenance page is
+      live and linked.
     */
     seoTitle: 'Recurring Sewer Backup Diagnosis',
     metaDescription:
@@ -4699,6 +4702,10 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
           },
         ],
         note: 'If the footage shows a significant condition, further evaluation may be appropriate outside our cleaning and diagnostic scope. If someone has recommended costly work, ask for the evidence, get multiple written estimates, and ask why they differ. Consider showing the video to another inspection company for a second opinion before agreeing.',
+        link: {
+          pageId: id('svc-independent-sewer-second-opinion'),
+          label: 'Independent review of your inspection video',
+        },
       },
       ask: {
         eyebrow: 'Before you book',
