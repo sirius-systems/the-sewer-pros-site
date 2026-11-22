@@ -103,12 +103,13 @@ const mockFetch = async (url, init = {}) => {
     return new Response('{}', { status: mode === 'upload-fail' ? 403 : mode === 'upload-throw' ? 500 : 200 })
   }
   const body = init.body === undefined ? undefined : JSON.parse(init.body)
-  calls.push({ kind: 'ghl', path, headers, body })
+  calls.push({ kind: 'ghl', method: init.method, path, headers, body })
   if (path === '/contacts/upsert') {
     if (mode === 'contact-fail') return new Response('{"message":"RAW GHL ERROR SECRET-TEXT"}', { status: 500 })
     return new Response('{"new":true,"contact":{"id":"contact_abc123"}}', { status: 200 })
   }
-  if (path.endsWith('/tags') && mode === 'tags-fail') return new Response('{}', { status: 500 })
+  if (path.endsWith('/tags') && mode === 'remove-fail' && init.method === 'DELETE') return new Response('{}', { status: 500 })
+  if (path.endsWith('/tags') && init.method === 'POST' && mode === 'tags-fail') return new Response('{}', { status: 500 })
   return new Response('{}', { status: 201 })
 }
 const env = (over = {}) => ({
@@ -167,6 +168,7 @@ const reset = () => {
   mode = 'ok'
 }
 const ghl = (suffix) => calls.filter((c) => c.kind === 'ghl' && c.path.endsWith(suffix))
+const tagPosts = () => ghl('/tags').filter((c) => c.method === 'POST')
 const uploads = () => calls.filter((c) => c.kind === 'upload')
 const nothingSent = () => calls.every((c) => c.kind === 'turnstile') || calls.length === 0
 
@@ -196,8 +198,8 @@ check('valid application with a PDF returns 200 {"ok":true} only', r.status === 
 const up = ghl('/contacts/upsert')[0]
 check('GHL called with Bearer token and Version 2021-07-28', up?.headers.Authorization === `Bearer ${FAKE_TOKEN}` && up?.headers.Version === '2021-07-28')
 check('upsert uses the location id, E.164 phone, email, first and last name', up?.body.locationId === FAKE_LOCATION && up?.body.phone === `+1${PHONE_DIGITS}` && up?.body.email === EMAIL && up?.body.firstName === 'Testfirst' && up?.body.lastName === 'Testlast')
-check('custom fields: only preferred_contact_method and source_page (no market, no SMS consent fields)', JSON.stringify(up?.body.customFields.map((f) => f.key)) === '["preferred_contact_method","source_page"]' && up.body.customFields[0].fieldValue === 'Email' && up.body.customFields[1].fieldValue === '/careers/')
-const tags = ghl('/tags')
+check('custom fields: preferred_contact_method, source_page, market (label) and inquiry_message; no SMS consent fields', JSON.stringify(up?.body.customFields.map((f) => f.key)) === '["preferred_contact_method","source_page","market","inquiry_message"]' && up.body.customFields[0].fieldValue === 'Email' && up.body.customFields[1].fieldValue === '/careers/' && up.body.customFields[2].fieldValue === 'San Diego' && up.body.customFields[3].fieldValue === 'Plain note')
+const tags = tagPosts()
 check('tags: website-careers, form-careers, careers-san-diego, and nothing else', tags.length === 1 && JSON.stringify(tags[0].body.tags) === '["website-careers","form-careers","careers-san-diego"]', JSON.stringify(tags.map((t) => t.body)))
 check('no tag starts with or contains market- and no lead tag is added', !JSON.stringify(tags).includes('market-') && !JSON.stringify(tags).includes('website-lead') && !JSON.stringify(tags).includes('form-contact'))
 const note = ghl('/notes')[0]?.body.body ?? ''
@@ -211,16 +213,32 @@ const replyAndLogs = r.text + '\n' + logText
 check('no secret, name, phone, email, file name or file content in logs or reply', ![FAKE_TOKEN, FAKE_TS_SECRET, 'Testfirst', 'Testlast', PHONE_DIGITS, EMAIL, 'Secret Resume', 'TEST-FILE-CONTENT-MARKER', 'CDL', 'Plain note'].some((s) => replyAndLogs.includes(s)))
 check('the Turnstile secret and the visitor token were sent to Turnstile, and the token is not forwarded to GHL', calls.find((c) => c.kind === 'turnstile')?.body.secret === FAKE_TS_SECRET && !JSON.stringify(calls.filter((c) => c.kind !== 'turnstile')).includes(GOOD_TS))
 
+/* ---- order and re-fire (a returning applicant must fire "Tag added" again) ---- */
+{
+  const seq = calls.map((c) => (c.kind === 'ghl' ? `${c.method} ${c.path.replace('contact_abc123', 'ID')}` : c.kind))
+  const iUpsert = seq.indexOf('POST /contacts/upsert')
+  const iNote = seq.indexOf('POST /contacts/ID/notes')
+  const iDel = seq.indexOf('DELETE /contacts/ID/tags')
+  const iAdd = seq.indexOf('POST /contacts/ID/tags')
+  check('order: upsert, resume upload, note, remove website-careers, add tags', iUpsert < seq.indexOf('upload') && seq.indexOf('upload') < iNote && iNote < iDel && iDel < iAdd && iDel > -1, seq.join(' > '))
+  const del = ghl('/tags').find((c) => c.method === 'DELETE')
+  check('remove call is DELETE /contacts/{id}/tags with only website-careers', JSON.stringify(del?.body) === '{"tags":["website-careers"]}', JSON.stringify(del?.body))
+}
+reset()
+mode = 'remove-fail'
+r = await send({ file: pdf() })
+check('a failed remove-tag call does not fail the application and the tags are still added', r.text === '{"ok":true}' && tagPosts().length === 1, r.text)
+
 /* ---- DOCX, no resume, each market ---- */
 reset()
 r = await send({ file: docx(), fileName: 'x.DOCX' })
 check('valid DOCX is accepted and uploaded as .docx', r.text === '{"ok":true}' && /\.docx$/.test(uploads()[0]?.entries[0].name ?? ''), r.text)
 reset()
 r = await send({ f: fields({ marketId: 'las-vegas-nv' }) })
-check('no resume: 200 {"ok":true}, no upload call, note says not sent, Las Vegas tag', r.text === '{"ok":true}' && uploads().length === 0 && ghl('/notes')[0].body.body.includes('Resume: not sent') && ghl('/tags')[0].body.tags.includes('careers-las-vegas'))
+check('no resume: 200 {"ok":true}, no upload call, note says not sent, Las Vegas tag', r.text === '{"ok":true}' && uploads().length === 0 && ghl('/notes')[0].body.body.includes('Resume: not sent') && tagPosts()[0].body.tags.includes('careers-las-vegas'))
 reset()
 r = await send({ f: fields({ marketId: 'st-louis-mo' }) })
-check('St. Louis tag is careers-st-louis', ghl('/tags')[0].body.tags.includes('careers-st-louis'))
+check('St. Louis tag is careers-st-louis', tagPosts()[0].body.tags.includes('careers-st-louis'))
 check('exported tag table matches: no entry contains market-', JSON.stringify(CAREERS_TAGS).includes('market-') === false)
 
 /* ---- validation ---- */
@@ -292,15 +310,15 @@ check('contact cannot be created: 502 {"ok":false}, no raw GHL text in the reply
 reset()
 mode = 'tags-fail'
 r = await send({ file: pdf() })
-check('tags cannot be saved: 502 {"ok":false} (the notification workflow depends on them), no upload attempted', r.status === 502 && r.text === '{"ok":false}' && uploads().length === 0, r.text)
+check('tags cannot be saved: 502 {"ok":false} (the notification workflow depends on them); the note was already saved', r.status === 502 && r.text === '{"ok":false}' && ghl('/notes').length === 1, r.text)
 reset()
 mode = 'upload-fail'
 r = await send({ file: pdf() })
 check('resume attach fails: 200 {"ok":true,"partial":true}', r.status === 200 && r.text === '{"ok":true,"partial":true}', r.text)
-check('resume attach fails: tag careers-resume-failed is added and the note says it could not be attached', ghl('/tags').some((t) => JSON.stringify(t.body.tags) === '["careers-resume-failed"]') && ghl('/notes')[0].body.body.includes('could not be attached'))
+check('resume attach fails: tag careers-resume-failed is added and the note says it could not be attached', tagPosts().some((t) => JSON.stringify(t.body.tags) === '["careers-resume-failed"]') && ghl('/notes')[0].body.body.includes('could not be attached'))
 reset()
 r = await send({ file: pdf(), envOver: { GHL_CAREERS_RESUME_FIELD_ID: '' } })
-check('resume field id not configured: partial result, no upload attempted, contact, tags and note kept', r.text === '{"ok":true,"partial":true}' && uploads().length === 0 && ghl('/contacts/upsert').length === 1 && ghl('/notes').length === 1 && ghl('/tags').some((t) => t.body.tags.includes('careers-resume-failed')), r.text)
+check('resume field id not configured: partial result, no upload attempted, contact, tags and note kept', r.text === '{"ok":true,"partial":true}' && uploads().length === 0 && ghl('/contacts/upsert').length === 1 && ghl('/notes').length === 1 && tagPosts().some((t) => t.body.tags.includes('careers-resume-failed')), r.text)
 reset()
 r = await send({ envOver: { GHL_CAREERS_RESUME_FIELD_ID: '' } })
 check('resume field id not configured and no resume sent: still a clean success', r.text === '{"ok":true}')

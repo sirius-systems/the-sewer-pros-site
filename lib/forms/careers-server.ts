@@ -370,10 +370,10 @@ export async function handleCareers(request: Request, env: CareersEnv, deps: Car
 
   const base = env.GHL_API_BASE ?? GHL_BASE
   const auth = { Authorization: `Bearer ${token}`, Version: GHL_VERSION, Accept: 'application/json' }
-  const call = async (path: string, payload: unknown): Promise<{ status: number; json?: unknown }> => {
+  const call = async (path: string, payload: unknown, method: 'POST' | 'DELETE' = 'POST'): Promise<{ status: number; json?: unknown }> => {
     try {
       const res = await fetchImpl(`${base}${path}`, {
-        method: 'POST',
+        method,
         headers: { ...auth, 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(GHL_TIMEOUT_MS),
@@ -403,6 +403,10 @@ export async function handleCareers(request: Request, env: CareersEnv, deps: Car
   const customFields = [
     { key: 'preferred_contact_method', fieldValue: application.contactMethod },
     { key: 'source_page', fieldValue: application.sourcePage },
+    // Merge fields for the notification email. Written even when empty so a repeat application
+    // never shows the last one's message. Employment type, availability and skills have no field (they are in the note).
+    { key: 'market', fieldValue: application.marketLabel },
+    { key: 'inquiry_message', fieldValue: application.message },
   ]
 
   let upsert = await call('/contacts/upsert', { ...contact, customFields })
@@ -421,13 +425,8 @@ export async function handleCareers(request: Request, env: CareersEnv, deps: Car
   }
   const contactPath = `/contacts/${encodeURIComponent(contactId)}`
 
-  // The tags start the notification workflow and the note holds the answers, so a failure of either
-  // is a failure of the application (the visitor is told, and a retry updates the same contact).
-  let tags = await call(`${contactPath}/tags`, { tags: careersTags(application) })
-  if (!ok2xx(tags.status)) tags = await call(`${contactPath}/tags`, { tags: careersTags(application) })
-  log(JSON.stringify({ requestId: id, step: 'ghl-tags', status: tags.status }))
-  if (!ok2xx(tags.status)) return done(false, 502, 'ghl-tags-failed')
-
+  // Order: custom fields (upsert), resume, resume-failed tag, note, and only then the tags that start
+  // the notification workflow, so the email already sees this application's data and attachment.
   const wantsResume = resumeBytes !== undefined && resumeExt !== undefined
   // The note is written once, with the resume outcome known, so the order is: attach, then note.
   let resume: 'attached' | 'none' | 'failed' = 'none'
@@ -469,6 +468,17 @@ export async function handleCareers(request: Request, env: CareersEnv, deps: Car
   if (!ok2xx(note.status)) note = await call(`${contactPath}/notes`, { body: noteBody(application, receivedAtIso, resume) })
   log(JSON.stringify({ requestId: id, step: 'ghl-note', status: note.status }))
   if (!ok2xx(note.status)) return done(false, 502, 'ghl-note-failed')
+
+  // A returning applicant still has website-careers, and "Tag added" fires only for a newly added tag,
+  // so remove it first. A failed remove is logged and the add still runs. Other tags are never removed.
+  const removed = await call(`${contactPath}/tags`, { tags: [CAREERS_TAGS.all[0]] }, 'DELETE')
+  log(JSON.stringify({ requestId: id, step: 'ghl-tag-remove', status: removed.status }))
+  // The tags start the notification workflow, so a failure of this step is a failure of the application
+  // (the visitor is told, and a retry updates the same contact).
+  let tags = await call(`${contactPath}/tags`, { tags: careersTags(application) })
+  if (!ok2xx(tags.status)) tags = await call(`${contactPath}/tags`, { tags: careersTags(application) })
+  log(JSON.stringify({ requestId: id, step: 'ghl-tags', status: tags.status }))
+  if (!ok2xx(tags.status)) return done(false, 502, 'ghl-tags-failed')
 
   return resume === 'failed' ? done(true, 200, 'ok-resume-failed', { partial: true }) : done(true, 200, 'ok')
 }

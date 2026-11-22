@@ -31,9 +31,9 @@ The site stays a static export. `functions/` is deployed by Cloudflare Pages nex
 | Upsert | `POST /contacts/upsert`, body needs `locationId`; accepts `firstName`, `lastName`, `phone`, `email`, `source`, `customFields`, `tags`, `dnd`, `dndSettings`. Follows the location's "Allow Duplicate Contact" setting, so a repeat submission updates the existing contact. Response has `new`, `contact`, `traceId`. |
 | Scope | `contacts.write` |
 | Custom field items | `{ key: "<unique_key>", fieldValue: "..." }` with **no `contact.` prefix**. Confirmed against the live API: a key written `contact.<name>` is accepted (HTTP 201) but silently ignored; the bare key, the field id, and id plus key all store the value. GHL also silently ignores a key for a field that does not exist. |
-| Tags | The upsert `tags` field overwrites every existing tag, so tags are added with `POST /contacts/{id}/tags` instead. |
+| Tags | The upsert `tags` field overwrites every existing tag, so tags are added with `POST /contacts/{id}/tags` (body `{ "tags": [...] }`). The market tag (leads) or `website-careers` (careers) is first removed with `DELETE /contacts/{id}/tags` (same body shape), so "Tag added" fires again for a returning contact. A failed remove is logged and the add still runs. |
 | Notes | `POST /contacts/{id}/notes` with `body`. |
-| Rate limits | Documented for OAuth Marketplace apps: 100 requests per 10 seconds and 200,000 per day, counted per app per location. The docs do not state limits for Private Integration tokens (sandbox tokens have 25 per 10 seconds and 10,000 per day). Each lead uses 3 calls. Check the `X-RateLimit-*` response headers on live responses. |
+| Rate limits | Documented for OAuth Marketplace apps: 100 requests per 10 seconds and 200,000 per day, counted per app per location. The docs do not state limits for Private Integration tokens (sandbox tokens have 25 per 10 seconds and 10,000 per day). Each lead uses 4 calls (upsert, note, remove tag, add tags). Check the `X-RateLimit-*` response headers on live responses. |
 | Do Not Disturb | Not set. The docs describe `dnd` and `dndSettings` as a channel block, not a consent record, so consent is stored in custom fields. |
 
 ## Fields
@@ -51,6 +51,15 @@ Custom fields. Create these in GHL (Settings, Custom Fields) as **Single Line** 
 | `sms_consent_timestamp` | UTC ISO time of receipt, set by the server; sent only when at least one box was checked |
 | `market` | St. Louis, San Diego, Las Vegas, or none |
 | `source_page` | the page path, for example `/contact/` |
+| `service_requested` | the service or issue chosen, as its label (for example Sewer Camera Inspection), not its id |
+| `inquiry_message` | the visitor's message; written even when empty, so a repeat inquiry never shows the last message |
+| `service_location` | the city chosen on the survey form, or the property ZIP on the contact form (both when both exist); written even when empty |
+
+These three exist so the GHL notification email can merge them (a note cannot be merged into an email). In the email use `{{contact.service_requested}}`, `{{contact.inquiry_message}}`, `{{contact.service_location}}`, `{{contact.market}}` and `{{contact.preferred_contact_method}}`. The fields and the note are saved before the market tag is added, so the workflow always sees this submission's data.
+
+**Repeat inquiries.** GHL fires "Tag added" only when a tag is newly added. The function therefore removes the market tag, then adds it again, on every submission. Only the market tag is removed (never `website-lead` or `form-*`). In GHL, Settings, Business Profile: turn "Allow Duplicate Contact" off and match on Phone, so a repeat inquiry updates the same contact.
+
+`preferred_contact_method` is a Radio field in the account today; the values sent (Call, Text, Email) must match its option labels exactly. The careers form sends Call or Email only.
 
 Consent state rule (a records-keeping choice, not legal advice): the four consent fields are written together, and only when the visitor checked at least one box in that submission. A later submission with both boxes unchecked therefore never overwrites an earlier `true` and never leaves an old timestamp next to `false` flags. Declining a box on a later form is not a withdrawal; a withdrawal (a STOP reply or a request) is handled in GHL. Every note still records that submission's own choices (both values, true or false), the consent version and the UTC time of receipt, so the full history stays in the notes. The owner should confirm this rule with whoever advises on SMS consent.
 
@@ -106,7 +115,7 @@ Names only; never put values in the repo, in chat or behind a `NEXT_PUBLIC_` pre
 
 In GHL:
 1. Create a Private Integration token with the `contacts.write` scope (add `locations/customFields.readonly` only if the function is later changed to look up field ids). Production account, not a sandbox.
-2. Create the seven custom fields above, as Single Line text.
+2. Create the custom fields above, as Single Line text (`inquiry_message` as Multi Line; `preferred_contact_method` may be Radio).
 3. Check Settings, Business Profile: "Allow Duplicate Contact" and its match order (phone or email) decide how repeat submissions merge.
 4. Rotate the token every 90 days (GHL recommendation) and update it in Cloudflare.
 
@@ -151,5 +160,5 @@ The careers form (`/careers/`) posts to a separate function, `POST /api/careers`
 
 - **Scope.** Attaching the resume calls `POST /forms/upload-custom-files`, which needs the `forms.write` scope on the Private Integration token, in addition to `contacts.write`. Without it (or without the field id) the contact, tags and note are still saved, the contact gets `careers-resume-failed`, and the visitor is asked to call.
 - **Tags.** `website-careers`, `form-careers` and one of `careers-st-louis`, `careers-san-diego`, `careers-las-vegas`. Never `market-*`. All map to `info@thesewerpros.com` (docs/lead-routing.md section 3A).
-- **Custom fields written.** `preferred_contact_method` and `source_page` (already in the list above) and the resume File Upload field. The `market` field is not written.
+- **Custom fields written.** `preferred_contact_method`, `source_page`, `market` (the market label the applicant chose) and `inquiry_message` (the applicant's message), all from the list above, plus the resume File Upload field. Employment type, availability and skills have no custom field; they are in the note only. Order: upsert, resume attach, note, remove `website-careers`, add the tags, so the notification email sees the data and the resume.
 - **Files.** PDF and DOCX, one file, 5 MB.

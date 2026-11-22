@@ -91,7 +91,51 @@ check(`every careers tag has a docs row whose only recipient is ${CAREERS_RECIPI
 const leadTagNames = ['website-lead', 'form-contact', 'form-survey']
 const collisions = careersTags.filter((t) => t.includes('market-') || leadTagNames.includes(t))
 check('no careers tag contains market- or equals a lead tag, so no market-* workflow can match it', collisions.length === 0, collisions.join(', '))
-check('the careers function never uses leadTags, the market-* tag template or the market custom field', !/leadTags|market-\$\{|key:\s*'market'/.test(careersServer.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')))
+const careersCode = careersServer.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')
+check('the careers function never uses leadTags or the market-* tag template', !/leadTags|market-\$\{/.test(careersCode))
+
+/* ---------------------------------------------------------------------------
+   Notification-email fields and tag re-fire (GHL "Tag added" workflows).
+   ------------------------------------------------------------------------- */
+const keysBlock = (server.match(/export const GHL_CUSTOM_FIELD_KEYS = \[([\s\S]*?)\] as const/) || ['', ''])[1]
+const leadKeys = [...keysBlock.matchAll(/'([a-z_]+)'/g)].map((m) => m[1])
+const needKeys = ['market', 'preferred_contact_method', 'source_page', 'service_requested', 'inquiry_message', 'service_location']
+check('lead-server.ts writes the six email merge fields', needKeys.every((k) => leadKeys.includes(k)), needKeys.filter((k) => !leadKeys.includes(k)).join(', '))
+check('docs/ghl-lead-setup.md lists the three new field keys', ['service_requested', 'inquiry_message', 'service_location'].every((k) => fs.readFileSync(path.resolve('docs/ghl-lead-setup.md'), 'utf8').includes(`\`${k}\``)))
+
+const issueBlock = (server.match(/export const ISSUE_LABELS[\s\S]*?\n\}/) || [''])[0]
+const labelled = new Set([...issueBlock.matchAll(/^\s*'?([a-z-]+)'?:\s*'/gm)].map((m) => m[1]))
+const contactForm = fs.readFileSync(path.resolve('components/sections/ContactForm.tsx'), 'utf8')
+const surveyForm = fs.readFileSync(path.resolve('components/sections/SurveyLeadForm.tsx'), 'utf8')
+const issueValues = [
+  ...[...(contactForm.match(/const ISSUES: [\s\S]*?\n\]/) || [''])[0].matchAll(/value:\s*'([a-z-]+)'/g)].map((m) => m[1]),
+  ...[...(surveyForm.match(/const SERVICE_PILLS[\s\S]*?\n\]/) || [''])[0].matchAll(/value:\s*'([a-z-]+)'/g)].map((m) => m[1]),
+  'not-sure',
+]
+const unlabelled = issueValues.filter((v) => !labelled.has(v))
+check('every service or issue value a form can send has a display label in ISSUE_LABELS', issueValues.length > 10 && unlabelled.length === 0, unlabelled.join(', '))
+
+const strip = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')
+const leadCode = strip(server)
+const inOrder = (code, anchors) => {
+  let at = -1
+  for (const a of anchors) {
+    const i = code.indexOf(a, at + 1)
+    if (i === -1) return false
+    at = i
+  }
+  return true
+}
+check(
+  'lead function order: upsert, note, remove market tag (DELETE), add tags',
+  inOrder(leadCode, ["'/contacts/upsert'", '/notes`', "'DELETE')", 'leadTags(lead)']),
+)
+check(
+  'careers function order: upsert, note, remove website-careers (DELETE), add tags',
+  inOrder(careersCode, ["'/contacts/upsert'", '/notes`', "'DELETE')", 'careersTags(application)']),
+)
+check('careers function writes the market and inquiry_message fields', /key: 'market'/.test(careersCode) && /key: 'inquiry_message'/.test(careersCode))
+check('the lead form payload sends no new field (location comes from the existing zip and serviceLocation)', !/\bcity\b|\blocation:\s/.test((fs.readFileSync(path.resolve('lib/forms/submit-lead.ts'), 'utf8').match(/export interface LeadPayload[\s\S]*?\n\}/) || [''])[0].replace(/\/\*[\s\S]*?\*\//g, '')))
 
 const careersData = fs.readFileSync(path.resolve('data/business/careers.ts'), 'utf8')
 const openingTitles = [...careersData.matchAll(/^\s*title:\s*'([^']+)'/gm)].map((m) => m[1])

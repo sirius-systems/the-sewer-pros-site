@@ -12,7 +12,7 @@ POST /api/lead                      Cloudflare Pages Function (functions/api/lea
   |  checks: honeypot, minimum time, rate limit, Cloudflare Turnstile
   v
 GoHighLevel contact upsert          (by phone or email; no duplicate contacts)
-  |  adds tags, adds a note with the request details, writes custom fields
+  |  writes the custom fields, adds a note, then removes and re-adds the market tag
   v
 GHL workflow per market tag         one workflow per tag emails that market's address
   |
@@ -39,7 +39,9 @@ Read from `lib/forms/lead-server.ts` (`leadTags`, `FORM_TYPES`, `MARKETS`). Tags
 
 There is no service tag. The service the visitor asked about is in the contact's note ("Service requested") and the page they came from is in the `source_page` custom field. A lead with no known market gets no `market-*` tag, and the `market` custom field reads `none`.
 
-Custom fields written: `market`, `source_page`, `preferred_contact_method`, and the SMS consent fields (`sms_nonmarketing_consent`, `sms_marketing_consent`, `sms_consent_version`, `sms_consent_timestamp`) only when a consent box was checked.
+Re-fire: GHL fires "Tag added" only for a newly added tag, so on every submission the function removes the lead's `market-*` tag (`DELETE /contacts/{id}/tags`) and adds the tags again, after the custom fields and the note are saved. A failed remove is logged and the add still runs. `website-lead` and `form-*` are never removed. In GHL set "Allow Duplicate Contact" off and match on Phone.
+
+Custom fields written: `market`, `source_page`, `preferred_contact_method`, `service_requested` (label), `inquiry_message` and `service_location` (city or ZIP; these two are written even when empty), and the SMS consent fields (`sms_nonmarketing_consent`, `sms_marketing_consent`, `sms_consent_version`, `sms_consent_timestamp`) only when a consent box was checked.
 
 ## 3. Market, tag and recipient
 
@@ -64,7 +66,7 @@ POST /api/careers                   Cloudflare Pages Function (functions/api/car
   |  checks: honeypot, minimum time, rate limit, Cloudflare Turnstile, resume type, size and signature
   v
 GoHighLevel contact upsert          (by phone or email; merges with an existing lead contact)
-  |  adds the careers tags and a note with the answers, then attaches the resume to a File Upload custom field
+  |  writes the custom fields, attaches the resume to a File Upload custom field, adds a note with the answers, then removes and re-adds website-careers with the other careers tags
   v
 One GHL workflow on website-careers   internal notification to info@thesewerpros.com
 ```
@@ -80,7 +82,7 @@ One GHL workflow on website-careers   internal notification to info@thesewerpros
 
 - One workflow triggered when `website-careers` is added is enough. The market tags exist for filtering and visibility.
 - No careers tag contains `market-`, and the careers function never adds `website-lead`, `form-contact`, `form-survey` or a `market-*` tag, so the per-market lead workflows cannot match a careers contact. `scripts/verify-lead-routing.mjs` checks this.
-- The careers function does not write the `market` custom field. It writes `preferred_contact_method` and `source_page`, plus the resume File Upload field.
+- The careers function writes `market` (the label the applicant chose), `inquiry_message`, `preferred_contact_method` and `source_page`, plus the resume File Upload field. Writing the `market` field is safe because routing is by tag only; the function never adds a `market-*` tag. It removes then re-adds `website-careers` after the note and resume, so a returning applicant fires the workflow again.
 - An applicant who is already a customer lead merges into the same GHL contact (the upsert matches on phone or email).
 - No new address is published. The careers page shows no email address, only each market's phone from `marketOperatingDetail`.
 
