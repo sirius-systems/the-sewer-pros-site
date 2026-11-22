@@ -132,7 +132,7 @@ export const lasVegasMarketContent: MarketPageContent = {
     major sewer decisions" is the differentiator stated as a model, not
     a guarantee.
   */
-  seoTitle: 'Sewer Inspection and Cleaning in Las Vegas, NV',
+  seoTitle: 'Sewer Inspection and Cleaning in the Las Vegas Valley',
   metaDescription:
     'Independent sewer camera inspection and cleaning across the Las Vegas Valley, Henderson to Summerlin. Video and written findings, no repair upselling.',
   /*

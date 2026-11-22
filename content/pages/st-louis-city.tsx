@@ -595,7 +595,7 @@ export const stLouisCityContent: LocationPageContent = {
   },
   secondOpinion: {
     eyebrow: 'Independent sewer inspection & second opinions',
-    title: 'Before You Approve an Expensive Sewer Repair, Get an Opinion With Nothing to Sell',
+    title: 'Before You Approve an Expensive Sewer Repair, Get an Opinion From a Company That Does Not Sell Repairs or Replacements',
     ledes: [
       'A sewer backup or major repair recommendation can make a costly decision feel urgent. The Sewer Pros inspects and documents the condition inside your sewer line so you can understand what is actually happening before you approve cleaning, excavation, lining, or replacement.',
       'Because we do not perform sewer repairs or replacements, we do not profit from selling you the work. Our role is to give you clear video evidence, straightforward findings, and an honest opinion you can use to make the next decision.',
