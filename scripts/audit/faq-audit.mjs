@@ -47,6 +47,25 @@ function visibleFaq(html) {
   return out
 }
 
+/**
+ * Anchor texts in an FAQ answer that sit inside third-party text: between double quotation
+ * marks (straight or curly), inside <q>, <blockquote> or <cite>, or inside an element
+ * marked data-no-link. The shared linker never creates such a link (lib/links/faq-links.tsx).
+ */
+export function linksInQuotedText(answerHtml) {
+  const out = []
+  // Elements that mark third-party text.
+  for (const m of answerHtml.matchAll(/<(q|blockquote|cite)\b[^>]*>[\s\S]*?<\/\1>|<(span|div|p)\b[^>]*data-no-link[^>]*>[\s\S]*?<\/\2>/g)) {
+    for (const a of m[0].matchAll(/<a\s[^>]*>([\s\S]*?)<\/a>/g)) out.push(strip(a[1]))
+  }
+  // Quotation marks: mark each anchor, flatten the markup, then look for anchors between quotes.
+  const flat = decode(answerHtml.replace(/<!-- -->/g, '').replace(/<a\s[^>]*>/g, '\uE000').replace(/<\/a>/g, '\uE001').replace(/<[^>]+>/g, ''))
+  for (const q of flat.matchAll(/"[^"]*"|\u201c[^\u201d]*\u201d/g)) {
+    for (const a of q[0].matchAll(/\uE000([^\uE001]*)\uE001/g)) out.push(a[1].trim())
+  }
+  return out
+}
+
 export function runFaqAudit(graph, root = path.resolve('out')) {
   const ents = buildEntities(graph)
   const inventory = []
@@ -68,7 +87,7 @@ export function runFaqAudit(graph, root = path.resolve('out')) {
     inventory.push({ url, type: pg.type, indexable: !pg.noindex && pg.inSitemap, faqCount: vis.length, schema: ld.length > 0, schemaCount: ld.length, linkedAnswers: vis.filter((v) => v.links.length).length, answerLinks: vis.reduce((s, v) => s + v.links.length, 0) })
     for (const v of vis) {
       answerLinkTotals.answers++
-      answers.push({ url, q: v.q, links: v.links, text: v.text })
+      answers.push({ url, q: v.q, links: v.links, text: v.text, html: v.html })
       if (v.links.length) answerLinkTotals.withLinks++
       answerLinkTotals.links += v.links.length
       if (ld.length > 0) {

@@ -1,9 +1,4 @@
 {
- "note": "Targets over the 40% single-anchor line (8 or more editorial links). They may not get worse; a new target over the line fails. Remove an entry once it is under the line. Shares updated 2026-11-22 after the template-level variants: pre-purchase moved under the line; the four left are held up by one-off hand-written body sentences and each page definition, which sit outside the FAQ variant pipeline.",
- "targets": {
-  "/services/sewer-cleaning/": 0.69,
-  "/services/hydro-jetting/": 0.53,
-  "/services/sewer-line-locating/": 0.47,
-  "/services/drain-cleaning/": 0.64
- }
+ "note": "Targets over the 40% single-anchor line (8 or more editorial links). They may not get worse; a new target over the line fails. Remove an entry once it is under the line. Empty since the 2026-11-22 anchor pass: Sewer Cleaning, Hydro Jetting, Sewer Line Locating and Drain Cleaning are all at or under 40%.",
+ "targets": {}
 }
