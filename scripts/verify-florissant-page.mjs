@@ -47,7 +47,8 @@ const norm = (s) => decode(s).replace(/\s+/g, ' ').trim()
 
 const bodyHtml = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '')
 // The review carousel (every page type, 6a41d72) and the SMS consent legal text are not page copy.
-const text = norm(bodyHtml.replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '').replace(/<[^>]+>/g, ' '))
+// The footer link to /reviews/ (74ef0c1) is sitewide chrome, not page copy.
+const text = norm(bodyHtml.replace(/<a [^>]*href="\/reviews\/"[^>]*>[\s\S]*?<\/a>/g, ' ').replace(/<section[^>]*aria-labelledby="reviews"[\s\S]*?<\/section>/, '').replace(/<span>By checking this box, I consent[^<]*<\/span>/g, '').replace(/<[^>]+>/g, ' '))
 
 /* ---- JSON-LD ---- */
 const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
