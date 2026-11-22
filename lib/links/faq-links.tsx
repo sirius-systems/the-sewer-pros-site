@@ -36,6 +36,18 @@ import type { PageId } from '@/types'
 
 const MAX_PER_ANSWER = 2
 
+/**
+ * The money pages (item 5 of the 2026-11-22 follow-up): an FAQ mention of one of these on a
+ * service + location page links to the canonical service page, not to the same-location
+ * sibling, so the canonical page collects the contextual links. The location-bounded sibling
+ * links for these services still come from the related-links block (link-plan.ts).
+ */
+const MONEY_SERVICES: ReadonlySet<string> = new Set([
+  'svc-pre-purchase-sewer-inspection',
+  'svc-sewer-camera-inspection',
+  'svc-sewer-cleaning-camera-inspection',
+])
+
 /** Longest phrase first, so "sewer cleaning and camera inspection" wins over "sewer cleaning". */
 const PHRASES: readonly { re: RegExp; serviceId: string }[] = [
   // Audiences named by their registered page (09 audience matrix). `serviceId`
@@ -45,6 +57,9 @@ const PHRASES: readonly { re: RegExp; serviceId: string }[] = [
   { re: /home buyers?/i, serviceId: 'aud-home-buyers' },
   { re: /property managers?/i, serviceId: 'aud-property-managers' },
   { re: /sewer cleaning (?:&|and) camera inspection/i, serviceId: 'svc-sewer-cleaning-camera-inspection' },
+  { re: /(?<!sewer )cleaning (?:&|and) camera inspection/i, serviceId: 'svc-sewer-cleaning-camera-inspection' },
+  // Second-opinion language points to the independent-inspection comparison, never to a repair page.
+  { re: /(?<!free )(?:independent )?second opinion/i, serviceId: 'cmp-independent-vs-repair' },
   { re: /pre-purchase sewer inspection/i, serviceId: 'svc-pre-purchase-sewer-inspection' },
   { re: /recurring sewer backup diagnosis/i, serviceId: 'svc-recurring-sewer-backup-diagnosis' },
   { re: /preventative sewer maintenance/i, serviceId: 'svc-preventative-sewer-maintenance' },
@@ -62,8 +77,8 @@ const PHRASES: readonly { re: RegExp; serviceId: string }[] = [
   // Geography. A market is named by its hub; "St. Louis City" and "St. Louis County" are not the market.
   // "City of X" names the municipality and its sewer department, not our service market, so it is not linked.
   { re: /(?<!City of )St\. Louis(?! City| County)/, serviceId: 'market-st-louis-mo' },
-  { re: /(?<!City of )San Diego(?! County)/, serviceId: 'market-san-diego-ca' },
-  { re: /(?<!City of |North )Las Vegas(?! Valley)/, serviceId: 'market-las-vegas-nv' },
+  { re: /(?<!City of )San Diego(?! County (?:Water|Sheriff|Board|Health))/, serviceId: 'market-san-diego-ca' },
+  { re: /(?<!City of |North )Las Vegas/, serviceId: 'market-las-vegas-nv' },
   { re: /St\. Louis City/, serviceId: 'loc-stl-st-louis-city' },
   { re: /Chesterfield/, serviceId: 'loc-stl-chesterfield' },
   { re: /Ballwin/, serviceId: 'loc-stl-ballwin' },
@@ -79,6 +94,74 @@ const PHRASES: readonly { re: RegExp; serviceId: string }[] = [
   { re: /Henderson/, serviceId: 'loc-lv-henderson' },
   { re: /Summerlin/, serviceId: 'loc-lv-summerlin' },
 ]
+
+/**
+ * Anchor variety (docs/16 anchor rules). The same shared answer is linked from
+ * many pages, so one fixed phrase would put the identical exact-match anchor
+ * on a target hundreds of times. Where the sentence allows it, the anchor is
+ * one of a few natural spans of the SAME words: the phrase itself, a shorter
+ * form that still names the service, the phrase with its determiner ("a sewer
+ * camera inspection") or the phrase with a following service noun ("hydro
+ * jetting service"). The visible text never changes, only how much of it is
+ * the link. The choice is a hash of the surrounding words, so it is stable
+ * between builds and differs between answers.
+ */
+const SHORT_FORM: Readonly<Record<string, RegExp>> = {
+  'svc-sewer-camera-inspection': /camera inspection$/i,
+  'svc-sewer-line-locating': /line locating$/i,
+  'svc-sewer-cleaning-camera-inspection': /camera inspection$/i,
+  'svc-pre-purchase-sewer-inspection': /sewer inspection$/i,
+}
+const FOLLOWING_NOUN = /^ (?:service|services|visit|appointment|option)\b/i
+const MARKET_FOLLOWING = /^ (?:area|metro area|market|Valley|County)\b/
+const DETERMINER = /\b(?:a|an|your|our|regular|routine|annual|scheduled|full|basic) $/i
+
+/**
+ * Sentences that name three or more registered services are lists ("Services
+ * include X, Y, Z and W"). Linking only the first one or two items of a list
+ * reads as arbitrary and stacks exact-name anchors, so list sentences carry no
+ * links; the service cards and the services hub link every item.
+ */
+function listRanges(text: string): [number, number][] {
+  const ranges: [number, number][] = []
+  const sentence = /[^.?!]+(?:\b(?:St|vs|Mt|Dr)\.[^.?!]*)*[.?!]?/g
+  let m: RegExpExecArray | null
+  while ((m = sentence.exec(text)) !== null) {
+    if (m[0].length === 0) break
+    const hits = new Set<string>()
+    for (const p of PHRASES) if (p.serviceId.startsWith('svc-') && new RegExp(p.re.source, p.re.flags.replace('g', '')).test(m[0])) hits.add(p.serviceId)
+    // "sewer cleaning and camera inspection" also contains two shorter names; count it once.
+    if (hits.size >= 3) ranges.push([m.index, m.index + m[0].length])
+  }
+  return ranges
+}
+
+function hashOf(s: string): number {
+  let h = 0
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0
+  return h
+}
+
+function anchorSpan(text: string, index: number, length: number, key: string): { index: number; length: number } {
+  const phrase = text.slice(index, index + length)
+  const candidates: { index: number; length: number }[] = [{ index, length }]
+  const short = SHORT_FORM[key]
+  const sm = short?.exec(phrase)
+  if (sm !== undefined && sm !== null) candidates.push({ index: index + sm.index, length: sm[0].length })
+  if (key.startsWith('svc-')) {
+    const before = DETERMINER.exec(text.slice(0, index))
+    if (before !== null) candidates.push({ index: index - before[0].length, length: length + before[0].length })
+    const after = FOLLOWING_NOUN.exec(text.slice(index + length))
+    if (after !== null) candidates.push({ index, length: length + after[0].length })
+  }
+  if (key.startsWith('market-')) {
+    const after = MARKET_FOLLOWING.exec(text.slice(index + length))
+    if (after !== null) candidates.push({ index, length: length + after[0].length })
+  }
+  if (candidates.length === 1) return candidates[0]
+  const seed = text.slice(Math.max(0, index - 24), index + length + 24) + key
+  return candidates[hashOf(seed) % candidates.length]
+}
 
 const MARKET_RES = PHRASES.filter((p) => p.serviceId.startsWith('market-')).map((p) => p.re)
 
@@ -122,30 +205,52 @@ export function createFaqLinker(ctx: FaqLinkContext) {
       serviceId === 'cta-second-opinion'
         ? ((here?.marketId !== undefined ? `contact-${here.marketId}` : 'core-contact') as PageId)
         : serviceId
-    const id =
-      ctx.locationId !== undefined && resolved.startsWith('svc-')
+    let id =
+      ctx.locationId !== undefined && resolved.startsWith('svc-') && !MONEY_SERVICES.has(resolved)
         ? (localServicePageId(ctx.locationId, resolved) ?? (resolved as PageId))
         : (resolved as PageId)
+    // On a service + location page, the page's own service links up to the canonical
+    // service page (16 §126: a local page names its canonical service, never itself).
+    if (id === ctx.pageId && ctx.locationId !== undefined && resolved.startsWith('svc-')) id = resolved as PageId
     if (id === ctx.pageId || used.has(id)) return undefined
     if (getPage(id) === undefined) return undefined
     return resolveLinkableOnly([id]).length > 0 ? id : undefined
   }
 
-  const linkString = (text: string, budget: { left: number }): ReactNode => {
+  interface Budget {
+    left: number
+    /** Offset, in the answer's plain text, of the next string node to be visited. */
+    pos: number
+    /** End of the opening sentence: the direct answer stays unlinked (12 AEO, 16 §126). */
+    firstEnd: number
+    /** Second pass on a service + location page: only the page's own service, up to the canonical page. */
+    ownOnly?: boolean
+  }
+
+  const linkString = (text: string, budget: Budget, base: number): ReactNode => {
     if (budget.left <= 0) return text
-    // Find the earliest phrase match, longest phrase on a tie.
-    let best: { index: number; length: number; id: PageId } | undefined
+    const from = Math.max(0, budget.firstEnd - base)
+    if (from >= text.length) return text
+    // Find the earliest phrase match after the opening sentence, longest phrase on a tie.
+    let best: { index: number; length: number; id: PageId; key: string } | undefined
+    const lists = listRanges(text)
     for (const p of PHRASES) {
-      const m = p.re.exec(text)
+      const re = new RegExp(p.re.source, p.re.flags.includes('g') ? p.re.flags : `${p.re.flags}g`)
+      re.lastIndex = from
+      let m = re.exec(text)
+      while (m !== null && p.serviceId.startsWith('svc-') && lists.some(([a, b]) => m !== null && m.index >= a && m.index < b)) m = re.exec(text)
       if (m === null) continue
       const id = targetFor(p.serviceId)
       if (id === undefined) continue
-      if (best === undefined || m.index < best.index) best = { index: m.index, length: m[0].length, id }
+      if (budget.ownOnly === true && id !== (p.serviceId as PageId)) continue
+      if (best === undefined || m.index < best.index) best = { index: m.index, length: m[0].length, id, key: p.serviceId }
     }
     if (best === undefined) return text
     used.add(best.id)
     budget.left -= 1
     const page = getPage(best.id)
+    const span = anchorSpan(text, best.index, best.length, best.key)
+    best = { ...best, index: Math.max(span.index, from), length: span.length }
     const rest = text.slice(best.index + best.length)
     return (
       <>
@@ -153,13 +258,17 @@ export function createFaqLinker(ctx: FaqLinkContext) {
         <Link href={page?.pathname ?? '/'} className="underline underline-offset-4">
           {text.slice(best.index, best.index + best.length)}
         </Link>
-        {linkString(rest, budget)}
+        {linkString(rest, budget, base + best.index + best.length)}
       </>
     )
   }
 
-  const walk = (node: ReactNode, budget: { left: number }): ReactNode => {
-    if (typeof node === 'string') return linkString(node, budget)
+  const walk = (node: ReactNode, budget: Budget): ReactNode => {
+    if (typeof node === 'string') {
+      const base = budget.pos
+      budget.pos += node.length
+      return linkString(node, budget, base)
+    }
     if (Array.isArray(node)) return node.map((n, i) => <Fragment key={i}>{walk(n, budget)}</Fragment>)
     if (!isValidElement(node)) return node
     // Leave existing links and non-DOM components alone.
@@ -177,6 +286,13 @@ export function createFaqLinker(ctx: FaqLinkContext) {
     // An answer that names several markets is a coverage answer: link each (16 §52 allows it).
     const text = plainText(answer)
     const markets = MARKET_RES.filter((re) => re.test(text)).length
-    return walk(answer, { left: markets >= 2 ? Math.max(MAX_PER_ANSWER, markets) : MAX_PER_ANSWER })
+    // The opening sentence is the direct answer that AEO extraction quotes: keep it clean.
+    const end = /(?<!\bSt|\bvs|\bMt|\bDr)[.?!](?:\s|$)/.exec(text)
+    const left = markets >= 2 ? Math.max(MAX_PER_ANSWER, markets) : MAX_PER_ANSWER
+    const budget: Budget = { left, pos: 0, firstEnd: end === null ? 0 : end.index + 1 }
+    const linked = walk(answer, budget)
+    if (budget.left < left || ctx.locationId === undefined) return linked
+    // Nothing after the opening sentence: a local page still names its canonical service (item 1, 16 §126).
+    return walk(answer, { left: 1, pos: 0, firstEnd: 0, ownOnly: true })
   }
 }

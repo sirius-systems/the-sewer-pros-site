@@ -302,6 +302,7 @@ check(
       '/services/hydro-jetting/',
       '/services/sewer-line-locating/',
       '/services/pre-purchase-sewer-inspection/',
+      '/services/drain-cleaning/',
     ].sort()),
   JSON.stringify(relatedHrefs),
 )

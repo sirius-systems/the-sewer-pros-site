@@ -271,6 +271,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
       </>
     ),
     services: [
+      { pageId: id('svc-pre-purchase-sewer-inspection'), description: 'The inspection a buyer may order, so you know what it covers.' },
       { pageId: id('svc-sewer-camera-inspection'), description: 'Establish the condition before listing.' },
       { pageId: id('svc-sewer-cleaning-camera-inspection'), description: 'Clean the line, then see what was underneath.' },
       { pageId: id('svc-sewer-cleaning'), description: 'Where the finding is accumulation rather than damage.' },

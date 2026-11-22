@@ -160,7 +160,7 @@ check('"On this page" nav is not rendered', (main.match(/aria-labelledby="on-thi
 check('nav is not hidden from assistive technology', !/aria-hidden="true"[^>]*aria-labelledby="on-this-page"|aria-labelledby="on-this-page"[^>]*aria-hidden="true"/.test(navBlock) && !/<nav[^>]*\shidden/.test(navBlock))
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
-checkRelatedCards({ main, check, expectedHrefs: ['/services/hydro-jetting/', '/services/sewer-cleaning-camera-inspection/', '/services/sewer-camera-inspection/'] })
+checkRelatedCards({ main, check, expectedHrefs: ['/services/hydro-jetting/', '/services/sewer-cleaning-camera-inspection/', '/services/sewer-camera-inspection/', '/services/preventative-sewer-maintenance/'] })
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
 const topicHrefs = [...topicBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('FAQ topic list has four anchors that resolve', topicHrefs.length === 4 && topicHrefs.every((h) => ids.includes(h)))

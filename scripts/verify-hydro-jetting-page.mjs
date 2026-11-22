@@ -176,7 +176,7 @@ check('every "On this page" anchor resolves', navHrefs.every((h) => ids.includes
 check('"On this page" nav is not rendered', (main.match(/aria-labelledby="on-this-page"/g) || []).length === 0)
 const headingIds = [...main.matchAll(/<h2[^>]*\sid="([^"]+)"/g)].map((m) => m[1])
 check('every nav entry points at a rendered section heading', navHrefs.every((h) => headingIds.includes(h)), navHrefs.filter((h) => !headingIds.includes(h)).join(', '))
-checkRelatedCards({ main, check, expectedHrefs: ['/services/sewer-cleaning/', '/services/sewer-camera-inspection/', '/services/drain-cleaning/', '/services/sewer-line-locating/'] })
+checkRelatedCards({ main, check, expectedHrefs: ['/services/sewer-cleaning/', '/services/sewer-camera-inspection/', '/services/drain-cleaning/', '/services/sewer-line-locating/', '/services/preventative-sewer-maintenance/'] })
 const topicBlock = (main.match(/<nav[^>]*aria-labelledby="faq-topics"[\s\S]*?<\/nav>/) || [''])[0]
 const topicHrefs = [...topicBlock.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
 check('FAQ topic list has five anchors that resolve', topicHrefs.length === 5 && topicHrefs.every((h) => ids.includes(h)), String(topicHrefs.length))

@@ -210,6 +210,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
       id('svc-stl-sewer-lateral-inspection-reporting'),
       id('res-camera-report'),
       id('res-stl-city-program'),
+      id('svc-pre-purchase-sewer-inspection'),
     ],
   },
 
@@ -372,6 +373,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
       id('res-stl-lateral-report'),
       id('loc-stl-st-louis-city'),
       id('svc-stl-sewer-lateral-inspection-reporting'),
+      id('svc-sewer-camera-inspection'),
     ],
   },
 
@@ -541,6 +543,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
       id('res-stl-city-program'),
       id('res-stl-lateral-report'),
       id('market-st-louis-mo'),
+      id('svc-sewer-camera-inspection'),
     ],
   },
 }

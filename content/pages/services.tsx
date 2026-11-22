@@ -571,6 +571,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('svc-hydro-jetting'),
       id('svc-sewer-line-locating'),
       id('svc-recurring-sewer-backup-diagnosis'),
+      id('svc-preventative-sewer-maintenance'),
     ],
     relatedDescriptions: {
       [id('res-camera-report')]:
@@ -1224,6 +1225,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       // Once the independent second-opinion page is in the registry, add its
       // id here as the fourth card, with the description 'Clear evidence
       // before a major sewer decision.' (it is Phase 2 and unbuilt today).
+      id('svc-preventative-sewer-maintenance'),
     ],
     relatedDescriptions: {
       [id('svc-hydro-jetting')]:
@@ -1741,6 +1743,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('svc-sewer-camera-inspection'),
       id('svc-drain-cleaning'),
       id('svc-sewer-line-locating'),
+      id('svc-preventative-sewer-maintenance'),
     ],
     // Not rendered by v2: the final request section replaces the separate
     // closing form and call-to-action band.
@@ -3661,6 +3664,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('svc-hydro-jetting'),
       id('svc-sewer-camera-inspection'),
       id('svc-sewer-line-locating'),
+      id('svc-recurring-sewer-backup-diagnosis'),
     ],
     relatedDescriptions: {
       [id('svc-sewer-cleaning')]:
@@ -4948,6 +4952,7 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
       id('svc-hydro-jetting'),
       id('svc-sewer-line-locating'),
       id('svc-pre-purchase-sewer-inspection'),
+      id('svc-drain-cleaning'),
     ],
     relatedDescriptions: {
       [id('svc-sewer-camera-inspection')]:
