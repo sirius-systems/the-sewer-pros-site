@@ -4,6 +4,8 @@ import {
   FaqSection,
   RelatedLinks,
   RelatedServiceCards,
+  Hero,
+  HeroBackdrop,
   CtaSection,
   SurveyLeadForm,
   relatedLinksRenders,
@@ -16,6 +18,7 @@ import { PageShell } from './PageShell'
 import { FaqGrouped } from '@/components/sections/service-v2'
 import { editorialImage } from '@/data/business/editorial-images'
 import { resolveLinkableOnly } from '@/lib/links/approved-link'
+import { heroContactAction } from '@/lib/links/hero-contact-action'
 import type {
   CardImage,
   CorePageContent,
@@ -103,9 +106,21 @@ export function CorePageTemplate({
     content.faq.length > 0 &&
     content.faq.every((entry) => entry.group !== undefined)
 
+  // Opt-in hub-style hero: copy over a backdrop photo, form beside it.
+  const heroOnBackdrop = content.heroBackdrop !== undefined
+  const heroForm = heroOnBackdrop && content.heroForm === true
+  const updatedLine =
+    content.showUpdated === true && content.dateModified !== undefined ? (
+      <p className="text-caption">
+        Updated{' '}
+        <time dateTime={content.dateModified}>{content.dateModified}</time>
+      </p>
+    ) : undefined
+
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
-    'standard',
+    // `Hero` renders `sparse`; the plain header is `standard`.
+    heroOnBackdrop ? 'sparse' : 'standard',
     'dense',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(relatedLinksRenders(content.relatedPageIds)
@@ -129,6 +144,33 @@ export function CorePageTemplate({
         dateModified: content.dateModified,
       }}
     >
+      {heroOnBackdrop && content.heroBackdrop !== undefined ? (
+        <Hero
+          variant="editorial"
+          title={content.hero.title}
+          intro={
+            <>
+              {updatedLine}
+              {content.hero.intro}
+            </>
+          }
+          backdrop={<HeroBackdrop set={content.heroBackdrop} />}
+          copyWidth="reading"
+          hideAsideBelowLg={heroForm}
+          mobileContactAction={heroContactAction(page)}
+          aside={
+            heroForm ? (
+              /* Same card wrapper and reason as the hubs; no default market. */
+              <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+                <SurveyLeadForm
+                  idPrefix="hero-survey"
+                  headingId="hero-request-service"
+                />
+              </div>
+            ) : undefined
+          }
+        />
+      ) : (
       <Section density="standard" width="reading">
         <header>
           <h1 className="text-h1 font-semibold tracking-tight text-balance">
@@ -151,6 +193,7 @@ export function CorePageTemplate({
 
         <EditorialMedia pathname={page.pathname} />
       </Section>
+      )}
 
       <TrustBar />
 

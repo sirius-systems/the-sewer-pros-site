@@ -30,6 +30,7 @@ import type { MarketId, PageId } from './common'
 import type { BackgroundVideo, CardImage } from './media'
 import type { ServiceId } from './service'
 import type { HubImageKey } from '@/data/business/hub-images'
+import type { HeroBackdropSet } from '@/data/business/hero-backdrop'
 
 /* ==========================================================================
    Shared pieces
@@ -3474,6 +3475,14 @@ export interface CorePageContent extends BasePageContent {
   dateModified?: string
   /** Opt-in: show an "Updated {dateModified}" line under the H1, as resource articles do. */
   showUpdated?: boolean
+  /**
+   * Opt-in: render the hub-style hero (copy over a full-bleed backdrop
+   * photo, lead form beside it from `lg`). A single-frame set; decorative.
+   * Without it the hero is the plain header it always was.
+   */
+  heroBackdrop?: HeroBackdropSet
+  /** With `heroBackdrop`: show the lead form in the hero's right column. */
+  heroForm?: boolean
   /**
    * Full-bleed image behind the closing CTA. Decorative; scene only
    * (DEC-145), so its alt text and source must not imply a real job.

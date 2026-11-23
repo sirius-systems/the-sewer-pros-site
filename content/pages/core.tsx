@@ -21,6 +21,7 @@
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import { editorialImage } from '@/data/business/editorial-images'
+import { faqHeroBackdrop } from '@/data/business/faq-hero-backdrop'
 import {
   homeServiceCards,
   approvedServicesIntro,
@@ -1928,6 +1929,8 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
       'Answers about sewer camera inspections, sewer cleaning, hydro jetting, drain problems, sewer backups, pre-purchase sewer scopes, and what the findings mean.',
     dateModified: '2026-11-23',
     showUpdated: true,
+    heroBackdrop: faqHeroBackdrop,
+    heroForm: true,
     faq: [
       {
         group: 'Basics',
