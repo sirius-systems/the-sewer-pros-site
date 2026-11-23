@@ -2672,7 +2672,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
   [id('res-replacement-questions')]: {
     seoTitle: 'Questions to Ask Before Approving Sewer Line Replacement',
     metaDescription:
-      'Ten questions to ask before approving a sewer line replacement: the evidence, alternatives, scope, price, warranty and records to get in writing.',
+      'Ten questions to ask before approving a sewer line replacement: the evidence, alternatives, scope and records to ask for in writing.',
     dateModified: '2026-11-23',
     hero: {
       eyebrow: 'Resource',
@@ -2705,7 +2705,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         <p>Restoring flow and correcting the cause are different goals. Cleaning can be enough for deposits in serviceable pipe, while a structural or alignment problem may need other work. Roots, age, pipe material, a crack or a localized collapse are not automatic reasons to replace the full length.</p>
         <p>Ask what each reasonable option would and would not do:</p>
         <ul>
-          <li><strong>Cleaning</strong> removes obstructions and can restore flow. It does not rebuild missing pipe, realign a joint or correct a sag.</li>
+          <li><strong>Cleaning</strong> <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>removes obstructions</ApprovedInlineLink> and can restore flow. It does not rebuild missing pipe, realign a joint or correct a sag.</li>
           <li><strong>Monitoring</strong> means watching a condition over time. It needs a stated reason it is reasonable and a stated change that would trigger action.</li>
           <li><strong>Localized repair</strong> corrects a defect at a defined location and leaves the surrounding pipe in place. It does not address separate problems elsewhere in the line.</li>
           <li><strong>Lining</strong> forms a new wall inside the existing pipe over a defined length. The old pipe stays, and conditions such as an obstruction, a collapse or a sag may need separate correction first.</li>
@@ -2815,7 +2815,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
           <li>Responsibility for a shared line or the connection at the main is unresolved.</li>
           <li>The video or defect log is not available to share.</li>
         </ul>
-        <p>A second reviewer does not always need another camera pass. They can start by deciding whether the existing footage is enough. <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>An independent sewer second opinion</ApprovedInlineLink> from The Sewer Pros begins there: the business contacts you and looks at what you already have. For disputed slope, ground stability or design questions, a suitably qualified engineer may be a better fit than another proposal, and it is reasonable to ask any reviewer whether they would sell the proposed work.</p>
+        <p>A second reviewer does not always need another camera pass. They can start by deciding whether the existing footage is enough. The page on <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>independent inspection compared with a repair company&rsquo;s inspection</ApprovedInlineLink> explains how the two differ. <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>An independent sewer second opinion</ApprovedInlineLink> from The Sewer Pros begins there: the business contacts you and looks at what you already have. For disputed slope, ground stability or design questions, a suitably qualified engineer may be a better fit than another proposal, and it is reasonable to ask any reviewer whether they would sell the proposed work.</p>
         <p>Give every reviewer the same material: the full video with its date, entry point and distance reference, the defect log, a statement of where the camera stopped, any route sketch or locating marks, the history of backups and cleanings, and the proposal&rsquo;s endpoints and method. Ask for findings in writing that separate what the reviewer saw from what they inferred.</p>
         <h2>Comparing proposals that disagree</h2>
         <p>Compare the specific questions instead of only the recommendation and the price:</p>
