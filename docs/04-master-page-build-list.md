@@ -890,7 +890,7 @@ proof-not-applicable
 blocked-pending-verification
 ```
 
-None of the current 64 launch pages has been reviewed against this field (§56A); it is a planning field going forward, not a retroactive audit result.
+None of the 206 built pages (as of November 23, 2026) has been reviewed against this field (§56A); it is a planning field going forward, not a retroactive audit result.
 
 Do not fabricate evidence to satisfy the field. If a page needs evidence it does not yet have, record `draft-proof-needed` rather than inventing a review, a statistic, or a case study.
 
