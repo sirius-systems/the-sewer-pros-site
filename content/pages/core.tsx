@@ -2415,6 +2415,46 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       id('svc-sewer-cleaning'),
       id('core-faq'),
     ],
+    ctaForm: true,
+    cta: {
+      title: 'Want the condition documented?',
+      body: (
+        <>
+          <p>
+            A sewer camera inspection report is only as useful as what it
+            documents. A complete report identifies the property and the
+            inspection date, shows where the camera entered the line and how
+            far it traveled, ties each finding to video or a photo, and says
+            what could not be seen.
+          </p>
+          <p>Before you rely on any report, check that it:</p>
+          <ul className="flex flex-col gap-2">
+            {[
+              'separates what was observed from what is suspected and what is recommended',
+              'states its limitations and any section the camera could not reach',
+              'comes with the full recording, not only highlights',
+            ].map((point) => (
+              <li key={point} className="flex gap-2">
+                <span aria-hidden="true" className="opacity-70">
+                  -
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+          <p>
+            With The Sewer Pros, a camera inspection comes with the inspection
+            video and written findings. We provide inspection, cleaning, and
+            locating, and we do not perform sewer repair or replacement, so
+            your findings are not the first step toward a repair sale.
+          </p>
+          <p>
+            Use the form to request an inspection and tell us what you want
+            documented.
+          </p>
+        </>
+      ),
+    },
     relatedAsCards: true,
     relatedDescriptions: {
       [id('res-read-video')]: RES_READ_VIDEO_DESCRIPTION,

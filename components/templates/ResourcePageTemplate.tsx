@@ -4,6 +4,7 @@ import {
   RelatedLinks,
   RelatedServiceCards,
   CtaSection,
+  SurveyLeadForm,
   relatedLinksRenders,
   faqSectionRenders,
   EditorialMedia,
@@ -114,7 +115,9 @@ export function ResourcePageTemplate({
     // entry read `sparse` and therefore described a page that does not
     // exist -- the rhythm check was validating a fiction on this family.
     // Verified against rendered output.
-    'dense',
+    // panel (form CTA) renders sparse; band renders dense. Same
+    // condition as the render below; an image does not change either.
+    content.ctaForm === true ? 'sparse' : 'dense',
   ]
 
   return (
@@ -229,15 +232,30 @@ export function ResourcePageTemplate({
         that read as a boxed card sitting between the full-bleed related
         strip above it and the full-bleed footer below.
       */}
-      <CtaSection
-        variant="band"
-        title={content.cta?.title ?? 'Want the condition documented?'}
-        body={content.cta?.body}
-        // Default surface so the closing CTA contrasts with the muted
-        // related band above it. With an image, Section uses the image.
-        surface="default"
-        backgroundImage={content.ctaBackground}
-      />
+      {content.ctaForm === true ? (
+        <CtaSection
+          variant="panel"
+          title={content.cta?.title ?? 'Want the condition documented?'}
+          body={content.cta?.body}
+          action={null}
+          backgroundImage={content.ctaBackground}
+          proof={
+            <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
+              <SurveyLeadForm idPrefix="cta-survey" />
+            </div>
+          }
+        />
+      ) : (
+        <CtaSection
+          variant="band"
+          title={content.cta?.title ?? 'Want the condition documented?'}
+          body={content.cta?.body}
+          // Default surface so the closing CTA contrasts with the muted
+          // related band above it. With an image, Section uses the image.
+          surface="default"
+          backgroundImage={content.ctaBackground}
+        />
+      )}
     </PageShell>
   )
 }

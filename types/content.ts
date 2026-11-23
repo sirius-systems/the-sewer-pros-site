@@ -3003,6 +3003,12 @@ export interface ResourcePageContent extends BasePageContent {
    */
   relatedAsCards?: boolean
   /**
+   * Opt-in: show the lead form beside the closing CTA copy and drop the
+   * CTA's own button (the form has its own submit). Off by default so
+   * the other resource pages keep the plain band.
+   */
+  ctaForm?: boolean
+  /**
    * Full-bleed artwork behind the closing CTA. Decorative; scene only
    * (DEC-145), so its alt text and source must not imply a real job.
    *
