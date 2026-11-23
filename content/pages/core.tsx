@@ -638,6 +638,9 @@ const SERVICE_AREA_GUIDANCE: MarketGuidanceContent = {
     },
   }
 
+/** One-line guide description, shared by the Resources hub and related-resource cards. */
+const RES_READ_VIDEO_DESCRIPTION = 'How to interpret sewer camera footage yourself.'
+
 export const hubContent: Partial<Record<PageId, HubPageContent>> = {
   [id('hub-services')]: {
     /*
@@ -1811,7 +1814,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       },
       {
         pageId: id('res-read-video'),
-        description: 'How to interpret sewer camera footage yourself.',
+        description: RES_READ_VIDEO_DESCRIPTION,
         image: editorialImage('/resources/how-to-read-a-sewer-camera-inspection-video/'),
       },
       {
@@ -2412,6 +2415,12 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       id('svc-sewer-cleaning'),
       id('core-faq'),
     ],
+    relatedAsCards: true,
+    relatedDescriptions: {
+      [id('res-read-video')]: RES_READ_VIDEO_DESCRIPTION,
+      [id('core-faq')]:
+        'Answers about sewer camera inspections, sewer cleaning, hydro jetting, and pre-purchase inspections.',
+    },
   },
 
   [id('res-read-video')]: {

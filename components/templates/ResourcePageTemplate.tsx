@@ -2,13 +2,21 @@ import { Section, Prose, type SectionDensity } from '@/components/ui'
 import {
   FaqSection,
   RelatedLinks,
+  RelatedServiceCards,
   CtaSection,
   relatedLinksRenders,
   faqSectionRenders,
   EditorialMedia,
 } from '@/components/sections'
 import { PageShell } from './PageShell'
-import type { MasterPageRecord, ResourcePageContent } from '@/types'
+import { editorialImage } from '@/data/business/editorial-images'
+import { resolveLinkableOnly } from '@/lib/links/approved-link'
+import type {
+  CardImage,
+  MasterPageRecord,
+  PageId,
+  ResourcePageContent,
+} from '@/types'
 
 /**
  * Resource article.
@@ -83,10 +91,21 @@ export function ResourcePageTemplate({
   page,
   content,
 }: ResourcePageTemplateProps) {
+  // Card images for related pages that are not home service cards
+  // (guides, FAQ). Service ids fall through to the shared card art.
+  const relatedCardImages: Partial<Record<PageId, CardImage>> = {}
+  if (content.relatedAsCards === true && content.relatedPageIds !== undefined) {
+    for (const link of resolveLinkableOnly(content.relatedPageIds)) {
+      const image = editorialImage(link.href)
+      if (image !== undefined) relatedCardImages[link.pageId] = image
+    }
+  }
+
   const densities: SectionDensity[] = [
     'standard',
     ...(content.body !== undefined ? (['standard'] as const) : []),
     ...(faqSectionRenders(content.faq) ? (['dense'] as const) : []),
+    // Cards and links both render one dense band when any page resolves.
     ...(relatedLinksRenders(content.relatedPageIds)
       ? (['dense'] as const)
       : []),
@@ -178,13 +197,24 @@ export function ResourcePageTemplate({
         <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }} title="Related questions" entries={content.faq} />
       )}
 
-      {content.relatedPageIds !== undefined && (
-        <RelatedLinks
-          title={content.relatedTitle ?? 'Related resources'}
-          pageIds={content.relatedPageIds}
-          descriptions={content.relatedDescriptions}
-        />
-      )}
+      {content.relatedPageIds !== undefined &&
+        (content.relatedAsCards === true ? (
+          <RelatedServiceCards
+            id="related-resources"
+            title={content.relatedTitle ?? 'Related resources'}
+            pageIds={content.relatedPageIds}
+            descriptions={content.relatedDescriptions}
+            images={relatedCardImages}
+            columns={3}
+            surface="muted"
+          />
+        ) : (
+          <RelatedLinks
+            title={content.relatedTitle ?? 'Related resources'}
+            pageIds={content.relatedPageIds}
+            descriptions={content.relatedDescriptions}
+          />
+        ))}
 
       {/*
         18 §115 places a relevant SERVICE CTA at the end of an article,
@@ -203,6 +233,10 @@ export function ResourcePageTemplate({
         variant="band"
         title={content.cta?.title ?? 'Want the condition documented?'}
         body={content.cta?.body}
+        // Default surface so the closing CTA contrasts with the muted
+        // related band above it. With an image, Section uses the image.
+        surface="default"
+        backgroundImage={content.ctaBackground}
       />
     </PageShell>
   )

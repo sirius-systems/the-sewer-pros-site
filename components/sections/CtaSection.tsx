@@ -1,5 +1,10 @@
 import type { ReactNode } from "react";
-import { Section, ButtonLink, buttonClasses } from "@/components/ui";
+import {
+  Section,
+  ButtonLink,
+  buttonClasses,
+  type SectionSurface,
+} from "@/components/ui";
 import { PRIMARY_CTA } from "@/components/layout/cta";
 import { cn } from "@/lib/utils/cn";
 import type { CardImage } from "@/types";
@@ -159,6 +164,13 @@ export interface CtaSectionProps {
    * the same opaque white as the body.
    */
   note?: ReactNode;
+  /**
+   * Overrides the surface a band/split sits on when no image is set.
+   * Default is the variant's own (`muted` for band, `brand` for panel),
+   * so existing callers are unchanged. Use it to contrast with an
+   * adjacent muted section.
+   */
+  surface?: SectionSurface;
   className?: string;
 }
 
@@ -176,6 +188,7 @@ export function CtaSection({
   primaryOnImage = "surface",
   phoneVariant = "text",
   note,
+  surface,
   className,
 }: CtaSectionProps) {
   const isPanel = variant === "panel";
@@ -412,7 +425,7 @@ export function CtaSection({
         overrides it inside `Section`, and this is what comes back if
         the image is ever removed.
       */
-      surface={isPanel ? "brand" : "muted"}
+      surface={surface ?? (isPanel ? "brand" : "muted")}
       backgroundImage={backgroundImage}
       labelledBy={id}
       className={className}

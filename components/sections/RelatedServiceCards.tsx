@@ -1,8 +1,8 @@
 import { ServiceIndex, serviceIndexRenders } from './ServiceIndex'
 import { homeServiceCards } from '@/content/pages/home-service-cards'
 import { comparisonCardImages } from '@/content/pages/comparisons'
-import type { SectionDensity } from '@/components/ui'
-import type { PageId } from '@/types'
+import type { SectionDensity, SectionSurface } from '@/components/ui'
+import type { CardImage, PageId } from '@/types'
 
 /**
  * "Related services" section, rendered as the homepage service cards.
@@ -24,7 +24,12 @@ export function RelatedServiceCards({
   pageIds,
   descriptions,
   columns = 3,
+  images,
+  surface,
 }: {
+  /** Optional per-page image overrides; win over the shared service card art. */
+  images?: Readonly<Partial<Record<PageId, CardImage>>>
+  surface?: SectionSurface
   id?: string
   density?: SectionDensity
   title: string
@@ -39,6 +44,7 @@ export function RelatedServiceCards({
       variant="cards"
       columns={columns}
       density={density}
+      surface={surface}
       id={id}
       title={title}
       intro={intro !== undefined ? <p>{intro}</p> : undefined}
@@ -47,7 +53,7 @@ export function RelatedServiceCards({
         return {
           pageId,
           description: descriptions?.[pageId] ?? card?.description,
-          image: card?.image ?? comparisonCardImages[pageId],
+          image: images?.[pageId] ?? card?.image ?? comparisonCardImages[pageId],
         }
       })}
     />

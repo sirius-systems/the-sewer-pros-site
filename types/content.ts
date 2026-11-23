@@ -2996,6 +2996,22 @@ export interface ResourcePageContent extends BasePageContent {
    * content changes justify it — never to appear fresh.
    */
   dateModified?: string
+  /**
+   * Opt-in: render `relatedPageIds` as image cards (the shared service
+   * card style) instead of the plain `RelatedLinks` list. Off by
+   * default so the other resource pages keep their link list.
+   */
+  relatedAsCards?: boolean
+  /**
+   * Full-bleed artwork behind the closing CTA. Decorative; scene only
+   * (DEC-145), so its alt text and source must not imply a real job.
+   *
+   * ⚠ A SITEWIDE PAGE'S CTA IMAGE MUST NOT NAME OR DEPICT ONE MARKET
+   * AS THE BUSINESS'S PLACE. No signage, no address, no office marker,
+   * no vehicle livery standing in for a branch (01 §20-21, CLAUDE.md
+   * §24).
+   */
+  ctaBackground?: CardImage
 }
 
 /** One compact benefit beside the hub intro's prose. */
