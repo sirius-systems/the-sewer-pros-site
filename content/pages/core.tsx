@@ -2425,7 +2425,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
     },
     cta: {
-      title: 'Want the condition documented?',
+      title: 'Request a Sewer Camera Inspection With Written Findings',
       body: (
         <>
           <p>
@@ -2754,7 +2754,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
     },
     cta: {
-      title: 'Want the condition documented?',
+      title: 'Get Your Sewer Camera Inspection Video Reviewed',
       body: (
         <>
           <p>
@@ -3103,7 +3103,7 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
     },
     cta: {
-      title: 'Want the condition documented?',
+      title: 'Get an Independent Sewer Inspection Before You Approve a Replacement',
       body: (
         <>
           <p>
