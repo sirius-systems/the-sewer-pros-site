@@ -135,6 +135,22 @@ check(
   'careers function order: upsert, note, remove website-careers (DELETE), add tags',
   inOrder(careersCode, ["'/contacts/upsert'", '/notes`', "'DELETE')", 'careersTags(application)']),
 )
+/* Careers multi-select fields: option allow-lists and the keys written (GHL Dropdown multiple / Multi line). */
+const optionsSrc = fs.readFileSync(path.resolve('lib/forms/careers-options.ts'), 'utf8')
+const listOf = (name) => {
+  const at = optionsSrc.indexOf('export const ' + name)
+  const open = optionsSrc.indexOf('[', at)
+  const close = optionsSrc.indexOf(']', open)
+  return at < 0 ? [] : [...optionsSrc.slice(open, close).matchAll(/'([^']+)'/g)].map((m) => m[1])
+}
+const sameList = (a, b) => a.length === b.length && a.every((v, i) => v === b[i])
+check('careers employment options are exactly Part Time, Full Time, Temp/Inter', sameList(listOf('CAREERS_EMPLOYMENT_TYPES'), ['Part Time', 'Full Time', 'Temp/Inter']), listOf('CAREERS_EMPLOYMENT_TYPES').join('|'))
+check('careers day options are exactly Monday to Saturday', sameList(listOf('CAREERS_AVAILABILITY_DAYS'), ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']), listOf('CAREERS_AVAILABILITY_DAYS').join('|'))
+check('careers time options are exactly Morning, Afternoon, Evening, Any', sameList(listOf('CAREERS_AVAILABILITY_TIMES'), ['Morning', 'Afternoon', 'Evening', 'Any']), listOf('CAREERS_AVAILABILITY_TIMES').join('|'))
+check('careers function writes employment_type, availability_days, availability_times and skills (bare keys)', ['employment_type', 'availability_days', 'availability_times', 'skills'].every((k) => careersCode.includes("key: '" + k + "'")))
+const careersForm = fs.readFileSync(path.resolve('components/sections/CareersForm.tsx'), 'utf8')
+check('the careers form uses the shared option lists for its three checkbox groups', ['employmentType', 'availabilityDays', 'availabilityTimes'].every((n) => new RegExp('name="' + n + '"').test(careersForm)) && /CAREERS_EMPLOYMENT_TYPES/.test(careersForm) && /CAREERS_AVAILABILITY_DAYS/.test(careersForm) && /CAREERS_AVAILABILITY_TIMES/.test(careersForm))
+check('docs/ghl-lead-setup.md lists the four careers field keys and the merge fields', ['employment_type', 'availability_days', 'availability_times', 'skills'].every((k) => fs.readFileSync(path.resolve('docs/ghl-lead-setup.md'), 'utf8').includes('{{contact.' + k + '}}')))
 check('careers function writes the market and inquiry_message fields', /key: 'market'/.test(careersCode) && /key: 'inquiry_message'/.test(careersCode))
 check('the lead form payload sends no new field (location comes from the existing zip and serviceLocation)', !/\bcity\b|\blocation:\s/.test((fs.readFileSync(path.resolve('lib/forms/submit-lead.ts'), 'utf8').match(/export interface LeadPayload[\s\S]*?\n\}/) || [''])[0].replace(/\/\*[\s\S]*?\*\//g, '')))
 

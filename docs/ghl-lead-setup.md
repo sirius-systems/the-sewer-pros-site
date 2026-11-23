@@ -160,8 +160,18 @@ The careers form (`/careers/`) posts to a separate function, `POST /api/careers`
 
 - **Scope.** Attaching the resume calls `POST /forms/upload-custom-files`, which needs the `forms.write` scope on the Private Integration token, in addition to `contacts.write`. Without it (or without the field id) the contact, tags and note are still saved, the contact gets `careers-resume-failed`, and the visitor is asked to call.
 - **Tags.** `website-careers`, `form-careers` and one of `careers-st-louis`, `careers-san-diego`, `careers-las-vegas`. Never `market-*`. All map to `info@thesewerpros.com` (docs/lead-routing.md section 3A).
-- **Custom fields written.** `preferred_contact_method`, `source_page`, `market` (the market label the applicant chose) and `inquiry_message` (the applicant's message), all from the list above, plus the resume File Upload field. Employment type, availability and skills have no custom field; they are in the note only. Order: upsert, resume attach, note, remove `website-careers`, add the tags, so the notification email sees the data and the resume.
+- **Custom fields written.** `preferred_contact_method`, `source_page`, `market` (the market label the applicant chose) and `inquiry_message` (the applicant's message), all from the list above, plus the resume File Upload field. Four more fields carry the applicant's choices (table below); the note repeats the same values for the record. Order: upsert, resume attach, note, remove `website-careers`, add the tags, so the notification email sees the data and the resume.
 - **Files.** PDF and DOCX, one file, 5 MB.
+- **Careers-only custom fields** (bare keys; the form shows them as optional checkbox groups, and the option labels are the stored values; the lists live in `lib/forms/careers-options.ts` and are pinned by `scripts/verify-lead-routing.mjs`):
+
+| Bare key | GHL type | Allowed values | Email merge field |
+|---|---|---|---|
+| `employment_type` | Dropdown (multiple) | `Part Time`, `Full Time`, `Temp/Inter` | `{{contact.employment_type}}` |
+| `availability_days` | Dropdown (multiple) | `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` | `{{contact.availability_days}}` |
+| `availability_times` | Dropdown (multiple) | `Morning`, `Afternoon`, `Evening`, `Any` | `{{contact.availability_times}}` |
+| `skills` | Multi line text | free text, up to 2000 characters, trimmed | `{{contact.skills}}` |
+
+  The three dropdowns are sent as arrays of strings. Unknown values are dropped (never a reason to refuse an application), and a field with no value is left out of the request entirely. If GHL refuses the arrays with a 4xx, the function retries once with comma-separated text, then without custom fields (the note still carries every answer). The earlier single "Type of employment" menu and the free-text availability box were replaced by these groups.
 
 ## SMS consent version history
 

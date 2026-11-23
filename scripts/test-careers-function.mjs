@@ -26,7 +26,8 @@ const copy = (name, fix) => {
 }
 copy('sms-consent.ts', (s) => s)
 copy('lead-server.ts', (s) => s.replace("from './sms-consent'", "from './sms-consent.mts'"))
-copy('careers-server.ts', (s) => s.replace("from './lead-server'", "from './lead-server.mts'"))
+copy('careers-options.ts', (s) => s)
+copy('careers-server.ts', (s) => s.replace("from './lead-server'", "from './lead-server.mts'").replace("from './careers-options'", "from './careers-options.mts'"))
 const { handleCareers, createRateLimiter, CAREERS_TAGS, checkResume } = {
   ...(await import(pathToFileURL(path.join(tmp, 'lib/forms/careers-server.mts')).href)),
   ...(await import(pathToFileURL(path.join(tmp, 'lib/forms/lead-server.mts')).href)),
@@ -104,6 +105,7 @@ const mockFetch = async (url, init = {}) => {
   }
   const body = init.body === undefined ? undefined : JSON.parse(init.body)
   calls.push({ kind: 'ghl', method: init.method, path, headers, body })
+  if (path === '/contacts/upsert' && mode === 'array-reject' && body.customFields?.some((c) => Array.isArray(c.fieldValue))) return new Response('{"message":"array"}', { status: 422 })
   if (path === '/contacts/upsert') {
     if (mode === 'contact-fail') return new Response('{"message":"RAW GHL ERROR SECRET-TEXT"}', { status: 500 })
     return new Response('{"new":true,"contact":{"id":"contact_abc123"}}', { status: 200 })
@@ -130,9 +132,10 @@ const fields = (over = {}) => ({
   phone: '(314) 555-0199',
   email: EMAIL,
   contactMethod: 'email',
-  employmentType: 'part-time',
-  availability: 'Weekdays <b>after</b> 3',
-  skills: 'CDL',
+  employmentType: ['Part Time', 'Temp/Inter'],
+  availabilityDays: ['Monday', 'Friday'],
+  availabilityTimes: ['Morning', 'Any'],
+  skills: '  CDL <b>class</b> A  ',
   message: 'Plain note',
   sourcePath: '/careers/',
   spRef: '',
@@ -142,7 +145,7 @@ const fields = (over = {}) => ({
 })
 async function send({ f = fields(), file, fileName = ORIGINAL_FILE_NAME, extra = [], origin = BASE, ctype, envOver, limiter } = {}) {
   const fd = new FormData()
-  for (const [k, v] of Object.entries(f)) if (v !== undefined) fd.append(k, v)
+  for (const [k, v] of Object.entries(f)) if (v !== undefined) for (const one of Array.isArray(v) ? v : [v]) fd.append(k, one)
   for (const [k, v] of extra) fd.append(k, v)
   if (file !== undefined) fd.append('resume', new File([file], fileName))
   const probe = new Request(`${BASE}/api/careers`, { method: 'POST', body: fd })
@@ -198,12 +201,18 @@ check('valid application with a PDF returns 200 {"ok":true} only', r.status === 
 const up = ghl('/contacts/upsert')[0]
 check('GHL called with Bearer token and Version 2021-07-28', up?.headers.Authorization === `Bearer ${FAKE_TOKEN}` && up?.headers.Version === '2021-07-28')
 check('upsert uses the location id, E.164 phone, email, first and last name', up?.body.locationId === FAKE_LOCATION && up?.body.phone === `+1${PHONE_DIGITS}` && up?.body.email === EMAIL && up?.body.firstName === 'Testfirst' && up?.body.lastName === 'Testlast')
-check('custom fields: preferred_contact_method, source_page, market (label) and inquiry_message; no SMS consent fields', JSON.stringify(up?.body.customFields.map((f) => f.key)) === '["preferred_contact_method","source_page","market","inquiry_message"]' && up.body.customFields[0].fieldValue === 'Email' && up.body.customFields[1].fieldValue === '/careers/' && up.body.customFields[2].fieldValue === 'San Diego' && up.body.customFields[3].fieldValue === 'Plain note')
+{
+  const cf = Object.fromEntries(up.body.customFields.map((c) => [c.key, c.fieldValue]))
+  check('custom fields: the four existing keys keep their values', cf.preferred_contact_method === 'Email' && cf.source_page === '/careers/' && cf.market === 'San Diego' && cf.inquiry_message === 'Plain note', JSON.stringify(cf))
+  check('employment_type, availability_days and availability_times are sent as ARRAYS in option order', JSON.stringify(cf.employment_type) === '["Part Time","Temp/Inter"]' && JSON.stringify(cf.availability_days) === '["Monday","Friday"]' && JSON.stringify(cf.availability_times) === '["Morning","Any"]', JSON.stringify(cf))
+  check('skills is a trimmed plain-text string (angle brackets removed); no SMS consent field', cf.skills === 'CDL b class /b A' && !('sms_marketing_consent' in cf), JSON.stringify(cf.skills))
+  check('bare keys only (no contact. prefix)', up.body.customFields.every((c) => !c.key.includes('.')))
+}
 const tags = tagPosts()
 check('tags: website-careers, form-careers, careers-san-diego, and nothing else', tags.length === 1 && JSON.stringify(tags[0].body.tags) === '["website-careers","form-careers","careers-san-diego"]', JSON.stringify(tags.map((t) => t.body)))
 check('no tag starts with or contains market- and no lead tag is added', !JSON.stringify(tags).includes('market-') && !JSON.stringify(tags).includes('website-lead') && !JSON.stringify(tags).includes('form-contact'))
 const note = ghl('/notes')[0]?.body.body ?? ''
-check('note holds market, contact method, employment type, availability (plain text), skills, message and resume status', note.includes('Market applied for: San Diego') && note.includes('Preferred contact: Email') && note.includes('Type of employment desired: Part time') && note.includes('Availability: Weekdays b after /b 3') && !note.includes('<') && note.includes('Skills or certifications: CDL') && note.includes('Message: Plain note') && note.includes('Resume: attached to this contact'))
+check('note holds market, contact method, employment type, availability (plain text), skills, message and resume status', note.includes('Market applied for: San Diego') && note.includes('Preferred contact: Email') && note.includes('Type of employment desired: Part Time, Temp/Inter') && note.includes('Available days: Monday, Friday') && note.includes('Available times: Morning, Any') && !note.includes('<') && note.includes('Skills or certifications: CDL') && note.includes('Message: Plain note') && note.includes('Resume: attached to this contact'))
 const upl = uploads()[0]
 check('resume upload: POST to /forms/upload-custom-files with contactId and locationId', upl?.path === `/forms/upload-custom-files?contactId=contact_abc123&locationId=${FAKE_LOCATION}`, upl?.path)
 check('resume upload: Bearer token, no JSON content type header (multipart boundary is set by fetch)', upl?.headers.Authorization === `Bearer ${FAKE_TOKEN}` && upl?.headers['Content-Type'] === undefined)
@@ -228,6 +237,35 @@ reset()
 mode = 'remove-fail'
 r = await send({ file: pdf() })
 check('a failed remove-tag call does not fail the application and the tags are still added', r.text === '{"ok":true}' && tagPosts().length === 1, r.text)
+
+/* ---- multi-select handling ---- */
+reset()
+r = await send({ f: fields({ employmentType: ['Contractor', 'Full Time', 'Full Time', ''], availabilityDays: ['Sunday', 'Saturday'], availabilityTimes: ['Night'] }) })
+{
+  const cf = Object.fromEntries(ghl('/contacts/upsert')[0].body.customFields.map((c) => [c.key, c.fieldValue]))
+  check('unknown values are dropped and the application is still accepted; duplicates collapse', r.text === '{"ok":true}' && JSON.stringify(cf.employment_type) === '["Full Time"]' && JSON.stringify(cf.availability_days) === '["Saturday"]' && !('availability_times' in cf), r.text + JSON.stringify(cf))
+}
+reset()
+r = await send({ f: fields({ employmentType: [], availabilityDays: [], availabilityTimes: [], skills: '   ' }) })
+{
+  const keys = ghl('/contacts/upsert')[0].body.customFields.map((c) => c.key)
+  const raw = JSON.stringify(ghl('/contacts/upsert')[0].body.customFields)
+  check('empty multi-selects and blank skills are omitted entirely (no empty string, no empty array)', r.text === '{"ok":true}' && !['employment_type', 'availability_days', 'availability_times', 'skills'].some((k) => keys.includes(k)) && !raw.includes('[]'), keys.join(','))
+}
+reset()
+r = await send({ f: fields({ employmentType: ['Part Time', 'x'.repeat(41)] }) })
+check('an over-long entry is ignored, not a reason to refuse', r.text === '{"ok":true}', r.text)
+reset()
+r = await send({ f: fields({ skills: 'x'.repeat(2001) }) })
+check('skills over 2000 characters is refused', r.status === 400, r.text)
+reset()
+mode = 'array-reject'
+r = await send()
+{
+  const ups = ghl('/contacts/upsert')
+  const last = ups[ups.length - 1].body.customFields
+  check('if GHL refuses arrays, the upsert is retried with comma-separated text and the application succeeds', r.text === '{"ok":true}' && ups.length === 2 && last.find((c) => c.key === 'employment_type').fieldValue === 'Part Time, Temp/Inter' && last.find((c) => c.key === 'availability_days').fieldValue === 'Monday, Friday', ups.length + JSON.stringify(last))
+}
 
 /* ---- DOCX, no resume, each market ---- */
 reset()
@@ -262,7 +300,6 @@ await rejected('missing market is refused', { f: fields({ marketId: '' }) })
 await rejected('missing email is refused', { f: fields({ email: '' }) })
 await rejected('bad phone is refused', { f: fields({ phone: '123' }) })
 await rejected('contact method "text" is not offered and is refused', { f: fields({ contactMethod: 'text' }) })
-await rejected('unknown employment type is refused', { f: fields({ employmentType: 'contractor' }) })
 await rejected('over-long message is refused', { f: fields({ message: 'x'.repeat(2001) }) })
 await rejected('source path that is not a path is refused', { f: fields({ sourcePath: 'careers' }) })
 await rejected('JSON content type is refused (415)', { ctype: 'application/json' }, 415)
