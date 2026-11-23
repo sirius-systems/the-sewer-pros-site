@@ -1667,25 +1667,25 @@ This document should not duplicate or override the canonical data in the registr
 
 This section reconciles the inventory with the repository. The authoritative machine-readable registry is `data/pages/approved-pages.ts`; this section summarizes it and does not replace it.
 
-Verified against commit `5b9586a`: 64 approved records, all `status: launch` and `indexable: true`; `gatedPages` is empty; all 64 are built (content exists and a route is generated); the production sitemap lists exactly those 64 URLs. Built and indexable here reflects the registry's own `launch` decision, not the existence of a route. Commercial services were removed by owner decision on Oct 12, 2026 and are not offered; the original 70-page launch build is now 64 launch pages, and the current build is 200 static pages with 197 sitemap URLs and 198 approved page records.
+At the September 21 baseline (commit `5b9586a`) the registry held 64 approved records, all `status: launch` and `indexable: true`, all built, and the sitemap listed exactly those 64 URLs. Commercial services were removed by owner decision on Oct 12, 2026 and are not offered; the original 70-page launch build became 64 launch pages. As of November 23, 2026 the build is 206 pages (204 in the sitemap), counted from the build output; the table below shows the current state. Built and indexable here reflects the registry's own `launch` decision, not the existence of a route.
 
 | Family | Built | Indexable | Paths |
 |---|---|---|---|
 | Home | 1 | 1 | `/` |
-| Core | 3 | 3 | `/about/`, `/contact/`, `/faq/` |
+| Core | 10 | 8 | `/about/`, `/contact/`, `/faq/`, `/reviews/`, `/careers/`, `/privacy/`, `/sms-terms/`, `/terms/` indexable; `/careers/thank-you/` and `/contact/thank-you/` are utility pages, not indexable |
 | Hubs | 4 | 4 | `/services/`, `/locations/`, `/for/`, `/resources/` |
-| Service | 10 | 10 | 9 under `/services/` (drain-cleaning, hydro-jetting, pre-purchase-sewer-inspection, preventative-sewer-maintenance, recurring-sewer-backup-diagnosis, sewer-camera-inspection, sewer-cleaning-camera-inspection, sewer-cleaning, sewer-line-locating) plus `/st-louis-mo/sewer-lateral-inspection-reporting/` |
-| Market | 3 | 3 | `/st-louis-mo/`, `/san-diego-ca/`, `/las-vegas-nv/` |
+| Service | 10 | 10 | `/services/` drain-cleaning, hydro-jetting, independent-sewer-inspection-second-opinion, pre-purchase-sewer-inspection, preventative-sewer-maintenance, recurring-sewer-backup-diagnosis, sewer-camera-inspection, sewer-cleaning-camera-inspection, sewer-cleaning, sewer-line-locating |
+| Market | 7 | 7 | `/st-louis-mo/`, `/san-diego-ca/`, `/las-vegas-nv/`, their three `/contact/` pages, and `/st-louis-mo/sewer-lateral-inspection-reporting/` |
 | Location | 16 | 16 | Paths `/locations/{market}/{location}/` (DEC-141). St. Louis 5 (St. Louis City, Chesterfield, Ballwin, Florissant, St. Charles); San Diego 7 (San Diego, Mission Valley, Carlsbad, Chula Vista, Escondido, Oceanside, San Marcos); Las Vegas 4 (Las Vegas, Henderson, North Las Vegas, Summerlin) |
-| Service + Location | 144 | 144 | 9 residential services x 16 locations (St. Louis 45, San Diego 63, Las Vegas 36), at `/locations/{market}/{location}/{service-slug}/` (DEC-139, DEC-140, DEC-141). See section 56D. This table row supersedes the 14-page count in the September 21 snapshot |
+| Service + Location | 144 | 144 | 9 residential services x 16 locations (St. Louis 45, San Diego 63, Las Vegas 36), at `/locations/{market}/{location}/{service-slug}/` (DEC-139, DEC-140, DEC-141). See section 56D. This row supersedes the 14-page count in the September 21 baseline |
 | Audience | 6 | 6 | `/for/` home-buyers, home-sellers, real-estate-agents, home-inspectors, property-managers, hoa-communities |
 | Comparison | 2 | 2 | `/compare/` hydro-jetting-vs-sewer-snaking, independent-sewer-inspection-vs-repair-company |
-| Resource | 5 | 5 | `/resources/` how-to-read-a-sewer-camera-inspection-video, st-louis-city-sewer-lateral-program, st-louis-county-sewer-lateral-program, st-louis-sewer-lateral-report, what-is-in-a-sewer-camera-inspection-report |
+| Resource | 6 | 6 | `/resources/` how-to-read-a-sewer-camera-inspection-video, questions-to-ask-before-approving-sewer-line-replacement, st-louis-city-sewer-lateral-program, st-louis-county-sewer-lateral-program, st-louis-sewer-lateral-report, what-is-in-a-sewer-camera-inspection-report |
 
 Other lifecycle states:
 
 * **Gated or noindex:** none. The five Las Vegas records moved from `launch_pending_validation` to `launch` under DEC-080. Only the framework 404 pages emit noindex
-* **Deferred:** `svc-independent-sewer-second-opinion` (Phase 2, approved, not built, not in the registry)
+* **Deferred:** none. The independent second opinion page (`svc-independent-sewer-second-opinion`) is built and indexable (DEC-151)
 * **Retired:** none
 * **Pages not built and not in the approved page registry:** audience + service, audience + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records. Geographic records for candidate locations may already exist in `07-master-location-registry.md`; a geographic record is not a page approval. See §56C for the proposed expansion candidates
 
