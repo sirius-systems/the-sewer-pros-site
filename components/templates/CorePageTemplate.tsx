@@ -156,6 +156,14 @@ export function CorePageTemplate({
           }
           backdrop={<HeroBackdrop set={content.heroBackdrop} />}
           copyWidth="reading"
+          /*
+            ⚠ NO PRIMARY BUTTON WHERE THE FORM IS ON SCREEN. `null`, not
+            omitted: undefined falls back to the global CTA. With the form
+            beside the copy a second ask competes with it (18 §62), the
+            same rule the closing CTA follows. Below `lg` the form is
+            hidden and `mobileContactAction` (lg:hidden) is the one action.
+          */
+          primaryAction={heroForm ? null : undefined}
           hideAsideBelowLg={heroForm}
           mobileContactAction={heroContactAction(page)}
           aside={
