@@ -1687,7 +1687,7 @@ Other lifecycle states:
 * **Gated or noindex:** none. The five Las Vegas records moved from `launch_pending_validation` to `launch` under DEC-080. Only the framework 404 pages emit noindex
 * **Deferred:** none. The independent second opinion page (`svc-independent-sewer-second-opinion`) is built and indexable (DEC-151)
 * **Retired:** none
-* **Pages not built and not in the approved page registry:** audience + service, audience + location, alternative pages, and any Las Vegas service + location pages. These are candidates only, not approved records. Geographic records for candidate locations may already exist in `07-master-location-registry.md`; a geographic record is not a page approval. See §56C for the proposed expansion candidates
+* **Pages not built (as of November 23, 2026):** audience + service, audience + location and alternative pages have no routes in the build. They are candidates only, not approved records. The Las Vegas service + location pages that this bullet once listed are now built and indexable (36 pages, section 56D). Geographic records for candidate locations may already exist in `07-master-location-registry.md`; a geographic record is not a page approval. See §56C for the proposed expansion candidates
 
 The families table in §13 to §24 describes intent. Where it says "build-ready / published", the state above applies.
 
