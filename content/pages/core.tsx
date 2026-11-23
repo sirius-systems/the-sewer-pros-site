@@ -2416,6 +2416,11 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       id('core-faq'),
     ],
     ctaForm: true,
+    ctaBackground: {
+      src: '/images/brand/resources/the-sewer-pros-sewer-camera-inspection-report-article-final-cta-16x9.webp',
+      alt: 'Camera monitor showing the inside of a pipe, with a blank clipboard and a closed notebook on a counter in front of it',
+      source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
+    },
     cta: {
       title: 'Want the condition documented?',
       body: (
