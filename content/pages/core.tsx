@@ -2402,93 +2402,247 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
 
   [id('res-read-video')]: {
     metaDescription:
-      'Learn how to read a sewer camera inspection video, recognize common findings, and understand what the footage can and cannot determine.',
+      'How to read a sewer camera inspection video: confirm what was inspected, read the distance counter, spot findings, and know what footage cannot prove.',
+    dateModified: '2026-11-23',
     hero: {
       eyebrow: 'Guide',
       title: 'How to Read a Sewer Camera Inspection Video',
     },
     directAnswer: (
       <p>
-        Watch for four things in a sewer camera inspection video: standing water where the line should drain,
-        joints that are separated or misaligned, roots or material entering the
-        pipe, and any change in the pipe&rsquo;s shape or surface. Note where along the line you see them: position is what makes an observation useful.
+        To read a sewer camera inspection video, first confirm which pipe the camera inspected, where it went in, which way it traveled, and how far it got. Then read the on-screen distance from its starting point, check how clearly you can see, and describe what is visible before deciding what it means. Footage shows visible condition. Cause, leakage, slope, and repair need more evidence.
       </p>
     ),
     body: (
       <>
-        <h2>What you are looking at in a sewer camera inspection video</h2>
-        <p>
-          The camera travels along the inside of the pipe, lit from the head.
-          The picture is close, wide-angle, and often wet, which is why
-          footage can look alarming when it is normal, and normal when it is
-          not.
-        </p>
-
-        <h2>Standing water</h2>
-        <p>
-          A line should carry water away. Water sitting in a section suggests
-          that part of the line is not draining: a low spot, a loss of slope,
-          or a restriction downstream. Watch whether the camera passes through
-          water and out the other side, or whether it stays submerged.
-        </p>
-
-        <h2>Joints</h2>
-        <p>
-          Joints appear as regular seams. What matters is whether they line up.
-          A visible gap, a step where one section sits higher than the next, or
-          daylight-like darkness at a seam suggests separation or offset, and
-          those are the points where roots and material typically enter.
-        </p>
-
-        <h2>Roots and intrusion</h2>
-        <p>
-          Roots enter at defects, so their presence marks the defect. Fine
-          hair-like growth and heavier mass differ in severity but both indicate
-          an opening. Note where along the line they appear.
-        </p>
-
-        <h2>Changes in the pipe itself</h2>
-        <p>
-          Watch for the pipe changing material or diameter, scale or buildup
-          coating the wall, cracks, and any point where the round profile
-          deforms. A change of material is not itself a problem: it is
-          information about how the line was built or previously worked on.
-        </p>
-
-        <h2>Where along the line</h2>
-        <p>
-          Where along the line a condition was seen is the single most useful thing to ask about: an observation tied to a location can be located on the property, quoted against precisely, and compared to a later inspection.
-        </p>
-
-        <h2>What footage cannot tell you</h2>
-        <p>
-          It shows the inside surface of the accessible line, at that moment.
-          It does not show wall thickness, the ground around the pipe, or how
-          long a condition has existed. Obscured sections are unknown, not
-          fine, and treating them as fine is the most common misreading.
-        </p>
-
-        <h2>If you are unsure</h2>
-        <p>
-          Ask whoever inspected the line to talk you through the footage and where along the line each condition was seen. If the reading matters to a significant decision,
-          you can{' '}
-          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
-            ask for a second opinion on the footage
-          </ApprovedInlineLink>{' '}
-          you already have.
-        </p>
+        <p>The footage from a <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>sewer camera inspection</ApprovedInlineLink> is evidence about the part of the pipe the camera could reach and see, on the day it was recorded. It is easy to misread. A dark line may be a shadow, a pool of water may be a normal result of running water, and a number on the screen may not mean what it seems to. This guide keeps three things apart: what the picture shows, what the on-screen numbers measure, and what the inspector has actually confirmed.</p>
+        <p>It describes how to review any inspection video. It is not a legal requirement, and it makes no claim about a particular inspection.</p>
+        <h2>Start with what was inspected</h2>
+        <p>Before judging any defect, work out which pipe you are looking at. Watch the opening footage and note:</p>
+        <ul>
+        <li>The address, the date, and who did the inspection.</li>
+        <li>The access point, such as a particular exterior cleanout.</li>
+        <li>The direction the camera traveled and where the inspection was meant to end.</li>
+        <li>Whether there are several clips, separate runs, or a pass in the opposite direction.</li>
+        </ul>
+        <p>Treat the access point, the direction, and the route as three separate questions. A cleanout&rsquo;s position in the yard does not tell you which way the camera went, because a line can be inspected toward the street, toward the house, or both. Also ask whether you are watching the camera go in or come out. A pass on the way out often shows the same pipe again, sometimes more steadily, rather than new pipe.</p>
+        <p>Then watch the end of the video, not just the last frame. The camera may have reached the intended connection, stopped at an obstruction or sharp bend, lost visibility, or been pulled back before the section was finished. The last number on the counter does not prove the whole line was inspected. A section the camera could not reach or see is unknown, not fine.</p>
+        <p>A simple route sketch helps. It should show the access point, any branches, and where the inspection ended, and it should say whether the route is inferred from the video or confirmed by locating from the surface.</p>
+        <h2>What the numbers on the screen mean</h2>
+        <p>Three different references can appear in the same video, and they are not interchangeable.</p>
+        <ul>
+        <li><strong>Playback position:</strong> where you are in the video file. Useful for finding a moment again.</li>
+        <li><strong>Date and time:</strong> the equipment clock. Worth checking, because it may not be set correctly.</li>
+        <li><strong>Distance counter:</strong> how much cable has been fed into the line, in feet or meters.</li>
+        </ul>
+        <p>When you note a finding, write down both the playback position and the distance, for example &ldquo;video 4:18, counter 37.6 ft, branch opening.&rdquo; That identifies the exact frame without assuming the counter alone is enough.</p>
+        <h3>Where did zero start?</h3>
+        <p>A distance reading only means something from a stated starting point. Zero might be the cleanout opening, a point partway down the access pipe, or the start of the horizontal run. Counters can be reset partway through, and slack cable can make the number run ahead of the camera. Ask where zero was set, whether there were resets or separate runs, and whether the units are feet or meters. A decimal on the screen looks precise, but that does not make the measurement exact.</p>
+        <h3>Distance is not location or depth</h3>
+        <p>&ldquo;42 ft&rdquo; means 42 units of cable from the starting point. It does not mean 42 feet in a straight line across the yard, and it says nothing about how deep the pipe is. Bends and vertical sections make the straight-line distance shorter than the cable distance. Finding a point from above ground is a separate step that uses a transmitter in the pipe and a receiver on the surface, and it has its own limits. If a decision depends on where a problem sits or how deep it is, ask for <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>sewer line locating</ApprovedInlineLink> and a sketch tied to fixed features such as a corner of the house, rather than measuring across the lawn from the video.</p>
+        <h2>Check the picture before you judge the pipe</h2>
+        <p>Image quality changes what you can conclude. Pause on a steady frame, then compare the same area as the camera approaches and as it leaves.</p>
+        <ul>
+        <li><strong>Bright patches or washed-out nearby walls:</strong> glare may be hiding surface detail.</li>
+        <li><strong>A dark far end with a bright foreground:</strong> a lighting limit. Darkness alone does not mean a blockage.</li>
+        <li><strong>Haze, smears, or constant blur:</strong> the lens may be dirty or fogged.</li>
+        <li><strong>Murky water or lost wall detail:</strong> the submerged part of the pipe wall may not be assessable in that stretch.</li>
+        </ul>
+        <p>Water needs context too. It may be there because of a defect, because of a restriction downstream, or because water was run on purpose during the inspection. Ask whether water was running and whether that stretch was looked at again after cleaning or after the lens was wiped.</p>
+        <p>Orientation matters as well. A rotating picture does not mean the pipe is twisting, and &ldquo;up&rdquo; on the screen is not always the top of the pipe. Some cameras keep the image upright and some do not, so a feature&rsquo;s position around the pipe, such as &ldquo;at the 10 o&rsquo;clock position,&rdquo; is only reliable when the camera&rsquo;s orientation is known.</p>
+        <h2>Normal features are not defects</h2>
+        <p>Pipes have parts that look dramatic on camera and are simply how the line was built.</p>
+        <ul>
+        <li><strong>Joints:</strong> regular seams where pipe sections meet. A joint is not a crack. What matters is whether it is open, stepped, or has roots or deposits at it.</li>
+        <li><strong>Bends:</strong> changes in the pipe&rsquo;s path. A turn in the picture can be a fitting, not damage.</li>
+        <li><strong>Branch connections:</strong> another pipe entering the line, often at a tee or wye. Ask which pipe it serves and whether the camera actually went into it.</li>
+        <li><strong>Material transitions:</strong> a change in pipe appearance at a connection. It may be original construction, an earlier repair, or a lining. It is information, not a fault.</li>
+        </ul>
+        <p>Do not name a pipe material from its color alone. Ask what visual evidence supports it.</p>
+        <h2>Common findings: what you see and what it does not prove</h2>
+        <p>For each of these, the footage can support a description of what is visible and where. On its own it usually cannot support a conclusion about cause, size, leakage, or what to do. Each note below pairs the visible cue with that limit.</p>
+        <h3>Roots</h3>
+        <p><strong>What you see:</strong> fine hair-like strands, thicker rope-like cords, or a tangled mass reaching into the pipe, ideally with a visible point where they enter. Stringy debris, wipes, or material snagged on a joint can look similar, so an unclear shape is better described as fibrous material until a closer look resolves it.</p>
+        <p><strong>What the video alone does not establish:</strong> which tree they came from, how far the roots extend outside the pipe, whether they caused the opening or found one that was already there, or how strong the remaining pipe is. A mass of roots can also hide the opening it enters through. Cleaning followed by a second look at the same spot can show the joint or wall underneath.</p>
+        <h3>Grease and other soft deposits</h3>
+        <p><strong>What you see:</strong> an attached coating, lobes, or hanging buildup that narrows the passage with irregular material. The useful first question is whether the material is stuck to the wall or loose on the bottom. A waxy or pale look is not a chemical identification.</p>
+        <p><strong>What the video alone does not establish:</strong> the exact makeup, how thick it is behind the visible surface, which fixture produced it, or the condition of the wall underneath. Cleaning and a repeat inspection can show what was covered.</p>
+        <h3>Mineral scale and corrosion-related buildup</h3>
+        <p><strong>What you see:</strong> rough crusts, nodules, or ridges attached to the wall. Grease, ordinary pipe texture, mortar, or repair material can look similar, and similar color does not mean similar material.</p>
+        <p><strong>What the video alone does not establish:</strong> the chemistry of the deposit, how much wall remains, or how fast it is changing. Knowing the pipe material and cleaning before a second look helps. Measuring wall loss takes testing that goes beyond the picture.</p>
+        <h3>Sediment and loose debris</h3>
+        <p><strong>What you see:</strong> a bed of fine particles, grit, flakes, or distinct objects on the bottom of the pipe. If it shifts between frames, it is loose rather than attached. The normal water surface, a protruding connection, or a dirty lens can be mistaken for it.</p>
+        <p><strong>What the video alone does not establish:</strong> where it came from, whether it proves soil is entering the pipe, whether it is pieces of broken pipe, or what the hidden bottom looks like. If sediment keeps returning after cleaning, the next question is what is feeding it or whether a low section is collecting it.</p>
+        <h3>Offset joints</h3>
+        <p><strong>What you see:</strong> two pipe sections meeting with a step or ledge instead of lining up smoothly. This is sideways displacement, which is different from a gap between pipe ends. A normal socket, a change in pipe size, a bend, or an off-center camera view can look similar.</p>
+        <p><strong>What the video alone does not establish:</strong> how large the offset is from a single angled frame, when it moved, whether it is still moving, or whether it leaks. Viewing the joint square-on and from both directions helps. Measuring it takes a calibrated method.</p>
+        <h3>Separated or open joints</h3>
+        <p><strong>What you see:</strong> a visible gap along the pipe between neighboring sections. A joint can be both open and offset, and those are separate observations. Normal joint recesses, shadows, sealant, and cracks near but not at the joint can look alike.</p>
+        <p><strong>What the video alone does not establish:</strong> that every dark ring is a gap, whether the joint is watertight, how big any cavity outside the pipe is, or why it opened. Visible soil, a void, roots, or water coming in at the joint is stronger evidence than the dark ring alone. When leakage is the real question, a leakage test can add evidence the camera cannot.</p>
+        <h3>Cracks and fractures</h3>
+        <p><strong>What you see:</strong> a line in the pipe surface that stays in place as the camera moves, sometimes with visible edges if it has opened. Note whether it runs along the pipe, around it, or branches. Mold seams, scratches, stains, liner wrinkles, and shadows can look like cracks.</p>
+        <p><strong>What the video alone does not establish:</strong> whether it goes all the way through the wall, how wide it is without calibration, whether it is active, or how much load the pipe can carry. A crack alone does not prove leakage. Water visibly crossing it, or a suitable test, is stronger evidence.</p>
+        <h3>Missing sections of pipe wall</h3>
+        <p><strong>What you see:</strong> a break in the expected outline of the wall, with broken edges, displaced pieces, or a clear opening. A broken wall, a hole, and visible soil or void outside the pipe are different observations. A normal branch opening, a liner end, or deep shadow can be mistaken for missing wall.</p>
+        <p><strong>What the video alone does not establish:</strong> how big any cavity outside the pipe is, how much soil has moved, what the remaining pipe can carry, or why it happened. A black opening is not proof of a void. Answering those questions can take investigation outside the pipe.</p>
+        <h3>Deformation and collapse</h3>
+        <p><strong>What you see:</strong> flattening, an egg-shaped distortion, or inward bulging compared with the pipe&rsquo;s expected round shape. A collapse shows failed structure. A camera that cannot pass means the inspection stopped there, not necessarily that the pipe collapsed. Angled views, bends, deposits, and liner wrinkles can fool the eye.</p>
+        <p><strong>What the video alone does not establish:</strong> a percentage of deformation from one uncalibrated frame, the cause, the loading above the pipe, or how soon anything might fail. Repeat views, the known pipe material, and measurement help, and inspecting from the opposite end can show what lies past a stopping point.</p>
+        <h3>Standing water and suspected low sections</h3>
+        <p><strong>What you see:</strong> a waterline, or a stretch where the camera enters water, travels through it, and comes out. Record where the water starts and ends and how clear it is, separately from any theory about why it is there. Running fixtures, test water, a restriction downstream, or the camera itself sitting low can all explain water.</p>
+        <p><strong>What the video alone does not establish:</strong> a confirmed low spot from one wet frame, the grade, how deep or long the dip is, or what the submerged wall looks like. A basic camera does not measure slope. Confirming a low section takes controlled conditions and surveyed elevation or profile data. If backups keep returning, the footage is one input to diagnosing recurring backups, alongside the symptoms and the history of the line.</p>
+        <h2>What a sewer video cannot prove by itself</h2>
+        <p>Some conclusions get stated as fact from footage that cannot support them. Watch for these.</p>
+        <ul>
+        <li><strong>&ldquo;The pipe looks clean, so it is watertight.&rdquo;</strong> No visible defect is not the same as no leakage. A camera shows the surface it can see. Where tightness matters, a leakage test is a separate method.</li>
+        <li><strong>&ldquo;There is a crack, so it is leaking.&rdquo;</strong> A crack is a visible line. Leakage is water crossing the pipe wall.</li>
+        <li><strong>&ldquo;There is water, so there is a belly.&rdquo;</strong> Water is the observation. A low section is one possible explanation.</li>
+        <li><strong>&ldquo;The counter says 30 feet, so dig 30 feet from the cleanout.&rdquo;</strong> Cable distance is not a surface position. Locating from above ground and a sketch tied to fixed features come first.</li>
+        <li><strong>&ldquo;The video shows the pipe&rsquo;s slope or depth.&rdquo;</strong> Neither is established by the picture alone.</li>
+        <li><strong>&ldquo;The camera shows how many years are left.&rdquo;</strong> Footage shows current visible condition. Estimating remaining life takes more information and carries real uncertainty.</li>
+        <li><strong>&ldquo;There are roots, so the whole line must be replaced.&rdquo;</strong> Roots are an observation, not a repair plan. Where they enter, what the joint underneath looks like after cleaning, how much of the line is affected, and how often problems return all matter.</li>
+        <li><strong>&ldquo;The camera stopped, so the rest is probably fine.&rdquo;</strong> Only the part that was inspected has been evaluated. Everything past an obstruction is unknown.</li>
+        <li><strong>&ldquo;That close-up looks terrible, so it is urgent.&rdquo;</strong> A close-up can document a real defect, but how big it looks is not how big it is, and appearance alone is not a structural or urgency assessment.</li>
+        </ul>
+        <p>None of this means a camera cannot find leaks. It can document water visibly entering the pipe. What it cannot do is certify every leakage condition from appearance.</p>
+        <h2>Four kinds of statements in written findings</h2>
+        <p>When you read written findings, or when an inspector walks you through the video, try to sort each statement into one of four kinds.</p>
+        <ul>
+        <li><strong>Observation:</strong> what is visible and where, such as &ldquo;branching material extends into the pipe at 37.6 ft.&rdquo;</li>
+        <li><strong>Inferred cause:</strong> what the inspector thinks it is, and why.</li>
+        <li><strong>Severity:</strong> how much it matters, based on extent, measurement, and symptoms.</li>
+        <li><strong>Recommendation:</strong> what to do next, and why.</li>
+        </ul>
+        <p>A recommendation should trace back through the other three to something you can find in the video. For what written findings should contain overall, see the companion guide on <ApprovedInlineLink pageId={id('res-camera-report')}>what a sewer camera inspection report includes</ApprovedInlineLink>.</p>
+        <h2>Questions to ask about the footage</h2>
+        <p>If something in the video matters to a decision, these questions turn a screen full of numbers into usable information.</p>
+        <ul>
+        <li>Which access point did you use, which way did the camera travel, and what feature shows where it ended?</li>
+        <li>Which sections or surfaces could you not see, and does your conclusion depend on assuming what is in them?</li>
+        <li>Where was the distance counter set to zero, and were there resets, separate runs, or a pass in the other direction?</li>
+        <li>Is the route on the sketch inferred from the video or confirmed by locating?</li>
+        <li>For each finding that affects the recommendation, what are the video position, the counter reading, and the still image?</li>
+        <li>Was the view limited by water, glare, roots, deposits, or a dirty lens, and was that stretch checked again after cleaning?</li>
+        <li>Which dimensions were measured and which were estimated?</li>
+        <li>What are you reading directly from the video, what are you inferring, and what would change your conclusion?</li>
+        </ul>
+        <h2>When cleaning and a second look can help</h2>
+        <p>Sometimes the footage cannot answer the question because something is in the way. Buildup, roots, or sediment can hide the wall, a joint, or the bottom of the pipe. In those cases, <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>sewer cleaning</ApprovedInlineLink> followed by a second look at the same stretch can show what was underneath. <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>Sewer cleaning and camera inspection</ApprovedInlineLink> are also available as one service.</p>
+        <p>Cleaning is not automatically safe or enough for every damaged pipe, so the method should suit the pipe&rsquo;s condition. It also helps to keep the original footage showing the obstruction, so the before and after can be compared.</p>
+        <h2>Weighing a recommendation against the footage</h2>
+        <p>A defect name does not pick a repair. Whatever is proposed should connect back to where the problem is, how far it extends, how much of the line was actually seen, and what is still uncertain. Different next steps need different evidence:</p>
+        <ul>
+        <li><strong>Monitoring:</strong> a baseline recording, a review plan, and what would trigger action.</li>
+        <li><strong>More inspection or testing:</strong> a specific unanswered question and how the answer could change the decision.</li>
+        <li><strong>Localized repair:</strong> a defined affected area, a confirmed surface location, and an adequate look at the rest of the line.</li>
+        <li><strong>Lining:</strong> the problem it is meant to address, the condition of the existing pipe, branches and ends, and a plan to inspect before and after.</li>
+        <li><strong>Replacement:</strong> the extent, and why maintenance, a localized repair, or other options would not address the documented problem.</li>
+        </ul>
+        <p>The Sewer Pros does not offer sewer repair or replacement. This section is here so you can check whether any proposal, from anyone, follows from the evidence. If you already have a video and a recommendation and want someone else to look at both, an <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>independent sewer second opinion</ApprovedInlineLink> is one way to do that, and <ApprovedInlineLink pageId={id('res-replacement-questions')}>questions to ask before approving a sewer replacement</ApprovedInlineLink> covers what to ask first.</p>
+        <h2>If you are buying a home</h2>
+        <p>If the video is part of a purchase, the same checks apply with a deadline attached. Confirm the inspected section, the endpoint, and anything the camera could not reach before you rely on the footage for a decision. A <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>pre-purchase sewer inspection</ApprovedInlineLink> is built around this situation.</p>
+        <h2>Formal condition grades</h2>
+        <p>Some utilities and contractors code and grade pipe condition using standardized systems, such as the PACP and LACP programs from NASSCO. These are useful planning tools, but they are not required for every residential inspection, and a grade is not a repair order or a deadline. If you see a grade, ask which grade it is, who assigned it, and what it summarizes. A formal-looking number does not remove errors in what was observed.</p>
+        <h2>What you receive from The Sewer Pros</h2>
+        <p>When a camera is used, you receive the inspection video. Written findings are included. Use the checks above when you review them, and ask about anything that is not clear.</p>
+        <h2>If you are unsure what the footage shows</h2>
+        <p>Ask whoever made the recording to talk you through it against the video positions and distances. If the reading matters to a significant decision, a second look at the same footage is reasonable.</p>
       </>
     ),
     faq: [
       {
+        question: 'The video looks bad. Does that mean the line is failing?',
+        answer: (
+          <p>
+            Not necessarily. Sewer footage frequently looks worse than the condition warrants: the camera is close, the environment is wet, and normal wear reads dramatically. What matters is specific observations at specific distances, not the general impression.
+          </p>
+        ),
+      },
+      {
+        question: 'How do I read the distance counter on a sewer camera video?',
+        answer: (
+          <p>
+            The counter usually shows how much cable has been fed into the line, in feet or meters, from a starting point the operator sets. Ask where zero was set and whether the counter was reset. Note the video position along with the distance so you can find each finding again.
+          </p>
+        ),
+      },
+      {
+        question: 'Does the distance on the video tell me where to dig?',
+        answer: (
+          <p>
+            No. The counter measures cable travel along the pipe, not a spot on the surface, and bends and vertical sections make the two differ. Locating the camera from above ground gives a surface position and an estimated depth, and it has limits of its own. See <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>more about sewer line locating</ApprovedInlineLink>, and confirm the location before anyone excavates.
+          </p>
+        ),
+      },
+      {
+        question: 'Does standing water in a sewer video mean the pipe is sagging?',
+        answer: (
+          <p>
+            Not by itself. Water is what you can see, and a low section is one possible reason for it. Running fixtures, a restriction downstream, or the camera sitting low can also explain it. Confirming a sag takes controlled conditions and grade or profile data, because a basic camera does not measure slope.
+          </p>
+        ),
+      },
+      {
+        question: 'Does a crack on the video mean the pipe is leaking?',
+        answer: (
+          <p>
+            Not necessarily. A crack is a visible line in the pipe. Leakage is water moving through the wall. Water visibly crossing the crack is stronger evidence, and a leakage test can check a joint or section that looks dry on camera.
+          </p>
+        ),
+      },
+      {
+        question: 'Do roots in the video mean I need a new sewer line?',
+        answer: (
+          <p>
+            No. Roots are an observation, not a repair plan. What matters is where they enter, what the joint or wall looks like once they are cleared, how much of the line is affected, and how often the problem returns. Before approving a replacement, see <ApprovedInlineLink pageId={id('res-replacement-questions')}>questions to ask before approving a sewer replacement</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        question: 'Why does my sewer video look dark, blurry, or washed out?',
+        answer: (
+          <p>
+            Several things affect the picture: glare from the camera light on wet or pale surfaces, a dim far end of the pipe, a dirty or fogged lens, and water. These are viewing limits, not necessarily pipe damage. A stretch that was hard to see should be described as not assessed, not as clear, and may be worth a second look after cleaning or after the lens is wiped.
+          </p>
+        ),
+      },
+      {
+        question: 'How do I know the camera inspected the whole line?',
+        answer: (
+          <p>
+            Look for an identified endpoint, such as a connection or structure, and a clear statement of where the inspection stopped and why. The last number on the counter is not proof. Ask which sections were not reached or could not be seen, since those are unknown, not clear.
+          </p>
+        ),
+      },
+      {
+        question: 'Can I get a second opinion on a sewer video I already have?',
+        answer: (
+          <p>
+            Yes. Someone else can review the footage and any written findings and tell you what is visible, what is uncertain, and whether the recommendation follows from it. An <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>independent sewer second opinion</ApprovedInlineLink> is one way to do this.
+          </p>
+        ),
+      },
+      {
+        question: 'Can a sewer video tell me how many years the pipe has left?',
+        answer: (
+          <p>
+            No. Footage shows visible condition now. Estimating remaining life takes the pipe material, age, repair history, extent of any defects, operating conditions, and sometimes testing, and it still carries real uncertainty. Be cautious about a precise number drawn from a video alone.
+          </p>
+        ),
+      },
+      {
+        question: 'How should I use a sewer video when buying a house?',
+        answer: (
+          <p>
+            Confirm what was inspected and what was not, then check each finding against its video position and distance. A clean-looking video of a partial run is not a clean line. See <ApprovedInlineLink pageId={id('aud-home-buyers')}>home buyer information</ApprovedInlineLink> or <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>pre-purchase sewer inspection</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
         question: 'What does a sewer camera inspection show?',
         answer: (
           <p>
-            It shows the visible inside of the accessible pipe on video: standing
-            water, joints that are separated or misaligned, roots or material
-            entering the pipe, and changes in the pipe’s shape or surface, along
-            with where along the line each one is. It cannot show wall thickness,
-            soil support, or the outside of the pipe.
+            It shows the visible inside of the accessible pipe on video: standing water, joints that are separated or misaligned, roots or material entering the pipe, and changes in the pipe&rsquo;s shape or surface, along with where along the line each one is. It cannot show wall thickness, soil support, or the outside of the pipe.
           </p>
         ),
       },
@@ -2496,26 +2650,20 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         question: 'How does a sewer camera inspection work?',
         answer: (
           <p>
-            A camera is fed into the line through an access point such as a
-            cleanout and travels along the inside of the pipe, lit from the head,
-            while the picture is recorded. The findings apply only to the length
-            the camera reached.
-          </p>
-        ),
-      },
-      {
-        question: 'The video looks bad. Does that mean the line is failing?',
-        answer: (
-          <p>
-            Not necessarily. Sewer footage frequently looks worse than the
-            condition warrants: the camera is close, the environment is wet,
-            and normal wear reads dramatically. What matters is specific
-            observations at specific distances, not the general impression.
+            A camera is fed into the line through an access point such as a cleanout and travels along the inside of the pipe, lit from the head, while the picture is recorded. The findings apply only to the length the camera reached.
           </p>
         ),
       },
     ],
-    relatedPageIds: [id('res-camera-report'), id('svc-sewer-camera-inspection'), id('svc-pre-purchase-sewer-inspection'), id('core-faq')],
+    relatedPageIds: [
+      id('res-camera-report'),
+      id('svc-sewer-camera-inspection'),
+      id('svc-sewer-line-locating'),
+      id('svc-independent-sewer-second-opinion'),
+      id('res-replacement-questions'),
+      id('svc-pre-purchase-sewer-inspection'),
+      id('core-faq'),
+    ],
   },
 
   /*
