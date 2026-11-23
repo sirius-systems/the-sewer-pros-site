@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { Field, TextInput, Textarea, Select, RadioGroup, Button, type SelectOption } from '@/components/ui'
+import { CAREERS_AVAILABILITY_DAYS, CAREERS_AVAILABILITY_TIMES, CAREERS_EMPLOYMENT_TYPES } from '@/lib/forms/careers-options'
 import { marketList, marketOperatingDetail } from '@/data/markets/markets'
 import { stampFirstInteraction } from '@/lib/forms/submit-lead'
 import { RESUME_ACCEPT, RESUME_HELP, resumeProblem, submitCareers } from '@/lib/forms/submit-careers'
@@ -36,12 +37,34 @@ const CONTACT_METHOD_OPTIONS: readonly SelectOption[] = [
   { value: 'call', label: 'Call' },
   { value: 'email', label: 'Email' },
 ]
-const EMPLOYMENT_OPTIONS: readonly SelectOption[] = [
-  { value: 'part-time', label: 'Part time' },
-  { value: 'full-time', label: 'Full time' },
-  { value: 'temp', label: 'Temp' },
-  { value: 'intern', label: 'Intern' },
-]
+
+/** A group of optional checkboxes sharing one name; each ticked box is sent as its own entry. */
+function CheckboxGroup({ name, idPrefix, legend, options }: { name: string; idPrefix: string; legend: string; options: readonly string[] }) {
+  return (
+    <fieldset>
+      <legend className="text-sm font-medium text-foreground">{legend}</legend>
+      <div className="mt-1.5 flex flex-wrap gap-x-6 gap-y-2">
+        {options.map((option) => {
+          const boxId = `${idPrefix}-${option.replace(/[^A-Za-z]/g, '').toLowerCase()}`
+          return (
+            <div key={option} className="flex min-h-6 items-center gap-2">
+              <input
+                type="checkbox"
+                id={boxId}
+                name={name}
+                value={option}
+                className="h-4 w-4 rounded-sm border-border text-accent-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-secondary"
+              />
+              <label htmlFor={boxId} className="text-sm text-foreground">
+                {option}
+              </label>
+            </div>
+          )
+        })}
+      </div>
+    </fieldset>
+  )
+}
 
 type FieldName = 'market' | 'fullName' | 'phone' | 'email' | 'contactMethod' | 'resume'
 type Errors = Partial<Record<FieldName, string>>
@@ -157,8 +180,11 @@ export function CareersForm({ idPrefix = 'careers' }: { idPrefix?: string }) {
 
     const body = new FormData()
     body.append('marketId', market)
-    for (const key of ['fullName', 'phone', 'email', 'contactMethod', 'employmentType', 'availability', 'skills', 'message']) {
+    for (const key of ['fullName', 'phone', 'email', 'contactMethod', 'skills', 'message']) {
       body.append(key, value(key))
+    }
+    for (const key of ['employmentType', 'availabilityDays', 'availabilityTimes']) {
+      for (const entry of data.getAll(key)) body.append(key, String(entry))
     }
     if (chosen !== undefined) body.append('resume', chosen)
     body.append('sourcePath', window.location.pathname)
@@ -292,16 +318,20 @@ export function CareersForm({ idPrefix = 'careers' }: { idPrefix?: string }) {
         <FieldError id={id('contactMethod-error')} message={errors.contactMethod} />
       </div>
 
-      <Field htmlFor={id('employmentType')} label="Type of employment desired">
-        <Select id={id('employmentType')} name="employmentType" options={EMPLOYMENT_OPTIONS} placeholder="No preference" />
-      </Field>
+      <div className="sm:col-span-2">
+        <CheckboxGroup name="employmentType" idPrefix={id('employmentType')} legend="Type of employment desired" options={CAREERS_EMPLOYMENT_TYPES} />
+      </div>
 
-      <Field htmlFor={id('availability')} label="Availability (days and times)">
-        <TextInput id={id('availability')} name="availability" type="text" maxLength={300} />
-      </Field>
+      <div className="sm:col-span-2">
+        <CheckboxGroup name="availabilityDays" idPrefix={id('availabilityDays')} legend="Available days" options={CAREERS_AVAILABILITY_DAYS} />
+      </div>
+
+      <div className="sm:col-span-2">
+        <CheckboxGroup name="availabilityTimes" idPrefix={id('availabilityTimes')} legend="Available times" options={CAREERS_AVAILABILITY_TIMES} />
+      </div>
 
       <Field htmlFor={id('skills')} label="Other skills or certifications" className="sm:col-span-2">
-        <TextInput id={id('skills')} name="skills" type="text" maxLength={500} />
+        <Textarea id={id('skills')} name="skills" maxLength={2000} />
       </Field>
 
       <Field htmlFor={id('message')} label="Anything you would like us to know" className="sm:col-span-2">

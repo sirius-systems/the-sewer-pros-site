@@ -15,7 +15,7 @@
  * Tags: `website-careers`, `form-careers` and one of `careers-st-louis`,
  * `careers-san-diego`, `careers-las-vegas`. None contains `market-`, and this file
  * never imports `leadTags`, so the per-market lead workflows cannot fire on a
- * careers contact. The existing `market` custom field is not written either.
+ * careers contact. The `market` custom field holds the area the applicant chose; routing is by tag only.
  * Every careers tag is routed to info@thesewerpros.com in GHL (docs/lead-routing.md).
  *
  * GHL API for the resume (HighLevel developer docs, checked 2026-11-22):
@@ -38,6 +38,7 @@ import {
   type LeadEnv,
   type RateLimiter,
 } from './lead-server'
+import { CAREERS_AVAILABILITY_DAYS, CAREERS_AVAILABILITY_TIMES, CAREERS_EMPLOYMENT_TYPES } from './careers-options'
 
 /* ---------------------------------------------------------------------------
    Configuration
@@ -61,12 +62,16 @@ export const CAREERS_MARKETS: Record<string, { key: CareersMarketKey; label: str
   'las-vegas-nv': { key: 'las-vegas', label: 'Las Vegas' },
 }
 const CONTACT_METHODS: Record<string, string> = { call: 'Call', email: 'Email' }
-const EMPLOYMENT_TYPES: Record<string, string> = {
-  'part-time': 'Part time',
-  'full-time': 'Full time',
-  temp: 'Temp',
-  intern: 'Intern',
-}
+
+/** Multi-select groups: the form sends one entry per ticked box under the same name. */
+const MULTI_FIELDS = {
+  employmentType: CAREERS_EMPLOYMENT_TYPES,
+  availabilityDays: CAREERS_AVAILABILITY_DAYS,
+  availabilityTimes: CAREERS_AVAILABILITY_TIMES,
+} as const
+type MultiKey = keyof typeof MULTI_FIELDS
+const MULTI_ENTRY_LIMIT = 40
+const MULTI_MAX_ENTRIES = 12
 
 const TEXT_LIMITS: Record<string, number> = {
   marketId: 40,
@@ -74,16 +79,14 @@ const TEXT_LIMITS: Record<string, number> = {
   phone: 30,
   email: 120,
   contactMethod: 10,
-  employmentType: 20,
-  availability: 300,
-  skills: 500,
+  skills: 2000,
   message: 2000,
   sourcePath: 200,
   spRef: 200,
   turnstileToken: 2100,
   formOpenedAt: 20,
 }
-const ALLOWED_FIELDS = new Set<string>([...Object.keys(TEXT_LIMITS), 'resume'])
+const ALLOWED_FIELDS = new Set<string>([...Object.keys(TEXT_LIMITS), ...Object.keys(MULTI_FIELDS), 'resume'])
 
 /** The tag names this function adds. Read by scripts/verify-lead-routing.mjs. */
 export const CAREERS_TAGS = {
@@ -169,8 +172,10 @@ export interface Application {
   contactMethod: string
   marketLabel: string
   marketKey: CareersMarketKey
-  employmentType: string
-  availability: string
+  /** Allow-listed labels only, in the option order, no duplicates. Empty when none was ticked. */
+  employmentType: string[]
+  availabilityDays: string[]
+  availabilityTimes: string[]
   skills: string
   message: string
   sourcePage: string
@@ -185,14 +190,27 @@ export type Validated =
   | { kind: 'retry' }
   | { kind: 'ok'; application: Application }
 
+/** The allow-listed options that were ticked, in option order, once each. Unknown values are dropped. */
+function allowed(key: MultiKey, values: string[]): string[] {
+  return MULTI_FIELDS[key].filter((option) => values.includes(option))
+}
+
 /** Checks the browser's form data. Unknown fields, wrong types and over-long values are rejected. */
 export function validateApplication(form: FormData, nowMs: number): Validated {
   const str: Record<string, string> = {}
   for (const key of Object.keys(TEXT_LIMITS)) str[key] = ''
   let resume: File | undefined
   const seen = new Set<string>()
+  const multi: Record<MultiKey, string[]> = { employmentType: [], availabilityDays: [], availabilityTimes: [] }
   for (const [key, value] of form.entries()) {
-    if (!ALLOWED_FIELDS.has(key) || seen.has(key)) return { kind: 'invalid' }
+    if (!ALLOWED_FIELDS.has(key)) return { kind: 'invalid' }
+    if (key in MULTI_FIELDS) {
+      // A multi-select group may repeat. Anything that is not a short string, and any extra entry, is
+      // ignored; unknown values are dropped below. None of this rejects the application.
+      if (typeof value === 'string' && value.length <= MULTI_ENTRY_LIMIT && multi[key as MultiKey].length < MULTI_MAX_ENTRIES) multi[key as MultiKey].push(value)
+      continue
+    }
+    if (seen.has(key)) return { kind: 'invalid' }
     seen.add(key)
     if (key === 'resume') {
       if (typeof value === 'string') return { kind: 'invalid' }
@@ -218,8 +236,6 @@ export function validateApplication(form: FormData, nowMs: number): Validated {
   const method = CONTACT_METHODS[str.contactMethod]
   if (market === undefined || fullName === '' || phone === undefined || method === undefined) return { kind: 'invalid' }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { kind: 'invalid' }
-  const employment = str.employmentType === '' ? '' : EMPLOYMENT_TYPES[str.employmentType]
-  if (employment === undefined) return { kind: 'invalid' }
   const sourcePage = clean(str.sourcePath)
   if (!sourcePage.startsWith('/')) return { kind: 'invalid' }
 
@@ -240,8 +256,9 @@ export function validateApplication(form: FormData, nowMs: number): Validated {
       contactMethod: method,
       marketLabel: market.label,
       marketKey: market.key,
-      employmentType: employment,
-      availability: clean(str.availability),
+      employmentType: allowed('employmentType', multi.employmentType),
+      availabilityDays: allowed('availabilityDays', multi.availabilityDays),
+      availabilityTimes: allowed('availabilityTimes', multi.availabilityTimes),
       skills: clean(str.skills),
       message: clean(str.message),
       sourcePage,
@@ -264,8 +281,9 @@ function noteBody(application: Application, receivedAtIso: string, resume: 'atta
   const lines = [
     `Market applied for: ${application.marketLabel}`,
     `Preferred contact: ${application.contactMethod}`,
-    ...(application.employmentType !== '' ? [`Type of employment desired: ${application.employmentType}`] : []),
-    ...(application.availability !== '' ? [`Availability: ${application.availability}`] : []),
+    ...(application.employmentType.length > 0 ? [`Type of employment desired: ${application.employmentType.join(', ')}`] : []),
+    ...(application.availabilityDays.length > 0 ? [`Available days: ${application.availabilityDays.join(', ')}`] : []),
+    ...(application.availabilityTimes.length > 0 ? [`Available times: ${application.availabilityTimes.join(', ')}`] : []),
     ...(application.skills !== '' ? [`Skills or certifications: ${application.skills}`] : []),
     ...(application.message !== '' ? [`Message: ${application.message}`] : []),
     `Resume: ${resume === 'attached' ? 'attached to this contact' : resume === 'none' ? 'not sent' : 'sent but could not be attached'}`,
@@ -400,19 +418,31 @@ export async function handleCareers(request: Request, env: CareersEnv, deps: Car
     source: 'The Sewer Pros website (careers)',
   }
   if (application.lastName !== '') contact.lastName = application.lastName
-  const customFields = [
+  // Multi-select and skills fields are omitted entirely when empty (no empty string, no empty array).
+  const customFields: { key: string; fieldValue: string | string[] }[] = [
     { key: 'preferred_contact_method', fieldValue: application.contactMethod },
     { key: 'source_page', fieldValue: application.sourcePage },
     // Merge fields for the notification email. Written even when empty so a repeat application
     // never shows the last one's message. Employment type, availability and skills have no field (they are in the note).
     { key: 'market', fieldValue: application.marketLabel },
     { key: 'inquiry_message', fieldValue: application.message },
+    ...(application.employmentType.length > 0 ? [{ key: 'employment_type', fieldValue: application.employmentType }] : []),
+    ...(application.availabilityDays.length > 0 ? [{ key: 'availability_days', fieldValue: application.availabilityDays }] : []),
+    ...(application.availabilityTimes.length > 0 ? [{ key: 'availability_times', fieldValue: application.availabilityTimes }] : []),
+    ...(application.skills !== '' ? [{ key: 'skills', fieldValue: application.skills }] : []),
   ]
 
   let upsert = await call('/contacts/upsert', { ...contact, customFields })
   log(JSON.stringify({ requestId: id, step: 'ghl-upsert', status: upsert.status }))
-  if (upsert.status >= 400 && upsert.status < 500 && ![401, 403, 429].includes(upsert.status)) {
-    // Most likely a custom field that does not exist yet. Save the contact without custom fields.
+  const retryable = (status: number) => status >= 400 && status < 500 && ![401, 403, 429].includes(status)
+  if (retryable(upsert.status)) {
+    // First retry: GHL may not take an array for a multi-select field, so send those as comma-separated text.
+    const asText = customFields.map((f) => ({ key: f.key, fieldValue: Array.isArray(f.fieldValue) ? f.fieldValue.join(', ') : f.fieldValue }))
+    upsert = await call('/contacts/upsert', { ...contact, customFields: asText })
+    log(JSON.stringify({ requestId: id, step: 'ghl-upsert-retry-text', status: upsert.status }))
+  }
+  if (retryable(upsert.status)) {
+    // Still refused: most likely a custom field that does not exist yet. Save the contact without custom fields.
     upsert = await call('/contacts/upsert', contact)
     log(JSON.stringify({ requestId: id, step: 'ghl-upsert-retry', status: upsert.status }))
   }
