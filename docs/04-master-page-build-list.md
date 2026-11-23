@@ -1941,7 +1941,7 @@ Open content follow-ups carried from the batch reviews: St. Louis housing-figure
 
 # 56C. Proposed Geographic Expansion Candidates (September 23, 2026)
 
-**Lifecycle for every route below: `candidate / not built / not published / not indexable`.** (Exception: the 18 Las Vegas service + location routes marked built in the Las Vegas section below.) These are planning candidates from an external SEO proposal, reconciled against the registry. Candidate status supports research, drafting, and development. It does not approve publication, indexation, sitemap inclusion, service coverage, or entry into `data/pages/approved-pages.ts`. Existing routes are excluded from the counts. Total: **9 candidate location hubs and 49 candidate service + location pages.**
+**Lifecycle for every route below: `candidate / not built / not published / not indexable`.** (Exception: the Las Vegas, St. Louis and San Diego service + location routes marked built in the sections below.) These are planning candidates from an external SEO proposal, reconciled against the registry. Candidate status supports research, drafting, and development. It does not approve publication, indexation, sitemap inclusion, service coverage, or entry into `data/pages/approved-pages.ts`. Existing routes are excluded from the counts. Total: **9 candidate location hubs and 49 candidate service + location pages.**
 
 Neither candidate status nor a geographic-registry record approves publication or indexation. The candidate locations exist in `07-master-location-registry.md`; the pages or routes are not in the approved page registry. Those are separate statements.
 
@@ -1971,36 +1971,40 @@ Canonical parent of each route: its location hub, with the canonical service pag
 
 The proposal's "27" and "29" totals conflicted. The enumerated set is 27 (15 + 12).
 
-## St. Louis service + location candidates (10)
+## St. Louis service + location candidates (10 proposed; 7 now built, 3 still candidates)
+
+**Status as of November 23, 2026.** The 7 candidates for St. Louis City, Chesterfield, Florissant and St. Charles are built and indexable. They are part of the 45 St. Louis service + location pages (section 56D), at `/locations/st-louis-mo/{location}/{service-slug}/` (DEC-141), not at the `/st-louis-mo/...` paths first proposed. The 3 candidates for O'Fallon and Wildwood have no routes in the build and remain `candidate / not built / not published / not indexable`; their location hubs are also not built.
 
 ```text
-/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/
-/st-louis-mo/st-louis-city/drain-cleaning/
-/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/
-/st-louis-mo/florissant/sewer-camera-inspection/
-/st-louis-mo/florissant/drain-cleaning/
-/st-louis-mo/st-charles/sewer-camera-inspection/
-/st-louis-mo/st-charles/sewer-cleaning/
-/st-louis-mo/ofallon-mo/sewer-camera-inspection/
-/st-louis-mo/ofallon-mo/pre-purchase-sewer-inspection/
-/st-louis-mo/wildwood/sewer-camera-inspection/
+BUILT      /locations/st-louis-mo/st-louis-city/pre-purchase-sewer-inspection/
+BUILT      /locations/st-louis-mo/st-louis-city/drain-cleaning/
+BUILT      /locations/st-louis-mo/chesterfield/pre-purchase-sewer-inspection/
+BUILT      /locations/st-louis-mo/florissant/sewer-camera-inspection/
+BUILT      /locations/st-louis-mo/florissant/drain-cleaning/
+BUILT      /locations/st-louis-mo/st-charles/sewer-camera-inspection/
+BUILT      /locations/st-louis-mo/st-charles/sewer-cleaning/
+CANDIDATE  /st-louis-mo/ofallon-mo/sewer-camera-inspection/
+CANDIDATE  /st-louis-mo/ofallon-mo/pre-purchase-sewer-inspection/
+CANDIDATE  /st-louis-mo/wildwood/sewer-camera-inspection/
 ```
 
-## San Diego service + location candidates (12)
+## San Diego service + location candidates (12 proposed; 6 now built, 6 still candidates)
+
+**Status as of November 23, 2026.** The 6 candidates for San Diego, Chula Vista, Oceanside and Escondido are built and indexable. They are part of the 63 San Diego service + location pages (section 56D), at `/locations/san-diego-ca/{location}/{service-slug}/` (DEC-141), not at the `/san-diego-ca/...` paths first proposed. The 6 candidates for Vista, El Cajon, Encinitas and La Mesa have no routes in the build and remain `candidate / not built / not published / not indexable`; their location hubs are also not built.
 
 ```text
-/san-diego-ca/san-diego/drain-cleaning/
-/san-diego-ca/san-diego/pre-purchase-sewer-inspection/
-/san-diego-ca/chula-vista/sewer-cleaning/
-/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/
-/san-diego-ca/oceanside/sewer-camera-inspection/
-/san-diego-ca/escondido/sewer-camera-inspection/
-/san-diego-ca/vista/sewer-camera-inspection/
-/san-diego-ca/vista/sewer-cleaning/
-/san-diego-ca/el-cajon/sewer-cleaning/
-/san-diego-ca/el-cajon/sewer-camera-inspection/
-/san-diego-ca/encinitas/pre-purchase-sewer-inspection/
-/san-diego-ca/la-mesa/sewer-camera-inspection/
+BUILT      /locations/san-diego-ca/san-diego/drain-cleaning/
+BUILT      /locations/san-diego-ca/san-diego/pre-purchase-sewer-inspection/
+BUILT      /locations/san-diego-ca/chula-vista/sewer-cleaning/
+BUILT      /locations/san-diego-ca/chula-vista/pre-purchase-sewer-inspection/
+BUILT      /locations/san-diego-ca/oceanside/sewer-camera-inspection/
+BUILT      /locations/san-diego-ca/escondido/sewer-camera-inspection/
+CANDIDATE  /san-diego-ca/vista/sewer-camera-inspection/
+CANDIDATE  /san-diego-ca/vista/sewer-cleaning/
+CANDIDATE  /san-diego-ca/el-cajon/sewer-cleaning/
+CANDIDATE  /san-diego-ca/el-cajon/sewer-camera-inspection/
+CANDIDATE  /san-diego-ca/encinitas/pre-purchase-sewer-inspection/
+CANDIDATE  /san-diego-ca/la-mesa/sewer-camera-inspection/
 ```
 
 `/san-diego-ca/mission-valley/hydro-jetting/` is an **existing** route, not a new candidate. It is under review: keep it only if local intent, evidence, and property-management relevance support a distinct page; otherwise assess consolidation under a broader San Diego page.
