@@ -66,7 +66,7 @@ function id(value: string): PageId {
  * Top-level header navigation.
  *
  * 03 §63: "Do not place every SEO page into the primary navigation."
- * Seven curated entries, all hubs or core pages. Individual services,
+ * Five curated entries, all hubs or core pages. Individual services,
  * markets, and locations are reached from their hubs.
  *
  * Grouped dropdowns (18 §44) are deliberately not implemented here —
@@ -77,7 +77,6 @@ export const primaryNav: NavItem[] = [
   { pageId: id('hub-services'), label: 'Services' },
   { pageId: id('hub-locations'), label: 'Locations' },
   { pageId: id('hub-audiences'), label: 'Who We Serve' },
-  { pageId: id('hub-resources'), label: 'Resources' },
   { pageId: id('core-about'), label: 'About' },
   { pageId: id('core-contact'), label: 'Contact' },
 ]
