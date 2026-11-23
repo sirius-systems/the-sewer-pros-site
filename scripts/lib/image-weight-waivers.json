@@ -313,5 +313,15 @@
   "bytes": 206432,
   "budget": 204800,
   "reason": "at the quality floor (q70, hero, not resized); a smaller source export is needed to reach the budget"
+ },
+ "images/brand/reviews/the-sewer-pros-customer-reviews-final-cta-st-louis-home-entryway-16x9.webp": {
+  "bytes": 141444,
+  "budget": 102400,
+  "reason": "at the quality floor (q70, 1600 wide); a smaller source export is needed to reach the budget"
+ },
+ "images/brand/reviews/the-sewer-pros-customer-reviews-sewer-camera-inspection-hero-16x9.webp": {
+  "bytes": 179696,
+  "budget": 102400,
+  "reason": "hero backdrop on /reviews/ that the audit does not classify as hero (path has no /hero/ folder); within the 200KB hero budget at q76, 1600 wide"
  }
 }

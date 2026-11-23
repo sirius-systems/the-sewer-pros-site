@@ -51,22 +51,35 @@ export function ReviewsPageTemplate({ page, content }: ReviewsPageTemplateProps)
         description: content.metaDescription,
       }}
     >
-      <Section density="standard" width="reading">
+      {/*
+        Background photograph via `Section`'s `backgroundImage` (measured black scrim,
+        unstyled text turns white). Decorative, so `alt` is empty at render. Scene only:
+        generated image, not a real job (DEC-145).
+      */}
+      <Section
+        density="standard"
+        width="reading"
+        backgroundImage={{
+          src: '/images/brand/reviews/the-sewer-pros-customer-reviews-sewer-camera-inspection-hero-16x9.webp',
+          alt: 'Sewer camera monitor and cable reel on a lawn beside a brick house and an open cleanout',
+          source: 'Generated image (DEC-145), owner-approved.',
+        }}
+      >
         <header>
           <h1 className="text-h1 font-semibold tracking-tight text-balance">
             {content.hero.title}
           </h1>
           {content.hero.intro !== undefined && (
-            <div className="mt-5 text-body-lg text-muted-foreground">
+            <div className="mt-5 text-body-lg text-white">
               {content.hero.intro}
             </div>
           )}
-          <ReviewAggregateStat />
+          <ReviewAggregateStat onDark />
           <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
             {googleProfiles.map((profile) => (
               <a
                 key={profile.marketId}
-                className="text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                className="text-white underline underline-offset-4 hover:opacity-80"
                 href={profile.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -102,6 +115,11 @@ export function ReviewsPageTemplate({ page, content }: ReviewsPageTemplateProps)
         title={content.cta?.title ?? 'Schedule an inspection'}
         body={content.cta?.body}
         action={null}
+        backgroundImage={{
+          src: '/images/brand/reviews/the-sewer-pros-customer-reviews-final-cta-st-louis-home-entryway-16x9.webp',
+          alt: 'Brick home entryway with a covered porch, a front door and a lit lantern, and a lawn in evening light',
+          source: 'Generated image (DEC-145), owner-approved.',
+        }}
         proof={
           <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
             <SurveyLeadForm idPrefix="cta-survey" />

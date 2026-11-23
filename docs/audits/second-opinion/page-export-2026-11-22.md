@@ -133,7 +133,7 @@ Full name (required) Phone (required) Email (optional)
 
 Preferred method of contact (required)
 
-Call Text Email Anything we should know? (optional) By checking this box, I consent to receive non-marketing text messages from SHH Group about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. By checking this box, I consent to receive marketing text messages from SHH Group about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Reference code
+Call Text Email Anything we should know? (optional) By checking this box, I consent to receive non-marketing text messages from [former sender name] about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. By checking this box, I consent to receive marketing text messages from [former sender name] about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Reference code
 
 Request Service
 
@@ -522,7 +522,7 @@ Full name (required) Phone (required) Email (optional)
 
 Preferred method of contact (required)
 
-Call Text Email Anything we should know? (optional) By checking this box, I consent to receive non-marketing text messages from SHH Group about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. By checking this box, I consent to receive marketing text messages from SHH Group about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Reference code
+Call Text Email Anything we should know? (optional) By checking this box, I consent to receive non-marketing text messages from [former sender name] about appointments, service updates, and account notifications. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. By checking this box, I consent to receive marketing text messages from [former sender name] about special offers, discounts, and promotions. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Reference code
 
 Request Service
 

@@ -127,7 +127,7 @@ export interface ReviewMarqueeProps {
  * `reviewCount` in structured data. DEC-028 stands and DEC-085 says so
  * in as many words.
  */
-export function ReviewAggregateStat() {
+export function ReviewAggregateStat({ onDark = false }: { onDark?: boolean }) {
   const { rating, reviewCount, verifiedAt } = ratingSnapshot
   // Fixed locale: `output: 'export'` prerenders this, so a
   // locale-dependent format would differ between build and browser.
@@ -137,8 +137,14 @@ export function ReviewAggregateStat() {
   )
 
   return (
-    <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm text-muted-foreground">
-      <span className="text-h2 font-semibold tracking-tight text-foreground">
+    <p
+      className={`mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm ${
+        onDark ? 'text-white' : 'text-muted-foreground'
+      }`}
+    >
+      <span
+        className={`text-h2 font-semibold tracking-tight ${onDark ? 'text-white' : 'text-foreground'}`}
+      >
         {rating}
         <span aria-hidden="true" className="ml-1 text-rating-gold">
           ★

@@ -193,6 +193,19 @@
   "sha256": "61faf751b9cfaaf24bc833cecc2585fb2a05248480ee6905b01515168a5c550d",
   "words": []
  },
+ "images/brand/reviews/the-sewer-pros-customer-reviews-final-cta-st-louis-home-entryway-16x9.webp": {
+  "sha256": "1543e053caf180bfdd63ba9ce08cdb062952489c47f88494db0702060588155a",
+  "words": []
+ },
+ "images/brand/reviews/the-sewer-pros-customer-reviews-sewer-camera-inspection-hero-16x9.webp": {
+  "sha256": "b04a38221268f6d5665c9cb08cd3532009dce7ba37412369604d786b22ab40a1",
+  "words": [
+   {
+    "text": "Standard",
+    "confidence": 92
+   }
+  ]
+ },
  "images/contact/hero/sewer-pros-contact-sewer-camera-inspection-hero-16x9.webp": {
   "sha256": "2f5c9ef234c23977ba82178ee4c5b9bb0db7133faccb39107498084e57644a83",
   "words": []
@@ -218,7 +231,7 @@
   "words": []
  },
  "images/homepage/hero/the-sewer-pros-high-pressure-sewer-line-cleaning-hero.webp": {
-  "sha256": "9c234d50275e4dc5d6d31a51a37994f36a74fa351fbaa28d85047cc552cc7951",
+  "sha256": "e0592f02a1cb8d98a1c3788ea838e060630888de30aaa613c1901dffbf6c0adb",
   "words": []
  },
  "images/homepage/hero/the-sewer-pros-homebuyer-sewer-due-diligence-hero.webp": {
