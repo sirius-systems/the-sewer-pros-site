@@ -3003,6 +3003,17 @@ export interface ResourcePageContent extends BasePageContent {
    */
   relatedAsCards?: boolean
   /**
+   * With `relatedAsCards`: pages listed as plain text links under the
+   * card grid, in the same band (for a related page that would leave an
+   * orphan card in the last row).
+   */
+  relatedTrailingPageIds?: readonly PageId[]
+  /**
+   * With `relatedAsCards`: borrow another page's approved editorial image
+   * (by pathname) for a card whose own page has none.
+   */
+  relatedImageFromPathname?: Readonly<Partial<Record<PageId, string>>>
+  /**
    * Opt-in: show the lead form beside the closing CTA copy and drop the
    * CTA's own button (the form has its own submit). Off by default so
    * the other resource pages keep the plain band.

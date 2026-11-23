@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import { ServiceIndex, serviceIndexRenders } from './ServiceIndex'
+import { resolveLinkableOnly } from '@/lib/links/approved-link'
 import { homeServiceCards } from '@/content/pages/home-service-cards'
 import { comparisonCardImages } from '@/content/pages/comparisons'
 import type { SectionDensity, SectionSurface } from '@/components/ui'
@@ -26,7 +28,10 @@ export function RelatedServiceCards({
   columns = 3,
   images,
   surface,
+  trailingPageIds,
 }: {
+  /** Plain text links rendered under the grid, inside the same section. */
+  trailingPageIds?: readonly PageId[]
   /** Optional per-page image overrides; win over the shared service card art. */
   images?: Readonly<Partial<Record<PageId, CardImage>>>
   surface?: SectionSurface
@@ -39,12 +44,30 @@ export function RelatedServiceCards({
   columns?: 2 | 3 | 4
 }) {
   if (!serviceIndexRenders(pageIds.map((pageId) => ({ pageId })))) return null
+  const trailing = resolveLinkableOnly(trailingPageIds ?? [])
   return (
     <ServiceIndex
       variant="cards"
       columns={columns}
       density={density}
       surface={surface}
+      footer={
+        trailing.length > 0 ? (
+          <p className="mt-8 text-sm">
+            {trailing.map((link, index) => (
+              <span key={link.pageId}>
+                {index > 0 && ' · '}
+                <Link
+                  href={link.href}
+                  className="font-medium text-accent-secondary underline underline-offset-4 hover:text-foreground"
+                >
+                  {link.label}
+                </Link>
+              </span>
+            ))}
+          </p>
+        ) : undefined
+      }
       id={id}
       title={title}
       intro={intro !== undefined ? <p>{intro}</p> : undefined}

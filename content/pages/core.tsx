@@ -640,6 +640,9 @@ const SERVICE_AREA_GUIDANCE: MarketGuidanceContent = {
 
 /** One-line guide description, shared by the Resources hub and related-resource cards. */
 const RES_READ_VIDEO_DESCRIPTION = 'How to interpret sewer camera footage yourself.'
+const RES_REPLACEMENT_QUESTIONS_DESCRIPTION =
+  'What to ask, and what a clear answer sounds like, before you approve a replacement.'
+const RES_CAMERA_REPORT_DESCRIPTION = 'What a written inspection report should contain.'
 
 export const hubContent: Partial<Record<PageId, HubPageContent>> = {
   [id('hub-services')]: {
@@ -1809,7 +1812,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     items: [
       {
         pageId: id('res-camera-report'),
-        description: 'What a written inspection report should contain.',
+        description: RES_CAMERA_REPORT_DESCRIPTION,
         image: editorialImage('/resources/what-is-in-a-sewer-camera-inspection-report/'),
       },
       {
@@ -1819,7 +1822,7 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       },
       {
         pageId: id('res-replacement-questions'),
-        description: 'What to ask, and what a clear answer sounds like, before you approve a replacement.',
+        description: RES_REPLACEMENT_QUESTIONS_DESCRIPTION,
         image: editorialImage('/resources/questions-to-ask-before-approving-sewer-line-replacement/'),
       },
     ],
@@ -2730,8 +2733,59 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       id('svc-independent-sewer-second-opinion'),
       id('res-replacement-questions'),
       id('svc-pre-purchase-sewer-inspection'),
-      id('core-faq'),
     ],
+    relatedTrailingPageIds: [id('core-faq')],
+    relatedImageFromPathname: {
+      [id('svc-independent-sewer-second-opinion')]:
+        '/compare/independent-sewer-inspection-vs-repair-company/',
+    },
+    relatedAsCards: true,
+    relatedDescriptions: {
+      [id('res-camera-report')]: RES_CAMERA_REPORT_DESCRIPTION,
+      [id('res-replacement-questions')]: RES_REPLACEMENT_QUESTIONS_DESCRIPTION,
+      // Same approved line the audience pages use for this service.
+      [id('svc-independent-sewer-second-opinion')]:
+        'Review the inspection report or video you already have.',
+    },
+    ctaForm: true,
+    cta: {
+      title: 'Want the condition documented?',
+      body: (
+        <>
+          <p>
+            A sewer camera video is evidence about the part of the pipe the
+            camera could reach and see, on the day it was recorded. Reading it
+            well starts with what was inspected: where the camera went in,
+            which way it traveled, and how far it got.
+          </p>
+          <p>Before you rely on any footage, check that:</p>
+          <ul className="flex flex-col gap-2">
+            {[
+              'the starting point of the distance counter is clear, and distance is read as a position along the pipe, not a spot or a depth at the surface',
+              'you can tell normal features, such as joints and bends, from defects, and what was observed from what is inferred and what is recommended',
+              'any part the camera could not see is stated, because only the part that was inspected has been evaluated',
+            ].map((point) => (
+              <li key={point} className="flex gap-2">
+                <span aria-hidden="true" className="opacity-70">
+                  -
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+          <p>
+            With The Sewer Pros, a camera inspection comes with the inspection
+            video and written findings. We provide inspection, cleaning, and
+            locating, and we do not perform sewer repair or replacement, so
+            your findings are not the first step toward a repair sale.
+          </p>
+          <p>
+            Use the form to request an inspection and tell us what you want
+            documented.
+          </p>
+        </>
+      ),
+    },
   },
 
   /* Questions to ask before approving a sewer line replacement (DEC-158; reworked 2026-11-23).

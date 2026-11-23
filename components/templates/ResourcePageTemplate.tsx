@@ -97,7 +97,9 @@ export function ResourcePageTemplate({
   const relatedCardImages: Partial<Record<PageId, CardImage>> = {}
   if (content.relatedAsCards === true && content.relatedPageIds !== undefined) {
     for (const link of resolveLinkableOnly(content.relatedPageIds)) {
-      const image = editorialImage(link.href)
+      const image = editorialImage(
+        content.relatedImageFromPathname?.[link.pageId] ?? link.href,
+      )
       if (image !== undefined) relatedCardImages[link.pageId] = image
     }
   }
@@ -208,6 +210,7 @@ export function ResourcePageTemplate({
             pageIds={content.relatedPageIds}
             descriptions={content.relatedDescriptions}
             images={relatedCardImages}
+            trailingPageIds={content.relatedTrailingPageIds}
             columns={3}
             surface="muted"
           />

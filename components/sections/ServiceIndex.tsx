@@ -152,6 +152,11 @@ export interface ServiceIndexProps {
    * cards; below `lg` they stack, heading first. Omitted: unchanged.
    */
   aside?: ReactNode
+  /**
+   * `cards` only. Rendered below the grid inside the same section, e.g.
+   * a trailing text link. Omitted: unchanged.
+   */
+  footer?: ReactNode
 }
 
 /**
@@ -191,6 +196,7 @@ export function ServiceIndex({
   columns = 3,
   className,
   aside,
+  footer,
 }: ServiceIndexProps) {
   // Gated pages drop out rather than failing the build — a service
   // whose page is pending validation simply is not listed yet (04 §4).
@@ -453,6 +459,7 @@ export function ServiceIndex({
             )
           })}
         </ul>
+        {footer}
       </Section>
     )
   }
