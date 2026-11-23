@@ -18,9 +18,9 @@ Do these in order:
 
 ## Privacy and SMS Terms pages (DEC-162)
 
-1. [ ] Set `PRIVACY_LAST_UPDATED` in `content/pages/privacy.tsx` to the go-live date.
+1. [x] Set `PRIVACY_LAST_UPDATED` and `SMS_TERMS_LAST_UPDATED` (done: both set to `June 1, 2026`, 2026-11-23). Change them if the pages are revised after launch.
 2. [ ] Counsel review of the policy, especially the CCPA request methods and the "no sale or sharing" statement.
 3. [ ] Confirm the retention wording, or replace it with real periods.
 4. [ ] Confirm the old marketing provider's pixels and audience sharing are off, and no Meta or Google ad tags are on the new site.
-5. [ ] Set `SMS_TERMS_LAST_UPDATED` in `content/pages/sms-terms.tsx`, have counsel review it, and have the owner confirm the three standard additions (not a condition of purchase, carriers, changes) and that STOP can opt out of either or both message types on the messaging platform.
+5. [ ] Have counsel review `content/pages/sms-terms.tsx`, and have the owner confirm the three standard additions (not a condition of purchase, carriers, changes) and that STOP can opt out of either or both message types on the messaging platform.
 6. [ ] Set `NEXT_PUBLIC_SITE_URL` in Cloudflare Pages to `https://thesewerpros.com` (no www) and redirect the www host to the apex (DEC-163).

@@ -11,11 +11,10 @@ import { marketList, marketOperatingDetail } from '@/data/markets/markets'
  */
 
 /**
- * TODO(launch): set this to the date the page goes live, as a display string
- * such as "December 1, 2026". Left empty on purpose so no invented date renders;
- * while it is empty the "Last updated" line shows a plain "To be set at launch".
+ * Display date for "Last updated" (owner set June 1, 2026). If it is ever empty, the
+ * page falls back to "To be set at launch" rather than showing an invented date.
  */
-export const PRIVACY_LAST_UPDATED = ''
+export const PRIVACY_LAST_UPDATED: string = 'June 1, 2026'
 
 export const privacySeo = {
   title: 'Privacy Policy',

@@ -13,11 +13,10 @@ import { marketList, marketOperatingDetail } from '@/data/markets/markets'
  */
 
 /**
- * TODO(launch): set this to the date the page goes live, as a display string
- * such as "December 1, 2026". Empty on purpose: while empty, the page shows
- * "To be set at launch" instead of an invented date.
+ * Display date for "Last updated" (owner set June 1, 2026). If it is ever empty, the
+ * page falls back to "To be set at launch" rather than showing an invented date.
  */
-export const SMS_TERMS_LAST_UPDATED = ''
+export const SMS_TERMS_LAST_UPDATED: string = 'June 1, 2026'
 
 export const smsTermsSeo = {
   title: 'SMS Terms',
