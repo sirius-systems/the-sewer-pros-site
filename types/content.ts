@@ -3458,6 +3458,21 @@ export interface HubPageContent extends BasePageContent {
 export interface CorePageContent extends BasePageContent {
   placeholder?: never
   /**
+   * Opt-in: render `relatedPageIds` as image cards (the shared service
+   * card style) instead of the plain `RelatedLinks` list. Off by default
+   * so `/about/` and `/contact/` are unchanged.
+   */
+  relatedAsCards?: boolean
+  /** With `relatedAsCards`: plain text links in a row under the card grid. */
+  relatedTrailingPageIds?: readonly PageId[]
+  /** With `relatedAsCards`: borrow another page's approved editorial image (by pathname). */
+  relatedImageFromPathname?: Readonly<Partial<Record<PageId, string>>>
+  /**
+   * ISO date for the page's `dateModified` in schema. Not shown on the
+   * page. Update only when the content substantively changes.
+   */
+  dateModified?: string
+  /**
    * Full-bleed image behind the closing CTA. Decorative; scene only
    * (DEC-145), so its alt text and source must not imply a real job.
    */

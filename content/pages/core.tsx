@@ -1911,8 +1911,10 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
     },
     metaDescription:
       'Get answers about sewer camera inspections, sewer cleaning, hydro jetting, drain problems, sewer backups, pipe materials, and pre-purchase inspections.',
+    dateModified: '2026-11-23',
     faq: [
       {
+        group: 'Basics',
         question: 'What does a sewer camera inspection show?',
         answer: (
           <p>
@@ -1924,6 +1926,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         ),
       },
       {
+        group: 'Basics',
         question: 'Do you perform sewer repairs or replacement?',
         answer: (
           <p>
@@ -1934,6 +1937,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         ),
       },
       {
+        group: 'Basics',
         question: 'Does the line need cleaning before it can be inspected?',
         answer: (
           <p>
@@ -1944,6 +1948,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         ),
       },
       {
+        group: 'Basics',
         question: 'Why does my line keep backing up after being cleared?',
         answer: (
           <p>
@@ -1955,6 +1960,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         ),
       },
       {
+        group: 'Basics',
         question: 'Is hydro jetting always better than snaking?',
         answer: (
           <p>
@@ -1964,6 +1970,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         ),
       },
       {
+        group: 'Basics',
         question: 'Should I get a sewer inspection before buying a property?',
         answer: (
           <p>
@@ -1972,6 +1979,7 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
         ),
       },
       {
+        group: 'Basics',
         question: 'Can you tell me who is responsible for the line?',
         answer: (
           <p>
@@ -1982,8 +1990,328 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
           </p>
         ),
       },
+      /* ---- Inspections and findings ---- */
+      {
+        group: 'Inspections and findings',
+        question: 'What is a sewer camera inspection?',
+        answer: (
+          <p>
+            A sewer camera inspection is a visual inspection of the accessible
+            inside of a drain or sewer line. A technician advances a camera on a
+            flexible cable, watches the picture live, and typically records it.
+            Some people call it a sewer scope. For how The Sewer Pros performs
+            one, see the{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>sewer camera inspection</ApprovedInlineLink>{' '}
+            page.
+          </p>
+        ),
+      },
+      {
+        group: 'Inspections and findings',
+        question: 'Will I get the video and written findings?',
+        answer: (
+          <p>
+            Yes. When The Sewer Pros uses a camera, you receive the inspection
+            video, and written findings are included. Ask how the video is
+            delivered, how long you can access it, and whether the findings note
+            any part of the line that could not be viewed. Our guide explains{' '}
+            <ApprovedInlineLink pageId={id('res-camera-report')}>what a sewer camera inspection report includes</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Inspections and findings',
+        question: 'What can’t a sewer camera inspection show?',
+        answer: (
+          <p>
+            A sewer camera inspection does not show anything under the
+            waterline, the soil around the pipe, pipe wall thickness, structural
+            capacity, slope or depth, how much service life the pipe has left, or
+            sections the camera did not reach. Findings should say what was and
+            was not viewed. Read more on{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>what a camera inspection covers</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Inspections and findings',
+        question: 'Can a sewer camera see through standing water?',
+        answer: (
+          <p>
+            No. A sewer camera generally cannot see below the waterline, so a
+            line that is blocked and not draining may not be viewable until flow
+            is restored. In that case, cleaning may need to come first. See{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>sewer cleaning and camera inspection</ApprovedInlineLink>{' '}
+            for the combined service.
+          </p>
+        ),
+      },
+      {
+        group: 'Inspections and findings',
+        question: 'Does a clear line mean the pipe is in good condition?',
+        answer: (
+          <p>
+            No, a clear line does not necessarily mean the pipe is in good
+            condition. A line can flow well after cleaning and still show a
+            visible structural condition, because cleaning need and structural
+            condition are separate questions. Camera findings also do not show
+            how much service life a pipe has left. Our guide covers{' '}
+            <ApprovedInlineLink pageId={id('res-read-video')}>how to read a sewer camera inspection video</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Inspections and findings',
+        question: 'What happens if the camera can’t get through the line?',
+        answer: (
+          <p>
+            When a sewer camera cannot get through the line, the part it did not
+            reach is not documented. Roots, debris, standing water, a damaged
+            section, or limited access can stop it, and the findings should say
+            what was not viewed. Where loose debris is the limit, cleaning and a
+            repeat look may improve the view. See{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>cleaning with a camera inspection</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Inspections and findings',
+        question: 'Do you have to pull a toilet, and do I need a cleanout?',
+        answer: (
+          <p>
+            A sewer camera most often goes in through a cleanout, where one is
+            accessible. Whether a property has a cleanout, and where it is,
+            depends on its plumbing layout, and other entry points may be
+            possible depending on the property and the equipment. Ask what
+            applies to your property before you book. Read{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>how a sewer camera inspection works</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      /* ---- Cleaning and backups ---- */
+      {
+        group: 'Cleaning and backups',
+        question: 'How do I know if it is a drain clog or a sewer line problem?',
+        answer: (
+          <p>
+            A drain clog usually affects one fixture, while several slow or
+            gurgling fixtures, or a backup at the lowest drains, may point to
+            the main sewer line. These are clues, not proof. A sewer camera
+            inspection can help show what is in the line. See{' '}
+            <ApprovedInlineLink pageId={id('svc-recurring-sewer-backup-diagnosis')}>recurring sewer backup diagnosis</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Cleaning and backups',
+        question: 'What is the difference between drain cleaning and sewer cleaning?',
+        answer: (
+          <p>
+            Drain cleaning usually refers to fixture and branch lines, such as
+            sinks, tubs, showers, and laundry drains, while sewer cleaning refers
+            to the larger line that carries wastewater away from the building.
+            Some jobs involve both. See{' '}
+            <ApprovedInlineLink pageId={id('svc-drain-cleaning')}>drain cleaning</ApprovedInlineLink>{' '}
+            for the smaller lines and{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>sewer cleaning</ApprovedInlineLink>{' '}
+            for the main line.
+          </p>
+        ),
+      },
+      {
+        group: 'Cleaning and backups',
+        question: 'Why are several drains slow or gurgling at once?',
+        answer: (
+          <p>
+            Several drains running slow or gurgling at once may point to a
+            restriction in a shared branch or the larger sewer line rather than
+            in one drain. That pattern does not prove where the restriction is
+            or what caused it, and a camera inspection can help show what is in
+            the line. See{' '}
+            <ApprovedInlineLink pageId={id('svc-drain-cleaning')}>drain line cleaning</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Cleaning and backups',
+        question: 'Will hydro jetting damage my pipes?',
+        answer: (
+          <p>
+            Hydro jetting can damage a pipe that is already weakened, which is
+            why the method is matched to the line and no method suits every pipe
+            or blockage. Defects, sags, and heavy debris can also raise the risk
+            of a backup during jetting, and no outcome can be promised. See{' '}
+            <ApprovedInlineLink pageId={id('svc-hydro-jetting')}>hydro jetting</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Cleaning and backups',
+        question: 'Can a sewer line be cleaned instead of replaced?',
+        answer: (
+          <p>
+            A sewer line can sometimes be cleaned instead of replaced, when the
+            pipe is sound and the problem is buildup. Cleaning cannot fix a
+            cracked, offset, or collapsed pipe, and a camera inspection shows
+            which condition you have. Read about{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>sewer line cleaning</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Cleaning and backups',
+        question: 'Are chemical drain cleaners or “flushable” wipes a good idea?',
+        answer: (
+          <p>
+            Neither is a reliable choice: chemical drain cleaners do not remove
+            every kind of restriction and can be hazardous to handle, and wipes
+            labeled flushable can collect in the line and contribute to
+            blockages. Flush only toilet paper and human waste. See{' '}
+            <ApprovedInlineLink pageId={id('svc-preventative-sewer-maintenance')}>preventative sewer maintenance</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      /* ---- Buying and selling a home ---- */
+      {
+        group: 'Buying and selling a home',
+        question: 'Is a sewer scope part of a standard home inspection?',
+        answer: (
+          <p>
+            No. A sewer scope is a separate, focused inspection of the sewer
+            line, and a standard home inspection is not assumed to include one.
+            Ask your home inspector what their inspection covers, and ask about a
+            sewer scope separately if you want the line itself checked. See{' '}
+            <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>pre-purchase sewer inspection</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Buying and selling a home',
+        question: 'Is a sewer scope required when buying or selling a house?',
+        answer: (
+          <p>
+            No national rule requires a sewer scope when buying or selling a
+            house. Some local programs require a lateral inspection when a
+            property is sold or transferred, and many do not, so check with your
+            agent or the local sewer utility. The Sewer Pros does not give legal
+            advice. Learn about a{' '}
+            <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>pre-purchase sewer scope</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Buying and selling a home',
+        question: 'What happens if a sewer problem is found before closing?',
+        answer: (
+          <p>
+            A sewer problem found before closing gives you documented evidence
+            of the line&rsquo;s condition while the decision is still open. What
+            to do with it is yours to decide, and The Sewer Pros cannot give
+            legal advice. We do not perform sewer repair or replacement, so no
+            repair quote comes attached to the findings. See{' '}
+            <ApprovedInlineLink pageId={id('aud-home-buyers')}>sewer inspection for home buyers</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      /* ---- Repair quotes and second opinions ---- */
+      {
+        group: 'Repair quotes and second opinions',
+        question: 'Should I get a second opinion before replacing a sewer line?',
+        answer: (
+          <p>
+            Yes, getting more than one view before approving major work is
+            common advice, and a second opinion is one way to do that. Send The
+            Sewer Pros the report or video you already have, and we tell you
+            whether we agree, disagree, or cannot tell. We do not perform repairs
+            or replacements. See{' '}
+            <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>independent inspection versus a repair company</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Repair quotes and second opinions',
+        question: 'What should I ask before approving major sewer work?',
+        answer: (
+          <p>
+            Before approving major sewer work, ask for the proposal in writing,
+            including the work, materials, schedule, and price. Ask which
+            inspection evidence it relies on, such as video and findings, and
+            whether the camera reached all sections. Compare written estimates
+            when the work is significant. See{' '}
+            <ApprovedInlineLink pageId={id('res-replacement-questions')}>questions to ask before approving a replacement</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Repair quotes and second opinions',
+        question: 'Is the second opinion free?',
+        answer: (
+          <p>
+            A free second opinion may be available on an inspection report or
+            video you already have. Ask about it before scheduling, and The
+            Sewer Pros explains what it covers before anything is scheduled.
+            Read about the{' '}
+            <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>independent sewer second opinion</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      /* ---- Scheduling, cost and service areas ---- */
+      {
+        group: 'Scheduling, cost and service areas',
+        question: 'How much does it cost, and how long does it take?',
+        answer: (
+          <p>
+            The cost and time of a sewer service depend on the access point, line
+            length and size, the amount of buildup, and whether a camera or
+            locating is included. The Sewer Pros does not publish a standard
+            price or time, so ask when you{' '}
+            <ApprovedInlineLink pageId={id('core-contact')}>request service</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        group: 'Scheduling, cost and service areas',
+        question: 'Do you offer same-day or emergency service?',
+        answer: (
+          <p>
+            The Sewer Pros can arrange same-day appointments when scheduling
+            permits, Monday through Friday, 8:00am to 4:00pm. Same-day service is
+            not available on weekends, and we do not offer 24/7 or emergency
+            service. Use the{' '}
+            <ApprovedInlineLink pageId={id('core-contact')}>contact page</ApprovedInlineLink>{' '}
+            to ask about scheduling.
+          </p>
+        ),
+      },
+      {
+        group: 'Scheduling, cost and service areas',
+        question: 'Which areas does The Sewer Pros serve?',
+        answer: (
+          <p>
+            The Sewer Pros provides sewer inspection and diagnostic services in
+            St. Louis, Missouri; San Diego, California; and Las Vegas, Nevada.
+            Select your service area or contact the team to confirm availability
+            for your property. See the{' '}
+            <ApprovedInlineLink pageId={id('hub-locations')}>service areas</ApprovedInlineLink>{' '}
+            for the St. Louis, San Diego, and Las Vegas pages.
+          </p>
+        ),
+      },
     ],
-    relatedPageIds: [id('hub-services'), id('hub-resources'), id('hub-audiences'), id('core-about')],
+    relatedPageIds: [
+      id('svc-sewer-camera-inspection'),
+      id('svc-sewer-cleaning'),
+      id('svc-hydro-jetting'),
+      id('svc-sewer-line-locating'),
+      id('svc-pre-purchase-sewer-inspection'),
+      id('hub-resources'),
+    ],
+    relatedAsCards: true,
+    relatedTrailingPageIds: [id('hub-services'), id('hub-audiences'), id('core-about')],
+    relatedDescriptions: {
+      [id('hub-resources')]:
+        'Guides to inspection reports, inspection video, and questions to ask before approving sewer work.',
+    },
     ctaBackground: {
       src: '/images/brand/frequently-asked-questions/the-sewer-pros-faqs-final-cta-residential-cleanout-utility-room-16x9.webp',
       alt: 'Utility room corner with a white drain pipe, a floor cleanout cap on a concrete floor, a metal shelf and a plant',

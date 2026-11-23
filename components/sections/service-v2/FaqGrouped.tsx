@@ -35,7 +35,16 @@ export function FaqGrouped({
   surface = 'muted',
   layout = 'columns',
   linkContext,
+  questionAnchors = false,
+  openFirst = false,
+  linkGroups,
 }: {
+  /** Gives each question heading a stable id (slug of the question) for deep links. */
+  questionAnchors?: boolean
+  /** Opens the first question on the page. */
+  openFirst?: boolean
+  /** When set, the answer linker runs only on entries in these groups. */
+  linkGroups?: readonly string[]
   /** Links the first mention of a service in each answer (lib/links/faq-links.tsx). */
   linkContext?: FaqLinkContext
   id?: string
@@ -122,8 +131,13 @@ export function FaqGrouped({
                     key={entry.question}
                     question={entry.question}
                     headingLevel="h4"
+                    headingId={questionAnchors ? slug(entry.question) : undefined}
+                    defaultOpen={openFirst && entry === entries[0]}
                   >
-                    {linkAnswer !== undefined ? linkAnswer(entry.answer, entry.question) : entry.answer}
+                    {linkAnswer !== undefined &&
+                    (linkGroups === undefined || linkGroups.includes(entry.group))
+                      ? linkAnswer(entry.answer, entry.question)
+                      : entry.answer}
                   </AccordionItem>
                 ))}
               </Accordion>

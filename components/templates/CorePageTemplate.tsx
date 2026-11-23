@@ -3,6 +3,7 @@ import {
   TrustBar,
   FaqSection,
   RelatedLinks,
+  RelatedServiceCards,
   CtaSection,
   SurveyLeadForm,
   relatedLinksRenders,
@@ -12,7 +13,15 @@ import {
 } from '@/components/sections'
 import { reviewMarqueeRenders } from '@/data/reviews/reviews'
 import { PageShell } from './PageShell'
-import type { CorePageContent, MasterPageRecord } from '@/types'
+import { FaqGrouped } from '@/components/sections/service-v2'
+import { editorialImage } from '@/data/business/editorial-images'
+import { resolveLinkableOnly } from '@/lib/links/approved-link'
+import type {
+  CardImage,
+  CorePageContent,
+  MasterPageRecord,
+  PageId,
+} from '@/types'
 
 /**
  * Core page — `/about/`, `/contact/`, `/faq/`.
@@ -77,6 +86,23 @@ export function CorePageTemplate({
   content,
   hideCta = false,
 }: CorePageTemplateProps) {
+  // Opt-in related cards: images for pages that are not home service cards.
+  const relatedCardImages: Partial<Record<PageId, CardImage>> = {}
+  if (content.relatedAsCards === true && content.relatedPageIds !== undefined) {
+    for (const link of resolveLinkableOnly(content.relatedPageIds)) {
+      const image = editorialImage(
+        content.relatedImageFromPathname?.[link.pageId] ?? link.href,
+      )
+      if (image !== undefined) relatedCardImages[link.pageId] = image
+    }
+  }
+  // Every entry carries a topic label: render the grouped FAQ (same
+  // mechanism as the service pages). Otherwise the plain accordion.
+  const faqIsGrouped =
+    content.faq !== undefined &&
+    content.faq.length > 0 &&
+    content.faq.every((entry) => entry.group !== undefined)
+
   // Explicit sequence, checked against `sectionRhythmIssues()` at build.
   const densities: SectionDensity[] = [
     'standard',
@@ -100,6 +126,7 @@ export function CorePageTemplate({
         // DEC-114: FAQPage is on wherever the page renders an FAQ. Same array
         // the FaqSection renders, so markup and visible text cannot diverge.
         faq: content.faq,
+        dateModified: content.dateModified,
       }}
     >
       <Section density="standard" width="reading">
@@ -125,17 +152,44 @@ export function CorePageTemplate({
         </Section>
       )}
 
-      {content.relatedPageIds !== undefined && (
-        <RelatedLinks
-          title={content.relatedTitle ?? 'Related pages'}
-          pageIds={content.relatedPageIds}
-          descriptions={content.relatedDescriptions}
-        />
-      )}
+      {content.relatedPageIds !== undefined &&
+        (content.relatedAsCards === true ? (
+          <RelatedServiceCards
+            id="related-pages"
+            title={content.relatedTitle ?? 'Related pages'}
+            pageIds={content.relatedPageIds}
+            descriptions={content.relatedDescriptions}
+            images={relatedCardImages}
+            trailingPageIds={content.relatedTrailingPageIds}
+            columns={3}
+            surface="muted"
+          />
+        ) : (
+          <RelatedLinks
+            title={content.relatedTitle ?? 'Related pages'}
+            pageIds={content.relatedPageIds}
+            descriptions={content.relatedDescriptions}
+          />
+        ))}
 
       {reviewMarqueeRenders() && <ReviewMarquee density="standard" surface="muted" />}
 
-      {content.faq !== undefined && (
+      {content.faq !== undefined && faqIsGrouped && (
+        <FaqGrouped
+          linkContext={{ pageId: page.id, locationId: page.locationId }}
+          linkGroups={['Basics']}
+          title="Common questions"
+          surface="default"
+          questionAnchors
+          openFirst
+          entries={content.faq.map((entry) => ({
+            group: entry.group ?? '',
+            question: entry.question,
+            answer: entry.answer,
+          }))}
+        />
+      )}
+      {content.faq !== undefined && !faqIsGrouped && (
         <FaqSection linkContext={{ pageId: page.id, locationId: page.locationId }} entries={content.faq} openFirst />
       )}
 

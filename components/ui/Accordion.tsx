@@ -36,6 +36,11 @@ export interface AccordionItemProps {
   headingLevel?: 'h2' | 'h3' | 'h4'
   defaultOpen?: boolean
   /**
+   * Optional id on the question heading, for a stable deep link
+   * (`/page/#id`). Off by default; existing callers are unchanged.
+   */
+  headingId?: string
+  /**
    * A small decorative mark beside the question. Off by default — every
    * existing caller renders unchanged. Must be `aria-hidden`; the
    * question text carries the meaning, never the icon.
@@ -48,6 +53,7 @@ export function AccordionItem({
   question,
   headingLevel: Heading = 'h3',
   defaultOpen = false,
+  headingId,
   icon,
   children,
 }: AccordionItemProps) {
@@ -68,7 +74,10 @@ export function AccordionItem({
               {icon}
             </span>
           )}
-          <Heading className="text-base font-medium text-foreground">
+          <Heading
+            id={headingId}
+            className="scroll-mt-24 text-base font-medium text-foreground"
+          >
             {question}
           </Heading>
         </span>
