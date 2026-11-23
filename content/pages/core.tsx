@@ -3066,16 +3066,70 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       id('res-read-video'),
       id('res-camera-report'),
       id('svc-independent-sewer-second-opinion'),
-      id('svc-sewer-camera-inspection'),
-      id('svc-sewer-line-locating'),
-      id('svc-sewer-cleaning-camera-inspection'),
-      id('svc-pre-purchase-sewer-inspection'),
-      id('core-faq'),
-      id('svc-sewer-cleaning'),
       id('cmp-independent-vs-repair'),
+      id('svc-sewer-camera-inspection'),
+      id('svc-sewer-cleaning-camera-inspection'),
+      id('svc-sewer-line-locating'),
+      id('svc-sewer-cleaning'),
+      id('svc-pre-purchase-sewer-inspection'),
     ],
+    relatedTrailingPageIds: [id('core-faq')],
+    relatedAsCards: true,
+    relatedDescriptions: {
+      [id('res-read-video')]: RES_READ_VIDEO_DESCRIPTION,
+      [id('res-camera-report')]: RES_CAMERA_REPORT_DESCRIPTION,
+      // Same approved line the audience pages use for this service.
+      [id('svc-independent-sewer-second-opinion')]:
+        'Review the inspection report or video you already have.',
+      // From the comparison page's own meta description, shortened.
+      [id('cmp-independent-vs-repair')]:
+        'Compare an independent sewer inspection with a repair company evaluation and see how video findings support a second opinion.',
+    },
+    relatedImageFromPathname: {
+      [id('svc-independent-sewer-second-opinion')]:
+        '/compare/independent-sewer-inspection-vs-repair-company/',
+      // Distinct from the second-opinion card above (two cards, two pictures).
+      [id('cmp-independent-vs-repair')]: '/resources/st-louis-sewer-lateral-report/',
+    },
+    ctaForm: true,
     cta: {
-      title: 'Request a Sewer Camera Inspection',
+      title: 'Want the condition documented?',
+      body: (
+        <>
+          <p>
+            Before approving a sewer line replacement, ask for a written record
+            that ties the proposed work to the actual condition of your pipe. A
+            defect on camera does not by itself show that the whole line must be
+            replaced, and replacement can still be the right answer when the
+            evidence supports it.
+          </p>
+          <p>Before you approve any proposal, make sure you have:</p>
+          <ul className="flex flex-col gap-2">
+            {[
+              'the evidence: the inspection video and a log of each defect with its location and length, plus a statement of what was not inspected',
+              'the reasoning: why replacement was chosen over cleaning, monitoring, a localized repair, or lining',
+              'the scope in writing: where the work starts and stops, what the price is based on, what will be restored, and who covers what',
+            ].map((point) => (
+              <li key={point} className="flex gap-2">
+                <span aria-hidden="true" className="opacity-70">
+                  -
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+          <p>
+            The Sewer Pros does not offer sewer repair or replacement. We
+            provide inspection, cleaning, and locating, and a camera inspection
+            comes with the inspection video and written findings, so the
+            evidence you receive is separate from any repair sale.
+          </p>
+          <p>
+            Use the form to request an inspection and tell us what
+            recommendation you received.
+          </p>
+        </>
+      ),
     },
   },
 }
