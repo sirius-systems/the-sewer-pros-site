@@ -32,7 +32,7 @@ export default function Page() {
     <HubPageTemplate
       page={page}
       content={content}
-      itemsTitle="Guides"
+      itemsTitle="Sewer Inspection Guides"
       itemsVariant="cards"
       backdrop={<HeroBackdrop set={resourcesHubBackdrop} />}
     />

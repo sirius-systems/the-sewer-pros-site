@@ -1792,23 +1792,31 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
     hero: {
       title: 'Sewer & Drain Resources',
       intro: (
-        <p>
-          Practical explanations of what inspections show, what findings mean,
-          and how to make sense of the evidence you are given.
-        </p>
+        <>
+          <p>
+            Plain-language guides to sewer camera inspections: what a written
+            inspection report should contain, how to read sewer inspection
+            video, and what to ask before approving a sewer line replacement.
+            Written for homeowners, home buyers, and property owners who want
+            clear evidence before a major sewer decision.
+          </p>
+          <p>
+            The Sewer Pros provides sewer inspection, cleaning, and locating.
+            We do not perform sewer repair or replacement, so these guides
+            explain the evidence instead of selling a repair.
+          </p>
+        </>
       ),
     },
     /*
-      ⚠ NOT THE PROPOSED COPY. The version drafted for this page named
-      hydro jetting, drain problems, pipe materials, and sewer backups —
-      none of which the two items below actually cover. This hub is
-      narrowly about interpreting inspection reports and footage, so
-      the description states that instead of the broader topic list,
-      per CLAUDE.md's rule against a title/description overstating page
-      content.
+      The description names only what the three guides cover: inspection
+      reports, inspection video, and questions before a replacement. It
+      must not grow to hydro jetting, drain problems, pipe materials or
+      sewer backups, none of which these guides address (CLAUDE.md: a
+      title or description must not claim more than the page covers).
     */
     metaDescription:
-      'Practical explanations of what a sewer camera inspection shows and what the findings mean, so you can make sense of the evidence you are given.',
+      'Guides to sewer camera inspection reports and video, plus the questions to ask before approving a sewer line replacement. Clear evidence before a big decision.',
     items: [
       {
         pageId: id('res-camera-report'),
@@ -1826,6 +1834,25 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         image: editorialImage('/resources/questions-to-ask-before-approving-sewer-line-replacement/'),
       },
     ],
+    cta: {
+      title: 'Request a Sewer Camera Inspection With Video and Written Findings',
+      body: (
+        <>
+          <p>
+            Reading about inspections is the first step. A sewer camera
+            inspection from The Sewer Pros gives you the inspection video and
+            written findings for your own line, so you can see what is actually
+            there before you decide on cleaning, monitoring, or repair.
+          </p>
+          <p>
+            We provide inspection, cleaning, and locating, and we do not
+            perform sewer repair or replacement. Choose the service you need,
+            or use &ldquo;Not sure? Tell us what&rsquo;s happening&rdquo; to
+            describe what is happening.
+          </p>
+        </>
+      ),
+    },
     ctaBackground: {
       src: '/images/brand/resources/the-sewer-pros-resources-final-cta-sewer-inspection-report-notebook-16x9.webp',
       alt: 'Clipboard with blank paper and a closed notebook on a counter beside a camera monitor, with a window behind',
