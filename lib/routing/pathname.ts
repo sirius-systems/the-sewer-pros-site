@@ -37,6 +37,8 @@ export const RESERVED_ROOT_SEGMENTS = [
   'compare',
   'alternatives',
   'resources',
+  'privacy',
+  'sms-terms',
 ] as const
 
 /**
@@ -46,7 +48,6 @@ export const RESERVED_ROOT_SEGMENTS = [
  * approved. Treat as advisory when choosing new slugs.
  */
 export const PROSPECTIVE_RESERVED_SEGMENTS = [
-  'privacy',
   'terms',
   'accessibility',
   'reviews',

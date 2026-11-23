@@ -99,11 +99,10 @@ export const primaryNav: NavItem[] = [
  * The footer links to `/contact/` instead of inventing one
  * (01 §35, 15 §102-103, CLAUDE.md §23).
  *
- * LEGAL LINKS — 18 §116 and §118 assume privacy, terms, and
- * accessibility pages. None is approved in doc 04, and 05 §9 lists
- * those segments as PROSPECTIVE reservations, not live routes. Linking
- * to them would produce 404s, so the group is absent until doc 04
- * approves the pages.
+ * LEGAL LINKS — the Privacy Policy link now exists (core-privacy,
+ * DEC-162), in the Company group. Terms and accessibility pages still
+ * do not exist, so they are not linked (a link would 404). The SMS Terms
+ * page exists but is not linked here until the owner's text is in.
  */
 export const footerNav: NavGroup[] = [
   {
@@ -145,6 +144,7 @@ export const footerNav: NavGroup[] = [
       { pageId: id('core-reviews'), label: 'Reviews' },
       { pageId: id('hub-resources'), label: 'Resources' },
       { pageId: id('core-careers'), label: 'Careers' },
+      { pageId: id('core-privacy'), label: 'Privacy Policy' },
     ],
   },
 ]

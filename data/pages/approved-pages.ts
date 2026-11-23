@@ -225,6 +225,29 @@ export const approvedPages: readonly MasterPageRecord[] = [
     parentId: 'core-careers' as PageId,
   },
   {
+    id: 'core-privacy' as PageId,
+    name: 'Privacy Policy',
+    pageType: 'core',
+    pathname: toPathname('/privacy/'),
+    status: 'launch',
+    // Legal/utility page (Fast mode, Level 1). Indexable, low sitemap priority.
+    indexable: true,
+    priority: 'L3',
+    parentId: 'core-home' as PageId,
+  },
+  {
+    id: 'core-sms-terms' as PageId,
+    name: 'SMS Terms',
+    pageType: 'core',
+    pathname: toPathname('/sms-terms/'),
+    status: 'launch',
+    // Placeholder body until the owner pastes the SMS opt-in program terms.
+    // Noindex and out of the footer until then (launch blocker).
+    indexable: false,
+    priority: 'L3',
+    parentId: 'core-home' as PageId,
+  },
+  {
     id: 'svc-sewer-camera-inspection' as PageId,
     name: 'Sewer Camera Inspection',
     pageType: 'service',

@@ -13,6 +13,7 @@ import {
   type SectionSurface,
   type SelectOption,
 } from '@/components/ui'
+import Link from 'next/link'
 import { SectionHeading } from './SectionHeading'
 import { marketList } from '@/data/markets/markets'
 import type { LeadFormConfig, MarketId } from '@/types'
@@ -415,6 +416,14 @@ export function LeadFormSection({
       <div className="flex justify-center sm:col-span-2">
         <Button type="submit">{submitLabel}</Button>
       </div>
+
+      <p className="text-center text-caption text-muted-foreground sm:col-span-2">
+        See our{' '}
+        <Link href="/privacy/" className="underline underline-offset-4 hover:text-foreground">
+          Privacy Policy
+        </Link>
+        .
+      </p>
 
       {config?.consentLine !== undefined && (
         <p className="text-center text-caption text-muted-foreground sm:col-span-2">

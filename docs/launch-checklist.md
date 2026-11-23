@@ -15,3 +15,11 @@ Do these in order:
 1. [ ] Re-run the launch-mode layout check (`docs/launch-mode-layout-check.md`): a throwaway build with `LAUNCH_MODE` true, one page of each type at 390 and 1440 wide, no empty columns or blank gaps.
 2. [ ] Set `LAUNCH_MODE` to true in `lib/launch.ts` (only when the owner says to).
 3. [ ] Run the production build last and read the build report (`scripts/report-unfilled-slots.mjs`): it should list 0 unfilled slots, and `scripts/count-placeholders.mjs` on the build should report 0 boxes.
+
+## Privacy and SMS Terms pages (DEC-162)
+
+1. [ ] Set `PRIVACY_LAST_UPDATED` in `content/pages/privacy.tsx` to the go-live date.
+2. [ ] Counsel review of the policy, especially the CCPA request methods and the "no sale or sharing" statement.
+3. [ ] Confirm the retention wording, or replace it with real periods.
+4. [ ] Confirm the old marketing provider's pixels and audience sharing are off, and no Meta or Google ad tags are on the new site.
+5. [ ] Paste the owner's SMS opt-in program terms into `content/pages/sms-terms.tsx` (LAUNCH BLOCKER: the placeholder `TODO(owner)` text renders today), then set `core-sms-terms` indexable, link it from the footer and set `SMS_LEGAL_LINKS` in `lib/forms/sms-consent.ts`.

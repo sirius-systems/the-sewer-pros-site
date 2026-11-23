@@ -8,6 +8,7 @@ import { SURVEY_LOCATION_GROUPS, findSurveyLocation } from '@/lib/forms/survey-l
 import { stampFirstInteraction, submitLead } from '@/lib/forms/submit-lead'
 import { useTurnstile } from '@/lib/forms/turnstile'
 import { SMS_CONSENT_VERSION } from '@/lib/forms/sms-consent'
+import Link from 'next/link'
 import { SmsConsent } from './SmsConsent'
 import type { ServiceId } from '@/types'
 
@@ -564,6 +565,13 @@ export function SurveyLeadForm({
             <Button type="submit" disabled={pending}>
               {pending ? 'Sending...' : 'Request Service'}
             </Button>
+            <p className="text-center text-caption text-muted-foreground">
+            See our{' '}
+            <Link href="/privacy/" className="underline underline-offset-4 hover:text-foreground">
+              Privacy Policy
+            </Link>
+            .
+          </p>
             <button
               type="button"
               className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
