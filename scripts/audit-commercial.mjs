@@ -38,8 +38,8 @@ const outDir = path.resolve(repo, String(args.out ?? 'out'))
 const WRITE = !args['no-write']
 
 /* ===================== configuration ===================== */
-const TERM = /commercial|business owner|businesses|\bfacilit(y|ies)\b|restaurant|warehouse|\bretail|industrial|office building|strip mall|shopping cent(er|re)|medical office|\bhotels?\b|\bschools?\b|\bchurch(es)?\b|\bB2B\b|multi[-_ ]?tenant/i
-const STRICT = /commercial|restaurant|warehouse|facility manager|multi[-_ ]?tenant|B2B/i
+const TERM = /(?<!non-)commercial|business owner|businesses|\bfacilit(y|ies)\b|restaurant|warehouse|\bretail|industrial|office building|strip mall|shopping cent(er|re)|medical office|\bhotels?\b|\bschools?\b|\bchurch(es)?\b|\bB2B\b|multi[-_ ]?tenant/i
+const STRICT = /(?<!non-)commercial|restaurant|warehouse|facility manager|multi[-_ ]?tenant|B2B/i
 // A line that records the decision itself, or a test guard that asserts commercial text is absent.
 const REMOVAL_NOTE = /(not (offered|listed|list|offer|market|serve|build)|does not (list|offer|serve|market)|do not (create|build|serve)|removed|removal|no longer|owner decision|never|retired|reintroduc|banned|forbidden|absent|must not|no (repair or )?commercial wording)/i
 // Municipal programs that name commercial property as outside their scope are local facts, not service claims.

@@ -24,3 +24,4 @@ Do these in order:
 4. [ ] Confirm the old marketing provider's pixels and audience sharing are off, and no Meta or Google ad tags are on the new site.
 5. [ ] Have counsel review `content/pages/sms-terms.tsx`, and have the owner confirm the three standard additions (not a condition of purchase, carriers, changes) and that STOP can opt out of either or both message types on the messaging platform.
 6. [ ] Set `NEXT_PUBLIC_SITE_URL` in Cloudflare Pages to `https://thesewerpros.com` (no www) and redirect the www host to the apex (DEC-163).
+7. [ ] Counsel review of `content/pages/terms.tsx` (disclaimer, limitation of liability, governing law and venue; confirm the contracting entity name). `TERMS_LAST_UPDATED` is set to `June 1, 2026` with the other two; change all three together if revised.

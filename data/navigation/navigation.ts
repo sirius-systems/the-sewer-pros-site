@@ -99,10 +99,10 @@ export const primaryNav: NavItem[] = [
  * The footer links to `/contact/` instead of inventing one
  * (01 §35, 15 §102-103, CLAUDE.md §23).
  *
- * LEGAL LINKS — Privacy Policy (core-privacy, DEC-162) and SMS Terms
- * (core-sms-terms, DEC-163) are linked in the Company group. General
- * Terms and accessibility pages still do not exist, so they are not
- * linked (a link would 404).
+ * LEGAL LINKS — Privacy Policy (core-privacy, DEC-162), SMS Terms
+ * (core-sms-terms, DEC-163) and Terms and Conditions (core-terms, DEC-164)
+ * are linked in the Company group. Only an accessibility page is still
+ * missing, so it is not linked (a link would 404).
  */
 export const footerNav: NavGroup[] = [
   {
@@ -146,6 +146,7 @@ export const footerNav: NavGroup[] = [
       { pageId: id('core-careers'), label: 'Careers' },
       { pageId: id('core-privacy'), label: 'Privacy Policy' },
       { pageId: id('core-sms-terms'), label: 'SMS Terms' },
+      { pageId: id('core-terms'), label: 'Terms and Conditions' },
     ],
   },
 ]

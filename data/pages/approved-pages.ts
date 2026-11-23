@@ -236,6 +236,17 @@ export const approvedPages: readonly MasterPageRecord[] = [
     parentId: 'core-home' as PageId,
   },
   {
+    id: 'core-terms' as PageId,
+    name: 'Terms and Conditions',
+    pageType: 'core',
+    pathname: toPathname('/terms/'),
+    status: 'launch',
+    // Website-use terms only (DEC-164). Indexable, low sitemap priority.
+    indexable: true,
+    priority: 'L3',
+    parentId: 'core-home' as PageId,
+  },
+  {
     id: 'core-sms-terms' as PageId,
     name: 'SMS Terms',
     pageType: 'core',

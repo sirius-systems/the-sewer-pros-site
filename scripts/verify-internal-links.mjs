@@ -44,6 +44,8 @@ import { canonicalCoverage } from './audit/clusters.mjs'
 import { GENERIC_ANCHORS, HIERARCHY_CEILING, expectedBreadcrumb, hierarchyIssues, marketOf, isCommercialPath } from './lib/link-rules.mjs'
 
 const MIN_INBOUND = 2
+// Legal utility pages are reached from the footer and from each other, not from editorial content (DEC-164).
+const LEGAL_UTILITY = new Set(['/privacy/', '/sms-terms/', '/terms/'])
 const MAX_DISTINCT = HIERARCHY_CEILING
 const MAX_SIBLING_LINKS = 12
 
@@ -73,7 +75,7 @@ check('no orphan pages (every indexable page has an inbound link from another in
 
 check(
   `every indexable page except the homepage has >= ${MIN_INBOUND} inbound links from page content`,
-  idx.filter((u) => u !== '/' && u !== '/contact/thank-you/' && new Set(urls.filter((v) => v !== u && idxSet.has(v) && editorial(v).some((l) => l.path === u))).size < MIN_INBOUND),
+  idx.filter((u) => u !== '/' && u !== '/contact/thank-you/' && !LEGAL_UTILITY.has(u) && new Set(urls.filter((v) => v !== u && idxSet.has(v) && editorial(v).some((l) => l.path === u))).size < MIN_INBOUND),
 )
 
 const broken = []

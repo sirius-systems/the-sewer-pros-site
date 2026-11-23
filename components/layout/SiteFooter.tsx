@@ -20,9 +20,10 @@ import { SITE_NAME, organization } from '@/data/business'
  * Still NO street address — none is published on the business's site,
  * and 15 §11 confirms a GBP does not authorise inventing one.
  *
- * LEGAL LINKS — Privacy Policy (`/privacy/`, DEC-162) and SMS Terms
- * (`/sms-terms/`, DEC-163) are linked in the Company group. Terms and
- * accessibility links still do not exist; linking to them would 404.
+ * LEGAL LINKS — Privacy Policy (`/privacy/`, DEC-162), SMS Terms
+ * (`/sms-terms/`, DEC-163) and Terms and Conditions (`/terms/`, DEC-164)
+ * are linked in the Company group. Only an accessibility link is still
+ * missing; linking to it would 404.
  *
  * Las Vegas WAS a third omission, held out while DEC-063 gated it.
  * DEC-080 released that gate, and `market-las-vegas-nv` is now listed

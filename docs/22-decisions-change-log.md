@@ -5854,3 +5854,23 @@ Recorded:
 
 * **SMS Terms.** The owner's page copy replaces the placeholder. `/sms-terms/` is indexable (low priority), linked from the footer Company group and from the Privacy Policy, and `SMS_LEGAL_LINKS` is set so the consent line on the forms links to `/privacy/` and `/sms-terms/`. The consent checkbox wording is unchanged. Three standard additions (consent is not a condition of purchase, carriers are not liable, changes) go beyond the checkbox wording and need owner or counsel confirmation, as does the STOP scope (either or both message types).
 * **Canonical host.** The production origin is `https://thesewerpros.com`, with no `www`. DEC-078 had chosen `www`; this reverses it. The value comes only from `NEXT_PUBLIC_SITE_URL` (no code fallback), so `.env.example`, the git-ignored `.env.local`, comments and the verify scripts that pinned the old origin were updated. The Cloudflare Pages `NEXT_PUBLIC_SITE_URL` value must be set to the same non-www origin, and the www host should redirect to the apex.
+
+
+## DEC-164 - Terms and Conditions Page (Website Use Only, Missouri Law)
+
+**Date:** 2026-11-23
+**Status:** APPROVED
+**Impact:** Minor (utility page and footer link)
+**Decision Owner:** Business owner (Sedrick)
+**Related:** DEC-162, DEC-163
+**Affected Documents:**
+
+* `content/pages/terms.tsx`, `app/terms/page.tsx`, `data/pages/approved-pages.ts`, `data/pages/pages.ts`, `lib/routing/pathname.ts`, `data/navigation/navigation.ts`, `components/layout/SiteFooter.tsx`, `docs/04-master-page-build-list.md`, `docs/launch-checklist.md`
+
+Recorded:
+
+* `/terms/` (`core-terms`) is a website-use-only utility page, indexable at low priority, Fast mode / Level 1, linked from the footer Company group beside the Privacy Policy and SMS Terms. Only an accessibility page is still missing.
+* **Scope.** No service pricing, scheduling, payment, cancellation or warranty terms. Those would be a separate document built from the owner's real policies.
+* **Governing law.** Missouri, with venue in the state or federal courts located in Missouri.
+* **Not included.** No arbitration, class waiver or indemnity clause; add only on counsel's advice. The business is named as "The Sewer Pros" only.
+* **Footer fix.** The footer drops links to pages missing from `authoredPageIds` (`content/index.ts`), so the Privacy Policy and SMS Terms footer links added in DEC-162 and DEC-163 never rendered. All three legal pages are now in that set and the footer links render. `verify-internal-links` exempts the three legal pages from the two-inbound-content-links rule, and `audit-commercial.mjs` no longer counts "non-commercial" as a commercial term.

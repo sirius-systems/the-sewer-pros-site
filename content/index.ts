@@ -160,6 +160,10 @@ export const authoredPageIds: ReadonlySet<PageId> = new Set<PageId>([
   'core-contact' as PageId,
   'core-contact-thank-you' as PageId,
   'core-careers-thank-you' as PageId,
+  // Legal utility pages: bodies live in content/pages and render through their own routes.
+  'core-privacy' as PageId,
+  'core-sms-terms' as PageId,
+  'core-terms' as PageId,
   ...(Object.keys(marketContactContent) as PageId[]),
   ...(Object.keys(serviceContent) as PageId[]),
   ...(Object.keys(comparisonContent) as PageId[]),

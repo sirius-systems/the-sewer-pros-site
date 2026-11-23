@@ -55,13 +55,14 @@ import { approvedPages } from './approved-pages'
 // + the independent sewer second opinion service page (DEC-151).
 // + the "questions to ask before approving a sewer line replacement" resource (DEC-158).
 // + /privacy/ and /sms-terms/ utility pages (DEC-162).
-const EXPECTED_PAGE_COUNT = 205
+// + the /terms/ utility page (DEC-164).
+const EXPECTED_PAGE_COUNT = 206
 // Was 65 while DEC-063 gated the five Las Vegas pages. DEC-080 released
 // that gate. The 67 indexable pages are the original 64 plus the three
 // market contact pages; the contact confirmation page is deliberately
 // noindex. Keep this pinned: it is the guard that catches a page becoming
 // indexable without a decision behind it (CLAUDE.md §45).
-const EXPECTED_INDEXABLE_COUNT = 203 // /sms-terms/ (DEC-163) + /privacy/ (DEC-162) + /careers/ (DEC-160) + /reviews/ + the independent second opinion page (DEC-151) + the replacement questions resource (DEC-158) + 67 + 9 Henderson + 9 City of Las Vegas + 9 North Las Vegas + 9 Summerlin + 39 St. Louis + 8 San Diego City + 16 Chula Vista/Mission Valley + 15 Carlsbad/San Marcos + 16 Escondido/Oceanside service+location pages
+const EXPECTED_INDEXABLE_COUNT = 204 // /terms/ (DEC-164) + /sms-terms/ (DEC-163) + /privacy/ (DEC-162) + /careers/ (DEC-160) + /reviews/ + the independent second opinion page (DEC-151) + the replacement questions resource (DEC-158) + 67 + 9 Henderson + 9 City of Las Vegas + 9 North Las Vegas + 9 Summerlin + 39 St. Louis + 8 San Diego City + 16 Chula Vista/Mission Valley + 15 Carlsbad/San Marcos + 16 Escondido/Oceanside service+location pages
 
 function fail(message: string): never {
   throw new Error(`Approved page registry invalid: ${message}`)
