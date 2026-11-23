@@ -2666,288 +2666,285 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
     ],
   },
 
-  /*
-    Questions to ask before approving a sewer line replacement (DEC-158).
-
-    ⚠ EVIDENCE-FIRST, NOT A COST PAGE. No price, cost range or third-party
-    statistic. No red-flag language aimed at contractors: every answer is
-    framed as "what a clear answer sounds like". "We do not sell repairs or
-    replacements" appears once, in the closing section. No "free", no promised
-    formats, turnaround, quote review or limits (DEC-155). Not legal advice.
-
-    ⚠ ONE LINK TO THE SECOND OPINION PAGE, in item 10, with the anchor "ask an
-    independent inspector to review the footage". Do not add a second one (the
-    anchor gate counts each distinct phrasing as a row).
-  */
+  /* Questions to ask before approving a sewer line replacement (DEC-158; reworked 2026-11-23).
+     Evidence-first, not a cost page: no price, statistic, brand or red-flag language aimed at contractors.
+     Two links to the second opinion page (body "second look" section and FAQ 10). Not legal advice. */
   [id('res-replacement-questions')]: {
     seoTitle: 'Questions to Ask Before Approving Sewer Line Replacement',
     metaDescription:
-      'Questions to ask before approving a sewer line replacement: what the footage shows, if the whole line was checked, and what alternatives were ruled out.',
+      'Ten questions to ask before approving a sewer line replacement: the evidence, alternatives, scope, price, warranty and records to get in writing.',
+    dateModified: '2026-11-23',
     hero: {
       eyebrow: 'Resource',
       title: 'Questions to Ask Before Approving a Sewer Line Replacement',
     },
     directAnswer: (
       <p>
-        Before approving a sewer line replacement, ask to see the evidence behind
-        it: the camera footage, where the problem is in the line, whether the
-        whole line was inspected, and what other options were considered. A
-        replacement is a large, expensive job, and clear answers to these
-        questions make it easier to decide with confidence.
+        Before approving a sewer line replacement, ask for a written record that ties the proposed work to the actual condition of your pipe: the inspection video, a log of each defect with its location and length, a statement of what was not inspected, and the reason replacement was chosen over cleaning, monitoring, a localized repair or lining. Finding a defect does not by itself show that the whole line must be replaced, and replacement can still be the right answer when the evidence supports it.
       </p>
     ),
     body: (
       <>
-        <h2>How to use this list</h2>
-        <p>
-          Bring these questions to the person who recommended the work, and to any
-          independent reviewer you choose. A clear answer usually names a location,
-          points to something visible on the footage and explains why the
-          recommended scope fits it. If an answer is vague, that only means the
-          evidence may not be complete yet. Asking the question is not an
-          accusation.
-        </p>
-
-        <h2>Ten questions to ask before you approve the work</h2>
-        <ol>
-          <li>
-            <p>
-              <strong>What exactly is wrong with the line, and where?</strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: a replacement decision should rest on a specific
-              defect in a specific place, not a general statement that the line is
-              in bad shape.
-            </p>
-            <p className="mt-1">
-              A clear answer: names the type of problem, such as a break, offset,
-              severe root intrusion or collapse, and where it is along the line.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Can I see the footage and get a copy of the findings?</strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: footage is the evidence. With it, you or another
-              party can review the same pipe conditions.
-            </p>
-            <p className="mt-1">
-              A clear answer: you can watch the recording, with locations marked,
-              and keep a copy.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>
-                Did the camera cover the whole line, from the cleanout to the
-                connection?
-              </strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: if the camera stopped early, part of the line may not
-              have been seen, and that part may be fine or may be worse.
-            </p>
-            <p className="mt-1">
-              A clear answer: states where the camera started and stopped, and
-              explains why if it stopped before the end.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Was the line cleaned before it was inspected?</strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: buildup, grease and debris can limit what a camera
-              can show. Cleaning first often gives a clearer picture of the pipe
-              itself.
-            </p>
-            <p className="mt-1">
-              A clear answer: says whether the line was cleaned, and what the
-              camera could and could not see.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Does the whole line need replacing, or a section?</strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: scope drives disruption and cost. The evidence should
-              support the length being recommended.
-            </p>
-            <p className="mt-1">
-              A clear answer: ties the recommended length to the footage, section
-              by section.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>
-                What other options were considered, and why were they ruled out?
-              </strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: depending on the condition, options may include
-              cleaning, hydro jetting, a localized fix or a trenchless method. Not
-              every line can use every option, and the reason should be
-              explainable.
-            </p>
-            <p className="mt-1">
-              A clear answer: names the alternatives and points to what on the
-              footage rules each one out.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>
-                What happens if I wait, and what does the evidence say about
-                urgency?
-              </strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: some conditions need prompt attention and others can
-              be monitored. You should know which this is.
-            </p>
-            <p className="mt-1">
-              A clear answer: separates active problems, such as repeated backups,
-              from conditions that are worth watching.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>What does the written estimate include?</strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: scope, method, excavation, restoration, permits and
-              who handles what should be written down before you approve anything.
-            </p>
-            <p className="mt-1">
-              A clear answer: a written scope you can compare line by line with any
-              other proposal.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Which part of the line is my responsibility?</strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: responsibility for a sewer lateral differs by city,
-              county and utility, and part of a line can sit in a public
-              right-of-way. Check with your local utility or municipality.
-            </p>
-            <p className="mt-1">
-              A clear answer: identifies where private responsibility ends and
-              whether any local program or permit applies.
-            </p>
-          </li>
-          <li>
-            <p>
-              <strong>Can an independent party review the footage before I sign?</strong>
-            </p>
-            <p className="mt-1">
-              Why it matters: a review by a company that does not sell the work
-              gives you another read on the same evidence. You can{' '}
-              <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
-                ask an independent inspector to review the footage
-              </ApprovedInlineLink>{' '}
-              before you approve anything.
-            </p>
-            <p className="mt-1">
-              A clear answer: yes. You keep the recording and can share it.
-            </p>
-          </li>
-        </ol>
-
-        <h2>Signs the evidence may not be complete yet</h2>
+        <p>If you have been told your sewer line needs to be replaced, the next step is not a quick yes or no. It is a set of questions about the evidence behind the recommendation. Replacement can be the right answer. This guide helps you check whether a proposal follows from what was actually found in the pipe, and what to get in writing before you approve it.</p>
+        <p>The Sewer Pros does not offer sewer repair or replacement. This guide is educational: it covers the questions and records that let you compare proposals on the same basis, and it does not judge any contractor. It is general information, not legal, financial, insurance or engineering advice, and rules about permits, ownership, licensing and warranties vary by address and by contract.</p>
+        <p>Two companion guides cover the evidence itself. <ApprovedInlineLink pageId={id('res-read-video')}>How to read a sewer camera inspection video</ApprovedInlineLink> explains what footage shows and what it cannot prove, and <ApprovedInlineLink pageId={id('res-camera-report')}>what a sewer camera inspection report should include</ApprovedInlineLink> explains what written findings should contain. This guide picks up at the decision to approve work.</p>
+        <h2>Start with observation versus recommendation</h2>
+        <p>An observation is something visible and specific, such as roots entering at a joint. A recommendation, such as replacing the entire lateral, needs added reasoning about severity, how far the problem extends, what else could be done and what remains unknown. A clear proposal shows how it gets from the first to the second. The questions below follow the order most people face the decision in.</p>
+        <h2>1. What exactly is wrong, where is it, and how much of the line was inspected?</h2>
+        <p>A backup, a visible defect or a camera that could not pass does not show that the whole line needs replacing. A recommendation should separate confirmed damage from pipe that was obscured or never seen.</p>
+        <p>A documented answer includes:</p>
         <ul>
-          <li>You have a recommendation but no footage.</li>
-          <li>The footage does not show where in the line the problem is.</li>
-          <li>
-            The camera stopped before the end of the line and the reason is unclear.
-          </li>
-          <li>The recommended scope is larger than the damage shown.</li>
-          <li>No alternatives were discussed.</li>
+          <li>A copy of the full inspection video that you can keep, showing the property, the date, the entry point, the direction of travel and a distance reference.</li>
+          <li>A written log of each defect with its type, severity and location, and for a long defect, where it starts and ends.</li>
+          <li>The condition of the pipe on either side of each defect, and whether the camera reached the public main.</li>
+          <li>A plain statement of what could not be seen because of water, roots, debris or an early stop.</li>
         </ul>
-        <p>
-          Any of these is a reason to gather more information before deciding, not a
-          conclusion about anyone&rsquo;s intent. If you have footage but cannot follow
-          it,{' '}
-          <ApprovedInlineLink pageId={id('res-read-video')}>
-            how to read a sewer camera inspection video
-          </ApprovedInlineLink>{' '}
-          explains what to look for.
-        </p>
-
-        <h2>What an independent inspection adds</h2>
-        <p>
-          A sewer camera inspection from a company that does not sell repairs or
-          replacements records the condition of the line and documents it.
-          Independent review before you approve the work can focus on footage you
-          already have. If you need a new look at the line, a{' '}
-          <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>
-            camera inspection of the line
-          </ApprovedInlineLink>{' '}
-          shows what is happening inside it. If the footage shows buildup rather than
-          structural damage,{' '}
-          <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>
-            sewer cleaning
-          </ApprovedInlineLink>{' '}
-          may be worth discussing first. For how this differs from a repair
-          company&rsquo;s own evaluation, see{' '}
-          <ApprovedInlineLink pageId={id('cmp-independent-vs-repair')}>
-            how an independent inspection differs from a repair company evaluation
-          </ApprovedInlineLink>
-          . We do not sell repairs or replacements. This list is general information
-          and is not legal advice.
-        </p>
+        <p>If the answer is incomplete, useful follow-ups are: where in the recording can I see this defect, what supports the conclusion about pipe beyond where the camera stopped, and would safe cleaning, another access point or locating settle the uncertainty. Cleaning is not always a safe first step on weakened pipe, so ask whether it could do harm. A <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>sewer cleaning followed by a camera inspection</ApprovedInlineLink> can show surfaces that buildup or roots hid on a first pass, and a current <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>sewer camera inspection</ApprovedInlineLink> gives a fresh baseline when existing footage is old or incomplete.</p>
+        <p>A camera shows the inside of the pipe. It does not by itself measure wall strength, soil support or watertightness, so conclusions about hidden conditions should say what was observed, what was inferred and what would need another test.</p>
+        <h2>2. Why is replacement preferable to cleaning, monitoring, a localized repair or lining?</h2>
+        <p>Restoring flow and correcting the cause are different goals. Cleaning can be enough for deposits in serviceable pipe, while a structural or alignment problem may need other work. Roots, age, pipe material, a crack or a localized collapse are not automatic reasons to replace the full length.</p>
+        <p>Ask what each reasonable option would and would not do:</p>
+        <ul>
+          <li><strong>Cleaning</strong> removes obstructions and can restore flow. It does not rebuild missing pipe, realign a joint or correct a sag.</li>
+          <li><strong>Monitoring</strong> means watching a condition over time. It needs a stated reason it is reasonable and a stated change that would trigger action.</li>
+          <li><strong>Localized repair</strong> corrects a defect at a defined location and leaves the surrounding pipe in place. It does not address separate problems elsewhere in the line.</li>
+          <li><strong>Lining</strong> forms a new wall inside the existing pipe over a defined length. The old pipe stays, and conditions such as an obstruction, a collapse or a sag may need separate correction first.</li>
+          <li><strong>Partial replacement</strong> installs new pipe over part of the route. The pipe that stays, and the transitions to it, still matter.</li>
+          <li><strong>Full replacement</strong> renews the whole defined run. &ldquo;Full&rdquo; needs a definition, such as whether it includes pipe under the building, a shared section and the connection at the main.</li>
+        </ul>
+        <p>Methods can also be combined, for example a point repair followed by lining the rest. Ask the contractor to complete this sentence in writing: &ldquo;This work corrects ___. It leaves ___ unchanged. More maintenance or work may still be needed because ___.&rdquo;</p>
+        <p>Also ask why the proposed length is what it is: how much pipe has documented damage, how much is needed for access or connections, and how much was not inspected. The companion guide on reading footage lists the evidence each option usually needs.</p>
+        <h2>3. Why does the proposed method fit my pipe and my site?</h2>
+        <p>Open-trench replacement installs new pipe in an excavated trench. Pipe bursting breaks the old pipe outward while new pipe is pulled along the same route. Lining rehabilitates the existing pipe from the inside, so the old pipe stays. &ldquo;Trenchless&rdquo; describes how the work is done. It is not a diagnosis, it does not mean no digging, and it does not tell you the method suits your pipe.</p>
+        <p>Useful questions:</p>
+        <ul>
+          <li>What conditions of my pipe and yard make this method appropriate, and what evidence shows it?</li>
+          <li>What does this method leave unchanged, such as slope, a sag, an offset or pipe outside the work limits?</li>
+          <li>Which access pits or preliminary repairs are expected, and what could require extra digging or a different method?</li>
+          <li>How will side connections and the connection at the main be handled?</li>
+          <li>What is the finished inside diameter, and what supports the conclusion that it will serve the property?</li>
+          <li>For lining: which exact system is proposed, and can I see its current installation instructions and quality requirements?</li>
+        </ul>
+        <p>If correcting a sag or slope is a reason for the project, ask what measurements establish the problem and how the result will be checked. A camera view of standing water is not a complete plan for correcting elevations.</p>
+        <h2>4. Exactly where does the work start and stop?</h2>
+        <p>&ldquo;House to street&rdquo; leaves a lot open. A measurable scope lets you point to a drawing and say what is being replaced, what stays and where responsibility changes.</p>
+        <p>A written scope identifies:</p>
+        <ul>
+          <li>A labeled sketch of the existing and proposed route, with endpoints tied to physical features such as a cleanout or a connection fitting.</li>
+          <li>Lengths and depths, whether each is measured or estimated, and what depth is measured to.</li>
+          <li>Pipe material, diameter and method for each segment, and any transitions between them.</li>
+          <li>Every side connection, shared line and cleanout, and which are kept, replaced or relocated.</li>
+          <li>What happens to any pipe taken out of service.</li>
+          <li>Whether the connection fitting at the main is included, since &ldquo;to the main&rdquo; can mean several things.</li>
+          <li>Any work in a sidewalk, street or other public area.</li>
+        </ul>
+        <p>The camera&rsquo;s distance counter is a position inside the pipe, not a surface location or a depth. <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>Sewer line locating</ApprovedInlineLink> is a separate step from the camera pass, and asking how an underground defect&rsquo;s position will be confirmed before digging is reasonable.</p>
+        <p>Ownership deserves its own check. Who owns the pipe, who maintains it, who may do the work and what permits and access are needed are four different questions, and the property line is not always where responsibility changes. Ask the sewer authority for the answer for your address and keep it in writing with the proposal.</p>
+        <h2>5. What is the price based on, and what can change it?</h2>
+        <p>This guide gives no prices. Cost depends on the method, length, depth, access, ground conditions, connections and restoration at a specific property, so an average would say little about whether a proposal is reasonable. What you can check is how the price is built:</p>
+        <ul>
+          <li><strong>Fixed price:</strong> a price for a defined scope, with stated conditions that allow adjustment. It is not necessarily unconditional for every underground condition.</li>
+          <li><strong>Estimate:</strong> may be a preliminary figure and not a ceiling. Ask what can make the final charge differ.</li>
+          <li><strong>Allowance:</strong> an amount held for an unresolved item. Ask what it covers, whether it is inside the total and how credits or overruns are handled.</li>
+          <li><strong>Unit price:</strong> a rate times a measured quantity. Ask who measures and whether there is a maximum without further approval.</li>
+          <li><strong>Time and materials:</strong> charges based on labor and material records. Ask about rates, markup and any not-to-exceed amount.</li>
+          <li><strong>Change order:</strong> a written change to scope, price or schedule. Ask who can approve it and whether approval comes before the changed work starts.</li>
+        </ul>
+        <p>Check that each bid states what it includes for permits and public-area approvals, locating and utility conflicts, excavation and ground conditions, cleaning and preparation, pipe and connections, disposal, backfill and testing, temporary wastewater arrangements, surface restoration, and final inspection and records.</p>
+        <p>Give each bidder the same footage, defect log and endpoints, then compare scope before price. A lower total may leave out permits, disposal, restoration or connection work that a higher total includes. Keep unknown items separate instead of inventing an all-in number. If a condition truly cannot be known without digging, ask how it will be documented and priced when found. For payments, ask what each payment verifies, and check your state&rsquo;s rules on deposits and contract requirements, which vary.</p>
+        <h2>6. Who is authorized and responsible for the whole project?</h2>
+        <p>The company that sells the work, the crew that installs it and the firm that restores the surface may be different. That can be perfectly normal when it is clear in writing. Ordinary checks:</p>
+        <ul>
+          <li>Match the company name on the proposal to the license record, the insurance and the payment details, and look up the license on your state&rsquo;s licensing agency site.</li>
+          <li>Ask the licensing agency whether the license classification covers the described work, using the written scope.</li>
+          <li>Request insurance evidence from the issuing agent. A certificate describes listed policies and does not change coverage. For questions about your own coverage, check your policy or ask your insurer.</li>
+          <li>Ask for the names and assigned work of any subcontractors, and who will lead the job and be on site each day.</li>
+          <li>Ask who applies for permits, whose name is on them and who arranges inspections.</li>
+        </ul>
+        <p>Training from a manufacturer or a trade credential can be useful background, but it does not replace a required license or a local permit.</p>
+        <h2>7. How will we use the home during the work, and what will be restored?</h2>
+        <p>A working sewer is not a finished job. Installing the pipe and restoring the property are separate milestones, and even work described as trenchless usually needs access pits or surface repair. Ask:</p>
+        <ul>
+          <li>Which fixtures and appliances must stay off, when, and who says use can resume? A sewer interruption is not a drinking-water shutdown, but it does affect toilets, sinks, showers and laundry.</li>
+          <li>What temporary wastewater arrangements are included, if any?</li>
+          <li>Where will trenches, pits, equipment, spoil and materials sit, and how will we get in and out of the house and garage?</li>
+          <li>Who arranges utility locating through your state&rsquo;s 811 service, and who finds private lines such as irrigation or lighting, which the usual notification may not cover?</li>
+          <li>What is restored, feature by feature: paving, concrete, pavers, lawn or decorative rock, irrigation, fences, grading and cleanup? Is a patch a patch or a full panel?</li>
+          <li>If the restored area later sinks, whom do I call and what is covered?</li>
+        </ul>
+        <p>For safety, stay out of open trenches, leave barriers in place, and report a new void or sinking ground promptly instead of assuming it is harmless.</p>
+        <h2>8. How will the completed work be verified?</h2>
+        <p>Verification comes from three places that are easy to blur: what the local authority requires, what the product&rsquo;s installation instructions require, and what the contract adds. Ask which is which.</p>
+        <ul>
+          <li>Which inspections must happen before the pipe is covered? A later camera pass cannot show buried joints or bedding.</li>
+          <li>What tests apply, who performs them and what counts as passing? Flushing water through is not necessarily a formal test.</li>
+          <li>What records come with a lined or burst pipe, such as installation or cure records, if the system calls for them?</li>
+          <li>Will I receive final footage, a measured drawing of what was installed and permit closeout?</li>
+          <li>Was an inspector from the permitting authority involved, or only the contractor? A contractor&rsquo;s camera recording is not a city inspection sign-off.</li>
+        </ul>
+        <p>Post-work footage documents the visible inside of the pipe. On its own it does not prove watertightness, the strength of a liner, the support under the pipe or a corrected slope. Treat completion as separate steps: service restored, pipe work accepted, excavation closed, permanent restoration done and paperwork closed, and keep a written list of anything outstanding.</p>
+        <h2>9. Who covers which failures, and who pays to reach and restore the area?</h2>
+        <p>A workmanship warranty from a contractor and a material warranty from a manufacturer are different promises. A long term that supplies only replacement material can leave the cost of digging, labor and restoration unaddressed. Read the actual documents before signing. This guide states no warranty terms for any company.</p>
+        <ul>
+          <li>Who is the warrantor, and what exact section of pipe is covered?</li>
+          <li>What counts as a covered failure, and what is excluded? Test the exclusions against the reason you are doing the work, such as roots, ground movement or settlement.</li>
+          <li>What is the remedy, and does it include diagnosis, access, excavation, permits, backfill and restoration?</li>
+          <li>What maintenance is required, and what could affect coverage?</li>
+          <li>When does coverage start and end, and does it transfer if you sell?</li>
+          <li>How do I make a claim, and what happens if the installer and the manufacturer disagree about the cause?</li>
+        </ul>
+        <p>&ldquo;Lifetime&rdquo; needs a definition: the product&rsquo;s life, the original owner&rsquo;s life or the length of ownership. A product&rsquo;s expected service life is not a promise to pay for a future failure. A separately purchased plan is its own contract with its own provider and limits.</p>
+        <h2>10. What must happen now, and what is still unresolved?</h2>
+        <p>Active sewage exposure is a sanitation problem that needs prompt attention. If sewage is entering the home or overflowing, keep people and pets away, avoid contaminated water near electrical equipment, and contact a qualified professional and your sewer authority. Do not wait on a long comparison to deal with an uncontrolled hazard.</p>
+        <p>Urgent work and permanent work are different decisions. Where it is safe to stabilize first, ask for the immediate work to be defined on its own, with its limits and price basis, what risk remains afterward and what further approval permanent work would need. Then ask:</p>
+        <ul>
+          <li>What specifically makes this urgent, and what supports the timeframe?</li>
+          <li>What could happen if I wait, and what would make waiting unacceptable?</li>
+          <li>Can the risk be reduced while I review the proposal?</li>
+          <li>If someone says an authority requires work by a deadline, which office issued it? Ask for the written notice and confirm it with that office.</li>
+        </ul>
+        <p>No source gives a universal safe waiting period for a sewer defect. A professional may not be able to predict when a pipe will fail, and that uncertainty should be stated plainly, neither as a promise that waiting is safe nor as a certainty of collapse. Keep the technical reason for the timing separate from any pricing deadline.</p>
+        <h2>When a second look helps</h2>
+        <p>A second look is most useful when the situation is stable and the recommendation rests on less evidence than the scope implies. For example:</p>
+        <ul>
+          <li>The recommendation came from a short clip or an inspection that stopped early.</li>
+          <li>Everything past where the camera stopped is described as failed, without direct evidence.</li>
+          <li>The proposed length is much longer than the documented problem, with no explanation.</li>
+          <li>Two proposals recommend very different work for the same footage.</li>
+          <li>A slope correction is promised without measurements.</li>
+          <li>Responsibility for a shared line or the connection at the main is unresolved.</li>
+          <li>The video or defect log is not available to share.</li>
+        </ul>
+        <p>A second reviewer does not always need another camera pass. They can start by deciding whether the existing footage is enough. <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>An independent sewer second opinion</ApprovedInlineLink> from The Sewer Pros begins there: the business contacts you and looks at what you already have. For disputed slope, ground stability or design questions, a suitably qualified engineer may be a better fit than another proposal, and it is reasonable to ask any reviewer whether they would sell the proposed work.</p>
+        <p>Give every reviewer the same material: the full video with its date, entry point and distance reference, the defect log, a statement of where the camera stopped, any route sketch or locating marks, the history of backups and cleanings, and the proposal&rsquo;s endpoints and method. Ask for findings in writing that separate what the reviewer saw from what they inferred.</p>
+        <h2>Comparing proposals that disagree</h2>
+        <p>Compare the specific questions instead of only the recommendation and the price:</p>
+        <ul>
+          <li>Is it the same section of pipe?</li>
+          <li>Were the inspection conditions the same? Footage taken before cleaning can hide surfaces visible afterward.</li>
+          <li>Do both point to the same defect at the same place in the footage?</li>
+          <li>Do they judge its severity the same way?</li>
+          <li>Is the same problem being solved: restoring flow, structural repair, correcting slope or renewing old pipe?</li>
+          <li>Were the same alternatives considered?</li>
+          <li>Are the assumptions about depth, soil, access and retained pipe the same?</li>
+          <li>Is the basis for urgency the same?</li>
+        </ul>
+        <p>A useful question for both contractors: &ldquo;You agree there is a defect here. What additional evidence makes the narrower repair insufficient, or what shows the rest of the line can stay?&rdquo; If the disagreement comes from missing evidence, resolve the gap instead of choosing the most alarming or the most reassuring opinion.</p>
+        <h2>If your property is in the Las Vegas Valley</h2>
+        <p>A Las Vegas mailing address does not tell you which government serves a property. Clark County states that a large portion of the Las Vegas valley has a Las Vegas mailing address but is located in unincorporated Clark County, and other homes are inside the City of Las Vegas, the City of North Las Vegas or the City of Henderson.</p>
+        <p>Clark County publishes a jurisdiction locator you can use to check whether an address is in unincorporated Clark County. Ask your sewer agency and your permitting office directly, confirm who owns the main your lateral connects to, and ask whether any digging, access pit or equipment will be in a street, alley or sidewalk.</p>
+        <p>Use your street address and assessor&rsquo;s parcel number when you call, and ask for each answer in writing.</p>
+        <h2>A short checklist before you approve</h2>
+        <ul>
+          <li>Immediate hazards have a defined response.</li>
+          <li>The diagnosis, location, extent and inspection limits are documented.</li>
+          <li>Alternatives and method suitability are explained.</li>
+          <li>Endpoints, materials, connections and restoration are written down.</li>
+          <li>Price assumptions, extras, change approvals and payment triggers are clear.</li>
+          <li>The contractor&rsquo;s license, insurance, subcontractors and project lead are verified.</li>
+          <li>Service restrictions and property access are planned.</li>
+          <li>Inspections, tests, records and closeout are identified.</li>
+          <li>Warranty coverage and the cost of corrective work are understood.</li>
+          <li>Address-specific requirements are confirmed, and anything still unknown is stated in the agreement.</li>
+        </ul>
+        <p>This checklist helps you prepare for an informed decision. It cannot remove every underground uncertainty, which is why unknowns belong in the agreement as stated uncertainties. The standard throughout is documented conditions, defined responsibilities and honest uncertainty.</p>
       </>
     ),
     faq: [
       {
-        question: 'Should I get a second opinion before replacing a sewer line?',
+        question: 'Does a defect on camera mean my whole sewer line needs to be replaced?',
         answer: (
-          <p>
-            A replacement is a major decision, and a review of the same footage by a
-            company that does not sell the work can confirm what the evidence shows.
-            It is reasonable to ask for the footage before you approve anything.
-          </p>
+          <p>Not by itself. A defect shows a condition at one location. Whether the fix is cleaning, monitoring, a localized repair, lining or replacement depends on how severe it is, how far it extends, the condition of the pipe around it and what could not be seen. Replacement can be the right answer when the evidence supports it, so ask how the recommendation follows from the footage. <ApprovedInlineLink pageId={id('res-read-video')}>How to read a sewer camera inspection video</ApprovedInlineLink> explains what footage can and cannot show.</p>
+        ),
+      },
+      {
+        question: 'What should I ask for before approving a sewer line replacement?',
+        answer: (
+          <p>Ask for a copy of the full inspection video, a written defect log with locations and lengths, a statement of what was not inspected, the reason replacement was chosen over narrower options, and a written scope with start and end points, connections, restoration, price assumptions, inspections and warranty terms.</p>
+        ),
+      },
+      {
+        question: 'What is the difference between sewer replacement and sewer lining?',
+        answer: (
+          <p>Replacement installs new pipe, either in an open trench or by breaking the old pipe outward while pulling new pipe through. Lining forms a new pipe wall inside the existing pipe, so the old pipe stays in place. They fix different things and have different access needs, so ask what the proposed method leaves unchanged, such as slope, a sag or connections.</p>
+        ),
+      },
+      {
+        question: 'Can only part of a sewer line be repaired instead of replaced?',
+        answer: (
+          <p>Sometimes. A localized repair corrects a defect at a defined location and leaves the rest of the pipe. Whether it is suitable depends on how many defects there are, how far they extend and the condition of the pipe on either side. Ask the contractor to explain why a narrower repair is or is not enough, using the footage.</p>
+        ),
+      },
+      {
+        question: 'Does trenchless mean there is no digging?',
+        answer: (
+          <p>No. Trenchless describes a way of installing pipe with less continuous trenching. Access pits, preliminary repairs, connections and equipment can still disturb the yard. Ask for a sketch showing every pit and work area, and what could require extra excavation.</p>
+        ),
+      },
+      {
+        question: 'How do I compare two sewer replacement bids?',
+        answer: (
+          <p>Give each contractor the same footage and defect log, then compare scope before price: endpoints and lengths, method, connections, permits, disposal, backfill, restoration, testing and records. Note what each bid lists as an allowance, an exclusion or a unit price. A lower total can leave out work that a higher total includes.</p>
+        ),
+      },
+      {
+        question: 'What should a sewer replacement proposal state in writing?',
+        answer: (
+          <p>It should state where the work starts and stops, the lengths and depths and how they were measured, the pipe material and diameter, how every connection and cleanout is handled, what is restored, which permits and inspections apply and who handles them, how added work is approved, what records you receive at the end, and the warranty terms.</p>
+        ),
+      },
+      {
+        question: 'What should I check about a sewer replacement warranty?',
+        answer: (
+          <p>Check who makes the promise, what section and what failures are covered, what is excluded, what the remedy is and who pays for digging and restoration. Ask what &ldquo;lifetime&rdquo; refers to, whether coverage transfers if you sell, and how to make a claim. A product&rsquo;s expected service life is not the same as a warranty.</p>
+        ),
+      },
+      {
+        question: 'Is sewer replacement urgent if my sewer is backing up?',
+        answer: (
+          <p>A sewage backup is a sanitation problem that needs prompt attention from a qualified professional, but urgency does not by itself show that the whole line must be replaced. Ask for the immediate work to be defined separately from permanent work, and ask what in the footage supports the timing.</p>
+        ),
+      },
+      {
+        question: 'Should I get a second opinion before approving a sewer replacement?',
+        answer: (
+          <p>It is often worth considering when the recommendation rests on a short clip, an inspection that stopped early or a length the footage does not explain. <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>An independent second opinion</ApprovedInlineLink> from The Sewer Pros begins by looking at what you already have.</p>
+        ),
+      },
+      {
+        question: 'What if I am buying a home and the sewer is said to need replacing?',
+        answer: (
+          <p>Ask for the inspection video and written findings behind the statement, and have the recommendation checked against them before you decide. A <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>pre-purchase sewer inspection</ApprovedInlineLink> can provide an independent look at the line. Questions about the purchase contract belong with your agent or attorney.</p>
+        ),
+      },
+      {
+        question: 'Who is responsible for the sewer line between my house and the street?',
+        answer: (
+          <p>It varies by city and utility, and sometimes by the type of problem. Responsibility can extend past the property line or stop at it, so ask the sewer authority for your address and get the answer in writing.</p>
         ),
       },
       {
         question: 'Can a sewer line be cleaned instead of replaced?',
         answer: (
-          <p>
-            Sometimes. If the problem is buildup or roots rather than a break or
-            collapse, cleaning or hydro jetting may address it. A camera inspection
-            shows which situation you have.
-          </p>
+          <p>Sometimes. If the problem is buildup or roots rather than a break or collapse, cleaning or hydro jetting may address it. A camera inspection shows which situation you have.</p>
         ),
       },
       {
         question: 'Why does the camera need to cover the whole line?',
         answer: (
-          <p>
-            Because the recommended scope should match the condition along the entire
-            line. Unseen sections leave open whether the problem is local or
-            widespread.
-          </p>
-        ),
-      },
-      {
-        question: 'Who is responsible for the sewer line on my property?',
-        answer: (
-          <p>
-            It depends on your city, county and utility. Part of the line may be the
-            property owner&rsquo;s and part may be public. Check with your local utility
-            or municipality.
-          </p>
+          <p>Because the recommended scope should match the condition along the entire line. Unseen sections leave open whether the problem is local or widespread.</p>
         ),
       },
     ],
     relatedPageIds: [
       id('res-read-video'),
       id('res-camera-report'),
+      id('svc-independent-sewer-second-opinion'),
       id('svc-sewer-camera-inspection'),
+      id('svc-sewer-line-locating'),
+      id('svc-sewer-cleaning-camera-inspection'),
+      id('svc-pre-purchase-sewer-inspection'),
+      id('core-faq'),
       id('svc-sewer-cleaning'),
       id('cmp-independent-vs-repair'),
     ],
