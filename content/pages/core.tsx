@@ -2748,6 +2748,11 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
         'Review the inspection report or video you already have.',
     },
     ctaForm: true,
+    ctaBackground: {
+      src: '/images/brand/resources/the-sewer-pros-how-to-read-sewer-camera-inspection-video-final-cta-16x9.webp',
+      alt: 'Camera monitor showing the inside of a pipe, with a cable reel beside it on a concrete floor',
+      source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
+    },
     cta: {
       title: 'Want the condition documented?',
       body: (
@@ -3092,6 +3097,11 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
       [id('cmp-independent-vs-repair')]: '/resources/st-louis-sewer-lateral-report/',
     },
     ctaForm: true,
+    ctaBackground: {
+      src: '/images/brand/resources/the-sewer-pros-sewer-line-replacement-questions-inspection-cta-16x9.webp',
+      alt: 'Camera monitor showing the inside of a pipe, with a closed notebook and a clipboard with a pen on a patio table',
+      source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
+    },
     cta: {
       title: 'Want the condition documented?',
       body: (
