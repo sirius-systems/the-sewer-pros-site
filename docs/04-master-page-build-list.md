@@ -1866,12 +1866,36 @@ No Critical findings.
 
 ## Inventory Summary
 
-* The audit confirmed a complete, exactly-reconciled 64-page inventory — no additions, omissions, or duplicates.
-* All 64 pages remain approved for indexation. **0 pages changed disposition.**
-* The 10 findings above are implementation and content-quality follow-ups (a metadata-authoring gap and two already-tracked pending items), not page-retirement or noindex decisions.
-* The inventory should be re-audited after the metadata, lead-form endpoint, TCPA, and evidence-production work (next actions below) is completed, per the process in §56A.
+### Current inventory (November 23, 2026)
 
-Confirmed result:
+Counted from the production build output (`out/`, excluding the framework `/404/` and `/_not-found/` pages) and the generated sitemap. `EXPECTED_PAGE_COUNT` is 206 and `EXPECTED_INDEXABLE_COUNT` is 204 in `data/pages/pages.ts`; the build matches both.
+
+| Family | Built | Indexable | Notes |
+|---|---|---|---|
+| Home | 1 | 1 | `/` |
+| Core | 10 | 8 | About, contact, FAQ, reviews, careers, privacy, SMS terms and terms are indexable. `/careers/thank-you/` and `/contact/thank-you/` are utility pages, not indexable and not in the sitemap. |
+| Hubs | 4 | 4 | Services, locations, audiences, resources |
+| Service | 10 | 10 | Includes the independent second opinion page (DEC-151) |
+| Market | 7 | 7 | 3 market hubs, 3 market contact pages, and `/st-louis-mo/sewer-lateral-inspection-reporting/` |
+| Location | 16 | 16 | St. Louis 5, San Diego 7, Las Vegas 4 |
+| Service + Location | 144 | 144 | 9 residential services x 16 locations (section 56D) |
+| Audience | 6 | 6 | Residential and real-estate audiences |
+| Comparison | 2 | 2 | |
+| Resource | 6 | 6 | Three St. Louis lateral guides, `res-camera-report`, `res-read-video`, `res-replacement-questions` (dates above) |
+| **Total** | **206** | **204** | 2 utility pages are not indexable |
+
+* All built pages are published; no page is gated, deferred or retired.
+* The per-page table above lists only the pages that existed or were reviewed in the September 22 audit, plus later additions that were recorded individually. It is not a complete listing of the 144 generated service + location pages; the registry (`data/pages/approved-pages.ts`) and the generated route set are the authoritative inventory.
+* The 64-page audit result below is a historical record. It has not been repeated for the current 206 pages (section 56A).
+
+### September 22, 2026 audit (historical, 64 pages)
+
+* The audit confirmed a complete, exactly-reconciled 64-page inventory, with no additions, omissions, or duplicates.
+* All 64 pages remained approved for indexation. **0 pages changed disposition.**
+* The 10 findings above are implementation and content-quality follow-ups (a metadata-authoring gap and two already-tracked pending items), not page-retirement or noindex decisions.
+* The inventory should be re-audited after the metadata, lead-form endpoint, TCPA, and evidence-production work (next actions below) is completed, per the process in section 56A.
+
+Confirmed result at that date:
 
 ```text
 64 built
