@@ -33,6 +33,7 @@ export default function Page() {
       page={page}
       content={content}
       itemsTitle="Guides"
+      itemsVariant="cards"
       backdrop={<HeroBackdrop set={resourcesHubBackdrop} />}
     />
   )

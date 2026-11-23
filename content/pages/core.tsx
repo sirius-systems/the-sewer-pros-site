@@ -20,6 +20,7 @@
 
 
 import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
+import { editorialImage } from '@/data/business/editorial-images'
 import {
   homeServiceCards,
   approvedServicesIntro,
@@ -1806,14 +1807,17 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
       {
         pageId: id('res-camera-report'),
         description: 'What a written inspection report should contain.',
+        image: editorialImage('/resources/what-is-in-a-sewer-camera-inspection-report/'),
       },
       {
         pageId: id('res-read-video'),
         description: 'How to interpret sewer camera footage yourself.',
+        image: editorialImage('/resources/how-to-read-a-sewer-camera-inspection-video/'),
       },
       {
         pageId: id('res-replacement-questions'),
         description: 'What to ask, and what a clear answer sounds like, before you approve a replacement.',
+        image: editorialImage('/resources/questions-to-ask-before-approving-sewer-line-replacement/'),
       },
     ],
     ctaBackground: {
