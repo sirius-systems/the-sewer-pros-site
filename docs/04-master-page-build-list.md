@@ -1853,6 +1853,17 @@ No Critical findings.
 | `res-read-video` | Resource | `/resources/how-to-read-a-sewer-camera-inspection-video/` | Educational | — | — | — | complete | published | indexable | needs-revision (metadata only) | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 | `res-replacement-questions` | Resource | `/resources/questions-to-ask-before-approving-sewer-line-replacement/` | Educational | — | — | — | complete | published | indexable | needs-revision (metadata only) | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Shares site-wide fallback meta/OG/Twitter description (Finding H2) | Author unique meta/OG/Twitter description |
 
+**Resource page `dateModified` (added November 23, 2026).** All six resource pages now carry a `dateModified` value in their content entry. It is shown on the page and emitted in the Article structured data. It records the last substantive content change, not the build date, and must not be restamped to look fresh.
+
+| Page ID | `dateModified` | Basis |
+|---|---|---|
+| `res-stl-lateral-report` | 2026-10-27 | Heading changes, commit `7c94f5a` |
+| `res-stl-city-program` | 2026-10-27 | Heading changes, commit `7c94f5a` |
+| `res-stl-county-program` | 2026-10-27 | Heading changes, commit `7c94f5a` |
+| `res-camera-report` | 2026-11-23 | Guide expanded, commit `fee2c0d` |
+| `res-read-video` | 2026-11-23 | Guide reworked, commit `518d768` |
+| `res-replacement-questions` | 2026-11-23 | Guide reworked, commit `4481094` |
+
 ## Inventory Summary
 
 * The audit confirmed a complete, exactly-reconciled 64-page inventory — no additions, omissions, or duplicates.
