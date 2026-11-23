@@ -105,6 +105,8 @@ export function ResourcePageTemplate({
       schema={{
         title: content.seoTitle ?? content.hero.title,
         description: content.metaDescription,
+        // Same value the page displays; omitted when the entry has none.
+        dateModified: content.dateModified,
         // DEC-114: FAQPage is on wherever the page renders an FAQ. Same array
         // the FaqSection renders, so markup and visible text cannot diverge.
         faq: content.faq,
