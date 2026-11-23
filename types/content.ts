@@ -3424,6 +3424,11 @@ export interface HubPageContent extends BasePageContent {
 /** Core page — about, contact, faq. */
 export interface CorePageContent extends BasePageContent {
   placeholder?: never
+  /**
+   * Full-bleed image behind the closing CTA. Decorative; scene only
+   * (DEC-145), so its alt text and source must not imply a real job.
+   */
+  ctaBackground?: CardImage
 }
 
 /**

@@ -153,6 +153,7 @@ export function CorePageTemplate({
           title={content.cta?.title ?? 'Schedule an inspection'}
           body={content.cta?.body}
           action={null}
+          backgroundImage={content.ctaBackground}
           proof={
             <div className="rounded-md border border-border bg-surface p-6 text-foreground shadow-sm sm:p-8">
               <SurveyLeadForm idPrefix="cta-survey" />

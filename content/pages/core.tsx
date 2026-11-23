@@ -1947,6 +1947,11 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
       },
     ],
     relatedPageIds: [id('hub-services'), id('hub-resources'), id('hub-audiences'), id('core-about')],
+    ctaBackground: {
+      src: '/images/brand/frequently-asked-questions/the-sewer-pros-faqs-final-cta-residential-cleanout-utility-room-16x9.webp',
+      alt: 'Utility room corner with a white drain pipe, a floor cleanout cap on a concrete floor, a metal shelf and a plant',
+      source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
+    },
   },
 }
 
