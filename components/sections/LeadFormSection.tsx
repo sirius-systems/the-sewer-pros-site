@@ -421,6 +421,10 @@ export function LeadFormSection({
         See our{' '}
         <Link href="/privacy/" className="underline underline-offset-4 hover:text-foreground">
           Privacy Policy
+        </Link>{' '}
+        and{' '}
+        <Link href="/sms-terms/" className="underline underline-offset-4 hover:text-foreground">
+          SMS Terms
         </Link>
         .
       </p>

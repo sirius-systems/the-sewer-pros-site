@@ -14,7 +14,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { walkOut, urlOf, pageType, decode } from './link-graph.mjs'
 
-export const ORIGIN = 'https://www.thesewerpros.com'
+export const ORIGIN = 'https://thesewerpros.com'
 
 /* ---- file facts ---------------------------------------------------------- */
 

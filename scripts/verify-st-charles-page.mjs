@@ -12,7 +12,7 @@ import { otherMarketPhoneHits } from './lib/market-phones.mjs'
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'locations', 'st-louis-mo', 'st-charles', 'index.html')
-const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.thesewerpros.com').replace(/\/+$/, '')
+const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://thesewerpros.com').replace(/\/+$/, '')
 const html = fs.readFileSync(PAGE, 'utf8')
 
 let failures = 0

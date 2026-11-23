@@ -16,7 +16,7 @@ import { Analytics } from '@/components/tracking'
  * from NEXT_PUBLIC_SITE_URL rather than a literal (02 §53).
  *
  * It was deliberately absent from the scaffold until DEC-078 confirmed
- * the canonical origin as https://www.thesewerpros.com. Under
+ * the canonical origin as https://thesewerpros.com. Under
  * `output: 'export'` the origin is baked into canonicals, schema `@id`
  * values, and the sitemap as static text, and 15 §5 requires those stay
  * stable once published — so a guess could not have been corrected

@@ -7,7 +7,7 @@
  *            docs/22-decisions-change-log.md DEC-061, DEC-078
  *
  * Build sequence step 14. Unblocked by DEC-078 confirming the canonical
- * origin as `https://www.thesewerpros.com` — 15 §5 requires `@id` and
+ * origin as `https://thesewerpros.com` — 15 §5 requires `@id` and
  * canonical values stay stable once published, which is why this could
  * not be built provisionally and corrected later.
  *

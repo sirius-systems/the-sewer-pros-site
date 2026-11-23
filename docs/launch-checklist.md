@@ -22,4 +22,5 @@ Do these in order:
 2. [ ] Counsel review of the policy, especially the CCPA request methods and the "no sale or sharing" statement.
 3. [ ] Confirm the retention wording, or replace it with real periods.
 4. [ ] Confirm the old marketing provider's pixels and audience sharing are off, and no Meta or Google ad tags are on the new site.
-5. [ ] Paste the owner's SMS opt-in program terms into `content/pages/sms-terms.tsx` (LAUNCH BLOCKER: the placeholder `TODO(owner)` text renders today), then set `core-sms-terms` indexable, link it from the footer and set `SMS_LEGAL_LINKS` in `lib/forms/sms-consent.ts`.
+5. [ ] Set `SMS_TERMS_LAST_UPDATED` in `content/pages/sms-terms.tsx`, have counsel review it, and have the owner confirm the three standard additions (not a condition of purchase, carriers, changes) and that STOP can opt out of either or both message types on the messaging platform.
+6. [ ] Set `NEXT_PUBLIC_SITE_URL` in Cloudflare Pages to `https://thesewerpros.com` (no www) and redirect the www host to the apex (DEC-163).

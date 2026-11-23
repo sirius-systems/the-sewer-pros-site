@@ -19,7 +19,7 @@ import { checkEquipmentNames, checkRelatedCards, checkServiceSchema } from './li
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'sewer-camera-inspection', 'index.html')
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
-const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
+const PRODUCTION_ORIGIN = 'https://thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
 const html = fs.readFileSync(PAGE, 'utf8')
 

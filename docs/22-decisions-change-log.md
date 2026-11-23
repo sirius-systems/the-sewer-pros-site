@@ -5837,3 +5837,20 @@ Recorded:
 * **Pages.** `/privacy/` (`core-privacy`, indexable, low priority, Fast mode / Level 1, approved 2026-09-01) and `/sms-terms/` (`core-sms-terms`, noindex). Both segments are now reserved root segments. The Privacy Policy is linked from the footer Company group and from the lead forms. The privacy requests email is info@thesewerpros.com, and the policy names The Sewer Pros only.
 * **SMS Terms.** The body is a `TODO(owner)` placeholder. Launch blocker: the owner must paste the SMS opt-in program terms. Not linked from the footer until then.
 * **Analytics consent determination (from `form-fields-and-consent-decision.md` section 2).** No cookie or consent banner at launch, because GA4 is configured for measurement only (no ad personalization, no Google Ads linking, no retargeting pixels, no PII sent). **This must be revisited before any ad personalization, Google Ads linking or retargeting pixel is added**; the policy's "we do not sell or share" statement is true only while that holds.
+
+
+## DEC-163 - SMS Terms Page Copy, Indexable; Canonical Host Is Non-www (Amends DEC-078)
+
+**Date:** 2026-11-23
+**Status:** APPROVED
+**Impact:** Moderate (the canonical origin changes before launch; no production URL had been published)
+**Decision Owner:** Business owner (Sedrick)
+**Amends:** DEC-078, DEC-162
+**Affected Documents:**
+
+* `content/pages/sms-terms.tsx`, `data/pages/approved-pages.ts`, `data/pages/pages.ts`, `lib/forms/sms-consent.ts`, `data/navigation/navigation.ts`, `components/layout/SiteFooter.tsx`, `.env.example`, `README.md`, `public/_headers`, the verify scripts that pin the origin
+
+Recorded:
+
+* **SMS Terms.** The owner's page copy replaces the placeholder. `/sms-terms/` is indexable (low priority), linked from the footer Company group and from the Privacy Policy, and `SMS_LEGAL_LINKS` is set so the consent line on the forms links to `/privacy/` and `/sms-terms/`. The consent checkbox wording is unchanged. Three standard additions (consent is not a condition of purchase, carriers are not liable, changes) go beyond the checkbox wording and need owner or counsel confirmation, as does the STOP scope (either or both message types).
+* **Canonical host.** The production origin is `https://thesewerpros.com`, with no `www`. DEC-078 had chosen `www`; this reverses it. The value comes only from `NEXT_PUBLIC_SITE_URL` (no code fallback), so `.env.example`, the git-ignored `.env.local`, comments and the verify scripts that pinned the old origin were updated. The Cloudflare Pages `NEXT_PUBLIC_SITE_URL` value must be set to the same non-www origin, and the www host should redirect to the apex.

@@ -28,7 +28,7 @@ import { checkEquipmentNames, checkServiceSchema } from './lib/service-page-chec
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'recurring-sewer-backup-diagnosis', 'index.html')
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
-const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
+const PRODUCTION_ORIGIN = 'https://thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
 const NAME = 'Recurring Sewer Backup Diagnosis'
 const H1 = 'Recurring Sewer Backup Diagnosis'

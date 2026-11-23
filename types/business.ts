@@ -170,7 +170,7 @@ export interface ContactPoint {
 /**
  * Runtime site configuration.
  *
- * `origin` is `https://www.thesewerpros.com` — www, not apex (DEC-078).
+ * `origin` is `https://thesewerpros.com` — apex, no www (DEC-162).
  *
  * ⚠ It must still come from `NEXT_PUBLIC_SITE_URL`, never a hard-coded
  * literal, now that the value is settled.

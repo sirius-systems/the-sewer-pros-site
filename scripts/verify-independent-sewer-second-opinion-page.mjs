@@ -25,7 +25,7 @@ import { checkEquipmentNames, checkRelatedCards, checkServiceSchema } from './li
 
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'independent-sewer-inspection-second-opinion', 'index.html')
-const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
+const PRODUCTION_ORIGIN = 'https://thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
 const H1 = 'Told You Need a New Sewer Line? Get a Second Opinion First.'
 const html = fs.readFileSync(PAGE, 'utf8')

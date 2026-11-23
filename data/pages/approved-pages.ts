@@ -241,9 +241,9 @@ export const approvedPages: readonly MasterPageRecord[] = [
     pageType: 'core',
     pathname: toPathname('/sms-terms/'),
     status: 'launch',
-    // Placeholder body until the owner pastes the SMS opt-in program terms.
-    // Noindex and out of the footer until then (launch blocker).
-    indexable: false,
+    // Indexable and low sitemap priority (DEC-163): carrier reviewers and
+    // customers need to reach it.
+    indexable: true,
     priority: 'L3',
     parentId: 'core-home' as PageId,
   },

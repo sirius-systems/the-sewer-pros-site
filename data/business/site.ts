@@ -9,8 +9,8 @@
  * ===========================================================================
  * ⚠  THE ORIGIN IS REQUIRED AT BUILD TIME, WITH NO FALLBACK
  * ===========================================================================
- * The canonical origin is settled: `https://www.thesewerpros.com`, www
- * rather than apex (DEC-078, 2026-08-17, closing PENDING-001).
+ * The canonical origin is settled: `https://thesewerpros.com`, apex
+ * with no www (DEC-162, 2026-11-23; DEC-078 had chosen www).
  *
  * It is deliberately NOT hardcoded here. Environment configuration stays
  * out of committed source (CLAUDE.md §52), so every environment supplies
@@ -63,7 +63,7 @@ export function siteOrigin(): string {
         `Set it in .env.local for local work, or in the deployment ` +
         `host's own environment settings for a build there — ` +
         `see .env.example.\n` +
-        `The value is https://www.thesewerpros.com (DEC-078). Use it in ` +
+        `The value is https://thesewerpros.com (DEC-078). Use it in ` +
         `every environment: a preview host must never reach a canonical ` +
         `tag, a schema @id, or the sitemap (05 §92, 02 §88).`,
     )

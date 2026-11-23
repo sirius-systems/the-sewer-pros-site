@@ -12,7 +12,7 @@ export const DESC_MIN = 110
 export const DESC_MAX = 160
 export const NEAR_DUP = 0.8
 
-const ORIGIN = 'https://www.thesewerpros.com'
+const ORIGIN = 'https://thesewerpros.com'
 const BANNED = [
   [/\bfree estimates?\b/i, 'free estimate'],
   [/\b(repair(s|ing)?|replac(e|es|ing|ement)|trenchless|relining|pipe lining|sewer lining|excavat\w+|pipe bursting)\b/i, 'repair or replacement wording'],

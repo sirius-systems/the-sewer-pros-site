@@ -21,7 +21,7 @@ import { checkEquipmentNames, checkServiceSchema, checkRelatedCards } from './li
 const ROOT = path.resolve('out')
 const PAGE = path.join(ROOT, 'services', 'drain-cleaning', 'index.html')
 // Follows the origin the build used (NEXT_PUBLIC_SITE_URL); falls back to production.
-const PRODUCTION_ORIGIN = 'https://www.thesewerpros.com'
+const PRODUCTION_ORIGIN = 'https://thesewerpros.com'
 const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_ORIGIN).replace(/\/+$/, '')
 const NAME = 'Drain Cleaning'
 const H1 = 'Drain Cleaning for Slow, Clogged, and Recurring Drains'

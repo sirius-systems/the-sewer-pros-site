@@ -106,7 +106,7 @@ export function summarize(pages, files) {
   for (const p of pages) {
     for (const ic of p.icons) if (ic.href) used.add(ic.href.split('?')[0].replace(/^\//, ''))
     for (const k of ['ogImageFile', 'twitterImageFile']) if (p.share[k]?.path) used.add(p.share[k].path)
-    for (const s of p.schemaImages) if (s.url) used.add(s.url.replace('https://www.thesewerpros.com/', '').split('?')[0])
+    for (const s of p.schemaImages) if (s.url) used.add(s.url.replace('https://thesewerpros.com/', '').split('?')[0])
   }
   for (const m of ['images/brand/logos/04-digital/android-chrome-192x192.png', 'images/brand/logos/04-digital/android-chrome-512x512.png', 'favicon.ico']) used.add(m)
   const unreferenced = files.filter((f) => !used.has('images/' + f.path.replace(/^images\//, '')) && !used.has(f.path) && !used.has(f.path.replace(/^/, '')))
@@ -162,12 +162,12 @@ export function summarize(pages, files) {
     const why = []
     if (!s.ogImage) why.push('no og:image')
     else {
-      if (!/^https:\/\/www\.thesewerpros\.com\//.test(s.ogImage)) why.push('og:image not an absolute production URL')
+      if (!/^https:\/\/thesewerpros\.com\//.test(s.ogImage)) why.push('og:image not an absolute production URL')
       if (!s.ogImageFile?.exists) why.push('og:image file missing')
       else if (Math.abs(s.ogImageFile.width - 1200) > 2 || Math.abs(s.ogImageFile.height - 630) > 2) why.push(`og:image file is ${s.ogImageFile.width}x${s.ogImageFile.height}, not 1200x630`)
     }
     if (!s.twitterImage) why.push('no twitter:image')
-    else if (!/^https:\/\/www\.thesewerpros\.com\//.test(s.twitterImage)) why.push('twitter:image not absolute')
+    else if (!/^https:\/\/thesewerpros\.com\//.test(s.twitterImage)) why.push('twitter:image not absolute')
     else if (!s.twitterImageFile?.exists) why.push('twitter:image file missing')
     if (why.length) ogProblems.push({ page: p.url, why })
   }

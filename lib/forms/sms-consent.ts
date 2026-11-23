@@ -46,10 +46,11 @@ export const SMS_CONSENT_ACCEPTED_VERSIONS: readonly string[] = [SMS_CONSENT_V2.
 export const SMS_CONSENT_VERSION = SMS_CONSENT.version
 
 /**
- * Privacy Policy and Terms pages. Both are undefined because neither page
- * exists on the site yet (the footer has no legal links). The consent block
- * shows the "See our Privacy Policy and Terms." line only when both hrefs are
- * set, so it never links to a page that is missing. Set them when the pages
- * exist and carry their own SMS section.
+ * Privacy Policy and SMS Terms pages. Both pages now exist (DEC-162, DEC-163), so
+ * both are set. The consent block shows the "See our Privacy Policy and Terms."
+ * line only when both hrefs are set, so it never links to a page that is missing.
  */
-export const SMS_LEGAL_LINKS: { privacy: string; terms: string } | undefined = undefined
+export const SMS_LEGAL_LINKS: { privacy: string; terms: string } | undefined = {
+  privacy: '/privacy/',
+  terms: '/sms-terms/',
+}
