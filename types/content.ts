@@ -3472,6 +3472,8 @@ export interface CorePageContent extends BasePageContent {
    * page. Update only when the content substantively changes.
    */
   dateModified?: string
+  /** Opt-in: show an "Updated {dateModified}" line under the H1, as resource articles do. */
+  showUpdated?: boolean
   /**
    * Full-bleed image behind the closing CTA. Decorative; scene only
    * (DEC-145), so its alt text and source must not imply a real job.

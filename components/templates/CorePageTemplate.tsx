@@ -134,6 +134,14 @@ export function CorePageTemplate({
           <h1 className="text-h1 font-semibold tracking-tight text-balance">
             {content.hero.title}
           </h1>
+          {content.showUpdated === true && content.dateModified !== undefined && (
+            <p className="mt-4 text-caption text-muted-foreground">
+              Updated{' '}
+              <time dateTime={content.dateModified}>
+                {content.dateModified}
+              </time>
+            </p>
+          )}
           {content.hero.intro !== undefined && (
             <div className="mt-5 text-body-lg text-muted-foreground">
               {content.hero.intro}

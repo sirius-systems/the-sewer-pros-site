@@ -1909,9 +1909,12 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
       title: 'Sewer & Drain FAQs',
       intro: <p>Common questions about inspections, cleaning, and what findings mean.</p>,
     },
+    // Names only what the 29 answers cover (inspections, cleaning, hydro
+    // jetting, drain problems, backups, pre-purchase sewer scopes, findings).
     metaDescription:
-      'Get answers about sewer camera inspections, sewer cleaning, hydro jetting, drain problems, sewer backups, pipe materials, and pre-purchase inspections.',
+      'Answers about sewer camera inspections, sewer cleaning, hydro jetting, drain problems, sewer backups, pre-purchase sewer scopes, and what the findings mean.',
     dateModified: '2026-11-23',
+    showUpdated: true,
     faq: [
       {
         group: 'Basics',
