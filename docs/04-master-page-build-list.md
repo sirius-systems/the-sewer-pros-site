@@ -1661,7 +1661,9 @@ This document should not duplicate or override the canonical data in the registr
 
 ---
 
-# 56. Implementation Snapshot (September 21, 2026)
+# 56. Implementation Snapshot (September 21, 2026; 64-page baseline)
+
+> **Update November 23, 2026.** This section is the September 21 baseline of 64 pages. The current inventory is 206 built pages, 204 indexable; see the Inventory Summary in section 56B.
 
 This section reconciles the inventory with the repository. The authoritative machine-readable registry is `data/pages/approved-pages.ts`; this section summarizes it and does not replace it.
 
@@ -1691,7 +1693,7 @@ The families table in §13 to §24 describes intent. Where it says "build-ready 
 
 ---
 
-# 56A. 64-Page Launch Inventory Audit Process
+# 56A. Launch Inventory Audit Process (64-page baseline)
 
 §56's snapshot confirms *what exists*: 64 built, launch-status, indexable pages. It does not confirm that all 64 satisfy the evidence-led quality model in §11A — that per-page review has not been performed as of this writing (September 22, 2026).
 
@@ -1775,7 +1777,7 @@ No Critical findings.
 | `npm run validate` | passed |
 | `npm run check` | passed |
 
-## Per-Page Inventory (all 64 pages)
+## Per-Page Inventory (64 pages at the September 22 audit, plus later additions)
 
 `Build`, `Publication`, and `Indexation` are the three separate lifecycle dimensions from §6A; `Content`, `Evidence`, `Conversion`, and `QA` are the review fields from §11A; `Disposition` is the overall §11A outcome. Every row below is `complete` / `published` / `indexable` / `keep-indexable` — the audit changed no page's status.
 
