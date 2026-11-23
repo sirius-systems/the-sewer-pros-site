@@ -1866,6 +1866,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         supporting: [
           'A camera may be used before cleaning, after cleaning, or both, when the line can be viewed. What a visit includes depends on the line, the entry point, and the scope of work.',
           'This page covers accessible private-property residential sewer and drain lines, not public sewer mains.',
+          <>
+            <ApprovedInlineLink pageId={id('res-read-video')}>How to read a sewer camera inspection video</ApprovedInlineLink> explains what footage shows and what it cannot prove, and <ApprovedInlineLink pageId={id('res-camera-report')}>what a camera inspection report should include</ApprovedInlineLink> explains what written findings should contain.
+          </>,
         ],
       },
       signals: {
@@ -3795,6 +3798,9 @@ export const serviceContent: Partial<Record<PageId, ServicePageContent>> = {
         supporting: [
           "The line being inspected is the private sewer lateral, the pipe that connects the building's plumbing to the public sewer main. The inspection documents visible conditions in the section the camera reaches, on the day of the visit. It is an inspection and documentation service. It does not repair anything.",
           'A sewer scope is a focused inspection of the sewer line. Ask your home inspector whether their inspection includes one.',
+          <>
+            <ApprovedInlineLink pageId={id('res-camera-report')}>What written sewer camera inspection findings should include</ApprovedInlineLink> is covered in a companion guide, and <ApprovedInlineLink pageId={id('res-replacement-questions')}>questions to ask before approving a sewer line replacement</ApprovedInlineLink> covers the evidence to ask for when a replacement is recommended.
+          </>,
         ],
       },
       signals: {

@@ -46,6 +46,7 @@
  * municipalities decide claims.
  */
 
+import { ApprovedInlineLink } from '@/components/links/ApprovedInlineLink'
 import type { PageId, ResourcePageContent } from '@/types'
 
 const id = (value: string): PageId => value as PageId
@@ -170,6 +171,9 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
           boundaries, and exclusions all vary.
         </p>
         <p>
+          <ApprovedInlineLink pageId={id('res-camera-report')}>What a sewer camera inspection report covers</ApprovedInlineLink> explains what written findings should contain, and <ApprovedInlineLink pageId={id('res-replacement-questions')}>what to ask before approving a sewer line replacement</ApprovedInlineLink> covers the evidence to ask for when a replacement is recommended.
+        </p>
+        <p>
           Anyone who tells you a report guarantees approval is describing a
           decision that is not theirs to make.
         </p>
@@ -212,6 +216,7 @@ export const stLouisResourceContent: Partial<Record<PageId, ResourcePageContent>
       id('res-camera-report'),
       id('res-stl-city-program'),
       id('svc-pre-purchase-sewer-inspection'),
+      id('res-replacement-questions'),
     ],
   },
 

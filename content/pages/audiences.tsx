@@ -365,6 +365,9 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
           contractors quote against the same facts, which makes the quotes
           comparable and the conversation shorter.
         </p>
+        <p>
+          <ApprovedInlineLink pageId={id('res-camera-report')}>What a sewer camera inspection report includes</ApprovedInlineLink> explains what written findings should contain, and <ApprovedInlineLink pageId={id('res-read-video')}>how to read a sewer camera inspection video</ApprovedInlineLink> explains what footage shows and what it cannot prove.
+        </p>
 
         <h2>Timing within a transaction</h2>
         <p>
@@ -422,7 +425,7 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
         ),
       },
     ],
-    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-camera-report'), id('aud-home-buyers')],
+    relatedPageIds: [id('cmp-independent-vs-repair'), id('res-camera-report'), id('aud-home-buyers'), id('res-read-video')],
   },
 
   /* ===================================================== inspectors -- */
@@ -462,6 +465,9 @@ export const audienceContent: Partial<Record<PageId, AudiencePageContent>> = {
           The third item is the one most often missing from sewer reports, and
           it is the one that most resembles how a careful inspection report is
           written: the limits of the assessment stated alongside its findings.
+        </p>
+        <p>
+          <ApprovedInlineLink pageId={id('res-camera-report')}>What a sewer camera inspection report should include</ApprovedInlineLink> explains what written findings should contain, and <ApprovedInlineLink pageId={id('res-read-video')}>reading a sewer camera inspection video</ApprovedInlineLink> explains what footage shows and what it cannot prove.
         </p>
 
         <h2>Why an independent referral is a safer one</h2>
