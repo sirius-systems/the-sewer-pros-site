@@ -1907,7 +1907,20 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
   [id('core-faq')]: {
     hero: {
       title: 'Sewer & Drain FAQs',
-      intro: <p>Common questions about inspections, cleaning, and what findings mean.</p>,
+      intro: (
+        <>
+          <p>
+            Answers to common questions about sewer camera inspections, sewer
+            cleaning, hydro jetting, drain problems, sewer backups, and buying a
+            home with a sewer scope. Each answer is short and direct, with a
+            link to the full page when you want more detail.
+          </p>
+          <p>
+            The Sewer Pros provides sewer inspection, cleaning, and locating. We
+            do not perform sewer repair or replacement.
+          </p>
+        </>
+      ),
     },
     // Names only what the 29 answers cover (inspections, cleaning, hydro
     // jetting, drain problems, backups, pre-purchase sewer scopes, findings).
@@ -2314,6 +2327,24 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
     relatedDescriptions: {
       [id('hub-resources')]:
         'Guides to inspection reports, inspection video, and questions to ask before approving sewer work.',
+    },
+    cta: {
+      title: 'Get Answers About Your Sewer Line With a Camera Inspection',
+      body: (
+        <>
+          <p>
+            General answers only go so far. A sewer camera inspection from The
+            Sewer Pros shows what is actually inside your line, and you receive
+            the inspection video and written findings so you can decide what to
+            do next.
+          </p>
+          <p>
+            We provide inspection, cleaning, and locating, and we do not
+            perform sewer repair or replacement. Choose the service you need, or
+            use &quot;Not sure? Tell us what&apos;s happening&quot;.
+          </p>
+        </>
+      ),
     },
     ctaBackground: {
       src: '/images/brand/frequently-asked-questions/the-sewer-pros-faqs-final-cta-residential-cleanout-utility-room-16x9.webp',
