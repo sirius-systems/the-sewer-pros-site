@@ -1952,108 +1952,339 @@ export const coreContent: Partial<Record<PageId, CorePageContent>> = {
 export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
   [id('res-camera-report')]: {
     metaDescription:
-      'Learn what a sewer camera inspection report may include, how findings are documented, and what to consider when reviewing the results.',
+      'Learn what a sewer camera inspection report includes, how to read the findings, and what to ask for before you rely on it or share it.',
+    dateModified: '2026-11-23',
     hero: {
       eyebrow: 'Guide',
       title: 'What Is Included in a Sewer Camera Inspection Report?',
     },
     directAnswer: (
       <p>
-        A useful sewer camera inspection report identifies the property and
-        date, states where the camera entered the line and how far it
-        travelled, describes each observed condition with its distance along
-        the line, notes any section that could not be assessed and why, and
-        includes the footage itself.
+        A sewer camera inspection report generally identifies the property and
+        the inspection date, where the camera entered the line, how far it
+        traveled, what was visible, and what could not be assessed. It may also
+        include photos, approximate distances, video references, and suggested
+        follow-up. The exact contents depend on the inspection agreement, so
+        confirm what you will receive before the visit.
       </p>
     ),
     body: (
       <>
         <h2>Why the report matters as much as the inspection</h2>
         <p>
-          The inspection produces evidence. The report is what makes that
-          evidence usable later: when comparing quotes, revisiting a decision,
-          or showing someone else what was found. If you already hold a report
-          or video, you can{' '}
-          <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
-            get an independent opinion on a report or video you already have
-          </ApprovedInlineLink>
-          .
+          A <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>sewer camera inspection</ApprovedInlineLink>
+          produces evidence. The report is what makes that evidence
+          usable later: when you compare quotes, revisit a decision, or show
+          someone else what was found. A good report tells you what the camera
+          saw, where it saw it, and what it could not see.
         </p>
 
-        <h2>What a sewer camera inspection report should contain</h2>
-        <h3>Identification</h3>
+        <h2>What counts as &ldquo;included&rdquo;?</h2>
         <p>
-          The property, the date, and which line was inspected. Obvious, and
-          routinely omitted.
+          No single national format governs these reports, so this guide
+          separates four kinds of items:
         </p>
-
-        <h3>Access point and extent</h3>
-        <p>
-          Where the camera entered, and how far along the line it reached. The
-          extent matters: a report covering thirty feet of a longer line is not
-          a report on the whole line.
-        </p>
-
-        <h3>Observations with distances</h3>
-        <p>
-          Each condition should be tied to a distance along the line. &ldquo;Root
-          intrusion at a joint&rdquo; is an observation; &ldquo;root intrusion
-          at a joint approximately 42 feet from the cleanout&rdquo; is
-          actionable: it can be located, quoted against, and re-checked.
-        </p>
-
-        <h3>What could not be assessed</h3>
-        <p>
-          Sections obscured by standing water or buildup, points where the
-          camera could not pass, and any part of the line not reached. This is
-          the section most often missing and among the most important: it
-          tells you the limits of what the inspection established.
-        </p>
-
-        <h3>The footage</h3>
-        <p>
-          Ask how the footage is delivered and how long you can access it. It is evidence about your property.
-        </p>
-
-        <h2>What a report should not do</h2>
-        <p>
-          It should not assert conditions the camera cannot establish: pipe
-          wall thickness from outside, soil conditions, or the remaining life of
-          a line. It also should not present a repair recommendation as a
-          finding; what was observed and what someone concludes from it are
-          different things, and worth being able to separate.
-        </p>
-
-        <h2>Questions worth asking</h2>
         <ul>
-          <li>How far along the line did you get, and what stopped you?</li>
-          <li>Which sections could you not assess clearly?</li>
-          <li>At what distance is each condition you noted?</li>
-          <li>Was the line cleaned before this inspection?</li>
-          <li>Can I have a copy of the footage?</li>
+          <li>
+            <strong>Required under a named standard.</strong> Some professional
+            standards set minimums. They are voluntary, and they apply only when
+            an inspector follows them.
+          </li>
+          <li>
+            <strong>Common in sample reports.</strong> Features that recur in
+            published sample reports from several inspection companies. That is
+            a small sample, not a survey of the industry.
+          </li>
+          <li>
+            <strong>Good practice.</strong> Details that make a report clearer,
+            even where no standard requires them.
+          </li>
+          <li>
+            <strong>Depends on the provider.</strong> Items to confirm in the
+            inspection agreement.
+          </li>
         </ul>
         <p>
-          If the report is behind a recommendation to replace the line, see{' '}
+          One published example is InterNACHI&rsquo;s sewer-scope standard,
+          written for properties with four or fewer residential units. It calls
+          for written findings, a statement of which sections were and were not
+          inspected, and the complete recorded video. It does not call for
+          surface locating, total line length, or repair estimates. It is a
+          private association&rsquo;s standard, not a law, and the client and
+          inspector can change its scope in advance. Treat it as a benchmark,
+          and confirm what applies to your inspection.
+        </p>
+
+        <h2>Property, inspection date, and inspector information</h2>
+        <p>
+          Identifying details connect the observations to the right property
+          and the right visit. Look for the property address, your name, the
+          inspection date, and the inspector and company with contact details.
+          Most of the sample reports we reviewed include these, though published
+          samples often use placeholder names. Check them before you rely on or
+          forward the report. The date matters because the report describes
+          conditions on that day only.
+        </p>
+
+        <h2>Which sewer-line sections were inspected?</h2>
+
+        <h3>Access point, direction, and footage reference</h3>
+        <p>
+          The access point is where the camera entered the line, often a
+          cleanout outside the house or in the basement. A report should say
+          where. It is also useful to know which way the camera traveled, toward
+          the street connection or back toward the building, and where the
+          footage counter started. Direction and starting point are good
+          practice rather than something a standard requires, so check whether
+          yours states them.
+        </p>
+        <p>
+          A footage reading is a distance along the pipe from that starting
+          point. It is not a marked spot in your yard, and it does not tell you
+          how deep the pipe is. Surface position and depth come from separate{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-line-locating')}>sewer line locating</ApprovedInlineLink> work.
+        </p>
+
+        <h3>Distance inspected, endpoint, and unreached sections</h3>
+        <p>
+          The distance inspected is how far the camera actually went. It is not
+          necessarily the total length of the line. One sample report described
+          roughly 100 feet from the entry point to the main. Another stopped at
+          debris partway along the run, which means the rest of that line was
+          not seen. A report should say which happened.
+        </p>
+        <p>
+          Under InterNACHI&rsquo;s standard, the report must identify inspected
+          and uninspected sections and give the reasons. The standard does not
+          require the total line length. Good practice is to state whether the
+          intended endpoint was reached, so you do not have to infer it.
+        </p>
+
+        <h2>Pipe material, approximate size, and transitions</h2>
+        <p>
+          Reports commonly name the visible pipe material, such as cast iron or
+          plastic. Some also give an approximate diameter, which is less common.
+          Where the material changes along the run, a good report notes where. A
+          change from one material to another is context, not a defect by
+          itself.
+        </p>
+        <p>
+          Identification is by sight, so it should be labeled approximate when
+          the inspector cannot be sure. InterNACHI asks for a material
+          description when possible, and does not require conclusive
+          identification of every material.
+        </p>
+
+        <h2>Video, photographs, and references that support the findings</h2>
+
+        <h3>Full recording versus selected images</h3>
+        <p>
+          The recording is the complete record of the inspection. Photos and
+          clips illustrate selected findings, and they are not a substitute for
+          it. Under InterNACHI&rsquo;s standard, the client receives the entire
+          recorded video as an online link or a physical copy. For help watching
+          it, see <ApprovedInlineLink pageId={id('res-read-video')}>how to read your sewer inspection video</ApprovedInlineLink>.
+        </p>
+        <p>
+          Photo counts and video delivery vary by provider. Some sample reports
+          show captioned still images, some link to the video, and one states
+          that not every concern will have a photo. Ask whether the link
+          expires, whether you can download the video, and whether you can share
+          it. The standard sets no hosting period, so do not assume permanent
+          access.
+        </p>
+
+        <h3>Footage readings and timestamps</h3>
+        <p>
+          Two methods help you find a finding in the recording. A footage
+          reading places it along the run. A video timestamp tells you when to
+          look in the recording. They are not the same: a timestamp helps you
+          find the moment but does not tell you how far along the pipe it was.
+        </p>
+        <p>
+          Good practice is for a report to cross-reference important findings to
+          the footage or the time, and to say where the counter began. Treat
+          footage as approximate. Decimal precision does not make it surveyed.
+        </p>
+
+        <h2>Observed findings, what they may mean, and follow-up</h2>
+
+        <h3>What the inspector saw</h3>
+        <p>
+          A report may describe roots entering the pipe, debris or grease
+          buildup, cracks, offset joints, standing water, and deterioration. Not
+          every report will include all of these, and some will include none. An
+          offset is a visible misalignment at a joint. Deterioration describes
+          visible breakdown of the pipe surface.
+        </p>
+        <p>
+          InterNACHI&rsquo;s standard lists specific conditions to report, with
+          thresholds such as offsets over a quarter inch and more than an inch
+          of standing water. Those are that standard&rsquo;s reporting
+          thresholds, not a nationwide pass or fail rule. A useful finding gives
+          the observation, where it was, the supporting image or video
+          reference, and what remains uncertain.
+        </p>
+
+        <h3>What an observation may mean, and what stays uncertain</h3>
+        <p>
+          Keep three things apart: what was seen, what it might mean, and what
+          is recommended.
+        </p>
+        <ul>
+          <li>
+            Standing water is an observation. It can point to a low section or a
+            restriction downstream, but a basic camera does not measure slope, so
+            the video alone does not confirm a sag or how deep it is.
+          </li>
+          <li>
+            A visible crack or deterioration shows a condition at that spot. It
+            does not establish wall thickness, structural strength, or how long
+            the pipe will last.
+          </li>
+          <li>
+            A camera can show water visibly entering a pipe. Not seeing any does
+            not prove the pipe is watertight.
+          </li>
+          <li>
+            A camera that stops advancing shows the inspection was limited at
+            that point. It does not prove the pipe collapsed, and it does not
+            show that the rest of the line is fine.
+          </li>
+        </ul>
+        <p>
+          Here is a hypothetical entry, not a real finding, to show the
+          difference:
+        </p>
+        <p>
+          <strong>Observation:</strong> Standing water was visible from
+          approximately 42 to 49 feet, measured from the exterior cleanout.
+          Water hid part of the lower pipe wall. See the image and video
+          reference.
+        </p>
+        <p>
+          <strong>Possible significance:</strong> A low section or a downstream
+          restriction is possible. Slope was not measured, and the hidden
+          surfaces could not be fully evaluated.
+        </p>
+        <p>
+          <strong>Suggested follow-up:</strong> Have the restriction and the
+          retained water evaluated. Cleaning and reinspection may help, and
+          additional measurement would be needed to establish pipe grade.
+        </p>
+
+        <h3>Condition summaries and urgency labels</h3>
+        <p>
+          Many reports sum up findings with labels such as &ldquo;maintenance
+          item,&rdquo; &ldquo;further evaluation,&rdquo; or
+          &ldquo;moderate.&rdquo; Each provider uses its own labels, and they
+          are not a shared scale. Read a label alongside the narrative next to
+          it, and ask what it means if the report does not define it. A concern
+          documented for monitoring is not the same as a recommendation to
+          replace the line.
+        </p>
+
+        <h2>Limitations and incomplete inspections</h2>
+        <p>
+          A report is limited by what the camera could reach and see. Common
+          limits include a buried or unavailable cleanout, debris or roots that
+          block the camera, poor visibility from condensation or murky water,
+          pipe wall hidden under standing water, and side branches the camera
+          passed without entering.
+        </p>
+        <p>
+          A good report names the specific limit and what it affected, instead
+          of relying only on a generic disclaimer. &ldquo;Not inspected&rdquo;
+          does not mean &ldquo;no defects.&rdquo; A camera also does not show the
+          soil around the pipe, the thickness of the pipe wall, or how much
+          service life remains. InterNACHI requires reasons for uninspected
+          areas and states that its inspection is not technically exhaustive.
+        </p>
+        <p>
+          An incomplete inspection does not mean the line failed. It means part
+          of the line was not seen. If backups keep coming back, see how
+          <ApprovedInlineLink pageId={id('svc-recurring-sewer-backup-diagnosis')}>recurring sewer backup diagnosis</ApprovedInlineLink> approaches the problem.
+        </p>
+
+        <h2>Services and deliverables that may be separate</h2>
+        <p>
+          Some work sits outside a basic inspection: surface locating and depth
+          estimates, cleaning, reinspection, and repair proposals. InterNACHI
+          expressly does not require locating or marking defects or giving
+          repair cost estimates, and it does not list cleaning, depth estimates,
+          or reinspection as minimum deliverables.
+        </p>
+        <p>
+          When buildup hides the pipe wall,{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-cleaning')}>sewer cleaning</ApprovedInlineLink> followed by a
+          second look may be how the newly exposed surfaces get seen. Cleaning
+          and camera work can also be done together, as described under{' '}
+          <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>sewer cleaning and camera inspection</ApprovedInlineLink>. Keep a recommendation for more work
+          separate from a service you have purchased or a quote you have
+          received. A recommendation is not a promise that the work is included. If
+          a recommendation involves replacing a line, see{' '}
           <ApprovedInlineLink pageId={id('res-replacement-questions')}>
-            questions to ask before approving a replacement
+            questions to ask before approving a sewer line replacement
           </ApprovedInlineLink>
           .
         </p>
+
+        <h2>Reports, local programs, and standardized defect coding</h2>
+        <p>
+          A private inspection report is not automatically a compliance
+          document. Some local programs require their own steps. The East Bay
+          regional private sewer lateral program in California, for example,
+          requires a witnessed pressure test and a certificate in addition to a
+          camera evaluation. Confirm local requirements with your sewer
+          authority. For a St. Louis-area example, see our guide to{' '}
+          <ApprovedInlineLink pageId={id('res-stl-lateral-report')}>the St. Louis sewer lateral report</ApprovedInlineLink>.
+        </p>
+        <p>
+          Standardized defect coding also exists. NASSCO&rsquo;s PACP and LACP
+          systems cover pipes and laterals, and some municipal specifications
+          require them. A residential report does not use that coding unless it
+          was part of the assignment, and a provider&rsquo;s own label such as
+          &ldquo;moderate&rdquo; is not a NASSCO grade.
+        </p>
+
+        <h2>What you receive from The Sewer Pros</h2>
+        <p>
+          When a camera is used, you receive the inspection video, and written
+          findings are included. The Sewer Pros provides inspection, cleaning,
+          and locating services and does not perform sewer repair or
+          replacement, so your findings are not the first step toward a repair
+          sale. Ask what applies to your visit, including whether locating is
+          part of it and how the video is delivered. To see how this fits into a
+          home purchase, read about{' '}
+          <ApprovedInlineLink pageId={id('svc-pre-purchase-sewer-inspection')}>pre-purchase sewer inspection</ApprovedInlineLink>.
+        </p>
+
+        <h2>Report-review checklist</h2>
+
+        <h3>Before you book</h3>
+        <ul>
+          <li>What will I receive: written findings, the full recording, and any photos?</li>
+          <li>How will I get the recording, and does the link expire?</li>
+          <li>Which line and endpoint are included, and are branches or in-house drains excluded?</li>
+          <li>What happens if the camera cannot finish, and what are the fees or return-visit terms?</li>
+          <li>Are cleaning, locating, depth estimates, and reinspection included, optional, or separately priced?</li>
+          <li>Are recommendations kept separate from any repair pricing?</li>
+          <li>Can I share the findings and recording to get a second opinion?</li>
+        </ul>
+
+        <h3>When you receive it</h3>
+        <ul>
+          <li>Confirm the property, inspection date, inspector, and company.</li>
+          <li>Open the recording and confirm it covers the whole inspection, not highlights.</li>
+          <li>Find the access point, how far the camera went, and where it stopped.</li>
+          <li>Match each significant finding to a footage reading, a timestamp, or an image.</li>
+          <li>Read the limitations before you rely on a reassuring summary.</li>
+          <li>Separate what was observed, what is suspected, and what is recommended.</li>
+          <li>Find out who arranges any follow-up work and whether it costs extra.</li>
+        </ul>
       </>
     ),
     faq: [
-      {
-        question: 'What does a sewer camera inspection show?',
-        answer: (
-          <p>
-            It shows the visible inside of the accessible pipe: standing water,
-            joints, roots or material in the pipe, and changes in the pipe, and
-            where along the line each one sits. What it records depends on the
-            access and the length the camera reached. It cannot show wall
-            thickness or soil support.
-          </p>
-        ),
-      },
       {
         question: 'Should the report include a repair quote?',
         answer: (
@@ -2065,8 +2296,108 @@ export const resourceContent: Partial<Record<PageId, ResourcePageContent>> = {
           </p>
         ),
       },
+      {
+        question: 'Is a video-only sewer inspection enough?',
+        answer: (
+          <p>
+            Not if you want the full package described in InterNACHI&rsquo;s
+            sewer-scope standard, which calls for written findings, a statement
+            of inspected and uninspected sections, and the complete recorded
+            video. Confirm the provider&rsquo;s deliverables before booking
+            instead of assuming every camera service includes the same things.
+          </p>
+        ),
+      },
+      {
+        question: 'Should I get the full recording, and how long will the link work?',
+        answer: (
+          <p>
+            InterNACHI&rsquo;s standard calls for the entire recording, not just
+            selected clips, delivered as an online link or a physical copy. It
+            sets no hosting period, so ask about expiration, accounts,
+            downloads, and sharing. A visible video link in a report does not
+            prove lifetime access.
+          </p>
+        ),
+      },
+      {
+        question: 'Is a sewer camera report part of a standard home inspection?',
+        answer: (
+          <p>
+            Do not assume so. A general home inspection standard can exclude
+            underground items, and InterNACHI describes sewer scope as an
+            ancillary service. Confirm the sewer camera work is separately
+            agreed and what it covers. For how this fits a purchase, see the
+            pages for <ApprovedInlineLink pageId={id('aud-home-inspectors')}>home inspectors</ApprovedInlineLink> and{' '}
+            <ApprovedInlineLink pageId={id('aud-home-buyers')}>home buyers</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        question: 'Does the report certify compliance with local sewer rules?',
+        answer: (
+          <p>
+            Not necessarily. Local programs may require their own tests,
+            submissions, or an official present at the inspection. Check with
+            your local sewer authority about what applies to your property. In
+            the St. Louis area, start with{' '}
+            <ApprovedInlineLink pageId={id('svc-stl-sewer-lateral-inspection-reporting')}>sewer lateral inspection and reporting</ApprovedInlineLink> and the guides to the{' '}
+            <ApprovedInlineLink pageId={id('res-stl-city-program')}>city</ApprovedInlineLink> and{' '}
+            <ApprovedInlineLink pageId={id('res-stl-county-program')}>county</ApprovedInlineLink> programs.
+          </p>
+        ),
+      },
+      {
+        question: 'Can another contractor use the report for a second opinion?',
+        answer: (
+          <p>
+            It can serve as supporting evidence, especially when findings are
+            matched to footage or images and the inspected section is clear.
+            Check the sharing and third-party use terms first. For an
+            independent evaluation before approving major work, see{' '}
+            <ApprovedInlineLink pageId={id('svc-independent-sewer-second-opinion')}>
+              independent sewer inspection and second opinion
+            </ApprovedInlineLink>
+            . Another contractor is not required to accept the conclusions, and may want
+            their own look. For how this plays out in a transaction, see the
+            page for <ApprovedInlineLink pageId={id('aud-real-estate-agents')}>real estate agents</ApprovedInlineLink>.
+          </p>
+        ),
+      },
+      {
+        question: 'Does an incomplete inspection mean the line failed?',
+        answer: (
+          <p>
+            No. Access, bends, debris, or equipment limits can stop a camera.
+            The report should state where it stopped and what was not seen. It
+            should not treat an incomplete run as a collapse, or the unreached
+            line as satisfactory. If buildup was the limit,{' '}
+            <ApprovedInlineLink pageId={id('svc-sewer-cleaning-camera-inspection')}>sewer cleaning and camera inspection</ApprovedInlineLink> covers cleaning the line and looking
+            again.
+          </p>
+        ),
+      },
+      {
+        question: 'What does a sewer camera inspection show?',
+        answer: (
+          <p>
+            A <ApprovedInlineLink pageId={id('svc-sewer-camera-inspection')}>sewer camera inspection</ApprovedInlineLink>{' '}
+            can show blockages, root intrusion, separated joints, offsets,
+            cracks, standing water, and other visible pipe conditions, and
+            where along the line each one sits. It does not measure slope or
+            wall thickness, and it does not show the soil outside the pipe.
+          </p>
+        ),
+      },
     ],
-    relatedPageIds: [id('res-read-video'), id('svc-sewer-camera-inspection'), id('svc-pre-purchase-sewer-inspection'), id('core-faq')],
+    relatedPageIds: [
+      id('res-read-video'),
+      id('svc-sewer-camera-inspection'),
+      id('svc-pre-purchase-sewer-inspection'),
+      id('svc-sewer-line-locating'),
+      id('svc-sewer-cleaning'),
+      id('core-faq'),
+    ],
   },
 
   [id('res-read-video')]: {
