@@ -1941,7 +1941,7 @@ Open content follow-ups carried from the batch reviews: St. Louis housing-figure
 
 # 56C. Proposed Geographic Expansion Candidates (September 23, 2026)
 
-**Lifecycle for every route below: `candidate / not built / not published / not indexable`.** These are planning candidates from an external SEO proposal, reconciled against the registry. Candidate status supports research, drafting, and development. It does not approve publication, indexation, sitemap inclusion, service coverage, or entry into `data/pages/approved-pages.ts`. Existing routes are excluded from the counts. Total: **9 candidate location hubs and 49 candidate service + location pages.**
+**Lifecycle for every route below: `candidate / not built / not published / not indexable`.** (Exception: the 18 Las Vegas service + location routes marked built in the Las Vegas section below.) These are planning candidates from an external SEO proposal, reconciled against the registry. Candidate status supports research, drafting, and development. It does not approve publication, indexation, sitemap inclusion, service coverage, or entry into `data/pages/approved-pages.ts`. Existing routes are excluded from the counts. Total: **9 candidate location hubs and 49 candidate service + location pages.**
 
 Neither candidate status nor a geographic-registry record approves publication or indexation. The candidate locations exist in `07-master-location-registry.md`; the pages or routes are not in the approved page registry. Those are separate statements.
 
@@ -1957,15 +1957,17 @@ Each hub's canonical parent is its market hub (`/las-vegas-nv/`, `/st-louis-mo/`
 
 The proposal's other Tier 1 hubs already exist in the inventory. Las Vegas Valley communities use `/las-vegas-nv/{location}/`, never standalone routes such as `/henderson-nv/`. The O'Fallon slug follows the registry (`ofallon-mo`).
 
-## Las Vegas service + location candidates (27)
+## Las Vegas service + location candidates (27 proposed; 18 now built, 9 still candidates)
+
+**Status as of November 23, 2026.** The 18 candidates for Las Vegas, Henderson, North Las Vegas and Summerlin are built and indexable. They are part of the 36 Las Vegas service + location pages (9 residential services x 4 locations, section 56D), at `/locations/las-vegas-nv/{location}/{service-slug}/` (DEC-141), not at the `/las-vegas-nv/{location}/...` paths first proposed. The 9 candidates for Enterprise, Spring Valley and Paradise have no routes in the build and remain `candidate / not built / not published / not indexable`; their location hubs (above) are also not built.
 
 Canonical parent of each route: its location hub, with the canonical service page as the service parent.
 
-* **Las Vegas, Henderson, North Las Vegas** (15): each for `sewer-camera-inspection`, `sewer-cleaning`, `drain-cleaning`, `hydro-jetting`, `sewer-line-locating`, e.g. `/las-vegas-nv/henderson/sewer-camera-inspection/`
-* **Enterprise** (3): `sewer-camera-inspection`, `drain-cleaning`, `sewer-line-locating`
-* **Spring Valley** (3): `sewer-camera-inspection`, `drain-cleaning`, `sewer-cleaning`
-* **Paradise** (3): `sewer-camera-inspection`, `drain-cleaning`, `hydro-jetting`
-* **Summerlin** (3): `sewer-camera-inspection`, `sewer-cleaning`, `drain-cleaning`
+* **Las Vegas, Henderson, North Las Vegas** (15, built): each for `sewer-camera-inspection`, `sewer-cleaning`, `drain-cleaning`, `hydro-jetting`, `sewer-line-locating`, now at e.g. `/locations/las-vegas-nv/henderson/sewer-camera-inspection/`
+* **Summerlin** (3, built): `sewer-camera-inspection`, `sewer-cleaning`, `drain-cleaning`
+* **Enterprise** (3, still candidates): `sewer-camera-inspection`, `drain-cleaning`, `sewer-line-locating`
+* **Spring Valley** (3, still candidates): `sewer-camera-inspection`, `drain-cleaning`, `sewer-cleaning`
+* **Paradise** (3, still candidates): `sewer-camera-inspection`, `drain-cleaning`, `hydro-jetting`
 
 The proposal's "27" and "29" totals conflicted. The enumerated set is 27 (15 + 12).
 
