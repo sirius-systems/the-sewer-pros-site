@@ -1816,6 +1816,11 @@ export const hubContent: Partial<Record<PageId, HubPageContent>> = {
         description: 'What to ask, and what a clear answer sounds like, before you approve a replacement.',
       },
     ],
+    ctaBackground: {
+      src: '/images/brand/resources/the-sewer-pros-resources-final-cta-sewer-inspection-report-notebook-16x9.webp',
+      alt: 'Clipboard with blank paper and a closed notebook on a counter beside a camera monitor, with a window behind',
+      source: 'Generated image (DEC-145), owner-approved. Scene, not a photograph of a Sewer Pros job.',
+    },
   },
 }
 

@@ -193,6 +193,24 @@
   "sha256": "61faf751b9cfaaf24bc833cecc2585fb2a05248480ee6905b01515168a5c550d",
   "words": []
  },
+ "images/brand/resources/the-sewer-pros-resources-final-cta-sewer-inspection-report-notebook-16x9.webp": {
+  "sha256": "c82488a255fa3377a63fe34621d7dde70dab81ba6a44a57ebc478bc9ec716b79",
+  "words": [
+   {
+    "text": "RIDGID",
+    "confidence": 87
+   }
+  ]
+ },
+ "images/brand/resources/the-sewer-pros-sewer-drain-resources-hero-seesnake-camera-monitor-16x9.webp": {
+  "sha256": "2c9096cb949b8b485090eb037c0dca582ecf3328e43fa28121bcca795db70031",
+  "words": [
+   {
+    "text": "SeeSnake",
+    "confidence": 70
+   }
+  ]
+ },
  "images/brand/reviews/the-sewer-pros-customer-reviews-final-cta-st-louis-home-entryway-16x9.webp": {
   "sha256": "1543e053caf180bfdd63ba9ce08cdb062952489c47f88494db0702060588155a",
   "words": []

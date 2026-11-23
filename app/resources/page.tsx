@@ -5,6 +5,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { pageMetadata } from '@/lib/seo'
 import { HubPageTemplate } from '@/components/templates'
+import { HeroBackdrop } from '@/components/sections'
+import { resourcesHubBackdrop } from '@/data/business/resources-hub-backdrop'
 import { getHubContent } from '@/content'
 import { getPage } from '@/data/pages'
 import type { PageId } from '@/types'
@@ -26,5 +28,12 @@ export default function Page() {
   const page = getPage(PAGE_ID)
   const content = getHubContent(PAGE_ID)
   if (page === undefined || content === undefined) notFound()
-  return <HubPageTemplate page={page} content={content} itemsTitle="Guides" />
+  return (
+    <HubPageTemplate
+      page={page}
+      content={content}
+      itemsTitle="Guides"
+      backdrop={<HeroBackdrop set={resourcesHubBackdrop} />}
+    />
+  )
 }
