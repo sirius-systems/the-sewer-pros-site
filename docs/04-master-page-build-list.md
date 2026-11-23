@@ -1727,7 +1727,7 @@ The families table in §13 to §24 describes intent. Where it says "build-ready 
 
 ---
 
-# 56B. Confirmed Audit Results (September 22, 2026)
+# 56B. Confirmed Audit Results (September 22, 2026; 64-page baseline)
 
 Full report: `/tmp/the-sewer-pros-page-audit-report.md`. This section is the inventory-document record of that report's confirmed results; it does not restate the report's reasoning or footnotes in full.
 
