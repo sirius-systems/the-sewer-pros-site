@@ -694,6 +694,13 @@ export function ContactForm({
           <Button type="submit" pending={pending} pendingLabel="Sending…">
             Submit Request
           </Button>
+          <p className="text-center text-caption text-muted-foreground">
+            See our{' '}
+            <Link href="/privacy/" className="underline underline-offset-4 hover:text-foreground">
+              Privacy Policy
+            </Link>
+            .
+          </p>
           {notice !== undefined && (
             <p role="status" className="text-center text-sm font-medium text-foreground">
               {notice}

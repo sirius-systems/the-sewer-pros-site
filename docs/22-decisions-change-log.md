@@ -5820,3 +5820,20 @@ Recorded:
 **Reason:** the sender named in the two consent sentences was the wrong business name. It must be The Sewer Pros.
 
 Recorded: only the company name changed; every other word of both sentences is as before. The version is now `sms-consent-v2` (2026-11-22). `sms-consent-v1` (2026-10-12) named the wrong sender; contacts and notes recorded under it keep that id, so they can be told apart. The function still accepts `sms-consent-v1` so a visitor who loaded the form before the change is not refused, but no page shows the v1 text. Timestamps are captured as before. `scripts/verify-lead-routing.mjs` checks the version, the sender, that the sentence lives in one file, and that the old name appears nowhere in tracked files. Still open: PENDING-019 (the "Text" option disclosure; the consent block now exists but the owner has not closed that item) and PENDING-020 (privacy and terms pages).
+
+
+## DEC-162 - Privacy Policy and SMS Terms Pages; No Consent Banner at Launch (GA4 Measurement-Only)
+
+**Date:** 2026-11-23
+**Status:** APPROVED
+**Impact:** Minor (two utility pages, footer and form links); the analytics consent determination must be revisited before any advertising feature
+**Decision Owner:** Business owner (Sedrick)
+**Affected Documents:**
+
+* `content/pages/privacy.tsx`, `content/pages/sms-terms.tsx`, `app/privacy/page.tsx`, `app/sms-terms/page.tsx`, `data/pages/approved-pages.ts`, `data/pages/pages.ts`, `lib/routing/pathname.ts`, `data/navigation/navigation.ts`, `components/layout/SiteFooter.tsx`, the three lead form components, `docs/04-master-page-build-list.md`
+
+Recorded:
+
+* **Pages.** `/privacy/` (`core-privacy`, indexable, low priority, Fast mode / Level 1, approved 2026-09-01) and `/sms-terms/` (`core-sms-terms`, noindex). Both segments are now reserved root segments. The Privacy Policy is linked from the footer Company group and from the lead forms. The privacy requests email is info@thesewerpros.com, and the policy names The Sewer Pros only.
+* **SMS Terms.** The body is a `TODO(owner)` placeholder. Launch blocker: the owner must paste the SMS opt-in program terms. Not linked from the footer until then.
+* **Analytics consent determination (from `form-fields-and-consent-decision.md` section 2).** No cookie or consent banner at launch, because GA4 is configured for measurement only (no ad personalization, no Google Ads linking, no retargeting pixels, no PII sent). **This must be revisited before any ad personalization, Google Ads linking or retargeting pixel is added**; the policy's "we do not sell or share" statement is true only while that holds.

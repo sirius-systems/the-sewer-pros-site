@@ -1792,6 +1792,8 @@ No Critical findings.
 | `core-reviews` | Core | `/reviews/` | Brand/trust | — | — | — | complete | published | indexable | pass | not-applicable | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Medium | Added 2026-11-22 on owner request; Google reviews from both profiles, filterable; visible text only, no review schema (DEC-028) | — |
 | `core-careers` | Core | `/careers/` | Brand/trust | — | — | — | complete | published | indexable | pass | not-applicable | pass (application form posts to /api/careers; resume attach needs the GHL File Upload field and forms.write scope, DEC-160) | pass | keep-indexable | Low | Added 2026-11-22 on owner request (DEC-160); one block per market (St. Louis area, San Diego area, Las Vegas Valley), no roles, pay or urgency; WebPage schema only, no JobPosting | — |
 | `core-careers-thank-you` | Core | `/careers/thank-you/` | Utility | — | — | — | complete | published | noindex | pass | not-applicable | pass | pass | keep-noindex | Low | Added 2026-11-22 (DEC-160); confirmation page, noindex, not in the sitemap, not linked from any page | — |
+| `core-privacy` | Core | `/privacy/` | Utility (legal) | — | — | — | complete | published | indexable | pass | not-applicable | not-applicable | pass | keep-indexable | Low | Added 2026-11-23 (DEC-162); Fast mode / Level 1; WebPage + BreadcrumbList only; low sitemap priority; counsel review before launch | — |
+| `core-sms-terms` | Core | `/sms-terms/` | Utility (legal) | — | — | — | placeholder | published | noindex | pass | not-applicable | not-applicable | pass | keep-noindex | Low | Added 2026-11-23 (DEC-162); body is a TODO(owner) placeholder, LAUNCH BLOCKER until the owner pastes the SMS opt-in program terms; not linked from the footer; linked only from /privacy/ | — |
 | `svc-sewer-camera-inspection` | Service | `/services/sewer-camera-inspection/` | Transactional service | svc-sewer-camera-inspection | — | — | complete | published | indexable | pass | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | Rewritten on Service Page Template v2 (DEC-123); unique authored title and description; scripts/verify-sewer-camera-inspection-page.mjs passes | No page-specific action required |
 | `svc-sewer-cleaning` | Service | `/services/sewer-cleaning/` | Transactional service | svc-sewer-cleaning | — | — | complete | published | indexable | pass | needs-collection | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | Migrated to Service Page Template v2 (DEC-124); unique authored title and description; scripts/verify-sewer-cleaning-page.mjs passes | No page-specific action required |
 | `svc-hydro-jetting` | Service | `/services/hydro-jetting/` | Transactional service | svc-hydro-jetting | — | — | complete | published | indexable | pass | needs-collection (image placeholders in place) | pass (PENDING-018 endpoint gap applies site-wide) | pass | keep-indexable | Routine | Migrated to Service Page Template v2 (DEC-125); unique authored title and description; scripts/verify-hydro-jetting-page.mjs passes | No page-specific action required |
@@ -1881,7 +1883,7 @@ Confirmed result:
 
 # 56D. Service + Location Grid (October 6, 2026)
 
-The full residential service x location grid is built, published and indexable (DEC-139, DEC-140). Registry: `data/pages/approved-pages.ts`. Totals now: **198 built, 198 published, 197 indexable** (the one non-indexable record is the contact confirmation page; DEC-142 of Oct 12, 2026 took the total from 204 to 198). `EXPECTED_PAGE_COUNT` is 198 and `EXPECTED_INDEXABLE_COUNT` is 197 in `data/pages/pages.ts`.
+The full residential service x location grid is built, published and indexable (DEC-139, DEC-140). Registry: `data/pages/approved-pages.ts`. Totals now: **198 built, 198 published, 197 indexable** at that date (the one non-indexable record was the contact confirmation page; DEC-142 of Oct 12, 2026 took the total from 204 to 198). `EXPECTED_PAGE_COUNT` is 198 and `EXPECTED_INDEXABLE_COUNT` is 197 in `data/pages/pages.ts`.
 
 | Item | Value |
 |---|---|
@@ -1968,3 +1970,5 @@ The proposal's "27" and "29" totals conflicted. The enumerated set is 27 (15 + 1
 * Confirm market coverage and service fit; several routes need local operational confirmation, and a page proposal does not establish service coverage
 * Confirm canonical location and service data, distinct page intent, and local evidence
 * Preserve nested market URLs; imply no physical office or Google Business Profile
+
+**Update 2026-11-23 (DEC-162).** `/privacy/` (indexable) and `/sms-terms/` (noindex, placeholder) were added. `EXPECTED_PAGE_COUNT` is now 205 and `EXPECTED_INDEXABLE_COUNT` is 202 in `data/pages/pages.ts`.
