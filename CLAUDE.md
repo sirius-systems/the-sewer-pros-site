@@ -1785,3 +1785,6 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Git attribution
+Never add Claude, Anthropic, Claude Code, or claude.ai session lines to commit messages, PR descriptions, or file contents. End commit messages with exactly: Co-Authored-By: Sirius Systems Digital Marketing Agency <info@siriussys.io>. PR descriptions carry no AI attribution.
